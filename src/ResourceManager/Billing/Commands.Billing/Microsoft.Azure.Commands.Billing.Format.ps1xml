@@ -86,22 +86,24 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Billing.Models.PSEnrollmentAccount</TypeName>
       </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>ObjectId</Label>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
                 <PropertyName>ObjectId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>PrincipalName</Label>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>PrincipalName</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
     </View>
   </ViewDefinitions>
 </Configuration>

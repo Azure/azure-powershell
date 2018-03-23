@@ -32,11 +32,10 @@ The **Get-AzureRmEnrollmentAccount** cmdlet gets enrollment accounts.
 ```
 PS C:\> Get-AzureRmEnrollmentAccount
 
-ObjectId      : dbd8453d-071f-4fb4-8e01-c99f5b067649
-PrincipalName : jason@contoso.onmicrosoft.com
-
-ObjectId      : 7ff524ac-a0de-4402-876f-934ccee3b601
-PrincipalName : carol@contoso.onmicrosoft.com
+ObjectId                             PrincipalName
+--------                             -------------
+dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
+7ff524ac-a0de-4402-876f-934ccee3b601 carol@contoso.onmicrosoft.com
 ```
 
 Get all available enrollment accounts.
@@ -45,8 +44,9 @@ Get all available enrollment accounts.
 ```
 PS C:\> Get-AzureRmEnrollmentAccount -ObjectId dbd8453d-071f-4fb4-8e01-c99f5b067649
 
-ObjectId      : dbd8453d-071f-4fb4-8e01-c99f5b067649
-PrincipalName : jason@contoso.onmicrosoft.com
+ObjectId                             PrincipalName
+--------                             -------------
+dbd8453d-071f-4fb4-8e01-c99f5b067649 jason@contoso.onmicrosoft.com
 ```
 
 Get the enrollment account with the specified object id.
