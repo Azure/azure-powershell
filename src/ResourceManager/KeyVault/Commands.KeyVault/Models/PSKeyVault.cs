@@ -26,13 +26,13 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class PSVault : PSVaultIdentityItem
+    public class PSKeyVault : PSKeyVaultIdentityItem
     {
-        public PSVault()
+        public PSKeyVault()
         {
         }
 
-        public PSVault(Vault vault, ActiveDirectoryClient adClient)
+        public PSKeyVault(Vault vault, ActiveDirectoryClient adClient)
         {
             var vaultTenantDisplayName = ModelExtensions.GetDisplayNameForTenant(vault.Properties.TenantId, adClient);
             VaultName = vault.Name;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnabledForTemplateDeployment = vault.Properties.EnabledForTemplateDeployment;
             EnabledForDiskEncryption = vault.Properties.EnabledForDiskEncryption;
             EnableSoftDelete = vault.Properties.EnableSoftDelete;
-            AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSVaultAccessPolicy(s, adClient)).ToArray();
+            AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
             OriginalVault = vault;
         }
         public string VaultUri { get; private set; }
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public bool? EnableSoftDelete { get; private set; }
 
-        public PSVaultAccessPolicy[] AccessPolicies { get; private set; }
+        public PSKeyVaultAccessPolicy[] AccessPolicies { get; private set; }
 
         public string AccessPoliciesText { get { return ModelExtensions.ConstructAccessPoliciesList(AccessPolicies); } }
 

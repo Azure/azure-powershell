@@ -19,9 +19,12 @@ using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class CertificateIdentityItem : ObjectIdentifier
+    public class PSKeyVaultCertificateIdentityItem : ObjectIdentifier
     {
-        internal CertificateIdentityItem(CertificateItem certItem, VaultUriHelper vaultUriHelper)
+        public PSKeyVaultCertificateIdentityItem()
+        { }
+
+        internal PSKeyVaultCertificateIdentityItem(CertificateItem certItem, VaultUriHelper vaultUriHelper)
         {
             if (certItem == null)
                 throw new ArgumentNullException("certItem");
@@ -40,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Tags = (certItem.Tags == null) ? null : certItem.Tags.ConvertToHashtable();
         }
 
-        internal CertificateIdentityItem(CertificateBundle certBundle)
+        internal PSKeyVaultCertificateIdentityItem(CertificateBundle certBundle)
         {
             if (certBundle == null)
                 throw new ArgumentNullException("certBundle");
@@ -69,9 +72,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public DateTime? NotBefore { get; set; }
 
-        public DateTime? Created { get; private set; }
+        public DateTime? Created { get; protected set; }
 
-        public DateTime? Updated { get; private set; }
+        public DateTime? Updated { get; protected set; }
 
         public Hashtable Tags { get; set; }
     }

@@ -19,12 +19,12 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyBundle : ObjectIdentifier
+    public class PSKeyVaultKey : PSKeyVaultKeyIdentityItem
     {
-        public KeyBundle()
+        public PSKeyVaultKey()
         { }
 
-        internal KeyBundle(Azure.KeyVault.Models.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
+        internal PSKeyVaultKey(Azure.KeyVault.Models.KeyBundle keyBundle, VaultUriHelper vaultUriHelper)
         {
             if (keyBundle == null)
                 throw new ArgumentNullException("keyBundle");
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             SetObjectIdentifier(vaultUriHelper, keyBundle.KeyIdentifier);
 
             Key = keyBundle.Key;
-            Attributes = new KeyAttributes(
+            Attributes = new PSKeyVaultKeyAttributes(
                 keyBundle.Attributes.Enabled,
                 keyBundle.Attributes.Expires, 
                 keyBundle.Attributes.NotBefore, 
@@ -44,9 +44,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 keyBundle.Attributes.Updated,
                 keyBundle.Attributes.RecoveryLevel,
                 keyBundle.Tags);
+
+            Enabled = keyBundle.Attributes.Enabled;
+            Expires = keyBundle.Attributes.Expires;
+            NotBefore = keyBundle.Attributes.NotBefore;
+            Created = keyBundle.Attributes.Created;
+            Updated = keyBundle.Attributes.Updated;
+            RecoveryLevel = keyBundle.Attributes.RecoveryLevel;
+            Tags = (keyBundle.Tags == null) ? null : keyBundle.Tags.ConvertToHashtable();
         }
 
-        public KeyAttributes Attributes { get; set; }
+        public PSKeyVaultKeyAttributes Attributes { get; set; }
 
         public JsonWebKey Key { get; set; }
 
