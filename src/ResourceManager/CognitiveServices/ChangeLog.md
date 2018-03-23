@@ -22,6 +22,8 @@
 
 ## Version 0.9.3
 * Fix issue with Default Resource Group in CloudShell
+* Integrate with Cognitive Services Management SDK version 4.0.0.
+* Add Get-AzureRmCognitiveServicesAccountUsages operation.
 
 ## Version 0.9.2
 * Update notice.txt and notice message.

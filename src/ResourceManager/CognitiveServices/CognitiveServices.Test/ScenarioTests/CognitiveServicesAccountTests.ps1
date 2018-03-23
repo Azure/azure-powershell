@@ -502,3 +502,35 @@ function Test-GetWithPaging
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test Test-GetUsages
+#>
+function Test-GetUsages
+{
+    # Setup
+    $rgname = Get-CognitiveServicesManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $accountname = 'csa' + $rgname;
+        $skuname = 'S1';
+        $accounttype = 'TextAnalytics';
+        $loc = 'West US';
+
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+
+        $createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
+		$usages = Get-AzureRmCognitiveServicesAccountUsages -ResourceGroupName $rgname -Name $accountname
+		Assert-True {$usages.Count -gt 0}
+		Assert-AreEqual 0.0 $usages[0].CurrentValue
+		Assert-True {$usages[0].Limit -gt 0}
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
