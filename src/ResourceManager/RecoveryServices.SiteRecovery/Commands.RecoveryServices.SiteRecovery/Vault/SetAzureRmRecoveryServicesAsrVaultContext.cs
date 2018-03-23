@@ -13,14 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Net;
 using System.Management.Automation;
+using Microsoft.Rest.Azure;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Vault Settings.
+    ///     Sets the Recovery Services vault context to be used for subsequent Azure Site Recovery operations in the current PowerShell session.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
@@ -35,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class SetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets ARS vault Object.
+        ///     Gets or sets the Recovery Services vault object corresponding to the Recovery Services vault.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ARSVault,
@@ -55,14 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.Vault.Name,
                 VerbsCommon.Set))
             {
-                switch (this.ParameterSetName)
-                {
-                    case ASRParameterSets.ARSVault:
-                        this.SetARSVaultContext(this.Vault);
-                        break;
-                    default:
-                        throw new PSInvalidOperationException(Resources.InvalidParameterSet);
-                }
+                this.SetARSVaultContext(this.Vault);
             }
         }
 
@@ -74,32 +70,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             try
             {
-                using (var powerShell = System.Management.Automation.PowerShell.Create())
+                VaultExtendedInfoResource vaultExtendedInfo = null;
+
+                try
                 {
-                    var vaultExtendedInfo = this.RecoveryServicesClient
-                        .GetVaultExtendedInfo(this.Vault.ResourceGroupName,this.Vault.Name);
-
-
-                    ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
-                    
-                    asrVaultCreds.ResourceName = this.Vault.Name;
-                    asrVaultCreds.ResourceGroupName = this.Vault.ResourceGroupName;
-                    asrVaultCreds.ChannelIntegrityKey = vaultExtendedInfo.IntegrityKey;
-                    
-                    asrVaultCreds.ResourceNamespace = ARMResourceTypeConstants
-                        .RecoveryServicesResourceProviderNameSpace;
-
-                    asrVaultCreds.ARMResourceType = ARMResourceTypeConstants.RecoveryServicesVault;
-
-                    Utilities.UpdateCurrentVaultContext(asrVaultCreds);
-
-                    this.RecoveryServicesClient.ValidateVaultSettings(
-                    asrVaultCreds.ResourceName,
-                    asrVaultCreds.ResourceGroupName);
-
-                    this.WriteObject(new ASRVaultSettings(asrVaultCreds));
-                    powerShell.Commands.Clear();
+                    vaultExtendedInfo = this.RecoveryServicesClient
+                    .GetVaultExtendedInfo(this.Vault.ResourceGroupName, this.Vault.Name);
                 }
+                catch (CloudException ex)
+                {
+                    throw new Exception(Resources.TryDownloadingVaultFile);
+                }
+
+                ASRVaultCreds asrVaultCreds = new ASRVaultCreds();
+
+                asrVaultCreds.ResourceName = this.Vault.Name;
+                asrVaultCreds.ResourceGroupName = this.Vault.ResourceGroupName;
+                asrVaultCreds.ChannelIntegrityKey = vaultExtendedInfo.IntegrityKey;
+
+                asrVaultCreds.ResourceNamespace = ARMResourceTypeConstants
+                    .RecoveryServicesResourceProviderNameSpace;
+
+                asrVaultCreds.ARMResourceType = ARMResourceTypeConstants.RecoveryServicesVault;
+
+                Utilities.UpdateCurrentVaultContext(asrVaultCreds);
+
+                this.RecoveryServicesClient.ValidateVaultSettings(
+                asrVaultCreds.ResourceName,
+                asrVaultCreds.ResourceGroupName);
+
+                this.WriteObject(new ASRVaultSettings(asrVaultCreds));
             }
             catch (InvalidOperationException e)
             {

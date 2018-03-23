@@ -24,7 +24,7 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Recovery Plans.
+    ///     Gets a recovery plan or all the recovery plans in the Recovery Services vault
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class GetAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets name of the Recovery Plan.
+        ///     Gets or sets the name of the recovery plan to get.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets friendly name of the Recovery Plan.
+        ///     Gets or sets the friendly name of the recovery plan to get.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByFriendlyName,
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string FriendlyName { get; set; }
 
         /// <summary>
-        ///     Gets or sets RP JSON FilePath.
+        ///     Gets or sets the file path to which this cmdlet saves the recovery plan json definition.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
