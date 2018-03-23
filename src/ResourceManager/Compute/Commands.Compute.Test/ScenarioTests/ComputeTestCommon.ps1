@@ -505,47 +505,47 @@ function Get-ResourceProviderLocation
 
 function Get-ComputeVMLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines";
+     Get-Location "Microsoft.Compute" "virtualMachines" "East US";
 }
 
 function Get-ComputeAvailabilitySetLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/availabilitySets";
+     Get-Location "Microsoft.Compute" "availabilitySets" "West US";
 }
 
 function Get-ComputeVMExtensionLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/extensions";
+     Get-Location "Microsoft.Compute" "virtualMachines/extensions" "West US";
 }
 
 function Get-ComputeVMDiagnosticSettingLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/diagnosticSettings";
+     Get-Location "Microsoft.Compute" "virtualMachines/diagnosticSettings" "West US";
 }
 
 function Get-ComputeVMMetricDefinitionLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/metricDefinitions";
+     Get-Location "Microsoft.Compute" "virtualMachines/metricDefinitions" "West US";
 }
 
 function Get-ComputeOperationLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/operations";
+     Get-Location "Microsoft.Compute" "locations/operations" "West US";
 }
 
 function Get-ComputeVMSizeLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/vmSizes";
+     Get-Location "Microsoft.Compute" "locations/vmSizes" "West US";
 }
 
 function Get-ComputeUsageLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/usages";
+     Get-Location "Microsoft.Compute" "locations/usages" "West US";
 }
 
 function Get-ComputePublisherLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/publishers";
+     Get-Location "Microsoft.Compute" "locations/publishers" "West US";
 }
 
 function Get-SubscriptionIdFromResourceGroup

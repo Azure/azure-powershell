@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
+* Fixed issue with cleaning up scripts in build
+
+## Version 4.3.0
+* Fixed issue with importing aliases
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+
+## Version 4.2.0
 * Update the Auditing commands parameters description
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

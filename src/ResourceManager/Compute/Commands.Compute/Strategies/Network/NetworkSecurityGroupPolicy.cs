@@ -13,18 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using System;
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class NetworkSecurityGroupStrategy
     {
         public static ResourceStrategy<NetworkSecurityGroup> Strategy { get; }
             = NetworkStrategy.Create(
-                type: "network security group",
                 provider: "networkSecurityGroups",
                 getOperations: client => client.NetworkSecurityGroups,
                 getAsync: (o, p) => o.GetAsync(
@@ -41,7 +43,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                 createModel: _ => new NetworkSecurityGroup
                 {
                     SecurityRules = openPorts
-                        .Select((port, index) => new SecurityRule
+                        ?.Select((port, index) => new SecurityRule
                         {
                             Name = name + port,
                             Protocol = "Tcp",
@@ -55,5 +57,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
                         })
                         .ToList()
                 });
+
+        public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
+            this ResourceConfig<ResourceGroup> resourceGroup,
+            string name,
+            int[] openPorts,
+            ImageAndOsType imageAndOsType)
+            => resourceGroup.CreateNetworkSecurityGroupConfig(
+                name,
+                imageAndOsType.UpdatePorts(openPorts));
     }
 }

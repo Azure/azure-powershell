@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSAccessUri))]
     public partial class GrantAzureRmDiskAccess : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {
@@ -175,15 +175,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
-            Mandatory = false)]
-        [AllowNull]
+            Mandatory = true)]
         public AccessLevel Access { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 4,
             Mandatory = false)]
-        [AllowNull]
         public int DurationInSecond { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

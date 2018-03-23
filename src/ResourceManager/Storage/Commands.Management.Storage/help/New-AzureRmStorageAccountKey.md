@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM.Storage
 ms.assetid: FDD2CE98-6C7E-4B95-BA5B-B03B6AC6EAEF
@@ -25,7 +25,7 @@ The **New-AzureRmStorageAccountKey** cmdlet regenerates a storage key for an Azu
 
 ### Example 1: Regenerate a storage key
 ```
-PS C:\>New-AzureRmStorageKey -ResourceGroupName "MyResourceGroup" -Name "MyStorageAccount" -KeyName "key1"
+PS C:\>New-AzureRmStorageKey -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyName "key1"
 ```
 
 This command regenerates a storage key for the specified Storage account.
@@ -101,6 +101,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

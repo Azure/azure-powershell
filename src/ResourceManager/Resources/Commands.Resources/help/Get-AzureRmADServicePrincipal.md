@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 4DC26C26-6162-4A15-BFCB-4D2B6B52DD81
@@ -15,8 +15,7 @@ Filters active directory service principals.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADServicePrincipal [-ServicePrincipalName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmADServicePrincipal [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
@@ -114,18 +113,6 @@ SPN of the service.
 
 ```yaml
 Type: String
-Parameter Sets: EmptyParameterSet
-Aliases: SPN
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
 Parameter Sets: SPNParameterSet
 Aliases: SPN
 
@@ -140,6 +127,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

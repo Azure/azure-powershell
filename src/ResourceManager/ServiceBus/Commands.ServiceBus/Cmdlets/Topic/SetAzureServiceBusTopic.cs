@@ -22,52 +22,36 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// <summary>
     /// 'Set-AzureRmServiceBusTopic' Cmdlet updates the specified ServiceBus Topic
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusTopicVerb, SupportsShouldProcess = true), OutputType(typeof(TopicAttributes))]
+    [Cmdlet(VerbsCommon.Set, ServicebusTopicVerb, SupportsShouldProcess = true), OutputType(typeof(PSTopicAttributes))]
     public class SetAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicName)]
         public string Name { get; set; }
         
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "ServiceBus Topic definition.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 3, HelpMessage = "ServiceBus Topic definition")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicObj)]
-        public TopicAttributes InputObject { get; set; }
+        public PSTopicAttributes InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            TopicAttributes topicAttributes = new TopicAttributes();
+            PSTopicAttributes topicAttributes = new PSTopicAttributes();
             if (InputObject != null)
             {
                 topicAttributes = InputObject;
-            }
-            else
-            {
-                //topicAttributes = TopicObj;
             }
             
             if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateTopic, Name, Namespace)))

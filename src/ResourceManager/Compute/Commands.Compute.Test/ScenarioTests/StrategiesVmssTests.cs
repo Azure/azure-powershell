@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Compute.Test.ScenarioTests;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -22,14 +22,31 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     {
         public StrategiesVmssTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(
+                new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
         [Fact]
-        [Trait(Category.RunType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmss()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmss");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssImageName()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmssImageName");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssWithoutDomainName()
+        {
+            StrategiesVirtualMachineTests.TestDomainName(
+                "Test-SimpleNewVmssWithoutDomainName",
+                () => HttpMockServer.GetAssetGuid("domainName").ToString());
         }
     }
 }

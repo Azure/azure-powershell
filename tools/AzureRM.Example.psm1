@@ -38,15 +38,22 @@ if ($PSVersionTable.PSVersion.Major -ge 5)
         Register-ArgumentCompleter -CommandName $_.Command -ParameterName $_.Parameter -ScriptBlock $sb
     }
 }
+else
+{
+    %PSVersionDeprecationMessage%
+}
 
 $FilteredCommands = %DEFAULTRGCOMMANDS%
 
-$FilteredCommands | ForEach-Object {
-	$global:PSDefaultParameterValues.Add($_,
-		{
-			$context = Get-AzureRmContext
-			if (($context -ne $null) -and $context.ExtendedProperties.ContainsKey("Default Resource Group")) {
-				$context.ExtendedProperties["Default Resource Group"]
-			} 
-		})
+if ($Env:ACC_CLOUD -eq $null)
+{
+    $FilteredCommands | ForEach-Object {
+        $global:PSDefaultParameterValues.Add($_,
+            {
+                $context = Get-AzureRmContext
+                if (($context -ne $null) -and $context.ExtendedProperties.ContainsKey("Default Resource Group")) {
+                    $context.ExtendedProperties["Default Resource Group"]
+                } 
+            })
+    }
 }

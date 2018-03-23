@@ -19,24 +19,15 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.Compute;
-using Microsoft.Azure.Commands.Common.Strategies.Network;
-using Microsoft.Azure.Commands.Common.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.Compute.Strategies;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -154,148 +145,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
-        async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
-        {
-            ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
-            VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
-            SubnetName = SubnetName ?? VMScaleSetName;
-            PublicIpAddressName = PublicIpAddressName ?? VMScaleSetName;
-            DomainNameLabel = DomainNameLabel ?? (VMScaleSetName + ResourceGroupName).ToLower();
-            SecurityGroupName = SecurityGroupName ?? VMScaleSetName;
-            LoadBalancerName = LoadBalancerName ?? VMScaleSetName;
-            FrontendPoolName = FrontendPoolName ?? VMScaleSetName;
-            BackendPoolName = BackendPoolName ?? VMScaleSetName;
-
-            // get image
-            bool isWindows;
-            Commands.Common.Strategies.Compute.Image image;
-            if (ImageName.Contains(':'))
-            {
-                var imageArray = ImageName.Split(':');
-                if (imageArray.Length != 4)
-                {
-                    throw new Exception("Invalid ImageName");
-                }
-                image = new Commands.Common.Strategies.Compute.Image
-                {
-                    publisher = imageArray[0],
-                    offer = imageArray[1],
-                    sku = imageArray[2],
-                    version = imageArray[3],
-                };
-                isWindows = image.publisher.ToLower() == "MicrosoftWindowsServer".ToLower();
-            }
-            else
-            {
-                // get image
-                var osTypeAndImage = Images
-                    .Instance
-                    .SelectMany(osAndMap => osAndMap
-                        .Value
-                        .Where(nameAndImage => nameAndImage.Key.ToLower() == ImageName.ToLower())
-                        .Select(nameAndImage => new
-                        {
-                            OsType = osAndMap.Key,
-                            Image = nameAndImage.Value
-                        }))
-                    .FirstOrDefault();
-                image = osTypeAndImage.Image;
-                isWindows = osTypeAndImage.OsType == "Windows";
-            }
-
-            BackendPort = BackendPort ?? (isWindows ? new[] { 3389, 5985 } : new[] { 22 });
-            
-            var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
-            
-            var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
-                name: PublicIpAddressName,
-                domainNameLabel: DomainNameLabel,
-                allocationMethod: AllocationMethod);
-            
-            var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
-                name: VirtualNetworkName, addressPrefix: VnetAddressPrefix);
-
-            var subnet = virtualNetwork.CreateSubnet(SubnetName, SubnetAddressPrefix);
-
-            var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
-                name: LoadBalancerName,
-                froontendPoolName: FrontendPoolName,
-                backendPoolName: BackendPoolName,
-                zones: Zone,
-                publicIPAddress: publicIpAddress,
-                subnet: subnet);
-
-            var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
-                name: FrontendPoolName,
-                zones: Zone,
-                publicIPAddress: publicIpAddress,
-                subnet: subnet);
-
-            var backendAddressPool = loadBalancer.CreateBackendAddressPool(
-                name: BackendPoolName);
-
-            var virtualMachineScaleSet = resourceGroup.CreateVirtualMachineScaleSetConfig(
-                name: VMScaleSetName,
-                subnet: subnet,
-                frontendIpConfigurations: new[] { frontendIpConfiguration },
-                backendAdressPool: backendAddressPool,
-                isWindows: isWindows,
-                adminUsername: Credential.UserName,
-                adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
-                image: image,
-                vmSize: VmSize,
-                instanceCount: InstanceCount,
-                upgradeMode: (MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode") == true ) ? UpgradePolicyMode : (UpgradeMode?) null);
-
-            var client = new Client(DefaultProfile.DefaultContext);
-
-            // get current Azure state
-            var current = await virtualMachineScaleSet.GetStateAsync(client, new CancellationToken());
-
-            if (Location == null)
-            {
-                Location = current.GetLocation(virtualMachineScaleSet);
-                if (Location == null)
-                {
-                    Location = "eastus";
-                }
-            }
-
-            var target = virtualMachineScaleSet.GetTargetState(current, client.SubscriptionId, Location);
-
-            var newState = await virtualMachineScaleSet
-               .UpdateStateAsync(
-                   client,
-                   target,
-                   new CancellationToken(),
-                   new ShouldProcess(asyncCmdlet),
-                    asyncCmdlet.ReportTaskProgress);
-
-            var result = newState.Get(virtualMachineScaleSet);
-            if(result == null)
-            {
-                result = current.Get(virtualMachineScaleSet);
-            }
-
-            if (result != null)
-            {
-                var psObject = new PSVirtualMachineScaleSet();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
-                asyncCmdlet.WriteObject(psObject);
-            }
-        }
-
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [AllowNull]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
+        [AllowNull]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
@@ -304,11 +164,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ValueFromPipeline = false)]
-        [Alias("Name")]
-        [AllowNull]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = true)]
+        [Alias("Name")]
+        [AllowNull]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
@@ -320,83 +180,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [AllowNull]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
-        // SimpleParameterSet
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [PSArgumentCompleter(
-            "CentOS",
-            "CoreOS",
-            "Debian",
-            "openSUSE-Leap",
-            "RHEL",
-            "SLES",
-            "UbuntuLTS",
-            "Win2016Datacenter",
-            "Win2012R2Datacenter",
-            "Win2012Datacenter",
-            "Win2008R2SP1")]
-        public string ImageName { get; set; } = "Win2016Datacenter";
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
-        public PSCredential Credential { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public int InstanceCount { get; set; } = 2;
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string VirtualNetworkName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string SubnetName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string PublicIpAddressName { get; set; }
-        
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string DomainNameLabel { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string SecurityGroupName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string LoadBalancerName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public int[] BackendPort { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [LocationCompleter("Microsoft.Compute/virtualMachineScaleSets")]
-        public string Location { get; set; }
-
-        // this corresponds to VmSku in the Azure CLI
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string VmSize { get; set; } = "Standard_DS1_v2";
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public UpgradeMode UpgradePolicyMode { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        [ValidateSet("Static", "Dynamic")]
-        public string AllocationMethod { get; set; } = "Static";
-        
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string VnetAddressPrefix { get; set; } = "192.168.0.0/16";
-        
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string FrontendPoolName { get; set; }
-
-        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public string BackendPoolName { get; set; }
-
-        [Parameter(
-            ParameterSetName = SimpleParameterSet,
-            Mandatory = false,
-            HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
-            ValueFromPipelineByPropertyName = true)]
-        public List<string> Zone { get; set; }
-        
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
     }

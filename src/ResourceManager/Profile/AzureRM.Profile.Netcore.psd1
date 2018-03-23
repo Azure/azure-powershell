@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Profile.Netcore.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -97,7 +97,7 @@ CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosa
                'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave', 
                'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment', 
                'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
-               'Get-AzureRmSubscription', 'Add-AzureRmAccount', 'Get-AzureRmContext', 
+               'Get-AzureRmSubscription', 'Connect-AzureRmAccount', 'Get-AzureRmContext', 
                'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext', 
                'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError', 
                'Select-AzureRmContext', 'Rename-AzureRmContext', 
@@ -109,7 +109,7 @@ CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosa
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error', 
+AliasesToExport = 'Add-AzureRmAccount', 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error',
 'Logout-AzAccount', 'Logout-AzureRmAccount', 'Login-AzAccount'
 
 # DSC resources to export from this module

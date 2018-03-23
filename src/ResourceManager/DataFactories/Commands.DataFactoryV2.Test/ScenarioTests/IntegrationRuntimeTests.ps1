@@ -61,6 +61,18 @@ function Test-SelfHosted-IntegrationRuntime
             -Force
         Assert-AreEqual $result.Description $description
 
+        $linkedIrName = 'LinkedIntegrationRuntime'
+        $authKeys = Get-AzureRmDataFactoryV2IntegrationRuntimeKey -InputObject $actual
+        $authKey = ConvertTo-SecureString $authKeys.AuthKey1 -AsPlainText -Force
+        $actualShared = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $linkedIrName `
+            -Type 'SelfHosted' `
+            -AuthKey $authKey `
+            -Force
+        Assert-AreEqual $actualShared.Name $linkedIrName
+
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Force
         Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
     }
     finally
@@ -73,11 +85,6 @@ function Test-SelfHosted-IntegrationRuntime
 .SYNOPSIS
 Creates a SSIS-Azure integration runtime and then does operations.
 Deletes the created integration runtime at the end.
-
-Before running this test, make sure setting the following environment variables:
-CatalogServerEndpoint: The catalog server endpoint for catalog database
-CatalogAdminUsername: The admin user name on this server
-CatalogAdminPassword: The password of the admin user.
 #>
 function Test-SsisAzure-IntegrationRuntime
 {
@@ -97,9 +104,16 @@ function Test-SsisAzure-IntegrationRuntime
      
         $irname = "ssis-azure-ir"
         $description = "SSIS-Azure integration runtime"
+
+        # Replace the following three variables to real values in record mode
+        $catalogServerEndpoint = 'fakeserver'
+        $catalogAdminUsername = 'fakeuser'
+        $catalogAdminPassword = 'fakepassord'
+
+        $secpasswd = ConvertTo-SecureString $catalogAdminPassword -AsPlainText -Force
+        $mycreds = New-Object System.Management.Automation.PSCredential($catalogAdminUsername, $secpasswd)
+        $sasuri = "https://ssisazurefileshare.blob.core.windows.net/privatepreview?st=2018-02-04T05%3A08%3A00Z&se=2020-02-05T05%3A08%3A00Z&sp=rwl&sv=2017-04-17&sr=c&sig=*******"
    
-        $secpasswd = ConvertTo-SecureString $Env:CatalogAdminPassword -AsPlainText -Force
-        $mycreds = New-Object System.Management.Automation.PSCredential($Env:CatalogAdminUsername, $secpasswd)
         $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -108,11 +122,13 @@ function Test-SsisAzure-IntegrationRuntime
             -Location 'East US' `
             -NodeSize Standard_A4_v2 `
             -NodeCount 1 `
-            -CatalogServerEndpoint $Env:CatalogServerEndpoint `
+            -CatalogServerEndpoint $catalogServerEndpoint `
             -CatalogAdminCredential $mycreds `
             -CatalogPricingTier 'S1' `
             -MaxParallelExecutionsPerNode 1 `
             -LicenseType LicenseIncluded `
+            -Edition Enterprise `
+            -SetupScriptContainerSasUri $sasuri `
             -Force
 
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `

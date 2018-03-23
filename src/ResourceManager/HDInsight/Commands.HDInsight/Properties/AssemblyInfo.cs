@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,5 +27,5 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("57ad7b0e-1f56-4166-b1f9-ec6512139a54")]
-[assembly: AssemblyVersion("4.0.1")]
-[assembly: AssemblyFileVersion("4.0.1")]
+[assembly: AssemblyVersion("4.1.0")]
+[assembly: AssemblyFileVersion("4.1.0")]

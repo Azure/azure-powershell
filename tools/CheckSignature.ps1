@@ -74,6 +74,7 @@ function Check-All {
     $files = $files | Where-Object { ($_.FullName -notlike "*Newtonsoft.Json*") -and `
                                      ($_.FullName -notlike "*AutoMapper*") -and `
                                      ($_.FullName -notlike "*Security.Cryptography*") -and `
+                                     ($_.FullName -notlike "*YamlDotNet*") -and `
                                      ($_.FullName -notlike "*BouncyCastle.Crypto*")}
     Write-Host "Checking the authenticode signature of $($files.Count) files (.dll, .ps1, .psm1)" -ForegroundColor Yellow
 
