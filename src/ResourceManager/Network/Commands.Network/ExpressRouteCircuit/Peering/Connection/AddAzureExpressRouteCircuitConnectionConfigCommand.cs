@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
                 circuitconnection.AuthorizationKey = this.AuthorizationKey;
             }
 
-            this.ExpressRouteCircuit.Peerings[0].Connections.Add(circuitconnection);
+            peering.Connections.Add(circuitconnection);
 
             WriteObject(peering);
             WriteObject(this.ExpressRouteCircuit);
