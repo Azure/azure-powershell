@@ -73,14 +73,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private void Initialize(string fileName)
         {
-            lock(fileLock)
-            {
-                ReadFileIntoCache(fileName);
-                HasStateChanged = true;
-
-                // Eagerly create cache file.
-                WriteCacheIntoFile(fileName);
-            }
+            EnsureCacheFile(fileName);
 
             AfterAccess = AfterAccessNotification;
             BeforeAccess = BeforeAccessNotification;
@@ -169,6 +162,40 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     _store.WriteFile(cacheFileName, dataToWrite);
                     HasStateChanged =  false;
                 }
+            }
+        }
+
+        private void EnsureCacheFile(string cacheFileName = null)
+        {
+            lock (fileLock)
+            {
+                if (_store.FileExists(cacheFileName))
+                {
+                    var existingData = _store.ReadFileAsBytes(cacheFileName);
+                    if (existingData != null)
+                    {
+#if !NETSTANDARD
+                        try
+                        {
+                            Deserialize(ProtectedData.Unprotect(existingData, null, DataProtectionScope.CurrentUser));
+                        }
+                        catch (CryptographicException)
+                        {
+                            _store.DeleteFile(cacheFileName);
+                        }
+#else
+                        Deserialize(existingData);
+#endif
+                    }
+                }
+                
+                // Eagerly create cache file.
+#if !NETSTANDARD
+                var dataToWrite = ProtectedData.Protect(Serialize(), null, DataProtectionScope.CurrentUser);
+#else
+                var dataToWrite = Serialize();
+#endif
+                _store.WriteFile(cacheFileName, dataToWrite);
             }
         }
     }
