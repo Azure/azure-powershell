@@ -113,5 +113,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-DatabaseGeoBackupPolicy");
             }
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDatabaseRestorePoint()
+        {
+            // TODO Rewrite SQL backup tests to be recordable
+            // TODO https://github.com/Azure/azure-powershell/issues/4155
+            RunPowerShellTest("Test-NewDatabaseRestorePoint");
+        }
     }
 }

@@ -141,7 +141,7 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Restore-AzureRmSqlDatabase', 
                'Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy', 
                'Set-AzureRmSqlServerBackupLongTermRetentionVault', 
-               'Get-AzureRmSqlDatabaseRestorePoints', 
+               'Get-AzureRmSqlDatabaseRestorePoints',
                'Get-AzureRmSqlDatabaseAuditingPolicy', 
                'Get-AzureRmSqlServerAuditingPolicy', 
                'Get-AzureRmSqlDatabaseAuditing', 'Get-AzureRmSqlServerAuditing', 
@@ -189,7 +189,9 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Remove-AzureRmSqlServerVirtualNetworkRule', 
                'Stop-AzureRmSqlDatabaseActivity', 'Get-AzureRmSqlServerDnsAlias', 
                'Remove-AzureRmSqlServerDnsAlias', 'New-AzureRmSqlServerDnsAlias', 
-               'Set-AzureRmSqlServerDnsAlias'
+               'Set-AzureRmSqlServerDnsAlias',
+               'New-AzureRmSqlDatabaseRestorePoint',
+               'Remove-AzureRmSqlDatabaseRestorePoint'
 
 # Variables to export from this module
 # VariablesToExport = @()

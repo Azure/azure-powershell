@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         private static SqlManagementClient SqlClient { get; set; }
 
         /// <summary>
+        /// The Sql client to be used by this end points communicator
+        /// </summary>
+        private static Management.Sql.SqlManagementClient SqlArmClient { get; set; }
+
+        /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
         private static IAzureSubscription Subscription { get; set; }
@@ -65,9 +70,34 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
-        public IList<Management.Sql.LegacySdk.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName)
+        public IEnumerable<Management.Sql.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName)
         {
-            return GetCurrentSqlClient().DatabaseBackup.ListRestorePoints(resourceGroupName, serverName, databaseName).RestorePoints;
+            return GetCurrentArmSqlClient().RestorePoints.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName).Result.Body;
+        }
+
+        /// <summary>
+        /// Creates a new restore point for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>A restore point</returns>
+        public Management.Sql.Models.RestorePoint NewRestorePoint(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.CreateDatabaseRestorePointDefinition restoreDefinition)
+        {
+            return GetCurrentArmSqlClient().RestorePoints.CreateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, restoreDefinition).Result.Body;
+        }
+
+        /// <summary>
+        /// Removes a given restore point for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="restorePointCreationDate">The name of the restore point</param>
+        /// <returns>void</returns>
+        public void RemoveRestorePoint(string resourceGroupName, string serverName, string databaseName, string restorePointCreationDate)
+        {
+            GetCurrentArmSqlClient().RestorePoints.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, restorePointCreationDate);
         }
 
         /// <summary>
@@ -251,6 +281,21 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 SqlClient = AzureSession.Instance.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             return SqlClient;
+        }
+
+        /// <summary>
+        /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
+        /// id tracing headers for the current cmdlet invocation.
+        /// </summary>
+        /// <returns>The SQL Management client for the currently selected subscription.</returns>
+        private Management.Sql.SqlManagementClient GetCurrentArmSqlClient()
+        {
+            // Get the SQL management client for the current subscription
+            if (SqlArmClient == null)
+            {
+                SqlArmClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+            }
+            return SqlArmClient;
         }
     }
 }
