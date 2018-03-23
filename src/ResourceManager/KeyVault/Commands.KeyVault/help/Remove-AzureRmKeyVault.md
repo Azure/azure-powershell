@@ -27,14 +27,14 @@ Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedSta
 
 ### InputObjectByAvailableVault
 ```
-Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
+Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByDeletedVault
 ```
-Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -143,7 +143,7 @@ The location of the deleted vault.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableVault, InputObjectByAvailableVault
+Parameter Sets: ByAvailableVault
 Aliases:
 
 Required: False
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: ByDeletedVault, InputObjectByDeletedVault
+Parameter Sets: ByDeletedVault
 Aliases:
 
 Required: True
