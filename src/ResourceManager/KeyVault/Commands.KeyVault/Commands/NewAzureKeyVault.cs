@@ -84,12 +84,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, 'soft delete' functionality is enabled for this key vault.")]
         public SwitchParameter EnableSoftDelete { get; set; }
 
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
@@ -165,24 +163,23 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException("'EnablePurgeProtection' may not be set to 'false'.");
 
                 var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
-                {
-                    VaultName = this.Name,
-                    ResourceGroupName = this.ResourceGroupName,
-                    Location = this.Location,
-                    EnabledForDeployment = this.EnabledForDeployment.IsPresent,
-                    EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
-                    EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
-                    EnableSoftDelete = EnableSoftDelete.IsPresent && EnableSoftDelete.Equals(true),
-                    EnablePurgeProtection = EnablePurgeProtection.IsPresent && EnablePurgeProtection.Equals(true),
-                    SkuFamilyName = DefaultSkuFamily,
-                    SkuName = this.Sku,
-                    TenantId = GetTenantId(),
-                    AccessPolicy = accessPolicy,
+                    {
+                        VaultName = this.Name,
+                        ResourceGroupName = this.ResourceGroupName,
+                        Location = this.Location,
+                        EnabledForDeployment = this.EnabledForDeployment.IsPresent,
+                        EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
+                        EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
+                        EnableSoftDelete = EnableSoftDelete.IsPresent && EnableSoftDelete.Equals(true) ? (bool?)true : null,
+                        EnablePurgeProtection = EnablePurgeProtection.IsPresent && EnablePurgeProtection.Equals(true) ? (bool?)true : null,
+                        SkuFamilyName = DefaultSkuFamily,
+                        SkuName = this.Sku,
+                        TenantId = GetTenantId(),
+                        AccessPolicy = accessPolicy,
                     NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
-                    Tags = this.Tag
-                },
-                ActiveDirectoryClient
-                );
+                        Tags = this.Tag
+                    },
+                    ActiveDirectoryClient);
 
                 this.WriteObject(newVault);
 

@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnabledForTemplateDeployment = vault.Properties.EnabledForTemplateDeployment;
             EnabledForDiskEncryption = vault.Properties.EnabledForDiskEncryption;
             EnableSoftDelete = vault.Properties.EnableSoftDelete;
+            EnablePurgeProtection = vault.Properties.EnablePurgeProtection;
             AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, adClient)).ToArray();
             NetworkAcls = InitNetworkRuleSet(vault.Properties);
             OriginalVault = vault;
@@ -69,11 +70,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public bool? EnableSoftDelete { get; private set; }
 
+        public bool? EnablePurgeProtection { get; private set; }
+
         public PSKeyVaultAccessPolicy[] AccessPolicies { get; private set; }
 
         public string AccessPoliciesText { get { return ModelExtensions.ConstructAccessPoliciesList(AccessPolicies); } }
 
-        public PSVaultNetworkRuleSet NetworkAcls { get; private set; }
+        public PSKeyVaultNetworkRuleSet NetworkAcls { get; private set; }
 
         public string NetworkAclsText { get { return ModelExtensions.ConstructNetworkRuleSet(NetworkAcls); } }
 
@@ -81,9 +84,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         //allow easy updates
         public Vault OriginalVault { get; private set; }
 
-        static private PSVaultNetworkRuleSet InitNetworkRuleSet(VaultProperties properties)
+        static private PSKeyVaultNetworkRuleSet InitNetworkRuleSet(VaultProperties properties)
         {
-            PSVaultNetworkRuleSet networkRuleSet = null;
+            PSKeyVaultNetworkRuleSet networkRuleSet = null;
             if (properties == null)
                 return networkRuleSet;
 
@@ -94,16 +97,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 networkAcls = new NetworkRuleSet();
             }
 
-            PSNetWorkRuleDefaultActionEnum defaultAct;
-            if (!Enum.TryParse<PSNetWorkRuleDefaultActionEnum>(networkAcls.DefaultAction, true, out defaultAct))
+            PSKeyVaultNetworkRuleDefaultActionEnum defaultAct;
+            if (!Enum.TryParse<PSKeyVaultNetworkRuleDefaultActionEnum>(networkAcls.DefaultAction, true, out defaultAct))
             {
-                defaultAct = PSNetWorkRuleDefaultActionEnum.Allow;
+                defaultAct = PSKeyVaultNetworkRuleDefaultActionEnum.Allow;
             }
 
-            PSNetWorkRuleBypassEnum bypass;
-            if (!Enum.TryParse<PSNetWorkRuleBypassEnum>(networkAcls.Bypass, true, out bypass))
+            PSKeyVaultNetworkRuleBypassEnum bypass;
+            if (!Enum.TryParse<PSKeyVaultNetworkRuleBypassEnum>(networkAcls.Bypass, true, out bypass))
             {
-                bypass = PSNetWorkRuleBypassEnum.AzureServices;
+                bypass = PSKeyVaultNetworkRuleBypassEnum.AzureServices;
             }
 
             IList <string> allowedIpAddresses = null;
@@ -118,7 +121,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 allowedVirtualNetworkResourceIds = networkAcls.VirtualNetworkRules.Select(item => { return item.Id; }).ToList();
             }
 
-            return new PSVaultNetworkRuleSet(defaultAct, bypass, allowedIpAddresses, allowedVirtualNetworkResourceIds);
+            return new PSKeyVaultNetworkRuleSet(defaultAct, bypass, allowedIpAddresses, allowedVirtualNetworkResourceIds);
         }
     }
 }

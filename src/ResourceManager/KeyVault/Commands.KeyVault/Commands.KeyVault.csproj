@@ -129,7 +129,7 @@
     <Compile Include="Models\ManagedStorageAccounts\PSKeyVaultManagedStorageSasDefinitionAttributes.cs" />
     <Compile Include="Models\ManagedStorageAccounts\PSKeyVaultManagedStorageSasDefinitionIdentityItem.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageSasDefinitiontFilterOptions.cs" />
-    <Compile Include="Models\PSVaultNetworkRuleSet.cs" />
+    <Compile Include="Models\PSKeyVaultNetworkRuleSet.cs" />
     <Compile Include="Models\VaultManagementClient.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\PSKeyVault.cs" />

@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 properties.EnabledForDeployment = parameters.EnabledForDeployment;
                 properties.EnabledForTemplateDeployment = parameters.EnabledForTemplateDeployment;
                 properties.EnabledForDiskEncryption = parameters.EnabledForDiskEncryption;
-                properties.EnableSoftDelete = parameters.EnableSoftDelete ? true : (bool?) null;
+                properties.EnableSoftDelete = parameters.EnableSoftDelete.HasValue && parameters.EnableSoftDelete.Value ? true : (bool?) null;
+                properties.EnablePurgeProtection = parameters.EnablePurgeProtection.HasValue && parameters.EnablePurgeProtection.Value ? true : (bool?)null;
                 properties.TenantId = parameters.TenantId;
                 properties.VaultUri = "";
                 properties.AccessPolicies = (parameters.AccessPolicy != null) ? new[] { parameters.AccessPolicy } : new AccessPolicyEntry[] { };
@@ -148,9 +149,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="updatedNetworkAcls">updated network rule set</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns>the updated vault</returns>
-        public PSKeyVault UpdateVault(PSKeyVault existingVault, PSKeyVaultAccessPolicy[] updatedPolicies, bool? updatedEnabledForDeployment,
-            bool? updatedEnabledForTemplateDeployment, bool? updatedEnabledForDiskEncryption, 
-            PSVaultNetworkRuleSet updatedNetworkAcls,
+        public PSKeyVault UpdateVault(
+            PSKeyVault existingVault, 
+            PSKeyVaultAccessPolicy[] updatedPolicies, 
+            bool? updatedEnabledForDeployment,
+            bool? updatedEnabledForTemplateDeployment, 
+            bool? updatedEnabledForDiskEncryption, 
+            bool? updatedSoftDeleteSwitch,
+            bool? updatedPurgeProtectionSwitch,
+            PSKeyVaultNetworkRuleSet updatedNetworkAcls,
             ActiveDirectoryClient adClient = null)
         {
             if (existingVault == null)
@@ -164,6 +171,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             properties.EnabledForDeployment = updatedEnabledForDeployment;
             properties.EnabledForTemplateDeployment = updatedEnabledForTemplateDeployment;
             properties.EnabledForDiskEncryption = updatedEnabledForDiskEncryption;
+
+            // soft delete flags can only be applied if they enable their respective behaviors
+            // and if different from the current corresponding properties on the vault.
+            if (!(properties.EnableSoftDelete.HasValue && properties.EnableSoftDelete.Value)
+                && updatedSoftDeleteSwitch.HasValue 
+                && updatedSoftDeleteSwitch.Value)
+                properties.EnableSoftDelete = updatedSoftDeleteSwitch;
+
+            if (!(properties.EnablePurgeProtection.HasValue && properties.EnableSoftDelete.Value)
+                && updatedPurgeProtectionSwitch.HasValue 
+                && updatedPurgeProtectionSwitch.Value)
+                properties.EnablePurgeProtection = updatedPurgeProtectionSwitch;
+
             properties.AccessPolicies = (updatedPolicies == null) ?
                 new List<AccessPolicyEntry>() :
                 updatedPolicies.Select(a => new AccessPolicyEntry()
@@ -308,7 +328,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="vaultProperties">Vault property</param>
         /// <param name="psRuleSet">Network rule set input</param>
-        static private void UpdateVaultNetworkRuleSetProperties(VaultProperties vaultProperties, PSVaultNetworkRuleSet psRuleSet)
+        static private void UpdateVaultNetworkRuleSetProperties(VaultProperties vaultProperties, PSKeyVaultNetworkRuleSet psRuleSet)
         {
             if (vaultProperties == null)
                 return;
