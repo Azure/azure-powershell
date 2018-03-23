@@ -21,22 +21,22 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// Requests that a backup of the specified key be downloaded and stored to a file
+    /// Requests that a backup of the specified certificate be downloaded and stored in a file
     /// </summary>
     /// <remarks>
     /// The cmdlet returns the path of the newly created backup file.
     /// </remarks>
-    [Cmdlet( VerbsData.Backup, "AzureKeyVaultSecret",
+    [Cmdlet(VerbsData.Backup, "AzureKeyVaultCertificate",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = BySecretNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( String ) )]
-    public class BackupAzureKeyVaultSecret : KeyVaultCmdletBase
+        DefaultParameterSetName = ByCertificateNameParameterSet,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(String))]
+    public class BackupAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region parameter sets
 
-        private const string BySecretNameParameterSet = "BySecretName";
-        private const string BySecretObjectParameterSet = "BySecret";
+        private const string ByCertificateNameParameterSet = "ByCertificateName";
+        private const string ByCertificateObjectParameterSet = "ByCertificate";
 
         #endregion
 
@@ -45,65 +45,65 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Vault name
         /// </summary>
-        [Parameter( Mandatory = true,
+        [Parameter(Mandatory = true,
                     Position = 0,
                     ValueFromPipelineByPropertyName = true,
-                    ParameterSetName = BySecretNameParameterSet,
-                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
+                    ParameterSetName = ByCertificateNameParameterSet,
+                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         /// <summary>
         /// Secret name
         /// </summary>
-        [Parameter( Mandatory = true,
+        [Parameter(Mandatory = true,
                     Position = 1,
                     ValueFromPipelineByPropertyName = true,
-                    ParameterSetName = BySecretNameParameterSet,
-                    HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name." )]
+                    ParameterSetName = ByCertificateNameParameterSet,
+                    HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
-        [Alias( Constants.SecretName )]
+        [Alias(Constants.SecretName)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The secret object to be backed up.
+        /// The certificate object to be backed up.
         /// </summary>
         /// <remarks>
-        /// Note that the backup applies to the entire family of a secret (current and all its versions); 
-        /// since a secret bundle represents a single version, the intent of this parameter is to allow pipelining.
-        /// The backup cmdlet will use the Name and VaultName properties of the SecretBundle parameter.
+        /// Note that the backup applies to the entire family of a certificate (current and all its versions); 
+        /// since a certficate bundle represents a single version, the intent of this parameter is to allow pipelining.
+        /// The backup cmdlet will use the Name and VaultName properties of the CertificateBundle parameter.
         /// </remarks>
         [Parameter(Mandatory = true,
                     Position = 0,
                     ValueFromPipelineByPropertyName = true,
-                    ParameterSetName = BySecretObjectParameterSet,
+                    ParameterSetName = ByCertificateObjectParameterSet,
                     HelpMessage = "Secret to be backed up, pipelined in from the output of a retrieval call.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Secret")]
-        public PSKeyVaultSecretIdentityItem InputObject { get; set; }
+        [Alias("Certificate")]
+        public PSKeyVaultCertificateIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// The output file in which the backup blob is to be stored
         /// </summary>
-        [Parameter( Mandatory = false,
+        [Parameter(Mandatory = false,
                     Position = 2,
                     ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "Output file. The output file to store the backed up secret blob in. If not present, a default filename is chosen." )]
+                    HelpMessage = "Output file. The output file to store the backup of the certificate. If not specified, a default filename will be generated.")]
         [ValidateNotNullOrEmpty]
         public string OutputFile { get; set; }
 
         /// <summary>
         /// Instructs the cmdlet to overwrite the destination file, if it exists.
         /// </summary>
-        [Parameter( Mandatory = false,
+        [Parameter(Mandatory = false,
                     Position = 3,
                     ValueFromPipelineByPropertyName = true,
-                    HelpMessage = "Overwrite the given file if it exists" )]
+                    HelpMessage = "Overwrite the given file if it exists")]
         public SwitchParameter Force { get; set; }
 
         #endregion Input Parameter Definition
 
-        public override void ExecuteCmdlet( )
+        public override void ExecuteCmdlet()
         {
             if (InputObject != null)
             {
@@ -111,22 +111,22 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = InputObject.VaultName;
             }
 
-            if ( ShouldProcess( Name, Properties.Resources.BackupSecret ) )
+            if (ShouldProcess(Name, Properties.Resources.BackupCertificate))
             {
-                if ( string.IsNullOrEmpty( OutputFile ) )
+                if (string.IsNullOrEmpty(OutputFile))
                 {
-                    OutputFile = GetDefaultFileForOperation( "backup", VaultName, Name );
+                    OutputFile = GetDefaultFileForOperation("backup", VaultName, Name);
                 }
 
                 var filePath = this.GetUnresolvedProviderPathFromPSPath(OutputFile);
 
                 // deny request if the file exists and overwrite is not authorized
-                if ( !AzureSession.Instance.DataStore.FileExists( filePath )
+                if (!AzureSession.Instance.DataStore.FileExists(filePath)
                     || Force.IsPresent
-                    || ShouldContinue( string.Format(Resources.FileOverwriteMessage, filePath ), Resources.FileOverwriteCaption ) )
+                    || ShouldContinue(string.Format(Resources.FileOverwriteMessage, filePath), Resources.FileOverwriteCaption))
                 {
-                    var backupBlobPath = this.DataServiceClient.BackupSecret(VaultName, Name, filePath);
-                    this.WriteObject( backupBlobPath );
+                    var backupBlobPath = this.DataServiceClient.BackupCertificate(VaultName, Name, filePath);
+                    this.WriteObject(backupBlobPath);
                 }
             }
         }

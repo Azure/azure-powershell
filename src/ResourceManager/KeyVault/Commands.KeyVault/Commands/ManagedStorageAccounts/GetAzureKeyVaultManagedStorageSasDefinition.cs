@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
         DefaultParameterSetName = ByAccountNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( List<ManagedStorageSasDefinitionListItem> ), typeof( ManagedStorageSasDefinition ) )]
+    [OutputType( typeof( List<PSKeyVaultManagedStorageSasDefinitionIdentityItem> ), typeof( PSKeyVaultManagedStorageSasDefinition ) )]
     public class GetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -76,22 +76,40 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         [Alias( Constants.SasDefinitionName )]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specifies whether to show the previously deleted storage sas definitions in the output.")]
+        public SwitchParameter InRemovedState { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            switch ( ParameterSetName )
+            if (ParameterSetName.Equals(ByDefinitionNameParameterSet))
             {
-                case ByDefinitionNameParameterSet:
-                    var sasDefinition  = DataServiceClient.GetManagedStorageSasDefinition( VaultName, AccountName, Name );
-                    WriteObject( sasDefinition );
-                    break;
-                case ByAccountNameParameterSet:
-                    GetAndWriteStorageSasDefinitions( VaultName, AccountName );
-                    break;
-
-                default:
-                    throw new ArgumentException( KeyVaultProperties.Resources.BadParameterSetName );
+                if (InRemovedState)
+                {
+                    var sasDefinition = DataServiceClient.GetDeletedManagedStorageSasDefinition(VaultName, AccountName, Name);
+                }
+                else
+                {
+                    var sasDefinition = DataServiceClient.GetManagedStorageSasDefinition(VaultName, AccountName, Name);
+                    WriteObject(sasDefinition);
+                }
+            }
+            else if (ParameterSetName.Equals(ByAccountNameParameterSet))
+            {
+                if (InRemovedState)
+                {
+                    GetAndWriteDeletedStorageSasDefinitions(VaultName, AccountName);
+                }
+                else
+                {
+                    GetAndWriteStorageSasDefinitions(VaultName, AccountName);
+                }
+            }
+            else
+            { 
+                throw new ArgumentException( KeyVaultProperties.Resources.BadParameterSetName );
             }
         }
 
@@ -107,6 +125,21 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 WriteObject( DataServiceClient.GetManagedStorageSasDefinitions( options ), true );
             } while ( !string.IsNullOrEmpty( options.NextLink ) );
+        }
+
+        private void GetAndWriteDeletedStorageSasDefinitions(string vaultName, string accountName)
+        {
+            var options = new KeyVaultStorageSasDefinitiontFilterOptions
+            {
+                VaultName = vaultName,
+                AccountName = accountName,
+                NextLink = null
+            };
+
+            do
+            {
+                WriteObject(DataServiceClient.GetDeletedManagedStorageSasDefinitions(options), true);
+            } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }
 }

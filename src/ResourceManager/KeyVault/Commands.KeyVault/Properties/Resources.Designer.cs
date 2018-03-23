@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -145,6 +145,33 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backup certificate.
+        /// </summary>
+        internal static string BackupCertificate {
+            get {
+                return ResourceManager.GetString("BackupCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The backup file &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string BackupFileAlreadyExists {
+            get {
+                return ResourceManager.GetString("BackupFileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find backup file &apos;{0}&apos;..
+        /// </summary>
+        internal static string BackupFileNotFound {
+            get {
+                return ResourceManager.GetString("BackupFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backup key.
         /// </summary>
         internal static string BackupKey {
@@ -168,6 +195,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string BackupKeyFileNotFound {
             get {
                 return ResourceManager.GetString("BackupKeyFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Backup managed storage account.
+        /// </summary>
+        internal static string BackupManagedStorageAccount {
+            get {
+                return ResourceManager.GetString("BackupManagedStorageAccount", resourceCulture);
             }
         }
         
@@ -388,11 +424,38 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid managed storage account bundle..
+        /// </summary>
+        internal static string InvalidManagedStorageAccountBundle {
+            get {
+                return ResourceManager.GetString("InvalidManagedStorageAccountBundle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid managed storage account identifier..
+        /// </summary>
+        internal static string InvalidManagedStorageAccountIdentifier {
+            get {
+                return ResourceManager.GetString("InvalidManagedStorageAccountIdentifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid key vault managed storage acccount name..
         /// </summary>
         internal static string InvalidManagedStorageAccountName {
             get {
                 return ResourceManager.GetString("InvalidManagedStorageAccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid managed storage account or storage SAS definition attributes..
+        /// </summary>
+        internal static string InvalidManagedStorageObjectAttributes {
+            get {
+                return ResourceManager.GetString("InvalidManagedStorageObjectAttributes", resourceCulture);
             }
         }
         
@@ -465,6 +528,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidSelectedSubscription {
             get {
                 return ResourceManager.GetString("InvalidSelectedSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid storage SAS definition identifier..
+        /// </summary>
+        internal static string InvalidStorageSasDefinitionIdentifier {
+            get {
+                return ResourceManager.GetString("InvalidStorageSasDefinitionIdentifier", resourceCulture);
             }
         }
         
@@ -820,11 +892,29 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Restore certificate.
+        /// </summary>
+        internal static string RestoreCertificate {
+            get {
+                return ResourceManager.GetString("RestoreCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restore key.
         /// </summary>
         internal static string RestoreKey {
             get {
                 return ResourceManager.GetString("RestoreKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore managed storage account.
+        /// </summary>
+        internal static string RestoreManagedStorageAccount {
+            get {
+                return ResourceManager.GetString("RestoreManagedStorageAccount", resourceCulture);
             }
         }
         
