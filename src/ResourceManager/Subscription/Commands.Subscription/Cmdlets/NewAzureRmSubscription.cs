@@ -14,11 +14,12 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Subscription.Models;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Subscription;
+using Microsoft.Azure.Management.Subscription.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,8 +27,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmSubscription", SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionCreationResult))]
-    public class NewAzureRmSubscription : AzureRMCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmSubscription", SupportsShouldProcess = true), OutputType(typeof(PSAzureSubscription))]
+    public class NewAzureRmSubscription : AzureRmLongRunningCmdlet
     {
         private ActiveDirectoryClient _activeDirectoryClient;
         private ISubscriptionClient _subscriptionClient;
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = "Name of the enrollment account to use when creating the subscription.")]
         public string EnrollmentAccountObjectId { get; set; }
 
-        [Parameter(Mandatory = false, Position = 0, HelpMessage = "Name of the subscription.")]
+        [Parameter(Mandatory = false, Position = 0, HelpMessage = "Name of the subscription. When not specified, a name will be generated based on the specified offer type.")]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "Offer type of the subscription.")]
@@ -87,14 +88,27 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         {
             if (this.ShouldProcess(target: this.Name, action: "Create subscription"))
             {
-                var objectIds = ResolveObjectIds(this.OwnerObjectId, this.OwnerApplicationId, this.OwnerSignInName);
-                WriteObject(objectIds);
-                //this.WriteObject(
-                //    new PSSubscriptionCreationResult(
-                //        this.SubscriptionClient.Subscriptions.Create(
-                //            this.Name,
-                //            this.OfferType,
-                //            ResolveObjectIds(this.OwnerObjectIds, this.OwnerServicePrincipalNames, this.OwnerUserPrincipalNames)));
+                var owners = this.ResolveObjectIds(this.OwnerObjectId, this.OwnerApplicationId, this.OwnerSignInName).Select(id => new AdPrincipal() { ObjectId = id }).ToArray();
+
+                // Create the subscription.
+                var result = this.SubscriptionClient.SubscriptionFactory.CreateSubscriptionInEnrollmentAccount(EnrollmentAccountObjectId, new SubscriptionCreationParameters()
+                {
+                    DisplayName = this.Name,
+                    OfferType = this.OfferType,
+                    Owners = owners
+                });
+
+                // Write output.
+                var createdSubscription = new AzureSubscription()
+                {
+                    // SubscriptionLink format is: "/subscriptions/{subscriptionid}"
+                    Id = result.SubscriptionLink.Split('/')[2],
+                    Name = this.Name,
+                    // By definition, a new subscription is always in the enabled state.
+                    State = "Enabled",
+                };
+                createdSubscription.SetTenant(DefaultContext.Tenant.Id);
+                WriteObject(new PSAzureSubscription(createdSubscription));
             }
         }
 
