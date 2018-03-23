@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.3.3
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 0.3.2
 * Service Fabric cmdlet refresh
   - Updated ARM templates

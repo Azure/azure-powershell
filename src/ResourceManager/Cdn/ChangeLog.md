@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 4.2.1
+* Fix issue with Default Resource Group in CloudShell
+* Fixed issue with cleaning up scripts in build
+
 ## Version 4.2.0
 * Fixed issue with importing aliases
 

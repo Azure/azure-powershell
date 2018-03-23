@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.6.2
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 0.6.1
 * Fix bug in Get-AzureRmEventHubGeoDRConfiguration help
 

@@ -75,6 +75,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
     /// <summary>
+    ///     Fabric Specific Details for Azure.
+    /// </summary>
+    public class ASRAzureFabricSpecificDetails : ASRFabricSpecificDetails
+    {
+        /// <summary>
+        ///     Gets or sets the fabric location.
+        /// </summary>
+        public string Location { get; set; }
+    }
+
+    /// <summary>
     ///     Details of the Process Server.
     /// </summary>
     public class ASRProcessServer
@@ -628,6 +639,42 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     VHD Name.
         /// </summary>
         public string VHDName { get; set; }
+    }
+
+    /// <summary>
+    ///     AzureToAzure Specific Replication Protected Item Details.
+    /// </summary>
+    public class ASRAzureToAzureSpecificRPIDetails : ASRProviderSpecificRPIDetails
+    {
+        /// <summary>
+        /// Gets or sets A2A specific protected disk details.
+        /// </summary>
+        public List<ASRAzureToAzureProtectedDiskDetails> A2ADiskDetails { get; set; }
+
+        /// <summary>
+        /// Fabric Object Id of the Virtual machine(AzureVm).
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the recovery fabric object Id.
+        /// </summary>
+        public string RecoveryFabricObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the test failover fabric object Id.
+        /// </summary>
+        public string TestFailoverRecoveryFabricObjectId { get; set; }
+
+        /// <summary>
+        /// Gets or sets Multi vm group name.
+        /// </summary>
+        public string MultiVmGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets Multi vm group id.
+        /// </summary>
+        public string MultiVmGroupId { get; set; }
     }
 
     /// <summary>
