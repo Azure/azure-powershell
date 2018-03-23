@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium,
         HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( ManagedStorageAccount ) )]
+    [OutputType( typeof( PSKeyVaultManagedStorageAccount ) )]
     public class UpdateAzureKeyVaultManagedStorageAccountKey : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            ManagedStorageAccount managedManagedStorageAccount = null;
+            PSKeyVaultManagedStorageAccount managedManagedStorageAccount = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(

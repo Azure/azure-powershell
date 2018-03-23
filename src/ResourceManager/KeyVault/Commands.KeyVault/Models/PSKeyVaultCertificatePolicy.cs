@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public int? RenewAtPercentageLifetime { get; set; }
         public int? EmailAtNumberOfDaysBeforeExpiry { get; set; }
         public int? EmailAtPercentageLifetime { get; set; }
+        public bool? CertificateTransparency { get; set; }
 
         public bool? Enabled { get; set; }
         public DateTime? Created { get; internal set; }
@@ -135,7 +136,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (ValidityInMonths.HasValue)
                 {
                     x509CertificateProperties.ValidityInMonths = ValidityInMonths.Value;
-                }                
+                }
+
+                if (CertificateTransparency.HasValue)
+                {
+                    x509CertificateProperties.CertificateTransparency = CertificateTransparency.Value;
+                }
 
                 certificatePolicy.X509CertificateProperties = x509CertificateProperties;
             }
@@ -220,6 +226,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 KeyUsage = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.KeyUsage == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.KeyUsage),
                 Ekus = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.Ekus == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.Ekus),               
                 ValidityInMonths = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.ValidityInMonths,
+                CertificateTransparency = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.CertificateTransparency,
                 IssuerName = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.Name,
                 CertificateType = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.CertificateType,
                 RenewAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions, (trigger) => trigger.DaysBeforeExpiry),

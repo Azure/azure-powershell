@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
+        public SwitchParameter EnablePurgeProtection { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
         public SkuName Sku { get; set; }
 
@@ -140,6 +145,23 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
+                // may not specify 'false' for either soft-delete or disable-purge; 
+                // the service, as of Mar 2018, automatically converts this parameter to a 'true', ignoring
+                // the value specified by the client. This, however, may cause an unwanted enabling of
+                // soft delete in a scenario like this:
+                //
+                //      get-vault | delete-vault | new-vault
+                //
+                // If s/d was not enabled on the original vault, the parameter name will be present on
+                // the input to the new-vault cmdlet, but without a value. if the presence of the parameter
+                // is passed into the input of the new-vault cmdlet, s/d will be enabled on the resulting vault.
+                if (EnableSoftDelete.IsPresent
+                    && !EnableSoftDelete)
+                    throw new ArgumentException("'EnableSoftDelete' may not be set to 'false'.");
+                if (EnablePurgeProtection.IsPresent
+                    && !EnablePurgeProtection)
+                    throw new ArgumentException("'EnablePurgeProtection' may not be set to 'false'.");
+
                 var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
                 {
                     VaultName = this.Name,
@@ -148,7 +170,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent,
                     EnabledForTemplateDeployment = EnabledForTemplateDeployment.IsPresent,
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent,
-                    EnableSoftDelete = EnableSoftDelete.IsPresent,
+                    EnableSoftDelete = EnableSoftDelete.IsPresent && EnableSoftDelete.Equals(true),
+                    EnablePurgeProtection = EnablePurgeProtection.IsPresent && EnablePurgeProtection.Equals(true),
                     SkuFamilyName = DefaultSkuFamily,
                     SkuName = this.Sku,
                     TenantId = GetTenantId(),
