@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSExpressRouteCircuitConnection, MNM.ExpressRouteCircuitConnection>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.PSExpressRouteCircuitConnection, CNM.PSExpressRouteCircuitConnection>();
+                cfg.CreateMap<MNM.ExpressRouteCircuitConnection, CNM.PSExpressRouteCircuitConnection>();
 
                 // ExpressRouteServiceProvider
                 // CNM to MNM
