@@ -7,41 +7,31 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4e688485-4104-43db-9967-494e3caca686"
+          "6634f069-742f-4ba7-a6a4-6ff00db0b6b8"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25211.01",
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Billing.BillingManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/enrollmentAccounts/c8a9f59a-2d9b-4086-91c8-8988cae3bec3\",\r\n      \"name\": \"c8a9f59a-2d9b-4086-91c8-8988cae3bec3\",\r\n      \"properties\": {\r\n        \"principalName\": \"JoeSchmoe@contoso.onmicrosoft.com\",\r\n        \"offerTypes\": [\r\n          \"MS-AZR-0017P\",\r\n          \"MS-AZR-0025P\",\r\n          \"MS-AZR-0148P\"\r\n        ]\r\n      },\r\n      \"type\": \"Microsoft.Billing/enrollmentAccounts\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/enrollmentAccounts/14522963-9fac-4453-9a4b-c9c57217a78f\",\r\n      \"name\": \"14522963-9fac-4453-9a4b-c9c57217a78f\",\r\n      \"properties\": {\r\n        \"principalName\": \"JoeSchmoe@contoso.onmicrosoft.com\",\r\n        \"offerTypes\": [\r\n          \"MS-AZR-0017P\",\r\n          \"MS-AZR-0025P\",\r\n          \"MS-AZR-0148P\"\r\n        ]\r\n      },\r\n      \"type\": \"Microsoft.Billing/enrollmentAccounts\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/enrollmentAccounts/00c223dd-a80a-462e-a0ef-6d95fe2a0670\",\r\n      \"name\": \"00c223dd-a80a-462e-a0ef-6d95fe2a0670\",\r\n      \"properties\": {\r\n        \"principalName\": \"JoeSchmoe@contoso.onmicrosoft.com\",\r\n        \"offerTypes\": [\r\n          \"MS-AZR-0017P\",\r\n          \"MS-AZR-0025P\",\r\n          \"MS-AZR-0148P\"\r\n        ]\r\n      },\r\n      \"type\": \"Microsoft.Billing/enrollmentAccounts\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/enrollmentAccounts/4b69ab5d-a262-4327-99da-4709df38656e\",\r\n      \"name\": \"4b69ab5d-a262-4327-99da-4709df38656e\",\r\n      \"properties\": {\r\n        \"principalName\": \"JoeSchmoe@contoso.onmicrosoft.com\",\r\n        \"offerTypes\": [\r\n          \"MS-AZR-0017P\",\r\n          \"MS-AZR-0025P\",\r\n          \"MS-AZR-0148P\"\r\n        ]\r\n      },\r\n      \"type\": \"Microsoft.Billing/enrollmentAccounts\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "637"
+        ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 20 Mar 2018 23:48:41 GMT"
-        ],
         "Pragma": [
           "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "Vary": [
-          "Accept-Encoding"
         ],
         "api-supported-versions": [
           "2018-03-01-preview"
@@ -52,69 +42,68 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14968"
+        ],
+        "x-ms-request-id": [
+          "556a63aa-a5ea-4c72-8e9e-7404c6773fc4"
+        ],
+        "x-ms-correlation-request-id": [
+          "556a63aa-a5ea-4c72-8e9e-7404c6773fc4"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20180323T055402Z:556a63aa-a5ea-4c72-8e9e-7404c6773fc4"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Mar 2018 05:54:01 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
           "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14995"
-        ],
-        "x-ms-request-id": [
-          "b8ff92c7-052e-47f2-b9ea-f332290e2895"
-        ],
-        "x-ms-correlation-request-id": [
-          "b8ff92c7-052e-47f2-b9ea-f332290e2895"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20180320T234841Z:b8ff92c7-052e-47f2-b9ea-f332290e2895"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/providers/Microsoft.Billing/enrollmentAccounts/c8a9f59a-2d9b-4086-91c8-8988cae3bec3?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9lbnJvbGxtZW50QWNjb3VudHMvYzhhOWY1OWEtMmQ5Yi00MDg2LTkxYzgtODk4OGNhZTNiZWMzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/providers/Microsoft.Billing/enrollmentAccounts/00c223dd-a80a-462e-a0ef-6d95fe2a0670?api-version=2018-03-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9lbnJvbGxtZW50QWNjb3VudHMvMDBjMjIzZGQtYTgwYS00NjJlLWEwZWYtNmQ5NWZlMmEwNjcwP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "549ea266-144d-4a7a-a821-5c382e89c9af"
+          "2bee3513-6be3-4af1-856e-19cdafc3532c"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25211.01",
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Billing.BillingManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Billing/enrollmentAccounts/c8a9f59a-2d9b-4086-91c8-8988cae3bec3\",\r\n  \"name\": \"c8a9f59a-2d9b-4086-91c8-8988cae3bec3\",\r\n  \"properties\": {\r\n    \"principalName\": \"JoeSchmoe@contoso.onmicrosoft.com\",\r\n    \"offerTypes\": [\r\n      \"MS-AZR-0017P\",\r\n      \"MS-AZR-0025P\",\r\n      \"MS-AZR-0148P\"\r\n    ]\r\n  },\r\n  \"type\": \"Microsoft.Billing/enrollmentAccounts\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Billing/enrollmentAccounts/00c223dd-a80a-462e-a0ef-6d95fe2a0670\",\r\n  \"name\": \"00c223dd-a80a-462e-a0ef-6d95fe2a0670\",\r\n  \"properties\": {\r\n    \"principalName\": \"JoeSchmoe@contoso.onmicrosoft.com\",\r\n    \"offerTypes\": [\r\n      \"MS-AZR-0017P\",\r\n      \"MS-AZR-0025P\",\r\n      \"MS-AZR-0148P\"\r\n    ]\r\n  },\r\n  \"type\": \"Microsoft.Billing/enrollmentAccounts\"\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "312"
+        ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 22 Mar 2018 19:29:15 GMT"
-        ],
         "Pragma": [
           "no-cache"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "Vary": [
-          "Accept-Encoding"
         ],
         "api-supported-versions": [
           "2018-03-01-preview"
@@ -125,23 +114,32 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14967"
+        ],
+        "x-ms-request-id": [
+          "7e237d38-2f1a-4081-924c-f043e026830d"
+        ],
+        "x-ms-correlation-request-id": [
+          "7e237d38-2f1a-4081-924c-f043e026830d"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20180323T055402Z:7e237d38-2f1a-4081-924c-f043e026830d"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Mar 2018 05:54:02 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
           "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14999"
-        ],
-        "x-ms-request-id": [
-          "3e1d95af-59dc-460c-adfe-dd0e9fca51a9"
-        ],
-        "x-ms-correlation-request-id": [
-          "3e1d95af-59dc-460c-adfe-dd0e9fca51a9"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20180322T192915Z:3e1d95af-59dc-460c-adfe-dd0e9fca51a9"
         ]
       },
       "StatusCode": 200

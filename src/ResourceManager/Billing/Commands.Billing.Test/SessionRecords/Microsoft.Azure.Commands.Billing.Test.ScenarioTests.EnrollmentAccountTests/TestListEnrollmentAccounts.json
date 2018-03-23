@@ -1,50 +1,40 @@
 {
   "Entries": [
     {
-      "RequestUri": "/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9lbnJvbGxtZW50QWNjb3VudHM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/c909e979-ef71-4def-a970-bc7c154db8c5/providers/Microsoft.Billing/invoices?api-version=2018-03-01-preview&$expand=downloadUrl&$top=1",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzkwOWU5NzktZWY3MS00ZGVmLWE5NzAtYmM3YzE1NGRiOGM1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQmlsbGluZy9pbnZvaWNlcz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXcmJGV4cGFuZD1kb3dubG9hZFVybCYkdG9wPTE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4e688485-4104-43db-9967-494e3caca686"
+          "25428ee2-821a-4737-aa3b-052212cd6fe2"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25211.01",
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows_10_Enterprise",
+          "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Billing.BillingManagementClient/2.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/enrollmentAccounts/a5a1de67-85ef-4082-b274-44a264fc4fee\",\r\n      \"name\": \"a5a1de67-85ef-4082-b274-44a264fc4fee\",\r\n      \"properties\": {\r\n        \"principalName\": \"JoeSchmoe@contoso.onmicrosoft.com\",\r\n        \"offerTypes\": [\r\n          \"MS-AZR-0017P\",\r\n          \"MS-AZR-0025P\",\r\n          \"MS-AZR-0148P\"\r\n        ]\r\n      },\r\n      \"type\": \"Microsoft.Billing/enrollmentAccounts\"\r\n    },\r\n    {\r\n      \"id\": \"/providers/Microsoft.Billing/enrollmentAccounts/14522963-9fac-4453-9a4b-c9c57217a78f\",\r\n      \"name\": \"14522963-9fac-4453-9a4b-c9c57217a78f\",\r\n      \"properties\": {\r\n        \"principalName\": \"JoeSchmoe@contoso.onmicrosoft.com\",\r\n        \"offerTypes\": [\r\n          \"MS-AZR-0017P\",\r\n          \"MS-AZR-0025P\",\r\n          \"MS-AZR-0148P\"\r\n        ]\r\n      },\r\n      \"type\": \"Microsoft.Billing/enrollmentAccounts\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/c909e979-ef71-4def-a970-bc7c154db8c5/providers/Microsoft.Billing/invoices/201710-317724100092362\",\r\n      \"type\": \"Microsoft.Billing/invoices\",\r\n      \"name\": \"201710-317724100092362\",\r\n      \"properties\": {\r\n        \"downloadUrl\": {\r\n          \"expiryTime\": \"2018-03-23T21:02:35Z\",\r\n          \"url\": \"https://billinginsightsstoretest.blob.core.windows.net/invoices/c909e979-ef71-4def-a970-bc7c154db8c5-201710-317724100092362.pdf?sv=2014-02-14&sr=b&sig=W1SsB4qFmVTt%2FWnlLk8JIXrs4tLONPFwg7cfjeaeK6M%3D&se=2018-03-23T21%3A02%3A35Z&sp=r\"\r\n        },\r\n        \"invoicePeriodEndDate\": \"2017-08-05\",\r\n        \"invoicePeriodStartDate\": \"2017-07-06\",\r\n        \"billingPeriodIds\": [\r\n          \"/subscriptions/c909e979-ef71-4def-a970-bc7c154db8c5/providers/Microsoft.Billing/billingPeriods/201710-1\"\r\n        ]\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "709"
+        ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 20 Mar 2018 23:48:41 GMT"
-        ],
         "Pragma": [
           "no-cache"
         ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
         "api-supported-versions": [
-          "2018-03-01-preview"
+          "2017-02-27-preview, 2017-04-24-preview, 2018-03-01-preview"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -52,23 +42,32 @@
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14990"
+        ],
+        "x-ms-request-id": [
+          "4e8b6946-34dc-41f1-9571-9f1e2e60c36c"
+        ],
+        "x-ms-correlation-request-id": [
+          "4e8b6946-34dc-41f1-9571-9f1e2e60c36c"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20180323T200235Z:4e8b6946-34dc-41f1-9571-9f1e2e60c36c"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 23 Mar 2018 20:02:35 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
         "X-AspNet-Version": [
           "4.0.30319"
         ],
         "X-Powered-By": [
           "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14995"
-        ],
-        "x-ms-request-id": [
-          "b8ff92c7-052e-47f2-b9ea-f332290e2895"
-        ],
-        "x-ms-correlation-request-id": [
-          "b8ff92c7-052e-47f2-b9ea-f332290e2895"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20180320T234841Z:b8ff92c7-052e-47f2-b9ea-f332290e2895"
         ]
       },
       "StatusCode": 200
@@ -76,6 +75,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "e67eab5a-bc80-4e7f-9c9f-2228d76575a4"
+    "SubscriptionId": "c909e979-ef71-4def-a970-bc7c154db8c5"
   }
 }
