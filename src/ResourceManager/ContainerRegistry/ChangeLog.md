@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 1.0.3
 * Fix issue with Default Resource Group in CloudShell
 
 ## Version 1.0.2
