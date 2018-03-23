@@ -150,7 +150,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // the value specified by the client. This, however, may cause an unwanted enabling of
                 // soft delete in a scenario like this:
                 //
-                //      get-vault | delete-vault | new-vault
+                //      $obj = get-vault 
+                //      delete-vault $obj
+                //      $obj | new-vault
                 //
                 // If s/d was not enabled on the original vault, the parameter name will be present on
                 // the input to the new-vault cmdlet, but without a value. if the presence of the parameter
