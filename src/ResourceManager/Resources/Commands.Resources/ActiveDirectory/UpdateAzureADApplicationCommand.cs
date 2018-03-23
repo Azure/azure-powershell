@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
             HelpMessage = "The URIs that identify the application.")]
         [ValidateNotNullOrEmpty]
-        public string[] IdentifierUris { get; set; }
+        [Alias("IdentifierUris")]
+        public string[] IdentifierUri { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
             HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
@@ -72,7 +73,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
             HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
-        public string[] ReplyUrls { get; set; }
+        [Alias("ReplyUrls")]
+        public string[] ReplyUrl { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
             HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
@@ -99,8 +101,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     DisplayName = DisplayName,
                     Homepage = HomePage,
-                    IdentifierUris = IdentifierUris,
-                    ReplyUrls = ReplyUrls,
+                    IdentifierUris = IdentifierUri,
+                    ReplyUrls = ReplyUrl,
                     AvailableToOtherTenants = AvailableToOtherTenants
                 };
 

@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-If specified, doesn't ask for confirmation for deleting user.
+If specified, doesn't ask for confirmation for deleting the user.
 
 ```yaml
 Type: SwitchParameter

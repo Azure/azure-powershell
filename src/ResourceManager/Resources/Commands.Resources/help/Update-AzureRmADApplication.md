@@ -15,21 +15,21 @@ Updates an existing azure active directory application.
 ### ApplicationObjectIdWithUpdateParamsParameterSet (Default)
 ```
 Update-AzureRmADApplication -ObjectId <Guid> [-DisplayName <String>] [-HomePage <String>]
- [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>]
+ [-IdentifierUri <String[]>] [-ReplyUrl <String[]>] [-AvailableToOtherTenants <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ApplicationIdWithUpdateParamsParameterSet
 ```
 Update-AzureRmADApplication -ApplicationId <Guid> [-DisplayName <String>] [-HomePage <String>]
- [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>]
+ [-IdentifierUri <String[]>] [-ReplyUrl <String[]>] [-AvailableToOtherTenants <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectWithUpdateParamsParameterSet
 ```
 Update-AzureRmADApplication -InputObject <PSADApplication> [-DisplayName <String>] [-HomePage <String>]
- [-IdentifierUris <String[]>] [-ReplyUrls <String[]>] [-AvailableToOtherTenants <Boolean>]
+ [-IdentifierUri <String[]>] [-ReplyUrl <String[]>] [-AvailableToOtherTenants <Boolean>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -176,13 +176,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IdentifierUris
+### -IdentifierUri
 The URIs that identify the application.
 
 ```yaml
 Type: String[]
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet, ApplicationIdWithUpdateParamsParameterSet
-Aliases:
+Aliases: IdentifierUris
 
 Required: False
 Position: Named
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String[]
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
-Aliases:
+Aliases: IdentifierUris
 
 Required: False
 Position: Named
@@ -233,13 +233,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ReplyUrls
+### -ReplyUrl
 Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 
 ```yaml
 Type: String[]
 Parameter Sets: ApplicationObjectIdWithUpdateParamsParameterSet, ApplicationIdWithUpdateParamsParameterSet
-Aliases:
+Aliases: ReplyUrls
 
 Required: False
 Position: Named
@@ -251,7 +251,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String[]
 Parameter Sets: InputObjectWithUpdateParamsParameterSet
-Aliases:
+Aliases: ReplyUrls
 
 Required: False
 Position: Named
