@@ -73,11 +73,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         private void Initialize(string fileName)
         {
-            ReadFileIntoCache(fileName);
-            HasStateChanged = true;
+            lock(fileLock)
+            {
+                ReadFileIntoCache(fileName);
+                HasStateChanged = true;
 
-            // Eagerly create cache file.
-            WriteCacheIntoFile(fileName);
+                // Eagerly create cache file.
+                WriteCacheIntoFile(fileName);
+            }
 
             AfterAccess = AfterAccessNotification;
             BeforeAccess = BeforeAccessNotification;
