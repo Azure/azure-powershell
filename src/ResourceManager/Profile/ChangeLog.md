@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.5.0
+* Enable MSI authentication in unsupported scenarios
 * Add support for user-defined Managed Service Identity
 
 ## Version 4.4.0

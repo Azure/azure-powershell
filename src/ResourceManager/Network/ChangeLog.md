@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+
+## Version 5.4.1
 * Fix issue with Default Resource Group in CloudShell
 
 ## Version 5.4.0
