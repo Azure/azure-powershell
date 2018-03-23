@@ -17,13 +17,14 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageAccount,
         DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( List<ManagedStorageAccount> ), typeof( ManagedStorageAccount ) )]
+    [OutputType( typeof( List<PSKeyVaultManagedStorageAccount> ), typeof( PSKeyVaultManagedStorageAccount ), typeof(List<PSDeletedKeyVaultManagedStorageAccountIdentityItem>), typeof(PSDeletedKeyVaultManagedStorageAccount) )]
     public class GetAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -61,26 +62,45 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias( Constants.StorageAccountName, Constants.Name )]
         public string AccountName { get; set; }
 
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByVaultNameParameterSet,
+            HelpMessage = "Specifies whether to show the previously deleted storage accounts in the output.")]
+        public SwitchParameter InRemovedState { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            switch( ParameterSetName )
+            if (ParameterSetName.Equals(ByAccountNameParameterSet))
             {
-                case ByAccountNameParameterSet:
-                    var storageAccount = DataServiceClient.GetManagedStorageAccount( VaultName, AccountName );
-                    WriteObject( storageAccount );
-                    break;
-                case ByVaultNameParameterSet:
-                    GetAndWriteManagedStorageAccount( VaultName );
-                    break;
-
-                default:
-                    throw new ArgumentException( KeyVaultProperties.Resources.BadParameterSetName );
+                if (InRemovedState)
+                {
+                    var storageAccount = DataServiceClient.GetDeletedManagedStorageAccount(VaultName, AccountName);
+                    WriteObject(storageAccount);
+                }
+                else
+                {
+                    var storageAccount = DataServiceClient.GetManagedStorageAccount(VaultName, AccountName);
+                    WriteObject(storageAccount);
+                }
+            }
+            else if (ParameterSetName.Equals(ByVaultNameParameterSet))
+            {
+                if (InRemovedState)
+                {
+                    GetAndWriteDeletedManagedStorageAccounts(VaultName);
+                }
+                else
+                {
+                    GetAndWriteManagedStorageAccounts(VaultName);
+                }
+            }
+            else
+            {
+                throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
             }
         }
 
-        private void GetAndWriteManagedStorageAccount( string vaultName )
+        private void GetAndWriteManagedStorageAccounts( string vaultName )
         {
             var options = new KeyVaultObjectFilterOptions
             {
@@ -91,6 +111,19 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 WriteObject( DataServiceClient.GetManagedStorageAccounts( options ), true );
             } while( !string.IsNullOrEmpty( options.NextLink ) );
+        }
+
+        private void GetAndWriteDeletedManagedStorageAccounts(string vaultName)
+        {
+            var options = new KeyVaultObjectFilterOptions
+            {
+                VaultName = vaultName,
+                NextLink = null
+            };
+            do
+            {
+                WriteObject(DataServiceClient.GetDeletedManagedStorageAccounts(options), true);
+            } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }
 }
