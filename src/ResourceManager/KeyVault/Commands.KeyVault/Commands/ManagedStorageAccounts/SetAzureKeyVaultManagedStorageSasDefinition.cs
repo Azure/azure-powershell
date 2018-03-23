@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 using System.Text;
 using System.Xml;
+using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri,
         DefaultParameterSetName = ParameterSetRawSas )]
-    [OutputType( typeof( ManagedStorageSasDefinition ) )]
+    [OutputType( typeof( PSKeyVaultManagedStorageSasDefinition ) )]
     public partial class SetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
     {
         private const string ParameterSetRawSas = "RawSas";
@@ -57,8 +57,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias( Constants.SasDefinitionName )]
         public string Name { get; set; }
 
+        [ValidateNotNullOrEmpty]
         [Parameter( Mandatory = true,
             Position = 3,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Storage SAS definition template uri.")]
+        public string TemplateUri { get; set; }
+
+        [ValidateNotNullOrEmpty]
+        [Parameter( Mandatory = true,
+            Position = 4,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Storage SAS type.")]
+        public string SasType { get; set; }
+
+        [Parameter( Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Sas definition parameters that will be used to create the sas token.",
             ParameterSetName = ParameterSetRawSas )]
@@ -347,11 +360,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if ( ShouldProcess( Name, Properties.Resources.SetManagedStorageSasDefinition ) )
             {
-                var sasDefinition = DataServiceClient.SetManagedStorageSasDefinition( VaultName,
+                var sasDefinition = DataServiceClient.SetManagedStorageSasDefinition( 
+                    VaultName,
                     AccountName,
-                    Name,
-                    GetParameters(),
-                    new ManagedStorageSasDefinitionAttributes( !Disable.IsPresent ),
+                    Name, 
+                    TemplateUri, 
+                    SasType,
+                    XmlConvert.ToString(ValidityPeriod.Value), 
+                    new PSKeyVaultManagedStorageSasDefinitionAttributes( !Disable.IsPresent ),
                     Tag );
 
                 WriteObject( sasDefinition );

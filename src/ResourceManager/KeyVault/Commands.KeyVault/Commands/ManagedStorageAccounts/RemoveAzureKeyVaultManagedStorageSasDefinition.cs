@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Globalization;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
          ConfirmImpact = ConfirmImpact.Medium,
         HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( ManagedStorageSasDefinition ) )]
+    [OutputType( typeof( PSDeletedKeyVaultManagedStorageSasDefinition ) )]
     public class RemoveAzureKeyVaultSasDefinition : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            ManagedStorageSasDefinition managedStorageSasDefinition = null;
+            PSDeletedKeyVaultManagedStorageSasDefinition managedStorageSasDefinition = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
