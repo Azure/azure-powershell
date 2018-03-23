@@ -310,7 +310,9 @@ Accept wildcard characters: False
 ```
 
 ### -RPOWarningThresholdInMinutes
-RPOWarningThresholdInMinutes```yaml
+RPOWarningThresholdInMinutes
+
+```yaml
 Type: Int32
 Parameter Sets: VMwareToAzure, AzureToVMware
 Aliases: 

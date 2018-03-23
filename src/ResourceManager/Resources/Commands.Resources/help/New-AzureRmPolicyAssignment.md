@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
@@ -78,6 +78,57 @@ The command stores that object in the $Policy variable.
 
 The final command assigns the policy in $Policy at the level of a resource group.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
+
+### Example 2: Policy assignment at resource group level with policy parameter object
+```
+PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
+PS C:\> $Policy = Get-AzureRmPolicyDefinition | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations' -and $_.Properties.PolicyType -eq 'BuiltIn'}
+PS C:\> $Locations = Get-AzureRmLocation | where displayname -like "*east*"
+PS C:\> $AllowedLocations = @{"listOfAllowedLocations"=($Locations.location)}
+PS C:\> New-AzureRmPolicyAssignment -Name "RestrictLocationPolicyAssignment" -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
+```
+
+The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
+The command stores that object in the $ResourceGroup variable.
+
+The second command gets the built-in policy definition for allowed locations by using the Get-AzureRmPolicyDefinition cmdlet.
+The command stores that object in the $Policy variable.
+
+The third and fourth commands create an object containing all Azure regions with "east" in the name.
+The commands store that object in the $AllowedLocations variable.
+
+The final command assigns the policy in $Policy at the level of a resource group using the policy parameter object in $AllowedLocations.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
+
+### Example 3: Policy assignment at resource group level with policy parameter file
+Create a file called _AllowedLocations.json_ in the local working directory with the following content.
+```
+{
+    "listOfAllowedLocations":  {
+      "value": [
+        "westus",
+        "westeurope",
+        "japanwest"
+      ]
+    }
+}
+```
+
+```
+PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
+PS C:\> $Policy = Get-AzureRmPolicyDefinition | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations' -and $_.Properties.PolicyType -eq 'BuiltIn'}
+PS C:\> New-AzureRmPolicyAssignment -Name "RestrictLocationPolicyAssignment" -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
+```
+
+The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
+The command stores that object in the $ResourceGroup variable.
+
+The second command gets the built-in policy definition for allowed locations by using the Get-AzureRmPolicyDefinition cmdlet.
+The command stores that object in the $Policy variable.
+
+The final command assigns the policy in $Policy at the level of a resource group using the policy parameter file AllowedLocations.json from the local working directory.
+The **ResourceId** property of $ResourceGroup identifies the resource group.
+
 
 ## PARAMETERS
 
@@ -347,6 +398,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

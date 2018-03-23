@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {
         protected const string CreateContainerGroupBaseParamSet = "CreateContainerGroupBaseParamSet";
-        protected const string CreateContainerGroupWithRegistryParamSet = "CreateContainerGroupWithRegistryParamSet";
         protected const string CreateContainerGroupWithAzureFileVolumeParamSet = "CreateContainerGroupWithAzureFileMountParamSet";
 
         [Parameter(
@@ -60,8 +59,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         public string Image { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
+            Mandatory = false,
             HelpMessage = "The custom container registry credential.")]
         [ValidateNotNullOrEmpty]
         public PSCredential RegistryCredential { get; set; }
@@ -141,6 +139,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The DNS name label for the IP address.")]
+        [ValidateNotNullOrEmpty]
+        public string DnsNameLabel { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The port(s) to open. Default: [80]")]
         [ValidateNotNullOrEmpty]
         public int[] Port { get; set; }
@@ -159,7 +163,6 @@ namespace Microsoft.Azure.Commands.ContainerInstance
 
         [Parameter(
             Mandatory = false,
-            ParameterSetName = CreateContainerGroupWithRegistryParamSet,
             HelpMessage = "The custom container registry login server.")]
         [ValidateNotNullOrEmpty]
         [Alias("RegistryServer")]
@@ -183,6 +186,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     OsType = this.OsType ?? ContainerGroupCreationParameters.DefaultOsType,
                     RestartPolicy = this.RestartPolicy ?? ContainerGroupRestartPolicy.Always,
                     IpAddressType = this.IpAddressType,
+                    DnsNameLabel = this.DnsNameLabel,
                     Ports = this.Port ?? ContainerGroupCreationParameters.DefaultPorts,
                     ContainerImage = this.Image,
                     EnvironmentVariables = this.ConvertHashtableToDictionary(this.EnvironmentVariable),

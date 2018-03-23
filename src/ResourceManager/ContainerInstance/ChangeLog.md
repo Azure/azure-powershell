@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix parameter sets issue for container registry and azure file volume mount
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 0.2.3
+* Apply Azure Container Instance SDK 2018-02-01
+    - Support DNS name label
+
+## Version 0.2.2
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 

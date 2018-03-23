@@ -32,7 +32,7 @@ using System.Management.Automation;
 using AutoMapper;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.Automation
+namespace Microsoft.Azure.Commands.Network
 {
 
     [Cmdlet(VerbsCommon.Set, "AzureRmRouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 }
             }
 
-            if(!present)
+            if (!present)
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }

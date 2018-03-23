@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,11 +18,18 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.1.0
+* Support for Private DNS Zones (Public Preview)
+    - Adds ability to create DNS zones that are visible only to the associated virtual networks
+
+## Version 4.0.1
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 
 ## Version 4.0.0
 * Support for CAA record types in Azure DNS
-   - Supports all operations on CAA record type
+    - Supports all operations on CAA record type
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
