@@ -165,6 +165,23 @@ function Test-UpdateReservationToSingle
 
 <#
 .SYNOPSIS
+Update reservation
+#>
+function Test-InvalidGuidInput
+{
+	$invalidInput = "NotGuid"
+
+	try
+	{
+		$reservations = Get-AzureRmReservation -ReservationOrderId $invalidInput
+	}
+	catch [System.Management.Automation.PSArgumentException]
+	{
+	}
+}
+
+<#
+.SYNOPSIS
 List reservations
 #>
 function Test-ListReservations
