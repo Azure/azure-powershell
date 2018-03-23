@@ -93,6 +93,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
+        public SwitchParameter EnablePurgeProtection { get; set; }
+
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (http://go.microsoft.com/fwlink/?linkid=512521).")]
         public SkuName Sku { get; set; }
 
@@ -176,7 +181,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         SkuName = this.Sku,
                         TenantId = GetTenantId(),
                         AccessPolicy = accessPolicy,
-                    NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
+                        NetworkAcls = new NetworkRuleSet(),     // New key-vault takes in default network rule set
                         Tags = this.Tag
                     },
                     ActiveDirectoryClient);
