@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "Express Route Circuit Peering intiating connection")]
         [ValidateNotNullOrEmpty]
-        public PSPeering ExpressRouteCircuitPeering { get; set; }
+        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
         public override void Execute()
         {
@@ -41,15 +41,19 @@ namespace Microsoft.Azure.Commands.Network
 
             var circuitconnection = new PSExpressRouteCircuitConnection();
 
-            if ((circuitconnection.PeerExpressRouteCircuitPeering.PeeringType != Microsoft.Azure.Management.Network.Models.ExpressRouteCircuitPeeringType.AzurePrivatePeering) ||
-                (ExpressRouteCircuitPeering.PeeringType != Microsoft.Azure.Management.Network.Models.ExpressRouteCircuitPeeringType.AzurePrivatePeering))
+            var peering =
+                    this.ExpressRouteCircuit.Peerings.First(
+                        resource =>
+                            string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (peering == null)
             {
-                throw new ArgumentException("Circuit Connection can only be established between Private Peerings");
+                throw new ArgumentException("Private Peering needs to be configured on the Express Route Circuit");
             }
 
             circuitconnection.Name = this.Name;
             circuitconnection.AddressPrefix = this.AddressPrefix;
-            circuitconnection.ExpressRouteCircuitPeering = this.ExpressRouteCircuitPeering;
+            circuitconnection.ExpressRouteCircuitPeering = peering.Id;
             circuitconnection.PeerExpressRouteCircuitPeering = this.PeerExpressRouteCircuitPeering;
 
             if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
@@ -57,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
                 circuitconnection.AuthorizationKey = this.AuthorizationKey;
             }
 
-            this.ExpressRouteCircuitPeering.Connections.Add(circuitconnection);
+            peering.Connections.Add(circuitconnection);
 
             WriteObject(circuitconnection);
         }

@@ -33,8 +33,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "SetByResourceId",
             HelpMessage = "Private Peering of Circuit being peered")]
-        public PSPeering PeerExpressRouteCircuitPeering { get; set; }
+        public string PeerExpressRouteCircuitPeering { get; set; }
 
         [Parameter(
             Mandatory = true,

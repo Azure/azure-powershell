@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using System.Management.Automation;
+using System;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -33,20 +34,31 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "Express Route Circuit Peering intiating connection")]
         [ValidateNotNullOrEmpty]
-        public PSPeering ExpressRouteCircuitPeering { get; set; }
+        public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            var connection = this.ExpressRouteCircuitPeering.Connections.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var peering =
+                    this.ExpressRouteCircuit.Peerings.First(
+                        resource =>
+                            string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (peering == null)
+            {
+                throw new ArgumentException("Private Peering does not exist on the Express Route Circuit");
+            }
+
+            var connection = peering.Connections.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
             if (connection != null)
             {
-                this.ExpressRouteCircuitPeering.Connections.Remove(connection);
+                peering.Connections.Remove(connection);
             }
 
-            WriteObject(this.ExpressRouteCircuitPeering);
+            WriteObject(peering);
+            WriteObject(this.ExpressRouteCircuit);
         }
     }
 }

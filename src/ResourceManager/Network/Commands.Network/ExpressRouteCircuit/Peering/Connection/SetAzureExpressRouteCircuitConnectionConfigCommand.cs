@@ -33,28 +33,32 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "Express Route Circuit Peering intiating connection")]
         [ValidateNotNullOrEmpty]
-        public PSPeering ExpressRouteCircuitPeering { get; set; }
+        public PSExpressRouteCircuit ExpressRouteCircuit{ get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            var connection = this.ExpressRouteCircuitPeering.Connections.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
+            var peering =
+                    this.ExpressRouteCircuit.Peerings.First(
+                        resource =>
+                            string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
+
+            if (peering == null)
+            {
+                throw new ArgumentException("Private Peering needs to be configured on the Express Route Circuit");
+            }
+
+            var connection = peering.Connections.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
 
             if (connection == null)
             {
                 throw new ArgumentException("Circuit Connection with the specified name does not exist");
             }
 
-            if ((connection.PeerExpressRouteCircuitPeering.PeeringType != Microsoft.Azure.Management.Network.Models.ExpressRouteCircuitPeeringType.AzurePrivatePeering) ||
-                (ExpressRouteCircuitPeering.PeeringType != Microsoft.Azure.Management.Network.Models.ExpressRouteCircuitPeeringType.AzurePrivatePeering))
-            {
-                throw new ArgumentException("Circuit Connection can only be established between Private Peerings");
-            }
-
             connection.Name = this.Name;
             connection.AddressPrefix = this.AddressPrefix;
-            connection.ExpressRouteCircuitPeering = this.ExpressRouteCircuitPeering;
+            connection.ExpressRouteCircuitPeering = peering.Id;
             connection.PeerExpressRouteCircuitPeering = this.PeerExpressRouteCircuitPeering;
 
             if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
@@ -62,7 +66,8 @@ namespace Microsoft.Azure.Commands.Network
                 connection.AuthorizationKey = this.AuthorizationKey;
             }
 
-            WriteObject(this.ExpressRouteCircuitPeering);
+            WriteObject(peering);
+            WriteObject(this.ExpressRouteCircuit);
         }
     }
 }
