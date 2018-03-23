@@ -14,16 +14,8 @@ Creates a container group.
 
 ### CreateContainerGroupBaseParamSet (Default)
 ```
-New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String> [-Location <String>]
- [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
- [-DnsNameLabel <String>] [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### CreateContainerGroupWithRegistryParamSet
-```
 New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
- -RegistryCredential <PSCredential> [-Location <String>] [-OsType <String>] [-RestartPolicy <String>]
+ [-RegistryCredential <PSCredential>] [-Location <String>] [-OsType <String>] [-RestartPolicy <String>]
  [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-DnsNameLabel <String>] [-Port <Int32[]>]
  [-Command <String>] [-EnvironmentVariable <Hashtable>] [-RegistryServerDomain <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -32,11 +24,12 @@ New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image
 ### CreateContainerGroupWithAzureFileMountParamSet
 ```
 New-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String> [-Image] <String>
- -AzureFileVolumeShareName <String> -AzureFileVolumeAccountCredential <PSCredential>
- -AzureFileVolumeMountPath <String> [-Location <String>] [-OsType <String>] [-RestartPolicy <String>]
- [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>] [-DnsNameLabel <String>] [-Port <Int32[]>]
- [-Command <String>] [-EnvironmentVariable <Hashtable>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RegistryCredential <PSCredential>] -AzureFileVolumeShareName <String>
+ -AzureFileVolumeAccountCredential <PSCredential> -AzureFileVolumeMountPath <String> [-Location <String>]
+ [-OsType <String>] [-RestartPolicy <String>] [-Cpu <Int32>] [-MemoryInGB <Double>] [-IpAddressType <String>]
+ [-DnsNameLabel <String>] [-Port <Int32[]>] [-Command <String>] [-EnvironmentVariable <Hashtable>]
+ [-RegistryServerDomain <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -432,10 +425,10 @@ The custom container registry credential.
 
 ```yaml
 Type: PSCredential
-Parameter Sets: CreateContainerGroupWithRegistryParamSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -447,7 +440,7 @@ The custom container registry login server.
 
 ```yaml
 Type: String
-Parameter Sets: CreateContainerGroupWithRegistryParamSet
+Parameter Sets: (All)
 Aliases: RegistryServer
 
 Required: False

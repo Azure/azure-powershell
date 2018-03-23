@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Creates Azure Site Recovery Policy object in memory.
+    ///     Deletes the specified Azure Site Recovery Fabric from the Recovery Services vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets the fabric name
+        ///     Gets or sets the fabric object corresponding to the fabric to be deleted.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,

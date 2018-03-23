@@ -6,7 +6,7 @@
 
 ## Checklist
 
-- [ ] I have read the [_Submitting Changes_](https://github.com/Azure/azure-powershell/blob/preview/CONTRIBUTING.md#making-changes) section of [`CONTRIBUTING.md`](https://github.com/Azure/azure-powershell/blob/preview/CONTRIBUTING.md)
+- [ ] I have read the [_Submitting Changes_](https://github.com/Azure/azure-powershell/blob/preview/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](https://github.com/Azure/azure-powershell/blob/preview/CONTRIBUTING.md)
 - [ ] The title of the PR is clear and informative
 - [ ] The appropriate [change log has been updated](https://github.com/Azure/azure-powershell/blob/preview/CONTRIBUTING.md#updating-the-change-log)
 - [ ] The PR does not introduce [breaking changes](https://github.com/Azure/azure-powershell/blob/preview/documentation/breaking-changes/breaking-changes-definition.md)

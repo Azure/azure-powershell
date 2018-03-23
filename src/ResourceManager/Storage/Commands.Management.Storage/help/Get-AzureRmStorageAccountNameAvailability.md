@@ -25,7 +25,7 @@ The **Get-AzureRmStorageAccountNameAvailability** cmdlet checks whether the name
 
 ### Example 1: Check availability of a Storage account name
 ```
-PS C:\>Get-AzureRmStorageAccountNameAvailability -Name 'ContosoStorage03'
+PS C:\>Get-AzureRmStorageAccountNameAvailability -Name 'contosostorage03'
 ```
 
 This command checks the availability of the name ContosoStorage03.
