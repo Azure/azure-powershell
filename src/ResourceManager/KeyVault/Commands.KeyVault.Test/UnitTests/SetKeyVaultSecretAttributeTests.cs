@@ -46,7 +46,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 NotBefore = secretAttributes.NotBefore,
                 ContentType = secretAttributes.ContentType,
                 Tag = secretAttributes.Tags,
+#pragma warning disable CS0618
                 PassThru = true
+#pragma warning restore CS0618
             };
         }
 

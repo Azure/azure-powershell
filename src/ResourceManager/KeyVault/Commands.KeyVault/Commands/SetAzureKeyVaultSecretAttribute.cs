@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter(Mandatory = false,
            HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return Secret object.")]
+        [Obsolete("-PassThru will be removed in May 2018, and output will be provided by default.")]
         public SwitchParameter PassThru { get; set; }
 
         #endregion
@@ -142,8 +143,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name,
                 Version ?? string.Empty,
                 new PSKeyVaultSecretAttributes(Enable, Expires, NotBefore, ContentType, Tag));
-
+#pragma warning disable CS0618
                 if (PassThru)
+#pragma warning restore CS0618
                 {
                     WriteObject(secret);
                 }
