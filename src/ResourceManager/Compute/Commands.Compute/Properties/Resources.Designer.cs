@@ -289,6 +289,33 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid image resource id &apos;{0}&apos;..
+        /// </summary>
+        internal static string ComputeInvalidImageName {
+            get {
+                return ResourceManager.GetString("ComputeInvalidImageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The image subscription doesn&apos;t match the current subscription..
+        /// </summary>
+        internal static string ComputeMismatchSubscription {
+            get {
+                return ResourceManager.GetString("ComputeMismatchSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t find the image &apos;{0}&apos;..
+        /// </summary>
+        internal static string ComputeNoImageFound {
+            get {
+                return ResourceManager.GetString("ComputeNoImageFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
         internal static string CreatingStorageAccountForBootDiagnostics {

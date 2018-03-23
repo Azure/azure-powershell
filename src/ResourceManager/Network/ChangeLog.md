@@ -19,7 +19,15 @@
 --->
 
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
+* Fix error message with Network cmdlets
+
+## Version 5.4.0
+* Updating model types for compatibility with DNS cmdlets.
+
+## Version 5.3.0
 * Fixed issue with importing aliases
+* Fix bug to serialize and display IPTags
 
 ## Version 5.2.0
 * Added cmdlet to create a new connection monitor
