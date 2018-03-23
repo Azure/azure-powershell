@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "IoT Device Provisioning Service Object")]
+            HelpMessage = "IoT Device Provisioning Service Linked Hub Object")]
         [ValidateNotNullOrEmpty]
-        public PSProvisioningServiceDescription InputObject { get; set; }
+        public PSIotHubDefinitionDescription InputObject { get; set; }
 
         [Parameter(
             Position = 0,
@@ -68,11 +68,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Position = 1,
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "Host name of linked IoT Hub")]
         [Parameter(
             Position = 1,
             Mandatory = true,
@@ -108,6 +103,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     case InputObjectParameterSet:
                         this.ResourceGroupName = this.InputObject.ResourceGroupName;
                         this.Name = this.InputObject.Name;
+                        this.LinkedHubName = this.InputObject.LinkedHubName;
                         this.UpdateIotDpsLinkedHub();
                         break;
 
@@ -136,7 +132,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                 iotHub.ApplyAllocationPolicy = this.ApplyAllocationPolicy ?? iotHub.ApplyAllocationPolicy;
                 iotHub.AllocationWeight = this.AllocationWeight ?? iotHub.AllocationWeight;
                 IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
-                this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(GetIotDpsHubs(this.ResourceGroupName, this.Name, this.LinkedHubName)), false);
+                this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(GetIotDpsHubs(this.ResourceGroupName, this.Name, this.LinkedHubName), this.ResourceGroupName, this.Name), false);
             }
             catch (Exception ex)
             {

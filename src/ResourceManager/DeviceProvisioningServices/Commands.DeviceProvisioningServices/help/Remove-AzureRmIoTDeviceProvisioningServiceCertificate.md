@@ -208,7 +208,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

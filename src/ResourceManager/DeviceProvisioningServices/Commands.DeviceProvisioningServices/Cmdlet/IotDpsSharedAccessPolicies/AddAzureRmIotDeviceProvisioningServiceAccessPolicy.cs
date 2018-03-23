@@ -109,7 +109,8 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "IoT Device Provisioning Service access policy permissions")]
         [ValidateNotNullOrEmpty]
-        public string Permissions { get; set; }
+        [ValidateSet(new string[] { "ServiceConfig", "EnrollmentRead", "EnrollmentWrite", "DeviceConnect", "RegistrationStatusRead", "RegistrationStatusWrite" }, IgnoreCase = true)]
+        public string[] Permissions { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private void WritePSObject(SharedAccessSignatureAuthorizationRuleAccessRightsDescription iotDpsAccessPolicy)
         {
-            this.WriteObject(IotDpsUtils.ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(iotDpsAccessPolicy), false);
+            this.WriteObject(IotDpsUtils.ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(iotDpsAccessPolicy, this.ResourceGroupName, this.Name), false);
         }
 
         private void WritePSObjects(IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> iotDpsAccessPolicies)
@@ -151,11 +152,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private void AddIotDpsAccessPolicy()
         {
-            string[] permissions = this.Permissions.Split(',');
             ArrayList accessRights = new ArrayList();
             PSAccessRightsDescription psAccessRightsDescription;
 
-            foreach (string permission in permissions)
+            foreach (string permission in this.Permissions)
             {
                 if (!Enum.TryParse<PSAccessRightsDescription>(permission.Trim(), true, out psAccessRightsDescription))
                 {

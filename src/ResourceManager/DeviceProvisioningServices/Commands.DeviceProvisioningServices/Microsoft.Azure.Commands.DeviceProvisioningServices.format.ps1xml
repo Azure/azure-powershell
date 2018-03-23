@@ -15,6 +15,8 @@
           <TableColumnHeader>
           </TableColumnHeader>
           <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ServiceOperationsHostName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -39,6 +41,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.ServiceOperationsHostName</ScriptBlock>
@@ -76,6 +81,9 @@
               </ListItem>
               <ListItem>
                 <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>Type</PropertyName>
@@ -156,6 +164,12 @@
           <ListEntry>
             <ListItems>
               <ListItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
                 <PropertyName>KeyName</PropertyName>
               </ListItem>
               <ListItem>
@@ -195,7 +209,7 @@
             <Wrap/>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Name</PropertyName>
+                <PropertyName>LinkedHubName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
@@ -223,7 +237,13 @@
           <ListEntry>
             <ListItems>
               <ListItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
                 <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>LinkedHubName</PropertyName>
               </ListItem>
               <ListItem>
                 <PropertyName>ConnectionString</PropertyName>

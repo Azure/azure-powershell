@@ -21,9 +21,9 @@ Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <Str
 
 ### InputObjectSet
 ```
-Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-InputObject] <PSProvisioningServiceDescription>
- [-KeyName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy
+ [-InputObject] <PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
@@ -46,6 +46,13 @@ True
 
 Delete shared access policy "mypolicy" in an Azure IoT Hub device provisioning service.
 
+### Example 2
+```
+PS C:\> Get-AzureRmIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Remove-AzureRmIoTDpsAccessPolicy
+```
+
+Delete shared access policy "mypolicy" in an Azure IoT Hub device provisioning service using pipeline.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -67,7 +74,7 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: PSProvisioningServiceDescription
+Type: PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
 Parameter Sets: InputObjectSet
 Aliases: 
 
@@ -95,7 +102,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: InputObjectSet, ResourceIdSet
+Parameter Sets: ResourceIdSet
 Aliases: 
 
 Required: True
@@ -206,7 +213,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceLinkedHub", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceLinkedHub", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Get-AzureRmIoTDpsHub")]
     [OutputType(typeof(PSIotHubDefinitionDescription), typeof(List<PSIotHubDefinitions>))]
     public class GetAzureRmIoTDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private void WritePSObject(IotHubDefinitionDescription iotDpsHub)
         {
-            this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(iotDpsHub), false);
+            this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(iotDpsHub, this.ResourceGroupName, this.Name), false);
         }
 
         private void WritePSObjects(IList<IotHubDefinitionDescription> iotDpsHubs)

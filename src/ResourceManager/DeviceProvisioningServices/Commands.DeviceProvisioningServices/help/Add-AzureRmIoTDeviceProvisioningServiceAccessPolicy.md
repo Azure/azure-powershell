@@ -15,21 +15,21 @@ Add a new shared access policy in an Azure IoT Hub device provisioning service.
 ### ResourceSet (Default)
 ```
 Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
- [-KeyName] <String> [-Permissions] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-KeyName] <String> [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
 Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-InputObject] <PSProvisioningServiceDescription>
- [-KeyName] <String> [-Permissions] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-KeyName] <String> [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName] <String>
- [-Permissions] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,10 +41,12 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ```
 PS C:\> Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -Permissions "ServiceConfig, EnrollmentWrite"
 
-KeyName      : mypolicy
-PrimaryKey   : hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey : vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
-Rights       : ServiceConfig, EnrollmentWrite
+ResourceGroupName	: myresourcegroup
+Name				: myiotdps
+KeyName				: mypolicy
+PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
+SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
+Rights				: ServiceConfig, EnrollmentWrite
 ```
 
 Add a new shared access policy in an Azure IoT Hub device provisioning service with EnrollmentWrite and ServiceConfig rights.
@@ -127,7 +129,7 @@ Accept wildcard characters: False
 IoT Device Provisioning Service access policy permissions
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases: 
 

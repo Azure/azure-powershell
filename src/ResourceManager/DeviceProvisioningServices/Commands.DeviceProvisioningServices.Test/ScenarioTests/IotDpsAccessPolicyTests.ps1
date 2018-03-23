@@ -32,7 +32,7 @@ function Test-AzureIotDpsAccessPolicyLifeCycle
 	$AccessPolicyDefaultKeyName = "provisioningserviceowner"
 	$AccessPolicyDefaultRights = "ServiceConfig, DeviceConnect, EnrollmentWrite"
 	$NewAccessPolicyKeyName = "Access1"
-	$NewAccessPolicyRights = "ServiceConfig, RegistrationStatusWrite"
+	$NewAccessPolicyRights = "ServiceConfig"
 
 	# Create or Update Resource Group
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 

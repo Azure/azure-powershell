@@ -23,6 +23,16 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
     public class PSIotHubDefinitionDescription
     {
         /// <summary>
+        /// Gets or sets the property of ResourceGroupName
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the property of Iot Dps Name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets flag for applying allocationPolicy or not for a given
         /// iot hub.
         /// </summary>
@@ -39,7 +49,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
         /// Gets host name of the IoT hub.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; private set; }
+        public string LinkedHubName { get; private set; }
 
         /// <summary>
         /// Gets or sets connection string og the IoT hub.

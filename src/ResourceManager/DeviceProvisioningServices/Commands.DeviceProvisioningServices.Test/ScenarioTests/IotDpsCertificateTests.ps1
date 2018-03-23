@@ -33,7 +33,7 @@ function Test-AzureIotDpsCertificateLifeCycle
 	$certificatePath = "$TestOutputRoot\rootCertificate.cer"
 	$verifyCertificatePath = "$TestOutputRoot\verifyCertificate.cer"
 	$certificateSubject = "CN=TestCertificate"
-	$certificateType = "Microsoft.Devices/IotHubs/Certificates"
+	$certificateType = "Microsoft.Devices/provisioningServices/Certificates"
 	$certificateName = "TestCertificate"
 
 	# Create or Update Resource Group

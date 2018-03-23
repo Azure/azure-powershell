@@ -53,9 +53,12 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             return ConvertObject<PSTagsResource, TagsResource>(psTagsResource);
         }
 
-        public static PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(SharedAccessSignatureAuthorizationRuleAccessRightsDescription accessPolicy)
+        public static PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(SharedAccessSignatureAuthorizationRuleAccessRightsDescription accessPolicy, string resourceGroupName, string name)
         {
-            return ConvertObject<SharedAccessSignatureAuthorizationRuleAccessRightsDescription, PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription>(accessPolicy);
+            PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription psSharedAccessSignatureAuthorizationRuleAccessRightsDescription = ConvertObject<SharedAccessSignatureAuthorizationRuleAccessRightsDescription, PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription>(accessPolicy);
+            psSharedAccessSignatureAuthorizationRuleAccessRightsDescription.ResourceGroupName = resourceGroupName;
+            psSharedAccessSignatureAuthorizationRuleAccessRightsDescription.Name = name;
+            return psSharedAccessSignatureAuthorizationRuleAccessRightsDescription;
         }
 
         public static IList<PSSharedAccessSignatureAuthorizationRuleAccessRights> ToPSSharedAccessSignatureAuthorizationRuleAccessRightsCollection(IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> accessPolicies)
@@ -63,9 +66,12 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             return ConvertObject<IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription>, IList<PSSharedAccessSignatureAuthorizationRuleAccessRights>>(accessPolicies);
         }
 
-        public static PSIotHubDefinitionDescription ToPSIotHubDefinitionDescription(IotHubDefinitionDescription linkedHub)
+        public static PSIotHubDefinitionDescription ToPSIotHubDefinitionDescription(IotHubDefinitionDescription linkedHub, string resourceGroupName, string name)
         {
-            return ConvertObject<IotHubDefinitionDescription, PSIotHubDefinitionDescription>(linkedHub);
+            PSIotHubDefinitionDescription psIotHubDefinitionDescription = ConvertObject<IotHubDefinitionDescription, PSIotHubDefinitionDescription>(linkedHub);
+            psIotHubDefinitionDescription.ResourceGroupName = resourceGroupName;
+            psIotHubDefinitionDescription.Name = name;
+            return psIotHubDefinitionDescription;
         }
 
         public static IList<PSIotHubDefinitions> ToPSIotHubDefinitionDescription(IList<IotHubDefinitionDescription> linkedHubs)

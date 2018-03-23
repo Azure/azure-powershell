@@ -29,26 +29,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     {
         private const string GetIotDpsParameterSet = "GetIotDpsByName";
         private const string ListIotDpsByRGParameterSet = "ListIotDpsByResourceGroup";
-        private const string InputObjectParameterSet = "InputObjectSet";
-        private const string ResourceIdParameterSet = "ResourceIdSet";
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            HelpMessage = "IoT Device Provisioning Service Object")]
-        [ValidateNotNullOrEmpty]
-        public PSProvisioningServiceDescription InputObject { get; set; }
-
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IoT Device Provisioning Service Resource Id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -78,18 +58,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         {
             switch(ParameterSetName)
             {
-                case InputObjectParameterSet:
-                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                    this.Name = this.InputObject.Name;
-                    this.GetIotDps();
-                    break;
-
-                case ResourceIdParameterSet:
-                    this.ResourceGroupName = IotDpsUtils.GetResourceGroupName(this.ResourceId);
-                    this.Name = IotDpsUtils.GetIotDpsName(this.ResourceId);
-                    this.GetIotDps();
-                    break;
-
                 case GetIotDpsParameterSet:
                     this.GetIotDps();
                     break;

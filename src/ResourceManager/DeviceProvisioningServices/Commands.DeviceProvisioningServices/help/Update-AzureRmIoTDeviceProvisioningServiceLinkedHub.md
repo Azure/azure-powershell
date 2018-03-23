@@ -21,9 +21,9 @@ Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String
 
 ### InputObjectSet
 ```
-Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-InputObject] <PSProvisioningServiceDescription>
- [-LinkedHubName] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-InputObject] <PSIotHubDefinitionDescription>
+ [-AllocationWeight <Int32>] [-ApplyAllocationPolicy <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
@@ -42,7 +42,9 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ```
 PS C:\> Update-AzureRmIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub" -AllocationWeight 10 -ApplyAllocationPolicy $true
 
-Name                  : myiothub.azure-devices.net
+ResourceGroupName	  : myresourcegroup
+Name				  : myiotdps
+LinkedHubName         : myiothub.azure-devices.net
 ConnectionString      : HostName=myiothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****
 AllocationWeight      : 10
 ApplyAllocationPolicy : True
@@ -102,7 +104,7 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: PSProvisioningServiceDescription
+Type: PSIotHubDefinitionDescription
 Parameter Sets: InputObjectSet
 Aliases: 
 
@@ -130,7 +132,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: InputObjectSet, ResourceIdSet
+Parameter Sets: ResourceIdSet
 Aliases: 
 
 Required: True

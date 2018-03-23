@@ -15,21 +15,21 @@ Update a shared access policy in an Azure IoT Hub device provisioning service.
 ### ResourceSet (Default)
 ```
 Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String> [-Name] <String>
- [-KeyName] <String> [-Permissions] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-KeyName] <String> [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-InputObject] <PSProvisioningServiceDescription>
- [-KeyName] <String> [-Permissions] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy
+ [-InputObject] <PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription> [-Permissions] <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceId] <String> [-KeyName] <String>
- [-Permissions] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,13 +41,29 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ```
 PS C:\> Update-AzureRmIoTDeviceProvisioningServiceAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" -Permissions "EnrollmentWrite"
 
-KeyName      : mypolicy
-PrimaryKey   : hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
-SecondaryKey : vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
-Rights       : EnrollmentWrite
+ResourceGroupName	: myresourcegroup
+Name				: myiotdps
+KeyName				: mypolicy
+PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
+SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
+Rights				: EnrollmentWrite
 ```
 
 Update access policy "mypolicy" in an Azure IoT Hub device provisioning service with EnrollmentWrite right.
+
+### Example 1
+```
+PS C:\> Get-AzureRmIoTDpsAccessPolicy -ResourceGroupName "myresourcegroup" -Name "myiotdps" -KeyName "mypolicy" | Update-AzureRmIoTDpsAccessPolicy -Permissions "EnrollmentWrite"
+
+ResourceGroupName	: myresourcegroup
+Name				: myiotdps
+KeyName				: mypolicy
+PrimaryKey			: hyZJm8W7rra9O7eKhkLu9m/CIPPt9x1NXVMbMJa1rvg=
+SecondaryKey		: vbIwGCBQCIbS5BKFKdddM6uZHLhNTuz9r8CZYgmTmpY=
+Rights				: EnrollmentWrite
+```
+
+Update access policy "mypolicy" in an Azure IoT Hub device provisioning service with EnrollmentWrite right using pipeline.
 
 ## PARAMETERS
 
@@ -70,7 +86,7 @@ Accept wildcard characters: False
 IoT Device Provisioning Service Object
 
 ```yaml
-Type: PSProvisioningServiceDescription
+Type: PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
 Parameter Sets: InputObjectSet
 Aliases: 
 
@@ -86,7 +102,7 @@ IoT Device Provisioning Service access policy key name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ResourceSet, ResourceIdSet
 Aliases: 
 
 Required: True
@@ -115,7 +131,7 @@ Accept wildcard characters: False
 IoT Device Provisioning Service access policy permissions
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases: 
 

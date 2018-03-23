@@ -22,6 +22,16 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models
     public partial class PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription
     {
         /// <summary>
+        /// Gets or sets the property of ResourceGroupName
+        /// </summary>
+        public string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the property of Iot Dps Name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets name of the key.
         /// </summary>
         [JsonProperty(PropertyName = "keyName")]

@@ -50,7 +50,7 @@ function Test-AzureIotDpsLinkedHubLifeCycle
 	# Link an Iot Hub to an Iot Hub Device Provisioning Service
 	$linkedHub = Add-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -IotHubResourceGroupName $ResourceGroupName -IotHubName $IotHubName
 	Assert-True { $linkedHub.Count -eq 1 }
-	Assert-True { $linkedHub.Name -eq $LinkedHubName }
+	Assert-True { $linkedHub.LinkedHubName -eq $LinkedHubName }
 	Assert-True { $linkedHub.Location -eq $Location }
 
 	# Update Linked Hub in Iot Hub Device Provisioning Service
@@ -61,7 +61,7 @@ function Test-AzureIotDpsLinkedHubLifeCycle
 	# Get Linked Hub in Iot Hub Device Provisioning Service
 	$linkedHub1 = Get-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName
 	Assert-True { $linkedHub1.Count -eq 1 }
-	Assert-True { $linkedHub1.Name -eq $LinkedHubName }
+	Assert-True { $linkedHub1.LinkedHubName -eq $LinkedHubName }
 	Assert-True { $linkedHub1.Location -eq $Location }
 	Assert-False { $linkedHub1.ApplyAllocationPolicy }
 	Assert-True { $linkedHub1.AllocationWeight -eq $AllocationWeight }

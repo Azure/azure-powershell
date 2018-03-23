@@ -12,6 +12,12 @@ List all or show details of linked IoT hubs in an Azure IoT Hub device provision
 
 ## SYNTAX
 
+### ResourceSet (Default)
+```
+Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
+ [-LinkedHubName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### InputObjectSet
 ```
 Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-InputObject] <PSProvisioningServiceDescription>
@@ -24,12 +30,6 @@ Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-Linked
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ResourceSet
-```
-Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
- [-LinkedHubName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 For an introduction to Azure IoT Hub Device Provisioning Service, see https://docs.microsoft.com/en-us/azure/iot-dps/about-iot-dps.
 
@@ -39,8 +39,8 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 ```
 PS C:\> Get-AzureRmIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps"
 
-Name							Location	AllocationWeight	ApplyAllocationPolicy
-----							--------	----------------	---------------------
+LinkedHubName					Location	AllocationWeight	ApplyAllocationPolicy
+-------------					--------	----------------	---------------------
 myiothub1.azure-devices.net		eastus		2
 myiothub2.azure-devices.net		westus2							true
 ```
@@ -51,7 +51,9 @@ List all linked IoT hubs in "myiotdps".
 ```
 PS C:\> Get-AzureRmIoTDpsHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -LinkedHubName "myiothub1"
 
-Name                  : myiothub1.azure-devices.net
+ResourceGroupName	  : myresourcegroup
+Name				  : myiotdps
+LinkedHubName         : myiothub1.azure-devices.net
 ConnectionString      : HostName=myiothub1.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=****
 AllocationWeight      : 2
 ApplyAllocationPolicy :
