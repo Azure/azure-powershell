@@ -93,16 +93,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The matched role Definitions</returns>
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, bool scopeAndBelow = false, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = null;
-            if (scopeAndBelow)
-            {
-                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.AtScopeAndBelow() && item.RoleName == name);
-            }
-            else
-            {
-                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
-            }
-
+            Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
             return new PageEnumerable<RoleDefinition>(
                 delegate ()
                 {
@@ -288,7 +279,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 // Get classic administrator access assignments
                 List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators
-                    .List("2015-06-01").ToList();
+                    .List().ToList();
                 List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
 
                 // Filter by principal if provided
@@ -477,7 +468,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         new Permission()
                         {
                             Actions = roleDefinition.Actions,
-                            NotActions = roleDefinition.NotActions
+                            NotActions = roleDefinition.NotActions,
+                            DataActions = roleDefinition.DataActions,
+                            NotDataActions = roleDefinition.NotDataActions
                         }
                     },
                 RoleName = roleDefinition.Name,
@@ -520,7 +513,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
             }
 
-            if (roleDefinition.Actions == null || !roleDefinition.Actions.Any())
+            if ((roleDefinition.Actions == null || !roleDefinition.Actions.Any()) && (roleDefinition.DataActions == null || !roleDefinition.DataActions.Any()))
             {
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }

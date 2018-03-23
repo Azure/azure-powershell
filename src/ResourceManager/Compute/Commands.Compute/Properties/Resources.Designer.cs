@@ -289,6 +289,33 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid image resource id &apos;{0}&apos;..
+        /// </summary>
+        internal static string ComputeInvalidImageName {
+            get {
+                return ResourceManager.GetString("ComputeInvalidImageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The image subscription doesn&apos;t match the current subscription..
+        /// </summary>
+        internal static string ComputeMismatchSubscription {
+            get {
+                return ResourceManager.GetString("ComputeMismatchSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t find the image &apos;{0}&apos;..
+        /// </summary>
+        internal static string ComputeNoImageFound {
+            get {
+                return ResourceManager.GetString("ComputeNoImageFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
         /// </summary>
         internal static string CreatingStorageAccountForBootDiagnostics {
@@ -1149,7 +1176,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics..
+        ///   Looks up a localized string similar to Since the VM is created using premium storage or managed disk, existing standard storage account, {0}, is used for boot diagnostics..
         /// </summary>
         internal static string UsingExistingStorageAccountForBootDiagnostics {
             get {
@@ -1239,11 +1266,38 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use &apos;{0}&apos; to connect to the VM..
+        /// </summary>
+        internal static string VirtualMachineUseConnectionString {
+            get {
+                return ResourceManager.GetString("VirtualMachineUseConnectionString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them..
         /// </summary>
         internal static string VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired {
             get {
                 return ResourceManager.GetString("VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where {0} is in the range {1}..
+        /// </summary>
+        internal static string VmssPortRange {
+            get {
+                return ResourceManager.GetString("VmssPortRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use &apos;{0}&apos; to connect to the VMSS instances..
+        /// </summary>
+        internal static string VmssUseConnectionString {
+            get {
+                return ResourceManager.GetString("VmssUseConnectionString", resourceCulture);
             }
         }
     }

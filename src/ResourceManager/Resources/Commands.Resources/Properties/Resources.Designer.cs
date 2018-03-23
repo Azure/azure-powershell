@@ -547,6 +547,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removed management partner with id &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovedManagementPartner {
+            get {
+                return ResourceManager.GetString("RemovedManagementPartner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove group with object id &apos;{0}&apos;?.
         /// </summary>
         internal static string RemoveGroupConfirmation {

@@ -12,7 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Moq;
+using System;
+using System.Reflection;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
@@ -21,32 +27,88 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     {
         public StrategiesVirtualMachineTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(
+                new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVm()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVm");
         }
 
-        [Fact] 
-        [Trait(Category.AcceptanceType, Category.CheckIn)] 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithAvailabilitySet()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmWithAvailabilitySet2()
-        { 
-            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2"); 
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2");
+        }
+
+        public static void TestDomainName(string psTest, Func<string> getUniqueId)
+        {
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
+            var oldCreate = create.GetValue(null);
+
+            ComputeTestController.NewInstance.RunPsTestWorkflow(
+                () => new[] { psTest },
+                // initializer
+                _ => create.SetValue(null, getUniqueId),
+                // cleanup 
+                () => create.SetValue(null, oldCreate),
+                callingClassType,
+                mockName);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithDefaultDomainName()
+        {
+            TestDomainName(
+                "Test-SimpleNewVmWithDefaultDomainName",
+                () => HttpMockServer.GetAssetGuid("domainName").ToString());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
+        public void TestSimpleNewVmWithDefaultDomainName2()
+        {
+            var i = 0;
+            var result = new Guid();
+            TestDomainName("Test-SimpleNewVmWithDefaultDomainName2", () =>
+            { 
+                switch (i)
+                {
+                    case 1:
+                        break;
+                    default:
+                        result = HttpMockServer.GetAssetGuid("domainName");
+                        break;
+                }
+                ++i;
+                return result.ToString();
+            });
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmImageName()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmImageName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmImageNameMicrosoftSqlUbuntu()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmImageNameMicrosoftSqlUbuntu");

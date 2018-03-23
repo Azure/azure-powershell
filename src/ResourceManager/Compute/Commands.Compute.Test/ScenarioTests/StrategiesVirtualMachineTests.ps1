@@ -40,6 +40,123 @@ function Test-SimpleNewVm
     }
 }
 
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmWithAvailabilitySet
+{
+    # Setup
+    $rgname = Get-ResourceName
+
+    try
+    {
+		$username = "admin01"
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$vmname = $rgname
+		[string]$asname = $rgname
+		[string]$domainNameLabel = "$vmname-$rgname".tolower();
+
+        # Common
+		$r = New-AzureRmResourceGroup -Name $rgname -Location "eastus"
+		$a = New-AzureRmAvailabilitySet `
+			-ResourceGroupName $rgname `
+			-Name $asname `
+			-Location "eastus" `
+			-Sku "Aligned" `
+			-PlatformUpdateDomainCount 2 `
+			-PlatformFaultDomainCount 2
+
+		$x = New-AzureRmVM `
+			-ResourceGroupName $rgname `
+			-Name $vmname `
+			-Credential $cred `
+			-DomainNameLabel $domainNameLabel `
+			-AvailabilitySetName $asname
+
+		Assert-AreEqual $vmname $x.Name;		
+		Assert-AreEqual $a.Id $x.AvailabilitySetReference.Id
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmWithDefaultDomainName
+{
+    # Setup
+    $rgname = Get-ResourceName
+
+    try
+    {
+		$username = "admin01"
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string] $vmname = "ps9301"
+
+        # Common
+		$x = New-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Credential $cred
+
+		Assert-AreEqual $vmname $x.Name
+		$fqdn = $x.FullyQualifiedDomainName
+		$split = $fqdn.Split(".")
+		Assert-AreEqual "eastus" $split[1] 
+		Assert-AreEqual "cloudapp" $split[2]
+		Assert-AreEqual "azure" $split[3]
+		Assert-AreEqual "com" $split[4]
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm
+#>
+function Test-SimpleNewVmWithDefaultDomainName2
+{
+    # Setup
+    $rgname = Get-ResourceName
+	$rgname2 = Get-ResourceName
+
+    try
+    {
+		$username = "admin01"
+		$password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+		$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string] $vmname = "vm"
+
+        # Common
+		$x = New-AzureRmVM `
+			-ResourceGroupName $rgname `
+			-Name $vmname `
+			-Credential $cred `
+			-ImageName "ubuntults"
+
+		# second VM
+		$x2 = New-AzureRmVM `
+			-ResourceGroupName $rgname2 `
+			-Name $vmname `
+			-Credential $cred `
+			-ImageName "ubuntults"
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+		Clean-ResourceGroup $rgname2
+    }
+}
 
 <#
 .SYNOPSIS

@@ -20,4 +20,6 @@
 	"Set-AzureRmADApplication" = "Update-AzureRmADApplication";
 	"Set-AzureRmADServicePrincipal" = "Update-AzureRmADServicePrincipal";
 	"Set-AzureRmADUser" = "Update-AzureRmADUser";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" | Out-Null
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | `
+ForEach-Object {if (!(Get-Alias -Name $_.Name -ErrorAction Ignore)) {Set-Alias -Name $_.Name -Value $_.Value -Description "AzureAlias" -Scope Global}} | Out-Null
+

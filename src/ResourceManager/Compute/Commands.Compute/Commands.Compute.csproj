@@ -52,12 +52,8 @@
       <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.3.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.5.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -274,26 +270,37 @@
     <Compile Include="Strategies\Client.cs" />
     <Compile Include="Strategies\ComputeRp\AvailabilitySetStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ComputeStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\DataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageAndOsType.cs" />
+    <Compile Include="Strategies\ComputeRp\ImageDataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageEx.cs" />
     <Compile Include="Strategies\ComputeRp\Images.cs" />
+    <Compile Include="Strategies\ComputeRp\ApiEntityReferenceStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\LinuxConfigurationStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\ManagedDiskParametersStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\NetworkInterfaceReferenceStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\SubResourceStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\VirtualMachineScaleSetStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\VirtualMachineStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\WindowsConfigurationStrategy.cs" />
     <Compile Include="Strategies\IAsyncCmdlet.cs" />
+    <Compile Include="Strategies\IParameters.cs" />
     <Compile Include="Strategies\Location.cs" />
     <Compile Include="Strategies\Network\BackendAddressPoolStrategy.cs" />
     <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
+    <Compile Include="Strategies\Network\InboundNetPoolStrategy.cs" />
     <Compile Include="Strategies\Network\LoadBalancerStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ManagedDiskStrategy.cs" />
+    <Compile Include="Strategies\Network\LoadBalancingRuleStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkInterfaceStrategy.cs" />
     <Compile Include="Strategies\Network\NetworkSecurityGroupPolicy.cs" />
     <Compile Include="Strategies\Network\NetworkStrategy.cs" />
     <Compile Include="Strategies\Network\PublicIPAddressStrategy.cs" />
     <Compile Include="Strategies\Network\SubnetStrategy.cs" />
     <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
-    <Compile Include="Strategies\ResourceManager\ResourceConfigExtensions.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
     <Compile Include="Strategies\ShouldProcess.cs" />
+    <Compile Include="Strategies\StrategyCmdlet.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />

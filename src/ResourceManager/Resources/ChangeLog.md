@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 5.5.0
+* Fixed issue with importing aliases
+* Add Support for DataActions and NotDataActions to be passed in roledefinition create calls
+* Fix Roledefinitions calls to use the type filter
+
+## Version 5.4.0
 * Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
 * Add proper error handling for Insufficient graph permission Issue whilst performing Roleassignment calls.

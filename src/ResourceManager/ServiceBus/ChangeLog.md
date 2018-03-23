@@ -19,6 +19,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 0.6.2
+* Added EnableBatchedOperations property to Queue
+* Added DeadLetteringOnFilterEvaluationExceptions property to Subscriptions
 
 ## Version 0.6.1
 * Added functionality fix for Remove-AzureRmServiceBusRule and Get-AzureRmServiceBusKey

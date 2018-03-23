@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Name = role.RoleName,
                     Actions = new List<string>(role.Permissions.SelectMany(r => r.Actions)),
                     NotActions = new List<string>(role.Permissions.SelectMany(r => r.NotActions)),
+                    DataActions = new List<string>(role.Permissions.SelectMany(r => r.DataActions)),
+                    NotDataActions = new List<string>(role.Permissions.SelectMany(r => r.NotDataActions)),
                     Id = role.Id.GuidFromFullyQualifiedId(),
                     AssignableScopes = role.AssignableScopes.ToList(),
                     Description = role.Description,
