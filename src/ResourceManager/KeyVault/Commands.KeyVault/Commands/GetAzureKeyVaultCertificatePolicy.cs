@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
         public override void ExecuteCmdlet()
         {
-            CertificatePolicy certificatePolicy;
+            PSKeyVaultCertificatePolicy certificatePolicy;
 
             if (InputObject != null)
             {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (certificatePolicy != null)
             {
-                this.WriteObject(PSKeyVaultCertificatePolicy.FromCertificatePolicy(certificatePolicy));
+                this.WriteObject(certificatePolicy);
             }
         }
     }

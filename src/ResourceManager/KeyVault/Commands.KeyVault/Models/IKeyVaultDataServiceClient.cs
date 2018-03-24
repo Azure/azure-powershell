@@ -76,13 +76,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         #region Certificate actions
 
-        Contacts SetCertificateContacts(string vaultName, Contacts contacts);
+        IEnumerable<PSKeyVaultCertificateContact> SetCertificateContacts(string vaultName, IEnumerable<PSKeyVaultCertificateContact> contacts);
 
-        Contacts GetCertificateContacts(string vaultName);
+        IEnumerable<PSKeyVaultCertificateContact> GetCertificateContacts(string vaultName);
 
-        CertificateBundle GetCertificate(string vaultName, string certName, string certificateVersion);
+        PSKeyVaultCertificate GetCertificate(string vaultName, string certName, string certificateVersion);
 
-        DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName );
+        PSDeletedKeyVaultCertificate GetDeletedCertificate( string vaultName, string certName );
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
 
@@ -90,39 +90,39 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 
-        CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags);
+        PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags);
 
-        CertificateBundle ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags);
+        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags);
 
-        CertificateBundle ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags);
+        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags);
 
-        DeletedCertificateBundle DeleteCertificate(string vaultName, string certName);
+        PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName);
 
         void PurgeCertificate( string vaultName, string certName );
 
-        CertificateBundle RecoverCertificate( string vaultName, string certName );
+        PSKeyVaultCertificate RecoverCertificate( string vaultName, string certName );
 
-        CertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags);
+        PSKeyVaultCertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags);
 
-        CertificateBundle UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags);
+        PSKeyVaultCertificate UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags);
 
-        CertificateOperation GetCertificateOperation(string vaultName, string certificateName);
+        PSKeyVaultCertificateOperation GetCertificateOperation(string vaultName, string certificateName);
 
-        CertificateOperation DeleteCertificateOperation(string vaultName, string certificateName);
+        PSKeyVaultCertificateOperation DeleteCertificateOperation(string vaultName, string certificateName);
 
-        CertificateOperation CancelCertificateOperation(string vaultName, string certificateName);
+        PSKeyVaultCertificateOperation CancelCertificateOperation(string vaultName, string certificateName);
 
-        CertificatePolicy GetCertificatePolicy(string vaultName, string certificateName);
+        PSKeyVaultCertificatePolicy GetCertificatePolicy(string vaultName, string certificateName);
 
-        CertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy);
+        PSKeyVaultCertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy);
 
-        IssuerBundle GetCertificateIssuer(string vaultName, string issuerName);
+        PSKeyVaultCertificateIssuer GetCertificateIssuer(string vaultName, string issuerName);
 
         IEnumerable<PSKeyVaultCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
 
-        IssuerBundle SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);  
+        PSKeyVaultCertificateIssuer SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);  
               
-        IssuerBundle DeleteCertificateIssuer(string vaultName, string issuerName);
+        PSKeyVaultCertificateIssuer DeleteCertificateIssuer(string vaultName, string issuerName);
         
         #endregion
 

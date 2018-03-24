@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     "Remove certificate issuer '{0}'",
                     Name),
                 Name,
-                () => { issuer = PSKeyVaultCertificateIssuer.FromIssuer(this.DataServiceClient.DeleteCertificateIssuer(VaultName, Name)); });
+                () => { issuer = this.DataServiceClient.DeleteCertificateIssuer(VaultName, Name); });
 
             if (PassThru)
             {

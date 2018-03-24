@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (ShouldProcess(VaultName, Properties.Resources.AddCertificateContact))
             {
-                Contacts existingContacts;
+                List<PSKeyVaultCertificateContact> existingContacts;
 
                 try
                 {
-                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
+                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName)?.ToList();
                 }
                 catch (KeyVaultErrorException exception)
                 {
@@ -118,32 +118,31 @@ namespace Microsoft.Azure.Commands.KeyVault
                     existingContacts = null;
                 }
 
-                List<Contact> newContactList;
+                List<PSKeyVaultCertificateContact> newContactList;
 
-                if (existingContacts == null ||
-                    existingContacts.ContactList == null)
+                if (existingContacts == null)
                 {
-                    newContactList = new List<Contact>();
+                    newContactList = new List<PSKeyVaultCertificateContact>();
                 }
                 else
                 {
-                    newContactList = new List<Contact>(existingContacts.ContactList);
+                    newContactList = new List<PSKeyVaultCertificateContact>(existingContacts);
                 }
                 
                 foreach (var email in EmailAddress)
                 {
                     if (newContactList.FindIndex(
-                        contact => (string.Compare(contact.EmailAddress, email, StringComparison.OrdinalIgnoreCase) == 0)) == -1)
+                        contact => (string.Compare(contact.Email, email, StringComparison.OrdinalIgnoreCase) == 0)) == -1)
                     {
-                        newContactList.Add(new Contact { EmailAddress = email });
+                        newContactList.Add(new PSKeyVaultCertificateContact { Email = email });
                     }
                 }
 
-                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = newContactList });
+                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, newContactList);
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(PSKeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts, VaultName), true);
+                    this.WriteObject(resultantContacts, true);
                 }
             }
         }

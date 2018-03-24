@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     Resources.RemoveCertWhatIfMessage,
                     Name),
                 Name,
-                () => { certBundle = PSDeletedKeyVaultCertificate.FromDeletedCertificateBundle( this.DataServiceClient.DeleteCertificate(VaultName, Name) ); });
+                () => { certBundle = this.DataServiceClient.DeleteCertificate(VaultName, Name); });
 
             if (PassThru.IsPresent)
             {

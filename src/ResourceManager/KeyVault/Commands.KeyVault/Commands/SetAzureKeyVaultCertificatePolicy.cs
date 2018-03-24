@@ -260,10 +260,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                         ValidateDnsNames();
                         ValidateEkus();
 
-                        var convertedKeyUsage = new List<string>();
-                        foreach (var key in KeyUsage)
+                        List<string> convertedKeyUsage = null;
+                        if (KeyUsage != null)
                         {
-                            convertedKeyUsage.Add(key.ToString());
+                            convertedKeyUsage = new List<string>();
+                            foreach (var key in KeyUsage)
+                            {
+                                convertedKeyUsage.Add(key.ToString());
+                            }
                         }
 
                         policy = new PSKeyVaultCertificatePolicy
@@ -301,7 +305,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(PSKeyVaultCertificatePolicy.FromCertificatePolicy(resultantPolicy));
+                    this.WriteObject(resultantPolicy);
                 }
             }
         }

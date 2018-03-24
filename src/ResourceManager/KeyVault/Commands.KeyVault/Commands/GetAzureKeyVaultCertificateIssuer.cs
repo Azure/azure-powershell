@@ -100,12 +100,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             else
             {
                 var issuer = this.DataServiceClient.GetCertificateIssuer(VaultName, Name);
-                var psissuer = PSKeyVaultCertificateIssuer.FromIssuer(issuer);
-                if (psissuer != null)
+                if (issuer != null)
                 {
-                    psissuer.VaultName = VaultName;
+                    issuer.VaultName = VaultName;
                 }
-                this.WriteObject(psissuer);
+                this.WriteObject(issuer);
             }
         }
 
