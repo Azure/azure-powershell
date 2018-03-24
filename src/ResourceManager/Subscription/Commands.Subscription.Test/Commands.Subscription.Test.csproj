@@ -139,22 +139,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScenarioTests\SubscriptionDefinitionTests.cs" />
+    <Compile Include="ScenarioTests\SubscriptionTests.cs" />
     <Compile Include="ScenarioTests\TestController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="ScenarioTests\SubscriptionDefinitionTests.ps1">
+    <None Include="ScenarioTests\SubscriptionTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Subscription.Test.ScenarioTests.SubscriptionDefinitionTests\TestGetSubscriptionDefinitionByName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Subscription.Test.ScenarioTests.SubscriptionDefinitionTests\TestListSubscriptionDefinitions.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Subscription.Test.ScenarioTests.SubscriptionDefinitionTests\TestNewSubscriptionDefinition.json">
+    <None Include="SessionRecords\Subscription.Test.ScenarioTests.SubscriptionTests\TestNewSubscription.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
