@@ -18,32 +18,32 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCertificateOrganizationDetails
+    public class PSKeyVaultCertificateOrganizationDetails
     {
         public string Id { get; set; }
 
-        public List<KeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
+        public List<PSKeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
 
         internal OrganizationDetails ToOrganizationDetails()
         {
             return new OrganizationDetails
             {                
                 Id = Id,
-                AdminDetails = KeyVaultCertificateAdministratorDetails.ToAdministratorDetails(AdministratorDetails),
+                AdminDetails = PSKeyVaultCertificateAdministratorDetails.ToAdministratorDetails(AdministratorDetails),
             };
         }
 
-        internal static KeyVaultCertificateOrganizationDetails FromOrganizationalDetails(OrganizationDetails organizationalDetails)
+        internal static PSKeyVaultCertificateOrganizationDetails FromOrganizationalDetails(OrganizationDetails organizationalDetails)
         {
             if (organizationalDetails == null)
             {
                 return null;
             }
 
-            var kvcOrganizationDetails = new KeyVaultCertificateOrganizationDetails
+            var kvcOrganizationDetails = new PSKeyVaultCertificateOrganizationDetails
             {
                 Id = organizationalDetails.Id,
-                AdministratorDetails = KeyVaultCertificateAdministratorDetails.FromAdministratorDetails(organizationalDetails.AdminDetails),
+                AdministratorDetails = PSKeyVaultCertificateAdministratorDetails.FromAdministratorDetails(organizationalDetails.AdminDetails),
             };
 
             return kvcOrganizationDetails;

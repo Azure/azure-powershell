@@ -19,7 +19,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCertificateAdministratorDetails
+    public class PSKeyVaultCertificateAdministratorDetails
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -37,14 +37,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             };
         }
 
-        internal static KeyVaultCertificateAdministratorDetails FromAdministratorDetails(AdministratorDetails administratorDetails)
+        internal static PSKeyVaultCertificateAdministratorDetails FromAdministratorDetails(AdministratorDetails administratorDetails)
         {
             if (administratorDetails == null)
             {
                 return null;
             }
 
-            return new KeyVaultCertificateAdministratorDetails
+            return new PSKeyVaultCertificateAdministratorDetails
             {
                 FirstName = administratorDetails.FirstName,
                 LastName = administratorDetails.LastName,
@@ -53,17 +53,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             };
         }
 
-        internal static List<KeyVaultCertificateAdministratorDetails> FromAdministratorDetails(IEnumerable<AdministratorDetails> administratorDetails)
+        internal static List<PSKeyVaultCertificateAdministratorDetails> FromAdministratorDetails(IEnumerable<AdministratorDetails> administratorDetails)
         {
             if (administratorDetails == null || administratorDetails.Count() == 0)
             {
                 return null;
             }
 
-            return administratorDetails.Select(adminDetails => KeyVaultCertificateAdministratorDetails.FromAdministratorDetails(adminDetails)).ToList();
+            return administratorDetails.Select(adminDetails => PSKeyVaultCertificateAdministratorDetails.FromAdministratorDetails(adminDetails)).ToList();
         }
 
-        internal static List<AdministratorDetails> ToAdministratorDetails(IEnumerable<KeyVaultCertificateAdministratorDetails> administratorDetails)
+        internal static List<AdministratorDetails> ToAdministratorDetails(IEnumerable<PSKeyVaultCertificateAdministratorDetails> administratorDetails)
         {
             if (administratorDetails == null || administratorDetails.Count() == 0)
             {
