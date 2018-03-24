@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,34 +19,31 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     /// <summary>
-    /// Key attributes from PSH perspective
+    /// Secret attributes from PSH perspective
     /// </summary>
-    public class KeyAttributes
+    public class PSKeyVaultSecretAttributes
     {
-        public KeyAttributes()
+        public PSKeyVaultSecretAttributes()
         { }
 
-        internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType,
-            string[] keyOps, Hashtable tags)
+        internal PSKeyVaultSecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string contentType, Hashtable tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
             this.NotBefore = notBefore;
-            this.KeyType = keyType;
-            this.KeyOps = keyOps;
+            this.ContentType = contentType;
             this.Tags = tags;
         }
 
-        internal KeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, 
-            string[] keyOps, DateTime? created, DateTime? updated, string deletionRecoveryLevel, IDictionary<string, string> tags)
+        internal PSKeyVaultSecretAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, 
+            DateTime? created, DateTime? updated, string contentType, string deletionRecoveryLevel, IDictionary<string, string> tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;
             this.NotBefore = notBefore;
-            this.KeyType = keyType;
-            this.KeyOps = keyOps;
             this.Created = created;
             this.Updated = updated;
+            this.ContentType = contentType;
             this.RecoveryLevel = deletionRecoveryLevel;
             this.Tags = (tags == null) ? null : tags.ConvertToHashtable();
         }
@@ -57,20 +54,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public DateTime? NotBefore { get; set; }
 
-        public string[] KeyOps { get; set; }
-
-        public string KeyType { get; private set; }
-
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
 
-        [Obsolete("The PurgeDisabled property is being deprecated and will be removed in a future release. Please use the RecoveryLevel property instead.")]
+        public string ContentType { get; set; }
+
+        public Hashtable Tags { get; set; }
+
+        [Obsolete( "The PurgeDisabled property is being deprecated and will be removed in a future release. Please use the RecoveryLevel property instead." )]
         public bool PurgeDisabled { get; private set; }
 
         public string RecoveryLevel { get; private set; }
 
-        public Hashtable Tags { get; set; }
         public string TagsTable
         {
             get
@@ -79,7 +75,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public Dictionary<string, string> TagsDirectionary
+        public Dictionary<string, string> TagsDictionary
         {
             get
             {
@@ -87,14 +83,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public static explicit operator Azure.KeyVault.Models.KeyAttributes(KeyAttributes attr)
+        public static explicit operator Azure.KeyVault.Models.SecretAttributes(PSKeyVaultSecretAttributes attr)
         {
-            return new Azure.KeyVault.Models.KeyAttributes()
+            return new Azure.KeyVault.Models.SecretAttributes
             {
                 Enabled = attr.Enabled,
                 NotBefore = attr.NotBefore,
                 Expires = attr.Expires
             };
+
         }
     }
 }
