@@ -338,7 +338,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             string storageAccountName, bool useHttps, string azureEnvironmentName = "")
         {
             IAzureEnvironment azureEnvironment = null;
-            var profile = SMProfile??RMProfile;
+            var profile = SMProfile ?? RMProfile;
             if (null != profile)
             {
                 if (profile.DefaultContext != null && profile.DefaultContext.Environment != null && string.IsNullOrEmpty(azureEnvironmentName))

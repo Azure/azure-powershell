@@ -173,6 +173,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RedisCache.Netcore
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.Dataplane.Netcore", "src\ResourceManager\AnalysisServices\Commands.AnalysisServices.Dataplane\Commands.AnalysisServices.Dataplane.Netcore.csproj", "{F172B347-4B1F-4888-A5B9-3D05303C0E6F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "src\Storage\Commands.Storage\Commands.Storage.Netcore.csproj", "{4F18000A-0329-4450-ADC8-8AA1C04A4666}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1191,6 +1193,18 @@ Global
 		{F172B347-4B1F-4888-A5B9-3D05303C0E6F}.Release|x64.Build.0 = Release|Any CPU
 		{F172B347-4B1F-4888-A5B9-3D05303C0E6F}.Release|x86.ActiveCfg = Release|Any CPU
 		{F172B347-4B1F-4888-A5B9-3D05303C0E6F}.Release|x86.Build.0 = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|x64.Build.0 = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|x86.Build.0 = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x64.ActiveCfg = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x64.Build.0 = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x86.ActiveCfg = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

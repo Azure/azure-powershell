@@ -224,7 +224,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             if (this.BlobProperties != null || this.BlobMetadata != null || this.pageBlobTier != null)
             {
-                await TaskEx.WhenAll(
+                await Task.WhenAll(
                     this.SetBlobProperties(localChannel, blob, this.BlobProperties),
                     this.SetBlobMeta(localChannel, blob, this.BlobMetadata),
                     this.SetBlobTier(localChannel, blob, pageBlobTier)).ConfigureAwait(false);

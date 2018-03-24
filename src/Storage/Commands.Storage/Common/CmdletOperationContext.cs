@@ -112,9 +112,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 context.StartTime = DateTime.Now;
 
                 Interlocked.Increment(ref startedRemoteCallCounter);
-
+#if NETSTANDARD
+                string message = String.Format(Resources.StartRemoteCall,
+                    startedRemoteCallCounter, String.Empty, e.RequestUri.ToString());
+#else
                 string message = String.Format(Resources.StartRemoteCall,
                     startedRemoteCallCounter, e.Request.Method, e.Request.RequestUri.ToString());
+#endif
 
                 try
                 {
@@ -135,8 +139,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 Interlocked.Increment(ref finishedRemoteCallCounter);
 
                 double elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
+#if NETSTANDARD
+                string message = String.Format(Resources.FinishRemoteCall,
+                    e.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
+#else
                 string message = String.Format(Resources.FinishRemoteCall,
                     e.Request.RequestUri.ToString(), (int)e.Response.StatusCode, e.Response.StatusCode, e.RequestInformation.ServiceRequestID, elapsedTime);
+#endif
 
                 try
                 {
