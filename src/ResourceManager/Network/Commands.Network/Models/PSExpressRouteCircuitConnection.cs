@@ -18,9 +18,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     using System.Collections.Generic;
     public class PSExpressRouteCircuitConnection: PSChildResource
     {
-        public string AuthorizationKey { get; set; }
         public string AddressPrefix { get; set; }
-        public string PeerExpressRouteCircuitPeering { get; set; }
-        public string ExpressRouteCircuitPeering { get; set; }
+        public string AuthorizationKey { get; set; }
+        public string CircuitConnectionStatus { get; set; }
+        public string ProvisioningState { get; set; }
+        public PSResourceId PeerExpressRouteCircuitPeering { get; set; }
+        public PSResourceId ExpressRouteCircuitPeering { get; set; }
     }
 }

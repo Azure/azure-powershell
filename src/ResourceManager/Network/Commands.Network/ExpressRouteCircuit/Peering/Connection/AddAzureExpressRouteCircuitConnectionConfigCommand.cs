@@ -54,8 +54,11 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Private Peering needs to be configured on the Express Route Circuit");
             }
 
-            circuitconnection.ExpressRouteCircuitPeering = peering.Id;
-            circuitconnection.PeerExpressRouteCircuitPeering = this.PeerExpressRouteCircuitPeering;
+            circuitconnection.ExpressRouteCircuitPeering = new PSResourceId();
+            circuitconnection.ExpressRouteCircuitPeering.Id = peering.Id;
+
+            circuitconnection.PeerExpressRouteCircuitPeering = new PSResourceId();
+            circuitconnection.PeerExpressRouteCircuitPeering.Id = this.PeerExpressRouteCircuitPeering;
 
             if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
             {
