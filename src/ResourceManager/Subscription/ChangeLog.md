@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* New cmdlet New-AzureRmSubscription to enable subscription creation under a specific EA enrollment account.
 
 ## Version 0.1.1
 * New Cmdlets Get-AzureRmSubscriptionDefinition and New-AzureRmSubscriptionDefinition

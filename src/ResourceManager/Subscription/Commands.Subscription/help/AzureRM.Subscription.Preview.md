@@ -11,9 +11,6 @@ Locale: en-US
 The topics in this section document the Azure PowerShell cmdlets for Azure Subscription in the Azure Resource Manager (ARM) framework. The cmdlets exist in the Microsoft.Azure.Commands.Subscription namespace.
 
 ## AzureRM.Subscription Cmdlets
-### [Get-AzureRmSubscriptionDefinition](Get-AzureRmSubscriptionDefinition.md)
-Gets a subscription definition.
-
-### [New-AzureRmSubscriptionDefinition](New-AzureRmSubscriptionDefinition.md)
-Creates a subscription definition.
+### [New-AzureRmSubscription](New-AzureRmSubscription.md)
+Creates an Azure subscription.
 
