@@ -1,0 +1,14 @@
+{
+  "hostingPlanName": {
+    "value": "xDeploymentTestHost26668"
+  },
+  "siteLocation": {
+    "value": "East US"
+  },
+  "sku": {
+    "value": "Basic"
+  },
+  "workerSize": {
+    "value": 0
+  }
+}
