@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru)
                 {
-                    var certificate = PSKeyVaultCertificate.FromCertificateBundle(certificateBundle);
+                    var certificate = certificateBundle;
                     this.WriteObject(certificate);
                 }
             }

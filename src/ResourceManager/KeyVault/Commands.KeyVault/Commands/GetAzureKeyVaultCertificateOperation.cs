@@ -77,10 +77,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
 
             var certificateOperation = this.DataServiceClient.GetCertificateOperation(VaultName, Name);
-            var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
-            kvCertificateOperation.VaultName = VaultName;
-            kvCertificateOperation.Name = Name;
-            this.WriteObject(kvCertificateOperation);
+            if (certificateOperation != null)
+            {
+                certificateOperation.VaultName = VaultName;
+                certificateOperation.Name = Name;
+            }
+            this.WriteObject(certificateOperation);
         }
     }
 }

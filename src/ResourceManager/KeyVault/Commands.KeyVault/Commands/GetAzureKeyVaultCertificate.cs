@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            CertificateBundle certBundle;
+            PSKeyVaultCertificate certBundle;
 
             if (InputObject != null)
             {
@@ -205,16 +205,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (!string.IsNullOrEmpty(Version))
             {
                 certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, Version);
-                var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
-                this.WriteObject(certificate);
+                this.WriteObject(certBundle);
             }
             else if (IncludeVersions)
             {
                 certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
                 if (certBundle != null)
                 {
-                    WriteObject(new PSKeyVaultCertificateIdentityItem(certBundle));
-                    GetAndWriteCertificatesVersions(VaultName, Name, certBundle.CertificateIdentifier.Version);
+                    WriteObject(certBundle);
+                    GetAndWriteCertificatesVersions(VaultName, Name, certBundle.Version);
                 }
             }
             else if (InRemovedState)
@@ -225,15 +224,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 else
                 {
-                    PSDeletedKeyVaultCertificate deletedCert = PSDeletedKeyVaultCertificate.FromDeletedCertificateBundle(DataServiceClient.GetDeletedCertificate(VaultName, Name));
+                    PSDeletedKeyVaultCertificate deletedCert = DataServiceClient.GetDeletedCertificate(VaultName, Name);
                     WriteObject(deletedCert);
                 }
             }
             else if (!string.IsNullOrEmpty(Name))
             {
                 certBundle = this.DataServiceClient.GetCertificate(VaultName, Name, string.Empty);
-                var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
-                this.WriteObject(certificate);
+                this.WriteObject(certBundle);
             }
             else
             {

@@ -193,10 +193,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ValidateEkus();
                 ValidateBothPercentageAndNumberOfDaysAreNotPresent();
 
-                var convertedKeyUsage = new List<string>();
-                foreach (var key in KeyUsage)
+                List<String> convertedKeyUsage = null;
+                if (KeyUsage != null)
                 {
-                    convertedKeyUsage.Add(key.ToString());
+                    convertedKeyUsage = new List<string>();
+                    foreach (var key in KeyUsage)
+                    {
+                        convertedKeyUsage.Add(key.ToString());
+                    }
                 }
 
                 var policy = new PSKeyVaultCertificatePolicy

@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(PSKeyVaultCertificateIssuer.FromIssuer(resultantIssuer));
+                    this.WriteObject(resultantIssuer);
                 }
             }
         }

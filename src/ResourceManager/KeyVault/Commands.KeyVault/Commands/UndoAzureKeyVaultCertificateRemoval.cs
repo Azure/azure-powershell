@@ -77,8 +77,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if ( ShouldProcess( Name, Properties.Resources.RecoverCertificate ) )
             {
-                CertificateBundle certificateBundle = DataServiceClient.RecoverCertificate(VaultName, Name);
-                var certificate = PSKeyVaultCertificate.FromCertificateBundle(certificateBundle);
+                PSKeyVaultCertificate certificate = DataServiceClient.RecoverCertificate(VaultName, Name);
                 WriteObject( certificate );
             }
         }

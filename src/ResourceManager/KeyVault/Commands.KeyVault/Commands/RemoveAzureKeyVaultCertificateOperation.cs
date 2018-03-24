@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name = InputObject.Name;
             }
 
-            CertificateOperation certificateOperation = null;
+            PSKeyVaultCertificateOperation certificateOperation = null;
 
             ConfirmAction(
                 Force.IsPresent,
@@ -107,8 +107,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (PassThru.IsPresent)
             {
-                var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
-                this.WriteObject(kvCertificateOperation);
+                this.WriteObject(certificateOperation);
             }
         }
     }
