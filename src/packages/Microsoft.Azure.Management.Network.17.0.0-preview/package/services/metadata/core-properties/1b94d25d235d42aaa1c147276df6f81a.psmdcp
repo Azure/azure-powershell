@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Microsoft</dc:creator>
+  <dc:description>Provides management capabilities for Network services.</dc:description>
+  <dc:identifier>Microsoft.Azure.Management.Network</dc:identifier>
+  <version>17.0.0-preview</version>
+  <keywords>Microsoft Azure Network management Network Network management Compute_2017-03-30 Network_2018-01-01</keywords>
+  <lastModifiedBy>NuGet.Packaging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35;Microsoft Windows NT 10.0.16299.0;</lastModifiedBy>
+</coreProperties>
