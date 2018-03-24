@@ -20,6 +20,7 @@
 
 ## Current Release
 * Fix issue with Default Resource Group in CloudShell
+* Fix error message with Network cmdlets
 
 ## Version 5.4.0
 * Updating model types for compatibility with DNS cmdlets.
