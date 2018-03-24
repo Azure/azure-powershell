@@ -54,10 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.ContainerRegistry.dll', 
-               '.\Microsoft.Azure.Management.ResourceManager.dll', 
-               '.\Microsoft.Azure.Management.Storage.dll', 
-               '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.ContainerRegistry.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -75,7 +72,8 @@ NestedModules = @('.\Microsoft.Azure.Commands.ContainerRegistry.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmContainerRegistry', 'Get-AzureRmContainerRegistry', 
+CmdletsToExport = 'New-AzureRmContainerRegistry', 
+               'Get-AzureRmContainerRegistry', 
                'Update-AzureRmContainerRegistry', 
                'Remove-AzureRmContainerRegistry', 
                'Get-AzureRmContainerRegistryCredential', 
