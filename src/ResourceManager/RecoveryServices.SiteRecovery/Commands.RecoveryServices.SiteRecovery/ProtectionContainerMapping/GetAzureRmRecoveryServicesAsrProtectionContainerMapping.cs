@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Protection Conatiner Mapping
+    ///     Gets Azure Site Recovery Protection Container mappings.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class GetAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Protection Conatiner Mapping
+        ///     Gets or sets the name of the protection container mapping to get.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithName,
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Protection Container Object.
+        ///     Gets or sets protection container to look for.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,

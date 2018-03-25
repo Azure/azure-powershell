@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Remove Azure Site Recovery Recovery Plan.
+    ///     Deletes the specified ASR recovery plan from Recovery Services vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets the name of the recovery plan to be deleted.
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets recovery plan object corresponding to the recovery plan to be deleted.
         /// </summary>
         [Parameter(
             Mandatory = true,
