@@ -30,7 +30,7 @@ Lists existing azure active directory applications.
 Filters active directory groups.
 
 ### [Get-AzureRmADGroupMember](Get-AzureRmADGroupMember.md)
-Get a group members.
+Lists members of an AD group in the current tenant.
 
 ### [Get-AzureRmADServicePrincipal](Get-AzureRmADServicePrincipal.md)
 Filters active directory service principals.
@@ -208,15 +208,6 @@ Delete will fail if there are existing role assignments made to the custom role.
 ### [Save-AzureRmResourceGroupDeploymentTemplate](Save-AzureRmResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
 
-### [Set-AzureRmADApplication](Set-AzureRmADApplication.md)
-Updates an existing azure active directory application.
-
-### [Set-AzureRmADServicePrincipal](Set-AzureRmADServicePrincipal.md)
-Updates an existing azure active directory service principal.
-
-### [Set-AzureRmADUser](Set-AzureRmADUser.md)
-Updates an existing active directory user.
-
 ### [Set-AzureRmManagedApplication](Set-AzureRmManagedApplication.md)
 Updates managed application
 
@@ -256,4 +247,13 @@ Validates a resource group deployment.
 
 ### [Unregister-AzureRmResourceProvider](Unregister-AzureRmResourceProvider.md)
 Unregisters a resource provider.
+
+### [Update-AzureRmADApplication](Update-AzureRmADApplication.md)
+Updates an existing azure active directory application.
+
+### [Update-AzureRmADServicePrincipal](Update-AzureRmADServicePrincipal.md)
+Updates an existing azure active directory service principal.
+
+### [Update-AzureRmADUser](Update-AzureRmADUser.md)
+Updates an existing active directory user.
 

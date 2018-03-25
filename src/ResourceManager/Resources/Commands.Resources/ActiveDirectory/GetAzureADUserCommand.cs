@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD users.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADUser", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADUser>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADUser", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(List<PSADUser>))]
     public class GetAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
@@ -50,22 +50,20 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
         public override void ExecuteCmdlet()
         {
-            ADObjectFilterOptions options = new ADObjectFilterOptions
-            {
-                SearchString = SearchString,
-                UPN = UserPrincipalName,
-                Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
-                Paging = true,
-                Mail = Mail
-            };
-
             ExecutionBlock(() =>
             {
-                do
+                ADObjectFilterOptions options = new ADObjectFilterOptions
                 {
-                    WriteObject(ActiveDirectoryClient.FilterUsers(options), true);
+                    SearchString = SearchString,
+                    UPN = UserPrincipalName,
+                    Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                    Paging = true,
+                    Mail = Mail
+                };
 
-                } while (!string.IsNullOrEmpty(options.NextLink));
+                ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+                WriteObject(ActiveDirectoryClient.FilterUsers(options, first, skip), true);
             });
         }
     }

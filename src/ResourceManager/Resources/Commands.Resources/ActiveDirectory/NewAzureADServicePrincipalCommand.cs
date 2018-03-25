@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using System.Security;
@@ -51,21 +52,41 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithoutCredential,
+            HelpMessage = "The object representing the application for which the service principal is created.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
+            HelpMessage = "The object representing the application for which the service principal is created.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordCredential,
+            HelpMessage = "The object representing the application for which the service principal is created.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithKeyPlain,
+            HelpMessage = "The object representing the application for which the service principal is created.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithKeyCredential,
+            HelpMessage = "The object representing the application for which the service principal is created.")]
+        public PSADApplication ApplicationObject { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordCredential,
             HelpMessage = "The collection of password credentials associated with the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPasswordCredential,
             HelpMessage = "The collection of password credentials associated with the application.")]
-        public PSADPasswordCredential[] PasswordCredentials { get; set; }
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordCredential,
+            HelpMessage = "The collection of password credentials associated with the application.")]
+        [Alias("PasswordCredentials")]
+        public PSADPasswordCredential[] PasswordCredential { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyCredential,
             HelpMessage = "The collection of key credentials associated with the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyCredential,
             HelpMessage = "The collection of key credentials associated with the application.")]
-        public PSADKeyCredential[] KeyCredentials { get; set; }
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithKeyCredential,
+            HelpMessage = "The collection of key credentials associated with the application.")]
+        [Alias("KeyCredentials")]
+        public PSADKeyCredential[] KeyCredential { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPasswordPlain,
+            HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public SecureString Password { get; set; }
@@ -73,6 +94,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithKeyPlain,
             HelpMessage = "The base64 encoded cert value for the key credentials associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyPlain,
+            HelpMessage = "The base64 encoded cert value for the key credentials associated with the application that will be valid for one year by default.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithKeyPlain,
             HelpMessage = "The base64 encoded cert value for the key credentials associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public string CertValue { get; set; }
@@ -85,6 +108,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyPlain,
             HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
+            HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ApplicationObjectWithKeyPlain,
+            HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
         public DateTime StartDate { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithPasswordPlain,
@@ -94,6 +121,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPasswordPlain,
             HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyPlain,
+            HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
+            HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ApplicationObjectWithKeyPlain,
             HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
         public DateTime EndDate { get; set; }
 
@@ -108,6 +139,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
+                if (this.IsParameterBound(c => c.ApplicationObject))
+                {
+                    ApplicationId = ApplicationObject.ApplicationId;
+                    DisplayName = ApplicationObject.DisplayName;
+                }
+
                 if (ApplicationId == Guid.Empty)
                 {
                     string uri = "http://" + DisplayName.Trim().Replace(' ', '_');
@@ -133,46 +170,40 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     AccountEnabled = true
                 };
 
-                switch (ParameterSetName)
+                if (this.IsParameterBound(c => c.Password))
                 {
-                    case ParameterSet.ApplicationWithPasswordPlain:
-                    case ParameterSet.DisplayNameWithPasswordPlain:
-                        string decodedPassword = SecureStringExtensions.ConvertToString(Password);
-                        createParameters.PasswordCredentials = new PSADPasswordCredential[]
+                    string decodedPassword = SecureStringExtensions.ConvertToString(Password);
+                    createParameters.PasswordCredentials = new PSADPasswordCredential[]
                         {
-                        new PSADPasswordCredential
-                        {
-                            StartDate = StartDate,
-                            EndDate = EndDate,
-                            KeyId = Guid.NewGuid(),
-                            Password = decodedPassword
-                        }
+                            new PSADPasswordCredential
+                            {
+                                StartDate = StartDate,
+                                EndDate = EndDate,
+                                KeyId = Guid.NewGuid(),
+                                Password = decodedPassword
+                            }
                         };
-                        break;
-
-                    case ParameterSet.ApplicationWithPasswordCredential:
-                    case ParameterSet.DisplayNameWithPasswordCredential:
-                        createParameters.PasswordCredentials = PasswordCredentials;
-                        break;
-
-                    case ParameterSet.ApplicationWithKeyPlain:
-                    case ParameterSet.DisplayNameWithKeyPlain:
-                        createParameters.KeyCredentials = new PSADKeyCredential[]
+                }
+                else if (this.IsParameterBound(c => c.PasswordCredential))
+                {
+                    createParameters.PasswordCredentials = PasswordCredential;
+                }
+                else if (this.IsParameterBound(c => c.CertValue))
+                {
+                    createParameters.KeyCredentials = new PSADKeyCredential[]
                         {
-                        new PSADKeyCredential
-                        {
-                            StartDate = StartDate,
-                            EndDate = EndDate,
-                            KeyId = Guid.NewGuid(),
-                            CertValue = CertValue
-                        }
+                            new PSADKeyCredential
+                            {
+                                StartDate = StartDate,
+                                EndDate = EndDate,
+                                KeyId = Guid.NewGuid(),
+                                CertValue = CertValue
+                            }
                         };
-                        break;
-
-                    case ParameterSet.ApplicationWithKeyCredential:
-                    case ParameterSet.DisplayNameWithKeyCredential:
-                        createParameters.KeyCredentials = KeyCredentials;
-                        break;
+                }
+                else if (this.IsParameterBound(c => c.KeyCredential))
+                {
+                    createParameters.KeyCredentials = KeyCredential;
                 }
 
                 if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId)))
