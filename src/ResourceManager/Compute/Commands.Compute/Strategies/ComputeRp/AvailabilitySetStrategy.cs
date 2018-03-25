@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -36,11 +38,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription => new AvailabilitySet
+                createModel: _ =>
                 {
-                    Sku = new Azure.Management.Compute.Models.Sku {  Name = "Aligned" },
-                    PlatformFaultDomainCount = 2,
-                    PlatformUpdateDomainCount = 2,
-                });
+                    throw new InvalidOperationException("Availability set doesn't exist.");
+                },
+                dependencies: Enumerable.Empty<IEntityConfig>());
     }
 }

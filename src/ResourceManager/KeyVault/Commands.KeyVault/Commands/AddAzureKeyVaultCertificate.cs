@@ -59,7 +59,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 2,
             HelpMessage = "Specifies the certificate policy.")]
         [ValidateNotNull]
-        [Alias("InputObject")]
         public PSKeyVaultCertificatePolicy CertificatePolicy { get; set; }
 
         /// <summary>

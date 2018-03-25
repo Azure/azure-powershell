@@ -91,7 +91,7 @@ Specifies a **KeyVaultCertificatePolicy** object.
 ```yaml
 Type: PSKeyVaultCertificatePolicy
 Parameter Sets: (All)
-Aliases: InputObject
+Aliases:
 
 Required: False
 Position: 2
