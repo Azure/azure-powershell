@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 2,
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByValueParameterSet,
             HelpMessage = "Specifies the certificate policy.")]
@@ -150,7 +151,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(ValueFromPipelineByPropertyName = true,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the subject name of the certificate.")]
-        public List<string> DnsNames { get; set; }
+        [Alias("DnsNames")]
+        public List<string> DnsName { get; set; }
 
         /// <summary>
         /// Key Usage
@@ -266,7 +268,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                         policy = new PSKeyVaultCertificatePolicy
                         {
-                            DnsNames = DnsNames,
+                            DnsNames = DnsName,
                             KeyUsage = KeyUsage,
                             Ekus = Ekus,
                             Enabled = !Disabled.IsPresent,
@@ -340,9 +342,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void ValidateDnsNames()
         {
-            if (DnsNames != null)
+            if (DnsName != null)
             {
-                foreach (var dnsName in DnsNames)
+                foreach (var dnsName in DnsName)
                 {
                     if (string.IsNullOrWhiteSpace(dnsName))
                     {

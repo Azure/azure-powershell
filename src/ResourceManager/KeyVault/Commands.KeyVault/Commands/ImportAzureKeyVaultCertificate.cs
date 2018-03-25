@@ -105,7 +105,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipeline = true,
                    ParameterSetName = ImportWithPrivateKeyFromCollectionParameterSet,
                    HelpMessage = "Specifies the certificate collection to add to key vault.")]
-        [Alias("InputObject")]
         public X509Certificate2Collection CertificateCollection { get; set; }
 
         /// <summary>

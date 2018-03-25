@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.3
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 4.0.2
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
 

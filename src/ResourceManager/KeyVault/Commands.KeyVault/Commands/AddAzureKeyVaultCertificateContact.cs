@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string InteractiveParameterSet = "Interactive";
         private const string InputObjectParameterSet = "ByObject";
-        private const string ResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -47,8 +46,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = InteractiveParameterSet,
-                   Position = 0,
                    ValueFromPipelineByPropertyName = true,
+                   Position = 0,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -63,18 +62,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                    HelpMessage = "KeyVault object.")]
         [ValidateNotNullOrEmpty]
         public PSKeyVault InputObject { get; set; }
-
-        /// <summary>
-        /// VaultId
-        /// </summary>
-        [Parameter(Mandatory = true,
-                   ParameterSetName = ResourceIdParameterSet,
-                   Position = 0,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "KeyVault Resource Id.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("VaultId")]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// EmailAddress
@@ -97,12 +84,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ParameterSetName.Equals(InputObjectParameterSet))
             {
                 VaultName = InputObject.VaultName.ToString();
-            }
-
-            if (ParameterSetName.Equals(ResourceIdParameterSet))
-            {
-                var parsedResourceId = new ResourceIdentifier(ResourceId);
-                VaultName = parsedResourceId.ResourceName;
             }
 
             if (ShouldProcess(VaultName, Properties.Resources.AddCertificateContact))
