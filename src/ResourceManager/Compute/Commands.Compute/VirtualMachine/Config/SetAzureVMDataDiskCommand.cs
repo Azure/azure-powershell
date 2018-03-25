@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,

@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 5,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        public DiskCreateOptionTypes CreateOption { get; set; }
+        public string CreateOption { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,

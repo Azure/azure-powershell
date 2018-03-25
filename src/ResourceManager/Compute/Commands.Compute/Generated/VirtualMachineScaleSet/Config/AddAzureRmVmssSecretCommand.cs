@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vSecrets = new Microsoft.Azure.Management.Compute.Models.VaultSecretGroup();
 
-            if (this.SourceVaultId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
             {
                 // SourceVault
                 vSecrets.SourceVault = new Microsoft.Azure.Management.Compute.Models.SubResource();
                 vSecrets.SourceVault.Id = this.SourceVaultId;
             }
-            vSecrets.VaultCertificates = this.VaultCertificate;
+            vSecrets.VaultCertificates = this.MyInvocation.BoundParameters.ContainsKey("VaultCertificate") ? this.VaultCertificate : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.Secrets.Add(vSecrets);
             WriteObject(this.VirtualMachineScaleSet);
         }

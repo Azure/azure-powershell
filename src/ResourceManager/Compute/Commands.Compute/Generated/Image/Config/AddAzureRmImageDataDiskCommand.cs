@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public int? DiskSizeGB { get; set; }
+        public int DiskSizeGB { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -103,17 +103,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vDataDisks = new Microsoft.Azure.Management.Compute.Models.ImageDataDisk();
 
             vDataDisks.Lun = this.Lun;
-            vDataDisks.BlobUri = this.BlobUri;
-            vDataDisks.Caching = this.Caching;
-            vDataDisks.DiskSizeGB = this.DiskSizeGB;
-            vDataDisks.StorageAccountType = this.StorageAccountType;
-            if (this.SnapshotId != null)
+            vDataDisks.BlobUri = this.MyInvocation.BoundParameters.ContainsKey("BlobUri") ? this.BlobUri : null;
+            vDataDisks.Caching = this.MyInvocation.BoundParameters.ContainsKey("Caching") ? this.Caching : (CachingTypes?) null;
+            vDataDisks.DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?) null;
+            vDataDisks.StorageAccountType = this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType") ? this.StorageAccountType : null;
+            if (this.MyInvocation.BoundParameters.ContainsKey("SnapshotId"))
             {
                 // Snapshot
                 vDataDisks.Snapshot = new Microsoft.Azure.Management.Compute.Models.SubResource();
                 vDataDisks.Snapshot.Id = this.SnapshotId;
             }
-            if (this.ManagedDiskId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskId"))
             {
                 // ManagedDisk
                 vDataDisks.ManagedDisk = new Microsoft.Azure.Management.Compute.Models.SubResource();

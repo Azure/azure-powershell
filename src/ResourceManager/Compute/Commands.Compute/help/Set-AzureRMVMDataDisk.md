@@ -136,10 +136,10 @@ Accept wildcard characters: False
 The virtual machine managed disk's account type.
 
 ```yaml
-Type: StorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Accepted values: Standard_LRS, Premium_LRS
 
 Required: False
 Position: Named

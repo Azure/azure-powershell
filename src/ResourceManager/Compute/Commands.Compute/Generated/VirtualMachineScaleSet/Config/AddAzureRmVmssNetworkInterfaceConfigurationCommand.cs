@@ -113,24 +113,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vNetworkInterfaceConfigurations = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfiguration();
 
-            vNetworkInterfaceConfigurations.Name = this.Name;
-            vNetworkInterfaceConfigurations.Primary = this.Primary;
+            vNetworkInterfaceConfigurations.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
+            vNetworkInterfaceConfigurations.Primary = this.MyInvocation.BoundParameters.ContainsKey("Primary") ? this.Primary : (bool?) null;
             vNetworkInterfaceConfigurations.EnableAcceleratedNetworking = this.EnableAcceleratedNetworking.IsPresent;
             vNetworkInterfaceConfigurations.EnableIPForwarding = this.EnableIPForwarding.IsPresent;
-            vNetworkInterfaceConfigurations.Id = this.Id;
-            if (this.NetworkSecurityGroupId != null)
+            vNetworkInterfaceConfigurations.Id = this.MyInvocation.BoundParameters.ContainsKey("Id") ? this.Id : null;
+            if (this.MyInvocation.BoundParameters.ContainsKey("NetworkSecurityGroupId"))
             {
                 // NetworkSecurityGroup
                 vNetworkInterfaceConfigurations.NetworkSecurityGroup = new Microsoft.Azure.Management.Compute.Models.SubResource();
                 vNetworkInterfaceConfigurations.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
             }
-            if (this.DnsSettingsDnsServer != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("DnsSettingsDnsServer"))
             {
                 // DnsSettings
                 vNetworkInterfaceConfigurations.DnsSettings = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfigurationDnsSettings();
                 vNetworkInterfaceConfigurations.DnsSettings.DnsServers = this.DnsSettingsDnsServer;
             }
-            vNetworkInterfaceConfigurations.IpConfigurations = this.IpConfiguration;
+            vNetworkInterfaceConfigurations.IpConfigurations = this.MyInvocation.BoundParameters.ContainsKey("IpConfiguration") ? this.IpConfiguration : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations.Add(vNetworkInterfaceConfigurations);
             WriteObject(this.VirtualMachineScaleSet);
         }

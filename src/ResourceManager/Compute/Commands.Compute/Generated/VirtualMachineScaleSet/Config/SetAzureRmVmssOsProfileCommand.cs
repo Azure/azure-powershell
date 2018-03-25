@@ -122,9 +122,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.ComputerNamePrefix != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ComputerNamePrefix"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -138,9 +137,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.ComputerNamePrefix = this.ComputerNamePrefix;
             }
 
-            if (this.AdminUsername != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("AdminUsername"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -154,9 +152,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.AdminUsername = this.AdminUsername;
             }
 
-            if (this.AdminPassword != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("AdminPassword"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -170,9 +167,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.AdminPassword = this.AdminPassword;
             }
 
-            if (this.CustomData != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("CustomData"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -186,9 +182,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.CustomData = this.CustomData;
             }
 
-            if (this.WindowsConfigurationProvisionVMAgent != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("WindowsConfigurationProvisionVMAgent"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -207,9 +202,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.ProvisionVMAgent = this.WindowsConfigurationProvisionVMAgent;
             }
 
-            if (this.WindowsConfigurationEnableAutomaticUpdate != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("WindowsConfigurationEnableAutomaticUpdate"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -228,9 +222,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.EnableAutomaticUpdates = this.WindowsConfigurationEnableAutomaticUpdate;
             }
 
-            if (this.TimeZone != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("TimeZone"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -249,9 +242,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.TimeZone = this.TimeZone;
             }
 
-            if (this.AdditionalUnattendContent != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("AdditionalUnattendContent"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -270,9 +262,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.AdditionalUnattendContent = this.AdditionalUnattendContent;
             }
 
-            if (this.Listener != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Listener"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -296,9 +287,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.WinRM.Listeners = this.Listener;
             }
 
-            if (this.LinuxConfigurationDisablePasswordAuthentication != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("LinuxConfigurationDisablePasswordAuthentication"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -317,9 +307,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.DisablePasswordAuthentication = this.LinuxConfigurationDisablePasswordAuthentication;
             }
 
-            if (this.PublicKey != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PublicKey"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -343,9 +332,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.Ssh.PublicKeys = this.PublicKey;
             }
 
-            if (this.Secret != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Secret"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {

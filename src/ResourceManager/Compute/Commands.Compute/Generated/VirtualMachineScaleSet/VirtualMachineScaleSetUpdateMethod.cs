@@ -151,19 +151,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
-        [AllowNull]
         public string VMScaleSetName { get; set; }
 
         public VirtualMachineScaleSetUpdate VirtualMachineScaleSetUpdate { get; set; }
@@ -189,7 +185,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
-        public StorageAccountTypes ManagedDiskStorageAccountType { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string ManagedDiskStorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false)]
