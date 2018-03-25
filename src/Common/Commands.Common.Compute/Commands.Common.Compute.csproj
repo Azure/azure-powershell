@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.Common.Compute</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Compute</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Management.Utilities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.9\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Version2016-04-preview\AvailabilitySetsOperations.cs" />
+    <Compile Include="Version2016-04-preview\AvailabilitySetsOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\ComputeManagementClient.cs" />
+    <Compile Include="Version2016-04-preview\DisksOperations.cs" />
+    <Compile Include="Version2016-04-preview\DisksOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\IAvailabilitySetsOperations.cs" />
+    <Compile Include="Version2016-04-preview\IComputeManagementClient.cs" />
+    <Compile Include="Version2016-04-preview\IDisksOperations.cs" />
+    <Compile Include="Version2016-04-preview\IImagesOperations.cs" />
+    <Compile Include="Version2016-04-preview\ImagesOperations.cs" />
+    <Compile Include="Version2016-04-preview\ImagesOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\ISnapshotsOperations.cs" />
+    <Compile Include="Version2016-04-preview\IUsageOperations.cs" />
+    <Compile Include="Version2016-04-preview\IVirtualMachineExtensionImagesOperations.cs" />
+    <Compile Include="Version2016-04-preview\IVirtualMachineExtensionsOperations.cs" />
+    <Compile Include="Version2016-04-preview\IVirtualMachineImagesOperations.cs" />
+    <Compile Include="Version2016-04-preview\IVirtualMachineScaleSetsOperations.cs" />
+    <Compile Include="Version2016-04-preview\IVirtualMachineScaleSetVMsOperations.cs" />
+    <Compile Include="Version2016-04-preview\IVirtualMachineSizesOperations.cs" />
+    <Compile Include="Version2016-04-preview\IVirtualMachinesOperations.cs" />
+    <Compile Include="Version2016-04-preview\Models\AccessLevel.cs" />
+    <Compile Include="Version2016-04-preview\Models\AccessUri.cs" />
+    <Compile Include="Version2016-04-preview\Models\AdditionalUnattendContent.cs" />
+    <Compile Include="Version2016-04-preview\Models\ApiEntityReference.cs" />
+    <Compile Include="Version2016-04-preview\Models\ApiError.cs" />
+    <Compile Include="Version2016-04-preview\Models\ApiErrorBase.cs" />
+    <Compile Include="Version2016-04-preview\Models\AvailabilitySet.cs" />
+    <Compile Include="Version2016-04-preview\Models\BootDiagnostics.cs" />
+    <Compile Include="Version2016-04-preview\Models\BootDiagnosticsInstanceView.cs" />
+    <Compile Include="Version2016-04-preview\Models\CachingTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\ComponentNames.cs" />
+    <Compile Include="Version2016-04-preview\Models\ComputeLongRunningOperationProperties.cs" />
+    <Compile Include="Version2016-04-preview\Models\CreationData.cs" />
+    <Compile Include="Version2016-04-preview\Models\DataDisk.cs" />
+    <Compile Include="Version2016-04-preview\Models\DataDiskImage.cs" />
+    <Compile Include="Version2016-04-preview\Models\DiagnosticsProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\Disk.cs" />
+    <Compile Include="Version2016-04-preview\Models\DiskCreateOption.cs" />
+    <Compile Include="Version2016-04-preview\Models\DiskCreateOptionTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\DiskEncryptionSettings.cs" />
+    <Compile Include="Version2016-04-preview\Models\DiskInstanceView.cs" />
+    <Compile Include="Version2016-04-preview\Models\DiskUpdate.cs" />
+    <Compile Include="Version2016-04-preview\Models\EncryptionSettings.cs" />
+    <Compile Include="Version2016-04-preview\Models\GrantAccessData.cs" />
+    <Compile Include="Version2016-04-preview\Models\HardwareProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\Image.cs" />
+    <Compile Include="Version2016-04-preview\Models\ImageDataDisk.cs" />
+    <Compile Include="Version2016-04-preview\Models\ImageDiskReference.cs" />
+    <Compile Include="Version2016-04-preview\Models\ImageOSDisk.cs" />
+    <Compile Include="Version2016-04-preview\Models\ImageReference.cs" />
+    <Compile Include="Version2016-04-preview\Models\ImageStorageProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\InnerError.cs" />
+    <Compile Include="Version2016-04-preview\Models\InstanceViewStatus.cs" />
+    <Compile Include="Version2016-04-preview\Models\InstanceViewTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\KeyVaultAndKeyReference.cs" />
+    <Compile Include="Version2016-04-preview\Models\KeyVaultAndSecretReference.cs" />
+    <Compile Include="Version2016-04-preview\Models\KeyVaultKeyReference.cs" />
+    <Compile Include="Version2016-04-preview\Models\KeyVaultSecretReference.cs" />
+    <Compile Include="Version2016-04-preview\Models\LinuxConfiguration.cs" />
+    <Compile Include="Version2016-04-preview\Models\ManagedDiskParameters.cs" />
+    <Compile Include="Version2016-04-preview\Models\NetworkInterfaceReference.cs" />
+    <Compile Include="Version2016-04-preview\Models\NetworkProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\OperatingSystemStateTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\OperatingSystemTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\OperationStatusResponse.cs" />
+    <Compile Include="Version2016-04-preview\Models\OSDisk.cs" />
+    <Compile Include="Version2016-04-preview\Models\OSDiskImage.cs" />
+    <Compile Include="Version2016-04-preview\Models\OSProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\Page.cs" />
+    <Compile Include="Version2016-04-preview\Models\Page1.cs" />
+    <Compile Include="Version2016-04-preview\Models\PassNames.cs" />
+    <Compile Include="Version2016-04-preview\Models\Plan.cs" />
+    <Compile Include="Version2016-04-preview\Models\ProtocolTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\PurchasePlan.cs" />
+    <Compile Include="Version2016-04-preview\Models\Resource.cs" />
+    <Compile Include="Version2016-04-preview\Models\ResourceIdentityType.cs" />
+    <Compile Include="Version2016-04-preview\Models\ResourceUpdate.cs" />
+    <Compile Include="Version2016-04-preview\Models\SettingNames.cs" />
+    <Compile Include="Version2016-04-preview\Models\Sku.cs" />
+    <Compile Include="Version2016-04-preview\Models\Snapshot.cs" />
+    <Compile Include="Version2016-04-preview\Models\SnapshotUpdate.cs" />
+    <Compile Include="Version2016-04-preview\Models\SourceVault.cs" />
+    <Compile Include="Version2016-04-preview\Models\SshConfiguration.cs" />
+    <Compile Include="Version2016-04-preview\Models\SshPublicKey.cs" />
+    <Compile Include="Version2016-04-preview\Models\StatusLevelTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\StorageAccountTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\StorageProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\SubResource.cs" />
+    <Compile Include="Version2016-04-preview\Models\SubResourceReadOnly.cs" />
+    <Compile Include="Version2016-04-preview\Models\UpgradeMode.cs" />
+    <Compile Include="Version2016-04-preview\Models\UpgradePolicy.cs" />
+    <Compile Include="Version2016-04-preview\Models\Usage.cs" />
+    <Compile Include="Version2016-04-preview\Models\UsageName.cs" />
+    <Compile Include="Version2016-04-preview\Models\VaultCertificate.cs" />
+    <Compile Include="Version2016-04-preview\Models\VaultSecretGroup.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualHardDisk.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachine.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineAgentInstanceView.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineCaptureParameters.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineCaptureResult.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineExtension.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineExtensionHandlerInstanceView.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineExtensionImage.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineExtensionInstanceView.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineIdentity.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineImage.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineImageResource.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineInstanceView.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSet.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetDataDisk.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetExtension.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetExtensionProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetIdentity.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetInstanceView.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetInstanceViewStatusesSummary.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetIPConfiguration.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetManagedDiskParameters.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetNetworkConfiguration.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetNetworkProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetOSDisk.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetOSProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetSku.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetSkuCapacity.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetSkuScaleType.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetStorageProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetVM.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetVMExtensionsSummary.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetVMInstanceIDs.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetVMInstanceRequiredIDs.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetVMInstanceView.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineScaleSetVMProfile.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineSize.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineSizeTypes.cs" />
+    <Compile Include="Version2016-04-preview\Models\VirtualMachineStatusCodeCount.cs" />
+    <Compile Include="Version2016-04-preview\Models\WindowsConfiguration.cs" />
+    <Compile Include="Version2016-04-preview\Models\WinRMConfiguration.cs" />
+    <Compile Include="Version2016-04-preview\Models\WinRMListener.cs" />
+    <Compile Include="Version2016-04-preview\SnapshotsOperations.cs" />
+    <Compile Include="Version2016-04-preview\SnapshotsOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\UsageOperations.cs" />
+    <Compile Include="Version2016-04-preview\UsageOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineExtensionImagesOperations.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineExtensionImagesOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineExtensionsOperations.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineExtensionsOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineImagesOperations.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineImagesOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineScaleSetsOperations.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineScaleSetsOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineScaleSetVMsOperations.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineScaleSetVMsOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineSizesOperations.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachineSizesOperationsExtensions.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachinesOperations.cs" />
+    <Compile Include="Version2016-04-preview\VirtualMachinesOperationsExtensions.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
