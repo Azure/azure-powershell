@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.1.2
+* Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
+
 ## Version 5.1.1
 * Removed AzureRemoteApp Cmdles. Following is the list of removed Cmdlets
         - Add-AzureRemoteAppUser

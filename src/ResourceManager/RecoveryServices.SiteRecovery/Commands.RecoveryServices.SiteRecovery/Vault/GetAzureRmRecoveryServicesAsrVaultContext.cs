@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Vault Settings.
+    ///     Gets ASR vault settings information for the Recovery Services vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
