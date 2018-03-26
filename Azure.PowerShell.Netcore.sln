@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Strategies.Netcore",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Common.Tests", "src\Common\Commands.Common.Tests\Commands.Common.Tests.csproj", "{B0EF35E9-2D7A-4AAE-8A1A-728B6CC8524B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Common.Compute.Netcore", "src\Common\Commands.Common.Compute\Commands.Common.Compute.Netcore.csproj", "{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.Netcore", "src\ResourceManager\AnalysisServices\Commands.AnalysisServices\Commands.AnalysisServices.Netcore.csproj", "{C348F9F1-3CF4-4B98-91C7-C13C0386DBC7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ApiManagement.ServiceManagement.Netcore", "src\ResourceManager\ApiManagement\Commands.ApiManagement.ServiceManagement\Commands.ApiManagement.ServiceManagement.Netcore.csproj", "{0A8F49F1-9667-4F18-A31F-7AAEC449DC1B}"
@@ -459,6 +461,18 @@ Global
 		{B0EF35E9-2D7A-4AAE-8A1A-728B6CC8524B}.Release|x64.Build.0 = Release|Any CPU
 		{B0EF35E9-2D7A-4AAE-8A1A-728B6CC8524B}.Release|x86.ActiveCfg = Release|Any CPU
 		{B0EF35E9-2D7A-4AAE-8A1A-728B6CC8524B}.Release|x86.Build.0 = Release|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Debug|x64.Build.0 = Debug|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Debug|x86.Build.0 = Debug|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Release|x64.ActiveCfg = Release|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Release|x64.Build.0 = Release|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Release|x86.ActiveCfg = Release|Any CPU
+		{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}.Release|x86.Build.0 = Release|Any CPU
 		{C348F9F1-3CF4-4B98-91C7-C13C0386DBC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C348F9F1-3CF4-4B98-91C7-C13C0386DBC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C348F9F1-3CF4-4B98-91C7-C13C0386DBC7}.Debug|x64.ActiveCfg = Debug|Any CPU
