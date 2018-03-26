@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" />
-    <PackageReference Include="Security.Cryptography" Version="1.7.2" />
     <PackageReference Include="System.Security.Cryptography.Cng" Version="4.4.0" />
   </ItemGroup>
 
@@ -62,6 +61,12 @@
 
   <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Security.Cryptography">
+      <HintPath>Utilities\Security.Cryptography.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
