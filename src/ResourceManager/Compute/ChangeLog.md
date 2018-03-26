@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.5.0
 * `New-AzureRmVM` and `New-AzureRmVMSS` support data disks.
 * `New-AzureRmVM` and `New-AzureRmVMSS` support custom image by name or by id.
 * Log analytic feature

@@ -19,6 +19,8 @@
 -->
 
 ## Current Release
+
+## Version 0.5.2
 * Updated the ADF .Net SDK to version 0.6.0-preview containing the following changes:
     - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
     - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService

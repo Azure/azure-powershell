@@ -18,4 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.0
 * Added ConvertTo-AzureRmVhd cmdlet that enables users to convert Hyper-V VM to Azure supported VHD files.
