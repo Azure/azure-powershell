@@ -139,6 +139,8 @@
     <Compile Include="Factories\AuthenticationFactory.cs" />
     <Compile Include="Factories\ClientFactory.cs" />
     <Compile Include="HttpClientOperationsFactory.cs" />
+    <Compile Include="Utilities\HttpClientWithRetry.cs" />
+    <Compile Include="ICacheable.cs" />
     <Compile Include="IHttpOperations.cs" />
     <Compile Include="IHttpOperationsFactory.cs" />
     <Compile Include="LegacySupport.cs" />
@@ -150,6 +152,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Utilities\AdalTokenCache.cs" />
+    <Compile Include="Utilities\HttpRetryAlgorithm.cs" />
+    <Compile Include="Utilities\IHttpRetryAlgorithm.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
