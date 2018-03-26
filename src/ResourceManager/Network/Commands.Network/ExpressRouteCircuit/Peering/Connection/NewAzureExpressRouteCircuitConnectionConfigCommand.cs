@@ -16,6 +16,10 @@ using Microsoft.Azure.Commands.Network.Models;
 using System.Management.Automation;
 using System;
 using System.Linq;
+using AutoMapper;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
