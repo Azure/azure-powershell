@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
         {
             this.CurrentValue = usage.CurrentValue;
             this.Limit = usage.Limit;
-            this.Name = usage.Name;
+            this.Name = usage.Name.Value;
             this.Status = usage.Status;
             this.Unit = usage.Unit;
             this.QuotaPeriod = usage.QuotaPeriod;
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
         }
 
         public double? CurrentValue { get; }
-        public MetricName Name { get; }
+        public string Name { get; }
         public double? Limit { get; }
         public string Status { get; }
         public string Unit { get; }

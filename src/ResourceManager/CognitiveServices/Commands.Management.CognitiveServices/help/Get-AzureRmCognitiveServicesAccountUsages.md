@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
 Module Name: AzureRM.CognitiveServices
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusages
 schema: 2.0.0
 ---
 
@@ -24,10 +24,18 @@ The **Get-AzureRmCognitiveServicesAccountUsages** cmdlet gets current usages for
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Get-AzureRmCognitiveServicesAccountUsages -ResourceGroupName TestUsages -Name TestCVUsages_Prediction
 
-{{ Add example description here }}
+CurrentValue  : 0
+Name          : CustomVision.Prediction.Transactions
+Limit         : 10000
+Status        : Included
+Unit          : Count
+QuotaPeriod   : 30.00:00:00
+NextResetTime : 0001-01-01T00:00:00Z
+
+
+```
 
 ## PARAMETERS
 
