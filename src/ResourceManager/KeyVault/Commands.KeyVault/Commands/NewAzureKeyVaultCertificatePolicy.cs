@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -27,16 +26,77 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificatePolicy,
         SupportsShouldProcess = true,
+        DefaultParameterSetName = SubjectNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificatePolicy))]
+    [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class NewAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string SubjectNameParameterSet = "SubjectName";
+        private const string DNSNamesParameterSet = "DNSNames";
+
+        #endregion
+
         #region Input Parameter Definitions
+
+        /// <summary>
+        /// IssuerName
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the name of the issuer for this certificate.")]
+        public string IssuerName { get; set; }
+
+        /// <summary>
+        /// SubjectName
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 1,
+                   ParameterSetName = SubjectNameParameterSet,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the subject name of the certificate.")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = DNSNamesParameterSet,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the subject name of the certificate.")]
+        public string SubjectName { get; set; }
+
+        /// <summary>
+        /// DnsNames
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 1,
+                   ParameterSetName = DNSNamesParameterSet,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the DNS names in the certificate.")]
+        [Alias("DnsNames")]
+        public List<string> DnsName { get; set; }
+
+        /// <summary>
+        /// RenewAtNumberOfDaysBeforeExpiry
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies how many days before expiry the automatic certificate renewal process begins.")]
+        [ValidateRange(1, int.MaxValue)]
+        public int? RenewAtNumberOfDaysBeforeExpiry { get; set; }
+
+        /// <summary>
+        /// RenewAtPercentageLifetime
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the certificate renewal begins.")]
+        [ValidateRange(0, 99)]
+        public int? RenewAtPercentageLifetime { get; set; }
 
         /// <summary>
         /// SecretContentType
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the content type of the resulting Key Vault secret.")]
         [ValidateSet(Constants.Pkcs12ContentType, Constants.PemContentType)]
         public string SecretContentType { get; set; }
@@ -44,99 +104,72 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// ReuseKeyOnRenewal
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies whether the certificate should use the old key during renewal.")]
         public SwitchParameter ReuseKeyOnRenewal { get; set; }
 
         /// <summary>
         /// ReuseKeyOnRenewal
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, 
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies whether the certificate policy is enabled or not.")]
         public SwitchParameter Disabled { get; set; }
 
         /// <summary>
-        /// SubjectName
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the subject name of the certificate.")]
-        public string SubjectName { get; set; }
-
-        /// <summary>
-        /// DnsNames
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the DNS names in the certificate.")]
-        public List<string> DnsNames { get; set; }
-
-        /// <summary>
         /// Key Usage
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,            
-            HelpMessage = "Specifies the key usages in the certificate.")]
+        [Parameter(Mandatory = false, 
+                   ValueFromPipelineByPropertyName = true,            
+                   HelpMessage = "Specifies the key usages in the certificate.")]
         public List<string> KeyUsage { get; set; }
 
         /// <summary>
         /// Ekus
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the enhanced key usages in the certificate.")]
         public List<string> Ekus { get; set; }
 
         /// <summary>
         /// ValidityInMonths
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the number of months the certificate will be valid.")]
         public int? ValidityInMonths { get; set; }
 
         /// <summary>
-        /// IssuerName
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   Mandatory = true,
-                   HelpMessage = "Specifies the name of the issuer for this certificate.")]
-        public string IssuerName { get; set; }
-
-        /// <summary>
         /// CertificateType
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, 
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the type of certificate to the issuer.")]
         public string CertificateType { get; set; }
 
         /// <summary>
-        /// RenewAtNumberOfDaysBeforeExpiry
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies how many days before expiry the automatic certificate renewal process begins.")]
-        public int? RenewAtNumberOfDaysBeforeExpiry { get; set; }
-
-        /// <summary>
-        /// RenewAtPercentageLifetime
-        /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the certificate renewal begins.")]
-        public int? RenewAtPercentageLifetime { get; set; }
-
-        /// <summary>
         /// EmailAtNumberOfDaysBeforeExpiry
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, 
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies how many days before expiry the automatic notification process begins.")]
         public int? EmailAtNumberOfDaysBeforeExpiry { get; set; }
 
         /// <summary>
         /// EmailAtPercentageLifetime
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, 
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the notification begins.")]
         public int? EmailAtPercentageLifetime { get; set; }        
 
         /// <summary>
         /// Key type
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, 
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the key type of the key backing the certificate.")]
         [ValidateSet(Constants.RSA, Constants.RSAHSM)]
         public string KeyType { get; set; }
@@ -144,13 +177,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// KeyNotExportable
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies whether the key is not exportable.")]
+        [Parameter(Mandatory = false, 
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Specifies whether the key is not exportable.")]
         public SwitchParameter KeyNotExportable { get; set; }
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificatePolicy))
             {
@@ -159,16 +193,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ValidateDnsNames();
                 ValidateKeyUsage();
                 ValidateEkus();
-                ValidateRenewAtNumberOfDaysBeforeExpiry();
-                ValidateRenewAtPercentageLifetime();
-
-                // Validate combinations of parameters
                 ValidateBothPercentageAndNumberOfDaysAreNotPresent();
-                ValidateAtLeastOneOfSubjectNameAndDnsNamesIsPresent();
 
-                var policy = new KeyVaultCertificatePolicy
+                var policy = new PSKeyVaultCertificatePolicy
                 {
-                    DnsNames = DnsNames,
+                    DnsNames = DnsName,
                     KeyUsage = KeyUsage,
                     Ekus = Ekus,
                     Enabled = !Disabled.IsPresent,
@@ -190,48 +219,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        private void ValidateAtLeastOneOfSubjectNameAndDnsNamesIsPresent()
-        {
-            if (SubjectName == null &&
-                DnsNames == null)
-            {
-                throw new ArgumentException("At least one of subject name or DNS names must be specified.");
-            }
-        }
-
         private void ValidateBothPercentageAndNumberOfDaysAreNotPresent()
         {
             if (RenewAtNumberOfDaysBeforeExpiry != null &&
                 RenewAtPercentageLifetime != null)
             {
                 throw new ArgumentException("Both RenewAtNumberOfDaysBeforeExpiry and RenewAtPercentageLifetime cannot be specified.");
-            }
-        }
-
-        private void ValidateRenewAtPercentageLifetime()
-        {
-            if (RenewAtPercentageLifetime != null)
-            {
-                if (RenewAtPercentageLifetime < 0)
-                {
-                    throw new ArgumentException("RenewAtPercentageLifetime must be larger than or equal to 0.");
-                }
-
-                if (RenewAtPercentageLifetime >= 100)
-                {
-                    throw new ArgumentException("RenewAtPercentageLifetime must be smaller than 100.");
-                }
-            }
-        }
-
-        private void ValidateRenewAtNumberOfDaysBeforeExpiry()
-        {
-            if (RenewAtNumberOfDaysBeforeExpiry != null)
-            {
-                if (RenewAtNumberOfDaysBeforeExpiry <= 0)
-                {
-                    throw new ArgumentException("RenewAtNumberOfDaysBeforeExpiry must be larger than 0.");
-                }
             }
         }
 
@@ -271,9 +264,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void ValidateDnsNames()
         {
-            if (DnsNames != null)
+            if (DnsName != null)
             {
-                foreach (var dnsName in DnsNames)
+                foreach (var dnsName in DnsName)
                 {
                     if (string.IsNullOrWhiteSpace(dnsName))
                     {

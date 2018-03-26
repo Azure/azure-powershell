@@ -64,4 +64,10 @@
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Security.Cryptography">
+      <HintPath>Utilities\Security.Cryptography.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
