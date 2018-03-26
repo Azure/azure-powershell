@@ -14,6 +14,11 @@
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
+    public enum VaultParams
+    {
+        Vault,
+    }
+
     public enum ContainerParams
     {
         Vault,

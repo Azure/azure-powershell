@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet),
             OutputType(typeof(PolicyBase), typeof(IList<PolicyBase>))]
-    public class GetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         protected const string PolicyNameParamSet = "PolicyNameParamSet";
         protected const string WorkloadParamSet = "WorkloadParamSet";
@@ -85,8 +85,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     // query service
                     ServiceClientModel.ProtectionPolicyResource policy =
                         PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                      Name,
-                                                      ServiceClientAdapter);
+                            Name,
+                            ServiceClientAdapter,
+                            vault: Vault);
                     if (policy == null)
                     {
                         throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
@@ -157,7 +158,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     WriteDebug("going to query service to get list of policies");
                     List<ServiceClientModel.ProtectionPolicyResource> respList =
-                        ServiceClientAdapter.ListProtectionPolicy(queryParams);
+                        ServiceClientAdapter.ListProtectionPolicy(
+                            queryParams,
+                            vaultName: Vault?.Name,
+                            resourceGroupName: Vault?.ResourceGroupName);
                     WriteDebug("Successfully got response from service");
 
                     policyList = ConversionHelpers.GetPolicyModelList(respList);

@@ -73,6 +73,10 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
+      <Project>{604260dc-b392-4cf4-81ec-34b14591e2d2}</Project>
+      <Name>Commands.RecoveryServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.Helpers\Commands.RecoveryServices.Backup.Helpers.csproj">
       <Project>{0e1d3f36-e6c8-4764-8c7d-6f9ee537490c}</Project>
       <Name>Commands.RecoveryServices.Backup.Helpers</Name>
@@ -97,6 +101,7 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

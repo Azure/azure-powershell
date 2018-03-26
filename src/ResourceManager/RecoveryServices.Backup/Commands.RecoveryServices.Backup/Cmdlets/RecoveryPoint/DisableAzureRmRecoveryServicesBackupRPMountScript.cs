@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupRPMountScript",
         SupportsShouldProcess = true), OutputType(typeof(RecoveryPointBase))]
-    public class DisableAzureRmRecoveryServicesBackupRPMountScript : RecoveryServicesBackupCmdletBase
+    public class DisableAzureRmRecoveryServicesBackupRPMountScript : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Recovery point of the item. Access to the mounted files of this recovery point
@@ -51,9 +51,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<Enum, object>()
-                {
-                    {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint}
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.Vault, Vault },
+                        { RestoreBackupItemParams.RecoveryPoint, RecoveryPoint }
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);

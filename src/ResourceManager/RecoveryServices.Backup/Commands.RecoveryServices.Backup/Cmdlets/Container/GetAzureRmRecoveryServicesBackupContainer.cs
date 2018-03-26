@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupContainer"),
         OutputType(typeof(ContainerBase), typeof(IList<ContainerBase>))]
-    public class GetAzureRmRecoveryServicesBackupContainer : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupContainer : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The type of the container(s) to be fetched.
@@ -97,14 +97,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
-                {
-                    {ContainerParams.ContainerType, ContainerType},
-                    {ContainerParams.BackupManagementType, backupManagementTypeNullable},
-                    {ContainerParams.Name, Name},
-                    {ContainerParams.FriendlyName, FriendlyName},
-                    {ContainerParams.ResourceGroupName, ResourceGroupName},
-                    {ContainerParams.Status, Status},
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.Vault, Vault },
+                        { ContainerParams.ContainerType, ContainerType },
+                        { ContainerParams.BackupManagementType, backupManagementTypeNullable },
+                        { ContainerParams.Name, Name },
+                        { ContainerParams.FriendlyName, FriendlyName },
+                        { ContainerParams.ResourceGroupName, ResourceGroupName },
+                        { ContainerParams.Status, Status },
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(ContainerType, backupManagementTypeNullable);

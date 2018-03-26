@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupManagementServer",
         SupportsShouldProcess = true)]
     public class UnregisterAzureRmRecoveryServicesBackupManagementServer
-        : RecoveryServicesBackupCmdletBase
+        : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The backup management server to be unregistered from the vault.
@@ -63,7 +63,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
                 }
 
                 string azureRmBackupManagementServer = AzureRmBackupManagementServer.Name;
-                ServiceClientAdapter.UnregisterContainers(azureRmBackupManagementServer);
+                ServiceClientAdapter.UnregisterContainers(
+                    azureRmBackupManagementServer,
+                    vaultName: Vault?.Name,
+                    resourceGroupName: Vault?.ResourceGroupName);
 
                 if (PassThru.IsPresent)
                 {
