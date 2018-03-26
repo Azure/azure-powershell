@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
 
 ## Version 0.6.3
 * Fix issue with Default Resource Group in CloudShell
