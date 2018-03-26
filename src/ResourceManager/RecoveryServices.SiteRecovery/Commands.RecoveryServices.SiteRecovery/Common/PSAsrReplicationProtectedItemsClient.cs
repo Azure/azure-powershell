@@ -438,6 +438,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
+        ///     Switch the Azure Site Recovery protection entity replication direction.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
+        /// <param name="protectionContainerName">Protection Conatiner Name</param>
+        /// <param name="input">Input for Switch</param>
+        /// <returns>Job Response</returns>
+        public PSSiteRecoveryLongRunningOperation StartSwitchProtection(
+            string fabricName,
+            string protectionContainerName,
+            SwitchProtectionInput input)
+        {
+            var op = this.GetSiteRecoveryClient()
+                .ReplicationProtectionContainers.BeginSwitchProtectionWithHttpMessagesAsync(
+                    fabricName,
+                    protectionContainerName,
+                    input,
+                    this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
         ///     Update Azure VM Properties
         /// </summary>
         /// <param name="fabricName">Fabric Name</param>
