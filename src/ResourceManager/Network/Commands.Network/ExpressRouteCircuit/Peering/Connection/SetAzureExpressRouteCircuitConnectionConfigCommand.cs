@@ -58,8 +58,12 @@ namespace Microsoft.Azure.Commands.Network
 
             connection.Name = this.Name;
             connection.AddressPrefix = this.AddressPrefix;
-            connection.ExpressRouteCircuitPeering = peering.Id;
-            connection.PeerExpressRouteCircuitPeering = this.PeerExpressRouteCircuitPeering;
+
+            connection.ExpressRouteCircuitPeering = new PSResourceId();
+            connection.ExpressRouteCircuitPeering.Id = peering.Id;
+
+            connection.PeerExpressRouteCircuitPeering = new PSResourceId();
+            connection.PeerExpressRouteCircuitPeering.Id = this.PeerExpressRouteCircuitPeering;
 
             if (!string.IsNullOrWhiteSpace(this.AuthorizationKey))
             {
