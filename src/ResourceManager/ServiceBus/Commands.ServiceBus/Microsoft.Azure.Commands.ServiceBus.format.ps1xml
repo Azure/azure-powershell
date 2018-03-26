@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes</Name>
+      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes</TypeName>
+        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -43,6 +43,72 @@
               </ListItem>
               <ListItem>
                 <PropertyName>Enabled</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FilterType </Label>
+                <ScriptBlock>$_.FilterType </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>Action </Label>
+                <ScriptBlock>
+                  if ($_.Action -ne null)
+                  {
+                    "SqlExpression : " + $_.Action.SqlExpression  + " ," + "`n"+ " CompatibilityLevel : " +  $_.Action.CompatibilityLevel + " , RequiresPreprocessing : " +  $_.Action.RequiresPreprocessing
+                  }
+                  else
+                  {
+                    $null
+                  }
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>SqlFilter </Label>
+                <ScriptBlock>
+                  if ($_.SqlFilter -ne null)
+                  {                  
+                    "SqlExpression : " + $_.SqlFilter.SqlExpression + " , CompatibilityLevel : " +  $_.SqlFilter.CompatibilityLevel+ " , RequiresPreprocessing : " +  $_.SqlFilter.RequiresPreprocessing
+                  }
+                  else
+                  {
+                    $null
+                  }
+               </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>CorrelationFilter </Label>
+                <ScriptBlock>
+                  if ($_.CorrelationFilter)
+                  {
+                    "CorrelationId : " + $_.CorrelationFilter.CorrelationId + " , MessageId : " +  $_.CorrelationFilter.MessageId + " , To : " +  $_.CorrelationFilter.To + " , ReplyTo : " +  $_.CorrelationFilter.ReplyTo + " , Label : " +  $_.CorrelationFilter.Label + " , SessionId : " +  $_.CorrelationFilter.SessionId + " , ReplyToSessionId : " +  $_.CorrelationFilter.ReplyToSessionId + " , ContentType : " +  $_.CorrelationFilter.ContentType + " , RequiresPreprocessing : " +  $_.CorrelationFilter.RequiresPreprocessing
+                  }
+                  else
+                  {
+                    $null
+                  }
+                </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
