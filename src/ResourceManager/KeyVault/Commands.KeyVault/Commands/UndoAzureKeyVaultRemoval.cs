@@ -12,20 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System.Collections;
 using System.Management.Automation;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Undo, "AzureRmKeyVaultRemoval",
         SupportsShouldProcess = true,
+        DefaultParameterSetName = DefaultParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyVaultModels.PSVault))]
+    [OutputType(typeof(PSKeyVault))]
     public class UndoAzureKeyVaultRemoval : KeyVaultManagementCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string DefaultParameterSet = "Default";
+        private const string InputObjectParameterSet = "InputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -33,10 +41,22 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
+
+        /// <summary>
+        /// Vault object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = InputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Deleted vault object")]
+        [ValidateNotNullOrEmpty]
+        public PSDeletedKeyVault InputObject { get; set; }
 
         /// <summary>
         /// Resource group name
@@ -54,6 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 2,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the deleted vault original Azure region.")]
         [LocationCompleter("Microsoft.KeyVault/vaults")]
@@ -68,9 +89,15 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                Location = InputObject.Location;
+            }
+
             if (ShouldProcess(VaultName, Properties.Resources.RecoverVault))
             {
-                var newVault = KeyVaultManagementClient.CreateNewVault(new PSKeyVaultModels.VaultCreationParameters()
+                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
                 {
                     VaultName = this.VaultName,
                     ResourceGroupName = this.ResourceGroupName,

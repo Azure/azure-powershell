@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -23,4 +23,4 @@
 * Add Partner Name in the response for cmdlets: Get-AzureRmManagementPartner, New-AzureRmManagementPartner and Update-AzureRmManagementPartner
 
 ## Version 0.1.0
-* Initial Release of ManagementPartner cmdlets
+* First release of Management Partners cmdlets
