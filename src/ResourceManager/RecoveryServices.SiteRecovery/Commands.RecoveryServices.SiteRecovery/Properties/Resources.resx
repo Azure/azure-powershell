@@ -146,6 +146,9 @@
   <data name="ProtectionContainerNotFound" xml:space="preserve">
     <value>Protection Container {0} is not associated with the Vault {1}</value>
   </data>
+  <data name="ProtectionContainerTypeIncorrect" xml:space="preserve">
+    <value>Protection Container type : {0} expected: {1}</value>
+  </data>
   <data name="RecoveryPlanNotFound" xml:space="preserve">
     <value>RecoveryPlan  {0} is not associated with the Vault {1}</value>
   </data>
@@ -304,9 +307,6 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="UnsupportedReplicationProtectionActionForUnplannedFailover" xml:space="preserve">
     <value>Unsupported replication protection action for virtual machine in replication group for unplanned failover for replication provider {0}. Use recovery plan action for the same purpose.</value>
   </data>
-  <data name="UnsupportedFabricTypeForDiscoverVirtualMachines" xml:space="preserve">
-    <value>Unsupported fabric type {0} for discover virtual machines</value>
-  </data>
   <data name="UnsupportedReplicationProvidedForUpdateVmProperties" xml:space="preserve">
     <value>Unsupported replication provider for set VM properties</value>
   </data>
@@ -430,9 +430,6 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="EmailsCountExceeded" xml:space="preserve">
     <value>maximum number of email addresses allowed is 20.</value>
   </data>
-  <data name="InvalidIpAddress" xml:space="preserve">
-    <value>Enter valid IP address.</value>
-  </data>
   <data name="ResumeTFOJobNotSupported" xml:space="preserve">
     <value>Message: Invalid JobId parameter. The resume job operation cannot be performed on the TestFailover job with Job Id {0} as the operation has already reached a terminal state. To cleanup the resources created by Test failover run the Test failover cleanup operation on the test failed over Recovery plan/replicated machine.
 Possible Causes: The resume job operation is not allowed on this Job.
@@ -440,5 +437,35 @@ Recommended Action: To cleanup the resources created by Test failover run the Te
   </data>
   <data name="UnsupportedReplicationReprotectScenerio" xml:space="preserve">
     <value>Unsupported Replication Reprotect Scenerio.</value>
+  </data>
+  <data name="InvalidPrimaryStagingAzureStorageAccountIdDiskInput" xml:space="preserve">
+    <value>Please pass a valid PrimaryStagingAzureStorageAccountId as input for disk URI "{0}".</value>
+  </data>
+  <data name="InvalidRecoveryAzureStorageAccountIdDiskInput" xml:space="preserve">
+    <value>Please pass a valid RecoveryAzureStorageAccountId as input for disk URI "{0}".</value>
+  </data>
+  <data name="IncorrectFabricType" xml:space="preserve">
+    <value>Incorrect Fabric type expected "{0}"  found "{1}".</value>
+  </data>
+  <data name="InvalidSwitchParamRPIAndProtectionContainerMapping" xml:space="preserve">
+    <value>Incorrect mapping selected as Input. Replication protected item target fabric {0} not matching protection container mapping target Fabric {1}.</value>
+  </data>
+  <data name="NullorEmptyPrimaryStagingAzureStorageAccountId" xml:space="preserve">
+    <value>PrimaryStagingAzureStorageAccountId passed is null or empty.</value>
+  </data>
+  <data name="InvalidRecoveryAzureStorageAccountId" xml:space="preserve">
+    <value>RecoveryAzureStorageAccountId passed is null or empty.</value>
+  </data>
+  <data name="ProtectionContainerFabricTypeIncorrect" xml:space="preserve">
+    <value>Protection container fabric type : {0} expected: {1}.</value>
+  </data>
+  <data name="ImproperFabricWithNetwork" xml:space="preserve">
+    <value>Please pass a valid VMM fabric with fabric network or pass only Azure fabric to check networkmapping for primary Azure fabric. </value>
+  </data>
+  <data name="TryDownloadingVaultFile" xml:space="preserve">
+    <value>Message: For newly created vault download vault creds file and retry.
+Recommended Action: Install module AzureRm.RecoveryServices if not installed. And execute below cmdlets
+$path = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $Vault
+Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $path.filepath</value>
   </data>
 </root>

@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate a failover operation.
+    ///    Starts a planned failover operation.
     /// </summary>
     [Cmdlet(
         VerbsLifecycle.Start,
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrPlannedFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Recovery Plan object.
+        ///     Gets or sets the recovery plan object to be failed over.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item object to be failed over.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPIObject,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
         /// <summary>
-        ///     Gets or sets Failover direction for the protected Item.
+        ///     Gets or sets the direction of the failover.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateSet(
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Direction { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Optimize value.
+        ///     Gets or sets what to optimize for.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -76,7 +76,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Optimize { get; set; }
 
         /// <summary>
-        ///     Gets or sets the recovery vm creation value.
+        ///     Gets or sets create the virtual machine if not found while failing back to the primary region
+        ///     (used in alternate location recovery.)
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -87,7 +88,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string CreateVmIfNotFound { get; set; }
 
         /// <summary>
-        ///     Gets or sets hyper-V recovery services provider to create vm on.
+        ///     Gets or sets identifies the host to on which to create the virtual machine while failing 
+        ///     over to an alternate location by specifying the ASR services provider object corresponding 
+        ///     to the ASR services provider running on the host.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPIObject,
@@ -96,7 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryServicesProvider ServicesProvider { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets data encryption primary certificate file path for failover of Protected Item.
         /// </summary>
         [Parameter(
             Mandatory = false,
@@ -105,7 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string DataEncryptionPrimaryCertFile { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets Data encryption secondary certificate file path for failover of Protected Item.
         /// </summary>
         [Parameter(
             Mandatory = false,
