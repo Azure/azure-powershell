@@ -80,17 +80,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
             }
         }
-        [Fact(Skip = "Needs re-recording.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseBackupLongTermRetentionPolicy()
-        {
-            // TODO Rewrite SQL backup tests to be recordable
-            // TODO https://github.com/Azure/azure-powershell/issues/4155
-            if (TestMockSupport.RunningMocked)
-            {
-                RunPowerShellTest("Test-DatabaseBackupLongTermRetentionPolicy");
-            }
-        }
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreLongTermRetentionBackup()
