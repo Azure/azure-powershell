@@ -58,29 +58,38 @@ AllowMultiple = true)]
         {
             string message = null;
 
-            if (!string.IsNullOrWhiteSpace(ReplacementCmdletOutputTypeName))
+            //check for the deprecation scenario
+            if (string.IsNullOrWhiteSpace(ReplacementCmdletOutputTypeName) && NewOutputProperties == null && DeprecatedOutputProperties == null && string.IsNullOrWhiteSpace(ChangeDescription))
             {
-                message = string.Format(Resources.BreakingChangesAttributesCmdLetOutputChange1, DeprecatedCmdLetOutputType.FullName, ReplacementCmdletOutputTypeName);
-            } else
-            {
-                message = string.Format(Resources.BreakingChangesAttributesCmdLetOutputChange2, DeprecatedCmdLetOutputType.FullName);
+                message = string.Format(Resources.BreakingChangesAttributesCmdLetOutputTypeDeprecated, DeprecatedCmdLetOutputType.FullName);
             }
-
-            if (DeprecatedOutputProperties != null && DeprecatedOutputProperties.Length > 0)
+            else
             {
-                message +=  Resources.BreakingChangesAttributesCmdLetOutputPropertiesRemoved+ "\t";
-                foreach (string propety in DeprecatedOutputProperties)
+                if (!string.IsNullOrWhiteSpace(ReplacementCmdletOutputTypeName))
                 {
-                    message += "'" + propety + "' ";
+                    message = string.Format(Resources.BreakingChangesAttributesCmdLetOutputChange1, DeprecatedCmdLetOutputType.FullName, ReplacementCmdletOutputTypeName);
                 }
-            }
-
-            if (NewOutputProperties != null && NewOutputProperties.Length > 0)
-            {
-                message += Resources.BreakingChangesAttributesCmdLetOutputPropertiesAdded + "\t";
-                foreach (string propety in NewOutputProperties)
+                else
                 {
-                    message += "'" + propety + "' ";
+                    message = string.Format(Resources.BreakingChangesAttributesCmdLetOutputChange2, DeprecatedCmdLetOutputType.FullName);
+                }
+
+                if (DeprecatedOutputProperties != null && DeprecatedOutputProperties.Length > 0)
+                {
+                    message += Resources.BreakingChangesAttributesCmdLetOutputPropertiesRemoved + "\t";
+                    foreach (string propety in DeprecatedOutputProperties)
+                    {
+                        message += "'" + propety + "' ";
+                    }
+                }
+
+                if (NewOutputProperties != null && NewOutputProperties.Length > 0)
+                {
+                    message += Resources.BreakingChangesAttributesCmdLetOutputPropertiesAdded + "\t";
+                    foreach (string propety in NewOutputProperties)
+                    {
+                        message += "'" + propety + "' ";
+                    }
                 }
             }
             return message;

@@ -1,6 +1,6 @@
 # Breaking Changes Attribute Help
 
-Below are descriptionsof the various types of Breaking Change Attributes (custom attributes) that can be used to decorate the cmdlet or its paramters to call out various [types of deprecations](https://github.com/praries880/azure-powershell/blob/breakingchangeattribute/documentation/breaking-changes/breaking-changes-definition.md).
+Below is description of the various types of Breaking Change Attributes (custom attributes) that can be used to decorate the cmdlet or its paramters to call out various [types of breaking changes](https://github.com/praries880/azure-powershell/blob/breakingchangeattribute/documentation/breaking-changes/breaking-changes-definition.md).
 
 ## The different types of attributes
 
@@ -41,6 +41,24 @@ NOTE :
 - The only time you will see the output (at runtime) of an attribute applied to a parameter (property or field) is if the parameter is actually invoked on the cmdline. The breaking change attributes to all parameters that are not invoked are ignored.
 
 ### Examples (with GenericBreakingChangeAttribute)
+#### With a simple message
+```cs
+    [GenericBreakingChange("Message 1")]
+    [Cmdlet(VerbsCommon.Get, "SomeObject0"), OutputType(typeof(Foo))]
+    class GetSomeObject0 : AzureRMCmdlet
+    {
+
+    }
+```
+
+##### Effects at runtime:
+```
+Get-SomeObject0 <parms here>
+...
+Breaking changes in the cmdlet : Get-SomeObject0
+ - Message 1
+```
+
 #### With "GenericBreakingChange"
 ```cs
     [GenericBreakingChange("Message 1", "5.0.0.0")]
@@ -101,7 +119,7 @@ Cmdlet invocation changes :
 
 #### With ChangeDescription property and multiple attributes in the cmdlet
 ```cs
-    [GenericBreakingChange("Message5"]
+    [GenericBreakingChange("Message5")]
     [Cmdlet(VerbsCommon.Get, "SomeObjectD"), OutputType(typeof(Foo))]
     class GetSomeObjectD : AzureRMCmdlet
         //This is just as an example, to call out a param change we would not use the generic attribute. Use "CmdletParameterBreakingChangeMarker" instead
@@ -139,7 +157,7 @@ This attribute marks a cmdlet for deprecation.
 #### Constructor Arguments
 None, other than the two inherited from GenericBreakingChangeAttribute
 
-#### When there is a replacement cmdlet for the one that is being deprecated :
+#### When there is a replacement cmdlet
 ```cs
 [CmdletDeprecation(ReplacementCmdletName = "Get-SomeObjectC")]
 [Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(Foo))]
@@ -196,6 +214,26 @@ Note :
 #### Constructor Arguments
 - deprecatedCmdletOutputTypeName : String, represents the type of the existing output type,
 - The two inherited from GenericBreakingChangeAttribute
+
+#### The output return type is being dropped
+```cs
+[CmdletOutputBreakingChange(typeof(Foo))]
+[Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(Foo))]
+public class GetSomeObjectA : AzureRMCmdlet
+{
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+```
+##### Effect at runtime
+```
+Get-SomeObjectA <parms here>
+...
+Breaking changes in the cmdlet : Get-SomeObjectA
+ - The output type 'Foo' is being deprecated without a replacement.
+```
 
 #### The output return type is changing
 ```cs
@@ -305,6 +343,31 @@ NOTE :
 - nameOfParameterChanging : String, represents the name of the existing parameter,
 - The two inherited from GenericBreakingChangeAttribute
 
+#### Generic change in a parameter
+```cs
+[Cmdlet(VerbsCommon.Get, "SomeObjectA0"), OutputType(typeof(Foo))]
+public class GetSomeObjectA0 : AzureRMCmdlet
+{
+        public const String ChangeDesc = "Change description Foo bar";
+        [CmdletParameterBreakingChange("Param1", ChangeDescription = ChangeDesc)]
+        [Parameter(Mandatory = false)]
+        public String Param1;
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+```
+
+##### Effect at runtime
+```
+Get-SomeObjectA0 -Param1=...
+...
+Breaking changes in the cmdlet : Get-SomeObjectA0
+ - The parameter 'Param1' is changing
+    Change description : Change description Foo bar
+```
+
 #### A Parameter is being deprecated
 ```cs
 [Cmdlet(VerbsCommon.Get, "SomeObjectA"), OutputType(typeof(Foo))]
@@ -328,6 +391,30 @@ Get-SomeObjectA -Param1=...
 Breaking changes in the cmdlet : Get-SomeObjectA
  - The parameter 'Param1' is changing
     Change description : Parameter is being deprecated without being replaced
+```
+
+#### A Parameter is changing its type
+```cs
+[Cmdlet(VerbsCommon.Get, "SomeObjectA1"), OutputType(typeof(Foo))]
+public class GetSomeObjectA1 : AzureRMCmdlet
+{
+        [CmdletParameterBreakingChange("Param1", OldParameterType = typeof(String), NewParameterTypeName="FooBar")]
+        [Parameter(Mandatory = false)]
+        public String Param1;
+    protected override void BeginProcessing()
+    {
+        // cmdlet logic
+    }
+}
+```
+
+##### Effect at runtime
+```
+Get-SomeObjectA1 -Param1=...
+...
+Breaking changes in the cmdlet : Get-SomeObjectA1
+ - The parameter 'Param1' is changing
+    The type of the parameter is changing from 'String' to 'FooBar'.
 ```
 
 #### A Parameter is being replaced
