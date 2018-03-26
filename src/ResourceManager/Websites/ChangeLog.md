@@ -18,8 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Fixed issue with importing aliases
 
+## Version 4.2.1
+* Fixed the help for Remove-AzureRmWebAppSlot
+* Fix issue with Default Resource Group in CloudShell
+* Fixed issue with cleaning up scripts in build
+
+## Version 4.2.0
+* Fixed issue with importing aliases
 * New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
 
 ## Version 4.1.0

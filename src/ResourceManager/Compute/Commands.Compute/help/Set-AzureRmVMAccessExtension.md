@@ -20,8 +20,7 @@ Set-AzureRmVMAccessExtension [-Credential <PSCredential>] [-ResourceGroupName] <
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine Extension to a virtual machine.
-VMAccess can reset the virtual machine user name and password.
+The **Set-AzureRmVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine VMAccess Extension to a virtual machine. VMAccess Extension can be used to set a temporary password and this should be immediately changed it after logging into the machine.
 
 ## EXAMPLES
 

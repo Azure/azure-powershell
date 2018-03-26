@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Profile.Netcore.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -58,6 +58,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
     '.\Microsoft.Azure.Commands.Common.Authentication.dll', 
     '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll',
     '.\Microsoft.Azure.Commands.Common.Authorization.dll',
+    '.\Microsoft.Azure.Commands.Common.Compute.dll',    
     '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll',
     '.\Microsoft.Azure.Commands.Common.Network.dll',
     '.\Microsoft.Azure.Commands.ResourceManager.Common.dll',

@@ -25,10 +25,18 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Alias("Set-AzureKeyVaultKey")]
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute",
         SupportsShouldProcess = true, 
+        DefaultParameterSetName = DefaultParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyBundle))]
+    [OutputType(typeof(PSKeyVaultKey))]
     public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string DefaultParameterSet = "Default";
+        private const string InputObjectParameterSet = "InputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -36,6 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
@@ -46,11 +55,23 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.KeyName)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// key object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Key object")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultKeyIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// Key version.
@@ -109,13 +130,19 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                Name = InputObject.Name;
+            }
+
             if (ShouldProcess(Name, Properties.Resources.SetKeyAttribute))
             {
                 var keyBundle = DataServiceClient.UpdateKey(
                 VaultName,
                 Name,
                 Version ?? string.Empty,
-                new KeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+                new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
 
                 if (PassThru)
                 {

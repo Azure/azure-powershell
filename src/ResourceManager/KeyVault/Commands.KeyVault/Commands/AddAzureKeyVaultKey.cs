@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.WebKey;
 using System;
 using System.Collections;
 using System.IO;
 using System.Management.Automation;
 using System.Security;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -35,16 +35,21 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = CreateParameterSet,
+        DefaultParameterSetName = InteractiveCreateParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyBundle))]
+    [OutputType(typeof(PSKeyVaultKey))]
     public class AddAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
         #region Parameter Set Names
 
-        private const string CreateParameterSet = "Create";
-        private const string ImportParameterSet = "Import";
+        private const string InteractiveCreateParameterSet = "InteractiveCreate";
+        private const string InputObjectCreateParameterSet = "InputObjectCreate";
+        private const string InteractiveImportParameterSet = "InteractiveImport";
+        private const string InputObjectImportParameterSet = "InputObjectImport";
+
+        private const string HsmDestination = "HSM";
+        private const string SoftwareDestination = "Software";
 
         #endregion
 
@@ -54,27 +59,35 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Vault name
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = CreateParameterSet,
+            ParameterSetName = InteractiveCreateParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [Parameter(Mandatory = true,
-            ParameterSetName = ImportParameterSet,
+            ParameterSetName = InteractiveImportParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectCreateParameterSet,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "Vault object.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectImportParameterSet,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "Vault object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVault InputObject { get; set; }
+
         /// <summary>
         /// key name
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = CreateParameterSet,
-            Position = 1,
-            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = ImportParameterSet,
             Position = 1,
             HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
@@ -88,7 +101,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// 2. pfx
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ImportParameterSet,
+            ParameterSetName = InteractiveImportParameterSet,
+            HelpMessage = "Path to the local file containing the key material to be imported.")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectImportParameterSet,
             HelpMessage = "Path to the local file containing the key material to be imported.")]
         [ValidateNotNullOrEmpty]
         public string KeyFilePath { get; set; }
@@ -98,7 +114,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Required for pfx file
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = ImportParameterSet,
+            ParameterSetName = InteractiveImportParameterSet,
+            HelpMessage = "Password of the local file containing the key material to be imported.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectImportParameterSet,
             HelpMessage = "Password of the local file containing the key material to be imported.")]
         [ValidateNotNullOrEmpty]
         public SecureString KeyFilePassword { get; set; }
@@ -107,10 +126,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Destination of the key
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = CreateParameterSet,
+            ParameterSetName = InteractiveCreateParameterSet,
+            HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectCreateParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [Parameter(Mandatory = false,
-            ParameterSetName = ImportParameterSet,
+            ParameterSetName = InteractiveImportParameterSet,
+            HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectImportParameterSet,
             HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [ValidateSet(HsmDestination, SoftwareDestination)]
         public string Destination { get; set; }
@@ -118,11 +143,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Set key in disabled state if present       
         /// </summary>
-        [Parameter(Mandatory = false,
-            ParameterSetName = CreateParameterSet,
-            HelpMessage = "Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use the key will fail. Use this parameter if you are preloading keys that you intend to enable later.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ImportParameterSet,
+        [Parameter(Mandatory = false,                            
             HelpMessage = "Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use the key will fail. Use this parameter if you are preloading keys that you intend to enable later.")]
         public SwitchParameter Disable { get; set; }
 
@@ -130,11 +151,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key operations 
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = CreateParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The operations that can be performed with the key. If not present, all operations can be performed.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The operations that can be performed with the key. If not present, all operations can be performed.")]
         public string[] KeyOps { get; set; }
@@ -143,39 +159,24 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = CreateParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the expiration time of the key in UTC. If not specified, key will not expire.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ImportParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the expiration time of the key in UTC. If not present, key will not expire.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
         /// The UTC time before which key can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
-            ParameterSetName = CreateParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The UTC time before which the key can't be used. If not specified, there is no limitation.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ImportParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which the key can't be used. If not present, there is no limitation.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
         /// Key tags
         /// </summary>
         [Parameter(Mandatory = false,
-           ParameterSetName = CreateParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "A hashtable representing key tags.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ImportParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable representing key tags.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
@@ -185,34 +186,34 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (ShouldProcess(Name, Properties.Resources.AddKey))
             {
-                Models.KeyBundle keyBundle;
-                switch (ParameterSetName)
+                PSKeyVaultKey keyBundle;
+                if (InputObject != null)
                 {
-                    case CreateParameterSet:
-                        keyBundle = this.DataServiceClient.CreateKey(
+                    VaultName = InputObject.VaultName.ToString();
+                }
+
+                if (string.IsNullOrEmpty(KeyFilePath))
+                {
+                    keyBundle = this.DataServiceClient.CreateKey(
                             VaultName,
                             Name,
                             CreateKeyAttributes());
-                        break;
-
-                    case ImportParameterSet:
-                        bool? importToHsm = null;
-                        keyBundle = this.DataServiceClient.ImportKey(
-                            VaultName, Name,
-                            CreateKeyAttributes(),
-                            CreateWebKeyFromFile(),
-                            string.IsNullOrEmpty(Destination) ? importToHsm : HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase));
-                        break;
-
-                    default:
-                        throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
+                }
+                else
+                {
+                    bool? importToHsm = null;
+                    keyBundle = this.DataServiceClient.ImportKey(
+                        VaultName, Name,
+                        CreateKeyAttributes(),
+                        CreateWebKeyFromFile(),
+                        string.IsNullOrEmpty(Destination) ? importToHsm : HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase));
                 }
 
                 this.WriteObject(keyBundle);
             }
         }
 
-        internal Models.KeyAttributes CreateKeyAttributes()
+        internal PSKeyVaultKeyAttributes CreateKeyAttributes()
         {
             string keyType = string.Empty;
 
@@ -221,7 +222,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 keyType = (HsmDestination.Equals(Destination, StringComparison.OrdinalIgnoreCase)) ? JsonWebKeyType.RsaHsm : JsonWebKeyType.Rsa;
             }
 
-            return new Models.KeyAttributes(
+            return new Models.PSKeyVaultKeyAttributes(
                 !Disable.IsPresent,
                 Expires,
                 NotBefore,
@@ -235,14 +236,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.KeyFilePath));
             if (!keyFile.Exists)
             {
-                throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.KeyFileNotFound, this.KeyFilePath));
+                throw new FileNotFoundException(string.Format(Resources.KeyFileNotFound, this.KeyFilePath));
             }
 
             var converterChain = WebKeyConverterFactory.CreateConverterChain();
             return converterChain.ConvertKeyFromFile(keyFile, KeyFilePassword);
         }
-
-        private const string HsmDestination = "HSM";
-        private const string SoftwareDestination = "Software";
     }
 }
