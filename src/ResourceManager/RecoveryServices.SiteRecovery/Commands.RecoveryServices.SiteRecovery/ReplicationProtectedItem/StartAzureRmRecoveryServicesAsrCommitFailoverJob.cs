@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate a commit operation.
+    ///     Starts the commit failover action for a site recovery object.
     /// </summary>
     [Cmdlet(
         VerbsLifecycle.Start,
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrCommitFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Recovery Plan object.
+        ///     Gets or sets recovery plan object corresponding to recovery plan to be failovered .
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item object corresponding to replication protected item  to be failovered.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPIObject,
