@@ -44,7 +44,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Compute", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Compute.Tests", "..\..\Common\Commands.Common.Compute.Tests\Commands.Common.Compute.Tests.csproj", "{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.CustomAttributes.Test", "..\..\Common\Commands.Common\CustomAttributes.Test\Commands.Common.CustomAttributes.Test.csproj", "{696C6B43-B5E0-4775-B493-3A971D0C38C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.CustomAttributes.Test", "..\..\Common\Commands.Common.CustomAttributes.Test\Commands.Common.CustomAttributes.Test.csproj", "{696C6B43-B5E0-4775-B493-3A971D0C38C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
