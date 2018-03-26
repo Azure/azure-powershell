@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 
     /**
      * This class acts as the base
-     */ 
+     **/ 
     public class GenericBreakingChangeAttribute : System.Attribute
     {
         private string _message;

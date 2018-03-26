@@ -1643,7 +1643,7 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
     <value>[AzureLongRunningJob]: ShouldMethod '{0}' unblocked.</value>
     <comment>0(string): methodType</comment>
   </data>
-  <data name="BreakingChangeAttributeParameterDeprecation" xml:space="preserve">
+  <data name="BreakingChangeAttributeParameterChanging" xml:space="preserve">
     <value>The parameter : '{0}' is changing.</value>
   </data>
   <data name="BreakingChangeAttributeParameterMandatoryNow" xml:space="preserve">
@@ -1718,5 +1718,11 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
     <value>Cmdlet invocation changes :
 	Old Way : {0}
 	New Way : {1}</value>
+  </data>
+  <data name="BreakingChangesAttributesCmdLetOutputTypeDeprecated" xml:space="preserve">
+    <value>The output type '{0}' is being deprecated without a replacement.</value>
+  </data>
+  <data name="BreakingChangeAttributeParameterTypeChange" xml:space="preserve">
+    <value>	The type of the parameter is changing from '{0}' to '{1}'.</value>
   </data>
 </root>

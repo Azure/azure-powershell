@@ -33,6 +33,10 @@ AllowMultiple = true)]
 
         public bool IsBecomingMandatory { get; set; } = false;
 
+        public Type OldParamaterType { get; set; }
+
+        public String NewParameterTypeName { get; set; }
+
         public CmdletParameterBreakingChangeAttribute(string nameOfParameterChanging) :
             base("")
         {
@@ -53,27 +57,34 @@ AllowMultiple = true)]
 
         protected override string GetAttributeSpecificMessage()
         {
+            string message = null;
            if (!string.IsNullOrWhiteSpace(ReplaceMentCmdletParameterName))
             {
                 if (IsBecomingMandatory)
                 {
-                    return string.Format(Resources.BreakingChangeAttributeParameterReplacedMandatory, NameOfParameterChanging, ReplaceMentCmdletParameterName);
+                    message = string.Format(Resources.BreakingChangeAttributeParameterReplacedMandatory, NameOfParameterChanging, ReplaceMentCmdletParameterName);
                 }
                 else
                 {
-                    return string.Format(Resources.BreakingChangeAttributeParameterReplaced, NameOfParameterChanging, ReplaceMentCmdletParameterName);
+                    message = string.Format(Resources.BreakingChangeAttributeParameterReplaced, NameOfParameterChanging, ReplaceMentCmdletParameterName);
                 }
             } else
             {
                 if (IsBecomingMandatory)
                 {
-                    return string.Format(Resources.BreakingChangeAttributeParameterMandatoryNow, NameOfParameterChanging);
+                    message = string.Format(Resources.BreakingChangeAttributeParameterMandatoryNow, NameOfParameterChanging);
                 } else
                 {
-                    return string.Format(Resources.BreakingChangeAttributeParameterDeprecation, NameOfParameterChanging);
+                    message = string.Format(Resources.BreakingChangeAttributeParameterChanging, NameOfParameterChanging); ;
                 }
             }
 
+           //See if the type of the param is changing
+            if (OldParamaterType != null && !string.IsNullOrWhiteSpace(NewParameterTypeName))
+            {
+                message +=  "\n" + string.Format(Resources.BreakingChangeAttributeParameterTypeChange, OldParamaterType.FullName, NewParameterTypeName);
+            }
+            return message;
         }
     }
 }

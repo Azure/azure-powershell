@@ -428,9 +428,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The parameter : &apos;{0}&apos; is changing..
         /// </summary>
-        public static string BreakingChangeAttributeParameterDeprecation {
+        public static string BreakingChangeAttributeParameterChanging {
             get {
-                return ResourceManager.GetString("BreakingChangeAttributeParameterDeprecation", resourceCulture);
+                return ResourceManager.GetString("BreakingChangeAttributeParameterChanging", resourceCulture);
             }
         }
         
@@ -458,6 +458,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string BreakingChangeAttributeParameterReplacedMandatory {
             get {
                 return ResourceManager.GetString("BreakingChangeAttributeParameterReplacedMandatory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 	The type of the parameter is changing from &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string BreakingChangeAttributeParameterTypeChange {
+            get {
+                return ResourceManager.GetString("BreakingChangeAttributeParameterTypeChange", resourceCulture);
             }
         }
         
@@ -526,6 +535,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string BreakingChangesAttributesCmdLetOutputPropertiesRemoved {
             get {
                 return ResourceManager.GetString("BreakingChangesAttributesCmdLetOutputPropertiesRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The output type &apos;{0}&apos; is being deprecated without a replacement..
+        /// </summary>
+        public static string BreakingChangesAttributesCmdLetOutputTypeDeprecated {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesCmdLetOutputTypeDeprecated", resourceCulture);
             }
         }
         

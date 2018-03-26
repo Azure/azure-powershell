@@ -52,6 +52,14 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         public const string Description = "CmdletA2 is being replaced by CmdletA21";
     }
 
+    [Cmdlet(VerbNameHolder.CmdletNameVerb, AzureRMTestCmdletWithCmdletWithOutputTypeDropped.CmdletName)]
+    [OutputType(typeof(string))]
+    [CmdletOutputBreakingChange(typeof(string))]
+    class AzureRMTestCmdletWithCmdletWithOutputTypeDropped : AzureRMCmdlet
+    {
+        public const string CmdletName = "CmdletB0";
+    }
+
     [Cmdlet(VerbNameHolder.CmdletNameVerb, AzureRMTestCmdletWithCmdletWithOutputTypeChange.CmdletName)]
     [OutputType(typeof(string))]
     [CmdletOutputBreakingChange(typeof(string), "5.0.0.0", ReplacementCmdletOutputTypeName ="List<string>")]
@@ -83,6 +91,16 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         public const string ChangeDesc = "Parameter is being deprecated without being replaced";
         //This deprecation marker should not have the OldWay=x New way=y printed as New way is not specified
         [CmdletParameterBreakingChange("Param1", ChangeDescription = ChangeDesc)]
+        [Parameter(Mandatory = false)]
+        public string Param1;
+    }
+
+    [Cmdlet(VerbNameHolder.CmdletNameVerb, AzureRMTestCmdletWithParamTypeChange.CmdletName)]
+    class AzureRMTestCmdletWithParamTypeChange
+    {
+        public const string CmdletName = "CmdletC1A";
+        //This deprecation marker should not have the OldWay=x New way=y printed as New way is not specified
+        [CmdletParameterBreakingChange("Param1", OldParamaterType = typeof(string), NewParameterTypeName = "List<string>")]
         [Parameter(Mandatory = false)]
         public string Param1;
     }

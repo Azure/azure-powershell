@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
     -->";
 
         /**
-         * This functiontakesn ina Type (expected to be a derevative of the AzurePSCmdlet)
+         * This function takes in a Type (expected to be a derevative of the AzurePSCmdlet)
          * And reads all the deprecation attributes attached to it
          * Prints a message on the cmdline For each of the attribute found
          * 
@@ -110,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
         }
 
         /**
-         * Takes in atype which is expected to be derived from AzurePScmdlet and gathers all the breaking change attributes on it
+         * Takes in a type which is expected to be derived from AzurePScmdlet and gathers all the breaking change attributes on it
          * Runs through the list of attributes and returns the deprecation messages for each of the attributes. 
          * This function is sued from the static analysis tools to generate the breaking change guide 
          **/
@@ -129,13 +129,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
         }
 
         /**
-         * This functiontakesn in a Type (expected to be a derevative of the AzurePSCmdlet)
+         * This function takes in a Type (expected to be a derevative of the AzurePSCmdlet)
          * And returns all the deprecation attributes attached to it
          * 
          * the boundParameterNames is a list of parameters bound to the cmdlet at runtime, 
          * We only process the Parameter beaking change attributes attached only params listed in this list (if present)
-         * */
-        **/
+         **/
         public static List<GenericBreakingChangeAttribute> GetAllBreakingChangeAttributesInType(Type type, List<string> boundParameterNames)
         {
             List<GenericBreakingChangeAttribute> attributeList = new List<GenericBreakingChangeAttribute>();
