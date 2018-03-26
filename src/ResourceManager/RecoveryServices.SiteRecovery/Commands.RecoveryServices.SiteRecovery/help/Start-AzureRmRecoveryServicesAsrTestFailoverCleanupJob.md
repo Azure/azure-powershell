@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/start-azurermrecoveryservicesasrtestfailovercleanupjob
@@ -51,13 +51,13 @@ Job to track test failover Cleanup of an Azure Site Recovery recoveryPlan.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Comment
+User Comment for Test Failover.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
@@ -66,44 +66,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryPlan
-Recovery Plan to perform the test failover cleanup on.
-
-```yaml
-Type: ASRRecoveryPlan
-Parameter Sets: ByRPObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ReplicationProtectedItem
-Replication Protected Item to perform the test failover cleanup on.
-
-```yaml
-Type: ASRReplicationProtectedItem
-Parameter Sets: ByRPIObject
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: wi
+Aliases: cf
 
 Required: False
 Position: Named
@@ -127,13 +96,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryPlan
+Recovery Plan to perform the test failover cleanup on.
+
+```yaml
+Type: ASRRecoveryPlan
+Parameter Sets: ByRPObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ReplicationProtectedItem
+Replication Protected Item to perform the test failover cleanup on.
+
+```yaml
+Type: ASRReplicationProtectedItem
+Parameter Sets: ByRPIObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Resource Id of replication protected item / recovery plan for cleaningup test failover.
 
 ```yaml
 Type: String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,13 +141,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Comment
-User Comment for Test Failover.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
 Required: False
 Position: Named
@@ -172,4 +172,3 @@ Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedIt
 ## NOTES
 
 ## RELATED LINKS
-
