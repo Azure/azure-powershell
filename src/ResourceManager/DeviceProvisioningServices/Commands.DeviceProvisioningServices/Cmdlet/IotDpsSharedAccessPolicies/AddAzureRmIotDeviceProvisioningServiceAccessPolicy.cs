@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             ValueFromPipeline = true,
             HelpMessage = "IoT Device Provisioning Service Object")]
         [ValidateNotNullOrEmpty]
-        public PSProvisioningServiceDescription InputObject { get; set; }
+        public PSProvisioningServiceDescription DpsObject { get; set; }
 
         [Parameter(
             Position = 0,
@@ -119,8 +119,8 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                 switch (ParameterSetName)
                 {
                     case InputObjectParameterSet:
-                        this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                        this.Name = this.InputObject.Name;
+                        this.ResourceGroupName = this.DpsObject.ResourceGroupName;
+                        this.Name = this.DpsObject.Name;
                         this.AddIotDpsAccessPolicy();
                         break;
 

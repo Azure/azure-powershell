@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             ValueFromPipeline = true,
             HelpMessage = "IoT Device Provisioning Service Object")]
         [ValidateNotNullOrEmpty]
-        public PSProvisioningServiceDescription InputObject { get; set; }
+        public PSProvisioningServiceDescription DpsObject { get; set; }
 
         [Parameter(
             Position = 0,
@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A boolean indicating whether to apply allocation policy to the IoT Hub")]
+            HelpMessage = "Apply allocation policy to the IoT Hub")]
         [ValidateNotNullOrEmpty]
-        public bool? ApplyAllocationPolicy { get; set; }
+        public SwitchParameter ApplyAllocationPolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -133,8 +133,8 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                 switch (ParameterSetName)
                 {
                     case InputObjectParameterSet:
-                        this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                        this.Name = this.InputObject.Name;
+                        this.ResourceGroupName = this.DpsObject.ResourceGroupName;
+                        this.Name = this.DpsObject.Name;
                         this.AddIotDpsLinkedHub();
                         break;
 
@@ -191,7 +191,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     ConnectionString = connectionString,
                     Location = location,
                     AllocationWeight = this.AllocationWeight,
-                    ApplyAllocationPolicy = this.ApplyAllocationPolicy
+                    ApplyAllocationPolicy = this.ApplyAllocationPolicy.IsPresent
                 };
 
                 ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);

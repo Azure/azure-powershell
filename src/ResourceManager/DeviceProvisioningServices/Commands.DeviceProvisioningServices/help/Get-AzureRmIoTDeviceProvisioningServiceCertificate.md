@@ -21,7 +21,7 @@ Get-AzureRmIoTDeviceProvisioningServiceCertificate [-ResourceGroupName] <String>
 
 ### InputObjectSet
 ```
-Get-AzureRmIoTDeviceProvisioningServiceCertificate [-InputObject] <PSProvisioningServiceDescription>
+Get-AzureRmIoTDeviceProvisioningServiceCertificate [-DpsObject] <PSProvisioningServiceDescription>
  [-CertificateName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -99,7 +99,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
+### -DpsObject
 IoT Device Provisioning Service Object
 
 ```yaml

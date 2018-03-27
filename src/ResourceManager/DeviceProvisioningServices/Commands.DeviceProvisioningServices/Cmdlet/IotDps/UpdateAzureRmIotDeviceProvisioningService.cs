@@ -129,6 +129,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             ParameterSetName = ResourceCreateUpdateParameterSet,
             HelpMessage = "IoT Device Provisioning Service Allocation policy")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet(new string[] { "Hashed", "GeoLatency", "Static" }, IgnoreCase = true)]
         public string AllocationPolicy { get; set; }
 
         [Parameter(

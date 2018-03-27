@@ -58,15 +58,17 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Properties")]
+            HelpMessage = "IoT Device Provisioning Service Allocation policy")]
         [ValidateNotNullOrEmpty]
-        public PSIotDpsPropertiesDescription Properties { get; set; }
+        [ValidateSet(new string[] { "Hashed", "GeoLatency", "Static" }, IgnoreCase = true)]
+        public string AllocationPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Sku")]
         [ValidateNotNullOrEmpty]
-        public PSIotDpsSku SkuName { get; set; }
+        [ValidateSet(new string[] { "S1" }, IgnoreCase = true)]
+        public string SkuName { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -83,9 +85,35 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     var provisioningServiceDescription = new ProvisioningServiceDescription()
                     {
                         Location = this.Location,
-                        Properties = this.Properties != null ? IotDpsUtils.ToIotDpsPropertiesDescription(this.Properties) : new IotDpsPropertiesDescription(),
-                        Sku = new IotDpsSkuInfo(this.SkuName.ToString() ?? IotDpsSku.S1)
+                        Properties = new IotDpsPropertiesDescription(),
+                        Sku = new IotDpsSkuInfo()
                     };
+
+                    if (this.AllocationPolicy != null)
+                    {
+                        PSAllocationPolicy psAllocationPolicy;
+                        if (Enum.TryParse<PSAllocationPolicy>(this.AllocationPolicy, true, out psAllocationPolicy))
+                        {
+                            provisioningServiceDescription.Properties.AllocationPolicy = psAllocationPolicy.ToString();
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Invalid Allocation Policy");
+                        }
+                    }
+
+                    if (this.SkuName != null)
+                    {
+                        PSIotDpsSku psIotDpsSku;
+                        if (Enum.TryParse<PSIotDpsSku>(this.SkuName, true, out psIotDpsSku))
+                        {
+                            provisioningServiceDescription.Sku.Name = psIotDpsSku.ToString();
+                        }
+                        else
+                        {
+                            throw new ArgumentException("Invalid Sku");
+                        }
+                    }
 
                     IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
                     this.WriteObject(IotDpsUtils.ToPSProvisioningServiceDescription(GetIotDpsResource(this.ResourceGroupName, this.Name)), false);

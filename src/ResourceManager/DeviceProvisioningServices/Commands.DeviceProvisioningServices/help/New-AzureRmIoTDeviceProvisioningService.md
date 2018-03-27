@@ -14,8 +14,8 @@ Create an Azure IoT Hub device provisioning service.
 
 ```
 New-AzureRmIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String> [-Location <String>]
- [-Properties <PSIotDpsPropertiesDescription>] [-SkuName <PSIotDpsSku>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllocationPolicy <String>] [-SkuName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +65,21 @@ Create an Azure IoT Hub device provisioning service with the standard pricing ti
 
 ## PARAMETERS
 
+### -AllocationPolicy
+IoT Device Provisioning Service Allocation policy
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -110,21 +125,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Properties
-Properties
-
-```yaml
-Type: PSIotDpsPropertiesDescription
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Resource Group
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Sku
 
 ```yaml
-Type: PSIotDpsSku
+Type: String
 Parameter Sets: (All)
 Aliases: 
 Accepted values: S1
