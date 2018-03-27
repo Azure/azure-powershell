@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.Network
             if (peering != null)
             {
                 var connection = peering.Connections.First();
+
+                // Create Circuit Connection
                 if (connection != null)
                 {
                     WriteObject(connection);

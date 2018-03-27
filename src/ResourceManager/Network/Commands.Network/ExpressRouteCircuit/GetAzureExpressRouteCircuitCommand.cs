@@ -58,13 +58,19 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (peering != null)
                 {
-                    var connection = peering.Connections.First();
-                    if (connection != null)
+                   
+                    if (peering.Connections.Any())
                     {
-                        var circuitconnection = NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.GetWithHttpMessagesAsync(
-                            this.ResourceGroupName, this.Name, "AzurePrivatePeering", connection.Name);
-                        var psExpressRouteCircuitConnection = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitConnection>(circuitconnection);
-                        WriteObject(circuitconnection);
+                        var connection = peering.Connections.First();
+
+                        if (connection != null)
+                        {
+                            // Retrieve from NRP Circuit Connection
+                            var circuitconnection = NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.GetWithHttpMessagesAsync(
+                                this.ResourceGroupName, this.Name, "AzurePrivatePeering", connection.Name);
+                            var psExpressRouteCircuitConnection = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitConnection>(circuitconnection);
+                            WriteObject(circuitconnection);
+                        }                       
                     }
                 } // To be removed end
                 
