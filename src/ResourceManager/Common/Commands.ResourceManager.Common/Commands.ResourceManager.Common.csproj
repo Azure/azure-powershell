@@ -51,13 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Channels" />
     <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
@@ -201,6 +195,7 @@
     <Compile Include="Utilities\Models\DeploymentVariable.cs" />
     <Compile Include="Utilities\Models\FilterResourcesOptions.cs" />
     <Compile Include="Utilities\Models\GenericResource.cs" />
+    <Compile Include="Utilities\Models\Location.cs" />
     <Compile Include="Utilities\Models\ResourceGroupDeployment.cs" />
     <Compile Include="Utilities\Models\ResourceIdentifier.cs" />
     <Compile Include="Utilities\ResourceManagementClientExtensions.cs" />

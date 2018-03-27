@@ -9,7 +9,7 @@
 			"value": "ps3525"
 			},
 			"virtualMachineSize": {
-			"value": "Standard_DS1_v2"
+			"value": "Standard_A4"
 			},
 			"adminUsername": {
 			"value": "netanaytics12"
@@ -33,7 +33,7 @@
 			"value": "netanalytics-32ps2831"
 			},
 			"storageAccountType": {
-			"value": "Premium_LRS"
+			"value": "Standard_LRS"
 			},
 			"diagnosticsStorageAccountName": {
 			"value": "ps2738"
