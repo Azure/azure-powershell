@@ -1911,7 +1911,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             try
             {
-                this.keyVaultClient.PurgeDeletedStorgeAccountAsync(vaultAddress, managedStorageAccountName).GetAwaiter().GetResult();
+                this.keyVaultClient.PurgeDeletedStorageAccountAsync(vaultAddress, managedStorageAccountName).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
