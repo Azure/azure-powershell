@@ -113,6 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 Interlocked.Increment(ref startedRemoteCallCounter);
 #if NETSTANDARD
+                //https://github.com/Azure/azure-storage-net/issues/658
                 string message = String.Format(Resources.StartRemoteCall,
                     startedRemoteCallCounter, String.Empty, e.RequestUri.ToString());
 #else
@@ -140,6 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
                 double elapsedTime = (context.EndTime - context.StartTime).TotalMilliseconds;
 #if NETSTANDARD
+                //https://github.com/Azure/azure-storage-net/issues/658
                 string message = String.Format(Resources.FinishRemoteCall,
                     e.RequestUri.ToString(), String.Empty, String.Empty, e.RequestInformation.ServiceRequestID, elapsedTime);
 #else
