@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.5.0'
+ModuleVersion = '4.6.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -212,15 +212,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* ''New-AzureRmVM'' and ''New-AzureRmVMSS'' support data disks.
-* ''New-AzureRmVM'' and ''New-AzureRmVMSS'' support custom image by name or by id.
-* Log analytic feature
-    - Added ''Export-AzureRmLogAnalyticRequestRateByInterval'' cmdlet
-    - Added ''Export-AzureRmLogAnalyticThrottledRequests'' cmdlet
-* Fix issue with Default Resource Group in CloudShell'
+        ReleaseNotes = '* Update for Zone Resilient'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
