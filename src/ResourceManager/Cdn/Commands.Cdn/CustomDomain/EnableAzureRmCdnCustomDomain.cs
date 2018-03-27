@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         {
             if (ParameterSetName == ObjectParameterSet)
             {
-                EndpointName = CdnCustomDomain.EndpointName;
-                ProfileName = CdnCustomDomain.ProfileName;
-                ResourceGroupName = CdnCustomDomain.ResourceGroupName;
-                CustomDomainName = CdnCustomDomain.Name;
+                EndpointName = InputObject.EndpointName;
+                ProfileName = InputObject.ProfileName;
+                ResourceGroupName = InputObject.ResourceGroupName;
+                CustomDomainName = InputObject.Name;
             }
 
             CdnManagementClient.CustomDomains.EnableCustomHttps(
