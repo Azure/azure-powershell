@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string Location { get; set; }
         public string Type { get; set; }
         public IDictionary<string, string> Tags { get; set; }
-        public string ProvisioningState { get; set; }        
-        public string Status { get; }        
-        public string StatusMessage { get; }        
+        public string ProvisioningState { get; set; }
+        public string Status { get; }
+        public string StatusMessage { get; }
         public DateTime? StatusTimestamp { get; }
     }
 }
