@@ -21,7 +21,7 @@ Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-ResourceGroupName] <String
 
 ### InputObjectSet
 ```
-Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-InputObject] <PSProvisioningServiceDescription>
+Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy [-DpsObject] <PSProvisioningServiceDescription>
  [-KeyName] <String> [-Permissions] <String[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -80,7 +80,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
+### -DpsObject
 IoT Device Provisioning Service Object
 
 ```yaml

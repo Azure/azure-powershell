@@ -16,22 +16,20 @@ Linked IoT hub to an Azure IoT Hub device provisioning service.
 ```
 Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
  [-IotHubResourceGroupName] <String> [-IotHubName] <String> [-AllocationWeight <Int32>]
- [-ApplyAllocationPolicy <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
-Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-InputObject] <PSProvisioningServiceDescription>
+Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-DpsObject] <PSProvisioningServiceDescription>
  [-IotHubResourceGroupName] <String> [-IotHubName] <String> [-AllocationWeight <Int32>]
- [-ApplyAllocationPolicy <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-IotHubResourceGroupName] <String>
- [-IotHubName] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy <Boolean>]
+ [-IotHubName] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -88,7 +86,7 @@ Accept wildcard characters: False
 A boolean indicating whether to apply allocation policy to the IoT Hub
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
@@ -114,7 +112,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
+### -DpsObject
 IoT Device Provisioning Service Object
 
 ```yaml

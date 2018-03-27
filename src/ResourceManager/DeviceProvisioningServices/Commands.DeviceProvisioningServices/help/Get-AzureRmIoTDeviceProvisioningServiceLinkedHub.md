@@ -20,7 +20,7 @@ Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [
 
 ### InputObjectSet
 ```
-Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-InputObject] <PSProvisioningServiceDescription>
+Get-AzureRmIoTDeviceProvisioningServiceLinkedHub [-DpsObject] <PSProvisioningServiceDescription>
  [-LinkedHubName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
+### -DpsObject
 IoT Device Provisioning Service Object
 
 ```yaml
