@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 0.1.1
 * Add Partner Name in the response for cmdlets: Get-AzureRmManagementPartner, New-AzureRmManagementPartner and Update-AzureRmManagementPartner
 
 ## Version 0.1.0
