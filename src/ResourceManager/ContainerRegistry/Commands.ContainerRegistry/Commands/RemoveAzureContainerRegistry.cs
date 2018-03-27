@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
@@ -21,6 +22,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     public class RemoveAzureContainerRegistry : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -51,7 +53,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             else if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
             {
                 string resourceGroup, registryName, childResourceName;
-                if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
+                if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
                 {
                     WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
                     return;
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (ShouldProcess(Name, "Remove Container Registry"))
             {
                 RegistryClient.DeleteRegistry(ResourceGroupName, Name);
-                if(PassThru)
+                if (PassThru)
                 {
                     WriteObject(true);
                 }
