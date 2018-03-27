@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
                 Expires = secretAttributes.Expires,
                 NotBefore = secretAttributes.NotBefore,
                 ContentType = secretAttributes.ContentType,
-                Tag = secretAttributes.Tags
+                Tag = secretAttributes.Tags,
+                PassThru = true
             };
         }
 
