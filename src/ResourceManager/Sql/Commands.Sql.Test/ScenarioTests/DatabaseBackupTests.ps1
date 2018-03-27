@@ -181,8 +181,6 @@ function Test-NewDatabaseRestorePoint
 			
 		New-AzureRmSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
 
-		Start-Sleep -s 15
-
 		# Get restore points from data warehouse database.
 		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 
@@ -217,8 +215,6 @@ function Test-RemoveDatabaseRestorePoint
 			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
 			
 		New-AzureRmSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
-
-		Start-Sleep -s 15
 
 		# Get restore points from data warehouse database.
 		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
