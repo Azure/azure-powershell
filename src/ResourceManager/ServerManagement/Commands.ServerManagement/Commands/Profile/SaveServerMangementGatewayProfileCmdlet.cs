@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
     using Newtonsoft.Json.Serialization;
 
     [Cmdlet(VerbsData.Save, "AzureRmServerManagementGatewayProfile"), OutputType(typeof(FileInfo))]
+    [Obsolete("The AzureRM.ServerManagement module will be removed from AzureRM in May 2018")]
     public class SaveServerManagementGatewayProfileCmdlet : ServerManagementGatewayProfileCmdlet
     {
         // downloads and saves the gateway profile 

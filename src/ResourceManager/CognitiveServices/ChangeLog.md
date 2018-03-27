@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.9.3
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 0.9.2
 * Update notice.txt and notice message.
 

@@ -24,7 +24,7 @@ Creates new Azure SQL Server DNS Alias that is pointing to specified server.
 
 ### Example 1
 ```
-PS C:\> $serverDNSAlias = NewAzureRmSqlServerDnsAlias -ResourceGroupName rg -ServerName serverName -DnsAliasName aliasName
+PS C:\> $serverDNSAlias = New-AzureRmSqlServerDnsAlias -ResourceGroupName rg -ServerName serverName -DnsAliasName aliasName
 
 ResourceGroupName  ServerName   DnsAliasName
 -----------------  ----------   ------------------
