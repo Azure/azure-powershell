@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-ms.assetid: 1C0AF5B2-7187-4BFA-8DBB-A771FD2E00A4
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabasebackuplongtermretentionpolicy
 schema: 2.0.0
 ---
@@ -44,11 +43,31 @@ Location                               :
 
 This command gets the current version of the long term retention policy for database01
 
+### Example 2: Get the legacy version of the long term retention policy
+```powershell
+PS C:\> Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01
+
+
+ResourceGroupName                      : resourcegroup01
+ServerName                             : server01
+DatabaseName                           : database01
+WeeklyRetention                        :
+MonthlyRetention                       :
+YearlyRetention                        :
+WeekOfYear                             :
+State                                  : Enabled
+RecoveryServicesBackupPolicyResourceId : /subscriptions/4f2b42fc-4fc3-fd41-8ab8-5a382d8b30df/resourceGroups/resourcegroup01/providers/MicrosoftRecoveryServices/vaults/vault01/backupPolicies/policy01
+Location                               : Southeast Asia
+```
+
+This command gets the legacy version of the long term retention policy for database01
+
 ## PARAMETERS
 
 ### -Current
 If not provided, the command returns the legacy Long Term Retention policy information.
 Otherwise, the command returns the current version of the Long Term Retention policy.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -56,7 +75,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -153,7 +172,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

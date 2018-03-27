@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Parameter set for clearing the long term retention V2 policy.
         /// </summary>
-        private const string ClearSet = "Clear";
+        private const string RemovePolicySet = "RemovePolicy";
 
         /// <summary>
         /// Parameter set for setting the legacy long term retention policy.
@@ -81,27 +81,23 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets whether or not to clear the Long Term Retention V2 policy.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ClearSet,
-            Position = 3,
+            ParameterSetName = RemovePolicySet,
             HelpMessage = "If provided, the policy for the database will be cleared.")]
-        public SwitchParameter Clear { get; set; }
+        public SwitchParameter RemovePolicy { get; set; }
 
         /// <summary>
         /// Gets or sets the Weekly Retention.
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = WeeklyRetentionRequiredSet,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [Parameter(Mandatory = false,
             ParameterSetName = MonthlyRetentionRequiredSet,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [Parameter(Mandatory = false,
             ParameterSetName = YearlyRetentionRequiredSet,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Weekly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [ValidateNotNullOrEmpty]
@@ -112,12 +108,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = MonthlyRetentionRequiredSet,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [Parameter(Mandatory = false,
             ParameterSetName = YearlyRetentionRequiredSet,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Monthly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [ValidateNotNullOrEmpty]
@@ -128,7 +122,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = YearlyRetentionRequiredSet,
-            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Yearly Retention. If just a number is passed instead of an ISO 8601 string, days will be assumed as the units. There is a minumum of 7 days and a maximum of 10 years.")]
         [ValidateNotNullOrEmpty]
@@ -139,7 +132,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = YearlyRetentionRequiredSet,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Week of Year, 1 to 52, to save for the Yearly Retention.")]
         [ValidateNotNullOrEmpty]
@@ -185,7 +177,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 YearlyRetention = string.Format(retentionFormat, YearlyRetention);
             }
 
-            if (Clear.IsPresent)
+            if (RemovePolicy.IsPresent)
             {
                 WeeklyRetention = "P0D";
                 MonthlyRetention = "P0D";
