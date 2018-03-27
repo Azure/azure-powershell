@@ -16,15 +16,15 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
-using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet(VerbsData.Update, "AzureKeyVaultSecret",
+        DefaultParameterSetName = DefaultParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultSecret))]
-    public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
+    [Alias("Set-AzureKeyVaultSecretAttribute")]
+    public class UpdateAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -68,48 +68,56 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVaultSecretIdentityItem InputObject { get; set; }
 
         /// <summary>
-        /// Secret value
+        /// Key version.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 2,
-            HelpMessage = "Secret value")]
-        public SecureString SecretValue { get; set; }
+            HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
+        [Alias("SecretVersion")]
+        public string Version { get; set; }
 
         /// <summary>
-        /// Set secret in disabled state if present       
-        /// </summary>        
+        /// If present, enable a secret if value is true. 
+        /// Disable a secret if value is false.
+        /// If not present, no change on current secret enabled/disabled state.
+        /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Set secret in disabled state if present. If not specified, the secret is enabled.")]
-        public SwitchParameter Disable { get; set; }
+            HelpMessage = "If present, enable a secret if value is true. Disable a secret if value is false. If not specified, the existing value of the secret's enabled/disabled state remains unchanged.")]
+        public bool? Enable { get; set; }
 
         /// <summary>
         /// Secret expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The expiration time of a secret in UTC time. If not specified, the secret will not expire.")]
+            HelpMessage = "The expiration time of a secret in UTC time. If not specified, the existing value of the secret's expiration time remains unchanged.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
         /// The UTC time before which secret can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The UTC time before which secret can't be used. If not specified, there is no limitation.")]
+            HelpMessage = "The UTC time before which secret can't be used. If not specified, the existing value of the secret's NotBefore attribute remains unchanged.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
         /// Content type
+        /// TODO: check if content type is null, will it replace the server data
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Secret's content type.")]
+            HelpMessage = "Secret's content type. If not specified, the existing value of the secret's content type remains unchanged. Remove the existing content type value by specifying an empty string.")]
         public string ContentType { get; set; }
 
         /// <summary>
         /// Secret tags
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "A hashtable representing secret tags.")]
+            HelpMessage = "A hashtable representing secret tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false,
+           HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return Secret object.")]
+        public SwitchParameter PassThru { get; set; }
 
         #endregion
 
@@ -120,15 +128,19 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = InputObject.VaultName;
                 Name = InputObject.Name;
             }
-            
-            if (ShouldProcess(Name, Properties.Resources.SetSecret))
+
+            if (ShouldProcess(Name, Properties.Resources.SetSecretAttribute))
             {
-                var secret = DataServiceClient.SetSecret(
+                var secret = DataServiceClient.UpdateSecret(
                 VaultName,
                 Name,
-                SecretValue,
-                new PSKeyVaultSecretAttributes(!Disable.IsPresent, Expires, NotBefore, ContentType, Tag));
-                WriteObject(secret);
+                Version ?? string.Empty,
+                new PSKeyVaultSecretAttributes(Enable, Expires, NotBefore, ContentType, Tag));
+
+                if (PassThru)
+                {
+                    WriteObject(secret);
+                }
             }
         }
     }

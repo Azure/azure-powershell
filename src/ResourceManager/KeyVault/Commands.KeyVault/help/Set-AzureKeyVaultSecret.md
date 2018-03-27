@@ -13,14 +13,7 @@ Creates or updates a secret in a key vault.
 
 ## SYNTAX
 
-### DefaultAttribute (Default)
-```
-Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Default
+### Default (Default)
 ```
 Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <SecureString> [-Disable]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
@@ -30,13 +23,6 @@ Set-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [-SecretValue] <S
 ### InputObject
 ```
 Set-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [-SecretValue] <SecureString> [-Disable]
- [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### InputObjectAttribute
-```
-Set-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-ContentType <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -171,22 +157,7 @@ Indicates that this cmdlet disables a secret.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Default, InputObject
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Enable
-If present, enable a secret if value is true. Disable a secret if value is false. If not specified, the existing value of the secret's enabled/disabled state remains unchanged.
-
-```yaml
-Type: Boolean
-Parameter Sets: DefaultAttribute, InputObjectAttribute
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -218,7 +189,7 @@ Secret object
 
 ```yaml
 Type: PSKeyVaultSecretIdentityItem
-Parameter Sets: InputObject, InputObjectAttribute
+Parameter Sets: InputObject
 Aliases:
 
 Required: True
@@ -235,7 +206,7 @@ your current environment.
 
 ```yaml
 Type: String
-Parameter Sets: DefaultAttribute, Default
+Parameter Sets: Default
 Aliases: SecretName
 
 Required: True
@@ -268,7 +239,7 @@ ConvertTo-SecureString`.
 
 ```yaml
 Type: SecureString
-Parameter Sets: Default, InputObject
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -301,26 +272,11 @@ of a key vault based on the name that this parameter specifies and your current 
 
 ```yaml
 Type: String
-Parameter Sets: DefaultAttribute, Default
+Parameter Sets: Default
 Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Version
-Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.
-
-```yaml
-Type: String
-Parameter Sets: DefaultAttribute, InputObjectAttribute
-Aliases: SecretVersion
-
-Required: False
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

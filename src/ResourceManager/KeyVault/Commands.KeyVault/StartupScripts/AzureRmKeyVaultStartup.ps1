@@ -13,6 +13,8 @@
 # ----------------------------------------------------------------------------------
 
 @{
-    "Set-AzureKeyVaultSecretAttribute" = "Set-AzureKeyVaultSecret";
-	"Set-AzureKeyVaultKey" = "Set-AzureKeyVaultKeyAttribute";
+    "Set-AzureKeyVaultSecretAttribute" = "Update-AzureKeyVaultSecret";
+	"Set-AzureKeyVaultCertificateAttribute" = "Update-AzureKeyVaultCertificate";
+	"Set-AzureKeyVaultKeyAttribute" = "Update-AzureKeyVaultKey";
+	"Set-AzureKeyVaultKey" = "Update-AzureKeyVaultKey";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Set-Alias -Description "AzureAlias" -Scope Global | Out-Null
