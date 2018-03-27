@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.5.1'
+ModuleVersion = '0.5.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.4.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataFactory.dll',
@@ -151,9 +151,14 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add parameter "SetupScriptContainerSasUri" and "Edition" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable custom setup and edition selection functionality
-* Fix credential encryption issue that caused no meaningful error for some encryption operations. 
-* Enable integration runtime to be shared across data factory'
+        ReleaseNotes = '* Updated the ADF .Net SDK to version 0.6.0-preview containing the following changes:
+    - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
+    - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService
+    - Added LinkedService, Dataset, CopySource for SalesforceMarketingCloud
+    - Added support for SecureOutput on all activities 
+    - Added new BatchCount property on ForEach activity which control how many concurrent activities to run
+    - Added new Filter Activity
+    - Added Linked Service Parameters support'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
