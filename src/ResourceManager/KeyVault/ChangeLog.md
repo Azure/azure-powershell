@@ -19,6 +19,9 @@
 -->
 ## Current Release
 * Updated cmdlets to include piping scenarios
+* Add deprecation messages for upcoming breaking change release
+
+## Version 4.2.1
 * Fix issue with Default Resource Group in CloudShell
 
 ## Version 4.2.0

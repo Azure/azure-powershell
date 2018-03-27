@@ -33,16 +33,16 @@ The following cmdlets were affected this release:
 - The -Certificate parameter has become mandatory.
 
 **Set-AzureKeyVaultManagedStorageSasDefinition**
-- The -Parameter parameter has become optional and no longer has a position.
+- The -Parameter parameter no longer has a position.
 
 **Set-AzureKeyVaultCertificateIssuer**
-- The -IssuerProvider has become mandatory.
+- The -IssuerProvider parameter has become mandatory.
 
 **Undo-AzureKeyVaultCertificateRemoval**
 - The output of this cmdlet has changed from CertificateBundle to PSKeyVaultCertificate.
 
 **Undo-AzureRmKeyVaultRemoval**
-- ResourceGroupName has been removed from the InputObject parameter set, and is instead obtained from the ResourceId.
+- ResourceGroupName has been removed from the InputObject parameter set, and is instead obtained from the InputObject parameter's ResourceId property.
 
 **Set-AzureRmKeyVaultAccessPolicy**
 - The "all" permission was removed from "PermissionsToKeys", "PermissionsToSecrets", and "PermissionsToCertificates".
