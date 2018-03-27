@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery alert and nofification settings.
+    ///     Gets details of Azure Site Recovery events in the vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
@@ -41,19 +41,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ResourceId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Fabric Id.
+        ///     Gets or sets the fabricId to filter.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByFabricId, Mandatory = true)]
         public string FabricId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Event name.
+        ///     Gets or sets name of the event for search.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByName, Mandatory = true)]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets server name.
+        ///     Gets or sets affected object friendly name for the search.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByParam)]
         [Parameter(ParameterSetName = ASRParameterSets.ByFabricId)]
@@ -61,14 +61,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string AffectedObjectFriendlyName { get; set; }
 
         /// <summary>
-        ///     Gets or sets the fabric.
+        ///     Gets or sets the fabric  to filter the events by.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByParam)]
         [ValidateNotNullOrEmpty]
         public ASRFabric Fabric { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Severity.
+        ///     Gets or sets the severity to filter on..
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByParam)]
         [Parameter(ParameterSetName = ASRParameterSets.ByFabricId)]
@@ -80,7 +80,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Severity { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Start time.
+        ///     Gets or sets the start time of the search window.
+        ///     Use this parameter to get only those events that have occurred after the specified time.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByParam)]
         [Parameter(ParameterSetName = ASRParameterSets.ByFabricId)]
@@ -88,7 +89,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public DateTime StartTime { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Endtime.
+        ///     Gets or sets the end time of the search window.
+        ///     Use this parameter to get only those events that have occurred before the specified time.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByParam)]
         [Parameter(ParameterSetName = ASRParameterSets.ByFabricId)]

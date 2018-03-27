@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.4
 * Fix parameter sets issue for container registry and azure file volume mount
 * Fix issue with Default Resource Group in CloudShell
 

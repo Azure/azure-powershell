@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Updates the Azure Site Recovery vCenter.
+    ///     Update discovery details for a registered vCenter.
     /// </summary>
     [Cmdlet(
         VerbsData.Update,
@@ -30,9 +30,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {
-
         /// <summary>
-        ///     Gets or sets Resource Id.
+        ///     Gets or sets the resourceId of vCenter to be updated.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByResourceId,
@@ -52,14 +51,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRvCenter InputObject { get; set; }
 
         /// <summary>
-        ///     Gets or sets Run as Account object.
+        ///     Gets or sets vCenter login credentials account.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public ASRRunAsAccount Account { get; set; }
 
         /// <summary>
-        ///     Gets or sets the port number.
+        ///     Gets or sets the TCP port on the vCenter server to use for discovery.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false)]
         [ValidateNotNullOrEmpty]

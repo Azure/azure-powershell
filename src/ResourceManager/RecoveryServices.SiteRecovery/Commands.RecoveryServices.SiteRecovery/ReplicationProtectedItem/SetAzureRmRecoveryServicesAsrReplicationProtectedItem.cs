@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Protection Entity.
+    ///     Sets recovery properties such as target network and virtual machine size for the specified replication protected item.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class SetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets ID of the Virtual Machine.
+        ///     Gets or sets the input object to the cmdlet: The ASR replication protected item object corresponding to the replication protected item to update.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -42,49 +42,57 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRReplicationProtectedItem InputObject { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Azure VM given name
+        ///     Gets or sets the name of the recovery virtual machine that will be created on failover.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Azure VM size
+        ///     Gets or sets the recovery virtual machine size.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string Size { get; set; }
 
         /// <summary>
-        ///     Gets or sets Selected Primary Network interface card Id
+        ///     Gets or sets the NIC of the virtual machine for which this cmdlet sets the recovery network property.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string PrimaryNic { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Azure Network Id
+        ///     Gets or sets the ID of the Azure virtual network to which the protected item should be failed over.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string RecoveryNetworkId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Azure Network Id
+        /// Gets or sets resource ID of the recovery cloud service to failover this virtual machine to.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string RecoveryCloudServiceId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the subnet on the recovery Azure virtual network to which
+        ///     this NIC of the protected item should be connected to on failover.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string RecoveryNicSubnetName { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Nic Static IPAddress
+        ///     Gets or sets the static IP address that should be assigned to primary NIC on recovery.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string RecoveryNicStaticIPAddress { get; set; }
 
         /// <summary>
-        ///     Gets or sets Selection Type for Nic
+        ///     Gets or sets the network interface card (NIC) properties set by user or set by default.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -94,7 +102,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string NicSelectionType { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Resource ID
+        ///     Gets or sets i=ID of the Azure resource group in the recovery region in which 
+        ///     the protected item will be recovered on failover.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -112,14 +121,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string LicenseType { get; set; }
 
         /// <summary>
-        ///     Gets or sets the target availability set ARM Id (for V2).
+        ///     Gets or sets the availability set for replication protected item after failover.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string RecoveryAvailabilitySet { get; set; }
 
         /// <summary>
-        ///     Gets or sets the managed Disk (for V2).
+        ///     Gets or sets if the Azure virtual machine that is created on failover should use managed disks.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -153,7 +162,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 // Check for Replication Provider type HyperVReplicaAzure/InMageAzureV2
                 if (!(provider is HyperVReplicaAzureReplicationDetails) &&
-                    !(provider is InMageAzureV2ReplicationDetails))
+                    !(provider is InMageAzureV2ReplicationDetails) &&
+                    !(provider is A2AReplicationDetails))
                 {
                     this.WriteWarning(
                         Resources.UnsupportedReplicationProvidedForUpdateVmProperties);
@@ -167,6 +177,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.IsNullOrEmpty(this.RecoveryNetworkId) &&
                     this.UseManagedDisk == null &&
                     string.IsNullOrEmpty(this.RecoveryAvailabilitySet) &&
+                    string.IsNullOrEmpty(this.RecoveryCloudServiceId) &&
                     string.IsNullOrEmpty(this.RecoveryResourceGroupId) &&
                     string.IsNullOrEmpty(this.LicenseType))
                 {
@@ -187,6 +198,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 var vmRecoveryNetworkId = this.RecoveryNetworkId;
                 var licenseType = this.LicenseType;
                 var recoveryResourceGroupId = this.RecoveryResourceGroupId;
+                var recoveryCloudServiceId = this.RecoveryCloudServiceId;
                 var useManagedDisk = this.UseManagedDisk;
                 var availabilitySetId = this.RecoveryAvailabilitySet;
                 var vMNicInputDetailsList = new List<VMNicInputDetails>();
@@ -216,7 +228,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                     if (string.IsNullOrEmpty(this.LicenseType))
                     {
-                        //licenseType = providerSpecificDetails.LicenseType;
+                        licenseType = providerSpecificDetails.LicenseType;
                     }
 
                     if (string.IsNullOrEmpty(this.RecoveryAvailabilitySet))
@@ -285,7 +297,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                     if (string.IsNullOrEmpty(this.LicenseType))
                     {
-                        //licenseType = providerSpecificDetails.LicenseType;
+                        licenseType = providerSpecificDetails.LicenseType;
                     }
 
                     if (string.IsNullOrEmpty(this.RecoveryAvailabilitySet))
@@ -326,6 +338,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 RecoveryAzureV2ResourceGroupId = recoveryResourceGroupId,
                                 UseManagedDisks = useManagedDisk
                             };
+                    }
+                    vMNicInputDetailsList = getNicListToUpdate(providerSpecificDetails.VmNics);
+                }
+                else if (provider is A2AReplicationDetails)
+                {
+                    A2AReplicationDetails providerSpecificDetails = (A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails;
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryResourceGroupId)))
+                    {
+                        recoveryResourceGroupId =
+                            providerSpecificDetails.RecoveryAzureResourceGroupId;
+                    }
+
+                    if (!this.MyInvocation.BoundParameters.ContainsKey(
+                            Utilities.GetMemberName(() => this.RecoveryCloudServiceId)))
+                    {
+                        recoveryCloudServiceId =
+                            providerSpecificDetails.RecoveryCloudService;
+                    }
+
+                    providerSpecificInput = new A2AUpdateReplicationProtectedItemInput()
+                    {
+                        RecoveryCloudServiceId = this.RecoveryCloudServiceId,
+                        RecoveryResourceGroupId = this.RecoveryResourceGroupId
+                    };
+                    if (string.IsNullOrEmpty(this.RecoveryNetworkId))
+                    {
+                        vmRecoveryNetworkId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
                     }
                     vMNicInputDetailsList = getNicListToUpdate(providerSpecificDetails.VmNics);
                 }
@@ -408,7 +449,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 }
             }
 
-            if (!nicFoundToBeUpdated) {
+            if (!nicFoundToBeUpdated)
+            {
                 throw new PSInvalidOperationException(Resources.NicNotFoundInVMForUpdateVmProperties);
             }
             return vMNicInputDetailsList;

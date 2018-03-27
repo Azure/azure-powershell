@@ -26,22 +26,14 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateContact,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<KeyVaultCertificateContact>))]
+    [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
     public class RemoveAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
-        #region Parameter Set Names
-
-        private const string ByVaultNameParameterSet = "VaultName";
-
-        #endregion
-
         /// <summary>
         /// VaultName
         /// </summary>
         [Parameter(Mandatory = true,
-                   ParameterSetName = ByVaultNameParameterSet,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
@@ -56,17 +48,18 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the email address of the contact.")]
         [ValidateNotNullOrEmpty]
-        public string EmailAddress { get; set; }
+        public string[] EmailAddress { get; set; }
 
         /// <summary>
         /// PassThru parameter
         /// </summary>
-        [Parameter(HelpMessage = "This cmdlet does not return an object by default. If this switch is specified, it returns the contact object.")]
+        [Parameter(Mandatory = false,
+                   HelpMessage = "This cmdlet does not return an object by default. If this switch is specified, it returns the contact object.")]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(EmailAddress, Properties.Resources.RemoveCertificateContact))
+            if (ShouldProcess(VaultName, Properties.Resources.RemoveCertificateContact))
             {
                 Contacts existingContacts;
 
@@ -96,11 +89,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                     existingContactList = new List<Contact>(existingContacts.ContactList);
                 }
 
-                var nContactsRemoved = existingContactList.RemoveAll(contact => string.Compare(contact.EmailAddress, EmailAddress, StringComparison.OrdinalIgnoreCase) == 0);
-
-                if (nContactsRemoved == 0)
+                foreach (var email in EmailAddress)
                 {
-                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Provided email address '{0}' is not found.", EmailAddress));
+                    existingContactList.RemoveAll(contact => string.Compare(contact.EmailAddress, email, StringComparison.OrdinalIgnoreCase) == 0);
                 }
 
                 if (existingContactList.Count == 0)
@@ -112,7 +103,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(KeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts));
+                    this.WriteObject(PSKeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts, VaultName));
                 }
             }
         }
