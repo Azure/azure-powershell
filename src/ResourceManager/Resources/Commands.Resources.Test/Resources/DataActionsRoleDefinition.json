@@ -1,0 +1,13 @@
+{
+    "Name": "CustomRole Tests Role New",
+    "Description": "Test role",
+    "Actions": [],
+    "NotActions": [],
+    "DataActions": [
+		"Microsoft.Storage/storageAccounts/blobServices/containers/blobs/*"
+    ],
+    "NotDataActions": [
+		"Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+    ],
+    "AssignableScopes": ["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"]
+}

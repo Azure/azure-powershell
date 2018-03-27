@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with cleaning up scripts in build
+
+## Version 4.2.0
+* Fixed issue with importing aliases
 
 ## Version 4.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

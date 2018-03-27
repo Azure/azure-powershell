@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanReceiveAllStreams()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanSupportShouldProcess()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanSupportShouldContinue()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleCmdletException()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleCmdletStop()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleShouldProcessExceptionForConfirm()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleShouldProcessExceptionForWhatIf()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleShouldContinueException()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void JobCopiesCmdletParameterSet()
         {
             Mock<ICommandRuntime> mock = new Mock<ICommandRuntime>();

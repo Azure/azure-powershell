@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = '.\AzureRM.Netcore.psm1'
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -54,6 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'AzureRM.Compute.Netcore'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'AzureRM.KeyVault.Netcore'; RequiredVersion = '0.10.0'; }, 
+               @{ModuleName = 'AzureRM.Kubernetes.Netcore'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'AzureRM.Network.Netcore'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'AzureRM.Resources.Netcore'; RequiredVersion = '0.10.0'; }, 
                @{ModuleName = 'AzureRM.Storage.Netcore'; RequiredVersion = '0.10.0'; }, 

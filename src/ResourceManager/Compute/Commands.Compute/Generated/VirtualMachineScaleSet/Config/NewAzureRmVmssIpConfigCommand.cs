@@ -70,8 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] LoadBalancerInboundNatPoolsId { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            Mandatory = false)]
         public SwitchParameter Primary { get; set; }
 
         [Parameter(
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var vIpConfigurations = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration();
 
             vIpConfigurations.Name = this.Name;
-            vIpConfigurations.Primary = this.Primary;
+            vIpConfigurations.Primary = this.Primary.IsPresent;
             vIpConfigurations.PrivateIPAddressVersion = this.PrivateIPAddressVersion;
             vIpConfigurations.Id = this.Id;
 

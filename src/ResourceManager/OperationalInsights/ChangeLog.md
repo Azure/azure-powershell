@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed issue with cleaning up scripts in build
+
+## Version 4.3.0
+* Fixed issue with importing aliases
 
 ## Version 4.2.0
 * Added support for V2 API querying via Invoke-AzureRmOperationalInsightsQuery. See [https://dev.loganalytics.io/](https://dev.loganalytics.io/) for more info on the new API.
