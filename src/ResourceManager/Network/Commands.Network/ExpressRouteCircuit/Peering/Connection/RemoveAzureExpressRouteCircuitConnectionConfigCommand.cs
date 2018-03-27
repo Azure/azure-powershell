@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.ExpressRouteCircuit);
 
             // TODO  : To be removed later once NRP changes are in
-            NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.Delete(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, "AzurePrivatePeering", this.Name();
+            NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.Delete(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, "AzurePrivatePeering", this.Name);
         }
     }
 }
