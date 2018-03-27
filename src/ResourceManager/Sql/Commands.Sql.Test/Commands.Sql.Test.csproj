@@ -573,6 +573,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseBackupTests\TestListDatabaseRestorePoints.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseBackupTests\TestNewDatabaseRestorePoint.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseBackupTests\TestRemoveDatabaseRestorePoint.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.DatabaseBackupTests\TestRestoreDeletedDatabaseBackup.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
