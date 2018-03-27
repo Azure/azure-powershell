@@ -177,7 +177,28 @@ function Test-InvalidGuidInput
 	}
 	catch [System.Management.Automation.PSArgumentException]
 	{
+		Assert-AreEqual $_.Exception.Message "ReservationOrderId parameter should be a GUID"
 	}
+
+	try
+	{
+		$reservations = Get-AzureRmReservationCatalog -SubscriptionId $invalidInput
+	}
+	catch [System.Management.Automation.PSArgumentException]
+	{
+		Assert-AreEqual $_.Exception.Message "SubscriptionId parameter should be a GUID"
+	}
+
+	try
+	{
+		$reservations = Get-AzureRmReservationHistory -ReservationOrderId $reservationOrderId -ReservationId $invalidInput
+	}
+	catch [System.Management.Automation.PSArgumentException]
+	{
+		Assert-AreEqual $_.Exception.Message "ReservationId parameter should be a GUID"
+	}
+
+
 }
 
 <#
