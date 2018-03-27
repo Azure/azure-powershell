@@ -49,12 +49,8 @@ function Get-TargetModules
         {
             $packageFolder = "$PSScriptRoot\..\src\Stack"
         }
-    
-        if($isNetCore -eq "true") {
-            $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager"
-        } else {
-            $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-        }
+
+        $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
     
         if ((($Scope -eq 'All') -or $PublishLocal)) {
           if($isNetCore -eq "false") {
