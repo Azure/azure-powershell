@@ -1,7 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-ms.assetid: 196E1AC9-A1E2-47D2-A3C1-535EFE439EE8
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy
 schema: 2.0.0
 ---
@@ -27,11 +26,11 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -State <String> -ResourceId 
  [-Confirm] [<CommonParameters>]
 ```
 
-### Clear
+### RemovePolicy
 ```
-Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [-Clear] [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy [-RemovePolicy] [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### MonthlyRetentionRequired
@@ -131,9 +130,9 @@ Location                               :
 
 This sets the long term retention policy of database01 to save each full backup for 14 days, the first full backup of each month for 24 weeks, and the full backup taken on the 26th week of the year for 10 years
 
-### Example 4: Clear the long term retention policy
+### Example 4: Remove the long term retention policy
 ```powershell
-PS C:\> Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -Clear
+PS C:\> Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -RemovePolicy
 
 
 ResourceGroupName                      : resourcegroup01
@@ -148,9 +147,10 @@ RecoveryServicesBackupPolicyResourceId :
 Location                               :
 ```
 
-Removes the policy for database01 so it no longer saves any long term retention backups. This will not affect backups that have already been taken
+Removes the policy for database01 so it no longer saves any long term retention backups.
+This will not affect backups that have already been taken
 
-### Example 4: Clear the long term retention policy
+### Example 4: Remove the long term retention policy
 ```powershell
 PS C:\> Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 -WeeklyRetention P0D
 
@@ -167,24 +167,10 @@ RecoveryServicesBackupPolicyResourceId :
 Location                               :
 ```
 
-This is another way of removing the policy for database01 so it no longer saves any long term retention backups. This will not affect backups that have already been taken
+This is another way of removing the policy for database01 so it no longer saves any long term retention backups.
+This will not affect backups that have already been taken
 
 ## PARAMETERS
-
-### -Clear
-If provided, the policy for the database will be cleared.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Clear
-Aliases:
-
-Required: True
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DatabaseName
 The name of the Azure SQL Database to use.
@@ -242,6 +228,21 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RemovePolicy
+If provided, the policy for the database will be removed.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: RemovePolicy
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -398,7 +399,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

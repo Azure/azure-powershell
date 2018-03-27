@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = RemoveBackupDefaultSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The location of the backups' source server.")]
         [ValidateNotNullOrEmpty]
@@ -59,7 +58,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = RemoveBackupDefaultSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the backup is under.")]
         [ValidateNotNullOrEmpty]
@@ -70,11 +68,31 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = RemoveBackupDefaultSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database the backup is from.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the LTR Backup object to remove.
+        /// </summary>
+        [Parameter(ParameterSetName = RemoveBackupByInputObjectSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The Database Long Term Retention Backup object to remove.")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource ID of the LTR Backup to remove.
+        /// </summary>
+        [Parameter(ParameterSetName = RemoveBackupByResourceIdSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Resource ID of the Database Long Term Retention Backup to remove.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the backup name.
@@ -86,28 +104,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "The name of the backup.")]
         [ValidateNotNullOrEmpty]
         public string BackupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the LTR Backup object to remove.
-        /// </summary>
-        [Parameter(ParameterSetName = RemoveBackupByInputObjectSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "The Database Long Term Retention Backup object to remove.")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseLongTermRetentionBackupModel InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource ID of the LTR Backup to remove.
-        /// </summary>
-        [Parameter(ParameterSetName = RemoveBackupByResourceIdSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "The Resource ID of the Database Long Term Retention Backup to remove.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
