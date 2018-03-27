@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Gateway
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmServerManagementGateway"), OutputType(typeof(Gateway))]
+    [Obsolete("The AzureRM.ServerManagement module will be removed from AzureRM in May 2018")]
     public class NewServerManagementGatewayCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
