@@ -298,7 +298,7 @@
     <Delete Files="@(ExtraPsdFiles->'%(FullPath)')"/>
 
     <!-- Update module manifests. -->
-    <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) AzureRM.Netcore -Profile Latest &quot; " Condition="'$(Latest)' == 'true' and '$(CodeSign)' == 'false'" ContinueOnError="false" />
+    <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) AzureRM.Netcore -Profile Latest &quot; " Condition="'$(Latest)' == 'true'" ContinueOnError="false" />
 
      <!-- Generate the help. -->
     <Exec Command="&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -GenerateMamlHelp -BuildConfig $(Configuration) &quot;" ContinueOnError="true" Condition=" '$(SkipHelp)' == 'false' and '$(Latest)' == 'true'"/>
@@ -372,8 +372,8 @@
         ContinueOnError="false"
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
 
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) $(Scope) -Profile Latest &quot; " Condition="'$(Latest)' == 'true' "/>    
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) $(Scope) -Profile Stack &quot; " Condition="'$(Stack)' == 'true' "/> 
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) $(Scope) -Profile Latest &quot; " Condition="'$(Latest)' == 'true' and '$(NetCore)' == 'false' "/>    
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) $(Scope) -Profile Stack &quot; " Condition="'$(Stack)' == 'true' and '$(NetCore)' == 'false' "/> 
 
     <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
