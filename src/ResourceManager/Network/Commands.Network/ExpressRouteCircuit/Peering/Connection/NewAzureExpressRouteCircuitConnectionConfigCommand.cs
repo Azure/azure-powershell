@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitConnectionConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCircuitConnection))]
+    [Cmdlet(VerbsCommon.New, "AzureRmExpressRouteCircuitConnectionConfig", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCircuitConnection))]
     public class NewAzureExpressRouteCircuitConnectionConfigCommand : AzureExpressRouteCircuitConnectionConfigBase
     {
         [Parameter(
