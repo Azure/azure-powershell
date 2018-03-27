@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.2.1
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 4.2.0
 * Fix credential encryption issue that caused no meaningful error for some encryption operations
 * Enable integration runtime to be shared across data factory

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     static class ModelExtensions
     {
 
-        public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
+        public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return sb.ToString();
         }
 
-        public static string ConstructAccessPoliciesList(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
+        public static string ConstructAccessPoliciesList(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 
