@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Session
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmServerManagementSession"), OutputType(typeof(Session))]
+    [Obsolete("The AzureRM.ServerManagement module will be removed from AzureRM in May 2018")]
     public class NewServerManagementSessionCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",

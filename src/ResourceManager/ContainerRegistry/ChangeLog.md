@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Decouple reliance on Commands.Resources.Rest and ARM/Storage SDKs.
 
 ## Version 1.0.3
 * Fix issue with Default Resource Group in CloudShell
