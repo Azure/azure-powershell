@@ -354,7 +354,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>Restored database object</returns>
         public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, string resourceId, AzureSqlDatabaseModel model)
         {
-            GenericResource database = GetCurrentResourcesClient().Resources.CreateOrUpdate(resourceGroupName, "Microsoft.Sql", string.Format("servers/{0}", serverName), "databases", databaseName, "2017-03-01-preview", new GenericResource
+            GenericResource resource = new GenericResource
             {
                 Location = model.Location,
                 Properties = new Dictionary<string, object>
@@ -362,9 +362,55 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     { "LongTermRetentionBackupResourceId", resourceId },
                     { "CreateMode", model.CreateMode },
                     { "ElasticPoolName", model.ElasticPoolName },
-                },
-                Sku = new Sku(model.RequestedServiceObjectiveName, model.Edition == Database.Model.DatabaseEdition.None ? null : model.Edition.ToString())
-            });
+                }
+            };
+
+            Sku sku = new Sku();
+            if (!string.IsNullOrWhiteSpace(model.RequestedServiceObjectiveName))
+            {
+                sku.Name = model.RequestedServiceObjectiveName;
+            }
+
+            if (model.Edition != Database.Model.DatabaseEdition.None)
+            {
+                sku.Tier = model.Edition.ToString();
+                if (string.IsNullOrWhiteSpace(model.RequestedServiceObjectiveName))
+                {
+                    // If the customer only provided Edition, map to the default SLO.
+                    //
+                    switch (model.Edition)
+                    {
+                        case Database.Model.DatabaseEdition.Free:
+                            sku.Name = "Free";
+                            break;
+                        case Database.Model.DatabaseEdition.Basic:
+                            sku.Name = "Basic";
+                            break;
+                        case Database.Model.DatabaseEdition.Standard:
+                            sku.Name = "S0";
+                            break;
+                        case Database.Model.DatabaseEdition.Premium:
+                            sku.Name = "P1";
+                            break;
+                        case Database.Model.DatabaseEdition.PremiumRS:
+                            sku.Name = "PRS1";
+                            break;
+                        case Database.Model.DatabaseEdition.DataWarehouse:
+                            sku.Name = "DW100";
+                            break;
+                        case Database.Model.DatabaseEdition.Stretch:
+                            sku.Name = "DS100";
+                            break;
+                    }
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(sku.Name) || !string.IsNullOrWhiteSpace(sku.Tier))
+            {
+                resource.Sku = sku;
+            }
+
+            GenericResource database = GetCurrentResourcesClient().Resources.CreateOrUpdate(resourceGroupName, "Microsoft.Sql", string.Format("servers/{0}", serverName), "databases", databaseName, "2017-03-01-preview", resource);
 
             if (database != null)
             {
