@@ -25,7 +25,7 @@ Disable-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Disable-AzureRmCdnCustomDomain** cmdlet disables the secured HTTPS delivery of a CDN custom domain.
 
 ## EXAMPLES
 

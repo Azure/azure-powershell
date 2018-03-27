@@ -18,7 +18,7 @@ Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl <String> [-DefaultProfile <IAzureCo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Confirm-AzureRmCdnEndpointProbeURL** cmdlet confirms if the probe URL provided can be used for dynamic site acceleration.
 
 ## EXAMPLES
 

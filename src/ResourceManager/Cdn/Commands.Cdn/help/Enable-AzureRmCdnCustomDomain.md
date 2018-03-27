@@ -25,7 +25,7 @@ Enable-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Enable-AzureRmCdnCustomDomain** cmdlet enables the secured HTTPS delivery of a CDN custom domain.
 
 ## EXAMPLES
 

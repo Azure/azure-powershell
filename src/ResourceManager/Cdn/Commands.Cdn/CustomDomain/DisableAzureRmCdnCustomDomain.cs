@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The custom domain object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
-        public PSCustomDomain CdnCustomDomain { get; set; }
+        public PSCustomDomain InputObject { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
