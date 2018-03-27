@@ -27,7 +27,7 @@ Update-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <
 ```
 
 ## DESCRIPTION
-The **Set-AzureKeyVaultKeyAttribute** cmdlet updates the editable attributes of a key in a key vault.
+The **Update-AzureKeyVaultKey** cmdlet updates the editable attributes of a key in a key vault.
 
 ## EXAMPLES
 
