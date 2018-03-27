@@ -18,11 +18,19 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultSecretRemoval",
-    SupportsShouldProcess = true,
-    HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(Secret))]
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = DefaultParameterSet,
+        HelpUri = Constants.KeyVaultHelpUri)]
+    [OutputType(typeof(PSKeyVaultSecret))]
     public class UndoAzureKeyVaultSecretRemoval : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string DefaultParameterSet = "Default";
+        private const string InputObjectParameterSet = "InputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -30,6 +38,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
@@ -40,19 +49,37 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
+            ParameterSetName = DefaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Deleted secret object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = InputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Deleted secret object")]
+        [ValidateNotNullOrEmpty]
+        public PSDeletedKeyVaultSecretIdentityItem InputObject { get; set; }
+
         #endregion
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                Name = InputObject.Name;
+            }
+
             if (ShouldProcess(Name, Properties.Resources.RecoverSecret))
             {
-                Secret secret = DataServiceClient.RecoverSecret(VaultName, Name);
+                PSKeyVaultSecret secret = DataServiceClient.RecoverSecret(VaultName, Name);
 
                 WriteObject(secret);
             }

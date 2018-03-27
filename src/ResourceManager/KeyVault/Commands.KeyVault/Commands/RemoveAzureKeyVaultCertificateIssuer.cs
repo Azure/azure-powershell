@@ -23,12 +23,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         ConfirmImpact = ConfirmImpact.High,
         DefaultParameterSetName = DefaultParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateIssuer))]
+    [OutputType(typeof(PSKeyVaultCertificateIssuer))]
     public class RemoveAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string DefaultParameterSet = "Default";
+        private const string InputObjectParameterSet = "InputObject";
 
         #endregion
 
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
+                   ParameterSetName = DefaultParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
@@ -49,11 +51,23 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
+                   ParameterSetName = DefaultParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Certificate Issuer Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = InputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Certificate Issuer Object")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultCertificateIssuerIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -70,9 +84,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter PassThru { get; set; }
 
         #endregion
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            KeyVaultCertificateIssuer issuer = null;
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                Name = InputObject.Name;
+            }
+
+            PSKeyVaultCertificateIssuer issuer = null;
 
             ConfirmAction(
                 Force.IsPresent,
@@ -85,7 +105,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     "Remove certificate issuer '{0}'",
                     Name),
                 Name,
-                () => { issuer = KeyVaultCertificateIssuer.FromIssuer(this.DataServiceClient.DeleteCertificateIssuer(VaultName, Name)); });
+                () => { issuer = PSKeyVaultCertificateIssuer.FromIssuer(this.DataServiceClient.DeleteCertificateIssuer(VaultName, Name)); });
 
             if (PassThru)
             {

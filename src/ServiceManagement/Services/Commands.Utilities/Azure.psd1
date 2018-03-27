@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.1.1'
+ModuleVersion = '5.1.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '4.1.0'; })
+RequiredModules = @(@{ModuleName = 'Azure.Storage'; ModuleVersion = '4.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -532,7 +532,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Removed all RemoteApp cmdlets'
+        ReleaseNotes = '* Updated Diagnostics Agent configuration schema for Azure Monitor sink support.'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
