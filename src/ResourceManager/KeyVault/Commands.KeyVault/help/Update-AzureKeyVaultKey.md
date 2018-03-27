@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/update-azurekeyvaultkey
 schema: 2.0.0
 ---
 
 # Update-AzureKeyVaultKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the attributes of a key in a key vault.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureKeyVaultKeyAttribute** cmdlet updates the editable attributes of a key in a key vault.
 
 ## EXAMPLES
 

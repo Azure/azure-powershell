@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/update-azurekeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -187,8 +187,8 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Secret version.
-Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.
+Certificate version.
+Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment, certificate name and certificate version.
 
 ```yaml
 Type: String
