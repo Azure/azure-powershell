@@ -38,9 +38,6 @@ The following cmdlets were affected this release:
 **Set-AzureKeyVaultCertificateIssuer**
 - The -IssuerProvider has become mandatory.
 
-**Set-AzureKeyVaultSecretAttribute**
-- This cmdlet will be combined with Set-AzureKeyVaultSecret and the -PassThru will be removed.
-
 **Undo-AzureKeyVaultCertificateRemoval**
 - The output of this cmdlet has changed from CertificateBundle to PSKeyVaultCertificate.
 
@@ -80,6 +77,7 @@ The following cmdlets were affected this release:
     - Set-AzureKeyVaultCertificatePolicy
     - Set-AzureKeyVaultKeyAttribute
     - Set-AzureKeyVaultSecret
+    - Set-AzureKeyVaultSecretAttribute
     - Stop-AzureKeyVaultCertificateOperation
     - Undo-AzureKeyVaultCertificateRemoval
     - Undo-AzureKeyVaultKeyRemoval
