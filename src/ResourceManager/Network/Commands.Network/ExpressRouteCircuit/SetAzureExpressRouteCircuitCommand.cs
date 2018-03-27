@@ -41,11 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.IsExpressRouteCircuitPresent(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-            }
-
-            // Map to the sdk object
-            var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(this.ExpressRouteCircuit);
-            circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCircuit.Tag, validate: true);          
+            }   
 
             // TODO To be removed later once NRP fix is checked in.
             var peering = this.ExpressRouteCircuit.Peerings.First(
@@ -67,11 +63,15 @@ namespace Microsoft.Azure.Commands.Network
             var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
             WriteObject(getExpressRouteCircuit); // To be removed end
 
-            // Execute the Create ExpressRouteCircuit call
-            this.ExpressRouteCircuitClient.CreateOrUpdate(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, circuitModel);
+            // Map to the sdk object
+            var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(getExpressRouteCircuit);
+            circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(getExpressRouteCircuit.Tag, validate: true);
 
-            getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
-            WriteObject(getExpressRouteCircuit);
+            // Execute the Create ExpressRouteCircuit call
+            this.ExpressRouteCircuitClient.CreateOrUpdate(getExpressRouteCircuit.ResourceGroupName, getExpressRouteCircuit.Name, circuitModel);
+
+            var updatedExpressRouteCircuit = this.GetExpressRouteCircuit(getExpressRouteCircuit.ResourceGroupName, getExpressRouteCircuit.Name);
+            WriteObject(updatedExpressRouteCircuit);
         }
     }
 }

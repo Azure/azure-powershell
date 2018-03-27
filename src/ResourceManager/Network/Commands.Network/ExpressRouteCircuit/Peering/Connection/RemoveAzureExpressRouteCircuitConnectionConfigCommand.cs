@@ -17,11 +17,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using System.Management.Automation;
 using System;
+using Microsoft.Azure.Management.Network;
+
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmExpressRouteCircuitConnectionConfig"), OutputType(typeof(PSExpressRouteCircuitConnection))]
-    public class RemoveAzureExpressRouteCircuitConnectionConfigCommand : NetworkBaseCmdlet
+    public class RemoveAzureExpressRouteCircuitConnectionConfigCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -61,8 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(this.ExpressRouteCircuit);
 
             // TODO  : To be removed later once NRP changes are in
-            NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.DeleteWithHttpMessagesAsync(
-                this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, "AzurePrivatePeering", this.Name);
+            NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.Delete(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, "AzurePrivatePeering", this.Name();
         }
     }
 }

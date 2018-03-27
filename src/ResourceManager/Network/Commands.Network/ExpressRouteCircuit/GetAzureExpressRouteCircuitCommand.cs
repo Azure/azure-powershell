@@ -49,31 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var circuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
 
-                WriteObject(circuit);
-
-                // TODO  : To be removed later once NRP fixes are checked in
-                var peering = circuit.Peerings.First(
-                            resource =>
-                            string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
-
-                if (peering != null)
-                {
-                   
-                    if (peering.Connections.Any())
-                    {
-                        var connection = peering.Connections.First();
-
-                        if (connection != null)
-                        {
-                            // Retrieve from NRP Circuit Connection
-                            var circuitconnection = NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.GetWithHttpMessagesAsync(
-                                this.ResourceGroupName, this.Name, "AzurePrivatePeering", connection.Name);
-                            var psExpressRouteCircuitConnection = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitConnection>(circuitconnection);
-                            WriteObject(circuitconnection);
-                        }                       
-                    }
-                } // To be removed end
-                
+                WriteObject(circuit);                
             }
             else
             {
