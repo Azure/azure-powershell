@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             if (!string.IsNullOrEmpty(idFromServer))
             {
-                var resourceIdentifier = new ResourceIdentifier(idFromServer);                
+                var resourceIdentifier = new ResourceIdentifier(idFromServer);
 
                 return resourceIdentifier.ResourceGroupName;
             }
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             if (!string.IsNullOrEmpty(storageAccountIdFromServer))
             {
                 var resourceIdentifier = new ResourceIdentifier(storageAccountIdFromServer);
-                if(string.Equals(resourceIdentifier.ResourceType, StorageResourceTypeName, StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(resourceIdentifier.ResourceType, StorageResourceTypeName, StringComparison.OrdinalIgnoreCase))
                 {
                     return resourceIdentifier.ResourceName;
                 }
@@ -85,11 +86,11 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     registryName = resourceIdentifier.ResourceName;
                     parsed = true;
                 }
-                else if(string.Equals(resourceIdentifier.ResourceType, RegistryReplicationResourceTypeName, StringComparison.OrdinalIgnoreCase) ||
+                else if (string.Equals(resourceIdentifier.ResourceType, RegistryReplicationResourceTypeName, StringComparison.OrdinalIgnoreCase) ||
                     string.Equals(resourceIdentifier.ResourceType, RegistryWebhookResourceTypeName, StringComparison.OrdinalIgnoreCase))
                 {
                     childResourceName = resourceIdentifier.ResourceName;
-                    registryName = resourceIdentifier.ParentResource.Split(new char[] { '/'})[1];
+                    registryName = resourceIdentifier.ParentResource.Split(new char[] { '/' })[1];
                     parsed = true;
                 }
             }
