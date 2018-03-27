@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Update attribute of a key vault key.
     /// </summary>
-    [Alias("Set-AzureKeyVaultKey")]
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute",
+    [Alias("Set-AzureKeyVaultKey", "Set-AzureKeyVaultKeyAttribute")]
+    [Cmdlet(VerbsData.Update, "AzureKeyVaultKey",
         SupportsShouldProcess = true, 
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
-    public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
+    public class UpdateAzureKeyVaultKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
