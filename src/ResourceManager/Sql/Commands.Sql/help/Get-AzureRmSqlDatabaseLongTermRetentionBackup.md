@@ -12,57 +12,50 @@ Gets one or more long term retention backups.
 
 ## SYNTAX
 
-### LocationName (Default)
+### Location (Default)
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup [-LocationName] <String> [-OnlyLatestPerDatabase]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-OnlyLatestPerDatabase]
  [[-DatabaseState] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ServerName
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup [-LocationName] <String> [-ServerName] <String>
- [-OnlyLatestPerDatabase] [[-DatabaseState] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### DatabaseName
-```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup [-LocationName] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-OnlyLatestPerDatabase] [[-DatabaseState] <String>]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ServerName] <String>
+ [[-DatabaseName] <String>] [-OnlyLatestPerDatabase] [[-DatabaseState] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BackupName
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup [-LocationName] <String> [-ServerName] <String>
+Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ServerName] <String>
  [-DatabaseName] <String> [-BackupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupByResourceId
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup [-LocationName] <String> [-BackupName] <String>
- [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ResourceId] <String> [-BackupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupsByResourceId
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup [-LocationName] <String> [-OnlyLatestPerDatabase]
- [[-DatabaseState] <String>] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ResourceId] <String>
+ [-OnlyLatestPerDatabase] [[-DatabaseState] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupByInputObject
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup [-BackupName] <String> [-InputObject] <AzureSqlDatabaseModel>
+Get-AzureRmSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseModel> [-BackupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetBackupsByInputObject
 ```
-Get-AzureRmSqlDatabaseLongTermRetentionBackup [-OnlyLatestPerDatabase] [[-DatabaseState] <String>]
- [-InputObject] <AzureSqlDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Get-AzureRmSqlDatabaseLongTermRetentionBackup [-InputObject] <AzureSqlDatabaseModel> [-OnlyLatestPerDatabase]
+ [[-DatabaseState] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -73,7 +66,7 @@ The **Get-AzureRmSqlDatabaseLongTermRetentionBackup** cmdlet gets all long term 
 
 ### Example 1: Get all backups for a location
 ```powershell
-PS C:\> Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName northeurope
+PS C:\> Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location northeurope
 
 
 BackupExpirationTime : 3/22/2018 11:43:18 PM
@@ -81,7 +74,7 @@ BackupName           : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 BackupTime           : 3/15/2018 11:43:18 PM
 DatabaseName         : database02
 DatabaseDeletionTime : 3/18/2018 4:36:00 PM
-LocationName         : northeurope
+Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 ServerName           : server02
 ServerCreateTime     : 2/28/2018 12:12:19 AM
@@ -91,7 +84,7 @@ BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
-LocationName         : northeurope
+Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
@@ -101,7 +94,7 @@ This command gets all long term retention backups for all databases (which may b
 
 ### Example 2: Get a specific long term retention backup
 ```powershell
-PS C:\> Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000"
+PS C:\> Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000"
 
 
 BackupExpirationTime : 3/22/2018 5:50:55 AM
@@ -109,7 +102,7 @@ BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
-LocationName         : northeurope
+Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
@@ -127,7 +120,7 @@ BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
-LocationName         : northeurope
+Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
@@ -157,13 +150,25 @@ The name of the Azure SQL Database the backup is from.
 
 ```yaml
 Type: String
-Parameter Sets: DatabaseName, BackupName
+Parameter Sets: ServerName
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: BackupName
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -173,7 +178,7 @@ Defaults to All
 
 ```yaml
 Type: String
-Parameter Sets: LocationName, ServerName, DatabaseName, GetBackupsByResourceId, GetBackupsByInputObject
+Parameter Sets: Location, ServerName, GetBackupsByResourceId, GetBackupsByInputObject
 Aliases:
 Accepted values: All, Deleted, Live
 
@@ -214,18 +219,16 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LocationName
-The location of the backups' source server.
-
-```yaml
+### -Location
+The location of the backups' source server.```yaml
 Type: String
-Parameter Sets: LocationName, ServerName, DatabaseName, BackupName, GetBackupByResourceId, GetBackupsByResourceId
+Parameter Sets: Location, ServerName, BackupName, GetBackupByResourceId, GetBackupsByResourceId
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -235,7 +238,7 @@ Defaults to false.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: LocationName, ServerName, DatabaseName, GetBackupsByResourceId, GetBackupsByInputObject
+Parameter Sets: Location, ServerName, GetBackupsByResourceId, GetBackupsByInputObject
 Aliases:
 
 Required: False
@@ -256,7 +259,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -265,13 +268,13 @@ The name of the Azure SQL Server the backups are under.
 
 ```yaml
 Type: String
-Parameter Sets: ServerName, DatabaseName, BackupName
+Parameter Sets: ServerName, BackupName
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -307,8 +310,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -317,7 +319,7 @@ Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseLongTermRetentionBackupModel
 
 ## NOTES
 

@@ -14,7 +14,7 @@ Deletes a long term retention backup.
 
 ### RemoveBackupDefault (Default)
 ```
-Remove-AzureRmSqlDatabaseLongTermRetentionBackup [-LocationName] <String> [-ServerName] <String>
+Remove-AzureRmSqlDatabaseLongTermRetentionBackup -Location <String> [-ServerName] <String>
  [-DatabaseName] <String> [-BackupName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -38,7 +38,7 @@ The **Remove-AzureRmSqlDatabaseLongTermRetentionBackup** cmdlet deletes the back
 
 ### Example 1: Delete a single backup
 ```powershell
-PS C:\> Remove-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000"
+PS C:\> Remove-AzureRmSqlDatabaseLongTermRetentionBackup -Location northeurope -ServerName server01 -DatabaseName database01 -BackupName "601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000"
 
 
 BackupExpirationTime : 3/22/2018 5:50:55 AM
@@ -46,7 +46,7 @@ BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
-LocationName         : northeurope
+Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
@@ -56,7 +56,7 @@ Deletes the backup with name 601061b7-d10b-46e0-bf77-a2bfb16a6add;13165566655000
 
 ### Example 2: Delete all backups for a location
 ```powershell
-PS C:\> Get-AzureRmSqlDatabaseLongTermRetentionBackup -LocationName northeurope | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+PS C:\> Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location northeurope | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
 
 
 BackupExpirationTime : 3/22/2018 11:43:18 PM
@@ -64,7 +64,7 @@ BackupName           : 55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 BackupTime           : 3/15/2018 11:43:18 PM
 DatabaseName         : database02
 DatabaseDeletionTime : 3/18/2018 4:36:00 PM
-LocationName         : northeurope
+Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server02/longTermRetentionDatabases/database02/longTermRetentionBackups/55970792-164c-4a4a-88e5-7158d092d503;131656309980000000
 ServerName           : server02
 ServerCreateTime     : 2/28/2018 12:12:19 AM
@@ -74,7 +74,7 @@ BackupName           : 601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 BackupTime           : 3/15/2018 5:50:55 AM
 DatabaseName         : database01
 DatabaseDeletionTime :
-LocationName         : northeurope
+Location         : northeurope
 ResourceId           : /subscriptions/371edd6d-9630-4558-a7bd-ee139498e6a1/providers/Microsoft.Sql/locations/northeurope/longTermRetentionServers/server01/longTermRetentionDatabases/database01/longTermRetentionBackups/601061b7-d10b-46e0-bf77-a2bfb16a6add;131655666550000000
 ServerName           : server01
 ServerCreateTime     : 2/29/2018 12:12:19 AM
@@ -159,16 +159,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -LocationName
-The name of the Azure SQL Server the database is in.
-
-```yaml
+### -Location
+The location of the backups' source server.```yaml
 Type: String
 Parameter Sets: RemoveBackupDefault
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -245,7 +243,7 @@ Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseLongTermRetentionBacku
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseLongTermRetentionBackupModel
 
 ## NOTES
 

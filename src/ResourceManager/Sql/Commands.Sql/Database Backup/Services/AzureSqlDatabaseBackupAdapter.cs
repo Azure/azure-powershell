@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
@@ -392,7 +391,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 BackupTime = backup.BackupTime,
                 DatabaseDeletionTime = backup.DatabaseDeletionTime,
                 DatabaseName = backup.DatabaseName,
-                LocationName = locationName,
+                Location = locationName,
                 ResourceId = backup.Id,
                 ServerCreateTime = backup.ServerCreateTime,
                 ServerName = backup.ServerName

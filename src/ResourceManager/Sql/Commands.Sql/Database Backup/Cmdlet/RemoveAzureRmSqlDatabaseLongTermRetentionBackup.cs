@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = RemoveBackupDefaultSet, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = RemoveBackupDefaultSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
     public class RemoveAzureRmSqlDatabaseLongTermRetentionBackup : AzureSqlDatabaseLongTermRetentionBackupCmdletBase
     {
         /// <summary>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             HelpMessage = "The location of the backups' source server.")]
         [ValidateNotNullOrEmpty]
         [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers")]
-        public virtual string LocationName { get; set; }
+        public virtual string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the server.
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> GetEntity()
         {
             return ModelAdapter.GetDatabaseLongTermRetentionBackups(
-                LocationName,
+                Location,
                 ServerName,
                 DatabaseName,
                 BackupName,
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> PersistChanges(
             IEnumerable<AzureSqlDatabaseLongTermRetentionBackupModel> entity)
         {
-            ModelAdapter.RemoveDatabaseLongTermRetentionBackup(LocationName, ServerName, DatabaseName, BackupName);
+            ModelAdapter.RemoveDatabaseLongTermRetentionBackup(Location, ServerName, DatabaseName, BackupName);
             return entity;
         }
 
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         {
             if (InputObject != null)
             {
-                LocationName = InputObject.LocationName;
+                Location = InputObject.Location;
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
                 BackupName = InputObject.BackupName;
@@ -184,14 +184,14 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 identifier = new ResourceIdentifier(identifier.ParentResource);
                 ServerName = identifier.ResourceName;
                 identifier = new ResourceIdentifier(identifier.ParentResource);
-                LocationName = identifier.ResourceName;
+                Location = identifier.ResourceName;
             }
 
             if (ShouldProcess(this.BackupName))
             {
                 if (Force.IsPresent || ShouldContinue(
-                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName),
-                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ServerName, this.LocationName)))
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupDescription, this.BackupName, this.DatabaseName, this.ServerName, this.Location),
+                    string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlDatabaseLongTermRetentionBackupWarning, this.BackupName, this.DatabaseName, this.ServerName, this.Location)))
                 {
                     base.ExecuteCmdlet();
                 }

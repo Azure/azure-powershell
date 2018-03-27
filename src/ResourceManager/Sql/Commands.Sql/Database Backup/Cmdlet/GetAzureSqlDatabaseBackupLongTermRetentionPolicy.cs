@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupLongTermRetentionPolicy", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
     [Alias("Get-AzureRmSqlDatabaseLongTermRetentionPolicy")]
     public class GetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
     {

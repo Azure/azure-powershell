@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Model
         /// <summary>
         /// Gets or sets the location name.
         /// </summary>
-        public string LocationName { get; set; }
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the resource ID.

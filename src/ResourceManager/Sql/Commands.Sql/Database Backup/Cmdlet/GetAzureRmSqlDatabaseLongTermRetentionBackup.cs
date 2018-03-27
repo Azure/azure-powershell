@@ -23,18 +23,13 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = LocationNameSet, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseLongTermRetentionBackup", DefaultParameterSetName = LocationSet, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseLongTermRetentionBackupModel))]
     public class GetAzureRmSqlDatabaseLongTermRetentionBackup : AzureSqlDatabaseLongTermRetentionBackupCmdletBase
     {
         /// <summary>
         /// Parameter set name for backup name.
         /// </summary>
         private const string BackupNameSet = "BackupName";
-
-        /// <summary>
-        /// Parameter set name for database name.
-        /// </summary>
-        private const string DatabaseNameSet = "DatabaseName";
 
         /// <summary>
         /// Parameter set name for server name.
@@ -44,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Parameter set name for location name.
         /// </summary>
-        private const string LocationNameSet = "LocationName";
+        private const string LocationSet = "Location";
 
         /// <summary>
         /// Parameter set for using a Database Input Object when getting a single backup.
@@ -70,54 +65,68 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// The location the backups are in.
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = LocationNameSet,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = LocationSet,
             Position = 0,
             HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ServerNameSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The location of the backups' source server.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = DatabaseNameSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = GetBackupByResourceIdSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The location of the backups' source server.")]
         [Parameter(Mandatory = true,
             ParameterSetName = GetBackupsByResourceIdSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The location of the backups' source server.")]
         [LocationCompleter("Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentonBackups")]
-        public string LocationName { get; set; }
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Database object to get backups for.
+        /// </summary>
+        [Parameter(ParameterSetName = GetBackupByInputObjectSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The database object to get backups for.")]
+        [Parameter(ParameterSetName = GetBackupsByInputObjectSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The database object to get backups for.")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlDatabaseModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Database Resource ID to get backups for.
+        /// </summary>
+        [Parameter(ParameterSetName = GetBackupByResourceIdSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The database Resource ID to get backups for.")]
+        [Parameter(ParameterSetName = GetBackupsByResourceIdSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The database Resource ID to get backups for.")]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the server.
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ServerNameSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the Azure SQL Server the backups are under.")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = DatabaseNameSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the backups are under.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the backups are under.")]
         [ValidateNotNullOrEmpty]
@@ -126,14 +135,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the database.
         /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = DatabaseNameSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "The name of the Azure SQL Database the backup is from.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ServerNameSet,
+            HelpMessage = "The name of the Azure SQL Server the backups are under.")]
         [Parameter(Mandatory = true,
             ParameterSetName = BackupNameSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database the backup is from.")]
         [ValidateNotNullOrEmpty]
@@ -167,10 +173,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ParameterSetName = ServerNameSet,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
-            ParameterSetName = DatabaseNameSet,
-            HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = LocationNameSet,
+            ParameterSetName = LocationSet,
             HelpMessage = "Whether or not to only get the latest backup per database. Defaults to false.")]
         [Parameter(Mandatory = false,
             ParameterSetName = GetBackupsByInputObjectSet,
@@ -187,63 +190,23 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(Mandatory = false,
             ParameterSetName = ServerNameSet,
             ValueFromPipelineByPropertyName = true,
-            Position = 4,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [Parameter(Mandatory = false,
-            ParameterSetName = DatabaseNameSet,
+            ParameterSetName = LocationSet,
             ValueFromPipelineByPropertyName = true,
-            Position = 4,
-            HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = LocationNameSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 4,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [Parameter(Mandatory = false,
             ParameterSetName = GetBackupsByInputObjectSet,
-            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [Parameter(Mandatory = false,
             ParameterSetName = GetBackupsByResourceIdSet,
-            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The state of the database whose backups you want to find, Alive, Deleted, or All. Defaults to All")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(Management.Sql.Models.LongTermRetentionDatabaseState.All, Management.Sql.Models.LongTermRetentionDatabaseState.Deleted, Management.Sql.Models.LongTermRetentionDatabaseState.Live,
             IgnoreCase = true)]
         public string DatabaseState { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Database object to get backups for.
-        /// </summary>
-        [Parameter(ParameterSetName = GetBackupByInputObjectSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "The database object to get backups for.")]
-        [Parameter(ParameterSetName = GetBackupsByInputObjectSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "The database object to get backups for.")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseModel InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Database Resource ID to get backups for.
-        /// </summary>
-        [Parameter(ParameterSetName = GetBackupByResourceIdSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "The database Resource ID to get backups for.")]
-        [Parameter(ParameterSetName = GetBackupsByResourceIdSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "The database Resource ID to get backups for.")]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -253,7 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         {
             if (InputObject != null)
             {
-                LocationName = InputObject.Location;
+                Location = InputObject.Location;
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
             }
@@ -266,7 +229,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             }
 
             return ModelAdapter.GetDatabaseLongTermRetentionBackups(
-                    LocationName,
+                    Location,
                     ServerName,
                     DatabaseName,
                     BackupName,
