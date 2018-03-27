@@ -84,6 +84,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 certificatePolicy.IssuerParameters.Name = IssuerName;
             }
 
+            if (CertificateTransparency.HasValue)
+            {
+                if (certificatePolicy.IssuerParameters == null)
+                {
+                    certificatePolicy.IssuerParameters = new IssuerParameters();
+                }
+
+                certificatePolicy.IssuerParameters.CertificateTransparency = CertificateTransparency;
+            }
+
             if (!string.IsNullOrWhiteSpace(CertificateType))
             {
                 if (certificatePolicy.IssuerParameters == null)
@@ -136,11 +146,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (ValidityInMonths.HasValue)
                 {
                     x509CertificateProperties.ValidityInMonths = ValidityInMonths.Value;
-                }
-
-                if (CertificateTransparency.HasValue)
-                {
-                    x509CertificateProperties.CertificateTransparency = CertificateTransparency.Value;
                 }
 
                 certificatePolicy.X509CertificateProperties = x509CertificateProperties;
@@ -226,7 +231,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 KeyUsage = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.KeyUsage == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.KeyUsage),
                 Ekus = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.Ekus == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.Ekus),               
                 ValidityInMonths = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.ValidityInMonths,
-                CertificateTransparency = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.CertificateTransparency,
+                CertificateTransparency = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.CertificateTransparency,
                 IssuerName = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.Name,
                 CertificateType = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.CertificateType,
                 RenewAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions, (trigger) => trigger.DaysBeforeExpiry),

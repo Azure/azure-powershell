@@ -84,15 +84,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter EnabledForDiskEncryption { get; set; }
 
         [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = "If specified, 'soft delete' functionality is enabled for this key vault.")]
         public SwitchParameter EnableSoftDelete { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
-        public SwitchParameter EnablePurgeProtection { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = false,
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
