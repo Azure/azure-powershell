@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public int? DiskSizeGB { get; set; }
+        public int DiskSizeGB { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -93,9 +93,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.OsType.HasValue)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsType"))
             {
-
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
@@ -110,9 +109,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.OsType = this.OsType.Value;
             }
 
-            if (this.OsState.HasValue)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsState"))
             {
-
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
@@ -127,9 +125,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.OsState = this.OsState.Value;
             }
 
-            if (this.BlobUri != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("BlobUri"))
             {
-
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
@@ -143,9 +140,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.BlobUri = this.BlobUri;
             }
 
-            if (this.Caching != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Caching"))
             {
-
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
@@ -159,9 +155,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.Caching = this.Caching;
             }
 
-            if (this.DiskSizeGB != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB"))
             {
-
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
@@ -175,9 +170,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.DiskSizeGB = this.DiskSizeGB;
             }
 
-            if (this.StorageAccountType != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
             {
-
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
@@ -191,9 +185,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.StorageAccountType = this.StorageAccountType;
             }
 
-            if (this.SnapshotId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SnapshotId"))
             {
-
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {
@@ -212,9 +205,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Image.StorageProfile.OsDisk.Snapshot.Id = this.SnapshotId;
             }
 
-            if (this.ManagedDiskId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDiskId"))
             {
-
                 // StorageProfile
                 if (this.Image.StorageProfile == null)
                 {

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update for Zone Resilient
 
 ## Version 4.5.0
 * `New-AzureRmVM` and `New-AzureRmVMSS` support data disks.

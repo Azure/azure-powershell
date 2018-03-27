@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     public partial class InvokeAzureComputeMethodCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected object CreateDiskRevokeAccessDynamicParameters()
+        protected object CreateVirtualMachineScaleSetVMRedeployDynamicParameters()
         {
             dynamicParameters = new RuntimeDefinedParameterDictionary();
             var pResourceGroupName = new RuntimeDefinedParameter();
@@ -47,17 +47,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pResourceGroupName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("ResourceGroupName", pResourceGroupName);
 
-            var pDiskName = new RuntimeDefinedParameter();
-            pDiskName.Name = "DiskName";
-            pDiskName.ParameterType = typeof(string);
-            pDiskName.Attributes.Add(new ParameterAttribute
+            var pVMScaleSetName = new RuntimeDefinedParameter();
+            pVMScaleSetName.Name = "VMScaleSetName";
+            pVMScaleSetName.ParameterType = typeof(string);
+            pVMScaleSetName.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
                 Position = 2,
                 Mandatory = true
             });
-            pDiskName.Attributes.Add(new AllowNullAttribute());
-            dynamicParameters.Add("DiskName", pDiskName);
+            pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
+
+            var pInstanceId = new RuntimeDefinedParameter();
+            pInstanceId.Name = "InstanceId";
+            pInstanceId.ParameterType = typeof(string);
+            pInstanceId.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 3,
+                Mandatory = true
+            });
+            pInstanceId.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("InstanceId", pInstanceId);
 
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
@@ -65,7 +77,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pArgumentList.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
+                Position = 4,
                 Mandatory = true
             });
             pArgumentList.Attributes.Add(new AllowNullAttribute());
@@ -74,67 +86,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return dynamicParameters;
         }
 
-        protected void ExecuteDiskRevokeAccessMethod(object[] invokeMethodInputParameters)
+        protected void ExecuteVirtualMachineScaleSetVMRedeployMethod(object[] invokeMethodInputParameters)
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
-            string diskName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
+            string instanceId = (string)ParseParameter(invokeMethodInputParameters[2]);
 
-            var result = DisksClient.RevokeAccess(resourceGroupName, diskName);
+            var result = VirtualMachineScaleSetVMsClient.Redeploy(resourceGroupName, vmScaleSetName, instanceId);
             WriteObject(result);
         }
     }
 
     public partial class NewAzureComputeArgumentListCmdlet : ComputeAutomationBaseCmdlet
     {
-        protected PSArgument[] CreateDiskRevokeAccessParameters()
+        protected PSArgument[] CreateVirtualMachineScaleSetVMRedeployParameters()
         {
             string resourceGroupName = string.Empty;
-            string diskName = string.Empty;
+            string vmScaleSetName = string.Empty;
+            string instanceId = string.Empty;
 
             return ConvertFromObjectsToArguments(
-                 new string[] { "ResourceGroupName", "DiskName" },
-                 new object[] { resourceGroupName, diskName });
+                 new string[] { "ResourceGroupName", "VMScaleSetName", "InstanceId" },
+                 new object[] { resourceGroupName, vmScaleSetName, instanceId });
         }
-    }
-
-    [Cmdlet(VerbsSecurity.Revoke, "AzureRmDiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
-    [OutputType(typeof(PSOperationStatusResponse))]
-    public partial class RevokeAzureRmDiskAccess : ComputeAutomationBaseCmdlet
-    {
-        public override void ExecuteCmdlet()
-        {
-            ExecuteClientAction(() =>
-            {
-                if (ShouldProcess(this.DiskName, VerbsSecurity.Revoke))
-                {
-                    string resourceGroupName = this.ResourceGroupName;
-                    string diskName = this.DiskName;
-
-                    var result = DisksClient.RevokeAccess(resourceGroupName, diskName);
-                    var psObject = new PSOperationStatusResponse();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                    WriteObject(psObject);
-                }
-            });
-        }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 1,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
-        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            ParameterSetName = "DefaultParameter",
-            Position = 2,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
-        [Alias("Name")]
-        public string DiskName { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
     }
 }

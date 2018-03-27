@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true)]
-        public DiskCreateOptionTypes? OsDiskCreateOption { get; set; }
+        public string OsDiskCreateOption { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Microsoft.Azure.Management.Compute.Models.StorageAccountTypes? ManagedDisk { get; set; }
+        public string ManagedDisk { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -130,9 +130,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.ImageReferencePublisher != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferencePublisher"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -151,9 +150,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Publisher = this.ImageReferencePublisher;
             }
 
-            if (this.ImageReferenceOffer != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceOffer"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -172,9 +170,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Offer = this.ImageReferenceOffer;
             }
 
-            if (this.ImageReferenceSku != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceSku"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -193,9 +190,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Sku = this.ImageReferenceSku;
             }
 
-            if (this.ImageReferenceVersion != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceVersion"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -214,9 +210,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Version = this.ImageReferenceVersion;
             }
 
-            if (this.ImageReferenceId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferenceId"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -235,9 +230,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
 
-            if (this.OsDiskName != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskName"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -256,9 +250,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.Name = this.OsDiskName;
             }
 
-            if (this.OsDiskCaching != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskCaching"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -294,9 +287,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator.IsPresent;
 
-            if (this.OsDiskCreateOption.HasValue)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskCreateOption"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -312,13 +304,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSDisk();
                 }
-
-                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption = this.OsDiskCreateOption.Value;
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption = this.OsDiskCreateOption;
             }
 
-            if (this.OsDiskOsType != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskOsType"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -337,9 +327,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.OsType = this.OsDiskOsType;
             }
 
-            if (this.Image != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Image"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -363,9 +352,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.Image.Uri = this.Image;
             }
 
-            if (this.VhdContainer != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("VhdContainer"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -384,9 +372,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.VhdContainers = this.VhdContainer;
             }
 
-            if (this.ManagedDisk != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDisk"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -410,9 +397,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.ManagedDisk;
             }
 
-            if (this.DataDisk != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("DataDisk"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {

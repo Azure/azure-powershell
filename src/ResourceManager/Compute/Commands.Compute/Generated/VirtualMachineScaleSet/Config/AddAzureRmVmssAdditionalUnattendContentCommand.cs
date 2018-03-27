@@ -100,10 +100,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vAdditionalUnattendContent = new Microsoft.Azure.Management.Compute.Models.AdditionalUnattendContent();
 
-            vAdditionalUnattendContent.PassName = this.PassName;
-            vAdditionalUnattendContent.ComponentName = this.ComponentName;
-            vAdditionalUnattendContent.SettingName = this.SettingName;
-            vAdditionalUnattendContent.Content = this.Content;
+            vAdditionalUnattendContent.PassName = this.MyInvocation.BoundParameters.ContainsKey("PassName") ? this.PassName : (PassNames?) null;
+            vAdditionalUnattendContent.ComponentName = this.MyInvocation.BoundParameters.ContainsKey("ComponentName") ? this.ComponentName : (ComponentNames?) null;
+            vAdditionalUnattendContent.SettingName = this.MyInvocation.BoundParameters.ContainsKey("SettingName") ? this.SettingName : (SettingNames?) null;
+            vAdditionalUnattendContent.Content = this.MyInvocation.BoundParameters.ContainsKey("Content") ? this.Content : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.WindowsConfiguration.AdditionalUnattendContent.Add(vAdditionalUnattendContent);
             WriteObject(this.VirtualMachineScaleSet);
         }

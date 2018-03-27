@@ -65,17 +65,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public DiskCreateOptionTypes? CreateOption { get; set; }
+        public string CreateOption { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public int? DiskSizeGB { get; set; }
+        public int DiskSizeGB { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public string StorageAccountType { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -107,16 +107,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vDataDisks = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetDataDisk();
 
-            vDataDisks.Name = this.Name;
+            vDataDisks.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vDataDisks.Lun = this.Lun;
-            vDataDisks.Caching = this.Caching;
+            vDataDisks.Caching = this.MyInvocation.BoundParameters.ContainsKey("Caching") ? this.Caching : (CachingTypes?) null;
             vDataDisks.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
-            if (this.CreateOption.HasValue)
-            {
-                vDataDisks.CreateOption = this.CreateOption.Value;
-            }
-            vDataDisks.DiskSizeGB = this.DiskSizeGB;
-            if (this.StorageAccountType != null)
+            vDataDisks.CreateOption = this.MyInvocation.BoundParameters.ContainsKey("CreateOption") ? this.CreateOption : null;
+            vDataDisks.DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?) null;
+            if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
             {
                 // ManagedDisk
                 vDataDisks.ManagedDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetManagedDiskParameters();

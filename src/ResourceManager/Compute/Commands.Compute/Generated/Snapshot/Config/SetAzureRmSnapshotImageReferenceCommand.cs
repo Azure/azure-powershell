@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true)]
-        public int? Lun { get; set; }
+        public int Lun { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -62,9 +62,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.Id != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Id"))
             {
-
                 // CreationData
                 if (this.Snapshot.CreationData == null)
                 {
@@ -78,9 +77,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.Snapshot.CreationData.ImageReference.Id = this.Id;
             }
 
-            if (this.Lun != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Lun"))
             {
-
                 // CreationData
                 if (this.Snapshot.CreationData == null)
                 {
