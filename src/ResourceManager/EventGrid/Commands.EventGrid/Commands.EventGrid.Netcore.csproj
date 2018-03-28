@@ -60,7 +60,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="..\Microsoft.Azure.Commands.EventGrid.format.ps1xml">
+    <None Include="..\Microsoft.Azure.Commands.EventGrid.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
