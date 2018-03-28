@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: FFB335D4-AE3E-4788-B6FD-9AFC36F52B61
@@ -15,8 +15,8 @@ Modifies the ACL of a file or folder in Data Lake Store.
 
 ```
 Set-AzureRmDataLakeStoreItemAcl [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Recursive] [-Concurrency <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,12 +57,25 @@ Specifies an ACL for a file or a folder.
 ```yaml
 Type: DataLakeStoreItemAce[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Concurrency
+Indicates the number of files/directories processed in parallel for recursive processing. Default will be computed as a best effort based on system specification.```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -87,7 +100,7 @@ Indicates the resulting ACL should be returned.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,10 +115,23 @@ Specifies the Data Lake Store path of the file or folder, starting with the root
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Recursive
+Indicates the ACL to be set recursively```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -158,4 +184,3 @@ If PassThru is specified, will return the resulting list of ACL entries.
 ## NOTES
 
 ## RELATED LINKS
-

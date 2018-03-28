@@ -18,13 +18,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels;
 using Microsoft.Azure.DataLake.Store.Acl;
+using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true,
          DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(bool))]
+     OutputType(typeof(object))]
     [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
@@ -84,6 +86,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true,  Mandatory = false, HelpMessage = "Indicates the ACL to be set recursively" )]
+        public SwitchParameter Recursive { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates the number of files/directories processed in parallel for recursive processing. Default will be computed as a best effort based on system specification."
+        )]
+        public int Concurrency { get; set; } = -1;
+
         public override void ExecuteCmdlet()
         {
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
@@ -95,10 +106,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Path.OriginalPath,
                 () =>
                 {
-                    DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec);
+                    AclProcessorStats stats = null;
+                    if (Recursive)
+                    {
+                        stats = DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
+                            Account, aclSpec, RequestedAclType.RemoveAcl, Concurrency);
+                    }
+                    else
+                    {
+                        DataLakeStoreFileSystemClient.RemoveAclEntries(Path.TransformedPath, Account, aclSpec);
+                    }
+
                     if (PassThru)
                     {
-                        WriteObject(true);
+                        if (Recursive)
+                        {
+                            WriteObject(new DataLakeStoreAclProcessorSummary(stats));
+                        }
+                        else
+                        {
+                            WriteObject(true);
+                        }
                     }
                 });
         }

@@ -102,7 +102,9 @@ CmdletsToExport = 'Get-AzureRmDataLakeStoreTrustedIdProvider',
                'Set-AzureRmDataLakeStoreItemExpiry', 
                'Set-AzureRmDataLakeStoreItemOwner', 
                'Set-AzureRmDataLakeStoreItemPermission', 
-               'Test-AzureRmDataLakeStoreAccount', 'Test-AzureRmDataLakeStoreItem'
+               'Test-AzureRmDataLakeStoreAccount', 'Test-AzureRmDataLakeStoreItem', 
+				'Get-AzureRmDataLakeStoreChildItemProperties',
+				'Get-AzureRmDataLakeStoreChildItemSummary'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -122,7 +124,7 @@ AliasesToExport = 'Get-AdlStoreTrustedIdProvider', 'Remove-AdlStoreTrustedIdProv
                'Remove-AdlStoreItemAcl', 'Remove-AdlStoreItemAclEntry', 
                'Set-AdlStoreItemAclEntry', 'Set-AdlStore', 'Set-AdlStoreItemAcl', 
                'Set-AdlStoreItemExpiry', 'Set-AdlStoreItemOwner', 
-               'Set-AdlStoreItemPermission', 'Test-AdlStore', 'Test-AdlStoreItem'
+               'Set-AdlStoreItemPermission', 'Test-AdlStore', 'Test-AdlStoreItem', 'Get-AdlStoreChildItemSummary','Get-AdlStoreChildItemProperties'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

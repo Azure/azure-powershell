@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.DataLakeStore
 Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
 Download Help Link: None
@@ -31,6 +31,9 @@ Gets details of a Data Lake Store account.
 
 ### [Get-AzureRmDataLakeStoreChildItem](Get-AzureRmDataLakeStoreChildItem.md)
 Gets the list of items in a folder in Data Lake Store.
+
+### [Get-AzureRmDataLakeStoreChildItemSummary](Get-AzureRmDataLakeStoreChildItemSummary.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmDataLakeStoreFirewallRule](Get-AzureRmDataLakeStoreFirewallRule.md)
 Gets the specified firewall rules in the specified Data Lake Store.

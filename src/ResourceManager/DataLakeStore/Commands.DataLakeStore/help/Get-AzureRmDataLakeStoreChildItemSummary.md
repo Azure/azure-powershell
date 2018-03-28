@@ -1,43 +1,43 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/enable-azurermdatalakestorekeyvault
+online version:
 schema: 2.0.0
 ---
 
-# Enable-AzureRmDataLakeStoreKeyVault
+# Get-AzureRmDataLakeStoreChildItemSummary
 
 ## SYNOPSIS
-Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
+Gets the summary of total size, files and directories contained in the path specified
 
 ## SYNTAX
 
 ```
-Enable-AzureRmDataLakeStoreKeyVault [-Account] <String> [-ResourceGroupName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmDataLakeStoreChildItemSummary [-Account] <String> [-Path] <DataLakeStorePathInstance>
+ [-Concurrency <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Enable-AzureRmDataLakeStoreKeyVault** cmdlet attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
+{{Fill in the Description}}
 
 ## EXAMPLES
 
-### Example 1: Enable the Key Vault for the ContosoADLS account
-```
-PS C:\>Enable-AzureRmDataLakeStoreKeyVault -Name "ContosoADLS"
+### Example 1
+```powershell
+PS C:\> {{ Add example code here }}
 ```
 
-This command attempts to enable the user managed Key Vault for the Data Lake Store account named ContosoADLS.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Account
-The Data Lake Store account to enable the user managed Key Vault for
+The Data Lake Store account to execute the filesystem operation in
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: AccountName, Name
+Aliases: AccountName
 
 Required: True
 Position: 0
@@ -46,8 +46,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Concurrency
+Indicates the number of files/directories processed in parallel.
+Default will be computed as a best effort based on system specification.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -61,16 +77,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of resource group associated with the account. If not specified will attempt to be discovered.
+### -Path
+The path in the specified Data Lake account that should be retrieve.
+Can be a file or folder In the format '/folder/file.txt', where the first '/' after the DNS indicates the root of the file system.
 
 ```yaml
-Type: String
+Type: DataLakeStorePathInstance
 Parameter Sets: (All)
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,7 +109,8 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
@@ -112,14 +130,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+System.Int32
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels.DataLakeStoreChildItemSummary
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzureRmDataLakeStoreAccount](./New-AzureRmDataLakeStoreAccount.md)
-
-[Set-AzureRmDataLakeStoreAccount](./Set-AzureRmDataLakeStoreAccount.md)
-

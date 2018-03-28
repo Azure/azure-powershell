@@ -16,14 +16,17 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
 using System.Linq;
+using Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels;
+using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), 
-        OutputType(typeof(bool))]
+        OutputType(typeof(object))]
     [Alias("Set-AdlStoreItemAcl")]
     public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
+
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
@@ -51,6 +54,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             )]
         public SwitchParameter PassThru { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates the ACL to be set recursively"
+        )]
+        public SwitchParameter Recursive { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates the number of files/directories processed in parallel for recursive processing. Default will be computed as a best effort based on system specification."
+        )]
+        public int Concurrency { get; set; } = -1;
+
         public override void ExecuteCmdlet()
         {
             WriteWarning(Resources.IncorrectOutputTypeWarning);
@@ -58,18 +73,33 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
                 Path.OriginalPath,
                 () =>
-                    {
-                        DataLakeStoreFileSystemClient.SetAcl(
-                            Path.TransformedPath,
-                            Account,
-                            Acl.Select(entry=>entry.ParseDataLakeStoreItemAce()).ToList());
+                {
+                        AclProcessorStats stats = null; 
+                        if (Recursive)
+                        {
+                            stats = DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
+                                Account,
+                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, Concurrency);
+                        }
+                        else
+                        {
+                            DataLakeStoreFileSystemClient.SetAcl(
+                                Path.TransformedPath,
+                                Account,
+                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList());
+                        }
 
                         if (PassThru)
                         {
-                            var toReturn = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, 
-                                        Account).Entries.Select(entry=>new DataLakeStoreItemAce(entry));
-
-                            WriteObject(toReturn);
+                            if (Recursive)
+                            {
+                                WriteObject(new DataLakeStoreAclProcessorSummary(stats));
+                            }
+                            else
+                            {
+                                WriteObject(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath,
+                                    Account).Entries.Select(entry => new DataLakeStoreItemAce(entry)));
+                            }
                         }
                     });
         }

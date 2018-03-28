@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 4E9EA2E9-4BE2-4530-BC2B-D369C016CD8C
@@ -69,7 +69,7 @@ Specifies the Data Lake Store path for the joined item, starting with the root d
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -84,7 +84,7 @@ Indicates that this operation can overwrite the destination file if it already e
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
