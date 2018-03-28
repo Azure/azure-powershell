@@ -19,15 +19,15 @@ Gets and removes custom domain with running endpoint.
 function Test-CustomDomainGetRemoveWithRunningEndpoint
 {
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "sdktest-c83c1e8f-343e-4ce8-873b-f6e5ddcdc53f"
-    $hostName = "sdktest-716d4572-627f-4dfe-8128-1df163647ae2.azureedge-test.net"
+    $endpointName = "testAkamaiEP"
+    $hostName = "testAkamai.dustydog.us"
 
     $customDomainName = getAssetName
 
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard_Verizon"
+    $profileSku = "Standard_Akamai"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tags $tags
 
@@ -61,20 +61,67 @@ function Test-CustomDomainGetRemoveWithRunningEndpoint
 
 <#
 .SYNOPSIS
+Enables custom domain with running endpoint.
+#>
+function Test-CustomDomainEnableDisableWithRunningEndpoint
+{
+    # Hard-coding host and endpoint names due to requirement for DNS CNAME
+	$endpointName = "testVerizonEP"
+    $hostName = "testVerizon.dustydog.us"
+	
+    $customDomainName = getAssetName
+
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Verizon"
+    $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tags $tags
+
+    $originName = getAssetName
+    $originHostName = "www.microsoft.com"
+    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+
+    $endpoint = Get-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
+    $validateResult = Test-AzureRmCdnCustomDomain -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -CustomDomainHostName $hostName
+    Assert-True{$validateResult.CustomDomainValidated}
+    $validateResultbyPiping = Test-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName $hostName
+    Assert-True{$validateResultbyPiping.CustomDomainValidated}
+
+    $createdCustomDomain = $endpoint | New-AzureRmCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName 
+    Assert-AreEqual $customDomainName $createdCustomDomain.Name
+    Assert-AreEqual $hostName $createdCustomDomain.HostName
+    
+	$customDomain = $endpoint | Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName 
+    Assert-AreEqual $customDomainName $customDomain.Name
+    Assert-AreEqual $hostName $customDomain.HostName
+
+    $enabled = $customDomain | Enable-AzureRmCdnCustomDomain -PassThru
+    Assert-True{$enabled}
+    Assert-ThrowsContains { Enable-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "BadRequest"
+
+    Assert-ThrowsContains { Disable-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "BadRequest"
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+
+<#
+.SYNOPSIS
 Gets and removes custom domain with stopped endpoint
 #>
 function Test-CustomDomainGetRemoveWithStoppedEndpoint
 {
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "sdktest-cbc4e6fa-da15-4f37-9511-6b7df122c1de" 
-    $hostName = "sdktest-34a59412-9044-4166-b055-d777e111e810.azureedge-test.net"  
+	$endpointName = "testAkamaiEP"
+    $hostName = "testAkamai.dustydog.us"
 
 	$customDomainName = getAssetName
 
     $profileName = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceLocation = "EastUS"
-    $profileSku = "Standard_Verizon"
+    $profileSku = "Standard_Akamai"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
     $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tags $tags
 

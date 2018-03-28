@@ -1,0 +1,170 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/providers/Microsoft.Cdn/validateProbe?api-version=2017-10-12",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJlZTU0NWItNzgzZi00NjM0LWEyNzctZTM1ZjU1YzkwNjYwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3ZhbGlkYXRlUHJvYmU/YXBpLXZlcnNpb249MjAxNy0xMC0xMg==",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"probeURL\": \"https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "79"
+        ],
+        "x-ms-client-request-id": [
+          "5e0d1e2f-4ed2-4104-860d-98f26bbd914f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/4.0.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"isValid\": true,\r\n  \"errorCode\": \"None\",\r\n  \"message\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "56"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5c080726-9231-40e2-acfd-62ef4ffcf82b"
+        ],
+        "x-ms-client-request-id": [
+          "5e0d1e2f-4ed2-4104-860d-98f26bbd914f"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "d1934102-f2be-48cb-8b7a-02406cdb39fb"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180319T175539Z:d1934102-f2be-48cb-8b7a-02406cdb39fb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 19 Mar 2018 17:55:39 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/e2ee545b-783f-4634-a277-e35f55c90660/providers/Microsoft.Cdn/validateProbe?api-version=2017-10-12",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTJlZTU0NWItNzgzZi00NjM0LWEyNzctZTM1ZjU1YzkwNjYwL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ2RuL3ZhbGlkYXRlUHJvYmU/YXBpLXZlcnNpb249MjAxNy0xMC0xMg==",
+      "RequestMethod": "POST",
+      "RequestBody": "{\r\n  \"probeURL\": \"https://www.notexist.com/notexist/notexist.txt\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "68"
+        ],
+        "x-ms-client-request-id": [
+          "b8c1c9a2-0657-40d4-bc1c-48d1bab1301b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Cdn.CdnManagementClient/4.0.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"isValid\": false,\r\n  \"errorCode\": \"EndpointProbeCannotBeRetrieved\",\r\n  \"message\": \"We couldn't retrieve the input probe. Please verify that it is publicly accessible and its size is approximately 10 KB.\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "200"
+        ],
+        "Content-Type": [
+          "application/json; odata.metadata=minimal"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "6fef253d-a782-4561-addf-ef07a021295d"
+        ],
+        "x-ms-client-request-id": [
+          "b8c1c9a2-0657-40d4-bc1c-48d1bab1301b"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "25a42fd1-f437-4988-bab4-bb0c08e24afd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180319T175540Z:25a42fd1-f437-4988-bab4-bb0c08e24afd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 19 Mar 2018 17:55:39 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "e2ee545b-783f-4634-a277-e35f55c90660"
+  }
+}
