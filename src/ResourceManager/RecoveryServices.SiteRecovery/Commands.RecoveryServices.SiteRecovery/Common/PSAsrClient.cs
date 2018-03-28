@@ -293,7 +293,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 throw new InvalidOperationException(Resources.MissingVaultSettings);
             }
 
-            var validResourceGroup = false;
             var validResource = false;
 
             //foreach (Management.RecoveryServices.Models.ResourceGroup resourceGroup in this.GetRecoveryServicesVaultClient.ResourceGroup.List())
