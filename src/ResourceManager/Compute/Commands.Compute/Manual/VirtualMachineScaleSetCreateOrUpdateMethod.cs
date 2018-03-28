@@ -114,6 +114,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] NatBackendPort { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        public int[] DataDiskSizeInGb { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -139,7 +142,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
-                    ImageAndOsType, _cmdlet.ImageName, Location);
+                    ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
 
                 // generate a domain name label if it's not specified.
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
@@ -218,7 +221,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     instanceCount: _cmdlet.InstanceCount,
                     upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
                         ? _cmdlet.UpgradePolicyMode
-                        : (UpgradeMode?)null);
+                        : (UpgradeMode?)null,
+                    dataDisks: _cmdlet.DataDiskSizeInGb);
             }
         }
 

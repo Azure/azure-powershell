@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8058D403-06E3-4BED-8924-D166CE303961}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.Aks</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Aks</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Aks</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Aks\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.Compute.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\AzureRM.Aks.psd1">
+      <Link>AzureRM.Aks.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="help\AzureRM.Aks.md" />
+    <None Include="help\Get-AzureRmAks.md" />
+    <None Include="help\Import-AzureRmAksCredential.md" />
+    <None Include="help\New-AzureRmAks.md" />
+    <None Include="help\Remove-AzureRmAks.md" />
+    <None Include="help\Set-AzureRmAks.md" />
+    <None Include="help\Start-AzureRmAksDashboard.md" />
+    <None Include="help\Stop-AzureRmAksDashboard.md" />
+    <None Include="Microsoft.Azure.Commands.Aks.Format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="MSSharedLibKey.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\Constants.cs" />
+    <Compile Include="Commands\CreateOrUpdateKubeBase.cs" />
+    <Compile Include="Commands\GetAzureRmAks.cs" />
+    <Compile Include="Commands\ImportAzureRmAksCredential.cs" />
+    <Compile Include="Commands\KubeCmdletBase.cs" />
+    <Compile Include="Commands\NewAzureRmAks.cs" />
+    <Compile Include="Commands\RemoveAzureRmAks.cs" />
+    <Compile Include="Commands\SetAzureRmAks.cs" />
+    <Compile Include="Commands\StartAzureRmAksDashboard.cs" />
+    <Compile Include="Commands\StopAzureRmAksDashboard.cs" />
+    <Compile Include="Generated\ContainerServiceClient.cs" />
+    <Compile Include="Generated\IContainerServiceClient.cs" />
+    <Compile Include="Generated\IManagedClustersOperations.cs" />
+    <Compile Include="Generated\ManagedClustersOperations.cs" />
+    <Compile Include="Generated\ManagedClustersOperationsExtensions.cs" />
+    <Compile Include="Generated\Models\ContainerServiceAgentPoolProfile.cs" />
+    <Compile Include="Generated\Models\ContainerServiceDiagnosticsProfile.cs" />
+    <Compile Include="Generated\Models\ContainerServiceLinuxProfile.cs" />
+    <Compile Include="Generated\Models\ContainerServiceMasterProfile.cs" />
+    <Compile Include="Generated\Models\ContainerServiceServicePrincipalProfile.cs" />
+    <Compile Include="Generated\Models\ContainerServiceSshConfiguration.cs" />
+    <Compile Include="Generated\Models\ContainerServiceSshPublicKey.cs" />
+    <Compile Include="Generated\Models\ContainerServiceStorageProfileTypes.cs" />
+    <Compile Include="Generated\Models\ContainerServiceVMDiagnostics.cs" />
+    <Compile Include="Generated\Models\ContainerServiceVMSizeTypes.cs" />
+    <Compile Include="Generated\Models\ContainerServiceWindowsProfile.cs" />
+    <Compile Include="Generated\Models\KeyVaultSecretRef.cs" />
+    <Compile Include="Generated\Models\ManagedCluster.cs" />
+    <Compile Include="Generated\Models\ManagedClusterAccessProfile.cs" />
+    <Compile Include="Generated\Models\ManagedClusterPoolUpgradeProfile.cs" />
+    <Compile Include="Generated\Models\ManagedClusterUpgradeProfile.cs" />
+    <Compile Include="Generated\Models\OrchestratorProfile.cs" />
+    <Compile Include="Generated\Models\OSType.cs" />
+    <Compile Include="Generated\Models\Page.cs" />
+    <Compile Include="Generated\Models\Resource.cs" />
+    <Compile Include="Models\AcsServicePrincipal.cs" />
+    <Compile Include="Models\Mapper.cs" />
+    <Compile Include="Models\PSContainerServiceAgentPoolProfile.cs" />
+    <Compile Include="Models\PSContainerServiceLinuxProfile.cs" />
+    <Compile Include="Models\PSContainerServiceServicePrincipalProfile.cs" />
+    <Compile Include="Models\PSContainerServiceSshConfiguration.cs" />
+    <Compile Include="Models\PSContainerServiceSshPublicKey.cs" />
+    <Compile Include="Models\PSKeyVaultSecretRef.cs" />
+    <Compile Include="Models\PSKubernetesCluster.cs" />
+    <Compile Include="Models\PSResource.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Management.Automation_PowerShell_3.0.6.3.9600.17400\lib\net40\System.Management.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="YamlDotNet, Version=4.2.4.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\YamlDotNet.Signed.4.2.4\lib\net45\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4AEF-B5BD-DB9186B8184B}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Commands.Common.Authorization.csproj">
+      <Project>{24508e26-154d-47f1-80ee-439bf0710996}</Project>
+      <Name>Commands.Common.Authorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
+      <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
+      <Name>Commands.Common.Graph.RBAC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <MarkdownFiles Include="$(ProjectDir)help\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+  </Target>
+</Project>

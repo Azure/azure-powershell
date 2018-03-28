@@ -17,15 +17,13 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.IO;
 using System.Management.Automation;
-using System.Reflection;
 using System.Security;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -103,13 +101,13 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = AccessTokenParameterSet, 
                     Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
-                    Mandatory = false, HelpMessage = "Account Id for managed service")]
+                    Mandatory = false, HelpMessage = "Account Id for managed service. Can be a managed service resource Id, or the associated client id. To use the SyatemAssigned identity, leave this field blank.")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 
         [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory =true, HelpMessage = "Login using managed service identity in the current environment.")]
-        [Alias("MSI")]
-        public SwitchParameter ManagedService { get; set; }
+        [Alias("MSI", "ManagedService")]
+        public SwitchParameter Identity { get; set; }
 
         [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Port number for managed service login.")]
         [PSDefaultValue(Help = "50342", Value = 50342)]
@@ -207,7 +205,8 @@ namespace Microsoft.Azure.Commands.Profile
                     builder.Host = ManagedServiceHostName;
                     builder.Port = ManagedServicePort;
                     builder.Path = "/oauth2/token";
-                    azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, builder.Uri.ToString());
+                    azureAccount.SetProperty(AzureAccount.Property.MSILoginUriBackup, builder.Uri.ToString());
+                    azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, AuthenticationFactory.DefaultMSILoginUri);
                     break;
                 default:
                     azureAccount.Type = AzureAccount.AccountType.User;
