@@ -28,7 +28,7 @@ param(
     [Parameter(Mandatory = $false)]
     [string] $BuildConfig = "Debug",
     [Parameter(Mandatory = $false)]
-    [string] $OutputFile = "$PSCommandPath/../index.json" 
+    [string] $OutputFile = "$PSCommandPath/../index.json"
 )
 
 if ([string]::isNullOrEmpty($Version))
