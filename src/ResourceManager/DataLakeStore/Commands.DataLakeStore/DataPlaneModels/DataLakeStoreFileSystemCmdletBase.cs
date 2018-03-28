@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             get {
             return _dataLakeFileSystemClient ??
-                   (_dataLakeFileSystemClient = new DataLakeStoreFileSystemClient(DefaultProfile.DefaultContext));
+                   (_dataLakeFileSystemClient = new DataLakeStoreFileSystemClient(DefaultProfile.DefaultContext, this));
         }
 
 
