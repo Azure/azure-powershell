@@ -59,6 +59,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Microsoft.Azure.Commands.DataLakeAnalytics.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
