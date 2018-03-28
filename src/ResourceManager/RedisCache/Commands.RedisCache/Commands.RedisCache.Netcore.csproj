@@ -61,6 +61,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Microsoft.Azure.Commands.RedisCache.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
