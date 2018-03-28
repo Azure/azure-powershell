@@ -216,6 +216,7 @@ FakesAssemblies/
 pingme.txt
 groupMapping*.json
 /tools/index.json
+/Package/index.json
 
 *.msi
 *.wixpdb
