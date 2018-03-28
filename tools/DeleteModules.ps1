@@ -50,14 +50,14 @@ function Get-TargetModules
     if ($listOfModules.Count -ge 1) 
     {
         $moduleList | ForEach-Object {
-            $targets += Find-Module -Name $_ -Repository $repoName
+            $targets += Find-Module -Name $_ -Repository $repoName -AllowPrerelease
         }
     }
 
     elseif ($moduleVersionTable.Count -ge 1)
     {
         $moduleVersionTable | ForEach-Object {
-            $targets += Find-Module -Name $_.Module -RequiredVersion $_.Version -Repository $repoName
+            $targets += Find-Module -Name $_.Module -RequiredVersion $_.Version -Repository $repoName -AllowPrerelease
         }
     }
 
