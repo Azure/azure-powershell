@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
     using Base;
 
     [Cmdlet(VerbsLifecycle.Install, "AzureRmServerManagementGatewayProfile")]
+    [Obsolete("The AzureRM.ServerManagement module will be removed from AzureRM in May 2018")]
     public class InstallServerManagementGatewayProfileCmdlet : ServerManagementCmdlet
     {
         // Installs a gateway profile into the correct location

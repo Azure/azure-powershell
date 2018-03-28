@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmServerManagementNode"), OutputType(typeof(Node))]
+    [Obsolete("The AzureRM.ServerManagement module will be removed from AzureRM in May 2018")]
     public class NewServerManagementNodeCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",
