@@ -131,12 +131,14 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'New-AzureRmSqlDatabaseExport', 'New-AzureRmSqlDatabaseImport', 
                'Get-AzureRmSqlDatabaseGeoBackupPolicy', 
                'Set-AzureRmSqlDatabaseGeoBackupPolicy', 
+               'Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy', 
+               'Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy', 
+               'Get-AzureRmSqlDatabaseLongTermRetentionBackup', 
+               'Remove-AzureRmSqlDatabaseLongTermRetentionBackup', 
                'Get-AzureRmSqlDeletedDatabaseBackup', 
                'Get-AzureRmSqlDatabaseGeoBackup', 
-               'Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy', 
                'Get-AzureRmSqlServerBackupLongTermRetentionVault', 
                'Restore-AzureRmSqlDatabase', 
-               'Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy', 
                'Set-AzureRmSqlServerBackupLongTermRetentionVault', 
                'Get-AzureRmSqlDatabaseRestorePoints', 
                'Get-AzureRmSqlDatabaseAuditingPolicy', 
@@ -195,7 +197,9 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
 AliasesToExport = 'Get-AzureRmSqlDatabaseServerAuditingPolicy', 
                'Remove-AzureRmSqlDatabaseServerAuditing', 
                'Set-AzureRmSqlDatabaseServerAuditingPolicy', 
-               'Use-AzureRmSqlDatabaseServerAuditingPolicy'
+               'Use-AzureRmSqlDatabaseServerAuditingPolicy',
+               'Get-AzureRmSqlDatabaseLongTermRetentionPolicy',
+               'Set-AzureRmSqlDatabaseLongTermRetentionPolicy'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
