@@ -101,13 +101,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                 throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.VaultNotFound, vaultName, resGroupName));
             }
 
-            // When rules are not specified, take them from the existing values if available
-            PSKeyVaultNetworkRuleSet existingNetworkAcls = vault.NetworkAcls;
-            if (existingNetworkAcls == null)
-            {
-                existingNetworkAcls = new PSKeyVaultNetworkRuleSet();
-            }
-
             return vault;
         }
 

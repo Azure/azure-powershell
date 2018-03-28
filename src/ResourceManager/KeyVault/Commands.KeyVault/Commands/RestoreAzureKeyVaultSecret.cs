@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet( VerbsData.Restore, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri )]
+        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType( typeof(PSKeyVaultSecret) )]
     public class RestoreAzureKeyVaultSecret : KeyVaultCmdletBase
     {

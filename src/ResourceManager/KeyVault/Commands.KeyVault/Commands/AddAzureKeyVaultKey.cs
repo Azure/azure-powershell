@@ -35,8 +35,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = InteractiveCreateParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = InteractiveCreateParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class AddAzureKeyVaultKey : KeyVaultCmdletBase
     {

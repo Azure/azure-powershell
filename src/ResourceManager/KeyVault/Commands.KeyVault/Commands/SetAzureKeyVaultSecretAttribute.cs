@@ -20,8 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute",
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultSecret))]
     public class SetAzureKeyVaultSecretAttribute : KeyVaultCmdletBase
     {

@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsLifecycle.Stop, CmdletNoun.AzureKeyVaultCertificateOperation,
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet,
-        ConfirmImpact = ConfirmImpact.High,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        ConfirmImpact = ConfirmImpact.High)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class StopAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {

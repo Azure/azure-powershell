@@ -21,14 +21,12 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
-        DefaultParameterSetName = ByAccountNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri )]
     [OutputType( typeof( List<PSKeyVaultManagedStorageSasDefinitionIdentityItem> ), typeof( PSKeyVaultManagedStorageSasDefinition ) )]
     public class GetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
-        private const string ByAccountNameParameterSet = "ByAccountName";
         private const string ByDefinitionNameParameterSet = "ByDefinitionName";
 
         #endregion
@@ -41,12 +39,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter( Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ByAccountNameParameterSet,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
-        [Parameter( Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -54,20 +46,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter( Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ByAccountNameParameterSet,
-                        HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
-                          "selected environment and manged storage account name." )]
-        [Parameter( Mandatory = true,
-            Position = 1,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ByDefinitionNameParameterSet,
-                        HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
-                          "selected environment and manged storage account name." )]
+            HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
+                    "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName )]
         public string AccountName { get; set; }
 
-        [Parameter( Mandatory = true,
+        [Parameter( Mandatory = false,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ByDefinitionNameParameterSet,
@@ -84,32 +69,29 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName.Equals(ByDefinitionNameParameterSet))
+            if (InRemovedState)
             {
-                if (InRemovedState)
-                {
-                    var sasDefinition = DataServiceClient.GetDeletedManagedStorageSasDefinition(VaultName, AccountName, Name);
-                }
-                else
-                {
-                    var sasDefinition = DataServiceClient.GetManagedStorageSasDefinition(VaultName, AccountName, Name);
-                    WriteObject(sasDefinition);
-                }
-            }
-            else if (ParameterSetName.Equals(ByAccountNameParameterSet))
-            {
-                if (InRemovedState)
+                if (String.IsNullOrWhiteSpace(Name))
                 {
                     GetAndWriteDeletedStorageSasDefinitions(VaultName, AccountName);
                 }
                 else
                 {
-                    GetAndWriteStorageSasDefinitions(VaultName, AccountName);
+                    var sasDefinition = DataServiceClient.GetDeletedManagedStorageSasDefinition(VaultName, AccountName, Name);
+                    WriteObject(sasDefinition);
                 }
             }
             else
-            { 
-                throw new ArgumentException( KeyVaultProperties.Resources.BadParameterSetName );
+            {
+                if (String.IsNullOrWhiteSpace(Name))
+                {
+                    var sasDefinition = DataServiceClient.GetManagedStorageSasDefinition(VaultName, AccountName, Name);
+                    WriteObject(sasDefinition);
+                }
+                else
+                {
+                    GetAndWriteStorageSasDefinitions(VaultName, AccountName);
+                }
             }
         }
 

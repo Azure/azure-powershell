@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmKeyVaultAccessPolicy",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByUserPrincipalName,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
