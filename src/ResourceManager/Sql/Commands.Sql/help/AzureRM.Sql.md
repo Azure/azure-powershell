@@ -62,6 +62,9 @@ Gets the details of an import or export of an Azure SQL Database.
 ### [Get-AzureRmSqlDatabaseIndexRecommendations](Get-AzureRmSqlDatabaseIndexRecommendations.md)
 Gets the recommended index operations for a server or database.
 
+### [Get-AzureRmSqlDatabaseLongTermRetentionBackup](Get-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+Gets one or more long term retention backups.
+
 ### [Get-AzureRmSqlDatabaseRecommendedAction](Get-AzureRmSqlDatabaseRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Database Advisor.
 
@@ -250,6 +253,9 @@ Removes an Azure SQL Database Failover Group.
 
 ### [Remove-AzureRmSqlDatabaseFromFailoverGroup](Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
+
+### [Remove-AzureRmSqlDatabaseLongTermRetentionBackup](Remove-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+Deletes a long term retention backup.
 
 ### [Remove-AzureRmSqlDatabaseSecondary](Remove-AzureRmSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.
