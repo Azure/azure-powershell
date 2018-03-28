@@ -51,8 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\Backup\GetAzureRmRecoveryServicesBackupStatus.cs" />
     <Compile Include="Cmdlets\Backup\BackupAzureRmRecoveryServicesBackupItem.cs" />
+    <Compile Include="Cmdlets\Backup\GetAzureRmRecoveryServicesBackupStatus.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmRecoveryServicesBackupManagementServer.cs" />

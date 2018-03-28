@@ -58,5 +58,5 @@ function Test-AzureVMProtectionCheck
 	#	Cleanup-ResourceGroup $resourceGroupName
 	#}
 
-	Cleanup-ResourceGroup $resourceGroupName
+	#Cleanup-ResourceGroup $resourceGroupName
 }
