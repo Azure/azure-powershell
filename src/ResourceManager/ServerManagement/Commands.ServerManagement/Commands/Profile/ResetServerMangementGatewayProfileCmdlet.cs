@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Profile
     using Management.ServerManagement;
 
     [Cmdlet(VerbsCommon.Reset, "AzureRmServerManagementGatewayProfile")]
+    [Obsolete("The AzureRM.ServerManagement module will be removed from AzureRM in May 2018")]
     public class ResetServerManagementGatewayProfileCmdlet : ServerManagementGatewayProfileCmdlet
     {
         // tells the service to regenerate the profile for a gateway

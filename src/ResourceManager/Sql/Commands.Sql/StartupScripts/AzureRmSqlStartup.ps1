@@ -18,6 +18,8 @@
     "Remove-AzureRmSqlDatabaseServerAuditing" = "Remove-AzureRmSqlServerAuditing";
     "Set-AzureRmSqlDatabaseServerAuditingPolicy" = "Set-AzureRmSqlServerAuditingPolicy";
     "Use-AzureRmSqlDatabaseServerAuditingPolicy" = "Use-AzureRmSqlServerAuditingPolicy";
+    "Get-AzureRmSqlDatabaseLongTermRetentionPolicy" = "Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy";
+    "Set-AzureRmSqlDatabaseLongTermRetentionPolicy" = "Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | `
 ForEach-Object {if (!(Get-Alias -Name $_.Name -ErrorAction Ignore)) {Set-Alias -Name $_.Name -Value $_.Value -Description "AzureAlias" -Scope Global}} | Out-Null
 
