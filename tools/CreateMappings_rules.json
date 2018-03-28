@@ -129,7 +129,7 @@
     { "regex": "Resources", "group": "Resources", "alias": "Resources" },
 
     { "regex":  "LocationBasedServices", "alias":  "Location Based Services"  },
-    { "regex": "Kubernetes", "group": "Kubernetes", "alias": "Kubernetes" },
+    { "regex": "Aks", "group": "Aks", "alias": "Aks" },
 
     { "regex": "ManagedServiceIdentity", "group": "Managed Service Identity", "alias": "Managed Service Identity" },
 

@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.1.1
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 5.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

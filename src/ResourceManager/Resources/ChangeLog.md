@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.5.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 5.5.0
 * Fixed issue with importing aliases
 * Add Support for DataActions and NotDataActions to be passed in roledefinition create calls
 * Fix Roledefinitions calls to use the type filter
