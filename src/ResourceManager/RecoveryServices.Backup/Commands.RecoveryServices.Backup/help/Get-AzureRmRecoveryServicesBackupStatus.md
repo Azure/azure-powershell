@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupstatus
 schema: 2.0.0
 ---
 
@@ -29,10 +29,10 @@ This cmdlet can be used to check if a VM is backed up by any vault in the subscr
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Example Code
 ```
 
-{{ Add example description here }}
+Example DESCRIPTION
 
 ## PARAMETERS
 
