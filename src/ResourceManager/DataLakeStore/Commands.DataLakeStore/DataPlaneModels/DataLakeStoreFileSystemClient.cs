@@ -26,6 +26,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.DataLake.Store;
 using Microsoft.Azure.DataLake.Store.Acl;
+using Microsoft.Azure.DataLake.Store.AclTools;
 using Microsoft.Azure.DataLake.Store.FileTransfer;
 using NLog;
 using NLog.Config;
@@ -128,13 +129,28 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).SetAcl(path, aclToSet);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="accountName"></param>
+        /// <param name="aclToSet"></param>
+        /// <param name="aclChangeType"></param>
+        /// <param name="concurrency"></param>
+        public AclProcessorStats ChangeAclRecursively(string path, string accountName, List<AclEntry> aclToSet,
+            RequestedAclType aclChangeType, int concurrency = -1)
+        {
+            return AdlsClientFactory.GetAdlsClient(accountName, _context).ChangeAcl(path, aclToSet, aclChangeType, concurrency);
+        }
         /// <summary>
         /// Add specific Acl entries
         /// </summary>
         /// <param name="path">Path</param>
         /// <param name="accountName">Account</param>
         /// <param name="aclToModify">Acl list specifying acls to modify</param>
-        public void ModifyAcl(string path, string accountName, List<AclEntry> aclToModify)
+        /// <param name="recursive"></param>
+        public void ModifyAcl(string path, string accountName, List<AclEntry> aclToModify, bool recursive = false)
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).ModifyAclEntries(path, aclToModify);
         }
@@ -153,7 +169,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="path">Path</param>
         /// <param name="accountName">Account</param>
         /// <param name="aclsToRemove">Acl list specifying acls to remove</param>
-        public void RemoveAclEntries(string path, string accountName, List<AclEntry> aclsToRemove)
+        public void RemoveAclEntries(string path, string accountName, List<AclEntry> aclsToRemove, bool recursive = false)
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).RemoveAclEntries(path, aclsToRemove);
         }
@@ -419,10 +435,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// </summary>
         /// <param name="path">File Path</param>
         /// <param name="accountName">Account name</param>
+        /// <param name="numThreads"></param>
         /// <returns></returns>
-        public ContentSummary GetContentSummary(string path, string accountName)
+        public ContentSummary GetContentSummary(string path, string accountName, int numThreads, CancellationToken cancelToken)
         {
-            return AdlsClientFactory.GetAdlsClient(accountName, _context).GetContentSummary(path);
+            return AdlsClientFactory.GetAdlsClient(accountName, _context).GetContentSummary(path, numThreads, cancelToken);
         }
         /// <summary>
         ///  Deletes the file or folder.
@@ -603,7 +620,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accountName"></param>
+        /// <param name="path"></param>
+        /// <param name="getAclUsage"></param>
+        /// <param name="dumpFileName"></param>
+        /// <param name="getDiskUsage"></param>
+        /// <param name="saveToLocal"></param>
+        /// <param name="numThreads"></param>
+        /// <param name="displayFiles"></param>
+        /// <param name="hideConsistentAcl"></param>
+        /// <param name="maxDepth"></param>
+        public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth )
+        {
+            AdlsClientFactory.GetAdlsClient(accountName, _context).GetFileProperties(path, getAclUsage, dumpFileName,
+                getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth);
+        }
 
         #endregion
 
