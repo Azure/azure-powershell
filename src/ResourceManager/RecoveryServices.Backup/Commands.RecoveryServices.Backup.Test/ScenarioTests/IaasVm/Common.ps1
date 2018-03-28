@@ -100,30 +100,35 @@ function Cleanup-ResourceGroup(
 		$vaults = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
 		foreach ($vault in $vaults)
 		{
-			$containers = Get-AzureRmRecoveryServicesBackupContainer `
-				-Vault $vault `
-				-ContainerType AzureVM
-			foreach ($container in $containers)
-			{
-				$items = Get-AzureRmRecoveryServicesBackupItem `
-					-Vault $vault `
-					-Container $container `
-					-WorkloadType AzureVM
-				foreach ($item in $items)
-				{
-					Disable-AzureRmRecoveryServicesBackupProtection `
-						-Vault $vault `
-						-Item $item `
-						-RemoveRecoveryPoints -Force
-				}
-			}
-
-			Remove-AzureRmRecoveryServicesVault -Vault $vault
+			Delete-Vault $vault
 		}
 	
 		# Cleanup RG. This cleans up all VMs and Storage Accounts.
 		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 	}
+}
+
+function Delete-Vault($vault)
+{
+	$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		-Vault $vault `
+		-ContainerType AzureVM
+	foreach ($container in $containers)
+	{
+		$items = Get-AzureRmRecoveryServicesBackupItem `
+			-Vault $vault `
+			-Container $container `
+			-WorkloadType AzureVM
+		foreach ($item in $items)
+		{
+			Disable-AzureRmRecoveryServicesBackupProtection `
+				-Vault $vault `
+				-Item $item `
+				-RemoveRecoveryPoints -Force
+		}
+	}
+
+	Remove-AzureRmRecoveryServicesVault -Vault $vault
 }
 
 function Create-VM(

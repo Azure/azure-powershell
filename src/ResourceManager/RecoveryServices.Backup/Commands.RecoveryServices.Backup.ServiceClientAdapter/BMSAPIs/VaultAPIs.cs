@@ -12,24 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Azure.Management.RecoveryServices.Models;
+
+namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS
 {
-    public enum UriEnums
+    public partial class ServiceClientAdapter
     {
-        Subscriptions,
-        ResourceGroups,
-        Providers,
-        Vaults,
-        BackupFabrics,
-        ProtectionContainers,
-        ProtectableItems,
-        ProtectedItems,
-        RecoveryPoints,
-        BackupJobs,
-        OperationResults,
-        BackupPolicies,
-        Operations,
-        OperationsStatus,
-        VirtualMachines,
+        public List<Vault> ListVaults()
+        {
+            var response = RSAdapter.Client.Vaults.ListBySubscriptionIdWithHttpMessagesAsync(
+                cancellationToken: RSAdapter.CmdletCancellationToken).Result;
+            return response.Body.ToList();
+        }
     }
 }

@@ -910,6 +910,52 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         }
 
+        /// <summary>
+        /// Checks if the given VM is protected by any vault in the subscription
+        /// </summary>
+        /// <returns></returns>
+        public ARSVault CheckBackupStatus()
+        {
+            string azureVmName = (string)ProviderData[ProtectionCheck.Name];
+            string azureVmResourceGroupName =
+                (string)ProviderData[ProtectionCheck.ResourceGroupName];
+
+            ODataQuery<ProtectedItemQueryObject> queryParams =
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureIaasVM &&
+                         q.ItemType == DataSourceType.VM);
+
+            var vaults = ServiceClientAdapter.ListVaults();
+            foreach (var vault in vaults)
+            {
+                var psVault = new ARSVault(vault);
+                var items = ServiceClientAdapter.ListProtectedItem(
+                    queryParams,
+                    vaultName: psVault.Name,
+                    resourceGroupName: psVault.ResourceGroupName);
+
+                if (items.Any(
+                    item =>
+                    {
+                        var uriDict = HelperUtils.ParseUri(
+                            item.Properties.SourceResourceId);
+                        var itemVmName = HelperUtils.GetVmNameFromId(
+                            item.Properties.SourceResourceId, uriDict);
+                        var itemVmRgName = HelperUtils.GetResourceGroupNameFromId(
+                            item.Properties.SourceResourceId, uriDict);
+
+                        return itemVmName.ToLower() == azureVmName.ToLower() &&
+                            itemVmRgName.ToLower() == azureVmResourceGroupName.ToLower();
+                    }))
+                {
+                    return psVault;
+                }
+            }
+
+            return null;
+        }
+
         #region private
 
         private static CmdletModel.DailyRetentionFormat GetDailyRetentionFormat()

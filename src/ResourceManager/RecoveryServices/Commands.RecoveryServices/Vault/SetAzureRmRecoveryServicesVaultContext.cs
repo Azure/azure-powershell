@@ -36,8 +36,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                Logger.Instance.WriteWarning("We are deprecating the dependency of RecoveryServices.Backup cmdlets on this cmdlet. Please use -Vault parameter instead.");
-
                 // Validate required parameters taken from the Vault.
                 if (string.IsNullOrEmpty(Vault.Name))
                 {

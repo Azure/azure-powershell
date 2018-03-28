@@ -542,6 +542,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         type.ToString()));
             }
         }
+
+        public ARSVault CheckBackupStatus()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }
