@@ -9,6 +9,7 @@ $output = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "src\Package\$Build
 Write-Verbose "The output folder is set to $output"
 $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
 $resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
+$stackPath = "src\Stack\$BuildConfig\ResourceManager\AzureResourceManager"
 
 Write-Verbose "Removing generated NuGet folders from $output"
 $resourcesFolders = @("de", "es", "fr", "it", "ja", "ko", "ru", "zh-Hans", "zh-Hant")
@@ -53,5 +54,33 @@ foreach ($RMFolder in $resourceManagerFolders)
         $removedScripts | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
     }
     $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Filter "*.psd1" | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
+    $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
+}
+
+$stackFolders = Get-ChildItem -Path $stackPath -Directory
+foreach ($stackFolder in $stackFolders)
+{
+    $psd1 = Get-ChildItem -Path $stackFolder.FullName -Filter "$($stackFolder.Name).psd1"
+    Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $psd1.DirectoryName -FileName $psd1.Name
+    
+    $acceptedDlls = @()
+    $acceptedDlls += $ModuleMetadata.NestedModules
+    $acceptedDlls += $ModuleMetadata.RequiredAssemblies
+
+    $acceptedDlls = $acceptedDlls | where { $_ -ne $null } | % { $_.Substring(2) }
+    
+    Write-Verbose "Removing redundant dlls in $($stackFolder.Name)"
+    $removedDlls = Get-ChildItem -Path $stackFolder.FullName -Filter "*.dll" | where { $acceptedDlls -notcontains $_.Name}
+    $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
+
+    Write-Verbose "Removing scripts and psd1 in $($stackFolder.FullName)"
+    if (Test-Path -Path "$($stackFolder.FullName)\StartupScripts")
+    {
+        $scriptName = "$($stackFolder.FullName)$([IO.Path]::DirectorySeparatorChar)StartupScripts$([IO.Path]::DirectorySeparatorChar)$($stackFolder.Name.replace('.', ''))Startup.ps1"
+        Write-Verbose $scriptName
+        $removedScripts = Get-ChildItem -Path "$($stackFolder.FullName)\StartupScripts" -Filter "*.ps1" | where { $_.FullName -ne $scriptName }
+        $removedScripts | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
+    }
+    $removedPsd1 = Get-ChildItem -Path "$($stackFolder.FullName)" -Filter "*.psd1" | where { $_.FullName -ne "$($stackFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($stackFolder.Name).psd1" }
     $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
 }

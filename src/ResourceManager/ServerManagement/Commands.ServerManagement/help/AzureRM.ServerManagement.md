@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.ServerManagement
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 644e6769-1030-4b92-a23d-ec58e9ebf3aa
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
