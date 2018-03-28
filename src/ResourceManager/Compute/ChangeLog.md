@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
+* `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
 
 ## Version 4.5.0
 * `New-AzureRmVM` and `New-AzureRmVMSS` support data disks.
@@ -30,8 +32,6 @@
 ## Version 4.4.0
 * `New-AzureRmVMSS` prints connection strings in verbose mode.
 * `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
-* `Get-AzureRmVmssDiskEncryptionStatus` reports encryption state of scale set using disk metadata
-* `Get-AzureRmVmssVmDiskEncryptionStatus` reports encryption state of all disks in instance using disk metadata
 * WriteAccelerator feature
     - Added WriteAccelerator switch parameter to the following cmdlets:
           Set-AzureRmVMOSDisk
