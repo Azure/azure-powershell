@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificate,
         SupportsShouldProcess = true,
         DefaultParameterSetName = ByVaultNameAndNameParameterSet,
-        ConfirmImpact = ConfirmImpact.High,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        ConfirmImpact = ConfirmImpact.High)]
     [OutputType(typeof(PSDeletedKeyVaultCertificate))]
     public class RemoveAzureKeyVaultCertificate : KeyVaultCmdletBase
     {

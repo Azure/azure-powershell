@@ -1063,7 +1063,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The network rule set of this vault is turned off now!.
+        ///   Looks up a localized string similar to The network rule set has been turned off for this vault..
         /// </summary>
         internal static string UpdateNetworkRuleWarning {
             get {

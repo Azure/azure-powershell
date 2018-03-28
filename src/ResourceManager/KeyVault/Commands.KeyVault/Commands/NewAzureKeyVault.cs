@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Create a new key vault.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmKeyVault",
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
@@ -157,13 +156,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // If s/d was not enabled on the original vault, the parameter name will be present on
                 // the input to the new-vault cmdlet, but without a value. if the presence of the parameter
                 // is passed into the input of the new-vault cmdlet, s/d will be enabled on the resulting vault.
-                if (EnableSoftDelete.IsPresent
-                    && !EnableSoftDelete)
-                    throw new ArgumentException("'EnableSoftDelete' may not be set to 'false'.");
-                if (EnablePurgeProtection.IsPresent
-                    && !EnablePurgeProtection)
-                    throw new ArgumentException("'EnablePurgeProtection' may not be set to 'false'.");
-
                 var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
                     {
                         VaultName = this.Name,

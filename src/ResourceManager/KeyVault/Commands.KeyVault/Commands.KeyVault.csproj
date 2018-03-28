@@ -53,11 +53,11 @@
   <ItemGroup>
     <Compile Include="Commands\AddAzureKeyVaultCertificate.cs" />
     <Compile Include="Commands\BackupAzureKeyVaultCertificate.cs" />
-    <Compile Include="Commands\BackupAzureKeyVaultManagedStorageAccount.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\BackupAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\BackupAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\GetAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultCertificate.cs" />
-    <Compile Include="Commands\RestoreAzureKeyVaultManagedStorageAccount.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\RestoreAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\GetAzureKeyVaultManagedStorageSasDefinition.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\UpdateAzureKeyVaultManagedStorageAccountKey.cs" />

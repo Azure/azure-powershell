@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -24,28 +25,54 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// NOTE: Define VaultName & ResourceGroupName in this class instead of base one because TAB order for input.
     /// </summary>
     [Cmdlet(VerbsData.Update, "AzureRmKeyVaultNetworkRuleSet",
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByVaultNameParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class UpdateAzureKeyVaultNetworkRuleSet : KeyVaultNetworkRuleSetBase
     {
+        private const string ByVaultNameParameterSet = "ByVaultName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
+
         #region Input Parameter Definitions
         /// <summary>
         /// Vault name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Specifies the name of a key vault whose network rule is being modified.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
+
+        /// <summary>
+        /// KeyVault object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "KeyVault object")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVault InputObject { get; set; }
+
+        /// <summary>
+        /// KeyVault ResourceId
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = ByResourceIdParameterSet,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Resource group name
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Specifies the name of the resource group associated with the key vault whose network rule is being modified.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
@@ -71,6 +98,16 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+            }
+            else if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(VaultName, Properties.Resources.UpdateNetworkRule))
             {
                 bool isIpAddressRangeSpecified = base.IsIpAddressRangeSpecified;

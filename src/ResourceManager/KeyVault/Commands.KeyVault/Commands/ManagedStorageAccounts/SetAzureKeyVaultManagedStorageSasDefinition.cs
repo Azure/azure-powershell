@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Set, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
         SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri,
         DefaultParameterSetName = ParameterSetRawSas )]
     [OutputType( typeof( PSKeyVaultManagedStorageSasDefinition ) )]
     public partial class SetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
@@ -75,6 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Sas definition parameters that will be used to create the sas token.",
             ParameterSetName = ParameterSetRawSas )]
+        [Obsolete("The 'Parameter' property is being deprecated and will be removed in a future release. Please use the TemplateUri and SasType properties instead.")]
         [ValidateNotNull]
         public Hashtable Parameter { get; set; }
 
@@ -290,12 +290,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                 case ParameterSetRawSas:
                 {
                     var dictionary = new Dictionary<string, string>();
-                    foreach ( DictionaryEntry p in Parameter )
-                    {
-                        if ( p.Key == null || string.IsNullOrEmpty( p.Key.ToString() ) )
-                            throw new ArgumentException( "An invalid parameter was specified." );
-                        dictionary[p.Key.ToString()] = ( p.Value == null ) ? string.Empty : p.Value.ToString();
-                    }
+                    // Commenting out the Parameter parsing code for now; remains to be determined whether
+                    // we can maintain backwards compatibility with the newly introduced properties.
+                    //foreach ( DictionaryEntry p in Parameter )
+                    //{
+                    //    if ( p.Key == null || string.IsNullOrEmpty( p.Key.ToString() ) )
+                    //        throw new ArgumentException( "An invalid parameter was specified." );
+                    //    dictionary[p.Key.ToString()] = ( p.Value == null ) ? string.Empty : p.Value.ToString();
+                    //}
                     return dictionary;
                 }
                 case ParameterSetAdhocAccountSas:

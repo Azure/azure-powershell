@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                     Position = 0,
-                    ValueFromPipelineByPropertyName = true,
                     ParameterSetName = ByStorageAccountNameParameterSet,
                     HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
@@ -58,7 +57,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                     Position = 1,
-                    ValueFromPipelineByPropertyName = true,
                     ParameterSetName = ByStorageAccountNameParameterSet,
                     HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
@@ -86,7 +84,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
                     Position = 2,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Output file. The output file to store the storage account backup. If not specified, a default filename will be generated.")]
         [ValidateNotNullOrEmpty]
         public string OutputFile { get; set; }
@@ -95,8 +92,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Instructs the cmdlet to overwrite the destination file, if it exists.
         /// </summary>
         [Parameter(Mandatory = false,
-                    Position = 3,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Overwrite the given file if it exists")]
         public SwitchParameter Force { get; set; }
 

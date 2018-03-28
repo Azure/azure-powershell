@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultAccessPolicy",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByUserPrincipalName,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {

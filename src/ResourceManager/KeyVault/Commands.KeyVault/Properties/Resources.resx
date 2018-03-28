@@ -466,6 +466,6 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Update vault network rule</value>
   </data>
   <data name="UpdateNetworkRuleWarning" xml:space="preserve">
-    <value>The network rule set of this vault is turned off now!</value>
+    <value>The network rule set has been turned off for this vault.</value>
   </data>
 </root>
