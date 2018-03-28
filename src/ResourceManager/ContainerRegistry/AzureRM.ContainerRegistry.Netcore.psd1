@@ -54,10 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.ContainerRegistry.dll', 
-    '.\Microsoft.Azure.Management.ResourceManager.dll', 
-    '.\Microsoft.Azure.Management.Storage.dll', 
-    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.ContainerRegistry.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
