@@ -1,5 +1,4 @@
-﻿using System;
-using System.Management.Automation;
+﻿using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 

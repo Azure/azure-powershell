@@ -3,6 +3,9 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels
 {
+    /// <summary>
+    /// Powershell side data structure containing files and directory processed
+    /// </summary>
     public class DataLakeStoreAclProcessorSummary
     {
         /// <summary>Number of files processed</summary>
