@@ -62,6 +62,11 @@
     <Compile Include="Auditing\Model\DatabaseBlobAuditingSettingsModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingSettingsModel.cs" />
     <Compile Include="Common\ResourceIdentityHelper.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseLongTermRetentionBackupCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\RemoveAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseLongTermRetentionBackupModel.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseLongTermRetentionPolicyModel.cs" />
     <Compile Include="Database\Cmdlet\StopAzureSqlDatabaseActivity.cs" />
     <Compile Include="Database\Model\DatabaseReadScale.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseCreateOrUpdateModel.cs" />
@@ -449,7 +454,9 @@
       <Name>SqlManagement</Name>
     </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.13.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
