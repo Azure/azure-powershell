@@ -112,7 +112,7 @@
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="..\AzureRM.Profile.psd1">
       <Link>AzureRM.Profile.psd1</Link>
@@ -120,12 +120,12 @@
     </None>
     <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
