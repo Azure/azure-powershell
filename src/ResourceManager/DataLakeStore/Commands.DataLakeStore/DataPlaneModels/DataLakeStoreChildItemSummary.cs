@@ -3,7 +3,7 @@
 namespace Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels
 {
     /// <summary>
-    /// 
+    /// Powershell side data structure containing files and directory count and total size
     /// </summary>
     public class DataLakeStoreChildItemSummary
     {

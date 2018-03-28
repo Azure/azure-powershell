@@ -647,18 +647,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         /// <summary>
-        /// 
+        /// Get file properties
         /// </summary>
-        /// <param name="accountName"></param>
-        /// <param name="path"></param>
-        /// <param name="getAclUsage"></param>
-        /// <param name="dumpFileName"></param>
-        /// <param name="getDiskUsage"></param>
-        /// <param name="saveToLocal"></param>
-        /// <param name="numThreads"></param>
-        /// <param name="displayFiles"></param>
-        /// <param name="hideConsistentAcl"></param>
-        /// <param name="maxDepth"></param>
+        /// <param name="accountName">Account name</param>
+        /// <param name="path">Path</param>
+        /// <param name="getAclUsage">Get Acl usage</param>
+        /// <param name="dumpFileName">Dump file name</param>
+        /// <param name="getDiskUsage">GetDisk usage</param>
+        /// <param name="saveToLocal">Save to local</param>
+        /// <param name="numThreads">Number of threads</param>
+        /// <param name="displayFiles">Display files</param>
+        /// <param name="hideConsistentAcl">Hide consistent Acl</param>
+        /// <param name="maxDepth">Maximum depth</param>
         public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth )
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).GetFileProperties(path, getAclUsage, dumpFileName,
