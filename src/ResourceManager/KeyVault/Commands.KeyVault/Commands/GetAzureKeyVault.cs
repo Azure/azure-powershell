@@ -23,8 +23,7 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault",
-        DefaultParameterSetName = ListVaultsBySubParameterSet,   
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ListVaultsBySubParameterSet)]
     [OutputType(typeof(PSKeyVault), typeof(List<PSKeyVaultIdentityItem>),
         typeof(PSDeletedKeyVault), typeof(List<PSDeletedKeyVault>))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase

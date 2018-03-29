@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </remarks>
     [Cmdlet(VerbsData.Backup, "AzureKeyVaultCertificate",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByCertificateNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByCertificateNameParameterSet)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultCertificate : KeyVaultCmdletBase
     {

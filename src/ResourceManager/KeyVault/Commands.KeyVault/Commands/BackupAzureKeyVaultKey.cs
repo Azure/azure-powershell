@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </remarks>
     [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByKeyNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByKeyNameParameterSet)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultKey : KeyVaultCmdletBase
     {

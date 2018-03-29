@@ -71,14 +71,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string SasType { get; set; }
 
         [Parameter( Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Sas definition parameters that will be used to create the sas token.",
-            ParameterSetName = ParameterSetRawSas )]
-        [Obsolete("The 'Parameter' property is being deprecated and will be removed in a future release. Please use the TemplateUri and SasType properties instead.")]
-        [ValidateNotNull]
-        public Hashtable Parameter { get; set; }
-
-        [Parameter( Mandatory = false,
             HelpMessage = "Disables the use of sas definition for generation of sas token." )]
         public SwitchParameter Disable { get; set; }
 
