@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Decouple reliance on Commands.Resources.Rest and ARM/Storage SDKs.
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 1.0.3
 * Fix issue with Default Resource Group in CloudShell
