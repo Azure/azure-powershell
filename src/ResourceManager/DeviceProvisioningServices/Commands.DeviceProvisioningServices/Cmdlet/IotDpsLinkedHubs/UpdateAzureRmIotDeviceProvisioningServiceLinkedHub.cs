@@ -90,9 +90,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "A boolean indicating whether to apply allocation policy to the IoT Hub")]
+            HelpMessage = "Apply allocation policy to the IoT Hub")]
         [ValidateNotNullOrEmpty]
-        public bool? ApplyAllocationPolicy { get; set; }
+        public SwitchParameter ApplyAllocationPolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             {
                 ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
                 IotHubDefinitionDescription iotHub = provisioningServiceDescription.Properties.IotHubs.FirstOrDefault(x => x.Name.Equals(this.LinkedHubName, StringComparison.OrdinalIgnoreCase));
-                iotHub.ApplyAllocationPolicy = this.ApplyAllocationPolicy ?? iotHub.ApplyAllocationPolicy;
+                iotHub.ApplyAllocationPolicy = this.ApplyAllocationPolicy.IsPresent;
                 iotHub.AllocationWeight = this.AllocationWeight ?? iotHub.AllocationWeight;
                 IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
                 this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(GetIotDpsHubs(this.ResourceGroupName, this.Name, this.LinkedHubName), this.ResourceGroupName, this.Name), false);

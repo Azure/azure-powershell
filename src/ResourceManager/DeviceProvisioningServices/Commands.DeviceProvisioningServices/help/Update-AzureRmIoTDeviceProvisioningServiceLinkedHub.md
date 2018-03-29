@@ -15,22 +15,22 @@ Update a linked IoT hub in an Azure IoT Hub device provisioning service.
 ### ResourceSet (Default)
 ```
 Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
- [-LinkedHubName] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy <Boolean>]
+ [-LinkedHubName] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
 Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-InputObject] <PSIotHubDefinitionDescription>
- [-AllocationWeight <Int32>] [-ApplyAllocationPolicy <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllocationWeight <Int32>] [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Update-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-LinkedHubName] <String>
- [-AllocationWeight <Int32>] [-ApplyAllocationPolicy <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllocationWeight <Int32>] [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,10 +71,10 @@ Accept wildcard characters: False
 ```
 
 ### -ApplyAllocationPolicy
-A boolean indicating whether to apply allocation policy to the IoT Hub
+Apply allocation policy to the IoT Hub
 
 ```yaml
-Type: Boolean
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
