@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                     Position = 1,
                     ParameterSetName = ByStorageAccountNameParameterSet,
-                    HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
+                    HelpMessage = "Storage account name. Cmdlet constructs the FQDN of a storage account from vault name, currently selected environment and storage account name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(Constants.SecretName)]
+        [Alias(Constants.StorageAccountName)]
         public string Name { get; set; }
 
         /// <summary>

@@ -195,7 +195,7 @@ extension, it imports the key as a software-protected key.
 Type: String
 Parameter Sets: InteractiveCreate, InputObjectCreate
 Aliases:
-Accepted values: HSM, Software
+Accepted values: HSM, Software, HSM, Software
 
 Required: True
 Position: Named
@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: InteractiveImport, InputObjectImport
 Aliases:
-Accepted values: HSM, Software
+Accepted values: HSM, Software, HSM, Software
 
 Required: False
 Position: Named
