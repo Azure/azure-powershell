@@ -19,6 +19,7 @@
 -->
 
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 0.5.2
 * Updated the ADF .Net SDK to version 0.6.0-preview containing the following changes:

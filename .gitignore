@@ -226,3 +226,5 @@ Results
 Package
 .DS_Store
 .idea
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Logger/bin
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Models/bin

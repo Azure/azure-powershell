@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add Partner Name in the response for cmdlets: Get-AzureRmManagementPartner, New-AzureRmManagementPartner and Update-AzureRmManagementPartner
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 0.1.0
 * First release of Management Partners cmdlets
-

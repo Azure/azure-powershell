@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 1.0.0
 * First release of Location Based Services management cmdlets
