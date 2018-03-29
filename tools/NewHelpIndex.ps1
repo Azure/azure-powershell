@@ -61,7 +61,7 @@ $outputModules = @{}
 
 #Create mappings file
 & "$PSScriptRoot/CreateMappings.ps1" -OutputFile $OutputFile/../groupMapping.json -WarningFile $OutputFile/../groupMappingWarnings.json
-$labelMapping = Get-Content -Raw $PSScriptRoot/groupMapping.json | ConvertFrom-Json
+$labelMapping = Get-Content -Raw $OutputFile/../groupMapping.json | ConvertFrom-Json
 
 $RMpsd1s = @()
 $HelpFolders = @()
