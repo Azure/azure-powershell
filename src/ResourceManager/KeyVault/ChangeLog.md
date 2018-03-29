@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated cmdlets to include piping scenarios
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.2.1
 * Fix issue with Default Resource Group in CloudShell
