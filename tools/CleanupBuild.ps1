@@ -61,19 +61,6 @@ foreach ($RMFolder in $resourceManagerFolders)
 $stackFolders = Get-ChildItem -Path $stackPath -Directory
 foreach ($stackFolder in $stackFolders)
 {
-    $psd1 = Get-ChildItem -Path $stackFolder.FullName -Filter "$($stackFolder.Name).psd1"
-    Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $psd1.DirectoryName -FileName $psd1.Name
-    
-    $acceptedDlls = @()
-    $acceptedDlls += $ModuleMetadata.NestedModules
-    $acceptedDlls += $ModuleMetadata.RequiredAssemblies
-
-    $acceptedDlls = $acceptedDlls | where { $_ -ne $null } | % { $_.Substring(2) }
-    
-    Write-Verbose "Removing redundant dlls in $($stackFolder.Name)"
-    $removedDlls = Get-ChildItem -Path $stackFolder.FullName -Filter "*.dll" | where { $acceptedDlls -notcontains $_.Name}
-    $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
-
     Write-Verbose "Removing scripts and psd1 in $($stackFolder.FullName)"
     if (Test-Path -Path "$($stackFolder.FullName)\StartupScripts")
     {
