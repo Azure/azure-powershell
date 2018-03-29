@@ -15,8 +15,18 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Automation;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using InternalResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using ResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
 namespace Microsoft.Azure.Commands.Automation.Test
 {
@@ -29,35 +39,48 @@ namespace Microsoft.Azure.Commands.Automation.Test
             helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(MockContext context)
         {
-            var automationManagementClient = GetAutomationManagementClient();
-
-            helper.SetupManagementClients(automationManagementClient);
+            helper.SetupManagementClients(
+                Azure.Test.TestBase.GetServiceClient<AutomationManagementClient>(new CSMTestEnvironmentFactory()),
+                context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment()),
+                context.GetServiceClient<InternalResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment()));
         }
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            using (UndoContext context = UndoContext.Current)
+            var callingClassType = TestUtilities.GetCallingClass(2);
+            var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Resources", null);
+            d.Add("Microsoft.Features", null);
+            d.Add("Microsoft.Authorization", null);
+            var providersToIgnore = new Dictionary<string, string>();
+            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+                SetupManagementClients(context);
 
-                SetupManagementClients();
-
+                var callingClassName = callingClassType
+                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
+                                        .Last();
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
                 helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    "ScenarioTests\\Common.ps1",
                     helper.RMProfileModule,
+                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
 
-                helper.RunPowerShellTest(scripts);
+                if (scripts != null)
+                {
+                    helper.RunPowerShellTest(scripts);
+                }
             }
         }
 
-        protected AutomationManagementClient GetAutomationManagementClient()
-        {
-            return TestBase.GetServiceClient<AutomationManagementClient>(new CSMTestEnvironmentFactory());
-        }
     }
 }

@@ -79,5 +79,21 @@ namespace Microsoft.Azure.Commands.Automation.Test
         {
             RunPowerShellTest("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1  @{'nums'='[1,2,3,4,5,6,7]'}  28");
         }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestAutomationCreateNewVariableWithGetContent()
+        {
+            RunPowerShellTest("Test-CreateNewVariableWithGetContent");
+        }
+
+        [Fact]
+        [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestAutomationCreateNewVariableWithLargeDataThrowsTimeOut()
+        {
+            RunPowerShellTest("Test-CreateNewVariableWithLargeDataThrowsTimeOut");
+        }        
     }
 }

@@ -361,3 +361,62 @@ function Test-AutomationStartUnpublishedRunbook
     Remove-AzureRmAutomationRunbook $accountName -Name $runbook.Name -Force 
     Assert-Throws {Get-AzureRmAutomationRunbook $accountName -Name $runbook.Name -Parameters $runbookParameters -PassThru -ErrorAction Stop}
 }
+
+<#
+.SYNOPSIS
+Tests create new automation variable with Get-Content
+#>
+function Test-CreateNewVariableWithGetContent
+{
+	$resourceGroupName = Get-RandomResourceGroupName
+	$rgLocation = "japaneast"
+	$automationAccountName = Get-RandomAutomationAccountName
+    $automationAccountLocation = $rgLocation
+
+	$variableName = "GetContentVariable"
+
+	$fileName = ".\CreateNewVariableWithGetContent.txt"
+	
+	echo "testline1" > $fileName
+    echo "testline2" >> $fileName
+
+	$variableValue = Get-Content $fileName
+
+    $resourceGroupCreated = New-AzureRMResourceGroup -Name $resourceGroupName -Location $rgLocation
+	$automationAccountCreated = New-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName -Location $automationAccountLocation -Name $automationAccountName -Plan Basic
+	$variableCreated = New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -name $variableName -value $variableValue -Encrypted:$false
+	$getVariable = Get-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -name $variableName
+
+	Assert-AreEqual $variableCreated.Name $getVariable.Name	
+ }
+
+<#
+.SYNOPSIS
+Tests create new automation variable with lage data throws time out
+#>
+function Test-CreateNewVariableWithLargeDataThrowsTimeOut
+{
+	$resourceGroupName = Get-RandomResourceGroupName
+	$rgLocation = "japaneast"
+	$automationAccountName = Get-RandomAutomationAccountName
+    $automationAccountLocation = $rgLocation
+
+	$variableName = "GetContentVariableWithLargeData"
+
+	$fileName = ".\CreateNewVariableWithLargeDataThrowsTimeOut.txt"
+	
+	echo "testlines" > $fileName
+    for($i = 0; $i -lt 1000; $i++)
+    {
+      echo "testline$i" >> $fileName
+    }
+	
+	$variableValue = Get-Content $fileName
+
+    $resourceGroupCreated = New-AzureRMResourceGroup -Name $resourceGroupName -Location $rgLocation
+	$automationAccountCreated = New-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName -Location $automationAccountLocation -Name $automationAccountName -Plan Basic
+	New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -name $variableName -value $variableValue -Encrypted:$false -ErrorAction SilentlyContinue
+
+	Assert-True { $Error[0] -like "Input value could not be serialized to json. Operation had timed out in*" }
+	$Error.Clear()
+}

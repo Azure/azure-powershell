@@ -1,0 +1,286 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourcegroups/rgps1626?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGRkYTZhZDItNzMwYS00MDUzLTg4ZDEtMGZhN2ZmMjA5YWVhL3Jlc291cmNlZ3JvdXBzL3JncHMxNjI2P2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestMethod": "HEAD",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "78498683-deab-4d7c-9dc7-a3b2fb67ca46"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2563.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "100"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14907"
+        ],
+        "x-ms-request-id": [
+          "27541f76-8d15-4021-9385-7a049785aa14"
+        ],
+        "x-ms-correlation-request-id": [
+          "27541f76-8d15-4021-9385-7a049785aa14"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180329T073326Z:27541f76-8d15-4021-9385-7a049785aa14"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Mar 2018 07:33:26 GMT"
+        ]
+      },
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourcegroups/rgps1626?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGRkYTZhZDItNzMwYS00MDUzLTg4ZDEtMGZhN2ZmMjA5YWVhL3Jlc291cmNlZ3JvdXBzL3JncHMxNjI2P2FwaS12ZXJzaW9uPTIwMTctMDUtMTA=",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"location\": \"japaneast\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "31"
+        ],
+        "x-ms-client-request-id": [
+          "bf8d57c2-7a5e-4714-b0f3-903b3c93976f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2563.0",
+          "OSName/WindowsServer2012R2Datacenter",
+          "OSVersion/6.3.9600",
+          "Microsoft.Azure.Management.ResourceManager.ResourceManagementClient/1.6.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourceGroups/rgps1626\",\r\n  \"name\": \"rgps1626\",\r\n  \"location\": \"japaneast\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "172"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "2127b059-4d7a-4497-8d92-87bfacd017bf"
+        ],
+        "x-ms-correlation-request-id": [
+          "2127b059-4d7a-4497-8d92-87bfacd017bf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180329T073329Z:2127b059-4d7a-4497-8d92-87bfacd017bf"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Mar 2018 07:33:29 GMT"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourceGroups/rgps1626/providers/Microsoft.Automation/automationAccounts/automationAccountps2111?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGRkYTZhZDItNzMwYS00MDUzLTg4ZDEtMGZhN2ZmMjA5YWVhL3Jlc291cmNlR3JvdXBzL3JncHMxNjI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYXV0b21hdGlvbkFjY291bnRwczIxMTE/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"capacity\": 0\r\n    }\r\n  },\r\n  \"name\": \"automationAccountps2111\",\r\n  \"location\": \"japaneast\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json"
+        ],
+        "Content-Length": [
+          "160"
+        ],
+        "x-ms-version": [
+          "2014-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"automationAccountps2111\",\r\n  \"id\": \"/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourceGroups/rgps1626/providers/Microsoft.Automation/automationAccounts/automationAccountps2111\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts\",\r\n  \"location\": \"japaneast\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"name\": \"Basic\",\r\n      \"family\": null,\r\n      \"capacity\": null\r\n    },\r\n    \"state\": \"Ok\",\r\n    \"RegistrationUrl\": \"https://jpe-agentservice-prod-1.azure-automation.net/accounts/253f89f3-2178-445a-85c0-d32230ff9825\",\r\n    \"creationTime\": \"2018-03-29T00:33:32.007-07:00\",\r\n    \"lastModifiedBy\": null,\r\n    \"lastModifiedTime\": \"2018-03-29T00:33:32.007-07:00\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "605"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1c96dd36-a998-463c-9c98-5d048853d6e8"
+        ],
+        "x-ms-location": [
+          "https://management.azure.com/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourceGroups/rgps1626/providers/Microsoft.Automation/automationAccounts/automationAccountps2111?api-version=2015-10-31"
+        ],
+        "ocp-location": [
+          "https://management.azure.com/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourceGroups/rgps1626/providers/Microsoft.Automation/automationAccounts/automationAccountps2111?api-version=2015-10-31"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f262d0a-0723-4814-88cb-ddc0c0037425"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180329T073332Z:5f262d0a-0723-4814-88cb-ddc0c0037425"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Mar 2018 07:33:32 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourceGroups/rgps1626/providers/Microsoft.Automation/automationAccounts/automationAccountps2111?api-version=2015-10-31"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/4dda6ad2-730a-4053-88d1-0fa7ff209aea/resourceGroups/rgps1626/providers/Microsoft.Automation/automationAccounts/automationAccountps2111/variables/GetContentVariableWithLargeData?api-version=2015-10-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGRkYTZhZDItNzMwYS00MDUzLTg4ZDEtMGZhN2ZmMjA5YWVhL3Jlc291cmNlR3JvdXBzL3JncHMxNjI2L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvYXV0b21hdGlvbkFjY291bnRwczIxMTEvdmFyaWFibGVzL0dldENvbnRlbnRWYXJpYWJsZVdpdGhMYXJnZURhdGE/YXBpLXZlcnNpb249MjAxNS0xMC0zMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [
+          "application/json"
+        ],
+        "x-ms-version": [
+          "2014-06-01"
+        ],
+        "User-Agent": [
+          "Microsoft.Azure.Management.Automation.AutomationManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Variable not found.\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "51"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "8fdf3e7f-a49c-4132-af86-f5f832ee6b66"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14934"
+        ],
+        "x-ms-correlation-request-id": [
+          "97e25e6d-637a-4e60-abe3-d9889f08e9d0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180329T073332Z:97e25e6d-637a-4e60-abe3-d9889f08e9d0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Mar 2018 07:33:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {
+    "Test-CreateNewVariableWithLargeDataThrowsTimeOut": [
+      "ps1626",
+      "ps2111"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "4dda6ad2-730a-4053-88d1-0fa7ff209aea"
+  }
+}
