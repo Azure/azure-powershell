@@ -277,10 +277,12 @@ namespace Microsoft.Azure.Commands.Compute
                     allocationMethod: _cmdlet.AllocationMethod,
                     sku: PublicIPAddressStrategy.Sku.Basic,
                     zones: _cmdlet.Zone);
+
+                _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
+
                 var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                     name: _cmdlet.SecurityGroupName,
-                    openPorts: _cmdlet.OpenPorts,
-                    imageAndOsType: ImageAndOsType);
+                    openPorts: _cmdlet.OpenPorts);
 
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup);
