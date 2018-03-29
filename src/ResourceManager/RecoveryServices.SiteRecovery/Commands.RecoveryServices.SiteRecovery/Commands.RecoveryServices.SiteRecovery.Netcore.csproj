@@ -30,7 +30,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.2.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery" Version="1.0.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery" Version="1.0.3-preview" />
   </ItemGroup>
 
   <ItemGroup>
