@@ -19,7 +19,7 @@ Create subscription
 function Test-NewSubscription
 {
     # $accounts = Get-AzureRmEnrollmentAccount
-    $accounts = @(@{ ObjectId = "0a31de1f-5d19-4753-8996-e134efc98008" })
+    $accounts = @(@{ ObjectId = "cdf813b6-bdc2-4df5-b150-00ccfd7580e2" })
     
     # Verify the caller has at least one enrollment account.
     Assert-True { $accounts.Count -gt 0 }
