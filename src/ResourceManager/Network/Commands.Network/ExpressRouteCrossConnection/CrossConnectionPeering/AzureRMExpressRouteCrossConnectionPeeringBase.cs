@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The PeeringType")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-           MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,
-           MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,
-           MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,
+           MNM.ExpressRoutePeeringType.AzurePrivatePeering,
+           MNM.ExpressRoutePeeringType.AzurePublicPeering,
+           MNM.ExpressRoutePeeringType.MicrosoftPeering,
            IgnoreCase = true)]
         public string PeeringType { get; set; }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (PeerAddressType == IPv6)
                 {
-                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSPeeringConfig();
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSExpressRouteCircuitPeeringConfig();
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Network
                 else
                 {
                     // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                    peering.MicrosoftPeeringConfig = new PSPeeringConfig();
+                    peering.MicrosoftPeeringConfig = new PSExpressRouteCircuitPeeringConfig();
                     peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
                     peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
                     peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public void SetIpv6PeeringParameters(PSExpressRouteCrossConnectionPeering peering)
         {
-            peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
+            peering.Ipv6PeeringConfig = new PSIpv6ExpressRouteCircuitPeeringConfig();
             peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
             peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
         }

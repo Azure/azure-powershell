@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The cross connection")]
         public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
 
         public override void Execute()

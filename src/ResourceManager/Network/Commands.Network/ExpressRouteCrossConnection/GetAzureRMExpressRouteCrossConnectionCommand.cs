@@ -25,6 +25,7 @@ using System.Management.Automation;
 using AutoMapper;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -60,25 +61,25 @@ namespace Microsoft.Azure.Commands.Network
                 IPage<ExpressRouteCrossConnection> crossConnectionPage;
                 if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
-                    crossConnectionPage = this.ExpressRouteCrossConnectionClient.List(this.ResourceGroupName);
+                    crossConnectionPage = this.ExpressRouteCrossConnectionClient.ListByResourceGroup(this.ResourceGroupName);
                 }
                 else
                 {
-                    crossConnectionPage = this.ExpressRouteCrossConnectionClient.ListAll();
+                    crossConnectionPage = this.ExpressRouteCrossConnectionClient.List();
                 }
 
                 // Get all resources by polling on next page link
                 var crossConnectionList = ListNextLink<ExpressRouteCrossConnection>.GetAllResourcesByPollingNextLink(crossConnectionPage, this.ExpressRouteCrossConnectionClient.ListNext);
 
-                var psCircuits = new List<PSExpressRouteCrossConnection>();
+                var psCrossConnections = new List<PSExpressRouteCrossConnection>();
                 foreach (var crossConnection in crossConnectionList)
                 {
-                    var psVnet = this.ToPsExpressRouteCrossConnection(crossConnection);
-                    psVnet.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(crossConnection.Id);
-                    psCircuits.Add(psVnet);
+                    var psCrossConnection = this.ToPsExpressRouteCrossConnection(crossConnection);
+                    psCrossConnection.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(crossConnection.Id);
+                    psCrossConnections.Add(psCrossConnection);
                 }
 
-                WriteObject(psCircuits, true);
+                WriteObject(psCrossConnections, true);
             }
         }
     }

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -44,9 +45,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The PeeringType")]
         [ValidateSet(
-           MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,
-           MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,
-           MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,
+           MNM.ExpressRoutePeeringType.AzurePrivatePeering,
+           MNM.ExpressRoutePeeringType.AzurePublicPeering,
+           MNM.ExpressRoutePeeringType.MicrosoftPeering,
            IgnoreCase = true)]
         public string PeeringType { get; set; }
 
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var routeTables = this.ExpressRouteCrossConnectionClient.ListRouteTable(ResourceGroupName, CrossConnectionName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
+            var routeTables = this.ExpressRouteCrossConnectionClient.ListRoutesTable(ResourceGroupName, CrossConnectionName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
             var psRoutes = new List<PSExpressRouteCircuitRoutesTable>();
             foreach (var routeTable in routeTables)
             {
