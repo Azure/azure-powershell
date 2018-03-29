@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string recoveryserver;
 
         /// <summary>
-        ///     Gets or sets recovery plan object
+        ///     Gets or sets name of the recovery plan.
         /// </summary>
         private RecoveryPlan recoveryPlan;
 
@@ -65,7 +65,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Points of the Policy.
+        ///     Gets or sets the ASR fabric object for the primary ASR fabric
+        ///     of the replication protected items that will be part of this recovery plan.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
@@ -77,7 +78,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRFabric PrimaryFabric { get; set; }
 
         /// <summary>
-        ///     Gets or sets Application Consistent Snapshot Frequency of the Policy in hours.
+        ///     Gets or sets the ASR fabric object for the recovery ASR fabric 
+        ///     of the replication protected items that will be part of this recovery plan.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
@@ -86,7 +88,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRFabric RecoveryFabric { get; set; }
 
         /// <summary>
-        ///     Gets or sets switch parameter. On passing, command does not ask for confirmation.
+        ///     Switch parameter to specify that the recovery location for recovery plan is Azure.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
@@ -94,7 +96,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter Azure { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Provider of the Policy.
+        ///     Gets or sets the failover deployment model (Classic or Resource Manager)
+        ///     of the replication protected items that will be part of this recovery plan.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToAzure,
@@ -106,7 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string FailoverDeploymentModel { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Frequency of the Policy in seconds.
+        ///     Gets or sets the  list of replication protected items to add to the first group of the recovery plan.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
@@ -120,7 +123,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRReplicationProtectedItem[] ReplicationProtectedItem { get; set; }
 
         /// <summary>
-        ///     Gets or sets RP JSON FilePath.
+        ///     Gets or sets the path to the recovery plan definition json file. 
+        ///     A recovery plan definition json can be used to create the recovery plan.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPFile,
@@ -261,6 +265,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     VmId = ((InMageReplicationDetails)replicationProtectedItemResponse
                         .Properties.ProviderSpecificDetails).VmId;
+                }
+                else if (replicationProtectedItemResponse.Properties.ProviderSpecificDetails.GetType() == typeof(A2AReplicationDetails))
+                {
+                    A2AReplicationDetails a2aReplicationDetails =
+                        ((A2AReplicationDetails)replicationProtectedItemResponse
+                        .Properties
+                        .ProviderSpecificDetails);
+                    if (a2aReplicationDetails.FabricObjectId.IndexOf(
+                        Constants.ClassicCompute,
+                        StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        createRecoveryPlanInputProperties.FailoverDeploymentModel =
+                            Management.RecoveryServices.SiteRecovery.Models.FailoverDeploymentModel.Classic;
+                    }
+                    else if (a2aReplicationDetails.FabricObjectId.IndexOf(
+                        Constants.Compute,
+                        StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        createRecoveryPlanInputProperties.FailoverDeploymentModel =
+                            Management.RecoveryServices.SiteRecovery.Models.FailoverDeploymentModel.ResourceManager;
+                    }
                 }
 
                 var recoveryPlanProtectedItem = new RecoveryPlanProtectedItem();
