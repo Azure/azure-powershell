@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.3.1
+* Fix issue with Default Resource Group in CloudShell
+* Fixed issue with cleaning up scripts in build
+
+## Version 4.3.0
+* Fixed issue with importing aliases
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+* Added Get-AzureRmSqlDatabaseLongTermRetentionBackup and Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+* Updated Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy and Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy to work with Long Term Retention V2
+* Updated Restore-AzureRmSqlDatabase to work with Long Term Retention V2 resource IDs
 
 ## Version 4.2.0
 * Update the Auditing commands parameters description

@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.9.3
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 0.9.2
+* Update notice.txt and notice message.
 
 ## Version 0.9.1
 * Integrate with Cognitive Services Management SDK version 3.0.0.

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
@@ -13,16 +13,31 @@ Creates a key in a key vault or imports a key into a key vault.
 
 ## SYNTAX
 
-### Create (Default)
+### InteractiveCreate (Default)
 ```
 Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable]
  [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Import
+### InteractiveImport
 ```
 Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
+ [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectCreate
+```
+Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
+ [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectImport
+```
+Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -178,8 +193,8 @@ extension, it imports the key as a software-protected key.
 
 ```yaml
 Type: String
-Parameter Sets: Create
-Aliases: 
+Parameter Sets: InteractiveCreate, InputObjectCreate
+Aliases:
 Accepted values: HSM, Software
 
 Required: True
@@ -191,8 +206,8 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Import
-Aliases: 
+Parameter Sets: InteractiveImport, InputObjectImport
+Aliases:
 Accepted values: HSM, Software
 
 Required: False
@@ -209,7 +224,7 @@ the key will fail. Use this parameter if you are preloading keys that you intend
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -227,12 +242,27 @@ parameter, the key does not expire.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Vault object.
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: InputObjectCreate, InputObjectImport
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -244,8 +274,8 @@ name extension.
 
 ```yaml
 Type: SecureString
-Parameter Sets: Import
-Aliases: 
+Parameter Sets: InteractiveImport, InputObjectImport
+Aliases:
 
 Required: False
 Position: Named
@@ -268,8 +298,8 @@ When you specify this parameter, the *Destination* parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Import
-Aliases: 
+Parameter Sets: InteractiveImport, InputObjectImport
+Aliases:
 
 Required: True
 Position: Named
@@ -295,7 +325,7 @@ the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=61
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -330,7 +360,7 @@ parameter, the key can be used immediately.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -362,8 +392,8 @@ FQDN of a key vault based on the name that this parameter specifies and your cur
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: InteractiveCreate, InteractiveImport
+Aliases:
 
 Required: True
 Position: 0
@@ -408,9 +438,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
 
 ## NOTES
 

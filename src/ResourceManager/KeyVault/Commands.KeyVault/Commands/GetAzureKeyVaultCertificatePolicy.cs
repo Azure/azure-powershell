@@ -24,12 +24,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificatePolicy,        
         DefaultParameterSetName = ByVaultAndCertNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificatePolicy))]
+    [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class GetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string ByVaultAndCertNameParameterSet = "VaultAndCertName";
+        private const string ByInputObjectParameterSet = "InputObject";
 
         #endregion
 
@@ -57,11 +58,29 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
+
+
+        /// <summary>
+        /// Certificate Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   Position = 0,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Certificate Object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultCertificateIdentityItem InputObject { get; set; }
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             CertificatePolicy certificatePolicy;
+
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName.ToString();
+                Name = InputObject.Name.ToString();
+            }
 
             try
             {
@@ -79,7 +98,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
 
             if (certificatePolicy != null)
             {
-                this.WriteObject(KeyVaultCertificatePolicy.FromCertificatePolicy(certificatePolicy));
+                this.WriteObject(PSKeyVaultCertificatePolicy.FromCertificatePolicy(certificatePolicy));
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: A82392AA-B12B-443E-8704-7CF5A9F8ED58
@@ -21,7 +21,7 @@ Backup-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-OutputFile] <S
 
 ### ByKey
 ```
-Backup-AzureKeyVaultKey [-Key] <KeyBundle> [[-OutputFile] <String>] [-Force]
+Backup-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-OutputFile] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Overwrite the given file if it exists
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -94,18 +94,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Key
-Specifies a previously retrieved key which is to be backed up.
+### -InputObject
+Key bundle to back up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: KeyBundle
+Type: PSKeyVaultKeyIdentityItem
 Parameter Sets: ByKey
-Aliases: 
+Aliases: Key
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -132,7 +132,7 @@ If you specify the name of an existing output file, the operation will not compl
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -147,7 +147,7 @@ Specifies the name of the key vault that contains the key to back up.
 ```yaml
 Type: String
 Parameter Sets: ByKeyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -191,6 +191,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

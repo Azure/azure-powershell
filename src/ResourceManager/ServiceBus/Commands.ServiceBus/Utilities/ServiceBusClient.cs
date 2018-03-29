@@ -221,6 +221,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 parameters.DeadLetteringOnMessageExpiration = queue.DeadLetteringOnMessageExpiration;
             if (queue.EnableExpress.HasValue)
                 parameters.EnableExpress = queue.EnableExpress;
+            if (queue.EnableBatchedOperations.HasValue)
+                parameters.EnableBatchedOperations = queue.EnableBatchedOperations;
             if (queue.EnablePartitioning.HasValue)
                 parameters.EnablePartitioning = queue.EnablePartitioning;
             if (queue.MaxDeliveryCount.HasValue)
@@ -456,6 +458,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 parameters.LockDuration = (TimeSpan?)AzureServiceBusCmdletBase.ParseTimespan(subscription.LockDuration);
             if (subscription.DeadLetteringOnMessageExpiration.HasValue)
                 parameters.DeadLetteringOnMessageExpiration = subscription.DeadLetteringOnMessageExpiration;
+            if (subscription.DeadLetteringOnFilterEvaluationExceptions.HasValue)
+                parameters.DeadLetteringOnFilterEvaluationExceptions = subscription.DeadLetteringOnFilterEvaluationExceptions;
             if (subscription.EnableBatchedOperations.HasValue)
                 parameters.EnableBatchedOperations = subscription.EnableBatchedOperations;
             if (subscription.MaxDeliveryCount.HasValue)
