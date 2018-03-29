@@ -16,14 +16,14 @@ Uploads a local file or directory to a Data Lake Store.
 ### NoDiagnosticLogging (Default)
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
- [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
+ [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IncludeDiagnosticLogging
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
- [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
+ [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
  [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,10 +35,10 @@ The **Import-AzureRmDataLakeStoreItem** cmdlet uploads a local file or directory
 
 ### Example 1: Upload a file
 ```
-PS C:\>Import-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "C:\SrcFile.csv" -Destination "/MyFiles/File.csv"
+PS C:\>Import-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path "C:\SrcFile.csv" -Destination "/MyFiles/File.csv" -Concurrency 4
 ```
 
-This command uploads the file SrcFile.csv and adds it to the MyFiles folder in the Data Lake Store as File.csv.
+This command uploads the file SrcFile.csv and adds it to the MyFiles folder in the Data Lake Store as File.csv with a concurrency of 4.
 
 ## PARAMETERS
 
@@ -57,9 +57,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Concurrency
+Indicates the number of files or chunks to upload in parallel. Default will be computed as a best effort based on system specifications.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ConcurrentFileCount
-Specify the maximum number of files to upload in parallel for a folder upload.
-The default value is five (5).
+Indicates the maximum number of files to upload in parallel for a folder upload.  Default will be computed as a best effort based on folder and file size
 
 ```yaml
 Type: Int32
@@ -74,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -150,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -ForceBinary
-Indicates that this operation uploads the file as a binary file.
+Indicates that the file(s) being copied should be copied with no concern for new line preservation across appends.
 
 ```yaml
 Type: SwitchParameter
@@ -180,8 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -PerFileThreadCount
-Specifies the maximum number of threads to use per file.
-The default value is ten (10).
+Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size
 
 ```yaml
 Type: Int32
@@ -211,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -Resume
-Indicates that this operation should resume a previously canceled or failed upload.
+Indicates that the file(s) being copied are a continuation of a previous upload. This will cause the system to attempt to resume from the last file that was not fully uploaded.
 
 ```yaml
 Type: SwitchParameter
