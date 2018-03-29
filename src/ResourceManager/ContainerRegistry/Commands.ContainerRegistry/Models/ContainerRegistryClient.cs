@@ -12,22 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Microsoft.Rest.Azure;
-using Microsoft.Azure.Management.ContainerRegistry;
-using Microsoft.Azure.Management.ContainerRegistry.Models;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.ContainerRegistry;
+using Microsoft.Azure.Management.ContainerRegistry.Models;
+using Microsoft.Rest.Azure;
+using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     public class ContainerRegistryClient
     {
         private ContainerRegistryManagementClient _client;
-        private StorageManagementClient _storageClient;
 
         public Action<string> VerboseLogger { get; set; }
         public Action<string> ErrorLogger { get; set; }
@@ -36,7 +33,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public ContainerRegistryClient(IAzureContext context)
         {
             _client = AzureSession.Instance.ClientFactory.CreateArmClient<ContainerRegistryManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-            _storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         public Registry CreateRegistry(string resourceGroupName, string registryName, Registry registry)
@@ -62,10 +58,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 AdminUserEnabled = adminUserEnabled
             };
 
-            if(sku != null)
+            if (sku != null)
             {
                 parameters.Sku = new Management.ContainerRegistry.Models.Sku(sku);
-            }            
+            }
 
             if (storageAccountId != null)
             {
@@ -169,7 +165,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             _client.Replications.Delete(resourceGroupName, registryName, replicationName);
         }
-        
+
         public Replication UpdateReplication(string resourceGroupName, string registryName, string replicationName, IDictionary<string, string> tags)
         {
             return _client.Replications.Update(resourceGroupName, registryName, replicationName, tags);
@@ -297,7 +293,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             return _client.Webhooks.ListEventsNext(nextLink);
         }
-        
+
         public CallbackConfig GetWebhookGetCallbackConfig(string resourceGroupName, string registryName, string webhookName)
         {
             return _client.Webhooks.GetCallbackConfig(resourceGroupName, registryName, webhookName);
