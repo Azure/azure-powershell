@@ -20,6 +20,7 @@
 
 ## Current Release
 * Fix error message with Network cmdlets
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 5.4.1
 * Fix issue with Default Resource Group in CloudShell
