@@ -281,16 +281,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 case ParameterSetRawSas:
                 {
-                    var dictionary = new Dictionary<string, string>();
-                    // Commenting out the Parameter parsing code for now; remains to be determined whether
-                    // we can maintain backwards compatibility with the newly introduced properties.
-                    //foreach ( DictionaryEntry p in Parameter )
-                    //{
-                    //    if ( p.Key == null || string.IsNullOrEmpty( p.Key.ToString() ) )
-                    //        throw new ArgumentException( "An invalid parameter was specified." );
-                    //    dictionary[p.Key.ToString()] = ( p.Value == null ) ? string.Empty : p.Value.ToString();
-                    //}
-                    return dictionary;
+                    return new Dictionary<string, string>();
                 }
                 case ParameterSetAdhocAccountSas:
                 return GetParameters( SasDefinitionParameterConstants.AccountSasTypeValue, null, null );

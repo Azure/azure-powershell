@@ -144,18 +144,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
-                // may not specify 'false' for either soft-delete or disable-purge; 
-                // the service, as of Mar 2018, automatically converts this parameter to a 'true', ignoring
-                // the value specified by the client. This, however, may cause an unwanted enabling of
-                // soft delete in a scenario like this:
-                //
-                //      $obj = get-vault 
-                //      delete-vault $obj
-                //      $obj | new-vault
-                //
-                // If s/d was not enabled on the original vault, the parameter name will be present on
-                // the input to the new-vault cmdlet, but without a value. if the presence of the parameter
-                // is passed into the input of the new-vault cmdlet, s/d will be enabled on the resulting vault.
                 var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
                     {
                         VaultName = this.Name,

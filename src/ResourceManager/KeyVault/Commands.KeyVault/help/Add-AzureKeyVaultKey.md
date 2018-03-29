@@ -208,7 +208,7 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: InteractiveImport, InputObjectImport
 Aliases:
-Accepted values: HSM, Software, HSM, Software
+Accepted values: HSM, Software
 
 Required: False
 Position: Named

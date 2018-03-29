@@ -14,19 +14,19 @@ Restores a managed storage account in a key vault from a backup file.
 
 ### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultmanaged storage account [-VaultName] <String> [-InputFile] <String>
+Restore-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Restore-AzureKeyVaultmanaged storage account [-InputObject] <PSKeyVault> [-InputFile] <String>
+Restore-AzureKeyVaultManagedStorageAccount [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Restore-AzureKeyVaultmanaged storage account [-ResourceId] <String> [-InputFile] <String>
+Restore-AzureKeyVaultManagedStorageAccount [-ResourceId] <String> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -159,19 +159,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccount
-
 
 ## NOTES
 
