@@ -17,12 +17,12 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
-        HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( List<PSKeyVaultManagedStorageSasDefinitionIdentityItem> ), typeof( PSKeyVaultManagedStorageSasDefinition ) )]
+    [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition)]
+    [OutputType( typeof( List<PSKeyVaultManagedStorageSasDefinitionIdentityItem> ), typeof( PSKeyVaultManagedStorageSasDefinition ), typeof(PSDeletedKeyVaultManagedStorageSasDefinition), typeof(PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem) )]
     public class GetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -85,12 +85,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (String.IsNullOrWhiteSpace(Name))
                 {
-                    var sasDefinition = DataServiceClient.GetManagedStorageSasDefinition(VaultName, AccountName, Name);
-                    WriteObject(sasDefinition);
+                    GetAndWriteStorageSasDefinitions(VaultName, AccountName);
                 }
                 else
                 {
-                    GetAndWriteStorageSasDefinitions(VaultName, AccountName);
+                    var sasDefinition = DataServiceClient.GetManagedStorageSasDefinition(VaultName, AccountName, Name);
+                    WriteObject(sasDefinition);
                 }
             }
         }

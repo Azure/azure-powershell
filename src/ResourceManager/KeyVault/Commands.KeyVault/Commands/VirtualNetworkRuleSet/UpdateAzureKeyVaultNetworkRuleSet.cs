@@ -101,11 +101,13 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (ResourceId != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
                 VaultName = resourceIdentifier.ResourceName;
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
             if (ShouldProcess(VaultName, Properties.Resources.UpdateNetworkRule))

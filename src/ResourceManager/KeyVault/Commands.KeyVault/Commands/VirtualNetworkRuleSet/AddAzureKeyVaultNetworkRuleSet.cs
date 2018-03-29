@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
+            ParameterSetName = ByVaultNameParameterSet,
             HelpMessage = "Specifies the name of a key vault whose network rule is being modified.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -84,11 +85,13 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;
+                ResourceGroupName = InputObject.ResourceGroupName;
             }
             else if (ResourceId != null)
             {
                 var resourceIdentifier = new ResourceIdentifier(ResourceId);
                 VaultName = resourceIdentifier.ResourceName;
+                ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
             if (ShouldProcess(VaultName, Properties.Resources.AddNetworkRule))

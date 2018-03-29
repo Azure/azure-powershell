@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </remarks>
     [Cmdlet(VerbsData.Backup, "AzureKeyVaultManagedStorageAccount",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByStorageAccountNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByStorageAccountNameParameterSet)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </remarks>
         [Parameter(Mandatory = true,
                     Position = 0,
-                    ValueFromPipelineByPropertyName = true,
+                    ValueFromPipeline = true,
                     ParameterSetName = ByStorageAccountObjectParameterSet,
                     HelpMessage = "Storage account bundle to be backed up, pipelined in from the output of a retrieval call.")]
         [ValidateNotNullOrEmpty]

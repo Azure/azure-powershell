@@ -32,9 +32,6 @@
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0-alpha" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.0-alpha" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.0.0.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.0.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="6.0.0.0" />
     <PackageReference Include="AutoMapper" Version="6.0.2" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
