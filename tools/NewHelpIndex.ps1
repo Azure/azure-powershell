@@ -31,19 +31,18 @@ param(
     [string] $OutputFile = "$PSScriptRoot/index.json"
 )
 
+Import-LocalizedData -BindingVariable "AzureRMpsd1" -BaseDirectory $PSScriptRoot/AzureRM -FileName "AzureRM.psd1"
+
 if ([string]::isNullOrEmpty($Version))
 {
-    Import-LocalizedData -BindingVariable "AzureRMpsd1" -BaseDirectory $PSScriptRoot/AzureRM -FileName "AzureRM.psd1"
     $Version = $AzureRMpsd1.ModuleVersion
     Write-Host "Using version obtained from AzureRM.psd1: $Version." -ForegroundColor Green;
 }
 
 if ([string]::isNullOrEmpty($SourceBaseUri))
 {
-    $Date = Get-Date
-    $Month = (Get-Culture).DateTimeFormat.GetMonthName($Date.Month)
-    $Year = $Date.Year
-    $SourceBaseUri = "https://github.com/Azure/azure-powershell/tree/v$Version-$Month$Year"
+    $tag = $AzureRMpsd1.PrivateData.PSData.ReleaseNotes.Split("`n")[0].Replace(" ", "").Trim("`r")
+    $SourceBaseUri = "https://github.com/Azure/azure-powershell/tree/v$tag"
     Write-Host "Using default SourceBaseUri: $SourceBaseUri." -ForegroundColor Green;
 }
 
