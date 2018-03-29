@@ -74,39 +74,42 @@
               <ListItem>
                 <Label>Action </Label>
                 <ScriptBlock>
-                  if ($_.Action -ne null)
+                  if ($_.Action -ne $null -and $_.Action.SqlExpression -ne $null)
                   {
-                    "SqlExpression : " + $_.Action.SqlExpression  + " ," + "`n"+ " CompatibilityLevel : " +  $_.Action.CompatibilityLevel + " , RequiresPreprocessing : " +  $_.Action.RequiresPreprocessing
+                  "SqlExpression: " + $_.Action.SqlExpression + " , CompatibilityLevel: " + $_.Action.CompatibilityLevel
                   }
                   else
                   {
-                    $null
+                  $null
                   }
                 </ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>SqlFilter </Label>
                 <ScriptBlock>
-                  if ($_.SqlFilter -ne null)
-                  {                  
-                    "SqlExpression : " + $_.SqlFilter.SqlExpression + " , CompatibilityLevel : " +  $_.SqlFilter.CompatibilityLevel+ " , RequiresPreprocessing : " +  $_.SqlFilter.RequiresPreprocessing
+                  if ($_.SqlFilter -ne $null -and $_.SqlFilter.SqlExpression -ne $null)
+                  {
+                  "SqlExpression: " + $_.SqlFilter.SqlExpression + " , CompatibilityLevel: " + $_.SqlFilter.CompatibilityLevel
                   }
                   else
                   {
-                    $null
+                  $null
                   }
-               </ScriptBlock>
+                </ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>CorrelationFilter </Label>
                 <ScriptBlock>
-                  if ($_.CorrelationFilter)
+                  if ($_.CorrelationFilter -ne $null)
                   {
-                    "CorrelationId : " + $_.CorrelationFilter.CorrelationId + " , MessageId : " +  $_.CorrelationFilter.MessageId + " , To : " +  $_.CorrelationFilter.To + " , ReplyTo : " +  $_.CorrelationFilter.ReplyTo + " , Label : " +  $_.CorrelationFilter.Label + " , SessionId : " +  $_.CorrelationFilter.SessionId + " , ReplyToSessionId : " +  $_.CorrelationFilter.ReplyToSessionId + " , ContentType : " +  $_.CorrelationFilter.ContentType + " , RequiresPreprocessing : " +  $_.CorrelationFilter.RequiresPreprocessing
-                  }
-                  else
-                  {
-                    $null
+                    "ContentType: " +  $_.CorrelationFilter.ContentType + "`n" +
+                    "MessageId: " + $_.CorrelationFilter.MessageId + "`n" +
+                    "To: " + $_.CorrelationFilter.To + "`n" +
+                    "ReplyTo: " + $_.CorrelationFilter.ReplyTo + "`n" +
+                    "Label: " +  $_.CorrelationFilter.Label + "`n" +
+                    "SessionId: " +  $_.CorrelationFilter.SessionId + "`n" +
+                    "ReplyToSessionId: " +  $_.CorrelationFilter.ReplyToSessionId + "`n" +
+                    "CorrelationId: " +  $_.CorrelationFilter.CorrelationId
                   }
                 </ScriptBlock>
               </ListItem>
