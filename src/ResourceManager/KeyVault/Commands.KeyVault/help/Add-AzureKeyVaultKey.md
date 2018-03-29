@@ -204,6 +204,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: String
+Parameter Sets: InteractiveImport, InputObjectImport
+Aliases:
+Accepted values: HSM, Software
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Disable
 Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use
 the key will fail. Use this parameter if you are preloading keys that you intend to enable later.
