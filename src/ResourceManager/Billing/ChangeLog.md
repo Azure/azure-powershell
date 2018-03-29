@@ -20,6 +20,7 @@
 ## Current Release
 * New Cmdlet Get-AzureRmEnrollmentAccount
   - cmdlet to retrieve enrollment accounts
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 0.14.0
 * Add support for online help
