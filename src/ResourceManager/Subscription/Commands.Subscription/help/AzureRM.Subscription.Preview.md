@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Subscription.Preview
 Module Guid: 8074e741-0979-4b4e-8f9b-7243f213d98a
 Download Help Link: 

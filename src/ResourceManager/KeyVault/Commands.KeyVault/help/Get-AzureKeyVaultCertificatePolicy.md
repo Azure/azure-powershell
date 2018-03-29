@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 0729687C-3104-4136-A80D-16BAEBD6B76C
@@ -13,8 +13,15 @@ Gets the policy for a certificate in a key vault.
 
 ## SYNTAX
 
+### VaultAndCertName (Default)
 ```
 Get-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### InputObject
+```
+Get-AzureKeyVaultCertificatePolicy [-InputObject] <PSKeyVaultCertificateIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -63,12 +70,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Certificate Object.
+
+```yaml
+Type: PSKeyVaultCertificateIdentityItem
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of a certificate.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: VaultAndCertName
 Aliases: CertificateName
 
 Required: True
@@ -83,8 +105,8 @@ Specifies the name of a key vault.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: VaultAndCertName
+Aliases:
 
 Required: True
 Position: 0
@@ -98,9 +120,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
 
 ## NOTES
 

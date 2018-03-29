@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Resources.Netcore.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -54,7 +54,8 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll',
+                '.\Microsoft.Azure.Management.ResourceManager.dll', 
                 '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll', 
                 '.\Microsoft.Extensions.Caching.Abstractions.dll', 
                 '.\Microsoft.Extensions.Caching.Memory.dll', 

@@ -29,65 +29,17 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 setName: (model, name) => model.Name = name);
 
         public static NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> CreateFrontendIPConfiguration(
-            this ResourceConfig<LoadBalancer> loadBalancer, 
+            this ResourceConfig<LoadBalancer> loadBalancer,
             string name,
             IList<string> zones,
-            ResourceConfig<PublicIPAddress> publicIPAddress,
-            NestedResourceConfig<Subnet, VirtualNetwork> subnet)
-                => Strategy.CreateConfig(
-                    parent: loadBalancer,
+            ResourceConfig<PublicIPAddress> publicIpAddress)
+                => loadBalancer.CreateNested(
+                    strategy: Strategy,
                     name: name,
-                    createModel: subscriptionId => {
-
-                        var frontEndConfig = CreateFrontendIpConfig(
-                                froontendPoolName: name,
-                                subscriptionId: subscriptionId,
-                                subnetId: subnet.GetId(subscriptionId).IdToString(),
-                                publicIpAddressId: publicIPAddress.GetId(subscriptionId).IdToString(),
-                                privateIpAddress: null,
-                                zones: zones);
-
-                        return frontEndConfig;
+                    createModel: engine => new FrontendIPConfiguration
+                    {
+                        Zones = zones,
+                        PublicIPAddress = engine.GetReference(publicIpAddress)
                     });
-
-        internal static FrontendIPConfiguration CreateFrontendIpConfig(
-            string froontendPoolName,
-            string subscriptionId,
-            string subnetId,
-            string publicIpAddressId,
-            string privateIpAddress,
-            IList<string> zones)
-        {
-            var frontendIpConfig = new FrontendIPConfiguration();
-            frontendIpConfig.Name = froontendPoolName;
-            frontendIpConfig.Zones = zones;
-
-            if (!string.IsNullOrEmpty(subnetId))
-            {
-                frontendIpConfig.Subnet = new Subnet(subnetId);
-
-                if (!string.IsNullOrEmpty(privateIpAddress))
-                {
-                    frontendIpConfig.PrivateIPAddress = privateIpAddress;
-                    frontendIpConfig.PrivateIPAllocationMethod = LoadBalancerStrategy.Static;
-                }
-                else
-                {
-                    frontendIpConfig.PrivateIPAllocationMethod = LoadBalancerStrategy.Dynamic;
-                }
-            }
-            else if (!string.IsNullOrEmpty(publicIpAddressId))
-            {
-                frontendIpConfig.PublicIPAddress = new PublicIPAddress(publicIpAddressId);
-            }
-
-            frontendIpConfig.Id =
-                LoadBalancerStrategy.GetResourceNotSetId(
-                    subscriptionId,
-                    LoadBalancerStrategy.LoadBalancerFrontendIpConfigName,
-                    frontendIpConfig.Name);
-
-            return frontendIpConfig;
-        }
     }
 }

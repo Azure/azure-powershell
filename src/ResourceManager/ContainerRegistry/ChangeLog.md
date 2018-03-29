@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Decouple reliance on Commands.Resources.Rest and ARM/Storage SDKs.
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 1.0.3
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 1.0.2
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

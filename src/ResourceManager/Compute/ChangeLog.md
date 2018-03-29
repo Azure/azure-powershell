@@ -18,6 +18,33 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.5.0
+* `New-AzureRmVM` and `New-AzureRmVMSS` support data disks.
+* `New-AzureRmVM` and `New-AzureRmVMSS` support custom image by name or by id.
+* Log analytic feature
+    - Added `Export-AzureRmLogAnalyticRequestRateByInterval` cmdlet
+    - Added `Export-AzureRmLogAnalyticThrottledRequests` cmdlet
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.4.0
+* `New-AzureRmVMSS` prints connection strings in verbose mode.
+* `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
+* WriteAccelerator feature
+    - Added WriteAccelerator switch parameter to the following cmdlets:
+          Set-AzureRmVMOSDisk
+          Set-AzureRmVMDataDisk
+          Add-AzureRmVMDataDisk
+          Add-AzureRmVmssDataDisk
+    - Added OsDiskWriteAccelerator switch parameter to the following cmdlet:
+          Set-AzureRmVmssStorageProfile.
+    - Added OsDiskWriteAccelerator Boolean parameter to the following cmdlets:
+          Update-AzureRmVM
+          Update-AzureRmVmss
+
+## Version 4.3.2
+* Fix ErrorAction issue for some of Get cmdlets.
 
 ## Version 4.3.1
 * `New-AzureRmVm` and `New-AzureRmVmss` get information about an image from Azure.

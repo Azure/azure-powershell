@@ -235,15 +235,9 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 // OS Profile
-                this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent =
-                    (this.ProvisionVMAgent.IsPresent)
-                    ? (bool?)true
-                    : null;
+                this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = this.ProvisionVMAgent.IsPresent;
 
-                this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates =
-                    this.EnableAutoUpdate.IsPresent
-                    ? (bool?)true
-                    : null;
+                this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent;
 
                 this.VM.OSProfile.WindowsConfiguration.TimeZone = this.TimeZone;
 
