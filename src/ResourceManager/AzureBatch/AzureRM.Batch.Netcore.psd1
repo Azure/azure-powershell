@@ -55,8 +55,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Batch.dll', 
-    '.\Microsoft.Azure.Management.Batch.dll', 
-    '.\Microsoft.WindowsAzure.Storage.dll'
+    '.\Microsoft.Azure.Management.Batch.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
