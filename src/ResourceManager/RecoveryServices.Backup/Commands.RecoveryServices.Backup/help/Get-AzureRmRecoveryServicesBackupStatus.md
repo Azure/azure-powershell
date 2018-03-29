@@ -7,7 +7,7 @@ schema: 2.0.0
 # Get-AzureRmRecoveryServicesBackupStatus
 
 ## SYNOPSIS
-This cmdlet can be used to check if a VM is backed up by any vault in the subscription.
+Checks whether your ARM resource is backed up or not.
 
 ## SYNTAX
 
@@ -23,7 +23,8 @@ Get-AzureRmRecoveryServicesBackupStatus [-ResourceId <String>] [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-This cmdlet can be used to check if a VM is backed up by any vault in the subscription.
+The command returns null/empty if the specified resource is not protected under any Recovery Services vault in the subscription. 
+If it is protected, the relevant vault details will be returned.
 
 ## EXAMPLES
 
@@ -52,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.
+Name of the ARM resource to be checked.
 
 ```yaml
 Type: String
@@ -67,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
+Resource group of the ARM resource to be checked.
 
 ```yaml
 Type: String
@@ -82,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.
+The relevant ID of the ARM resource.
 
 ```yaml
 Type: String
@@ -97,7 +98,8 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.
+The type of the ARM resource which Azure Recovery Services vault can protect. 
+Acceptable values: Microsoft.Compute/virtualMachines, Microsoft.ClassicCompute/virtualMachines.
 
 ```yaml
 Type: String

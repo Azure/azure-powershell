@@ -12,51 +12,40 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$resourceGroupName = "RecoveryServicesBackupTestRg";
-$resourceName = "PsTestRsVault";
-$policyName = "PsTestPolicy";
-
 function Test-AzureVMProtectionCheck
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
 
-	# Setup
-	$vm = Create-VM $resourceGroupName $location
+	try
+	{
+		# Setup
+		$vm = Create-GalleryVM $resourceGroupName $location
 
-	#$status = Get-AzureRmRecoveryServicesBackupStatus `
-	#	-Name $vm.Name `
-	#	-ResourceGroupName $vm.ResourceGroupName `
-	#	-Type $vm.Type
+		$status = Get-AzureRmRecoveryServicesBackupStatus `
+			-Name $vm.Name `
+			-ResourceGroupName $vm.ResourceGroupName `
+			-Type $vm.Type
 
-	#Assert-Null $status
+		Assert-Null $status
 
-	#$vault = Create-RecoveryServicesVault $resourceGroupName $location
-	#Enable-Protection $vault $vm
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Enable-Protection $vault $vm
 		
-	#$checkVault = Get-AzureRmRecoveryServicesBackupStatus -ResourceId $vm.Id
-	#Assert-NotNull $checkVault
-	#Assert-True { $vault.Name -eq $checkVault.Name }
-	#Assert-True { $vault.ResourceGroupName -eq $checkVault.ResourceGroupName }
+		$checkVault = Get-AzureRmRecoveryServicesBackupStatus -ResourceId $vm.Id
+		Assert-NotNull $checkVault
+		Assert-True { $vault.Name -eq $checkVault.Name }
+		Assert-True { $vault.ResourceGroupName -eq $checkVault.ResourceGroupName }
 
-	#Delete-Vault $vault
+		Delete-Vault $vault
 
-	#$status = Find-AzureRmResource `
-	#	-ResourceNameEquals $vm.Name `
-	#	-ResourceGroupNameEquals $vm.ResourceGroupName | `
-	#	Get-AzureRmRecoveryServicesBackupStatus
+		$status = Get-AzureRmRecoveryServicesBackupStatus -ResourceId $vm.Id
 
-	#Assert-Null $status
-
-	#try
-	#{
-		
-	#}
-	#finally
-	#{
-	#	# Cleanup
-	#	Cleanup-ResourceGroup $resourceGroupName
-	#}
-
-	#Cleanup-ResourceGroup $resourceGroupName
+		Assert-Null $status
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
 }

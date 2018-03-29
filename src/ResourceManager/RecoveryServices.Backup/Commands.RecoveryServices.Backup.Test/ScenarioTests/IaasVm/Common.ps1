@@ -189,6 +189,44 @@ function Create-VM(
 	return $vm
 }
 
+function Create-GalleryVM(
+	[string] $resourceGroupName, 
+	[string] $location, 
+	[int] $nick = 0)
+{
+	$suffix = $(Get-RandomSuffix 5) + $nick
+	$vmName = "PSTestVM" + $suffix
+
+	$vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName -ErrorAction Ignore
+
+	if ($vm -eq $null)
+	{
+		$subnetConfigName = "PSTestSNC" + $suffix
+		$vnetName = "PSTestVNET" + $suffix
+		$pipName = "pstestpublicdns" + $suffix
+		$nsgName = "PSTestNSG" + $suffix
+		$dnsLabel = "pstestdnslabel" + "-" + $suffix
+
+		$UserName='demouser'
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+		$Credential=New-Object PSCredential($UserName,$Password)
+
+		$vm = New-AzureRmVm `
+			-ResourceGroupName $resourceGroupName `
+			-Name $vmName `
+			-Location $location `
+			-SubnetName $subnetConfigName `
+			-SecurityGroupName $nsgName `
+			-PublicIpAddressName $pipName `
+			-ImageName "MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest" `
+			-Credential $Credential `
+			-DomainNameLabel $dnsLabel
+	}
+
+	return $vm
+}
+
 function Create-SA(
 	[string] $resourceGroupName, 
 	[string] $location)
