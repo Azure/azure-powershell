@@ -24,55 +24,55 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes);
+        PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes);
 
-        KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
+        PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
-        KeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes);
+        PSKeyVaultKey UpdateKey(string vaultName, string keyName, string keyVersion, PSKeyVaultKeyAttributes keyAttributes);
 
-        KeyBundle GetKey(string vaultName, string keyName, string keyVersion);
+        PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion);
 
-        DeletedKeyBundle GetDeletedKey(string vaultName, string name);
+        PSDeletedKeyVaultKey GetDeletedKey(string vaultName, string name);
 
-        IEnumerable<KeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<KeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultKeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<DeletedKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSDeletedKeyVaultKeyIdentityItem> GetDeletedKeys(KeyVaultObjectFilterOptions options);
 
-        DeletedKeyBundle DeleteKey(string vaultName, string keyName);
+        PSDeletedKeyVaultKey DeleteKey(string vaultName, string keyName);
 
         void PurgeKey(string vaultName, string name);
 
-        KeyBundle RecoverKey(string vaultName, string keyName);
+        PSKeyVaultKey RecoverKey(string vaultName, string keyName);
 
-        Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes);
+        PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes);
 
-        Secret UpdateSecret(string vaultName, string secretName, string secretVersion, SecretAttributes secretAttributes);
+        PSKeyVaultSecret UpdateSecret(string vaultName, string secretName, string secretVersion, PSKeyVaultSecretAttributes secretAttributes);
 
-        Secret GetSecret(string vaultName, string secretName, string secretVersion);
+        PSKeyVaultSecret GetSecret(string vaultName, string secretName, string secretVersion);
 
-        DeletedSecret GetDeletedSecret(string vaultName, string name);
+        PSDeletedKeyVaultSecret GetDeletedSecret(string vaultName, string name);
 
-        IEnumerable<SecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultSecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<SecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultSecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<DeletedSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSDeletedKeyVaultSecretIdentityItem> GetDeletedSecrets(KeyVaultObjectFilterOptions options);
 
-        DeletedSecret DeleteSecret(string vaultName, string secretName);
+        PSDeletedKeyVaultSecret DeleteSecret(string vaultName, string secretName);
 
         void PurgeSecret(string vaultName, string secretName);
 
-        Secret RecoverSecret(string vaultName, string secretName);
+        PSKeyVaultSecret RecoverSecret(string vaultName, string secretName);
 
         string BackupKey(string vaultName, string keyName, string outputBlobPath);
 
-        KeyBundle RestoreKey(string vaultName, string inputBlobPath);
+        PSKeyVaultKey RestoreKey(string vaultName, string inputBlobPath);
 
         string BackupSecret(string vaultName, string secretName, string outputBlobPath);
 
-        Secret RestoreSecret(string vaultName, string inputBlobPath);
+        PSKeyVaultSecret RestoreSecret(string vaultName, string inputBlobPath);
 
         #region Certificate actions
 
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName );
 
-        IEnumerable<CertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<DeletedCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
+        IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
 
-        IEnumerable<CertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 
         CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags);
 
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         IssuerBundle GetCertificateIssuer(string vaultName, string issuerName);
 
-        IEnumerable<CertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
+        IEnumerable<PSKeyVaultCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
 
-        IssuerBundle SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, KeyVaultCertificateOrganizationDetails organizationDetails);  
+        IssuerBundle SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);  
               
         IssuerBundle DeleteCertificateIssuer(string vaultName, string issuerName);
         

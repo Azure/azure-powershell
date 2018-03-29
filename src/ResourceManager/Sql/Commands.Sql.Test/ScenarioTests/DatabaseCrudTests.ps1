@@ -598,7 +598,7 @@ function Test-CancelDatabaseOperationInternal ($location = "westcentralus")
 		Catch
 		{
 			$ErrorMessage = $_.Exception.Message
-			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel database management operation '" + $dbactivityId + "' in the current state")
+			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel management operation '" + $dbactivityId + "' in the current state")
 		}
 	}
 	finally
