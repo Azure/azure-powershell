@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureKeyVaultCertificate,
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateOperation))]
+    [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class AddAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-                public string VaultName { get; set; }
+        public string VaultName { get; set; }
 
         /// <summary>
         /// Name
@@ -53,11 +53,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// CertificatePolicy
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Specifies the certificate policy.")]
         [ValidateNotNull]
-        public KeyVaultCertificatePolicy CertificatePolicy { get; set; }
+        public PSKeyVaultCertificatePolicy CertificatePolicy { get; set; }
 
         /// <summary>
         /// Certificate tags
@@ -69,11 +71,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         public Hashtable Tag { get; set; }
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Properties.Resources.AddCertificate)) {
                 var certificateOperation = this.DataServiceClient.EnrollCertificate(VaultName, Name, CertificatePolicy == null ? null : CertificatePolicy.ToCertificatePolicy(), Tag == null ? null : Tag.ConvertToDictionary());
-                var kvCertificateOperation = KeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
+                var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
                 this.WriteObject(kvCertificateOperation);
             }
         }

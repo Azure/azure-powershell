@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.3.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.3.0
 * Fixed issue with importing aliases
 
 ## Version 4.2.1

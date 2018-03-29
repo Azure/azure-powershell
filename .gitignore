@@ -215,6 +215,10 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
+
+*.msi
+*.wixpdb
+
 .vscode/
 /tools/AutomationTestFramework/RunBooks
 /tools/AutomationTestFramework/TestHelpers/TestHelpers.zip
@@ -222,3 +226,5 @@ Results
 Package
 .DS_Store
 .idea
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Logger/bin
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Models/bin

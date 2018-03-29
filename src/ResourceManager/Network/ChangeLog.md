@@ -19,7 +19,18 @@
 --->
 
 ## Current Release
+* Fix error message with Network cmdlets
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 5.4.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 5.4.0
+* Updating model types for compatibility with DNS cmdlets.
+
+## Version 5.3.0
 * Fixed issue with importing aliases
+* Fix bug to serialize and display IPTags
 
 ## Version 5.2.0
 * Added cmdlet to create a new connection monitor

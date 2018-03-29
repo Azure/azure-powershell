@@ -29,7 +29,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Compute</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Compute\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -270,7 +270,9 @@
     <Compile Include="Strategies\Client.cs" />
     <Compile Include="Strategies\ComputeRp\AvailabilitySetStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ComputeStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\DataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageAndOsType.cs" />
+    <Compile Include="Strategies\ComputeRp\ImageDataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageEx.cs" />
     <Compile Include="Strategies\ComputeRp\Images.cs" />
     <Compile Include="Strategies\ComputeRp\ApiEntityReferenceStrategy.cs" />
@@ -282,6 +284,7 @@
     <Compile Include="Strategies\ComputeRp\VirtualMachineStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\WindowsConfigurationStrategy.cs" />
     <Compile Include="Strategies\IAsyncCmdlet.cs" />
+    <Compile Include="Strategies\IParameters.cs" />
     <Compile Include="Strategies\Location.cs" />
     <Compile Include="Strategies\Network\BackendAddressPoolStrategy.cs" />
     <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
@@ -297,6 +300,7 @@
     <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
     <Compile Include="Strategies\ShouldProcess.cs" />
+    <Compile Include="Strategies\StrategyCmdlet.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
