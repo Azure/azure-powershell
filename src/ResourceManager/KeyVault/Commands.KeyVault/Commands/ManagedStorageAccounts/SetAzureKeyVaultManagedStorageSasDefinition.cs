@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Sas definition parameters that will be used to create the sas token.",
             ParameterSetName = ParameterSetRawSas )]
-        [Obsolete("-Parameter will become optional and will have its position removed in May 2018")]
+        [Obsolete("-Parameter will be removed and replaced by -TemplateUri and -SasType in May 2018")]
         [ValidateNotNull]
         public Hashtable Parameter { get; set; }
 

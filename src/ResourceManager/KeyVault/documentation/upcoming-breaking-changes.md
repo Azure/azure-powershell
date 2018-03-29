@@ -33,7 +33,7 @@ The following cmdlets were affected this release:
 - The -Certificate parameter has become mandatory.
 
 **Set-AzureKeyVaultManagedStorageSasDefinition**
-- The -Parameter parameter no longer has a position.
+- The -Parameter parameter has been removed and replaced by -TemplateUri and -SasType
 
 **Set-AzureKeyVaultCertificateIssuer**
 - The -IssuerProvider parameter has become mandatory.
