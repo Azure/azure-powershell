@@ -9,7 +9,8 @@ $output = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "src\Package\$Build
 Write-Verbose "The output folder is set to $output"
 $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
 $resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
-$stackPath = "src\Stack\$BuildConfig\ResourceManager\AzureResourceManager"
+$outputStack = Join-Path (Get-Item $PSScriptRoot).Parent.FullName "src\Stack\$BuildConfig"
+$stackPath = Join-Path $outputStack "ResourceManager\AzureResourceManager"
 
 Write-Verbose "Removing generated NuGet folders from $output"
 $resourcesFolders = @("de", "es", "fr", "it", "ja", "ko", "ru", "zh-Hans", "zh-Hant")
