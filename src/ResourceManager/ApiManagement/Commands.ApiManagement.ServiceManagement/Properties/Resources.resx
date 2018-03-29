@@ -125,12 +125,28 @@
     <value>File "{0}" already exists. Override?</value>
     <comment>Process workflow</comment>
   </data>
+  <data name="ApiReleaseRemoveDescription" xml:space="preserve">
+    <value>Removing Api Release "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiReleaseRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove Api Release "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
   <data name="ApiRemoveDescription" xml:space="preserve">
     <value>Removing API "{0}".</value>
     <comment>Process workflow</comment>
   </data>
   <data name="ApiRemoveWarning" xml:space="preserve">
     <value>Are you sure you want to remove API "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiVersionSetRemoveDescription" xml:space="preserve">
+    <value>Removing API Version Set "{0}"</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="ApiVersionSetRemoveWarning" xml:space="preserve">
+    <value>Are you sure you want to remove API Version Set "{0}"?</value>
     <comment>Process workflow</comment>
   </data>
   <data name="AuthorizationServerRemoveDescription" xml:space="preserve">

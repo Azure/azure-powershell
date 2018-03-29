@@ -11,15 +11,12 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
-//
-
-namespace Microsoft.Azure.Commands.ApiManagement.Models
+namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public enum PsApiManagementHostnameType
+    public enum PsApiManagementVersioningScheme
     {
-        Proxy = 1,
-        Portal = 2,
-        Management = 3,
-        Scm = 4
+        Segment = 0,
+        Query = 1,
+        Header = 2
     }
 }

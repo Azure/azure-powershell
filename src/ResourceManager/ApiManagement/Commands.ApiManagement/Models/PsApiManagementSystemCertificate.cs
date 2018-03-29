@@ -17,26 +17,30 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using Microsoft.Azure.Management.ApiManagement.Models;
     using System;
 
-    public class PsApiManagementHostnameConfiguration
+    public class PsApiManagementSystemCertificate
     {
-        public PsApiManagementHostnameConfiguration()
+        public PsApiManagementSystemCertificate()
         {
         }
 
-        internal PsApiManagementHostnameConfiguration(HostnameConfiguration hostnameConfigurationResource)
+        internal PsApiManagementSystemCertificate(CertificateConfiguration certificateConfiguration)
             : this()
         {
-            if (hostnameConfigurationResource == null)
+            if (certificateConfiguration == null)
             {
-                throw new ArgumentNullException("hostnameConfigurationResource");
+                throw new ArgumentNullException("certificateConfiguration");
             }
 
-            HostnameCertificate = new PsApiManagementHostnameCertificate(hostnameConfigurationResource.Certificate);
-            Hostname = hostnameConfigurationResource.HostName;
+            CertificateInformation = certificateConfiguration.Certificate != null ? new PsApiManagementCertificateInformation(certificateConfiguration.Certificate) : null;
+            StoreName = certificateConfiguration.StoreName;
         }
 
-        public PsApiManagementHostnameCertificate HostnameCertificate { get; set; }
+        public PsApiManagementCertificateInformation CertificateInformation { get; set; }
 
-        public string Hostname { get; set; }
+        public string EncodedCertificate { get; set; }
+
+        public string CertificatePassword { get; set; }
+
+        public string StoreName { get; set; }
     }
 }

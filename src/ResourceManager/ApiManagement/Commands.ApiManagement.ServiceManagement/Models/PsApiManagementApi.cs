@@ -26,6 +26,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         public string Path { get; set; }
 
+        public string ApiType { get; set; }
+
         public PsApiManagementSchema[] Protocols { get; set; }
 
         // map from AuthenticationSettings.OAuth2.AuthorizationServerId
@@ -39,5 +41,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
         // map from SubscriptionKeyParameterNames.Query
         public string SubscriptionKeyQueryParamName { get; set; }
+
+        public string ApiRevision { get; set; }
+
+        public string ApiVersion { get; set; }
+
+        public bool IsCurrent { get; set;  }
+
+        public bool IsOnline { get; set; }
     }
 }

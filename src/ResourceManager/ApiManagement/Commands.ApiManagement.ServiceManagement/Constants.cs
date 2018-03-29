@@ -34,6 +34,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         public const string ApiManagementApi = "AzureRmApiManagementApi";
 
+        public const string ApiManagementApiRevision = "AzureRmApiManagementApiRevision";
+
+        public const string ApiManagementApiRelease = "AzureRmApiManagementApiRelease";
+
+        public const string ApiManagementApiVersionSet = "AzureRmApiManagementApiVersionSet";
+
         public const string ApiManagementAuthorizationServer = "AzureRmApiManagementAuthorizationServer";
 
         public const string ApiManagementCertificate = "AzureRmApiManagementCertificate";

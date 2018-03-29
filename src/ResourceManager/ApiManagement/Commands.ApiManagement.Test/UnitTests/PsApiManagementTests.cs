@@ -20,83 +20,59 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
         public void TestCtor()
         {
             // arrange
-            var resource = new ApiServiceResource
+            var resource = new ApiManagementServiceResource
             {
-                ETag = "etag",
-                Id = "id",
                 Location = "location",
-                Name = "name",
-                Type = "resource type",
                 Tags = new Dictionary<string, string>()
                 {
                     {"tagkey1", "tagvalue1" },
                     {"tagkey2", "tagvalue2" }
                 },
-                SkuProperties = new ApiServiceSkuProperties
+                Sku = new ApiManagementServiceSkuProperties
                 {
                     Capacity = 3,
-                    SkuType = SkuType.Premium
+                    Name = SkuType.Premium
                 },
-                Properties = new ApiServiceProperties
+                AdditionalLocations = new List<AdditionalLocation>()
                 {
-                    AdditionalRegions = new List<AdditionalRegion>()
+                    new AdditionalLocation
                     {
-                        new AdditionalRegion
+                        Location = "region location",
+                        Sku = new ApiManagementServiceSkuProperties()
                         {
-                            Location = "region location",
-                            SkuType = SkuType.Premium,
-                            SkuUnitCount = 2,
-                            StaticIPs = new List<string>() { "192.168.1.1", "192.168.1.1" },
-                            VirtualNetworkConfiguration = new VirtualNetworkConfiguration
-                            {
-                                Location = "region vpn location",
-                                SubnetResourceId = "region subnet resourceId"
-                            }
-                        }
-                    },
-                    AddresserEmail = "addresser@email.com",
-                    CreatedAtUtc = DateTime.UtcNow,
-                    CustomProperties = new Dictionary<string, string>()
-                    {
-                        { "cpkey1", "cpvalue1" },
-                        { "cpkey2", "cpvalue2" }
-                    },
-                    HostnameConfigurations = new List<HostnameConfiguration>()
-                    {
-                        new HostnameConfiguration
-                        {
-                            Type = HostnameType.Portal,
-                            Certificate = new CertificateInformation
-                            {
-                                Expiry = DateTime.UtcNow.AddDays(5),
-                                Subject = "portal cert subject",
-                                Thumbprint = "portal cert thumbprint"
-                            },
-                            Hostname = "portal hostname"
+                            Name = SkuType.Premium,
+                            Capacity = 2
                         },
-                        new HostnameConfiguration
+                        VirtualNetworkConfiguration = new VirtualNetworkConfiguration
                         {
-                            Type = HostnameType.Proxy,
-                            Certificate = new CertificateInformation
-                            {
-                                Expiry = DateTime.UtcNow.AddDays(10),
-                                Subject = "proxy cert subject",
-                                Thumbprint = "proxy cert thumbprint"
-                            },
-                            Hostname = "proxy hostname"
+                            SubnetResourceId = "region subnet resourceId"
                         }
-                    },
-                    ManagementPortalEndpoint = "http://management.portal.endpoint",
-                    ProvisioningState = "Active",
-                    ProxyEndpoint = "http://proxy.endpoint",
-                    PublisherEmail = "publisher@email.com",
-                    PublisherName = "publisher name",
-                    StaticIPs = new[] { "192.168.0.1", "192.168.0.2" },
-                    VirtualNetworkConfiguration = new VirtualNetworkConfiguration
-                    {
-                        Location = "region vpn location",
-                        SubnetResourceId = "region subnet resourceId"
                     }
+                },
+                NotificationSenderEmail = "addresser@email.com",
+                CustomProperties = new Dictionary<string, string>()
+                {
+                    { "cpkey1", "cpvalue1" },
+                    { "cpkey2", "cpvalue2" }
+                },
+                HostnameConfigurations = new List<HostnameConfiguration>()
+                {
+                    new HostnameConfiguration
+                    {
+                        Type = HostnameType.Portal,
+                        HostName = "portal hostname"
+                    },
+                    new HostnameConfiguration
+                    {
+                        Type = HostnameType.Proxy,
+                        HostName = "proxy hostname"
+                    }
+                },
+                PublisherEmail = "publisher@email.com",
+                PublisherName = "publisher name",
+                VirtualNetworkConfiguration = new VirtualNetworkConfiguration
+                {
+                    SubnetResourceId = "region subnet resourceId"
                 }
             };
 
@@ -113,39 +89,31 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.UnitTests
                 Assert.Equal(resource.Tags[tagKey], result.Tags[tagKey]);
             }
 
-            Assert.Equal(resource.Properties.AdditionalRegions.Count, result.AdditionalRegions.Count);
-            var resourceRegion = resource.Properties.AdditionalRegions[0];
+            Assert.Equal(resource.AdditionalLocations.Count, result.AdditionalRegions.Count);
+            var resourceRegion = resource.AdditionalLocations[0];
             var resultRegion = result.AdditionalRegions[0];
             Assert.Equal(resourceRegion.Location, resultRegion.Location);
-            Assert.Equal(resourceRegion.SkuType.ToString(), resultRegion.Sku.ToString());
-            Assert.Equal(resourceRegion.SkuUnitCount, resultRegion.Capacity);
-            for (int i = 0; i < resourceRegion.StaticIPs.Count; i++)
-            {
-                Assert.Equal(resourceRegion.StaticIPs[i], resultRegion.StaticIPs[i]);
-            }
-            Assert.Equal(resourceRegion.VirtualNetworkConfiguration.Location, resultRegion.VirtualNetwork.Location);
+            Assert.Equal(resourceRegion.Sku.Name, resultRegion.Sku.ToString());
+            Assert.Equal(resourceRegion.Sku.Capacity, resultRegion.Capacity);
             Assert.Equal(resourceRegion.VirtualNetworkConfiguration.SubnetResourceId, resultRegion.VirtualNetwork.SubnetResourceId);
 
-            var portalHostname = resource.Properties.HostnameConfigurations.Single(h => h.Type == HostnameType.Portal);
-            Assert.Equal(portalHostname.Hostname, result.PortalHostnameConfiguration.Hostname);
+            var portalHostname = resource.HostnameConfigurations.Single(h => h.Type == HostnameType.Portal);
+            Assert.Equal(portalHostname.HostName, result.PortalHostnameConfiguration.Hostname);
             Assert.Equal(portalHostname.Certificate.Expiry, result.PortalHostnameConfiguration.HostnameCertificate.Expiry);
             Assert.Equal(portalHostname.Certificate.Subject, result.PortalHostnameConfiguration.HostnameCertificate.Subject);
             Assert.Equal(portalHostname.Certificate.Thumbprint, result.PortalHostnameConfiguration.HostnameCertificate.Thumbprint);
 
-            var proxyHostname = resource.Properties.HostnameConfigurations.Single(h => h.Type == HostnameType.Proxy);
-            Assert.Equal(proxyHostname.Hostname, result.ProxyHostnameConfiguration.Hostname);
+            var proxyHostname = resource.HostnameConfigurations.Single(h => h.Type == HostnameType.Proxy);
+            Assert.Equal(proxyHostname.HostName, result.ProxyHostnameConfiguration.Hostname);
             Assert.Equal(proxyHostname.Certificate.Expiry, result.ProxyHostnameConfiguration.HostnameCertificate.Expiry);
             Assert.Equal(proxyHostname.Certificate.Subject, result.ProxyHostnameConfiguration.HostnameCertificate.Subject);
             Assert.Equal(proxyHostname.Certificate.Thumbprint, result.ProxyHostnameConfiguration.HostnameCertificate.Thumbprint);
+            
+            Assert.Equal(resource.VirtualNetworkConfiguration.SubnetResourceId, result.VirtualNetwork.SubnetResourceId);
 
-            Assert.Equal(resource.Properties.VirtualNetworkConfiguration.Location, result.VirtualNetwork.Location);
-            Assert.Equal(resource.Properties.VirtualNetworkConfiguration.SubnetResourceId, result.VirtualNetwork.SubnetResourceId);
-
-            Assert.Equal(resource.Properties.ManagementPortalEndpoint, result.PortalUrl);
-            Assert.Equal(resource.Properties.ProxyEndpoint, result.RuntimeUrl);
-            Assert.Equal(resource.Properties.ProvisioningState, result.ProvisioningState);
-            Assert.Equal(resource.SkuProperties.SkuType.ToString(), result.Sku.ToString());
-            Assert.Equal(resource.SkuProperties.Capacity, result.Capacity);
+            Assert.Equal(resource.ProvisioningState, result.ProvisioningState);
+            Assert.Equal(resource.Sku.Name, result.Sku.ToString());
+            Assert.Equal(resource.Sku.Capacity, result.Capacity);
         }
     }
 }

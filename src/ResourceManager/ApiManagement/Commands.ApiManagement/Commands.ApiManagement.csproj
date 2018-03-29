@@ -22,7 +22,7 @@
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
@@ -39,7 +39,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
     <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
@@ -89,9 +89,15 @@
     <Compile Include="Commands\GetAzureApiManagementSsoToken.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\NewAzureApiManagementCustomHostnameConfiguration.cs" />
     <Compile Include="Commands\NewAzureApiManagementHostnameConfiguration.cs" />
     <Compile Include="Commands\NewAzureApiManagementRegion.cs" />
+    <Compile Include="Commands\NewAzureApiManagementSystemCertificate.cs" />
     <Compile Include="Commands\NewAzureApiManagementVirtualNetwork.cs" />
+    <Compile Include="Commands\SetAzureApiManagement.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\Mappers.cs" />
+    <Compile Include="Models\PsApiManagementCertificateInformation.cs" />
     <Compile Include="Commands\RemoveAzureApiManagementRegion.cs" />
     <Compile Include="Commands\SetAzureApiManagementHostnames.cs">
       <SubType>Code</SubType>
@@ -107,9 +113,11 @@
     <Compile Include="Commands\RemoveAzureApiManagement.cs" />
     <Compile Include="Commands\RestoreAzureApiManagement.cs" />
     <Compile Include="Models\PsApiManagement.cs" />
+    <Compile Include="Models\PsApiManagementCustomHostNameConfiguration.cs" />
     <Compile Include="Models\PsApiManagementHostnameCertificate.cs" />
     <Compile Include="Models\PsApiManagementHostnameConfiguration.cs" />
     <Compile Include="Models\PsApiManagementHostnameType.cs" />
+    <Compile Include="Models\PsApiManagementSystemCertificate.cs" />
     <Compile Include="Models\PsApiManagementRegion.cs" />
     <Compile Include="Models\PsApiManagementSku.cs" />
     <Compile Include="Models\PsApiManagementVirtualNetwork.cs" />
@@ -159,6 +167,7 @@
       <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />
   <Target Name="AfterBuild">

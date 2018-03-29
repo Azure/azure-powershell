@@ -79,6 +79,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing Api Release &quot;{0}&quot;.
+        /// </summary>
+        internal static string ApiReleaseRemoveDescription {
+            get {
+                return ResourceManager.GetString("ApiReleaseRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove Api Release &quot;{0}&quot;?.
+        /// </summary>
+        internal static string ApiReleaseRemoveWarning {
+            get {
+                return ResourceManager.GetString("ApiReleaseRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing API &quot;{0}&quot;..
         /// </summary>
         internal static string ApiRemoveDescription {
@@ -93,6 +111,24 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string ApiRemoveWarning {
             get {
                 return ResourceManager.GetString("ApiRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing API Version Set &quot;{0}&quot;.
+        /// </summary>
+        internal static string ApiVersionSetRemoveDescription {
+            get {
+                return ResourceManager.GetString("ApiVersionSetRemoveDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove API Version Set &quot;{0}&quot;?.
+        /// </summary>
+        internal static string ApiVersionSetRemoveWarning {
+            get {
+                return ResourceManager.GetString("ApiVersionSetRemoveWarning", resourceCulture);
             }
         }
         

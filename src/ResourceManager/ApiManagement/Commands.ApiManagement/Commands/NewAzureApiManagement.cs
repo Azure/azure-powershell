@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common.ArgumentCompleters;
-    using System;
-    using System.Collections.Generic;
+    using System.Collections;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.New, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
@@ -62,8 +61,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Standard and Premium . Default value is Developer")]
-        [ValidateSet("Developer", "Standard", "Premium"), PSDefaultValue(Value = "Developer")]
+            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Basic, Standard and Premium . Default value is Developer")]
+        [ValidateSet("Developer", "Basic", "Standard", "Premium"), PSDefaultValue(Value = "Developer")]
         public PsApiManagementSku? Sku { get; set; }
 
         [Parameter(
@@ -89,34 +88,51 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Virtual Network Configuration of master Azure API Management deployment region. Default value is $null")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
-            HelpMessage = "Tags dictionary.")]
-        [Obsolete("New-AzureRmApiManagement: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
-        public Dictionary<string, string> Tag { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "A string,string dictionary of tags associated with this account")]        
+        [ValidateNotNull]
+        public Hashtable Tags { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Additional deployment regions of Azure API Management.")]
         public PsApiManagementRegion[] AdditionalRegions { get; set; }
+        
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Custom hostname configurations. Default value is $null. Passing $null will set the default hostname.")]
+        public PsApiManagementCustomHostNameConfiguration[] CustomHostnameConfiguration { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Certificates issued by Internal CA to be installed on the service. Default value is $null.")]
+        public PsApiManagementSystemCertificate[] SystemCertificateConfiguration { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            //var tags = TagsConversionHelper.CreateTagDictionary(Tag, true);
             var apiManagementResource = Client.CreateApiManagementService(
                     ResourceGroupName,
                     Name,
                     Location,
                     Organization,
                     AdminEmail,
+                    null,
                     Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
                     VpnType,
-                    Tag,
                     VirtualNetwork,
-                    AdditionalRegions);
+                    AdditionalRegions,
+                    CustomHostnameConfiguration,
+                    SystemCertificateConfiguration,
+                    AssignIdentity.IsPresent);
 
             this.WriteObject(apiManagementResource);
         }

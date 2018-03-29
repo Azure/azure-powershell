@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -70,24 +71,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 if (portalHostnameResource != null)
                 {
                     PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(portalHostnameResource);
+                    PortalCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(portalHostnameResource);
                 }
 
                 var proxyHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Proxy);
                 if (proxyHostnameResource != null)
                 {
                     ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResource);
+                    ProxyCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(proxyHostnameResource);
                 }
 
                 var managementHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
                 if (managementHostnameResource != null)
                 {
                     ManagementHostnameConfiguration = new PsApiManagementHostnameConfiguration(managementHostnameResource);
+                    ManagementCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(managementHostnameResource);
                 }
 
                 var scmHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Scm);
                 if (scmHostnameResource != null)
                 {
                     ScmHostnameConfiguration = new PsApiManagementHostnameConfiguration(scmHostnameResource);
+                    ScmCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(scmHostnameResource);
                 }
             }
 
@@ -95,9 +100,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 Tags = apiServiceResource.Tags;
             }
+
+            this.Identity = apiServiceResource.Identity;
         }
 
         public string[] StaticIPs { get; private set; }
+
+        public string[] PublicIPAddresses { get; private set; }
+
+        public string[] PrivateIPAddresses { get; private set; }
 
         public string Id { get; private set; }
 
@@ -125,17 +136,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public PsApiManagementVpnType VpnType { get; set; }
 
+        [Obsolete("deprecated")]
         public PsApiManagementHostnameConfiguration PortalHostnameConfiguration { get; set; }
 
+        [Obsolete("deprecated")]
         public PsApiManagementHostnameConfiguration ProxyHostnameConfiguration { get; set; }
 
+        [Obsolete("deprecated")]
         public PsApiManagementHostnameConfiguration ManagementHostnameConfiguration { get; set; }
 
+        [Obsolete("deprecated")]
         public PsApiManagementHostnameConfiguration ScmHostnameConfiguration { get; set; }
+
+        public PsApiManagementCustomHostNameConfiguration PortalCustomHostnameConfiguration { get; set; }
+
+        public PsApiManagementCustomHostNameConfiguration ProxyCustomHostnameConfiguration { get; set; }
+
+        public PsApiManagementCustomHostNameConfiguration ManagementCustomHostnameConfiguration { get; set; }
+
+        public PsApiManagementCustomHostNameConfiguration ScmCustomHostnameConfiguration { get; set; }
+
+        public PsApiManagementSystemCertificate[] SystemCertificates { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
         public IList<PsApiManagementRegion> AdditionalRegions { get; private set; }
+
+        public ApiManagementServiceIdentity Identity { get; private set; }
 
         public string ResourceGroupName
         {

@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using Helpers;
     using System;
     using System.Linq;
 
@@ -33,9 +34,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             }
 
             Location = additionalLocation.Location;
-            Sku = ApiManagementClient.MapSku(additionalLocation.Sku.Name);
+            Sku = Mappers.MapSku(additionalLocation.Sku.Name);
             Capacity = additionalLocation.Sku.Capacity ?? 1;
-            StaticIPs = additionalLocation.PublicIPAddresses.ToArray();
+            PublicIPAddresses = additionalLocation.PublicIPAddresses.ToArray();
+            PrivateIPAddresses = additionalLocation.PublicIPAddresses.ToArray();
 
             if (additionalLocation.VirtualNetworkConfiguration != null)
             {
@@ -45,7 +47,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
+        [Obsolete("This property is no longer populated and will be removed in a future release")]
         public string[] StaticIPs { get; private set; }
+
+        public string[] PublicIPAddresses { get; private set; }
+
+        public string[] PrivateIPAddresses { get; private set; }
 
         public int Capacity { get; set; }
 

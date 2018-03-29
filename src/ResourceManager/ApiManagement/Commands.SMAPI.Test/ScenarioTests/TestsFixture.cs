@@ -150,29 +150,26 @@
             string resourceGroupName,
             string apiServiceName,
             string location,
-            SkuType skuType = SkuType.Developer)
+            string skuType = SkuType.Developer)
         {
-            client.ResourceProvider.CreateOrUpdate(
+            client.ApiManagementService.CreateOrUpdate(
                 resourceGroupName,
                 apiServiceName,
-                new ApiServiceCreateOrUpdateParameters
+                new ApiManagementServiceResource
                 {
                     Location = location,
-                    Properties = new ApiServiceProperties
-                    {
-                        AddresserEmail = "foo@live.com",
-                        PublisherEmail = "foo@live.com",
-                        PublisherName = "apimgmt"
-                    },
-                    SkuProperties = new ApiServiceSkuProperties
+                    NotificationSenderEmail = "foo@live.com",
+                    PublisherEmail = "foo@live.com",
+                    PublisherName = "apimgmt",
+                    Sku = new ApiManagementServiceSkuProperties
                     {
                         Capacity = 1,
-                        SkuType = skuType
+                        Name = skuType
                     },
                 });
 
-            var response = client.ResourceProvider.Get(resourceGroupName, apiServiceName);
-            ThrowIfTrue(!response.Value.Name.Equals(apiServiceName), string.Format("ApiService name is not equal to {0}", apiServiceName));
+            var response = client.ApiManagementService.Get(resourceGroupName, apiServiceName);
+            ThrowIfTrue(!response.Name.Equals(apiServiceName), string.Format("ApiService name is not equal to {0}", apiServiceName));
         }
 
         public static Stream ToStream(this XDocument doc)

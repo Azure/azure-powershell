@@ -20,10 +20,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementLogger)]
-    [OutputType(typeof(PsApiManagementLogger))]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementLogger, DefaultParameterSetName = EventHubLogger)]
+    [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new[] { EventHubLogger, ApplicationInsightsLogger })]
     public class SetAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
+        private const string EventHubLogger = "EventHubLogger";
+        private const string ApplicationInsightsLogger = "ApplicationInsightsLogger";
+        
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
 
-        [Parameter(
+        [Parameter(           
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of logger to update. This parameter is mandatory.")]
@@ -39,16 +42,26 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String LoggerId { get; set; }
 
         [Parameter(
+            ParameterSetName = EventHubLogger,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "EventHub Entity name. This parameter is optional.")]
         public String Name { get; set; }
 
         [Parameter(
+            ParameterSetName = EventHubLogger,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
-            HelpMessage = "EventHub Connection String with Send Policy Rights. This parameter is optional.")]
+            Mandatory = true,
+            HelpMessage = "EventHub Connection String with Send Policy Rights. ")]
         public String ConnectionString { get; set; }
+       
+        [Parameter(
+            ParameterSetName = ApplicationInsightsLogger,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
+            HelpMessage = "Instrumentation Key of the application Insights. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public String InstrumentationKey { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -75,19 +88,32 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             var credentials = new Dictionary<string, string>();
 
-            if (!string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(ConnectionString))
+            string loggerType = string.Empty;
+            if (ParameterSetName == EventHubLogger)
             {
-                credentials.Add("name", Name);
-                credentials.Add("connectionString", ConnectionString);
+                loggerType = LoggerType.AzureEventHub;
+                if (!string.IsNullOrWhiteSpace(ConnectionString))
+                {
+                    credentials.Add("connectionString", ConnectionString);
+                }
+
+                if (!string.IsNullOrWhiteSpace(Name))
+                {
+                    credentials.Add("name", Name);                    
+                }                
             }
-            else if ((string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(ConnectionString)) ||
-                (!string.IsNullOrWhiteSpace(Name) && string.IsNullOrWhiteSpace(ConnectionString)))
+            else if (ParameterSetName == ApplicationInsightsLogger)
             {
-                WriteWarning("When updating Logger Credentials, we need to Provide both -Name and -ConnectionString parameters");
-                return;
+                loggerType = LoggerType.ApplicationInsights;
+                credentials.Add("instrumentationKey", InstrumentationKey);
             }
 
-            Client.LoggerSet(Context, LoggerType.AzureEventHub, LoggerId, Description, credentials, IsBuffered.IsPresent);
+            if (string.IsNullOrEmpty(loggerType))
+            {
+                throw new ArgumentException("Unable to determine the loggerType to set.");
+            }
+
+            Client.LoggerSet(Context, loggerType, LoggerId, Description, credentials, IsBuffered.IsPresent);
 
             if (PassThru)
             {
