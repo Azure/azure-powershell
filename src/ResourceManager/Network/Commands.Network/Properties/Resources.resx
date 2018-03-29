@@ -168,7 +168,7 @@
     <value>ResourceGroupNotSet</value>
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
-    <value>Resource : {0}, not found</value>
+    <value>Resource '{0}' not found</value>
   </data>
   <data name="SetByResource" xml:space="preserve">
     <value>SetByResource</value>
