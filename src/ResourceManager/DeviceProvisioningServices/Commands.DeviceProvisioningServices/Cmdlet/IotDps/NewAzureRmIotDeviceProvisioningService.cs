@@ -114,6 +114,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                             throw new ArgumentException("Invalid Sku");
                         }
                     }
+                    else
+                    {
+                        provisioningServiceDescription.Sku = new IotDpsSkuInfo(IotDpsSku.S1);
+                    }
 
                     IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
                     this.WriteObject(IotDpsUtils.ToPSProvisioningServiceDescription(GetIotDpsResource(this.ResourceGroupName, this.Name)), false);

@@ -32,7 +32,6 @@ function Test-AzureIotDpsLinkedHubLifeCycle
 
 	# Constant variable
 	$LinkedHubName = [string]::Format("{0}.azure-devices.net",$IotHubName)
-	$ApplyAllocationPolicyValue = $FALSE
 	$AllocationWeight = 10
 
 	# Create or Update Resource Group
@@ -54,7 +53,7 @@ function Test-AzureIotDpsLinkedHubLifeCycle
 	Assert-True { $linkedHub.Location -eq $Location }
 
 	# Update Linked Hub in Iot Hub Device Provisioning Service
-	$updatedLinkedHub = Update-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName -AllocationWeight $AllocationWeight -ApplyAllocationPolicy $ApplyAllocationPolicyValue
+	$updatedLinkedHub = Update-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName -AllocationWeight $AllocationWeight
 	Assert-False { $updatedLinkedHub.ApplyAllocationPolicy }
 	Assert-True { $updatedLinkedHub.AllocationWeight -eq $AllocationWeight }
 
