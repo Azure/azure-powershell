@@ -17,7 +17,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -34,7 +36,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -50,7 +54,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -66,7 +72,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -82,7 +90,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -98,7 +108,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -114,7 +126,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -138,7 +152,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -160,7 +182,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -182,7 +206,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -204,7 +230,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -226,7 +254,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -248,7 +278,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -270,7 +302,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -300,7 +334,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -331,12 +373,14 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -353,7 +397,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -369,7 +415,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -393,7 +441,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -415,7 +471,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -437,7 +495,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -467,7 +527,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -504,7 +572,55 @@
               "SecondaryKey": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "primaryKey",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "secondaryKey",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -521,7 +637,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -537,7 +655,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -561,7 +681,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -583,7 +711,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -605,7 +735,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -635,7 +767,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -666,12 +806,14 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -688,7 +830,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -704,7 +848,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -720,7 +866,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -744,7 +892,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -766,7 +922,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -796,7 +954,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -823,7 +989,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -853,7 +1021,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -880,7 +1056,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -902,7 +1080,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -932,7 +1112,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -959,7 +1147,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -989,7 +1179,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1024,7 +1222,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1055,12 +1261,14 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1077,7 +1285,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1093,7 +1303,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1109,7 +1321,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1133,7 +1347,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1155,7 +1377,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1177,7 +1401,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1199,7 +1425,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1229,7 +1457,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1260,12 +1496,14 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1282,7 +1520,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1298,7 +1538,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1322,7 +1564,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1344,7 +1594,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1366,7 +1618,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1396,7 +1650,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1430,7 +1692,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1447,7 +1711,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1463,7 +1729,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1479,7 +1747,9 @@
             "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": "System.String",
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1495,7 +1765,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1511,7 +1783,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1527,7 +1801,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1551,7 +1827,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1573,7 +1857,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1595,7 +1881,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1617,7 +1905,9 @@
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1639,7 +1929,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1661,7 +1953,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1683,7 +1977,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1713,7 +2009,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1744,7 +2048,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
               "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1770,7 +2074,54 @@
               "PrimaryKey": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "cache",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "accessKeys",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroupName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1787,7 +2138,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1803,7 +2156,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1819,7 +2174,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1835,7 +2192,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1851,7 +2210,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "P1",
@@ -1886,7 +2247,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Basic",
@@ -1906,7 +2269,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1922,7 +2287,9 @@
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1940,7 +2307,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Boolean"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1956,7 +2325,9 @@
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1974,7 +2345,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1990,7 +2363,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2006,7 +2381,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2022,7 +2399,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2038,7 +2417,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2054,7 +2435,9 @@
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2070,7 +2453,9 @@
             "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": "System.String",
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2094,7 +2479,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2116,7 +2509,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2138,7 +2533,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2160,7 +2557,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2182,7 +2581,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2204,7 +2605,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "P1",
@@ -2245,7 +2648,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Basic",
@@ -2271,7 +2676,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2293,7 +2700,9 @@
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2317,7 +2726,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Boolean"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2339,7 +2750,9 @@
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2363,7 +2776,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2385,7 +2800,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2407,7 +2824,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2429,7 +2848,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2451,7 +2872,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2473,7 +2896,9 @@
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2495,7 +2920,9 @@
                   "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": "System.String",
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2525,7 +2952,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2562,7 +2997,55 @@
               "SecondaryKey": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "primaryKey",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "secondaryKey",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -2579,7 +3062,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2595,7 +3080,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2611,7 +3098,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Primary",
@@ -2630,7 +3119,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2654,7 +3145,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2676,7 +3175,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2698,7 +3199,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2720,7 +3223,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Primary",
@@ -2745,7 +3250,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2775,7 +3282,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2806,7 +3321,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -2817,7 +3332,41 @@
               "EndIP": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -2834,7 +3383,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2850,7 +3401,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2863,7 +3416,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
               "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2887,7 +3440,55 @@
               "ResourceGroupName": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "cache",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroupName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2903,7 +3504,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2919,7 +3522,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2935,7 +3540,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2951,7 +3558,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2975,7 +3584,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2997,7 +3614,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3019,7 +3638,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3041,7 +3662,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3063,7 +3686,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3085,7 +3710,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3115,7 +3742,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3139,7 +3774,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
                   "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "EnableNonSslPort": "System.Boolean",
                     "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3163,7 +3798,55 @@
                     "ResourceGroupName": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "cache",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "resourceGroupName",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3185,7 +3868,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3207,7 +3892,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3229,7 +3916,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3259,7 +3948,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3286,7 +3983,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3308,7 +4007,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3330,7 +4031,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3352,7 +4055,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3382,7 +4087,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3409,7 +4122,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3431,7 +4146,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3453,7 +4170,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3483,7 +4202,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3514,14 +4241,48 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryServerName": "System.String",
               "SecondaryServerName": "System.String",
               "ProvisioningState": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -3538,7 +4299,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3554,7 +4317,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3578,7 +4343,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3600,7 +4373,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3622,7 +4397,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3652,7 +4429,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3683,12 +4468,14 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
               "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -3705,7 +4492,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3721,7 +4510,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3734,10 +4525,12 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3761,7 +4554,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3783,7 +4584,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3805,7 +4608,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3824,10 +4629,12 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
                   "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry[], Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3857,7 +4664,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -3888,14 +4703,48 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "StartHourUtc": "System.Int32",
               "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
               "DayOfWeek": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -3912,7 +4761,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Everyday",
@@ -3938,7 +4789,9 @@
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3956,7 +4809,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.TimeSpan"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -3980,7 +4835,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4002,7 +4865,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Everyday",
@@ -4034,7 +4899,9 @@
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4058,7 +4925,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.TimeSpan"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4088,7 +4957,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4122,7 +4999,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4139,7 +5018,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4155,7 +5036,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4171,7 +5054,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4187,7 +5072,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4211,7 +5098,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4233,7 +5128,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4255,7 +5152,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4277,7 +5176,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4299,7 +5200,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4329,7 +5232,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4363,7 +5274,9 @@
             "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4380,7 +5293,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4396,7 +5311,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4420,7 +5337,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4442,7 +5367,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4464,7 +5391,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4494,7 +5423,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4528,7 +5465,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4545,7 +5484,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4561,7 +5502,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4577,7 +5520,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4601,7 +5546,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4623,7 +5576,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4645,7 +5600,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4667,7 +5624,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4697,7 +5656,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4731,7 +5698,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4748,7 +5717,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4764,7 +5735,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4780,7 +5753,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4793,7 +5768,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "Name": "System.String",
@@ -4804,7 +5779,41 @@
               "EndIP": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4820,7 +5829,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4844,7 +5855,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -4866,7 +5885,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4888,7 +5909,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4910,7 +5933,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4932,7 +5957,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4962,7 +5989,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -4986,7 +6021,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
                   "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ResourceGroupName": "System.String",
                     "Name": "System.String",
@@ -4997,7 +6032,41 @@
                     "EndIP": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5019,7 +6088,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5049,7 +6120,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5076,7 +6155,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5106,7 +6187,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5140,7 +6229,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -5157,7 +6248,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5173,7 +6266,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5189,7 +6284,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5213,7 +6310,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5235,7 +6340,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5257,7 +6364,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5279,7 +6388,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5309,7 +6420,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5343,7 +6462,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -5360,7 +6481,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5376,7 +6499,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5392,7 +6517,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "PrimaryNode",
@@ -5414,7 +6541,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5430,7 +6559,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5446,7 +6577,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5470,7 +6603,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5492,7 +6633,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5514,7 +6657,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5536,7 +6681,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "PrimaryNode",
@@ -5564,7 +6711,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5586,7 +6735,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5608,7 +6759,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5638,7 +6791,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5669,7 +6830,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
             "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "EnableNonSslPort": "System.Boolean",
               "TenantSettings": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5695,7 +6856,54 @@
               "PrimaryKey": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "cache",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "accessKeys",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroupName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -5712,7 +6920,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5728,7 +6938,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5744,7 +6956,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "P1",
@@ -5779,7 +6993,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Basic",
@@ -5799,7 +7015,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5815,7 +7033,9 @@
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5833,7 +7053,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Boolean"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5849,7 +7071,9 @@
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5867,7 +7091,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5883,7 +7109,9 @@
             "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5907,7 +7135,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -5929,7 +7165,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5951,7 +7189,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -5973,7 +7213,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "P1",
@@ -6014,7 +7256,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Basic",
@@ -6040,7 +7284,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6062,7 +7308,9 @@
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6086,7 +7334,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Boolean"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6108,7 +7358,9 @@
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6132,7 +7384,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6154,7 +7408,9 @@
                   "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6184,7 +7440,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6218,7 +7482,9 @@
             "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -6235,7 +7501,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -6251,7 +7519,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -6267,7 +7537,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -6291,7 +7563,15 @@
               "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -6313,7 +7593,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6335,7 +7617,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6357,7 +7641,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6387,7 +7673,15 @@
                     "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -6412,7 +7706,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Boolean": {
       "Namespace": null,
@@ -6420,7 +7716,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Byte": {
       "Namespace": null,
@@ -6428,7 +7726,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.SByte": {
       "Namespace": null,
@@ -6436,7 +7736,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Int16": {
       "Namespace": null,
@@ -6444,7 +7746,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.UInt16": {
       "Namespace": null,
@@ -6452,7 +7756,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Int32": {
       "Namespace": null,
@@ -6460,7 +7766,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.UInt32": {
       "Namespace": null,
@@ -6468,7 +7776,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Int64": {
       "Namespace": null,
@@ -6476,7 +7786,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.UInt64": {
       "Namespace": null,
@@ -6484,7 +7796,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Single": {
       "Namespace": null,
@@ -6492,7 +7806,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Double": {
       "Namespace": null,
@@ -6500,7 +7816,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Decimal": {
       "Namespace": null,
@@ -6508,7 +7826,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Char": {
       "Namespace": null,
@@ -6516,7 +7836,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -6531,7 +7853,9 @@
         "VersionProfile": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -6544,7 +7868,9 @@
         "Type": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
@@ -6555,7 +7881,9 @@
       "GenericTypeArguments": [
         "System.String",
         "System.String"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -6586,7 +7914,9 @@
         "Name": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IList`1[System.String]": {
       "Namespace": "System.Collections.Generic",
@@ -6596,7 +7926,9 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "System.String"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -6608,7 +7940,9 @@
         "State": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -6619,7 +7953,9 @@
         "Directory": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
@@ -6629,7 +7965,15 @@
         "CacheData": "System.Byte[]"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Clear",
+          "Parameters": [],
+          "ReturnType": "System.Void"
+        }
+      ],
+      "Constructors": []
     },
     "System.Byte[]": {
       "Namespace": "System",
@@ -6637,7 +7981,19 @@
       "AssemblyQualifiedName": "System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": "System.Byte",
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Void": {
+      "Namespace": "System",
+      "Name": "System.Void",
+      "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
@@ -6647,7 +8003,9 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
@@ -6657,7 +8015,9 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
       "Namespace": "System.Collections.Generic",
@@ -6667,12 +8027,14 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes": {
       "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
       "Name": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "EnableNonSslPort": "System.Boolean",
         "RedisConfiguration": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -6696,7 +8058,55 @@
         "ResourceGroupName": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "cache",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "resourceGroupName",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
     },
     "System.Nullable`1[System.Int32]": {
       "Namespace": "System",
@@ -6706,24 +8116,70 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "System.Int32"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer": {
       "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
       "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "PrimaryServerName": "System.String",
         "SecondaryServerName": "System.String",
         "ProvisioningState": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
     },
     "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule": {
       "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
       "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ResourceGroupName": "System.String",
         "Name": "System.String",
@@ -6734,19 +8190,87 @@
         "EndIP": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
     },
     "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry": {
       "Namespace": "Microsoft.Azure.Commands.RedisCache.Models",
       "Name": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry, Microsoft.Azure.Commands.RedisCache, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StartHourUtc": "System.Int32",
         "MaintenanceWindow": "System.Nullable`1[System.TimeSpan]",
         "DayOfWeek": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
     },
     "System.Nullable`1[System.TimeSpan]": {
       "Namespace": "System",
@@ -6756,7 +8280,9 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "System.TimeSpan"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.TimeSpan": {
       "Namespace": "System",
@@ -6764,7 +8290,9 @@
       "AssemblyQualifiedName": "System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     }
   }
 }

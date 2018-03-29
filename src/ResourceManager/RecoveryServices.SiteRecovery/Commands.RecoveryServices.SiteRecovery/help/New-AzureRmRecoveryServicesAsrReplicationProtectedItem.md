@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/new-azurermrecoveryservicesasrreplicationprotecteditem
@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmRecoveryServicesAsrReplicationProtectedItem
 
 ## SYNOPSIS
-Enables replication for an ASR protectable item by creating a replication protected item
+Enables replication for an ASR protectable item by creating a replication protected item.
 
 ## SYNTAX
 
@@ -47,6 +47,15 @@ New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-HyperVToAzure] -Protect
  [-Confirm] [<CommonParameters>]
 ```
 
+### AzureToAzure
+```
+New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure]
+ -AzureToAzureDiskReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]> -AzureVmId <String>
+ -Name <String> [-RecoveryVmName <String>] -ProtectionContainerMapping <ASRProtectionContainerMapping>
+ -RecoveryResourceGroupId <String> [-RecoveryCloudServiceId <String>] [-RecoveryAvailabilitySetId <String>]
+ [-WaitForCompletion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet creates a new replication protected item.
 Use this cmdlet to enable replication for an ASR protectable item.
@@ -62,10 +71,33 @@ Starts the replication protected item creation operation for the specified ASR p
 
 ### Example 2
 ```
-PS C:\>$job = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm -RecoveryAzureStorageAccountId $RecoveryAzureStorageAccountId -RecoveryResourceGroupId  $RecoveryResourceGroupId -ProcessServer $fabric.fabricSpecificDetails.ProcessServers[0] -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
+PS C:\>$job = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $pi -Name $rpiName -ProtectionContainerMapping $pcm `
+-RecoveryAzureStorageAccountId $RecoveryAzureStorageAccountId -RecoveryResourceGroupId  $RecoveryResourceGroupId `
+-ProcessServer $fabric.fabricSpecificDetails.ProcessServers[0] -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
 
-Starts the replication protected item creation operation for the specified ASR protectable item and returns the ASR job used to track the operation.
+Starts the replication protected item creation operation for the specified ASR protectable item and returns the ASR job used to track the operation(vmWare to Azure scenario).
+
+### Example 3
+```
+PS C:>$job = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureToAzureDiskReplicationConfig disk1,disk2 -AzureVmId $vmId `
+-Name "a2aprotectedItem" -RecoveryVmName "vmName" -ProtectionContainerMapping $pcmMapping -RecoveryResourceGroupId $recoveryResourceGroup
+```
+
+Starts the replication protected item creation operation for the specified ASR protectable item and returns the ASR job used to track the operation (Azure to Azure scenario).
+
+### Example 4
+```
+PS C:\> $disk1 = new-AzureToAzureDiskReplicationConfiguration -vhdUri  $diskUri1 -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
+-LogStorageAccountId $logStorageAccountId  
+PS C:\> $disk2 = new-AzureToAzureDiskReplicationConfiguration -vhdUri  $diskUri2 -RecoveryAzureStorageAccountId $recoveryAzureStorageAccountId `
+-LogStorageAccountId $logStorageAccountId  
+PS C:\> $enableDRjob = New-AzureRmRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vmId -Name $rpiName `
+-RecoveryCloudServiceId  $recoveryCloudServiceId -ProtectionContainerMapping $pcm -RecoveryResourceGroupId  $RecoveryResourceGroupId `
+-AzureToAzureDiskReplicationConfiguration $disk1,$disk2
+```
+
+Starts the replication protected item creation operation for the specified VmId and returns the ASR job used to track the operation (Azure to Azure scenario).
 
 ## PARAMETERS
 
@@ -75,7 +107,52 @@ The run as account to be used to push install the Mobility service if needed. Mu
 ```yaml
 Type: ASRRunAsAccount
 Parameter Sets: VMwareToAzure
-Aliases: 
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureToAzure
+Switch parameter to specify that the replicated item is an Azure virtual machine replicating to a recovery Azure region.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureToAzureDiskReplicationConfiguration
+Specifies the list of virtual machine disks to replicated and the cache storage account and recovery storage account to be used to replicate the disk.
+
+```yaml
+Type: ASRAzuretoAzureDiskReplicationConfig[]
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureVmId
+Specifies the azure vm id to be replicated.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure
+Aliases:
 
 Required: True
 Position: Named
@@ -99,13 +176,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HyperVToAzure
+Switch parameter to specify the replicated item is a Hyper-V virtual machine that is being replicated to Azure.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: EnterpriseToAzure, HyperVSiteToAzure
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeDiskId
+The list of disks to include for replication. By default all disks are included.
+
+```yaml
+Type: String[]
+Parameter Sets: VMwareToAzure, HyperVSiteToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogStorageAccountId
-Vm log azure storage account Id.
+Specifies the log or cache storage account Id to be used to store replication logs.
 
 ```yaml
 Type: String
 Parameter Sets: VMwareToAzure, HyperVSiteToAzure
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,7 +241,7 @@ Specifies a name for the ASR replication protected item. The name must be unique
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -136,7 +257,7 @@ The acceptable values for this parameter are: Windows or Linux.
 ```yaml
 Type: String
 Parameter Sets: HyperVSiteToAzure
-Aliases: 
+Aliases:
 Accepted values: Windows, Linux
 
 Required: True
@@ -152,7 +273,7 @@ Specifies the name of the operating system disk.
 ```yaml
 Type: String
 Parameter Sets: HyperVSiteToAzure
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -167,7 +288,7 @@ The Process Server to use to replicate this machine. Use the list of process ser
 ```yaml
 Type: ASRProcessServer
 Parameter Sets: VMwareToAzure
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -181,8 +302,8 @@ Specifies the ASR protectable item object for which replication is being enabled
 
 ```yaml
 Type: ASRProtectableItem
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: EnterpriseToEnterprise, VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure
+Aliases:
 
 Required: True
 Position: Named
@@ -197,9 +318,24 @@ Specifies the ASR protection container mapping object corresponding to the repli
 ```yaml
 Type: ASRProtectionContainerMapping
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAvailabilitySetId
+The ID of the AvailabilitySet to recover the machine to in the event of a failover.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -212,7 +348,7 @@ The ID of the Azure virtual network to recover the machine to in the event of a 
 ```yaml
 Type: String
 Parameter Sets: VMwareToAzure, HyperVSiteToAzure
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -227,9 +363,39 @@ Specifies the ID of the Azure storage account to replicate to.
 ```yaml
 Type: String
 Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAzureSubnetName
+The subnet within the recovery Azure virtual network to which the failed over virtual machine should be attached in the event of a failover.
+
+```yaml
+Type: String
+Parameter Sets: VMwareToAzure, HyperVSiteToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryCloudServiceId
+Specifies the resource ID of the recovery cloud service to failover this virtual machine to.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -241,10 +407,25 @@ Specifies the ARM identifier of the resource group in which the virtual machine 
 
 ```yaml
 Type: String
-Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure
-Aliases: 
+Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryVmName
+Name of the recovery Vm created after failover.
+
+```yaml
+Type: String
+Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -257,10 +438,40 @@ Specifies the replication group name to use to create multi-VM consistent recove
 ```yaml
 Type: String
 Parameter Sets: VMwareToAzure
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMwareToAzure
+Switch parameter to specify the replicated item is a VMware virtual machine or physical server that will be replicate to Azure.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: VMwareToAzure
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VmmToVmm
+Switch parameter to specify the replicated item is a Hyper-V virtual machine that is being replicated between VMM managed Hyper-V sites.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: EnterpriseToEnterprise
+Aliases:
+
+Required: False
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -272,7 +483,7 @@ Specifies that the cmdlet should wait for completion of the operation before ret
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -289,111 +500,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryAzureSubnetName
-The subnet within the recovery Azure virtual network to which the failed over virtual machine should be attached in the event of a failover.
-
-```yaml
-Type: String
-Parameter Sets: VMwareToAzure, HyperVSiteToAzure
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryVmName
-Name of the recovery Vm created after failover.
-
-```yaml
-Type: String
-Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VmmToVmm
-Switch parameter to specify the replicated item is a Hyper-V virtual machine that is beind replicated between VMM managed Hyper-V sites.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: EnterpriseToEnterprise
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HyperVToAzure
-Switch parameter to specify the replicated item is a Hyper-V virtual machine that is being replicated to Azure.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: EnterpriseToAzure, HyperVSiteToAzure
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VMwareToAzure
-Switch parameter to specify the replicated item is a VMware virtual machine or physical server that will be replicate to Azure.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: VMwareToAzure
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IncludeDiskId
-The list of disks to include for replication. By default all disks are included.
-
-```yaml
-Type: String[]
-Parameter Sets: VMwareToAzure, HyperVSiteToAzure
-Aliases: 
 
 Required: False
 Position: Named

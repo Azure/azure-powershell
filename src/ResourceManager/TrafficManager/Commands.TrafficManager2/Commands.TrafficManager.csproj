@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.TrafficManager</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,7 +33,7 @@
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.TrafficManager</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>

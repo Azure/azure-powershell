@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="parameters">vault creation parameters</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns></returns>
-        public PSVault CreateNewVault(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null)
+        public PSKeyVault CreateNewVault(VaultCreationParameters parameters, ActiveDirectoryClient adClient = null)
         {
             if (parameters == null)
                 throw new ArgumentNullException("parameters");
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     Properties = properties
                 });
 
-            return new PSVault(response, adClient);
+            return new PSKeyVault(response, adClient);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="resourceGroupName">resource group name</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns>the retrieved vault</returns>
-        public PSVault GetVault(string vaultName, string resourceGroupName, ActiveDirectoryClient adClient = null)
+        public PSKeyVault GetVault(string vaultName, string resourceGroupName, ActiveDirectoryClient adClient = null)
         {
             if (string.IsNullOrWhiteSpace(vaultName))
                 throw new ArgumentNullException("vaultName");
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 var response = this.KeyVaultManagementClient.Vaults.Get(resourceGroupName, vaultName);
 
-                return new PSVault(response, adClient);
+                return new PSKeyVault(response, adClient);
             }
             catch (CloudException ce)
             {
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="updatedEnabledForDiskEncryption">enabled for disk encryption</param>
         /// <param name="adClient">the active directory client</param>
         /// <returns>the updated vault</returns>
-        public PSVault UpdateVault(PSVault existingVault, PSVaultAccessPolicy[] updatedPolicies, bool? updatedEnabledForDeployment,
+        public PSKeyVault UpdateVault(PSKeyVault existingVault, PSKeyVaultAccessPolicy[] updatedPolicies, bool? updatedEnabledForDeployment,
             bool? updatedEnabledForTemplateDeployment, bool? updatedEnabledForDiskEncryption, ActiveDirectoryClient adClient = null)
         {
             if (existingVault == null)
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     Tags = TagsConversionHelper.CreateTagDictionary(existingVault.Tags, validate: true)
                 }
                 );
-            return new PSVault(response, adClient);
+            return new PSKeyVault(response, adClient);
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// <param name="vaultName">vault name</param>
         /// <param name="location">resource group name</param>
         /// <returns>the retrieved deleted vault. Null if vault is not found.</returns>
-        public PSDeletedVault GetDeletedVault(string vaultName, string location)
+        public PSDeletedKeyVault GetDeletedVault(string vaultName, string location)
         {
             if (string.IsNullOrWhiteSpace(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 var response = this.KeyVaultManagementClient.Vaults.GetDeleted(vaultName, location);
 
-                return new PSDeletedVault(response);
+                return new PSDeletedKeyVault(response);
             }
             catch (CloudException ce)
             {
@@ -269,15 +269,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// Lists deleted vault in a subscription.
         /// </summary>
         /// <returns>the retrieved deleted vault</returns>
-        public List<PSDeletedVault> ListDeletedVaults()
+        public List<PSDeletedKeyVault> ListDeletedVaults()
         {
-            List<PSDeletedVault> deletedVaults = new List<PSDeletedVault>();
+            List<PSDeletedKeyVault> deletedVaults = new List<PSDeletedKeyVault>();
 
             var response = this.KeyVaultManagementClient.Vaults.ListDeleted();
 
             foreach (var deletedVault in response)
             {
-                deletedVaults.Add(new PSDeletedVault(deletedVault));
+                deletedVaults.Add(new PSDeletedKeyVault(deletedVault));
             }
 
             while (response?.NextPageLink != null)
@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 foreach (var deletedVault in response)
                 {
-                    deletedVaults.Add(new PSDeletedVault(deletedVault));
+                    deletedVaults.Add(new PSDeletedKeyVault(deletedVault));
                 }
             }
 

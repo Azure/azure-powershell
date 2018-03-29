@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/start-azurermrecoveryservicesasrcommitfailoverjob
@@ -53,13 +53,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryPlan
-Specifies an ASR recovery plan object.
+Specifies an ASR recovery plan object corresponding to recovery plan to be failovered.
 
 ```yaml
 Type: ASRRecoveryPlan
 Parameter Sets: ByRPObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,12 +83,12 @@ Accept wildcard characters: False
 ```
 
 ### -ReplicationProtectedItem
-Specifies an ASR replication protected item object.
+Specifies an ASR replication protected item object corresponding to replication protected item  to be failovered.
 
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: ByRPIObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,21 +112,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -128,4 +127,3 @@ Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedIt
 ## NOTES
 
 ## RELATED LINKS
-
