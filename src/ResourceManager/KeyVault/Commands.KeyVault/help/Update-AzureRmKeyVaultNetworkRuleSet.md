@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureRmKeyVaultNetworkRuleSet
 
 ## SYNOPSIS
-Updates the network ruleset on the specified vault.
+Updates the network rule set on a key vault.
 
 ## SYNTAX
 
@@ -37,17 +37,17 @@ Update-AzureRmKeyVaultNetworkRuleSet [-ResourceId] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Update-AzureRmKeyVaultNetworkRuleSet** command updates the network rules in effect on the specified key vault. 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>$myNetworkResId = '/subscriptions/01234-5678-9abc-def/resourceGroups/myrg/providers/Microsoft.Network/networkInterfaces/myNetwork'
-PS C:\>Update-AzureRmKeyVaultNetworkRuleSet -VaultName 'myVault' -DefaultAction Allow -Bypass AzureServices -IpAddressRange "10.0.0.1" -VirtualNetworkResourceId $myNetworkResId 
+PS C:\>$myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
+PS C:\>Update-AzureRmKeyVaultNetworkRuleSet -VaultName 'myVault' -ResourceGroupName myRG -Bypass AzureServices -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
 ```
 
-This command updates the network ruleset on the vault named 'myVault'.
+This command updates the network ruleset on the vault named 'myVault' for the specified IP range and the virtual network, allowing bypassing of the network rule for Azure services.
 
 ## PARAMETERS
 
@@ -236,21 +236,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-System.String
-System.Nullable`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultNetworkRuleDefaultActionEnum, Microsoft.Azure.Commands.KeyVault, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]]
-System.Nullable`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultNetworkRuleBypassEnum, Microsoft.Azure.Commands.KeyVault, Version=4.2.1.0, Culture=neutral, PublicKeyToken=null]]
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-
 
 ## NOTES
 

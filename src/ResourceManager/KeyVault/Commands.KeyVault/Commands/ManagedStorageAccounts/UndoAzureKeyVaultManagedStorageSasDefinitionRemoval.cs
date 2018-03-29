@@ -15,11 +15,10 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
-using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultManagedStorageAccountSasDefinitionRemoval",
+    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultManagedStorageSasDefinitionRemoval",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultManagedStorageSasDefinition))]
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -50,7 +48,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "KeyVault-managed storage account name. Cmdlet constructs the FQDN of a managed storage SAS definition from vault name, currently-" +
                           "selected environment and managed storage account name.")]
         [ValidateNotNullOrEmpty]
@@ -63,7 +60,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 2,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the KeyVault-managed storage SAS definition. Cmdlet constructs the FQDN of the target from vault name, currently-selected " +
                           "environment, the name of the managed storage account and the name of the SAS definition.")]
         [ValidateNotNullOrEmpty]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmKeyVaultNetworkRuleSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes a network rule set from a key vault.
 
 ## SYNTAX
 
@@ -40,9 +40,10 @@ Remove-AzureRmKeyVaultNetworkRuleSet [-ResourceId] <String> [-IpAddressRange <St
 
 ### Example 1
 ```powershell
-PS C:\> PS C:\> Remove-AzureRmKeyVaultNetworkRuleSet -VaultName myVault -IpAddressRange "10.0.0.1" -VirtualNetworkResourceId $myNetworkResId 
-
+PS C:\>$myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
+PS C:\> PS C:\> Remove-AzureRmKeyVaultNetworkRuleSet -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
 ```
+
 This command removes a network ruleset from the specified vault, provided a rule is found matching the specified IP address and the virtual network resource identifier.
 
 ## PARAMETERS
@@ -200,19 +201,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-
 
 ## NOTES
 

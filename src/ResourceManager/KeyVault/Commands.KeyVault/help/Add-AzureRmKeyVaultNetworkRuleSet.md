@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzureRmKeyVaultNetworkRuleSet
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Adds a rule meant to restrict access to a key vault based on the client's internet address.
 
 ## SYNTAX
 
@@ -34,14 +34,14 @@ Add-AzureRmKeyVaultNetworkRuleSet [-ResourceId] <String> [-IpAddressRange <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Add-AzureRmKeyVaultNetworkRuleSet** cmdlet grants or restricts access to a key vault to a set of caller designated by their IP addresses or the virtual network to which they belong. The rule has the potential to restrict access for other users, applications, or security groups which have been granted permissions via the access policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzureRmKeyVaultNetworkRuleSet -VaultName myVault -IpAddressRange "10.0.0.1" -VirtualNetworkResourceId $myNetworkResId 
-
+PS C:\>$myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
+PS C:\> Add-AzureRmKeyVaultNetworkRuleSet -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
 ```
 
 This command adds a network ruleset to the specified vault, allowing access to the specified IP address from the virtual network identified by $myNetworkResId.
@@ -201,19 +201,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-
 
 ## NOTES
 
