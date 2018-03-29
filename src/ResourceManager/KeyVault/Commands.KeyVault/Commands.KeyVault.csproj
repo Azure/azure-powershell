@@ -56,6 +56,8 @@
     <Compile Include="Commands\ManagedStorageAccounts\BackupAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\BackupAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\GetAzureKeyVaultManagedStorageAccount.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\UndoAzureKeyVaultManagedStorageAccountRemoval.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\UndoAzureKeyVaultManagedStorageSasDefinitionRemoval.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultCertificate.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\RestoreAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultSecret.cs" />

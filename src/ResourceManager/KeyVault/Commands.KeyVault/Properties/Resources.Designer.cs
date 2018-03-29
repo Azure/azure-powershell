@@ -667,6 +667,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recover KeyVault-managed storage account.
+        /// </summary>
+        internal static string RecoverManagedStorageAccount {
+            get {
+                return ResourceManager.GetString("RecoverManagedStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recover KeyVault-managed storage account SAS definition..
+        /// </summary>
+        internal static string RecoverManagedStorageSasDefinition {
+            get {
+                return ResourceManager.GetString("RecoverManagedStorageSasDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recover secret.
         /// </summary>
         internal static string RecoverSecret {

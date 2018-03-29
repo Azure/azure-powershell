@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
-
         [Parameter( Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
