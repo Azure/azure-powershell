@@ -6,7 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{133561EC-99AF-4ADC-AF41-39C4D3AD323B}</ProjectGuid>
+    <ProjectGuid>{81E4373B-42EC-445E-9A40-06C44F29099A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Dns.Test</RootNamespace>

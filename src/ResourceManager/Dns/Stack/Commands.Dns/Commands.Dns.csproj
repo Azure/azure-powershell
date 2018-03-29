@@ -121,7 +121,7 @@
     <ItemGroup>
       <MarkdownFiles Include="$(ProjectDir)help\*.*" />
     </ItemGroup>
-	<ItemGroup>
+    <ItemGroup>
       <OutFiles Include="$(OutDir)\**\*.*" />
     </ItemGroup>
     <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Dns\%(RecursiveDir)%(Filename)%(Extension)')" />
