@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-#Requires -Modules AzureRM.KeyVault, PowerShellGet > 1,6,0
+#Requires -Modules AzureRM.KeyVault, @{ModuleName='PowerShellGet';ModuleVersion='1.6.0'}
 [CmdletBinding(
     DefaultParameterSetName='Scope', 
     SupportsShouldProcess=$true
