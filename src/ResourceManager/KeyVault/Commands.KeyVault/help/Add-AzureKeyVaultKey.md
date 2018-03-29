@@ -195,22 +195,9 @@ extension, it imports the key as a software-protected key.
 Type: String
 Parameter Sets: InteractiveCreate, InputObjectCreate
 Aliases:
-Accepted values: HSM, Software, HSM, Software
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: InteractiveImport, InputObjectImport
-Aliases:
 Accepted values: HSM, Software
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
