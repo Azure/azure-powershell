@@ -211,7 +211,7 @@
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 $(Configuration) $(Scope) -Profile Stack &quot; " Condition="'$(Stack)' == 'true' and '$(CodeSign)' == 'false'"/> 
 
     <Exec ContinueOnError="false" 
-      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json &quot;" Condition="'$(Latest)' == 'true'"/>
+      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" Condition="'$(Latest)' == 'true'"/>
       
    <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1"
