@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -22,14 +21,14 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// Add network rule set
+    /// Remove network rule 
     /// NOTE: Define VaultName & ResourceGroupName in this class instead of base one because TAB order for input.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmKeyVaultNetworkRuleSet",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultNetworkRule",
+        DefaultParameterSetName = ByVaultNameParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
-    public class AddAzureKeyVaultNetworkRuleSet : KeyVaultNetworkRuleSetBase
+    public class RemoveAzureRmKeyVaultNetworkRule : KeyVaultNetworkRuleSetBase
     {
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            if (ShouldProcess(VaultName, Properties.Resources.AddNetworkRule))
+            if (ShouldProcess(VaultName, Properties.Resources.RemoveNetworkRule))
             {
                 bool isIpAddressRangeSpecified = base.IsIpAddressRangeSpecified;
                 bool isVirtualNetResIdSpecified = base.IsVirtualNetworkResourceIdSpecified;
@@ -110,16 +109,15 @@ namespace Microsoft.Azure.Commands.KeyVault
                 IList<string> ipAddressRanges = existingVault.NetworkAcls.IpAddressRanges;
                 if (isIpAddressRangeSpecified)
                 {
-                    ipAddressRanges = MergeInputToSource(base.IpAddressRange, existingVault.NetworkAcls.IpAddressRanges);
+                    ipAddressRanges = RemoveInputFromSource(base.IpAddressRange, existingVault.NetworkAcls.IpAddressRanges);
                 }
 
                 IList<string> virtualNetworkResourceId = existingVault.NetworkAcls.VirtualNetworkResourceIds;
                 if (isVirtualNetResIdSpecified)
                 {
-                    virtualNetworkResourceId =
-                        MergeInputToSource(base.VirtualNetworkResourceId, existingVault.NetworkAcls.VirtualNetworkResourceIds);
+                    virtualNetworkResourceId = 
+                        RemoveInputFromSource(base.VirtualNetworkResourceId, existingVault.NetworkAcls.VirtualNetworkResourceIds);
                 }
-
 
                 PSKeyVaultNetworkRuleSet updatedNetworkAcls = new PSKeyVaultNetworkRuleSet(
                     existingVault.NetworkAcls.DefaultAction, existingVault.NetworkAcls.Bypass, ipAddressRanges, virtualNetworkResourceId);
@@ -132,25 +130,25 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        static private IList<string> MergeInputToSource(string[] addedTargetList, IList<string> sourceList)
+        static private IList<string> RemoveInputFromSource(string[] removeTargetList, IList<string> sourceList)
         {
-            if (addedTargetList == null || addedTargetList.Length == 0)
+            if (removeTargetList == null || removeTargetList.Length == 0)
             {   // No inputs
                 return sourceList;
             }
 
             if (sourceList == null || sourceList.Count == 0)
-            {
-                return new List<string>(addedTargetList);
+            {   // Nothing to remove
+                return sourceList;
             }
 
             List<string> updatedResults = new List<string>(sourceList);
-            foreach (string item in addedTargetList)
+            foreach (string item in removeTargetList)
             {
                 int index = updatedResults.FindIndex(x => string.Equals(x, item, StringComparison.OrdinalIgnoreCase));
-                if (index == -1)
-                {   // Duplicated items are not added
-                    updatedResults.Add(item);
+                if (index != -1)
+                { 
+                    updatedResults.RemoveAt(index);
                 }
             }
 

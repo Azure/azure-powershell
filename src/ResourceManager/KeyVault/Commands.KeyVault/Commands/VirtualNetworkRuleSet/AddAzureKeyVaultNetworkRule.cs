@@ -21,14 +21,14 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
-    /// Remove network rule set
+    /// Add network rule
     /// NOTE: Define VaultName & ResourceGroupName in this class instead of base one because TAB order for input.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultNetworkRuleSet",
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Add, "AzureRmKeyVaultNetworkRule",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVault))]
-    public class RemoveAzureRmKeyVaultNetworkRuleSet : KeyVaultNetworkRuleSetBase
+    public class AddAzureKeyVaultNetworkRule : KeyVaultNetworkRuleSetBase
     {
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
             }
 
-            if (ShouldProcess(VaultName, Properties.Resources.RemoveNetworkRule))
+            if (ShouldProcess(VaultName, Properties.Resources.AddNetworkRule))
             {
                 bool isIpAddressRangeSpecified = base.IsIpAddressRangeSpecified;
                 bool isVirtualNetResIdSpecified = base.IsVirtualNetworkResourceIdSpecified;
@@ -109,15 +109,16 @@ namespace Microsoft.Azure.Commands.KeyVault
                 IList<string> ipAddressRanges = existingVault.NetworkAcls.IpAddressRanges;
                 if (isIpAddressRangeSpecified)
                 {
-                    ipAddressRanges = RemoveInputFromSource(base.IpAddressRange, existingVault.NetworkAcls.IpAddressRanges);
+                    ipAddressRanges = MergeInputToSource(base.IpAddressRange, existingVault.NetworkAcls.IpAddressRanges);
                 }
 
                 IList<string> virtualNetworkResourceId = existingVault.NetworkAcls.VirtualNetworkResourceIds;
                 if (isVirtualNetResIdSpecified)
                 {
-                    virtualNetworkResourceId = 
-                        RemoveInputFromSource(base.VirtualNetworkResourceId, existingVault.NetworkAcls.VirtualNetworkResourceIds);
+                    virtualNetworkResourceId =
+                        MergeInputToSource(base.VirtualNetworkResourceId, existingVault.NetworkAcls.VirtualNetworkResourceIds);
                 }
+
 
                 PSKeyVaultNetworkRuleSet updatedNetworkAcls = new PSKeyVaultNetworkRuleSet(
                     existingVault.NetworkAcls.DefaultAction, existingVault.NetworkAcls.Bypass, ipAddressRanges, virtualNetworkResourceId);
@@ -130,25 +131,25 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
         }
 
-        static private IList<string> RemoveInputFromSource(string[] removeTargetList, IList<string> sourceList)
+        static private IList<string> MergeInputToSource(string[] addedTargetList, IList<string> sourceList)
         {
-            if (removeTargetList == null || removeTargetList.Length == 0)
+            if (addedTargetList == null || addedTargetList.Length == 0)
             {   // No inputs
                 return sourceList;
             }
 
             if (sourceList == null || sourceList.Count == 0)
-            {   // Nothing to remove
-                return sourceList;
+            {
+                return new List<string>(addedTargetList);
             }
 
             List<string> updatedResults = new List<string>(sourceList);
-            foreach (string item in removeTargetList)
+            foreach (string item in addedTargetList)
             {
                 int index = updatedResults.FindIndex(x => string.Equals(x, item, StringComparison.OrdinalIgnoreCase));
-                if (index != -1)
-                { 
-                    updatedResults.RemoveAt(index);
+                if (index == -1)
+                {   // Duplicated items are not added
+                    updatedResults.Add(item);
                 }
             }
 
