@@ -49,11 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         private static ResourceManagementClient ResourcesClient { get; set; }
 
         /// <summary>
-        /// The Sql client to be used by this end points communicator
-        /// </summary>
-        private static Management.Sql.SqlManagementClient SqlArmClient { get; set; }
-
-        /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
         private static IAzureSubscription Subscription { get; set; }
