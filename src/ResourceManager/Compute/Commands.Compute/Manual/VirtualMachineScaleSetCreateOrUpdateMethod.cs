@@ -27,6 +27,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
@@ -107,6 +108,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string BackendPoolName { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        public string UserAssignedIdentity { get; set; }
+
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false,
@@ -166,6 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                 vmSize: VmSize,
                 instanceCount: InstanceCount,
+                identity : GetVmssIdentityFromArgs(),
                 upgradeMode: MyInvocation.BoundParameters.ContainsKey("UpgradePolicyMode")
                     ? UpgradePolicyMode
                     : (UpgradeMode?)null);
@@ -211,6 +219,37 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 psObject.FullyQualifiedDomainName = fqdn;
                 asyncCmdlet.WriteObject(psObject);
             }
+        }
+
+        private VirtualMachineScaleSetIdentity GetVmssIdentityFromArgs()
+        {
+            VirtualMachineScaleSetIdentity identityConfig = null;
+            if (SystemAssignedIdentity || !string.IsNullOrWhiteSpace(UserAssignedIdentity))
+            {
+                identityConfig = new VirtualMachineScaleSetIdentity();
+
+                if (!string.IsNullOrWhiteSpace(UserAssignedIdentity))
+                {
+                    List<string> identities = new List<string>();
+                    identities.Add(UserAssignedIdentity);
+                    identityConfig.IdentityIds = identities;
+
+                    if (SystemAssignedIdentity)
+                    {
+                        identityConfig.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                    }
+                    else
+                    {
+                        identityConfig.Type = ResourceIdentityType.UserAssigned;
+                    }
+                }
+                else
+                {
+                    identityConfig.Type = ResourceIdentityType.SystemAssigned;
+                }
+            }
+
+            return identityConfig;
         }
     }
 }

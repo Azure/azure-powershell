@@ -31,7 +31,41 @@ function Test-SimpleNewVm
         # Common
 		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
 
-        Assert-AreEqual $vmname $x.Name;        
+        Assert-AreEqual $vmname $x.Name;
+		Assert-Null $x.Identity 
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm with system assigned identity
+#>
+function Test-SimpleNewVmSystemAssignedIdentity
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity
+
+        Assert-AreEqual $vmname $x.Name;
+		Assert-AreEqual "SystemAssigned" $x.Identity.Type     
+		Assert-NotNull  $x.Identity.PrincipalId
+		Assert-NotNull  $x.Identity.TenantId
+		Assert-Null $x.Identity.IdentityIds     
     }
     finally
     {

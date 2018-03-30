@@ -31,5 +31,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmss");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssWithSystemAssignedIdentity()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmssWithSystemAssignedIdentity");
+        }
     }
 }
