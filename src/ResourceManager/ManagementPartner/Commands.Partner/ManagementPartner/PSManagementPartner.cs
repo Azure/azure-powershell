@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ManagementPartner
     class PSManagementPartner
     {
         public string PartnerId { get; set; }
+        public string PartnerName { get; set; }
         public string TenantId { get; set; }
         public string ObjectId { get; set; }
         public string State { get; set; }
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.ManagementPartner
         public PSManagementPartner(PartnerResponse partnerResponse)
         {
             PartnerId = partnerResponse.PartnerId;
+            PartnerName = partnerResponse.PartnerName;
             TenantId = partnerResponse.TenantId;
             ObjectId = partnerResponse.ObjectId;
             State = partnerResponse.State;

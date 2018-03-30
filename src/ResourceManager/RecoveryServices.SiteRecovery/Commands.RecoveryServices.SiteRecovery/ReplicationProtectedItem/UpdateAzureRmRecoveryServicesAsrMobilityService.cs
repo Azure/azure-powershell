@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to update mobility service.
+    ///     Push mobility service agent updates to protected machines.
     /// </summary>
     [Cmdlet(
         VerbsData.Update,
@@ -32,14 +32,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class UpdateAzureRmRecoveryServicesAsrMobilityService : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets RunAsAccount.
+        ///     Gets or sets te run as account ID to be used to push the update.
+        ///     Must be one from the list of run as accounts in the ASR fabric corresponding to machine being updated.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public ASRRunAsAccount Account { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item to be updated.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,
@@ -69,6 +70,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.ReplicationProtectedItem.ReplicationProvider,
                     Constants.InMage,
                     StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.A2A,
+                    StringComparison.OrdinalIgnoreCase) !=
                 0)
                 {
                     throw new InvalidOperationException(
@@ -92,13 +98,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         ARMResourceTypeConstants.ReplicationProtectedItems);
 
                 // Create the Update Mobility Service input request.
-                var input = new UpdateMobilityServiceRequest
+                var input = new UpdateMobilityServiceRequest();
+                if (this.Account != null)
                 {
-                    Properties = new UpdateMobilityServiceRequestProperties
+                    input.Properties = new UpdateMobilityServiceRequestProperties
                     {
                         RunAsAccountId = this.Account.AccountId
-                    }
-                };
+                    };
+                }
+                else
+                {
+                    input.Properties = new UpdateMobilityServiceRequestProperties();
+                }
 
                 // Update the Mobility Service.
                 var response = this.RecoveryServicesClient.UpdateAzureSiteRecoveryMobilityService(

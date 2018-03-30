@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using Microsoft.PowerShell.Commands;
 using System.IO;
 using System.Management.Automation;
 
