@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>List of restore points</returns>
         public IEnumerable<Management.Sql.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName)
         {
-            return GetCurrentArmSqlClient().RestorePoints.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName).Result.Body;
+            return GetCurrentSqlClient().RestorePoints.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName).Result.Body;
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>A restore point</returns>
         public Management.Sql.Models.RestorePoint NewRestorePoint(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.CreateDatabaseRestorePointDefinition restoreDefinition)
         {
-            return GetCurrentArmSqlClient().RestorePoints.CreateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, restoreDefinition).Result.Body;
+            return GetCurrentSqlClient().RestorePoints.CreateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, restoreDefinition).Result.Body;
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>void</returns>
         public void RemoveRestorePoint(string resourceGroupName, string serverName, string databaseName, string restorePointCreationDate)
         {
-            GetCurrentArmSqlClient().RestorePoints.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, restorePointCreationDate);
+            GetCurrentSqlClient().RestorePoints.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, restorePointCreationDate);
         }
 
         /// <summary>
@@ -480,21 +480,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 SqlClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             return SqlClient;
-        }
-
-        /// <summary>
-        /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
-        /// id tracing headers for the current cmdlet invocation.
-        /// </summary>
-        /// <returns>The SQL Management client for the currently selected subscription.</returns>
-        private Management.Sql.SqlManagementClient GetCurrentArmSqlClient()
-        {
-            // Get the SQL management client for the current subscription
-            if (SqlArmClient == null)
-            {
-                SqlArmClient = AzureSession.Instance.ClientFactory.CreateArmClient<Management.Sql.SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-            }
-            return SqlArmClient;
         }
 
         /// <summary>
