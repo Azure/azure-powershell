@@ -117,14 +117,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vExtensions = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension();
 
-            vExtensions.Name = this.Name;
-            vExtensions.ForceUpdateTag = this.ForceUpdateTag;
-            vExtensions.Publisher = this.Publisher;
-            vExtensions.Type = this.Type;
-            vExtensions.TypeHandlerVersion = this.TypeHandlerVersion;
-            vExtensions.AutoUpgradeMinorVersion = this.AutoUpgradeMinorVersion;
-            vExtensions.Settings = this.Setting;
-            vExtensions.ProtectedSettings = this.ProtectedSetting;
+            vExtensions.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
+            vExtensions.ForceUpdateTag = this.MyInvocation.BoundParameters.ContainsKey("ForceUpdateTag") ? this.ForceUpdateTag : null;
+            vExtensions.Publisher = this.MyInvocation.BoundParameters.ContainsKey("Publisher") ? this.Publisher : null;
+            vExtensions.Type = this.MyInvocation.BoundParameters.ContainsKey("Type") ? this.Type : null;
+            vExtensions.TypeHandlerVersion = this.MyInvocation.BoundParameters.ContainsKey("TypeHandlerVersion") ? this.TypeHandlerVersion : null;
+            vExtensions.AutoUpgradeMinorVersion = this.MyInvocation.BoundParameters.ContainsKey("AutoUpgradeMinorVersion") ? this.AutoUpgradeMinorVersion : (bool?) null;
+            vExtensions.Settings = this.MyInvocation.BoundParameters.ContainsKey("Setting") ? this.Setting : null;
+            vExtensions.ProtectedSettings = this.MyInvocation.BoundParameters.ContainsKey("ProtectedSetting") ? this.ProtectedSetting : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.ExtensionProfile.Extensions.Add(vExtensions);
             WriteObject(this.VirtualMachineScaleSet);
         }

@@ -52,7 +52,7 @@ function Test-Disk
         $diskconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $diskconfig.EncryptionSettings.KeyEncryptionKey = $null;
         $diskconfig.CreationData.ImageReference = $null;
-        
+
         Assert-AreEqual "1" $diskconfig.Zones
         $diskconfig.Zones = $null
 

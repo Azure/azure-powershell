@@ -94,8 +94,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vPublicKeys = new Microsoft.Azure.Management.Compute.Models.SshPublicKey();
 
-            vPublicKeys.Path = this.Path;
-            vPublicKeys.KeyData = this.KeyData;
+            vPublicKeys.Path = this.MyInvocation.BoundParameters.ContainsKey("Path") ? this.Path : null;
+            vPublicKeys.KeyData = this.MyInvocation.BoundParameters.ContainsKey("KeyData") ? this.KeyData : null;
             this.VirtualMachineScaleSet.VirtualMachineProfile.OsProfile.LinuxConfiguration.Ssh.PublicKeys.Add(vPublicKeys);
             WriteObject(this.VirtualMachineScaleSet);
         }

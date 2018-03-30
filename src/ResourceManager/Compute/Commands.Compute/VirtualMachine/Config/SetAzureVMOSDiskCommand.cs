@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 5,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        public DiskCreateOptionTypes CreateOption { get; set; }
+        public string CreateOption { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public PSStorageAccountTypes? StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -247,6 +247,12 @@ namespace Microsoft.Azure.Commands.Compute
                 };
             }
 
+            if (MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
+            {
+                WriteWarning("Set-AzureRmVMOSDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
+                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
+            }
+
             if (!string.IsNullOrEmpty(this.ManagedDiskId) || this.StorageAccountType != null)
             {
                 if (this.VM.StorageProfile.OsDisk.ManagedDisk == null)
@@ -255,7 +261,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 this.VM.StorageProfile.OsDisk.ManagedDisk.Id = this.ManagedDiskId ?? this.VM.StorageProfile.OsDisk.ManagedDisk.Id;
-                this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.StorageAccountType ?? this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+                this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.StorageAccountType.ToSerializedValue() ?? this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
             }
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
