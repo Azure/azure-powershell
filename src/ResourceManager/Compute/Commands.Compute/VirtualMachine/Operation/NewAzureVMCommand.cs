@@ -37,6 +37,7 @@ using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -208,6 +209,14 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string AvailabilitySetName { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        public string UserAssignedIdentity { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -266,7 +275,8 @@ namespace Microsoft.Azure.Commands.Compute
                     adminUsername: Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, Credential.Password).Password,
                     size: Size,
-                    availabilitySet: availabilitySet);
+                    availabilitySet: availabilitySet,
+                    identity : GetVMIdentityFromArgs());
             }
             else
             {
@@ -354,7 +364,8 @@ namespace Microsoft.Azure.Commands.Compute
                     osType: imageAndOsType.OsType,
                     disk: disk,
                     size: Size,
-                    availabilitySet: availabilitySet);
+                    availabilitySet: availabilitySet,
+                    identity: GetVMIdentityFromArgs());
             }
 
             var client = new Client(DefaultProfile.DefaultContext);
@@ -490,6 +501,36 @@ namespace Microsoft.Azure.Commands.Compute
                     WriteObject(psResult);
                 });
             }
+        }
+
+        private VirtualMachineIdentity GetVMIdentityFromArgs()
+        {
+            VirtualMachineIdentity identityConfig = null;
+            if (SystemAssignedIdentity || !string.IsNullOrWhiteSpace(UserAssignedIdentity))
+            {
+                identityConfig = new VirtualMachineIdentity();
+
+                if (!string.IsNullOrWhiteSpace(UserAssignedIdentity))
+                {
+                    List<string> identities = new List<string>();
+                    identities.Add(UserAssignedIdentity);
+                    identityConfig.IdentityIds = identities;
+
+                    if (SystemAssignedIdentity)
+                    {
+                        identityConfig.Type = CM.ResourceIdentityType.SystemAssignedUserAssigned;
+                    } else
+                    {
+                        identityConfig.Type = CM.ResourceIdentityType.UserAssigned;
+                    }
+                }
+                else
+                {
+                    identityConfig.Type = CM.ResourceIdentityType.SystemAssigned;
+                }
+            }
+
+            return identityConfig;
         }
 
         private string GetBginfoExtension()

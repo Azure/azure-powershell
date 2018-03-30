@@ -46,7 +46,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminUsername,
             string adminPassword,
             string size,
-            ResourceConfig<AvailabilitySet> availabilitySet)
+            ResourceConfig<AvailabilitySet> availabilitySet,
+            VirtualMachineIdentity identity)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -85,6 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         {
                             ImageReference = imageAndOsType.Image
                         },
+                        Identity = identity,
                         AvailabilitySet = availabilitySet == null
                             ? null
                             : new Azure.Management.Compute.Models.SubResource
@@ -102,7 +104,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             OperatingSystemTypes osType,
             ResourceConfig<Disk> disk,
             string size,
-            ResourceConfig<AvailabilitySet> availabilitySet)
+            ResourceConfig<AvailabilitySet> availabilitySet,
+            VirtualMachineIdentity identity)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -137,6 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             }
                         }
                     },
+                    Identity = identity,
                     AvailabilitySet = availabilitySet == null
                         ? null
                         : new Azure.Management.Compute.Models.SubResource

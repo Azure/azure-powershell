@@ -40,6 +40,43 @@ function Test-SimpleNewVmss
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
+		Assert-Null $x.Identity  
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+function Test-SimpleNewVmssWithSystemAssignedIdentity
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        # Common
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity
+
+        Assert-AreEqual $vmssname $x.Name;
+        Assert-AreEqual $vmssname $x.ResourceGroupName;
+        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
+        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
+        Assert-AreEqual "Standard_DS1_v2" $x.Sku.Name
+        Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
+        Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
+        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
+        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
+		Assert-AreEqual "SystemAssigned" $x.Identity.Type     
+		Assert-NotNull  $x.Identity.PrincipalId
+		Assert-NotNull  $x.Identity.TenantId
+		Assert-Null $x.Identity.IdentityIds  
     }
     finally
     {

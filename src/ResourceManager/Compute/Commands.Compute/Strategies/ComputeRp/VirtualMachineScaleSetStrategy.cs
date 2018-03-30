@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminPassword,
             string vmSize,
             int instanceCount,
+            VirtualMachineScaleSetIdentity identity,
             UpgradeMode? upgradeMode)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -74,7 +75,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Capacity = instanceCount,
                             Name = vmSize,
                         },
-                        VirtualMachineProfile = new VirtualMachineScaleSetVMProfile()
+                        VirtualMachineProfile = new VirtualMachineScaleSetVMProfile(),
+                        Identity = identity
                     };
 
                     vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
