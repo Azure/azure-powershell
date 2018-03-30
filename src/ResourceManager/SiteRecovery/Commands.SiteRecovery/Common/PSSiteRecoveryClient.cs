@@ -30,8 +30,9 @@ using System.Net.Security;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web.Script.Serialization;
 using System.Xml;
+using Newtonsoft.Json;
+using Formatting = System.Xml.Formatting;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -275,7 +276,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             cikTokenDetails.Version = new Version(1, 2);
             cikTokenDetails.PropertyBag = new Dictionary<string, object>();
 
-            string shaInput = new JavaScriptSerializer().Serialize(cikTokenDetails);
+            string shaInput = JsonConvert.SerializeObject(cikTokenDetails);
 
             if (null == asrVaultCreds.ChannelIntegrityKey)
             {
@@ -286,7 +287,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(shaInput)));
             cikTokenDetails.HashFunction = CikSupportedHashFunctions.HMACSHA256.ToString();
 
-            return new JavaScriptSerializer().Serialize(cikTokenDetails);
+            return JsonConvert.SerializeObject(cikTokenDetails);
         }
 
         /// <summary>
