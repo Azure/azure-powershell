@@ -15,45 +15,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class ManagedStorageSasDefinitionListItem
+    public class PSKeyVaultManagedStorageSasDefinitionIdentityItem : ObjectIdentifier
     {
-        internal ManagedStorageSasDefinitionListItem()
+        internal PSKeyVaultManagedStorageSasDefinitionIdentityItem()
         { }
 
-        internal ManagedStorageSasDefinitionListItem( Azure.KeyVault.Models.SasDefinitionItem storageSasDefinitionItem, VaultUriHelper vaultUriHelper )
+        internal PSKeyVaultManagedStorageSasDefinitionIdentityItem( Azure.KeyVault.Models.SasDefinitionItem storageSasDefinitionItem, VaultUriHelper vaultUriHelper )
         {
             if ( storageSasDefinitionItem == null )
-                throw new ArgumentNullException( "storageSasDefinitionItem" );
+                throw new ArgumentNullException(nameof(storageSasDefinitionItem));
 
             if ( vaultUriHelper == null )
-                throw new ArgumentNullException( "vaultUriHelper" );
+                throw new ArgumentNullException(nameof(vaultUriHelper));
 
-            var identifier = new SasDefinitionIdentifier( storageSasDefinitionItem.Id );
+            SetObjectIdentifier(vaultUriHelper, storageSasDefinitionItem.Identifier);
 
-            Id = identifier.Identifier;
-            VaultName = vaultUriHelper.GetVaultName( identifier.Identifier );
-            Name = identifier.Name;
-            Attributes = storageSasDefinitionItem.Attributes == null ? null : new ManagedStorageSasDefinitionAttributes( storageSasDefinitionItem.Attributes.Enabled, storageSasDefinitionItem.Attributes.Created, storageSasDefinitionItem.Attributes.Updated );
+            Attributes = storageSasDefinitionItem.Attributes == null ? null : new PSKeyVaultManagedStorageSasDefinitionAttributes(storageSasDefinitionItem.Attributes);
             Tags = storageSasDefinitionItem.Tags == null ? null : storageSasDefinitionItem.Tags.ConvertToHashtable();
             Sid = storageSasDefinitionItem.SecretId;
-            AccountName = identifier.StorageAccount;
+            AccountName = storageSasDefinitionItem.Identifier.StorageAccount;
         }
 
-        public string Id { get; set; }
-        
         public string Sid { get; set; }
-
-        public string VaultName { get; set; }
 
         public string AccountName { get; set; }
 
-        public string Name { get; set; }
-
-        public ManagedStorageSasDefinitionAttributes Attributes { get; set; }
+        public PSKeyVaultManagedStorageSasDefinitionAttributes Attributes { get; set; }
 
         public Hashtable Tags { get; set; }
 
