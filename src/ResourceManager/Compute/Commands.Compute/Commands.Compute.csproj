@@ -53,7 +53,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.5.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.18.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -240,6 +240,7 @@
     <Compile Include="Images\GetAzureVMImagePublisherCommand.cs" />
     <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
+    <Compile Include="Models\PSStorageAccountTypes.cs" />
     <Compile Include="Models\PSSyncOutputEvents.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Models\PSVirtualMachineExtensionImage.cs" />

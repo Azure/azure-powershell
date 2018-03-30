@@ -145,7 +145,7 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
             Assert-AreEqual 20 $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].DiskSizeGB;
             Assert-AreEqual 1 $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].Lun;
             Assert-AreEqual 'Empty' $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].CreateOption;
-            Assert-AreEqual 'StandardLRS' $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType;
+            Assert-AreEqual StandardLRS $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType;
             Assert-AreEqual $true $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].WriteAcceleratorEnabled;
             $vmss.VirtualMachineProfile.StorageProfile.DataDisks[0].WriteAcceleratorEnabled = $false;
 
@@ -353,12 +353,12 @@ function Test-VirtualMachineScaleSetUpdate
 
         $imgRef = Get-DefaultCRPImage -loc $loc;
         $vhdContainer = "https://" + $stoname + ".blob.core.windows.net/" + $vmssName;
-        
+
         $extname = 'csetest';
         $publisher = 'Microsoft.Compute';
         $exttype = 'BGInfo';
         $extver = '2.1';
-        
+
         $ipCfg = New-AzureRmVmssIPConfig -Name 'test' -SubnetId $subnetId;
         $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity 2 -SkuName 'Standard_A0' -UpgradePolicyMode 'Manual' `
             | Add-AzureRmVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
@@ -402,7 +402,7 @@ function Test-VirtualMachineScaleSetUpdate
         Assert-AreEqual $exttype $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Type;
         Assert-AreEqual $extver $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].TypeHandlerVersion;
         Assert-AreEqual $true $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion;
-        
+
         # Verify the result of VMSS
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $null $vmss.Zones;
@@ -1283,7 +1283,7 @@ function Test-VirtualMachineScaleSetRollingUpgrade
         $result = $job | Wait-Job;
         Assert-AreEqual "Failed" $result.State;
         Assert-True { $result.Error[0].ToString().Contains("InternalExecutionError")};
-     
+
         $job = Stop-AzureRmVmssRollingUpgrade -ResourceGroupName $rgname -VMScaleSetName $vmssName -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Failed" $result.State;
@@ -1444,7 +1444,7 @@ function Test-VirtualMachineScaleSetWriteAcceleratorUpdate
         Assert-AreEqual $exttype $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].Type;
         Assert-AreEqual $extver $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].TypeHandlerVersion;
         Assert-AreEqual $true $result.VirtualMachineProfile.ExtensionProfile.Extensions[0].AutoUpgradeMinorVersion;
-        
+
         # Verify the result of VMSS
         $vmss = Get-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
         Assert-AreEqual $null $vmss.Zones;

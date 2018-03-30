@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
@@ -20,11 +21,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     static class ManagedDiskParametersStrategy
     {
         public static ManagedDiskParameters GetReference(
-            this IEngine engine, ResourceConfig<Disk> disk, StorageAccountTypes storageAccountTypes)
+            this IEngine engine, ResourceConfig<Disk> disk, PSStorageAccountTypes? storageAccountTypes)
             => new ManagedDiskParameters
             {
                 Id = engine.GetId(disk),
-                StorageAccountType = storageAccountTypes
+                StorageAccountType = storageAccountTypes.ToSerializedValue()
             };
     }
 }

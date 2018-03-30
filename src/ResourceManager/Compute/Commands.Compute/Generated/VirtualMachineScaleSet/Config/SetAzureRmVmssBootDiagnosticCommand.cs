@@ -62,9 +62,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.Enabled != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("Enabled"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {
@@ -83,9 +82,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSet.VirtualMachineProfile.DiagnosticsProfile.BootDiagnostics.Enabled = this.Enabled;
             }
 
-            if (this.StorageUri != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("StorageUri"))
             {
-
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {

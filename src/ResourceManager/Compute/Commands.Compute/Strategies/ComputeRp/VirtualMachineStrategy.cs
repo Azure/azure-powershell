@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
-                            ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
+                            ManagedDisk = engine.GetReference(disk, PSStorageAccountTypes.PremiumLRS),
                         },
                         DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
                     },

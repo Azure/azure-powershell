@@ -149,12 +149,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false)]
-        [AllowNull]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -162,22 +160,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = true)]
         [Alias("Name")]
-        [AllowNull]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = false,
             ValueFromPipeline = true)]
-        [AllowNull]
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

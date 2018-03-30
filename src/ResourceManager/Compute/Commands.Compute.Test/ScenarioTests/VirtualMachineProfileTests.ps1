@@ -45,7 +45,7 @@ function Test-VirtualMachineProfile
     $p = Add-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri1 -Primary;
     $p = Add-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri2;
     $p = Remove-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri2;
-        
+
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Id $ipRefUri1;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
@@ -69,7 +69,7 @@ function Test-VirtualMachineProfile
     $managedDataDiskId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rggroup/providers/Microsoft.Compute/disks/dataDisk";
     $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -CreateOption Empty -ManagedDiskId $managedDataDiskId -StorageAccountType StandardLRS;
     Assert-AreEqual $managedDataDiskId $p.StorageProfile.DataDisks[2].ManagedDisk.Id;
-    Assert-AreEqual "StandardLRS" $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
+    Assert-AreEqual StandardLRS $p.StorageProfile.DataDisks[2].ManagedDisk.StorageAccountType;
     Assert-Null $p.StorageProfile.DataDisks[2].DiskSizeGB;
     Assert-AreEqual $false $p.StorageProfile.DataDisks[2].WriteAcceleratorEnabled;
 
@@ -121,7 +121,7 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $osDiskName $p.StorageProfile.OSDisk.Name;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $managedOsDiskId_0 $p.StorageProfile.OSDisk.ManagedDisk.Id;
-    Assert-AreEqual 'StandardLRS' $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
+    Assert-AreEqual StandardLRS $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
     Assert-AreEqual $true $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
 
     $p = Set-AzureRmVMOsDisk -VM $p -ManagedDiskId $managedOsDiskId_1;
@@ -129,7 +129,7 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
     Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
     Assert-AreEqual $managedOsDiskId_1 $p.StorageProfile.OSDisk.ManagedDisk.Id;
-    Assert-AreEqual 'StandardLRS' $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
+    Assert-AreEqual StandardLRS $p.StorageProfile.OSDisk.ManagedDisk.StorageAccountType;
     Assert-AreEqual $false $p.StorageProfile.OSDisk.WriteAcceleratorEnabled;
 
     # Windows OS

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public PSStorageAccountTypes? StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -116,6 +116,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 if (this.StorageAccountType != null)
                 {
+                    WriteWarning("Set-AzureRmVMDataDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
+                                 "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
                     if (dataDisk.ManagedDisk == null)
                     {
                         ThrowTerminatingError
@@ -127,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        dataDisk.ManagedDisk.StorageAccountType = this.StorageAccountType;
+                        dataDisk.ManagedDisk.StorageAccountType = this.StorageAccountType.ToSerializedValue();
                     }
                 }
 

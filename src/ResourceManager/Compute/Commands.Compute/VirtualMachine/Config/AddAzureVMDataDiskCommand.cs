@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        public DiskCreateOptionTypes CreateOption { get; set; }
+        public string CreateOption { get; set; }
 
         [Alias("SourceImage")]
         [Parameter(
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        public PSStorageAccountTypes? StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -112,6 +112,12 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            if (MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
+            {
+                WriteWarning("Add-AzureRmVMDataDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
+                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
+            }
+
             var storageProfile = this.VM.StorageProfile;
 
             if (storageProfile == null)
@@ -144,7 +150,7 @@ namespace Microsoft.Azure.Commands.Compute
                               : new ManagedDiskParameters
                               {
                                   Id = this.ManagedDiskId,
-                                  StorageAccountType = this.StorageAccountType
+                                  StorageAccountType = this.StorageAccountType.ToSerializedValue()
                               },
                 WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
             });
