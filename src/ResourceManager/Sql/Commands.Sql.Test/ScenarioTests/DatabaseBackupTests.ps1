@@ -281,7 +281,7 @@ function Test-DatabaseGeoBackupPolicy
 function Test-NewDatabaseRestorePoint
 {
 	# Setup
-	$location = "West US 2"
+	$location = Get-Location "Microsoft.Sql" "servers" "West US 2"
 	$serverVersion = "12.0";
 	$label = "label01";
 	$rg = Create-ResourceGroupForTest
@@ -306,6 +306,7 @@ function Test-NewDatabaseRestorePoint
 		Assert-AreEqual $restorePoint.RestorePointType DISCRETE
 		Assert-Null $restorePoint.EarliestRestoreDate
 		Assert-AreEqual $restorePoint.RestorePointCreationDate.Kind Utc
+		Assert-AreEqual $restorePoint.RestorePointLabel $label
 	}
 	finally
 	{
@@ -316,7 +317,7 @@ function Test-NewDatabaseRestorePoint
 function Test-RemoveDatabaseRestorePoint
 {
 	# Setup
-	$location = "West central US"
+	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
 	$serverVersion = "12.0";
 	$label = "label01";
 	$rg = Create-ResourceGroupForTest

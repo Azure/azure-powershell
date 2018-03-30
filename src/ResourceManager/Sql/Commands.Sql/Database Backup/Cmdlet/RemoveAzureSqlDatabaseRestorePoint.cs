@@ -19,8 +19,8 @@ using System;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseRestorePoint", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseRestorePoint", SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
     public class RemoveAzureSqlDatabaseRestorePoint : AzureSqlDatabaseRestorePointCmdletBase
     {
         /// <summary>

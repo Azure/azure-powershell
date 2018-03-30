@@ -151,7 +151,11 @@ namespace Microsoft.Azure.Commands.DataFactories
             CloudBlobContainer sascontainer = sourceClient.GetContainerReference(rli.Container);
             CloudBlobDirectory sourceDirectory = sascontainer.GetDirectoryReference(rli.Directory);
 
+#if NETSTANDARD
+            var bloblist = sourceDirectory.ListBlobsSegmentedAsync(true, BlobListingDetails.None, null, null, null, null).Result.Results;
+#else
             var bloblist = sourceDirectory.ListBlobs(true);
+#endif
             string downloadFolderPath = parameters.Directory.Insert(parameters.Directory.Length, @"\");
 
             foreach (var blob in bloblist)
@@ -177,8 +181,12 @@ namespace Microsoft.Azure.Commands.DataFactories
                 }
                 // adding _log suffix to differentiate between files and folders of the same name. Azure blob storage only knows about blob files. We could use nested folder structure
                 // as part of the blob file name and thus it is possible to have a file and folder of the same name in the same location which is not acceptable for Windows file system
-                string fileToDonwload = destBlob.Name.Remove(0, rli.Directory.Length);
-                destBlob.DownloadToFile(downloadFolderPath + fileToDonwload + "_log", FileMode.Create);
+                string fileToDownload = destBlob.Name.Remove(0, rli.Directory.Length);
+#if NETSTANDARD
+                destBlob.DownloadToFileAsync(downloadFolderPath + fileToDownload + "_log", FileMode.Create).RunSynchronously();
+#else
+                destBlob.DownloadToFile(downloadFolderPath + fileToDownload + "_log", FileMode.Create);
+#endif
             }
         }
     }

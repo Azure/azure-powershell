@@ -57,12 +57,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 RequiredAssemblies = '.\AutoMapper.dll',
     '.\Microsoft.Azure.Commands.Common.Strategies.dll', 
     '.\Microsoft.Azure.Management.Compute.dll',
-    '.\Microsoft.Azure.Management.KeyVault.dll',
-    '.\Microsoft.Azure.Management.Storage.dll',
-    '.\Microsoft.Data.Edm.dll',
-    '.\Microsoft.Data.OData.dll',
-    '.\Microsoft.WindowsAzure.Storage.dll', 
-    '.\System.Spatial.dll'
+    '.\Microsoft.Azure.Management.KeyVault.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

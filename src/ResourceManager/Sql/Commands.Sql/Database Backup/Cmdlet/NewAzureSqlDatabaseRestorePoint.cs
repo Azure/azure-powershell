@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseRestorePoint", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseRestorePoint", SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
     public class NewAzureSqlDatabaseRestorePoint : AzureSqlDatabaseRestorePointCmdletBase
     {
         /// <summary>
