@@ -339,10 +339,15 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
 
                 // Update the vault
-                var updatedVault = KeyVaultManagementClient.UpdateVault(existingVault, updatedPolicies,
+                var updatedVault = KeyVaultManagementClient.UpdateVault(
+                    existingVault, 
+                    updatedPolicies,
                     EnabledForDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
                     EnabledForTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,
                     EnabledForDiskEncryption.IsPresent ? false : existingVault.EnabledForDiskEncryption,
+                    existingVault.EnableSoftDelete,
+                    existingVault.EnablePurgeProtection,
+                    existingVault.NetworkAcls,
                     ActiveDirectoryClient);
 
                 if (PassThru.IsPresent)
