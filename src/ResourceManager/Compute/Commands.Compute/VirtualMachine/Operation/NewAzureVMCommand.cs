@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] Zone { get; set; }
 
@@ -273,11 +274,15 @@ namespace Microsoft.Azure.Commands.Compute
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
                     domainNameLabel: _cmdlet.DomainNameLabel,
-                    allocationMethod: _cmdlet.AllocationMethod);
+                    allocationMethod: _cmdlet.AllocationMethod,
+                    sku: PublicIPAddressStrategy.Sku.Basic,
+                    zones: _cmdlet.Zone);
+
+                _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
+
                 var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                     name: _cmdlet.SecurityGroupName,
-                    openPorts: _cmdlet.OpenPorts,
-                    imageAndOsType: ImageAndOsType);
+                    openPorts: _cmdlet.OpenPorts);
 
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup);
@@ -297,7 +302,8 @@ namespace Microsoft.Azure.Commands.Compute
                             new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeInGb);
+                        dataDisks: _cmdlet.DataDiskSizeInGb,
+                        zones: _cmdlet.Zone);
                 }
                 else
                 {
@@ -312,7 +318,8 @@ namespace Microsoft.Azure.Commands.Compute
                         disk: disk,
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeInGb);
+                        dataDisks: _cmdlet.DataDiskSizeInGb,
+                        zones: _cmdlet.Zone);
                 }
             }
         }
