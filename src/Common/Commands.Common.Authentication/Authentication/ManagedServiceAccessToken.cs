@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Rest.Azure;
 using System;
-using System.Net.Http;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
@@ -28,7 +30,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         IHttpOperations<ManagedServiceTokenInfo> _tokenGetter;
         DateTime _expiration = DateTime.UtcNow;
         string _accessToken;
-        string _requestUri;
 
         public ManagedServiceAccessToken(IAzureAccount account, IAzureEnvironment environment, string resourceId, string tenant = "Common")
         {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 throw new ArgumentNullException(nameof(tenant));
             }
-            
+
             if (environment == null)
             {
                 throw new ArgumentNullException(nameof(environment));
@@ -49,10 +50,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
             _account = account;
             _resourceId = GetResource(resourceId, environment);
-            var baseUri = _account.GetProperty(AzureAccount.Property.MSILoginUri);
-            var builder = new UriBuilder(baseUri);
-            builder.Query = string.Format("resource={0}", Uri.EscapeDataString(_resourceId));
-            _requestUri = builder.Uri.ToString();
+            var idType = GetIdentityType(account);
+            foreach (var uri in BuildTokenUri(_account.GetProperty(AzureAccount.Property.MSILoginUri), account, idType, _resourceId))
+            {
+                RequestUris.Enqueue(uri);
+            }
+
+            if (account.IsPropertySet(AzureAccount.Property.MSILoginUriBackup))
+            {
+                foreach (var uri in BuildTokenUri(_account.GetProperty(AzureAccount.Property.MSILoginUriBackup), account, idType, _resourceId))
+                {
+                    RequestUris.Enqueue(uri);
+                }
+            }
+
             _tenant = tenant;
             IHttpOperationsFactory factory;
             if (!AzureSession.Instance.TryGetComponent(HttpClientOperationsFactory.Name, out factory))
@@ -60,7 +71,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 factory = HttpClientOperationsFactory.Create();
             }
 
-            _tokenGetter = factory.GetHttpOperations<ManagedServiceTokenInfo>().WithHeader("Metadata", new[] { "true" });
+            _tokenGetter = factory.GetHttpOperations<ManagedServiceTokenInfo>(true).WithHeader("Metadata", new[] { "true" });
         }
 
         public string AccessToken
@@ -71,14 +82,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 {
                     GetOrRenewAuthentication();
                 }
-                catch (HttpRequestException httpException)
+                catch (CloudException httpException)
                 {
-                    throw new InvalidOperationException(string.Format(Resources.MSITokenRequestFailed, _resourceId, _requestUri), httpException);
+                    throw new InvalidOperationException(string.Format(Resources.MSITokenRequestFailed, _resourceId, httpException?.Request?.RequestUri?.ToString()), httpException);
                 }
 
                 return _accessToken;
             }
         }
+
+        public Queue<string> RequestUris { get; } = new Queue<string>();
 
         public string LoginType => "ManagedService";
 
@@ -93,22 +106,97 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         void GetOrRenewAuthentication()
         {
-            if (_expiration - DateTime.UtcNow < TimeSpan.FromMinutes(5))
+            if (_expiration - DateTime.UtcNow < ManagedServiceTokenInfo.TimeoutThreshold)
             {
-                var info = _tokenGetter.GetAsync(_requestUri, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                ManagedServiceTokenInfo info = null;
+                while (info == null && RequestUris.Count > 0)
+                {
+                    var currentRequestUri = RequestUris.Dequeue();
+                    try
+                    {
+                        info = _tokenGetter.GetAsync(currentRequestUri, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+                        // if a request was succesful, we should not check any other Uris
+                        RequestUris.Clear();
+                        RequestUris.Enqueue(currentRequestUri);
+                    }
+                    catch (CloudException) when (RequestUris.Count > 0)
+                    {
+                        // do nothing
+                    }
+                }
                 SetToken(info);
             }
         }
 
         void SetToken(ManagedServiceTokenInfo info)
         {
-            _expiration = DateTime.UtcNow + TimeSpan.FromSeconds(info.ExpiresIn);
-            _accessToken = info.AccessToken;
+            if (info != null)
+            {
+                _expiration = DateTime.UtcNow + TimeSpan.FromSeconds(info.ExpiresIn);
+                _accessToken = info.AccessToken;
+            }
         }
 
-        string GetResource(string endpointOrResource, IAzureEnvironment environment)
+        static IdentityType GetIdentityType(IAzureAccount account)
+        {
+            if (account == null || string.IsNullOrWhiteSpace(account.Id) || account.Id.Contains("@"))
+            {
+                return IdentityType.SystemAssigned;
+            }
+
+            if (account.Id.Contains("/"))
+            {
+                return IdentityType.Resource;
+            }
+
+            return IdentityType.ClientId;
+        }
+
+        static string GetResource(string endpointOrResource, IAzureEnvironment environment)
         {
             return environment.GetEndpoint(endpointOrResource) ?? endpointOrResource;
+        }
+
+        static IEnumerable<string> BuildTokenUri(string baseUri, IAzureAccount account, IdentityType identityType, string resourceId)
+        {
+            UriBuilder builder = new UriBuilder(baseUri);
+            builder.Query = BuildTokenQuery(account, identityType, resourceId);
+            yield return builder.Uri.ToString();
+
+            if (identityType == IdentityType.ClientId)
+            {
+                builder = new UriBuilder(baseUri);
+                builder.Query = BuildTokenQuery(account, IdentityType.ObjectId, resourceId);
+                yield return builder.Uri.ToString();
+            }
+        }
+
+        static string BuildTokenQuery(IAzureAccount account, IdentityType idType, string resource)
+        {
+            StringBuilder query = new StringBuilder($"resource={Uri.EscapeDataString(resource)}");
+            switch (idType)
+            {
+                case IdentityType.Resource:
+                    query.Append($"&msi_res_id={Uri.EscapeDataString(account.Id)}");
+                    break;
+                case IdentityType.ClientId:
+                    query.Append($"&client_id={Uri.EscapeDataString(account.Id)}");
+                    break;
+                case IdentityType.ObjectId:
+                    query.Append($"&object_id={Uri.EscapeDataString(account.Id)}");
+                    break;
+            }
+
+            query.Append("&api-version=2018-02-01");
+            return query.ToString();
+        }
+
+        enum IdentityType
+        {
+            Resource,
+            ClientId,
+            ObjectId,
+            SystemAssigned
         }
     }
 }

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ListRegistriesParameterSet, HelpMessage = "Resource Group Name.")]
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = RegistryNameParameterSet, HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
                 {
                     string resourceGroup, registryName, childResourceName;
-                    if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
+                    if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
                     {
                         WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
                         return;
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
             if (IncludeDetail)
             {
-                foreach(var psr in psRegistries)
+                foreach (var psr in psRegistries)
                 {
                     SetRegistryDetials(psr);
                 }
@@ -91,7 +93,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         private void SetRegistryDetials(PSContainerRegistry registry)
         {
-            if(!string.IsNullOrEmpty(registry.ResourceGroupName) && !string.IsNullOrEmpty(registry.Name))
+            if (!string.IsNullOrEmpty(registry.ResourceGroupName) && !string.IsNullOrEmpty(registry.Name))
             {
                 registry.Usages = RegistryClient.ListRegistryUsage(registry.ResourceGroupName, registry.Name)?.Value;
             }

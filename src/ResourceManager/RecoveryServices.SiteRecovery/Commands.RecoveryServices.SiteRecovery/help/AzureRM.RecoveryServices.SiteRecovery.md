@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: 
@@ -71,6 +71,9 @@ Gets details of the vCenter servers registered for discovery on the Configuratio
 ### [Import-AzureRmRecoveryServicesAsrVaultSettingsFile](Import-AzureRmRecoveryServicesAsrVaultSettingsFile.md)
 Imports the specified ASR vault settings file to set the vault context(PowerShell session context) for subsequent ASR operations in the PowerShell session. 
 
+### [New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig](New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig.md)
+Creates a disk mapping object for Azure virtual machine disks to be replicated.
+
 ### [New-AzureRmRecoveryServicesAsrFabric](New-AzureRmRecoveryServicesAsrFabric.md)
 Creates an Azure Site Recovery Fabric.
 
@@ -83,6 +86,9 @@ Creates an Azure Site Recovery replication policy.
 ### [New-AzureRmRecoveryServicesAsrProtectableItem](New-AzureRmRecoveryServicesAsrProtectableItem.md)
 Add(Discover) a physical server to the list of protectable items.
 
+### [New-AzureRmRecoveryServicesAsrProtectionContainer](New-AzureRmRecoveryServicesAsrProtectionContainer.md)
+Creates an Azure Site Recovery Protection Container within the specified fabric.
+
 ### [New-AzureRmRecoveryServicesAsrProtectionContainerMapping](New-AzureRmRecoveryServicesAsrProtectionContainerMapping.md)
 Creates an Azure Site Recovery Protection Container mapping by associating the specified replication policy to the specified ASR protection container.
 
@@ -90,7 +96,7 @@ Creates an Azure Site Recovery Protection Container mapping by associating the s
 Creates an ASR recovery plan.
 
 ### [New-AzureRmRecoveryServicesAsrReplicationProtectedItem](New-AzureRmRecoveryServicesAsrReplicationProtectedItem.md)
-Enables replication for an ASR protectable item by creating a replication protected item
+Enables replication for an ASR protectable item by creating a replication protected item.
 
 ### [New-AzureRmRecoveryServicesAsrStorageClassificationMapping](New-AzureRmRecoveryServicesAsrStorageClassificationMapping.md)
 Creates an ASR storage classification mapping in the Recovery Services vault.
@@ -107,11 +113,14 @@ Deletes the specified ASR network mapping from the Recovery Services vault.
 ### [Remove-AzureRmRecoveryServicesAsrPolicy](Remove-AzureRmRecoveryServicesAsrPolicy.md)
 Deletes the specified ASR replication policy from the Recovery Services vault.
 
+### [Remove-AzureRmRecoveryServicesAsrProtectionContainer](Remove-AzureRmRecoveryServicesAsrProtectionContainer.md)
+Deletes the specified Protection Container from its Fabric.
+
 ### [Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping](Remove-AzureRmRecoveryServicesAsrProtectionContainerMapping.md)
 Deletes the specified Azure Site Recovery protection container mapping.
 
 ### [Remove-AzureRmRecoveryServicesAsrRecoveryPlan](Remove-AzureRmRecoveryServicesAsrRecoveryPlan.md)
-Delets the specified ASR recovery plan from Recovery Services vault.
+Deletes the specified ASR recovery plan from Recovery Services vault.
 
 ### [Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem](Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem.md)
 Stops/Disables replication for an Azure Site Recovery replication protected item.
@@ -153,7 +162,7 @@ Starts a planned failover operation.
 Starts replication resynchronization.
 
 ### [Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob](Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob.md)
-Switch replication from one Process server to another.
+Switch replication from one Process server to another for load balancing.
 
 ### [Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob](Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob.md)
 Starts the test failover cleanup operation.
@@ -161,8 +170,8 @@ Starts the test failover cleanup operation.
 ### [Start-AzureRmRecoveryServicesAsrTestFailoverJob](Start-AzureRmRecoveryServicesAsrTestFailoverJob.md)
 Starts a test failover operation.
 
-### [Start-AzureRmRecoveryServicesAsrTestFailoverJob](Start-AzureRmRecoveryServicesAsrTestFailoverJob.md)
-Starts a test failover operation.
+### [Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob](Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob.md)
+Starts a unplanned failover operation.
 
 ### [Stop-AzureRmRecoveryServicesAsrJob](Stop-AzureRmRecoveryServicesAsrJob.md)
 Stops an Azure Site Recovery job.
@@ -171,7 +180,7 @@ Stops an Azure Site Recovery job.
 Push mobility service agent updates to protected machines.
 
 ### [Update-AzureRmRecoveryServicesAsrNetworkMapping](Update-AzureRmRecoveryServicesAsrNetworkMapping.md)
-Updates the specified ASR network mapping.
+Updates the specified azure site recovery network mapping.
 
 ### [Update-AzureRmRecoveryServicesAsrPolicy](Update-AzureRmRecoveryServicesAsrPolicy.md)
 Updates an Azure Site Recovery replication policy.
