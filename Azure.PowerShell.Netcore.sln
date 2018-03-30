@@ -73,7 +73,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Consumption.Netcor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ContainerRegistry.Netcore", "src\ResourceManager\ContainerRegistry\Commands.ContainerRegistry\Commands.ContainerRegistry.Netcore.csproj", "{49A69011-CEFF-464B-AC2E-5A387EFFBE8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataFactoryV2.Netcore", "src\ResourceManager\DataFactories\Commands.DataFactoryV2\Commands.DataFactoryV2.Netcore.csproj", "{EAC7B54E-974B-435F-95CE-B01CC2F955A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataFactoryV2.Netcore", "src\ResourceManager\DataFactoryV2\Commands.DataFactoryV2\Commands.DataFactoryV2.Netcore.csproj", "{EAC7B54E-974B-435F-95CE-B01CC2F955A3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeAnalytics.Netcore", "src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics\Commands.DataLakeAnalytics.Netcore.csproj", "{CC0D2BA5-B087-4206-9F98-CD8230AADEF3}"
 EndProject
