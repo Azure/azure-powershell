@@ -19,24 +19,31 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     /// <summary>
     /// Secret attributes from PSH perspective
     /// </summary>
-    public class ManagedStorageSasDefinitionAttributes
+    public sealed class PSKeyVaultManagedStorageAccountAttributes
     {
-        public ManagedStorageSasDefinitionAttributes( bool? enabled )
+        public PSKeyVaultManagedStorageAccountAttributes(bool? enabled)
         {
             this.Enabled = enabled;
         }
 
-        internal ManagedStorageSasDefinitionAttributes( bool? enabled, DateTime? created, DateTime? updated )
-            : this( enabled )
+        internal PSKeyVaultManagedStorageAccountAttributes( bool? enabled, DateTime? created, DateTime? updated, string recoveryLevel ) :
+             this(enabled)
         {
             this.Created = created;
             this.Updated = updated;
+            this.RecoveryLevel = recoveryLevel;
         }
+
+        internal PSKeyVaultManagedStorageAccountAttributes(Azure.KeyVault.Models.StorageAccountAttributes modelAttributes) :
+            this(modelAttributes.Enabled, modelAttributes.Created, modelAttributes.Updated, modelAttributes.RecoveryLevel)
+        { }
 
         public bool? Enabled { get; set; }
 
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
+
+        public string RecoveryLevel { get; private set; }
     }
 }

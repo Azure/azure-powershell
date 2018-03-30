@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </remarks>
     [Cmdlet( VerbsData.Backup, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = BySecretNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri )]
+        DefaultParameterSetName = BySecretNameParameterSet)]
     [OutputType( typeof( String ) )]
     public class BackupAzureKeyVaultSecret : KeyVaultCmdletBase
     {
@@ -70,8 +69,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         /// <remarks>
         /// Note that the backup applies to the entire family of a secret (current and all its versions); 
-        /// since a key bundle represents a single version, the intent of this parameter is to allow pipelining.
-        /// The backup cmdlet will use the Name and VaultName properties of the KeyBundle parameter.
+        /// since a secret bundle represents a single version, the intent of this parameter is to allow pipelining.
+        /// The backup cmdlet will use the Name and VaultName properties of the SecretBundle parameter.
         /// </remarks>
         [Parameter(Mandatory = true,
                     Position = 0,

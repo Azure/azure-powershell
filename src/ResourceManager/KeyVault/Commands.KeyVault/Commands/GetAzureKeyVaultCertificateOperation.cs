@@ -21,8 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Gets the status of the certificate operation
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateOperation,
-        DefaultParameterSetName = ByNameParameterSet,  
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class GetAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {

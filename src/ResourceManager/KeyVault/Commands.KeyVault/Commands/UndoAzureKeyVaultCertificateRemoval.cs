@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Undo, "AzureKeyVaultCertificateRemoval",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri )]
+        DefaultParameterSetName = DefaultParameterSet)]
     [OutputType( typeof( CertificateBundle ) )]
     public class UndoAzureKeyVaultCertificateRemoval : KeyVaultCmdletBase
     {

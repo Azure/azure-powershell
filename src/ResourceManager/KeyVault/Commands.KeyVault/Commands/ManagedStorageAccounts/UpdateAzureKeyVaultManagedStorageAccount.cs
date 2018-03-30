@@ -20,9 +20,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsData.Update, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( ManagedStorageAccount ) )]
+        SupportsShouldProcess = true)]
+    [OutputType( typeof( PSKeyVaultManagedStorageAccount ) )]
     public class UpdateAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -93,7 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ActiveKeyName,
                     AutoRegenerateKey,
                     RegenerationPeriod,
-                    new ManagedStorageAccountAttributes( Enable ),
+                    new PSKeyVaultManagedStorageAccountAttributes( Enable ),
                     Tag);
 
                 if( PassThru )

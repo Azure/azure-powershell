@@ -375,6 +375,10 @@
                 <PropertyName>AccessPoliciesText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Network Rule Set</Label>
+                <PropertyName>NetworkAclsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Tags</Label>
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
