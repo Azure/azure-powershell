@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Alias("Set-AzureKeyVaultKey")]
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute",
         SupportsShouldProcess = true, 
-        DefaultParameterSetName = DefaultParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
     public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {

@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmKeyVaultAccessPolicy",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByUserPrincipalName,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
@@ -569,10 +568,15 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
 
                 // Update the vault
-                var updatedVault = KeyVaultManagementClient.UpdateVault(vault, updatedListOfAccessPolicies,
+                var updatedVault = KeyVaultManagementClient.UpdateVault(
+                    vault, 
+                    updatedListOfAccessPolicies,
                     EnabledForDeployment.IsPresent ? true : vault.EnabledForDeployment,
                     EnabledForTemplateDeployment.IsPresent ? true : vault.EnabledForTemplateDeployment,
                     EnabledForDiskEncryption.IsPresent ? true : vault.EnabledForDiskEncryption,
+                    vault.EnableSoftDelete,
+                    vault.EnablePurgeProtection,
+                    vault.NetworkAcls,
                     ActiveDirectoryClient);
 
                 if (PassThru.IsPresent)

@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureKeyVaultCertificatePolicy,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ExpandedRenewPercentageParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ExpandedRenewPercentageParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class SetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
@@ -242,6 +241,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "Specifies whether the key is not exportable.")]
         public SwitchParameter KeyNotExportable { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Indicates whether certificate transparency is enabled for this certificate/issuer; if not specified, the default is 'true'")]
+        public bool? CertificateTransparency { get; set; }
+
         /// <summary>
         /// PassThru parameter
         /// </summary>
@@ -282,7 +285,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                             SubjectName = SubjectName,
                             ValidityInMonths = ValidityInMonths,
                             Kty = KeyType,
-                            Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null
+                            Exportable = KeyNotExportable.IsPresent ? !KeyNotExportable.IsPresent : (bool?)null,
+                            CertificateTransparency = CertificateTransparency ?? (bool?)null
                         };
 
                         if (ReuseKeyOnRenewal.HasValue)

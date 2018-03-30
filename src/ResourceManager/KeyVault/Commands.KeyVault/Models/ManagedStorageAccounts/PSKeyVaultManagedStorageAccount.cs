@@ -14,13 +14,13 @@
 
 using System;
 using System.Xml;
-using Microsoft.Azure.KeyVault;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class ManagedStorageAccount : ManagedStorageAccountListItem
+    public class PSKeyVaultManagedStorageAccount : PSKeyVaultManagedStorageAccountIdentityItem
     {
-        public ManagedStorageAccount()
+        public PSKeyVaultManagedStorageAccount()
         { }
 
         /// <summary>
@@ -28,24 +28,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="managedStorageAccountBundle">managed storage bundle returned from service</param>
         /// <param name="vaultUriHelper">helper class</param>
-        internal ManagedStorageAccount( Azure.KeyVault.Models.StorageBundle managedStorageAccountBundle, VaultUriHelper vaultUriHelper )
+        internal PSKeyVaultManagedStorageAccount( Azure.KeyVault.Models.StorageBundle managedStorageAccountBundle, VaultUriHelper vaultUriHelper )
         {
             if ( managedStorageAccountBundle == null )
-                throw new ArgumentNullException( "managedStorageAccountBundle" );
+                throw new ArgumentNullException(nameof(managedStorageAccountBundle));
 
             if ( vaultUriHelper == null )
-                throw new ArgumentNullException( "vaultUriHelper" );
+                throw new ArgumentNullException(nameof(vaultUriHelper));
 
-            var identifier = new StorageAccountIdentifier(managedStorageAccountBundle.Id);
+            if (managedStorageAccountBundle.ResourceId == null || managedStorageAccountBundle.Attributes == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidManagedStorageAccountBundle);
 
-            Id = identifier.Identifier;
-            VaultName = vaultUriHelper.GetVaultName( identifier.Identifier );
-            AccountName = identifier.Name;
+            SetObjectIdentifier(vaultUriHelper, new Azure.KeyVault.StorageAccountIdentifier( managedStorageAccountBundle.Id) );
+
+            AccountName = this.Name;
             AccountResourceId = managedStorageAccountBundle.ResourceId;
             ActiveKeyName = managedStorageAccountBundle.ActiveKeyName;
             AutoRegenerateKey = managedStorageAccountBundle.AutoRegenerateKey;
             RegenerationPeriod = string.IsNullOrWhiteSpace( managedStorageAccountBundle.RegenerationPeriod ) ? (TimeSpan?) null : XmlConvert.ToTimeSpan( managedStorageAccountBundle.RegenerationPeriod );
-            Attributes = managedStorageAccountBundle.Attributes == null ? null : new ManagedStorageAccountAttributes( managedStorageAccountBundle.Attributes.Enabled, managedStorageAccountBundle.Attributes.Created, managedStorageAccountBundle.Attributes.Updated );
+            Attributes = managedStorageAccountBundle.Attributes == null 
+                ? null 
+                : new PSKeyVaultManagedStorageAccountAttributes(managedStorageAccountBundle.Attributes);
             Tags = managedStorageAccountBundle.Tags == null ? null : managedStorageAccountBundle.Tags.ConvertToHashtable();
         }
 
