@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 {
     public class SetKeyVaultSecretAttributeTests : KeyVaultUnitTestBase
     {
-        private SetAzureKeyVaultSecretAttribute cmdlet;
+        private UpdateAzureKeyVaultSecret cmdlet;
         private PSKeyVaultSecretAttributes secretAttributes;
         private PSKeyVaultSecret secret;
         public SetKeyVaultSecretAttributeTests()
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             secretAttributes = new PSKeyVaultSecretAttributes(true, DateTime.UtcNow.AddYears(2), DateTime.UtcNow, "contenttype", null);
             secret = new PSKeyVaultSecret() { VaultName = VaultName, Name = SecretName, Version = SecretVersion, SecretValue = null, Attributes = secretAttributes };
 
-            cmdlet = new SetAzureKeyVaultSecretAttribute()
+            cmdlet = new UpdateAzureKeyVaultSecret()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 DataServiceClient = keyVaultClientMock.Object,

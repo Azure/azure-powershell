@@ -47,7 +47,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -57,7 +56,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
@@ -80,7 +78,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// RenewAtNumberOfDaysBeforeExpiry
         /// </summary>
         [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the number of days before expiration when automatic renewal should start.")]
         [ValidateRange(1, int.MaxValue)]
@@ -90,7 +87,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// RenewAtPercentageLifetime
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the certificate renewal begins.")]
         [ValidateRange(0, 99)]
@@ -99,10 +95,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// SecretContentType
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the content type of the resulting Key Vault secret.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the content type of the resulting Key Vault secret.")]
         [ValidateSet(Constants.Pkcs12ContentType, Constants.PemContentType)]
@@ -111,10 +107,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// ReuseKeyOnRenewal
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies whether the certificate should use the old key during renewal.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies whether the certificate should use the old key during renewal.")]
         public bool? ReuseKeyOnRenewal { get; set; }
@@ -122,10 +118,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// ReuseKeyOnRenewal
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies whether the certificate policy is enabled or not.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies whether the certificate policy is enabled or not.")]
         public SwitchParameter Disabled { get; set; }
@@ -133,10 +129,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// SubjectName
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the subject name of the certificate.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the subject name of the certificate.")]
         public string SubjectName { get; set; }
@@ -144,10 +140,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// DnsNames
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the subject name of the certificate.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the subject name of the certificate.")]
         [Alias("DnsNames")]
@@ -156,21 +152,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Key Usage
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the key usages in the certificate.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the key usages in the certificate.")]
-        public List<string> KeyUsage { get; set; }
+        public List<X509KeyUsageFlags> KeyUsage { get; set; }
 
         /// <summary>
         /// Ekus
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the enhanced key usages in the certificate.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the enhanced key usages in the certificate.")]
         public List<string> Ekus { get; set; }
@@ -178,10 +174,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// ValidityInMonths
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the number of months the certificate will be valid.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the number of months the certificate will be valid.")]
         public int? ValidityInMonths { get; set; }
@@ -189,10 +185,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// IssuerName
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies the name of the issuer for this certificate.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the name of the issuer for this certificate.")]
         public string IssuerName { get; set; }
@@ -200,10 +196,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// CertificateType
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
                    ParameterSetName = ExpandedRenewPercentageParameterSet,
                    HelpMessage = "Specifies the type of certificate to the issuer.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
                    ParameterSetName = ExpandedRenewNumberParameterSet,
                    HelpMessage = "Specifies the type of certificate to the issuer.")]
         public string CertificateType { get; set; }
@@ -211,21 +207,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// EmailAtNumberOfDaysBeforeExpiry
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
                    HelpMessage = "Specifies how many days before expiry the automatic notification process begins.")]
         public int? EmailAtNumberOfDaysBeforeExpiry { get; set; }
 
         /// <summary>
         /// EmailAtPercentageLifetime
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
                    HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the notification begins.")]
         public int? EmailAtPercentageLifetime { get; set; }
 
         /// <summary>
         /// Key type
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
                    HelpMessage = "Specifies the key type of the key backing the certificate.")]
         [ValidateSet(Constants.RSA, Constants.RSAHSM)]
         public string KeyType { get; set; }
@@ -233,10 +229,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// KeyNotExportable
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewPercentageParameterSet,
             HelpMessage = "Specifies whether the key is not exportable.")]
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies whether the key is not exportable.")]
         public SwitchParameter KeyNotExportable { get; set; }
@@ -266,13 +262,22 @@ namespace Microsoft.Azure.Commands.KeyVault
                         // Validate input parameters
                         ValidateSubjectName();
                         ValidateDnsNames();
-                        ValidateKeyUsage();
                         ValidateEkus();
+
+                        List<string> convertedKeyUsage = null;
+                        if (KeyUsage != null)
+                        {
+                            convertedKeyUsage = new List<string>();
+                            foreach (var key in KeyUsage)
+                            {
+                                convertedKeyUsage.Add(key.ToString());
+                            }
+                        }
 
                         policy = new PSKeyVaultCertificatePolicy
                         {
                             DnsNames = DnsName,
-                            KeyUsage = KeyUsage,
+                            KeyUsage = convertedKeyUsage,
                             Ekus = Ekus,
                             Enabled = !Disabled.IsPresent,
                             IssuerName = IssuerName,
@@ -289,9 +294,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                             CertificateTransparency = CertificateTransparency ?? (bool?)null
                         };
 
-                        if (ReuseKeyOnRenewal.HasValue)
+                        if (MyInvocation.BoundParameters.ContainsKey("ReuseKeyOnRenewal"))
                         {
-                            policy.ReuseKeyOnRenewal = ReuseKeyOnRenewal.Value;
+                            policy.ReuseKeyOnRenewal = ReuseKeyOnRenewal;
                         }
 
                         break;
@@ -305,27 +310,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(PSKeyVaultCertificatePolicy.FromCertificatePolicy(resultantPolicy));
-                }
-            }
-        }
-
-        private void ValidateKeyUsage()
-        {
-            if (KeyUsage != null)
-            {
-                foreach (var usage in KeyUsage)
-                {
-                    if (string.IsNullOrWhiteSpace(usage))
-                    {
-                        throw new ArgumentException("One of the Key Usage provided is empty.");
-                    }
-
-                    X509KeyUsageFlags parsedUsage;
-                    if (!Enum.TryParse(usage, true, out parsedUsage))
-                    {
-                        throw new ArgumentException(string.Format("Key Usage {0} is invalid.", usage));
-                    }
+                    this.WriteObject(resultantPolicy);
                 }
             }
         }
