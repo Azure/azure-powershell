@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.Profile.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Profile.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PoshDirectory>C:\Program Files\PowerShell\6.0.2</PoshDirectory>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -22,10 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.8.1" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.2" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.10" />
+    
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     
     <!-- This is needed for discovering tests in test explorer -->
@@ -46,6 +43,13 @@
       </ReferencePath>
     </ItemGroup>
   </Target>
+  
+  <Target Name="CopyPowerShellToTestDirectory" BeforeTargets="Build">
+    <ItemGroup>
+      <PoshFiles Include="$(PoshDirectory)\*.*"/>
+    </ItemGroup>
+    <Copy SourceFiles="$(PoshFiles)" DestinationFolder="$(TargetDir)"/>
+  </Target>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
@@ -55,6 +59,15 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
     <ProjectReference Include="..\Commands.Profile\Commands.Profile.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
+      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
+      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
