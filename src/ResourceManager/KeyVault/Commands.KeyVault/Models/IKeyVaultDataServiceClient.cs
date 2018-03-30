@@ -121,11 +121,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         IEnumerable<PSKeyVaultCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
 
-        PSKeyVaultCertificateIssuer SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);  
-              
+        PSKeyVaultCertificateIssuer SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);
+
         PSKeyVaultCertificateIssuer DeleteCertificateIssuer(string vaultName, string issuerName);
-        
-        IssuerBundle DeleteCertificateIssuer(string vaultName, string issuerName);
 
         string BackupCertificate(string vaultName, string certificateName, string outputBlobPath);
 
