@@ -70,6 +70,7 @@
     <Compile Include="Database\Cmdlet\StopAzureSqlDatabaseActivity.cs" />
     <Compile Include="Database\Model\DatabaseReadScale.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseCreateOrUpdateModel.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\StopAzureSqlElasticPoolActivity.cs" />
     <Compile Include="Failover Group\Cmdlet\AddAzureSqlDatabaseToFailoverGroup.cs" />
     <Compile Include="Failover Group\Cmdlet\AzureSqlFailoverGroupCmdletBase.cs" />
     <Compile Include="Failover Group\Cmdlet\GetAzureSqlFailoverGroup.cs" />

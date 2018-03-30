@@ -413,6 +413,9 @@ Cancels the asynchronous updates operation on the database.
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
 
+### [Stop-AzureRmSqlElasticPoolActivity](Stop-AzureRmSqlElasticPoolActivity.md)
+Cancel the asynchronous update operation on an elastic pool.
+
 ### [Stop-AzureRmSqlServerUpgrade](Stop-AzureRmSqlServerUpgrade.md)
 Stops the upgrade of a SQL Database server.
 
