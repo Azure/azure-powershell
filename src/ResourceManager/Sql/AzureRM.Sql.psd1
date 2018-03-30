@@ -190,7 +190,7 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Remove-AzureRmSqlServerDnsAlias', 'New-AzureRmSqlServerDnsAlias', 
                'Set-AzureRmSqlServerDnsAlias',
                'New-AzureRmSqlDatabaseRestorePoint',
-               'Remove-AzureRmSqlDatabaseRestorePoint'
+               'Remove-AzureRmSqlDatabaseRestorePoint',
                'Stop-AzureRmSqlElasticPoolActivity'
 
 
