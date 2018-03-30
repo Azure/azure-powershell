@@ -589,7 +589,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             OperationContext.GlobalSendingRequest +=
                 (sender, args) =>
                 {
+                    //https://github.com/Azure/azure-storage-net/issues/658
+#if !NETSTANDARD
                     args.Request.UserAgent = Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.UserAgent + " " + ApiConstants.UserAgentHeaderValue;
+#endif
                 };
 
             base.BeginProcessing();
