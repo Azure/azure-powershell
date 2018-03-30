@@ -17,9 +17,6 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
