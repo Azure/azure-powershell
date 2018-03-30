@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }        
 
-        public CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -112,11 +112,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certBundle;
+            return new PSKeyVaultCertificate(certBundle);
 
         }
 
-        public CertificateBundle ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -147,10 +147,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certBundle;
+            return new PSKeyVaultCertificate(certBundle);
         }
 
-        public CertificateBundle ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certBundle;
+            return new PSKeyVaultCertificate(certBundle);
         }
 
         public PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
-        public Contacts GetCertificateContacts(string vaultName)
+        public IEnumerable<PSKeyVaultCertificateContact> GetCertificateContacts(string vaultName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -266,10 +266,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return contacts;
+            if (contacts == null ||
+                contacts.ContactList == null)
+            {
+                return null;
+            }
+
+            var contactsModel = new List<PSKeyVaultCertificateContact>();
+
+            foreach (var contact in contacts.ContactList)
+            {
+                contactsModel.Add(PSKeyVaultCertificateContact.FromKVCertificateContact(contact, vaultName));
+            }
+
+            return contactsModel;
         }
 
-        public CertificateBundle GetCertificate(string vaultName, string certName, string certificateVersion)
+        public PSKeyVaultCertificate GetCertificate(string vaultName, string certName, string certificateVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -296,7 +309,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certBundle;
+            return new PSKeyVaultCertificate(certBundle);
         }
 
         public PSKeyVaultKey GetKey(string vaultName, string keyName, string keyVersion)
@@ -470,27 +483,49 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSDeletedKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
-        public Contacts SetCertificateContacts(string vaultName, Contacts contacts)
+        public IEnumerable<PSKeyVaultCertificateContact> SetCertificateContacts(string vaultName, IEnumerable<PSKeyVaultCertificateContact> contacts)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
-            if (null == contacts)
-                throw new ArgumentNullException(nameof(contacts));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            List<Contact> contactList = null;
+            if (contacts != null)
+            {
+                contactList = new List<Contact>();
+                foreach (var psContact in contacts)
+                {
+                    contactList.Add(new Contact { EmailAddress = psContact.Email });
+                }
+            }
+            Contacts inputContacts = new Contacts { ContactList = contactList };
 
             Contacts outputContacts;
 
             try
             {
-                outputContacts = this.keyVaultClient.SetCertificateContactsAsync(vaultAddress, contacts).GetAwaiter().GetResult();
+                outputContacts = this.keyVaultClient.SetCertificateContactsAsync(vaultAddress, inputContacts).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return outputContacts;
+            if (outputContacts == null ||
+                outputContacts.ContactList == null)
+            {
+                return null;
+            }
+
+            var contactsModel = new List<PSKeyVaultCertificateContact>();
+
+            foreach (var contact in outputContacts.ContactList)
+            {
+                contactsModel.Add(PSKeyVaultCertificateContact.FromKVCertificateContact(contact, vaultName));
+            }
+
+            return contactsModel;
         }
 
         public PSKeyVaultSecret SetSecret(string vaultName, string secretName, SecureString secretValue, PSKeyVaultSecretAttributes secretAttributes)
@@ -634,7 +669,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public CertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags)
+        public PSKeyVaultCertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -654,10 +689,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certificateOperation;
+            return PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
         }
 
-        public CertificateBundle UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -677,10 +712,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certificateBundle;
+            return new PSKeyVaultCertificate(certificateBundle);
         }
 
-        public DeletedCertificateBundle DeleteCertificate(string vaultName, string certName)
+        public PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -700,7 +735,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certBundle;
+            return new PSDeletedKeyVaultCertificate(certBundle);
         }
 
         public void PurgeCertificate(string vaultName, string certName)
@@ -722,7 +757,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public CertificateOperation GetCertificateOperation(string vaultName, string certificateName)
+        public PSKeyVaultCertificateOperation GetCertificateOperation(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -749,10 +784,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certificateOperation;
+            return PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
         }
 
-        public CertificateOperation CancelCertificateOperation(string vaultName, string certificateName)
+        public PSKeyVaultCertificateOperation CancelCertificateOperation(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -772,10 +807,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certificateOperation;
+            return PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
         }
 
-        public CertificateOperation DeleteCertificateOperation(string vaultName, string certificateName)
+        public PSKeyVaultCertificateOperation DeleteCertificateOperation(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -795,7 +830,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certificateOperation;
+            return PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
         }
 
         public PSDeletedKeyVaultSecret DeleteSecret(string vaultName, string secretName)
@@ -920,7 +955,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultSecret( secretBundle, this.vaultUriHelper );
         }
 
-        public CertificatePolicy GetCertificatePolicy(string vaultName, string certificateName)
+        public PSKeyVaultCertificatePolicy GetCertificatePolicy(string vaultName, string certificateName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -946,10 +981,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certificatePolicy;
+            return PSKeyVaultCertificatePolicy.FromCertificatePolicy(certificatePolicy);
         }
 
-        public CertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy)
+        public PSKeyVaultCertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -970,10 +1005,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return resultantCertificatePolicy;
+            return PSKeyVaultCertificatePolicy.FromCertificatePolicy(certificatePolicy);
         }
 
-        public IssuerBundle GetCertificateIssuer(string vaultName, string issuerName)
+        public PSKeyVaultCertificateIssuer GetCertificateIssuer(string vaultName, string issuerName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -999,7 +1034,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return certificateIssuer;
+            return PSKeyVaultCertificateIssuer.FromIssuer(certificateIssuer);
         }
 
         public IEnumerable<PSKeyVaultCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options)
@@ -1031,7 +1066,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public IssuerBundle SetCertificateIssuer(
+        public PSKeyVaultCertificateIssuer SetCertificateIssuer(
             string vaultName,
             string issuerName,
             string issuerProvider,
@@ -1078,10 +1113,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return resultantIssuer;
+            return PSKeyVaultCertificateIssuer.FromIssuer(resultantIssuer);
         }        
 
-        public IssuerBundle DeleteCertificateIssuer(string vaultName, string issuerName)
+        public PSKeyVaultCertificateIssuer DeleteCertificateIssuer(string vaultName, string issuerName)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -1101,7 +1136,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException(ex);
             }
 
-            return issuer;
+            return PSKeyVaultCertificateIssuer.FromIssuer(issuer);
         }
 
         #region Managed Storage Accounts
@@ -1604,7 +1639,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultSecret(recoveredSecret, this.vaultUriHelper);
         }
 
-        public DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName )
+        public PSDeletedKeyVaultCertificate GetDeletedCertificate( string vaultName, string certName )
         {
             if ( string.IsNullOrEmpty( vaultName ) )
                 throw new ArgumentNullException( nameof(vaultName) );
@@ -1630,7 +1665,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException( ex );
             }
 
-            return deletedCertificate;
+            return new PSDeletedKeyVaultCertificate(deletedCertificate);
         }
 
         public IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options )
@@ -1661,7 +1696,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        public CertificateBundle RecoverCertificate( string vaultName, string certName )
+        public PSKeyVaultCertificate RecoverCertificate( string vaultName, string certName )
         {
             if ( string.IsNullOrEmpty( vaultName ) )
                 throw new ArgumentNullException( nameof( vaultName ) );
@@ -1680,7 +1715,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw GetInnerException( ex );
             }
 
-            return recoveredCertificate;
+            return new PSKeyVaultCertificate(recoveredCertificate);
         }
 
         public string BackupCertificate(string vaultName, string certificateName, string outputBlobPath)
