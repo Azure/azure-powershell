@@ -30,8 +30,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.DataFactories" Version="4.13.0" />
     <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="3.4.6604.1" />
-    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.4.0" />
-    <PackageReference Include="WindowsAzure.Storage" Version="8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +41,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 

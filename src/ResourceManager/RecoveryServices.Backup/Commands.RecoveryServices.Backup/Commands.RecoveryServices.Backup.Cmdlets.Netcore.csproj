@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="2.1.0-preview" />
-    <PackageReference Include="Microsoft.WindowsAzure.Management.Scheduler" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
