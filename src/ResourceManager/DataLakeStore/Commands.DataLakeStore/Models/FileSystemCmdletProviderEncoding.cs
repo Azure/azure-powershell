@@ -12,24 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Dns.Services;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
-namespace Microsoft.Azure.Commands.Dns
+namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
-    /// <summary>
-    /// The base class for all Azure Dns Management Cmdlets
-    /// </summary>
-    public abstract class DnsDatabaseCmdletBase : AzurePSCmdlet 
+    // This is a copy of Microsoft.PowerShell.Commands. This enum no longer exists in .NET Core.
+    // TODO: Proper fix to be done in https://github.com/Azure/azure-powershell/issues/5742
+    public enum FileSystemCmdletProviderEncoding
     {
-        /// <summary>
-        /// Stores the per request session Id for all request made in this cmdlet call.
-        /// </summary>
-        protected string clientRequestId { get; set; }
-
-        internal DnsDatabaseCmdletBase()
-        {
-            this.clientRequestId = Util.GenerateTracingId();
-        }
+        Unknown = 0,
+        String = 1,
+        Unicode = 2,
+        Byte = 3,
+        BigEndianUnicode = 4,
+        UTF8 = 5,
+        UTF7 = 6,
+        UTF32 = 7,
+        Ascii = 8,
+        Default = 9,
+        Oem = 10,
+        BigEndianUTF32 = 11
     }
 }

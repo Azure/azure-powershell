@@ -54,8 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.BackupServicesManagement.dll', 
-               '.\Microsoft.WindowsAzure.Management.Common.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.Management.BackupServicesManagement.dll',  
                '.\Microsoft.WindowsAzure.Management.Scheduler.dll', 
                '.\Security.Cryptography.dll'
 
