@@ -23,7 +23,7 @@ Creates a key in a key vault or imports a key into a key vault.
 ### [Add-AzureKeyVaultManagedStorageAccount](Add-AzureKeyVaultManagedStorageAccount.md)
 Adds an existing Azure Storage Account to the specified key vault for its keys to be managed by the Key Vault service.
 
-### [Add-AzureRmKeyVaultNetworkRuleSet](Add-AzureRmKeyVaultNetworkRuleSet.md)
+### [Add-AzureRmKeyVaultNetworkRule](Add-AzureRmKeyVaultNetworkRule.md)
 Adds a rule meant to restrict access to a key vault based on the client's internet address.
 
 ### [Backup-AzureKeyVaultCertificate](Backup-AzureKeyVaultCertificate.md)
@@ -113,8 +113,8 @@ Deletes a key vault.
 ### [Remove-AzureRmKeyVaultAccessPolicy](Remove-AzureRmKeyVaultAccessPolicy.md)
 Removes all permissions for a user or application from a key vault.
 
-### [Remove-AzureRmKeyVaultNetworkRuleSet](Remove-AzureRmKeyVaultNetworkRuleSet.md)
-Remove the network rule set from a key vault.
+### [Remove-AzureRmKeyVaultNetworkRule](Remove-AzureRmKeyVaultNetworkRule.md)
+Remove the network rule from a key vault.
 
 ### [Restore-AzureKeyVaultCertificate](Restore-AzureKeyVaultCertificate.md)
 Restores a certificate in a key vault from a backup file.

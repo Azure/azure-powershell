@@ -107,9 +107,9 @@
     <Compile Include="Models\PSDeletedKeyVaultCertificate.cs" />
     <Compile Include="Models\PSDeletedKeyVault.cs" />
     <Compile Include="Models\PSKeyVaultCertificateIdentityItem.cs" />
-    <Compile Include="Commands\VirtualNetworkRuleSet\AddAzureKeyVaultNetworkRuleSet.cs" />
+    <Compile Include="Commands\VirtualNetworkRuleSet\AddAzureKeyVaultNetworkRule.cs" />
     <Compile Include="Commands\VirtualNetworkRuleSet\KeyVaultNetworkRuleSetBase.cs" />
-    <Compile Include="Commands\VirtualNetworkRuleSet\RemoveAzureRmKeyVaultNetworkRuleSet.cs" />
+    <Compile Include="Commands\VirtualNetworkRuleSet\RemoveAzureRmKeyVaultNetworkRule.cs" />
     <Compile Include="Commands\VirtualNetworkRuleSet\UpdateAzureKeyVaultNetworkRuleSet.cs" />
     <Compile Include="Commands\Constants.cs" />
     <Compile Include="Models\PSKeyVaultCertificateIssuerIdentityItem.cs" />

@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/add-azurermkeyvaultnetworkruleset
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/add-azurermkeyvaultnetworkrule
 schema: 2.0.0
 ---
 
-# Add-AzureRmKeyVaultNetworkRuleSet
+# Add-AzureRmKeyVaultNetworkRule
 
 ## SYNOPSIS
 Adds a rule meant to restrict access to a key vault based on the client's internet address.
@@ -14,37 +14,37 @@ Adds a rule meant to restrict access to a key vault based on the client's intern
 
 ### ByVaultName (Default)
 ```
-Add-AzureRmKeyVaultNetworkRuleSet [-VaultName] <String> [[-ResourceGroupName] <String>]
+Add-AzureRmKeyVaultNetworkRule [-VaultName] <String> [[-ResourceGroupName] <String>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Add-AzureRmKeyVaultNetworkRuleSet [-InputObject] <PSKeyVault> [-IpAddressRange <String[]>]
+Add-AzureRmKeyVaultNetworkRule [-InputObject] <PSKeyVault> [-IpAddressRange <String[]>]
  [-VirtualNetworkResourceId <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Add-AzureRmKeyVaultNetworkRuleSet [-ResourceId] <String> [-IpAddressRange <String[]>]
+Add-AzureRmKeyVaultNetworkRule [-ResourceId] <String> [-IpAddressRange <String[]>]
  [-VirtualNetworkResourceId <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmKeyVaultNetworkRuleSet** cmdlet grants or restricts access to a key vault to a set of caller designated by their IP addresses or the virtual network to which they belong. The rule has the potential to restrict access for other users, applications, or security groups which have been granted permissions via the access policy.
+The **Add-AzureRmKeyVaultNetworkRule** cmdlet grants or restricts access to a key vault to a set of caller designated by their IP addresses or the virtual network to which they belong. The rule has the potential to restrict access for other users, applications, or security groups which have been granted permissions via the access policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 PS C:\>$myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
-PS C:\> Add-AzureRmKeyVaultNetworkRuleSet -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
+PS C:\> Add-AzureRmKeyVaultNetworkRule -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
 ```
 
-This command adds a network ruleset to the specified vault, allowing access to the specified IP address from the virtual network identified by $myNetworkResId.
+This command adds a network rule to the specified vault, allowing access to the specified IP address from the virtual network identified by $myNetworkResId.
 
 ## PARAMETERS
 

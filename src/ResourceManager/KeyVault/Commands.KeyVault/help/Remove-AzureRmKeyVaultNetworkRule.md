@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/add-azurermkeyvaultnetworkruleset
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/add-azurermkeyvaultnetworkrule
 schema: 2.0.0
 ---
 
-# Remove-AzureRmKeyVaultNetworkRuleSet
+# Remove-AzureRmKeyVaultNetworkRule
 
 ## SYNOPSIS
-Removes a network rule set from a key vault.
+Removes a network rule from a key vault.
 
 ## SYNTAX
 
 ### ByVaultName (Default)
 ```
-Remove-AzureRmKeyVaultNetworkRuleSet [-VaultName] <String> [[-ResourceGroupName] <String>]
+Remove-AzureRmKeyVaultNetworkRule [-VaultName] <String> [[-ResourceGroupName] <String>]
  [-IpAddressRange <String[]>] [-VirtualNetworkResourceId <String[]>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzureRmKeyVaultNetworkRuleSet [-InputObject] <PSKeyVault> [-IpAddressRange <String[]>]
+Remove-AzureRmKeyVaultNetworkRule [-InputObject] <PSKeyVault> [-IpAddressRange <String[]>]
  [-VirtualNetworkResourceId <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzureRmKeyVaultNetworkRuleSet [-ResourceId] <String> [-IpAddressRange <String[]>]
+Remove-AzureRmKeyVaultNetworkRule [-ResourceId] <String> [-IpAddressRange <String[]>]
  [-VirtualNetworkResourceId <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -41,10 +41,10 @@ Remove-AzureRmKeyVaultNetworkRuleSet [-ResourceId] <String> [-IpAddressRange <St
 ### Example 1
 ```powershell
 PS C:\>$myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
-PS C:\> PS C:\> Remove-AzureRmKeyVaultNetworkRuleSet -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
+PS C:\> PS C:\> Remove-AzureRmKeyVaultNetworkRule -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
 ```
 
-This command removes a network ruleset from the specified vault, provided a rule is found matching the specified IP address and the virtual network resource identifier.
+This command removes a network rule from the specified vault, provided a rule is found matching the specified IP address and the virtual network resource identifier.
 
 ## PARAMETERS
 
