@@ -22,7 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 using rpError = Microsoft.Azure.Commands.SiteRecovery.RestApiInfra;
 
 
@@ -206,8 +206,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
                 if (cloudException != null && cloudException.Response != null && !string.IsNullOrEmpty(cloudException.Response.Content))
                 {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    rpError.Error error = serializer.Deserialize<rpError.Error>(cloudException.Response.Content);
+                    rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(cloudException.Response.Content);
 
                     // rpError.Error error = (rpError.Error)Utilities.Deserialize<rpError.Error>(cloudException.Response.Content);
                     if (error.ErrorCode.Equals(RpErrorCode.ResourceExtendedInfoNotFound.ToString(), StringComparison.InvariantCultureIgnoreCase))
