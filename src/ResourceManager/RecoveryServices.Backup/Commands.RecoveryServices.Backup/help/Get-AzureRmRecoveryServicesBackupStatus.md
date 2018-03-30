@@ -30,10 +30,14 @@ If it is protected, the relevant vault details will be returned.
 
 ### Example 1
 ```
-PS C:\> Example Code
-```
+PS C:\> $isVMBackedUp = Get-AzureRmRecoveryServicesBackupStatus -Name “myAzureVM” -ResourceGroupName “myAzureVMRG” -ResourceType “AzureVM”
+PS C:\> If ($isVMBackedUp -eq “”) {
+Get-AzureRmRecoveryServicesVault -Name "testvault"  -ResourceGroupName "vaultResourceGroup" | Set-AzureRmRecoveryServicesVaultContext
+$defPolicy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+Enable-AzureRmRecoveryServicesBackupProtection -Policy $defpol -Name "myAzureVM" -ResourceGroupName "myAzureVMRG"
+}
 
-Example DESCRIPTION
+```
 
 ## PARAMETERS
 
