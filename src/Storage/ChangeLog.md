@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix the issue that upload Blob and upload File cmdlets fail on FIPS policy enabled machines
+	- Set-AzureStorageBlobContent
+	- Set-AzureStorageFileContent
 * Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.2.0
