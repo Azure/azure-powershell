@@ -85,10 +85,6 @@
       <Project>{30b92759-50b3-494e-b9f0-ec9a2ce9d57b}</Project>
       <Name>Commands.RecoveryServices.Backup.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.RecoveryServices.Backup.Logger\Commands.RecoveryServices.Backup.Logger.csproj">
-      <Project>{5e675749-6139-464a-904c-59c0ffdfec82}</Project>
-      <Name>Commands.RecoveryServices.Backup.Logger</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.RecoveryServices.Backup.ServiceClientAdapter\Commands.RecoveryServices.Backup.ServiceClientAdapter.csproj">
       <Project>{b758fec1-35c1-4f93-a954-66dd33f6e0ec}</Project>
       <Name>Commands.RecoveryServices.Backup.ServiceClientAdapter</Name>
