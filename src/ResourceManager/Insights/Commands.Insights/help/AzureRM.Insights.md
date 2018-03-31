@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.Insights
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 698c387c-bd6b-41c6-82ce-721f1ef39548
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
