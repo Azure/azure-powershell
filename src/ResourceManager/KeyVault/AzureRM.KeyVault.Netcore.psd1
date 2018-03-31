@@ -146,7 +146,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = "Initial Release'
+        ReleaseNotes = 'Initial Release'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
