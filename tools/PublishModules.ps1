@@ -190,6 +190,8 @@ function Change-RMModule
         {
             return
         }
+
+        Add-PSM1Dependency -Path $moduleSourcePath
         Write-Output "Changing to directory for module modifications $TempRepoPath"
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
         if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)
@@ -224,6 +226,24 @@ function Change-RMModule
         {
             popd
         }
+    }
+}
+
+function Add-PSM1Dependency {
+    [CmdletBinding()]
+    param(
+        [string] $Path)
+
+    PROCESS {
+        $file = Get-Item -Path $Path
+        $manifestFile = $file.Name
+        $psm1file = $manifestFile -replace ".psd1", ".psm1"
+
+        # RootModule = ''
+        $regex = New-Object System.Text.RegularExpressions.Regex "#\s*RootModule\s*=\s*''"
+        $content = (Get-Content -Path $Path) -join "`r`n"
+        $text = $regex.Replace($content, "RootModule = '$psm1File'")
+        $text | Out-File -FilePath $Path
     }
 }
 
