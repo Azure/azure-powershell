@@ -90,19 +90,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = RemoveVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
-        [Parameter(Mandatory = false,
-            Position = 1,
-            ParameterSetName = InputObjectRemoveVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location of the deleted vault.")]
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = RemoveDeletedVaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location of the deleted vault.")]
-        [Parameter(Mandatory = true,
-            Position = 1,
-            ParameterSetName = InputObjectRemoveDeletedVaultParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The location of the deleted vault.")]
         [LocationCompleter("Microsoft.KeyVault/vaults")]
@@ -142,6 +132,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 VaultName = InputObject.VaultName;
                 ResourceGroupName = InputObject.ResourceGroupName;
+                Location = InputObject.Location;
             }
 
             if (InRemovedState)

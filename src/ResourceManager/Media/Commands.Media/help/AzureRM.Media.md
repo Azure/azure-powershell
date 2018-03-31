@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.Media
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: c66edca6-2e57-4550-905e-f5cc104de25e
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
