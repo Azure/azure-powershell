@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Package\Debug\Storage\Azure.Storage\</OutputPath>
+    <OutputPath>..\..\Package\Release\Storage\Azure.Storage\</OutputPath>
     <DocumentationFile />
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
