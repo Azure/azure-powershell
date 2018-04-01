@@ -621,7 +621,7 @@
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope Stack -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
           Condition="'$(Scope)' =='All' or '$(Scope)' =='Stack'"
-          ContinueOnError="false"/>
+          ContinueOnError="true"/>
 
     <CallTarget Targets="BuildInstaller" />
  </Target>
