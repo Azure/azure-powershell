@@ -102,7 +102,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
                @{ModuleName = 'AzureRM.Sql.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Storage.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.StreamAnalytics.Netcore'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'AzureRM.Subscription.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Tags.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.TrafficManager.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.UsageAggregates.Netcore'; RequiredVersion = '0.11.0'; }, 
