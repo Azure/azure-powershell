@@ -537,7 +537,7 @@
 
 
 
-  <Target Name="BuildInstaller" Condition="'$(Scope)' == 'all'">
+  <Target Name="BuildInstaller" Condition="'$(Scope)' == 'all' or $(Scope) == 'Latest'">
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(AzurePackageFolder) -InstallationPolicy Trusted &quot; "/>
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; "/>
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; "/>
