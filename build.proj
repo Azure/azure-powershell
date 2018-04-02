@@ -269,7 +269,7 @@
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
 
-      <CallTarget Targets="GenerateHelp"/>
+    <CallTarget Targets="GenerateHelp"/>
 
     <!-- Update modules -->
     <CallTarget Targets="UpdateModules"/>
@@ -662,8 +662,8 @@
     <CallTarget Targets="LiveTests"/>
   </Target>
 
+  <!-- Create and update help files as needed -->
   <Target Name="GenerateHelp" Condition=" '$(SkipHelp)' == 'false'">
-    <!-- Create and update help files as needed -->
     <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
       ContinueOnError="false"/>
   </Target>
