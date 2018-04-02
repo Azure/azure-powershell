@@ -83,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             try
             {
-                blob.FetchAttributes(accessCondition, options, operationContext);
+                blob.FetchAttributesAsync(accessCondition, options, operationContext).RunSynchronously();
             }
             catch (StorageException se)
             {
@@ -121,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         blob.Name));
             }
 
-            targetBlob.FetchAttributes();
+            targetBlob.FetchAttributesAsync().RunSynchronously();
             return targetBlob;
         }
 

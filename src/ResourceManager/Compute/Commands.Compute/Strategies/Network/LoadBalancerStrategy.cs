@@ -35,11 +35,25 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 _ => 30);
 
+        public enum Sku
+        {
+            Basic,
+            Standard,
+        }
+
         public static ResourceConfig<LoadBalancer> CreateLoadBalancerConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
-            string name)
+            string name,
+            Sku sku)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
-                name: name);
+                name: name,
+                createModel: engine => new LoadBalancer
+                {
+                    Sku = new LoadBalancerSku
+                    {
+                        Name = sku.ToString()
+                    }
+                });
     }
 }

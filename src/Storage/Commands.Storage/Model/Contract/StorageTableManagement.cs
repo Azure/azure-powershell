@@ -65,7 +65,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of tables that begin with the specified prefix</returns>
         public IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            return tableClient.ListTables(prefix, requestOptions, operationContext);
+            //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
+            TableContinuationToken continuationToken = null;
+            var results = new List<CloudTable>();
+            do
+            {
+                var response = tableClient.ListTablesSegmentedAsync(prefix, null, continuationToken, requestOptions, operationContext).Result;
+                continuationToken = response.ContinuationToken;
+                results.AddRange(response.Results);
+            } while (continuationToken != null);
+            return results;
         }
 
         /// <summary>
@@ -87,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>True if table was created; otherwise, false.</returns>
         public bool CreateTableIfNotExists(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            return table.CreateIfNotExists(requestOptions, operationContext);
+            return table.CreateIfNotExistsAsync(requestOptions, operationContext).Result;
         }
 
         /// <summary>
@@ -98,7 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void Delete(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            table.Delete(requestOptions, operationContext);
+            table.DeleteAsync(requestOptions, operationContext).RunSynchronously();
         }
 
         /// <summary>
@@ -110,7 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>True if table exists; otherwise, false.</returns>
         public bool DoesTableExist(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            return table.Exists(requestOptions, operationContext);
+            return table.ExistsAsync(requestOptions, operationContext).Result;
         }
 
         /// <summary>
@@ -121,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public TablePermissions GetTablePermissions(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            return table.GetPermissions(requestOptions, operationContext);
+            return table.GetPermissionsAsync(requestOptions, operationContext).Result;
         }
 
         /// <summary>
@@ -146,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns></returns>
         public void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            table.SetPermissions(tablePermissions, requestOptions, operationContext);
+            table.SetPermissionsAsync(tablePermissions, requestOptions, operationContext).RunSynchronously();
         }
 
 
