@@ -28,51 +28,23 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitStageCRUD()
+        public void TestExpressRouteCrossConnectionApis()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitStageCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCrossConnectionApis");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitCRUD()
+        public void TestExpressRouteCrossConnectionPeeringApis()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCrossConnectionPeeringApis");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
+        public void TestExpressRouteCrossConnectionStatsApis()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitMicrosoftPeeringCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteCircuitAuthorizationCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitAuthorizationCRUD");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteBgpServiceCommunitiesGet()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteBGPServiceCommunities");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestExpressRouteRouteFilterCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteRouteFilters");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCrossConnectionStatsApis");
         }
     }
 }
