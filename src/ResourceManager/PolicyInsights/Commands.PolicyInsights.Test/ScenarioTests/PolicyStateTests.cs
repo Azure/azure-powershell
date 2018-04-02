@@ -34,56 +34,56 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_LatestManagementGroupScope()
+        public void LatestManagementGroupScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestManagementGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_LatestSubscriptionScope()
+        public void LatestSubscriptionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestSubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_LatestResourceGroupScope()
+        public void LatestResourceGroupScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestResourceGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_LatestResourceScope()
+        public void LatestResourceScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestResourceScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_LatestPolicySetDefinitionScope()
+        public void LatestPolicySetDefinitionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestPolicySetDefinitionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_LatestPolicyDefinitionScope()
+        public void LatestPolicyDefinitionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestPolicyDefinitionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_LatestSubscriptionLevelPolicyAssignmentScope()
+        public void LatestSubscriptionLevelPolicyAssignmentScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestSubscriptionLevelPolicyAssignmentScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_LatestResourceGroupLevelPolicyAssignmentScope()
+        public void LatestResourceGroupLevelPolicyAssignmentScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-LatestResourceGroupLevelPolicyAssignmentScope");
         }
@@ -94,56 +94,56 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_AllManagementGroupScope()
+        public void AllManagementGroupScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllManagementGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_AllSubscriptionScope()
+        public void AllSubscriptionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllSubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_AllResourceGroupScope()
+        public void AllResourceGroupScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllResourceGroupScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_AllResourceScope()
+        public void AllResourceScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllResourceScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_AllPolicySetDefinitionScope()
+        public void AllPolicySetDefinitionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllPolicySetDefinitionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_AllPolicyDefinitionScope()
+        public void AllPolicyDefinitionScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllPolicyDefinitionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_AllSubscriptionLevelPolicyAssignmentScope()
+        public void AllSubscriptionLevelPolicyAssignmentScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllSubscriptionLevelPolicyAssignmentScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void Get_AzureRmPolicyState_AllResourceGroupLevelPolicyAssignmentScope()
+        public void AllResourceGroupLevelPolicyAssignmentScope()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmPolicyState-AllResourceGroupLevelPolicyAssignmentScope");
         }
