@@ -17,11 +17,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Tools.Common.Issues;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {
     /// <summary>
-    /// Record to indicate a difference in assembly file versions for shared assemblies with the same 
+    /// Record to indicate a difference in assembly file versions for shared assemblies with the same
     /// assembly version. This could result in unexpected behavior, depending on the assembly load order.
     /// </summary>
     public class SharedAssemblyConflict : IReportRecord
@@ -58,7 +59,7 @@ namespace StaticAnalysis.DependencyAnalyzer
                          record.AssemblyVersion == AssemblyVersion &&
                          record.ProblemId == ProblemId;
             }
-            
+
             return result;
         }
 

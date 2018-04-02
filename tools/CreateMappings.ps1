@@ -3,9 +3,9 @@
 # Define parameters.
 param(
     [string] $RootPath = "$PSScriptRoot\..\src", 
-    [string] $OutputFile = "groupMapping.json", 
-    [string] $WarningFile = "groupMappingWarnings.json", 
-    [string] $RulesFile = "CreateMappings_rules.json" 
+    [string] $OutputFile = "$PSScriptRoot\groupMapping.json", 
+    [string] $WarningFile = "$PSScriptRoot\groupMappingWarnings.json", 
+    [string] $RulesFile = "$PSScriptRoot\CreateMappings_rules.json" 
 );
 
 # Load rules file from JSON.
