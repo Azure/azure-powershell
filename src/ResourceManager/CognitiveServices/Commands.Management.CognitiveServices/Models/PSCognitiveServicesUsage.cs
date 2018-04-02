@@ -13,13 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CognitiveServices.Models;
-using CognitiveServicesModels = Microsoft.Azure.Management.CognitiveServices.Models;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices.Models
 {
     public class PSCognitiveServicesUsage
     {
-        public PSCognitiveServicesUsage(CognitiveServicesModels.Usage usage)
+        public PSCognitiveServicesUsage(Usage usage)
         {
             this.CurrentValue = usage.CurrentValue;
             this.Limit = usage.Limit;
