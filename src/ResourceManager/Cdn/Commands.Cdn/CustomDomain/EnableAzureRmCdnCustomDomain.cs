@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         [ValidateNotNull]
         public PSCustomDomain InputObject { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object (if specified).")]
+        [Parameter(Mandatory = false, HelpMessage = "Return object (if specified).")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -61,11 +61,13 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
                 CustomDomainName = InputObject.Name;
             }
 
-            CdnManagementClient.CustomDomains.EnableCustomHttps(
-                ResourceGroupName,
-                ProfileName,
-                EndpointName,
-                CustomDomainName);
+            ConfirmAction(MyInvocation.InvocationName,
+                CustomDomainName,
+                () => CdnManagementClient.CustomDomains.EnableCustomHttps(
+                    ResourceGroupName,
+                    ProfileName,
+                    EndpointName,
+                    CustomDomainName));
 
             WriteVerbose(Resources.Success);
             if (PassThru)

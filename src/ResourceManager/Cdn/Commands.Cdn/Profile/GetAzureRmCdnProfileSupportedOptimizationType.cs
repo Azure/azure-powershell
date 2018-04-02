@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                 CdnManagementClient.Profiles.ListSupportedOptimizationTypes(ResourceGroupName, ProfileName).SupportedOptimizationTypes.Select(optimizationType => new PSOptimizationType(optimizationType)).ToList();
 
             WriteVerbose(Resources.Success);
-            WriteObject(supportedOptimizationTypes);
+            WriteObject(supportedOptimizationTypes, true);
         }
     }
 }
