@@ -356,6 +356,10 @@ if ($scope -eq 'AzureRM.Netcore') {
     Create-ModulePsm1 -ModulePath "$resourceManagerRootFolder\AzureRM.Profile.Netcore" -TemplatePath $templateLocation -IsRMModule $true
     Write-Host "Updated profile module"
 
+    $modulePath = "$packageFolder\$buildConfig\Storage\Azure.Storage.Netcore"
+    Write-Host "Updating AzureStorage module from $modulePath"
+    Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule $false
+
     $env:PSModulePath += "$([IO.Path]::PathSeparator)$resourceManagerRootFolder\AzureRM.Profile.Netcore";
 
     foreach ($module in $resourceManagerModules) {
