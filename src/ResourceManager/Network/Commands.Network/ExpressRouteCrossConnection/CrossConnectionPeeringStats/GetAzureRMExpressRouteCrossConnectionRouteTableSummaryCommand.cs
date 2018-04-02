@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             var routeTableSummaries = this.ExpressRouteCrossConnectionClient.ListRoutesTableSummary(ResourceGroupName, CrossConnectionName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
-            var psRoutes = new List<PSExpressRouteCircuitRoutesTable>();
+            var psRoutes = new List<PSExpressRouteCrossConnectionRoutesTableSummary>();
             foreach (var routeTableSummary in routeTableSummaries)
             {
-                var psRoute = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuitRoutesTable>(routeTableSummary);
+                var psRoute = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCrossConnectionRoutesTableSummary>(routeTableSummary);
                 psRoutes.Add(psRoute);
             }
             WriteObject(psRoutes, true);

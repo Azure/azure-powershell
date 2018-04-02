@@ -16,7 +16,7 @@
 .SYNOPSIS
 Tests ExpressRouteCrossConnection Get and Update.
 #>
-function Test-ExpressRouteCrossConnectionGetAndUpdate
+function Test-ExpressRouteCrossConnectionApis
 {
 	 # Setup
     $rgname = 'ccTestCircuitRG'
@@ -89,6 +89,14 @@ function Test-ExpressRouteCrossConnectionGetAndUpdate
 	Assert-NotNull $crossConnection.Peerings[0].MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
 	Assert-Null $crossConnection.Peerings[0].RouteFilter
 
+	#Verify List all cmdlet
+	$crossConnectionsAll = Get-AzureRMExpressRouteCrossConnection
+	Assert-AreEqual 1 @($crossConnectionsAll).Count
+
+	#Verify List by resource group cmdlet
+	$crossConnectionsByRg = Get-AzureRMExpressRouteCrossConnection -ResourceGroupName $crossConnectionResourceGroupName
+	Assert-AreEqual 1 @($crossConnectionsByRg).Count
+
 	# Update the provisioning state
 	$updatedState = "Provisioned
 	$note = "Test Note"
@@ -117,7 +125,7 @@ function Test-ExpressRouteCrossConnectionGetAndUpdate
 .SYNOPSIS
 Tests ExpressRouteCrossConnectionPeering CRUD.
 #>
-function Test-ExpressRouteRouteFilters
+function Test-ExpressRouteCrossConnectionPeeringApis
 {
 	$rgname = "filter"
     $location = "westus"
@@ -182,7 +190,7 @@ function Test-ExpressRouteRouteFilters
 .SYNOPSIS
 Tests ExpressRouteCrossConnection Peering Stats APIs
 #>
-function Test-ExpressRouteCircuitStageCRUD
+function Test-ExpressRouteCrossConnectionStatsApis
 {
     # Create the resource group
       $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation
