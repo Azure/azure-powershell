@@ -75,7 +75,7 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzureRmCognitiveServicesAccount', 
                'Get-AzureRmCognitiveServicesAccountKey', 
                'Get-AzureRmCognitiveServicesAccountSkus', 
-			   'Get-AzureRmCognitiveServicesAccountUsages', 
+			   'Get-AzureRmCognitiveServicesAccountUsage', 
                'New-AzureRmCognitiveServicesAccount', 
                'New-AzureRmCognitiveServicesAccountKey', 
                'Remove-AzureRmCognitiveServicesAccount', 

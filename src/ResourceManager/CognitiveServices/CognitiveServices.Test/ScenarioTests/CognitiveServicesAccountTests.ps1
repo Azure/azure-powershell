@@ -523,10 +523,22 @@ function Test-GetUsages
         New-AzureRmResourceGroup -Name $rgname -Location $loc;
 
         $createdAccount = New-AzureRmCognitiveServicesAccount -ResourceGroupName $rgname -Name $accountname -Type $accounttype -SkuName $skuname -Location $loc -Force;
-		$usages = Get-AzureRmCognitiveServicesAccountUsages -ResourceGroupName $rgname -Name $accountname
-		Assert-True {$usages.Count -gt 0}
-		Assert-AreEqual 0.0 $usages[0].CurrentValue
-		Assert-True {$usages[0].Limit -gt 0}
+		$usages1 = Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName $rgname -Name $accountname
+		$usages2 = Get-AzureRmCognitiveServicesAccountUsage -InputObject $createdAccount
+		$usages3 = Get-AzureRmCognitiveServicesAccountUsage -ResourceId $createdAccount.Id
+
+		Assert-True {$usages1.Count -gt 0}
+		Assert-AreEqual 0.0 $usages1[0].CurrentValue
+		Assert-True {$usages1[0].Limit -gt 0}
+
+		Assert-AreEqual $usages1.Count $usages2.Count
+		Assert-AreEqual $usages2.Count $usages3.Count
+
+		Assert-AreEqual $usages1[0].CurrentValue $usages2[0].CurrentValue
+		Assert-AreEqual $usages2[0].CurrentValue $usages3[0].CurrentValue
+
+		Assert-AreEqual $usages1[0].Limit $usages2[0].Limit
+		Assert-AreEqual $usages2[0].Limit $usages3[0].Limit
     }
     finally
     {

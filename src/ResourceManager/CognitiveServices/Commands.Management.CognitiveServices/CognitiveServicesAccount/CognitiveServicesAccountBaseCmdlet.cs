@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         protected const string CognitiveServicesAccountNounStr = "AzureRmCognitiveServicesAccount";
         protected const string CognitiveServicesAccountKeyNounStr = CognitiveServicesAccountNounStr + "Key";
         protected const string CognitiveServicesAccountSkusNounStr = CognitiveServicesAccountNounStr + "Skus";
-        protected const string CognitiveServicesAccountUsagesNounStr = CognitiveServicesAccountNounStr + "Usages";
+        protected const string CognitiveServicesAccountUsagesNounStr = CognitiveServicesAccountNounStr + "Usage";
 
         protected const string CognitiveServicesAccountNameAlias = "CognitiveServicesAccountName";
         protected const string AccountNameAlias = "AccountName";
