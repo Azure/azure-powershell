@@ -407,7 +407,9 @@
           Condition="'$(Scope)' == 'AzureRM.Netcore' or '$(Netcore)' == 'true'"
           ContinueOnError="false" />
 
-    <CallTarget Targets="GenerateHelp"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
+          Condition="'$(SkipHelp)' == 'false'"
+          ContinueOnError="false"/>
 
     <!-- Cleanup extraneous files. -->
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\CleanupBuild.ps1 -BuildConfig $(Configuration) &quot;" />
