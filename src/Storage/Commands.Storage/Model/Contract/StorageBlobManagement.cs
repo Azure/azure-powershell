@@ -93,7 +93,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
         public IEnumerable<CloudBlobContainer> ListContainers(string prefix, ContainerListingDetails detailsIncluded, BlobRequestOptions options, OperationContext operationContext)
         {
-            return this.BlobClient.ListContainers(prefix, detailsIncluded, options, operationContext);
+            //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
+            BlobContinuationToken continuationToken = null;
+            var results = new List<CloudBlobContainer>();
+            do
+            {
+                var response = BlobClient.ListContainersSegmentedAsync(prefix, detailsIncluded, null, continuationToken, options, operationContext).Result;
+                continuationToken = response.ContinuationToken;
+                results.AddRange(response.Results);
+            } while (continuationToken != null);
+            return results;
         }
 
         /// <summary>
@@ -106,7 +115,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>The container's permission</returns>
         public BlobContainerPermissions GetContainerPermissions(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
-            return container.GetPermissions(accessCondition, options, operationContext);
+            return container.GetPermissionsAsync(accessCondition, options, operationContext).Result;
         }
 
         /// <summary>
@@ -128,7 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>True if the container did not already exist and was created; otherwise false.</returns>
         public bool CreateContainerIfNotExists(CloudBlobContainer container, BlobRequestOptions requestOptions, OperationContext operationContext)
         {
-            return container.CreateIfNotExists(requestOptions, operationContext);
+            return container.CreateIfNotExistsAsync(requestOptions, operationContext).Result;
         }
 
         /// <summary>
@@ -140,7 +149,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void DeleteContainer(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
-            container.Delete(accessCondition, options, operationContext);
+            container.DeleteAsync(accessCondition, options, operationContext).RunSynchronously();
         }
 
         /// <summary>
@@ -153,7 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void SetContainerPermissions(CloudBlobContainer container, BlobContainerPermissions permissions, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
-            container.SetPermissions(permissions, accessCondition, options, operationContext);
+            container.SetPermissionsAsync(permissions, accessCondition, options, operationContext).RunSynchronously();
         }
 
         /// <summary>
@@ -197,7 +206,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of CloudBlob</returns>
         public IEnumerable<IListBlobItem> ListBlobs(CloudBlobContainer container, string prefix, bool useFlatBlobListing, BlobListingDetails blobListingDetails, BlobRequestOptions options, OperationContext operationContext)
         {
-            return container.ListBlobs(prefix, useFlatBlobListing, blobListingDetails, options, operationContext);
+            //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
+            BlobContinuationToken continuationToken = null;
+            var results = new List<IListBlobItem>();
+            do
+            {
+                var response = container.ListBlobsSegmentedAsync(prefix, useFlatBlobListing, blobListingDetails, null, continuationToken, options, operationContext).Result;
+                continuationToken = response.ContinuationToken;
+                results.AddRange(response.Results);
+            } while (continuationToken != null);
+            return results;
         }
 
         /// <summary>
@@ -215,7 +233,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             }
             else
             {
-                return container.Exists(options, operationContext);
+                return container.ExistsAsync(options, operationContext).Result;
             }
         }
 
@@ -234,7 +252,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             }
             else
             {
-                return blob.Exists(options, operationContext);
+                return blob.ExistsAsync(options, operationContext).Result;
             }
         }
 
@@ -248,7 +266,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of CloudBlob</returns>
         public void DeleteCloudBlob(CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
-            blob.Delete(deleteSnapshotsOption, accessCondition, options, operationContext);
+            blob.DeleteAsync(deleteSnapshotsOption, accessCondition, options, operationContext).RunSynchronously();
         }
 
         /// <summary>
@@ -260,7 +278,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
         public void FetchContainerAttributes(CloudBlobContainer container, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
-            container.FetchAttributes(accessCondition, options, operationContext);
+            container.FetchAttributesAsync(accessCondition, options, operationContext).RunSynchronously();
         }
 
         /// <summary>
@@ -271,7 +289,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
         public void FetchBlobAttributes(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
-            blob.FetchAttributes(accessCondition, options, operationContext);
+            blob.FetchAttributesAsync(accessCondition, options, operationContext).RunSynchronously();
         }
 
         /// <summary>
@@ -282,7 +300,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
         public void SetBlobProperties(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
-            blob.SetProperties(accessCondition, options, operationContext);
+            blob.SetPropertiesAsync(accessCondition, options, operationContext).RunSynchronously();
         }
 
         /// <summary>
@@ -294,7 +312,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
         public void SetBlobMetadata(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
-            blob.SetMetadata(accessCondition, options, operationContext);
+            blob.SetMetadataAsync(accessCondition, options, operationContext).RunSynchronously();
         }
 
         /// <summary>
@@ -309,7 +327,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         {
             try
             {
-                blob.AbortCopy(copyId, accessCondition, options, operationContext);
+                blob.AbortCopyAsync(copyId, accessCondition, options, operationContext).RunSynchronously();
             }
             catch (StorageException e)
             {
@@ -339,13 +357,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             switch (type)
             {
                 case StorageServiceType.Blob:
-                    return account.CreateCloudBlobClient().GetServiceProperties((BlobRequestOptions)options, operationContext);
+                    return account.CreateCloudBlobClient().GetServicePropertiesAsync((BlobRequestOptions)options, operationContext).Result;
                 case StorageServiceType.Queue:
-                    return account.CreateCloudQueueClient().GetServiceProperties((QueueRequestOptions)options, operationContext);
+                    return account.CreateCloudQueueClient().GetServicePropertiesAsync((QueueRequestOptions)options, operationContext).Result;
                 case StorageServiceType.Table:
-                    return account.CreateCloudTableClient().GetServiceProperties((TableRequestOptions)options, operationContext);
+                    return account.CreateCloudTableClient().GetServicePropertiesAsync((TableRequestOptions)options, operationContext).Result;
                 case StorageServiceType.File:
-                    FileServiceProperties fileServiceProperties = account.CreateCloudFileClient().GetServiceProperties((FileRequestOptions)options, operationContext);
+                    FileServiceProperties fileServiceProperties = account.CreateCloudFileClient().GetServicePropertiesAsync((FileRequestOptions)options, operationContext).Result;
                     ServiceProperties sp = new ServiceProperties();
                     sp.Clean();
                     sp.Cors = fileServiceProperties.Cors;
@@ -371,13 +389,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             switch (type)
             {
                 case StorageServiceType.Blob:
-                    account.CreateCloudBlobClient().SetServiceProperties(properties, (BlobRequestOptions)options, operationContext);
+                    account.CreateCloudBlobClient().SetServicePropertiesAsync(properties, (BlobRequestOptions)options, operationContext).RunSynchronously();
                     break;
                 case StorageServiceType.Queue:
-                    account.CreateCloudQueueClient().SetServiceProperties(properties, (QueueRequestOptions)options, operationContext);
+                    account.CreateCloudQueueClient().SetServicePropertiesAsync(properties, (QueueRequestOptions)options, operationContext).RunSynchronously();
                     break;
                 case StorageServiceType.Table:
-                    account.CreateCloudTableClient().SetServiceProperties(properties, (TableRequestOptions)options, operationContext);
+                    account.CreateCloudTableClient().SetServicePropertiesAsync(properties, (TableRequestOptions)options, operationContext).RunSynchronously();
                     break;
                 case StorageServiceType.File:
                     if (null != properties.Logging)
@@ -389,7 +407,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     fileServiceProperties.Cors = properties.Cors;
                     fileServiceProperties.HourMetrics = properties.HourMetrics;
                     fileServiceProperties.MinuteMetrics = properties.MinuteMetrics;
-                    account.CreateCloudFileClient().SetServiceProperties(fileServiceProperties, (FileRequestOptions)options, operationContext);
+                    account.CreateCloudFileClient().SetServicePropertiesAsync(fileServiceProperties, (FileRequestOptions)options, operationContext).RunSynchronously();
                     break;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
@@ -633,7 +651,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public BlobResultSegment ListBlobsSegmented(CloudBlobContainer container, string prefix, bool useFlatBlobListing,
             BlobListingDetails blobListingDetails, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, OperationContext operationContext)
         {
-            return container.ListBlobsSegmented(prefix, useFlatBlobListing, blobListingDetails, maxResults, currentToken, options, operationContext);
+            return container.ListBlobsSegmentedAsync(prefix, useFlatBlobListing, blobListingDetails, maxResults, currentToken, options, operationContext).Result;
         }
 
         /// <summary>
@@ -646,7 +664,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
         public ContainerResultSegment ListContainersSegmented(string prefix, ContainerListingDetails detailsIncluded, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, OperationContext operationContext)
         {
-            return this.BlobClient.ListContainersSegmented(prefix, detailsIncluded, maxResults, currentToken, options, operationContext);
+            return this.BlobClient.ListContainersSegmentedAsync(prefix, detailsIncluded, maxResults, currentToken, options, operationContext).Result;
         }
 
         /// <summary>

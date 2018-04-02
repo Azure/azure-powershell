@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             if (string.IsNullOrEmpty(policyIdentifier)) return true;
             CloudFileShare fileShare = channel.GetShareReference(shareName);
-            FileSharePermissions permission = fileShare.GetPermissions();
+            FileSharePermissions permission = fileShare.GetPermissionsAsync().Result;
 
             SharedAccessFilePolicy sharedAccessPolicy =
                 GetExistingPolicy<SharedAccessFilePolicy>(permission.SharedAccessPolicies, policyIdentifier);

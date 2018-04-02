@@ -18,14 +18,14 @@ List billing periods
 #>
 function Test-ListBillingPeriods
 {
-    $billingBillingPeriods = Get-AzureRmBillingPeriod
+    $billingPeriods = Get-AzureRmBillingPeriod
 
-    Assert-True {$billingBillingPeriods.Count -ge 1}
-	Assert-NotNull $billingBillingPeriods[0].Name
-	Assert-NotNull $billingBillingPeriods[0].Id
-	Assert-NotNull $billingBillingPeriods[0].Type
-	Assert-NotNull $billingBillingPeriods[0].BillingPeriodStartDate
-	Assert-NotNull $billingBillingPeriods[0].BillingPeriodEndDate
+    Assert-True {$billingPeriods.Count -ge 1}
+	Assert-NotNull $billingPeriods[0].Name
+	Assert-NotNull $billingPeriods[0].Id
+	Assert-NotNull $billingPeriods[0].Type
+	Assert-NotNull $billingPeriods[0].BillingPeriodStartDate
+	Assert-NotNull $billingPeriods[0].BillingPeriodEndDate
 }
 
 <#
@@ -34,14 +34,14 @@ List billing periods with MaxCount
 #>
 function Test-ListBillingPeriodsWithMaxCount
 {
-    $billingBillingPeriods = Get-AzureRmBillingPeriod -MaxCount 1
+    $billingPeriods = Get-AzureRmBillingPeriod -MaxCount 1
 
-    Assert-True {$billingBillingPeriods.Count -eq 1}
-	Assert-NotNull $billingBillingPeriods[0].Name
-	Assert-NotNull $billingBillingPeriods[0].Id
-	Assert-NotNull $billingBillingPeriods[0].Type
-	Assert-NotNull $billingBillingPeriods[0].BillingPeriodStartDate
-	Assert-NotNull $billingBillingPeriods[0].BillingPeriodEndDate
+    Assert-True {$billingPeriods.Count -eq 1}
+	Assert-NotNull $billingPeriods[0].Name
+	Assert-NotNull $billingPeriods[0].Id
+	Assert-NotNull $billingPeriods[0].Type
+	Assert-NotNull $billingPeriods[0].BillingPeriodStartDate
+	Assert-NotNull $billingPeriods[0].BillingPeriodEndDate
 }
 
 <#
@@ -50,7 +50,12 @@ Get billing period with specified name
 #>
 function Test-GetBillingPeriodWithName
 {
-	$billingPeriodName = "201705-1"
+    $billingPeriods = Get-AzureRmBillingPeriod | where { $_.InvoiceNames.Count -eq 1 }
+    Assert-True {$billingPeriods.Count -ge 1}
+
+	$billingPeriodName = $billingPeriods[0].Name
+	$billingInvoiceName = $billingPeriods[0].InvoiceNames[0]
+
     $billingPeriod = Get-AzureRmBillingPeriod -Name $billingPeriodName
 
 	Assert-AreEqual $billingPeriodName $billingPeriod.Name
@@ -60,7 +65,7 @@ function Test-GetBillingPeriodWithName
 	Assert-NotNull $billingPeriod.BillingPeriodEndDate
 	Assert-NotNull $billingPeriod.InvoiceNames
 	Assert-AreEqual 1 $billingPeriod.InvoiceNames.Count
-	Assert-AreEqual "201705-217994100075389" $billingPeriod.InvoiceNames
+	Assert-AreEqual $billingInvoiceName $billingPeriod.InvoiceNames
 }
 
 <#
@@ -69,17 +74,18 @@ Get billing period with specified names
 #>
 function Test-GetBillingPeriodWithNames
 {
-	$billingPeriodNames = "201705-1", "201704-1", "201703-1"
-    $billingBillingPeriods = Get-AzureRmBillingPeriod -Name $billingPeriodNames
+    $sampleBillingPeriods = Get-AzureRmBillingPeriod
+    Assert-True {$sampleBillingPeriods.Count -gt 1}
 
-    Assert-True {$billingBillingPeriods.Count -eq 3}
-	Foreach($billingPeriod in $billingBillingPeriods)
+	$billingPeriodNames = $sampleBillingPeriods | %{ $_.Name }
+    $billingPeriods = Get-AzureRmBillingPeriod -Name $billingPeriodNames
+
+    Assert-AreEqual $sampleBillingPeriods.Count $billingPeriods.Count
+	Foreach($billingPeriod in $billingPeriods)
 	{
 		Assert-NotNull $billingPeriod.Id
 		Assert-NotNull $billingPeriod.Type
 		Assert-NotNull $billingPeriod.BillingPeriodStartDate
 		Assert-NotNull $billingPeriod.BillingPeriodEndDate
-		Assert-NotNull $billingPeriod.InvoiceNames
-		Assert-AreEqual 1 $billingPeriod.InvoiceNames.Count
 	}
 }
