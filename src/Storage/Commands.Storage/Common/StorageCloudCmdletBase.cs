@@ -589,7 +589,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             OperationContext.GlobalSendingRequest +=
                 (sender, args) =>
                 {
+                    //https://github.com/Azure/azure-storage-net/issues/658
+#if !NETSTANDARD
                     args.Request.UserAgent = Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.UserAgent + " " + ApiConstants.UserAgentHeaderValue;
+#endif
                 };
 
             base.BeginProcessing();
@@ -621,6 +624,24 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             //ctrl + c and etc
             cancellationTokenSource.Cancel();
             base.StopProcessing();
+        }
+
+        /// <summary>
+        /// true if FIPS policy is enabled on the current machine
+        /// </summary>
+        public static bool fipsEnabled { get; } = IsFIPSEnabled();
+
+        internal static bool IsFIPSEnabled()
+        {
+            try
+            {
+                System.Security.Cryptography.MD5.Create();
+                return false;
+            }
+            catch (System.Reflection.TargetInvocationException)
+            {
+                return true;
+            }
         }
     }
 }
