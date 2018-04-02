@@ -277,7 +277,7 @@
     <!-- Update modules -->
     <CallTarget Targets="UpdateModules"/>
 
-    <Exec ContinueOnError="false" 
+    <Exec ContinueOnError="false"
           Command="$(PowerShellCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;"
           Condition=" '$(SkipHelp)' == 'false'"/>
 
@@ -632,7 +632,7 @@
   </PropertyGroup>
 
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
-  <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
+  <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.Test.targets"/>
 
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
