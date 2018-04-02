@@ -209,7 +209,7 @@
     <PowerShellCoreCommand Condition=" '$(PowerShellCoreCommand)' == '' ">pwsh</PowerShellCoreCommand>
     <!-- All PowerShell commands have this prefix  -->
     <PowerShellCommandPrefix>&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCommandPrefix>
-    <PowerShellCoreCommandPrefix>&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
+    <PowerShellCoreCommandPrefix>&quot;$(PowerShellCoreCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command</PowerShellCoreCommandPrefix>
   </PropertyGroup>
 
   <!--
