@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if ( ShouldProcess( Name, Properties.Resources.RecoverCertificate ) )
             {
+                WriteWarning("Undo-AzureKeyVaultCertificateRemoval: The output of the cmdlet will be changing from CertificateBundle to PSKeyVaultCertificate in May 2018");
                 CertificateBundle certificate = DataServiceClient.RecoverCertificate(VaultName, Name);
 
                 WriteObject( certificate );

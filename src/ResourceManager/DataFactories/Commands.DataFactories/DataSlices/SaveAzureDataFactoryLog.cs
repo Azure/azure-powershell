@@ -99,7 +99,12 @@ namespace Microsoft.Azure.Commands.DataFactories
             bool writeDeny = false;
             try
             {
+#if NETSTANDARD
+                //https://stackoverflow.com/a/41019841/294804
+                var accessControlList = new DirectorySecurity(directory, AccessControlSections.All);
+#else
                 DirectorySecurity accessControlList = Directory.GetAccessControl(directory);
+#endif
                 if (accessControlList == null)
                 {
                     return false;
