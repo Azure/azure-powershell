@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         [Parameter(ParameterSetName = ParameterSetNames.PolicyDefinitionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Top)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Top)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Top)]
-        public int? Top { get; set; }
+        public int Top { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         [Parameter(ParameterSetName = ParameterSetNames.PolicyDefinitionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
-        public DateTime? From { get; set; }
+        public DateTime From { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         [Parameter(ParameterSetName = ParameterSetNames.PolicyDefinitionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
         [Parameter(ParameterSetName = ParameterSetNames.ResourceGroupLevelPolicyAssignmentScope, Mandatory = false, HelpMessage = ParameterHelpMessages.From)]
-        public DateTime? To { get; set; }
+        public DateTime To { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Filter)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.Filter)]
@@ -114,9 +114,9 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         {
             var queryOptions = new RestApiModels.QueryOptions
             {
-                Top = Top,
-                FromProperty = From,
-                To = To,
+                Top = MyInvocation.BoundParameters.ContainsKey("Top") ? (int?)Top : null,
+                FromProperty = MyInvocation.BoundParameters.ContainsKey("From") ? (DateTime?)From : null,
+                To = MyInvocation.BoundParameters.ContainsKey("To") ? (DateTime?)To : null,
                 Filter = Filter
             };
 
