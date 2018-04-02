@@ -44,8 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.2-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.3-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
     </Reference>
     <Reference Include="Security.Cryptography">
       <HintPath>Utilities\Security.Cryptography.dll</HintPath>
@@ -74,6 +73,7 @@
     <Compile Include="Common\PSAsrStorageClassificationClient.cs" />
     <Compile Include="Common\AsrCmdletBase.cs" />
     <Compile Include="Common\PSAsrVCenterClient.cs" />
+    <Compile Include="DiskReplicationConfiguration\AzureRmAsrAzureToAzureDiskReplicationConfig.cs" />
     <Compile Include="Event\GetAzureRmRecoveryServicesAsrEvent.cs" />
     <Compile Include="Fabrics\GetAzureRmRecoveryServicesAsrFabric.cs" />
     <Compile Include="Fabrics\NewAzureRmRecoveryServicesAsrFabric.cs" />
@@ -102,6 +102,8 @@
     <Compile Include="ProtectionContainerMapping\NewAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
     <Compile Include="ProtectionContainerMapping\RemoveAzureRmRecoveryServicesAsrProtectionContainerMapping.cs" />
     <Compile Include="ProtectionContainer\GetAzureRmRecoveryServicesAsrProtectionContainer.cs" />
+    <Compile Include="ProtectionContainer\NewAzureRmRecoveryServicesAsrProtectionContainer.cs" />
+    <Compile Include="ProtectionContainer\RemoveAzureRmRecoveryServicesAsrProtectionContainer.cs" />
     <Compile Include="RecoveryPlan\EditAzureRmRecoveryServicesAsrRecoveryPlan.cs" />
     <Compile Include="RecoveryPlan\NewAzureRmRecoveryServicesAsrRecoveryPlan.cs" />
     <Compile Include="RecoveryPoint\GetAzureRmRecoveryServicesAsrRecoveryPoint.cs" />
@@ -143,8 +145,8 @@
     <Compile Include="Utilities\CertUtils.cs" />
     <Compile Include="Utilities\SiteRecoveryAutoMapperProfile.cs" />
     <Compile Include="Utilities\Utilities.cs" />
-    <Compile Include="Vault\SetAzureRmRecoveryServicesAsrVaultSettings.cs" />
-    <Compile Include="Vault\GetAzureRmRecoveryServicesAsrVaultSettings.cs" />
+    <Compile Include="Vault\SetAzureRmRecoveryServicesAsrVaultContext.cs" />
+    <Compile Include="Vault\GetAzureRmRecoveryServicesAsrVaultContext.cs" />
     <Compile Include="Vault\ImportAzureRmRecoveryServicesAsrVaultSettingsFile.cs" />
     <Compile Include="vCenter\GetAzureRmRecoveryServicesAsrvCenter.cs" />
     <Compile Include="vCenter\NewAzureRmRecoveryServicesAsrvCenter.cs" />

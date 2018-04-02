@@ -13,13 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using System.Web.Script.Serialization;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.Azure;
+using Newtonsoft.Json;
+using CertificateRequest = Microsoft.Azure.Management.RecoveryServices.Models.CertificateRequest;
 using rpError = Microsoft.Azure.Commands.RecoveryServices.RestApiInfra;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
@@ -150,8 +150,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 if (cloudException != null && cloudException.Response != null
                     && !string.IsNullOrEmpty(cloudException.Response.Content))
                 {
-                    JavaScriptSerializer serializer = new JavaScriptSerializer();
-                    rpError.Error error = serializer.Deserialize<rpError.Error>(cloudException.Response.Content);
+                    rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(cloudException.Response.Content);
 
                     if (error.ErrorCode.Equals(
                         RpErrorCode.ResourceExtendedInfoNotFound.ToString(),

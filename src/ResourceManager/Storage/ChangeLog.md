@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.2.2
 * Fix examples to reflect required lowercase syntax in StorageAccountName
 * Fix issue with Default Resource Group in CloudShell
 
