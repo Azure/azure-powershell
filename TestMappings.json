@@ -203,5 +203,8 @@
   ],
   "tools/BuildPackagesTask/": [
     ".\\tools\\BuildPackagesTask\\Microsoft.Azure.Build.Tasks.Test\\bin\\Debug\\Microsoft.Azure.Build.Tasks.Test.dll"
+  ],
+  "tools/RepoTasks/": [
+    ".\\tools\\RepoTasks\\RepoTasks.Cmdlets.Tests\\bin\\Debug\\RepoTasks.Cmdlets.Tests.dll"
   ]
 }

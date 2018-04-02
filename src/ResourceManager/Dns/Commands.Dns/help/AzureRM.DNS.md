@@ -1,6 +1,6 @@
 ---
 Module Name: AzureRM.Dns
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 5e5ed8bc-27bf-4380-9de1-4b22ba0920b2
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
