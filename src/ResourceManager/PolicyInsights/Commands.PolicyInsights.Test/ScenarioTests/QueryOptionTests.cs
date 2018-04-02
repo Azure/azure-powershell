@@ -32,49 +32,49 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void QueryOptions_QueryResultsWithFrom()
+        public void QueryResultsWithFrom()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithFrom");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void QueryOptions_QueryResultsWithTo()
+        public void QueryResultsWithTo()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithTo");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void QueryOptions_QueryResultsWithTop()
+        public void QueryResultsWithTop()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithTop");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void QueryOptions_QueryResultsWithOrderBy()
+        public void QueryResultsWithOrderBy()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithOrderBy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void QueryOptions_QueryResultsWithSelect()
+        public void QueryResultsWithSelect()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithSelect");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void QueryOptions_QueryResultsWithFilter()
+        public void QueryResultsWithFilter()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void QueryOptions_QueryResultsWithApply()
+        public void QueryResultsWithApply()
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "QueryOptions-QueryResultsWithApply");
         }

@@ -201,121 +201,121 @@
     <None Include="ScenarioTests\PolicyEventTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\Get_AzureRmPolicyEvent_ManagementGroupScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\ManagementGroupScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\Get_AzureRmPolicyEvent_PolicyDefinitionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\PolicyDefinitionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\Get_AzureRmPolicyEvent_PolicySetDefinitionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\PolicySetDefinitionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\Get_AzureRmPolicyEvent_ResourceGroupLevelPolicyAssignmentScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\ResourceGroupLevelPolicyAssignmentScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\Get_AzureRmPolicyEvent_ResourceGroupScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\ResourceGroupScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\Get_AzureRmPolicyEvent_ResourceScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\ResourceScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\Get_AzureRmPolicyEvent_SubscriptionLevelPolicyAssignmentScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\SubscriptionLevelPolicyAssignmentScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\Get_AzureRmPolicyEvent_SubscriptionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyEventTests\SubscriptionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\Get_AzureRmPolicyStateSummary_ManagementGroupScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\ManagementGroupScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\Get_AzureRmPolicyStateSummary_PolicyDefinitionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\PolicyDefinitionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\Get_AzureRmPolicyStateSummary_PolicySetDefinitionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\PolicySetDefinitionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\Get_AzureRmPolicyStateSummary_ResourceGroupLevelPolicyAssignmentScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\ResourceGroupLevelPolicyAssignmentScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\Get_AzureRmPolicyStateSummary_ResourceGroupScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\ResourceGroupScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\Get_AzureRmPolicyStateSummary_ResourceScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\ResourceScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\Get_AzureRmPolicyStateSummary_SubscriptionLevelPolicyAssignmentScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\SubscriptionLevelPolicyAssignmentScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\Get_AzureRmPolicyStateSummary_SubscriptionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateSummaryTests\SubscriptionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_AllManagementGroupScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\AllManagementGroupScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_AllPolicyDefinitionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\AllPolicyDefinitionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_AllPolicySetDefinitionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\AllPolicySetDefinitionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_AllResourceGroupLevelPolicyAssignmentScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\AllResourceGroupLevelPolicyAssignmentScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_AllResourceGroupScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\AllResourceGroupScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_AllResourceScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\AllResourceScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_AllSubscriptionLevelPolicyAssignmentScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\AllSubscriptionLevelPolicyAssignmentScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_AllSubscriptionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\AllSubscriptionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_LatestManagementGroupScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\LatestManagementGroupScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_LatestPolicyDefinitionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\LatestPolicyDefinitionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_LatestPolicySetDefinitionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\LatestPolicySetDefinitionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_LatestResourceGroupLevelPolicyAssignmentScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\LatestResourceGroupLevelPolicyAssignmentScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_LatestResourceGroupScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\LatestResourceGroupScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_LatestResourceScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\LatestResourceScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_LatestSubscriptionLevelPolicyAssignmentScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\LatestSubscriptionLevelPolicyAssignmentScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\Get_AzureRmPolicyState_LatestSubscriptionScope.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.PolicyStateTests\LatestSubscriptionScope.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryOptions_QueryResultsWithApply.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryResultsWithApply.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryOptions_QueryResultsWithFilter.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryResultsWithFilter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryOptions_QueryResultsWithFrom.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryResultsWithFrom.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryOptions_QueryResultsWithOrderBy.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryResultsWithOrderBy.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryOptions_QueryResultsWithSelect.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryResultsWithSelect.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryOptions_QueryResultsWithTo.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryResultsWithTo.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryOptions_QueryResultsWithTop.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests.QueryOptionTests\QueryResultsWithTop.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
