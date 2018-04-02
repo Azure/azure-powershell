@@ -1,6 +1,6 @@
 ---
 Module Name: AzureRM.Network
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: eb75c732-e274-4a20-b502-e9958e63484a
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
