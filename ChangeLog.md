@@ -1,4 +1,43 @@
-﻿## 5.6.0 - March 2018
+﻿## 5.7.0 - April 2018
+
+#### General
+* Updated to the latest version of the Azure ClientRuntime
+
+#### Azure.Storage
+* Fix the issue that upload Blob and upload File cmdlets fail on FIPS policy enabled machines
+	- Set-AzureStorageBlobContent
+	- Set-AzureStorageFileContent
+
+#### AzureRM.Billing
+* New Cmdlet Get-AzureRmEnrollmentAccount
+  - cmdlet to retrieve enrollment accounts
+
+#### AzureRM.CognitiveServices
+* Integrate with Cognitive Services Management SDK version 4.0.0.
+* Add Get-AzureRmCognitiveServicesAccountUsage operation.
+
+#### AzureRM.Compute
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support availability zones.
+
+#### AzureRM.ContainerRegistry
+* Decouple reliance on Commands.Resources.Rest and ARM/Storage SDKs.
+
+#### AzureRM.KeyVault
+* Updated cmdlets to include piping scenarios
+* Add deprecation messages for upcoming breaking change release
+
+#### AzureRM.Network
+* Fix error message with Network cmdlets
+
+#### AzureRM.ServiceBus
+* updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
+* Fixed auto-forward properties in New-AzureRmServiceBusQueue and New-AzureRmServiceBusSubscription cmdlet
+
+#### AzureRM.Sql
+* Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
+* Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response
+
+## 5.6.0 - March 2018
 
 #### General
 * Fix issue with Default Resource Group in CloudShell
