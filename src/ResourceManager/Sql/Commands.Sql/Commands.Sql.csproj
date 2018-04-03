@@ -284,6 +284,8 @@
     <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationCommunicator.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseRestorePointCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseRestorePoints.cs" />
+    <Compile Include="Database Backup\Cmdlet\NewAzureSqlDatabaseRestorePoint.cs" />
+    <Compile Include="Database Backup\Cmdlet\RemoveAzureSqlDatabaseRestorePoint.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseRestorePointModel.cs" />
     <Compile Include="Database Backup\Services\AzureSqlDatabaseBackupAdapter.cs" />
     <Compile Include="Database Backup\Services\AzureSqlDatabaseBackupCommunicator.cs" />
