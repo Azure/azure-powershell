@@ -101,9 +101,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:
-                    ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
-                    PSKeyVault vault = null;
-
+                    // If VaultName == null, list
                     if (string.IsNullOrEmpty(VaultName))
                     {
                         GetAndWriteObjects<PSKeyVaultIdentityItem>(
@@ -116,12 +114,27 @@ namespace Microsoft.Azure.Commands.KeyVault
                         break;
                     }
 
-                    if (!string.IsNullOrWhiteSpace(ResourceGroupName))
-                        vault = KeyVaultManagementClient.GetVault(
-                                                    VaultName,
-                                                    ResourceGroupName,
-                                                    ActiveDirectoryClient);
-                    WriteObject(vault);
+                    // Else if RG == null, list to find it
+                    // As of 4/3/18, the ARM client trims results to 1000, so we're using the more expensive ListVaults op.
+                    if (string.IsNullOrWhiteSpace(ResourceGroupName))
+                    {
+                        PSKeyVaultIdentityItem vaultListItem = null;
+                        var options = new KeyVaultResourceFilterOptions();
+                        do
+                        {
+                            var pageResults = KeyVaultManagementClient.ListVaults(options);
+                            vaultListItem = pageResults.Find(it => it.VaultName.Equals(VaultName, StringComparison.CurrentCultureIgnoreCase));
+                        } while (vaultListItem == null
+                            &&!string.IsNullOrEmpty(options.NextLink));
+
+                        // no matching vault
+                        if (vaultListItem == null)
+                            break;
+
+                        ResourceGroupName = vaultListItem.ResourceGroupName;
+                    }
+
+                    WriteObject(KeyVaultManagementClient.GetVault(VaultName, ResourceGroupName, ActiveDirectoryClient));
                     break;
 
                 case ListVaultsBySubParameterSet:
