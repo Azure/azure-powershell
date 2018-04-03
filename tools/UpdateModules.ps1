@@ -211,7 +211,7 @@ function Find-CompleterAttribute {
                 $parameters = $currentCmdlet.GetProperties()
                 foreach ($parameter in $parameters) {
                     $completerAttribute = $parameter.CustomAttributes | Where-Object {$_.AttributeType.BaseType.Name -eq "PSCompleterBaseAttribute"}
-                    if ($completerAttribute -ne $null) {                        
+                    if ($completerAttribute -ne $null) {
                         $attributeTypeName = "System.Management.Automation.CmdletAttribute"
                         $constructedCommands += "@{'Command' = '" + $currentCmdlet.GetCustomAttributes($attributeTypeName).VerbName + "-" + $currentCmdlet.GetCustomAttributes($attributeTypeName).NounName + "'; "
                         $constructedCommands += "'Parameter' = '" + $parameter.Name + "'; "
@@ -433,6 +433,11 @@ function Update-Stack {
         [ValidateSet('Debug', 'Release')]
         [String]$BuildConfig
     )
+
+    Write-Host "Updating profile module for stack"
+    New-ModulePsm1 -ModulePath "$script:StackRMRoot\AzureRM.Profile" -TemplatePath $script:TemplateLocation -IsRMModule
+    Write-Host "Updated profile module"
+    Write-Host " "
 
     $StackRMModules = Get-ChildItem -Path $script:StackRMRoot -Directory
     Write-Host "Updating stack modules"
