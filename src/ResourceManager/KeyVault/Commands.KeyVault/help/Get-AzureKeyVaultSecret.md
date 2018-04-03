@@ -49,6 +49,24 @@ Get-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVe
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByResourceIdVaultName
+```
+Get-AzureKeyVaultSecret [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdSecretName
+```
+Get-AzureKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdSecretVersions
+```
+Get-AzureKeyVaultSecret [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzureKeyVaultSecret** cmdlet gets secrets in a key vault.
 This cmdlet gets a specific secret or all the secrets in a key vault.
@@ -132,7 +150,7 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: BySecretVersions, ByInputObjectSecretVersions
+Parameter Sets: BySecretVersions, ByInputObjectSecretVersions, ByResourceIdSecretVersions
 Aliases:
 
 Required: True
@@ -162,7 +180,7 @@ Specifies whether to show the previously deleted secrets in the output
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByVaultName, ByInputObjectVaultName
+Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
 Aliases:
 
 Required: False
@@ -177,23 +195,38 @@ Specifies the name of the secret to get.
 
 ```yaml
 Type: String
-Parameter Sets: ByVaultName, ByInputObjectVaultName
+Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
 Aliases: SecretName
 
 Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: String
-Parameter Sets: BySecretName, BySecretVersions, ByInputObjectSecretName, ByInputObjectSecretVersions
+Parameter Sets: BySecretName, BySecretVersions, ByInputObjectSecretName, ByInputObjectSecretVersions, ByResourceIdSecretName, ByResourceIdSecretVersions
 Aliases: SecretName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdVaultName, ByResourceIdSecretName, ByResourceIdSecretVersions
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -211,7 +244,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -221,13 +254,13 @@ This cmdlet constructs the FQDN of a secret based on the key vault name, your cu
 
 ```yaml
 Type: String
-Parameter Sets: BySecretName, ByInputObjectSecretName
+Parameter Sets: BySecretName, ByInputObjectSecretName, ByResourceIdSecretName
 Aliases: SecretVersion
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
