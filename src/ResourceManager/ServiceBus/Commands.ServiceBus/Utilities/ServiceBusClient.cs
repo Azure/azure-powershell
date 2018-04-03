@@ -580,6 +580,9 @@ namespace Microsoft.Azure.Commands.ServiceBus
             if (!string.IsNullOrEmpty(parameter.PartnerNamespace))
                 Parameter1.PartnerNamespace = parameter.PartnerNamespace;
 
+            if (!string.IsNullOrEmpty(parameter.AlternateName))
+                Parameter1.AlternateName = parameter.AlternateName;
+
             var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
             return new PSServiceBusDRConfigurationAttributes(response);
         }
