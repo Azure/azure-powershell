@@ -77,7 +77,7 @@ function Get-TargetModules
           foreach ($module in $resourceManagerModules) {
             # filter out AzureRM.Profile which always gets published first 
             # And "Azure.Storage" which is built out as test dependencies  
-            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and ($module.Name -ne "AzureRM.Profile.Netcore")-and ($module.Name -ne "Azure.Storage.Netcore")) {
+            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and ($module.Name -ne "AzureRM.Profile.Netcore") -and ($module.Name -ne "Azure.Storage.Netcore")) {
               $targets += $module.FullName
             }
           }
