@@ -223,33 +223,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private VirtualMachineScaleSetIdentity GetVmssIdentityFromArgs()
         {
-            VirtualMachineScaleSetIdentity identityConfig = null;
-            if (SystemAssignedIdentity || !string.IsNullOrWhiteSpace(UserAssignedIdentity))
-            {
-                identityConfig = new VirtualMachineScaleSetIdentity();
-
-                if (!string.IsNullOrWhiteSpace(UserAssignedIdentity))
+            var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
+            return SystemAssignedIdentity || isUserAssignedEnabled
+                ? new VirtualMachineScaleSetIdentity
                 {
-                    List<string> identities = new List<string>();
-                    identities.Add(UserAssignedIdentity);
-                    identityConfig.IdentityIds = identities;
-
-                    if (SystemAssignedIdentity)
-                    {
-                        identityConfig.Type = ResourceIdentityType.SystemAssignedUserAssigned;
-                    }
-                    else
-                    {
-                        identityConfig.Type = ResourceIdentityType.UserAssigned;
-                    }
+                    Type =  !isUserAssignedEnabled ? ResourceIdentityType.SystemAssigned
+                        : SystemAssignedIdentity ? ResourceIdentityType.SystemAssignedUserAssigned
+                        : ResourceIdentityType.UserAssigned,
+                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
                 }
-                else
-                {
-                    identityConfig.Type = ResourceIdentityType.SystemAssigned;
-                }
-            }
-
-            return identityConfig;
+                : null;
         }
     }
 }

@@ -505,32 +505,16 @@ namespace Microsoft.Azure.Commands.Compute
 
         private VirtualMachineIdentity GetVMIdentityFromArgs()
         {
-            VirtualMachineIdentity identityConfig = null;
-            if (SystemAssignedIdentity || !string.IsNullOrWhiteSpace(UserAssignedIdentity))
-            {
-                identityConfig = new VirtualMachineIdentity();
-
-                if (!string.IsNullOrWhiteSpace(UserAssignedIdentity))
+            var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
+            return SystemAssignedIdentity || isUserAssignedEnabled
+                ? new VirtualMachineIdentity
                 {
-                    List<string> identities = new List<string>();
-                    identities.Add(UserAssignedIdentity);
-                    identityConfig.IdentityIds = identities;
-
-                    if (SystemAssignedIdentity)
-                    {
-                        identityConfig.Type = CM.ResourceIdentityType.SystemAssignedUserAssigned;
-                    } else
-                    {
-                        identityConfig.Type = CM.ResourceIdentityType.UserAssigned;
-                    }
+                    Type = !isUserAssignedEnabled ? CM.ResourceIdentityType.SystemAssigned
+                        : SystemAssignedIdentity ? CM.ResourceIdentityType.SystemAssignedUserAssigned
+                        : CM.ResourceIdentityType.UserAssigned,
+                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
                 }
-                else
-                {
-                    identityConfig.Type = CM.ResourceIdentityType.SystemAssigned;
-                }
-            }
-
-            return identityConfig;
+                : null;
         }
 
         private string GetBginfoExtension()

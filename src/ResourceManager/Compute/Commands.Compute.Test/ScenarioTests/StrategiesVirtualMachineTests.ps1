@@ -74,6 +74,103 @@ function Test-SimpleNewVmSystemAssignedIdentity
     }
 }
 
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm with user assigned identity
+#>
+function Test-SimpleNewVmUserAssignedIdentity
+{
+    # Setup
+    $vmname = "UAITG123456"
+
+    try
+    {
+       # To record this test run these commands first :
+       # New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
+       # New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
+       # 
+       # Now get the identity :
+       # 
+       # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
+        #Nore down the Id and use it in the PS code
+		#$identityName = $vmname + "Identity1"
+		#$newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
+
+		#$newUserId = $newUserIdentity.Id
+
+		$newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
+
+        $username = "admin01"
+        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId
+
+        Assert-AreEqual $vmname $x.Name;
+		Assert-AreEqual "UserAssigned" $x.Identity.Type     
+		Assert-Null  $x.Identity.PrincipalId
+		Assert-Null  $x.Identity.TenantId
+		Assert-NotNull $x.Identity.IdentityIds
+		Assert-AreEqual 1 $x.Identity.IdentityIds.Count
+		Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm with system assigned identity and user assigned identity
+#>
+function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
+{
+    # Setup
+    $vmname = "UAITG123456"
+
+    try
+    {
+       # To record this test run these commands first :
+       # New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
+       # New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
+       # 
+       # Now get the identity :
+       # 
+       # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
+        #Nore down the Id and use it in the PS code
+		#$identityName = $vmname + "Identity1"
+		#$newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
+
+		#$newUserId = $newUserIdentity.Id
+
+		$newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
+
+        $username = "admin01"
+        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity
+
+        Assert-AreEqual $vmname $x.Name;
+		Assert-AreEqual "UserAssigned" $x.Identity.Type     
+		Assert-NotNull  $x.Identity.PrincipalId
+		Assert-NotNull  $x.Identity.TenantId
+		Assert-NotNull $x.Identity.IdentityIds
+		Assert-AreEqual 1 $x.Identity.IdentityIds.Count
+		Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
 
 <#
 .SYNOPSIS
