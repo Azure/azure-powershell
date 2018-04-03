@@ -17,6 +17,8 @@ $script:aliases = @{
     "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";
     "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";
     "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";
+    "Enable-AzureStorageDeleteRetentionPolicy" = "Enable-AzureStorageSoftDelete";
+    "Disable-AzureStorageDeleteRetentionPolicy" = "Disable-AzureStorageSoftDelete";
 }
 
 $aliases.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"

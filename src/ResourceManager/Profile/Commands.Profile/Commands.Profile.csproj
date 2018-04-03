@@ -47,8 +47,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Build" />
-    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
       <Private>True</Private>
@@ -57,14 +55,7 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration.Install" />
-    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\DisconnectAzureRmAccount.cs" />
@@ -121,7 +112,7 @@
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="..\AzureRM.Profile.psd1">
       <Link>AzureRM.Profile.psd1</Link>
@@ -129,12 +120,12 @@
     </None>
     <Content Include="Microsoft.Azure.Commands.Profile.types.ps1xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +140,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authorization\Commands.Common.Authorization.csproj">
       <Project>{24508e26-154d-47f1-80ee-439bf0710996}</Project>
       <Name>Commands.Common.Authorization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Compute\Commands.Common.Compute.csproj">
+      <Project>{f6d508d1-be2d-475d-aa0f-dfb5c615cc9d}</Project>
+      <Name>Commands.Common.Compute</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
       <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
@@ -190,7 +185,11 @@
     <ItemGroup>
       <OutFiles Include="$(OutDir)\**\*.*" />
     </ItemGroup>
+    <ItemGroup>
+      <NewtonsoftJson Include="$(ProjectDir)..\..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll" />
+    </ItemGroup>
     <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
+    <Copy SourceFiles="@(NewtonsoftJson)" DestinationFolder="$(OutputPath)\NewAssemblies\" ContinueOnError="false" />
   </Target>
 </Project>

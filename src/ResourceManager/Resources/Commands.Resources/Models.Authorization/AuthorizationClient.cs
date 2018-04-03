@@ -93,16 +93,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
 
-            Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = null;
-
-            if (scopeAndBelow)
-            {
-                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.AtScopeAndBelow() && item.RoleName == name);
-            }
-            else
-            {
-                odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
-            }
+            Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
 
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
                         scope,
@@ -139,7 +130,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(scope ?? "",
-            new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow())).Select(r => r.ToPSRoleDefinition()));
+            new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>()).Select(r => r.ToPSRoleDefinition()));
             return result;
         }
 
@@ -150,10 +141,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope, bool scopeAndBelow)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
-            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
-                    scope, scopeAndBelow ? new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.AtScopeAndBelow()) : null)
-                .Where(r => r.RoleType == AuthorizationClientExtensions.CustomRole)
-                .Select(r => r.ToPSRoleDefinition()));
+			result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(
+					scope, new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.Type == AuthorizationClientExtensions.CustomRole))
+				.Select(r => r.ToPSRoleDefinition()));
             return result;
         }
 
@@ -293,7 +283,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 // Get classic administrator access assignments 
                 List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators
-                    .List("2015-06-01").ToList();
+                    .List().ToList();
                 List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
 
                 // Filter by principal if provided
@@ -482,7 +472,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         new Permission()
                         {
                             Actions = roleDefinition.Actions,
-                            NotActions = roleDefinition.NotActions
+                            NotActions = roleDefinition.NotActions,
+                            DataActions = roleDefinition.DataActions,
+                            NotDataActions = roleDefinition.NotDataActions
                         }
                     },
                 RoleName = roleDefinition.Name,
@@ -525,7 +517,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
             }
 
-            if (roleDefinition.Actions == null || !roleDefinition.Actions.Any())
+            if ((roleDefinition.Actions == null || !roleDefinition.Actions.Any()) && (roleDefinition.DataActions == null || !roleDefinition.DataActions.Any()))
             {
                 throw new ArgumentException(ProjectResources.InvalidActions);
             }

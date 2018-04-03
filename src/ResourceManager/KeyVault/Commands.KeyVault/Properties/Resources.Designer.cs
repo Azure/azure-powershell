@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The &apos;all&apos; permission is being deprecated and does not include the &apos;purge&apos; permission. &apos;Purge&apos; permission must be explicitly set..
+        ///   Looks up a localized string similar to The &apos;all&apos; permission will be removed in May 2018 and does not include the &apos;purge&apos; permission. &apos;Purge&apos; permission must be explicitly set..
         /// </summary>
         internal static string AllPermissionExpansionWarning {
             get {
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No account found in the context. Please login using Login-AzureRMAccount..
+        ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzureRMAccount..
         /// </summary>
         internal static string ArmAccountNotFound {
             get {
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Login-AzureRmAccount to set up your Azure credentials..
+        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Connect-AzureRmAccount to set up your Azure credentials..
         /// </summary>
         internal static string InvalidSubscriptionState {
             get {
@@ -523,7 +523,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login..
         /// </summary>
         internal static string NoTenantInContext {
             get {

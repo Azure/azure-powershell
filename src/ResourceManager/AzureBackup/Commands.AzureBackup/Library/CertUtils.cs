@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Management;
-using Microsoft.WindowsAzure.Management.EventSources;
 using Security.Cryptography;
 using Security.Cryptography.X509Certificates;
 using System;
@@ -95,11 +93,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Library
             // X509 certificate needs PersistKeySet flag set.  
             // Reload a new X509Certificate2 instance from exported bytes in order to set the PersistKeySet flag.
             var bytes = cert.Export(X509ContentType.Pfx, password);
-
-            // NOTE: PfxValidation is not done here because these are newly created certs and assumed valid.
-
-            ICommonEventSource evtSource = null;
-            return X509Certificate2Helper.NewX509Certificate2(bytes, password, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable, evtSource, doPfxValidation: false);
+            return new X509Certificate2(bytes, password, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.Exportable);
         }
 
         /// <summary>

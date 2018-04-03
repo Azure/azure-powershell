@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated cmdlets to include piping scenarios
+* Add deprecation messages for upcoming breaking change release
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.2.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.2.0
+* Fixed example for Set-AzureRmKeyVaultAccessPolicy
 
 ## Version 4.1.1
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'

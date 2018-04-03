@@ -163,6 +163,11 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public StorageAccountTypes? StorageAccountType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false)]
+        public SwitchParameter WriteAccelerator { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
@@ -252,6 +257,8 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile.OsDisk.ManagedDisk.Id = this.ManagedDiskId ?? this.VM.StorageProfile.OsDisk.ManagedDisk.Id;
                 this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.StorageAccountType ?? this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
             }
+
+            this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;
 
             WriteObject(this.VM);
         }

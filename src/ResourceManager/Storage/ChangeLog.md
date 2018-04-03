@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.2.2
+* Fix examples to reflect required lowercase syntax in StorageAccountName
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.2.1
 * Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
     - New-AzureRmStorageAccount
     - Set-AzureRmStorageAccount
