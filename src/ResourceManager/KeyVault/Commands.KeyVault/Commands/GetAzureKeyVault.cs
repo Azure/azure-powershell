@@ -106,7 +106,13 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                     if (string.IsNullOrEmpty(VaultName))
                     {
-                        WriteObject(ListVaults(ResourceGroupName, Tag), true);
+                        GetAndWriteObjects<PSKeyVaultIdentityItem>(
+                            new KeyVaultResourceFilterOptions
+                            {
+                                ResourceGroup = ResourceGroupName,
+                                Tag = Tag
+                            },
+                            KeyVaultManagementClient.ListVaults);
                         break;
                     }
 
@@ -119,7 +125,13 @@ namespace Microsoft.Azure.Commands.KeyVault
                     break;
 
                 case ListVaultsBySubParameterSet:
-                    WriteObject(ListVaults(ResourceGroupName, Tag), true);
+                    GetAndWriteObjects<PSKeyVaultIdentityItem>(
+                        new KeyVaultResourceFilterOptions
+                        {
+                            ResourceGroup = ResourceGroupName,
+                            Tag = Tag
+                        },
+                        KeyVaultManagementClient.ListVaults);
                     break;
 
                 case GetDeletedVaultParameterSet:

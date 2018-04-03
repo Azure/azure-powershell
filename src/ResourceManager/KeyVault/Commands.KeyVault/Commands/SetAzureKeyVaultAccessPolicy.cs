@@ -73,6 +73,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Manageissuers,
             CertPerms.Setissuers,
             CertPerms.Recover,
+            CertPerms.Backup,
+            CertPerms.Restore
         };
 
         private readonly string[] StorageAllExpansion = {
@@ -86,6 +88,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             StoragePerms.Set,
             StoragePerms.Setsas,
             StoragePerms.Update,
+            StoragePerms.Backup,
+            StoragePerms.Restore
         };
 
         #region Parameter Set Names
@@ -382,7 +386,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectByEmailAddress,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
-        [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge", "all")]
+        [ValidateSet("get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge", "backup", "restore", "all")]
         public string[] PermissionsToCertificates { get; set; }
 
         /// <summary>
@@ -420,7 +424,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectByEmailAddress,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies managed storage account and sas definition  operation permissions to grant to a user or service principal.")]
-        [ValidateSet( "get", "list", "delete", "set", "update", "regeneratekey", "getsas", "listsas", "deletesas", "setsas", "all" )]
+        [ValidateSet( "get", "list", "delete", "set", "update", "regeneratekey", "getsas", "listsas", "deletesas", "setsas", "recover", "backup", "restore", "all")]
         public string[] PermissionsToStorage { get; set; }
 
         [Parameter(Mandatory = false,

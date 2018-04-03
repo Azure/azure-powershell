@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using System.Collections;
+using Microsoft.Azure.Management.KeyVault.Models;
 using ResourceManagement = Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -35,6 +36,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Location = resource.Location;
             Tags = TagsConversionHelper.CreateTagHashtable(resource.Tags);
         }
+
+        public PSKeyVaultIdentityItem(Vault vault)
+        {
+            ResourceIdentifier identifier = new ResourceIdentifier(vault.Id);
+
+            VaultName = vault.Name;
+            ResourceId = vault.Id;
+            ResourceGroupName = identifier.ResourceGroupName;
+            Location = vault.Location;
+            Tags = TagsConversionHelper.CreateTagHashtable(vault.Tags);
+        }
+
         public string ResourceId { get; protected set; }
 
         public string VaultName { get; protected set; }
