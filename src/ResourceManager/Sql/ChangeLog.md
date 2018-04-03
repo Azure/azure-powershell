@@ -39,6 +39,7 @@
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob parameter to long running cmdlets
 * Obsoleted -DatabaseName parameter from Get-AzureRmSqlServiceObjective
+* Adding New-AzureRmSqlDatabaseRestorePoint, Remove-AzureRmSqlDatabaseRestorePoint and output model of Get-AzureRmSqlDatabaseRestorePoints will have one more field
 
 ## Version 4.1.1
 * Added ability to rename database using Set-AzureRmSqlDatabase
