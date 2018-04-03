@@ -22,16 +22,17 @@ $DependencyMapPath = "$PSScriptRoot\..\src\Package\DependencyMap.csv"
 
 $DependencyMap = Import-Csv -Path $DependencyMapPath
 
-$ModuleManifestFiles = $ProjectPaths | ForEach-Object{ Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | Select-Where { $_.FullName -like "*$($BuildConfig)*" -and `
+$ModuleManifestFiles = $ProjectPaths | ForEach-Object{ Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | Where-Object { $_.FullName -like "*$($BuildConfig)*" -and `
                                                                                                                         $_.FullName -notlike "*Netcore*" -and `
                                                                                                                         $_.FullName -notlike "*dll-Help.psd1*" -and `
                                                                                                                         $_.FullName -notlike "*Stack*" } }
 
 foreach ($ModuleManifest in $ModuleManifestFiles)
 {
+    Write-Host $ModuleManifest
     Write-Host "checking $($ModuleManifest.Fullname)"
     $ModuleName = $ModuleManifest.Name.Replace(".psd1", "")
-    $Assemblies = $DependencyMap | Select-Where { $_.Directory.EndsWith($ModuleName) }
+    $Assemblies = $DependencyMap | Where-Object { $_.Directory.EndsWith($ModuleName) }
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifest.DirectoryName -FileName $ModuleManifest.Name
 
     $LoadedAssemblies = @()
@@ -47,7 +48,7 @@ foreach ($ModuleManifest in $ModuleManifestFiles)
         $RequiredModules = $ModuleMetadata.RequiredModules | ForEach-Object { $_["ModuleName"] }
         foreach ($RequiredModule in $RequiredModules)
         {
-            $RequiredModuleManifest = $ModuleManifestFiles | Select-Where { $_.Name.Replace(".psd1", "") -eq $RequiredModule }
+            $RequiredModuleManifest = $ModuleManifestFiles | Where-Object { $_.Name.Replace(".psd1", "") -eq $RequiredModule }
             if (-not $RequiredModuleManifest)
             {
                 continue
