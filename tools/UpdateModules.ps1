@@ -262,6 +262,7 @@ if ($Profile -eq "Stack") {
 }
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
+$storageRootFolder = "$packageFolder\$buildConfig\Storage"
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
 $templateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
 
@@ -340,6 +341,10 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
 if ($scope -eq 'AzureRM.Netcore') {
     Write-Host "Updating profile module"
     Create-ModulePsm1 -ModulePath "$resourceManagerRootFolder\AzureRM.Profile.Netcore" -TemplatePath $templateLocation -IsRMModule $true
+    Write-Host "Updated profile module"
+
+    Write-Host "Updating storage module"
+    Create-ModulePsm1 -ModulePath "$storageRootFolder\Azure.Storage.Netcore" -TemplatePath $templateLocation -IsRMModule $false
     Write-Host "Updated profile module"
 
     $env:PSModulePath += "$([IO.Path]::PathSeparator)$resourceManagerRootFolder\AzureRM.Profile.Netcore";
