@@ -58,7 +58,7 @@ RequiredAssemblies = '.\Microsoft.WindowsAzure.Storage.dll',
                '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
                '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
                '.\Microsoft.Data.Services.Client.dll', '.\System.Spatial.dll', 
-               '.\Microsoft.Azure.KeyVault.Core.dll', '.\Microsoft.WindowsAzure.Configuration.dll',
+               '.\Microsoft.Azure.KeyVault.Core.dll',
                '.\Microsoft.WindowsAzure.Management.dll'
 
 
