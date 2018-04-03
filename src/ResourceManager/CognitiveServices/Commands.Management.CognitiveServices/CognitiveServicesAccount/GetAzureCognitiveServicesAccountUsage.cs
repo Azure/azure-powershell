@@ -1,10 +1,8 @@
 ﻿using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
-using Microsoft.Azure.Management.CognitiveServices.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Rest.Azure;
-using System.Collections.Generic;
+using System;
 using System.Linq;
 using System.Management.Automation;
 
@@ -13,13 +11,14 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Usages for Cognitive Services Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountUsagesNounStr), OutputType(typeof(PSCognitiveServicesUsage))]
+    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountUsagesNounStr, DefaultParameterSetName = "ResourceNameParameterSet"),
+     OutputType(typeof(PSCognitiveServicesUsage))]
     public class GetAzureCognitiveServicesAccountUsageCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             ParameterSetName = "InputObjectParameterSet",
             HelpMessage = "Cognitive Services Account Object.")]
         [ValidateNotNullOrEmpty]
@@ -37,7 +36,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = "ResourceNameParameterSet",
             HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
@@ -47,7 +45,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = "ResourceNameParameterSet",
             HelpMessage = "Cognitive Services Account Name.")]
         [Alias(CognitiveServicesAccountNameAlias, AccountNameAlias)]
@@ -59,12 +56,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             base.ExecuteCmdlet();
             RunCmdLet(() =>
             {
-                if (ParameterSetName == "InputObjectParameterSet")
+                if (ParameterSetName.Equals("InputObjectParameterSet", StringComparison.InvariantCulture))
                 {
                     this.ResourceGroupName = InputObject.ResourceGroupName;
                     this.Name = InputObject.AccountName;
                 }
-                else if (ParameterSetName == "ResourceIdParameterSet")
+                else if (ParameterSetName.Equals("ResourceIdParameterSet", StringComparison.InvariantCulture))
                 {
                     var id = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = id.ResourceGroupName;
@@ -75,7 +72,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                                                    .GetUsages(ResourceGroupName, Name)
                                                    .Value?.Select(u => new PSCognitiveServicesUsage(u));
 
-                if(cognitiveServicesUsages != null)
+                if (cognitiveServicesUsages != null)
                 {
                     WriteObject(cognitiveServicesUsages, true);
                 }
