@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ServerManagement.Commands.Node
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmServerManagementNode")]
+    [Obsolete("The AzureRM.ServerManagement module will be removed from AzureRM in May 2018")]
     public class RemoveServerManagementNodeCmdlet : ServerManagementCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group.",

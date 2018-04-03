@@ -136,6 +136,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 else
                 {
+                    WriteWarning("Set-AzureKeyVaultCertificateIssuer: The -IssuerProvider parameter will become mandatory in the May 2018 release.");
                     issuerToUse = new PSKeyVaultCertificateIssuer
                     {
                         Name = Name,

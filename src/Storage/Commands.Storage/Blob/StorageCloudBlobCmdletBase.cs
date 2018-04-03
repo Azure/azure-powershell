@@ -257,11 +257,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             try
             {
                 BlobContinuationToken blobToken = new BlobContinuationToken();
-                IEnumerator<IListBlobItem> listedBlobs = container.ListBlobsSegmented("", true, BlobListingDetails.None, 1, blobToken, RequestOptions, OperationContext).Results.GetEnumerator();
-                if (listedBlobs.MoveNext() && listedBlobs.Current != null)
-                    return false;
-                else
-                    return true;
+                using (IEnumerator<IListBlobItem> listedBlobs = container
+                    .ListBlobsSegmentedAsync("", true, BlobListingDetails.None, 1, blobToken, RequestOptions,
+                        OperationContext).Result.Results.GetEnumerator())
+                {
+                    return !(listedBlobs.MoveNext() && listedBlobs.Current != null);
+                }
             }
             catch(Exception)
             {

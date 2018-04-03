@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
+* Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.3.1
 * Fix issue with Default Resource Group in CloudShell
@@ -26,6 +29,9 @@
 ## Version 4.3.0
 * Fixed issue with importing aliases
 * Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+* Added Get-AzureRmSqlDatabaseLongTermRetentionBackup and Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+* Updated Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy and Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy to work with Long Term Retention V2
+* Updated Restore-AzureRmSqlDatabase to work with Long Term Retention V2 resource IDs
 
 ## Version 4.2.0
 * Update the Auditing commands parameters description
@@ -33,6 +39,7 @@
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob parameter to long running cmdlets
 * Obsoleted -DatabaseName parameter from Get-AzureRmSqlServiceObjective
+* Adding New-AzureRmSqlDatabaseRestorePoint, Remove-AzureRmSqlDatabaseRestorePoint and output model of Get-AzureRmSqlDatabaseRestorePoints will have one more field
 
 ## Version 4.1.1
 * Added ability to rename database using Set-AzureRmSqlDatabase
@@ -177,3 +184,4 @@
     - To configure ReadScale, user simply specify "ReadScale" paramter with "Enabled/Disabled" at database creation with New-AzureRmSqlDatabase cmdlet,
 
 ## Version 2.3.0
+
