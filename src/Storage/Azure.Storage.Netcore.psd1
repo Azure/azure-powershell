@@ -60,7 +60,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-TypesToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
+TypesToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
