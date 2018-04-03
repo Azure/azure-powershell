@@ -32,8 +32,11 @@ Gets details of a Data Lake Store account.
 ### [Get-AzureRmDataLakeStoreChildItem](Get-AzureRmDataLakeStoreChildItem.md)
 Gets the list of items in a folder in Data Lake Store.
 
+### [Get-AzureRmDataLakeStoreChildItemProperties](Get-AzureRmDataLakeStoreChildItemProperties.md)
+Gets the properties (Disk usage and Acl) for the entire tree from the specified path
+
 ### [Get-AzureRmDataLakeStoreChildItemSummary](Get-AzureRmDataLakeStoreChildItemSummary.md)
-{{Fill in the Synopsis}}
+Gets the summary of total size, files and directories contained in the path specified
 
 ### [Get-AzureRmDataLakeStoreFirewallRule](Get-AzureRmDataLakeStoreFirewallRule.md)
 Gets the specified firewall rules in the specified Data Lake Store.

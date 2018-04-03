@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
             HelpMessage =
-                "The path in the specified Data Lake account that should be retrieve. Can be a file or folder " +
+                "The path in the specified Data Lake account whose properties need to be retrieved. Can be a file or folder " +
                 "In the format '/folder/file.txt', " +
                 "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
-                "Number of files/directories processed in parallel. Optional: a reasonable default will be selected ")]
+                "Number of files/directories processed in parallel. Optional: a reasonable default will be selected")]
         public int Concurrency { get; set; } = -1;
 
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Mandatory = true,
