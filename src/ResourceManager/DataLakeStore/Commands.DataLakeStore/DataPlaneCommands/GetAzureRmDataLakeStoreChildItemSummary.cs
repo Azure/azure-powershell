@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
-                "Indicates the number of files/directories processed in parallel. Default will be computed as a best effort based on system specification."
+                "Number of files/directories processed in parallel. Optional: a reasonable default will be selected"
         )]
         public int Concurrency { get; set; } = -1;
 

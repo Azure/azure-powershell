@@ -86,12 +86,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true,  Mandatory = false, HelpMessage = "Indicates the ACL to be set recursively" )]
+        [Parameter(ValueFromPipelineByPropertyName = true,  Mandatory = false, HelpMessage = "Indicates the ACL to be removed recursively" )]
         public SwitchParameter Recursive { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
-                "Indicates the number of files/directories processed in parallel for recursive processing. Default will be computed as a best effort based on system specification."
+                "Number of files/directories processed in parallel. Optional: a reasonable default will be selected"
         )]
         public int Concurrency { get; set; } = -1;
 
