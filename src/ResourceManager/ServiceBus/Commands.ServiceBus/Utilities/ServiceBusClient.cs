@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 CompatibilityLevel = ruleAttributes.Action.CompatibilityLevel
             };
 
-            if(ruleAttributes.FilterType.ToString().Equals("SqlFilter"))
+            if (ruleAttributes.FilterType.ToString().Equals("SqlFilter"))
                 parameters.SqlFilter = new SqlFilter() { RequiresPreprocessing = ruleAttributes.SqlFilter.RequiresPreprocessing, SqlExpression = ruleAttributes.SqlFilter.SqlExpression };
             if (ruleAttributes.FilterType.ToString().Equals("CorrelationFilter"))
             {
@@ -529,6 +529,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
                     ReplyToSessionId = ruleAttributes.CorrelationFilter.ReplyToSessionId,
                     ContentType = ruleAttributes.CorrelationFilter.ContentType,
                     RequiresPreprocessing = ruleAttributes.CorrelationFilter.RequiresPreprocessing,
+                    Properties = ruleAttributes.CorrelationFilter.Properties
                 };
             }
 
