@@ -164,6 +164,14 @@ function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
 		Assert-NotNull $x.Identity.IdentityIds
 		Assert-AreEqual 1 $x.Identity.IdentityIds.Count
 		Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
 <#
 Test Simple Paremeter Set for New Vm
 #>
