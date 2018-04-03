@@ -277,3 +277,82 @@ function Test-DatabaseGeoBackupPolicy
 	$result = Get-AzureRmSqlDatabaseGeoBackupPolicy -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -DatabaseName $db.DatabaseName
 	Assert-True { $result.State -eq "Disabled" }
 }
+
+function Test-NewDatabaseRestorePoint
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "servers" "West US 2"
+	$serverVersion = "12.0";
+	$label = "label01";
+	$rg = Create-ResourceGroupForTest
+
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create data warehouse database with all parameters.
+		$databaseName = Get-DatabaseName
+		$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
+			
+		New-AzureRmSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
+
+		# Get restore points from data warehouse database.
+		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+
+		# We just created a restore point
+		Assert-AreEqual $restorePoints.Count 1
+		$restorePoint = $restorePoints[0]
+		Assert-AreEqual $restorePoint.RestorePointType DISCRETE
+		Assert-Null $restorePoint.EarliestRestoreDate
+		Assert-AreEqual $restorePoint.RestorePointCreationDate.Kind Utc
+		Assert-AreEqual $restorePoint.RestorePointLabel $label
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-RemoveDatabaseRestorePoint
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
+	$serverVersion = "12.0";
+	$label = "label01";
+	$rg = Create-ResourceGroupForTest
+
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create data warehouse database with all parameters.
+		$databaseName = Get-DatabaseName
+		$dwdb = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+			-Edition DataWarehouse -RequestedServiceObjectiveName DW100
+			
+		New-AzureRmSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointLabel $label
+
+		# Get restore points from data warehouse database.
+		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+
+		# We just created a restore point
+		Assert-AreEqual $restorePoints.Count 1
+		$restorePoint = $restorePoints[0]
+		Assert-AreEqual $restorePoint.RestorePointType DISCRETE
+		Assert-Null $restorePoint.EarliestRestoreDate
+		Assert-AreEqual $restorePoint.RestorePointCreationDate.Kind Utc
+
+		Remove-AzureRmSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointCreationDate $restorePoint.RestorePointCreationDate
+
+	    # Get restore points from data warehouse database.
+		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
+
+		# We just created a restore point
+		Assert-AreEqual $restorePoints.Count 0
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
