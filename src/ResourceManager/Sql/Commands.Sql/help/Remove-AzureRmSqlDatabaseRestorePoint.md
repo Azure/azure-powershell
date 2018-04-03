@@ -1,47 +1,38 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
-ms.assetid: 67A9BB67-CF17-4CAA-99D9-002D0D23178B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabaserestorepoints
+ms.assetid: 67A9BB67-EF14-4CAA-99D9-002D0D23178B
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlDatabaseRestorePoints
+# Remove-AzureRmSqlDatabaseRestorePoint
 
 ## SYNOPSIS
-Retrieves the distinct restore points from which a SQL Data Warehouse can be restored.
+Removes given restore point from a SQL Database.
 
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseRestorePoints [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmSqlDatabaseRestorePoint -RestorePointCreationDate <DateTime> [-ServerName] <String>
+ [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlDatabaseRestorePoints** cmdlet retrieves the distinct restore points that an Azure SQL Data Warehouse can be restored from.
-For an Azure SQL Database, the restore window is continuous.
-This means that any point in time in the backup retention period of the database can be used as a restore point.
+The **Remove-AzureRmSqlDatabaseRestorePoint** cmdlet removes given restore point from Azure SQL Database.
 
-This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
+This cmdlet is currently supported by the SQL Server Datawarehouse service on Azure SQL Database.
 
 ## EXAMPLES
 
-### Example 1: Get all restore points
+### Example 1: Removes a restore point
 ```
-PS C:\>Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
-ResourceGroupName        : resourcegroup01
-ServerName               : server01
-DatabaseName             : database01
-Location                 : Central US
-RestorePointType         : CONTINUOUS
-RestorePointCreationDate : 
-EarliestRestoreDate      : 8/12/2015 12:00:00 AM
-RestorePointLabel        : RestorePoint01
+PS C:\>$RestorePointCreationDate = Get-Date "3/11/2017 1:50:00 AM"
+PS C:\>Remove-AzureRmSqlDatabaseRestorePoint -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -RestorePointCreationDate $RestorePointCreationDate
 ```
 
-This command returns all available restore points for the Azure SQL Database named Database01.
+This command removes a restore point for Azure SQL Database given creation date.
 
 ## PARAMETERS
 
@@ -85,6 +76,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RestorePointCreationDate
+Specifies the restore point creation date.
+
+```yaml
+Type: DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -140,9 +146,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
