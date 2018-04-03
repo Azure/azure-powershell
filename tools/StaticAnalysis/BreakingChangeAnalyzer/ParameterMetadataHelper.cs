@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -40,7 +39,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
         /// <summary>
         /// Compares the metadata of parameters with the same name (or alias) for any breaking changes.
-        /// 
+        ///
         /// Breaking changes for parameters include
         ///   - Removing a parameter
         ///   - Removing an alias to a parameter
@@ -53,7 +52,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameters">The list of parameters from the new cmdlet metadata.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of the issues found.</param>
         public void CompareParameterMetadata(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             List<ParameterMetadata> oldParameters,
             List<ParameterMetadata> newParameters,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -111,7 +110,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForChangedParameterType(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -129,7 +128,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedParameterAlias(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -170,7 +169,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckParameterValidationSets(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -225,7 +224,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                         remediation: string.Format(Properties.Resources.RemovedValidateSetValueRemediation,
                             oldValue, oldParameter.Name));
                 }
-            }            
+            }
         }
 
         /// <summary>
@@ -237,7 +236,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of the issues found.</param>
         private void CheckParameterValidateRange(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -295,7 +294,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameter">The parameter metadata from new assembly</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForValidateNotNullOrEmpty(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             ParameterMetadata oldParameter,
             ParameterMetadata newParameter,
             ReportLogger<BreakingChangeIssue> issueLogger)

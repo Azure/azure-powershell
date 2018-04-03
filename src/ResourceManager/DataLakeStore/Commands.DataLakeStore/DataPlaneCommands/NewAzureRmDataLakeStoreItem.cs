@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.PowerShell.Commands;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 using Microsoft.Azure.DataLake.Store;
