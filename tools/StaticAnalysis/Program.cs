@@ -18,6 +18,7 @@ using System.IO;
 using StaticAnalysis.CmdlineArgParsing;
 using System.Reflection;
 using System.Linq;
+using Tools.Common.Loggers;
 
 namespace StaticAnalysis
 {
@@ -72,17 +73,6 @@ namespace StaticAnalysis
                     bool.TryParse(args[2], out useExceptions);
                 }
 
-                bool skipHelp = true;
-                if (args.Length > 3)
-                {
-                    bool.TryParse(args[3], out skipHelp);
-                }
-
-                if (skipHelp)
-                {
-                    Analyzers = Analyzers.Where((a) => !(a is HelpAnalyzer.HelpAnalyzer)).ToList();
-                }
-                
                 analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, exceptionsDirectory) :
                     new AnalysisLogger(reportsDirectory);
                 if (logReportsDirectoryWarning)

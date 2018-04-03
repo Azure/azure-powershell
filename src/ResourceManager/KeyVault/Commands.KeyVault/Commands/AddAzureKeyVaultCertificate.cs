@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("Add-AzureKeyVaultCertificate: The -CertificatePolicy parameter will become mandatory in the May 2018 release.");
             if (ShouldProcess(Name, Properties.Resources.AddCertificate)) {
                 var certificateOperation = this.DataServiceClient.EnrollCertificate(VaultName, Name, CertificatePolicy == null ? null : CertificatePolicy.ToCertificatePolicy(), Tag == null ? null : Tag.ConvertToDictionary());
                 var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
