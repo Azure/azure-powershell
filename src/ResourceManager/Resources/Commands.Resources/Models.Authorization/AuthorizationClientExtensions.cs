@@ -19,12 +19,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     internal static class AuthorizationClientExtensions
     {
         public const string CustomRole = "CustomRole";
+        public const string AuthorizationDeniedException = "Authorization_RequestDenied";
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {
@@ -47,6 +49,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Name = role.RoleName,
                     Actions = new List<string>(role.Permissions.SelectMany(r => r.Actions)),
                     NotActions = new List<string>(role.Permissions.SelectMany(r => r.NotActions)),
+                    DataActions = new List<string>(role.Permissions.SelectMany(r => r.DataActions)),
+                    NotDataActions = new List<string>(role.Permissions.SelectMany(r => r.NotDataActions)),
                     Id = role.Id.GuidFromFullyQualifiedId(),
                     AssignableScopes = role.AssignableScopes.ToList(),
                     Description = role.Description,
@@ -118,7 +122,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<string> objectIds = new List<string>();
             objectIds.AddRange(assignments.Select(r => r.PrincipalId.ToString()));
             objectIds = objectIds.Distinct().ToList();
-            List<PSADObject> adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
+            List<PSADObject> adObjects = null;
+            try
+            {
+                adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
+            }
+            catch (CloudException ce) when (IsAuthorizationDeniedException(ce))
+            {
+                throw new InvalidOperationException(ProjectResources.InSufficientGraphPermission);
+            }
 
             foreach (RoleAssignment assignment in assignments)
             {
@@ -206,6 +218,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         private static string GuidFromFullyQualifiedId(this string Id)
         {
             return Id.TrimEnd('/').Substring(Id.LastIndexOf('/') + 1);
+        }
+
+        private static bool IsAuthorizationDeniedException(CloudException ce)
+        {
+            if (ce.Response != null && ce.Response.StatusCode == HttpStatusCode.Unauthorized &&
+                ce.Error != null && ce.Error.Code != null && string.Equals(ce.Error.Code, AuthorizationDeniedException, StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -13,35 +13,22 @@
 # ----------------------------------------------------------------------------------
 
 #####
-# For some reason we can use this command create a cluster first before we can run it on cloud
-# New-AzureRmServiceFabricCluster -ResourceGroupName ps1cluster -Location "South Central US" `
-#  -VmPassword $certPwd -Verbose -OS WindowsServer2012R2Datacenter -PfxOutputFolder c:\test `
-#  -CertificatePassword $certPwd
-# It will print key vault , thumbprint for the test
+# Use these commands to setup the tests for recording - KV operations do not work within the test framework
 #####
-
-$global:time = Get-Date
-$global:suffix = 'cluster'
-$global:prefix = 'ps1'
+#
+# $password = "[password]" | ConvertTo-SecureString -Force -AsPlainText
+# New-AzureRmServiceFabricCluster -ResourceGroupName azurermsfrg -Name azurermsfcluster -Location southcentralus -VmPassword $password -KeyVaultName azurermsfkv -CertificateOutputFolder $pwd -CertificatePassword $password -CertificateSubjectName "AzureRMSFTestCert"
+# $policy = New-AzureKeyVaultCertificatePolicy -SecretContentType application/x-pkcs12 -SubjectName "CN=AzureRMSFTestCert2" -IssuerName Self
+# Add-AzureKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 -CertificatePolicy $policy
+# Get-AzureKeyVaultCertificate -VaultName azurermsfkv -Name AzureRMSFTestCert2 | select Thumbprint, SecretId
+# Add the above values to Get-SecretUrl and Get-Thumbrprint
+#
+#####
 
 function WaitClusterReady
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
-	$pwd = Get-Pwd | ConvertTo-SecureString -AsPlainText -Force
-	Try  
-    {  
-        $clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
-    }   
-    Catch
-    {  
-		ReplaceParameterFile
-		$keyvaulturi = Get-SecretUrl
-		$resourceGroupName = Get-ResourceGroupName
-		New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile .\Resources\template.json `
-	          -ParameterFile .\Resources\parameters.json  -SecretIdentifier $keyvaulturi -Thumbprint Get-ThumbprintByFile
-    } 	 
-	
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 	while($clusters[0].ClusterState -ne 'Ready' -and $clusters[0].ClusterState -ne 'Failed')
 	{
@@ -49,30 +36,14 @@ function WaitClusterReady
 	}
 }
 
-function ReplaceParameterFile
-{
-	$cluster = Get-ClusterName
-	(Get-Content .\Resources\parameters.json).replace('[replaceclusterName]', $cluster) | Set-Content .\Resources\parameters.json
-}
-
 function Get-ResourceGroupName
 {
-    return $global:prefix + $global:suffix;
+    return "azurermsfrg";
 }
 
 function Get-ClusterName
 {
-    return $global:prefix + $global:suffix;
-}
-
-function Get-NewClusterName
-{
-	return 'newcreated' + $global:prefix + $global:suffix;
-}
-
-function Get-NewResourceGroupName
-{
-    return 'newcreated' + $global:prefix + $global:suffix
+    return "azurermsfcluster";
 }
 
 function Get-NodeTypeName
@@ -80,44 +51,40 @@ function Get-NodeTypeName
     return "nt1vm";
 }
 
-function Get-Cert
-{
-    return ".\Resources\test.pfx";
-}
-
-function Get-Pwd
-{
-    return "123";
-}
-
 function Get-KeyVaultName
 {
-    return "kvps";
+    return "azurermsfkv";
+}
+
+function Get-NewCertName
+{
+    return "AzureRMSFTestCert2"
 }
 
 function Get-SecretUrl
 {
-	return 'https://kvps.vault.azure.net:443/secrets/kvpsrg/6202d05ec08c4767911ddf0613c2b1e8'
+    # Thumbprint for this cert should be specified in TestServiceFabric.cs
+    return "https://azurermsfkv.vault.azure.net/secrets/AzureRMSFTestCert2/62bccb6ecac54a03a204c7676fa9b8cf"
 }
 
-function Get-ThumbprintByFile
+function Get-Thumbprint
 {
-    return "2394f562bf05258059fe32c0d7c63024ead13096"
+    return "2F51AC39C590551FC7391A7A0A187A67BF8256CA"
 }
 
 function Get-DurabilityLevel
 {
-	return "Bronze"
+	return "Silver"
 }
 
 function Get-ReliabilityLevel
 {
-	return "None"
+	return "Bronze"
 }
 
 function Get-NewNodeTypeName
 {
-	return 'nnt1'
+	return 'nt2vm'
 }
 
 function Get-SectionName
@@ -138,7 +105,11 @@ function Get-ValueName
 function Get-VmPwd
 {
     $length = 10
-    $allowedCharacters = "abcdefghijklmnopqrstuvwxyz0123456789".ToCharArray()
+    $allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray()
+    $allowedDigits = "0123456789".ToCharArray()
+    $allowedSpecial = "!@#$%^&*()-+_={}\[];':,.<>".ToCharArray()
     $myRandomString = -join (Get-Random -Count $length -InputObject $allowedCharacters)
+    $myRandomString += Get-Random -Count 1 -InputObject $allowedDigits
+    $myRandomString += Get-Random -Count 1 -InputObject $allowedSpecial
     return  "$myRandomString"
 }

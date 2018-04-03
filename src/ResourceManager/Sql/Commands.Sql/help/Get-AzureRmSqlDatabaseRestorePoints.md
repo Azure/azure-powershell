@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 67A9BB67-CF17-4CAA-99D9-002D0D23178B
@@ -38,6 +38,7 @@ Location                 : Central US
 RestorePointType         : CONTINUOUS
 RestorePointCreationDate : 
 EarliestRestoreDate      : 8/12/2015 12:00:00 AM
+RestorePointLabel        : RestorePoint01
 ```
 
 This command returns all available restore points for the Azure SQL Database named Database01.
@@ -139,6 +140,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

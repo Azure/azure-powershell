@@ -1,4 +1,207 @@
-﻿## 5.3.0 - February 2018
+﻿## 5.6.0 - March 2018
+
+#### General
+* Fix issue with Default Resource Group in CloudShell
+* Fix issue where incorrect startup scripts were being executed during module import
+
+#### AzureRM.Profile
+* Enable MSI authentication in unsupported scenarios
+* Add support for user-defined Managed Service Identity
+
+#### AzureRM.AnalysisServices
+* Fixed issue with cleaning up scripts in build
+
+#### AzureRM.Cdn
+* Fixed issue with cleaning up scripts in build
+
+#### AzureRM.Compute
+* 'New-AzureRmVM' and 'New-AzureRmVMSS' support data disks.
+* 'New-AzureRmVM' and 'New-AzureRmVMSS' support custom image by name or by id.
+* Log analytic feature
+    - Added 'Export-AzureRmLogAnalyticRequestRateByInterval' cmdlet
+    - Added 'Export-AzureRmLogAnalyticThrottledRequests' cmdlet
+
+#### AzureRM.ContainerInstance
+* Fix parameter sets issue for container registry and azure file volume mount
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK to version 0.6.0-preview containing the following changes:
+    - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
+    - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService
+    - Added LinkedService, Dataset, CopySource for SalesforceMarketingCloud
+    - Added support for SecureOutput on all activities 
+    - Added new BatchCount property on ForEach activity which control how many concurrent activities to run
+    - Added new Filter Activity
+    - Added Linked Service Parameters support
+
+#### AzureRM.Dns
+* Support for Private DNS Zones (Public Preview)
+    - Adds ability to create DNS zones that are visible only to the associated virtual networks
+
+#### AzureRM.Network
+* Updating model types for compatibility with DNS cmdlets.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Changes for ASR Azure to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure,VMware to Azure)
+    - New-AzureRmRecoveryServicesAsrProtectionContainer
+    - New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
+    - Remove-AzureRmRecoveryServicesAsrProtectionContainer
+    - Update-AzureRmRecoveryServicesAsrProtectionDirection
+
+#### AzureRM.Storage
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+#### AzureRM.Websites
+* Fixed the help for Remove-AzureRmWebAppSlot
+
+## 5.5.0 - March 2018
+#### AzureRM.Profile
+* Fixed issue with importing aliases
+* Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8
+
+#### Azure.Storage
+* Support Soft-Delete feature
+	- Enable-AzureStorageDeleteRetentionPolicy
+	- Disable-AzureStorageDeleteRetentionPolicy
+	- Get-AzureStorageBlob
+
+#### AzureRM.AnalysisServices
+* Fixed issue with importing aliases
+* Add support of firewall and query scaleout feature, as well as support of 2017-08-01 api version.
+
+#### AzureRM.Automation
+* Fixed issue with importing aliases
+
+#### AzureRM.Cdn
+* Fixed issue with importing aliases
+
+#### AzureRM.CognitiveServices
+* Update notice.txt and notice message.
+
+#### AzureRM.Compute
+* 'New-AzureRmVMSS' prints connection strings in verbose mode.
+* 'New-AzureRmVmss' supports public IP address, load balancing rules, inbound NAT rules.
+* WriteAccelerator feature
+    - Added WriteAccelerator switch parameter to the following cmdlets:
+	  Set-AzureRmVMOSDisk
+	  Set-AzureRmVMDataDisk
+	  Add-AzureRmVMDataDisk
+	  Add-AzureRmVmssDataDisk
+    - Added OsDiskWriteAccelerator switch parameter to the following cmdlet:
+          Set-AzureRmVmssStorageProfile.
+    - Added OsDiskWriteAccelerator Boolean parameter to the following cmdlets:
+          Update-AzureRmVM
+          Update-AzureRmVmss
+
+#### AzureRM.DataFactories
+* Fix credential encryption issue that caused no meaningful error for some encryption operations
+* Enable integration runtime to be shared across data factory
+
+#### AzureRM.DataFactoryV2
+* Add parameter "SetupScriptContainerSasUri" and "Edition" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable custom setup and edition selection functionality
+* Fix credential encryption issue that caused no meaningful error for some encryption operations. 
+* Enable integration runtime to be shared across data factory
+
+#### AzureRM.HDInsight
+* Fixed issue with importing aliases
+
+#### AzureRM.KeyVault
+* Fixed example for Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.Network
+* Fixed issue with importing aliases
+
+#### AzureRM.OperationalInsights
+* Fixed issue with importing aliases
+
+#### AzureRM.RecoveryServices
+* Fixed issue with importing aliases
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Fixed issue with importing aliases
+
+#### AzureRM.Resources
+* Fixed issue with importing aliases
+
+#### AzureRM.ServiceBus
+* Added EnableBatchedOperations property to Queue
+* Added DeadLetteringOnFilterEvaluationExceptions property to Subscriptions
+
+#### AzureRM.ServiceFabric
+* Service Fabric cmdlet refresh
+  - Updated ARM templates
+  - Failed operations no longer rollback
+  - Add-AzureRmServiceFabricNodeType
+    - VMs default to managed disks
+    - Existing VMSS subnet used
+    - All operations are idempotent
+  - Remove-AzureRmServiceFabricNodeType cleans up partially created VMSS and/or cluster node types
+  - Fixed output of PSCluster object for complex property types
+
+#### AzureRM.Sql
+* Fixed issue with importing aliases
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+
+#### AzureRM.Websites
+* Fixed issue with importing aliases
+* New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
+
+## 5.4.1 - February 2018
+#### AzureRM.Profile
+* Fix concurrent module import issue in PowerShell Workflow and Azure Automation
+
+## 5.4.0 - February 2018
+#### AzureRM.Automation
+* Added alias from New-AzureRmAutomationModule to Import-AzureRmAutomationModule
+
+#### AzureRM.Compute
+* Fix ErrorAction issue for some of Get cmdlets.
+
+#### AzureRM.ContainerInstance
+* Apply Azure Container Instance SDK 2018-02-01
+    - Support DNS name label
+
+#### AzureRM.DevTestLabs
+* Fixed all of the GET cmdlets which previously weren't working.
+
+#### AzureRM.EventHub
+* Fix bug in Get-AzureRmEventHubGeoDRConfiguration help
+
+#### AzureRM.Network
+* Added cmdlet to create a new connection monitor
+    - New-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to update a connection monitor
+    - Set-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to get connection monitor or connection monitor list
+    - Get-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to query connection monitor
+    - Get-AzureRmNetworkWatcherConnectionMonitorReport
+* Added cmdlet to start connection monitor
+    - Start-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to stop connection monitor
+    - Stop-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to remove connection monitor
+    - Remove-AzureRmNetworkWatcherConnectionMonitor
+* Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
+* Added EnableHttp2 flag to Application Gateway
+    - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
+* Add IpTags to PublicIpAddress
+    - Updated New-AzureRmPublicIpAddress: Added IpTags
+    - New-AzureRmPublicIpTag to add Iptag
+* Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
+
+#### AzureRM.Resources
+* Register-AzureRmProviderFeature: Added missing example in the docs
+* Register-AzureRmResourceProvider: Added missing example in the docs
+
+#### AzureRM.Storage
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+## 5.3.0 - February 2018
 #### AzureRM.Profile
 * Added deprecation warning for PowerShell 3 and 4
 * 'Add-AzureRmAccount' has been renamed as 'Connect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Login-AzAccount' and 'Login-AzureRmAccount') have been redirected to the new cmdlet name.

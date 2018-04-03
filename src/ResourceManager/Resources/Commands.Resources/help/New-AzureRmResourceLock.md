@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 6847ECFD-2E3D-46F6-ABE9-9D8E08C7858F
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 
 ### -LockLevel
 Specifies the level for the lock.
-Currently, the only valid value is CanNotDelete.
+Currently, valid values are CanNotDelete, ReadOnly.
 
 ```yaml
 Type: LockLevel
@@ -364,6 +364,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

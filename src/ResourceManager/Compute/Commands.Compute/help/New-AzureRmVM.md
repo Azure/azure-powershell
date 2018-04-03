@@ -46,7 +46,7 @@ This cmdlet takes a virtual machine object as input.
 Use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
 Other cmdlets can be used to configure the virtual machine, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, Add-AzureRmVMNetworkInterface, and Set-AzureRmVMOSDisk.
 
-The `StrategyParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
+The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
 
 ## EXAMPLES
 
@@ -97,7 +97,7 @@ $Vnet = New-AzureRmVirtualNetwork -Name $NetworkName -ResourceGroupName $Resourc
 $PIP = New-AzureRmPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $ResourceGroupName -Location $LocationName -AllocationMethod Dynamic
 $NIC = New-AzureRmNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id
 
-$Crededntial = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword); 
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword); 
 
 $VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
 $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
