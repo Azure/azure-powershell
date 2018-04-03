@@ -275,7 +275,7 @@
     <CallTarget Targets="UpdateModules"/>
 
     <Exec ContinueOnError="false"
-          Command="$(PowerShellCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;"
+          Command="$(PowerShellCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(AzurePackageFolder)\index.json -BuildConfig $(Configuration) &quot;"
           Condition=" '$(SkipHelp)' == 'false'"/>
 
     <!-- Copying shortcut to be signed -->
