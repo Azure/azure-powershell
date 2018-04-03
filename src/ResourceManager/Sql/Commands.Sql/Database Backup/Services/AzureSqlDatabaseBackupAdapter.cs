@@ -76,11 +76,55 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     ServerName = serverName,
                     DatabaseName = databaseName,
                     Location = restorePoint.Location,
-                    RestorePointType = restorePoint.Properties.RestorePointType,
-                    RestorePointCreationDate = restorePoint.Properties.RestorePointCreationDate,
-                    EarliestRestoreDate = restorePoint.Properties.EarliestRestoreDate
+                    RestorePointType = restorePoint.RestorePointType.ToString(),
+                    RestorePointCreationDate = restorePoint.RestorePointCreationDate,
+                    EarliestRestoreDate = restorePoint.EarliestRestoreDate,
+                    RestorePointLabel = restorePoint.RestorePointLabel
                 };
             }).ToList();
+        }
+
+        /// <summary>
+        /// Creates a new the restore point for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>List of restore points</returns>
+        internal IEnumerable<AzureSqlDatabaseRestorePointModel> NewRestorePoint(IEnumerable<AzureSqlDatabaseRestorePointModel> entityList)
+        {
+            AzureSqlDatabaseRestorePointModel entity = entityList.Single();
+            Management.Sql.Models.CreateDatabaseRestorePointDefinition definition = new Management.Sql.Models.CreateDatabaseRestorePointDefinition { RestorePointLabel = entity.RestorePointLabel };
+            var resp = Communicator.NewRestorePoint(entity.ResourceGroupName, entity.ServerName, entity.DatabaseName, definition);
+            return new List<AzureSqlDatabaseRestorePointModel>
+            {
+                new AzureSqlDatabaseRestorePointModel()
+                {
+                    ResourceGroupName = entity.ResourceGroupName,
+                    ServerName = entity.ServerName,
+                    DatabaseName = entity.DatabaseName,
+                    Location = resp.Location,
+                    RestorePointType = resp.RestorePointType.ToString(),
+                    RestorePointCreationDate = resp.RestorePointCreationDate,
+                    EarliestRestoreDate = resp.EarliestRestoreDate,
+                    RestorePointLabel = resp.RestorePointLabel
+                }
+            };
+        }
+
+        /// <summary>
+        /// Removes a given restore point for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="restorePointCreationDate">The create time of the restore point</param>
+        /// <returns>void</returns>
+        internal void RemoveRestorePoint(IEnumerable<AzureSqlDatabaseRestorePointModel> entityList)
+        {
+            AzureSqlDatabaseRestorePointModel entity = entityList.Single();
+            string restorePointName = entity.RestorePointCreationDate.Value.ToFileTimeUtc().ToString();
+            Communicator.RemoveRestorePoint(entity.ResourceGroupName, entity.ServerName, entity.DatabaseName, restorePointName);
         }
 
         /// <summary>

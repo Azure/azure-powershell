@@ -1,47 +1,45 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 67A9BB67-CF17-4CAA-99D9-002D0D23178B
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/get-azurermsqldatabaserestorepoints
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint
 schema: 2.0.0
 ---
 
-# Get-AzureRmSqlDatabaseRestorePoints
+# New-AzureRmSqlDatabaseRestorePoint
 
 ## SYNOPSIS
-Retrieves the distinct restore points from which a SQL Data Warehouse can be restored.
+Creates a new restore point from which a SQL Database can be restored.
 
 ## SYNTAX
 
 ```
-Get-AzureRmSqlDatabaseRestorePoints [-ServerName] <String> [-DatabaseName] <String>
+New-AzureRmSqlDatabaseRestorePoint -RestorePointLabel <String> [-ServerName] <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSqlDatabaseRestorePoints** cmdlet retrieves the distinct restore points that an Azure SQL Data Warehouse can be restored from.
-For an Azure SQL Database, the restore window is continuous.
-This means that any point in time in the backup retention period of the database can be used as a restore point.
+The **New-AzureRmSqlDatabaseRestorePoint** cmdlet creates a new restore point that an Azure SQL Database can be restored from.
 
-This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
+This cmdlet is currently supported by the SQL Server Datawarehouse service on Azure SQL Database.
 
 ## EXAMPLES
 
-### Example 1: Get all restore points
+### Example 1: Create a restore point
 ```
-PS C:\>Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\>New-AzureRmSqlDatabaseRestorePoint -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -RestorePointLabel "RestorePoint01"
 ResourceGroupName        : resourcegroup01
 ServerName               : server01
 DatabaseName             : database01
 Location                 : Central US
-RestorePointType         : CONTINUOUS
-RestorePointCreationDate : 
-EarliestRestoreDate      : 8/12/2015 12:00:00 AM
+RestorePointType         : DISCRETE
+RestorePointCreationDate : 8/12/2015 12:00:00 AM
+EarliestRestoreDate      : 
 RestorePointLabel        : RestorePoint01
 ```
 
-This command returns all available restore points for the Azure SQL Database named Database01.
+This command creates a restore point for Azure SQL Database and returns the details of the restore point.
 
 ## PARAMETERS
 
@@ -85,6 +83,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RestorePointLabel
+Specifies the label of the restore point for easy identification.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -140,9 +153,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
