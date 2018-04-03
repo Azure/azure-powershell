@@ -298,14 +298,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        /// <summary>
+        /// Heres whats happening here :
+        /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
+        /// defined identity in the VMSS identity object.
+        /// If only "SystemAssignedIdentity" is present, we just set the type of the Identity to "SystemAssigned" and no identity ids are set as its created by Azure
+        /// If only "UserAssignedIdentity" is present, we set the type of the Identity to be "UserAssigned" and set the Identity in the VMSS identity object.
+        /// If neither is present, we return a null.
+        /// </summary>
+        /// <returns>Returning the Identity generated form the cmdlet parameters "SystemAssignedIdentity" and "UserAssignedIdentity"</returns>
         private VirtualMachineScaleSetIdentity GetVmssIdentityFromArgs()
         {
             var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
-            return SystemAssignedIdentity || isUserAssignedEnabled
+            return SystemAssignedIdentity.IsPresent || isUserAssignedEnabled
                 ? new VirtualMachineScaleSetIdentity
                 {
                     Type =  !isUserAssignedEnabled ? ResourceIdentityType.SystemAssigned
-                        : SystemAssignedIdentity ? ResourceIdentityType.SystemAssignedUserAssigned
+                        : SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned
                         : ResourceIdentityType.UserAssigned,
                     IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
                 }
