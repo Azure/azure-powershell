@@ -11,20 +11,28 @@
     # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$ProjectPaths = @( "$PSScriptRoot\..\src\ResourceManager" )
+param(
+    [ValidateNotNullOrEmpty()]
+    [ValidateSet('Debug', 'Release')]
+    [System.String]$BuildConfig
+)
+
+$ProjectPaths = @( "$PSScriptRoot\..\src\Package\$BuildConfig\ResourceManager" )
 $DependencyMapPath = "$PSScriptRoot\..\src\Package\DependencyMap.csv"
 
 $DependencyMap = Import-Csv -Path $DependencyMapPath
 
-$ModuleManifestFiles = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.FullName -notlike "*Debug*" -and `
+$ModuleManifestFiles = $ProjectPaths | ForEach-Object{ Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | Where-Object { $_.FullName -like "*$($BuildConfig)*" -and `
                                                                                                                         $_.FullName -notlike "*Netcore*" -and `
                                                                                                                         $_.FullName -notlike "*dll-Help.psd1*" -and `
                                                                                                                         $_.FullName -notlike "*Stack*" } }
 
 foreach ($ModuleManifest in $ModuleManifestFiles)
 {
+    Write-Host $ModuleManifest
+    Write-Host "checking $($ModuleManifest.Fullname)"
     $ModuleName = $ModuleManifest.Name.Replace(".psd1", "")
-    $Assemblies = $DependencyMap | where { $_.Directory.EndsWith($ModuleName) }
+    $Assemblies = $DependencyMap | Where-Object { $_.Directory.EndsWith($ModuleName) }
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifest.DirectoryName -FileName $ModuleManifest.Name
 
     $LoadedAssemblies = @()
@@ -32,32 +40,33 @@ foreach ($ModuleManifest in $ModuleManifestFiles)
     {
         $LoadedAssemblies += $ModuleMetadata.RequiredAssemblies
     }
-    
+
     $LoadedAssemblies += $ModuleMetadata.NestedModules
 
     if ($ModuleMetadata.RequiredModules)
     {
-        $RequiredModules = $ModuleMetadata.RequiredModules | % { $_["ModuleName"] }
+        $RequiredModules = $ModuleMetadata.RequiredModules | ForEach-Object { $_["ModuleName"] }
         foreach ($RequiredModule in $RequiredModules)
         {
-            $RequiredModuleManifest = $ModuleManifestFiles | where { $_.Name.Replace(".psd1", "") -eq $RequiredModule }
+            $RequiredModuleManifest = $ModuleManifestFiles | Where-Object { $_.Name.Replace(".psd1", "") -eq $RequiredModule }
             if (-not $RequiredModuleManifest)
             {
                 continue
             }
-            Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $RequiredModuleManifest.DirectoryName -FileName $RequiredModuleManifest.Name
-            
-            if ($ModuleMetadata.RequiredAssemblies.Count -gt 0)
-            {
-                $LoadedAssemblies += $ModuleMetadata.RequiredAssemblies
+
+            $RequiredModuleManifest | ForEach-Object {
+                Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $_.DirectoryName -FileName $_.Name
+                if ($ModuleMetadata.RequiredAssemblies.Count -gt 0)
+                {
+                    $LoadedAssemblies += $ModuleMetadata.RequiredAssemblies
+                }
+                $LoadedAssemblies += $ModuleMetadata.NestedModules
             }
-            
-            $LoadedAssemblies += $ModuleMetadata.NestedModules
         }
     }
-    
-    $LoadedAssemblies = $LoadedAssemblies | % { $_.Substring(2) }
-    $LoadedAssemblies = $LoadedAssemblies | % { $_.Replace(".dll", "") }
+
+    $LoadedAssemblies = $LoadedAssemblies | ForEach-Object { $_.Substring(2) }
+    $LoadedAssemblies = $LoadedAssemblies | ForEach-Object { $_.Replace(".dll", "") }
 
     $Found = @()
     foreach ($Assembly in $Assemblies)
