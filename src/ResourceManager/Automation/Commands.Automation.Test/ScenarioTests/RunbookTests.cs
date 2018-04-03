@@ -15,32 +15,32 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.Automation.Test
+namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
 {
-    public class AutomationTests : AutomationScenarioTestsBase
+    public class RunbookTests : AutomationScenarioTestsBase
     {
-        public AutomationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public RunbookTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Need x64 test framework.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationStartAndStopRunbook()
         {
-            RunPowerShellTest("Test-AutomationStartAndStopRunbook -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1");
+            RunPowerShellTest("Test-AutomationStartAndStopRunbook -runbookPath ScenarioTests\\Resources\\Test.ps1");
         }
 
-        [Fact(Skip = "Need x64 test framework.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationPublishAndEditRunbook()
         {
-            RunPowerShellTest("Test-AutomationPublishAndEditRunbook -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1 -editRunbookPath Resources\\Automation\\Test-WorkflowV2.ps1");
+            RunPowerShellTest("Test-AutomationPublishAndEditRunbook -runbookPath ScenarioTests\\Resources\\Test.ps1 -editRunbookPath ScenarioTests\\Resources\\Test-V2.ps1");
         }
 
-        [Fact(Skip = "Need x64 test framework.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationConfigureRunbook()
@@ -56,15 +56,15 @@ namespace Microsoft.Azure.Commands.Automation.Test
             RunPowerShellTest("Test-AutomationSuspendAndResumeJob -runbookPath ScenarioTests\\Resources\\Use-WorkflowCheckpointSample.ps1");
         }
 
-        [Fact(Skip = "Need to re-record tests with latest version of automation library")]
+        [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAutomationStartRunbookOnASchedule()
         {
-            RunPowerShellTest("Test-AutomationStartRunbookOnASchedule -runbookPath ScenarioTests\\Resources\\Test-Workflow.ps1");
+            RunPowerShellTest("Test-AutomationStartRunbookOnASchedule -runbookPath ScenarioTests\\Resources\\Test.ps1");
         }
 
-        [Fact(Skip = "Need x64 test framework.")]
+        [Fact(Skip = "Need to re-record tests with latest version of automation library")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationStartUnpublishedRunbook()
@@ -72,28 +72,12 @@ namespace Microsoft.Azure.Commands.Automation.Test
             RunPowerShellTest("Test-AutomationStartUnpublishedRunbook -runbookPath ScenarioTests\\Resources\\Test-WorkFlowWithVariousParameters.ps1");
         }
 
-        [Fact(Skip = "Need x64 test framework.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
         public void TestAutomationRunbookWithParameter()
         {
-            RunPowerShellTest("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1  @{'nums'='[1,2,3,4,5,6,7]'}  28");
-        }
-
-        [Fact]
-        [Trait(Category.Service, Category.Automation)]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestAutomationCreateNewVariableWithGetContent()
-        {
-            RunPowerShellTest("Test-CreateNewVariableWithGetContent");
-        }
-
-        [Fact]
-        [Trait(Category.Service, Category.Automation)]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        public void TestAutomationCreateNewVariableWithLargeDataThrowsTimeOut()
-        {
-            RunPowerShellTest("Test-CreateNewVariableWithLargeDataThrowsTimeOut");
-        }        
+            RunPowerShellTest("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1");
+        }       
     }
 }

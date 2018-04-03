@@ -28,7 +28,7 @@ using ResourceManagementClient = Microsoft.Azure.Management.ResourceManager.Reso
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
-namespace Microsoft.Azure.Commands.Automation.Test
+namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
 {
     public abstract class AutomationScenarioTestsBase : RMTestBase
     {
@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Test
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\AutomationTestCommon.ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.Automation.psd1"));

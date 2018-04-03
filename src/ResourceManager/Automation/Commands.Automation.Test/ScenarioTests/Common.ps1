@@ -18,7 +18,7 @@ Gets resource group name
 #>
 function Get-RandomResourceGroupName
 {
-    return 'rg' + (getAssetName)
+    return 'rg-' + (getAssetName)
 }
 
 <#
@@ -27,5 +27,36 @@ Gets account name
 #>
 function Get-RandomAutomationAccountName
 {
-	return 'automationAccount' + (getAssetName)
+	return 'automationAccount-' + (getAssetName)
 }
+
+<#
+.SYNOPSIS
+Gets autoamtion account test location
+#>
+function Get-AutomationAccountTestLocation
+{
+	return Get-Location -providerNamespace "Microsoft.Automation" -resourceType "automationAccounts" -preferredLocation "Japan East"
+}
+
+<#
+.SYNOPSIS
+Checks whether the first string contains the second one
+#>
+function AssertContains
+{
+    param([string] $str, [string] $substr, [string] $message)
+
+    if (!$message)
+    {
+        $message = "Assertion failed because '$str' does not contain '$substr'"
+    }
+  
+    if (!$str.Contains($substr)) 
+    {
+        throw $message
+    }
+  
+    return $true
+}  
+
