@@ -101,65 +101,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { this._resourceClient = value; }
         }
 
-        protected List<PSKeyVaultModels.PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
-        {
-            IResourceManagementClient armClient = this.ResourceClient;
-
-            PSTagValuePair tagValuePair = new PSTagValuePair();
-            if (tag != null && tag.Count > 0)
-            {
-                tagValuePair = TagsConversionHelper.Create(tag);
-                if (tagValuePair == null)
-                {
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidTagFormat);
-                }
-            }
-            IPage<GenericResource> listResult = null;
-            var resourceType = tag == null ? KeyVaultManagementClient.VaultsResourceType : null;
-            if (resourceGroupName != null)
-            {
-                listResult = armClient.ResourceGroups.ListResources(resourceGroupName,
-                    new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType &&
-                             r.Tagname == tagValuePair.Name &&
-                             r.Tagvalue == tagValuePair.Value));
-            }
-            else
-            {
-                listResult = armClient.Resources.List(
-                    new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType &&
-                             r.Tagname == tagValuePair.Name &&
-                             r.Tagvalue == tagValuePair.Value));
-            }
-
-            List<PSKeyVaultModels.PSKeyVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSKeyVaultIdentityItem>();
-            if (listResult != null)
-            {
-                vaults.AddRange(listResult.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
-                    .Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
-            }
-
-            while (!string.IsNullOrEmpty(listResult.NextPageLink))
-            {
-                if (resourceGroupName != null)
-                {
-                    listResult = armClient.ResourceGroups.ListResourcesNext(listResult.NextPageLink);
-                }
-                else
-                {
-                    listResult = armClient.Resources.ListNext(listResult.NextPageLink);
-                }
-
-                if (listResult != null)
-                {
-                    vaults.AddRange(listResult.Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
-                }
-            }
-
-            return vaults;
-        }
-
         protected string GetResourceGroupName(string vaultName)
         {
             string rg = null;
@@ -387,6 +328,24 @@ namespace Microsoft.Azure.Commands.KeyVault
             return IsValidGUid(objectId);
         }
 
+
+        /// <summary>
+        /// Utility function that iterates over the paged results, until the NextLink is null;
+        /// writes retrieved objects one page at a time.
+        /// </summary>
+        /// <typeparam name="TObject">The object type to write.</typeparam>
+        /// <param name="options">The KeyVaultObjectFilterOptions</param>
+        /// <param name="getObjects">Function that takes the options and returns a list of objects.</param>
+        protected void GetAndWriteObjects<TObject>(KeyVaultResourceFilterOptions options, Func<KeyVaultResourceFilterOptions, IEnumerable<TObject>> getObjects)
+        {
+            do
+            {
+                var pageResults = getObjects(options);
+                WriteObject(pageResults, true);
+            } while (!string.IsNullOrEmpty(options.NextLink));
+        }
+
+
         protected readonly string[] DefaultPermissionsToKeys =
         {
             KeyPerms.Get,
@@ -425,7 +384,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Managecontacts,
             CertPerms.Manageissuers,
             CertPerms.Setissuers,
-            CertPerms.Recover
+            CertPerms.Recover,
+            CertPerms.Backup,
+            CertPerms.Restore
         };
 
         protected readonly string[] DefaultPermissionsToStorage = 
@@ -440,6 +401,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             StoragePerms.Set,
             StoragePerms.Setsas,
             StoragePerms.Update,
+            StoragePerms.Recover,
+            StoragePerms.Backup,
+            StoragePerms.Restore
         };
 
         protected readonly string DefaultSkuFamily = "A";

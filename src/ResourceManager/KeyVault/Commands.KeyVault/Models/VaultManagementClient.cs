@@ -18,7 +18,6 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 #endif
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.KeyVault;
 using System;
@@ -29,6 +28,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest.Azure;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -317,6 +317,84 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return deletedVaults;
+        }
+
+        /// <summary>
+        /// Returns the lists in the resource group, if specified, or the current subscription.
+        /// </summary>
+        /// <param name="resourceGroupName"></param>
+        /// <returns>
+        /// List of vault items.
+        /// </returns>
+        public List<PSKeyVaultIdentityItem> ListVaults(KeyVaultResourceFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException(nameof(options));
+
+            List<PSKeyVaultIdentityItem> vaults = new List<PSKeyVaultIdentityItem>();
+
+            bool doListBySubcription = String.IsNullOrWhiteSpace(options.ResourceGroup);
+            bool doFilterByTag = options.Tag != null && options.Tag.Count > 0;
+
+            PSTagValuePair tagValuePair = null;
+            if (doFilterByTag)
+            {
+                tagValuePair = TagsConversionHelper.Create(options.Tag);
+                if (tagValuePair == null)
+                {
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidTagFormat);
+                }
+            }
+
+            IPage<Vault> page = null;
+            if (doListBySubcription)
+            {
+                if (options.NextLink == null)
+                {
+                    page = Task.Run(async () => await this.KeyVaultManagementClient.Vaults.ListBySubscriptionAsync().ConfigureAwait(false))
+                                        .ConfigureAwait(false)
+                                        .GetAwaiter()
+                                        .GetResult();
+                }
+                else
+                {
+                    page = Task.Run(async () => await this.KeyVaultManagementClient.Vaults.ListBySubscriptionNextAsync(options.NextLink).ConfigureAwait(false))
+                        .ConfigureAwait(false)
+                        .GetAwaiter()
+                        .GetResult();
+                }
+            }
+            else
+            {
+                if (options.NextLink == null)
+                {
+                    page = Task.Run(async () => await this.KeyVaultManagementClient.Vaults.ListByResourceGroupAsync(options.ResourceGroup).ConfigureAwait(false))
+                        .ConfigureAwait(false)
+                        .GetAwaiter()
+                        .GetResult();
+                }
+                else
+                {
+                    page = Task.Run(async () => await this.KeyVaultManagementClient.Vaults.ListByResourceGroupNextAsync(options.NextLink).ConfigureAwait(false))
+                        .ConfigureAwait(false)
+                        .GetAwaiter()
+                        .GetResult();
+                }
+            }
+
+            options.NextLink = page?.NextPageLink;
+
+            foreach (var listedVault in page)
+            {
+                if (!doFilterByTag 
+                    || (listedVault.Tags.ContainsKey(tagValuePair.Name)
+                        && listedVault.Tags[tagValuePair.Name].EqualsInsensitively(tagValuePair.Value)))
+                {
+                    vaults.Add(new PSKeyVaultIdentityItem(listedVault));
+                }
+            }
+
+            return vaults;
         }
 
         public readonly string VaultsResourceType = "Microsoft.KeyVault/vaults";
