@@ -27,8 +27,8 @@ Restore-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-InputFile] <String>
 
 ### ByResourceId
 ```
-Restore-AzureKeyVaultKey -ResourceId <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzureKeyVaultKey [-ResourceId] <String> [-InputFile] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +106,7 @@ Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

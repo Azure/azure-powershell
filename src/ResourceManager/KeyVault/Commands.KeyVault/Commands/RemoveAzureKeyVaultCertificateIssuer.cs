@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateIssuer,
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateIssuer))]
     public class RemoveAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
@@ -40,7 +39,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    ParameterSetName = DefaultParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -51,7 +49,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 1,
                    ParameterSetName = DefaultParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
@@ -104,7 +101,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     "Remove certificate issuer '{0}'",
                     Name),
                 Name,
-                () => { issuer = PSKeyVaultCertificateIssuer.FromIssuer(this.DataServiceClient.DeleteCertificateIssuer(VaultName, Name)); });
+                () => { issuer = this.DataServiceClient.DeleteCertificateIssuer(VaultName, Name); });
 
             if (PassThru)
             {
