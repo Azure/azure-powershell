@@ -15,13 +15,9 @@
 using System;
 using System.Linq;
 using System.Management.Automation;
-using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
-using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
-using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
-using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
