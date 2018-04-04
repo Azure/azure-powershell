@@ -17,14 +17,13 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 #else
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 #endif
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.KeyVault;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.KeyVault;
 using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
