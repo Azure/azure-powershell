@@ -4,12 +4,12 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Linq;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.DataMigration.Common;
 using Microsoft.Azure.Commands.DataMigration.Models;
 using Microsoft.Azure.Management.DataMigration;
 using Microsoft.Azure.Management.DataMigration.Models;
-using System.Linq;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             HelpMessage = "Source platform type for project.")]
         [ValidateNotNullOrEmpty]
-        public ProjectSourcePlatform SourceType { get; set; }
+        public string SourceType { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "Target platform type for project.")]
         [ValidateNotNullOrEmpty]
-        public ProjectTargetPlatform TargetType { get; set; }
+        public string TargetType { get; set; }
 
         [Parameter(
             Mandatory = false,

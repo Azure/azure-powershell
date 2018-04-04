@@ -4,8 +4,8 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataMigration.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public override void CustomInit()
         {
             this.SimpleParam(dataSource, typeof(string), "Gets or sets data source in the format Protocol:MachineName\\SQLServerInstanceName,PortNumber", true);
-            this.SimpleParam(authType, typeof(AuthenticationType), "Authentication type to be used for Sql Connection", true);
+            this.SimpleParam(authType, typeof(string), "Authentication type to be used for Sql Connection", true);
             this.SimpleParam(encryptConnection, typeof(SwitchParameter), "Gets or sets whether to encrypt the connection, Default Value True");
             this.SimpleParam(trustServerCertificate, typeof(SwitchParameter), "Gets or sets whether to trust the server certificate");
             this.SimpleParam(additionalSettings, typeof(string), "Gets or sets additional connection settings");
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         {
             SqlConnectionInfo connectionInfo = new SqlConnectionInfo();
             connectionInfo.DataSource = MyInvocation.BoundParameters[dataSource] as string;
-            connectionInfo.Authentication = (AuthenticationType)MyInvocation.BoundParameters[authType];
+            connectionInfo.Authentication = MyInvocation.BoundParameters[authType] as string;
 
             if (MyInvocation.BoundParameters.ContainsKey(additionalSettings))
             {

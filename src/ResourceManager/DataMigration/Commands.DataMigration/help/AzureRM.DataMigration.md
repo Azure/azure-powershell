@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.DataMigration
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
 Help Version: 0.1.0
@@ -28,11 +28,17 @@ Locale: en-US
 ### [New-AzureRmDataMigrationProject](New-AzureRmDataMigrationProject.md)
 {{Creates a new Azure Database Migration Service project.}}
 
+### [New-AzureRmDataMigrationFileShare](New-AzureRmDataMigrationFileShare.md)
+{{Manually Enter New-AzureRmDataMigrationFileShare Description Here}}
+
 ### [New-AzureRmDataMigrationService](New-AzureRmDataMigrationService.md)
 {{Creates a new instance of the Azure Database Migration Service.}}
 
 ### [New-AzureRmDataMigrationSqlServerSqlDbSelectedDB](New-AzureRmDataMigrationSqlServerSqlDbSelectedDB.md)
 {{Creates a MigrateSqlServerSqlDbDatabaseInput object that contains information about source and target databases for migration.}}
+
+### [New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB](New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB.md)
+{{Manually Enter New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB Description Here}}
 
 ### [New-AzureRmDataMigrationTask](New-AzureRmDataMigrationTask.md)
 {{Creates and starts a data migration task in the Azure Database Migration Service.}}
@@ -51,4 +57,7 @@ Locale: en-US
 
 ### [Stop-AzureRmDataMigrationService](Stop-AzureRmDataMigrationService.md)
 {{Stops an instance of the Azure Database Migration Service that is in a running state.}}
+
+### [Stop-AzureRmDataMigrationTask](Stop-AzureRmDataMigrationTask.md)
+{{Manually Enter Stop-AzureRmDataMigrationTask Description Here}}
 
