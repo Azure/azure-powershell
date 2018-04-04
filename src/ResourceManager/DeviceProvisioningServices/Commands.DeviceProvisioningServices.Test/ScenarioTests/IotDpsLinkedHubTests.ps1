@@ -28,6 +28,7 @@ function Test-AzureIotDpsLinkedHubLifeCycle
 	$IotDpsName = getAssetName 
 	$ResourceGroupName = getAssetName 
 	$IotHubName = getAssetName
+	$hubKeyName = "ServiceKey"
 	$Sku = "S1"
 
 	# Constant variable
@@ -46,11 +47,20 @@ function Test-AzureIotDpsLinkedHubLifeCycle
 	$iotHub = New-AzureRmIoTHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1
 	Assert-True { $iotHub.Name -eq $IotHubName }
 
+	# Add a key to IoT Hub
+	$hubKeys = Add-AzureRmIoTHubKey -Name $IotHubName -ResourceGroupName $ResourceGroupName -KeyName $hubKeyName -Rights ServiceConnect
+	Assert-True { $hubKeys.Count -gt 1 }
+
+	# Get key information from IoT Hub
+	$hubKey = Get-AzureRmIoTHubKey -Name $IotHubName -ResourceGroupName $ResourceGroupName -KeyName $hubKeyName
+
+	$HubConnectionString = [string]::Format("HostName={0};SharedAccessKeyName={1};SharedAccessKey={2}",$iotHub.Properties.HostName,$hubKey.KeyName,$hubKey.PrimaryKey)
+
 	# Link an Iot Hub to an Iot Hub Device Provisioning Service
-	$linkedHub = Add-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -IotHubResourceGroupName $ResourceGroupName -IotHubName $IotHubName
+	$linkedHub = Add-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -IotHubConnectionString $HubConnectionString -IotHubLocation $iotHub.Location
 	Assert-True { $linkedHub.Count -eq 1 }
-	Assert-True { $linkedHub.LinkedHubName -eq $LinkedHubName }
-	Assert-True { $linkedHub.Location -eq $Location }
+	Assert-True { $linkedHub.LinkedHubName -eq $iotHub.Properties.HostName }
+	Assert-True { $linkedHub.Location -eq $iotHub.Location }
 
 	# Update Linked Hub in Iot Hub Device Provisioning Service
 	$updatedLinkedHub = Update-AzureRmIoTDpsHub -ResourceGroupName $ResourceGroupName -Name $IotDpsName -LinkedHubName $LinkedHubName -AllocationWeight $AllocationWeight

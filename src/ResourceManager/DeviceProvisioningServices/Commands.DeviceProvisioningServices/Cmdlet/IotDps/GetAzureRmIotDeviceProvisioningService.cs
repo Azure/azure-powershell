@@ -33,13 +33,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [Parameter(
             Mandatory = false,
             ParameterSetName = ListIotDpsByRGParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = GetIotDpsParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -49,7 +47,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = GetIotDpsParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the IoT Device Provisioning Service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

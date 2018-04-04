@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -61,7 +60,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the IoT Device Provisioning Service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -88,14 +86,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                 try
                 {
                     this.IotDpsClient.IotDpsResource.Delete(this.Name, this.ResourceGroupName);
-                    if (PassThru.IsPresent)
-                    {
-                        this.WriteObject(true);
-                    }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw ex;
+                }
+
+                if (PassThru)
+                {
+                    this.WriteObject(true);
                 }
             }
         }

@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -63,7 +62,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the IoT Device Provisioning Service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -77,7 +75,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Host name of linked IoT Hub")]
         [ValidateNotNullOrEmpty]
         public string LinkedHubName { get; set; }
@@ -107,16 +104,17 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
                     IList<IotHubDefinitionDescription> linkedHubs = GetIotDpsHubs(this.ResourceGroupName, this.Name);
                     IotHubDefinitionDescription linkedHub = linkedHubs.FirstOrDefault(hubs => hubs.Name.Equals(this.LinkedHubName));
-                    provisioningServiceDescription.Properties.IotHubs = linkedHubs.Where(x => x.ConnectionString != linkedHub.ConnectionString).ToList(); 
+                    provisioningServiceDescription.Properties.IotHubs = linkedHubs.Where(x => x.ConnectionString != linkedHub.ConnectionString).ToList();
                     IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
-                    if (PassThru.IsPresent)
-                    {
-                        this.WriteObject(true);
-                    }
                 }
                 catch (Exception ex)
                 {
                     throw ex;
+                }
+
+                if (PassThru)
+                {
+                    this.WriteObject(true);
                 }
             }
         }
