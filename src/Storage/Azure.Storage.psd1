@@ -59,7 +59,6 @@ RequiredAssemblies = '.\Microsoft.WindowsAzure.Storage.dll',
                '.\Microsoft.Azure.KeyVault.Core.dll',
                '.\Microsoft.WindowsAzure.Management.dll'
 
-
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
 
