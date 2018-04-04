@@ -128,6 +128,7 @@
     <Compile Include="Common\ComputeClientInstancViewMethod.cs" />
     <Compile Include="Common\ComputeCloudException.cs" />
     <Compile Include="Common\DiagnosticsHelper.cs" />
+    <Compile Include="Common\StorageAccountTypesExtensions.cs" />
     <Compile Include="Common\StorageManagementClient.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
@@ -240,7 +241,6 @@
     <Compile Include="Images\GetAzureVMImagePublisherCommand.cs" />
     <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
-    <Compile Include="Models\PSStorageAccountTypes.cs" />
     <Compile Include="Models\PSSyncOutputEvents.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Models\PSVirtualMachineExtensionImage.cs" />

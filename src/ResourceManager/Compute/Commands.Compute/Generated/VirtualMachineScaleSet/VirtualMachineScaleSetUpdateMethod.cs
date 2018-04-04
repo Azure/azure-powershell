@@ -20,7 +20,9 @@
 // code is regenerated.
 
 using Microsoft.Azure.Commands.Compute.Automation.Models;
+using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -187,7 +189,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false)]
         [ValidateNotNullOrEmpty]
-        public PSStorageAccountTypes? ManagedDiskStorageAccountType { get; set; }
+        [PSArgumentCompleter("StandardLRS", "PremiumLRS")]
+        public string ManagedDiskStorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false)]
