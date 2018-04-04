@@ -63,9 +63,7 @@ function Get-AllCertPermissions
         "managecontacts", 
         "manageissuers", 
         "setissuers",
-        "recover",
-        "backup",
-        "restore"
+        "recover"
     )
 }
 
@@ -81,10 +79,7 @@ function Get-AllStoragePermissions
          "regeneratekey",
          "set",
          "setsas",
-         "update",
-         "recover",
-         "backup",
-         "restore"
+         "update"
     )
 }
 
@@ -433,10 +428,10 @@ function Test-SetRemoveAccessPolicyByUPN
 {
     Param($existingVaultName, $rgName, $upn)
 
-    $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover")
-    $PermToSecrets = @("get", "list", "set", "delete", "backup", "restore", "recover")
-    $PermToCertificates = @("get", "list", "create", "delete", "backup", "restore", "recover")
-    $PermToStorage = @("get", "list", "delete", "backup", "restore", "recover")
+    $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
+    $PermToSecrets = @("get", "list", "set", "delete", "backup", "restore")
+    $PermToCertificates = @("get", "list", "create", "delete")
+    $PermToStorage = @("get", "list", "delete")
     $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PermissionsToStorage $PermToStorage -PassThru
     
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets $PermToCertificates $PermToStorage
@@ -452,10 +447,10 @@ function Test-SetRemoveAccessPolicyByEmailAddress
 {
     Param($existingVaultName, $rgName, $email, $upn)
 
-    $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover")
-    $PermToSecrets = @("get", "list", "set", "delete", "recover")
-    $PermToCertificates = @("get", "list", "create", "delete", "recover")
-    $PermToStorage = @("get", "list", "delete", "recover")
+    $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
+    $PermToSecrets = @("get", "list", "set", "delete")
+    $PermToCertificates = @("get", "list", "create", "delete")
+    $PermToStorage = @("get", "list", "delete")
 
     $vault = Set-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EmailAddress $email -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PermissionsToCertificates $PermToCertificates -PermissionsToStorage $PermToStorage -PassThru
 

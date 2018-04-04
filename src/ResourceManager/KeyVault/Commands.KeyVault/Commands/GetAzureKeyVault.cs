@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -101,50 +101,25 @@ namespace Microsoft.Azure.Commands.KeyVault
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:
-                    // If VaultName == null, list
+                    ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
+                    PSKeyVault vault = null;
+
                     if (string.IsNullOrEmpty(VaultName))
                     {
-                        GetAndWriteObjects<PSKeyVaultIdentityItem>(
-                            new KeyVaultResourceFilterOptions
-                            {
-                                ResourceGroup = ResourceGroupName,
-                                Tag = Tag
-                            },
-                            KeyVaultManagementClient.ListVaults);
+                        WriteObject(ListVaults(ResourceGroupName, Tag), true);
                         break;
                     }
 
-                    // Else if RG == null, list to find it
-                    // As of 4/3/18, the ARM client trims results to 1000, so we're using the more expensive ListVaults op.
-                    if (string.IsNullOrWhiteSpace(ResourceGroupName))
-                    {
-                        PSKeyVaultIdentityItem vaultListItem = null;
-                        var options = new KeyVaultResourceFilterOptions();
-                        do
-                        {
-                            var pageResults = KeyVaultManagementClient.ListVaults(options);
-                            vaultListItem = pageResults.Find(it => it.VaultName.Equals(VaultName, StringComparison.CurrentCultureIgnoreCase));
-                        } while (vaultListItem == null
-                            &&!string.IsNullOrEmpty(options.NextLink));
-
-                        // no matching vault
-                        if (vaultListItem == null)
-                            break;
-
-                        ResourceGroupName = vaultListItem.ResourceGroupName;
-                    }
-
-                    WriteObject(KeyVaultManagementClient.GetVault(VaultName, ResourceGroupName, ActiveDirectoryClient));
+                    if (!string.IsNullOrWhiteSpace(ResourceGroupName))
+                        vault = KeyVaultManagementClient.GetVault(
+                                                    VaultName,
+                                                    ResourceGroupName,
+                                                    ActiveDirectoryClient);
+                    WriteObject(vault);
                     break;
 
                 case ListVaultsBySubParameterSet:
-                    GetAndWriteObjects<PSKeyVaultIdentityItem>(
-                        new KeyVaultResourceFilterOptions
-                        {
-                            ResourceGroup = ResourceGroupName,
-                            Tag = Tag
-                        },
-                        KeyVaultManagementClient.ListVaults);
+                    WriteObject(ListVaults(ResourceGroupName, Tag), true);
                     break;
 
                 case GetDeletedVaultParameterSet:
