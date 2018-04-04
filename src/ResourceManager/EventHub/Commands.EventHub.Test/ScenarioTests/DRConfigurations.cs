@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void DRConfigurationsCURD()
         {
             EventHubsController.NewInstance.RunPsTest("DRConfigurationTests");
@@ -36,7 +35,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void DRConfigurationsCURDAlternateName()
         {
             EventHubsController.NewInstance.RunPsTest("DRConfigurationTestsAlternateName");
