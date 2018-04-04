@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             return ConvertObject<PSIotDpsPropertiesDescription, IotDpsPropertiesDescription>(psIotDpsPropertiesDescription);
         }
 
-        public static TagsResource ToTagsResource(PSTagsResource psTagsResource)
+        public static TagsResource ToTagsResource(IDictionary<string,string> tags)
         {
-            return ConvertObject<PSTagsResource, TagsResource>(psTagsResource);
+            return new TagsResource(tags);
         }
 
         public static PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(SharedAccessSignatureAuthorizationRuleAccessRightsDescription accessPolicy, string resourceGroupName, string name)

@@ -63,25 +63,24 @@ function Test-AzureIotDpsLifeCycle
 	Assert-True { $updatedIotDps1.Properties.AllocationPolicy -eq $NewAllocationPolicy }
 
 	# Add Tags to Iot Hub Device Provisioning Service
-	$tags = New-Object Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSTagsResource
-	$tags.Tags = New-Object 'system.collections.generic.dictionary[[string],[string]]'
-	$tags.Tags.Add($Tag1Key, $Tag1Value)
-	$updatedIotDps2 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tags $tags
+	$tags = @{}
+	$tags.Add($Tag1Key, $Tag1Value)
+	$updatedIotDps2 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags
 	Assert-True { $updatedIotDps2.Tags.Count -eq 1 }
 	Assert-True { $updatedIotDps2.Tags.Item($Tag1Key) -eq $Tag1Value }
 	
 	# Add more Tags to Iot Hub Device Provisioning Service
-	$tags.Tags.Clear()
-	$tags.Tags.Add($Tag2Key, $Tag2Value)
-	$updatedIotDps3 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tags $tags
+	$tags.Clear()
+	$tags.Add($Tag2Key, $Tag2Value)
+	$updatedIotDps3 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags
 	Assert-True { $updatedIotDps3.Tags.Count -eq 2 }
 	Assert-True { $updatedIotDps3.Tags.Item($Tag1Key) -eq $Tag1Value }
 	Assert-True { $updatedIotDps3.Tags.Item($Tag2Key) -eq $Tag2Value }
 
 	# Add Tags to Iot Hub Device Provisioning Service with Reset option
-	$tags.Tags.Clear()
-	$tags.Tags.Add($Tag1Key, $Tag1Value)
-	$updatedIotDps4 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tags $tags -Reset
+	$tags.Clear()
+	$tags.Add($Tag1Key, $Tag1Value)
+	$updatedIotDps4 = Update-AzureRmIoTDps -ResourceGroupName $ResourceGroupName -Name $IotDpsName -Tag $tags -Reset
 	Assert-True { $updatedIotDps4.Tags.Count -eq 1 }
 	Assert-True { $updatedIotDps4.Tags.Item($Tag1Key) -eq $Tag1Value }
 

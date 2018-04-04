@@ -15,6 +15,8 @@
 namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 {
     using System;
+    using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -22,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
     using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
-    [Cmdlet(VerbsData.Update, "AzureRmIoTDeviceProvisioningService", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, "AzureRmIoTDeviceProvisioningService", DefaultParameterSetName = ResourceUpdateParameterSet, SupportsShouldProcess = true)]
     [Alias("Update-AzureRmIoTDps")]
     [OutputType(typeof(PSProvisioningServiceDescription))]
     public class UpdateAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
@@ -68,13 +70,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceUpdateParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [Parameter(
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceCreateUpdateParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -84,13 +84,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceUpdateParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the IoT Device Provisioning Service")]
         [Parameter(
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceCreateUpdateParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the IoT Device Provisioning Service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -99,19 +97,19 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = InputObjectUpdateParameterSet,
-            HelpMessage = "IoT Device Provisioning Service Tags")]
+            HelpMessage = "IoT Device Provisioning Service Tag collection")]
         [Parameter(
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceIdUpdateParameterSet,
-            HelpMessage = "IoT Device Provisioning Service Tags")]
+            HelpMessage = "IoT Device Provisioning Service Tag collection")]
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceUpdateParameterSet,
-            HelpMessage = "IoT Device Provisioning Service Tags")]
+            HelpMessage = "IoT Device Provisioning Service Tag collection")]
         [ValidateNotNullOrEmpty]
-        public PSTagsResource Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             Position = 1,
@@ -205,19 +203,19 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             ProvisioningServiceDescription updatedProvisioningServiceDescription = new ProvisioningServiceDescription();
             if (this.Reset.IsPresent)
             {
-                updatedProvisioningServiceDescription = this.IotDpsClient.IotDpsResource.Update(this.ResourceGroupName, this.Name, IotDpsUtils.ToTagsResource(this.Tags));
+                updatedProvisioningServiceDescription = this.IotDpsClient.IotDpsResource.Update(this.ResourceGroupName, this.Name, IotDpsUtils.ToTagsResource(this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value)));
             }
             else
             {
                 ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
                 foreach (var tag in provisioningServiceDescription.Tags)
                 {
-                    if (!this.Tags.Tags.ContainsKey(tag.Key))
+                    if (!this.Tag.ContainsKey(tag.Key))
                     {
-                        this.Tags.Tags.Add(tag);
+                        this.Tag.Add(tag.Key, tag.Value);
                     }
                 }
-                updatedProvisioningServiceDescription = this.IotDpsClient.IotDpsResource.Update(this.ResourceGroupName, this.Name, IotDpsUtils.ToTagsResource(this.Tags));
+                updatedProvisioningServiceDescription = this.IotDpsClient.IotDpsResource.Update(this.ResourceGroupName, this.Name, IotDpsUtils.ToTagsResource(this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value)));
             }
 
             this.WritePSObject(updatedProvisioningServiceDescription);

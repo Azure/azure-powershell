@@ -54,7 +54,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -64,7 +63,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the IoT Device Provisioning Service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -73,13 +71,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IoT Device Provisioning Service access policy key name")]
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IoT Device Provisioning Service access policy key name")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
@@ -88,19 +84,16 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 2,
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IoT Device Provisioning Service access policy permissions")]
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IoT Device Provisioning Service access policy permissions")]
         [Parameter(
             Position = 3,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IoT Device Provisioning Service access policy permissions")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(new string[] { "ServiceConfig", "EnrollmentRead", "EnrollmentWrite", "DeviceConnect", "RegistrationStatusRead", "RegistrationStatusWrite" }, IgnoreCase = true)]

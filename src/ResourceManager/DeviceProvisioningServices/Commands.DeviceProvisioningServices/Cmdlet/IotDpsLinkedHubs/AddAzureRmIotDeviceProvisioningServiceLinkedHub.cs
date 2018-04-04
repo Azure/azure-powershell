@@ -18,8 +18,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Azure.Management.IotHub;
-    using Azure.Management.IotHub.Models;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices;
@@ -57,7 +55,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -67,7 +64,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the IoT Device Provisioning Service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -76,43 +72,38 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub resource group name")]
+            HelpMessage = "Connection String of the Iot Hub resource.")]
         [Parameter(
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub resource group name")]
+            HelpMessage = "Connection String of the Iot Hub resource.")]
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub resource group name")]
+            HelpMessage = "Connection String of the Iot Hub resource.")]
         [ValidateNotNullOrEmpty]
-        public string IotHubResourceGroupName { get; set; }
+        public string IotHubConnectionString { get; set; }
 
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
+            HelpMessage = "Location of the Iot Hub")]
         [Parameter(
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
+            HelpMessage = "Location of the Iot Hub")]
         [Parameter(
             Position = 3,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the Iot Hub")]
+            HelpMessage = "Location of the Iot Hub")]
         [ValidateNotNullOrEmpty]
-        public string IotHubName { get; set; }
+        [LocationCompleter("Microsoft.Devices/ProvisioningServices")]
+        public string IotHubLocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -168,28 +159,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         {
             try
             {
-                const string IotHubConnectionStringTemplate = "HostName={0};SharedAccessKeyName={1};SharedAccessKey={2}";
-                string connectionString = string.Empty;
-
-                IotHubDescription iotHubDescription = this.IotHubClient.IotHubResource.Get(this.IotHubResourceGroupName, this.IotHubName);
-                var hostName = iotHubDescription.Properties.HostName;
-                var location = iotHubDescription.Location;
-
-                IList<SharedAccessSignatureAuthorizationRule> keys = new List<SharedAccessSignatureAuthorizationRule>(this.IotHubClient.IotHubResource.ListKeys(this.IotHubResourceGroupName, this.IotHubName));
-                SharedAccessSignatureAuthorizationRule key = keys.FirstOrDefault(x => x.Rights.HasFlag(AccessRights.ServiceConnect));
-                if (key != null)
-                {
-                    connectionString = String.Format(IotHubConnectionStringTemplate, hostName, key.KeyName, key.PrimaryKey);
-                }
-                else
-                {
-                    throw new ArgumentNullException("Iot Hub doesn't have required access policy");
-                }
-
                 IotHubDefinitionDescription iotDpsHub = new IotHubDefinitionDescription()
                 {
-                    ConnectionString = connectionString,
-                    Location = location,
+                    ConnectionString = this.IotHubConnectionString,
+                    Location = this.IotHubLocation,
                     AllocationWeight = this.AllocationWeight,
                     ApplyAllocationPolicy = this.ApplyAllocationPolicy.IsPresent
                 };

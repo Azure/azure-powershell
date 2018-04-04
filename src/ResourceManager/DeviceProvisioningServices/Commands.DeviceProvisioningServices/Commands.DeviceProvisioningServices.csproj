@@ -7,7 +7,7 @@
     <ProjectGuid>{3AAECB0D-386B-4C7A-B46E-4D89E36ADCDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.DeviceProvisioningServices</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Commands.DeviceProvisioningServices</RootNamespace>
     <AssemblyName>Microsoft.Azure.Commands.DeviceProvisioningServices</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -36,10 +36,6 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DeviceProvisioningServices, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.DeviceProvisioningServices.0.9.0-preview\lib\net452\Microsoft.Azure.Management.DeviceProvisioningServices.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Azure.Management.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.IotHub.1.1.3\lib\net452\Microsoft.Azure.Management.IotHub.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />

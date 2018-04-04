@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -62,7 +61,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the IoT Device Provisioning Service")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -71,7 +69,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Position = 2,
             Mandatory = true,
             ParameterSetName = ResourceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot device provisioning service certificate")]
         [ValidateNotNullOrEmpty]
         public string CertificateName { get; set; }

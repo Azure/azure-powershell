@@ -12,11 +12,16 @@ Update an Azure IoT Hub device provisioning service.
 
 ## SYNTAX
 
+### ResourceUpdateSet (Default)
+```
+Update-AzureRmIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String> -Tag <Hashtable>
+ [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### InputObjectUpdateSet
 ```
-Update-AzureRmIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription>
- [-Tags] <PSTagsResource> [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzureRmIoTDeviceProvisioningService [-InputObject] <PSProvisioningServiceDescription> -Tag <Hashtable>
+ [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectCreateUpdateSet
@@ -28,7 +33,7 @@ Update-AzureRmIoTDeviceProvisioningService [-InputObject] <PSProvisioningService
 
 ### ResourceIdUpdateSet
 ```
-Update-AzureRmIoTDeviceProvisioningService [-ResourceId] <String> [-Tags] <PSTagsResource> [-Reset]
+Update-AzureRmIoTDeviceProvisioningService [-ResourceId] <String> -Tag <Hashtable> [-Reset]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,13 +41,6 @@ Update-AzureRmIoTDeviceProvisioningService [-ResourceId] <String> [-Tags] <PSTag
 ```
 Update-AzureRmIoTDeviceProvisioningService [-ResourceId] <String> [-AllocationPolicy] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceUpdateSet
-```
-Update-AzureRmIoTDeviceProvisioningService [-ResourceGroupName] <String> [-Name] <String>
- [-Tags] <PSTagsResource> [-Reset] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ### ResourceCreateUpdateSet
@@ -78,7 +76,7 @@ Update Allocation Policy to "GeoLatency" of an Azure IoT Hub device provisioning
 
 ### Example 2
 ```
-PS C:\> Update-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tags @tags
+PS C:\> Update-AzureRmIoTDeviceProvisioningService -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -93,11 +91,11 @@ SkuTier						: Standard
 Etag						: AAAAAAAPoOk=
 ```
 
-Add "@tags" to the Tags of an Azure IoT Hub device provisioning service "myiotdps".
+Add "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps".
 
 ### Example 3
 ```
-PS C:\> Get-AzureRmIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzureRmIoTDps -Tags @tags -Reset
+PS C:\> Get-AzureRmIoTDps -ResourceGroupName "myresourcegroup" -Name "myiotdps" | Update-AzureRmIoTDps -Tag @tags -Reset
 
 ResourceGroupName			: myresourcegroup
 Name						: myiotdps
@@ -112,7 +110,7 @@ SkuTier						: Standard
 Etag						: AAAAAAAS1dY=
 ```
 
-Delete Tags and add new "@tags" to the Tags of an Azure IoT Hub device provisioning service "myiotdps" using pipeline.
+Delete Tag and add new "@tags" to the Tag of an Azure IoT Hub device provisioning service "myiotdps" using pipeline.
 
 ## PARAMETERS
 
@@ -172,7 +170,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -181,7 +179,7 @@ Reset IoT Device Provisioning Service Tags
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: InputObjectUpdateSet, ResourceIdUpdateSet, ResourceUpdateSet
+Parameter Sets: ResourceUpdateSet, InputObjectUpdateSet, ResourceIdUpdateSet
 Aliases: 
 
 Required: False
@@ -202,7 +200,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -221,16 +219,16 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-IoT Device Provisioning Service Tags
+### -Tag
+IoT Device Provisioning Service Tag collection
 
 ```yaml
-Type: PSTagsResource
-Parameter Sets: InputObjectUpdateSet, ResourceIdUpdateSet, ResourceUpdateSet
+Type: Hashtable
+Parameter Sets: ResourceUpdateSet, InputObjectUpdateSet, ResourceIdUpdateSet
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

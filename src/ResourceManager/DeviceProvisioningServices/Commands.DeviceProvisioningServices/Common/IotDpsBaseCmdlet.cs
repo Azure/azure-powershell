@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using System.Collections.Generic;
     using System.Linq;
     using Azure.Management.Internal.Resources;
-    using Azure.Management.IotHub;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -31,22 +30,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private IIotDpsClient iotDpsClient;
 
-        private IIotHubClient iothubClient;
-
         private IResourceManagementClient resourceManagementClient;
-
-        protected IIotHubClient IotHubClient
-        {
-            get
-            {
-                if (this.iothubClient == null)
-                {
-                    this.iothubClient = AzureSession.Instance.ClientFactory.CreateArmClient<IotHubClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-                }
-
-                return this.iothubClient;
-            }
-        }
 
         protected IIotDpsClient IotDpsClient
         {

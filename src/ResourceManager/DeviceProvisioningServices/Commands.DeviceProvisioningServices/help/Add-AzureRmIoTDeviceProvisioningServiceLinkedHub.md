@@ -15,21 +15,21 @@ Linked IoT hub to an Azure IoT Hub device provisioning service.
 ### ResourceSet (Default)
 ```
 Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceGroupName] <String> [-Name] <String>
- [-IotHubResourceGroupName] <String> [-IotHubName] <String> [-AllocationWeight <Int32>]
- [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -IotHubConnectionString <String> -IotHubLocation <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectSet
 ```
 Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-DpsObject] <PSProvisioningServiceDescription>
- [-IotHubResourceGroupName] <String> [-IotHubName] <String> [-AllocationWeight <Int32>]
- [-ApplyAllocationPolicy] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -IotHubConnectionString <String> -IotHubLocation <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> [-IotHubResourceGroupName] <String>
- [-IotHubName] <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
+Add-AzureRmIoTDeviceProvisioningServiceLinkedHub [-ResourceId] <String> -IotHubConnectionString <String>
+ -IotHubLocation <String> [-AllocationWeight <Int32>] [-ApplyAllocationPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ For an introduction to Azure IoT Hub Device Provisioning Service, see https://do
 
 ### Example 1
 ```
-PS C:\> Add-AzureRmIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -IotHubResourceGroupName "myresourcegroup" -IotHubName "myiothub"
+PS C:\> Add-AzureRmIoTDeviceProvisioningServiceLinkedHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -IotHubConnectionString $hubConnectionString -IotHubLocation "eastus"
 
 ResourceGroupName	  : myresourcegroup
 Name				  : myiotdps
@@ -55,7 +55,7 @@ Linked IoT hub to an Azure IoT Hub device provisioning service.
 
 ### Example 2
 ```
-PS C:\> Add-AzureRmIoTDpsHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -IotHubResourceGroupName "myresourcegroup" -IotHubName "myiothub2" -AllocationWeight 10 -ApplyAllocationPolicy $false
+PS C:\> Add-AzureRmIoTDpsHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -IotHubConnectionString $hubConnectionString -IotHubLocation "eastus" -AllocationWeight 10 -ApplyAllocationPolicy $false
 
 LinkedHubName					Location	AllocationWeight	ApplyAllocationPolicy
 -------------					--------	----------------	---------------------
@@ -127,8 +127,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -IotHubName
-Name of the Iot Hub
+### -IotHubConnectionString
+Connection String of the Iot Hub resource.
 
 ```yaml
 Type: String
@@ -136,14 +136,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IotHubResourceGroupName
-Name of the Iot Hub resource group name
+### -IotHubLocation
+Location of the Iot Hub
 
 ```yaml
 Type: String
@@ -151,9 +151,9 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -168,7 +168,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -183,7 +183,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -94,6 +94,9 @@
   "src/ResourceManager/IotHub/": [
     ".\\src\\ResourceManager\\IotHub\\Commands.IotHub.Test\\bin\\Debug\\Microsoft.Azure.Commands.IotHub.Test.dll"
   ],
+  "src/ResourceManager/DeviceProvisioningServices/": [
+    ".\\src\ResourceManager\DeviceProvisioningServices\Commands.DeviceProvisioningServices.Test\bin\Debug\Microsoft.Azure.Commands.DeviceProvisioningServices.dll"
+  ],
   "src/ResourceManager/KeyVault/": [
     ".\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\bin\\Debug\\Microsoft.Azure.Commands.Compute.Test.dll",
     ".\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\bin\\Debug\\Microsoft.Azure.Commands.KeyVault.Test.dll",
