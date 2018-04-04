@@ -11,12 +11,19 @@
     # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+[CmdletBinding()]
+Param
+(
+    [Parameter()]
+    [string]$BuildConfig
+)
+
 $ProjectPaths = @( "$PSScriptRoot\..\src\ResourceManager" )
 $DependencyMapPath = "$PSScriptRoot\..\src\Package\DependencyMap.csv"
 
 $DependencyMap = Import-Csv -Path $DependencyMapPath
 
-$ModuleManifestFiles = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.FullName -notlike "*Debug*" -and `
+$ModuleManifestFiles = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.FullName -notlike "*$BuildConfig*" -and `
                                                                                                                         $_.FullName -notlike "*Netcore*" -and `
                                                                                                                         $_.FullName -notlike "*dll-Help.psd1*" -and `
                                                                                                                         $_.FullName -notlike "*Stack*" } }
@@ -47,14 +54,17 @@ foreach ($ModuleManifest in $ModuleManifestFiles)
             {
                 continue
             }
-            Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $RequiredModuleManifest.DirectoryName -FileName $RequiredModuleManifest.Name
             
-            if ($ModuleMetadata.RequiredAssemblies.Count -gt 0)
-            {
-                $LoadedAssemblies += $ModuleMetadata.RequiredAssemblies
+            $RequiredModuleManifest | % {
+                Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $_.DirectoryName -FileName $_.Name
+            
+                if ($ModuleMetadata.RequiredAssemblies.Count -gt 0)
+                {
+                    $LoadedAssemblies += $ModuleMetadata.RequiredAssemblies
+                }
+                
+                $LoadedAssemblies += $ModuleMetadata.NestedModules
             }
-            
-            $LoadedAssemblies += $ModuleMetadata.NestedModules
         }
     }
     
