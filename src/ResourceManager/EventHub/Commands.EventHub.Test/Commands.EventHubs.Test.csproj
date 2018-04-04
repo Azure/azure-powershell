@@ -173,7 +173,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\DRConfigurationsCURD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\DRConfigurationsCURDAlternateName.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\DRConfigurationsCURDAlternateName.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\EventHubsAuthorizationRulesCRUD.json">
