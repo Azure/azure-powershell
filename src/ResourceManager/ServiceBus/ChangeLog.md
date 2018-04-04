@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
+* Fixed auto-forward properties in New-AzureRmServiceBusQueue and New-AzureRmServiceBusSubscription cmdlet
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 0.6.3
 * Fix issue with Default Resource Group in CloudShell
