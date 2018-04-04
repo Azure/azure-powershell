@@ -5,12 +5,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
@@ -26,7 +22,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             this.MyInvocation = myInvocation;
             this.RuntimeDefinedParams = new RuntimeDefinedParameterDictionary();
 
-            //Custom Init to creat your dynamic parameter list
+            //Custom Init to create your dynamic parameter list
             this.CustomInit();
         }
 
@@ -49,6 +45,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         /// An initialization method that performs custom operations like creating dyanmic prams
         /// </summary>
         public abstract void CustomInit();
-        
+
     }
 }

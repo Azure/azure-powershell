@@ -7,7 +7,6 @@
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.DataMigration.Models;
-using Microsoft.Azure.Management.DataMigration;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
@@ -65,7 +64,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             if (MyInvocation.BoundParameters.ContainsKey(SchemaValidation))
             {
                 options.EnableSchemaValidation = (SwitchParameter)MyInvocation.BoundParameters[SchemaValidation];
-            }else
+            }
+            else
             {
                 options.EnableSchemaValidation = false;
             }
@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             if (MyInvocation.BoundParameters.ContainsKey(DataIntegrityValidation))
             {
                 options.EnableDataIntegrityValidation = (SwitchParameter)MyInvocation.BoundParameters[DataIntegrityValidation];
-            }else
+            }
+            else
             {
                 options.EnableDataIntegrityValidation = false;
             }
@@ -81,7 +82,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             if (MyInvocation.BoundParameters.ContainsKey(QueryAnalysisValidation))
             {
                 options.EnableQueryAnalysisValidation = (SwitchParameter)MyInvocation.BoundParameters[QueryAnalysisValidation];
-            }else
+            }
+            else
             {
                 options.EnableQueryAnalysisValidation = false;
             }

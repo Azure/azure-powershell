@@ -32,9 +32,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
             DataMigrationTestController.NewInstance.RunPsTest("Test-CreateAndGetProjectSqlSqlDb");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveService()
         {
             DataMigrationTestController.NewInstance.RunPsTest("Test-RemoveService");
@@ -47,9 +46,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
             DataMigrationTestController.NewInstance.RunPsTest("Test-RemoveProject");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestStopStartService()
         {
             DataMigrationTestController.NewInstance.RunPsTest("Test-StopStartDataMigrationService");
@@ -81,6 +79,27 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         public void TestMigrateSqlSqlDb()
         {
             DataMigrationTestController.NewInstance.RunPsTest("Test-MigrateSqlSqlDB");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConnectToTargetSqlDbMi()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest("Test-ConnectToTargetSqlDbMi");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMigrateSqlSqlDbMi()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest("Test-MigrateSqlSqlDbMi");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestValidateMigrationInputSqlSqlDbMi()
+        {
+            DataMigrationTestController.NewInstance.RunPsTest("Test-ValidateMigrationInputSqlSqlDbMi");
         }
     }
 }

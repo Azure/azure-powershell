@@ -4,18 +4,18 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Management.Automation;
 using Microsoft.Azure.Commands.DataMigration.Common;
 using Microsoft.Azure.Commands.DataMigration.Models;
 using Microsoft.Azure.Management.DataMigration;
 using Microsoft.Azure.Management.DataMigration.Models;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     /// <summary>
     /// Class for the cmdlet to create task.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationTask", DefaultParameterSetName = ComponentNameParameterSet , SupportsShouldProcess = true), OutputType(typeof(PSProjectTask))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationTask", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSProjectTask))]
     [Alias("New-AzureRmDmsTask")]
     public class NewDataMigrationTask : DataMigrationCmdlet, IDynamicParameters
     {
@@ -110,6 +110,15 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                         break;
                     case TaskTypeEnum.GetUserTablesSql:
                         taskCmdlet = new GetUserTableSqlCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.ConnectToTargetSqlDbMi:
+                        taskCmdlet = new ConnectToTargetSqlDbMiTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.MigrateSqlServerSqlDbMi:
+                        taskCmdlet = new MigrateSqlServerSqlDbMiTaskCmdlet(this.MyInvocation);
+                        break;
+                    case TaskTypeEnum.ValidateMigrationInputSqlServerSqlDbMi:
+                        taskCmdlet = new ValidateMigrationInputSqlServerSqlDbMiTaskCmdlet(this.MyInvocation);
                         break;
                     default:
                         throw new PSArgumentException();

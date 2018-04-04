@@ -1,12 +1,12 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="NewDataMigrationSqlServerSqlDbSelectedTables.cs" company="Microsoft">
+// <copyright file="NewDataMigrationSqlServerSqlDbSelectedDB.cs" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataMigration.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
