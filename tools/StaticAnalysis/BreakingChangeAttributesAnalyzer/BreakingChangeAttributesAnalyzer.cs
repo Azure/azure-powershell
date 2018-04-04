@@ -22,6 +22,9 @@ using System.Management.Automation;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Tools.Common.Helpers;
+using Tools.Common.Issues;
+using Tools.Common.Loggers;
 
 namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 {

@@ -18,9 +18,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Management.Automation;
-using StaticAnalysis.help;
-using StaticAnalysis.HelpAnalyzer;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Tools.Common.Extensions;
 
 namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 {
