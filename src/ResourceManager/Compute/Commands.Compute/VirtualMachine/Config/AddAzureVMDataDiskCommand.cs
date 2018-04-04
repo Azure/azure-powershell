@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -103,7 +104,8 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public PSStorageAccountTypes? StorageAccountType { get; set; }
+        [PSArgumentCompleter("StandardLRS", "PremiumLRS")]
+        public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
