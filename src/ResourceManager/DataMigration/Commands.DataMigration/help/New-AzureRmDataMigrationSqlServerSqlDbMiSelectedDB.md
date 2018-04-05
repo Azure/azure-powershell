@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates a MigrateSqlServerSqlMIDatabaseInput object that contains information about source and target databases for migration.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB -Name <String> -RestoreDataba
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB cmdlet creates a MigrateSqlServerSqlMIDatabaseInput object that contains information about source and target databases, as well as the table mappings, for migration. This cmdlet can be used as a parameter with the New-AzureRmDataMigrationTask cmdlet.
 
 ## EXAMPLES
 
@@ -31,9 +31,9 @@ PS C:\> New-AzureRmDmsSqlServerSqlDbMiSelectedDB -Name "HR" -RestoreDatabaseName
 ## PARAMETERS
 
 ### -BackupFileShare
-File share where the source server database files for this database should be backed up.
+The local network share where the Azure Database Migration Service can take the source database backups to. 
+The service account running source SQL Server instance must have write privileges on this network share.
 Use this setting to override file share information for each database.
-Use fully qualified domain name for the server.
 
 ```yaml
 Type: FileShare
