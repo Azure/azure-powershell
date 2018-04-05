@@ -125,6 +125,5 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones
                 });
-
     }
 }
