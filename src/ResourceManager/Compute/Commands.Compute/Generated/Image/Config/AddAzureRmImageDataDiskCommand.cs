@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("StandardLRS", "PremiumLRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
         public string StorageAccountType { get; set; }
 
         [Parameter(

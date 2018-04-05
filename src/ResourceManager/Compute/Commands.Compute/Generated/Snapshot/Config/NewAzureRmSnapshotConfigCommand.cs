@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
         [Alias("AccountType")]
-        [PSArgumentCompleter("StandardLRS", "PremiumLRS", "StandardZRS")]
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS", "Standard_ZRS")]
         public string SkuName { get; set; }
 
         [Parameter(
