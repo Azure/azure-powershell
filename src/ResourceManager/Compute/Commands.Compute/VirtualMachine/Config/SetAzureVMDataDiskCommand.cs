@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                     else
                     {
-                        dataDisk.ManagedDisk.StorageAccountType = this.StorageAccountType.ToSerializedValue();
+                        dataDisk.ManagedDisk.StorageAccountType = this.StorageAccountType;
                     }
                 }
 

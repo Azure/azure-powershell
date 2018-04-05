@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Compute
                               : new ManagedDiskParameters
                               {
                                   Id = this.ManagedDiskId,
-                                  StorageAccountType = this.StorageAccountType.ToSerializedValue()
+                                  StorageAccountType = this.StorageAccountType
                               },
                 WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
             });
