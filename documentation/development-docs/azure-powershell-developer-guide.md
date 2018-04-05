@@ -28,7 +28,6 @@ The Azure PowerShell Developer Guide was created to help with the development an
     - [Enable Running PowerShell when Debugging](#enable-running-powershell-when-debugging)
         - [Importing Modules](#importing-modules)
     - [Adding Help Content](#adding-help-content)
-    - [Updating the Installer](#updating-the-installer)
 - [Adding Tests](#adding-tests)
     - [Using Azure TestFramework](#using-azure-testframework)
     - [Scenario Tests](#scenario-tests)
@@ -256,23 +255,6 @@ Each cmdlet has a markdown file that contains the help content that is displayed
 
 For complete documentation, see [`help-generation.md`](./help-generation.md) in the `documentation` folder.
 
-## Updating the Installer
-
-The installer should be updated whenever a library dependency is added/removed from your project module, or file paths are changed.
-
-To regenerate the install wxi file, follow these steps:
-
-- Ensure that the WiX tools bin folder is in your `PATH` environment variable
-- Set the `AzurePSRoot` environment variable to the path of your locally cloned Azure PowerShell repository
-    - `set AzurePSRoot=C:\<PATH_TO_REPO>\azure-powershell`
-- Build the cmdlets
-    - Follow the steps mentioned in [building the environment](#building-the-environment)
-    - This builds both the cmdlets and the installer - if your changes have removed or renamed files previously contained in the installer, the installer build may fail. In this case, you can ignore installer build failures
--  Generate the new wxi file using the `generate.ps1` script
-    - `powershell .\tools\installer\generate.ps1 <BUILD_CONFIG>`
-    - `<BUILD_CONFIG>` is `DEBUG` or `RELEASE`, depending on which build configuration you are using
-- Verify that the changes look correct uses `git diff`. Often times, unintended changes happen if your repository is not clean; if this occurs, revert the changes made to the wxi file, commit all other changes, and use `git clean -xdf` to wipe out all untracked files from your local git repository
-
 # Adding Tests
 
 _Note_: As mentioned in the prerequisites section, set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
@@ -391,7 +373,7 @@ Once all of your cmdlets have been created and the appropriate tests have been a
 ## Publish to PowerShell Gallery
 
 - To publish your module to the [official PowerShell gallery](http://www.powershellgallery.com/), or the test gallery site, contact the Azure PowerShell team
-- To create a signed module package for local usage, use the [powershell-sign](http://azuresdkci.cloudapp.net/view/1-AzurePowerShell/job/powershell-sign/) job on Jenkins
+- To create a signed module package for local usage, use the [ps-sign](https://azuresdkci.westus2.cloudapp.azure.com/job/ps-sign/) job on Jenkins
 
 ## AsJob Parameter
 
