@@ -103,6 +103,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 .Where(r => r != config);
 
         public static string GetFullName(this IResourceConfig config)
-            => config.Strategy.Type.Provider + "/" + config.Name; 
+            => config.Strategy.Type.Provider + "/" + config.Name;
     }
 }

@@ -13,24 +13,25 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Concurrent;
-using System.Security;
+using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Json
 {
-    internal sealed class DependencyEngine : IEngine
+    class NullableConverter : GenericTypeConverter
     {
-        public ConcurrentDictionary<string, IEntityConfig> Dependencies { get; }
-            = new ConcurrentDictionary<string, IEntityConfig>();
+        protected override Type[] GetGenericArguments(Type type)
+            => type.IsGenericType(typeof(Nullable<>)) ? type.GetGenericArguments() : null;
 
-        public string GetId(IEntityConfig config)
+        protected override Type ConverterGenericType => typeof(Converter<>);
+
+        class Converter<T> : ConverterBase<T?>
+            where T : struct
         {
-            var id = config.DefaultIdStr();
-            Dependencies.GetOrAdd(id, config);
-            return id;
-        }
+            public override T? Deserialize(Converters converters, JToken token)
+                => token.Type == JTokenType.Null ? new T?() : converters.Deserialize<T>(token);
 
-        public string GetSecureString(string name, SecureString secret)
-            => null;
+            public override JToken Serialize(Converters converters, T? value)
+                => value.HasValue ? converters.Serialize(value.Value) : null;
+        }
     }
 }

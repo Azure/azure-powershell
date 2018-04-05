@@ -14,8 +14,6 @@
 
 using Microsoft.Rest;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
@@ -23,6 +21,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public sealed class ResourceStrategy<TModel> : IResourceStrategy
     {
         public ResourceType Type { get; }
+
+        public Func<IClient, string> GetApiVersion { get; }
 
         public Func<IClient, GetAsyncParams, Task<TModel>> GetAsync { get; }
 
@@ -33,22 +33,23 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
         public Func<TModel, int> CreateTime { get; }
 
-        public bool CompulsoryLocation { get; }
+        public bool CompulsoryLocation
+            => Type.Namespace != ResourceType.ResourceGroup.Namespace;
 
         public ResourceStrategy(
             ResourceType type,
+            Func<IClient, string> getApiVersion,
             Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
             Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Property<TModel, string> location,
-            Func<TModel, int> createTime,
-            bool compulsoryLocation)
+            Func<TModel, int> createTime)
         {
             Type = type;
+            GetApiVersion = getApiVersion;
             GetAsync = getAsync;
             CreateOrUpdateAsync = createOrUpdateAsync;
             Location = location;
             CreateTime = createTime;
-            CompulsoryLocation = compulsoryLocation;
         }
     }
 
@@ -56,24 +57,27 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         public static ResourceStrategy<TModel> Create<TModel, TClient, TOperation>(
             ResourceType type,
+            Func<TClient, string> getApiVersion,
             Func<TClient, TOperation> getOperations,
             Func<TOperation, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
             Action<TModel, string> setLocation,
-            Func<TModel, int> createTime,
-            bool compulsoryLocation)
+            Func<TModel, int> createTime)
             where TModel : class
             where TClient : ServiceClient<TClient>
         {
             Func<IClient, TOperation> toOperations = client => getOperations(client.GetClient<TClient>());
             return new ResourceStrategy<TModel>(
                 type,
+                client => getApiVersion(client.GetClient<TClient>()),
                 (client, p) => getAsync(toOperations(client), p),
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
                 Property.Create(getLocation, setLocation),
-                createTime,
-                compulsoryLocation);
+                createTime);
         }
+
+        public static string GetResourceType(this IResourceStrategy strategy)
+            => strategy.Type == null ? null : strategy.Type.Namespace + "/" + strategy.Type.Provider;
     }
 }

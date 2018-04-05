@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             where TModel : Resource
             => ResourceStrategy.Create(
                 type: new ResourceType(Namespace, provider),
+                getApiVersion: _ => "2017-12-01",
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
                 getLocation: config => config.Location,
                 setLocation: (config, location) => config.Location = location,
-                createTime: createTime,
-                compulsoryLocation: true);
+                createTime: createTime);
 
         public static string GetConnectionString(
             this ImageAndOsType imageAndOsType, string fqdn, string user, string port = null)

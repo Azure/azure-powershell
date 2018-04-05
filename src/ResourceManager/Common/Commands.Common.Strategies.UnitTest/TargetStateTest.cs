@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         {
             public T GetClient<T>() where T : ServiceClient<T>
                 => this as T;
+
+            public string SubscriptionId { get; }
         }
 
         class NestedModel
@@ -36,13 +38,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             // resource group
             var rgStrategy = ResourceStrategy.Create<Model, Client, Client>(
                 ResourceType.ResourceGroup,
+                c => "1.0",
                 c => c,
                 async (c, m) => null,
                 async (c, m) => new Model(),
                 m => m.Location,
                 (m, location) => m.Location = location,
-                m => 0,
-                false);
+                m => 0);
 
             var rgConfig = rgStrategy.CreateResourceConfig(null, "rgname");
             var rgConfig2 = rgStrategy.CreateResourceConfig(null, "rgname2");
@@ -50,13 +52,13 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             // resource
             var resourceStrategy = ResourceStrategy.Create<Model, Client, Client>(
                 new ResourceType("Company.Namespace", "resourceProvider"),
+                c => "1.0",
                 c => c,
                 async (c, m) => null,
                 async (c, m) => new Model(),
                 m => m.Location,
                 (m, location) => m.Location = location,
-                m => 0,
-                false);
+                m => 0);
 
             var resource = resourceStrategy.CreateResourceConfig(rgConfig, "res");
 

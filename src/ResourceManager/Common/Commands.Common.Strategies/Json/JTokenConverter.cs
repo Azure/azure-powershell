@@ -12,14 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
+using System;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Json
 {
-    public interface IEngine
+    public class JTokenConverter : IConverter
     {
-        string GetId(IEntityConfig config);
+        public object Deserialize(Converters converters, Type type, JToken token)
+            => token;
 
-        string GetSecureString(string name, SecureString secret);
+        public bool Match(Type type)
+            => new[] { type }.Concat(type.GetInterfaces()).Any(v => v == typeof(JToken));
+
+        public JToken Serialize(Converters converters, Type type, object value)
+            => value as JToken;
     }
 }

@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
+using Newtonsoft.Json.Linq;
+using System;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Json
 {
-    public interface IEngine
+    interface IConverter
     {
-        string GetId(IEntityConfig config);
-
-        string GetSecureString(string name, SecureString secret);
+        bool Match(Type type);
+        JToken Serialize(Converters converters, Type type, object value);
+        object Deserialize(Converters converters, Type type, JToken token);
     }
 }

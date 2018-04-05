@@ -20,5 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         T GetClient<T>()
             where T : ServiceClient<T>;
+
+        string SubscriptionId { get; }
     }
 }

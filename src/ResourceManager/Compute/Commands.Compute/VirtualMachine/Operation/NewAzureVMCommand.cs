@@ -40,11 +40,11 @@ using System.Collections;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Commands.Common.Strategies.Templates;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachine,
         SupportsShouldProcess = true,
         DefaultParameterSetName = "SimpleParameterSet")]
-    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
+    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine), typeof(string))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
@@ -215,6 +215,10 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public SwitchParameter AsArmTemplate { get; set; }
+
         public override void ExecuteCmdlet()
         {
             switch (ParameterSetName)
@@ -251,9 +255,13 @@ namespace Microsoft.Azure.Commands.Compute
                 set { _cmdlet.Location = value; }
             }
 
+            public bool AsArmTemplate
+                => _cmdlet.AsArmTemplate;
+
             public BlobUri DestinationUri;
 
-            public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
+            public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync(
+                ResourceConfig<ResourceGroup> resourceGroup)
             {
                 if (_cmdlet.DiskFile == null)
                 {
@@ -267,7 +275,6 @@ namespace Microsoft.Azure.Commands.Compute
                     location: Location,
                     client: _client);
 
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName, addressPrefix: _cmdlet.AddressPrefix);
                 var subnet = virtualNetwork.CreateSubnet(_cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
@@ -297,9 +304,7 @@ namespace Microsoft.Azure.Commands.Compute
                         name: _cmdlet.Name,
                         networkInterface: networkInterface,
                         imageAndOsType: ImageAndOsType,
-                        adminUsername: _cmdlet.Credential.UserName,
-                        adminPassword:
-                            new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                        admin: _cmdlet.Credential,
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
@@ -362,17 +367,17 @@ namespace Microsoft.Azure.Commands.Compute
                     ResourceGroupName,
                     Name,
                     new StorageAccountCreateParameters
-                {
+                    {
 #if !NETSTANDARD
-                    AccountType = AccountType.PremiumLRS,
+                        AccountType = AccountType.PremiumLRS,
 #else
                     Sku = new Microsoft.Azure.Management.Storage.Models.Sku
                     {
                         Name = SkuName.PremiumLRS
                     },
 #endif
-                    Location = Location
-                });
+                        Location = Location
+                    });
                 var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
                 {
@@ -412,7 +417,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var result = await StrategyCmdlet.RunAsync(client, parameters, asyncCmdlet, new CancellationToken());
+            var result = await StrategyCmdlet.RunAsync(
+                client, parameters, ResourceGroupName, asyncCmdlet, new CancellationToken());
 
             if (result != null)
             {

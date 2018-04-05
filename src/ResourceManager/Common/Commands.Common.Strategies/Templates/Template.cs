@@ -12,27 +12,33 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+using Newtonsoft.Json;
+using System.Collections.Generic;
+
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
-    public sealed class ResourceType
-    {       
-        public static ResourceType ResourceGroup { get; }
-            = new ResourceType(null, ResourceId.ResourceGroups);
+    /// <summary>
+    /// Azure Resource Management Template (JSON object).
+    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates
+    /// </summary>
+    public class Template
+    {
+        [JsonProperty("$schema")]
+        public string Schema { get; set; }
+            = "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#";
 
         /// <summary>
-        /// A resource type namespace, for example 'Microsoft.Network'.
+        /// Template version.
         /// </summary>
-        public string Namespace { get; }
+        public string contentVersion { get; set; }
+
+        public Dictionary<string, Parameter> parameters { get; set; }
 
         /// <summary>
-        /// A resource type provider, for example 'virtualNetworks'.
+        /// Resources that are deployed.
         /// </summary>
-        public string Provider { get; } 
+        public Resource[] resources { get; set; }
 
-        public ResourceType(string namespace_, string provider)
-        {
-            Namespace = namespace_;
-            Provider = provider;
-        }
+        public Dictionary<string, Output> outputs { get; set; }
     }
 }

@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Linq;
+using System.Net;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
@@ -32,5 +34,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => new[] { ResourceId.Subscriptions, _SubscriptionId } 
                 .Concat(config.GetIdFromSubscription()) 
                 .IdToString();
+
+        public string GetSecureString(string name, SecureString secret)
+            => new NetworkCredential(string.Empty, secret).Password;
     }
 }

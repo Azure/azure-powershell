@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
-
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
-    public interface IEngine
+    /// <summary>
+    /// Deployment parameters (JSON object).
+    /// </summary>
+    public class DeploymentParameter
     {
-        string GetId(IEntityConfig config);
-
-        string GetSecureString(string name, SecureString secret);
+        public object value { get; set; }
     }
 }

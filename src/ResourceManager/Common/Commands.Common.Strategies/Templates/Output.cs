@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
-
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
-    public interface IEngine
+    /// <summary>
+    /// Azure template output (JSON object).
+    /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-outputs
+    /// </summary>
+    public class Output
     {
-        string GetId(IEntityConfig config);
+        public string type { get; set; }
 
-        string GetSecureString(string name, SecureString secret);
+        public object value { get; set; }
     }
 }

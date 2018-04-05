@@ -23,10 +23,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -117,6 +117,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        public SwitchParameter AsArmTemplate { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -139,7 +142,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public ImageAndOsType ImageAndOsType { get; set; }
 
-            public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
+            public bool AsArmTemplate
+                => _cmdlet.AsArmTemplate;
+
+            public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync(
+                ResourceConfig<ResourceGroup> resourceGroup)
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                     ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -150,8 +157,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     name: _cmdlet.VMScaleSetName,
                     location: Location,
                     client: _client);
-
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
 
                 var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Count == 0;
 
@@ -232,8 +237,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     inboundNatPools: inboundNatPools,
                     networkSecurityGroup: networkSecurityGroup,
                     imageAndOsType: ImageAndOsType,
-                    adminUsername: _cmdlet.Credential.UserName,
-                    adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                    admin: _cmdlet.Credential,
                     vmSize: _cmdlet.VmSize,
                     instanceCount: _cmdlet.InstanceCount,
                     upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
@@ -260,7 +264,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             var parameters = new Parameters(this, client);
 
             var result = await StrategyCmdlet.RunAsync(
-                client, parameters, asyncCmdlet, new CancellationToken());
+                client, parameters, ResourceGroupName, asyncCmdlet, new CancellationToken());
 
             if (result != null)
             {

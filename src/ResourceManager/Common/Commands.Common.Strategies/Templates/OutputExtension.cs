@@ -12,14 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
+using Microsoft.Azure.Commands.Common.Strategies.Json;
+using Newtonsoft.Json.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
-    public interface IEngine
+    public static class OutputExtension
     {
-        string GetId(IEntityConfig config);
-
-        string GetSecureString(string name, SecureString secret);
+        public static T GetModel<T>(this Output output)
+            where T : class
+        {
+            var jModel = new JObject { { "properties", output.value as JToken } };
+            return new Converters().Deserialize<T>(jModel);
+        }
     }
 }

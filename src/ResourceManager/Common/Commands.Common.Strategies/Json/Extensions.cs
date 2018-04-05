@@ -12,14 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
+using System;
+using System.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Json
 {
-    public interface IEngine
+    static class Extensions
     {
-        string GetId(IEntityConfig config);
+        public static bool IsGenericType(this Type t, Type genericType)
+            => t.IsGenericType && t.GetGenericTypeDefinition() == genericType;
 
-        string GetSecureString(string name, SecureString secret);
+        public static Type[] GetGenericArguments(this Type t, Type genericType, Func<Type, Type[]> p)
+            => new[] { t }
+                .Concat(t.GetInterfaces())
+                .Where(i => i.IsGenericType(genericType))
+                .Select(p)
+                .FirstOrDefault();
     }
 }
