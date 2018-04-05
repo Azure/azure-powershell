@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var toReturn = new List<DataLakeStoreItemAce>(DataLakeStoreItemAce.GetAclFromStatus(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account)));
+            var toReturn = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath, Account).Entries.Select(entry => new DataLakeStoreItemAce(entry)).ToList();
             WriteObject(toReturn);
         }
     }
