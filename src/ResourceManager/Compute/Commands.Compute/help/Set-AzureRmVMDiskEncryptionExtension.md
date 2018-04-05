@@ -13,7 +13,7 @@ Enables encryption on a running IaaS virtual machine in Azure.
 
 ## SYNTAX
 
-### SinglePassParameterSet (Default)
+### SimpleParameterSet (Default)
 ```
 Set-AzureRmVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> 
  [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String>
@@ -66,7 +66,7 @@ $KeyVaultResourceId = $KeyVault.ResourceId
 Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 ```
 
-This example demonstrates enabling encryption without specifying an AD Client ID.   
+This example demonstrates enabling encryption without specifying AD credentials.   
 
 ### Example 2: Enable encryption with pipelined input
 ```
@@ -83,7 +83,7 @@ $params = New-Object PSObject -Property @{
 $params | Set-AzureRmVmDiskEncryptionExtension 
 ```
 
-This example demonstrates sending parameters using pipelined input to enable encryption without specifying an AD Client ID.  
+This example demonstrates sending parameters using pipelined input to enable encryption without specifying AD credentials.  
 
 ### Example 3: Enable encryption using Azure AD Client ID and Client Secret
 ```
@@ -252,7 +252,7 @@ Specifies the client ID of the Azure AD application that has permissions to writ
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: AADClientCertParameterSet, AADClientSecretParameterSet
 Aliases: 
 
 Required: True
