@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
-* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support availability zones.
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support availability zones.
 * Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.5.0
