@@ -66,9 +66,26 @@ $KeyVaultResourceId = $KeyVault.ResourceId
 Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
 ```
 
-This example enables encryption.
+This example demonstrates enabling encryption without specifying an AD Client ID.   
 
-### Example 2: Enable encryption using Azure AD Client ID and Client Secret
+### Example 2: Enable encryption with pipelined input
+```
+$params = New-Object PSObject -Property @{
+    ResourceGroupName = "[resource-group-name]"
+    VMName = "[vm-name]"
+    DiskEncryptionKeyVaultId = "/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]"
+    DiskEncryptionKeyVaultUrl = "https://[keyvault-name].vault.azure.net"
+    KeyEncryptionKeyVaultId = "/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]"
+    KeyEncryptionKeyUrl = "https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id]"
+    VolumeType = "All"
+}
+
+$params | Set-AzureRmVmDiskEncryptionExtension 
+```
+
+This example demonstrates sending parameters using pipelined input to enable encryption without specifying an AD Client ID.  
+
+### Example 3: Enable encryption using Azure AD Client ID and Client Secret
 ```
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
@@ -83,7 +100,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName 
 
 This example enables encryption using Azure AD client ID, and client secret.
 
-### Example 3: Enable encryption using Azure AD client ID and client certification thumbprint
+### Example 4: Enable encryption using Azure AD client ID and client certification thumbprint
 ```
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
@@ -135,7 +152,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName 
 
 This example enables encryption using Azure AD client ID and client certification thumbprints.
 
-### Example 4: Enable encryption using Azure AD client ID, client secret, and wrap disk encryption key by using key encryption key
+### Example 5: Enable encryption using Azure AD client ID, client secret, and wrap disk encryption key by using key encryption key
 ```
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
@@ -156,7 +173,7 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RGName -VMName $VMName 
 
 This example enables encryption using Azure AD client ID, client secret, and wrap disk encryption key by using the key encryption key.
 
-### Example 5: Enable encryption using Azure AD client ID, client cert thumbprint, and wrap disk encryptionkey by using key encryption key
+### Example 6: Enable encryption using Azure AD client ID, client cert thumbprint, and wrap disk encryptionkey by using key encryption key
 ```
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
