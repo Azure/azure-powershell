@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -60,6 +61,40 @@ namespace Microsoft.Azure.Commands.Compute.Common
             }
 
             return storageAccountType;
+        }
+
+        public static StorageProfile ToSerializedStorageProfile(this StorageProfile storageProfile)
+        {
+            if (storageProfile != null &&
+                storageProfile.DataDisks != null)
+            {
+                foreach (var disk in storageProfile.DataDisks)
+                {
+                    if (disk != null && disk.ManagedDisk != null)
+                    {
+                        disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToSerializedValue();
+                    }
+                }
+            }
+
+            return storageProfile;
+        }
+
+        public static StorageProfile ToUnserializedStorageProfile(this StorageProfile storageProfile)
+        {
+            if (storageProfile != null &&
+                storageProfile.DataDisks != null)
+            {
+                foreach (var disk in storageProfile.DataDisks)
+                {
+                    if (disk != null && disk.ManagedDisk != null)
+                    {
+                        disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToUnserializedValue();
+                    }
+                }
+            }
+
+            return storageProfile;
         }
     }
 }
