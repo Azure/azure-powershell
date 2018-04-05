@@ -66,12 +66,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 
         public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
         {
-            share.FetchAttributes(accessCondition, options, operationContext);
+            Task.Run(() => share.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
         }
 
         public void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
         {
-            share.SetProperties(accessCondition, options, operationContext);
+            Task.Run(() => share.SetPropertiesAsync(accessCondition, options, operationContext)).Wait();
         }
 
         public async Task EnumerateFilesAndDirectoriesAsync(CloudFileDirectory directory, Action<IListFileItem> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
@@ -155,14 +155,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null,
             FileRequestOptions options = null, OperationContext operationContext = null)
         {
-            return share.GetPermissions(accessCondition, options, operationContext);
+            return share.GetPermissionsAsync(accessCondition, options, operationContext).Result;
         }
 
         public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions,
             AccessCondition accessCondition = null,
             FileRequestOptions options = null, OperationContext operationContext = null)
         {
-            share.SetPermissions(permissions, accessCondition, options, operationContext);
+            Task.Run(() => share.SetPermissionsAsync(permissions, accessCondition, options, operationContext)).Wait();
         }
 
         public Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)

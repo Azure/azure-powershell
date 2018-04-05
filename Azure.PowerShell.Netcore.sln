@@ -73,7 +73,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Consumption.Netcor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ContainerRegistry.Netcore", "src\ResourceManager\ContainerRegistry\Commands.ContainerRegistry\Commands.ContainerRegistry.Netcore.csproj", "{49A69011-CEFF-464B-AC2E-5A387EFFBE8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataFactoryV2.Netcore", "src\ResourceManager\DataFactories\Commands.DataFactoryV2\Commands.DataFactoryV2.Netcore.csproj", "{EAC7B54E-974B-435F-95CE-B01CC2F955A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataFactoryV2.Netcore", "src\ResourceManager\DataFactoryV2\Commands.DataFactoryV2\Commands.DataFactoryV2.Netcore.csproj", "{EAC7B54E-974B-435F-95CE-B01CC2F955A3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeAnalytics.Netcore", "src\ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics\Commands.DataLakeAnalytics.Netcore.csproj", "{CC0D2BA5-B087-4206-9F98-CD8230AADEF3}"
 EndProject
@@ -174,6 +174,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.RedisCache.Netcore", "src\ResourceManager\RedisCache\Commands.RedisCache\Commands.RedisCache.Netcore.csproj", "{AB5FF36F-FA0C-4726-8E73-92A5C54B1DDE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.Dataplane.Netcore", "src\ResourceManager\AnalysisServices\Commands.AnalysisServices.Dataplane\Commands.AnalysisServices.Dataplane.Netcore.csproj", "{F172B347-4B1F-4888-A5B9-3D05303C0E6F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "src\Storage\Commands.Storage\Commands.Storage.Netcore.csproj", "{4F18000A-0329-4450-ADC8-8AA1C04A4666}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1205,6 +1207,18 @@ Global
 		{F172B347-4B1F-4888-A5B9-3D05303C0E6F}.Release|x64.Build.0 = Release|Any CPU
 		{F172B347-4B1F-4888-A5B9-3D05303C0E6F}.Release|x86.ActiveCfg = Release|Any CPU
 		{F172B347-4B1F-4888-A5B9-3D05303C0E6F}.Release|x86.Build.0 = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|x64.Build.0 = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Debug|x86.Build.0 = Debug|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x64.ActiveCfg = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x64.Build.0 = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x86.ActiveCfg = Release|Any CPU
+		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

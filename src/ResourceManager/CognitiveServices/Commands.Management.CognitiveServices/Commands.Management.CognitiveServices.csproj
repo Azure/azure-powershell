@@ -48,12 +48,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.CognitiveServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.CognitiveServices.3.0.0\lib\net452\Microsoft.Azure.Management.CognitiveServices.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.CognitiveServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.CognitiveServices.4.0.0\lib\net452\Microsoft.Azure.Management.CognitiveServices.dll</HintPath>
     </Reference>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CognitiveServicesAccount\GetAzureCognitiveServicesAccountUsage.cs" />
+    <Compile Include="Models\PSCognitiveServicesUsage.cs" />
     <Compile Include="ObsoletedModels\ProvisioningState.cs" />
     <Compile Include="Models\PSCognitiveServicesAccount.cs" />
     <Compile Include="Models\PSCognitiveServicesAccountKeys.cs" />

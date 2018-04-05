@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Sas definition parameters that will be used to create the sas token.",
             ParameterSetName = ParameterSetRawSas )]
+        [Obsolete("-Parameter will be removed and replaced by -TemplateUri and -SasType in May 2018")]
         [ValidateNotNull]
         public Hashtable Parameter { get; set; }
 
@@ -277,7 +278,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 case ParameterSetRawSas:
                 {
                     var dictionary = new Dictionary<string, string>();
+#pragma warning disable CS0618
                     foreach ( DictionaryEntry p in Parameter )
+#pragma warning restore CS0618
                     {
                         if ( p.Key == null || string.IsNullOrEmpty( p.Key.ToString() ) )
                             throw new ArgumentException( "An invalid parameter was specified." );

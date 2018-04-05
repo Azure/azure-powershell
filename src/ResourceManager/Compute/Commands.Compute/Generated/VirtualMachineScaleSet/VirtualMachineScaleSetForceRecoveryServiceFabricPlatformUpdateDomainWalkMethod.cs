@@ -59,13 +59,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             pVMScaleSetName.Attributes.Add(new AllowNullAttribute());
             dynamicParameters.Add("VMScaleSetName", pVMScaleSetName);
 
+            var pPlatformUpdateDomain = new RuntimeDefinedParameter();
+            pPlatformUpdateDomain.Name = "PlatformUpdateDomain";
+            pPlatformUpdateDomain.ParameterType = typeof(int);
+            pPlatformUpdateDomain.Attributes.Add(new ParameterAttribute
+            {
+                ParameterSetName = "InvokeByDynamicParameters",
+                Position = 3,
+                Mandatory = true
+            });
+            pPlatformUpdateDomain.Attributes.Add(new AllowNullAttribute());
+            dynamicParameters.Add("PlatformUpdateDomain", pPlatformUpdateDomain);
+
             var pArgumentList = new RuntimeDefinedParameter();
             pArgumentList.Name = "ArgumentList";
             pArgumentList.ParameterType = typeof(object[]);
             pArgumentList.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByStaticParameters",
-                Position = 3,
+                Position = 4,
                 Mandatory = true
             });
             pArgumentList.Attributes.Add(new AllowNullAttribute());
@@ -78,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
-            var platformUpdateDomain = new int();
+            int platformUpdateDomain = (int)ParseParameter(invokeMethodInputParameters[2]);
 
             var result = VirtualMachineScaleSetsClient.ForceRecoveryServiceFabricPlatformUpdateDomainWalk(resourceGroupName, vmScaleSetName, platformUpdateDomain);
             WriteObject(result);

@@ -95,23 +95,25 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosave', 
-               'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave', 
-               'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment', 
-               'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
-               'Get-AzureRmSubscription', 'Connect-AzureRmAccount', 'Get-AzureRmContext', 
-               'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext', 
-               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError', 
-               'Select-AzureRmContext', 'Rename-AzureRmContext', 
-               'Remove-AzureRmContext', 'Clear-AzureRmContext', 
-               'Remove-AzureRmAccount', 'Get-AzureRmContextAutosaveSetting', 
-               'Set-AzureRmDefault', 'Get-AzureRmDefault', 'Clear-AzureRmDefault'
+    'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave', 
+    'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment', 
+    'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
+    'Get-AzureRmSubscription', 'Connect-AzureRmAccount', 
+    'Get-AzureRmContext', 'Set-AzureRmContext', 'Import-AzureRmContext', 
+    'Save-AzureRmContext', 'Get-AzureRmTenant', 'Send-Feedback', 
+    'Resolve-AzureRmError', 'Select-AzureRmContext', 
+    'Rename-AzureRmContext', 'Remove-AzureRmContext', 
+    'Clear-AzureRmContext', 'Disconnect-AzureRmAccount', 
+    'Get-AzureRmContextAutosaveSetting', 'Set-AzureRmDefault', 
+    'Get-AzureRmDefault', 'Clear-AzureRmDefault'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Add-AzureRmAccount', 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error',
-'Logout-AzAccount', 'Logout-AzureRmAccount', 'Login-AzAccount'
+AliasesToExport = 'Add-AzureRmAccount', 'Login-AzAccount', 'Login-AzureRmAccount', 
+    'Remove-AzureRmAccount', 'Logout-AzAccount', 'Logout-AzureRmAccount', 
+    'Select-AzureRmSubscription', 'Resolve-Error', 'Save-AzureRmProfile'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
