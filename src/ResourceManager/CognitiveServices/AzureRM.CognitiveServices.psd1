@@ -75,10 +75,11 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzureRmCognitiveServicesAccount', 
                'Get-AzureRmCognitiveServicesAccountKey', 
                'Get-AzureRmCognitiveServicesAccountSkus', 
+			   'Get-AzureRmCognitiveServicesAccountUsage', 
                'New-AzureRmCognitiveServicesAccount', 
                'New-AzureRmCognitiveServicesAccountKey', 
                'Remove-AzureRmCognitiveServicesAccount', 
-               'Set-AzureRmCognitiveServicesAccount'
+               'Set-AzureRmCognitiveServicesAccount'			   
 
 # Variables to export from this module
 # VariablesToExport = @()
