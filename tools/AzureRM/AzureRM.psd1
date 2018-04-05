@@ -179,6 +179,7 @@ AzureRM.CognitiveServices
 * Add Get-AzureRmCognitiveServicesAccountUsage operation.
         
 AzureRM.Compute
+* Update for Zone Resilient
 * ''New-AzureRmVm'' and ''New-AzureRmVmss'' (simple parameter set) support availability zones.
         
 AzureRM.ContainerRegistry

@@ -212,7 +212,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* ''New-AzureRmVm'' and ''New-AzureRmVmss'' (simple parameter set) support availability zones.
+        ReleaseNotes = '* Update for Zone Resilient
+* ''New-AzureRmVm'' and ''New-AzureRmVmss'' (simple parameter set) support availability zones.
 * Updated to the latest version of the Azure ClientRuntime'
 
         # Prerelease string of this module

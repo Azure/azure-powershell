@@ -20,6 +20,7 @@
 ## Current Release
 
 ## Version 4.6.0
+* Update for Zone Resilient
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support availability zones.
 * Updated to the latest version of the Azure ClientRuntime
 
