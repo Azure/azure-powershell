@@ -20,10 +20,6 @@
 -->
 ## Current Release
 
-## Version 0.1.2
-* Add GUID argument checks
-    - Checks for argument of type ReservationOrderId, ReservationId, SubscriptionId
-
 ## Version 0.1.1
 * New Cmdlet Get-AzureRmReservationOrder
     - cmdlet to retrieve azure reservation order.
