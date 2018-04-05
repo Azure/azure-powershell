@@ -131,7 +131,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
+        ReleaseNotes = '* Added ''properties'' in CorrelationFilter of Rules to support customproperties
+* updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
 * Fixed auto-forward properties in New-AzureRmServiceBusQueue and New-AzureRmServiceBusSubscription cmdlet
 * Updated to the latest version of the Azure ClientRuntime'
 

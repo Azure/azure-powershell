@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '5.7.0'
@@ -70,7 +70,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.6.0';
                @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '4.2.2'; }, 
                @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.5.3'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '4.2.3'; }, 
-               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '5.1.2'; }, 
+               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '5.2.0'; }, 
                @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '4.0.4'; }, 
                @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '4.1.2'; }, 
                @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.3.2'; }, 
@@ -183,7 +183,19 @@ AzureRM.Compute
         
 AzureRM.ContainerRegistry
 * Decouple reliance on Commands.Resources.Rest and ARM/Storage SDKs.
-        
+
+AzureRM.DataLakeStore
+* Add debug functionality
+* Update the version of the ADLS dataplane SDK to 1.1.2
+* Export-AzureRmDataLakeStoreItem - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Import-AzureRMDataLakeStoreItem - Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
+* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
+* Remove-AzureRmDataLakeStoreItem - Deprecated parameter Clean.
+
+AzureRM.EventHub
+* Fixed AlternameName in New-AzureRmEventHubGeoDRConfiguration
+
 AzureRM.KeyVault
 * Updated cmdlets to include piping scenarios
 * Add deprecation messages for upcoming breaking change release
@@ -192,6 +204,7 @@ AzureRM.Network
 * Fix error message with Network cmdlets
         
 AzureRM.ServiceBus
+* Added ''properties'' in CorrelationFilter of Rules to support customproperties
 * updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
 * Fixed auto-forward properties in New-AzureRmServiceBusQueue and New-AzureRmServiceBusSubscription cmdlet
         
