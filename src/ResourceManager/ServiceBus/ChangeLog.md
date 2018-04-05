@@ -21,6 +21,7 @@
 ## Current Release
 
 ## Version 0.6.4
+* Added 'properties' in CorrelationFilter of Rules to support customproperties
 * updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
 * Fixed auto-forward properties in New-AzureRmServiceBusQueue and New-AzureRmServiceBusSubscription cmdlet
 * Updated to the latest version of the Azure ClientRuntime
