@@ -106,6 +106,26 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="help\AzureRM.DataMigration.md" />
+    <None Include="help\Get-AzureRmDataMigrationProject.md" />
+    <None Include="help\Get-AzureRmDataMigrationService.md" />
+    <None Include="help\Get-AzureRmDataMigrationTask.md" />
+    <None Include="help\New-AzureRmDataMigrationConnectionInfo.md" />
+    <None Include="help\New-AzureRmDataMigrationDatabaseInfo.md" />
+    <None Include="help\New-AzureRmDataMigrationFileShare.md" />
+    <None Include="help\New-AzureRmDataMigrationProject.md" />
+    <None Include="help\New-AzureRmDataMigrationService.md" />
+    <None Include="help\New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB.md" />
+    <None Include="help\New-AzureRmDataMigrationSqlServerSqlDbSelectedDB.md" />
+    <None Include="help\New-AzureRmDataMigrationTask.md" />
+    <None Include="help\Remove-AzureRmDataMigrationProject.md" />
+    <None Include="help\Remove-AzureRmDataMigrationService.md" />
+    <None Include="help\Remove-AzureRmDataMigrationTask.md" />
+    <None Include="help\Start-AzureRmDataMigrationService.md" />
+    <None Include="help\Stop-AzureRmDataMigrationService.md" />
+    <None Include="help\Stop-AzureRmDataMigrationTask.md" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.3.0-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
       <Private>True</Private>

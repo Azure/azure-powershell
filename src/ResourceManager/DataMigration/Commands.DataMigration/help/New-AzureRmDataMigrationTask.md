@@ -170,7 +170,7 @@ Task Type.
 Type: TaskTypeEnum
 Parameter Sets: (All)
 Aliases: 
-Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql
+Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, ValidateMigrationInputSqlServerSqlDbMi, MigrateSqlServerSqlDbMi
 
 Required: True
 Position: Named

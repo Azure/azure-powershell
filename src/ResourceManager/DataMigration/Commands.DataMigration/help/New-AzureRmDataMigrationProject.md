@@ -210,7 +210,7 @@ Target platform type for project.
 Type: ProjectTargetPlatform
 Parameter Sets: (All)
 Aliases: 
-Accepted values: SQLDB
+Accepted values: SQLDB, SQLMI
 
 Required: True
 Position: Named

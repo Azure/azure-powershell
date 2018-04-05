@@ -29,7 +29,7 @@ Locale: en-US
 {{Creates a new Azure Database Migration Service project.}}
 
 ### [New-AzureRmDataMigrationFileShare](New-AzureRmDataMigrationFileShare.md)
-{{Manually Enter New-AzureRmDataMigrationFileShare Description Here}}
+{{Creates the File share object for the Azure Database Migration Service, which specifies the file share information for migration.}}
 
 ### [New-AzureRmDataMigrationService](New-AzureRmDataMigrationService.md)
 {{Creates a new instance of the Azure Database Migration Service.}}
@@ -38,7 +38,7 @@ Locale: en-US
 {{Creates a MigrateSqlServerSqlDbDatabaseInput object that contains information about source and target databases for migration.}}
 
 ### [New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB](New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB.md)
-{{Manually Enter New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB Description Here}}
+{{Creates a MigrateSqlServerSqlDbMiDatabaseInput object that contains information about source and target databases for migration.}}
 
 ### [New-AzureRmDataMigrationTask](New-AzureRmDataMigrationTask.md)
 {{Creates and starts a data migration task in the Azure Database Migration Service.}}
@@ -59,5 +59,5 @@ Locale: en-US
 {{Stops an instance of the Azure Database Migration Service that is in a running state.}}
 
 ### [Stop-AzureRmDataMigrationTask](Stop-AzureRmDataMigrationTask.md)
-{{Manually Enter Stop-AzureRmDataMigrationTask Description Here}}
+{{Stops an instance of the Azure Database Migration Service that is in a running state.}}
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmDataMigrationFileShare
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Creates the FileShare object for the Azure Database Migration Service, which specifies the local network share to take the source database backups to.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzureRmDataMigrationFileShare -Path <String> -Credential <PSCredential>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The New-AzureRmDataMigrationFileShare cmdlet creates the FileShare object that specifies the local network share that Azure Database Migration Service can take source database backups to. The service account running source SQL Server instance must have write privileges on this network share.
 
 ## EXAMPLES
 
@@ -116,7 +116,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.DataMigration.Models.MigrateSqlServerSqlDbDatabaseInput
+### Microsoft.Azure.Management.DataMigration.Models.FileShare
 
 
 ## NOTES
