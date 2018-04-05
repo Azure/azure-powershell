@@ -86,6 +86,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.5.0';
                @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.9.1'; }, 
                @{ModuleName = 'AzureRM.Network'; RequiredVersion = '5.4.1'; }, 
                @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '4.1.0'; }, 
+               @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '0.9.0-preview'; }, 
                @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '4.3.1'; }, 
                @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '4.1.3'; }, 
                @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.1.1'; }, 

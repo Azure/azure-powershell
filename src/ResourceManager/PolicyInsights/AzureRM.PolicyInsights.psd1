@@ -110,10 +110,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* This is the Public Preview release of Policy Insights cmdlets'
+        ReleaseNotes = '* Public preview release of Policy Insights cmdlets'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

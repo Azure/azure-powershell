@@ -18,4 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.9.0-preview
 * Public preview release of Policy Insights cmdlets
