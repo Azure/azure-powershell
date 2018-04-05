@@ -106,6 +106,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 WriteObject(psObject, true);
             });
         }
-
     }
 }
