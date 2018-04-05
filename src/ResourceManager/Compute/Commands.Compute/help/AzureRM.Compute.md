@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
 Download Help Link: 

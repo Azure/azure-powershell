@@ -29,6 +29,34 @@
 
 The following cmdlets were affected this release:
 
+**Find-AzureRmResource**
+- This cmdlet is being removed and the functionality will be moved into `Get-AzureRmResource`
+
+```powershell
+# Old
+Find-AzureRmResource -ResourceType "Microsoft.Web/sites" -ResourceGroupNameContains "ResourceGroup"
+Find-AzureRmResource -ResourceType "Microsoft.Web/sites" -ResourceNameContains "test"
+
+# New
+Get-AzureRmResource -ResourceType "Microsoft.Web/sites" -ResourceGroupName "*ResourceGroup*"
+Get-AzureRmResource -ResourceType "Microsoft.Web/sites" -Name "*test*"
+```
+
+**Find-AzureRmResourceGroup**
+- This cmdlet is being removed and the functionality will be moved into `Get-AzureRmResourceGroup`
+
+```powershell
+# Old
+Find-AzureRmResourceGroup
+Find-AzureRmResourceGroup -Tag @{ "testtag" = $null }
+Find-AzureRmResourceGroup -Tag @{ "testtag" = "testval" }
+
+# New
+Get-AzureRmResourceGroup
+Get-AzureRmResourceGroup -Tag @{ "testtag" = $null }
+Get-AzureRmResourceGroup -Tag @{ "testtag" = "testval" }
+```
+
 **Get-AzureRmRoleDefinition**
 - Parameter "AtScopeAndBelow" is being removed.
 

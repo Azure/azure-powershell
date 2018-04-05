@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermvmssdatadisk
@@ -14,8 +14,8 @@ Adds a data disk to the VMSS.
 
 ```
 Add-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
- [[-Lun] <Int32>] [[-Caching] <CachingTypes>] [-WriteAccelerator] [-CreateOption <DiskCreateOptionTypes>]
- [-DiskSizeGB <Int32>] [-StorageAccountType <StorageAccountTypes>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Lun] <Int32>] [[-Caching] <CachingTypes>] [-WriteAccelerator] [-CreateOption <String>]
+ [-DiskSizeGB <Int32>] [-StorageAccountType <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Specifies the caching type of the disk.
 ```yaml
 Type: CachingTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
@@ -54,10 +54,9 @@ Accept wildcard characters: False
 Specifies the create option of the disk.
 
 ```yaml
-Type: DiskCreateOptionTypes
+Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: FromImage, Empty, Attach
+Aliases:
 
 Required: False
 Position: Named
@@ -87,7 +86,7 @@ Specifies the size of the disk in GB.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,7 +101,7 @@ Specifies the logical unit number of the disk.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -117,7 +116,7 @@ Specifies the name of the disk.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -130,10 +129,9 @@ Accept wildcard characters: False
 Specifies the storage account type of the disk.
 
 ```yaml
-Type: StorageAccountTypes
+Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Aliases:
 
 Required: False
 Position: Named
@@ -149,7 +147,7 @@ You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) cmdlet to cr
 ```yaml
 Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -164,7 +162,7 @@ Specifies whether WriteAccelerator should be enabled or disabled on the data dis
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -224,4 +222,3 @@ System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.StorageAccountTypes
 ## NOTES
 
 ## RELATED LINKS
-
