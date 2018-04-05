@@ -22,8 +22,6 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         {
             if (SubscriptionId != null)
             {
-                ValidateGuidInput(SubscriptionId, "SubscriptionId parameter");
-
                 var response = AzureReservationAPIClient.GetCatalog(SubscriptionId).Select(x => new PSCatalog(x));
                 WriteObject(response, true);
             }

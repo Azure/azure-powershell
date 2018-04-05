@@ -6,7 +6,6 @@ using Microsoft.Azure.Management.Reservations.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Reservations;
 using Microsoft.Azure.Commands.Reservations.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
@@ -41,9 +40,6 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             var resourceInfo = $"Reservation {ReservationId[0]} and {ReservationId[1]} in order {ReservationOrderId}";
             if (ShouldProcess(resourceInfo, "Merge"))
             {
-                ValidateGuidInput(ReservationOrderId, "ReservationOrderId parameter");
-                ReservationId.ForEach(x => ValidateGuidInput(x, "Each id in ReservationId parameter"));
-
                 MergeRequest Merge = new MergeRequest(ListOfResourceId());
                 var response = AzureReservationAPIClient.Reservation.Merge(ReservationOrderId, Merge).Select(x => new PSReservation(x));
                 WriteObject(response, true);

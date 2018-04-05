@@ -39,8 +39,6 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         private void PageResults()
         {
-            ValidateGuidInput(ReservationOrderId, "ReservationOrderId parameter");
-
             var response = new PSReservationPage(AzureReservationAPIClient.Reservation.List(ReservationOrderId));
             WriteObject(response, true);
             while (response.NextPageLink != null)
@@ -55,9 +53,6 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             {
                 if (ReservationId != null)
                 {
-                    ValidateGuidInput(ReservationOrderId, "ReservationOrderId parameter");
-                    ValidateGuidInput(ReservationId, "ReservationId parameter");
-
                     var response = new PSReservation(AzureReservationAPIClient.Reservation.Get(ReservationId, ReservationOrderId));
                     WriteObject(response);
                 }

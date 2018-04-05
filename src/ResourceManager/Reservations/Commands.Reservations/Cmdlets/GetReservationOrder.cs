@@ -17,7 +17,6 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         {
             if (ReservationOrderId != null)
             {
-                ValidateGuidInput(ReservationOrderId, "ReservationOrderId parameter");
                 var response = new PSReservationOrder(AzureReservationAPIClient.ReservationOrder.Get(ReservationOrderId));
                 WriteObject(response);
             }

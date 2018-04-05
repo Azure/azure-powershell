@@ -93,12 +93,5 @@ namespace Microsoft.Azure.Commands.Reservations.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetCatalog");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestInvalidGuidInput()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-InvalidGuidInput");
-        }
-
     }
 }

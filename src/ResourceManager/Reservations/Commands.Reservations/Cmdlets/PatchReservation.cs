@@ -55,9 +55,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             var resourceInfo = $"Reservation {ReservationId} in order {ReservationOrderId}";
             if (ShouldProcess(resourceInfo, "Update"))
             {
-                ValidateGuidInput(ReservationOrderId, "ReservationOrderId parameter");
-                ValidateGuidInput(ReservationId, "ReservationId parameter");
-
+                
                 Patch Patch;
                 if (AppliedScope != null)
                 {

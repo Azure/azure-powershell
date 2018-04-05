@@ -38,9 +38,6 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                 ReservationId = name[1];
             }
 
-            ValidateGuidInput(ReservationOrderId, "ReservationOrderId parameter");
-            ValidateGuidInput(ReservationId, "ReservationId parameter");
-
             var response = new PSReservationPage(AzureReservationAPIClient.Reservation.ListRevisions(ReservationId, ReservationOrderId));
             WriteObject(response, true);
             while (response.NextPageLink != null)

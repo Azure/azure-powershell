@@ -165,44 +165,6 @@ function Test-UpdateReservationToSingle
 
 <#
 .SYNOPSIS
-Update reservation
-#>
-function Test-InvalidGuidInput
-{
-	$invalidInput = "NotGuid"
-
-	try
-	{
-		$reservations = Get-AzureRmReservation -ReservationOrderId $invalidInput
-	}
-	catch [System.Management.Automation.PSArgumentException]
-	{
-		Assert-AreEqual $_.Exception.Message "ReservationOrderId parameter should be a GUID"
-	}
-
-	try
-	{
-		$reservations = Get-AzureRmReservationCatalog -SubscriptionId $invalidInput
-	}
-	catch [System.Management.Automation.PSArgumentException]
-	{
-		Assert-AreEqual $_.Exception.Message "SubscriptionId parameter should be a GUID"
-	}
-
-	try
-	{
-		$reservations = Get-AzureRmReservationHistory -ReservationOrderId $reservationOrderId -ReservationId $invalidInput
-	}
-	catch [System.Management.Automation.PSArgumentException]
-	{
-		Assert-AreEqual $_.Exception.Message "ReservationId parameter should be a GUID"
-	}
-
-
-}
-
-<#
-.SYNOPSIS
 List reservations
 #>
 function Test-ListReservations

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,15 +20,6 @@ namespace Microsoft.Azure.Commands.Reservations.Common
         private IAzureReservationAPIClient _azureReservationAPI;
 
         private Dictionary<string, List<string>> _defaultRequestHeaders;
-
-        protected void ValidateGuidInput(string inputValue, string inputType)
-        {
-            Guid result;
-            if (!Guid.TryParse(inputValue, out result))
-            {
-                throw new PSArgumentException($"{inputType} should be a GUID");
-            }
-        }
 
         /// <summary>
         /// Gets or sets the Reservations management client.
