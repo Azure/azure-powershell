@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
-Module Name: AzureRM.Resources
+external help file: Microsoft.Azure.Commands.ManagementPartner.dll-Help.xml
+Module Name: AzureRM.ManagementPartner
 online version: https://docs.microsoft.com/en-us/powershell/module/get-azurermmanagementpartner
 schema: 2.0.0
 ---
@@ -79,22 +79,20 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Resources.PSManagementPartner
 
-
 ## NOTES
 
 ## RELATED LINKS
+
 [Remove-AzureRmManagementPartner](./Remove-AzureRmManagementPartner.md)
 
 [New-AzureRmManagementPartner](./New-AzureRmManagementPartner.md)
