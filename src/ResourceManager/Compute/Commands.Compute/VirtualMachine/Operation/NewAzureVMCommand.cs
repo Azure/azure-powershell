@@ -537,9 +537,9 @@ namespace Microsoft.Azure.Commands.Compute
             return SystemAssignedIdentity.IsPresent || isUserAssignedEnabled
                 ? new VirtualMachineIdentity
                 {
-                    Type = !isUserAssignedEnabled ? CM.ResourceIdentityType.SystemAssigned
-                        : SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned
-                        : CM.ResourceIdentityType.UserAssigned,
+                    Type = !isUserAssignedEnabled ? 
+                           CM.ResourceIdentityType.SystemAssigned :
+                           (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
                     IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
                 }
                 : null;

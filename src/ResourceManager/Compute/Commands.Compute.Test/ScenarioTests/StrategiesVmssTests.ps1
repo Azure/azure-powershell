@@ -24,7 +24,7 @@ function Test-SimpleNewVmss
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
@@ -57,7 +57,7 @@ function Test-SimpleNewVmssWithSystemAssignedIdentity
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
@@ -93,7 +93,7 @@ function Test-SimpleNewVmssWithUserAssignedIdentity
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 		
@@ -146,7 +146,7 @@ function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
@@ -203,7 +203,7 @@ function Test-SimpleNewVmssImageName
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
@@ -239,7 +239,7 @@ function Test-SimpleNewVmssWithoutDomainName
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
         # Common
