@@ -22,6 +22,18 @@
 #### AzureRM.ContainerRegistry
 * Decouple reliance on Commands.Resources.Rest and ARM/Storage SDKs.
 
+#### AzureRM.DataLakeStore
+* Add debug functionality
+* Update the version of the ADLS dataplane SDK to 1.1.2
+* Export-AzureRmDataLakeStoreItem - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Import-AzureRMDataLakeStoreItem - Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
+* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
+* Remove-AzureRmDataLakeStoreItem - Deprecated parameter Clean.
+
+#### AzureRM.EventHub
+* Fixed AlternameName in New-AzureRmEventHubGeoDRConfiguration
+
 #### AzureRM.KeyVault
 * Updated cmdlets to include piping scenarios
 * Add deprecation messages for upcoming breaking change release
@@ -30,6 +42,7 @@
 * Fix error message with Network cmdlets
 
 #### AzureRM.ServiceBus
+* Added 'properties' in CorrelationFilter of Rules to support customproperties
 * updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
 * Fixed auto-forward properties in New-AzureRmServiceBusQueue and New-AzureRmServiceBusSubscription cmdlet
 

@@ -66,12 +66,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 
         public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
         {
-            share.FetchAttributesAsync(accessCondition, options, operationContext).RunSynchronously();
+            Task.Run(() => share.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
         }
 
         public void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
         {
-            share.SetPropertiesAsync(accessCondition, options, operationContext).RunSynchronously();
+            Task.Run(() => share.SetPropertiesAsync(accessCondition, options, operationContext)).Wait();
         }
 
         public async Task EnumerateFilesAndDirectoriesAsync(CloudFileDirectory directory, Action<IListFileItem> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
@@ -162,7 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             AccessCondition accessCondition = null,
             FileRequestOptions options = null, OperationContext operationContext = null)
         {
-            share.SetPermissionsAsync(permissions, accessCondition, options, operationContext).RunSynchronously();
+            Task.Run(() => share.SetPermissionsAsync(permissions, accessCondition, options, operationContext)).Wait();
         }
 
         public Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)

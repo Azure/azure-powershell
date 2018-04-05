@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeStore.Models;
-using System.IO;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -22,7 +21,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Alias("Add-AdlStoreItemContent")]
     public class AddAzureDataLakeStoreItemContent : DataLakeStoreFileSystemCmdletBase
     {
-        private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -46,15 +44,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
                 "Optionally indicates the encoding for the content being uploaded as part of 'Value'. Default is UTF8")]
-        public FileSystemCmdletProviderEncoding Encoding
-        {
-            get { return _encoding; }
-            set { _encoding = value; }
-        }
+        public FileSystemCmdletProviderEncoding Encoding { get; set; } = FileSystemCmdletProviderEncoding.UTF8;
 
         public override void ExecuteCmdlet()
         {
-            DataLakeStoreFileSystemClient.AppendToFile(Path.TransformedPath, Account, new MemoryStream(GetBytes(Value, Encoding)));
+            DataLakeStoreFileSystemClient.AppendToFile(Path.TransformedPath, Account, GetBytes(Value, Encoding));
             WriteObject(true);
         }
     }

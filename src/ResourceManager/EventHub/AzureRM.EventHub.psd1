@@ -124,7 +124,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime'
+        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime
+* Fixed AlternameName in New-AzureRmEventHubGeoDRConfiguration'
 
         # Prerelease string of this module
         # Prerelease = ''
