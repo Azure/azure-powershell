@@ -125,6 +125,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             ExecuteClientAction(() =>
             {
+                WriteWarning("Update-AzureRmVmss: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
+                             "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
+
                 if (ShouldProcess(this.VMScaleSetName, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
@@ -407,7 +410,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetManagedDiskParameters();
                 }
-                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.ManagedDiskStorageAccountType;
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.ManagedDiskStorageAccountType.ToSerializedValue();
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("PlanPublisher"))

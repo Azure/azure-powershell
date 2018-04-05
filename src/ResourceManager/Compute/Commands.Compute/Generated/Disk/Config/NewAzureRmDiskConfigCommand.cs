@@ -123,6 +123,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
+            WriteWarning("New-AzureRmDiskConfig: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
+                         "The Name property for a Sku will return Standard_LRS and Premium_LRS");
+
             // Sku
             Microsoft.Azure.Management.Compute.Models.DiskSku vSku = null;
 
