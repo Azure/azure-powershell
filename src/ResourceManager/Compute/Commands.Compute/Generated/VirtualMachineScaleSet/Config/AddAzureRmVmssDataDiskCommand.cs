@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                              "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
                 // ManagedDisk
                 vDataDisks.ManagedDisk = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetManagedDiskParameters();
-                vDataDisks.ManagedDisk.StorageAccountType = this.StorageAccountType.ToSerializedValue();
+                vDataDisks.ManagedDisk.StorageAccountType = this.StorageAccountType;
             }
             this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks.Add(vDataDisks);
             WriteObject(this.VirtualMachineScaleSet);

@@ -97,6 +97,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
+            WriteWarning("Set-AzureRmImageOsDisk: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
+                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
+
             if (this.MyInvocation.BoundParameters.ContainsKey("OsType"))
             {
                 // StorageProfile
@@ -188,7 +191,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.Image.StorageProfile.OsDisk = new Microsoft.Azure.Management.Compute.Models.ImageOSDisk();
                 }
-                this.Image.StorageProfile.OsDisk.StorageAccountType = this.StorageAccountType.ToSerializedValue();
+                this.Image.StorageProfile.OsDisk.StorageAccountType = this.StorageAccountType;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SnapshotId"))

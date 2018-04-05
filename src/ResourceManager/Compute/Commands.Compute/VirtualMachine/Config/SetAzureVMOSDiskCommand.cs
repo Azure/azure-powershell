@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 this.VM.StorageProfile.OsDisk.ManagedDisk.Id = this.ManagedDiskId ?? this.VM.StorageProfile.OsDisk.ManagedDisk.Id;
-                this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.StorageAccountType.ToSerializedValue() ?? this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
+                this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType = this.StorageAccountType ?? this.VM.StorageProfile.OsDisk.ManagedDisk.StorageAccountType;
             }
 
             this.VM.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent;

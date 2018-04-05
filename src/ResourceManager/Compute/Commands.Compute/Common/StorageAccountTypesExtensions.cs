@@ -28,18 +28,35 @@ namespace Microsoft.Azure.Commands.Compute.Common
         private static string Standard_ZRS = "Standard_ZRS";
         private static string Premium_LRS = "Premium_LRS";
 
-        private static Dictionary<string, string> _mappings = new Dictionary<string, string>()
+        private static Dictionary<string, string> _toSerializedMappings = new Dictionary<string, string>()
         {
             { StandardLRS, Standard_LRS },
             { StandardZRS, Standard_ZRS },
             { PremiumLRS, Premium_LRS }
         };
 
+        private static Dictionary<string, string> _toUnserializedMappings = new Dictionary<string, string>()
+        {
+            { Standard_LRS, StandardLRS },
+            { Standard_ZRS, StandardZRS },
+            { Premium_LRS, PremiumLRS }
+        };
+
         public static string ToSerializedValue(this string storageAccountType)
         {
-            if (!string.IsNullOrEmpty(storageAccountType) && _mappings.ContainsKey(storageAccountType))
+            if (!string.IsNullOrEmpty(storageAccountType) && _toSerializedMappings.ContainsKey(storageAccountType))
             {
-                return _mappings[storageAccountType];
+                return _toSerializedMappings[storageAccountType];
+            }
+
+            return storageAccountType;
+        }
+
+        public static string ToUnserializedValue(this string storageAccountType)
+        {
+            if (!string.IsNullOrEmpty(storageAccountType) && _toUnserializedMappings.ContainsKey(storageAccountType))
+            {
+                return _toUnserializedMappings[storageAccountType];
             }
 
             return storageAccountType;

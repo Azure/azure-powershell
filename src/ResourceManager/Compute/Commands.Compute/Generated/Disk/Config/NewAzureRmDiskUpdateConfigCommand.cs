@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vSku = new Microsoft.Azure.Management.Compute.Models.DiskSku();
                 }
-                vSku.Name = this.SkuName.ToSerializedValue();
+                vSku.Name = this.SkuName;
             }
 
             var vDiskUpdate = new PSDiskUpdate

@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vSku = new Microsoft.Azure.Management.Compute.Models.DiskSku();
                 }
-                vSku.Name = this.SkuName.ToSerializedValue();
+                vSku.Name = this.SkuName;
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("CreateOption"))
