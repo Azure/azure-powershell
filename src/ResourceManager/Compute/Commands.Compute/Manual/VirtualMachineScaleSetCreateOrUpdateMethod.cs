@@ -314,9 +314,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             return SystemAssignedIdentity.IsPresent || isUserAssignedEnabled
                 ? new VirtualMachineScaleSetIdentity
                 {
-                    Type =  !isUserAssignedEnabled ? ResourceIdentityType.SystemAssigned
-                        : SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned
-                        : ResourceIdentityType.UserAssigned,
+                    Type = !isUserAssignedEnabled ?
+                           ResourceIdentityType.SystemAssigned :
+                           (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
                     IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
                 }
                 : null;
