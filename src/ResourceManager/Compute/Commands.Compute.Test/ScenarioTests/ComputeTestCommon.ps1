@@ -94,6 +94,35 @@ function Get-ComputeDefaultLocation
     return $test_location;
 }
 
+# Create key vault resources
+function Create-KeyVault($resourceGroupName, $vaultName, $location)
+{
+	# initialize parameters
+	$resourceGroupName = if ([string]::IsNullOrEmpty($resourceGroupName)) { Get-ComputeTestResourceName } else { $resourceGroupName }
+    $vaultName = if ([string]::IsNullOrEmpty($vaultName)) { 'kv' + $resourceGroupName } else { $vaultName }
+    $location = if ([string]::IsNullOrEmpty($location)) { Get-ComputeVMLocation } else { $location }
+
+	# create vault
+	$vault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location -Sku standard
+	$vault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
+
+	# enable for disk encryption 
+	Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
+	
+	# create key encryption key 
+	$kekName = 'kek' + $resourceGroupName
+	$kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
+
+	# return the newly created key vault properties
+	$properties = New-Object PSObject -Property @{
+		DiskEncryptionKeyVaultId = $vault.ResourceId
+		DiskEncryptionKeyVaultUrl = $vault.VaultUri
+		KeyEncryptionKeyVaultId = $vault.ResourceId
+		KeyEncryptionKeyUrl = $kek.Key.kid
+	}
+	return $properties
+}
+
 # Create a new virtual machine with other necessary resources configured
 function Create-VirtualMachine($rgname, $vmname, $loc)
 {
