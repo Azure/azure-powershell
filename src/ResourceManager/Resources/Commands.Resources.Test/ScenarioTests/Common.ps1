@@ -36,7 +36,7 @@ Gets valid password string for a VM
 #>
 function Get-PasswordForVM
 {
-	return ([char[]]([char]33..[char]95) + ([char[]]([char]97..[char]126)) + 0..9 | sort {Get-Random})[0..11] -join ''
+	return (getAssetName) + '_196Ab!@'
 }
 
 <#

@@ -24,7 +24,7 @@ function Test-SimpleNewVm
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmname-$vmname".tolower();
 
@@ -54,7 +54,7 @@ function Test-SimpleNewVmSystemAssignedIdentity
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmname-$vmname".tolower();
 
@@ -101,7 +101,7 @@ function Test-SimpleNewVmUserAssignedIdentity
 		$newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
 
         $username = "admin01"
-        $password = "werWER345#%^" | ConvertTo-SecureString -AsPlainText -Force
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmname-$vmname".tolower();
 
