@@ -15,7 +15,7 @@ Adds a data disk to the VMSS.
 ```
 Add-AzureRmVmssDataDisk [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
  [[-Lun] <Int32>] [[-Caching] <CachingTypes>] [-WriteAccelerator] [-CreateOption <String>]
- [-DiskSizeGB <Int32>] [-StorageAccountType <PSStorageAccountTypes>] [-DefaultProfile <IAzureContextContainer>]
+ [-DiskSizeGB <Int32>] [-StorageAccountType <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -129,10 +129,9 @@ Accept wildcard characters: False
 Specifies the storage account type of the disk.
 
 ```yaml
-Type: PSStorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named

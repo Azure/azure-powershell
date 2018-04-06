@@ -17,7 +17,7 @@ Updates the state of a VMSS.
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
- [-ManagedDiskStorageAccountType <PSStorageAccountTypes>] [-PlanPublisher <String>]
+ [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>]
  [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>]
  [-MaxBatchInstancePercent <Int32>] [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>]
  [-AutomaticOSUpgrade <Boolean>] [-SinglePlacementGroup <Boolean>] [-CustomData <String>]
@@ -35,7 +35,7 @@ Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>] [-IdentityId <String[]>]
- [-ManagedDiskStorageAccountType <PSStorageAccountTypes>] [-PlanPublisher <String>]
+ [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>]
  [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>]
  [-MaxBatchInstancePercent <Int32>] [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>]
  [-AutomaticOSUpgrade <Boolean>] [-SinglePlacementGroup <Boolean>] [-CustomData <String>]
@@ -344,10 +344,9 @@ The acceptable values for this parameter are:
 - PremiumLRS
 
 ```yaml
-Type: PSStorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named

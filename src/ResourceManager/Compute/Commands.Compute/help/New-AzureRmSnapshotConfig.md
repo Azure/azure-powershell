@@ -13,7 +13,7 @@ Creates a configurable snapshot object.
 ## SYNTAX
 
 ```
-New-AzureRmSnapshotConfig [[-SkuName] <PSStorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+New-AzureRmSnapshotConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>]
  [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Tag <Hashtable>] [-CreateOption <String>]
  [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
  [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
@@ -184,10 +184,9 @@ Accept wildcard characters: False
 Specifies the Sku name of the storage account.
 
 ```yaml
-Type: PSStorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases: AccountType
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: 0

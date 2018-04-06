@@ -16,14 +16,14 @@ Modifies properties of a virtual machine data disk.
 ### ChangeWithName
 ```
 Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Name] <String> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [-StorageAccountType <PSStorageAccountTypes>] [-WriteAccelerator]
+ [[-DiskSizeInGB] <Int32>] [-StorageAccountType <String>] [-WriteAccelerator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ChangeWithLun
 ```
 Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Lun] <Int32> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [-StorageAccountType <PSStorageAccountTypes>] [-WriteAccelerator]
+ [[-DiskSizeInGB] <Int32>] [-StorageAccountType <String>] [-WriteAccelerator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -136,10 +136,9 @@ Accept wildcard characters: False
 The virtual machine managed disk's account type.
 
 ```yaml
-Type: PSStorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named

@@ -14,7 +14,7 @@ Adds a data disk to an image obejct.
 
 ```
 Add-AzureRmImageDataDisk [-Image] <PSImage> [[-Lun] <Int32>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
- [-DiskSizeGB <Int32>] [-StorageAccountType <PSStorageAccountTypes>] [-SnapshotId <String>]
+ [-DiskSizeGB <Int32>] [-StorageAccountType <String>] [-SnapshotId <String>]
  [-ManagedDiskId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -172,10 +172,9 @@ Accept wildcard characters: False
 The Storage Account type of the data image disk
 
 ```yaml
-Type: PSStorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named

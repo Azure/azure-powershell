@@ -16,7 +16,7 @@ Adds a data disk to a virtual machine.
 ```
 Add-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
  [[-Caching] <CachingTypes>] [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String>
- [[-SourceImageUri] <String>] [[-ManagedDiskId] <String>] [[-StorageAccountType] <PSStorageAccountTypes>]
+ [[-SourceImageUri] <String>] [[-ManagedDiskId] <String>] [[-StorageAccountType] <String>]
  [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -243,10 +243,9 @@ Accept wildcard characters: False
 Specifies the storage account type of managed disk.
 
 ```yaml
-Type: PSStorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: 9
