@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
@@ -129,9 +129,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             set;
         }
 
-        [Parameter(Position = 9, ValueFromPipelineByPropertyName = true, Mandatory = false, ParameterSetName = "Upgrade", HelpMessage = "Extension configurations.")]
-        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true, Mandatory = false, ParameterSetName = "Config", HelpMessage = "HelpMessage")]
+        [Parameter(Position = 9, ValueFromPipelineByPropertyName = true, Mandatory = false, ParameterSetName = "Upgrade", HelpMessage = "Extension configurations")]
+        [Parameter(Position = 4, ValueFromPipelineByPropertyName = true, Mandatory = false, ParameterSetName = "Config", HelpMessage = "Extension configurations")]
         public ExtensionConfigurationInput[] ExtensionConfiguration
+        {
+            get;
+            set;
+        }
+
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, ParameterSetName = "Upgrade", HelpMessage = "Extended Property")]
+        [Parameter(ValueFromPipelineByPropertyName = false, Mandatory = false, ParameterSetName = "Config", HelpMessage = "Extended Property")]
+        public Hashtable ExtendedProperty
         {
             get;
             set;
@@ -236,7 +244,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     ExtensionConfiguration = extConfig,
                     PackageUri = packageUrl,
                     Label = Label ?? ServiceName,
-                    Force = Force.IsPresent
+                    Force = Force.IsPresent,
+                    ExtendedProperties = ExtendedProperty != null ? ConvertToDictionary(ExtendedProperty) : null,
                 };
 
                 if (!string.IsNullOrEmpty(RoleName))
@@ -277,7 +286,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 var changeDeploymentStatusParams = new DeploymentChangeConfigurationParameters
                 {
                     Configuration = configString,
-                    ExtensionConfiguration = extConfig
+                    ExtensionConfiguration = extConfig,
+                    ExtendedProperties = ExtendedProperty != null ? ConvertToDictionary(ExtendedProperty) : null
                 };
 
                 ExecuteClientActionNewSM(
