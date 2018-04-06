@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Subscription.Models",
             "Name": "Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition, Microsoft.Azure.Commands.Subscription, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition, Microsoft.Azure.Commands.Subscription, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Name": "System.String",
               "SubscriptionId": "System.String",
@@ -294,7 +294,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition, Microsoft.Azure.Commands.Subscription, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition, Microsoft.Azure.Commands.Subscription, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -820,7 +820,7 @@
     "Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition": {
       "Namespace": "Microsoft.Azure.Commands.Subscription.Models",
       "Name": "Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition, Microsoft.Azure.Commands.Subscription, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSSubscriptionDefinition, Microsoft.Azure.Commands.Subscription, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "SubscriptionId": "System.String",
