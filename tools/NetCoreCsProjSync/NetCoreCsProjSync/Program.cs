@@ -79,6 +79,7 @@ namespace NetCoreCsProjSync
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"{desktopFileName}: Could not locate management library containing {managementPackageName}");
                         Console.ForegroundColor = priorColor;
+                        Environment.ExitCode = 1;
                         continue;
                     }
 
@@ -95,8 +96,9 @@ namespace NetCoreCsProjSync
                     {
                         var priorColor = Console.ForegroundColor;
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"{netCoreFileName}:Could not locate management library containing {managementPackageName}");
+                        Console.WriteLine($"{netCoreFileName}: Could not locate management library containing {managementPackageName}");
                         Console.ForegroundColor = priorColor;
+                        Environment.ExitCode = 1;
                         continue;
                     }
 
@@ -111,6 +113,7 @@ namespace NetCoreCsProjSync
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"Version mismatch: {oldVersionString} > {newVersionString} : {managementPackageName}");
                         Console.ForegroundColor = priorColor;
+                        Environment.ExitCode = 1;
                     }
                 }
             }
