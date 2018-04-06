@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletDeprecationAttribute()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttribute), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttribute), null));
 
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletDeprecationAttributeNoReplacement()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeNoReplacement), null));
 
             Assert.Equal(1, attribs.Count);
             Assert.True(attribs[0].ChangeInEfectByDateSet);
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletDeprecationAttributeWithDescription()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeAndDescription), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletDeprecationMarkerAttributeAndDescription), null));
 
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletOutputTypeDropped()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputTypeDropped), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputTypeDropped), null));
 
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletOutputTypeDeprecation()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputTypeChange), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputTypeChange), null));
 
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletWithOutputTypeRemovedProperties()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputDeprecatedProperties), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputDeprecatedProperties), null));
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletWithOutputTypeAddedProperties()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputNewProperties), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithCmdletWithOutputNewProperties), null));
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletWithParamDeprecatedNoReplacement()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithDeprecatedParam), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithDeprecatedParam), null));
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletWithParamTypeChange()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParamTypeChange), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParamTypeChange), null));
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
@@ -231,7 +231,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletWithParamDeprecatedWithReplacement()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithReplacedParam), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithReplacedParam), null));
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletWithParamDeprecatedWithMandatoryReplacement()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithReplacedMandatoryParam), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithReplacedMandatoryParam), null));
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestForCmdletWithParamBecomingMandatory()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParameterBecomingMandatory), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParameterBecomingMandatory), null));
             Assert.Equal(1, attribs.Count);
             Assert.False(attribs[0].ChangeInEfectByDateSet);
             Assert.False(attribs[0].DeprecateByVersionSet);
@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Commands.Common.CustomAttributes.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRMTestCmdletWithParameterMetadataChangeAndOrderChange()
         {
-            List<GenericBreakingChangeAttribute> attribs = BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParameterMetadataChangeAndAGenericChange), null);
+            List<GenericBreakingChangeAttribute> attribs = new List<GenericBreakingChangeAttribute>(BreakingChangeAttributeHelper.GetAllBreakingChangeAttributesInType(typeof(AzureRMTestCmdletWithParameterMetadataChangeAndAGenericChange), null));
             Assert.Equal(2, attribs.Count);
 
             //This gets in the weeds here a lil too much, we get two different types of attributes, we will try and cast one to each type and then check if

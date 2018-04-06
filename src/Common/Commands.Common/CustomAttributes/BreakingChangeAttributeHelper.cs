@@ -77,13 +77,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
          * the boundParameterNames is a list of parameters bound to the cmdlet at runtime, 
          * We only process the Parameter beaking change attributes attached only params listed in this list (if present)
          * */
-        public static void ProcessCustomAttributesAtRuntime(Type type, List<string> boundParameterNames)
+        public static void ProcessCustomAttributesAtRuntime(Type type, InvocationInfo invocationInfo)
         {
             bool emitWarningOrError = true;
 
             try
             {
-                emitWarningOrError = Boolean.Parse(System.Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                emitWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
             }
             catch (Exception)
             {
@@ -96,16 +96,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
                 return;
             }
 
-            List<GenericBreakingChangeAttribute> attributes = GetAllBreakingChangeAttributesInType(type, boundParameterNames);
+            List<GenericBreakingChangeAttribute> attributes = new List<GenericBreakingChangeAttribute>(GetAllBreakingChangeAttributesInType(type, invocationInfo));
 
             if (attributes != null && attributes.Count > 0)
             {
                 Console.WriteLine(string.Format(Resources.BreakingChangesAttributesHeaderMessage, Utilities.GetNameFromCmdletType(type)));
-            }
 
-            foreach (GenericBreakingChangeAttribute attribute in attributes)
-            {
-                attribute.PrintCustomAttributeInfo(type, false);
+                foreach (GenericBreakingChangeAttribute attribute in attributes)
+                {
+                    attribute.PrintCustomAttributeInfo(type, false);
+                }
             }
         }
 
@@ -135,7 +135,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
          * the boundParameterNames is a list of parameters bound to the cmdlet at runtime, 
          * We only process the Parameter beaking change attributes attached only params listed in this list (if present)
          **/
-        public static List<GenericBreakingChangeAttribute> GetAllBreakingChangeAttributesInType(Type type, List<string> boundParameterNames)
+        public static IEnumerable<GenericBreakingChangeAttribute> GetAllBreakingChangeAttributesInType(Type type, InvocationInfo invocationInfo)
         {
             List<GenericBreakingChangeAttribute> attributeList = new List<GenericBreakingChangeAttribute>();
 
@@ -143,30 +143,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 
             foreach (MethodInfo m in type.GetRuntimeMethods())
             {
-                attributeList.AddRange(m.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>());
+                attributeList.AddRange((m.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>()));
             }
 
-            //Only process the fields if the bound params have the field Name in them. If the bound params is null then
-            //we do no filtering
             foreach (FieldInfo f in type.GetRuntimeFields())
             {
-                if ((boundParameterNames != null && boundParameterNames.Contains(f.Name)) || (boundParameterNames == null))
-                {
-                    attributeList.AddRange(f.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>());
-                }
+                attributeList.AddRange(f.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>());
             }
 
-            //Only process the property if the bound params have the prop Name in them. If the bound params is null then
-            //we do no filtering
             foreach (PropertyInfo p in type.GetRuntimeProperties())
             {
-                if ((boundParameterNames != null && boundParameterNames.Contains(p.Name)) || (boundParameterNames == null))
-                {
                     attributeList.AddRange(p.GetCustomAttributes(typeof(GenericBreakingChangeAttribute), false).Cast<GenericBreakingChangeAttribute>());
-                }
             }
 
-            return attributeList;
+            return invocationInfo == null ? attributeList : attributeList.Where(e => e.IsApplicableToInvocation(invocationInfo));
         }
     }
 }

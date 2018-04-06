@@ -23,10 +23,10 @@ using System.Threading.Tasks;
 namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     [AttributeUsage(
-   AttributeTargets.Class |
-   AttributeTargets.Field |
-   AttributeTargets.Property,
-   AllowMultiple = true)]
+     AttributeTargets.Class |
+     AttributeTargets.Field |
+     AttributeTargets.Property,
+     AllowMultiple = true)]
 
     /**
      * This class acts as the base
@@ -126,7 +126,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
          * 
          * We get the cmdlet name from the passed in Type (it is expected to have the CMdlet attribute decorated on the class)
          * */
-        public void PrintCustomAttributeInfo(Type type, Boolean withCmdletName)
+        public void PrintCustomAttributeInfo(Type type, bool withCmdletName)
         {
             if (!withCmdletName) {
                 Console.WriteLine(string.Format(Resources.BreakingChangesAttributesDeclarationMessage, GetAttributeSpecificMessage()));
@@ -155,6 +155,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
             {
                 Console.WriteLine(string.Format(Resources.BreakingChangesAttributesUsageChangeMessageConsole, OldWay, NewWay));
             }
+        }
+
+        public virtual bool IsApplicableToInvocation(InvocationInfo invocation)
+        {
+            return true;
         }
 
         protected virtual string GetAttributeSpecificMessage()

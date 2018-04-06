@@ -4,12 +4,12 @@ Below is description of the various types of Breaking Change Attributes (custom 
 
 ## The different types of attributes
 
-- [Common stuff and The generic breaking change attribute](#common-stuff)
+- [Common stuff and The generic breaking change attribute](#common-aspects-and-properties)
 - [Cmdlet deprecation attribute](#cmdletdeprecationattribute)
 - [Cmdlet output breaking change attribute](#cmdletoutputbreakingchangeattribute)
 - [Cmdlet parameter properties change attribute](#cmdletparameterbreakingchangeattribute)
 
-## Common stuff
+## Common aspects and properties
 ### GenericBreakingChangeAttribute
 The base attibute which provides the core functionality is called "GenericBreakingChange" All the remaining attrbutes derive from it and provide functionality that makes sense for the scenarios they handle.
 

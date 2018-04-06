@@ -18,13 +18,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     [AttributeUsage(
-AttributeTargets.Property |
-AttributeTargets.Field,
-AllowMultiple = true)]
+     AttributeTargets.Property |
+     AttributeTargets.Field,
+     AllowMultiple = true)]
     public class CmdletParameterBreakingChangeAttribute : GenericBreakingChangeAttribute
     {
         public string NameOfParameterChanging { get; }
@@ -38,19 +39,19 @@ AllowMultiple = true)]
         public String NewParameterTypeName { get; set; }
 
         public CmdletParameterBreakingChangeAttribute(string nameOfParameterChanging) :
-            base("")
+            base(string.Empty)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
 
         public CmdletParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByVersion) :
-             base("", deprecateByVersion)
+             base(string.Empty, deprecateByVersion)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
 
         public CmdletParameterBreakingChangeAttribute(string nameOfParameterChanging, string deprecateByVersion, string changeInEfectByDate) :
-             base("", deprecateByVersion, changeInEfectByDate)
+             base(string.Empty, deprecateByVersion, changeInEfectByDate)
         {
             this.NameOfParameterChanging = nameOfParameterChanging;
         }
@@ -85,6 +86,19 @@ AllowMultiple = true)]
                 message +=  "\n" + string.Format(Resources.BreakingChangeAttributeParameterTypeChange, OldParamaterType.FullName, NewParameterTypeName);
             }
             return message;
+        }
+
+        /// <summary>
+        /// See if the bound parameters contain the current parameter, if they do
+        /// then the attribbute is applicable
+        /// If the invocationInfo is null we return true
+        /// </summary>
+        /// <param name="invocation"></param>
+        /// <returns>bool</returns>
+        public override bool IsApplicableToInvocation(InvocationInfo invocationInfo)
+        {
+            bool? applicable = invocationInfo == null ? true : invocationInfo.BoundParameters?.Keys?.Contains(this.NameOfParameterChanging);
+            return applicable.HasValue ? applicable.Value : false;
         }
     }
 }

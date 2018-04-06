@@ -22,25 +22,24 @@ using System.Threading.Tasks;
 namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     [AttributeUsage(
-AttributeTargets.Class,
-AllowMultiple = true)]
+     AttributeTargets.Class,
+     AllowMultiple = true)]
     public class CmdletDeprecationAttribute : GenericBreakingChangeAttribute
     {
         public string ReplacementCmdletName { get; set; }
 
         public CmdletDeprecationAttribute() :
-            base("")
+            base(string.Empty)
         {
-            this.ReplacementCmdletName = null;
         }
 
         public CmdletDeprecationAttribute(string deprecateByVersione) :
-             base("", deprecateByVersione)
+             base(string.Empty, deprecateByVersione)
         {
         }
 
         public CmdletDeprecationAttribute(string deprecateByVersion, string changeInEfectByDate) :
-             base("", deprecateByVersion, changeInEfectByDate)
+             base(string.Empty, deprecateByVersion, changeInEfectByDate)
         {
         }
 
