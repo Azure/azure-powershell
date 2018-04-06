@@ -77,7 +77,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
                @{ModuleName = 'AzureRM.Dns.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.EventGrid.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.EventHub.Netcore'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'AzureRM.HDInsight.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Insights.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.IotHub.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.KeyVault.Netcore'; RequiredVersion = '0.11.0'; }, 
