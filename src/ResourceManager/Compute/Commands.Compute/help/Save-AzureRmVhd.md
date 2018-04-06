@@ -76,7 +76,7 @@ Run cmdlet in the background and return a Job to track progress.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,7 +151,7 @@ Specifies the name of the resource group of the storage account.
 ```yaml
 Type: String
 Parameter Sets: ResourceGroupParameterSetName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

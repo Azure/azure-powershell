@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 1A2C843C-6962-4B0E-ACBF-A5EFF609A5BE
@@ -28,7 +28,7 @@ New-AzureRmVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJ
  [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-VmSize <String>]
  [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
- [-Zone <System.Collections.Generic.List`1[System.String]>]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-DataDiskSizeInGb <Int32[]>]
  [-NatBackendPort <Int32[]>] [-DefaultProfile <IAzureContextContainer>]
  [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -151,7 +151,7 @@ Allocation method for the Public IP Address of the Scale Set (Static or Dynamic)
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 Accepted values: Static, Dynamic
 
 Required: False
@@ -167,7 +167,7 @@ Run cmdlet in the background and return a Job to track progress.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -182,7 +182,7 @@ The name of the backend address pool to use in the load balancer for this Scale 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -197,7 +197,7 @@ Backend port numbers used by the Scale Set load balancer to communicate with VMs
 ```yaml
 Type: Int32[]
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -212,9 +212,24 @@ The administrator credentials (username and password) for VMs in this Scale Set.
 ```yaml
 Type: PSCredential
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataDiskSizeInGb
+Specifies the sizes of data disks in GB.
+
+```yaml
+Type: Int32[]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -242,7 +257,7 @@ The domain name label for the public Fully-Qualified domain name (FQDN) for this
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -257,7 +272,7 @@ The name of the frontend address pool to usein the Scale Set locad balancer.  If
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -272,7 +287,7 @@ The name of the image for VMs in this Scale Set. If no value is provided, the "W
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -287,7 +302,7 @@ The number of VM images in the Scale Set.  If no value is provided, 2 instances 
 ```yaml
 Type: Int32
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -302,7 +317,7 @@ The name of the load balancer to use with this Scale Set.  A new load balancer u
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -317,7 +332,7 @@ The Azure location where this Scale Set will be created.  If no value is specifi
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -332,7 +347,7 @@ Backend port for inbound network address translation.
 ```yaml
 Type: Int32[]
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -347,7 +362,7 @@ The name of the public IP Address to use with this scale set.  A new Public IPAd
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -362,7 +377,7 @@ Specifies the name of the resource group of the VMSS.  If no value is specified,
 ```yaml
 Type: String
 Parameter Sets: DefaultParameter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -374,7 +389,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -389,7 +404,7 @@ The name of the network security group to apply to this Scale Set.  If no value 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -404,7 +419,7 @@ The address prefix of the Subnet this ScaleSet will use. Default Subnet settings
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -419,7 +434,7 @@ The name of the subnet to use with this Scale Set.  A new Subnet will be created
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -449,7 +464,7 @@ The upgrade policy mode for VM instances in this Scale Set.  Upgrade policy coul
 ```yaml
 Type: UpgradeMode
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 Accepted values: Automatic, Manual, Rolling
 
 Required: False
@@ -480,7 +495,7 @@ Specifies the **VirtualMachineScaleSet** object that contains the properties of 
 ```yaml
 Type: PSVirtualMachineScaleSet
 Parameter Sets: DefaultParameter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -495,7 +510,7 @@ The name fo the Virtual Network to use with this scale set.  If no value is supp
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -537,7 +552,7 @@ The size of the VM instances in this scale set.  A default size (Standard_DS1_v2
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -552,7 +567,7 @@ The address prefix for the virtual network used with this Scale Set.  Default vi
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -567,7 +582,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 05E6155D-4F0E-406B-9312-77AD97EF66EE
@@ -19,7 +19,8 @@ New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <Stri
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-ImageName <String>]
- [-Size <String>] [-AvailabilitySetName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-WhatIf]
+ [-Size <String>] [-AvailabilitySetName <String>] [-AsJob] [-DataDiskSizeInGb <Int32[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +37,8 @@ New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <Stri
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux]
- [-Size <String>] [-AvailabilitySetName <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-WhatIf]
+ [-Size <String>] [-AvailabilitySetName <String>] [-AsJob] [-DataDiskSizeInGb <Int32[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -122,7 +124,7 @@ The address prefix for the virtual network which will be created for the VM.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +139,7 @@ The IP allocation method for the public IP which will be created for the VM.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 Accepted values: Static, Dynamic
 
 Required: False
@@ -153,7 +155,7 @@ Run cmdlet in the background and return a Job to track progress.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,7 +170,7 @@ Specifies a name for the availability set.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,9 +185,24 @@ The administrator credentials for the VM.
 ```yaml
 Type: PSCredential
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataDiskSizeInGb
+Specifies the sizes of data disks in GB.
+
+```yaml
+Type: Int32[]
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -213,7 +230,7 @@ Indicates that this cmdlet does not install the **BG Info** extension on the vir
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -228,7 +245,7 @@ The local path to the virtual hard disk file to be uploaded to the cloud and for
 ```yaml
 Type: String
 Parameter Sets: DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -243,7 +260,7 @@ The subdomain label for the fully-qualified domain name (FQDN) of the VM.  This 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -258,7 +275,7 @@ The friendly image name upon which the VM will be built.  These include: Win2016
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -281,7 +298,7 @@ If you specify this parameter for an update, the value must match the initial va
 ```yaml
 Type: String
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -296,7 +313,7 @@ Indicates whether the disk file is for Linux VM, if specified; or Windows, if no
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -311,7 +328,7 @@ Specifies a location for the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -323,7 +340,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -338,7 +355,7 @@ The name of the VM resource.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -353,7 +370,7 @@ A list of ports to open on the network security group (NSG) for the created VM. 
 ```yaml
 Type: Int32[]
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -368,7 +385,7 @@ The name of a new (or existing) public IP address for the created VM to use.  If
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -383,7 +400,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -395,7 +412,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -410,7 +427,7 @@ The name of a new (or existing) network security group (NSG) for the created VM 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -425,7 +442,7 @@ The Virtual Machine Size.  The Default Value is: Standard_DS1_v2.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -440,7 +457,7 @@ The address prefix for the subnet which will be created for the VM.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -455,7 +472,7 @@ The name of a new (or existing) subnet for the created VM to use.  If not specif
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -517,7 +534,7 @@ The name of a new (or existing) virtual network for the created VM to use.  If n
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -549,7 +566,7 @@ Specifies the zone list of the virtual machine.
 ```yaml
 Type: String[]
 Parameter Sets: DefaultParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3

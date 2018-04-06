@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Globalization;
@@ -80,7 +81,8 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -89,6 +91,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("Set-AzureRmVMDataDisk: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
+                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
+
             var storageProfile = this.VM.StorageProfile;
 
             if (storageProfile == null || storageProfile.DataDisks == null)
@@ -116,6 +121,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 if (this.StorageAccountType != null)
                 {
+                    WriteWarning("Set-AzureRmVMDataDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
+                                 "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
                     if (dataDisk.ManagedDisk == null)
                     {
                         ThrowTerminatingError
