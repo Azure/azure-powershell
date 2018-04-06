@@ -22,8 +22,8 @@ using System.Threading.Tasks;
 namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 {
     [AttributeUsage(
-AttributeTargets.Class,
-AllowMultiple = true)]
+     AttributeTargets.Class,
+     AllowMultiple = true)]
     public class CmdletOutputBreakingChangeAttribute : GenericBreakingChangeAttribute
     {
         public Type DeprecatedCmdLetOutputType { get; }
@@ -37,19 +37,19 @@ AllowMultiple = true)]
         public string[] NewOutputProperties { get; set; }
 
         public CmdletOutputBreakingChangeAttribute(Type deprecatedCmdletOutputTypeName) :
-            base("")
+            base(string.Empty)
         {
             this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputTypeName;
         }
 
         public CmdletOutputBreakingChangeAttribute(Type deprecatedCmdletOutputTypeName, string deprecateByVersion) :
-             base("", deprecateByVersion)
+             base(string.Empty, deprecateByVersion)
         {
             this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputTypeName;
         }
 
         public CmdletOutputBreakingChangeAttribute(Type deprecatedCmdletOutputTypeName, string deprecateByVersion, string changeInEfectByDate) :
-             base("", deprecateByVersion, changeInEfectByDate)
+             base(string.Empty, deprecateByVersion, changeInEfectByDate)
         {
             this.DeprecatedCmdLetOutputType = deprecatedCmdletOutputTypeName;
         }

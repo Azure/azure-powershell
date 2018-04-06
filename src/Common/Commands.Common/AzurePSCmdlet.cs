@@ -276,7 +276,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             //Now see if the cmdlet has any Breaking change attributes on it and process them if it does
             //This will print any breaking change attribute messages that are applied to the cmdlet
-            BreakingChangeAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), new List<String>(this.MyInvocation?.BoundParameters?.Keys));
+            BreakingChangeAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), this.MyInvocation);
         }
 
         /// <summary>
