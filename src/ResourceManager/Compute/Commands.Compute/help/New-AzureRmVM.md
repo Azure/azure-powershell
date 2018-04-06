@@ -53,6 +53,23 @@ The `SimpleParameterSet` provides a convenient method to create a VM by making c
 ### Example 1: Create a virtual machine
 ```
 PS C:\> New-AzureRmVM -Name MyVm -Credential (Get-Credential)
+
+VERBOSE: Use 'mstsc /v:myvm-222222.eastus.cloudapp.azure.com' to connect to the VM.
+
+ResourceGroupName        : MyVm
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyVm/provi
+ders/Microsoft.Compute/virtualMachines/MyVm
+VmId                     : 11111111-1111-1111-1111-111111111111
+Name                     : MyVm
+Type                     : Microsoft.Compute/virtualMachines
+Location                 : eastus
+Tags                     : {}
+HardwareProfile          : {VmSize}
+NetworkProfile           : {NetworkInterfaces}
+OSProfile                : {ComputerName, AdminUsername, WindowsConfiguration, Secrets}
+ProvisioningState        : Succeeded
+StorageProfile           : {ImageReference, OsDisk, DataDisks}
+FullyQualifiedDomainName : myvm-222222.eastus.cloudapp.azure.com
 ```
 
 This example script shows how to create a virtual machine.
