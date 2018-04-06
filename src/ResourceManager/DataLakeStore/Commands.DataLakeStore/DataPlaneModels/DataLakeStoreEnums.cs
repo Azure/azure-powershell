@@ -12,16 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Runtime.Serialization;
+
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class DataLakeStoreEnums
     {
+        /// <summary>
+        /// Scope of ACL entry
+        /// </summary>
         public enum ScopeType
         {
             Access,
             Default
         }
-
+        /// <summary>
+        /// Type of ACL entry
+        /// </summary>
         public enum AceType
         {
             User,
@@ -72,6 +79,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             User,
             Group,
             Other
+        }
+        public enum FileType
+        {
+            [EnumMember(Value = "FILE")] FILE,
+            [EnumMember(Value = "DIRECTORY")] DIRECTORY,
+        }
+        
+        public enum PathRelativeExpiryOptions
+        {
+            RelativeToNow,
+            RelativeToCreationDate
         }
     }
 }

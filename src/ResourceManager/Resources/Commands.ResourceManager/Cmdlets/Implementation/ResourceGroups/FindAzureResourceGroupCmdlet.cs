@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+        	WriteWarning("Find-AzureRmResourceGroup: This cmdlet will be deprecated in an upcoming breaking change release. The functionality of this cmdlet will be moved into Get-AzureRmResourceGroup.");
             PaginatedResponseHelper.ForEach(
                getFirstPage: () => this.GetResourceGroups(),
                getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),

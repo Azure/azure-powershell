@@ -25,6 +25,7 @@ function ServiceBusRuleTests
 	$nameTopic = getAssetName "Topic-"
 	$subName = getAssetName "Subscription-"
 	$ruleName = getAssetName "Rule-"
+	$ruleName1 = getAssetName "Rule-"
 	 
     Write-Debug "Create resource group"
 	Write-Debug "ResourceGroup name : $resourceGroupName"
@@ -79,24 +80,46 @@ function ServiceBusRuleTests
 
 	$setRule = Set-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -InputObject $getRule	
 	Assert-AreEqual $setRule.SqlFilter.SqlExpression "myproperty='testing'" "Rule's SqlExpression updated earlier is not found."
+	
+	# Create Rule
+	$createRule1 = New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName1 -SqlExpression "myproperty='test'"
+	Assert-AreEqual $createRule1.Name $ruleName1 "Rule created earlier is not found."
+	
+	# Get Rule
+	$getRule1 = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName1
+	Assert-AreEqual $getRule1.Name $ruleName1 "Get-rule, Rule created earlier is not found."
+
+	# Update Rule
+	$getRule1.FilterType = "CorrelationFilter"
+	$getRule1.CorrelationFilter.Properties.add("topichint","topichintexpresion")
+	$getRule1.CorrelationFilter.Properties.add("topichint1","topichintexpresion1")
+	$getRule1.CorrelationFilter.Properties.add("topichint2","topichintexpresion2")
+
+	$setRule1 = Set-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName1 -InputObject $getRule1
+	Assert-AreEqual $setRule1.FilterType "CorrelationFilter" "Rule's FilterType is not CorrelationFilter"
+	Assert-True {$setRule1.CorrelationFilter.Properties.Count -gt 1} "CorrelationFilter - properties count is less than 1, where as it should be greate than 1"
+	Assert-AreEqual $setRule1.CorrelationFilter.Properties.Count 3 "CorrelationFilter - properties count in not 3"
 
 	#remove Rule
 	Remove-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName -Force
+	
+	#remove Rule
+	Remove-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName -Name $ruleName1 -Force
 
 	# Get rule List to verfiy the deleted rule
 	$ruleList_delete = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $resultGetTopic.Name -Subscription $subName
-	Assert-AreEqual $ruleList_delete.Count 0 "Rule List: Rule count not equal to Zero delete"	
+	Assert-AreEqual $ruleList_delete.Count 0 "Rule List: Rule count not equal to Zero delete"
 	
 	# Delete the created/Updated Subscription
 	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultGetSub.Name
 	Assert-True {$ResultDeleteTopic} "Topic not deleted"
-		
+		 
 	# Cleanup
 	# Delete all Created Topic
 	Write-Debug " Delete the Topic"
 	for ($i = 0; $i -lt $ResulListTopic.Count; $i++)
 	{
-		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListTopic[$i].Name		
+		$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListTopic[$i].Name
 	}
 
 	Write-Debug "Delete NameSpace"

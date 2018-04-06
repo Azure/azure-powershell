@@ -54,7 +54,7 @@ Specifies the name of the container service that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -69,7 +69,7 @@ Specifies the resource group of the container service that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1

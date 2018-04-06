@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pAccess = new RuntimeDefinedParameter();
             pAccess.Name = "Access";
-            pAccess.ParameterType = typeof(AccessLevel);
+            pAccess.ParameterType = typeof(string);
             pAccess.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string diskName = (string)ParseParameter(invokeMethodInputParameters[1]);
             var grantAccessData = new GrantAccessData();
-            var pAccess = (AccessLevel) ParseParameter(invokeMethodInputParameters[2]);
+            var pAccess = (string) ParseParameter(invokeMethodInputParameters[2]);
             grantAccessData.Access = pAccess;
             var pDurationInSeconds = (int) ParseParameter(invokeMethodInputParameters[3]);
             grantAccessData.DurationInSeconds = pDurationInSeconds;
@@ -155,9 +155,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -165,18 +163,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
-        [AllowNull]
         public string DiskName { get; set; }
-
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
             Mandatory = true)]
-        public AccessLevel Access { get; set; }
+        public string Access { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
