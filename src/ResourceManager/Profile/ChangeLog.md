@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.6.0
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 4.5.0
 * Enable MSI authentication in unsupported scenarios
 * Add support for user-defined Managed Service Identity

@@ -20,6 +20,9 @@
 -->
 ## Current Release
 
+## Version 0.1.2
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 0.1.1
 * New Cmdlet Get-AzureRmReservationOrder
     - cmdlet to retrieve azure reservation order.

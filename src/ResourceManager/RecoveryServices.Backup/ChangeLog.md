@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.1.2
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 4.1.1
 * Fixed issue with cleaning up scripts in build
 

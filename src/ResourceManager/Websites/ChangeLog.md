@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.2.2
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 4.2.1
 * Fixed the help for Remove-AzureRmWebAppSlot
 * Fix issue with Default Resource Group in CloudShell

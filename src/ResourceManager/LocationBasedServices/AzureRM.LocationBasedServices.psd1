@@ -75,7 +75,6 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzureRmLocationBasedServicesAccount', 
                'New-AzureRmLocationBasedServicesAccount', 
                'Remove-AzureRmLocationBasedServicesAccount', 
-               'Set-AzureRmLocationBasedServicesAccount', 
                'Get-AzureRmLocationBasedServicesAccountKey', 
                'New-AzureRmLocationBasedServicesAccountKey'
 
