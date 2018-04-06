@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.DataLakeStore.Models;
+using System;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
-using Microsoft.Azure.Management.DataLake.Store.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
-using Microsoft.Rest;
+using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -28,11 +28,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         // define parameter sets.
         internal const string BaseParameterSetName = "NoDiagnosticLogging";
         internal const string DiagnosticParameterSetName = "IncludeDiagnosticLogging";
-
-        // default number of threads
-        private int numThreadsPerFile = -1;
-        private int fileCount = -1;
-        private LogLevel logLevel = LogLevel.Error;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in",
@@ -81,29 +76,25 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             ParameterSetName = DiagnosticParameterSetName)]
         public SwitchParameter Resume { get; set; }
 
+        [Obsolete("Parameter PerFileThreadCount of ExportAzureRmDataLakeStoreItem is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of threads to use per file. Default will be computed as a best effort based on folder and file size",
+            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of threads to use per file. Default will be computed as a best effort based on folder and file size",
+            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
-        public int PerFileThreadCount
-        {
-            get { return numThreadsPerFile; }
-            set { numThreadsPerFile = value; }
-        }
+        public int PerFileThreadCount { get; set; } = -1;
 
+        [Obsolete("Parameter ConcurrentFileCount of ExportAzureRmDataLakeStoreItem is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
+            HelpMessage =
+                "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = BaseParameterSetName)]
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
+            HelpMessage =
+                "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
             ParameterSetName = DiagnosticParameterSetName)]
-        public int ConcurrentFileCount
-        {
-            get { return fileCount; }
-            set { fileCount = value; }
-        }
+        public int ConcurrentFileCount { get; set; } = -1;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten",
@@ -114,13 +105,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter Force { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.",
+            HelpMessage =
+                "Indicates the number of files or chunks to download in parallel. Default will be computed as a best effort based on system specifications.",
+            ParameterSetName = BaseParameterSetName)]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates the number of files or chunks to download in parallel. Default will be computed as a best effort based on system specification.",
             ParameterSetName = DiagnosticParameterSetName)]
-        public LogLevel DiagnosticLogLevel
-        {
-            get { return logLevel; }
-            set { logLevel = value; }
-        }
+        public int Concurrency { get; set; } = -1;
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Optionally indicates the diagnostic log level to use to record events during the file or folder import. Default is Error.",
+            ParameterSetName = DiagnosticParameterSetName)]
+        public LogLevel DiagnosticLogLevel { get; set; } = LogLevel.Error;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = "Specifies the path for the diagnostic log to record events to during the file or folder import.",
@@ -130,63 +128,54 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
+            if (ConcurrentFileCount != -1)
+            {
+                WriteWarning(Resources.IncorrectConcurrentFileCountWarning);
+            }
+            if (PerFileThreadCount != -1)
+            {
+                WriteWarning(Resources.IncorrectPerFileThreadCountWarning);
+            }
             // We will let this throw itself if the path they give us is invalid
-            // TODO: perhaps in the future catch this and throw a cmdlet specific exception
             var powerShellReadyPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Destination);
-
-            FileType type;
             ConfirmAction(
                 VerbsData.Export,
                 Path.TransformedPath,
                 () =>
                 {
-                    if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.TransformedPath, Account, out type))
-                    {
-                        throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.TransformedPath));
-                    }
-
-                    DataLakeStoreTraceLogger logger = null;
-                    var previousTracing = ServiceClientTracing.IsEnabled;
                     try
                     {
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)
                         {
-                            var diagnosticPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
-                            logger = new DataLakeStoreTraceLogger(this, diagnosticPath, DiagnosticLogLevel);
+                            var diagnosticPath =
+                                SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
+                            DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 
-                        if (logger == null)
+                        int threadCount;
+                        if (Concurrency > 0)
                         {
-                            // if the caller does not explicitly want logging, we will explicitly turn it off
-                            // for performance reasons
-                            ServiceClientTracing.IsEnabled = false;
+                            threadCount = Concurrency;
                         }
-
-                        if (type == FileType.FILE)
+                        else if (ConcurrentFileCount > 0 && PerFileThreadCount <= 0)
                         {
-                            DataLakeStoreFileSystemClient.CopyFile(powerShellReadyPath, Account, Path.TransformedPath, CmdletCancellationToken,
-                                isDownload: true, overwrite: Force, cmdletRunningRequest: this, threadCount: PerFileThreadCount, resume: Resume);
+                            threadCount = ConcurrentFileCount;
+                        }
+                        else if (ConcurrentFileCount <= 0 && PerFileThreadCount > 0)
+                        {
+                            threadCount = PerFileThreadCount;
                         }
                         else
                         {
-                            DataLakeStoreFileSystemClient.CopyDirectory(powerShellReadyPath, Account, Path.TransformedPath,
-                                CmdletCancellationToken,
-                                isDownload: true, overwrite: Force, cmdletRunningRequest: this,
-                                perFileThreadCount: PerFileThreadCount, concurrentFileCount: ConcurrentFileCount, recursive: Recurse, resume: Resume);
+                            threadCount = Math.Min(PerFileThreadCount * ConcurrentFileCount, DataLakeStoreFileSystemClient.ImportExportMaxThreads);
                         }
-
+                        DataLakeStoreFileSystemClient.BulkCopy(powerShellReadyPath, Account,
+                            Path.TransformedPath, CmdletCancellationToken, threadCount, Recurse, Force, Resume, true, this);
                         WriteObject(powerShellReadyPath);
                     }
-                    finally
+                    catch (AdlsException exp)
                     {
-                        // set service client tracing back always
-                        ServiceClientTracing.IsEnabled = previousTracing;
-                        if (logger != null)
-                        {
-                            // dispose and free the logger.
-                            logger.Dispose();
-                            logger = null;
-                        }
+                        throw new CloudException("ADLSException: " + exp.Message);
                     }
                 });
         }
