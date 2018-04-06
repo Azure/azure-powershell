@@ -72,7 +72,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
                @{ModuleName = 'AzureRM.DataFactoryV2.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeStore.Netcore'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'AzureRM.DataMigration.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.DevTestLabs.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Dns.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.EventGrid.Netcore'; RequiredVersion = '0.11.0'; }, 
