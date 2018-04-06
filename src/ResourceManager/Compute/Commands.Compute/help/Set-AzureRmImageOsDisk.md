@@ -15,7 +15,7 @@ Sets the operating system disk properties on an image object.
 ```
 Set-AzureRmImageOsDisk [-Image] <PSImage> [[-OsType] <OperatingSystemTypes>]
  [[-OsState] <OperatingSystemStateTypes>] [[-BlobUri] <String>] [-Caching <CachingTypes>] [-DiskSizeGB <Int32>]
- [-StorageAccountType <PSStorageAccountTypes>] [-SnapshotId <String>] [-ManagedDiskId <String>]
+ [-StorageAccountType <String>] [-SnapshotId <String>] [-ManagedDiskId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -190,10 +190,9 @@ Accept wildcard characters: False
 The Storage Account type of Os Image Disk
 
 ```yaml
-Type: PSStorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: Named

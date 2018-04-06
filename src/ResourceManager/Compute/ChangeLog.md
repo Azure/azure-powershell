@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.6.0
 * `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
 * `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
 * Update for Zone Resilient
