@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/add-azurermimagedatadisk
@@ -14,7 +14,7 @@ Adds a data disk to an image obejct.
 
 ```
 Add-AzureRmImageDataDisk [-Image] <PSImage> [[-Lun] <Int32>] [[-BlobUri] <String>] [[-Caching] <CachingTypes>]
- [-DiskSizeGB <Int32>] [-StorageAccountType <StorageAccountTypes>] [-SnapshotId <String>]
+ [-DiskSizeGB <Int32>] [-StorageAccountType <String>] [-SnapshotId <String>]
  [-ManagedDiskId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -53,7 +53,7 @@ Specifies the link, as a URI, of the blob.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -68,7 +68,7 @@ Specifies the caching mode of the disk.
 ```yaml
 Type: CachingTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
@@ -99,7 +99,7 @@ Specifies the size of the disk in Gigabytes (GB).
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,7 +114,7 @@ Specifies a local image object.
 ```yaml
 Type: PSImage
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -129,7 +129,7 @@ Specifies the logical unit number (LUN).
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -144,7 +144,7 @@ Specifies the ID of a managed disk.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,7 +159,7 @@ Specifies the ID of a snapshot.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -172,10 +172,9 @@ Accept wildcard characters: False
 The Storage Account type of the data image disk
 
 ```yaml
-Type: StorageAccountTypes
+Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Aliases:
 
 Required: False
 Position: Named
@@ -232,4 +231,3 @@ System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, Pub
 ## NOTES
 
 ## RELATED LINKS
-

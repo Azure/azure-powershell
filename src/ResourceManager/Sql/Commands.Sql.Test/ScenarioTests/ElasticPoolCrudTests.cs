@@ -73,5 +73,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RemoveElasticPool");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestElasticPoolCancelOperation()
+        {
+            RunPowerShellTest("Test-ListAndCancelElasticPoolOperation");
+        }
     }
 }

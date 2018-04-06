@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.2
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 4.0.1
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
 

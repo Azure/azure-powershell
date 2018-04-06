@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 7EC166C7-151D-4DA0-9B10-165E735D4F12
@@ -41,7 +41,7 @@ Indicates whether the extension version should be automatically updated to a new
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -71,7 +71,7 @@ If a value is provided and is different from the previous value, the extension h
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,7 +86,7 @@ Specifies the name of the extension that this cmdlet adds.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -102,7 +102,7 @@ This cmdlet encrypts the private configuration.
 ```yaml
 Type: Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -119,7 +119,7 @@ This can use the [Get-AzureRmVMImagePublisher](./Get-AzureRmVMImagePublisher.md)
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -135,7 +135,7 @@ This cmdlet does not encrypt public configuration.
 ```yaml
 Type: Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -151,7 +151,7 @@ You can use the [Get-AzureRmVMExtensionImageType](./Get-AzureRmVMExtensionImageT
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -167,7 +167,7 @@ You can use the [Get-AzureRmVMExtensionImage](./Get-AzureRmVMExtensionImage.md) 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -183,7 +183,7 @@ You can use the [New-AzureRmVmssConfig](./New-AzureRmVmssConfig.md) to create th
 ```yaml
 Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

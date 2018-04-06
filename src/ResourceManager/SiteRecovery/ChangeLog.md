@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.6
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 5.0.5
 * Fix issue with Default Resource Group in CloudShell
 
