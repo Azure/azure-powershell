@@ -179,6 +179,8 @@ AzureRM.CognitiveServices
 * Add Get-AzureRmCognitiveServicesAccountUsage operation.
         
 AzureRM.Compute
+* `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
+* `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
 * Update for Zone Resilient
 * ''New-AzureRmVm'' and ''New-AzureRmVmss'' (simple parameter set) support availability zones.
         
