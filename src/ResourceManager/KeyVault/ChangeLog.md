@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.3.0
+## Version 4.4.0-preview
 * Updated cmdlets to include piping scenarios
 * Added new cmdlets around NewtorkRules: Add/Remove/Update-AzureKeyVaultNetworkRule
 * Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
