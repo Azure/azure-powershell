@@ -52,10 +52,28 @@ The `SimpleParameterSet` provides a convenient method to create a VM by making c
 
 ### Example 1: Create a virtual machine
 ```
-PS C:\> New-AzureRmVM -Name MyVm
+PS C:\> New-AzureRmVM -Name MyVm -Credential (Get-Credential)
+
+VERBOSE: Use 'mstsc /v:myvm-222222.eastus.cloudapp.azure.com' to connect to the VM.
+
+ResourceGroupName        : MyVm
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyVm/provi
+ders/Microsoft.Compute/virtualMachines/MyVm
+VmId                     : 11111111-1111-1111-1111-111111111111
+Name                     : MyVm
+Type                     : Microsoft.Compute/virtualMachines
+Location                 : eastus
+Tags                     : {}
+HardwareProfile          : {VmSize}
+NetworkProfile           : {NetworkInterfaces}
+OSProfile                : {ComputerName, AdminUsername, WindowsConfiguration, Secrets}
+ProvisioningState        : Succeeded
+StorageProfile           : {ImageReference, OsDisk, DataDisks}
+FullyQualifiedDomainName : myvm-222222.eastus.cloudapp.azure.com
 ```
 
 This example script shows how to create a virtual machine.
+The script will ask a user name and password for the VM.
 This script uses several other cmdlets.
 
 ### Example 2: Create a virtual machine from a custom user image
@@ -63,11 +81,11 @@ This script uses several other cmdlets.
 PS C:\> ## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
-$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force 
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
 ## Azure Account
 $LocationName = "westus"
 $ResourceGroupName = "MyResourceGroup"
-# This a Premium_LRS storage account. 
+# This a Premium_LRS storage account.
 # It is required in order to run a client VM with efficiency and high performance.
 $StorageAccount = "Mydisk"
 
@@ -77,9 +95,9 @@ $ComputerName = "MyClientVM"
 $OSDiskUri = "https://Mydisk.blob.core.windows.net/disks/MyOSDisk.vhd"
 $SourceImageUri = "https://Mydisk.blob.core.windows.net/vhds/MyOSImage.vhd"
 $VMName = "MyVM"
-# Modern hardware environment with fast disk, high IOPs performance. 
+# Modern hardware environment with fast disk, high IOPs performance.
 # Required to run a client VM with efficiency and performance
-$VMSize = "Standard_DS3" 
+$VMSize = "Standard_DS3"
 $OSDiskCaching = "ReadWrite"
 $OSCreateOption = "FromImage"
 
@@ -97,7 +115,7 @@ $Vnet = New-AzureRmVirtualNetwork -Name $NetworkName -ResourceGroupName $Resourc
 $PIP = New-AzureRmPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $ResourceGroupName -Location $LocationName -AllocationMethod Dynamic
 $NIC = New-AzureRmNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id
 
-$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword); 
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
 $VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
 $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
@@ -287,7 +305,7 @@ Specifies a license type, which indicates that the image or disk for the virtual
 This value is used only for images that contain the Windows Server operating system.
 The acceptable values for this parameter are:
 
-- Windows_Client 
+- Windows_Client
 - Windows_Server
 
 This value cannot be updated.
