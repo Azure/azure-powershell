@@ -75,7 +75,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
     '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll',
     '.\Microsoft.Threading.Tasks.dll',
     '.\Microsoft.Threading.Tasks.Extensions.dll',
-    '.\Microsoft.Threading.Tasks.Extensions.Desktop.dll'
+    '.\Microsoft.Threading.Tasks.Extensions.Desktop.dll',
 	'.\Microsoft.WindowsAzure.Storage.dll',
 	'.\Microsoft.WindowsAzure.Storage.DataMovement.dll',
     '.\Newtonsoft.Json.dll'
