@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll','.\Microsoft.Azure.DataLake.Store.dll','.\NLog.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -63,8 +63,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 
-               '.\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.DataLakeStore.dll')
@@ -154,10 +153,10 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Corrected usage of ''Login-AzureRmAccount'' to use ''Connect-AzureRmAccount''
 * Corrected the error message of ''Test-AzureRmDataLakeStoreAccount'' when running this cmdlet without having logged in with ''Login-AzureRmAccount'''
-
-        # Prerelease string of this module
+		
+		# Prerelease string of this module
         # Prerelease = ''
-
+        
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
 
