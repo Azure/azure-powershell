@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Netcore.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.11.0'
@@ -72,12 +72,10 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
                @{ModuleName = 'AzureRM.DataFactoryV2.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeAnalytics.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.DataLakeStore.Netcore'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'AzureRM.DataMigration.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.DevTestLabs.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Dns.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.EventGrid.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.EventHub.Netcore'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'AzureRM.HDInsight.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Insights.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.IotHub.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.KeyVault.Netcore'; RequiredVersion = '0.11.0'; }, 
@@ -90,9 +88,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
                @{ModuleName = 'AzureRM.NotificationHubs.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.OperationalInsights.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.PowerBIEmbedded.Netcore'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.Netcore'; RequiredVersion = '0.11.0'; },               
-               @{ModuleName = 'AzureRM.RecoveryServices.Backup.Netcore'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.RedisCache.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Relay.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Resources.Netcore'; RequiredVersion = '0.11.0'; }, 

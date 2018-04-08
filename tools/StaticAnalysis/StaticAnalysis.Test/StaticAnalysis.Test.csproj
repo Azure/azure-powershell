@@ -86,6 +86,12 @@
     <Compile Include="TestCmdlets\SignatureVerifier_Cmdlet.cs" />
     <Compile Include="TestCmdlets\BreakingChangeAnalyzer_Cmdlet.cs" />
   </ItemGroup>
+  <ItemGroup Condition="'$(AfterBuild)' != 'true'">
+    <ProjectReference Include="..\..\Tools.Common\Tools.Common.csproj">
+      <Project>{cc14de77-8ef6-44be-9f66-853062668194}</Project>
+      <Name>Tools.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
