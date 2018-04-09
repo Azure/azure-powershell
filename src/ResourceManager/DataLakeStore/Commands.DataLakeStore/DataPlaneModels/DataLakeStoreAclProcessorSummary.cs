@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Azure.DataLake.Store.AclTools;
 
-namespace Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels
+namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
     /// Powershell side data structure containing files and directory processed

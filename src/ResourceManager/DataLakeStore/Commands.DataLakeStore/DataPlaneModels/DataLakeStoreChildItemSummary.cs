@@ -1,6 +1,6 @@
 ﻿using Microsoft.Azure.DataLake.Store;
 
-namespace Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels
+namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
     /// Powershell side data structure containing files and directory count and total size
