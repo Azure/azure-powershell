@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                Mandatory = false,
                HelpMessage = "File share where the source server database files for this database should be backed up. " +
                             "Use this setting to override file share information for each database. " +
-                            "Use fully qualified domain name for the server."
+                            "Use fully qualified domain name for the server.",
+               ValueFromPipeline = true
            )]
         public FileShare BackupFileShare { get; set; }
 
