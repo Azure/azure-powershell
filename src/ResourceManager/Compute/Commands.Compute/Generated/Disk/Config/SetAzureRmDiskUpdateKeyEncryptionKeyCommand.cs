@@ -62,9 +62,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            if (this.KeyUrl != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("KeyUrl"))
             {
-
                 // EncryptionSettings
                 if (this.DiskUpdate.EncryptionSettings == null)
                 {
@@ -78,9 +77,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.DiskUpdate.EncryptionSettings.KeyEncryptionKey.KeyUrl = this.KeyUrl;
             }
 
-            if (this.SourceVaultId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SourceVaultId"))
             {
-
                 // EncryptionSettings
                 if (this.DiskUpdate.EncryptionSettings == null)
                 {

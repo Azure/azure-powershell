@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             return new DataLakeStorePathInstance
             {
-                TransformedPath = path.TrimStart('/').TrimEnd('/'),
+                TransformedPath = path.Equals("/")?path:path.TrimEnd('/'),
                 OriginalPath = path // return the original path they gave
             };
         }
