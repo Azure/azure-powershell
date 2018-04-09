@@ -21,18 +21,18 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchPoolNodeCounts, DefaultParameterSetName = Constants.ODataFilterParameterSet),
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchPoolNodeCounts, DefaultParameterSetName = Constants.PoolIdParameterSet),
      OutputType(typeof(PSPoolNodeCounts))]
     public class GetBatchPoolNodeCountsCommand : BatchObjectModelCmdletBase
     {
         private const int defaultMaxCount = 10;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = false,
+        [Parameter(Position = 0, ParameterSetName = Constants.PoolIdParameterSet, Mandatory = false,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool for which to get node counts.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, ValueFromPipeline = true, Mandatory = false)]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, ValueFromPipeline = true, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public PSCloudPool Pool { get; set; }
 
