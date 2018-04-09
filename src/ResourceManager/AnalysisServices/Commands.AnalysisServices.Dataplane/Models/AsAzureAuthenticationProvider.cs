@@ -13,16 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+#if NETSTANDARD
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Rest.Azure.Authentication;
+#endif
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 {
@@ -38,12 +37,20 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
 
     public interface IAsAzureAuthenticationProvider
     {
+#if NETSTANDARD
+        string GetAadAuthenticatedToken(AsAzureContext asAzureContext, SecureString password, Action<string> promptAction, string clientId, string resourceUri, Uri resourceRedirectUri);
+#else
         string GetAadAuthenticatedToken(AsAzureContext asAzureContext, SecureString password, PromptBehavior promptBehavior, string clientId, string resourceUri, Uri resourceRedirectUri);
+#endif
     }
 
     public class AsAzureAuthenticationProvider : IAsAzureAuthenticationProvider
     {
+#if NETSTANDARD
+        public string GetAadAuthenticatedToken(AsAzureContext asAzureContext, SecureString password, Action<string> promptAction, string clientId, string resourceUri, Uri resourceRedirectUri)
+#else
         public string GetAadAuthenticatedToken(AsAzureContext asAzureContext, SecureString password, PromptBehavior promptBehavior, string clientId, string resourceUri, Uri resourceRedirectUri)
+#endif
         {
             var authUriBuilder = new UriBuilder((string)asAzureContext.Environment.Endpoints[AsAzureEnvironment.AsRolloutEndpoints.AdAuthorityBaseUrl]);
             authUriBuilder.Path = string.IsNullOrEmpty(asAzureContext.Account.Tenant)
@@ -61,20 +68,37 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             {
                 if (asAzureContext.Account.Id != null)
                 {
+#if NETSTANDARD
+                    result = authenticationContext.AcquireTokenAsync(
+                        resourceUri,
+                        clientId,
+                        resourceRedirectUri,
+                        new PlatformParameters(),
+                        new UserIdentifier(asAzureContext.Account.Id, UserIdentifierType.OptionalDisplayableId)).Result;
+#else
                     result = authenticationContext.AcquireToken(
                         resourceUri,
                         clientId,
                         resourceRedirectUri,
                         promptBehavior,
                         new UserIdentifier(asAzureContext.Account.Id, UserIdentifierType.OptionalDisplayableId));
+#endif
                 }
                 else
                 {
+#if NETSTANDARD
+                    result = authenticationContext.AcquireTokenAsync(
+                        resourceUri,
+                        clientId,
+                        resourceRedirectUri,
+                        new PlatformParameters()).Result;
+#else
                     result = authenticationContext.AcquireToken(
                         resourceUri,
                         clientId,
                         resourceRedirectUri,
                         promptBehavior);
+#endif
                 }
 
                 asAzureContext.Account.Id = result.UserInfo.DisplayableId;
@@ -85,8 +109,18 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
             {
                 if (accountType == AsAzureAccount.AccountType.User)
                 {
+#if NETSTANDARD
+                    //https://stackoverflow.com/a/39393039/294804
+                    //https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/issues/482
+                    //https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile/blob/5d5499d09c918ae837810d457822474df97600e9/DirSearcherClient/Program.cs#L206-L210
+                    // Note: More robust implementation in UserTokenProvider.Netcore.cs in DoAcquireToken
+                    DeviceCodeResult codeResult = authenticationContext.AcquireDeviceCodeAsync(resourceUri, clientId).Result;
+                    promptAction(codeResult?.Message);
+                    result = authenticationContext.AcquireTokenByDeviceCodeAsync(codeResult).Result;
+#else
                     UserCredential userCredential = new UserCredential(asAzureContext.Account.Id, password);
                     result = authenticationContext.AcquireToken(resourceUri, clientId, userCredential);
+#endif
 
                     asAzureContext.Account.Id = result.UserInfo.DisplayableId;
                     asAzureContext.Account.Tenant = result.TenantId;
@@ -96,8 +130,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                 {
                     if (string.IsNullOrEmpty(asAzureContext.Account.CertificateThumbprint))
                     {
+#if NETSTANDARD
+                        ClientCredential credential = new ClientCredential(asAzureContext.Account.Id, ConversionUtilities.SecureStringToString(password));
+                        result = authenticationContext.AcquireTokenAsync(resourceUri, credential).Result;
+#else
                         ClientCredential credential = new ClientCredential(asAzureContext.Account.Id, password);
                         result = authenticationContext.AcquireToken(resourceUri, credential);
+#endif
                     }
                     else
                     {
@@ -107,13 +146,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                         {
                             throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, asAzureContext.Account.CertificateThumbprint));
                         }
-
+#if NETSTANDARD
+                        result = authenticationContext.AcquireTokenAsync(resourceUri, new ClientAssertionCertificate(asAzureContext.Account.Id, certificate)).Result;
+#else
                         result = authenticationContext.AcquireToken(resourceUri, new ClientAssertionCertificate(asAzureContext.Account.Id, certificate));
+#endif
                     }
                 }
             }
 
-            return result.AccessToken;
+            return result?.AccessToken;
         }
     }
 }

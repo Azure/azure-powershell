@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-
+using Tools.Common.Issues;
 
 namespace StaticAnalysis.HelpAnalyzer
 {
@@ -46,7 +44,7 @@ namespace StaticAnalysis.HelpAnalyzer
 
         public string FormatRecord()
         {
-            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"", 
+            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\"",
                 Assembly, HelpFile, Target, Severity, ProblemId, Description, Remediation);
         }
 
@@ -61,7 +59,7 @@ namespace StaticAnalysis.HelpAnalyzer
                     string.Equals(record.Target, Target, StringComparison.OrdinalIgnoreCase) &&
                          record.ProblemId == ProblemId;
             }
-            
+
             return result;
         }
 

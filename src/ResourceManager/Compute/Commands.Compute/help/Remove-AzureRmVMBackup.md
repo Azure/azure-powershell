@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -98,4 +98,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-
