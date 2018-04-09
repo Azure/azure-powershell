@@ -80,5 +80,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayIkeV2");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VirtualNetworkGatewayVpnCustomIpsecPolicySetTest()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet");
+        }
     }
 }
