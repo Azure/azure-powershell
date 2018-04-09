@@ -47,7 +47,9 @@ foreach ($ModuleManifest in $ModuleManifestFiles)
         $RequiredModules = $ModuleMetadata.RequiredModules | % { $_["ModuleName"] }
         foreach ($RequiredModule in $RequiredModules)
         {
-            $RequiredModuleManifest = $ModuleManifestFiles | where { $_.Name.Replace(".psd1", "") -eq $RequiredModule }
+            Write-Output ("ModuleManifest: " + $RequiredModuleManifest)
+            Write-Output ("Required Module: " + $RequiredModule)
+           $RequiredModuleManifest = $ModuleManifestFiles | where { $_.Name.Replace(".psd1", "") -eq $RequiredModule } | Select-Object -First 1
             if (-not $RequiredModuleManifest)
             {
                 continue
