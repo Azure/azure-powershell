@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage = "Indicates the resulting ACL should be returned.")]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Indicates the ACL to be modified recursively" )]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Indicates the ACL to be modified recursively to the child subdirectories and files")]
         public SwitchParameter Recursive { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,

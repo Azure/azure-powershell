@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true,  Mandatory = false, HelpMessage = "Indicates the ACL to be removed recursively" )]
+        [Parameter(ValueFromPipelineByPropertyName = true,  Mandatory = false, HelpMessage = "Indicates the ACL to be removed recursively to the child subdirectories and files")]
         public SwitchParameter Recursive { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
