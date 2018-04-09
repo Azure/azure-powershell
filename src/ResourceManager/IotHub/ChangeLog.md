@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 3.1.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 3.1.1
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 3.1.0
 * Add Certificate support for IoTHub cmdlets
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

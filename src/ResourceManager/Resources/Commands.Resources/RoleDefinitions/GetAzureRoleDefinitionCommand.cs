@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "If specified, displays the the roles at and below scope.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionCustom, HelpMessage = "If specified, displays the the roles at and below scope.")]
+        [Obsolete("Get-AzureRmRoleDefinition: The parameter \"AtScopeAndBelow\" is being removed in an upcoming breaking change release.")]
         public SwitchParameter AtScopeAndBelow { get; set; }
 
         public override void ExecuteCmdlet()
@@ -55,7 +56,9 @@ namespace Microsoft.Azure.Commands.Resources
             FilterRoleDefinitionOptions options = new FilterRoleDefinitionOptions
             {
                 CustomOnly = Custom.IsPresent ? true : false,
+                #pragma warning disable 0618
                 ScopeAndBelow = AtScopeAndBelow.IsPresent ? true : false,
+                #pragma warning restore 0618
                 Scope = Scope,
                 ResourceIdentifier = new ResourceIdentifier
                 {

@@ -70,8 +70,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] LoadBalancerInboundNatPoolsId { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            Mandatory = false)]
         public SwitchParameter Primary { get; set; }
 
         [Parameter(
@@ -89,7 +88,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [Alias("PublicIPAddressIdleTimeoutInMinutes")]
-        public int? PublicIPAddressConfigurationIdleTimeoutInMinutes { get; set; }
+        public int PublicIPAddressConfigurationIdleTimeoutInMinutes { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -109,10 +108,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             var vIpConfigurations = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIPConfiguration();
 
-            vIpConfigurations.Name = this.Name;
-            vIpConfigurations.Primary = this.Primary;
-            vIpConfigurations.PrivateIPAddressVersion = this.PrivateIPAddressVersion;
-            vIpConfigurations.Id = this.Id;
+            vIpConfigurations.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
+            vIpConfigurations.Primary = this.Primary.IsPresent;
+            vIpConfigurations.PrivateIPAddressVersion = this.MyInvocation.BoundParameters.ContainsKey("PrivateIPAddressVersion") ? this.PrivateIPAddressVersion : null;
+            vIpConfigurations.Id = this.MyInvocation.BoundParameters.ContainsKey("Id") ? this.Id : null;
 
             // SubnetId
             if (this.SubnetId != null)

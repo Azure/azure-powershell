@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSResourceSku))]
     public partial class GetAzureRmComputeResourceSku : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {
@@ -106,6 +106,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 WriteObject(psObject, true);
             });
         }
-
     }
 }

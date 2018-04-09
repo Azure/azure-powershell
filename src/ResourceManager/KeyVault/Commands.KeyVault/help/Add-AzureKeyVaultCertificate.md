@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 89299823-3382-402D-9458-519466748051
@@ -15,7 +15,7 @@ Adds a certificate to a key vault.
 
 ```
 Add-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
- [[-CertificatePolicy] <KeyVaultCertificatePolicy>] [-Tag <Hashtable>]
+ [[-CertificatePolicy] <PSKeyVaultCertificatePolicy>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -89,14 +89,14 @@ The final command uses the Get-AzureKeyVaultCertificate cmdlet to get the certif
 Specifies a **KeyVaultCertificatePolicy** object.
 
 ```yaml
-Type: KeyVaultCertificatePolicy
+Type: PSKeyVaultCertificatePolicy
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -153,7 +153,7 @@ Specifies the name of a key vault.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -198,9 +198,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateOperation
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOperation
 
 ## NOTES
 

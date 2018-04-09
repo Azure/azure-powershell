@@ -81,8 +81,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 if ((null != se.RequestInformation) &&
                     ((int)HttpStatusCode.BadRequest == se.RequestInformation.HttpStatusCode) &&
                     (null != se.RequestInformation.ExtendedErrorInformation) &&
-                    (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ExtendedErrorInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
-                    string.Equals(InvalidXMLDocError, se.RequestInformation.ExtendedErrorInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
+                    (string.Equals(InvalidXMLNodeValueError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(InvalidXMLDocError, se.RequestInformation.ErrorCode, StringComparison.OrdinalIgnoreCase)))
                 {
                     throw new InvalidOperationException(Resources.CORSRuleError);
                 }

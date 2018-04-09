@@ -40,13 +40,13 @@ The **New-AzureRmServiceBusGeoDRConfiguration** cmdlet Creates a new Alias(Disas
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmServiceBusGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName" -PartnerNamespace "SampleNamespace_Secondary"
+PS C:\> New-AzureRmServiceBusGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName" -PartnerNamespace "/subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Secondary"
 
 Name              : SampleDRCongifName
 Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
 Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
 ProvisioningState : Accepted
-PartnerNamespace  : SampleNamespace_Secondary
+PartnerNamespace  : /subscriptions/{SubscriptionId}/resourceGroups/TestignGeoDR/providers/Microsoft.ServiceBus/namespaces/SampleNamespaceSecondary
 Role              : Primary
 ```
 
@@ -145,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -PartnerNamespace
-DR Configuration PartnerNamespace
+DR Configuration PartnerNamespace (ARM Id of PartnerNamespace [Secondary namespace])
 
 ```yaml
 Type: String

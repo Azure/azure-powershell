@@ -147,6 +147,7 @@ namespace Microsoft.Azure.Commands.Resources
             psOperation.Description = operation.Description;
             psOperation.ProviderNamespace = provider;
             psOperation.ResourceName = resource ?? string.Empty;
+            psOperation.IsDataAction = operation.IsDataAction.HasValue ? operation.IsDataAction.Value : false;
 
             return psOperation;
         }

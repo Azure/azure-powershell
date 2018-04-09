@@ -1,6 +1,6 @@
 ---
 Module Name: AzureRM.Sql
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
@@ -61,6 +61,9 @@ Gets the details of an import or export of an Azure SQL Database.
 
 ### [Get-AzureRmSqlDatabaseIndexRecommendations](Get-AzureRmSqlDatabaseIndexRecommendations.md)
 Gets the recommended index operations for a server or database.
+
+### [Get-AzureRmSqlDatabaseLongTermRetentionBackup](Get-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+Gets one or more long term retention backups.
 
 ### [Get-AzureRmSqlDatabaseRecommendedAction](Get-AzureRmSqlDatabaseRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Database Advisor.
@@ -251,6 +254,9 @@ Removes an Azure SQL Database Failover Group.
 ### [Remove-AzureRmSqlDatabaseFromFailoverGroup](Remove-AzureRmSqlDatabaseFromFailoverGroup.md)
 Removes one or more databases from an Azure SQL Database Failover Group.
 
+### [Remove-AzureRmSqlDatabaseLongTermRetentionBackup](Remove-AzureRmSqlDatabaseLongTermRetentionBackup.md)
+Deletes a long term retention backup.
+
 ### [Remove-AzureRmSqlDatabaseSecondary](Remove-AzureRmSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.
 
@@ -406,6 +412,9 @@ Cancels the asynchronous updates operation on the database.
 
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
+
+### [Stop-AzureRmSqlElasticPoolActivity](Stop-AzureRmSqlElasticPoolActivity.md)
+Cancel the asynchronous update operation on an elastic pool.
 
 ### [Stop-AzureRmSqlServerUpgrade](Stop-AzureRmSqlServerUpgrade.md)
 Stops the upgrade of a SQL Database server.

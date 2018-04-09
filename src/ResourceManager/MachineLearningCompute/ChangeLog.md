@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 0.4.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.4.1
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 0.4.0
 * Add IncludeAllResources parameter to Remove-AzureRmMlOpCluster cmdlet
     - Using this switch parameter will remove all resources that were created with the cluster originally

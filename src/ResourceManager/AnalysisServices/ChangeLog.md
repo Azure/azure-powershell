@@ -19,6 +19,18 @@
 -->
 ## Current Release
 
+## Version 0.6.6
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.6.5
+* Fix issue with Default Resource Group in CloudShell
+* Fixed issue with cleaning up scripts in build
+
+## Version 0.6.4
+* Fixed issue with importing aliases
+* Add support of firewall and query scaleout feature, as well as support of 2017-08-01 api version.
+* Fix unique Id is null or empty bug.
+
 ## Version 0.6.3
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
 

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.PowerShell.Commands;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
