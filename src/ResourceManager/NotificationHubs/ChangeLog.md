@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.1.1
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 4.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

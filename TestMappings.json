@@ -11,6 +11,9 @@
   "src/Common/Commands.Common.Authentication.Test/": [
     ".\\src\\Common\\Commands.Common.Authentication.Test\\bin\\Debug\\Microsoft.Azure.Commands.Common.Authentication.Test.dll"
   ],
+  "src/ResourceManager/Aks/": [
+    ".\\src\\ResourceManager\\Aks\\Commands.Aks.Test\\bin\\Debug\\Microsoft.Azure.Commands.Aks.Test.dll"
+  ],
   "src/ResourceManager/AnalysisServices/": [
     ".\\src\\ResourceManager\\AnalysisServices\\Commands.AnalysisServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.AnalysisServices.Test.dll"
   ],
@@ -56,8 +59,10 @@
   ],
   "src/ResourceManager/DataFactories/": [
     ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactories.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactories.Test.dll",
-    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactoryV2.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactoryV2.Test.dll",
     ".\\src\\ResourceManager\\StreamAnalytics\\Commands.StreamAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"
+  ],
+  "src/ResourceManager/DataFactoryV2/": [
+    ".\\src\\ResourceManager\\DataFactoryV2\\Commands.DataFactoryV2.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactoryV2.Test.dll"
   ],
   "src/ResourceManager/DataLakeAnalytics/": [
     ".\\src\\ResourceManager\\DataLakeAnalytics\\Commands.DataLakeAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"
@@ -101,6 +106,9 @@
   "src/ResourceManager/MachineLearningCompute/" : [
      ".\\src\\ResourceManager\\MachineLearningCompute\\Commands.MachineLearningCompute.Test\\bin\\Debug\\Microsoft.Azure.Commands.MachineLearningCompute.Test.dll"
   ],
+  "src/ResourceManager/ManagedServiceIdentity/" : [
+    ".\\src\\ResourceManager\\ManagedServiceIdentity\\Commands.ManagedServiceIdentity.Test\\bin\\Debug\\Microsoft.Azure.Commands.ManagedServiceIdentity.Test.dll"
+ ],
   "src/ResourceManager/MarketplaceOrdering/Commands.MarketplaceOrdering.Test/": [
     ".\\src\\ResourceManager\\MarketplaceOrdering\\Commands.MarketplaceOrdering.Test\\bin\\Debug\\Microsoft.Azure.Commands.MarketplaceOrdering.Test.dll"
   ],
@@ -110,7 +118,8 @@
     ".\\src\\ResourceManager\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.Azure.Commands.Network.Test.dll",
     ".\\src\\ResourceManager\\RecoveryServices.Backup\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll",
     ".\\src\\ResourceManager\\ServiceFabric\\Commands.ServiceFabric.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceFabric.Test.dll",
-    ".\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\bin\\Debug\\Microsoft.Azure.Commands.Sql.Test.dll"
+    ".\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\bin\\Debug\\Microsoft.Azure.Commands.Sql.Test.dll",
+    ".\\src\\ResourceManager\\Dns\\Commands.Dns.Test\\bin\\Debug\\Microsoft.Azure.Commands.Dns.Test.dll"
   ],
   "src/ResourceManager/NotificationHubs /": [
     ".\\src\\ResourceManager\\NotificationHubs\\Commands.NotificationHubs.Test\\bin\\Debug\\Microsoft.Azure.Commands.NotificationHubs.Test.dll"
@@ -196,5 +205,8 @@
   ],
   "tools/BuildPackagesTask/": [
     ".\\tools\\BuildPackagesTask\\Microsoft.Azure.Build.Tasks.Test\\bin\\Debug\\Microsoft.Azure.Build.Tasks.Test.dll"
+  ],
+  "tools/RepoTasks/": [
+    ".\\tools\\RepoTasks\\RepoTasks.Cmdlets.Tests\\bin\\Debug\\RepoTasks.Cmdlets.Tests.dll"
   ]
 }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestTaskCRUD()
         {
             BatchController controller = BatchController.NewInstance;
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestCreateTaskCollection()
         {
             BatchController controller = BatchController.NewInstance;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestTerminateTask()
         {
             BatchController controller = BatchController.NewInstance;
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestListAllSubtasks()
         {
             BatchController controller = BatchController.NewInstance;

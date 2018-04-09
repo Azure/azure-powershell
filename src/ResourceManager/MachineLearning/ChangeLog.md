@@ -19,6 +19,12 @@
 -->
 ## Current Release
 
+## Version 0.17.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.17.1
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 0.17.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

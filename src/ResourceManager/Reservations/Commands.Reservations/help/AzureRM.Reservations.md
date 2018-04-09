@@ -1,6 +1,6 @@
----
+﻿---
 Module Name: AzureRM.Reservations
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 43d3b085-6323-4ac4-a7c3-81d75ea036e5
 Download Help Link: 
 Help Version: 1.0.0
 Locale: en-US

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultkeyattribute
@@ -12,10 +12,18 @@ Updates the attributes of a key in a key vault.
 
 ## SYNTAX
 
+### Default (Default)
 ```
 Set-AzureKeyVaultKeyAttribute [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Set-AzureKeyVaultKeyAttribute [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <String>]
+ [-Enable <Boolean>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +79,7 @@ the key.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -88,12 +96,27 @@ parameter uses Coordinated Universal Time (UTC). To obtain a **DateTime** object
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Key object
+
+```yaml
+Type: PSKeyVaultKeyIdentityItem
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -116,7 +139,7 @@ the JSON Web Key specification. These values (case-sensitive) are:
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,7 +155,7 @@ your current environment.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases: KeyName
 
 Required: True
@@ -150,7 +173,7 @@ To obtain a **DateTime** object, use the **Get-Date** cmdlet.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -166,7 +189,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -198,8 +221,8 @@ This cmdlet constructs the FQDN of a key vault based on the name that this param
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Default
+Aliases:
 
 Required: True
 Position: 0
@@ -260,9 +283,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
 
 ## NOTES
 

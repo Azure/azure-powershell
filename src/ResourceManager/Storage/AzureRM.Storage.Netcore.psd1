@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Storage.Netcore.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '0.10.0'
@@ -54,11 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll',
-    '.\Microsoft.Data.Edm.dll',
-    '.\Microsoft.Data.OData.dll',
-    '.\Microsoft.WindowsAzure.Storage.dll', 
-    '.\System.Spatial.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

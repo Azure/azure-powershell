@@ -94,6 +94,11 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter AssignIdentity { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false)]
+        public bool OsDiskWriteAccelerator { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -114,7 +119,7 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
                         HardwareProfile = this.VM.HardwareProfile,
-                        StorageProfile = this.VM.StorageProfile,
+                        StorageProfile = this.VM.StorageProfile.ToSerializedStorageProfile(),
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
                         Plan = this.VM.Plan,
@@ -129,6 +134,19 @@ namespace Microsoft.Azure.Commands.Compute
                     if (this.IdentityType != null)
                     {
                         parameters.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
+                    }
+
+                    if (this.MyInvocation.BoundParameters.ContainsKey("OsDiskWriteAccelerator"))
+                    {
+                        if (parameters.StorageProfile == null)
+                        {
+                            parameters.StorageProfile = new StorageProfile();
+                        }
+                        if (parameters.StorageProfile.OsDisk == null)
+                        {
+                            parameters.StorageProfile.OsDisk = new OSDisk();
+                        }
+                        parameters.StorageProfile.OsDisk.WriteAcceleratorEnabled = this.OsDiskWriteAccelerator;
                     }
 
                     if (this.IdentityId != null)

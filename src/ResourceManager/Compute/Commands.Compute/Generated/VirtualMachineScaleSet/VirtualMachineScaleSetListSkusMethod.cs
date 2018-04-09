@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSetSku))]
     public partial class GetAzureRmVmssSku : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {
@@ -144,9 +144,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
@@ -154,10 +152,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
-        [AllowNull]
         public string VMScaleSetName { get; set; }
     }
 }

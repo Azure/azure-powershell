@@ -109,6 +109,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public const string StorageServiceProperty = "AzureStorageServiceProperty";
 
+        /// Azure storage Service Delete Retention Policy
+        /// </summary>
+        public const string ServiceDeleteRetentionPolicy = "AzureStorageDeleteRetentionPolicy";
+
         /// <summary>
         /// Azure storage CORS rule
         /// </summary>

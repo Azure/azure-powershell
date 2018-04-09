@@ -15,7 +15,6 @@
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System.Linq;
 using System.Collections.Generic;
@@ -27,9 +26,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     public static class VirtualMachineScaleSetStrategy
     {
         public static ResourceStrategy<VirtualMachineScaleSet> Strategy { get; }
-            = ComputePolicy.Create(
-                type: "virtual machine scale set",
-                provider: "virtualMachines",
+            = ComputeStrategy.Create(
+                provider: "virtualMachineScaleSets",
                 getOperations: client => client.VirtualMachineScaleSets,
                 getAsync: (o, p) => o.GetAsync(
                     p.ResourceGroupName, p.Name, p.CancellationToken),
@@ -41,89 +39,78 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
-            IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
-            Func<ImageAndOsType> getImageAndOsType,
+            IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
+            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup,
+            ImageAndOsType imageAndOsType,
             string adminUsername,
             string adminPassword,
             string vmSize,
             int instanceCount,
-            UpgradeMode? upgradeMode)
+            UpgradeMode? upgradeMode,
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscriptionId =>
+                createModel: engine => new VirtualMachineScaleSet()
                 {
-                    var imageAndOsType = getImageAndOsType();
-                    var vmss = new VirtualMachineScaleSet()
-                    {
-                        Zones = frontendIpConfigurations
-                            ?.Select(f => f.CreateModel(subscriptionId))
-                            ?.Where(z => z?.Zones != null)
-                            .SelectMany(z => z.Zones)
-                            .Where(z => z != null)
-                            .ToList(),
+                    Zones = zones,
 
-                        UpgradePolicy =new UpgradePolicy
+                    UpgradePolicy = new UpgradePolicy
+                    {
+                        Mode = upgradeMode ?? UpgradeMode.Manual
+                    },
+
+                    Sku = new Azure.Management.Compute.Models.Sku()
+                    {
+                        Capacity = instanceCount,
+                        Name = vmSize,
+                    },
+                    VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
+                    {
+                        OsProfile = new VirtualMachineScaleSetOSProfile
                         {
-                            Mode = upgradeMode ?? UpgradeMode.Manual
+                            ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
+                            WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
+                            LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
+                            AdminUsername = adminUsername,
+                            AdminPassword = adminPassword,
                         },
-
-                        Sku = new Azure.Management.Compute.Models.Sku()
+                        StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {
-                            Capacity = instanceCount,
-                            Name = vmSize,
+                            ImageReference = imageAndOsType?.Image,
+                            DataDisks = DataDiskStrategy.CreateVmssDataDisks(
+                                imageAndOsType?.DataDiskLuns, dataDisks)
                         },
-                        VirtualMachineProfile = new VirtualMachineScaleSetVMProfile()
-                    };
-
-                    vmss.VirtualMachineProfile.OsProfile = new VirtualMachineScaleSetOSProfile
-                    {
-                        ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
-                        WindowsConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Windows 
-                            ? new WindowsConfiguration()
-                            : null,
-                        LinuxConfiguration = imageAndOsType.OsType == OperatingSystemTypes.Linux 
-                            ? new LinuxConfiguration()
-                            : null,
-                        AdminUsername = adminUsername,
-                        AdminPassword = adminPassword,
-                    };
-
-                    vmss.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile
-                    {
-                        ImageReference = imageAndOsType.Image
-                    };
-
-                    var ipConfig = new VirtualMachineScaleSetIPConfiguration
-                    {
-                        Name = name,
-                        LoadBalancerBackendAddressPools = new[] 
+                        NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                         {
-                            new Azure.Management.Compute.Models.SubResource(
-                                id: backendAdressPool.GetId(subscriptionId).IdToString())
-                        },
-                        Subnet = new ApiEntityReference { Id = subnet.GetId(subscriptionId).IdToString() }
-                    };
-
-
-                    vmss.VirtualMachineProfile.NetworkProfile = new VirtualMachineScaleSetNetworkProfile
-                    {
-                        NetworkInterfaceConfigurations = new[]
-                        {
-                            new VirtualMachineScaleSetNetworkConfiguration
+                            NetworkInterfaceConfigurations = new[]
                             {
-                                Name = name,
-                                IpConfigurations = new [] { ipConfig },
-                                Primary = true
+                                new VirtualMachineScaleSetNetworkConfiguration
+                                {
+                                    Name = name,
+                                    IpConfigurations = new []
+                                    {
+                                        new VirtualMachineScaleSetIPConfiguration
+                                        {
+                                            Name = name,
+                                            LoadBalancerBackendAddressPools = new [] 
+                                            {
+                                                engine.GetReference(backendAdressPool)
+                                            },
+                                            Subnet = engine.GetReference(subnet),
+                                            LoadBalancerInboundNatPools = inboundNatPools
+                                                ?.Select(engine.GetReference)
+                                                .ToList()
+                                        }
+                                    },
+                                    Primary = true,
+                                    NetworkSecurityGroup = engine.GetReference(networkSecurityGroup)
+                                }
                             }
                         }
-                    };
-
-
-                    return vmss;
-                },
-                dependencies: new IEntityConfig[] { subnet, backendAdressPool }
-                    .Concat(frontendIpConfigurations));
+                    }
+                });
     }
 }

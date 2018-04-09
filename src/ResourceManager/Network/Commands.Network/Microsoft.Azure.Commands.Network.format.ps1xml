@@ -942,7 +942,7 @@
               </ListItem>
               <ListItem>
                 <Label>IpTags</Label>
-                <PropertyName>IpTags</PropertyName>
+                <PropertyName>IpTagsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

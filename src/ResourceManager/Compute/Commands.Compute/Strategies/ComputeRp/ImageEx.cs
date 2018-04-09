@@ -25,11 +25,35 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class ImageEx
     {
+        public static int[] UpdatePorts(this ImageAndOsType imageAndOsType, int[] ports)
+            => ports ?? imageAndOsType?.OsType.CreatePorts();
+
+        private static int[] CreatePorts(this OperatingSystemTypes osType)
+            => osType == OperatingSystemTypes.Windows ? new[] { 3389, 5985 }
+                : osType == OperatingSystemTypes.Linux ? new[] { 22 }
+                : null;
+
         public static async Task<ImageAndOsType> UpdateImageAndOsTypeAsync(
-            this IClient client, string imageName, string location)
+            this IClient client,
+            ImageAndOsType imageAndOsType,
+            string resourceGroupName,
+            string imageName,
+            string location)
         {
+            if (imageAndOsType != null)
+            {
+                return imageAndOsType;
+            }
+
+            var compute = client.GetClient<ComputeManagementClient>();
+
             if (imageName.Contains(':'))
             {
+                if (location == null)
+                {
+                    return null;
+                }
+
                 var imageArray = imageName.Split(':');
                 if (imageArray.Length != 4)
                 {
@@ -43,7 +67,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Sku = imageArray[2],
                     Version = imageArray[3],
                 };
-                var compute = client.GetClient<ComputeManagementClient>();
+
                 if (image.Version.ToLower() == "latest")
                 {
                     var images = await compute.VirtualMachineImages.ListAsync(
@@ -58,12 +82,40 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 }
                 var imageModel = await compute.VirtualMachineImages.GetAsync(
                     location, image.Publisher, image.Offer, image.Sku, image.Version);
-                return new ImageAndOsType(imageModel.OsDiskImage.OperatingSystem, image);
+                return new ImageAndOsType(
+                    imageModel.OsDiskImage.OperatingSystem,
+                    image,
+                    imageModel.DataDiskImages.GetLuns());
+            } 
+            else if (imageName.Contains("/"))
+            {
+                var resourceId = ResourceId.TryParse(imageName);
+                if (resourceId == null
+                    || resourceId.ResourceType.Namespace != ComputeStrategy.Namespace
+                    || resourceId.ResourceType.Provider != "images")
+                {
+                    throw new ArgumentException(string.Format(Resources.ComputeInvalidImageName, imageName));
+                }
+
+                if (compute.SubscriptionId != resourceId.SubscriptionId)
+                {
+                    throw new ArgumentException(Resources.ComputeMismatchSubscription);
+                }
+
+                return await compute.GetImageAndOsTypeAsync(resourceId.ResourceGroupName, resourceId.Name);
             }
             else
             {
-                // get image
-                return Images
+                try
+                {
+                    return await compute.GetImageAndOsTypeAsync(resourceGroupName, imageName);
+                }
+                catch
+                {
+                }
+
+                // get generic image
+                var result = Images
                     .Instance
                     .SelectMany(osAndMap => osAndMap
                         .Value
@@ -72,9 +124,27 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             osAndMap.Key == "Windows" 
                                 ? OperatingSystemTypes.Windows
                                 : OperatingSystemTypes.Linux,
-                            nameAndImage.Value)))
+                            nameAndImage.Value,
+                            null)))
                     .FirstOrDefault();
+
+                if (result == null)
+                {
+                    throw new ArgumentException(string.Format(Resources.ComputeNoImageFound, imageName));
+                }
+
+                return result;
             }
+        }
+
+        static async Task<ImageAndOsType> GetImageAndOsTypeAsync(
+            this ComputeManagementClient compute, string resourceGroupName, string name)
+        {
+            var localImage = await compute.Images.GetAsync(resourceGroupName, name);
+            return new ImageAndOsType(
+                localImage.StorageProfile.OsDisk.OsType,
+                new ImageReference { Id = localImage.Id },
+                localImage.StorageProfile.DataDisks.GetLuns());
         }
     }
 }
