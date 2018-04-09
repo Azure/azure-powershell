@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
 using System.Linq;
-using Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels;
 using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
