@@ -107,7 +107,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void Delete(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            table.DeleteAsync(requestOptions, operationContext).RunSynchronously();
+            Task.Run(() => table.DeleteAsync(requestOptions, operationContext)).Wait();
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns></returns>
         public void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            table.SetPermissionsAsync(tablePermissions, requestOptions, operationContext).RunSynchronously();
+            Task.Run(() => table.SetPermissionsAsync(tablePermissions, requestOptions, operationContext)).Wait();
         }
 
 

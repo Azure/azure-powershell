@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// create a new stored access policy to a specific azure share.
@@ -81,7 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             fileSharePermissions.SharedAccessPolicies.Add(this.Policy, policy);
 
             //Set permissions back to container
-            fileShare.SetPermissionsAsync(fileSharePermissions).RunSynchronously();
+            Task.Run(() => fileShare.SetPermissionsAsync(fileSharePermissions)).Wait();
             WriteObject(Policy);
         }
     }
