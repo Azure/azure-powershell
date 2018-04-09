@@ -68,6 +68,9 @@ Gets a Batch node file.
 ### [Get-AzureBatchPool](Get-AzureBatchPool.md)
 Gets Batch pools under the specified Batch account.
 
+### [Get-AzureBatchPoolNodeCounts](Get-AzureBatchPoolNodeCounts.md)
+Gets Batch node counts per node state grouped by pool id.
+
 ### [Get-AzureBatchPoolStatistics](Get-AzureBatchPoolStatistics.md)
 Gets pool summary statistics for a Batch account.
 

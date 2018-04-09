@@ -712,6 +712,17 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return response;
         }
 
+        public static AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders> CreatePoolNodeCountsGetResponse(
+            IEnumerable<ProxyModels.PoolNodeCounts> poolNodeCounts)
+        {
+            var response = new AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            response.Body = new MockPagedEnumerable<ProxyModels.PoolNodeCounts>(poolNodeCounts);
+
+            return response;
+        }
+
         /// <summary>
         /// Builds a CloudTaskListResponse object
         /// </summary>
