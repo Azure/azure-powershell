@@ -22,14 +22,14 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Resources
         public static ResourceStrategy<ResourceGroup> Strategy { get; }
             = ResourceStrategy.Create(
                 type: ResourceType.ResourceGroup,
+                getApiVersion: client => client.ApiVersion,
                 getOperations: (ResourceManagementClient client) => client.ResourceGroups,
                 getAsync: (o, p) => o.GetAsync(p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p)
                     => o.CreateOrUpdateAsync(p.Name, p.Model, p.CancellationToken),
                 getLocation: model => model.Location,
                 setLocation: (model, location) => model.Location = location,
-                createTime: _ => 3,
-                compulsoryLocation: false);
+                createTime: _ => 3);
 
         public static ResourceConfig<ResourceGroup> CreateResourceGroupConfig(string name)
             => Strategy.CreateResourceConfig(null, name);

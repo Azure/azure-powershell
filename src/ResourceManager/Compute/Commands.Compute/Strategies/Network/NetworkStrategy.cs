@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             where TModel : Resource
             => ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.Network", provider),
-                getApiVersion: _ => "2017-10-01",
+                getApiVersion: client => client.ApiVersion /* "2017-10-01" */,
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
