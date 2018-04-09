@@ -151,6 +151,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).SetOwner(path, owner, group);
         }
+
         /// <summary>
         /// Sets specific Acl entries
         /// </summary>
@@ -181,8 +182,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="path">Path</param>
         /// <param name="accountName">Account</param>
         /// <param name="aclToModify">Acl list specifying acls to modify</param>
-        /// <param name="recursive"></param>
-        public void ModifyAcl(string path, string accountName, List<AclEntry> aclToModify, bool recursive = false)
+        public void ModifyAcl(string path, string accountName, List<AclEntry> aclToModify)
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).ModifyAclEntries(path, aclToModify);
         }
@@ -201,10 +201,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="path">Path</param>
         /// <param name="accountName">Account</param>
         /// <param name="aclsToRemove">Acl list specifying acls to remove</param>
-        public void RemoveAclEntries(string path, string accountName, List<AclEntry> aclsToRemove, bool recursive = false)
+        public void RemoveAclEntries(string path, string accountName, List<AclEntry> aclsToRemove)
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).RemoveAclEntries(path, aclsToRemove);
         }
+
         /// <summary>
         /// Remove all the ACLs
         /// </summary>
@@ -462,12 +463,14 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             return AdlsClientFactory.GetAdlsClient(accountName, _context).GetDirectoryEntry(filePath);
         }
+
         /// <summary>
         /// Obtains the content summary recursively
         /// </summary>
         /// <param name="path">File Path</param>
         /// <param name="accountName">Account name</param>
-        /// <param name="numThreads"></param>
+        /// <param name="numThreads">Concurrency</param>
+        /// <param name="cancelToken">Cancelation token</param>
         /// <returns></returns>
         public ContentSummary GetContentSummary(string path, string accountName, int numThreads, CancellationToken cancelToken)
         {
