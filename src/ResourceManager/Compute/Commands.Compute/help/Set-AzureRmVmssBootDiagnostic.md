@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssbootdiagnostic
@@ -54,7 +54,7 @@ Whether boot diagnostics should be enabled on the virtual machine scale set.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -69,7 +69,7 @@ URI of the storage account to use for placing the console output and screenshot.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -85,7 +85,7 @@ You can use the New-AzureRmVmssConfig cmdlet to create the object.
 ```yaml
 Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -141,4 +141,3 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
-

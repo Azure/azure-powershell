@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.CognitiveServices
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 66c566b4-950c-4a2b-9f3b-199d92f0df1a
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
