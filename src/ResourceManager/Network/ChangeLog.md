@@ -19,6 +19,16 @@
 --->
 
 ## Current Release
+* Updated below commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
+    - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIpsecPolicies   [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]
+    - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIPsecParameters [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]
+* Added new commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
+    - New-AzureRmVpnClientIpsecPolicy : Added for passing output from this command to existing commands: New-AzureRmVirtualNetworkGateway & Set-AzureRmVirtualNetworkGateway to set Vpn IPSec policy
+    - New-AzureRmVpnClientIpsecParameters
+	- Set-AzureRmVpnClientIpsecParameters
+	- Get-AzureRmVpnClientIpsecParameters
+	- Remove-AzureRmVpnClientIpsecParameters
+* Added a warning note for existing command: Set-AzureRmVirtualNetworkGatewayVpnClientConfig to let users know of its plan of removal in next release.
 
 ## Version 5.4.2
 * Fix error message with Network cmdlets
