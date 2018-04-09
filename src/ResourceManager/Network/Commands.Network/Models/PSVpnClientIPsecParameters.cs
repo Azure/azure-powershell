@@ -11,20 +11,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSIpsecPolicy
+    public class PSVpnClientIPsecParameters
     {
         /// <summary>
         /// Quick Mode / Phase 2 SA life time in seconds
         /// </summary>
-        public int SALifeTimeSeconds { get; set; }
+        public int SaLifeTimeSeconds { get; set; }
 
         /// <summary>
         /// Quick Mode / Phase 2 SA payload size in kilobytes
         /// </summary>
-        public int SADataSizeKilobytes { get; set; } 
+        public int SaDataSizeKilobytes { get; set; }
 
         /// <summary>
         /// IKE phase 1 IPSec encryption algorithm
