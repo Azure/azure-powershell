@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.2.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.5.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ManagementPartner.dll'
@@ -109,7 +109,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* First release of Management Partners cmdlets'
+        ReleaseNotes = '* Add Partner Name in the response for cmdlets: Get-AzureRmManagementPartner, New-AzureRmManagementPartner and Update-AzureRmManagementPartner
+* Updated to the latest version of the Azure ClientRuntime'
 
         # Prerelease string of this module
         Prerelease = 'preview'
