@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
-                "Indicates the ACL to be set recursively"
+                "Indicates the ACL to be set recursively to the child subdirectories and files"
         )]
         public SwitchParameter Recursive { get; set; }
 

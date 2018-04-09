@@ -67,7 +67,9 @@ Accept wildcard characters: False
 ```
 
 ### -Concurrency
-Indicates the number of files/directories processed in parallel for recursive processing. Default will be computed as a best effort based on system specification.```yaml
+Number of files/directories processed in parallel. Optional: a reasonable default will be selected.
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases:
@@ -125,7 +127,9 @@ Accept wildcard characters: False
 ```
 
 ### -Recursive
-Indicates the ACL to be set recursively```yaml
+Indicates the ACL to be set recursively to the child subdirectories and files
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
