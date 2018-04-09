@@ -61,6 +61,20 @@
     <ProjectReference Include="..\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
+      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
+      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
+      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="SessionRecords\**\*.json">
