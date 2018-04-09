@@ -19,6 +19,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Name { get; set; }
         public string Tier { get; set; }
-        public int Capacity { get; set; }
+        public int? Capacity { get; set; }
     }
 }

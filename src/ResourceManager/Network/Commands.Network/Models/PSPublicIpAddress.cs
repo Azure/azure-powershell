@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public int? IdleTimeoutInMinutes { get; set; }
 
-        public List<string> Zones { get; set; }
+        public new List<string> Zones { get; set; }
 
         public string ProvisioningState { get; set; }
 

@@ -1,0 +1,7 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "E:\\azure-sdk-for-net\\restoredPackages"
+    ]
+  }
+}

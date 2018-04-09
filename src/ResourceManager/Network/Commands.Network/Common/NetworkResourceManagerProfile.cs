@@ -567,6 +567,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Application Gateways
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSIdentity, MNM.Identity>();
                 cfg.CreateMap<CNM.PSApplicationGateway, MNM.ApplicationGateway>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySku, MNM.ApplicationGatewaySku>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySslPolicy, MNM.ApplicationGatewaySslPolicy>()
@@ -608,8 +609,11 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallRuleSet, MNM.ApplicationGatewayFirewallRuleSet>();
                 cfg.CreateMap<CNM.PSApplicationGatewayAvailableSslOptions, MNM.ApplicationGatewayAvailableSslOptions>();
                 cfg.CreateMap<CNM.PSApplicationGatewaySslPredefinedPolicy, MNM.ApplicationGatewaySslPredefinedPolicy>();
+                cfg.CreateMap<CNM.PSApplicationGatewayAutoscaleBounds, MNM.ApplicationGatewayAutoscaleBounds>();
+                cfg.CreateMap<CNM.PSApplicationGatewayAutoscaleConfiguration, MNM.ApplicationGatewayAutoscaleConfiguration>();
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.Identity, CNM.PSIdentity>();
                 cfg.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
                 cfg.CreateMap<MNM.ApplicationGatewaySku, CNM.PSApplicationGatewaySku>();
                 cfg.CreateMap<MNM.ApplicationGatewaySslPolicy, CNM.PSApplicationGatewaySslPolicy>()
@@ -651,6 +655,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayFirewallRuleSet, CNM.PSApplicationGatewayFirewallRuleSet>();
                 cfg.CreateMap<MNM.ApplicationGatewayAvailableSslOptions, CNM.PSApplicationGatewayAvailableSslOptions>();
                 cfg.CreateMap<MNM.ApplicationGatewaySslPredefinedPolicy, CNM.PSApplicationGatewaySslPredefinedPolicy>();
+                cfg.CreateMap<MNM.ApplicationGatewayAutoscaleBounds, CNM.PSApplicationGatewayAutoscaleBounds>();
+                cfg.CreateMap<MNM.ApplicationGatewayAutoscaleConfiguration, CNM.PSApplicationGatewayAutoscaleConfiguration>();
 
                 // Application Security Groups
                 // CNM to MNM

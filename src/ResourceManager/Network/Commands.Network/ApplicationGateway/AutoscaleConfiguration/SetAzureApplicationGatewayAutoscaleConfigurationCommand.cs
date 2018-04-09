@@ -13,34 +13,27 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewaySkuBase : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayAutoscaleConfiguration", SupportsShouldProcess = true),
+        OutputType(typeof(PSApplicationGateway))]
+    public class SetAzureApplicationGatewayAutoscaleConfigurationCommand : AzureApplicationGatewayAutoscaleConfigurationBase
     {
         [Parameter(
-               Mandatory = true,
-               HelpMessage = "The name of the SKU")]
-        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", "Standard_v2", "WAF_v2", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Application gateway tier")]
-        [ValidateSet("Standard", "WAF", "Standard_v2", "WAF_v2", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string Tier { get; set; }
-
-        [Parameter(
-               Mandatory = false,
-               HelpMessage = "Application gateway instance count")]
-        [ValidateNotNullOrEmpty]
-        public int? Capacity { get; set; }
-        
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The applicationGateway")]
+        public PSApplicationGateway ApplicationGateway { get; set; }
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            if (ShouldProcess("AzureApplicationGatewayAutoscaleConfiguration", Microsoft.Azure.Commands.Network.Properties.Resources.CreatingResourceMessage))
+            {
+                base.ExecuteCmdlet();
+                this.ApplicationGateway.AutoscaleConfiguration = this.NewObject();
+                WriteObject(this.ApplicationGateway);
+            }
         }
     }
 }

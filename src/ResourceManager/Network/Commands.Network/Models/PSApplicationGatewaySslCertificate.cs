@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Data { get; set; }
         public SecureString Password { get; set; }
         public string PublicCertData { get; set; }
+        public string KeyVaultSecretId { get; set; }
         public string ProvisioningState { get; set; }
         public string Type { get; set; }
     }

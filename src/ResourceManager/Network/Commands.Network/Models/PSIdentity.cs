@@ -12,31 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Internal.Resources.Utilities;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSTopLevelResource : PSChildResource
+    public class PSIdentity
     {
-        public string ResourceGroupName { get; set; }
-
-        public string Location { get; set; }
-
-        public string ResourceGuid { get; set; }
-
-        public string Type { get; set; }
-
-        public Hashtable Tag { get; set; }
-
-        public PSIdentity Identity { get; set; }
-
-        public IList<string> Zones { get; set; }
-
-        public string TagsTable
-        {
-            get { return ResourcesExtensions.ConstructTagsTable(Tag); }
-        }
+        public PSIdentityType Type { get; set; }
+        public IList<string> IdentityIds { get; set; }
     }
 }

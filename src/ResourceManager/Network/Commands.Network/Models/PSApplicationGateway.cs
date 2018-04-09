@@ -52,6 +52,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool? EnableHttp2 { get; set; }
 
+        public PSApplicationGatewayAutoscaleConfiguration AutoscaleConfiguration { get; set; }
+
         public string OperationalState { get; private set; }
 
         public string ProvisioningState { get; set; }

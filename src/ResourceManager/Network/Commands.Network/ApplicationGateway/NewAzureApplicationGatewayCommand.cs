@@ -151,6 +151,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "User Assigned Identity to be associated with application gateway.")]
+        public string UserAssignedIdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "A list of availability zones denoting where the application gateway needs to come from.")]
+        public IList<string> Zones { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -189,6 +199,21 @@ namespace Microsoft.Azure.Commands.Network
             applicationGateway.ResourceGroupName = this.ResourceGroupName;
             applicationGateway.Location = this.Location;
             applicationGateway.Sku = this.Sku;
+
+            if (string.Equals(this.Sku.Tier, "Standard_v2", System.StringComparison.InvariantCultureIgnoreCase)
+                || string.Equals(this.Sku.Tier, "WAF_v2", System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                applicationGateway.AutoscaleConfiguration = new PSApplicationGatewayAutoscaleConfiguration()
+                {
+                    Bounds = new PSApplicationGatewayAutoscaleBounds
+                    {
+                        Min = this.Sku.Capacity.Value,
+                        Max = this.Sku.Capacity.Value
+                    }
+                };
+
+                this.Sku.Capacity = null;
+            }
 
             if (this.SslPolicy != null)
             {
@@ -264,6 +289,20 @@ namespace Microsoft.Azure.Commands.Network
             if (this.EnableHttp2.IsPresent)
             {
                 applicationGateway.EnableHttp2 = true;
+            }
+
+            if (this.Zones != null)
+            {
+                applicationGateway.Zones = this.Zones;
+            }
+
+            if (!string.IsNullOrEmpty(this.UserAssignedIdentityId))
+            {
+                applicationGateway.Identity = new PSIdentity
+                {
+                    Type = PSIdentityType.userAssigned,
+                    IdentityIds = new List<string> { this.UserAssignedIdentityId }
+                };
             }
 
             // Normalize the IDs

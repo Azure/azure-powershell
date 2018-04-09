@@ -12,35 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewaySkuBase : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayAutoscaleConfiguration"), OutputType(typeof(PSApplicationGatewayAutoscaleConfiguration))]
+    public class GetAzureApplicationGatewayAutoscaleConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
-               Mandatory = true,
-               HelpMessage = "The name of the SKU")]
-        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", "Standard_v2", "WAF_v2", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The applicationGateway")]
+        public PSApplicationGateway ApplicationGateway { get; set; }
 
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Application gateway tier")]
-        [ValidateSet("Standard", "WAF", "Standard_v2", "WAF_v2", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string Tier { get; set; }
-
-        [Parameter(
-               Mandatory = false,
-               HelpMessage = "Application gateway instance count")]
-        [ValidateNotNullOrEmpty]
-        public int? Capacity { get; set; }
-        
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            WriteObject(this.ApplicationGateway.AutoscaleConfiguration, true);
         }
     }
 }

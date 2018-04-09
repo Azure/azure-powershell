@@ -57,9 +57,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=17.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.17.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=18.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.Network\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +72,13 @@
     <Compile Include="ApplicationGateway\AuthenticationCertificate\NewAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\RemoveAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
     <Compile Include="ApplicationGateway\AuthenticationCertificate\SetAzureApplicationGatewayAuthenticationCertificateCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleBounds\AzureApplicationGatewayAutoscaleBoundsBase.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleBounds\NewAzureApplicationGatewayAutoscaleBoundsCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\AzureApplicationGatewayAutoscaleConfigurationBase.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\GetAzureApplicationGatewayAutoscaleConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\NewAzureApplicationGatewayAutoscaleConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\RemoveAzureApplicationGatewayAutoscaleConfigurationCommand.cs" />
+    <Compile Include="ApplicationGateway\AutoscaleConfiguration\SetAzureApplicationGatewayAutoscaleConfigurationCommand.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\AddAzureApplicationGatewayBackendAddressPoolCommand.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\AzureApplicationGatewayBackendAddressPoolBase.cs" />
     <Compile Include="ApplicationGateway\BackendAddressPool\GetAzureApplicationGatewayBackendAddressPoolCommand.cs" />
@@ -208,6 +215,8 @@
     <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
+    <Compile Include="Models\PSApplicationGatewayAutoscaleBounds.cs" />
+    <Compile Include="Models\PSApplicationGatewayAutoscaleConfiguration.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
     <Compile Include="Models\PSApplicationGatewayProbeHealthResponseMatch.cs" />
@@ -221,6 +230,8 @@
     <Compile Include="Models\PSConnectionMonitorSource.cs" />
     <Compile Include="Models\PSConnectionStateSnapshot.cs" />
     <Compile Include="Models\PSEndpointServiceResult.cs" />
+    <Compile Include="Models\PSIdentity.cs" />
+    <Compile Include="Models\PSIdentityType.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
     <Compile Include="Models\PSLoadBalancerSku.cs" />
     <Compile Include="Models\PSPublicIpAddressSku.cs" />

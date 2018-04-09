@@ -12,35 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Network.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewaySkuBase : NetworkBaseCmdlet
+    public class AzureApplicationGatewayAutoscaleBoundsBase : NetworkBaseCmdlet
     {
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "The name of the SKU")]
-        [ValidateSet("Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", "Standard_v2", "WAF_v2", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
 
         [Parameter(
-               Mandatory = true,
-               HelpMessage = "Application gateway tier")]
-        [ValidateSet("Standard", "WAF", "Standard_v2", "WAF_v2", IgnoreCase = true)]
+            HelpMessage = "Lower bound on number of Application Gateway instances.")]
         [ValidateNotNullOrEmpty]
-        public string Tier { get; set; }
+        public int Min { get; set; }
 
         [Parameter(
-               Mandatory = false,
-               HelpMessage = "Application gateway instance count")]
+            HelpMessage = "Upper bound on number of Application Gateway instances.")]
         [ValidateNotNullOrEmpty]
-        public int? Capacity { get; set; }
-        
+        public int Max { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+        }
+
+        protected PSApplicationGatewayAutoscaleBounds NewObject()
+        {
+            return new PSApplicationGatewayAutoscaleBounds()
+            {
+                Min = this.Min,
+                Max = this.Max
+            };
         }
     }
 }
