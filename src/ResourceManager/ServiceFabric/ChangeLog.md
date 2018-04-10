@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-
+* Update default Linux image version sku
 ## Version 0.3.4
 * Updated to the latest version of the Azure ClientRuntime
 
