@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Update default Linux image version sku
+  - NewAzureServiceFabricCluster.cs default UbuntuServer1604 Sku update
 
 ## Version 0.3.4
 * Updated to the latest version of the Azure ClientRuntime
