@@ -22,15 +22,14 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.8.1" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.2" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.11" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.12" />
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.9.0" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
     <PackageReference Include="Moq" Version="4.7.145" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     
     <!-- This is needed for discovering tests in test explorer -->
+    <PackageReference Include="System.Management.Automation" Version="6.0.1.1" />
     <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" /> 
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
@@ -60,20 +59,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
-      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
-      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <Reference Include="Microsoft.Rest.ClientRuntime">
-      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
-      <HintPath>C:\td\azure-sdk-for-net\src\SdkCommon\TestFramework\ClientRuntime.Azure.TestFramework\bin\Release\netcoreapp2.0\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
-    </Reference>
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Azure.Common" Version="2.1.4" />
+    <PackageReference Include="Microsoft.Azure.Common" Version="2.2.0" />
+     <PackageReference Include="Hyak.Common" Version="1.2.0" />
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0-preview-02" />
-    <!--<PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.1.1" /> -->
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 </Project>

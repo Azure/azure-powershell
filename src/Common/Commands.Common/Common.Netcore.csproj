@@ -25,7 +25,6 @@
   <ItemGroup >
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
     <PackageReference Include="System.Net.WebHeaderCollection" Version="4.3.0" />
-    <PackageReference Include="System.Management.Automation" Version="6.0.0-rc" />
   </ItemGroup>
 
   <ItemGroup>

@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.BackupServices" Version="1.0.5-preview" />
-    <PackageReference Include="Microsoft.WindowsAzure.Management.Scheduler" Version="6.0.0" />
     <PackageReference Include="System.Security.Cryptography.Cng" Version="4.4.0" />
   </ItemGroup>
 
