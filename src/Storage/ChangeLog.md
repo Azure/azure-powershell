@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+*Support $web as Storage blob container name
+	- New-AzureStorageBlobContainer
+	- Remove-AzureStorageBlobContainer
+	- Set-AzureStorageBlobContent
+	- Get-AzureStorageBlobContent
 
 ## Version 4.2.1
 * Fix the issue that upload Blob and upload File cmdlets fail on FIPS policy enabled machines
