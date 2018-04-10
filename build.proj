@@ -31,7 +31,7 @@
       'AzureStorage': storage data plane cmdlets
       'Stack': Azure Stack cmdlets
       'Subfolder under src\ResourceManager': An individual cmdlet module
-      By default, it builds everything but Stack
+      By default, it builds everything
 
     /p:SkipHelp=True
       Skips help generation, mainly for local builds to save time.
