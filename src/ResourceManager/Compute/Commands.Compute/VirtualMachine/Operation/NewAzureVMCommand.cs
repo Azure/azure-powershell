@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2008R2SP1",
             "Win10")]
         public string ImageName { get; set; } = "Win2016Datacenter";
-        
+
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string DiskFile { get; set; }
@@ -218,6 +218,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("New-AzureRmVM: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
+                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
             switch (ParameterSetName)
             {
                 case SimpleParameterSet:
@@ -460,7 +462,7 @@ namespace Microsoft.Azure.Commands.Compute
                     {
                         DiagnosticsProfile = this.VM.DiagnosticsProfile,
                         HardwareProfile = this.VM.HardwareProfile,
-                        StorageProfile = this.VM.StorageProfile,
+                        StorageProfile = this.VM.StorageProfile.ToSerializedStorageProfile(),
                         NetworkProfile = this.VM.NetworkProfile,
                         OsProfile = this.VM.OSProfile,
                         Plan = this.VM.Plan,

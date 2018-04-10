@@ -60,7 +60,7 @@ Specifies a filter expression.
 ```yaml
 Type: String
 Parameter Sets: ListVMImage
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,7 +75,7 @@ Specifies the location of a VMImage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,7 +91,7 @@ To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -107,7 +107,7 @@ To obtain an image publisher, use the Get-AzureRmVMImagePublisher cmdlet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,7 +123,7 @@ To obtain an SKU, use the Get-AzureRmVMImageSku cmdlet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -138,7 +138,7 @@ Specifies the version of the VMImage.
 ```yaml
 Type: String
 Parameter Sets: GetVMImageDetail
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
