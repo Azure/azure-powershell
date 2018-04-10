@@ -97,7 +97,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Configuration.Install" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Security" />
   </ItemGroup>
   <ItemGroup>
