@@ -38,7 +38,9 @@ Creates an Azure subscription under the specified enrollment account with the sp
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -51,7 +53,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.```yaml
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -64,7 +68,9 @@ Accept wildcard characters: False
 ```
 
 ### -EnrollmentAccountObjectId
-Name of the enrollment account to use when creating the subscription.```yaml
+Name of the enrollment account to use when creating the subscription.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
