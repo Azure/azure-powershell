@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
 
 ## Version 4.6.0
 * `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
