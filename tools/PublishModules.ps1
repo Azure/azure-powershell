@@ -365,7 +365,6 @@ function Remove-ModuleDependencies {
         $regex = New-Object System.Text.RegularExpressions.Regex "NestedModules\s*=\s*@\([^\)]+\)"
         $content = (Get-Content -Path $Path) -join "`r`n"
         $text = $regex.Replace($content, "NestedModules = @()")
-        $text | Out-File -FilePath $Path
         Out-FileNoBom -File $Path -Text $text
     }
 }

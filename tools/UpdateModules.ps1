@@ -370,14 +370,14 @@ function Update-Azure {
     }
 
     if ($scope -in $script:StorageScopes) {
-        $modulePath = "$AzurePackages\$buildConfig\Storage\Azure.Storage"
+        $modulePath = "$script:AzurePackages\$buildConfig\Storage\Azure.Storage"
         Write-Host "Updating AzureStorage module from $modulePath"
         New-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule:$false
         Write-Host " "
     }
 
     if ($scope -in $script:ServiceScopes) {
-        $modulePath = "$AzurePackages\$buildConfig\ServiceManagement\Azure"
+        $modulePath = "$script:AzurePackages\$buildConfig\ServiceManagement\Azure"
         Write-Host "Updating ServiceManagement(aka Azure) module from $modulePath"
         New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
         Write-Host " "
@@ -411,6 +411,11 @@ function Update-Stack {
     Write-Host "Updating profile module for stack"
     New-ModulePsm1 -ModulePath "$script:StackRMRoot\AzureRM.Profile" -TemplatePath $script:TemplateLocation -IsRMModule
     Write-Host "Updated profile module"
+    Write-Host " "
+    
+    $modulePath = "$script:StackRMRoot\$buildConfig\Storage\Azure.Storage"
+    Write-Host "Updating AzureStorage module from $modulePath"
+    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule:$false
     Write-Host " "
 
     $StackRMModules = Get-ChildItem -Path $script:StackRMRoot -Directory
@@ -478,8 +483,8 @@ $script:AzurePackages = "$PSSCriptRoot\..\src\Package"
 $script:StackPackages = "$PSSCriptRoot\..\src\Stack"
 
 # Resource Management folders
-$script:AzureRMRoot = "$AzurePackages\$buildConfig\ResourceManager\AzureResourceManager"
-$script:StackRMRoot = "$StackPackages\$buildConfig\ResourceManager\AzureResourceManager"
+$script:AzureRMRoot = "$script:AzurePackages\$buildConfig\ResourceManager\AzureResourceManager"
+$script:StackRMRoot = "$script:StackPackages\$buildConfig\ResourceManager\AzureResourceManager"
 
 
 # Begin
