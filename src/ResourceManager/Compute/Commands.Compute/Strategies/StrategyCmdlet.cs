@@ -45,13 +45,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 // create target state
                 var templateEngine = new TemplateEngine(client);
                 
-                var virtualCurrent = new State();
-                virtualCurrent.GetOrAdd(resourceGroup, () => new ResourceGroup());
+                var emptyCurrent = new State();
 
-                var virtualTarget = config.GetTargetState(
-                    virtualCurrent, templateEngine, parameters.Location);
+                var fullTarget = config.GetTargetState(
+                    emptyCurrent, templateEngine, parameters.Location);
 
-                var template = config.CreateTemplate(client, virtualTarget, templateEngine);
+                var template = config.CreateTemplate(client, fullTarget, templateEngine);
                 template.parameters = templateEngine
                     .SecureStrings
                     .Keys
@@ -75,52 +74,19 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                     }
                 };
                 var templateResult = new Converters().Serialize(template).ToString();
-                // asyncCmdlet.WriteObject(templateResult);
                 File.WriteAllText(parameters.OutputTemplateFile, templateResult, Encoding.UTF8);
 
-                // deployment
                 /*
-                // create a resource group.
-                await resourceGroup
-                    .UpdateStateAsync(
-                        client,
-                        target,
-                        new CancellationToken(),
-                        new ShouldProcess(asyncCmdlet),
-                        asyncCmdlet.ReportTaskProgress);
-
-                var rmClient = client.GetClient<ResourceManagementClient>();
-                var deployment = new Deployment
-                {
-                    Properties = new DeploymentProperties
-                    {
-                        Template = template,
-                        Parameters = templateEngine
-                            .SecureStrings
-                            .ToDictionary(
-                                kv => kv.Key,
-                                kv => new DeploymentParameter
-                                {
-                                    value = new NetworkCredential(string.Empty, kv.Value).Password
-                                })
-                    }
-                };
-
-                var validation = await rmClient.Deployments.ValidateAsync(
-                    resourceGroupName: config.ResourceGroup.Name,
-                    deploymentName: config.Name,
-                    parameters: deployment);
-
-                var tResult = await rmClient.Deployments.CreateOrUpdateAsync(
-                    resourceGroupName: config.ResourceGroup.Name,
-                    deploymentName: config.Name,
-                    parameters: deployment);
-
-                var output = ((tResult.Properties.Outputs as JObject)["result"] as JObject)
-                    .ToObject<Output>();
-
-                return output.GetModel<TModel>();
-                */
+                // deployment
+                return await DeployTemplateAsync(
+                    client,
+                    asyncCmdlet,
+                    resourceGroup,
+                    fullTarget,
+                    templateEngine,
+                    template,
+                    config);
+                    */
             }
 
             var engine = new SdkEngine(client.SubscriptionId);
@@ -135,6 +101,58 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 asyncCmdlet.ReportTaskProgress);
 
             return newState.Get(config) ?? current.Get(config);
+        }
+
+        static async Task<TModel> DeployTemplateAsync<TModel>(
+            IClient client,
+            IAsyncCmdlet asyncCmdlet,
+            ResourceConfig<ResourceGroup> resourceGroup,
+            IState target,
+            TemplateEngine templateEngine,
+            Template template,
+            ResourceConfig<TModel> config)
+            where TModel : class
+        {
+            // create a resource group.
+            await resourceGroup
+                .UpdateStateAsync(
+                    client,
+                    target,
+                    new CancellationToken(),
+                    new ShouldProcess(asyncCmdlet),
+                    asyncCmdlet.ReportTaskProgress);
+
+            var rmClient = client.GetClient<ResourceManagementClient>();
+            var deployment = new Deployment
+            {
+                Properties = new DeploymentProperties
+                {
+                    Template = template,
+                    Parameters = templateEngine
+                        .SecureStrings
+                        .ToDictionary(
+                            kv => kv.Key,
+                            kv => new DeploymentParameter
+                            {
+                                value = new NetworkCredential(string.Empty, kv.Value).Password
+                            })
+                }
+            };
+
+            var validation = await rmClient.Deployments.ValidateAsync(
+                resourceGroupName: config.ResourceGroup.Name,
+                deploymentName: config.Name,
+                parameters: deployment);
+
+            var tResult = await rmClient.Deployments.CreateOrUpdateAsync(
+                resourceGroupName: config.ResourceGroup.Name,
+                deploymentName: config.Name,
+                parameters: deployment);
+
+            var output = ((tResult.Properties.Outputs as JObject)["result"] as JObject)
+                .ToObject<Output>();
+
+            return output.GetModel<TModel>();
         }
     }
 }
