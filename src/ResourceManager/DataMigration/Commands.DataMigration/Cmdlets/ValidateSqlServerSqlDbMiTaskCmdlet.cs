@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ValidateMigrationInputSqlServerSqlDbMiTaskCmdlet.cs" company="Microsoft">
+// <copyright file="ValidateSqlServerSqlDbMiTaskCmdlet.cs" company="Microsoft">
 //     Copyright (c) Microsoft Corporation.
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
@@ -11,13 +11,13 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class ValidateMigrationInputSqlServerSqlDbMiTaskCmdlet : TaskCmdlet
+    public class ValidateSqlServerSqlDbMiTaskCmdlet : TaskCmdlet
     {
         private readonly string SelectedDatabase = "SelectedDatabase";
         private readonly string BackupBlobSasUri = "BackupBlobSasUri";
         private readonly string BackupFileShare = "BackupFileShare";
 
-        public ValidateMigrationInputSqlServerSqlDbMiTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
+        public ValidateSqlServerSqlDbMiTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
         {
         }
 

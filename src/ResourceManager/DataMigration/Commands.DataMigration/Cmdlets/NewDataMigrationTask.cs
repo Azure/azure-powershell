@@ -117,8 +117,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
                     case TaskTypeEnum.MigrateSqlServerSqlDbMi:
                         taskCmdlet = new MigrateSqlServerSqlDbMiTaskCmdlet(this.MyInvocation);
                         break;
-                    case TaskTypeEnum.ValidateMigrationInputSqlServerSqlDbMi:
-                        taskCmdlet = new ValidateMigrationInputSqlServerSqlDbMiTaskCmdlet(this.MyInvocation);
+                    case TaskTypeEnum.ValidateSqlServerSqlDbMi:
+                        taskCmdlet = new ValidateSqlServerSqlDbMiTaskCmdlet(this.MyInvocation);
                         break;
                     default:
                         throw new PSArgumentException();
