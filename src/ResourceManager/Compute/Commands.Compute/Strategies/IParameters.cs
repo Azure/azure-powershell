@@ -16,6 +16,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
         Task<ResourceConfig<TModel>> CreateConfigAsync(ResourceConfig<ResourceGroup> resourceGroup);
 
-        bool AsArmTemplate { get; }
+        string OutputTemplateFile { get; }
     }
 }

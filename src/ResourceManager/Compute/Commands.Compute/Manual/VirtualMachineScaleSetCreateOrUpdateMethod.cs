@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public int[] DataDiskSizeInGb { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
-        public SwitchParameter AsArmTemplate { get; set; }
+        public string OutputTemplateFile { get; set; }
 
         const int FirstPortRangeStart = 50000;
 
@@ -142,8 +142,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public ImageAndOsType ImageAndOsType { get; set; }
 
-            public bool AsArmTemplate
-                => _cmdlet.AsArmTemplate;
+            public string OutputTemplateFile
+                => _cmdlet.OutputTemplateFile;
 
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync(
                 ResourceConfig<ResourceGroup> resourceGroup)

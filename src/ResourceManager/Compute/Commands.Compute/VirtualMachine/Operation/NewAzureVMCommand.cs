@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachine,
         SupportsShouldProcess = true,
         DefaultParameterSetName = "SimpleParameterSet")]
-    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine), typeof(string))]
+    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
-        public SwitchParameter AsArmTemplate { get; set; }
+        public string OutputTemplateFile { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -257,8 +257,8 @@ namespace Microsoft.Azure.Commands.Compute
                 set { _cmdlet.Location = value; }
             }
 
-            public bool AsArmTemplate
-                => _cmdlet.AsArmTemplate;
+            public string OutputTemplateFile
+                => _cmdlet.OutputTemplateFile;
 
             public BlobUri DestinationUri;
 

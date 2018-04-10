@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             // update a DAG of configs.
             config = await parameters.CreateConfigAsync(resourceGroup);
 
-            if (parameters.AsArmTemplate)
+            if (parameters.OutputTemplateFile != null)
             {
                 // create target state
                 var templateEngine = new TemplateEngine(client);
