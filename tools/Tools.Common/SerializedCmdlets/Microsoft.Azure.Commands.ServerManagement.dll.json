@@ -87,7 +87,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -432,7 +432,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -741,7 +741,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -862,7 +862,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -929,7 +929,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1172,7 +1172,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -1287,7 +1287,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -1453,7 +1453,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1556,7 +1556,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -1836,7 +1836,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -2155,7 +2155,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -2398,7 +2398,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -2563,7 +2563,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -2667,7 +2667,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -2863,7 +2863,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -3029,7 +3029,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -3151,7 +3151,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -3546,7 +3546,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -3950,7 +3950,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Created": "System.Nullable`1[System.DateTime]",
@@ -4146,7 +4146,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Created": "System.Nullable`1[System.DateTime]",
@@ -4312,7 +4312,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -4685,7 +4685,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -4792,7 +4792,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -5058,7 +5058,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -5270,7 +5270,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -5469,7 +5469,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -5810,7 +5810,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -6009,7 +6009,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -6251,7 +6251,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
             "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -6541,7 +6541,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
                   "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",
@@ -6857,7 +6857,7 @@
     "Microsoft.Azure.Commands.ServerManagement.Model.Session": {
       "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
       "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Session",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Session, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Created": "System.Nullable`1[System.DateTime]",
@@ -7103,7 +7103,7 @@
     "Microsoft.Azure.Commands.ServerManagement.Model.Node": {
       "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
       "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Node",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Node, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Created": "System.Nullable`1[System.DateTime]",
@@ -7424,7 +7424,7 @@
     "Microsoft.Azure.Commands.ServerManagement.Model.Gateway": {
       "Namespace": "Microsoft.Azure.Commands.ServerManagement.Model",
       "Name": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServerManagement.Model.Gateway, Microsoft.Azure.Commands.ServerManagement, Version=4.1.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Instances": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ServerManagement.Models.GatewayStatus]",

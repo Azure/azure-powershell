@@ -52,7 +52,7 @@ Specifies the location of the VMImage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
