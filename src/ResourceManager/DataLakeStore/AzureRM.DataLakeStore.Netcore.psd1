@@ -54,7 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Store.dll','.\Microsoft.Azure.DataLake.Store.dll','.\NLog.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
