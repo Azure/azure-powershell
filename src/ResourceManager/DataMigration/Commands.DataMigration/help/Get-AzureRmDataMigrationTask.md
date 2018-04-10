@@ -278,7 +278,7 @@ Filter by TaskType.
 Type: TaskTypeEnum
 Parameter Sets: ListByComponent, ListByInputObject, ListByResourceId
 Aliases: 
-Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, ValidateMigrationInputSqlServerSqlDbMi, MigrateSqlServerSqlDbMi
+Accepted values: MigrateSqlServerSqlDb, ConnectToSourceSqlServer, ConnectToTargetSqlDb, GetUserTablesSql, ConnectToTargetSqlDbMi, ValidateSqlServerSqlDbMi, MigrateSqlServerSqlDbMi
 
 Required: False
 Position: Named

@@ -452,7 +452,7 @@ function Test-ValidateMigrationInputSqlSqlDbMi
 
 		$selectedDbs = New-AzureRmDmsSqlServerSqlDbMiSelectedDB -Name "HR" -RestoreDatabaseName "HR_PSTEST1" -BackupFileShare $backupFileShare
 
-		$migTask = New-AzureRmDataMigrationTask -TaskType ValidateMigrationInputSqlServerSqlDbMi `
+		$migTask = New-AzureRmDataMigrationTask -TaskType ValidateSqlServerSqlDbMi `
 		  -ResourceGroupName $rg.ResourceGroupName `
 		  -ServiceName $service.Name `
 		  -ProjectName $project.Name `

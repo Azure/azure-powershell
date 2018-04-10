@@ -15,6 +15,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Models
         GetUserTablesSql,
         ConnectToTargetSqlDbMi,
         MigrateSqlServerSqlDbMi,
-        ValidateMigrationInputSqlServerSqlDbMi
+        ValidateSqlServerSqlDbMi
     }
 }

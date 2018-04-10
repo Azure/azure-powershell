@@ -40,7 +40,7 @@
     <Compile Include="Cmdlets\ConnectionInfoCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToSourceSqlServerTaskCmdlet.cs" />
     <Compile Include="Cmdlets\NewFileShare.cs" />
-    <Compile Include="Cmdlets\ValidateMigrationInputSqlServerSqlDbMiTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\ValidateSqlServerSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToTargetSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\GetUserTableSqlCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToTargetSqlDbTaskCmdlet.cs" />
