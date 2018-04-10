@@ -7,8 +7,10 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -42,9 +44,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             {
                 // create target state
                 var templateEngine = new TemplateEngine(client);
-                var target = config.GetTargetState(current, templateEngine, parameters.Location);
+                
+                var virtualCurrent = new State();
+                virtualCurrent.GetOrAdd(resourceGroup, () => new ResourceGroup());
 
-                var template = config.CreateTemplate(client, target, templateEngine);
+                var virtualTarget = config.GetTargetState(
+                    virtualCurrent, templateEngine, parameters.Location);
+
+                var template = config.CreateTemplate(client, virtualTarget, templateEngine);
                 template.parameters = templateEngine
                     .SecureStrings
                     .Keys
@@ -58,17 +65,18 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                         new Output
                         {
                             type = "object",
-                            value = 
-                                "[reference('" 
-                                + config.GetIdFromResourceGroup().IdToString() + 
-                                "', '" + 
-                                config.Strategy.GetApiVersion(client) + 
+                            value =
+                                "[reference('"
+                                + config.GetIdFromResourceGroup().IdToString() +
+                                "', '" +
+                                config.Strategy.GetApiVersion(client) +
                                 "')]"
                         }
                     }
                 };
                 var templateResult = new Converters().Serialize(template).ToString();
-                asyncCmdlet.WriteObject(templateResult);
+                // asyncCmdlet.WriteObject(templateResult);
+                File.WriteAllText(parameters.OutputTemplateFile, templateResult, Encoding.UTF8);
 
                 // deployment
                 /*
@@ -113,23 +121,20 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
                 return output.GetModel<TModel>();
                 */
-                return null;
             }
-            else
-            {
-                var engine = new SdkEngine(client.SubscriptionId);
-                var target = config.GetTargetState(current, engine, parameters.Location);
 
-                // apply target state
-                var newState = await config.UpdateStateAsync(
-                    client,
-                    target,
-                    cancellationToken,
-                    new ShouldProcess(asyncCmdlet),
-                    asyncCmdlet.ReportTaskProgress);
+            var engine = new SdkEngine(client.SubscriptionId);
+            var target = config.GetTargetState(current, engine, parameters.Location);
 
-                return newState.Get(config) ?? current.Get(config);
-            }
+            // apply target state
+            var newState = await config.UpdateStateAsync(
+                client,
+                target,
+                cancellationToken,
+                new ShouldProcess(asyncCmdlet),
+                asyncCmdlet.ReportTaskProgress);
+
+            return newState.Get(config) ?? current.Get(config);
         }
     }
 }
