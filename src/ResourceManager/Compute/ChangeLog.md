@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.6.0
+* `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
+* `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
+* Update for Zone Resilient
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support availability zones.
 * Updated to the latest version of the Azure ClientRuntime
 

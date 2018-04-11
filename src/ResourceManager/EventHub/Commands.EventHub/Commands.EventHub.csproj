@@ -46,7 +46,6 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.3\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AuthorizationRule\GetAzureEventhubAuthorizationRules.cs" />
