@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.5
 * Updated to the latest version of the Azure ClientRuntime
 
 ## Version 0.2.4
