@@ -52,7 +52,8 @@ function Test-NewVmWin10
     try
     {
         $username = "admin01"
-        $password = "werWER345#%^${Get-ResourceName}" | ConvertTo-SecureString -AsPlainText -Force
+		$passwordSuffix = Get-ResourceName
+        $password = "werWER345#%^$passwordSuffix" | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmname-$vmname".tolower();
 
