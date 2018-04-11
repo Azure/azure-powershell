@@ -198,6 +198,7 @@
     <Compile Include="Certificates\StopBatchCertificateDeletionCommandTests.cs" />
     <Compile Include="ComputeNodes\DisableBatchComputeNodeSchedulingCommandTests.cs" />
     <Compile Include="ComputeNodes\EnableBatchComputeNodeSchedulingCommandTests.cs" />
+    <Compile Include="ComputeNodes\AddBatchComputeNodeServiceLogsCommandTests.cs" />
     <Compile Include="ComputeNodes\GetBatchComputeNodeLoginSettingsCommandTests.cs" />
     <Compile Include="ComputeNodes\RemoveBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommandTests.cs" />

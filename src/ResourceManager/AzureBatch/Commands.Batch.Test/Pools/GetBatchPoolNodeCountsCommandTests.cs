@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Action<BatchRequest<ProxyModels.AccountListPoolNodeCountsOptions, AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders>>> requestAction =
                 (request) =>
                 {
-                    ProxyModels.AccountListPoolNodeCountsOptions options = (ProxyModels.AccountListPoolNodeCountsOptions)request.Options;
+                    ProxyModels.AccountListPoolNodeCountsOptions options = request.Options;
                     requestFilter = options.Filter;
                 };
 
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             Action<BatchRequest<ProxyModels.AccountListPoolNodeCountsOptions, AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders>>> requestAction =
                 (request) =>
                 {
-                    ProxyModels.AccountListPoolNodeCountsOptions options = (ProxyModels.AccountListPoolNodeCountsOptions)request.Options;
+                    ProxyModels.AccountListPoolNodeCountsOptions options = request.Options;
                     requestFilter = options.Filter;
                 };
 

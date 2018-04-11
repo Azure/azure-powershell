@@ -992,6 +992,23 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
+        /// Builds a ComputeNodeGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.UploadBatchServiceLogsResult, ProxyModels.ComputeNodeUploadBatchServiceLogsHeaders> CreateComputeNodeServiceLogsAddResponse(int numberOfFilesUploaded, string virtualDirectoryName)
+        {
+            var response = new AzureOperationResponse<ProxyModels.UploadBatchServiceLogsResult, ProxyModels.ComputeNodeUploadBatchServiceLogsHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            ProxyModels.UploadBatchServiceLogsResult result = new ProxyModels.UploadBatchServiceLogsResult();
+            result.NumberOfFilesUploaded = numberOfFilesUploaded;
+            result.VirtualDirectoryName = virtualDirectoryName;
+
+            response.Body = result;
+
+            return response;
+        }
+
+        /// <summary>
         /// Uses Reflection to set a property value on an object. Can be used to bypass restricted set accessors.
         /// </summary>
         internal static void SetProperty(object obj, string propertyName, object propertyValue)

@@ -116,6 +116,7 @@ namespace PSModelGenerator
             {"Microsoft.Azure.Batch.TaskFailureInformation", "PSTaskFailureInformation"},
             {"Microsoft.Azure.Batch.TaskSchedulingPolicy", "PSTaskSchedulingPolicy"},
             {"Microsoft.Azure.Batch.TaskStatistics", "PSTaskStatistics"},
+            {"Microsoft.Azure.Batch.UploadBatchServiceLogsResult", "PSAddComputeNodeServiceLogsResult"},
             {"Microsoft.Azure.Batch.UsageStatistics", "PSUsageStatistics"},
             {"Microsoft.Azure.Batch.UserAccount", "PSUserAccount"},
             {"Microsoft.Azure.Batch.UserIdentity", "PSUserIdentity"},
