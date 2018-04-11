@@ -53,8 +53,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureAccount testAccount;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
+#if !NETSTANDARD
+
         public string PackageDirectory = @"..\..\..\..\..\..\Package\Debug";
         public string StackDirectory = @"..\..\..\..\..\..\Stack\Debug";
+#else
+        public string PackageDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Package", "Debug");
+        public string StackDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Stack", "Debug");
+#endif
 
         protected List<string> modules;
 
@@ -110,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                                     @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
 #else
                 return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile.NetCore\AzureRM.Profile.NetCore.psd1");
+                                    "ResourceManager","AzureResourceManager", "AzureRM.Profile.NetCore", "AzureRM.Profile.NetCore.psd1");
 #endif
             }
         }
@@ -125,7 +131,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
 #else
                 return Path.Combine(this.PackageDirectory,
-                    @"ResourceManager\AzureResourceManager\AzureRM.Resources.NetCore\AzureRM.Resources.NetCore.psd1");
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Resources.NetCore", "AzureRM.Resources.NetCore.psd1");
 
 #endif
             }
@@ -141,7 +147,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
 #else
                 return Path.Combine(this.PackageDirectory,
-                    @"ResourceManager\AzureResourceManager\AzureRM.Insights.NetCore\AzureRM.Insights.NetCore.psd1");
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Insights.NetCore", "AzureRM.Insights.NetCore.psd1");
 
 #endif
             }
@@ -157,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
 #else
                 return Path.Combine(this.PackageDirectory,
-                    @"ResourceManager\AzureResourceManager\AzureRM.Storage.NetCore\AzureRM.Storage.NetCore.psd1");
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Storage.NetCore", "AzureRM.Storage.NetCore.psd1");
 
 #endif
             }
@@ -168,8 +174,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
+#if !NETSTANDARD
                 return Path.Combine(this.PackageDirectory,
                                      @"Storage\Azure.Storage\Azure.Storage.psd1");
+#else
+                return Path.Combine(this.PackageDirectory,
+                     "Storage", "Azure.Storage.Netcore", "Azure.Storage.Netcore.psd1");
+
+#endif
             }
         }
 
@@ -183,7 +195,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
 #else
                 return Path.Combine(this.PackageDirectory,
-                    @"ResourceManager\AzureResourceManager\AzureRM.Network.NetCore\AzureRM.Network.NetCore.psd1");
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Network.NetCore", "AzureRM.Network.NetCore.psd1");
 
 #endif
             }
@@ -193,14 +205,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);
             return Path.Combine(this.PackageDirectory,
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+                                 "ResourceManager", "AzureResourceManager", basename, psd1FileName);
         }
 
         public string GetStackRMModulePath(string psd1FileName)
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);
             return Path.Combine(this.StackDirectory,
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+                                 "ResourceManager", "AzureResourceManager", basename , psd1FileName);
         }
 
         public string StackRMProfileModule
