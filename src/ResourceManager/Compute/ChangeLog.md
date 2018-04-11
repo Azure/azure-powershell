@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support a `Win10` image.
+* `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
 * Set minimum dependency of module to PowerShell 5.0
 
 ## Version 4.6.0
