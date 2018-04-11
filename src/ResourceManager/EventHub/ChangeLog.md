@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.3
 * Fixed AlternameName in New-AzureRmEventHubGeoDRConfiguration
 * Updated to the latest version of the Azure ClientRuntime
 

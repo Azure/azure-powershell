@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 8F7AF1B8-D769-452C-92CF-4486C3EB894D
@@ -16,44 +16,44 @@ Sets the operating system disk properties on a virtual machine.
 ### DefaultParamSet (Default)
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <DiskCreateOptionTypes>]
- [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
- [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-DiskSizeInGB <Int32>]
+ [-ManagedDiskId <String>] [-StorageAccountType <String>] [-WriteAccelerator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsParamSet
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <DiskCreateOptionTypes>] [-Windows]
- [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Windows]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>]
  [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsDiskEncryptionParameterSet
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <DiskCreateOptionTypes>] [-Windows]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Windows]
  [-DiskEncryptionKeyUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
  [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
- [-StorageAccountType <StorageAccountTypes>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
+ [-StorageAccountType <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### LinuxParamSet
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <DiskCreateOptionTypes>] [-Linux]
- [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <StorageAccountTypes>]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Linux]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>]
  [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LinuxDiskEncryptionParameterSet
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <DiskCreateOptionTypes>] [-Linux]
+ [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Linux]
  [-DiskEncryptionKeyUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
  [[-KeyEncryptionKeyVaultId] <String>] [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>]
- [-StorageAccountType <StorageAccountTypes>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
+ [-StorageAccountType <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -134,7 +134,7 @@ This setting affects the performance of the disk.
 ```yaml
 Type: CachingTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
@@ -161,10 +161,9 @@ In the case of a platform image, the *VhdUri* parameter is sufficient.
 - Empty.
 
 ```yaml
-Type: DiskCreateOptionTypes
+Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: FromImage, Empty, Attach
+Aliases:
 
 Required: False
 Position: 5
@@ -194,7 +193,7 @@ Specifies the location of the disk encryption key.
 ```yaml
 Type: String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 7
@@ -209,7 +208,7 @@ Specifies the resource ID of the Key Vault containing the disk encryption key.
 ```yaml
 Type: String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 8
@@ -224,7 +223,7 @@ Specifies the size, in GB, of the operating system disk.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -239,7 +238,7 @@ Specifies the location of the key encryption key.
 ```yaml
 Type: String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 9
@@ -254,7 +253,7 @@ Specifies the resource ID of the Key Vault containing the key encryption key.
 ```yaml
 Type: String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 10
@@ -270,7 +269,7 @@ Specify this parameter for user image based virtual machine deployment.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: LinuxParamSet, LinuxDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -285,7 +284,7 @@ Specifies the ID of a managed disk.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -328,10 +327,9 @@ Accept wildcard characters: False
 Specifies the storage account type of managed disk.
 
 ```yaml
-Type: StorageAccountTypes
+Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Aliases:
 
 Required: False
 Position: Named
@@ -382,7 +380,7 @@ Indicates that the operating system on the user image is Windows.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: WindowsParamSet, WindowsDiskEncryptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -397,7 +395,7 @@ Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

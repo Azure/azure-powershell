@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: FB9ACBA2-081E-4876-A21A-F5BA11CBEDA2
@@ -77,7 +77,7 @@ It gets downloaded to the virtual machine together with the configuration.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -94,7 +94,7 @@ It gets overwritten by the configuration data path provided through the Set-Azur
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,7 +110,7 @@ The file can be a Windows PowerShell script (.ps1) file or a Windows PowerShell 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -125,7 +125,7 @@ Specifies the name of the Azure storage container the configuration is uploaded 
 ```yaml
 Type: String
 Parameter Sets: UploadArchive
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -155,7 +155,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -186,7 +186,7 @@ Specifies the name of the resource group that contains the storage account.
 ```yaml
 Type: String
 Parameter Sets: UploadArchive
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -201,7 +201,7 @@ Indicates that this cmdlet excludes DSC resource dependencies from the configura
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -216,7 +216,7 @@ Specifies the Azure storage account name that is used to upload the configuratio
 ```yaml
 Type: String
 Parameter Sets: UploadArchive
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -231,7 +231,7 @@ Specifies the suffix for the storage end point.
 ```yaml
 Type: String
 Parameter Sets: UploadArchive
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

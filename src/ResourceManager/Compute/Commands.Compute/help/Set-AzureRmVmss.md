@@ -46,7 +46,7 @@ Run cmdlet in the background and return a Job to track progress.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -76,7 +76,7 @@ The instance ID of the virtual machine.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -91,7 +91,7 @@ Indicates that the cmdlet reimages the VMSS.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DefaultParameter
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +106,7 @@ Indicates that the cmdlet reimages all the disks in the VMSS.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: FriendMethod
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,7 +121,7 @@ Specifies the name of the resource group of the VMSS.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
