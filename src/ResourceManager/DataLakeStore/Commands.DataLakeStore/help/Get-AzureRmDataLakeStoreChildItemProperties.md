@@ -35,16 +35,24 @@ Get-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLak
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmDataLakeStoreChildItemProperties** is used to report the ADLS space usage or/and ACL usage for the given directory and it's sub directories and files.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get the disk usage and ACL usage for all subdirectories and files
+```
+PS C:\> Get-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -GetDiskUsage -IncludeFiles
 ```
 
-{{ Add example description here }}
+Get the disk usage and ACL usage for all subdirectories and files under /a. IncludeFiles ensures the usage is reported for files also
+
+### Example 2: Get the ACL usage for all subdirectories and files with the consistent ACL hidden
+```
+PS C:\> Get-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcls -IncludeFiles
+```
+
+Get the ACL usage for all subdirectories and files under /a. IncludeFiles ensures the usage is reported for files also. if /a/b and it's child directories has same ACLs as /a then HideConsistentAcls ensures ACLs for /a/b is not output.
+
 
 ## PARAMETERS
 
