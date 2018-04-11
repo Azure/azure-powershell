@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationsManagement/solutions/LogicAppsManagement(defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus)/providers/Microsoft.PolicyInsights/policyStates/default/queryResults?api-version=2017-12-12-preview&$top=2",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zL2QwNjEwYjI3LTk2NjMtNGMwNS04OWY4LTViNGJlMDFlODZhNS9yZXNvdXJjZWdyb3Vwcy9kZWZhdWx0cmVzb3VyY2Vncm91cC1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5PcGVyYXRpb25zTWFuYWdlbWVudC9zb2x1dGlvbnMvTG9naWNBcHBzTWFuYWdlbWVudChkZWZhdWx0d29ya3NwYWNlLWQwNjEwYjI3LTk2NjMtNGMwNS04OWY4LTViNGJlMDFlODZhNS1ldXMpL3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcG9saWN5U3RhdGVzL2RlZmF1bHQvcXVlcnlSZXN1bHRzP2FwaS12ZXJzaW9uPTIwMTctMTItMTItcHJldmlldyYkdG9wPTI=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "99f888f8-62db-409d-980e-82b98a97c51d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/0.9.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationsManagement/solutions/LogicAppsManagement(defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus)/providers/Microsoft.PolicyInsights/policyStates/$metadata#default\",\r\n  \"@odata.count\": 2,\r\n  \"value\": [\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationsManagement/solutions/LogicAppsManagement(defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus)/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"Timestamp\": \"2018-03-22T15:55:27Z\",\r\n      \"ResourceId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationsManagement/solutions/LogicAppsManagement(defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus)\",\r\n      \"PolicyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1\",\r\n      \"PolicyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/24813039-7534-408a-9842-eb99f45721b1\",\r\n      \"EffectiveParameters\": null,\r\n      \"IsCompliant\": false,\r\n      \"SubscriptionId\": \"d0610b27-9663-4c05-89f8-5b4be01e86a5\",\r\n      \"ResourceType\": \"/Microsoft.OperationsManagement/solutions\",\r\n      \"ResourceLocation\": \"eastus\",\r\n      \"ResourceGroup\": \"defaultresourcegroup-eus\",\r\n      \"ResourceTags\": \"tbd\",\r\n      \"PolicyAssignmentName\": \"ddd8ef92e3714a5ea3d208c1\",\r\n      \"PolicyAssignmentOwner\": \"tbd\",\r\n      \"PolicyAssignmentParameters\": \"{\\\"TAGNAME_1\\\":{\\\"value\\\":\\\"carolynz - initiative tag\\\"}}\",\r\n      \"PolicyAssignmentScope\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5\",\r\n      \"PolicyDefinitionName\": \"24813039-7534-408a-9842-eb99f45721b1\",\r\n      \"PolicyDefinitionAction\": \"audit\",\r\n      \"PolicyDefinitionCategory\": \"tbd\",\r\n      \"PolicySetDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/12b58873-e0f8-4b95-936c-86cbe7c9d697\",\r\n      \"PolicySetDefinitionName\": \"12b58873-e0f8-4b95-936c-86cbe7c9d697\",\r\n      \"PolicySetDefinitionOwner\": null,\r\n      \"PolicySetDefinitionCategory\": null,\r\n      \"PolicySetDefinitionParameters\": null,\r\n      \"ManagementGroupIds\": \"AzGovTest5,AzGovTest3,AzGovTest2,AzGovTest1,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"PolicyDefinitionReferenceId\": \"14799174781370023846\"\r\n    },\r\n    {\r\n      \"@odata.id\": null,\r\n      \"@odata.context\": \"https://management.azure.com/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationsManagement/solutions/LogicAppsManagement(defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus)/providers/Microsoft.PolicyInsights/policyStates/$metadata#default/$entity\",\r\n      \"Timestamp\": \"2018-03-22T15:55:27Z\",\r\n      \"ResourceId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationsManagement/solutions/LogicAppsManagement(defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus)\",\r\n      \"PolicyAssignmentId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/dcda79d769674aea8bfcaa49\",\r\n      \"PolicyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/c8b79b49-a579-4045-984e-1b249ab8b474\",\r\n      \"EffectiveParameters\": null,\r\n      \"IsCompliant\": false,\r\n      \"SubscriptionId\": \"d0610b27-9663-4c05-89f8-5b4be01e86a5\",\r\n      \"ResourceType\": \"/Microsoft.OperationsManagement/solutions\",\r\n      \"ResourceLocation\": \"eastus\",\r\n      \"ResourceGroup\": \"defaultresourcegroup-eus\",\r\n      \"ResourceTags\": \"tbd\",\r\n      \"PolicyAssignmentName\": \"dcda79d769674aea8bfcaa49\",\r\n      \"PolicyAssignmentOwner\": \"tbd\",\r\n      \"PolicyAssignmentParameters\": \"{\\\"allowedLocations\\\":{\\\"value\\\":[\\\"East US\\\"]}}\",\r\n      \"PolicyAssignmentScope\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5\",\r\n      \"PolicyDefinitionName\": \"c8b79b49-a579-4045-984e-1b249ab8b474\",\r\n      \"PolicyDefinitionAction\": \"audit\",\r\n      \"PolicyDefinitionCategory\": \"tbd\",\r\n      \"PolicySetDefinitionId\": \"\",\r\n      \"PolicySetDefinitionName\": \"\",\r\n      \"PolicySetDefinitionOwner\": null,\r\n      \"PolicySetDefinitionCategory\": null,\r\n      \"PolicySetDefinitionParameters\": null,\r\n      \"ManagementGroupIds\": \"AzGovTest5,AzGovTest3,AzGovTest2,AzGovTest1,72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n      \"PolicyDefinitionReferenceId\": \"\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4305"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          ":a0dd0b24-8031-4ea7-9808-43804dcca787"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14988"
+        ],
+        "x-ms-correlation-request-id": [
+          "3cb89c43-68eb-4f24-88db-784bc9e4bbbd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180322T181817Z:3cb89c43-68eb-4f24-88db-784bc9e4bbbd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 22 Mar 2018 18:18:16 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "d0610b27-9663-4c05-89f8-5b4be01e86a5"
+  }
+}
