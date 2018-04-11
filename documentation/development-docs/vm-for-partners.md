@@ -35,7 +35,7 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
     ```PowerShell
     Connect-AzureRmAccount
     ```
-5. Execute the Powershell script. The script is essentially does the following:
+5. Execute the Powershell script. The script essentially does the following:
     1. Checks if a **resource group** with the name ```$ResourceGroupName``` exists if not - creates it for you.
     2. Checks if a **storage account**  with the name ```$StorageAccountName``` exists if not - creates it for you.
     3. Checks if a **storage account container** with the name ```$StorageAccountName``` exists if not - creates it for you.
