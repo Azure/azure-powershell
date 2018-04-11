@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             getOperations: client => client.Sites,
             getAsync: (o, p) => o.GetSiteAsync(p.ResourceGroupName, p.Name, null, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateSiteAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 20,
-            compulsoryLocation: true);
+            createTime: _ => 20);
 
         public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup, 
             ResourceConfig<ServerFarmWithRichSku> plan, string siteName) => 
@@ -47,8 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             getOperations: client => client.WebApps,
             getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 20,
-            compulsoryLocation: true);
+            createTime: _ => 20);
 
         public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup,
             ResourceConfig<AppServicePlan> plan, string siteName) =>

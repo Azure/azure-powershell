@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             Func<WebSiteManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
-            Func<TModel, int> createTime,
-            bool compulsoryLocation = false) where TModel : Resource
+            Func<TModel, int> createTime) where TModel : Resource
             => ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.Web", provider),
                 getApiVersion: client => client.ApiVersion(),

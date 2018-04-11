@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             getOperations: client => client.ServerFarms,
             getAsync: (o, p) => o.GetServerFarmAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateServerFarmAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 5,
-            compulsoryLocation: true);
+            createTime: _ => 5);
 
         public static ResourceConfig<ServerFarmWithRichSku> CreateServerFarmConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
@@ -47,8 +46,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             getOperations: client => client.AppServicePlans,
             getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
             createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 5,
-            compulsoryLocation: true);
+            createTime: _ => 5);
 
         public static ResourceConfig<AppServicePlan> CreateServerFarmConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
