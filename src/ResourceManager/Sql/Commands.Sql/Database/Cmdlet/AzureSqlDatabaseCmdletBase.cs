@@ -24,6 +24,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     public abstract class AzureSqlDatabaseCmdletBase<TModel> : AzureSqlCmdletBase<TModel, AzureSqlDatabaseAdapter>
     {
+        // Some const variables used by SetAzureSqlDatabase and NewAzureSqlDatabase cmdlet
+        public const string DtuDatabaseParameterSet = "DtuBasedDatabase";
+        public const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
+        public const string DefaultDatabaseSkuName = "Standard";
+
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>

@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Database.Model;
+using SqlDatabaseModel = Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 
@@ -61,27 +62,34 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// <summary>
         /// Gets or sets the edition of the elastic pool
         /// </summary>
-        public DatabaseEdition? Edition { get; set; }
+        public SqlDatabaseModel.DatabaseEdition? Edition { get; set; }
 
         /// <summary>
-        /// Gets or sets the Dtu for the elastic pool
+        /// Gets or sets the Compute generation name of the elastic pool
         /// </summary>
-        public int? Dtu { get; set; }
+        public string ComputeGeneration { get; set; }
 
         /// <summary>
-        /// Gets or sets the max Dtu per database in the elastic pool
+        /// Gets or sets the Sku capacity of the elastic pool
         /// </summary>
-        public int? DatabaseDtuMax { get; set; }
+        public int? Capacity { get; set; }
 
         /// <summary>
-        /// Gets or sets the min Dtu per database in the elastic pool
+        /// Gets or sets the Minumum capacity of the elastic pool
+        ///    For Dtu pool, it is the min Database Dtu of the pool; for Vcore pool, it is the min vcore capacity of the pool
         /// </summary>
-        public int? DatabaseDtuMin { get; set; }
+        public double? MinCapacity { get; set; }
 
         /// <summary>
-        /// Gets or sets the amount of storage the elastic pool has
+        /// Gets or sets the Maximum capacity of the elastic pool
+        ///    For Dtu pool, it is the max Database Dtu of the pool; for Vcore pool, it is the max vcore capacity of the pool
         /// </summary>
-        public int? StorageMB { get; set; }
+        public double? MaxCapacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount of storage in bytes the elastic pool has in bytes
+        /// </summary>
+        public long? MaxSizeBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Elastic Pool.
@@ -92,5 +100,27 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the zone redundant option of the elastic pool.
         /// </summary>
         public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Sku of the elastic pool.
+        /// </summary>
+        public Sku Sku { get; set; }
+
+        /// <summary>
+        /// Gets or sets the per database settings of the elastic pool.
+        /// </summary>
+        public ElasticPoolPerDatabaseSettings PerDatabaseSettings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the kind of the elastic pool. This is metadata used for the Azure
+        /// portal experience.
+        /// </summary>
+        public string Kind { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type to apply for this elastic pool.
+        /// Possible values include: 'LicenseIncluded', 'BasePrice'
+        /// </summary>
+        public string LicenseType { get; set; }
     }
 }

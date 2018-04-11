@@ -34,6 +34,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
+        public void TestVcoreElasticPoolCreate()
+        {
+            RunPowerShellTest("Test-CreateVcoreElasticPool");
+        }
+
+        [Fact]
         public void TestElasticPoolCreateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-CreateElasticPoolWithZoneRedundancy");
@@ -44,6 +50,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestElasticPoolUpdate()
         {
             RunPowerShellTest("Test-UpdateElasticPool");
+        }
+
+        [Fact]
+        public void TestVcoreElasticPoolUpdate()
+        {
+            RunPowerShellTest("Test-UpdateVcoreElasticPool");
         }
 
         [Fact]
