@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 4.5.0
+* Add commandlets for new feature - Instance Failover Groups
+	- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity
+	- New-AzureRmSqlDatabaseInstanceFailoverGroup creates a new Instance Failover Group
+	- Remove-AzureRmSqlDatabaseInstanceFailoverGroup Instance Failover Group deletes the Failover Group
+	- Set-AzureRmSqlDatabaseInstanceFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Instance Failover Group
+	- Switch-AzureRmSqlDatabaseInstanceFailoverGroup issues the failover operation with data loss or without data loss
+
 ## Version 4.4.0
 * Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
 * Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response
