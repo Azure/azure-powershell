@@ -44,23 +44,24 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Subscription, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Subscription.1.0.0-preview\lib\net452\Microsoft.Azure.Management.Subscription.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Subscription.1.1.0-preview\lib\net452\Microsoft.Azure.Management.Subscription.dll</HintPath>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\NewAzureRmSubscriptionDefinition.cs" />
-    <Compile Include="Cmdlets\GetAzureRmSubscriptionDefinition.cs" />
-    <Compile Include="Common\AzureSubscriptionDefinitionCmdletBase.cs" />
+    <Compile Include="Cmdlets\NewAzureRmSubscription.cs" />
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="Models\PSSubscriptionDefinition.cs" />
+    <Compile Include="Models\PSAzureSubscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4AEF-B5BD-DB9186B8184B}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
+      <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
+      <Name>Commands.Common.Graph.RBAC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
