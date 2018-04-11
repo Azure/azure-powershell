@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 }
             };
 
-            Sku sku = new Sku();
+            Management.Internal.Resources.Models.Sku sku = new Management.Internal.Resources.Models.Sku();
             if (!string.IsNullOrWhiteSpace(model.RequestedServiceObjectiveName))
             {
                 sku.Name = model.RequestedServiceObjectiveName;

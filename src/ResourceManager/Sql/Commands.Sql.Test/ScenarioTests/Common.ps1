@@ -613,3 +613,12 @@ function Get-DNSNameBasedOnEnvironment ()
      }
      return ".database.windows.net"
 }
+
+<#
+	.SYNOPSIS
+	Get a managed instance that is no longer needed for tests
+#>
+function Get-ManagedInstanceForTest ($resourceGroup, $serverName)
+{
+	Get-AzureRmResource -ResourceType "Microsoft.SQL/managedInstances" -ResourceGroupName $resourceGroup -ResourceName $serverName
+}
