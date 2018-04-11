@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.2.0
 * Updated to the latest version of the Azure ClientRuntime
 * Add debug functionality
 * Update the version of the ADLS dataplane SDK to 1.1.2
