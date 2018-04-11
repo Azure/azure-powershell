@@ -21,15 +21,14 @@ using Xunit;
 namespace Subscription.Test.ScenarioTests
 {
     /// <summary>
-    /// The following tests require four subscription definitions to be created manually at this time. This can 
-    /// be done by calling New-AzureRmSubscriptionDefinition. At this time, this can only be done when your tenant is 
-    /// whitelisted by Microsoft.
+    /// The following tests require four subscriptions to be created manually. This can be done by 
+    /// calling New-AzureRmSubscription. At this time, this can only be done by EA customers.
     /// </summary>
-    public class SubscriptionDefinitionTests
+    public class SubscriptionTests
     {
         private XunitTracingInterceptor _logger;
 
-        public SubscriptionDefinitionTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SubscriptionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
@@ -38,22 +37,9 @@ namespace Subscription.Test.ScenarioTests
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListSubscriptionDefinitions()
+        public void TestNewSubscription()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListSubscriptionDefinitions");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetSubscriptionDefinitionByName()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetSubscriptionDefinitionByName");
-        }
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSubscriptionDefinition()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewSubscriptionDefinition");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-NewSubscription");
         }
     }
 }
