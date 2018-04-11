@@ -18,16 +18,16 @@ Get-AzureRmDataLakeStoreChildItemSummary [-Account] <String> [-Path] <DataLakeSt
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmDataLakeStoreChildItemSummary** retrieves the content summary for a given path. It recursively computes total number of files, directories and total size of all the files under the given path.
 
 ## EXAMPLES
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+### Example 1: Get the content summary of a folder
+```
+PS C:\> Get-AzureRmDataLakeStoreChildItemSummary -Account ContosoADL -Path /a -Concurrency 128
 ```
 
-{{ Add example description here }}
+It lists number of total directories, files and their size contained under /a.
 
 ## PARAMETERS
 
