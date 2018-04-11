@@ -6,7 +6,10 @@
 # Generated on: 12/02/2016
 #  
   
-@{  
+@{
+
+# Script module or binary module file associated with this manifest.
+# RootModule = ''
   
 # Version number of this module.  
 ModuleVersion = '0.5.0'
@@ -27,7 +30,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 Description = 'Microsoft Azure PowerShell - Analysis Services server management'
   
 # Minimum version of the Windows PowerShell engine required by this module  
-PowerShellVersion = '3.0'  
+PowerShellVersion = '5.0'  
   
 # Name of the Windows PowerShell host required by this module  
 PowerShellHostName = ''  

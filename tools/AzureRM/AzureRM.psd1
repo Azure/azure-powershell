@@ -33,7 +33,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 Description = 'Azure Resource Manager Module'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '3.0'
+PowerShellVersion = '5.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -95,7 +95,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.6.0';
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.3'; }, 
                @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '5.5.2'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.3'; }, 
-               @{ModuleName = 'AzureRM.ServerManagement'; RequiredVersion = '4.1.2'; }, 
                @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.4'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.4'; }, 
                @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '5.0.6'; }, 

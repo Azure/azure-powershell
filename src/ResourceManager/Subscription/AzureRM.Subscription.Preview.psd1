@@ -33,7 +33,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 Description = 'Microsoft Azure PowerShell - Subscription cmdlets for Azure Resource Manager'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '3.0'
+PowerShellVersion = '5.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -72,8 +72,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.Subscription.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmSubscriptionDefinition', 
-               'New-AzureRmSubscriptionDefinition'
+CmdletsToExport = 'New-AzureRmSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -96,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ARM','Subscription','SubscriptionDefinition'
+        Tags = 'Azure','ARM','Subscription'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
