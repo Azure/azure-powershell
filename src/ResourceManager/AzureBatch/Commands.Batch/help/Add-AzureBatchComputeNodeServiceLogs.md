@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/add-azurebatchcomputenodeservicelogs
 schema: 2.0.0
 ---
 
