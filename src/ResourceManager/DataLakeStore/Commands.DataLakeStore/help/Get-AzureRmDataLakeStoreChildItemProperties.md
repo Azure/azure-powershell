@@ -133,7 +133,9 @@ Accept wildcard characters: False
 ```
 
 ### -HideConsistentAcls
-Do not show directory subtree if the ACLs are the same throughout the entire subtree. This makes it easier to see only the paths up to which the ACLs differ.For example if all files and folders under /a/b are the same, do not show the subtreeunder /a/b, and just output /a/b with 'True' in the Consistent ACL columnCannot be set if IncludeFiles is not set, because consistent Acl cannot be determined without retrieving acls for the files.```yaml
+Do not show directory subtree if the ACLs are the same throughout the entire subtree. This makes it easier to see only the paths up to which the ACLs differ.For example if all files and folders under /a/b are the same, do not show the subtreeunder /a/b, and just output /a/b with 'True' in the Consistent ACL columnCannot be set if IncludeFiles is not set, because consistent Acl cannot be determined without retrieving acls for the files.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: GetAllProperties, GetAclDump
 Aliases:
@@ -146,7 +148,9 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeFiles
-Show stats at file level (default is to show directory-level info only)```yaml
+Show stats at file level (default is to show directory-level info only)
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -174,7 +178,9 @@ Accept wildcard characters: False
 ```
 
 ### -OutputPath
-Path to output file. Can be a Local path or Adl Path. By default it is local. If SaveToAdl is pecified then it is an ADL path in the same account```yaml
+Path to output file. Can be a Local path or Adl Path. By default it is local. If SaveToAdl is pecified then it is an ADL path in the same account
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
