@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             bool compulsoryLocation = false) where TModel : Resource
             => ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.Web", provider),
-                getApiVersion: client => client.ApiVersion,
+                getApiVersion: client => client.ApiVersion(),
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
