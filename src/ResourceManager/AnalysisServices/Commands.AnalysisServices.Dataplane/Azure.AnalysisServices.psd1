@@ -6,7 +6,10 @@
 # Generated on: 12/02/2016
 #  
   
-@{  
+@{
+
+# Script module or binary module file associated with this manifest.
+# RootModule = ''
   
 # Version number of this module.  
 ModuleVersion = '0.5.0'
