@@ -73,9 +73,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 permission = fileShare.GetPermissionsAsync().Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
 
             SharedAccessFilePolicy sharedAccessPolicy =

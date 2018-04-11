@@ -86,17 +86,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 Task.Run(() => blob.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (StorageException se)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                if (se.RequestInformation == null ||
-                    (se.RequestInformation.HttpStatusCode != (int)HttpStatusCode.NotFound))
+                if (((StorageException)e.InnerException).RequestInformation == null ||
+                    (((StorageException)e.InnerException).RequestInformation.HttpStatusCode != (int)HttpStatusCode.NotFound))
                 {
-                    throw;
+                    throw e.InnerException;
                 }
 
                 return null;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException se)
+            catch (StorageException se)
             {
                 if (se.RequestInformation == null ||
                     (se.RequestInformation.HttpStatusCode != (int)HttpStatusCode.NotFound))
@@ -136,9 +136,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 Task.Run(() => targetBlob.FetchAttributesAsync()).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
 
             return targetBlob;
