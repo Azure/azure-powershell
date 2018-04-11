@@ -104,9 +104,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     continuationToken = response.ContinuationToken;
                     results.AddRange(response.Results);
                 }
-                catch (AggregateException e) when (e.InnerException is StorageException storageException)
+                catch (AggregateException e) when (e.InnerException is StorageException)
                 {
-                    throw storageException;
+                    throw e.InnerException;
                 }
             } while (continuationToken != null);
             return results;
@@ -126,9 +126,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return container.GetPermissionsAsync(accessCondition, options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -155,9 +155,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return container.CreateIfNotExistsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -174,9 +174,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => container.DeleteAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -194,9 +194,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => container.SetPermissionsAsync(permissions, accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -272,9 +272,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 {
                     return container.ExistsAsync(options, operationContext).Result;
                 }
-                catch (AggregateException e) when (e.InnerException is StorageException storageException)
+                catch (AggregateException e) when (e.InnerException is StorageException)
                 {
-                    throw storageException;
+                    throw e.InnerException;
                 }
             }
         }
@@ -298,9 +298,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                 {
                     return blob.ExistsAsync(options, operationContext).Result;
                 }
-                catch (AggregateException e) when (e.InnerException is StorageException storageException)
+                catch (AggregateException e) when (e.InnerException is StorageException)
                 {
-                    throw storageException;
+                    throw e.InnerException;
                 }
             }
         }
@@ -319,9 +319,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => blob.DeleteAsync(deleteSnapshotsOption, accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -338,9 +338,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => container.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -356,9 +356,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => blob.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -374,9 +374,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => blob.SetPropertiesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -393,9 +393,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => blob.SetMetadataAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -425,16 +425,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     throw;
                 }
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                if (storageException.IsSuccessfulResponse())
+                if (((StorageException)e.InnerException).IsSuccessfulResponse())
                 {
                     //The abort operation is successful, although get an exception
                     return;
                 }
                 else
                 {
-                    throw storageException;
+                    throw e.InnerException;
                 }
             }
         }
@@ -472,9 +472,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                         throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
                 }
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -518,9 +518,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                         throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
                 }
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -765,9 +765,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return container.ListBlobsSegmentedAsync(prefix, useFlatBlobListing, blobListingDetails, maxResults, currentToken, options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -785,9 +785,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return this.BlobClient.ListContainersSegmentedAsync(prefix, detailsIncluded, maxResults, currentToken, options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 

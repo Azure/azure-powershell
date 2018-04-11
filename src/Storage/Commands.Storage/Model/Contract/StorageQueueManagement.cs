@@ -80,9 +80,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     continuationToken = response.ContinuationToken;
                     results.AddRange(response.Results);
                 }
-                catch (AggregateException e) when (e.InnerException is StorageException storageException)
+                catch (AggregateException e) when (e.InnerException is StorageException)
                 {
-                    throw storageException;
+                    throw e.InnerException;
                 }
             } while (continuationToken != null);
             return results;
@@ -109,9 +109,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     return null;
                 }
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -127,9 +127,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => queue.FetchAttributesAsync(options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -156,9 +156,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return queue.CreateIfNotExistsAsync(options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -174,9 +174,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => queue.DeleteAsync(options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -193,9 +193,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return queue.ExistsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -211,9 +211,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return queue.GetPermissionsAsync(options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -242,9 +242,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => queue.SetPermissionsAsync(queuePermissions, requestOptions, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
     }

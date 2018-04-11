@@ -75,9 +75,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 fileSharePermissions = fileShare.GetPermissionsAsync().Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
 
             //Add new policy
@@ -95,9 +95,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 Task.Run(() => fileShare.SetPermissionsAsync(fileSharePermissions)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
 
             WriteObject(Policy);

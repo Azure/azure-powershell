@@ -70,9 +70,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => share.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -82,9 +82,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => share.SetPropertiesAsync(accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -173,9 +173,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return share.GetPermissionsAsync(accessCondition, options, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -187,9 +187,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => share.SetPermissionsAsync(permissions, accessCondition, options, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 

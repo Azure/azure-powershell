@@ -77,9 +77,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     continuationToken = response.ContinuationToken;
                     results.AddRange(response.Results);
                 }
-                catch (AggregateException e) when (e.InnerException is StorageException storageException)
+                catch (AggregateException e) when (e.InnerException is StorageException)
                 {
-                    throw storageException;
+                    throw e.InnerException;
                 }
             } while (continuationToken != null);
             return results;
@@ -108,9 +108,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return table.CreateIfNotExistsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -126,9 +126,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => table.DeleteAsync(requestOptions, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -145,9 +145,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return table.ExistsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -163,9 +163,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 return table.GetPermissionsAsync(requestOptions, operationContext).Result;
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
@@ -195,9 +195,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             {
                 Task.Run(() => table.SetPermissionsAsync(tablePermissions, requestOptions, operationContext)).Wait();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException storageException)
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                throw storageException;
+                throw e.InnerException;
             }
         }
 
