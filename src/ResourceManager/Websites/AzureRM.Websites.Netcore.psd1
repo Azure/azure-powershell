@@ -54,7 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll', '.\Microsoft.Azure.Commands.Common.Strategies.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll', '.\Microsoft.Azure.Commands.Common.Strategies.4.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -72,27 +72,27 @@ NestedModules = @('.\Microsoft.Azure.Commands.Websites.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmAppServicePlan', 'Set-AzureRmAppServicePlan', 
-               'New-AzureRmAppServicePlan', 'Remove-AzureRmAppServicePlan', 
-               'Get-AzureRmWebAppSlot', 'Get-AzureRmWebAppSlotConfigName', 
-               'Get-AzureRmWebAppSlotMetrics', 
-               'Get-AzureRmWebAppSlotPublishingProfile', 'New-AzureRmWebAppSlot', 
-               'Remove-AzureRmWebAppSlot', 
-               'Reset-AzureRmWebAppSlotPublishingProfile', 
-               'Restart-AzureRmWebAppSlot', 'Set-AzureRmWebAppSlot', 
-               'Set-AzureRmWebAppSlotConfigName', 'Start-AzureRmWebAppSlot', 
-               'Stop-AzureRmWebAppSlot', 'Switch-AzureRmWebAppSlot', 
-               'New-AzureRmWebAppDatabaseBackupSetting', 
-               'Restore-AzureRmWebAppBackup', 'Get-AzureRmAppServicePlanMetrics', 
-               'Get-AzureRmWebAppCertificate', 'Get-AzureRmWebAppSSLBinding', 
-               'New-AzureRmWebAppSSLBinding', 'Remove-AzureRmWebAppSSLBinding', 
-               'Edit-AzureRmWebAppBackupConfiguration', 'Get-AzureRmWebAppBackup', 
-               'Get-AzureRmWebAppBackupConfiguration', 
-               'Get-AzureRmWebAppBackupList', 'Get-AzureRmWebAppMetrics', 
-               'Get-AzureRmWebAppPublishingProfile', 'Get-AzureRmWebApp', 
-               'New-AzureRmWebAppBackup', 'Remove-AzureRmWebApp', 
-               'New-AzureRmWebApp', 'Remove-AzureRmWebAppBackup', 
-               'Reset-AzureRmWebAppPublishingProfile', 'Restart-AzureRmWebApp', 
+CmdletsToExport = 'Get-AzureRmAppServicePlan', 'Set-AzureRmAppServicePlan',
+               'New-AzureRmAppServicePlan', 'Remove-AzureRmAppServicePlan',
+               'Get-AzureRmWebAppSlot', 'Get-AzureRmWebAppSlotConfigName',
+               'Get-AzureRmWebAppSlotMetrics',
+               'Get-AzureRmWebAppSlotPublishingProfile', 'New-AzureRmWebAppSlot',
+               'Remove-AzureRmWebAppSlot',
+               'Reset-AzureRmWebAppSlotPublishingProfile',
+               'Restart-AzureRmWebAppSlot', 'Set-AzureRmWebAppSlot',
+               'Set-AzureRmWebAppSlotConfigName', 'Start-AzureRmWebAppSlot',
+               'Stop-AzureRmWebAppSlot', 'Switch-AzureRmWebAppSlot',
+               'New-AzureRmWebAppDatabaseBackupSetting',
+               'Restore-AzureRmWebAppBackup', 'Get-AzureRmAppServicePlanMetrics',
+               'Get-AzureRmWebAppCertificate', 'Get-AzureRmWebAppSSLBinding',
+               'New-AzureRmWebAppSSLBinding', 'Remove-AzureRmWebAppSSLBinding',
+               'Edit-AzureRmWebAppBackupConfiguration', 'Get-AzureRmWebAppBackup',
+               'Get-AzureRmWebAppBackupConfiguration',
+               'Get-AzureRmWebAppBackupList', 'Get-AzureRmWebAppMetrics',
+               'Get-AzureRmWebAppPublishingProfile', 'Get-AzureRmWebApp',
+               'New-AzureRmWebAppBackup', 'Remove-AzureRmWebApp',
+               'New-AzureRmWebApp', 'Remove-AzureRmWebAppBackup',
+               'Reset-AzureRmWebAppPublishingProfile', 'Restart-AzureRmWebApp',
                'Set-AzureRmWebApp', 'Start-AzureRmWebApp', 'Stop-AzureRmWebApp'
 
 # Variables to export from this module
@@ -134,7 +134,7 @@ PrivateData = @{
         # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
