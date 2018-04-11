@@ -111,7 +111,8 @@ CmdletsToExport = 'Remove-AzureRmBatchAccount', 'Get-AzureRmBatchAccount',
                'Enable-AzureBatchTask', 'Set-AzureBatchTask', 'Stop-AzureBatchTask', 
                'Get-AzureBatchComputeNode', 'Get-AzureBatchJobSchedule', 
                'New-AzureBatchJobSchedule', 'Remove-AzureBatchJobSchedule', 
-               'Get-AzureBatchTaskCounts', 'Get-AzureBatchPoolNodeCounts'
+               'Get-AzureBatchTaskCounts', 'Get-AzureBatchPoolNodeCounts',
+               'Add-AzureBatchComputeNodeServiceLogs'
 
 # Variables to export from this module
 # VariablesToExport = @()

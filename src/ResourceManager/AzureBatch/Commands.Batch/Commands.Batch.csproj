@@ -90,10 +90,12 @@
     <Compile Include="BatchAccounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="BatchAccounts\SetBatchAccountCommand.cs" />
     <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommand.cs" />
+    <Compile Include="ComputeNodes\AddBatchComputeNodeServiceLogsCommand.cs" />
     <Compile Include="Jobs\GetBatchJobPreparationAndReleaseTaskStatusCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
     <Compile Include="Models\AccountCreateParameters.cs" />
     <Compile Include="Models\BatchClient.ApplicationPackages.cs" />
+    <Compile Include="Models\AddComputeNodeServiceLogsParameters.cs" />
     <Compile Include="Models\ListJobPreparationAndReleaseStatusOptions.cs" />
     <Compile Include="Models\GetTaskCountsOptions.cs" />
     <Compile Include="Models\ListPoolNodeCountsOptions.cs" />

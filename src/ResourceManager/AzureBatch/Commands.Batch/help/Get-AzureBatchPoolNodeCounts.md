@@ -11,16 +11,24 @@ Gets Batch node counts per node state grouped by pool id.
 
 ## SYNTAX
 
-### Id
-```
-Get-AzureBatchPoolNodeCounts [-PoolId] <String> -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>]
-```
+Get-AzureBatchPoolNodeCounts
+   [-MaxCount <Int32>]
+   -BatchContext <BatchAccountContext>
+   [-DefaultProfile <IAzureContextContainer>]
+   [<CommonParameters>]
 
-### ParentObject
-```
-Get-AzureBatchPoolNodeCounts [[-Pool] <PSCloudPool>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>]
+Get-AzureBatchPoolNodeCounts
+   [[-PoolId] <String>]
+   -BatchContext <BatchAccountContext>
+   [-DefaultProfile <IAzureContextContainer>]
+   [<CommonParameters>]
+
+Get-AzureBatchPoolNodeCounts
+   [[-Pool] <PSCloudPool>]
+   -BatchContext <BatchAccountContext>
+   [-DefaultProfile <IAzureContextContainer>]
+   [<CommonParameters>]
+
 ```
 
 ## DESCRIPTION
@@ -31,25 +39,25 @@ The **Get-AzureBatchPoolNodeCounts** cmdlet allows customers to get back node co
 
 To list node counts per node state for pools under current batch account context.
 
-PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName batchtestaccount
+PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
 PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext
 
 Dedicated                                          LowPriority                                        PoolId
 ---------                                          -----------                                        ------
-Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Pool1
-Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Pool2
+Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
+Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool2
 
 To show node counts per node state for a pool given pool id:
 
-PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $account -PoolId Pool1
+PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 
 Dedicated                                          LowPriority                                        PoolId
 ---------                                          -----------                                        ------
-Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Pool1
+Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
 
 A PSNodeCounts object looks like this:
 
-PS C:\> $poolnodecounts = Get-AzureBatchPoolNodeCounts -BatchContext $account -PoolId Pool1
+PS C:\> $poolnodecounts = Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 PS C:\> $poolnodecounts.Dedicated
 
 Creating            : 1
@@ -66,6 +74,12 @@ Total               : 8
 Unknown             : 0
 Unusable            : 0
 WaitingForStartTask : 0
+
+PS C:\> Get-AzureBatchPool -Id "contosopool1" -BatchContext $batchContext | Get-AzureBatchPoolNodeCounts -BatchContext $batchContext
+
+Dedicated                                          LowPriority                                        PoolId
+---------                                          -----------                                        ------
+Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
 
 ## PARAMETERS
 
@@ -142,7 +156,6 @@ Microsoft.Azure.Commands.Batch.BatchAccountContext
 
 
 ## OUTPUTS
-
 ### Microsoft.Azure.Commands.Batch.Models.PSPoolNodeCounts
 
 

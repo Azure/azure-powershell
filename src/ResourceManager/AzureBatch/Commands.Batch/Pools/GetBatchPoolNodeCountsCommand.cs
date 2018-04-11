@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
-using System.Management.Automation.Language;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
@@ -32,8 +31,8 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, ValueFromPipeline = true, Mandatory = false)]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, Mandatory = false)]
+        [ValidateNotNull]
         public PSCloudPool Pool { get; set; }
 
         [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
