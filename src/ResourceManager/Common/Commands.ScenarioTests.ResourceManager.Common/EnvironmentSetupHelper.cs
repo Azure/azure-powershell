@@ -55,11 +55,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
 #if !NETSTANDARD
 
-        public string PackageDirectory = @"..\..\..\..\..\..\Package\Debug";
+        public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
         public string StackDirectory = @"..\..\..\..\..\..\Stack\Debug";
 #else
         public string PackageDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Package", "Debug");
-        public string StackDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Stack", "Debug");
+        public string StackDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "..", "Stack", "Debug");
 #endif
 
         protected List<string> modules;
