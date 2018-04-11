@@ -1,4 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Strategies;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -30,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 
             foreach (var p in asyncCmdlet.Parameters)
             {
-                asyncCmdlet.WriteVerbose(p.Key + " = " + p.Value?.ToString());
+                asyncCmdlet.WriteVerbose(p.Key + " = " + ToPowerShellString(p.Value));
             }
 
             // apply target state
@@ -42,6 +45,25 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 asyncCmdlet.ReportTaskProgress);
 
             return newState.Get(config) ?? current.Get(config);
+        }
+
+        static string ToPowerShellString(object value)
+        {
+            if (value == null)
+            {
+                return "$null";
+            }
+            var s = value as string;
+            if (s != null)
+            {
+                return "\"" + s + "\"";
+            }
+            var e = value as IEnumerable;
+            if (e != null)
+            {
+                return string.Join(",", e.Cast<object>().Select(ToPowerShellString));
+            }
+            return value.ToString();
         }
     }
 }
