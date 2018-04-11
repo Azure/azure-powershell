@@ -11,6 +11,9 @@ Locale: en-US
 The Azure Batch cmdlets in the Azure module enable you to manage Microsoft Azure Batch services in Azure PowerShell.
 
 ## AzureRM.Batch Cmdlets
+### [Add-AzureBatchComputeNodeServiceLogs](Add-AzureBatchComputeNodeServiceLogs.md)
+Upload compute node service logs to an Azure Storage container.
+
 ### [Disable-AzureBatchAutoScale](Disable-AzureBatchAutoScale.md)
 Disables automatic scaling of a pool.
 

@@ -11,7 +11,7 @@ Upload Azure Batch service log files from the specified compute node to an Azure
 
 ## SYNTAX
 
-Get-AzureBatchPoolNodeCounts
+Add-AzureBatchComputeNodeServiceLogs
    [-PoolId <string>]
    [-ComputeNodeId <string>]
    [-ContainerUrl <string>]
@@ -21,7 +21,7 @@ Get-AzureBatchPoolNodeCounts
    [-DefaultProfile <IAzureContextContainer>]
    [<CommonParameters>]
 
-Get-AzureBatchPoolNodeCounts
+Add-AzureBatchComputeNodeServiceLogs
    [-ComputeNode <PSComputeNode>]
    [-ContainerUrl <string>]
    [-StartTime <StartTime>]
