@@ -19,11 +19,13 @@
 function Test-CreateElasticPool
 {
     # Setup 
-	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
 
     try
     {
+		## Create Dtu based pool with DtuPoolParameterSet
         # Create a pool with all values
         $poolName = Get-ElasticPoolName
         $job = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -32,16 +34,52 @@ function Test-CreateElasticPool
 		$ep1 = $job.Output
 
         Assert-NotNull $ep1
-        Assert-AreEqual 200 $ep1.Dtu 
-        Assert-AreEqual 204800 $ep1.StorageMB
-        Assert-AreEqual Standard $ep1.Edition
-        Assert-AreEqual 10 $ep1.DatabaseDtuMin
-        Assert-AreEqual 100 $ep1.DatabaseDtuMax
+		Assert-AreEqual	Standard $ep1.Sku.Tier
+		Assert-AreEqual StandardPool $ep1.Sku.Name
+		Assert-AreEqual 200 $ep1.Sku.Capacity
+		Assert-AreEqual 10 $ep1.PerDatabaseSettings.MinCapacity
+		Assert-AreEqual 100 $ep1.PerDatabaseSettings.MaxCapacity
 
         # Create a pool using piping and default values
         $poolName = Get-ElasticPoolName
         $ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName
         Assert-NotNull $ep2
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
+    Tests creating an Vcore elastic pool
+#>
+function Test-CreateVcoreElasticPool
+{
+    # Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+    try
+    {
+		## Create Vcore based pool with VcorePoolParameterSet
+		$poolName = Get-ElasticPoolName
+		$job = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		        -ElasticPoolName $poolName -Vcore 2 -VcoreTier GeneralPurpose -ComputeGeneration GP_Gen4 -StorageMB 204800 -AsJob
+		$job | Wait-Job
+		$ep1 = $job.Output
+
+		Assert-NotNull $ep1
+		Assert-AreEqual GP_Gen4 $ep1.Sku.Name
+		Assert-AreEqual GeneralPurpose $ep1.Sku.Tier
+		Assert-AreEqual 2 $ep1.Sku.Capacity
+
+		# Create BC_Gen4_1 elastic pool which is not supported and check the error Message
+		$poolName = Get-ElasticPoolName
+		Assert-ThrowsContains -script { New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		-ElasticPoolName $poolName -Vcore 1 -VcoreTier BusinessCritial -ComputeGeneration BC_Gen4 -StorageMB 204800 } -message "Mismatch between SKU name 'BC_Gen4_1' and tier 'BusinessCritical'"
     }
     finally
     {
@@ -94,8 +132,9 @@ function Test-CreateElasticPoolWithZoneRedundancy
 function Test-UpdateElasticPool
 {
     # Setup 
-	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -110,28 +149,89 @@ function Test-UpdateElasticPool
 
     try
     {
-        # Create a pool with all values
+        # Update a pool with all values
         $job = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
             -ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600 -AsJob
 		$job | Wait-Job
 		$sep1 = $job.Output
 
         Assert-NotNull $sep1
-        Assert-AreEqual 400 $sep1.Dtu 
-        Assert-AreEqual 409600 $sep1.StorageMB
-        Assert-AreEqual Standard $sep1.Edition
-        Assert-AreEqual 0 $sep1.DatabaseDtuMin
-        Assert-AreEqual 50 $sep1.DatabaseDtuMax
+        Assert-AreEqual 400 $sep1.Sku.Capacity 
+        Assert-AreEqual 429496729600 $sep1.MaxSizeBytes
+        Assert-AreEqual Standard $sep1.Sku.Tier
+		Assert-AreEqual StandardPool $sep1.Sku.Name
+        Assert-AreEqual 0 $sep1.PerDatabaseSettings.MinCapacity
+        Assert-AreEqual 50 $sep1.PerDatabaseSettings.MaxCapacity
 
-        # Create a pool using piping
+        # Update a pool using piping
         $sep2 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -Dtu 200 `
             -DatabaseDtuMin 10 -DatabaseDtuMax 50  -Edition Standard -StorageMB 204800
+
         Assert-NotNull $sep2
-        Assert-AreEqual 200 $sep2.Dtu 
-        Assert-AreEqual 204800 $sep2.StorageMB
-        Assert-AreEqual Standard $sep2.Edition
-        Assert-AreEqual 10 $sep2.DatabaseDtuMin
-        Assert-AreEqual 50 $sep2.DatabaseDtuMax
+        Assert-AreEqual 200 $sep2.Sku.Capacity 
+        Assert-AreEqual 214748364800 $sep2.MaxSizeBytes
+        Assert-AreEqual Standard $sep2.Sku.Tier
+		Assert-AreEqual StandardPool $sep2.Sku.Name
+        Assert-AreEqual 10 $sep2.PerDatabaseSettings.MinCapacity
+        Assert-AreEqual 50 $sep2.PerDatabaseSettings.MaxCapacity
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
+    Tests updating an Vcore elastic pool
+#>
+function Test-UpdateVcoreElasticPool
+{
+    # Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	# Create a Vcore Pool
+    $poolName = Get-ElasticPoolName
+    $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+        -ElasticPoolName $poolName -Vcore 2 -VcoreTier GeneralPurpose -ComputeGeneration GP_Gen4
+    Assert-NotNull $ep1
+    
+	# Create a Dtu pool
+    $poolName = Get-ElasticPoolName
+    $ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName -Edition Standard -Dtu 400 -DatabaseDtuMin 10 `
+         -DatabaseDtuMax 100
+    Assert-NotNull $ep2
+
+
+    try
+    {
+        # Update Vcore pool to Dtu pool
+        $job = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600 -AsJob
+		$job | Wait-Job
+		$sep1 = $job.Output
+
+        Assert-NotNull $sep1
+        Assert-AreEqual 400 $sep1.Sku.Capacity 
+        Assert-AreEqual 429496729600 $sep1.MaxSizeBytes
+        Assert-AreEqual Standard $sep1.Sku.Tier
+		Assert-AreEqual StandardPool $sep1.Sku.Name
+        Assert-AreEqual 0 $sep1.PerDatabaseSettings.MinCapacity
+        Assert-AreEqual 50 $sep1.PerDatabaseSettings.MaxCapacity
+
+        # Update a Dtu pool to Vcore pool using piping
+        $sep2 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -Vcore 2 `
+            -VcoreTier GeneralPurpose -ComputeGeneration GP_Gen4 -StorageMB 204800
+
+        Assert-NotNull $sep2
+        Assert-AreEqual 2 $sep2.Sku.Capacity 
+        Assert-AreEqual 214748364800 $sep2.MaxSizeBytes
+        Assert-AreEqual GeneralPurpose $sep2.Sku.Tier
+		Assert-AreEqual GP_Gen4 $sep2.Sku.Name
+        Assert-AreEqual 0 $sep2.PerDatabaseSettings.MinCapacity
+        Assert-AreEqual 2 $sep2.PerDatabaseSettings.MaxCapacity
     }
     finally
     {

@@ -103,12 +103,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                DatabaseDtuMax = model.DatabaseDtuMax,
-                DatabaseDtuMin = model.DatabaseDtuMin,
-                Edition = model.Edition.ToString(),
-                Dtu = model.Dtu,
-                StorageMB = model.StorageMB,
-                ZoneRedundant = model.ZoneRedundant
+                Sku = model.Sku,
+                MaxSizeBytes = model.MaxSizeBytes,
+                ZoneRedundant = model.ZoneRedundant,
+                PerDatabaseSettings = model.PerDatabaseSettings
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -352,16 +350,19 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 ServerName = serverName,
                 ElasticPoolName = pool.Name,
                 CreationDate = pool.CreationDate ?? DateTime.MinValue,
-                DatabaseDtuMax = pool.DatabaseDtuMax.Value,
-                DatabaseDtuMin = pool.DatabaseDtuMin.Value,
-                Dtu = pool.Dtu,
                 State = pool.State,
-                StorageMB = pool.StorageMB,
+                MaxSizeBytes = pool.MaxSizeBytes,
                 Tags =
                     TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(pool.Tags), false),
                 Location = pool.Location,
                 Edition = edition,
-                ZoneRedundant = pool.ZoneRedundant
+                ZoneRedundant = pool.ZoneRedundant,
+                Sku = pool.Sku,
+                PerDatabaseSettings = pool.PerDatabaseSettings,
+                Capacity = pool.Sku.Capacity,
+                ComputeGeneration = pool.Sku.Name,
+                MinCapacity = pool.PerDatabaseSettings.MinCapacity,
+                MaxCapacity = pool.PerDatabaseSettings.MaxCapacity
             };
 
             return model;

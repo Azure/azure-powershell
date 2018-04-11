@@ -49,6 +49,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The maximum size of the Azure SQL Database in bytes.",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The maximum size of the Azure SQL Database in bytes.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public long MaxSizeBytes { get; set; }
 
@@ -76,6 +79,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the database in.",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The name of the Elastic Pool to put the database in.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
 
@@ -85,6 +91,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public DatabaseReadScale ReadScale { get; set; }
 
@@ -94,6 +103,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Database",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The tags to associate with the Azure Sql Database",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
@@ -103,6 +115,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The zone redundancy to associate with the Azure Sql Database",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         public SwitchParameter ZoneRedundant { get; set; }
 
         /// <summary>
@@ -118,6 +133,27 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Vcore number for the Azure Sql database
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The Vcore number for the Azure Sql database")]
+        public int Vcore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Vcore service tier for the Azure Sql database.
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The Vcore service tier for the Azure Sql database. e.g. 'GeneralPurpose', 'BusinessCritical'.")]
+        public string VcoreTier { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Compute generation for the Azure Sql database.
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The compute generation for the Azure Sql Database. e.g. 'GP_Gen4', 'BC_Gen4'.")]
+        public string ComputeGeneration { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -153,9 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     ResourceGroupName = ResourceGroupName,
                     ServerName = ServerName,
                     DatabaseName = DatabaseName,
-                    Edition = Edition,
                     MaxSizeBytes = MaxSizeBytes,
-                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                     Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                     ElasticPoolName = ElasticPoolName,
                     Location = model.FirstOrDefault().Location,
@@ -163,9 +197,43 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     ZoneRedundant =
                         MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
                             ? (bool?) ZoneRedundant.ToBool()
-                            : null
+                            : null,
+                    Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition.ToString() : RequestedServiceObjectiveName,
+                        Tier = Edition.ToString()
+                    }
                 });
             }
+            else if(this.ParameterSetName == VcoreDatabaseParameterSet)
+            {
+                AzureSqlDatabaseModel newDbModel = new AzureSqlDatabaseModel()
+                {
+                    ResourceGroupName = ResourceGroupName,
+                    ServerName = ServerName,
+                    DatabaseName = DatabaseName,
+                    MaxSizeBytes = MaxSizeBytes,
+                    Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
+                    ElasticPoolName = ElasticPoolName,
+                    Location = model.FirstOrDefault().Location,
+                    ReadScale = ReadScale,
+                    ZoneRedundant =
+                        MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
+                            ? (bool?)ZoneRedundant.ToBool()
+                            : null
+                };
+
+                string skuName = string.Format("{0}_{1}", ComputeGeneration, Vcore);
+                newDbModel.Sku = new Management.Sql.Models.Sku()
+                {
+                    Name = skuName,
+                    Tier = VcoreTier,
+                    Capacity = Vcore
+                };
+
+                newEntity.Add(newDbModel);
+            }
+
             return newEntity;
         }
 

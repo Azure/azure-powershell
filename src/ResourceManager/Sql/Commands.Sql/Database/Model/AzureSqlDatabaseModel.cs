@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Model
 {
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the max size of the database in bytes
         /// </summary>
-        public long MaxSizeBytes { get; set; }
+        public long? MaxSizeBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the status of the databse
@@ -139,6 +140,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public bool? ZoneRedundant { get; set; }
 
         /// <summary>
+        /// Gets or sets the Sku of the database
+        /// </summary>
+        public Sku Sku { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -191,7 +197,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlDatabaseModel from Management.Sql.LegacySdk.Models.Database object
+        /// Construct AzureSqlDatabaseModel from Management.Sql.Database object
         /// </summary>
         /// <param name="resourceGroup">Resource group</param>
         /// <param name="serverName">Server name</param>
@@ -206,7 +212,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             CollationName = database.Collation;
             CreationDate = database.CreationDate.Value;
             CurrentServiceObjectiveName = database.ServiceLevelObjective;
-            MaxSizeBytes = long.Parse(database.MaxSizeBytes);
+            MaxSizeBytes = database.MaxSizeBytes;
             DatabaseName = database.Name;
             Status = database.Status;
             Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
@@ -216,19 +222,21 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             CreateMode = database.CreateMode;
             EarliestRestoreDate = database.EarliestRestoreDate;
 
-            CurrentServiceObjectiveId = database.CurrentServiceObjectiveId.Value;
+            CurrentServiceObjectiveName = database.CurrentServiceObjectiveName;
 
             DatabaseId = database.DatabaseId.Value;
 
             Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
             Edition = edition;
 
-            RequestedServiceObjectiveId = database.RequestedServiceObjectiveId.Value;
+            RequestedServiceObjectiveName = database.RequestedServiceObjectiveName;
 
             Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
             ReadScale = readScale;
 
             ZoneRedundant = database.ZoneRedundant;
+
+            Sku = database.Sku;
         }
     }
 }

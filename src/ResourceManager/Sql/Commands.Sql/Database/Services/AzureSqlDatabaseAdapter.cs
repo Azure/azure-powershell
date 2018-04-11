@@ -168,12 +168,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 Location = model.Database.Location,
                 Tags = model.Database.Tags,
                 Collation = model.Database.CollationName,
-                Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
-                MaxSizeBytes = model.Database.MaxSizeBytes.ToString(),
-                RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
-                ElasticPoolName = model.Database.ElasticPoolName,
-                RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
-                ReadScale = (ReadScale)Enum.Parse(typeof(ReadScale), model.Database.ReadScale.ToString()),
+                Sku = model.Database.Sku,
+                MaxSizeBytes = model.Database.MaxSizeBytes,
+                ReadScale =  model.Database.ReadScale.ToString(),
                 SampleName = model.SampleName,
                 ZoneRedundant = model.Database.ZoneRedundant
             });

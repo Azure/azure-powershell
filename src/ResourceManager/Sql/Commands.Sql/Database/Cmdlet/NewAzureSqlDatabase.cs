@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = "DtuBasedDatabase")]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseCreateOrUpdateModel>
     {
         /// <summary>
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the edition to assign to the Azure SQL Database
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         public DatabaseEdition Edition { get; set; }
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the service objective to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         public string RequestedServiceObjectiveName { get; set; }
@@ -121,6 +121,27 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Gets or sets the Vcore number for the Azure Sql database
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The Vcore number for the Azure Sql database")]
+        public int Vcore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Vcore service tier for the Azure Sql database.
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The Vcore service tier for the Azure Sql database. e.g. 'GeneralPurpose', 'BusinessCritical'.")]
+        public string VcoreTier { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Compute generation for the Azure Sql database.
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The compute generation for the Azure Sql Database. e.g. 'GP_Gen4', 'BC_Gen4'.")]
+        public string ComputeGeneration { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -165,26 +186,46 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override AzureSqlDatabaseCreateOrUpdateModel ApplyUserInputToModel(AzureSqlDatabaseCreateOrUpdateModel model)
         {
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
-            return new AzureSqlDatabaseCreateOrUpdateModel
+            AzureSqlDatabaseCreateOrUpdateModel dbCreateUpdateModel = new AzureSqlDatabaseCreateOrUpdateModel();
+            AzureSqlDatabaseModel newDbModel = new AzureSqlDatabaseModel()
             {
-                Database = new AzureSqlDatabaseModel()
-                {
-                    Location = location,
-                    ResourceGroupName = ResourceGroupName,
-                    ServerName = ServerName,
-                    CatalogCollation = CatalogCollation,
-                    CollationName = CollationName,
-                    DatabaseName = DatabaseName,
-                    Edition = Edition,
-                    MaxSizeBytes = MaxSizeBytes,
-                    RequestedServiceObjectiveName = RequestedServiceObjectiveName,
-                    Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                    ElasticPoolName = ElasticPoolName,
-                    ReadScale = ReadScale,
-                    ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
-                },
-                SampleName = SampleName
+                Location = location,
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                CatalogCollation = CatalogCollation,
+                CollationName = CollationName,
+                DatabaseName = DatabaseName,
+                MaxSizeBytes = MaxSizeBytes,
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                ElasticPoolName = ElasticPoolName,
+                ReadScale = ReadScale,
+                ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null
             };
+
+            if(ParameterSetName == DtuDatabaseParameterSet)
+            {
+                newDbModel.Sku = new Management.Sql.Models.Sku()
+                {
+                    Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition.ToString() : RequestedServiceObjectiveName,
+                    Tier = Edition.ToString()
+                };
+            }
+            else
+            {
+                string skuName = string.Format("{0}_{1}", ComputeGeneration, Vcore);
+
+                newDbModel.Sku = new Management.Sql.Models.Sku()
+                {
+                    Name = skuName,
+                    Tier = VcoreTier,
+                    Capacity = Vcore
+                };
+            }
+
+            dbCreateUpdateModel.Database = newDbModel;
+            dbCreateUpdateModel.SampleName = SampleName;
+
+            return dbCreateUpdateModel;
         }
 
         /// <summary>
@@ -200,7 +241,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             // Location polling. This means that switching to AutoRest requires re-recording almost all scenario tests,
             // which currently is quite difficult.
             AzureSqlDatabaseModel upsertedDatabase;
-            if (!string.IsNullOrEmpty(entity.SampleName) || entity.Database.ZoneRedundant.HasValue)
+            if (!string.IsNullOrEmpty(entity.SampleName) || entity.Database.ZoneRedundant.HasValue || entity.Database.Sku != null)
             {
                 upsertedDatabase = ModelAdapter.UpsertDatabaseWithNewSdk(this.ResourceGroupName, this.ServerName, entity);
             }
