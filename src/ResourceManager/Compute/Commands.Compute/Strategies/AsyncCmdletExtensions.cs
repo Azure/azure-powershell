@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Strategies;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 
@@ -30,10 +31,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         /// </summary>
         /// <param name="cmdlet"></param>
         /// <param name="createAndStartTask"></param>
-        public static void StartAndWait(
-            this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
+        public static void StartAndWait<T>(
+            this T cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
+            where T : PSCmdlet
         {
-            var asyncCmdlet = new AsyncCmdlet(cmdlet);
+            var asyncCmdlet = new AsyncCmdlet<T>(cmdlet);
             string previousX = null;
             string previousOperation = null;
             asyncCmdlet.Scheduler.Wait(
@@ -79,18 +81,37 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 });
         }
 
-        sealed class AsyncCmdlet : IAsyncCmdlet
+        sealed class AsyncCmdlet<T> : IAsyncCmdlet
+            where T : PSCmdlet
         {
             public SyncTaskScheduler Scheduler { get; } = new SyncTaskScheduler();
 
-            readonly Cmdlet _Cmdlet;
+            readonly T _Cmdlet;
 
             public List<ITaskProgress> TaskProgressList { get; } 
                 = new List<ITaskProgress>();
 
-            public AsyncCmdlet(Cmdlet cmdlet)
+            public AsyncCmdlet(T cmdlet)
             {
                 _Cmdlet = cmdlet;
+            }
+
+            public bool WhatIf
+                => _Cmdlet.MyInvocation.BoundParameters.ContainsKey("WhatIf");
+
+            public IEnumerable<KeyValuePair<string, object>> Parameters
+            {
+                get
+                {
+                    var psName = _Cmdlet.ParameterSetName;
+                    return typeof(T)
+                        .GetProperties()
+                        .Where(p => p
+                            .GetCustomAttributes(false)
+                            .OfType<ParameterAttribute>()
+                            .Any(a => a.ParameterSetName == psName))
+                        .Select(p => new KeyValuePair<string, object>(p.Name, p.GetValue(_Cmdlet)));
+                }
             }
 
             public void WriteVerbose(string message)
