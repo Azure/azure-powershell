@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
 
 ## Version 4.3.0
 * Updated cmdlets to include piping scenarios
