@@ -144,4 +144,7 @@
   <data name="ServicePrincipalWithSPNDoesntExist" xml:space="preserve">
     <value>Service principal with SPN '{0}' does not exist.</value>
   </data>
+  <data name="UserWithUPNDoesntExist" xml:space="preserve">
+    <value>User with UPN '{0}' does not exist.</value>
+  </data>
 </root>
