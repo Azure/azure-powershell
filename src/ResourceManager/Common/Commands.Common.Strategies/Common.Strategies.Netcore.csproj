@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Strategies</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Strategies.4</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Strategies</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
