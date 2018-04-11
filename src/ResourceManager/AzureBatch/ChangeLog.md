@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 4.0.5
+* Release new cmdlet Get-AzureBatchPoolNodeCounts
+* Release new cmdlet Add-AzureBatchComputeNodeServiceLogs
+
 ## Version 4.0.4
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
