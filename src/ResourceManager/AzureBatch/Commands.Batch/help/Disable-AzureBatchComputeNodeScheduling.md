@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 2DF5FB4D-A5CB-439C-AC6F-DF2130AF33EC
@@ -80,7 +80,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -96,7 +96,7 @@ This object reference is created by using the Get-AzureBatchComputeNode cmdlet a
 ```yaml
 Type: PSComputeNode
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -141,7 +141,7 @@ No new tasks will be scheduled on this node.
 ```yaml
 Type: DisableComputeNodeSchedulingOption
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Requeue, Terminate, TaskCompletion
 
 Required: False
@@ -157,7 +157,7 @@ Specifies the ID of the compute node where task scheduling is disabled.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -174,7 +174,7 @@ If you use the *PoolId* parameter, do not use the *ComputeNode* parameter in tha
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

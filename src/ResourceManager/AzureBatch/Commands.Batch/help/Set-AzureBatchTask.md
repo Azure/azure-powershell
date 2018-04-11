@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 6A6D6C7D-EED7-4AD4-ACE6-BFA64404455E
@@ -48,7 +48,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -78,7 +78,7 @@ Specifies the **PSCloudTask** to which this cmdlet updates the Batch service.
 ```yaml
 Type: PSCloudTask
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

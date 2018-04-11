@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 93614655-A8F2-4A67-887D-43D41AB91F82
@@ -152,7 +152,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -184,7 +184,7 @@ If you do not specify a filter, this cmdlet returns all compute nodes for the po
 ```yaml
 Type: String
 Parameter Sets: ODataFilter, ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -200,7 +200,7 @@ You cannot specify wildcard characters.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -217,7 +217,7 @@ The default value is 1000.
 ```yaml
 Type: Int32
 Parameter Sets: ODataFilter, ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -233,7 +233,7 @@ To obtain a **PSCloudPool** object, use the Get-AzureBatchPool cmdlet.
 ```yaml
 Type: PSCloudPool
 Parameter Sets: ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -248,7 +248,7 @@ Specifies the ID of the pool that contains the compute nodes.
 ```yaml
 Type: String
 Parameter Sets: ODataFilter, Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -264,7 +264,7 @@ Specify a value for this parameter to get specific properties rather than all ob
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

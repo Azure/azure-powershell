@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 2B4BFDDA-9721-42E6-84E1-A209CB782954
@@ -141,7 +141,7 @@ Specifies a locality hint that the Batch service uses to select a node on which 
 ```yaml
 Type: PSAffinityInformation
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -175,7 +175,7 @@ or check the status of the job or of other tasks.
 ```yaml
 Type: PSAuthenticationTokenSettings
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -191,7 +191,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -206,7 +206,7 @@ Specifies the command line for the task.
 ```yaml
 Type: String
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -221,7 +221,7 @@ Specifies the execution constraints that apply to this task.
 ```yaml
 Type: PSTaskConstraints
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -241,7 +241,7 @@ are mapped into the container, and the task command line is executed in the cont
 ```yaml
 Type: PSTaskContainerSettings
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -272,7 +272,7 @@ The task will not be scheduled until all depended-on tasks have completed succes
 ```yaml
 Type: TaskDependencies
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -287,7 +287,7 @@ Specifies the display name of the task.
 ```yaml
 Type: String
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -317,7 +317,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSExitConditions
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -332,7 +332,7 @@ Specifies the ID of the task.
 ```yaml
 Type: String
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -348,7 +348,7 @@ To obtain a **PSCloudJob** object, use the Get-AzureBatchJob cmdlet.
 ```yaml
 Type: PSCloudJob
 Parameter Sets: JobObject_Bulk, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -363,7 +363,7 @@ Specifies the ID of the job under which this cmdlet creates the task.
 ```yaml
 Type: String
 Parameter Sets: JobId_Single, JobId_Bulk
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -378,7 +378,7 @@ Specifies information about how to run a multi-instance task.
 ```yaml
 Type: PSMultiInstanceSettings
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -395,7 +395,7 @@ For multi-instance tasks, the files will only be uploaded from the compute node 
 ```yaml
 Type: PSOutputFile[]
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -428,7 +428,7 @@ Each task must have a unique ID.
 ```yaml
 Type: PSCloudTask[]
 Parameter Sets: JobId_Bulk, JobObject_Bulk
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -443,7 +443,7 @@ The user identity under which the task runs.
 ```yaml
 Type: PSUserIdentity
 Parameter Sets: JobId_Single, JobObject_Single
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

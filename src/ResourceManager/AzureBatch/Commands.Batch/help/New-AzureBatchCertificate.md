@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: B423C1A1-1988-4721-81E7-3B7EC163B03A
@@ -56,7 +56,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,7 +87,7 @@ The certificate file must be in either .cer or .pfx format.
 ```yaml
 Type: String
 Parameter Sets: File
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -103,7 +103,7 @@ You must specify this parameter if you specify a certificate in .pfx format.
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,7 +118,7 @@ Specifies the raw certificate data in either .cer or .pfx format.
 ```yaml
 Type: Byte[]
 Parameter Sets: RawData
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

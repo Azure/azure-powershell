@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 87E7FA51-427E-4DB8-A6A2-D8638FD3DB8B
@@ -55,7 +55,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -85,7 +85,7 @@ Specifies a display name for the job schedule.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -100,7 +100,7 @@ Specifies the ID of the job schedule that this cmdlet creates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -115,7 +115,7 @@ Specifies the details of the jobs that this cmdlet includes in the job schedule.
 ```yaml
 Type: PSJobSpecification
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -132,7 +132,7 @@ The value is the metadata value.
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,7 +147,7 @@ Specifies the schedule that determines when to create jobs.
 ```yaml
 Type: PSSchedule
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

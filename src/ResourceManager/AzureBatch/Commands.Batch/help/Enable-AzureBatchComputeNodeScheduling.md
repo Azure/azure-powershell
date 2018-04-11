@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 36EB9CE6-EAC9-471C-97D6-14E882E0F710
@@ -65,7 +65,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,7 +81,7 @@ This object reference is created by using the Get-AzureBatchComputeNode cmdlet a
 ```yaml
 Type: PSComputeNode
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -111,7 +111,7 @@ Specifies the ID of the compute node where task scheduling is enabled.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -126,7 +126,7 @@ Specifies the ID of the batch pool that contains the compute node where task sch
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

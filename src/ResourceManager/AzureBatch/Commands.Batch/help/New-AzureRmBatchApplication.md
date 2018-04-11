@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: FF111B74-90A3-4F7C-B515-CE1EEF68EB54
@@ -40,7 +40,7 @@ Specifies the name of the Batch account to which this cmdlet adds an application
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -55,7 +55,7 @@ Specifies whether packages within the application can be overwritten using the s
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -70,7 +70,7 @@ Specifies the ID of the application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -100,7 +100,7 @@ Specifies the display name for the application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -115,7 +115,7 @@ Specifies the name of the resource group that contains the Batch account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

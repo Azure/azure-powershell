@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 1EA57372-6FA5-45C9-94A1-50D53830FC10
@@ -57,7 +57,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,7 +87,7 @@ Specifies the ID of the task that this cmdlet stops.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -102,7 +102,7 @@ Specifies the ID of the job that contains the task.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -118,7 +118,7 @@ To obtain a **PSCloudTask** object, use the Get-AzureBatchTask cmdlet.
 ```yaml
 Type: PSCloudTask
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
