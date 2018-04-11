@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
 * Updated below commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
     - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIpsecPolicies   [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]
     - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIPsecParameters [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]

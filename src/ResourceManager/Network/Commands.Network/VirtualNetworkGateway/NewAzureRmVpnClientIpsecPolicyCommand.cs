@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         public int SADataSizeKilobytes { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Vpnclient IPSec encryption algorithm (IKE Phase 1)")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
         public string IpsecEncryption { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Vpnclient IPSec integrity algorithm (IKE Phase 1)")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         public string IpsecIntegrity { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Vpnclient IKE encryption algorithm (IKE Phase 2)")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         public string IkeEncryption { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Vpnclient IKE integrity algorithm (IKE Phase 2)")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Network
         public string IkeIntegrity { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Vpnclient DH Groups used in IKE Phase 1 for initial SA")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Network
         public string DhGroup { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The Vpnclient PFS Groups used in IKE Phase 2 for new child SA")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
