@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: A9C98F8F-90F2-4BF4-A234-31966FBB975B
@@ -110,7 +110,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -141,7 +141,7 @@ If you specify this parameter, this cmdlet gets the certificates that match the 
 ```yaml
 Type: String
 Parameter Sets: ODataFilter
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -158,7 +158,7 @@ The default value is 1000.
 ```yaml
 Type: Int32
 Parameter Sets: ODataFilter
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,7 +174,7 @@ Specify a value for this parameter to get specific properties rather than all ob
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -189,7 +189,7 @@ Specifies the thumbprint of the certificate that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: Thumbprint
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -205,7 +205,7 @@ Currently, the only valid value is sha1.
 ```yaml
 Type: String
 Parameter Sets: Thumbprint
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

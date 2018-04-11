@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: A39A415A-B403-48D3-AF80-CF7CFE382577
@@ -58,7 +58,7 @@ For more information, see Azure Regions (https://azure.microsoft.com/regions).
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -82,4 +82,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

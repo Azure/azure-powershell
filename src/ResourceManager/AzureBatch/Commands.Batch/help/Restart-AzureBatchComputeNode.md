@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 029361F0-C4E9-4948-9EBA-BFBD1B029909
@@ -53,7 +53,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -68,7 +68,7 @@ Specifies the **PSComputeNode** object that represents the compute node to reboo
 ```yaml
 Type: PSComputeNode
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -98,7 +98,7 @@ Specifies the ID of the compute node to reboot.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -113,7 +113,7 @@ Specifies the ID of the pool that contains the compute node.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -129,7 +129,7 @@ The default is Requeue.
 ```yaml
 Type: ComputeNodeRebootOption
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
 
 Required: False

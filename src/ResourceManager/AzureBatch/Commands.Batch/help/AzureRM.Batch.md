@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.Batch
 Module Guid: Batch_Cmdlets_D48CF693-4125-4D2D-879
 Download Help Link: http://go.microsoft.com/fwlink/?linkid=390762
@@ -12,7 +12,7 @@ The Azure Batch cmdlets in the Azure module enable you to manage Microsoft Azure
 
 ## AzureRM.Batch Cmdlets
 ### [Add-AzureBatchComputeNodeServiceLogs](Add-AzureBatchComputeNodeServiceLogs.md)
-Upload compute node service logs to an Azure Storage container.
+Upload compute node service log files to an Azure Storage container.
 
 ### [Disable-AzureBatchAutoScale](Disable-AzureBatchAutoScale.md)
 Disables automatic scaling of a pool.
@@ -91,6 +91,9 @@ Gets the subtask information of the specified task.
 
 ### [Get-AzureBatchTask](Get-AzureBatchTask.md)
 Gets the Batch tasks for a job.
+
+### [Get-AzureBatchTaskCounts](Get-AzureBatchTaskCounts.md)
+Gets the task counts for the specified job.
 
 ### [Get-AzureRmBatchAccount](Get-AzureRmBatchAccount.md)
 Gets a Batch account in the current subscription.

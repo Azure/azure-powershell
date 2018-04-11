@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 82C7B128-8818-4390-B1A5-CB40AC9D53CA
@@ -64,7 +64,7 @@ Specifies the resource ID of the storage account to be used for auto storage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -94,7 +94,7 @@ The resource ID of the Azure key vault associated with the Batch account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -109,7 +109,7 @@ The URL of the Azure key vault associated with the Batch account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,7 +125,7 @@ For more information, see [Azure Regions](https://azure.microsoft.com/en-us/regi
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -140,7 +140,7 @@ The allocation mode for creating pools in the Batch account.
 ```yaml
 Type: PoolAllocationMode
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: BatchService, UserSubscription
 
 Required: False
@@ -156,7 +156,7 @@ Specifies the name of the resource group in which this cmdlet creates the accoun
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2

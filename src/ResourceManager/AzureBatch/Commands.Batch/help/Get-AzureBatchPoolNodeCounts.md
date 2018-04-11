@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+Module Name: AzureRM.Batch
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchpoolnodecounts
 schema: 2.0.0
 ---
@@ -7,38 +8,37 @@ schema: 2.0.0
 # Get-AzureBatchPoolNodeCounts
 
 ## SYNOPSIS
-Gets Batch node counts per node state grouped by pool id. 
+Gets Batch node counts per node state grouped by pool id.
 
 ## SYNTAX
 
-Get-AzureBatchPoolNodeCounts
-   [-MaxCount <Int32>]
-   -BatchContext <BatchAccountContext>
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+### PoolId (Default)
+```
+Get-AzureBatchPoolNodeCounts [-PoolId <String>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
-Get-AzureBatchPoolNodeCounts
-   [[-PoolId] <String>]
-   -BatchContext <BatchAccountContext>
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
+### ParentObject
+```
+Get-AzureBatchPoolNodeCounts [-Pool <PSCloudPool>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
-Get-AzureBatchPoolNodeCounts
-   [[-Pool] <PSCloudPool>]
-   -BatchContext <BatchAccountContext>
-   [-DefaultProfile <IAzureContextContainer>]
-   [<CommonParameters>]
-
+### ODataFilter
+```
+Get-AzureBatchPoolNodeCounts [-MaxCount <Int32>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-
-The **Get-AzureBatchPoolNodeCounts** cmdlet allows customers to get back node counts per node state grouped by pool. Possible node states are creating, idle, leavingPool, offline, preempted, rebooting, reimaging, running, starting, startTaskFailed, unknown, unusable and waitingForStartTask. The cmdlet takes **PoolId** or **Pool** parameter to filter only pool with pool id specified. 
+The Get-AzureBatchPoolNodeCounts cmdlet allows customers to get back node counts per node state grouped by pool. Possible node states are creating, idle, leavingPool, offline, preempted, rebooting, reimaging, running, starting, startTaskFailed, unknown, unusable and waitingForStartTask. The cmdlet takes PoolId or Pool parameter to filter only pool with pool id specified. 
 
 ## EXAMPLES
 
-To list node counts per node state for pools under current batch account context.
+### Example 1
 
+```
+powershell
 PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
 PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext
 
@@ -46,16 +46,20 @@ Dedicated                                          LowPriority                  
 ---------                                          -----------                                        ------
 Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
 Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool2
+```
 
-To show node counts per node state for a pool given pool id:
+ 
+To list node counts per node state for pools under current batch account context.
 
+### Example 2
+
+```
+powershell
 PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 
 Dedicated                                          LowPriority                                        PoolId
 ---------                                          -----------                                        ------
 Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
-
-A PSNodeCounts object looks like this:
 
 PS C:\> $poolnodecounts = Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 PS C:\> $poolnodecounts.Dedicated
@@ -80,6 +84,10 @@ PS C:\> Get-AzureBatchPool -Id "contosopool1" -BatchContext $batchContext | Get-
 Dedicated                                          LowPriority                                        PoolId
 ---------                                          -----------                                        ------
 Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
+```
+
+ 
+To show node counts per node state for a pool given pool id:
 
 ## PARAMETERS
 
@@ -93,7 +101,7 @@ To change the key to use, set the BatchAccountContext.KeyInUse property.
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,54 +125,70 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaxCount
+{{Fill MaxCount Description}}
+
+```yaml
+Type: Int32
+Parameter Sets: ODataFilter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Pool
-Specifies pool that contains tasks that this cmdlet gets.
-To obtain a **PSCloudPool** object, use the Get-AzureBatchPool cmdlet.
+{{Fill Pool Description}}
 
 ```yaml
 Type: PSCloudPool
 Parameter Sets: ParentObject
-Aliases: 
+Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -PoolId
-The id of the Pool for which to get node counts per node state.
+The id of the pool for which to get node counts.
 
 ```yaml
 Type: String
-Parameter Sets: Id
-Aliases: 
+Parameter Sets: PoolId
+Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Batch.Models.PSCloudPool
-Microsoft.Azure.Commands.Batch.BatchAccountContext
-
+Microsoft.Azure.Commands.Batch.Models.PSCloudJob Microsoft.Azure.Commands.Batch.BatchAccountContext
 
 ## OUTPUTS
-### Microsoft.Azure.Commands.Batch.Models.PSPoolNodeCounts
 
+### Microsoft.Azure.Commands.Batch.Models.PSTaskCounts
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzureRmBatchAccountKeys](./Get-AzureRmBatchAccountKeys.md)
+[Get-AzureRmBatchAccountKeys]()
 
-[Get-AzureBatchPool](./Get-AzureBatchPool.md)
+[Get-AzureBatchJob]()
 
-[Azure Batch Cmdlets](./AzureRM.Batch.md)
+[Azure Batch Cmdlets]()
+

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: C9E2D9EC-3B6A-492D-B183-9856185548CD
@@ -128,7 +128,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,7 +142,7 @@ The end of the byte range to be downloaded.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,7 +156,7 @@ The start of the byte range to be downloaded.
 ```yaml
 Type: Int64
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -171,7 +171,7 @@ Specifies the ID of the compute node that contains the node file that this cmdle
 ```yaml
 Type: String
 Parameter Sets: ComputeNode_Id_Path, ComputeNode_Id_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -201,7 +201,7 @@ Specifies the file path where this cmdlet saves the node file.
 ```yaml
 Type: String
 Parameter Sets: Task_Id_Path, ComputeNode_Id_Path, InputObject_Path
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -217,7 +217,7 @@ This cmdlet does not close or rewind this stream.
 ```yaml
 Type: Stream
 Parameter Sets: Task_Id_Stream, ComputeNode_Id_Stream, InputObject_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -233,7 +233,7 @@ To obtain a node file object, use the Get-AzureBatchNodeFile cmdlet.
 ```yaml
 Type: PSNodeFile
 Parameter Sets: InputObject_Path, InputObject_Stream
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -248,7 +248,7 @@ Specifies the ID of the job that contains the target task.
 ```yaml
 Type: String
 Parameter Sets: Task_Id_Path, Task_Id_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -278,7 +278,7 @@ Specifies the ID of the pool that contains the compute node that contains the no
 ```yaml
 Type: String
 Parameter Sets: ComputeNode_Id_Path, ComputeNode_Id_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -293,7 +293,7 @@ Specifies the ID of the task.
 ```yaml
 Type: String
 Parameter Sets: Task_Id_Path, Task_Id_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

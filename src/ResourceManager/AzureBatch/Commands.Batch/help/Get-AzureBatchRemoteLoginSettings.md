@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 07811B64-6A77-452C-B148-DE8C13E73DEF
@@ -70,7 +70,7 @@ To obtain a **BatchAccountContext** that contains access keys for your subscript
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,7 +86,7 @@ To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.
 ```yaml
 Type: PSComputeNode
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -102,7 +102,7 @@ for which this cmdlet gets remote logon settings.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -132,7 +132,7 @@ Specifies the ID of the pool that contains the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

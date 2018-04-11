@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: B6229D26-D38C-44CD-B9CA-7F39365C8B9D
@@ -52,7 +52,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,7 +84,7 @@ Specifies the execution constraints for the job.
 ```yaml
 Type: PSJobConstraints
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,7 +114,7 @@ Specifies the display name for the job.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ Specifies an ID for the job.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -145,7 +145,7 @@ The Batch service runs the Job Manager task when the job is started.
 ```yaml
 Type: PSJobManagerTask
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -161,7 +161,7 @@ The Batch service runs the Job Preparation task on a compute node before it star
 ```yaml
 Type: PSJobPreparationTask
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -178,7 +178,7 @@ The Batch service runs the Job Release task on each compute node where it ran an
 ```yaml
 Type: PSJobReleaseTask
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -195,7 +195,7 @@ The value is the metadata value.
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -210,7 +210,7 @@ Specifies an action the Batch service takes if all tasks in the job are in the c
 ```yaml
 Type: OnAllTasksComplete
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: NoAction, TerminateJob
 
 Required: False
@@ -226,7 +226,7 @@ Specifies an action the Batch service takes if any task in the job fails.
 ```yaml
 Type: OnTaskFailure
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: NoAction, PerformExitOptionsJobAction
 
 Required: False
@@ -242,7 +242,7 @@ Specifies the details of the pool on which the Batch service runs the tasks of t
 ```yaml
 Type: PSPoolInformation
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -261,7 +261,7 @@ The default value is 0.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

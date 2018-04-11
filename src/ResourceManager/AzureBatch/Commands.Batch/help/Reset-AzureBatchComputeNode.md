@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: A202537B-D292-4822-A0B9-27A6A20621D4
@@ -54,7 +54,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,7 +69,7 @@ Specifies the **PSComputeNode** object that represents the compute node to reima
 ```yaml
 Type: PSComputeNode
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -99,7 +99,7 @@ Specifies the ID of the compute node to reimage.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -114,7 +114,7 @@ Specifies the ID of the pool that contains the compute node.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -130,7 +130,7 @@ The default is Requeue.
 ```yaml
 Type: ComputeNodeReimageOption
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
 
 Required: False

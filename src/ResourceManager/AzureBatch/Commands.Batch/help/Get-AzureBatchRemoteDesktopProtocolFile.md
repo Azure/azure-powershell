@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: D077DB50-12BC-45AB-8EAC-57810DA83035
@@ -81,7 +81,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +97,7 @@ To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.
 ```yaml
 Type: PSComputeNode
 Parameter Sets: InputObject_Path, InputObject_Stream
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -112,7 +112,7 @@ Specifies the ID of the compute node to which the .rdp file points.
 ```yaml
 Type: String
 Parameter Sets: Id_Path, Id_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -142,7 +142,7 @@ Specifies the file path where this cmdlet saves the .rdp file.
 ```yaml
 Type: String
 Parameter Sets: Id_Path, InputObject_Path
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -158,7 +158,7 @@ This cmdlet does not close or rewind this stream.
 ```yaml
 Type: Stream
 Parameter Sets: Id_Stream, InputObject_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -173,7 +173,7 @@ Specifies the ID of the pool that contains the compute node from which this cmdl
 ```yaml
 Type: String
 Parameter Sets: Id_Path, Id_Stream
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
