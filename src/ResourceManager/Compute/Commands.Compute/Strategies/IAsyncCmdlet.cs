@@ -13,12 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies
 {
     interface IAsyncCmdlet
     {
+        bool WhatIf { get; }
+
+        IEnumerable<KeyValuePair<string, object>> Parameters { get; }
+
         void WriteVerbose(string message);
 
         Task<bool> ShouldProcessAsync(string target, string action);

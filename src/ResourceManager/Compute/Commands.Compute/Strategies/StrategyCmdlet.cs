@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
             var engine = new SdkEngine(client.SubscriptionId);
             var target = config.GetTargetState(current, engine, parameters.Location);
 
+            foreach (var p in asyncCmdlet.Parameters)
+            {
+                asyncCmdlet.WriteVerbose(p.Key + " = " + p.Value?.ToString());
+            }
+
             // apply target state
             var newState = await config.UpdateStateAsync(
                 client,
