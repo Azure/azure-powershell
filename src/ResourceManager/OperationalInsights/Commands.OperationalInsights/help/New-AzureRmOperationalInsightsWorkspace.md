@@ -122,6 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 Specifies the name of an Azure resource group.
 The workspace is created in this resource group.
 
@@ -159,12 +160,13 @@ Valid values are:
 - free
 - standard
 - premium
+- PerGB2018
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: free, standard, premium, pernode, standalone
+Accepted values: free, standard, premium, pernode, standalone, PerGB2018
 
 Required: False
 Position: 3
