@@ -39,7 +39,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		$job1 | Wait-Job
 		$db = $job1.Output
 
-		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-AreEqual $databaseName $db.DatabaseName 
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.CurrentServiceObjectiveName
@@ -94,6 +94,37 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
 		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a Vcore based database
+#>
+function Test-CreateVcoreDatabase
+{
+	# Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create with vcore related parameters
+		$databaseName = Get-DatabaseName
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Vcore 2 -ComputeGeneration GP_Gen4 -VcoreTier GeneralPurpose -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $databaseName $db.DatabaseName 
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual 2 $db.Capacity
+		Assert-AreEqual GeneralPurpose $db.Edition
 	}
 	finally
 	{
@@ -255,6 +286,56 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 		Assert-AreEqual $dwdb2.Edition DataWarehouse
 		Assert-AreEqual $dwdb2.CurrentServiceObjectiveName DW200
 		Assert-AreEqual $dwdb2.CollationName $collationName
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a vcore database 
+#>
+function Test-UpdateVcoreDatabase ()
+{
+	# Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-Vcore 2 -VcoreTier GeneralPurpose -ComputeGeneration GP_Gen4 -MaxSizeBytes 250GB
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		# Alter with defaults
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-NotNull $db1.MaxSizeBytes
+		Assert-NotNull $db1.Edition
+		Assert-NotNull $db1.CurrentServiceObjectiveName
+
+		# Alter with all properties
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-MaxSizeBytes 5GB -Vcore 1 -VcoreTier GeneralPurpose -ComputeGeneration GP_Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.MaxSizeBytes 5GB
+		Assert-AreEqual $db1.Edition GeneralPurpose
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4
+		Assert-AreEqual $db1.CollationName $db.CollationName
+		Assert-NotNull $db1.Tags
+		Assert-AreEqual True $db1.Tags.ContainsKey("tag_key")
+		Assert-AreEqual "tag_new_value" $db1.Tags["tag_key"]
 	}
 	finally
 	{

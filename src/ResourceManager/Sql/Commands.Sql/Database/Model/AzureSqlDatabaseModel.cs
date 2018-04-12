@@ -85,19 +85,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public DateTime CreationDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the current service objective ID
-        /// </summary>
-        public Guid CurrentServiceObjectiveId { get; set; }
-
-        /// <summary>
         /// Gets or sets the current service objective name
         /// </summary>
         public string CurrentServiceObjectiveName { get; set; }
-
-        /// <summary>
-        /// gets or sets the requested service objective ID
-        /// </summary>
-        public Guid? RequestedServiceObjectiveId { get; set; }
 
         /// <summary>
         /// Gets or sets the requested service objective name
@@ -145,6 +135,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public Sku Sku { get; set; }
 
         /// <summary>
+        /// Gets or sets the capacity of the database. 
+        ///    The capacity is Dtu number if the database is dtu based database; capacity is Vcore number if the database is vcore based database.
+        /// </summary>
+        public int? Capacity { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -178,17 +174,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             CreateMode = database.Properties.CreateMode;
             EarliestRestoreDate = database.Properties.EarliestRestoreDate;
 
-            Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
-            CurrentServiceObjectiveId = id;
-
             Guid.TryParse(database.Properties.DatabaseId, out id);
             DatabaseId = id;
 
             Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
             Edition = edition;
-
-            Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
-            RequestedServiceObjectiveId = id;
 
             Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
             ReadScale = readScale;
@@ -237,6 +227,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             ZoneRedundant = database.ZoneRedundant;
 
             Sku = database.Sku;
+
+            Capacity = database.Sku.Capacity;
         }
     }
 }

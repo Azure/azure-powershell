@@ -187,12 +187,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             if (ParameterSetName == DtuPoolParameterSet)
             {
                 DatabaseEdition? edition = MyInvocation.BoundParameters.ContainsKey("Edition") ? (DatabaseEdition?)Edition : null;
-                newModel.Sku = new Management.Sql.Models.Sku()
+                if(edition.HasValue)
                 {
-                    Name = edition.HasValue ? string.Format("{0}{1}", edition.Value, NormalElasticPoolSkuNamesPostfix) : DefaultPoolSkuName,
-                    Tier = edition.HasValue ? edition.ToString() : null,
-                    Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
-                };
+                    newModel.Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = edition.HasValue ? string.Format("{0}{1}", edition.Value, NormalElasticPoolSkuNamesPostfix) : DefaultPoolSkuName,
+                        Tier = edition.HasValue ? edition.ToString() : null,
+                        Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
+                    };
+                }
 
                 newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
                 {
