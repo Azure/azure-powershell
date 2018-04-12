@@ -105,17 +105,23 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             AzureSession.Instance.DataStore = new MemoryDataStore();
             var savedRmProfile = AzureRmProfileProvider.Instance.Profile;
+#if !NETSTANDARD
             var savedSmProfile = AzureSMProfileProvider.Instance.Profile;
+#endif
             try
             {
                 AzureRmProfileProvider.Instance.Profile = rmProfile;
+#if !NETSTANDARD
                 AzureSMProfileProvider.Instance.Profile = smProfile;
+#endif
                 testAction();
             }
             finally
             {
                 AzureRmProfileProvider.Instance.Profile = savedRmProfile;
+#if !NETSTANDARD
                 AzureSMProfileProvider.Instance.Profile = savedSmProfile;
+#endif
             }
         }
 

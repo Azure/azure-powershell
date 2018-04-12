@@ -31,6 +31,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Text;
 
@@ -53,8 +54,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureAccount testAccount;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
+#if !NETSTANDARD
+
         public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
         public string StackDirectory = @"..\..\..\..\..\..\Stack\Debug";
+#else
+        public string PackageDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Package", "Release");
+        public string StackDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "..", "Stack", "Release");
+#endif
 
         protected List<string> modules;
 
@@ -64,6 +71,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
         public EnvironmentSetupHelper()
         {
+#if NETSTANDARD
+            if (!Directory.Exists(PackageDirectory))
+            {
+                PackageDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Package", "Debug");
+                StackDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "..", "Stack", "Debug");
+            }
+#endif
+
             TestExecutionHelpers.SetUpSessionAndProfile();
             IDataStore datastore = new MemoryDataStore();
             if (AzureSession.Instance.DataStore != null && (AzureSession.Instance.DataStore is MemoryDataStore))
@@ -105,8 +120,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
-                return Path.Combine(this.PackageDirectory,
+#if !NETSTANDARD
+               return Path.Combine(this.PackageDirectory,
                                     @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+#else
+                return Path.Combine(this.PackageDirectory,
+                                    "ResourceManager","AzureResourceManager", "AzureRM.Profile.Netcore", "AzureRM.Profile.Netcore.psd1");
+#endif
             }
         }
 
@@ -114,8 +134,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
+#if !NETSTANDARD
                 return Path.Combine(this.PackageDirectory,
                                     @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+
+#else
+                return Path.Combine(this.PackageDirectory,
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Resources.Netcore", "AzureRM.Resources.Netcore.psd1");
+
+#endif
             }
         }
 
@@ -123,8 +150,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
+#if !NETSTANDARD
                 return Path.Combine(this.PackageDirectory,
                                     @"ResourceManager\AzureResourceManager\AzureRM.Insights\AzureRM.Insights.psd1");
+
+#else
+                return Path.Combine(this.PackageDirectory,
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Insights.Netcore", "AzureRM.Insights.Netcore.psd1");
+
+#endif
             }
         }
 
@@ -132,8 +166,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
+#if !NETSTANDARD
                 return Path.Combine(this.PackageDirectory,
                                     @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
+
+#else
+                return Path.Combine(this.PackageDirectory,
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Storage.Netcore", "AzureRM.Storage.Netcore.psd1");
+
+#endif
             }
         }
 
@@ -142,8 +183,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
+#if !NETSTANDARD
                 return Path.Combine(this.PackageDirectory,
                                      @"Storage\Azure.Storage\Azure.Storage.psd1");
+#else
+                return Path.Combine(this.PackageDirectory,
+                     "Storage", "Azure.Storage.Netcore", "Azure.Storage.Netcore.psd1");
+
+#endif
             }
         }
 
@@ -151,8 +198,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             get
             {
+#if !NETSTANDARD
                 return Path.Combine(this.PackageDirectory,
-                                     @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
+
+#else
+                return Path.Combine(this.PackageDirectory,
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Network.Netcore", "AzureRM.Network.Netcore.psd1");
+
+#endif
             }
         }
 
@@ -160,14 +214,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);
             return Path.Combine(this.PackageDirectory,
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+                                 "ResourceManager", "AzureResourceManager", basename, psd1FileName);
         }
 
         public string GetStackRMModulePath(string psd1FileName)
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);
             return Path.Combine(this.StackDirectory,
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+                                 "ResourceManager", "AzureResourceManager", basename , psd1FileName);
         }
 
         public string StackRMProfileModule
@@ -538,7 +592,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 try
                 {
-                    powershell.Runspace.Events.Subscribers.Clear();
+                    //powershell.Runspace.Events.Subscribers.Clear();
                     output = powershell.Invoke();
                     if (powershell.Streams.Error.Count > 0)
                     {
@@ -568,6 +622,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
+#if NETSTANDARD
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process -ErrorAction Ignore");
+            }
+#endif
             powershell.AddScript("$error.clear()");
             powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
