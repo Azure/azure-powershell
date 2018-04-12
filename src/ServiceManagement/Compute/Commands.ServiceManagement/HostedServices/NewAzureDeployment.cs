@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System;
+using System.Collections;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
@@ -102,6 +101,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Extension configurations.")]
         public ExtensionConfigurationInput[] ExtensionConfiguration
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Extension configurations.")]
+        public Hashtable ExtendedProperty
         {
             get;
             set;
@@ -199,6 +205,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 Name = this.Name,
                 StartDeployment = !this.DoNotStart.IsPresent,
                 TreatWarningsAsError = this.TreatWarningsAsError.IsPresent,
+                ExtendedProperties = this.ExtendedProperty != null ? ConvertToDictionary(this.ExtendedProperty) : null
             };
 
             InvokeInOperationContext(() =>
