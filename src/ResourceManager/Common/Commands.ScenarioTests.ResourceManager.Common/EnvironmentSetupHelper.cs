@@ -70,6 +70,14 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
         public EnvironmentSetupHelper()
         {
+#if NETSTANDARD
+            if (!Directory.Exists(PackageDirectory))
+            {
+                PackageDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Package", "Debug");
+                StackDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "..", "Stack", "Debug");
+            }
+#endif
+
             TestExecutionHelpers.SetUpSessionAndProfile();
             IDataStore datastore = new MemoryDataStore();
             if (AzureSession.Instance.DataStore != null && (AzureSession.Instance.DataStore is MemoryDataStore))
