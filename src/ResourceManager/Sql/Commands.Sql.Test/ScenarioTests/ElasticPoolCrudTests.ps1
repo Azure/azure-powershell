@@ -232,6 +232,16 @@ function Test-UpdateVcoreElasticPool
 		Assert-AreEqual GP_Gen4 $sep2.Sku.Name
         Assert-AreEqual 0 $sep2.PerDatabaseSettings.MinCapacity
         Assert-AreEqual 2 $sep2.PerDatabaseSettings.MaxCapacity
+
+		# Update pool using piping with default values
+		$sep3 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName
+		Assert-NotNull $sep3
+		Assert-NotNull $sep3.Sku.Capacity
+		Assert-NotNull $sep3.Sku.Tier
+		Assert-NotNull $sep3.Sku.name
+		Assert-NotNull $sep3.MaxSizeBytes
+		Assert-NotNull $sep2.PerDatabaseSettings.MinCapacity
+        Assert-NotNull $sep2.PerDatabaseSettings.MaxCapacity
     }
     finally
     {

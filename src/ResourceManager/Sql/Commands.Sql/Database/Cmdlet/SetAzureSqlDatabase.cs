@@ -182,9 +182,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
         {
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
+
             if (this.ParameterSetName == UpdateParameterSetName)
             {
-                newEntity.Add(new AzureSqlDatabaseModel()
+                AzureSqlDatabaseModel newDbModel = new AzureSqlDatabaseModel()
                 {
                     ResourceGroupName = ResourceGroupName,
                     ServerName = ServerName,
@@ -196,14 +197,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     ReadScale = ReadScale,
                     ZoneRedundant =
                         MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
-                            ? (bool?) ZoneRedundant.ToBool()
-                            : null,
-                    Sku = new Management.Sql.Models.Sku()
+                            ? (bool?)ZoneRedundant.ToBool()
+                            : null
+                };
+
+                if (!string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) || MyInvocation.BoundParameters.ContainsKey("Edition"))
+                {
+                    newDbModel.Sku = new Management.Sql.Models.Sku()
                     {
                         Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition.ToString() : RequestedServiceObjectiveName,
-                        Tier = Edition.ToString()
-                    }
-                });
+                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null
+                    };
+                }
+
+                newEntity.Add(newDbModel);
             }
             else if(this.ParameterSetName == VcoreDatabaseParameterSet)
             {
@@ -247,6 +254,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             switch (this.ParameterSetName)
             {
                 case UpdateParameterSetName:
+                case VcoreDatabaseParameterSet:
                     return new List<AzureSqlDatabaseModel>
                     {
                         ModelAdapter.UpsertDatabaseWithNewSdk(

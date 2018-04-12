@@ -204,11 +204,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             if(ParameterSetName == DtuDatabaseParameterSet)
             {
-                newDbModel.Sku = new Management.Sql.Models.Sku()
+                if (!string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) || MyInvocation.BoundParameters.ContainsKey("Edition"))
                 {
-                    Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition.ToString() : RequestedServiceObjectiveName,
-                    Tier = Edition.ToString()
-                };
+                    newDbModel.Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition.ToString() : RequestedServiceObjectiveName,
+                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null
+                    };
+                }
             }
             else
             {

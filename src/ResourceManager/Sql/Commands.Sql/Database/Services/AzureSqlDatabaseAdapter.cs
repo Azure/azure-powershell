@@ -143,7 +143,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                     Collation = model.Database.CollationName,
                     Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
                     MaxSizeBytes = model.Database.MaxSizeBytes,
-                    RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
                     ElasticPoolName = model.Database.ElasticPoolName,
                     RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
                     ReadScale = model.Database.ReadScale.ToString(),
