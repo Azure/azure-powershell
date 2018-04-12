@@ -17,6 +17,9 @@ using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
@@ -65,25 +68,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 
         public static async Task<string> UpdateDomainNameLabelAsync(
             string domainNameLabel,
-            string name,
-            string location,
-            IClient client)
+            string subscriptionId,
+            string resourceGroupName,
+            string publicIpAddressName)
         {
             if (domainNameLabel == null)
             {
-                if (location == null)
-                {
-                    return null;
-                }
-                var networkClient = client.GetClient<NetworkManagementClient>();
-                do
-                {
-                    domainNameLabel = (name + '-' + UniqueId.Create().Substring(0, 6)).ToLower();
-                } while ((await networkClient.CheckDnsNameAvailabilityAsync(
-                            location,
-                            domainNameLabel))
-                        .Available
-                    != true);
+                var id = subscriptionId + "/" + resourceGroupName + "/" + publicIpAddressName;
+                var bytes= Encoding.UTF8.GetBytes(id);
+                var hash = SHA1.Create().ComputeHash(bytes);
+                return "x" + string.Join("", hash.Select(v => v.ToString("x2")));
             }
             return domainNameLabel;
         }
