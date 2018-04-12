@@ -399,4 +399,13 @@ function Test-VirtualMachineProfileWithoutAUC
     # Verify Additional Unattend Content
     Assert-Null $p.OSProfile.WindowsConfiguration.AdditionalUnattendContent "NULL";
     Assert-False {$p.OSProfile.WindowsConfiguration.AdditionalUnattendContent.IsInitialized};
+
+    $p.OSProfile = $null;
+    $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+    Assert-Null $p.OSProfile.WindowsConfiguration.ProvisionVMAgent;
+
+    $p.OSProfile = $null;
+    $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -DisableVMAgent;
+    Assert-False {$p.OSProfile.WindowsConfiguration.ProvisionVMAgent};
+
 }
