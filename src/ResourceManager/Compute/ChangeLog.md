@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
 * Set minimum dependency of module to PowerShell 5.0
 
 ## Version 4.6.0
