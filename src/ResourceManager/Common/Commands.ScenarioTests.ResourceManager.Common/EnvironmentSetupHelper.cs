@@ -124,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                                     @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
 #else
                 return Path.Combine(this.PackageDirectory,
-                                    "ResourceManager","AzureResourceManager", "AzureRM.Profile.NetCore", "AzureRM.Profile.NetCore.psd1");
+                                    "ResourceManager","AzureResourceManager", "AzureRM.Profile.Netcore", "AzureRM.Profile.Netcore.psd1");
 #endif
             }
         }
@@ -139,7 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
 #else
                 return Path.Combine(this.PackageDirectory,
-                                    "ResourceManager", "AzureResourceManager", "AzureRM.Resources.NetCore", "AzureRM.Resources.NetCore.psd1");
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Resources.Netcore", "AzureRM.Resources.Netcore.psd1");
 
 #endif
             }
@@ -155,7 +155,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
 #else
                 return Path.Combine(this.PackageDirectory,
-                                    "ResourceManager", "AzureResourceManager", "AzureRM.Insights.NetCore", "AzureRM.Insights.NetCore.psd1");
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Insights.Netcore", "AzureRM.Insights.Netcore.psd1");
 
 #endif
             }
@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
 #else
                 return Path.Combine(this.PackageDirectory,
-                                    "ResourceManager", "AzureResourceManager", "AzureRM.Storage.NetCore", "AzureRM.Storage.NetCore.psd1");
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Storage.Netcore", "AzureRM.Storage.Netcore.psd1");
 
 #endif
             }
@@ -203,7 +203,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
 #else
                 return Path.Combine(this.PackageDirectory,
-                                    "ResourceManager", "AzureResourceManager", "AzureRM.Network.NetCore", "AzureRM.Network.NetCore.psd1");
+                                    "ResourceManager", "AzureResourceManager", "AzureRM.Network.Netcore", "AzureRM.Network.Netcore.psd1");
 
 #endif
             }
@@ -621,7 +621,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
-            //powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process");
+            powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process");
             powershell.AddScript("$error.clear()");
             powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
