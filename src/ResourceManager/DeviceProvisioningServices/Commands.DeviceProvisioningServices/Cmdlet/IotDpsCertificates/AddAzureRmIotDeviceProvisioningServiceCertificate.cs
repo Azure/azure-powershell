@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using System.IO;
     using System.Management.Automation;
     using System.Text;
+    using Common.Authentication;
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices;
@@ -148,11 +149,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             switch (fileInfo.Extension.ToLower(CultureInfo.InvariantCulture))
             {
                 case ".cer":
-                    var certificateByteContent = File.ReadAllBytes(this.Path);
+                    var certificateByteContent = AzureSession.Instance.DataStore.ReadFileAsBytes(this.Path);
                     certificate = Convert.ToBase64String(certificateByteContent);
                     break;
                 case ".pem":
-                    certificate = File.ReadAllText(this.Path);
+                    certificate = AzureSession.Instance.DataStore.ReadFileAsText(this.Path);
                     break;
                 default:
                     certificate = this.Path;
