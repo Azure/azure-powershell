@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 0.3.3
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.3.2
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 0.3.1
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using System;
     using System.Globalization;
     using System.Net;
+    using System.Threading.Tasks;
 
     internal static class Util
     {
@@ -83,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             try
             {
-                blob.FetchAttributes(accessCondition, options, operationContext);
+                Task.Run(() => blob.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
             }
             catch (StorageException se)
             {
@@ -121,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         blob.Name));
             }
 
-            targetBlob.FetchAttributes();
+            Task.Run(() => targetBlob.FetchAttributesAsync()).Wait();
             return targetBlob;
         }
 

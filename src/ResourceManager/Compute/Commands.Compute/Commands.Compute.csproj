@@ -29,7 +29,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Compute</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Compute\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -53,7 +53,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.17.5.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.18.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -80,7 +80,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Spatial, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\System.Spatial.5.8.2\lib\net40\System.Spatial.dll</HintPath>
       <Private>True</Private>
@@ -128,6 +127,7 @@
     <Compile Include="Common\ComputeClientInstancViewMethod.cs" />
     <Compile Include="Common\ComputeCloudException.cs" />
     <Compile Include="Common\DiagnosticsHelper.cs" />
+    <Compile Include="Common\StorageAccountTypesExtensions.cs" />
     <Compile Include="Common\StorageManagementClient.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
@@ -270,7 +270,9 @@
     <Compile Include="Strategies\Client.cs" />
     <Compile Include="Strategies\ComputeRp\AvailabilitySetStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ComputeStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\DataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageAndOsType.cs" />
+    <Compile Include="Strategies\ComputeRp\ImageDataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageEx.cs" />
     <Compile Include="Strategies\ComputeRp\Images.cs" />
     <Compile Include="Strategies\ComputeRp\ApiEntityReferenceStrategy.cs" />
@@ -282,6 +284,7 @@
     <Compile Include="Strategies\ComputeRp\VirtualMachineStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\WindowsConfigurationStrategy.cs" />
     <Compile Include="Strategies\IAsyncCmdlet.cs" />
+    <Compile Include="Strategies\IParameters.cs" />
     <Compile Include="Strategies\Location.cs" />
     <Compile Include="Strategies\Network\BackendAddressPoolStrategy.cs" />
     <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
@@ -297,6 +300,7 @@
     <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
     <Compile Include="Strategies\ShouldProcess.cs" />
+    <Compile Include="Strategies\StrategyCmdlet.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />

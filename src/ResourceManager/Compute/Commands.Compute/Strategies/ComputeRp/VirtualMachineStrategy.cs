@@ -16,8 +16,9 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using System;
 using Microsoft.Azure.Commands.Common.Strategies;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -40,44 +41,45 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
-            Func<ImageAndOsType> getImageAndOsType,
+            ImageAndOsType imageAndOsType,
             string adminUsername,
             string adminPassword,
             string size,
-            ResourceConfig<AvailabilitySet> availabilitySet)
+            ResourceConfig<AvailabilitySet> availabilitySet,
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: engine =>
+                createModel: engine => new VirtualMachine
                 {
-                    var imageAndOsType = getImageAndOsType();
-                    return new VirtualMachine
+                    OsProfile = new OSProfile
                     {
-                        OsProfile = new OSProfile
+                        ComputerName = name,
+                        WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
+                        LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
+                        AdminUsername = adminUsername,
+                        AdminPassword = adminPassword,
+                    },
+                    NetworkProfile = new NetworkProfile
+                    {
+                        NetworkInterfaces = new[]
                         {
-                            ComputerName = name,
-                            WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
-                            LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
-                            AdminUsername = adminUsername,
-                            AdminPassword = adminPassword,
-                        },
-                        NetworkProfile = new NetworkProfile
-                        {
-                            NetworkInterfaces = new[]
-                            {
-                                engine.GetReference(networkInterface)
-                            }
-                        },
-                        HardwareProfile = new HardwareProfile
-                        {
-                            VmSize = size
-                        },
-                        StorageProfile = new StorageProfile
-                        {
-                            ImageReference = imageAndOsType.Image
-                        },
-                        AvailabilitySet = engine.GetReference(availabilitySet)
-                    };
+                            engine.GetReference(networkInterface)
+                        }
+                    },
+                    HardwareProfile = new HardwareProfile
+                    {
+                        VmSize = size
+                    },
+                    StorageProfile = new StorageProfile
+                    {
+                        ImageReference = imageAndOsType?.Image,
+                        DataDisks = DataDiskStrategy.CreateDataDisks(
+                            imageAndOsType?.DataDiskLuns, dataDisks)
+                    },
+                    AvailabilitySet = engine.GetReference(availabilitySet),
+                    Zones = zones,
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -87,7 +89,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             OperatingSystemTypes osType,
             ResourceConfig<Disk> disk,
             string size,
-            ResourceConfig<AvailabilitySet> availabilitySet)
+            ResourceConfig<AvailabilitySet> availabilitySet,
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -111,10 +115,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
-                            ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
-                        }
+                            ManagedDisk = engine.GetReference(disk, "PremiumLRS"),
+                        },
+                        DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
                     },
-                    AvailabilitySet = engine.GetReference(availabilitySet)
+                    AvailabilitySet = engine.GetReference(availabilitySet),
+                    Zones = zones
                 });
     }
 }

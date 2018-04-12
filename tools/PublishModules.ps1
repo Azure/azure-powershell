@@ -49,12 +49,8 @@ function Get-TargetModules
         {
             $packageFolder = "$PSScriptRoot\..\src\Stack"
         }
-    
-        if($isNetCore -eq "true") {
-            $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager"
-        } else {
-            $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-        }
+
+        $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
     
         if ((($Scope -eq 'All') -or $PublishLocal)) {
           if($isNetCore -eq "false") {
@@ -194,6 +190,7 @@ function Change-RMModule
         {
             return
         }
+
         Write-Output "Changing to directory for module modifications $TempRepoPath"
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
         if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)
@@ -218,6 +215,7 @@ function Change-RMModule
             Write-Output "Expanding $zipPath"
             Expand-Archive $zipPath -DestinationPath $dirPath
             Write-Output "Adding PSM1 dependency to $unzippedManifest"
+            Add-PSM1Dependency -Path $unzippedManifest
             Write-Output "Removing module manifest dependencies for $unzippedManifest"
             Remove-ModuleDependencies -Path $unzippedManifest
             Remove-Item -Path $zipPath -Force
@@ -228,6 +226,23 @@ function Change-RMModule
         {
             popd
         }
+    }
+}
+
+function Add-PSM1Dependency {
+    [CmdletBinding()]
+    param(
+        [string] $Path)
+
+    PROCESS {
+        $file = Get-Item -Path $Path
+        $manifestFile = $file.Name
+        $psm1file = $manifestFile -replace ".psd1", ".psm1"
+        Write-Output "Adding RootModule dependency ($psm1file) to psd1 '$path'"
+        $regex = New-Object System.Text.RegularExpressions.Regex "#\s*RootModule\s*=\s*''"
+        $content = (Get-Content -Path $Path) -join "`r`n"
+        $text = $regex.Replace($content, "RootModule = '$psm1file'")
+        $text | Out-File -FilePath $Path
     }
 }
 
