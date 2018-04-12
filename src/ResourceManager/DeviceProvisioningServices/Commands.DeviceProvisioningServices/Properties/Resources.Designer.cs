@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Propert
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create new an Azure IoT Hub Device Provisioing Service certificate verification code.
+        /// </summary>
+        internal static string NewCertificateVerificationCode {
+            get {
+                return ResourceManager.GetString("NewCertificateVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete a shared access policies in an Azure IoT Hub Device Provisioning Service.
         /// </summary>
         internal static string RemoveAccessPolicy {

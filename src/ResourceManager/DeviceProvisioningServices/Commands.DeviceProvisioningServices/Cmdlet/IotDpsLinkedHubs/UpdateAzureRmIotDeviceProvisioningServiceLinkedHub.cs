@@ -88,7 +88,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "Apply allocation policy to the IoT Hub")]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter ApplyAllocationPolicy { get; set; }
 
         public override void ExecuteCmdlet()
@@ -122,19 +121,12 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private void UpdateIotDpsLinkedHub()
         {
-            try
-            {
-                ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
-                IotHubDefinitionDescription iotHub = provisioningServiceDescription.Properties.IotHubs.FirstOrDefault(x => x.Name.Equals(this.LinkedHubName, StringComparison.OrdinalIgnoreCase));
-                iotHub.ApplyAllocationPolicy = this.ApplyAllocationPolicy.IsPresent;
-                iotHub.AllocationWeight = this.AllocationWeight ?? iotHub.AllocationWeight;
-                IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
-                this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(GetIotDpsHubs(this.ResourceGroupName, this.Name, this.LinkedHubName), this.ResourceGroupName, this.Name), false);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
+            IotHubDefinitionDescription iotHub = provisioningServiceDescription.Properties.IotHubs.FirstOrDefault(x => x.Name.Equals(this.LinkedHubName, StringComparison.OrdinalIgnoreCase));
+            iotHub.ApplyAllocationPolicy = this.ApplyAllocationPolicy.IsPresent;
+            iotHub.AllocationWeight = this.AllocationWeight ?? iotHub.AllocationWeight;
+            IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
+            this.WriteObject(IotDpsUtils.ToPSIotHubDefinitionDescription(GetIotDpsHubs(this.ResourceGroupName, this.Name, this.LinkedHubName), this.ResourceGroupName, this.Name), false);
         }
     }
 }

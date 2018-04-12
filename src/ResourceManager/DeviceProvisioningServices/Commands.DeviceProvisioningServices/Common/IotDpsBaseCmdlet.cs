@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     public class IotDpsBaseCmdlet : AzureRMCmdlet
     {
-        protected const string ArmApiVersion = "2017-11-15";
-
         private IIotDpsClient iotDpsClient;
 
         private IResourceManagementClient resourceManagementClient;

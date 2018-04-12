@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Cmdlet\IotDpsCertificates\AddAzureRmIotDeviceProvisioningServiceCertificate.cs" />
     <Compile Include="Cmdlet\IotDpsCertificates\GetAzureRmIotDeviceProvisioningServiceCertificate.cs" />
-    <Compile Include="Cmdlet\IotDpsCertificates\GetAzureRmIotDeviceProvisioningServiceCertificateVerificationCode.cs" />
+    <Compile Include="Cmdlet\IotDpsCertificates\NewAzureRmIotDeviceProvisioningServiceCertificateVerificationCode.cs" />
     <Compile Include="Cmdlet\IotDpsCertificates\RemoveAzureRmIotDeviceProvisioningServiceCertificate.cs" />
     <Compile Include="Cmdlet\IotDpsCertificates\SetAzureRmIotDeviceProvisioningServiceCertificate.cs" />
     <Compile Include="Cmdlet\IotDpsLinkedHubs\AddAzureRmIotDeviceProvisioningServiceLinkedHub.cs" />
@@ -91,6 +91,7 @@
       <Link>AzureRM.DeviceProvisioningServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="help\New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="StartupScripts\*.ps1">
       <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
@@ -106,7 +107,6 @@
     <None Include="help\Get-AzureRmIoTDeviceProvisioningService.md" />
     <None Include="help\Get-AzureRmIoTDeviceProvisioningServiceAccessPolicy.md" />
     <None Include="help\Get-AzureRmIoTDeviceProvisioningServiceCertificate.md" />
-    <None Include="help\Get-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode.md" />
     <None Include="help\Get-AzureRmIoTDeviceProvisioningServiceLinkedHub.md" />
     <None Include="help\New-AzureRmIoTDeviceProvisioningService.md" />
     <None Include="help\Remove-AzureRmIoTDeviceProvisioningService.md" />

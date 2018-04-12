@@ -142,7 +142,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
             Mandatory = false,
             ParameterSetName = ResourceUpdateParameterSet,
             HelpMessage = "Reset IoT Device Provisioning Service Tags")]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter Reset { get; set; }
 
         public override void ExecuteCmdlet()

@@ -62,8 +62,8 @@ function Test-AzureIotDpsCertificateLifeCycle
 	Assert-True { $certificate.Type -eq $certificateType }
 	Assert-True { $certificate.CertificateName -eq $certificateName }
 
-	# Get Verification Code
-	$certificateWithVerificationCode = Get-AzureRmIoTDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName | Get-AzureRmIotDpsCVC
+	# Generate Verification Code
+	$certificateWithVerificationCode = Get-AzureRmIoTDpsCertificate -ResourceGroupName $ResourceGroupName -Name $IotDpsName -CertificateName $certificateName | New-AzureRmIotDpsCVC
 	Assert-True { $certificateWithVerificationCode.Properties.Subject -eq $certificateSubject }
 	Assert-NotNull { $certificateWithVerificationCode.Properties.VerificationCode }
 

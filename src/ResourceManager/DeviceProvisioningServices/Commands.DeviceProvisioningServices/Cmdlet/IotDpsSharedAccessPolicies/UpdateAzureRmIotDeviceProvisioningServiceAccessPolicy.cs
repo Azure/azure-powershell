@@ -145,30 +145,23 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                 }
             }
 
-            try
+            ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
+            IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> iotDpsAccessPolicyList = GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name);
+
+            SharedAccessSignatureAuthorizationRuleAccessRightsDescription iotDpsAccessPolicy = GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name, this.KeyName);
+
+            foreach (SharedAccessSignatureAuthorizationRuleAccessRightsDescription accessPolicy in iotDpsAccessPolicyList)
             {
-                ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
-                IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> iotDpsAccessPolicyList = GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name);
-
-                SharedAccessSignatureAuthorizationRuleAccessRightsDescription iotDpsAccessPolicy = GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name, this.KeyName);
-
-                foreach (SharedAccessSignatureAuthorizationRuleAccessRightsDescription accessPolicy in iotDpsAccessPolicyList)
+                if (accessPolicy.KeyName.Equals(iotDpsAccessPolicy.KeyName))
                 {
-                    if (accessPolicy.KeyName.Equals(iotDpsAccessPolicy.KeyName))
-                    {
-                        accessPolicy.Rights = string.Join(", ", accessRights.ToArray());
-                    }
+                    accessPolicy.Rights = string.Join(", ", accessRights.ToArray());
                 }
-
-                provisioningServiceDescription.Properties.AuthorizationPolicies = iotDpsAccessPolicyList;
-                IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
-
-                this.WriteObject(IotDpsUtils.ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name, this.KeyName), this.ResourceGroupName, this.Name), false);
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            provisioningServiceDescription.Properties.AuthorizationPolicies = iotDpsAccessPolicyList;
+            IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
+
+            this.WriteObject(IotDpsUtils.ToPSSharedAccessSignatureAuthorizationRuleAccessRightsDescription(GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name, this.KeyName), this.ResourceGroupName, this.Name), false);
         }
     }
 }
