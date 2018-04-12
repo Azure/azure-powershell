@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -31,6 +34,20 @@ namespace Commands.DeviceProvisioningServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureIotDpsCertificateLifeCycle()
         {
+            var rootCertificatePath = System.AppDomain.CurrentDomain.BaseDirectory + "\\rootCertificate.cer";
+            var verifyCertificatePath = System.AppDomain.CurrentDomain.BaseDirectory + "\\verifyCertificate.cer";
+
+            TestExecutionHelpers.SetUpSessionAndProfile();
+
+            var oldDataStore = AzureSession.Instance.DataStore;
+            var memoryStore = oldDataStore as MemoryDataStore;
+            MemoryDataStore dataStore = memoryStore != null ? memoryStore : new MemoryDataStore();
+
+            dataStore.VirtualStore.Add(rootCertificatePath, rootCertificatePath);
+            dataStore.VirtualStore.Add(verifyCertificatePath, verifyCertificatePath);
+
+            AzureSession.Instance.DataStore = dataStore;
+
             IotDpsController.NewInstance.RunPsTest("Test-AzureIotDpsCertificateLifeCycle");
         }
     }
