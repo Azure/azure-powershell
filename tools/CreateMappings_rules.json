@@ -84,6 +84,8 @@
 
     { "regex": "OperationalInsights", "alias": "Operational Insights" }, 
 
+    { "regex": "PolicyInsights", "alias": "Policy Insights" }, 
+
     { "regex": "PowerBIEmbedded", "group": "Power BI", "alias": "Power BI Embedded Capacity" }, 
     { "regex": "PowerBIWorkspace", "group": "Power BI", "alias": "Power BI Workspace Collections" }, 
 
@@ -129,7 +131,7 @@
     { "regex": "Resources", "group": "Resources", "alias": "Resources" },
 
     { "regex":  "LocationBasedServices", "alias":  "Location Based Services"  },
-    { "regex": "Kubernetes", "group": "Kubernetes", "alias": "Kubernetes" },
+    { "regex": "Aks", "group": "Aks", "alias": "Aks" },
 
     { "regex": "ManagedServiceIdentity", "group": "Managed Service Identity", "alias": "Managed Service Identity" },
 

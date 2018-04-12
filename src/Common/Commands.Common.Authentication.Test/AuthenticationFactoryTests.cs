@@ -25,6 +25,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Test;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit.Abstractions;
+using Microsoft.Rest.Azure;
 
 namespace Common.Authentication.Test
 {
@@ -162,14 +163,14 @@ namespace Common.Authentication.Test
             };
             var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
             var expectedResource = environment.ActiveDirectoryServiceEndpointResourceId;
-            var builder = new UriBuilder(AuthenticationFactory.DefaultMSILoginUri);
-            builder.Query = string.Format("resource={0}", Uri.EscapeDataString(environment.ActiveDirectoryServiceEndpointResourceId));
+            var builder = new UriBuilder(AuthenticationFactory.DefaultBackupMSILoginUri);
+            builder.Query = $"resource={Uri.EscapeDataString(environment.ActiveDirectoryServiceEndpointResourceId)}&api-version=2018-02-01";
             var defaultUri = builder.Uri.ToString();
 
             var responses = new Dictionary<string, ManagedServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
             {
                 {defaultUri, new ManagedServiceTokenInfo { AccessToken = expectedAccessToken, ExpiresIn = 3600, Resource=expectedResource}},
-                {"http://myfunkyurl:10432/oauth2/token?resource=foo", new ManagedServiceTokenInfo { AccessToken = expectedToken2, ExpiresIn = 3600, Resource="foo"} }
+                {"http://myfunkyurl:10432/oauth2/token?resource=foo&api-version=2018-02-01", new ManagedServiceTokenInfo { AccessToken = expectedToken2, ExpiresIn = 3600, Resource="foo"} }
             };
             AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
             var authFactory = new AuthenticationFactory();
@@ -183,6 +184,150 @@ namespace Common.Authentication.Test
             };
             account2.SetProperty(AzureAccount.Property.MSILoginUri, "http://myfunkyurl:10432/oauth2/token");
             var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, "foo");
+            _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
+            Assert.Equal(expectedToken2, token2.AccessToken);
+            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
+            Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanAuthenticateUsingMSIResourceId()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            string expectedAccessToken = Guid.NewGuid().ToString();
+            _output.WriteLine("Expected access token for ARM URI: {0}", expectedAccessToken);
+            string expectedToken2 = Guid.NewGuid().ToString();
+            string tenant = Guid.NewGuid().ToString();
+            _output.WriteLine("Expected access token for graph URI: {0}", expectedToken2);
+            string userId = "/foo/bar/baz";
+            var account = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
+            var expectedResource = environment.ActiveDirectoryServiceEndpointResourceId;
+            var builder = new UriBuilder(AuthenticationFactory.DefaultMSILoginUri);
+            builder.Query = $"resource={Uri.EscapeDataString(environment.ActiveDirectoryServiceEndpointResourceId)}&msi_res_id={Uri.EscapeDataString(userId)}&api-version=2018-02-01";
+            var defaultUri = builder.Uri.ToString();
+
+            var customBuilder = new UriBuilder(AuthenticationFactory.DefaultMSILoginUri);
+            customBuilder.Query = $"resource={Uri.EscapeDataString(environment.GraphEndpointResourceId)}&msi_res_id={Uri.EscapeDataString(userId)}&api-version=2018-02-01";
+            var customUri = customBuilder.Uri.ToString();
+
+            var responses = new Dictionary<string, ManagedServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
+            {
+                {defaultUri, new ManagedServiceTokenInfo { AccessToken = expectedAccessToken, ExpiresIn = 3600, Resource=expectedResource}},
+                {customUri, new ManagedServiceTokenInfo { AccessToken = expectedToken2, ExpiresIn = 3600, Resource=environment.GraphEndpointResourceId} }
+            };
+            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
+            var authFactory = new AuthenticationFactory();
+            var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
+            Assert.Equal(expectedAccessToken, token.AccessToken);
+            var account2 = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
+            _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
+            Assert.Equal(expectedToken2, token2.AccessToken);
+            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
+            Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanAuthenticateUsingMSIClientId()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            string expectedAccessToken = Guid.NewGuid().ToString();
+            _output.WriteLine("Expected access token for ARM URI: {0}", expectedAccessToken);
+            string expectedToken2 = Guid.NewGuid().ToString();
+            string tenant = Guid.NewGuid().ToString();
+            _output.WriteLine("Expected access token for graph URI: {0}", expectedToken2);
+            string userId = Guid.NewGuid().ToString();
+            var account = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
+            var expectedResource = environment.ActiveDirectoryServiceEndpointResourceId;
+            var builder = new UriBuilder(AuthenticationFactory.DefaultMSILoginUri);
+            builder.Query = $"resource={Uri.EscapeDataString(environment.ActiveDirectoryServiceEndpointResourceId)}&client_id={userId}&api-version=2018-02-01";
+            var defaultUri = builder.Uri.ToString();
+
+            var customBuilder = new UriBuilder(AuthenticationFactory.DefaultMSILoginUri);
+            customBuilder.Query = $"resource={Uri.EscapeDataString(environment.GraphEndpointResourceId)}&client_id={userId}&api-version=2018-02-01";
+            var customUri = customBuilder.Uri.ToString();
+
+            var responses = new Dictionary<string, ManagedServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
+            {
+                {defaultUri, new ManagedServiceTokenInfo { AccessToken = expectedAccessToken, ExpiresIn = 3600, Resource=expectedResource}},
+                {customUri, new ManagedServiceTokenInfo { AccessToken = expectedToken2, ExpiresIn = 3600, Resource=environment.GraphEndpointResourceId} }
+            };
+            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
+            var authFactory = new AuthenticationFactory();
+            var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
+            Assert.Equal(expectedAccessToken, token.AccessToken);
+            var account2 = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
+            _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
+            Assert.Equal(expectedToken2, token2.AccessToken);
+            var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
+            Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanAuthenticateUsingMSIObjectId()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            string expectedAccessToken = Guid.NewGuid().ToString();
+            _output.WriteLine("Expected access token for ARM URI: {0}", expectedAccessToken);
+            string expectedToken2 = Guid.NewGuid().ToString();
+            string tenant = Guid.NewGuid().ToString();
+            _output.WriteLine("Expected access token for graph URI: {0}", expectedToken2);
+            string userId = Guid.NewGuid().ToString();
+            var account = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            var environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
+            var expectedResource = environment.ActiveDirectoryServiceEndpointResourceId;
+            var builder = new UriBuilder(AuthenticationFactory.DefaultMSILoginUri);
+            builder.Query = $"resource={Uri.EscapeDataString(environment.ActiveDirectoryServiceEndpointResourceId)}&object_id={userId}&api-version=2018-02-01";
+            var defaultUri = builder.Uri.ToString();
+
+            var customBuilder = new UriBuilder(AuthenticationFactory.DefaultMSILoginUri);
+            customBuilder.Query = $"resource={Uri.EscapeDataString(environment.GraphEndpointResourceId)}&object_id={userId}&api-version=2018-02-01";
+            var customUri = customBuilder.Uri.ToString();
+
+            var responses = new Dictionary<string, ManagedServiceTokenInfo>(StringComparer.OrdinalIgnoreCase)
+            {
+                {defaultUri, new ManagedServiceTokenInfo { AccessToken = expectedAccessToken, ExpiresIn = 3600, Resource=expectedResource}},
+                {customUri, new ManagedServiceTokenInfo { AccessToken = expectedToken2, ExpiresIn = 3600, Resource=environment.GraphEndpointResourceId} }
+            };
+            AzureSession.Instance.RegisterComponent(HttpClientOperationsFactory.Name, () => TestHttpOperationsFactory.Create(responses, _output), true);
+            var authFactory = new AuthenticationFactory();
+            var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
+            _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
+            Assert.Equal(expectedAccessToken, token.AccessToken);
+            var account2 = new AzureAccount
+            {
+                Id = userId,
+                Type = AzureAccount.AccountType.ManagedService
+            };
+            var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
             var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");

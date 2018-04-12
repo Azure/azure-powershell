@@ -54,7 +54,7 @@ This cmdlet gets the type for an extension at the location that this parameter s
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ This cmdlet gets the type for an extension from the publisher that this paramete
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

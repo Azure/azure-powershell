@@ -32,5 +32,12 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             EventHubsController.NewInstance.RunPsTest("DRConfigurationTests");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DRConfigurationsCURDAlternateName()
+        {
+            EventHubsController.NewInstance.RunPsTest("DRConfigurationTestsAlternateName");
+        }
     }
 }

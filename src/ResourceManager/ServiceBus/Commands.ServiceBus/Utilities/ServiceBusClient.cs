@@ -235,7 +235,11 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 parameters.RequiresSession = queue.RequiresSession;
             if (queue.Status.HasValue)
                 parameters.Status = queue.Status;
-        
+            if (!string.IsNullOrEmpty(queue.ForwardDeadLetteredMessagesTo))
+                parameters.ForwardDeadLetteredMessagesTo = queue.ForwardDeadLetteredMessagesTo;
+            if (!string.IsNullOrEmpty(queue.ForwardTo))
+                parameters.ForwardTo = queue.ForwardTo;
+
             SBQueue response = Client.Queues.CreateOrUpdate(resourceGroupName, namespaceName, queueName, parameters);
             return new PSQueueAttributes(response);
         }
@@ -468,8 +472,11 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 parameters.RequiresSession = subscription.RequiresSession;
             if (subscription.Status.HasValue)
                 parameters.Status = subscription.Status;
+            if (!string.IsNullOrEmpty(subscription.ForwardTo))
+                parameters.ForwardTo = subscription.ForwardTo;
+            if (!string.IsNullOrEmpty(subscription.ForwardDeadLetteredMessagesTo))
+                parameters.ForwardDeadLetteredMessagesTo = subscription.ForwardDeadLetteredMessagesTo;
             
-
             var response = Client.Subscriptions.CreateOrUpdate(resourceGroupName, namespaceName, topicName, subscriptionName, parameters);
             return new PSSubscriptionAttributes(response);
         }
@@ -499,11 +506,19 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
         public PSRulesAttributes CreateUpdateRules(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, string ruleName, PSRulesAttributes ruleAttributes)
         {
-            var parameters = new Rule()
+            var parameters = new Rule();
+            parameters.FilterType = ruleAttributes.FilterType;
+            parameters.Action = new Management.ServiceBus.Models.Action()
             {
-                Action = new Management.ServiceBus.Models.Action(),
-                SqlFilter = new SqlFilter() { RequiresPreprocessing = ruleAttributes.SqlFilter.RequiresPreprocessing, SqlExpression = ruleAttributes.SqlFilter.SqlExpression },
-                CorrelationFilter = new CorrelationFilter()
+                SqlExpression = ruleAttributes.Action.SqlExpression,
+                CompatibilityLevel = ruleAttributes.Action.CompatibilityLevel
+            };
+
+            if (ruleAttributes.FilterType.ToString().Equals("SqlFilter"))
+                parameters.SqlFilter = new SqlFilter() { RequiresPreprocessing = ruleAttributes.SqlFilter.RequiresPreprocessing, SqlExpression = ruleAttributes.SqlFilter.SqlExpression };
+            if (ruleAttributes.FilterType.ToString().Equals("CorrelationFilter"))
+            {
+                parameters.CorrelationFilter = new CorrelationFilter()
                 {
                     CorrelationId = ruleAttributes.CorrelationFilter.CorrelationId,
                     MessageId = ruleAttributes.CorrelationFilter.MessageId,
@@ -514,9 +529,9 @@ namespace Microsoft.Azure.Commands.ServiceBus
                     ReplyToSessionId = ruleAttributes.CorrelationFilter.ReplyToSessionId,
                     ContentType = ruleAttributes.CorrelationFilter.ContentType,
                     RequiresPreprocessing = ruleAttributes.CorrelationFilter.RequiresPreprocessing,
-                }            
-             
-            };
+                    Properties = ruleAttributes.CorrelationFilter.Properties
+                };
+            }
 
             var response = Client.Rules.CreateOrUpdate(resourceGroupName, namespaceName, topicName, subscriptionName, ruleName, parameters);
             return new PSRulesAttributes(response);
@@ -564,6 +579,9 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
             if (!string.IsNullOrEmpty(parameter.PartnerNamespace))
                 Parameter1.PartnerNamespace = parameter.PartnerNamespace;
+
+            if (!string.IsNullOrEmpty(parameter.AlternateName))
+                Parameter1.AlternateName = parameter.AlternateName;
 
             var response = Client.DisasterRecoveryConfigs.CreateOrUpdate(resourceGroupName, namespaceName, alias, Parameter1);
             return new PSServiceBusDRConfigurationAttributes(response);
