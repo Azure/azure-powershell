@@ -203,6 +203,9 @@ This command creates a new Azure SQL Database Failover Group.
 ### [New-AzureRmSqlDatabaseImport](New-AzureRmSqlDatabaseImport.md)
 Imports a .bacpac file and create a new database on the server.
 
+### [New-AzureRmSqlDatabaseRestorePoint](New-AzureRmSqlDatabaseRestorePoint.md)
+Creates a new restore point from which a SQL Database can be restored.
+
 ### [New-AzureRmSqlDatabaseSecondary](New-AzureRmSqlDatabaseSecondary.md)
 Creates a secondary database for an existing database and starts data replication.
 
@@ -256,6 +259,9 @@ Removes one or more databases from an Azure SQL Database Failover Group.
 
 ### [Remove-AzureRmSqlDatabaseLongTermRetentionBackup](Remove-AzureRmSqlDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
+
+### [Remove-AzureRmSqlDatabaseRestorePoint](Remove-AzureRmSqlDatabaseRestorePoint.md)
+Removes given restore point from a SQL Database.
 
 ### [Remove-AzureRmSqlDatabaseSecondary](Remove-AzureRmSqlDatabaseSecondary.md)
 Terminates data replication between a SQL Database and the specified secondary database.
@@ -414,7 +420,7 @@ Cancels the asynchronous updates operation on the database.
 Stops the workflow that runs a recommended index operation.
 
 ### [Stop-AzureRmSqlElasticPoolActivity](Stop-AzureRmSqlElasticPoolActivity.md)
-Cancel the asynchronous update operation on an elastic pool.
+Cancels the asynchronous update operation on an elastic pool.
 
 ### [Stop-AzureRmSqlServerUpgrade](Stop-AzureRmSqlServerUpgrade.md)
 Stops the upgrade of a SQL Database server.
