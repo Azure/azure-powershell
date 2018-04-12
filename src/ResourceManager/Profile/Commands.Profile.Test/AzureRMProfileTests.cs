@@ -864,11 +864,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
             profile.Save();
             string actual = dataStore.ReadFileAsText(path).Substring(1).TrimEnd(new[] { '\0' });
+#if NETSTANDARD
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 expected = expected.Replace("\r\n", "\n");
             }
-
+#endif
             Assert.Equal(expected, actual);
         }
 
