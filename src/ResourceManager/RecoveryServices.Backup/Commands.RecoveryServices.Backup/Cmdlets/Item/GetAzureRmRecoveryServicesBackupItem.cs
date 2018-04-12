@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem",
         DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase),
             typeof(IList<ItemBase>))]
-    public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
         internal const string GetItemsForVaultParamSet = "GetItemsForVault";
@@ -88,14 +88,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
-                {
-                    {ItemParams.Container, Container},
-                    {ItemParams.BackupManagementType, BackupManagementType},
-                    {ItemParams.AzureVMName, Name},
-                    {ItemParams.ProtectionStatus, ProtectionStatus},
-                    {ItemParams.ProtectionState, ProtectionState},
-                    {ItemParams.WorkloadType, WorkloadType},
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.Vault, Vault },
+                        { ItemParams.Container, Container },
+                        { ItemParams.BackupManagementType, BackupManagementType },
+                        { ItemParams.AzureVMName, Name },
+                        { ItemParams.ProtectionStatus, ProtectionStatus },
+                        { ItemParams.ProtectionState, ProtectionState },
+                        { ItemParams.WorkloadType, WorkloadType },
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = null;
 

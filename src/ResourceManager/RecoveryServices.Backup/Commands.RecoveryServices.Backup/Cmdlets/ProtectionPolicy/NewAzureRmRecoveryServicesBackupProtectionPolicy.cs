@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmRecoveryServicesBackupProtectionPolicy",
         SupportsShouldProcess = true), OutputType(typeof(PolicyBase))]
-    public class NewAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
+    public class NewAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Name of the policy to be created
@@ -87,19 +87,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 PolicyCmdletHelpers.ValidateProtectionPolicyName(Name);
 
                 // Validate if policy already exists               
-                if (PolicyCmdletHelpers.GetProtectionPolicyByName(Name, ServiceClientAdapter) != null)
+                if (PolicyCmdletHelpers.GetProtectionPolicyByName(
+                    Name,
+                    ServiceClientAdapter,
+                    vault: Vault) != null)
                 {
                     throw new ArgumentException(string.Format(Resources.PolicyAlreadyExistException, Name));
                 }
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
-                {
-                   {PolicyParams.PolicyName, Name},
-                   {PolicyParams.WorkloadType, WorkloadType},
-                   {PolicyParams.RetentionPolicy, RetentionPolicy},
-                   {PolicyParams.SchedulePolicy, SchedulePolicy},
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.Vault, Vault },
+                        { PolicyParams.PolicyName, Name },
+                        { PolicyParams.WorkloadType, WorkloadType },
+                        { PolicyParams.RetentionPolicy, RetentionPolicy },
+                        { PolicyParams.SchedulePolicy, SchedulePolicy },
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
@@ -109,8 +113,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 // now get the created policy and return
                 ServiceClientModel.ProtectionPolicyResource policy = PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                                             Name,
-                                                                             ServiceClientAdapter);
+                    Name,
+                    ServiceClientAdapter,
+                    vault: Vault);
                 // now convert service Policy to PSObject
                 WriteObject(ConversionHelpers.GetPolicyModel(policy));
             }, ShouldProcess(Name, VerbsCommon.New));

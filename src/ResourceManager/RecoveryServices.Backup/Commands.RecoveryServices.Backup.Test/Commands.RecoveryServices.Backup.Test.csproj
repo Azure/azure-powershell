@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\IaasVm\ProtectionCheckTests.cs" />
     <Compile Include="TestConstants.cs" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -181,6 +182,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\IaasVm\JobTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\IaasVm\ProtectionCheckTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\IaasVm\PolicyTests.ps1">
@@ -253,6 +257,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.PolicyTests\TestAzureVMPolicy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests.ProtectionCheckTests\TestAzureVMProtectionCheck.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

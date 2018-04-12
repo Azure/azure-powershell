@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
         OutputType(typeof(JobBase))]
-    public class BackupAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
+    public class BackupAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The protected item on which backup has to be triggered.
@@ -54,15 +54,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
                     {
-                    {ItemParams.Item, Item},
-                    {ItemParams.ExpiryDateTimeUTC, ExpiryDateTimeUTC},
+                        {VaultParams.Vault, Vault},
+                        {ItemParams.Item, Item},
+                        {ItemParams.ExpiryDateTimeUTC, ExpiryDateTimeUTC},
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerBackup();
 
-                HandleCreatedJob(jobResponse, Resources.TriggerBackupOperation);
+                HandleCreatedJob(
+                    jobResponse, 
+                    Resources.TriggerBackupOperation,
+                    vault: Vault);
             }, ShouldProcess(Item.Name, VerbsData.Backup));
         }
     }

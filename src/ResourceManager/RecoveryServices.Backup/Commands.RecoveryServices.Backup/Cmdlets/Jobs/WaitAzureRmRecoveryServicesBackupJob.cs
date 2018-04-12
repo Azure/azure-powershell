@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Waits for the given job to finish its operation and returns the corresponding job object.
     /// </summary>
     [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(JobBase), typeof(IList<JobBase>))]
-    public class WaitAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
+    public class WaitAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Job or List of jobs until end of which the cmdlet should wait.
@@ -109,8 +109,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         string jobId = jobsToWaitOn[i];
                         var updatedJob = JobConversions.GetPSJob(
-                            ServiceClientAdapter.GetJob(jobId)
-                            );
+                            ServiceClientAdapter.GetJob(
+                                jobId,
+                                vaultName: Vault?.Name,
+                                resourceGroupName: Vault?.ResourceGroupName));
 
                         if (IsJobInProgress(updatedJob))
                         {

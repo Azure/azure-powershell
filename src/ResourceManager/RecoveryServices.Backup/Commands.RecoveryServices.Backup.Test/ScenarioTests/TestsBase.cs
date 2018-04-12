@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
         public NetworkMgmtNS.NetworkManagementClient NetworkManagementClient { get; private set; }
 
+        public Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient InternalNetworkManagementClient { get; private set; }
+
         public ComputeMgmtNS.ComputeManagementClient ComputeManagementClient { get; private set; }
 
         protected string ResourceNamespace { get; private set; }
@@ -92,6 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
             StorageClient = GetStorageManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
+            InternalNetworkManagementClient = this.GetNetworkManagementClientInternal(context);
             ComputeManagementClient = GetComputeManagementClient(context);
 
             helper.SetupManagementClients(
@@ -102,6 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 HyakRmClient,
                 StorageClient,
                 NetworkManagementClient,
+                InternalNetworkManagementClient,
                 ComputeManagementClient);
         }
 
@@ -114,6 +118,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         private NetworkMgmtNS.NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<NetworkMgmtNS.NetworkManagementClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient GetNetworkManagementClientInternal(MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient>(
                 TestEnvironmentFactory.GetTestEnvironment());
         }
 

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection", SupportsShouldProcess = true),
         OutputType(typeof(JobBase))]
-    public class DisableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
+    public class DisableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The protected item whose protection needs to be disabled.
@@ -69,10 +69,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         base.ExecuteCmdlet();
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-                        {
-                                {ItemParams.Item, Item},
-                                {ItemParams.DeleteBackupData, this.DeleteBackupData},
-                        }, ServiceClientAdapter);
+                            {
+                                { VaultParams.Vault, Vault },
+                                { ItemParams.Item, Item },
+                                { ItemParams.DeleteBackupData, this.DeleteBackupData },
+                            }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =
                             providerManager.GetProviderInstance(Item.WorkloadType,
@@ -82,11 +83,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         // Track Response and display job details
 
-                        HandleCreatedJob(itemResponse, Resources.DisableProtectionOperation);
+                        HandleCreatedJob(
+                            itemResponse,
+                            Resources.DisableProtectionOperation,
+                            vault: Vault);
                     }
                 );
             }, ShouldProcess(Item.Name, VerbsLifecycle.Disable));
-            
+
         }
     }
 }

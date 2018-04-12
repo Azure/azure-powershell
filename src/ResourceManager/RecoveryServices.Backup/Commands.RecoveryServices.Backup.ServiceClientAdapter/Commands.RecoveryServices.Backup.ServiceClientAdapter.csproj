@@ -58,6 +58,7 @@
     <Compile Include="BMSAPIs\JobAPIs.cs" />
     <Compile Include="BMSAPIs\ItemAPIs.cs" />
     <Compile Include="BMSAPIs\ContainerAPIs.cs" />
+    <Compile Include="BMSAPIs\VaultAPIs.cs" />
     <Compile Include="BMSAPIs\ProtectableItemAPI.cs" />
     <Compile Include="BMSAPIs\RecoveryPointsAPIs.cs" />
     <Compile Include="BMSAPIs\RestoreDiskAPIs.cs" />

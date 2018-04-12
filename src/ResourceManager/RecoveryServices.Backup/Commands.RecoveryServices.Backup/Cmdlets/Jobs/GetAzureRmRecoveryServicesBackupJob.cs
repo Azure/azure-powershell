@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"),
         OutputType(typeof(JobBase), typeof(IList<JobBase>))]
-    public class GetAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Filter value for status of job.
@@ -149,13 +149,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 int resultCount = 0;
 
-                var adapterResponse = ServiceClientAdapter.GetJobs(JobId,
+                var adapterResponse = ServiceClientAdapter.GetJobs(
+                    JobId,
                     ServiceClientHelpers.GetServiceClientJobStatus(Status),
                     Operation.ToString(),
                     rangeStart,
                     rangeEnd,
                     ServiceClientHelpers.GetServiceClientBackupManagementType(
-                        BackupManagementType));
+                        BackupManagementType),
+                    vaultName: Vault?.Name,
+                    resourceGroupName: Vault?.ResourceGroupName);
 
                 JobConversions.AddServiceClientJobsToPSList(
                     adapterResponse, result, ref resultCount);

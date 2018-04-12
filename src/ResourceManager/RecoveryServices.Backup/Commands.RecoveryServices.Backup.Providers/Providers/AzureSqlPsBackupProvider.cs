@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>The job response returned from the service</returns>
         public RestAzureNS.AzureOperationResponse DisableProtection()
         {
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
             bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
@@ -84,8 +85,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             if (deleteBackupData)
             {
                 return ServiceClientAdapter.DeleteProtectedItem(
-                                containerUri,
-                                protectedItemUri);
+                    containerUri,
+                    protectedItemUri,
+                    vaultName: vault?.Name,
+                    resourceGroupName: vault?.ResourceGroupName);
             }
             else
             {
@@ -126,6 +129,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>Recovery point detail as returned by the service</returns>
         public RecoveryPointBase GetRecoveryPointDetails()
         {
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
             AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
                 as AzureSqlItem;
 
@@ -136,7 +140,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, item.Id);
 
             var rpResponse = ServiceClientAdapter.GetRecoveryPointDetails(
-                containerUri, protectedItemName, recoveryPointId);
+                containerUri, 
+                protectedItemName, 
+                recoveryPointId,
+                vaultName: vault?.Name,
+                resourceGroupName: vault?.ResourceGroupName);
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpResponse, item);
         }
 
@@ -146,6 +154,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of recovery point PowerShell model objects</returns>
         public List<RecoveryPointBase> ListRecoveryPoints()
         {
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
             DateTime startDate = (DateTime)(ProviderData[RecoveryPointParams.StartDate]);
             DateTime endDate = (DateTime)(ProviderData[RecoveryPointParams.EndDate]);
             AzureSqlItem item = ProviderData[RecoveryPointParams.Item]
@@ -172,7 +181,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             queryFilter.Filter = queryFilterString;
 
             List<RecoveryPointResource> rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
-                containerUri, protectedItemName, queryFilter);
+                containerUri,
+                protectedItemName,
+                queryFilter,
+                vaultName: vault?.Name,
+                resourceGroupName: vault?.ResourceGroupName);
             return RecoveryPointConversions.GetPSAzureRecoveryPoints(rpListResponse, item);
         }
 
@@ -182,6 +195,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>Created policy object as returned by the service</returns>
         public ProtectionPolicyResource CreatePolicy()
         {
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
             string policyName = (string)ProviderData[PolicyParams.PolicyName];
             CmdletModel.WorkloadType workloadType =
                 (CmdletModel.WorkloadType)ProviderData[PolicyParams.WorkloadType];
@@ -197,7 +211,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             Logger.Instance.WriteDebug("Validation of Retention policy is successful");
 
             // construct Hydra policy request            
-            ProtectionPolicyResource hydraRequest = new ProtectionPolicyResource()
+            ProtectionPolicyResource protectionPolicyResource = new ProtectionPolicyResource()
             {
                 Properties = new AzureSqlProtectionPolicy()
                 {
@@ -207,8 +221,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             };
 
             return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(
-                                 policyName,
-                                 hydraRequest).Body;
+                policyName,
+                protectionPolicyResource,
+                vaultName: vault?.Name,
+                resourceGroupName: vault?.ResourceGroupName).Body;
         }
 
         /// <summary>
@@ -217,6 +233,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>Modified policy object as returned by the service</returns>
         public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource> ModifyPolicy()
         {
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
             RetentionPolicyBase retentionPolicy =
               ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
               (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
@@ -241,7 +258,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             CmdletModel.SimpleRetentionPolicy sqlRetentionPolicy =
                 (CmdletModel.SimpleRetentionPolicy)((AzureSqlPolicy)policy).RetentionPolicy;
-            ProtectionPolicyResource hydraRequest = new ProtectionPolicyResource()
+            ProtectionPolicyResource protectionPolicyResource = new ProtectionPolicyResource()
             {
                 Properties = new AzureSqlProtectionPolicy()
                 {
@@ -250,8 +267,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             };
 
-            return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(policy.Name,
-                                                               hydraRequest);
+            return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(
+                policy.Name,
+                protectionPolicyResource,
+                vaultName: vault?.Name,
+                resourceGroupName: vault?.ResourceGroupName);
         }
 
         /// <summary>
@@ -260,15 +280,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of protection containers</returns>
         public List<ContainerBase> ListProtectionContainers()
         {
-            string name = (string)this.ProviderData[ContainerParams.Name];
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
+            string name = (string)ProviderData[ContainerParams.Name];
 
             ODataQuery<BMSContainerQueryObject> queryParams =
                 new ODataQuery<BMSContainerQueryObject>(
                     q => q.BackupManagementType
                             == ServiceClientModel.BackupManagementType.AzureSql);
 
-
-            var listResponse = ServiceClientAdapter.ListContainers(queryParams);
+            var listResponse = ServiceClientAdapter.ListContainers(
+                queryParams,
+                vaultName: vault?.Name,
+                resourceGroupName: vault?.ResourceGroupName);
 
             List<ContainerBase> containerModels =
                 ConversionHelpers.GetContainerModelList(listResponse);
@@ -317,6 +340,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of protected items</returns>
         public List<ItemBase> ListProtectedItems()
         {
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
             ContainerBase container = (ContainerBase)ProviderData[ItemParams.Container];
             string name = (string)ProviderData[ItemParams.AzureVMName];
             ItemProtectionStatus protectionStatus =
@@ -334,9 +358,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             List<ProtectedItemResource> protectedItems = new List<ProtectedItemResource>();
             string skipToken = null;
-            var listResponse = ServiceClientAdapter.ListProtectedItem(queryParams, skipToken);
+            var listResponse = ServiceClientAdapter.ListProtectedItem(
+                queryParams,
+                skipToken,
+                vaultName: vault?.Name,
+                resourceGroupName: vault?.ResourceGroupName);
             protectedItems.AddRange(listResponse);
-
 
             // 1. Filter by container
             if (container != null)
@@ -379,7 +406,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         HelperUtils.GetProtectedItemUri(dictionary, protectedItems[i].Id);
 
                     var getResponse = ServiceClientAdapter.GetProtectedItem(
-                        containerUri, protectedItemUri, getItemQueryParams);
+                        containerUri,
+                        protectedItemUri,
+                        getItemQueryParams,
+                        vaultName: vault?.Name,
+                        resourceGroupName: vault?.ResourceGroupName);
                     protectedItemGetResponses.Add(getResponse.Body);
                 }
             }
@@ -510,6 +541,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         CmdletModel.ContainerType.AzureSQL.ToString(),
                         type.ToString()));
             }
+        }
+
+        public ARSVault CheckBackupStatus()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

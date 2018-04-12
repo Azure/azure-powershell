@@ -25,13 +25,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns>Operation status response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
-            GetProtectedItemOperationStatus(string operationId)
+            GetProtectedItemOperationStatus(
+                string operationId,
+                string vaultName = null,
+                string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             return BmsAdapter.Client.BackupOperationStatuses.GetWithHttpMessagesAsync(
-                resourceName, resourceGroupName, operationId).Result;
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                operationId).Result;
         }
 
         /// <summary>
@@ -41,13 +43,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse<ServiceClientModel.OperationStatus>
-            GetProtectionPolicyOperationStatus(string policyName, string operationId)
+            GetProtectionPolicyOperationStatus(
+                string policyName,
+                string operationId,
+                string vaultName = null,
+                string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             return BmsAdapter.Client.ProtectionPolicyOperationStatuses.GetWithHttpMessagesAsync(
-                resourceName, resourceGroupName, policyName, operationId).Result;
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                policyName,
+                operationId).Result;
         }
 
         /// <summary>
@@ -56,14 +62,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse GetRefreshContainerOperationResult(
-                string operationId)
+            string operationId,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
-            return BmsAdapter.Client.ProtectionContainerRefreshOperationResults
+            return BmsAdapter
+                .Client
+                .ProtectionContainerRefreshOperationResults
                 .GetWithHttpMessagesAsync(
-                    resourceName, resourceGroupName, AzureFabricName, operationId).Result;
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                    AzureFabricName,
+                    operationId).Result;
         }
 
         /// <summary>
@@ -72,13 +82,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="operationId">ID of the operation in progress</param>
         /// <returns></returns>
         public RestAzureNS.AzureOperationResponse GetCancelJobOperationResult(
-                string operationId)
+            string operationId,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             return BmsAdapter.Client.JobOperationResults.GetWithHttpMessagesAsync(
-                resourceName, resourceGroupName, AzureFabricName, operationId).Result;
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
+                AzureFabricName,
+                operationId).Result;
         }
     }
 }

@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Rest.Azure;
@@ -254,22 +255,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         }
 
         public static string GetResourceGroupNameFromId(
-            Dictionary<CmdletModel.UriEnums, string> keyValuePairs,
-            string id)
+            string id,
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs = null)
         {
-            string resourceGroupName = string.Empty;
+            return GetValueFromId(id, CmdletModel.UriEnums.ResourceGroups, keyValuePairs);
+        }
 
-            if (keyValuePairs.ContainsKey(CmdletModel.UriEnums.ResourceGroups))
-            {
-                resourceGroupName = keyValuePairs[CmdletModel.UriEnums.ResourceGroups];
-            }
-            else
-            {
-                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
-                    CmdletModel.UriEnums.ResourceGroups.ToString(), id));
-            }
+        public static string GetResourceNameFromId(string id)
+        {
+            return id.Split('/').Last();
+        }
 
-            return resourceGroupName;
+        public static string GetResourceTypeFromId(string id)
+        {
+            var parts = id.Split('/');
+            return parts[parts.Length - 3] + "/" + parts[parts.Length - 2];
         }
 
         public static string GetVaultNameFromId(
@@ -289,6 +289,38 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             }
 
             return vaultName;
+        }
+
+        public static string GetVmNameFromId(
+            string id,
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs = null)
+        {
+            return GetValueFromId(id, CmdletModel.UriEnums.VirtualMachines, keyValuePairs);
+        }
+
+        public static string GetValueFromId(
+            string id,
+            CmdletModel.UriEnums uriEnum,
+            Dictionary<CmdletModel.UriEnums, string> keyValuePairs = null)
+        {
+            string uriEnumValue = string.Empty;
+
+            if (keyValuePairs == null)
+            {
+                keyValuePairs = ParseUri(id);
+            }
+
+            if (keyValuePairs.ContainsKey(uriEnum))
+            {
+                uriEnumValue = keyValuePairs[uriEnum];
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.URIValueNotFound,
+                    uriEnum.ToString(), id));
+            }
+
+            return uriEnumValue;
         }
 
         /// <summary>

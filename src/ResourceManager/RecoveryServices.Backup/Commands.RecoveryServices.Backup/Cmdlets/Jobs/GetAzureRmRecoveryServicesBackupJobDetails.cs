@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJobDetails",
         DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
-    public class GetAzureRmRecoveryServicesBackupJobDetails : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
@@ -57,7 +57,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug("Fetching job with ID: " + JobId);
 
-                var adapterResponse = ServiceClientAdapter.GetJob(JobId);
+                var adapterResponse = ServiceClientAdapter.GetJob(
+                    JobId,
+                    vaultName: Vault?.Name,
+                    resourceGroupName: Vault?.ResourceGroupName);
                 WriteObject(JobConversions.GetPSJob(adapterResponse));
             });
         }
