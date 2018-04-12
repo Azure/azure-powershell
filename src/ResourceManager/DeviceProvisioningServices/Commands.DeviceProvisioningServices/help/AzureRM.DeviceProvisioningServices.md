@@ -29,14 +29,14 @@ List all or show details of shared access policies in an Azure IoT Hub device pr
 ### [Get-AzureRmIoTDeviceProvisioningServiceCertificate](Get-AzureRmIoTDeviceProvisioningServiceCertificate.md)
 Lists all certificates or a particular certificate contained within an Azure IoT Hub Device Provisioning Service.
 
-### [Get-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode](Get-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode.md)
-Generate a verification code for an Azure IoT Hub Device Provisioning Service certificate.
-
 ### [Get-AzureRmIoTDeviceProvisioningServiceLinkedHub](Get-AzureRmIoTDeviceProvisioningServiceLinkedHub.md)
 List all or show details of linked IoT hubs in an Azure IoT Hub device provisioning service.
 
 ### [New-AzureRmIoTDeviceProvisioningService](New-AzureRmIoTDeviceProvisioningService.md)
 Create an Azure IoT Hub device provisioning service.
+
+### [New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode](New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode.md)
+Generate a verification code for an Azure IoT Hub Device Provisioning Service certificate.
 
 ### [Remove-AzureRmIoTDeviceProvisioningService](Remove-AzureRmIoTDeviceProvisioningService.md)
 Delete an Azure IoT Hub device provisioning service.

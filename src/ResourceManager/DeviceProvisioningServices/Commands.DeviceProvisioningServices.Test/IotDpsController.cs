@@ -143,6 +143,7 @@ namespace Commands.DeviceProvisioningServices.Test
         {
             return context.GetServiceClient<IotHubClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
+
         private IotDpsClient GetIotDpsClient(MockContext context)
         {
             return context.GetServiceClient<IotDpsClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());

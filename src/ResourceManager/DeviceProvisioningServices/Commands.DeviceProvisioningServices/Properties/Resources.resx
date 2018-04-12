@@ -129,6 +129,9 @@
   <data name="AddLinkedHub" xml:space="preserve">
     <value>Create a linked IoT Hub in an Azure IoT Hub Device Provisioning Service</value>
   </data>
+  <data name="NewCertificateVerificationCode" xml:space="preserve">
+    <value>Create new an Azure IoT Hub Device Provisioing Service certificate verification code</value>
+  </data>
   <data name="RemoveAccessPolicy" xml:space="preserve">
     <value>Delete a shared access policies in an Azure IoT Hub Device Provisioning Service</value>
   </data>

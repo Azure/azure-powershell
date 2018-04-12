@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmIoTDeviceProvisioningServiceLinkedHub", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Remove-AzureRmIoTDpsHub")]
+    [OutputType(typeof(Boolean))]
     public class RemoveAzureRmIoTDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -99,18 +100,11 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     this.Name = IotDpsUtils.GetIotDpsName(this.ResourceId);
                 }
 
-                try
-                {
-                    ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
-                    IList<IotHubDefinitionDescription> linkedHubs = GetIotDpsHubs(this.ResourceGroupName, this.Name);
-                    IotHubDefinitionDescription linkedHub = linkedHubs.FirstOrDefault(hubs => hubs.Name.Equals(this.LinkedHubName));
-                    provisioningServiceDescription.Properties.IotHubs = linkedHubs.Where(x => x.ConnectionString != linkedHub.ConnectionString).ToList();
-                    IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
+                IList<IotHubDefinitionDescription> linkedHubs = GetIotDpsHubs(this.ResourceGroupName, this.Name);
+                IotHubDefinitionDescription linkedHub = linkedHubs.FirstOrDefault(hubs => hubs.Name.Equals(this.LinkedHubName));
+                provisioningServiceDescription.Properties.IotHubs = linkedHubs.Where(x => x.ConnectionString != linkedHub.ConnectionString).ToList();
+                IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
 
                 if (PassThru)
                 {

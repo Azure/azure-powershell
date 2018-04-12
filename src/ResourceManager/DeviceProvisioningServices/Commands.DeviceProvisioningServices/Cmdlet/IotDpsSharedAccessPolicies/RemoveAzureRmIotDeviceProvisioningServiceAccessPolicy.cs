@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmIoTDeviceProvisioningServiceAccessPolicy", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Remove-AzureRmIoTDpsAccessPolicy")]
+    [OutputType(typeof(Boolean))]
     public class RemoveAzureRmIoTDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -99,19 +100,12 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     this.Name = IotDpsUtils.GetIotDpsName(this.ResourceId);
                 }
 
-                try
-                {
-                    ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
-                    IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> currentIotDpsAccessPolicyList = GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name);
-                    SharedAccessSignatureAuthorizationRuleAccessRightsDescription iotDpsAccessPolicy = GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name, this.KeyName);
-                    IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> updatedIotDpsAccessPolicyList = currentIotDpsAccessPolicyList.Where(x => x.KeyName != iotDpsAccessPolicy.KeyName).ToList();
-                    provisioningServiceDescription.Properties.AuthorizationPolicies = updatedIotDpsAccessPolicyList;
-                    IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
+                IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> currentIotDpsAccessPolicyList = GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name);
+                SharedAccessSignatureAuthorizationRuleAccessRightsDescription iotDpsAccessPolicy = GetIotDpsAccessPolicy(this.ResourceGroupName, this.Name, this.KeyName);
+                IList<SharedAccessSignatureAuthorizationRuleAccessRightsDescription> updatedIotDpsAccessPolicyList = currentIotDpsAccessPolicyList.Where(x => x.KeyName != iotDpsAccessPolicy.KeyName).ToList();
+                provisioningServiceDescription.Properties.AuthorizationPolicies = updatedIotDpsAccessPolicyList;
+                IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
 
                 if (PassThru)
                 {

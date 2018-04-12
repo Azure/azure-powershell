@@ -72,58 +72,51 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         {
             if (ShouldProcess(Name, DPSResources.AddDeviceProvisioningService))
             {
-                try
+                if (string.IsNullOrEmpty(this.Location))
                 {
-                    if (string.IsNullOrEmpty(this.Location))
-                    {
-                        ResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(this.ResourceGroupName);
-                        this.Location = resourceGroup.Location;
-                    }
+                    ResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(this.ResourceGroupName);
+                    this.Location = resourceGroup.Location;
+                }
 
-                    var provisioningServiceDescription = new ProvisioningServiceDescription()
-                    {
-                        Location = this.Location,
-                        Properties = new IotDpsPropertiesDescription(),
-                        Sku = new IotDpsSkuInfo()
-                    };
+                var provisioningServiceDescription = new ProvisioningServiceDescription()
+                {
+                    Location = this.Location,
+                    Properties = new IotDpsPropertiesDescription(),
+                    Sku = new IotDpsSkuInfo()
+                };
 
-                    if (this.AllocationPolicy != null)
+                if (this.AllocationPolicy != null)
+                {
+                    PSAllocationPolicy psAllocationPolicy;
+                    if (Enum.TryParse<PSAllocationPolicy>(this.AllocationPolicy, true, out psAllocationPolicy))
                     {
-                        PSAllocationPolicy psAllocationPolicy;
-                        if (Enum.TryParse<PSAllocationPolicy>(this.AllocationPolicy, true, out psAllocationPolicy))
-                        {
-                            provisioningServiceDescription.Properties.AllocationPolicy = psAllocationPolicy.ToString();
-                        }
-                        else
-                        {
-                            throw new ArgumentException("Invalid Allocation Policy");
-                        }
-                    }
-
-                    if (this.SkuName != null)
-                    {
-                        PSIotDpsSku psIotDpsSku;
-                        if (Enum.TryParse<PSIotDpsSku>(this.SkuName, true, out psIotDpsSku))
-                        {
-                            provisioningServiceDescription.Sku.Name = psIotDpsSku.ToString();
-                        }
-                        else
-                        {
-                            throw new ArgumentException("Invalid Sku");
-                        }
+                        provisioningServiceDescription.Properties.AllocationPolicy = psAllocationPolicy.ToString();
                     }
                     else
                     {
-                        provisioningServiceDescription.Sku = new IotDpsSkuInfo(IotDpsSku.S1);
+                        throw new ArgumentException("Invalid Allocation Policy");
                     }
+                }
 
-                    IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
-                    this.WriteObject(IotDpsUtils.ToPSProvisioningServiceDescription(GetIotDpsResource(this.ResourceGroupName, this.Name)), false);
-                }
-                catch (Exception e)
+                if (this.SkuName != null)
                 {
-                    throw e;
+                    PSIotDpsSku psIotDpsSku;
+                    if (Enum.TryParse<PSIotDpsSku>(this.SkuName, true, out psIotDpsSku))
+                    {
+                        provisioningServiceDescription.Sku.Name = psIotDpsSku.ToString();
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid Sku");
+                    }
                 }
+                else
+                {
+                    provisioningServiceDescription.Sku = new IotDpsSkuInfo(IotDpsSku.S1);
+                }
+
+                IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
+                this.WriteObject(IotDpsUtils.ToPSProvisioningServiceDescription(GetIotDpsResource(this.ResourceGroupName, this.Name)), false);
             }
         }
     }

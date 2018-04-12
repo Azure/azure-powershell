@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         [Parameter(
             Mandatory = false,
             HelpMessage = "Apply allocation policy to the IoT Hub")]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter ApplyAllocationPolicy { get; set; }
 
         public override void ExecuteCmdlet()
@@ -157,33 +156,26 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         private void AddIotDpsLinkedHub()
         {
-            try
+            IotHubDefinitionDescription iotDpsHub = new IotHubDefinitionDescription()
             {
-                IotHubDefinitionDescription iotDpsHub = new IotHubDefinitionDescription()
-                {
-                    ConnectionString = this.IotHubConnectionString,
-                    Location = this.IotHubLocation,
-                    AllocationWeight = this.AllocationWeight,
-                    ApplyAllocationPolicy = this.ApplyAllocationPolicy.IsPresent
-                };
+                ConnectionString = this.IotHubConnectionString,
+                Location = this.IotHubLocation,
+                AllocationWeight = this.AllocationWeight,
+                ApplyAllocationPolicy = this.ApplyAllocationPolicy.IsPresent
+            };
 
-                ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
-                provisioningServiceDescription.Properties.IotHubs.Add(iotDpsHub);
-                IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
+            ProvisioningServiceDescription provisioningServiceDescription = GetIotDpsResource(this.ResourceGroupName, this.Name);
+            provisioningServiceDescription.Properties.IotHubs.Add(iotDpsHub);
+            IotDpsCreateOrUpdate(this.ResourceGroupName, this.Name, provisioningServiceDescription);
 
-                IList<IotHubDefinitionDescription> iotDpsHubs = GetIotDpsHubs(this.ResourceGroupName, this.Name);
-                if (iotDpsHubs.Count == 1)
-                {
-                    this.WritePSObject(iotDpsHubs[0]);
-                }
-                else
-                {
-                    this.WritePSObjects(iotDpsHubs);
-                }
+            IList<IotHubDefinitionDescription> iotDpsHubs = GetIotDpsHubs(this.ResourceGroupName, this.Name);
+            if (iotDpsHubs.Count == 1)
+            {
+                this.WritePSObject(iotDpsHubs[0]);
             }
-            catch (Exception ex)
+            else
             {
-                throw ex;
+                this.WritePSObjects(iotDpsHubs);
             }
         }
     }

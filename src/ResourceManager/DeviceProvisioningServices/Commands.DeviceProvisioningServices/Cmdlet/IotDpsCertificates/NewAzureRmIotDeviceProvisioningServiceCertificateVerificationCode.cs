@@ -20,11 +20,12 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     using Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.DeviceProvisioningServices.Models;
+    using DPSResources = Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Properties.Resources;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode", DefaultParameterSetName = ResourceParameterSet)]
+    [Cmdlet(VerbsCommon.New, "AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSVerificationCodeResponse))]
-    [Alias("Get-AzureRmIoTDpsCVC")]
-    public class GetAzureRmIoTDeviceProvisioningServiceCertificateVerificationCode : IotDpsBaseCmdlet
+    [Alias("New-AzureRmIoTDpsCVC")]
+    public class NewAzureRmIoTDeviceProvisioningServiceCertificateVerificationCode : IotDpsBaseCmdlet
     {
         private const string ResourceParameterSet = "ResourceSet";
         private const string InputObjectParameterSet = "InputObjectSet";
@@ -88,45 +89,39 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
         public override void ExecuteCmdlet()
         {
-            switch (ParameterSetName)
+            if (ShouldProcess(Name, DPSResources.NewCertificateVerificationCode))
             {
-                case InputObjectParameterSet:
-                    this.ResourceGroupName = this.InputObject.ResourceGroupName;
-                    this.Name = this.InputObject.Name;
-                    this.CertificateName = this.InputObject.CertificateName;
-                    this.Etag = this.InputObject.Etag;
-                    this.GetIotDpsCertificateVerificationCode();
-                    break;
+                switch (ParameterSetName)
+                {
+                    case InputObjectParameterSet:
+                        this.ResourceGroupName = this.InputObject.ResourceGroupName;
+                        this.Name = this.InputObject.Name;
+                        this.CertificateName = this.InputObject.CertificateName;
+                        this.Etag = this.InputObject.Etag;
+                        this.GetIotDpsCertificateVerificationCode();
+                        break;
 
-                case ResourceIdParameterSet:
-                    this.ResourceGroupName = IotDpsUtils.GetResourceGroupName(this.ResourceId);
-                    this.Name = IotDpsUtils.GetIotDpsName(this.ResourceId);
-                    this.CertificateName = IotDpsUtils.GetIotDpsCertificateName(this.ResourceId);
-                    this.GetIotDpsCertificateVerificationCode();
-                    break;
+                    case ResourceIdParameterSet:
+                        this.ResourceGroupName = IotDpsUtils.GetResourceGroupName(this.ResourceId);
+                        this.Name = IotDpsUtils.GetIotDpsName(this.ResourceId);
+                        this.CertificateName = IotDpsUtils.GetIotDpsCertificateName(this.ResourceId);
+                        this.GetIotDpsCertificateVerificationCode();
+                        break;
 
-                case ResourceParameterSet:
-                    this.GetIotDpsCertificateVerificationCode();
-                    break;
+                    case ResourceParameterSet:
+                        this.GetIotDpsCertificateVerificationCode();
+                        break;
 
-                default:
-                    throw new ArgumentException("BadParameterSetName");
+                    default:
+                        throw new ArgumentException("BadParameterSetName");
+                }
             }
         }
 
         private void GetIotDpsCertificateVerificationCode()
         {
-            try
-            {
-                VerificationCodeResponse verificationCodeResponse = this.IotDpsClient.DpsCertificate.GenerateVerificationCode(this.CertificateName, this.Etag, this.ResourceGroupName, this.Name);
-                this.WriteObject(IotDpsUtils.ToPSVerificationCodeResponse(verificationCodeResponse));
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            VerificationCodeResponse verificationCodeResponse = this.IotDpsClient.DpsCertificate.GenerateVerificationCode(this.CertificateName, this.Etag, this.ResourceGroupName, this.Name);
+            this.WriteObject(IotDpsUtils.ToPSVerificationCodeResponse(verificationCodeResponse));
         }
     }
 }
-
-

@@ -159,29 +159,22 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     break;
             }
 
-            try
+            certificate = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(certificate));
+
+            CertificateBodyDescription certificateBodyDescription = new CertificateBodyDescription();
+            certificateBodyDescription.Certificate = certificate;
+
+            CertificateResponse certificateResponse;
+            if (this.Etag != null)
             {
-                certificate = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(certificate));
-
-                CertificateBodyDescription certificateBodyDescription = new CertificateBodyDescription();
-                certificateBodyDescription.Certificate = certificate;
-
-                CertificateResponse certificateResponse;
-                if (this.Etag != null)
-                {
-                    certificateResponse = this.IotDpsClient.DpsCertificate.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription, this.Etag);
-                }
-                else
-                {
-                    certificateResponse = this.IotDpsClient.DpsCertificate.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription);
-                }
-
-                this.WriteObject(IotDpsUtils.ToPSCertificateResponse(certificateResponse));
+                certificateResponse = this.IotDpsClient.DpsCertificate.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription, this.Etag);
             }
-            catch (Exception e)
+            else
             {
-                throw e;
+                certificateResponse = this.IotDpsClient.DpsCertificate.CreateOrUpdate(this.ResourceGroupName, this.Name, this.CertificateName, certificateBodyDescription);
             }
+
+            this.WriteObject(IotDpsUtils.ToPSCertificateResponse(certificateResponse));
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmIoTDeviceProvisioningService", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Remove-AzureRmIoTDps")]
+    [OutputType(typeof(Boolean))]
     public class RemoveAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
@@ -83,14 +84,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
                     this.Name = IotDpsUtils.GetIotDpsName(this.ResourceId);
                 }
 
-                try
-                {
-                    this.IotDpsClient.IotDpsResource.Delete(this.Name, this.ResourceGroupName);
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
+                this.IotDpsClient.IotDpsResource.Delete(this.Name, this.ResourceGroupName);
 
                 if (PassThru)
                 {
