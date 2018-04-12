@@ -58,8 +58,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
         public string StackDirectory = @"..\..\..\..\..\..\Stack\Debug";
 #else
-        public string PackageDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Package", "Debug");
-        public string StackDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "..", "Stack", "Debug");
+        public string PackageDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "Package", "Release");
+        public string StackDirectory = Path.Combine("..", "..", "..", "..", "..", "..", "..", "Stack", "Release");
 #endif
 
         protected List<string> modules;
@@ -613,7 +613,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
-            powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process");
+            //powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process");
             powershell.AddScript("$error.clear()");
             powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));

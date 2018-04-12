@@ -35,6 +35,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using System.Threading.Tasks;
@@ -863,6 +864,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             profile.DefaultContext.TokenCache = new AuthenticationStoreTokenCache(new AzureTokenCache { CacheData = new byte[] { 1, 2, 3, 4, 5, 6, 8, 9, 0 } });
             profile.Save();
             string actual = dataStore.ReadFileAsText(path).Substring(1).TrimEnd(new[] { '\0' });
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                expected = expected.Replace("\r\n", "\n");
+            }
+
             Assert.Equal(expected, actual);
         }
 
