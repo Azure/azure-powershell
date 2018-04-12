@@ -21,6 +21,7 @@
 * Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
 * Add new cmdlet for retrieving the content summary under a directory
 * Add new cmdlet for retrieving the disk usage and Acl dump
+* Set minimum dependency of module to PowerShell 5.0
 
 ## Version 5.2.0
 * Updated to the latest version of the Azure ClientRuntime
