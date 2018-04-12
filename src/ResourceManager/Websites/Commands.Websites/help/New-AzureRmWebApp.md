@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.WebSites
 ms.assetid: D6D4E733-31AE-4ABE-8C78-583EC48C56B8
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermwebapp
 schema: 2.0.0
@@ -13,20 +13,22 @@ Creates an Azure Web App.
 
 ## SYNTAX
 
-### SimpleParameterSet (Default)
-```
-New-AzureRmWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
- [[-AppServicePlan] <String>] [-AsJob] [-GitRepositoryPath <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### WebAppParameterSet
+### S1 (Default)
 ```
 New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-AppServicePlan] <String>] [-SourceWebApp] <Site> [[-TrafficManagerProfile] <String>] [-IgnoreSourceControl]
- [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
- [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-AppServicePlan] <String>] [[-SourceWebApp] <Site>] [[-TrafficManagerProfileId] <String>]
+ [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### S2
+```
+New-AzureRmWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-AppServicePlan] <String>] [[-SourceWebApp] <Site>] [[-TrafficManagerProfileName] <String>]
+ [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,11 +66,11 @@ App Settings Overrides HashTable
 
 ```yaml
 Type: Hashtable
-Parameter Sets: WebAppParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 6
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -79,11 +81,11 @@ App Service Environment Name
 
 ```yaml
 Type: String
-Parameter Sets: WebAppParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 7
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -94,26 +96,11 @@ App Service Environment Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: WebAppParameterSet
-Aliases: 
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -134,31 +121,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GitRepositoryPath
-Path to the GitHub repository containign the web application to deploy.
-
-```yaml
-Type: String
-Parameter Sets: SimpleParameterSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IgnoreCustomHostNames
 Ignore Custom Host Names Option
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: WebAppParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,11 +141,11 @@ Ignore Source Control Option
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: WebAppParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -184,11 +156,11 @@ Include Source WebApp Slots Option
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: WebAppParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -199,19 +171,7 @@ Location
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
-Aliases: 
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: WebAppParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -227,7 +187,7 @@ WebApp Name
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: WebAppName
+Aliases: 
 
 Required: True
 Position: 1
@@ -241,19 +201,7 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet
-Aliases: 
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: WebAppParameterSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -268,23 +216,23 @@ Source WebApp Object
 
 ```yaml
 Type: Site
-Parameter Sets: WebAppParameterSet
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: 4
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -TrafficManagerProfile
-Resource Id of existing traffic manager profile
+### -TrafficManagerProfileId
+Traffic Manager Profile Id
 
 ```yaml
 Type: String
-Parameter Sets: WebAppParameterSet
-Aliases: TrafficManagerProfileName, TrafficManagerProfileId
+Parameter Sets: S1
+Aliases: 
 
 Required: False
 Position: 5
@@ -293,28 +241,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -TrafficManagerProfileName
+Traffic Manager Profile Name
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: String
+Parameter Sets: S2
+Aliases: 
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: wi
+Aliases: 
 
 Required: False
 Position: Named

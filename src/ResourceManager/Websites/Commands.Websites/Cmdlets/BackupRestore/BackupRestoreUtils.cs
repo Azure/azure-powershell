@@ -50,11 +50,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 StorageAccountUrl = backup.StorageAccountUrl,
                 BlobName = backup.BlobName,
                 Databases = dbs,
-#if !NETSTANDARD
-                BackupId = backup.BackupItemId,
-#else
                 BackupId = backup.BackupId,
-#endif
                 BackupName = backup.BackupItemName,
                 BackupStatus = status,
                 Scheduled = backup.Scheduled,
@@ -90,10 +86,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             if (schedule != null)
             {
                 frequencyInterval = schedule.FrequencyInterval;
-                if (schedule.FrequencyUnit != null)
-                {
-                    frequencyUnit = schedule.FrequencyUnit.ToString();
-                }
+                frequencyUnit = schedule.FrequencyUnit.ToString();
                 retentionPeriodInDays = schedule.RetentionPeriodInDays;
                 startTime = schedule.StartTime;
                 keepAtLeastOneBackup = schedule.KeepAtLeastOneBackup;
