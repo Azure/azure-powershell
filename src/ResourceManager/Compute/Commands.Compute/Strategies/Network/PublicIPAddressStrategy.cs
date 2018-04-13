@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     Zones = zones,
                 });
 
-        public static async Task<string> UpdateDomainNameLabelAsync(
+        public static string UpdateDomainNameLabelAsync(
             string domainNameLabel,
             string subscriptionId,
             string resourceGroupName,
@@ -77,9 +77,43 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 var id = subscriptionId + "/" + resourceGroupName + "/" + publicIpAddressName;
                 var bytes= Encoding.UTF8.GetBytes(id);
                 var hash = SHA1.Create().ComputeHash(bytes);
-                return "x" + string.Join("", hash.Select(v => v.ToString("x2")));
+
+                // // remove digits from the first letter.
+                // hash[0] |= 0xC0
+                // return string.Join("", hash.Select(v => v.ToString("x2")));
+
+                // remove digits from the first letter.
+                hash[0] |= 0x80;
+                return string.Join("", Crockford(hash));
             }
             return domainNameLabel;
+        }
+
+        private static IEnumerable<char> Crockford(IEnumerable<byte> stream)
+        {
+            //                     0         1         2         3
+            //                     01234567890123456789012345678901
+            const string Encode = "0123456789abcdefghjkmnpqrstvwxyz";
+            var b = 0;
+            var size = 0;
+            var first = true;
+            foreach (var v in stream)
+            {
+                b = (b << 8) | v;
+                size += 8;
+                //
+                while (size >= 5)
+                {
+                    size -= 5;
+                    var index = (b >> size) & 0x1F;
+                    yield return Encode[index];
+                }
+            }
+            if (size > 0)
+            {
+                var index = (b << (5 - size)) & 0x1F;
+                yield return Encode[index];
+            }
         }
 
         public static string Fqdn(string domainNameLabel, string location)

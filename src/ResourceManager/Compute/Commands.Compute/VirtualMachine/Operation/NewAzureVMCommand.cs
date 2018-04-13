@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.Compute
                         ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
                 }
 
-                _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                _cmdlet.DomainNameLabel = PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     subscriptionId: _client.SubscriptionId,
                     resourceGroupName: _cmdlet.ResourceGroupName,
