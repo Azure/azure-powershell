@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes);
+        PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size);
 
         PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
