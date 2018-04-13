@@ -58,7 +58,7 @@ For any of these operations, you can provide key attributes or accept default se
 If you create or import a key that has the same name as an existing key in your key vault, the
 original key is updated with the values that you specify for the new key. You can access the
 previous values by using the version-specific URI for that version of the key. To learn about key
-versions and the URI structure, see [About Keys andSecrets](http://go.microsoft.com/fwlink/?linkid=518560)
+versions and the URI structure, see [About Keys and Secrets](http://go.microsoft.com/fwlink/?linkid=518560)
 in the Key Vault REST API documentation.
 
 Note: To import a key from your own hardware security module, you must first generate a BYOK
