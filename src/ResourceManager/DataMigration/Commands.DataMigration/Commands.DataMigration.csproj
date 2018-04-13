@@ -98,7 +98,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="help\New-AzureRmDataMigrationSelectedDB.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="..\AzureRM.DataMigration.psd1">
       <Link>AzureRM.DataMigration.psd1</Link>
@@ -124,6 +123,7 @@
     <None Include="help\Start-AzureRmDataMigrationService.md" />
     <None Include="help\Stop-AzureRmDataMigrationService.md" />
     <None Include="help\Stop-AzureRmDataMigrationTask.md" />
+    <None Include="help\New-AzureRmDataMigrationSelectedDB.md" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
