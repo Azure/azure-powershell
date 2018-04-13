@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.WebSites
 ms.assetid: 78AAF476-2E9E-4E60-9940-9A9AC6F9506A
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/remove-azurermappserviceplan
 schema: 2.0.0
@@ -21,7 +21,7 @@ Remove-AzureRmAppServicePlan [-Force] [-ResourceGroupName] <String> [-Name] <Str
 
 ### S2
 ```
-Remove-AzureRmAppServicePlan [-Force] [-AppServicePlan] <ServerFarmWithRichSku> [-AsJob]
+Remove-AzureRmAppServicePlan [-Force] [-AppServicePlan] <AppServicePlan> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ This command removes the Azure App Service plan named ContosoASP that belongs to
 App Service Plan Object
 
 ```yaml
-Type: ServerFarmWithRichSku
+Type: AppServicePlan
 Parameter Sets: S2
 Aliases: 
 

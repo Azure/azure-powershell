@@ -96,11 +96,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+        
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable MSI on an existing azure webapp")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
+        public SwitchParameter HttpsOnly { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             SiteConfig siteConfig = null;
+            Site site = null;
             string location = null;
             switch (ParameterSetName)
             {
@@ -131,10 +138,45 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers
                         };
+
+                        // Update web app configuration
+                        WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
                     }
 
-                    // Update web app configuration
-                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
+                    if (parameters.Any(p => CmdletHelpers.SiteParameters.Contains(p)))
+                    {
+                        site = new Site
+                        {
+                            Location = location,
+                            ServerFarmId = WebApp.ServerFarmId,
+                            Identity = AssignIdentity.IsPresent ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
+                            HttpsOnly = HttpsOnly.IsPresent
+                        };
+
+                        Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);
+                        if (AssignIdentity.IsPresent)
+                        {
+
+                            // Add or update the appsettings property
+                            appSettings["WEBSITE_DISABLE_MSI"] = (!AssignIdentity).ToString();
+                            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, WebApp.SiteConfig, appSettings, 
+                                                                     WebApp.SiteConfig.ConnectionStrings.
+                                                                        ToDictionary(nvp => nvp.Name,
+                                                                        nvp => new ConnStringValueTypePair
+                                                                        {
+                                                                            Type = nvp.Type.Value,
+                                                                            Value = nvp.ConnectionString
+                                                                        },
+                                                                        StringComparer.OrdinalIgnoreCase));
+                        }
+                        else
+                        {
+                            // disabling the identity property updates the siteconfig only
+                            appSettings["WEBSITE_DISABLE_MSI"] = (!AssignIdentity.IsPresent).ToString();
+                        }
+                        
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, site);
+                    }
 
                     if (parameters.Contains("AppServicePlan"))
                     {

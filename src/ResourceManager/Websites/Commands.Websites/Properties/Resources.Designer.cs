@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Commands.WebApps.Properties {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.WebApps.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.WebApps.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,42 +58,6 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Directory &apos;{0}&apos; does not exist, please check the directory path and try again..
-        /// </summary>
-        internal static string GitDirectoryDoesNotExist {
-            get {
-                return ResourceManager.GetString("GitDirectoryDoesNotExist", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To connect your website with a git repository, you must have the git executable installed. Please download and install git from https://git-scm.com/.
-        /// </summary>
-        internal static string GitInstallMessage {
-            get {
-                return ResourceManager.GetString("GitInstallMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to add git remote to directory &apos;{0}&apos; with error &apos;{1}&apos;.
-        /// </summary>
-        internal static string GitRemoteAddFailure {
-            get {
-                return ResourceManager.GetString("GitRemoteAddFailure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use &apos;git push azure master&apos; to push local changes to this website..
-        /// </summary>
-        internal static string GitRemoteMessage {
-            get {
-                return ResourceManager.GetString("GitRemoteMessage", resourceCulture);
             }
         }
         
@@ -165,24 +130,6 @@ namespace Microsoft.Azure.Commands.WebApps.Properties {
         internal static string RemovingWebsite {
             get {
                 return ResourceManager.GetString("RemovingWebsite", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create.
-        /// </summary>
-        internal static string SimpleWebAppCreateAction {
-            get {
-                return ResourceManager.GetString("SimpleWebAppCreateAction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to WebApp &apos;{0}&apos;.
-        /// </summary>
-        internal static string SimpleWebAppCreateTarget {
-            get {
-                return ResourceManager.GetString("SimpleWebAppCreateTarget", resourceCulture);
             }
         }
     }
