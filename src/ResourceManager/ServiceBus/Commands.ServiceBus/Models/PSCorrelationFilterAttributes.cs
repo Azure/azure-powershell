@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// </summary>
         public PSCorrelationFilterAttributes()
         {
+            Properties = new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -44,8 +45,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// the rule action requires preprocessing.</param>
         public PSCorrelationFilterAttributes(Management.ServiceBus.Models.CorrelationFilter correlationFilter)
         {
-            if(correlationFilter != null)
-                { 
+            if (correlationFilter != null)
+            {
                 CorrelationId = correlationFilter.CorrelationId;
                 MessageId = correlationFilter.MessageId;
                 To = correlationFilter.To;
@@ -55,6 +56,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 ReplyToSessionId = correlationFilter.ReplyToSessionId;
                 ContentType = correlationFilter.ContentType;
                 RequiresPreprocessing = correlationFilter.RequiresPreprocessing;
+                Properties = correlationFilter.Properties;
+            }
+            else
+            {
+                Properties = new Dictionary<string, string>();
             }
         }
 
@@ -103,6 +109,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// preprocessing.
         /// </summary>
         public bool? RequiresPreprocessing { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags
+        /// </summary>
+        public IDictionary<string, string> Properties { get; set; }
 
     }
 }
