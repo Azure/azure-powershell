@@ -29,7 +29,7 @@ If the namespace name is not provided, a list of namespaces is returned.
 PS C:\> Get-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName
 ```
 
-Gets the details of the Event Hubs namespace \`MyNamespaceName\` in the resource group \`MyResourceGroupName\`.
+Gets the details of namespace \`MyNamespaceName\` in the resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add -ExtendedProperty parameter to New-AzureDeployment and Set-AzureDeployment
 
 ## Version 5.1.2
 * Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
