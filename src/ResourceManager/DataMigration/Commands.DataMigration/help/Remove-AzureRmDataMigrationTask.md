@@ -16,18 +16,19 @@ Removes an Azure Database Migration Service task from Azure.
 ```
 Remove-AzureRmDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
  -Name <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
 Remove-AzureRmDataMigrationTask [-InputObject] <PSProjectTask> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Remove-AzureRmDataMigrationTask [-ResourceId] <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,17 +38,15 @@ The Remove-AzureRmDataMigrationTask cmdlet removes an Azure Database Migration S
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmDataMigrationTask –TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
+PS C:\> Remove-AzureRmDataMigrationTask -TaskName TestTask -ProjectName myTestProject -ServiceName MyTestService
  -ResourceGroupName MyResourceGroup
-
 ```
 
 The preceding example removes an Azure Database Migration Service task named TestTask from Azure based on task name parameter.
 
 ### Example 2
 ```
-PS C:\> Remove-AzureRmDataMigrationTask –InputObject $TestTask
-
+PS C:\> Remove-AzureRmDataMigrationTask -InputObject $TestTask
 ```
 
 The preceding example removes an Azure Database Migration Service task based on PSProjectTask object passed in.
@@ -221,19 +220,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask
 System.String
 
-
 ## OUTPUTS
 
 ### System.Boolean
 
-
 ## NOTES
 
 ## RELATED LINKS
-
 
