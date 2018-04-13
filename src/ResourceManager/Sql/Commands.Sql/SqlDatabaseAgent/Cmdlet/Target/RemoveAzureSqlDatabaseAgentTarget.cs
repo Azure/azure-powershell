@@ -29,6 +29,14 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Cmdlet
         OutputType(typeof(JobTarget))]
     public class RemoveAzureSqlDatabaseAgentTarget : AzureSqlDatabaseAgentTargetCmdletBase
     {
+        /// <summary>
+        /// Updates list of existing targets during remove target scenario
+        /// There is 1 scenario where we will need to send an update to server
+        /// 1. If target was in list and we removed it.
+        /// If this scenarios occurs, we return true and send update to server.
+        /// Otherwise, we return empty response to indicate that no changes were made.
+        /// </summary>
+        /// <returns>True if an update to server is required after updating list of existing targets</returns>
         protected override bool UpdateExistingTargets()
         {
             int? index = FindTarget();

@@ -39,9 +39,14 @@ namespace Microsoft.Azure.Commands.Sql.SqlDatabaseAgent.Cmdlet
         public override SwitchParameter Exclude { get; set; }
 
         /// <summary>
-        /// 
+        /// Updates list of existing targets during add target scenario
+        /// There are 2 scenarios where we will need to send an update to server
+        /// 1. If target wasn't in list and we need to add it
+        /// 2. If target was in the list, but client wants to update it's membership type.
+        /// If one of these scenarios occurs, we return true and send update to server.
+        /// Otherwise, we return empty response to indicate that no changes were made.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True if an update to server is required after updating list of existing targets</returns>
         protected override bool UpdateExistingTargets()
         {
             int? index = FindTarget();
