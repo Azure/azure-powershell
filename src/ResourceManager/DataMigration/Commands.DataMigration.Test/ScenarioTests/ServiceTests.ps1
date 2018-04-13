@@ -284,7 +284,7 @@ function Test-MigrateSqlSqlDB
 		$tableMap.Add("HR.LOCATIONS","HR.LOCATIONS")
 		$tableMap.Add("HR.REGIONS","HR.REGIONS")
 
-		$selectedDbs = New-AzureRmDmsSqlServerSqlDbSelectedDB -Name HR -TargetDatabaseName psTarget -TableMap $tableMap
+		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name HR -TargetDatabaseName psTarget -TableMap $tableMap
 
 		$migTask = New-AzureRmDmsTask -TaskType MigrateSqlServerSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -SourceCred $sourceCred -TargetConnection $targetConnectionInfo -TargetCred $targetCred -SelectedDatabase  $selectedDbs
 
@@ -380,7 +380,7 @@ function Test-MigrateSqlSqlDBMi
 
 		$backupFileShare = New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
 
-		$selectedDbs = New-AzureRmDataMigrationSelectedDB -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
+		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
 
         $selectedLogins = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_LOGINS")
         $selectedLogins = $selectedLogins -split ","
@@ -450,7 +450,7 @@ function Test-ValidateMigrationInputSqlSqlDbMi
 
 		$backupFileShare = New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
 
-		$selectedDbs = New-AzureRmDataMigrationSelectedDB -Name "HR" -TargetDatabaseName "HR_PSTEST1" -BackupFileShare $backupFileShare
+		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST1" -BackupFileShare $backupFileShare
 
 		$migTask = New-AzureRmDataMigrationTask -TaskType ValidateSqlServerSqlDbMi `
 		  -ResourceGroupName $rg.ResourceGroupName `

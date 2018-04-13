@@ -14,8 +14,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [Alias("New-AzureRmDmsSelectedDB")]
     public class NewDataMigrationSelectedDB : DataMigrationCmdlet
     {
-        private const string SqlServerSqlDbParameterSet = "SqlServerSqlDbMigration";
-        private const string SqlServerSqlDbMiParameterSet = "SqlServerSqlDbMiMigration";
+        private const string SqlServerSqlDbParameterSet = "MigrateSqlServerSqlDb";
+        private const string SqlServerSqlDbMiParameterSet = "MigrateSqlServerSqlDbMi";
 
         [Parameter(
             Mandatory = true,
@@ -44,6 +44,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public string TargetDatabaseName { get; set; }
 
         [Parameter(
+            ParameterSetName = SqlServerSqlDbMiParameterSet,
+            Mandatory = true,
+            HelpMessage = "Set migration type to SQL Server to SQL DB MI Migration."
+        )]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter MigrateSqlServerSqlDbMi { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "File share where the source server database files for this database should be backed up. " +
                 "Use this setting to override file share information for each database. " +
@@ -54,9 +62,17 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public FileShare BackupFileShare { get; set; }
 
         [Parameter(
+            ParameterSetName = SqlServerSqlDbParameterSet,
+            Mandatory = true,
+            HelpMessage = "Set migration type to SQL Server to SQL DB Migration."
+        )]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter MigrateSqlServerSqlDb { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Set Database to readonly before migration",
-            ParameterSetName = "SqlServerSqlDbParameterSet"
+            ParameterSetName = SqlServerSqlDbParameterSet
         )]
         [ValidateNotNullOrEmpty]
         public SwitchParameter MakeSourceDbReadOnly { get; set; }
@@ -64,7 +80,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Mandatory = false,
             HelpMessage = "mapping of source to target tables",
-            ParameterSetName = "SqlServerSqlDbParameterSet"
+            ParameterSetName = SqlServerSqlDbParameterSet
         )]
         [ValidateNotNullOrEmpty]
         public IDictionary<string, string> TableMap { get; set; }
