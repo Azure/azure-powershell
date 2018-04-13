@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Subscription.dll-Help.xml
-Module Name: AzureRM.Subscription.Preview
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.subscription.preview/new-azurermsubscription
+Module Name: AzureRM.Subscription
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.subscription/new-azurermsubscription
 schema: 2.0.0
 ---
 
