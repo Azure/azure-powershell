@@ -17,7 +17,9 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Subscription.Models;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.Management.Subscription;
 using Microsoft.Azure.Management.Subscription.Models;
 using System;
@@ -128,11 +130,25 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
             {
                 foreach (string upn in userPrincipalNames)
                 {
-                    uniqueObjectIds.Add(Guid.Parse(ActiveDirectoryClient.GetObjectIdFromUPN(upn)));
+                    // TODO: Revert once available: uniqueObjectIds.Add(Guid.Parse(ActiveDirectoryClient.GetObjectIdFromUPN(upn)));
+                    uniqueObjectIds.Add(Guid.Parse(GetObjectIdFromUPN(ActiveDirectoryClient, upn)));
                 }
             }
 
             return uniqueObjectIds.Select(id => id.ToString()).ToArray();
+        }
+
+        // Temporary until this code has moved into ActiveDirectoryClient.
+        private static string GetObjectIdFromUPN(ActiveDirectoryClient activeDirectoryClient, string upn)
+        {
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<User>(s => s.UserPrincipalName == upn);
+            var user = activeDirectoryClient.GraphClient.Users.List(odataQueryFilter.ToString()).SingleOrDefault();
+            if (user == null)
+            {
+                throw new InvalidOperationException(String.Format("User with UPN '{0}' does not exist.", upn));
+            }
+
+            return user.ObjectId;
         }
     }
 }

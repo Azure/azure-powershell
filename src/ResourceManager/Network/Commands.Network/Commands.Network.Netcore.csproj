@@ -27,7 +27,7 @@
   </PropertyGroup>
 
   <ItemGroup >
-    <PackageReference Include="AutoMapper" Version="6.0.2" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="17.0.0-preview" />
   </ItemGroup>
 
