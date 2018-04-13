@@ -132,8 +132,8 @@ PrivateData = @{
         # ReleaseNotes of this module
         # ReleaseNotes = ''
 
-        # Preview string of this module
-        # preview = ''
+        # Prerelease string of this module
+        # Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

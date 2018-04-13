@@ -91,7 +91,6 @@
       <Link>AzureRM.DeviceProvisioningServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="help\New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="StartupScripts\*.ps1">
       <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
@@ -100,6 +99,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
+    <None Include="help\New-AzureRmIoTDeviceProvisioningServiceCertificateVerificationCode.md" />
     <None Include="help\Add-AzureRmIoTDeviceProvisioningServiceAccessPolicy.md" />
     <None Include="help\Add-AzureRmIoTDeviceProvisioningServiceCertificate.md" />
     <None Include="help\Add-AzureRmIoTDeviceProvisioningServiceLinkedHub.md" />
