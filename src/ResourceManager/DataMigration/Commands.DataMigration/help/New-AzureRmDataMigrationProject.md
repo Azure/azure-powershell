@@ -188,7 +188,9 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseInfo
-Database Infos.```yaml
+Database Infos.
+
+```yaml
 Type: DatabaseInfo[]
 Parameter Sets: (All)
 Aliases: 
@@ -201,7 +203,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-PSDataMigrationService Object.```yaml
+PSDataMigrationService Object.
+
+```yaml
 Type: PSDataMigrationService
 Parameter Sets: ComponentObjectParameterSet
 Aliases: DataMigrationService
@@ -214,7 +218,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the project.```yaml
+The name of the project.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ProjectName
@@ -227,7 +233,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-DataMigrationService Resource Id.```yaml
+DataMigrationService Resource Id.
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdParameterSet
 Aliases: 

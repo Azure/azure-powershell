@@ -84,7 +84,9 @@ Accept wildcard characters: False
 ```
 
 ### -MigrateSqlServerSqlDb
-Set migration type to SQL Server to SQL DB Migration.```yaml
+Set migration type to SQL Server to SQL DB Migration.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: MigrateSqlServerSqlDb
 Aliases: 
@@ -97,7 +99,9 @@ Accept wildcard characters: False
 ```
 
 ### -MigrateSqlServerSqlDbMi
-Set migration type to SQL Server to SQL DB MI Migration.```yaml
+Set migration type to SQL Server to SQL DB MI Migration.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: MigrateSqlServerSqlDbMi
 Aliases: 
