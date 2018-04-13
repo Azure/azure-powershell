@@ -31,6 +31,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Text;
 
@@ -53,8 +54,15 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureAccount testAccount;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
-        public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
-        public string StackDirectory = @"..\..\..\..\..\..\Stack\Debug";
+
+        public static string PackageDirectory { get; }  = GetConfigDirectory();
+        public static string StackDirectory { get; }  = GetConfigDirectory("Stack");
+
+        public static string RmDirectory { get; }  = GetRMModuleDirectory();
+        public static string StackRmDirectory { get; }  = GetRMModuleDirectory("Stack");
+
+        public static string StorageDirectory { get; } = GetStorageDirectory();
+        public static string StackStorageDirectory { get; } = GetStorageDirectory("Stack");
 
         protected List<string> modules;
 
@@ -64,6 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
         public EnvironmentSetupHelper()
         {
+
             TestExecutionHelpers.SetUpSessionAndProfile();
             IDataStore datastore = new MemoryDataStore();
             if (AzureSession.Instance.DataStore != null && (AzureSession.Instance.DataStore is MemoryDataStore))
@@ -101,109 +110,79 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        public string RMProfileModule
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
-            }
-        }
+        public string RMProfileModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Profile");
 
-        public string RMResourceModule
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
-            }
-        }
+        public string RMResourceModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Resources");
 
-        public string RMInsightsModule
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Insights\AzureRM.Insights.psd1");
-            }
-        }
+        public string RMInsightsModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Insights");
 
-        public string RMStorageModule
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
-            }
-        }
+        public string RMStorageModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Storage");
 
         //TODO: clarify (data plane should not be under ARM folder)
-        public string RMStorageDataPlaneModule
+        public string RMStorageDataPlaneModule { get; } = GetModuleManifest(StorageDirectory, "AzureR.Storage");
+
+        public string RMNetworkModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Network");
+
+
+        public string StackRMProfileModule { get; } = GetModuleManifest(StackRmDirectory, "AzureRM.Profile");
+
+        public string StackRMResourceModule { get; } = GetModuleManifest(StackRmDirectory, "AzureRM.Resources");
+
+        public string StackRMStorageModule { get; } = GetModuleManifest(StackRmDirectory, "AzureRM.Storage");
+
+        public string StackRMStorageDataPlaneModule { get; } = GetModuleManifest(StackStorageDirectory, "AzureRM.Profile");
+
+        private static string ProbeForSrcDirectory()
         {
-            get
+            string directoryPath = "..";
+            while(Directory.Exists(directoryPath) && !Directory.Exists(Path.Combine(directoryPath, "src")))
             {
-                return Path.Combine(this.PackageDirectory,
-                                     @"Storage\Azure.Storage\Azure.Storage.psd1");
+                directoryPath = Path.Combine(directoryPath, "..");
             }
+
+            string result = Directory.Exists(directoryPath) ? Path.Combine(directoryPath, "src") : null;
+            return result;
         }
 
-        public string RMNetworkModule
+        private static string GetConfigDirectory(string targetDirectory = "Package")
         {
-            get
+            string result = null;
+            var srcDirectory = ProbeForSrcDirectory();
+            if (srcDirectory != null)
             {
-                return Path.Combine(this.PackageDirectory,
-                                     @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
+                var baseDirectory = Path.Combine(srcDirectory, targetDirectory);
+                if (Directory.Exists(baseDirectory))
+                {
+                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault();
+                }
             }
+
+            return result;
         }
 
-        public string GetRMModulePath(string psd1FileName)
+        private static string GetRMModuleDirectory(string targetDirectory = "Package")
         {
-            string basename = Path.GetFileNameWithoutExtension(psd1FileName);
-            return Path.Combine(this.PackageDirectory,
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+            string configDirectory = GetConfigDirectory(targetDirectory);
+            return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "ResourceManager", "AzureResourceManager");
         }
 
-        public string GetStackRMModulePath(string psd1FileName)
+        private static string GetStorageDirectory(string targetDirectory = "Package")
         {
-            string basename = Path.GetFileNameWithoutExtension(psd1FileName);
-            return Path.Combine(this.StackDirectory,
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+            string configDirectory = GetConfigDirectory(targetDirectory);
+            return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "Storage");
         }
 
-        public string StackRMProfileModule
+        private static string GetModuleManifest(string baseDirectory, string desktopModuleName)
         {
-            get
+            if (string.IsNullOrWhiteSpace(baseDirectory) || string.IsNullOrWhiteSpace(desktopModuleName))
             {
-                return Path.Combine(this.StackDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                return null;
             }
-        }
 
-        public string StackRMResourceModule
-        {
-            get
-            {
-                return Path.Combine(this.StackDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
-            }
-        }
+            string desktopModule = Path.Combine(baseDirectory, desktopModuleName, $"{desktopModuleName}.psd1");
+            string netcoreModule = Path.Combine(baseDirectory, $"{desktopModuleName}.Netcore", $"{desktopModuleName}.Netcore.psd1");
+            return (File.Exists(desktopModule) ? desktopModule : (File.Exists(netcoreModule) ? netcoreModule : null));
 
-        public string StackRMStorageModule
-        {
-            get
-            {
-                return Path.Combine(this.StackDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
-            }
-        }
-
-        public string StackRMStorageDataPlaneModule
-        {
-            get
-            {
-                return Path.Combine(this.StackDirectory,
-                                     @"Storage\Azure.Storage\Azure.Storage.psd1");
-            }
         }
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
@@ -538,7 +517,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 try
                 {
-                    powershell.Runspace.Events.Subscribers.Clear();
                     output = powershell.Invoke();
                     if (powershell.Streams.Error.Count > 0)
                     {
@@ -568,6 +546,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
+#if NETSTANDARD
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process -ErrorAction Ignore");
+            }
+#endif
             powershell.AddScript("$error.clear()");
             powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));

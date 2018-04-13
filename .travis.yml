@@ -21,6 +21,7 @@ before_install:
 
 script:
  - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=$CONFIG
+ - dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter="AcceptanceType=CheckIn"
  
 after_success:
  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
