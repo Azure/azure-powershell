@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Change Guid paramters to Guid type, not string
 
 ## Version 0.1.1
 * New Cmdlet Get-AzureRmReservationOrder
