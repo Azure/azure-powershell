@@ -53,7 +53,7 @@
     <Compile Include="Cmdlets\NewAzureRmDataMigrationService.cs" />
     <Compile Include="Cmdlets\NewConnectionInfoCmdlet.cs" />
     <Compile Include="Cmdlets\NewDatabaseInfoCmdlet.cs" />
-    <Compile Include="Cmdlets\NewDataMigrationSqlServerSqlDbMiSelectedDB.cs" />
+    <Compile Include="Cmdlets\NewDataMigrationSelectedDB.cs" />
     <Compile Include="Cmdlets\NewDataMigrationSqlServerSqlDbSelectedDB.cs" />
     <Compile Include="Cmdlets\NewDataMigrationTask.cs" />
     <Compile Include="Cmdlets\NewProjectCmdlet.cs" />
@@ -98,6 +98,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="help\New-AzureRmDataMigrationSelectedDB.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="..\AzureRM.DataMigration.psd1">
       <Link>AzureRM.DataMigration.psd1</Link>
@@ -115,7 +116,6 @@
     <None Include="help\New-AzureRmDataMigrationFileShare.md" />
     <None Include="help\New-AzureRmDataMigrationProject.md" />
     <None Include="help\New-AzureRmDataMigrationService.md" />
-    <None Include="help\New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB.md" />
     <None Include="help\New-AzureRmDataMigrationSqlServerSqlDbSelectedDB.md" />
     <None Include="help\New-AzureRmDataMigrationTask.md" />
     <None Include="help\Remove-AzureRmDataMigrationProject.md" />
