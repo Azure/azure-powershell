@@ -142,6 +142,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                 Sku = "2008-R2-SP1",
                                 Version = "latest",
                             }
+                        },
+                        {
+                            "Win10",
+                            new ImageReference
+                            {
+                                Publisher = "MicrosoftVisualStudio",
+                                Offer = "Windows",
+                                Sku = "Windows-10-N-x64",
+                                Version = "latest"
+                            }
                         }
                     }
                 }
