@@ -181,6 +181,9 @@
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="DdosProtectionPlan\GetAzureRMDdosProtectionPlanCommand.cs" />
+    <Compile Include="DdosProtectionPlan\NewAzureRMDdosProtectionPlanCommand.cs" />
+    <Compile Include="DdosProtectionPlan\RemoveAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="EndpointService\GetAzureRMAvailableEndpointServiceCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\AddAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\AzureExpressRouteCircuitAuthorizationBase.cs" />
@@ -244,6 +247,7 @@
     <Compile Include="Models\PSConnectivityHop.cs" />
     <Compile Include="Models\PSConnectivityInformation.cs" />
     <Compile Include="Models\PSConnectivityIssue.cs" />
+    <Compile Include="Models\PSDdosProtectionPlan.cs" />
     <Compile Include="Models\PSFlowLog.cs" />
     <Compile Include="Models\PSFlowLogProperties.cs" />
     <Compile Include="Models\PSGatewayRoute.cs" />
