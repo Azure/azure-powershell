@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the name of the service objective to assign to the secondary.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the service objective to assign to the secondary.")]
+            HelpMessage = "The name of the service objective to assign to the secondary." +
+            "Possible ServiceObjectiveName could be S3, P2, GP_Gen4_2. GP_Gen4_2 is new supported service tier.")]
         [ValidateNotNullOrEmpty]
         public string SecondaryServiceObjectiveName { get; set; }
 
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the read intent of the secondary (ReadOnly is not yet supported).
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The read intent of the secondary (ReadOnly is not yet supported).")]
+            HelpMessage = "The read intent of the secondary (Non-Readable secondary is not supported anymore).")]
         [ValidateNotNullOrEmpty]
         public AllowConnections AllowConnections { get; set; }
 
@@ -140,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         {
             string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName);
             List<Model.AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
-            newEntity.Add(new AzureReplicationLinkModel()
+            AzureReplicationLinkModel linkModel = new AzureReplicationLinkModel()
             {
                 PartnerLocation = location,
                 ResourceGroupName = this.ResourceGroupName,
@@ -148,11 +149,20 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 DatabaseName = this.DatabaseName,
                 PartnerResourceGroupName = this.PartnerResourceGroupName,
                 PartnerServerName = this.PartnerServerName,
-                SecondaryServiceObjectiveName = this.SecondaryServiceObjectiveName,
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-            });
+            };
+
+            if(!string.IsNullOrWhiteSpace(SecondaryServiceObjectiveName))
+            {
+                linkModel.SecondarySku = new Management.Sql.Models.Sku()
+                {
+                    Name = SecondaryServiceObjectiveName
+                };
+            }
+
+            newEntity.Add(linkModel);
             return newEntity;
         }
 
@@ -163,8 +173,12 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
-            return new List<AzureReplicationLinkModel>() {
-                ModelAdapter.CreateLink(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
+            //           return new List<AzureReplicationLinkModel>() {
+            //               ModelAdapter.CreateLink(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
+            //           };
+            return new List<AzureReplicationLinkModel>()
+            {
+                ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
             };
         }
     }

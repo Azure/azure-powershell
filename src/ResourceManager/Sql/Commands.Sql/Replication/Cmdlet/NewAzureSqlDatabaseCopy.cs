@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database copy
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the service objective to assign to the Azure SQL Database copy.")]
+            HelpMessage = "The name of the service objective to assign to the Azure SQL Database copy. " +
+            "Possible ServiceObjectiveName could be S3, P2, GP_Gen4_2")]
         [ValidateNotNullOrEmpty]
         public string ServiceObjectiveName { get; set; }
 
@@ -146,8 +147,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             string copyLocation = copyServer.Equals(ServerName) ? location : ModelAdapter.GetServerLocation(copyResourceGroup, copyServer);
+            Database.Model.AzureSqlDatabaseModel sourceDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
             List<Model.AzureSqlDatabaseCopyModel> newEntity = new List<AzureSqlDatabaseCopyModel>();
-            newEntity.Add(new AzureSqlDatabaseCopyModel()
+
+            AzureSqlDatabaseCopyModel copyModel = new AzureSqlDatabaseCopyModel()
             {
                 Location = location,
                 ResourceGroupName = ResourceGroupName,
@@ -159,8 +162,18 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 CopyLocation = copyLocation,
                 ServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-            });
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true)
+            };
+
+            if (!string.IsNullOrWhiteSpace(ServiceObjectiveName))
+            {
+                copyModel.Sku = new Management.Sql.Models.Sku()
+                {
+                    Name = ServiceObjectiveName
+                };
+            }
+
+            newEntity.Add(copyModel);
             return newEntity;
         }
 
@@ -171,9 +184,13 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseCopyModel> PersistChanges(IEnumerable<AzureSqlDatabaseCopyModel> entity)
         {
-            return new List<AzureSqlDatabaseCopyModel>() {
-                ModelAdapter.CopyDatabase(entity.First().CopyResourceGroupName, entity.First().CopyServerName, entity.First())
+            return new List<AzureSqlDatabaseCopyModel>()
+            {
+                ModelAdapter.CopyDatabaseWithNewSdk(entity.First().CopyResourceGroupName, entity.First().CopyServerName, entity.First())
             };
+//                return new List<AzureSqlDatabaseCopyModel>() {
+//                    ModelAdapter.CopyDatabase(entity.First().CopyResourceGroupName, entity.First().CopyServerName, entity.First())
+//                };
         }
     }
 }
