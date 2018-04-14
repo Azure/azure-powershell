@@ -88,7 +88,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureReplicationLinkModel> GetEntity()
         {
-            return ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
+            //return ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
+            return ModelAdapter.ListLinksWithNewSdk(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
         }
 
         /// <summary>
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             switch (ParameterSetName)
             {
                 case ByFailoverParams:
-                    return new List<AzureReplicationLinkModel>() { ModelAdapter.FailoverLink(this.ResourceGroupName,
+                    return new List<AzureReplicationLinkModel>() { ModelAdapter.FailoverLinkWithNewSdk(this.ResourceGroupName,
                         this.ServerName,
                         this.DatabaseName,
                         this.PartnerResourceGroupName,

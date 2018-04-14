@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
 {
@@ -42,9 +43,19 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string SecondaryServiceObjectiveName { get; set; }
 
         /// <summary>
+        /// Gets or sets the requested Sku for the partner
+        /// </summary>
+        public Sku SecondarySku { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the Elastic Pool the partner is in
         /// </summary>
         public string SecondaryElasticPoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Id of the Elastic Pool the partner is in
+        /// </summary>
+        public string SecondaryElasticPoolId { get; set; }
 
         /// <summary>
         /// Gets or sets the id of the replication link

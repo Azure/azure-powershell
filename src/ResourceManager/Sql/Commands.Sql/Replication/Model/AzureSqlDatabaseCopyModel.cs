@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
@@ -55,5 +56,15 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the location of the partner database
         /// </summary>
         public string CopyLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Id of the Elastic Pool the database is in
+        /// </summary>
+        public string ElasticPoolId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the requested Sku for the copy
+        /// </summary>
+        public Sku Sku { get; set; }
     }
 }
