@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns></returns>
         public AzureSqlDatabaseModel GetElasticPoolDatabase(string resourceGroupName, string serverName, string poolName, string databaseName)
         {
-            var resp = Communicator.GetDatabase(resourceGroupName, serverName, poolName, databaseName);
+            var resp = Communicator.GetDatabase(resourceGroupName, serverName, databaseName);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
