@@ -30,7 +30,7 @@ This command will retrieve all of the credential properties (but not the credent
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS E:\> Get-AzureRmADSpCredential -ServicePrincipalName http://test12345
 ```
@@ -60,7 +60,7 @@ The object id of the service principal to retrieve credentials from.
 ```yaml
 Type: String
 Parameter Sets: ObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -75,7 +75,7 @@ The name (SPN) of the service principal to retrieve credentials from.
 ```yaml
 Type: String
 Parameter Sets: SPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -88,6 +88,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

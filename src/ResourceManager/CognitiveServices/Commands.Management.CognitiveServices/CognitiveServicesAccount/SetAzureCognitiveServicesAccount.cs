@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             else
             {
                 // Not updating anything (this is allowed) - just return the account, no need for approval.
-                var cognitiveServicesAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.GetProperties(this.ResourceGroupName, this.Name);
+                var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(this.ResourceGroupName, this.Name);
                 WriteCognitiveServicesAccount(cognitiveServicesAccount);
                 return;
             }
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             {
                 RunCmdLet(() =>
                 {
-                    var updatedAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.Update(
+                    var updatedAccount = this.CognitiveServicesClient.Accounts.Update(
                         this.ResourceGroupName,
                         this.Name,
                         sku,

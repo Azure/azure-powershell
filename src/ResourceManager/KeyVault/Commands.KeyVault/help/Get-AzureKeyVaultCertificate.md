@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 363FA51E-D075-4800-A4BE-BFF63FD25C90
@@ -13,27 +13,39 @@ Gets a certificate from a key vault.
 
 ## SYNTAX
 
-### ByVaultName (Default)
+### ByName (Default)
 ```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### ByCertificateName
-```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [[-Version] <String>]
+Get-AzureKeyVaultCertificate [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByCertificateVersions
+### ByCertificateNameAndVersion
+```
+Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByCertificateAllVersions
 ```
 Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByDeletedCertificates
+### ByNameInputObject
 ```
-Get-AzureKeyVaultCertificate [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByCertificateNameAndVersionInputObject
+```
+Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByCertificateAllVersionsInputObject
+```
+Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -110,8 +122,8 @@ Indicates that this operation gets all versions of the certificate.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByCertificateVersions
-Aliases: 
+Parameter Sets: ByCertificateAllVersions, ByCertificateAllVersionsInputObject
+Aliases:
 
 Required: True
 Position: Named
@@ -120,15 +132,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+KeyVault object.
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: ByNameInputObject, ByCertificateNameAndVersionInputObject, ByCertificateAllVersionsInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InRemovedState
 Specifies whether to include previously deleted certificates in the output
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByDeletedCertificates
-Aliases: 
+Parameter Sets: ByName, ByNameInputObject
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -140,10 +167,10 @@ Specifies the name of the certificate to get.
 
 ```yaml
 Type: String
-Parameter Sets: ByCertificateName, ByCertificateVersions
+Parameter Sets: ByName, ByNameInputObject
 Aliases: CertificateName
 
-Required: True
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -152,10 +179,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: ByDeletedCertificates
+Parameter Sets: ByCertificateNameAndVersion, ByCertificateAllVersions, ByCertificateNameAndVersionInputObject, ByCertificateAllVersionsInputObject
 Aliases: CertificateName
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -167,8 +194,8 @@ Specifies the name of a key vault.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByName, ByCertificateNameAndVersion, ByCertificateAllVersions
+Aliases:
 
 Required: True
 Position: 0
@@ -182,10 +209,10 @@ Specifies the version of a certificate.
 
 ```yaml
 Type: String
-Parameter Sets: ByCertificateName
+Parameter Sets: ByCertificateNameAndVersion, ByCertificateNameAndVersionInputObject
 Aliases: CertificateVersion
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -197,11 +224,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.CertificateIdentityItem]
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem]
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificate
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
 
 ## NOTES
 

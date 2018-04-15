@@ -21,8 +21,8 @@ New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionName <
 
 ### ResourceGroupWithObjectIdParameterSet
 ```
-New-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -RoleDefinitionName <String> [-AllowDelegation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmRoleAssignment -ObjectId <Guid> -ResourceGroupName <String> -RoleDefinitionName <String>
+ [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithObjectIdParameterSet
@@ -46,8 +46,8 @@ New-AzureRmRoleAssignment -ObjectId <Guid> -Scope <String> -RoleDefinitionId <Gu
 
 ### ResourceGroupWithSignInNameParameterSet
 ```
-New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefinitionName <String> [-AllowDelegation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -RoleDefinitionName <String>
+ [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithSignInNameParameterSet
@@ -59,14 +59,14 @@ New-AzureRmRoleAssignment -SignInName <String> -ResourceGroupName <String> -Reso
 
 ### ScopeWithSignInNameParameterSet
 ```
-New-AzureRmRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmRoleAssignment -SignInName <String> [-Scope <String>] -RoleDefinitionName <String>
+ [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceGroupWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ApplicationId <String> -ResourceGroupName <String> [-AllowDelegation]
- -RoleDefinitionName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -RoleDefinitionName <String>
+ [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceWithSPNParameterSet
@@ -78,8 +78,8 @@ New-AzureRmRoleAssignment -ApplicationId <String> -ResourceGroupName <String> -R
 
 ### ScopeWithSPNParameterSet
 ```
-New-AzureRmRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String> [-AllowDelegation]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmRoleAssignment -ApplicationId <String> [-Scope <String>] -RoleDefinitionName <String>
+ [-AllowDelegation] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,14 +107,14 @@ ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - 
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS C:\> New-AzureRmRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -RoleDefinitionName Reader -AllowDelegation
 ```
 
 Grant Reader role access to a user at a resource group scope with the Role Assignment being available for delegation
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS C:\> Get-AzureRMADGroup -SearchString "Christine Koch Team"
 
@@ -127,30 +127,59 @@ PS C:\> New-AzureRmRoleAssignment -ObjectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb
 
 Grant access to a security group
 
-### --------------------------  Example 3  --------------------------
+### Example 3
 ```
 PS C:\> New-AzureRmRoleAssignment -SignInName john.doe@contoso.com -RoleDefinitionName Owner -Scope "/subscriptions/86f81fc3-b00f-48cd-8218-3879f51ff362/resourcegroups/rg1/providers/Microsoft.Web/sites/site1"
 ```
 
 Grant access to a user at a resource (website)
 
-### --------------------------  Example 4  --------------------------
+### Example 4
 ```
 PS C:\> New-AzureRMRoleAssignment -ObjectId 5ac84765-1c8c-4994-94b2-629461bd191b -RoleDefinitionName "Virtual Machine Contributor" -ResourceName Devices-Engineering-ProjectRND -ResourceType Microsoft.Network/virtualNetworks/subnets -ParentResource virtualNetworks/VNET-EASTUS-01 -ResourceGroupName Network
 ```
 
 Grant access to a group at a nested resource (subnet)
 
-### --------------------------  Example 5  --------------------------
+### Example 5
 ```
 PS C:\> $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName "testServiceprincipal"
 PS C:\> New-AzureRmRoleAssignment -RoleDefinitionName "Reader" -ApplicationId $servicePrincipal.ApplicationId
-
 ```
 
 Grant reader access to a service principal
 
 ## PARAMETERS
+
+### -AllowDelegation
+The delegation flag while creating a Role assignment.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ApplicationId
+The Application ID of the ServicePrincipal
+
+```yaml
+Type: String
+Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
+Aliases: SPN, ServicePrincipalName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -189,7 +218,7 @@ Should only be  used in conjunction with ResourceGroupName, ResourceType and Res
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -206,7 +235,7 @@ When used in conjunction with ResourceName, ResourceType and (optionally)ParentR
 ```yaml
 Type: String
 Parameter Sets: ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -224,7 +253,7 @@ Should only be used in conjunction with ResourceGroupName, ResourceType and (opt
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -242,7 +271,7 @@ Should only be used in conjunction with ResourceGroupName, ResourceName and (opt
 ```yaml
 Type: String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -257,7 +286,7 @@ Id of the RBAC role that needs to be assigned to the principal.
 ```yaml
 Type: Guid
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -273,7 +302,7 @@ Reader, Contributor, Virtual Network Administrator, etc.
 ```yaml
 Type: String
 Parameter Sets: EmptyParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -293,7 +322,7 @@ If specified, it should start with "/subscriptions/{id}".
 ```yaml
 Type: String
 Parameter Sets: EmptyParameterSet, RoleIdWithScopeAndObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -305,24 +334,9 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ScopeWithObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet
-Aliases: 
+Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApplicationId
-The Application ID of the ServicePrincipal
-
-```yaml
-Type: String
-Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet
-Aliases: SPN,ServicePrincipalName
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -344,24 +358,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AllowDelegation
-The delegation flag while creating a Role assignment.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: EmptyParameterSet,ResourceGroupWithObjectIdParameterSet,ResourceWithObjectIdParameterSet,ScopeWithObjectIdParameterSet,RoleIdWithScopeAndObjectIdParameterSet,ResourceGroupWithSignInNameParameterSet,ResourceGroupWithSignInNameParameterSet,ScopeWithSignInNameParameterSet,ResourceGroupWithSPNParameterSet,ResourceWithSPNParameterSet,ScopeWithSPNParameterSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

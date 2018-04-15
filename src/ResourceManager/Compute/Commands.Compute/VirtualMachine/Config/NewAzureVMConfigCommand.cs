@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.New,
-        ProfileNouns.VirtualMachineConfig),
+        ProfileNouns.VirtualMachineConfig,
+        DefaultParameterSetName = "DefaultParameterSet"),
     OutputType(
         typeof(PSVirtualMachine))]
     public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
@@ -60,12 +61,21 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Position = 4,
+            Mandatory = true,
+            ParameterSetName = "ExplicitIdentityParameterSet",
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is obsolete.  Use AssignIdentity parameter instead.", false)]
         public ResourceIdentityType? IdentityType { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ParameterSetName = "ExplicitIdentityParameterSet",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = "AssignIdentityParameterSet",
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AssignIdentity { get; set; }
@@ -88,6 +98,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("New-AzureRmVMConfig: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
+                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
+
             var vm = new PSVirtualMachine
             {
                 Name = this.VMName,
@@ -103,7 +116,11 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.IdentityType != null)
             {
-                vm.Identity = new VirtualMachineIdentity(null, null, ResourceIdentityType.SystemAssigned);
+                vm.Identity = new VirtualMachineIdentity(null, null, this.IdentityType);
+                if (this.IdentityId != null)
+                {
+                    vm.Identity.IdentityIds = this.IdentityId;
+                }
             }
             if (!string.IsNullOrEmpty(this.VMSize))
             {

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
@@ -32,7 +32,7 @@ Set-AzureRmRoleDefinition -Role <PSRoleDefinition> [-DefaultProfile <IAzureConte
 The Set-AzureRmRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control.
 Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object.
 The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes.
-NotActions is optional.
+NotActions, DataActions, NotDataActions are optional.
 
 Following is a sample updated role definition json for Set-AzureRmRoleDefinition
 
@@ -45,23 +45,35 @@ Following is a sample updated role definition json for Set-AzureRmRoleDefinition
             "*/read",
             "Microsoft.ClassicCompute/virtualmachines/restart/action",
             "Microsoft.ClassicCompute/virtualmachines/start/action"
-        \]
-        "AssignableScopes": \["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"\]
-    }
+        \],
+        "NotActions":
+        \[
+            "*/write"
+        \],
+        "DataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        \],
+        "NotDataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        \],
+        "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\]
+}
 
 ## EXAMPLES
 
-### --------------------------  Update using PSRoleDefinitionObject  --------------------------
+### Update using PSRoleDefinitionObject
 ```
 PS C:\> $roleDef = Get-AzureRmRoleDefinition "Contoso On-Call"
           PS C:\> $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualmachines/start/action")
           PS C:\> $roleDef.Description = "Can monitor all resources and start and restart virtual machines"
-          PS C:\> $roleDef.AssignableScopes = @("/subscriptions/eb910d4f-edbf-429b-94F6-d76bae7ff401", "/subscriptions/a846d197-5eac-45c7-b885-a6227fe6d388")
+          PS C:\> $roleDef.AssignableScopes = @("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 
           PS C:\> Set-AzureRmRoleDefinition -Role $roleDef
 ```
 
-### --------------------------  Create using JSON file  --------------------------
+### Create using JSON file
 ```
 PS C:\> Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
@@ -91,7 +103,7 @@ Id property is Required.
 ```yaml
 Type: String
 Parameter Sets: InputFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +118,7 @@ Role definition object to be updated
 ```yaml
 Type: PSRoleDefinition
 Parameter Sets: RoleDefinitionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

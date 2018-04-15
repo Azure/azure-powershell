@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,7 +29,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -51,7 +51,9 @@
     <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.18.0-preview\lib\net45\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Azure.OperationalInsights, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.OperationalInsights.0.9.0-preview\lib\net452\Microsoft.Azure.OperationalInsights.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\OperationalInsightsClient.Search.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="Models\DataSourcePropertiesPerKind\PSWindowsEventDataSourceProperties.cs" />
     <Compile Include="Models\PSCoreSummary.cs" />
     <Compile Include="Models\PSDataSource.cs" />
+    <Compile Include="Models\PSQueryResponse.cs" />
     <Compile Include="Models\PSSearchError.cs" />
     <Compile Include="Models\PSHighlight.cs" />
     <Compile Include="Models\PSIntelligencePack.cs" />
@@ -124,6 +127,7 @@
     </Compile>
     <Compile Include="OperationalInsightsBaseCmdlet.cs" />
     <Compile Include="ProvisioningFailedException.cs" />
+    <Compile Include="Query\InvokeOperationalInsightsQuery.cs" />
     <Compile Include="Search\GetAzureOperationalInsightsSavedSearchCommand.cs" />
     <Compile Include="Search\GetAzureOperationalInsightsSavedSearchResultsCommand.cs" />
     <Compile Include="Search\GetAzureOperationalInsightsSchemaCommand.cs" />
@@ -168,7 +172,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="StartupScripts\*.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

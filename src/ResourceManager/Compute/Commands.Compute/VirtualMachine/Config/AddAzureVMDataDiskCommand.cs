@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        public DiskCreateOptionTypes CreateOption { get; set; }
+        public string CreateOption { get; set; }
 
         [Alias("SourceImage")]
         [Parameter(
@@ -103,10 +104,22 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        public string StorageAccountType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false)]
+        public SwitchParameter WriteAccelerator { get; set; }
 
         public override void ExecuteCmdlet()
         {
+            if (MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
+            {
+                WriteWarning("Add-AzureRmVMDataDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
+                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
+            }
+
             var storageProfile = this.VM.StorageProfile;
 
             if (storageProfile == null)
@@ -140,8 +153,9 @@ namespace Microsoft.Azure.Commands.Compute
                               {
                                   Id = this.ManagedDiskId,
                                   StorageAccountType = this.StorageAccountType
-                              }
-        });
+                              },
+                WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent
+            });
 
             this.VM.StorageProfile = storageProfile;
 

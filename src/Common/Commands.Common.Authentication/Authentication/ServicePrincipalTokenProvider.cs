@@ -15,8 +15,8 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Rest.Azure.Authentication;
 #if NETSTANDARD
+using Microsoft.Rest.Azure.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
 #endif
 using System;
@@ -110,14 +110,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             TracingAdapter.Information(Resources.SPNRenewTokenTrace, appId, config.AdDomain, config.AdEndpoint,
                 config.ClientId, config.ClientRedirectUri);
+#if !NETSTANDARD
             using (SecureString appKey = LoadAppKey(appId, config.AdDomain))
             {
+#else
+                var appKey = LoadAppKey(appId, config.AdDomain);
+#endif
                 if (appKey == null)
                 {
                     throw new KeyNotFoundException(string.Format(Resources.ServiceKeyNotFound, appId));
                 }
                 return AcquireTokenWithSecret(config, appId, appKey);
+#if !NETSTANDARD
             }
+#endif
         }
 
         private AuthenticationResult RenewWithCertificate(

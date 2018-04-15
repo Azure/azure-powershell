@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 15CAC050-F2E9-4872-88E7-516A6D194FAB
@@ -62,7 +62,7 @@ Indicates that the virtual machine runs the Linux operating system.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: LinuxParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -77,7 +77,7 @@ Specifies the local path for the boot diagnostics data.
 ```yaml
 Type: String
 Parameter Sets: WindowsParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: LinuxParamSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -119,7 +119,7 @@ Specifies the name of the resource group of the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -134,7 +134,7 @@ Indicates that the virtual machine runs the Windows operating system.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: WindowsParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -147,6 +147,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSRunCommandDocument))]
     public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteClientAction(() =>
             {
@@ -163,19 +163,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/locations/runCommands")]
         public string Location { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         public string CommandId { get; set; }
     }
 }

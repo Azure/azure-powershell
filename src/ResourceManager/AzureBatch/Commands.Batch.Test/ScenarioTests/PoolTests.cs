@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestPoolCRUD()
         {
             BatchController.NewInstance.RunPsTest("Test-PoolCRUD");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestResizeAndStopResizePool()
         {
             BatchController controller = BatchController.NewInstance;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestAutoScaleActions()
         {
             BatchController controller = BatchController.NewInstance;
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public  void TestChangeOSVersion()
         {
             BatchController controller = BatchController.NewInstance;

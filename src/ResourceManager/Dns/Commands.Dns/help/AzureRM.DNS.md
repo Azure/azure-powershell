@@ -1,16 +1,16 @@
-﻿---
-Module Name: AzureRM.DNS
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+---
+Module Name: AzureRM.Dns
+Module Guid: 5e5ed8bc-27bf-4380-9de1-4b22ba0920b2
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
 ---
 
-# AzureRM.DNS Module
+# AzureRM.Dns Module
 ## Description
 This topic displays help topics for the Azure DNS Cmdlets.
 
-## AzureRM.DNS Cmdlets
+## AzureRM.Dns Cmdlets
 ### [Add-AzureRmDnsRecordConfig](Add-AzureRmDnsRecordConfig.md)
 Adds a DNS record to a local record set object.
 

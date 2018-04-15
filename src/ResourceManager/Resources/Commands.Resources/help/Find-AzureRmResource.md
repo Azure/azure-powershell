@@ -81,7 +81,7 @@ If you do not specify a version, this cmdlet uses the latest available version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -111,7 +111,7 @@ Indicates that this cmdlet expands the properties of the resource.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ For instance:
 ```yaml
 Type: String
 Parameter Sets: GetBySpecifiedScope, GetBySpecifiedScopeAtTenantLevel, GetByMultiSubscriptionQuery
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -184,7 +184,7 @@ This cmdlet appends this value to the request in addition to any other filters.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -199,7 +199,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -231,7 +231,7 @@ The resource group name for a full match.
 ```yaml
 Type: String
 Parameter Sets: GetBySpecifiedScope, GetByMultiSubscriptionQuery
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -262,7 +262,7 @@ The resource name for a full match. e.g. if your resource name is testResource, 
 ```yaml
 Type: String
 Parameter Sets: GetBySpecifiedScope, GetBySpecifiedScopeAtTenantLevel, GetByMultiSubscriptionQuery
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -282,7 +282,7 @@ This cmdlet searches for resources of the specified type.
 ```yaml
 Type: String
 Parameter Sets: GetBySpecifiedScope
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetBySpecifiedScopeAtTenantLevel, GetByMultiSubscriptionQuery
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -309,7 +309,7 @@ The tag filter for the OData query. The expected format is @{tagName=$null} or @
 ```yaml
 Type: Hashtable
 Parameter Sets: GetByTagObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -322,7 +322,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetByTagNameValue
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -335,7 +335,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetByTagNameValue
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -350,7 +350,7 @@ Indicates that this cmdlet operates at the tenant level.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: GetBySpecifiedScopeAtTenantLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -365,7 +365,7 @@ Specifies the number of resources to retrieve.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -378,6 +378,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

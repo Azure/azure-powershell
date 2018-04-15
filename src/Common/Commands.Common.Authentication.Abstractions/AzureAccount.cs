@@ -84,7 +84,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             public const string Certificate = "Certificate",
             User = "User",
             ServicePrincipal = "ServicePrincipal",
-            AccessToken = "AccessToken";
+            AccessToken = "AccessToken",
+            ManagedService = "ManagedService";
         }
 
         /// <summary>
@@ -117,9 +118,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Thumbprint for associated certificate
         /// </summary>
-        CertificateThumbprint = "CertificateThumbprint";
+        CertificateThumbprint = "CertificateThumbprint",
+
+        /// <summary>
+        /// Login Uri for Managed Service Login
+        /// </summary>
+        MSILoginUri = "MSILoginUri",
+        
+        /// <summary>
+        /// Backup login Uri for MSI
+        /// </summary>
+        MSILoginUriBackup = "MSILoginBackup",
 
 
+        /// <summary>
+        /// Secret that may be used with MSI login
+        /// </summary>
+        MSILoginSecret = "MSILoginSecret";
         }
     }
 }

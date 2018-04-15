@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
+        ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please authenticate using the log in dialog. In PowerShell, execute Connect-AzureRmAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
         /// </summary>
         public static string AdalUserInteractionRequired {
             get {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No account found in the context. Please login using Login-AzureRMAccount..
+        ///   Looks up a localized string similar to No account found in the context. Please login using Connect-AzureRmAccount..
         /// </summary>
         public static string ArmAccountNotFound {
             get {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please execute Login-AzureRMAccount without parameters and enter your credentials..
+        ///   Looks up a localized string similar to User Interaction is required to authenticate this user. Please execute Connect-AzureRmAccount without parameters and enter your credentials..
         /// </summary>
         public static string ArmUserInteractionRequired {
             get {
@@ -156,6 +156,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string AzureDirectoryName {
             get {
                 return ResourceManager.GetString("AzureDirectoryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking Cache request {0}.
+        /// </summary>
+        public static string CacheCheck {
+            get {
+                return ResourceManager.GetString("CacheCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cache Hit.
+        /// </summary>
+        public static string CacheHit {
+            get {
+                return ResourceManager.GetString("CacheHit", resourceCulture);
             }
         }
         
@@ -214,7 +232,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
+        ///   Looks up a localized string similar to Your Microsoft Azure credential in the Windows PowerShell session has expired. Please log in again. In PowerShell, execute Connect-AzureRmAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
         /// </summary>
         public static string ExpiredRefreshToken {
             get {
@@ -232,6 +250,33 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [HttpClientOperations]: Adding Header &apos;{0}&apos;.
+        /// </summary>
+        public static string HttpClientAddingHeader {
+            get {
+                return ResourceManager.GetString("HttpClientAddingHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [HttpClientOperations {0}].
+        /// </summary>
+        public static string HttpClientOperationsInvocationId {
+            get {
+                return ResourceManager.GetString("HttpClientOperationsInvocationId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unexpected response status code &apos;{0}&apos; received for request &apos;{{{1} {2}}} Body: {{{3}}}.
+        /// </summary>
+        public static string HttpRequestExceptionMessage {
+            get {
+                return ResourceManager.GetString("HttpRequestExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Illegal characters in path..
         /// </summary>
         public static string IllegalPath {
@@ -241,7 +286,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Login-AzureRMAccount to set up your Azure credentials..
+        ///   Looks up a localized string similar to Your Azure credentials have not been set up or have expired, please run Connect-AzureRmAccount to set up your Azure credentials..
         /// </summary>
         public static string InvalidArmContext {
             get {
@@ -349,6 +394,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error retrieving the managed service access token for resource &apos;{0}&apos; using the URI &apos;{1}&apos;.  Please check that this managed service is configured to emit tokens at this address and that the associated managed service identity has the appropriate role assignment and try logging in again..
+        /// </summary>
+        public static string MSITokenRequestFailed {
+            get {
+                return ResourceManager.GetString("MSITokenRequestFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Common.Authentication]: No matching account record for account {0} in subscription {1}.
         /// </summary>
         public static string NoAccountInContext {
@@ -376,7 +430,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        ///   Looks up a localized string similar to No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRmAccount to login..
         /// </summary>
         public static string NoSubscriptionInContext {
             get {
@@ -385,7 +439,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login..
+        ///   Looks up a localized string similar to No tenant found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRmAccount to login..
         /// </summary>
         public static string NoTenantInContext {
             get {
@@ -430,7 +484,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Login-AzureRMAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
+        ///   Looks up a localized string similar to Unable to retrieve service key for ServicePrincipal account {0}. Please log in again to supply the credentials for this service principal. In PowerShell, execute Connect-AzureRmAccount for Azure Resource Manager cmdlets or Add-AzureAccount for service management cmdlets..
         /// </summary>
         public static string ServiceKeyNotFound {
             get {

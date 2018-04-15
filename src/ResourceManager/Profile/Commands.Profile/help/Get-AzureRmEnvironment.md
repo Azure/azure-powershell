@@ -90,7 +90,7 @@ PublishSettingsFileUrl                            : https://manage.windowsazure.
 ResourceManagerUrl                                : https://management.usgovcloudapi.net/
 SqlDatabaseDnsSuffix                              : .database.usgovcloudapi.net
 StorageEndpointSuffix                             : core.usgovcloudapi.net
-ActiveDirectoryAuthority                          : https://login-us.microsoftonline.com/
+ActiveDirectoryAuthority                          : https://login.microsoftonline.us/
 GraphUrl                                          : https://graph.windows.net/
 GraphEndpointResourceId                           : https://graph.windows.net/
 TrafficManagerDnsSuffix                           : usgovtrafficmanager.net
@@ -138,6 +138,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

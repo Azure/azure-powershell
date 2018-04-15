@@ -67,7 +67,7 @@ Specifies the name of the feature to get.
 ```yaml
 Type: String
 Parameter Sets: GetFeature
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -82,7 +82,7 @@ Indicates that this cmdlet gets all features.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ListAvailableParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +97,7 @@ Specifies the namespace for which this cmdlet gets provider features.
 ```yaml
 Type: String
 Parameter Sets: ListAvailableParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetFeature
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -122,6 +122,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 {
@@ -134,6 +135,26 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         public IList<Management.Sql.Models.ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName)
         {
             return GetCurrentSqlClient().ElasticPoolActivities.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();
+        }
+
+        /// <summary>
+        /// Gets Elastic Pool Operations
+        /// </summary>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="serverName"></param>
+        /// <param name="elasticPoolName"></param>
+        /// <returns></returns>
+        public IList<Management.Sql.Models.ElasticPoolOperation> ListOperation(string resourceGroupName, string serverName, string elasticPoolName)
+        {
+            return GetCurrentSqlClient().ElasticPoolOperations.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();
+        }
+
+        /// <summary>
+        /// Cancel elastic pool activities
+        /// </summary>
+        public void CancelOperation(string resourceGroupName, string serverName, string elasticPoolName, Guid operationId)
+        {
+            GetCurrentSqlClient().ElasticPoolOperations.Cancel(resourceGroupName, serverName, elasticPoolName, operationId);
         }
 
         /// <summary>
