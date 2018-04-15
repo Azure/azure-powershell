@@ -39,7 +39,21 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalysisServicesServerScaleOutIn()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerScaleOutIn");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAnalysisServicesServerFirewall()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerFirewall");
+        }
+
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerDisableBackup()
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerDisableBackup");
@@ -53,28 +67,28 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerLogExport()
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerLogExport");
         }
 
         [Fact]
-        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerRestart()
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerRestart");
         }
 
         [Fact]
-        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerSynchronizeSingle()
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerSynchronizeSingle");
         }
 
         [Fact]
-        [Trait(Category.ServiceManagement, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAnalysisServicesServerLoginWithSPN()
         {
             NewInstance.RunPsTest("Test-AnalysisServicesServerLoginWithSPN");

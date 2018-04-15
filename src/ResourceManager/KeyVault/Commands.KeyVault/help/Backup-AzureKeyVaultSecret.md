@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 80AAA327-77C6-4372-9461-FFED5A15E678
@@ -21,7 +21,7 @@ Backup-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-OutputFile]
 
 ### BySecret
 ```
-Backup-AzureKeyVaultSecret [-Secret] <Secret> [[-OutputFile] <String>] [-Force]
+Backup-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-OutputFile] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -83,12 +83,27 @@ Prompts you for confirmation before overwriting the output file, if that exists.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
 Default value: False
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Secret to be backed up, pipelined in from the output of a retrieval call.
+
+```yaml
+Type: PSKeyVaultSecretIdentityItem
+Parameter Sets: BySecret
+Aliases: Secret
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -115,25 +130,10 @@ If you specify the name of an existing output file, the operation will not compl
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Secret
-Specifies the object whose name and vault should be used for the backup operation.
-
-```yaml
-Type: Secret
-Parameter Sets: BySecret
-Aliases: 
-
-Required: True
-Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -145,7 +145,7 @@ Specifies the name of the key vault that contains the secret to back up.
 ```yaml
 Type: String
 Parameter Sets: BySecretName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -189,6 +189,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class NetworkStrategy
     {
         public static ResourceStrategy<TModel> Create<TModel, TOperations>(
-            string type,
             string provider,
             Func<NetworkManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
@@ -30,14 +30,25 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Network
             Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
-                type,
-                new [] { "Microsoft.Network", provider },
+                new ResourceType("Microsoft.Network", provider),
                 getOperations,
                 getAsync,
-                createOrUpdateAsync, 
+                createOrUpdateAsync,
                 model => model.Location, 
                 (model, location) => model.Location = location,
                 createTime,
                 true);
+
+        public static TModel GetReference<TModel, TParentModel>(
+            this IEngine engine, NestedResourceConfig<TModel, TParentModel> config)
+            where TModel : SubResource, new()
+            where TParentModel : Resource
+            => new TModel { Id = engine.GetId(config) };
+
+        public static TModel GetReference<TModel>(this IEngine engine, ResourceConfig<TModel> config)
+            where TModel : Resource, new()
+            => new TModel { Id = engine.GetId(config) };
+
+        public const string Tcp = "Tcp";
     }
 }

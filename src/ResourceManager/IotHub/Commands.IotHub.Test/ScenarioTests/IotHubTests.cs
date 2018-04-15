@@ -28,12 +28,26 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureIotHubLifeCycle()
         {
             IotHubController.NewInstance.RunPsTestWorkflow(
                 () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-AzureRmIotHubLifecycle", "northeurope", "powershelliothub", "powershellrg", "S1") }; },
+                null,
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
+        public void TestAzureIotHubCertificateLifeCycle()
+        {
+            IotHubController.NewInstance.RunPsTestWorkflow(
+                () => { return new[] { "Test-AzureRmIotHubCertificateLifecycle" }; },
                 null,
                 null,
                 TestUtilities.GetCallingClass(),

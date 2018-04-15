@@ -15,6 +15,8 @@
 <#
 .SYNOPSIS
 Tests retrieving websites
+.DESCRIPTION
+SmokeTest
 #>
 function Test-GetWebApp
 {
@@ -22,7 +24,7 @@ function Test-GetWebApp
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
 	$wname2 = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
 	$tier = "Shared"
 	$apiversion = "2015-08-01"
@@ -99,7 +101,7 @@ function Test-GetWebAppMetrics
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
 	$tier = "Shared"
 	$apiversion = "2015-08-01"
@@ -166,7 +168,7 @@ function Test-StartStopRestartWebApp
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
 	$tier = "Shared"
 	$apiversion = "2015-08-01"
@@ -239,7 +241,7 @@ function Test-CloneNewWebApp
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$appname = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$planName = Get-WebHostPlanName
 	$tier = "Premium"
 	$apiversion = "2015-08-01"
@@ -308,7 +310,7 @@ function Test-CloneNewWebAppAndDeploymentSlots
 	$appname = Get-WebsiteName
 	$slot1name = "staging"
 	$slot2name = "testing"
-	$location = Get-Location
+	$location = Get-WebLocation
 	$planName = Get-WebHostPlanName
 	$tier = "Premium"
 	$apiversion = "2015-08-01"
@@ -412,7 +414,7 @@ function Test-CloneNewWebAppWithTrafficManager
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
 	$tier = "Premium"
 	$apiversion = "2015-08-01"
@@ -474,13 +476,15 @@ function Test-CloneNewWebAppWithTrafficManager
 <#
 .SYNOPSIS
 Tests creating a new website.
+.DESCRIPTION
+SmokeTest
 #>
 function Test-CreateNewWebApp
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$wname = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$whpName = Get-WebHostPlanName
 	$tier = "Shared"
 	$apiversion = "2015-08-01"
@@ -527,7 +531,7 @@ function Test-CreateNewWebAppOnAse
 	$wname = Get-WebsiteName
 	$location = "West US"
 	$whpName = "travel_production_plan"
-	$aseName = "asedemo"
+	$aseName = "asedemops"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	try
@@ -561,13 +565,15 @@ function Test-CreateNewWebAppOnAse
 <#
 .SYNOPSIS
 Tests retrieving websites
+.DESCRIPTION
+SmokeTest
 #>
 function Test-SetWebApp
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$webAppName = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$appServicePlanName1 = Get-WebHostPlanName
 	$appServicePlanName2 = Get-WebHostPlanName
 	$tier1 = "Shared"
@@ -648,13 +654,15 @@ function Test-SetWebApp
 <#
 .SYNOPSIS
 Tests remove a web app
+.DESCRIPTION
+SmokeTest
 #>
 function Test-RemoveWebApp
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$appName = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$planName = Get-WebHostPlanName
 	$tier = "Shared"
 	$apiversion = "2015-08-01"
@@ -677,7 +685,10 @@ function Test-RemoveWebApp
 		$webapp | Remove-AzureRmWebApp -Force -AsJob | Wait-Job
 
 		# Retrieve web app by name
-		$webappNames = Get-AzureRmWebApp -ResourceGroupName $rgname | Select -expand Name
+		# TODO: Temporarily changed the call below to use parentheses around the Get,
+		# since an issue exists currently that causes the test to fail.
+		# https://github.com/Azure/azure-powershell/issues/5174
+		$webappNames = (Get-AzureRmWebApp -ResourceGroupName $rgname) | Select -Property Name
 
 		Assert-False { $webappNames -contains $appName }
 	}
@@ -698,7 +709,7 @@ function Test-WebAppPublishingProfile
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$appName = Get-WebsiteName
-	$location = Get-Location
+	$location = Get-WebLocation
 	$planName = Get-WebHostPlanName
 	$tier = "Shared"
 	$apiversion = "2015-08-01"

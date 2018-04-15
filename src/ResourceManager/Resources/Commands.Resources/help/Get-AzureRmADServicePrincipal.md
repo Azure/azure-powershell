@@ -15,8 +15,7 @@ Filters active directory service principals.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADServicePrincipal [-ServicePrincipalName <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmADServicePrincipal [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
@@ -41,21 +40,21 @@ Filters active directory service principals.
 
 ## EXAMPLES
 
-### --------------------------  Filters service principals using SPN  --------------------------
+### Filters service principals using SPN
 ```
 PS C:\> Get-AzureRmADServicePrincipal -SPN 36f81fc3-b00f-48cd-8218-3879f51ff39f
 ```
 
 Gets service principals with 36f81fc3-b00f-48cd-8218-3879f51ff39f SPN.
 
-### --------------------------  Filters service principals using Search String  --------------------------
+### Filters service principals using Search String
 ```
 PS C:\> Get-AzureRmADServicePrincipal -SearchString "Web"
 ```
 
 Filters all ad service principals that have display name starting with "Web".
 
-### --------------------------  List AD service principals  --------------------------
+### List AD service principals
 ```
 PS C:\> Get-AzureRmADServicePrincipal
 ```
@@ -85,7 +84,7 @@ Object id of the service principal.
 ```yaml
 Type: Guid
 Parameter Sets: ObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -100,7 +99,7 @@ Fetches all service principals that have the display name starting with this val
 ```yaml
 Type: String
 Parameter Sets: SearchStringParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -111,18 +110,6 @@ Accept wildcard characters: False
 
 ### -ServicePrincipalName
 SPN of the service.
-
-```yaml
-Type: String
-Parameter Sets: EmptyParameterSet
-Aliases: SPN
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: String
@@ -140,6 +127,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

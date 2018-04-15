@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <para> If consumerGroup name provided, a single Consumergroup detials will be returned</para>
     /// <para> If consumerGroup name not provided, list of Consumergroups will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ConsumerGroupVerb), OutputType(typeof(List<ConsumerGroupAttributes>))]
+    [Cmdlet(VerbsCommon.Get, ConsumerGroupVerb), OutputType(typeof(List<PSConsumerGroupAttributes>))]
     public class GetAzureRmEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
 
@@ -33,10 +33,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         /// Resource Group Name
         /// </summary>
         /// <remarks>Paramaeter value is required</remarks>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
@@ -45,10 +42,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         /// Name Space Name. 
         /// </summary>
         /// <remarks>Paramaeter value is required</remarks>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
@@ -57,10 +51,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         /// EventHub Name. 
         /// </summary>
         /// <remarks>Paramaeter value is required</remarks>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "EventHub Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [Alias(AliasEventHubName)]
         public string EventHub { get; set; }
 
@@ -70,10 +61,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         /// <para> If consumerGroup name not provided, list of Consumergroups will be returned</para>
         /// </summary>
         /// <remarks>Paramaeter value is not required to see the List</remarks>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "ConsumerGroup Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position =3, HelpMessage = "ConsumerGroup Name")]
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 
@@ -82,13 +70,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a ConsumnerGroup
-                ConsumerGroupAttributes consumergroupAttributesList = Client.GetConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
+                PSConsumerGroupAttributes consumergroupAttributesList = Client.GetConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
                 WriteObject(consumergroupAttributesList);
             }
             else
             {
                 // Get all ConsumnerGroups
-                IEnumerable<ConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
+                IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
                 WriteObject(consumergroupAttributesList.ToList(), true);
             }
         }

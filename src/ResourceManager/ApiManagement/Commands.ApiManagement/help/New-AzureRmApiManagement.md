@@ -1,5 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 164C5205-01BA-47BB-B780-D0B9AE614A4B
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagement
 schema: 2.0.0
@@ -16,7 +17,7 @@ Creates an API Management deployment.
 New-AzureRmApiManagement -ResourceGroupName <String> -Name <String> -Location <String> -Organization <String>
  -AdminEmail <String> [-Sku <PsApiManagementSku>] [-Capacity <Int32>] [-VpnType <PsApiManagementVpnType>]
  [-VirtualNetwork <PsApiManagementVirtualNetwork>]
- [-Tags <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
+ [-Tag <System.Collections.Generic.Dictionary`2[System.String,System.String]>]
  [-AdditionalRegions <PsApiManagementRegion[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -66,7 +67,7 @@ Additional deployment regions of Azure API Management.
 ```yaml
 Type: PsApiManagementRegion[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,7 +82,7 @@ Specifies the originating email address for all notifications that the API Manag
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +98,7 @@ The default is one (1).
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -109,7 +110,7 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
  
- ```yaml
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -130,7 +131,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -145,7 +146,7 @@ Specifies a name for the API Management deployment.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -161,7 +162,7 @@ API Management uses this address in the developer portal in email notifications.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -176,7 +177,7 @@ Specifies the name of the of resource group under which this cmdlet creates an A
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -198,7 +199,7 @@ The default is Developer.
 ```yaml
 Type: PsApiManagementSku
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Developer, Standard, Premium
 
 Required: False
@@ -208,13 +209,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tags
-Specifies a dictionary of tags.
+### -Tag
+Tags dictionary.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Tags
 
 Required: False
 Position: Named
@@ -229,7 +230,7 @@ Virtual Network Configuration of master Azure API Management deployment region.
 ```yaml
 Type: PsApiManagementVirtualNetwork
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -247,7 +248,7 @@ Virtual Network Type of the ApiManagement Deployment. Valid Values are
 ```yaml
 Type: PsApiManagementVpnType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, External, Internal
 
 Required: False
@@ -261,6 +262,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

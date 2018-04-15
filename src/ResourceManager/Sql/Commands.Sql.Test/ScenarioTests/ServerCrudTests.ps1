@@ -15,6 +15,8 @@
 <#
 	.SYNOPSIS
 	Tests creating a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-CreateServer
 {
@@ -38,6 +40,7 @@ function Test-CreateServer
 		Assert-AreEqual $server1.ServerName $serverName
 		Assert-AreEqual $server1.ServerVersion $version
 		Assert-AreEqual $server1.SqlAdministratorLogin $serverLogin
+		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 	}
 	finally
 	{
@@ -48,6 +51,8 @@ function Test-CreateServer
 <#
 	.SYNOPSIS
 	Tests updating a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-UpdateServer
 {
@@ -67,6 +72,7 @@ function Test-UpdateServer
 		Assert-AreEqual $server1.ServerName $server.ServerName
 		Assert-AreEqual $server1.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server1.SqlAdministratorLogin $server.SqlAdministratorLogin
+		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 		
 		# Test piping
 		$serverPassword = "n3wc00lP@55w0rd!!!"
@@ -76,6 +82,7 @@ function Test-UpdateServer
 		Assert-AreEqual $server2.ServerName $server.ServerName
 		Assert-AreEqual $server2.ServerVersion $server.ServerVersion
 		Assert-AreEqual $server2.SqlAdministratorLogin $server.SqlAdministratorLogin
+		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 	}
 	finally
 	{
@@ -86,6 +93,8 @@ function Test-UpdateServer
 <#
 	.SYNOPSIS
 	Tests Getting a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-GetServer
 {
@@ -102,11 +111,13 @@ function Test-GetServer
 		$resp1 = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName -ServerName $server1.ServerName
 		Assert-AreEqual $server1.ServerName $resp1.ServerName
 		Assert-AreEqual $server1.SqlAdministratorLogin $resp1.SqlAdministratorLogin
+		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 		
 		# Test piping
 		$resp2 = $server2 | Get-AzureRmSqlServer
 		Assert-AreEqual $server2.ServerName $resp2.ServerName
 		Assert-AreEqual $server2.SqlAdministratorLogin $resp2.SqlAdministratorLogin
+		Assert-StartsWith ($server1.ServerName + ".") $server1.FullyQualifiedDomainName
 		
 		$all = Get-AzureRmSqlServer -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual 2 $all.Count
@@ -128,6 +139,8 @@ function Test-GetServer
 <#
 	.SYNOPSIS
 	Tests Removing a server
+	.DESCRIPTION
+	SmokeTest
 #>
 function Test-RemoveServer
 {

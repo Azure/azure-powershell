@@ -18,11 +18,64 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support a `Win10` image.
+* `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.6.0
+* `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
+* `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
+* Update for Zone Resilient
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support availability zones.
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.5.0
+* `New-AzureRmVM` and `New-AzureRmVMSS` support data disks.
+* `New-AzureRmVM` and `New-AzureRmVMSS` support custom image by name or by id.
+* Log analytic feature
+    - Added `Export-AzureRmLogAnalyticRequestRateByInterval` cmdlet
+    - Added `Export-AzureRmLogAnalyticThrottledRequests` cmdlet
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.4.0
+* `New-AzureRmVMSS` prints connection strings in verbose mode.
+* `New-AzureRmVmss` supports public IP address, load balancing rules, inbound NAT rules.
+* WriteAccelerator feature
+    - Added WriteAccelerator switch parameter to the following cmdlets:
+          Set-AzureRmVMOSDisk
+          Set-AzureRmVMDataDisk
+          Add-AzureRmVMDataDisk
+          Add-AzureRmVmssDataDisk
+    - Added OsDiskWriteAccelerator switch parameter to the following cmdlet:
+          Set-AzureRmVmssStorageProfile.
+    - Added OsDiskWriteAccelerator Boolean parameter to the following cmdlets:
+          Update-AzureRmVM
+          Update-AzureRmVmss
+
+## Version 4.3.2
+* Fix ErrorAction issue for some of Get cmdlets.
+
+## Version 4.3.1
+* `New-AzureRmVm` and `New-AzureRmVmss` get information about an image from Azure.
+
+## Version 4.3.0
+* Added `FullyQualifiedDomainName` to `PSVirtualMachinScaleSet`.
+* Added `AvailabilitySetName` parameter to the simplified parameterset of `New-AzureRmVm`.
+* Corrected usage of `Login-AzureRmAccount` to use `Connect-AzureRmAccount`
+* User assigned identity support for VM and VM scale set
+- IdentityType and IdentityId parameters are added to New-AzureRmVMConfig, New-AzureRmVmssConfig, Update-AzureRmVM and Update-AzureRmVmss
+* Added EnableIPForwarding parameter to Add-AzureRmVmssNetworkInterfaceConfig
+* Added Priority parameter to New-AzureRmVmssConfig
+
+## Version 4.2.0
+* Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
-
+* Obsoleted -Tags in favor of -Tag for New-AzureRmVm and Update-AzureRmVm
 * Fixed Get-AzureRmComputeResourceSku cmdlet when Zone is included in restriction.
 * Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
+* Fixed a non-existing resource group creation problem for New-AzureRmVM
+
 ## Version 4.1.1
 * Get-AzureRmComputeResourceSku shows zone information.
 * Update Disable-AzureRmVmssDiskEncryption to fix issue https://github.com/Azure/azure-powershell/issues/5038
@@ -66,7 +119,7 @@
     - New cmdelt: 'Get-AzureRmVmssVMDiskEncryptionStatus' shows the disk encryption status of VMs in a VM scale set
 
 ## Version 3.3.1
-* 
+*
 ## Version 3.3.0
 * Set-AzureRmVMAEMExtension: Add support for new Premium Disk sizes
 * Set-AzureRmVMAEMExtension: Add support for M series
@@ -83,7 +136,7 @@
   - New-AzureRmSnapshot
   - Update-AzureRmDisk
   - Update-AzureRmSnapshot
-  
+
 ## Version 3.2.0
 * Storage account type support for Image disk:
     - 'StorageAccountType' parameter is added to Set-AzureRmImageOsDisk and Add-AzureRmImageDataDisk

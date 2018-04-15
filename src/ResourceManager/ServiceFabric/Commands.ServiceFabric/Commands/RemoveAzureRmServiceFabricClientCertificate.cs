@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
@@ -29,9 +30,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {
         public override void ExecuteCmdlet()
         {
-            var cluster = SFRPClient.Clusters.Get(  
-                ResourceGroupName,
-                Name);
+            var cluster = GetCurrentCluster();
 
             if (ShouldProcess(target: this.Name, action: string.Format("Remove a client certificate")))
             {
@@ -91,9 +90,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     case SingleUpdateWithCommonNameSet:
                     case MultipleUpdatesWithCommonNameSet:
                     {
-                        var oldCommonNames = cluster.ClientCertificateCommonNames.Select(
-                            c => c.CertificateCommonName + c.CertificateIssuerThumbprint).
-                            ToDictionary(c => c, StringComparer.OrdinalIgnoreCase);
+                        var oldCommonNames = cluster.ClientCertificateCommonNames
+                            .GroupBy(c => c.CertificateCommonName + c.CertificateIssuerThumbprint,
+                                StringComparer.OrdinalIgnoreCase)
+                            .ToDictionary(c => c.Key, c => c.First(), StringComparer.OrdinalIgnoreCase);
 
                         var toRemoveCommonName = ParseArgumentsForCommonName(true);
 

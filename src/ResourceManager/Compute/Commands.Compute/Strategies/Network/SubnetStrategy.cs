@@ -12,43 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.Network
+namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class SubnetStrategy
     {
         public static NestedResourceStrategy<Subnet, VirtualNetwork> Strategy { get; }
             = NestedResourceStrategy.Create<Subnet, VirtualNetwork>(
                 provider: "subnets",
-                get: (vn, name) => vn.Subnets?.FirstOrDefault(s => s?.Name == name),
-                createOrUpdate: (vn, name, subnet) =>
-                {
-                    subnet.Name = name;
-                    if (vn.Subnets == null)
-                    {
-                        vn.Subnets = new List<Subnet> { subnet };
-                        return;
-                    }
-                    var subnetAndIndex = vn
-                        .Subnets
-                        .Select((sn, i) => new { sn, i })
-                        .FirstOrDefault(sni => sni.sn.Name == name);
-                    if (subnetAndIndex != null)
-                    {
-                        vn.Subnets[subnetAndIndex.i] = subnet;
-                        return;
-                    }
-                    vn.Subnets.Add(subnet);
-                });
+                getList: parentModel => parentModel.Subnets,
+                setList: (parentModel, list) => parentModel.Subnets = list,
+                getName: model => model.Name,
+                setName: (model, name) => model.Name = name);
 
         public static NestedResourceConfig<Subnet, VirtualNetwork> CreateSubnet(
             this ResourceConfig<VirtualNetwork> virtualNetwork, string name, string addressPrefix)
-            => Strategy.CreateConfig(
-                parent: virtualNetwork,
+            => virtualNetwork.CreateNested(
+                strategy: Strategy,
                 name: name,
-                createModel: () => new Subnet { AddressPrefix = addressPrefix });
+                createModel: _ => new Subnet { Name = name, AddressPrefix = addressPrefix });
     }
 }

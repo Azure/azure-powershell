@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanReceiveAllStreams()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanSupportShouldProcess()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanSupportShouldContinue()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleCmdletException()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleCmdletStop()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -113,15 +113,13 @@ namespace Microsoft.Azure.Commands.Profile.Test
             job.StateChanged += this.HandleStateChange;
             try
             {
-                job.StopJob();
-                if (this.jobCompleted.WaitOne(TimeSpan.FromSeconds(10)))
+                if (job.JobStateInfo.State != JobState.Completed)
                 {
+                    job.StopJob();
+                    this.jobCompleted.WaitOne(TimeSpan.FromSeconds(10));
                     Assert.Equal("Stopped", job.StatusMessage);
                 }
-                else
-                {
-                    throw new InvalidOperationException("Job did not complete");
-                }
+
             }
             finally
             {
@@ -131,7 +129,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleShouldProcessExceptionForConfirm()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -147,7 +145,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleShouldProcessExceptionForWhatIf()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -164,7 +162,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void CanHandleShouldContinueException()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -179,7 +177,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void JobCopiesCmdletParameterSet()
         {
             Mock<ICommandRuntime> mock = new Mock<ICommandRuntime>();
@@ -266,14 +264,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             try
             {
                 HandleStateChange(job, new JobStateEventArgs(job.JobStateInfo, new JobStateInfo(JobState.NotStarted)));
-                if (this.jobCompleted.WaitOne(TimeSpan.FromSeconds(30)))
-                {
-                    validate(job);
-                }
-                else
-                {
-                    throw new InvalidOperationException("Job did not complete");
-                }
+                this.jobCompleted.WaitOne(TimeSpan.FromSeconds(30));
+                validate(job);
             }
             finally
             {

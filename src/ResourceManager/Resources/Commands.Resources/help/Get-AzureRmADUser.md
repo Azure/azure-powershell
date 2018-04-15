@@ -43,21 +43,21 @@ Filters active directory users.
 
 ## EXAMPLES
 
-### --------------------------  Filters users using UPN  --------------------------
+### Filters users using UPN
 ```
 PS C:\> Get-AzureRmADUser -UPN foo@domain.com
 ```
 
 Gets user with foo@domain.com
 
-### --------------------------  Filters users using Search String  --------------------------
+### Filters users using Search String
 ```
 PS C:\> Get-AzureRmADUser -SearchString Joe
 ```
 
 Filters all ad users that has Joe in the display name.
 
-### --------------------------  List AD users  --------------------------
+### List AD users
 ```
 PS C:\> Get-AzureRmADUser
 ```
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: MailParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -100,7 +100,7 @@ Object id of the user.
 ```yaml
 Type: Guid
 Parameter Sets: ObjectIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -115,7 +115,7 @@ The user display name
 ```yaml
 Type: String
 Parameter Sets: SearchStringParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -155,6 +155,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

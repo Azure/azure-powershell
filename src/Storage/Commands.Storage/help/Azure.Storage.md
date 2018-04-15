@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: Azure.Storage
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 Download Help Link: ./Azure.Storage.md
@@ -11,6 +11,12 @@ Locale: en-US
 This topic displays help topics for the Azure Storage Cmdlets.
 
 ## Azure.Storage Cmdlets
+### [Disable-AzureStorageDeleteRetentionPolicy](Disable-AzureStorageDeleteRetentionPolicy.md)
+Disable delete retention policy  for the Azure Storage Blob service.
+
+### [Enable-AzureStorageDeleteRetentionPolicy](Enable-AzureStorageDeleteRetentionPolicy.md)
+Enable delete retention policy  for the Azure Storage Blob service.
+
 ### [Get-AzureStorageBlob](Get-AzureStorageBlob.md)
 Lists blobs in a container.
 
@@ -49,6 +55,9 @@ Gets logging properties for Azure Storage services.
 
 ### [Get-AzureStorageServiceMetricsProperty](Get-AzureStorageServiceMetricsProperty.md)
 Gets metrics properties for the Azure Storage service.
+
+### [Get-AzureStorageServiceProperty](Get-AzureStorageServiceProperty.md)
+Gets properties for Azure Storage services.
 
 ### [Get-AzureStorageShare](Get-AzureStorageShare.md)
 Gets a list of file shares.
@@ -196,4 +205,7 @@ Stops a copy operation.
 
 ### [Stop-AzureStorageFileCopy](Stop-AzureStorageFileCopy.md)
 Stops a copy operation to the specified destination file.
+
+### [Update-AzureStorageServiceProperty](Update-AzureStorageServiceProperty.md)
+Modifies the properties for the Azure Storage service.
 

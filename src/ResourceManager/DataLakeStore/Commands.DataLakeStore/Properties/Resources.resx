@@ -168,6 +168,15 @@
   <data name="IncorrectOutputTypeWarning" xml:space="preserve">
     <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
   </data>
+  <data name="IncorrectPerFileThreadCountWarning" xml:space="preserve">
+    <value>Parameter PerFileThreadCount is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.</value>
+  </data>
+  <data name="IncorrectConcurrentFileCountWarning" xml:space="preserve">
+    <value>Parameter ConcurrentFileCount is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.</value>
+  </data>
+  <data name="IncorrectCleanWarning" xml:space="preserve">
+    <value>Parameter Clean is deprecated. This parameter will be removed in future releases.</value>
+  </data>
   <data name="InvalidAce" xml:space="preserve">
     <value>Invalid ACE returned. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}</value>
   </data>
@@ -226,7 +235,7 @@
     <value>Failed to move source: '{0}' to destination: '{1}'. Please ensure the file or folder exists at the source and that the destination does not or force was used.</value>
   </data>
   <data name="NoSubscriptionInContext" xml:space="preserve">
-    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login.</value>
   </data>
   <data name="ObsoleteWarningForAclObjects" xml:space="preserve">
     <value>The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry</value>

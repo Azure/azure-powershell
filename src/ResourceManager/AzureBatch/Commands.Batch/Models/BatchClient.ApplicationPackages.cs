@@ -117,7 +117,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             try
             {
                 CloudBlockBlob blob = new CloudBlockBlob(new Uri(storageUrl));
+#if NETSTANDARD 
+                blob.UploadFromFileAsync(filePath).RunSynchronously();
+#else
                 blob.UploadFromFile(filePath, FileMode.Open);
+#endif
             }
             catch (Exception exception)
             {

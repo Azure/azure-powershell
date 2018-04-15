@@ -49,12 +49,8 @@ function Get-TargetModules
         {
             $packageFolder = "$PSScriptRoot\..\src\Stack"
         }
-    
-        if($isNetCore -eq "true") {
-            $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager"
-        } else {
-            $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-        }
+
+        $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
     
         if ((($Scope -eq 'All') -or $PublishLocal)) {
           if($isNetCore -eq "false") {
@@ -64,8 +60,12 @@ function Get-TargetModules
           }
         }
 
-        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false") ) {
-          $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
+        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage'))) {
+            if($isNetCore -eq "false") {
+                $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
+            } else {
+                $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage.Netcore"                
+            }
         } 
 
         if ((($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) -and ($isNetCore -eq "false") -and ($Profile -ne "Stack")) {
@@ -77,7 +77,7 @@ function Get-TargetModules
           foreach ($module in $resourceManagerModules) {
             # filter out AzureRM.Profile which always gets published first 
             # And "Azure.Storage" which is built out as test dependencies  
-            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and ($module.Name -ne "AzureRM.Profile.Netcore")) {
+            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and ($module.Name -ne "AzureRM.Profile.Netcore") -and ($module.Name -ne "Azure.Storage.Netcore")) {
               $targets += $module.FullName
             }
           }
@@ -154,12 +154,22 @@ function Update-NugetPackage
         Remove-Item -Recurse -Path $packPath -Force
         Remove-Item -Path $contentPath -Force
         $content = (Get-Content -Path $modulePath) -join "`r`n"
-        $content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+        $content = $content -replace $regex2, ("<requireLicenseAcceptance>true</requireLicenseAcceptance>")
         $content | Out-File -FilePath $modulePath -Force
         &$NugetExe pack $modulePath -OutputDirectory $BasePath
     }
 }
 
+<#
+.DESCRIPTION
+Creates a module Nuget Package with correct Nuget metadata and module manifest metadata in two parts.
+Part 1: Uses Publish-Module to create a .nupkg file with the correct metadata for module installation, 
+Part 2: Updates the package contents to make module suitable for Import inside PowerShell.
+In part 1, psd1 dependencies are used to determine the dependencies in the Nuget package
+In part 2, Alters psd1 settings to allow fine-grained control of assembly loading when module is imported 
+through a generated psm1 file. If a module manifest already has a psm1 module definition in its RootModule property
+then the Part 2 processing is skipped.
+#>
 function Change-RMModule 
 {
     [CmdletBinding()]
@@ -179,34 +189,64 @@ function Change-RMModule
         $file = Get-Item $moduleSourcePath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
         $toss = Publish-Module -Path $Path -Repository $TempRepo -Force
+        # Create a psm1 and alter psd1 dependencies to allow fine-grained control over assembly loading.  Opt out by definitng a RootModule.
+        if ($ModuleMetadata.RootModule)
+        {
+            return
+        }
+
         Write-Output "Changing to directory for module modifications $TempRepoPath"
+        $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
+        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)
+        {
+            $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
+        }
+        
         pushd $TempRepoPath
         try
         {
-          $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".nupkg")
-          $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $ModuleMetadata.ModuleVersion.ToString() + ".zip")
-          $dirPath = Join-Path -Path . -ChildPath $moduleName
-          $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
+            $nupkgPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".nupkg")
+            $zipPath = Join-Path -Path . -ChildPath ($moduleName + "." + $moduleVersion + ".zip")
+            $dirPath = Join-Path -Path . -ChildPath $moduleName
+            $unzippedManifest = Join-Path -Path $dirPath -ChildPath ($moduleName + ".psd1")
 
-          if (!(Test-Path -Path $nupkgPath))
-          {
-              throw "Module at $nupkgPath in $TempRepoPath does not exist"
-          }
-          Write-Output "Renaming package $nupkgPath to zip archive $zipPath"
-          ren $nupkgPath $zipPath
-          Write-Output "Expanding $zipPath"
-          Expand-Archive $zipPath -DestinationPath $dirPath
-          Write-Output "Adding PSM1 dependency to $unzippedManifest"
-          Write-Output "Removing module manifest dependencies for $unzippedManifest"
-          Remove-ModuleDependencies -Path $unzippedManifest
-          Remove-Item -Path $zipPath -Force
-          Write-Output "Repackaging $dirPath"
-          Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
+            if (!(Test-Path -Path $nupkgPath))
+            {
+                throw "Module at $nupkgPath in $TempRepoPath does not exist"
+            }
+            Write-Output "Renaming package $nupkgPath to zip archive $zipPath"
+            ren $nupkgPath $zipPath
+            Write-Output "Expanding $zipPath"
+            Expand-Archive $zipPath -DestinationPath $dirPath
+            Write-Output "Adding PSM1 dependency to $unzippedManifest"
+            Add-PSM1Dependency -Path $unzippedManifest
+            Write-Output "Removing module manifest dependencies for $unzippedManifest"
+            Remove-ModuleDependencies -Path $unzippedManifest
+            Remove-Item -Path $zipPath -Force
+            Write-Output "Repackaging $dirPath"
+            Update-NugetPackage -BasePath $TempRepoPath -ModuleName $moduleName -DirPath $dirPath -NugetExe $NugetExe
         }
         finally 
         {
             popd
         }
+    }
+}
+
+function Add-PSM1Dependency {
+    [CmdletBinding()]
+    param(
+        [string] $Path)
+
+    PROCESS {
+        $file = Get-Item -Path $Path
+        $manifestFile = $file.Name
+        $psm1file = $manifestFile -replace ".psd1", ".psm1"
+        Write-Output "Adding RootModule dependency ($psm1file) to psd1 '$path'"
+        $regex = New-Object System.Text.RegularExpressions.Regex "#\s*RootModule\s*=\s*''"
+        $content = (Get-Content -Path $Path) -join "`r`n"
+        $text = $regex.Replace($content, "RootModule = '$psm1file'")
+        $text | Out-File -FilePath $Path
     }
 }
 

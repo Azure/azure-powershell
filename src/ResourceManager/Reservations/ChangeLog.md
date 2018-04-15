@@ -1,4 +1,5 @@
-﻿<!--
+
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,6 +19,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 0.1.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.1.1
 * New Cmdlet Get-AzureRmReservationOrder
     - cmdlet to retrieve azure reservation order.
 * New Cmdlet Get-AzureRmReservation
@@ -34,3 +41,7 @@
     - cmdlet to retrieve list of reservation order ids that are applicable to subscription.
 * New Cmdlet Get-AzureRmReservationCatalog
     - cmdlet to retrieve available reservation catalog for the subscription.
+* Enable subscription Auto-Registration for the reservations provider
+
+## Version 0.1.0
+* Initial Release of Resrvations cmdlets

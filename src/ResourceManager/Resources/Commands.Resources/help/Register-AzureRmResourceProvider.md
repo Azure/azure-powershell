@@ -23,10 +23,12 @@ The **Register-AzureRmResourceProvider** cmdlet registers an Azure resource prov
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Register a provider
+```
+PS C:\>Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-```
+This registers the Microsoft.Network provider for your account.
 
 ## PARAMETERS
 
@@ -37,7 +39,7 @@ You can specify a different version than the default version.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -67,7 +69,7 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,7 +84,7 @@ Specifies the namespace of the resource provider.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -126,6 +128,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

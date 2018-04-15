@@ -22,17 +22,19 @@ Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-TrafficManagerDnsSuffix] <String>] [[-SqlDatabaseDnsSuffix] <String>]
  [[-AzureDataLakeStoreFileSystemEndpointSuffix] <String>]
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
- [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId <String>]]
+ [[-AzureOperationalInsightsEndpoint] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>] 
+ [-Scope <ContextModificationScope>][-DefaultProfile <IAzureContextContainer>] 
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ARMEndpoint
 ```
 Set-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpoint] <String>
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
- [[-DataLakeAudience] <String>] [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId <String>]] [[-AzureOperationalInsightsEndpoint] <String>] 
+ [[-AzureOperationalInsightsEndpointResourceId] <String>] [-Scope <ContextModificationScope>] 
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +70,9 @@ AzureKeyVaultDnsSuffix                            :
 AzureDataLakeStoreFileSystemEndpointSuffix        :
 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
 AzureKeyVaultServiceEndpointResourceId            :
+BatchEndpointResourceId                           :
+AzureOperationalInsightsEndpoint                  :
+AzureOperationalInsightsEndpointResourceId        :
 
 PS C:\> Set-AzureRmEnvironment -Name TestEnvironment
         -ActiveDirectoryEndpoint NewTestADEndpoint
@@ -92,6 +97,9 @@ AzureKeyVaultDnsSuffix                            :
 AzureDataLakeStoreFileSystemEndpointSuffix        :
 AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix :
 AzureKeyVaultServiceEndpointResourceId            :
+BatchEndpointResourceId                           :
+AzureOperationalInsightsEndpoint                  :
+AzureOperationalInsightsEndpointResourceId        :
 ```
 
 In this example we are creating a new Azure environment with sample endpoints using Add-AzureRmEnvironment, and then we are changing the value of the ActiveDirectoryEndpoint and GraphEndpoint attributes of the created environment using the cmdlet Set-AzureRmEnvironment.
@@ -370,7 +378,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user.
+Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 
 ```yaml
 Type: ContextModificationScope
@@ -445,6 +453,51 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -BatchEndpointResourceId
+The resource identifier of the Azure Batch service that is the recipient of the requested token
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 20
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureOperationalInsightsEndpoint
+Specifies the endpoint for the Operational Insights query access. 
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 22
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AzureOperationalInsightsEndpointResourceId
+Specifies the audience for access tokens that authorize requests for Operational Insights services.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 21
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -479,6 +532,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

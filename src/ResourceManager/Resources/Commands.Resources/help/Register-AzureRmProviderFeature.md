@@ -23,10 +23,12 @@ The **Register-AzureRmProviderFeature** cmdlet registers an Azure provider featu
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Register a feature
+```
+PS C:\>Register-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
-```
+This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.
 
 ## PARAMETERS
 
@@ -51,7 +53,7 @@ Specifies the name of the feature that this cmdlet registers.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -66,7 +68,7 @@ Specifies a namespace for which this cmdlet registers a provider feature.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -110,6 +112,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

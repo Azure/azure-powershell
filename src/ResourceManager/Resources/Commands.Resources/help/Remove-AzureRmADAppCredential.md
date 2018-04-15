@@ -44,7 +44,7 @@ The credential to be removed is identified by its key ID if an individual creden
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 PS E:\> Remove-AzureRmADAppCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
 ```
@@ -52,7 +52,7 @@ PS E:\> Remove-AzureRmADAppCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5
 This command removes a credential key from an application.
 In this example, the key with Id "9044423a-60a3-45ac-9ab1-09534157ebb" will be removed from the application.
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 PS E:\> Remove-AzureRmADAppCredential -ApplicationId 4589cd6b-3d79-4bb4-93b8-a0b99f3bfc58 -All
 ```
@@ -68,7 +68,7 @@ Switch to remove all the credentials associated with the application.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ApplicationObjectIdWithAllParameterSet, ApplicationIdWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -83,7 +83,7 @@ The id of the application to remove the credentials from.
 ```yaml
 Type: String
 Parameter Sets: ApplicationIdWithKeyIdParameterSet, ApplicationIdWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ Switch to delete credential without a confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ The key Ids for the application can be obtained using the Get-AzureRmADAppCreden
 ```yaml
 Type: Guid
 Parameter Sets: ApplicationObjectIdWithKeyIdParameterSet, ApplicationIdWithKeyIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -144,7 +144,7 @@ The object id of the application to remove the credentials from.
 ```yaml
 Type: String
 Parameter Sets: ApplicationObjectIdWithKeyIdParameterSet, ApplicationObjectIdWithAllParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -185,6 +185,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
