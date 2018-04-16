@@ -26,13 +26,13 @@ function Test-SimpleNewVm
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+		    [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
+		    $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel
 
         Assert-AreEqual $vmname $x.Name;
-		Assert-Null $x.Identity 
+		    Assert-Null $x.Identity 
 
     }
     finally
@@ -92,29 +92,60 @@ function Test-SimpleNewVmUserAssignedIdentity
        # Now get the identity :
        # 
        # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
-        #Nore down the Id and use it in the PS code
-		#$identityName = $vmname + "Identity1"
-		#$newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
+       #Nore down the Id and use it in the PS code
+		   #$identityName = $vmname + "Identity1"
+		   #$newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
 
-		#$newUserId = $newUserIdentity.Id
+		    #$newUserId = $newUserIdentity.Id
 
-		$newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
+		    $newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
 
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+		    [string]$domainNameLabel = "$vmname-$vmname".tolower();
 
         # Common
-		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId
+		    $x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId
 
         Assert-AreEqual $vmname $x.Name;
-		Assert-AreEqual "UserAssigned" $x.Identity.Type     
-		Assert-Null  $x.Identity.PrincipalId
-		Assert-Null  $x.Identity.TenantId
-		Assert-NotNull $x.Identity.IdentityIds
-		Assert-AreEqual 1 $x.Identity.IdentityIds.Count
-		Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
+		    Assert-AreEqual "UserAssigned" $x.Identity.Type     
+		    Assert-Null  $x.Identity.PrincipalId
+		    Assert-Null  $x.Identity.TenantId
+		    Assert-NotNull $x.Identity.IdentityIds
+		    Assert-AreEqual 1 $x.Identity.IdentityIds.Count
+		    Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm win Win10 and data disks
+#>
+function Test-NewVmWin10
+{
+    $vmname = Get-ResourceName
+    
+    try {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		    [string]$domainNameLabel = "$vmname-$vmname".tolower();
+        $x = New-AzureRmVM `
+			      -Name $vmname `
+			      -Credential $cred `
+			      -DomainNameLabel $domainNameLabel `
+			      -ImageName "Win10" `
+			      -DataDiskSizeInGb 32,64
+
+		    Assert-AreEqual 2 $x.StorageProfile.DataDisks.Count
+        Assert-AreEqual $vmname $x.Name; 
+        Assert-Null $x.Identity
     }
     finally
     {
@@ -173,6 +204,7 @@ function Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity
 }
 
 <#
+.SYNOPSIS
 Test Simple Paremeter Set for New Vm
 #>
 function Test-SimpleNewVmWithAvailabilitySet

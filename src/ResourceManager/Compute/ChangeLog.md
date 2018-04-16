@@ -19,6 +19,9 @@
 -->
 ## Current Release
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support a `Win10` image.
+* `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
+* Set minimum dependency of module to PowerShell 5.0
 
 ## Version 4.6.0
 * `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level

@@ -23,7 +23,7 @@
 
   <ItemGroup >
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.2.12" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.8" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.12" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
   </ItemGroup>
 
