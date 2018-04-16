@@ -168,6 +168,15 @@
   <data name="IncorrectOutputTypeWarning" xml:space="preserve">
     <value>The output type defined for this cmdlet is incorrect and will be updated to reflect what is actually returned (and defined in the help) in a future release.</value>
   </data>
+  <data name="IncorrectPerFileThreadCountWarning" xml:space="preserve">
+    <value>Parameter PerFileThreadCount is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.</value>
+  </data>
+  <data name="IncorrectConcurrentFileCountWarning" xml:space="preserve">
+    <value>Parameter ConcurrentFileCount is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.</value>
+  </data>
+  <data name="IncorrectCleanWarning" xml:space="preserve">
+    <value>Parameter Clean is deprecated. This parameter will be removed in future releases.</value>
+  </data>
   <data name="InvalidAce" xml:space="preserve">
     <value>Invalid ACE returned. Expected ACE format: '[default]:&lt;scope&gt;:&lt;identity&gt;:&lt;permissions&gt;'. Actual ACE: {0}</value>
   </data>

@@ -59,9 +59,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
             Type = rule.Type;
             Action = new ServiceBus.Models.PSActionAttributes(rule.Action);
             FilterType = rule.FilterType;
-            if (rule.FilterType.ToString().Equals("SqlFilter"))
-                SqlFilter = new PSSQLFilterAttributes(rule.SqlFilter);
-            if (rule.FilterType.ToString().Equals("CorrelationFilter"))
+            SqlFilter = new PSSQLFilterAttributes(rule.SqlFilter);
             CorrelationFilter = new PSCorrelationFilterAttributes(rule.CorrelationFilter);
         }
 

@@ -108,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void FetchAttributes(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext)
         {
-            queue.FetchAttributesAsync(options, operationContext).RunSynchronously();
+            Task.Run(() => queue.FetchAttributesAsync(options, operationContext)).Wait();
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void DeleteQueue(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext)
         {
-            queue.DeleteAsync(options, operationContext).RunSynchronously();
+            Task.Run(() => queue.DeleteAsync(options, operationContext)).Wait();
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext"></param>
         public void SetPermissions(CloudQueue queue, QueuePermissions queuePermissions, QueueRequestOptions requestOptions, OperationContext operationContext)
         {
-            queue.SetPermissionsAsync(queuePermissions, requestOptions, operationContext).RunSynchronously();
+            Task.Run(() => queue.SetPermissionsAsync(queuePermissions, requestOptions, operationContext)).Wait();
         }
     }
 }
