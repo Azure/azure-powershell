@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             Sku = database.Sku;
 
-            Capacity = database.Sku.Capacity;
+            Capacity = database.Sku == null ? (int?)null : database.Sku.Capacity;
         }
     }
 }

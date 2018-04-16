@@ -78,14 +78,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             return GetCurrentSqlClient().ElasticPools.Get(resourceGroupName, serverName, elasticPoolName);
         }
 
-        ///// <summary>
-        ///// Gets the Azure Sql Database in the Elastic Pool
-        ///// </summary>
-        //public Management.Sql.LegacySdk.Models.Database GetDatabase(string resourceGroupName, string serverName, string elasticPoolName, string databaseName)
-        //{
-        //    return GetLegacySqlClient().ElasticPools.GetDatabases(resourceGroupName, serverName, elasticPoolName, databaseName).Database;
-        //}
-
         /// <summary>
         /// Gets the Azure Sql Database
         /// </summary>
@@ -94,14 +86,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName);
         }
 
-        ///// <summary>
-        ///// Lists the Azure Sql Database in the Elastic Pool
-        ///// </summary>
-        //public IList<Management.Sql.LegacySdk.Models.Database> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName)
-        //{
-        //    return GetLegacySqlClient().ElasticPools.ListDatabases(resourceGroupName, serverName, elasticPoolName).Databases;
-        //}
-
+        /// <summary>
+        /// List Azure Sql databases in the Elastic Pool
+        /// </summary>
         public IList<Management.Sql.Models.Database> ListDatabases(string resourceGroupName, string serverName, string elasticPoolName)
         {
             return GetCurrentSqlClient().Databases.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();

@@ -88,7 +88,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureReplicationLinkModel> GetEntity()
         {
-            //return ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
             return ModelAdapter.ListLinksWithNewSdk(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
         }
 

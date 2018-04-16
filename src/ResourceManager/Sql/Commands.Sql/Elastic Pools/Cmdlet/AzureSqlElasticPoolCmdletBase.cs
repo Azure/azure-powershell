@@ -27,7 +27,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         // Some const variables used by SetAzureSqlElasticPool and NewAzureSqlElasticPool cmdlet
         public const string DtuPoolParameterSet = "DtuBasedPool";
         public const string VcorePoolParameterSet = "VcoreBasedPool";
-        public const string DefaultPoolSkuName = "StandardPool";
         public const string NormalElasticPoolSkuNamesPostfix = "Pool";
 
         public long Megabytes = 1024L * 1024L;

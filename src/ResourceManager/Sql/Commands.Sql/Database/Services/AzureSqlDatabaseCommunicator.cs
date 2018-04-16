@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public void Remove(string resourceGroupName, string serverName, string databaseName)
         {
-            GetLegacySqlClient().Databases.Delete(resourceGroupName, serverName, databaseName);
+            GetCurrentSqlClient().Databases.Delete(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
