@@ -38,21 +38,31 @@ namespace NetCoreCsProjSync
 
         public static void Main(string[] args)
         {
-            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a)) ?? @"..\..\..\src\ResourceManager";
+            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a.ToLower())) ?? @"..\..\..\src\ResourceManager";
             if (!Directory.Exists(rmPath))
             {
                 throw new ArgumentException($"Directory [{rmPath}] does not exist");
             }
             //https://stackoverflow.com/a/17563994/294804
-            //var mode = args.Any(a => a.IndexOf(Create, StringComparison.InvariantCultureIgnoreCase) >= 0) ? Create : 
-            //    (args.Any(a => a.IndexOf(Validate, StringComparison.InvariantCultureIgnoreCase) >= 0) ? Validate : TestProj);
             var mode = ModeMap.Keys.FirstOrDefault(k => args.Any(a => a.IndexOf(k, StringComparison.InvariantCultureIgnoreCase) >= 0)) ?? TestProj;
             ModeMap[mode](rmPath);
         }
 
         private static void TestCsProjfiles(string srcPath)
         {
-            GetTestProjectFolderPaths(srcPath).ToList().ForEach(Console.WriteLine);
+            //GetTestProjectFolderPaths(srcPath).ToList().ForEach(Console.WriteLine);
+            var projectFolders = GetTestProjectFolderPaths(srcPath);
+            var desktopFilePaths = GetTestDesktopFilePaths(projectFolders).Where(fp => !fp.EndsWith("Commands.Common.Tests.csproj"));
+            var desktopDefinitions = GetDesktopDefinitions(desktopFilePaths);
+
+            desktopDefinitions.SelectMany(d => d.ItemGroups.SelectMany(ig => ig.References.Select(ConvertOldToNewPackageReference))).Where(p => p != null)
+                .GroupBy(p => $"{p.Include}: {p.Version}", (k, r) => (Reference: k, Count: r.Count())).Select(g => $"{g.Reference}: {g.Count}")
+                .OrderBy(g => g)
+                .ToList().ForEach(Console.WriteLine);
+            //foreach (var desktopDefinition in desktopDefinitions)
+            //{
+            //    desktopDefinition.ItemGroups.SelectMany(ig => ig.References.Select(ConvertOldToNewPackageReference)).GroupBy(p => p.Include + p.Version)
+            //}
         }
 
         private static void ValidateCsProjFiles(string rmPath)
