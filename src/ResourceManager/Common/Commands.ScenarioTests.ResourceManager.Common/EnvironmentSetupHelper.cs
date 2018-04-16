@@ -209,6 +209,28 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         }
 
         /// <summary>
+        /// For backwards compatibility - return the path to an RM module manifest for AzureStack
+        /// </summary>
+        /// <param name="moduleName">The name of the module</param>
+        /// <returns>The path to the module directory</returns>
+        public string GetStackRMModulePath(string moduleName)
+        {
+            if (string.IsNullOrWhiteSpace(RmDirectory))
+            {
+                throw new InvalidOperationException("No ResourceManager Modules Directory found in build. Please build the modules before running tests.");
+            }
+
+            if (string.IsNullOrWhiteSpace(moduleName))
+            {
+                throw new ArgumentNullException(nameof(moduleName));
+            }
+
+            var moduleDirectory = moduleName.Replace(".psd1", "");
+            return GetModuleManifest(StackRmDirectory, moduleDirectory);
+        }
+
+
+        /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
         /// </summary>
         /// <param name="initializedManagementClients"></param>
