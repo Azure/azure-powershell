@@ -268,4 +268,3 @@ function Test-NotificationSettings
     Assert-NotNull($NotificationSettings.Locale)
     Set-AzureRmRecoveryServicesAsrNotificationSetting -DisableNotification
 }
-

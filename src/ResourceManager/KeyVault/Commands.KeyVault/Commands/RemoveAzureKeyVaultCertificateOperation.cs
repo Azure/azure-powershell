@@ -26,9 +26,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateOperation))]
+    [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class RemoveAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string DefaultParameterSet = "Default";
+        private const string InputObjectParameterSet = "InputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -36,6 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
+                   ParameterSetName = DefaultParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
@@ -46,11 +54,23 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>       
         [Parameter(Mandatory = true,
                    Position = 1,
+                   ParameterSetName = DefaultParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Operation object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = InputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Operation object")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultCertificateOperation InputObject { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -66,8 +86,14 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                Name = InputObject.Name;
+            }
+
             CertificateOperation certificateOperation = null;
 
             ConfirmAction(
@@ -85,7 +111,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (PassThru.IsPresent)
             {
-                var kvCertificateOperation = KeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
+                var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
                 this.WriteObject(kvCertificateOperation);
             }
         }

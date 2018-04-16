@@ -1,4 +1,117 @@
-﻿## 5.5.0 - March 2018
+﻿## 5.7.0 - April 2018
+
+#### General
+* Updated to the latest version of the Azure ClientRuntime
+
+#### Azure.Storage
+* Fix the issue that upload Blob and upload File cmdlets fail on FIPS policy enabled machines
+	- Set-AzureStorageBlobContent
+	- Set-AzureStorageFileContent
+
+#### AzureRM.Billing
+* New Cmdlet Get-AzureRmEnrollmentAccount
+  - cmdlet to retrieve enrollment accounts
+
+#### AzureRM.CognitiveServices
+* Integrate with Cognitive Services Management SDK version 4.0.0.
+* Add Get-AzureRmCognitiveServicesAccountUsage operation.
+
+#### AzureRM.Compute
+* `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
+* `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
+* Update for Zone Resilient
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support availability zones.
+
+#### AzureRM.ContainerRegistry
+* Decouple reliance on Commands.Resources.Rest and ARM/Storage SDKs.
+
+#### AzureRM.DataLakeStore
+* Add debug functionality
+* Update the version of the ADLS dataplane SDK to 1.1.2
+* Export-AzureRmDataLakeStoreItem - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Import-AzureRMDataLakeStoreItem - Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
+* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
+* Remove-AzureRmDataLakeStoreItem - Deprecated parameter Clean.
+
+#### AzureRM.EventHub
+* Fixed AlternameName in New-AzureRmEventHubGeoDRConfiguration
+
+#### AzureRM.KeyVault
+* Updated cmdlets to include piping scenarios
+* Add deprecation messages for upcoming breaking change release
+
+#### AzureRM.Network
+* Fix error message with Network cmdlets
+
+#### AzureRM.ServiceBus
+* Added 'properties' in CorrelationFilter of Rules to support customproperties
+* updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
+* Fixed auto-forward properties in New-AzureRmServiceBusQueue and New-AzureRmServiceBusSubscription cmdlet
+
+#### AzureRM.Sql
+* Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
+* Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response
+
+## 5.6.0 - March 2018
+
+#### General
+* Fix issue with Default Resource Group in CloudShell
+* Fix issue where incorrect startup scripts were being executed during module import
+
+#### AzureRM.Profile
+* Enable MSI authentication in unsupported scenarios
+* Add support for user-defined Managed Service Identity
+
+#### AzureRM.AnalysisServices
+* Fixed issue with cleaning up scripts in build
+
+#### AzureRM.Cdn
+* Fixed issue with cleaning up scripts in build
+
+#### AzureRM.Compute
+* 'New-AzureRmVM' and 'New-AzureRmVMSS' support data disks.
+* 'New-AzureRmVM' and 'New-AzureRmVMSS' support custom image by name or by id.
+* Log analytic feature
+    - Added 'Export-AzureRmLogAnalyticRequestRateByInterval' cmdlet
+    - Added 'Export-AzureRmLogAnalyticThrottledRequests' cmdlet
+
+#### AzureRM.ContainerInstance
+* Fix parameter sets issue for container registry and azure file volume mount
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK to version 0.6.0-preview containing the following changes:
+    - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
+    - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService
+    - Added LinkedService, Dataset, CopySource for SalesforceMarketingCloud
+    - Added support for SecureOutput on all activities 
+    - Added new BatchCount property on ForEach activity which control how many concurrent activities to run
+    - Added new Filter Activity
+    - Added Linked Service Parameters support
+
+#### AzureRM.Dns
+* Support for Private DNS Zones (Public Preview)
+    - Adds ability to create DNS zones that are visible only to the associated virtual networks
+
+#### AzureRM.Network
+* Updating model types for compatibility with DNS cmdlets.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Changes for ASR Azure to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure,VMware to Azure)
+    - New-AzureRmRecoveryServicesAsrProtectionContainer
+    - New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
+    - Remove-AzureRmRecoveryServicesAsrProtectionContainer
+    - Update-AzureRmRecoveryServicesAsrProtectionDirection
+
+#### AzureRM.Storage
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+#### AzureRM.Websites
+* Fixed the help for Remove-AzureRmWebAppSlot
+
+## 5.5.0 - March 2018
 #### AzureRM.Profile
 * Fixed issue with importing aliases
 * Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8

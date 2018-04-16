@@ -19,8 +19,14 @@
 --->
 
 ## Current Release
-* Fix issue with Default Resource Group in CloudShell
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 5.4.2
 * Fix error message with Network cmdlets
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 5.4.1
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 5.4.0
 * Updating model types for compatibility with DNS cmdlets.

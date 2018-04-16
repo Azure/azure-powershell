@@ -22,13 +22,13 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win2008R2SP1")]
+            "Win2008R2SP1",
+            "Win10")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
@@ -153,10 +154,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
 
+                var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Count == 0;
+
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
                     domainNameLabel: _cmdlet.DomainNameLabel,
-                    allocationMethod: _cmdlet.AllocationMethod);
+                    allocationMethod: _cmdlet.AllocationMethod,
+                    sku: noZones 
+                        ? PublicIPAddressStrategy.Sku.Basic
+                        : PublicIPAddressStrategy.Sku.Standard,
+                    zones: null);
 
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName,
@@ -166,11 +173,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     _cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
 
                 var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
-                    name: _cmdlet.LoadBalancerName);
+                    name: _cmdlet.LoadBalancerName,
+                    sku: noZones
+                        ? LoadBalancerStrategy.Sku.Basic
+                        : LoadBalancerStrategy.Sku.Standard);
 
                 var frontendIpConfiguration = loadBalancer.CreateFrontendIPConfiguration(
                     name: _cmdlet.FrontendPoolName,
-                    zones: _cmdlet.Zone,
                     publicIpAddress: publicIpAddress);
 
                 var backendAddressPool = loadBalancer.CreateBackendAddressPool(
@@ -195,25 +204,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var inboundNatPoolName = _cmdlet.VMScaleSetName;
                 var PortRangeSize = _cmdlet.InstanceCount * 2;
 
-                var inboundNatPools = _cmdlet.NatBackendPort
-                    ?.Select((port, i) =>
-                    {
-                        var portRangeStart = FirstPortRangeStart + i * 2000;
-                        return loadBalancer.CreateInboundNatPool(
-                            name: inboundNatPoolName + port.ToString(),
-                            frontendIpConfiguration: frontendIpConfiguration,
-                            frontendPortRangeStart: portRangeStart,
-                            frontendPortRangeEnd: portRangeStart + PortRangeSize,
-                            backendPort: port);
-                    })
+                var ports = _cmdlet
+                    .NatBackendPort
+                    ?.Select((port, i) => Tuple.Create(
+                        port,
+                        FirstPortRangeStart + i * 2000))
                     .ToList();
+
+                var inboundNatPools = ports
+                    ?.Select(p => loadBalancer.CreateInboundNatPool(
+                        name: inboundNatPoolName + p.Item1.ToString(),
+                        frontendIpConfiguration: frontendIpConfiguration,
+                        frontendPortRangeStart: p.Item2,
+                        frontendPortRangeEnd: p.Item2 + PortRangeSize,
+                        backendPort: p.Item1))
+                    .ToList();
+
+                var networkSecurityGroup = noZones 
+                    ? null 
+                    : resourceGroup.CreateNetworkSecurityGroupConfig(
+                        _cmdlet.VMScaleSetName,
+                        _cmdlet.NatBackendPort.Concat(_cmdlet.BackendPort).ToList());
 
                 return resourceGroup.CreateVirtualMachineScaleSetConfig(
                     name: _cmdlet.VMScaleSetName,
-                    subnet: subnet,
-                    frontendIpConfigurations: new[] { frontendIpConfiguration },
+                    subnet: subnet,                    
                     backendAdressPool: backendAddressPool,
                     inboundNatPools: inboundNatPools,
+                    networkSecurityGroup: networkSecurityGroup,
                     imageAndOsType: ImageAndOsType,
                     adminUsername: _cmdlet.Credential.UserName,
                     adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
@@ -222,7 +240,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
                         ? _cmdlet.UpgradePolicyMode
                         : (UpgradeMode?)null,
-                    dataDisks: _cmdlet.DataDiskSizeInGb);
+                    dataDisks: _cmdlet.DataDiskSizeInGb,
+                    zones: _cmdlet.Zone);
             }
         }
 
@@ -260,7 +279,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var range =
                     FirstPortRangeStart.ToString() +
                     ".." +
-                    (FirstPortRangeStart + InstanceCount * 2).ToString();
+                    (FirstPortRangeStart + InstanceCount * 2 - 1).ToString();
 
                 asyncCmdlet.WriteVerbose(
                     Resources.VmssUseConnectionString,

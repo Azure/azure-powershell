@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.11.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,15 +51,12 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll', 
-                '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll', 
-                '.\Microsoft.Extensions.Caching.Abstractions.dll', 
-                '.\Microsoft.Extensions.Caching.Memory.dll', 
-                '.\Microsoft.Extensions.Options.dll', 
-                '.\Microsoft.Extensions.Primitives.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll',
+    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',
+	'.\Microsoft.Azure.Management.ResourceManager.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @() 
@@ -128,7 +125,7 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'Get-AzureRmResourceProviderAction'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

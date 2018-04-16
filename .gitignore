@@ -215,6 +215,8 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
+/tools/index.json
+/Package/index.json
 
 *.msi
 *.wixpdb
@@ -226,3 +228,8 @@ Results
 Package
 .DS_Store
 .idea
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Logger/bin
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Models/bin
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Helpers/bin
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Providers/bin
+/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.ServiceClientAdapter/bin
