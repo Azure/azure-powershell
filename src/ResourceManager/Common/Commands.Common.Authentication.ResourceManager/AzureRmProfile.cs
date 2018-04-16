@@ -578,7 +578,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 TrySetContext(context.Key, context.Value);
             }
 
-            if (other.DefaultContext != null)
+            if (other.DefaultContext != null && this.DefaultContext != other.DefaultContext)
             {
                 this.TrySetDefaultContext(other.DefaultContext);
             }
