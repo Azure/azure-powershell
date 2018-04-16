@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.WebApps
 
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true, HelpMessage = "The app service plan object", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ServerFarmWithRichSku AppServicePlan { get; set; }
+        public AppServicePlan AppServicePlan { get; set; }
 
         public override void ExecuteCmdlet()
         {
