@@ -24,14 +24,14 @@ If an Event Hub name is not provided, a list of all Event Hubs in the specified 
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - specified EventHub
 ```
 PS C:\> Get-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName
 ```
 
 Returns the details of the Event Hub \`MyEventHubName\`.
 
-### Example 2
+### Example 2 - List of EventHub in specified Namespace
 ```
 PS C:\> Get-AzureRmEventHub -ResourceGroup MyResourceGroupName -NamespaceName MyNamespaceName
 ```

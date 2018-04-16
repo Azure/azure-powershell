@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
 Download Help Link: 
@@ -328,6 +328,9 @@ Removes an extension from the VMSS.
 
 ### [Remove-AzureRmVmssNetworkInterfaceConfiguration](Remove-AzureRmVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
+
+### [Repair-AzureRmVmssServiceFabricUpdateDomain](Repair-AzureRmVmssServiceFabricUpdateDomain.md)
+Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
 
 ### [Restart-AzureRmVM](Restart-AzureRmVM.md)
 Restarts an Azure virtual machine.
