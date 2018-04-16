@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVaultCertificateIdentityItem InputObject { get; set; }
 
         /// <summary>
-        /// If present, operate on the deleted key entity.
+        /// If present, operate on the deleted entity.
         /// </summary>
         [Parameter(Mandatory = false,
                     HelpMessage = "Permanently remove the previously deleted certificate.")]
