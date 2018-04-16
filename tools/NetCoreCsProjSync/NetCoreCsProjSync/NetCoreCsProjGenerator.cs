@@ -54,10 +54,15 @@ namespace NetCoreCsProjSync
                 dir => Directory.EnumerateDirectories(dir).SelectMany(md => Directory.EnumerateDirectories(md).Where(IsTestFolder)))
         };
 
+        //https://stackoverflow.com/a/5229311/294804
         public static IEnumerable<string> GetTestProjectFolderPaths(string srcPath, bool ignoreExisting = false) =>
             Directory.EnumerateDirectories(srcPath)
-                .SelectMany(dir => TestFolderMapper.FirstOrDefault(m => m?.FolderNames?.Contains(Path.GetFileName(dir)) ?? false)?.GetTestDirs(dir) ?? Enumerable.Empty<string>())
+                .SelectMany(dir => TestFolderMapper.FirstOrDefault(m => m?.FolderNames?.Contains(new DirectoryInfo(dir).Name) ?? false)?.GetTestDirs(dir) ?? Enumerable.Empty<string>())
                 .Where(pd => HasCsProj(pd, ignoreExisting));
+
+        public static IEnumerable<string> GetTestDesktopFilePaths(IEnumerable<string> testProjectPaths) =>
+            testProjectPaths.Select(pd => Directory.EnumerateFiles(pd).Where(f => TestFolderDenoters.Any(tfd => f.EndsWith(tfd + CsProjExtension)))
+                .First(f => !f.Contains(NetCoreCsProjExtension)));
 
         public static IEnumerable<string> GetDesktopFilePaths(IEnumerable<string> projectPaths) =>
             projectPaths.Select(pd => Directory.EnumerateFiles(pd, CsProjFilter, SearchOption.TopDirectoryOnly).First(f => !f.Contains(NetCoreCsProjExtension)));
@@ -131,7 +136,11 @@ namespace NetCoreCsProjSync
             var slashParts = hintPath.Split('\\');
             if (slashParts[0] != "..") return null;
 
-            var parts = slashParts[4].Split('.');
+            var slashPartIndex = slashParts.Select((sp, i) => ((int Index, string SlashPart)?)(Index: i, SlashPart: sp))
+                .FirstOrDefault(t => t?.SlashPart?.ToLower()?.Contains("packages") ?? false)?.Index;
+            if (slashPartIndex == null) return null;
+
+            var parts = slashParts[slashPartIndex.Value + 1].Split('.');
             //https://stackoverflow.com/a/18251942/294804
             var firstDigitIndex = parts.Select((p, i) => (Index: i, Part: p)).First(a => a.Part.All(Char.IsDigit)).Index;
             //https://stackoverflow.com/a/14435083/294804
@@ -147,7 +156,7 @@ namespace NetCoreCsProjSync
             return version ?? (hasVersion ? oldReference.Include.Split(',')[1].Replace(versionToken, String.Empty) : null);
         }
 
-        private static NewPackageReference ConvertOldToNewPackageReference(OldReference oldReference)
+        public static NewPackageReference ConvertOldToNewPackageReference(OldReference oldReference)
         {
             var version = GetVersionString(oldReference);
             var include = oldReference.Include.Split(',').First();
