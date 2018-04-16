@@ -31,16 +31,33 @@ namespace NetCoreCsProjSync
         private const string NetCoreFilter = @"*" + NetCoreCsProjExtension;
 
         private const string CommandsFilter = @"Commands.*";
-        private const string TestFolderDenoter = @".Test";
-        private const string TestFolderDenoter2 = @".UnitTest";
+        private static readonly string[] TestFolderDenoters = {@".Test", @".UnitTest", @".Tests"};
+
+        private static bool IsTestFolder(string path) => TestFolderDenoters.Any(path.EndsWith);
+
+        private static bool HasCsProj(string path, bool ignoreExisting = false) => 
+            Directory.EnumerateFiles(path, CsProjFilter, SearchOption.TopDirectoryOnly).Any() && 
+            (ignoreExisting || !Directory.EnumerateFiles(path, NetCoreFilter, SearchOption.TopDirectoryOnly).Any());
 
         // https://stackoverflow.com/a/25245678/294804
         public static IEnumerable<string> GetProjectFolderPaths(string rmPath, bool ignoreExisting = false) =>
             Directory.EnumerateDirectories(rmPath).SelectMany(md =>
                 Directory.EnumerateDirectories(md, CommandsFilter).Where(pd =>
-                    !pd.EndsWith(TestFolderDenoter) && !pd.EndsWith(TestFolderDenoter2) &&
-                    Directory.EnumerateFiles(pd, CsProjFilter, SearchOption.TopDirectoryOnly).Any() &&
-                    (ignoreExisting || !Directory.EnumerateFiles(pd, NetCoreFilter, SearchOption.TopDirectoryOnly).Any())));
+                    !IsTestFolder(pd) && HasCsProj(pd, ignoreExisting)));
+
+        private static readonly List<(string[] FolderNames, Func<string, IEnumerable<string>> GetTestDirs)?> TestFolderMapper = 
+            new List<(string[] FolderNames, Func<string, IEnumerable<string>> GetTestDirs)?>
+        {
+            (new []{"Common", "Storage"}, 
+                dir => Directory.EnumerateDirectories(dir).Where(IsTestFolder)),
+            (new []{"ResourceManager", "StackAdmin"}, 
+                dir => Directory.EnumerateDirectories(dir).SelectMany(md => Directory.EnumerateDirectories(md).Where(IsTestFolder)))
+        };
+
+        public static IEnumerable<string> GetTestProjectFolderPaths(string srcPath, bool ignoreExisting = false) =>
+            Directory.EnumerateDirectories(srcPath)
+                .SelectMany(dir => TestFolderMapper.FirstOrDefault(m => m?.FolderNames?.Contains(Path.GetFileName(dir)) ?? false)?.GetTestDirs(dir) ?? Enumerable.Empty<string>())
+                .Where(pd => HasCsProj(pd, ignoreExisting));
 
         public static IEnumerable<string> GetDesktopFilePaths(IEnumerable<string> projectPaths) =>
             projectPaths.Select(pd => Directory.EnumerateFiles(pd, CsProjFilter, SearchOption.TopDirectoryOnly).First(f => !f.Contains(NetCoreCsProjExtension)));

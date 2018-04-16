@@ -27,11 +27,13 @@ namespace NetCoreCsProjSync
     {
         private const string Validate = "-v";
         private const string Create = "-c";
+        private const string TestProj = "-t";
 
         private static readonly Dictionary<string, Action<string>> ModeMap = new Dictionary<string, Action<string>>
         {
             { Validate, ValidateCsProjFiles },
-            { Create, CreateCsProjFiles }
+            { Create, CreateCsProjFiles },
+            { TestProj, TestCsProjfiles }
         };
 
         public static void Main(string[] args)
@@ -42,8 +44,15 @@ namespace NetCoreCsProjSync
                 throw new ArgumentException($"Directory [{rmPath}] does not exist");
             }
             //https://stackoverflow.com/a/17563994/294804
-            var mode = args.Any(a => a.IndexOf(Create, StringComparison.InvariantCultureIgnoreCase) >= 0) ? Create : Validate;
+            //var mode = args.Any(a => a.IndexOf(Create, StringComparison.InvariantCultureIgnoreCase) >= 0) ? Create : 
+            //    (args.Any(a => a.IndexOf(Validate, StringComparison.InvariantCultureIgnoreCase) >= 0) ? Validate : TestProj);
+            var mode = ModeMap.Keys.FirstOrDefault(k => args.Any(a => a.IndexOf(k, StringComparison.InvariantCultureIgnoreCase) >= 0)) ?? TestProj;
             ModeMap[mode](rmPath);
+        }
+
+        private static void TestCsProjfiles(string srcPath)
+        {
+            GetTestProjectFolderPaths(srcPath).ToList().ForEach(Console.WriteLine);
         }
 
         private static void ValidateCsProjFiles(string rmPath)
