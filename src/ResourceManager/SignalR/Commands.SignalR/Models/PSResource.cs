@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SignalR.Models;
+
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
     public class PSResource
@@ -22,11 +24,11 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public string Type { get; }
 
-        public PSResource(string id, string name, string type)
+        public PSResource(Resource resource)
         {
-            Id = id;
-            Name = name;
-            Type = type;
+            Id = resource.Id;
+            Name = resource.Name;
+            Type = resource.Type;
         }
     }
 }

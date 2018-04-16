@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -26,18 +28,25 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         /// <summary>
         /// TODO: smart command with default resource group name
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 0)]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 1)]
         [ValidateNotNullOrEmpty()]
         public string Name { get; set; }
 
         /// <summary>
         /// TODO: smart command with default location.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(
+            Mandatory = true,
+            Position = 2)]
+        [LocationCompleter("Microsoft.SignalR/signalRs")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
