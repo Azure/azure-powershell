@@ -188,9 +188,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 ModelAdapter.CopyDatabaseWithNewSdk(entity.First().CopyResourceGroupName, entity.First().CopyServerName, entity.First())
             };
-//                return new List<AzureSqlDatabaseCopyModel>() {
-//                    ModelAdapter.CopyDatabase(entity.First().CopyResourceGroupName, entity.First().CopyServerName, entity.First())
-//                };
         }
     }
 }

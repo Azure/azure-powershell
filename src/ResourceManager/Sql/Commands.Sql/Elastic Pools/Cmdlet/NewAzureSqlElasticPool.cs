@@ -191,8 +191,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 {
                     newModel.Sku = new Management.Sql.Models.Sku()
                     {
-                        Name = edition.HasValue ? string.Format("{0}{1}", edition.Value, NormalElasticPoolSkuNamesPostfix) : DefaultPoolSkuName,
-                        Tier = edition.HasValue ? edition.ToString() : null,
+                        Name = string.Format("{0}{1}", edition.Value, NormalElasticPoolSkuNamesPostfix),
+                        Tier = edition.ToString(),
                         Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
                     };
                 }

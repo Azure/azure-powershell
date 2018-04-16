@@ -173,9 +173,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
-            //           return new List<AzureReplicationLinkModel>() {
-            //               ModelAdapter.CreateLink(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())
-            //           };
             return new List<AzureReplicationLinkModel>()
             {
                 ModelAdapter.CreateLinkWithNewSdk(entity.First().PartnerResourceGroupName, entity.First().PartnerServerName, entity.First())

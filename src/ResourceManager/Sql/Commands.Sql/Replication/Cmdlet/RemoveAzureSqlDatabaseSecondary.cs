@@ -57,9 +57,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureReplicationLinkModel> GetEntity()
         {
-            //return new List<Model.AzureReplicationLinkModel>() {
-            //    ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName)
-            //};
             return new List<Model.AzureReplicationLinkModel>() {
                 ModelAdapter.GetLinkWithNewSdk(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName)
             };
@@ -82,7 +79,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
-            //ModelAdapter.RemoveLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName);
             ModelAdapter.RemoveLinkWithNewSdk(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName);
             return entity;
         }

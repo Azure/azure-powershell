@@ -238,21 +238,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override AzureSqlDatabaseCreateOrUpdateModel PersistChanges(AzureSqlDatabaseCreateOrUpdateModel entity)
         {
-            // Use AutoRest or Hyak SDK depending on model parameters.
-            // This is done because we want to add support for -SampleName, which is only supported by AutoRest SDK.
-            // Why not always use AutoRest SDK? Because it uses Azure-AsyncOperation polling, while Hyak uses
-            // Location polling. This means that switching to AutoRest requires re-recording almost all scenario tests,
-            // which currently is quite difficult.
-            AzureSqlDatabaseModel upsertedDatabase;
-            if (!string.IsNullOrEmpty(entity.SampleName) || entity.Database.ZoneRedundant.HasValue || entity.Database.Sku != null)
-            {
-                upsertedDatabase = ModelAdapter.UpsertDatabaseWithNewSdk(this.ResourceGroupName, this.ServerName, entity);
-            }
-            else
-            {
-                upsertedDatabase = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity);
-            }
-
+            // Use AutoRest Sdk
+            AzureSqlDatabaseModel upsertedDatabase = ModelAdapter.UpsertDatabaseWithNewSdk(this.ResourceGroupName, this.ServerName, entity);
+            
             return new AzureSqlDatabaseCreateOrUpdateModel
             {
                 Database = upsertedDatabase

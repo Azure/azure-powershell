@@ -35,11 +35,6 @@ namespace Microsoft.Azure.Management.Sql.Models
         public const string Secondary = "Secondary";
 
         /// <summary>
-        /// Create database as non-readable geo-secondary.
-        /// </summary>
-        public const string NonReadableSecondary = "NonReadableSecondary";
-
-        /// <summary>
         /// Database created as restore target where source is another live
         /// database
         /// </summary>
@@ -66,5 +61,15 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// Database created by restoring an archived backup
         /// </summary>
         public const string RestoreArchivedBackup = "RestoreArchivedBackup";
+
+        /// <summary>
+        /// Database created by restoring an external backup on secondary
+        /// </summary>
+        public const string RestoreExternalBackupSecondary = "RestoreExternalBackupSecondary";
+
+        /// <summary>
+        /// Database created by restoring a long term retention backup
+        /// </summary>
+        public const string RestoreLongTermRetentionBackup = "RestoreLongTermRetentionBackup";
     }
 }
