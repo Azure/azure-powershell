@@ -59,8 +59,10 @@
   ],
   "src/ResourceManager/DataFactories/": [
     ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactories.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactories.Test.dll",
-    ".\\src\\ResourceManager\\DataFactories\\Commands.DataFactoryV2.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactoryV2.Test.dll",
     ".\\src\\ResourceManager\\StreamAnalytics\\Commands.StreamAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"
+  ],
+  "src/ResourceManager/DataFactoryV2/": [
+    ".\\src\\ResourceManager\\DataFactoryV2\\Commands.DataFactoryV2.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataFactoryV2.Test.dll"
   ],
   "src/ResourceManager/DataLakeAnalytics/": [
     ".\\src\\ResourceManager\\DataLakeAnalytics\\Commands.DataLakeAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataLakeAnalytics.Test.dll"
@@ -124,6 +126,9 @@
   ],
   "src/ResourceManager/OperationalInsights/": [
     ".\\src\\ResourceManager\\OperationalInsights\\Commands.OperationalInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.OperationalInsights.Test.dll"
+  ],
+  "src/ResourceManager/PolicyInsights/": [
+    ".\\src\\ResourceManager\\PolicyInsights\\Commands.PolicyInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.PolicyInsights.Test.dll"
   ],
   "src/ResourceManager/PowerBIEmbedded/": [
     ".\\src\\ResourceManager\\PowerBIEmbedded\\Commands.PowerBIEmbedded.Test\\bin\\Debug\\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"
@@ -203,5 +208,8 @@
   ],
   "tools/BuildPackagesTask/": [
     ".\\tools\\BuildPackagesTask\\Microsoft.Azure.Build.Tasks.Test\\bin\\Debug\\Microsoft.Azure.Build.Tasks.Test.dll"
+  ],
+  "tools/RepoTasks/": [
+    ".\\tools\\RepoTasks\\RepoTasks.Cmdlets.Tests\\bin\\Debug\\RepoTasks.Cmdlets.Tests.dll"
   ]
 }

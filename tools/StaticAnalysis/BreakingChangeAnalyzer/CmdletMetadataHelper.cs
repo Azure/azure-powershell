@@ -15,14 +15,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
     /// <summary>
-    /// This class is responsible for comparing CmdletBreakingChangeMetadata and
+    /// This class is responsible for comparing CmdletMetadata and
     /// checking for breaking changes between old (serialized) metadata and new metadata.
     /// </summary>
     public class CmdletMetadataHelper
@@ -47,7 +47,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
         /// <summary>
         /// Compares the metadata of cmdlets with the same name (or alias) for any breaking changes.
-        /// 
+        ///
         /// Breaking changes for cmdlets include
         ///   - Removing a cmdlet
         ///   - Removing an alias to a cmdlet
@@ -55,7 +55,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         ///   - Removing SupportsPaging
         ///   - Output type (or any of its properties) of cmdlet has changed
         ///   - Default parameter set has changed
-        ///   
+        ///
         /// This method will also check for breaking changes in the cmdlets' parameters and
         /// parameter sets using the appropriate helpers.
         /// </summary>
@@ -63,13 +63,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newCmdlets">The list of cmdlets from the new metadata.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         public void CompareCmdletMetadata(
-            List<CmdletBreakingChangeMetadata> oldCmdlets,
-            List<CmdletBreakingChangeMetadata> newCmdlets,
+            List<CmdletMetadata> oldCmdlets,
+            List<CmdletMetadata> newCmdlets,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // This dictionary will map a cmdlet name (or alias) to the corresponding metadata
-            Dictionary<string, CmdletBreakingChangeMetadata> cmdletDictionary =
-                new Dictionary<string, CmdletBreakingChangeMetadata>();
+            Dictionary<string, CmdletMetadata> cmdletDictionary =
+                new Dictionary<string, CmdletMetadata>();
 
             // Add each cmdlet and its aliases to the dictionary
             foreach (var newCmdlet in newCmdlets)
@@ -125,8 +125,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedCmdletAlias(
-            CmdletBreakingChangeMetadata oldCmdlet,
-            CmdletBreakingChangeMetadata newCmdlet,
+            CmdletMetadata oldCmdlet,
+            CmdletMetadata newCmdlet,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // This set will contain all of the aliases in the new metadata
@@ -164,8 +164,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedSupportsShouldProcess(
-            CmdletBreakingChangeMetadata oldCmdlet,
-            CmdletBreakingChangeMetadata newCmdlet,
+            CmdletMetadata oldCmdlet,
+            CmdletMetadata newCmdlet,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // If the old cmdlet implements SupportsShouldProcess and the new cmdlet does not, log an issue
@@ -187,8 +187,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForRemovedSupportsPaging(
-            CmdletBreakingChangeMetadata oldCmdlet,
-            CmdletBreakingChangeMetadata newCmdlet,
+            CmdletMetadata oldCmdlet,
+            CmdletMetadata newCmdlet,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // If the old cmdlet implements SupportsPaging and the new cmdlet does not, log an issue
@@ -211,8 +211,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckForChangedOutputType(
-            CmdletBreakingChangeMetadata oldCmdlet,
-            CmdletBreakingChangeMetadata newCmdlet,
+            CmdletMetadata oldCmdlet,
+            CmdletMetadata newCmdlet,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // This dictionary will map an output type name to the corresponding type metadata
@@ -262,8 +262,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newCmdlet">The cmdlet metadata from the new assembly.</param>
         /// <param name="issueLogger">ReportLogger that will keep track of issues found.</param>
         private void CheckDefaultParameterName(
-            CmdletBreakingChangeMetadata oldCmdlet,
-            CmdletBreakingChangeMetadata newCmdlet,
+            CmdletMetadata oldCmdlet,
+            CmdletMetadata newCmdlet,
             ReportLogger<BreakingChangeIssue> issueLogger)
         {
             // If the default parameter name hasn't changed, or if there wasn't a
@@ -315,7 +315,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         }
 
         /// <summary>
-        /// Comparer for assebly qualified names.  Parses of the PublicKeyToken, so that types from signed and unsigned assemblies match 
+        /// Comparer for assebly qualified names.  Parses of the PublicKeyToken, so that types from signed and unsigned assemblies match
         /// </summary>
         class TypeNameComparer : IEqualityComparer<string>
         {

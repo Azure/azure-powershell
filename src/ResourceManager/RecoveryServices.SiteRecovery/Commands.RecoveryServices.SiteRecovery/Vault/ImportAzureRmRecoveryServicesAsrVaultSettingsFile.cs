@@ -24,7 +24,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Imports Azure Site Recovery Vault Settings.
+    ///     Imports the specified ASR vault settings file to set the vault context(PowerShell session context)
+    ///     for subsequent ASR operations in the PowerShell session. 
     /// </summary>
     [Cmdlet(
         VerbsData.Import,

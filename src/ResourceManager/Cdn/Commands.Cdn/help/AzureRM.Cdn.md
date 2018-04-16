@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.Cdn
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 52594002-db89-46df-928d-2755dad840e8
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US

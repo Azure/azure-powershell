@@ -8,6 +8,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Tools.Common.Issues;
+using Tools.Common.Loggers;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -219,7 +221,7 @@ namespace StaticAnalysis.Test
             xunitOutput.WriteLine(output);
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.MandatoryParameter)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.MandatoryParameter));
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterSet)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterSet));
         }
 
         [Fact]
@@ -242,11 +244,8 @@ namespace StaticAnalysis.Test
 
             xunitOutput.WriteLine(output);
 
-            Assert.Equal(3, testReport.ProblemIdList.Count);
-            foreach (var problemId in testReport.ProblemIdList)
-            {
-                Assert.Equal(BreakingChangeProblemId.PositionChange, problemId);
-            }
+            Assert.Equal(1, testReport.ProblemIdList.Count);
+            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterSet)).SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterSet));
         }
 
         [Fact]
@@ -370,8 +369,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ValueFromPipeline))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ValueFromPipeline));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterSet))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterSet));
         }
 
         [Fact]
@@ -396,8 +395,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.ValueFromPipelineByPropertyName))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.ValueFromPipelineByPropertyName));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterSet))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterSet));
         }
 
         [Fact(Skip = "Will fix as part of breaking change tool refactor: https://github.com/Azure/azure-powershell/issues/3507")]
@@ -468,8 +467,8 @@ namespace StaticAnalysis.Test
 
             Assert.Equal(1, testReport.ProblemIdList.Count);
             Assert.True(testReport.ProblemIdList
-                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterFromParameterSet))
-                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterFromParameterSet));
+                .Where<int>((problemId) => problemId.Equals(BreakingChangeProblemId.RemovedParameterSet))
+                            .SingleOrDefault<int>().Equals(BreakingChangeProblemId.RemovedParameterSet));
         }
 
         [Fact]
