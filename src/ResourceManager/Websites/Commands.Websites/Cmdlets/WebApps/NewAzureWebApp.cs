@@ -150,19 +150,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         private void ValidateWebAppName(string name)
         {
-#if !NETSTANDARD
-            var available = WebsitesClient.WrappedWebsitesClient.GlobalModel.CheckNameAvailability(new ResourceNameAvailabilityRequest { Name = name, Type = "Site" });
-            if (available.NameAvailable.HasValue && !available.NameAvailable.Value)
-            {
-                throw new InvalidOperationException(string.Format("Website name '{0}' is not available.  Please try a different name.", name));
-            }
-#else
             var available = WebsitesClient.WrappedWebsitesClient.CheckNameAvailability(name,"Site");
             if (available.NameAvailable.HasValue && !available.NameAvailable.Value)
             {
                 throw new InvalidOperationException(string.Format("Website name '{0}' is not available.  Please try a different name.", name));
             }
-#endif
         }
 
         public void CreateWithClonedWebApp()
@@ -210,30 +202,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 CloneSlots(slotNames);
             }
         }
-#if !NETSTANDARD
-        private async Task<ServerFarmWithRichSku> GetDefaultServerFarm(string location)
-        {
-            var websiteLocation = string.IsNullOrWhiteSpace(location) ? new LocationConstraint() : new LocationConstraint(location);
-            var farmResources = await ResourcesClient.ResourceManagementClient.Resources.ListAsync(new ODataQuery<GenericResourceFilter>(r => r.ResourceType == "Microsoft.Web/serverFarms"));
-            ServerFarmWithRichSku defaultFarm = null;
-            foreach (var resource in farmResources)
-            {
-                // Try to find a policy with Sku=Free and available site capacity
-                var id = new ResourceIdentifier(resource.Id);
-                var farm = await WebsitesClient.WrappedWebsitesClient.ServerFarms.GetServerFarmAsync(id.ResourceGroupName, id.ResourceName);
-                if (websiteLocation.Match(farm.Location)
-                    && string.Equals("free", farm.Sku?.Tier?.ToLower(), StringComparison.OrdinalIgnoreCase)
-                    && farm.NumberOfSites < MaxFreeSites)
-                {
-                    defaultFarm = farm;
-                    break;
-                }
-
-            }
-
-            return defaultFarm;
-        }
-#else
         private async Task<AppServicePlan> GetDefaultServerFarm(string location)
         {
             var websiteLocation = string.IsNullOrWhiteSpace(location) ? new LocationConstraint() : new LocationConstraint(location);
@@ -257,7 +225,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             return defaultFarm;
         }
 
-#endif
 
         bool TryGetServerFarmFromResourceId(string serverFarm, out string resourceGroup, out string serverFarmName)
         {
@@ -302,11 +269,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 if (farm != null)
                 {
                     planResourceGroup = farm.ResourceGroup;
-#if !NETSTANDARD
-                    planName = farm.ServerFarmWithRichSkuName;
-#else
                     planName = farm.Name;
-#endif
                     planRG = ResourceGroupStrategy.CreateResourceGroupConfig(planResourceGroup);
                 }
             }
@@ -332,11 +295,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 var scmHostName = output.EnabledHostNames.FirstOrDefault(s => s.Contains(".scm."));
                 if (!string.IsNullOrWhiteSpace(scmHostName))
                 {
-#if !NETSTANDARD
-                    var profile = await WebsitesClient.WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlAsync(output.ResourceGroup, output.SiteName, new CsmPublishingProfileOptions { Format = "WebDeploy" });
-#else
                     var profile = await WebsitesClient.WrappedWebsitesClient.WebApps.ListPublishingProfileXmlWithSecretsAsync(output.ResourceGroup, output.Name, new CsmPublishingProfileOptions { Format = "WebDeploy" });
-#endif
                     var doc = new XmlDocument();
                     doc.Load(profile);
                     userName = doc.SelectSingleNode("//publishProfile[@publishMethod=\"MSDeploy\"]/@userName").Value;
