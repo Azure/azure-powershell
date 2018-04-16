@@ -119,7 +119,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public string RMStorageModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Storage");
 
         //TODO: clarify (data plane should not be under ARM folder)
-        public string RMStorageDataPlaneModule { get; } = GetModuleManifest(StorageDirectory, "AzureR.Storage");
+        public string RMStorageDataPlaneModule { get; } = GetModuleManifest(StorageDirectory, "Azure.Storage");
 
         public string RMNetworkModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Network");
 
@@ -171,7 +171,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             string configDirectory = GetConfigDirectory(targetDirectory);
             return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "Storage");
         }
-
         private static string GetModuleManifest(string baseDirectory, string desktopModuleName)
         {
             if (string.IsNullOrWhiteSpace(baseDirectory) || string.IsNullOrWhiteSpace(desktopModuleName))
@@ -179,11 +178,36 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 return null;
             }
 
-            string desktopModule = Path.Combine(baseDirectory, desktopModuleName, $"{desktopModuleName}.psd1");
-            string netcoreModule = Path.Combine(baseDirectory, $"{desktopModuleName}.Netcore", $"{desktopModuleName}.Netcore.psd1");
-            return (File.Exists(desktopModule) ? desktopModule : (File.Exists(netcoreModule) ? netcoreModule : null));
+#if NETSTANDARD
+            string module = Path.Combine(baseDirectory, $"{desktopModuleName}.Netcore", $"{desktopModuleName}.Netcore.psd1");
+#else
+            string module = Path.Combine(baseDirectory, desktopModuleName, $"{desktopModuleName}.psd1");
+#endif
+            return File.Exists(module) ? module : null;
 
         }
+
+        /// <summary>
+        /// For backwards compatibility - return the path to an RM module manifest
+        /// </summary>
+        /// <param name="moduleName">The name of the module</param>
+        /// <returns>The path to the module directory</returns>
+        public string GetRMModulePath(string moduleName)
+        {
+            if (string.IsNullOrWhiteSpace(RmDirectory))
+            {
+                throw new InvalidOperationException("No ResourceManager Modules Directory found in build. Please build the modules before running tests.");
+            }
+
+            if (string.IsNullOrWhiteSpace(moduleName))
+            {
+                throw new ArgumentNullException(nameof(moduleName));
+            }
+
+            var moduleDirectory = moduleName.Replace(".psd1", "");
+            return GetModuleManifest(RmDirectory, moduleDirectory);
+        }
+
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
         /// </summary>
