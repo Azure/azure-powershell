@@ -40,7 +40,7 @@ The **Remove-AzureRmEventHubGeoDRConfiguration** cmdlet deletes an Alias(Disaste
 PS C:\>Remove-AzureRmEventHubGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Secondary" -Name "SampleDRCongifName"
 ```
 
-Deletes an Alias(Disaster Recovery configuration)
+Deletes an Alias (Disaster Recovery configuration)
 
 ## PARAMETERS
 

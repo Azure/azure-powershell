@@ -52,7 +52,7 @@ function Test-Disk
         $diskconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $diskconfig.EncryptionSettings.KeyEncryptionKey = $null;
         $diskconfig.CreationData.ImageReference = $null;
-        
+
         Assert-AreEqual "1" $diskconfig.Zones
         $diskconfig.Zones = $null
 
@@ -64,7 +64,7 @@ function Test-Disk
         $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
-        Assert-AreEqual StandardLRS $disk.Sku.Name;
+        Assert-AreEqual "StandardLRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
         Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
@@ -139,7 +139,7 @@ function Test-Snapshot
         # Get snapshot test
         $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
-        Assert-AreEqual StandardLRS $snapshot.Sku.Name;
+        Assert-AreEqual "StandardLRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
         Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;

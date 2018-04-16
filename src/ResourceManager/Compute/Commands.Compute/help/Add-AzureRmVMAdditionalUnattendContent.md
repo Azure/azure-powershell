@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 50B64FFE-8277-4DAA-805A-271123B35355
@@ -61,7 +61,7 @@ The XML content must be less than 4 KB and must include the root element for the
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -95,7 +95,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: SettingNames
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AutoLogon, FirstLogonCommands
 
 Required: False

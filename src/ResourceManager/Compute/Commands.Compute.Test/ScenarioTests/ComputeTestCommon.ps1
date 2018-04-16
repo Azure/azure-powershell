@@ -95,20 +95,32 @@ function Get-ComputeDefaultLocation
 }
 
 # Create key vault resources
-function Create-KeyVault($resourceGroupName, $vaultName, $location)
+function Create-KeyVault
 {
-	# initialize parameters
-	$resourceGroupName = if ([string]::IsNullOrEmpty($resourceGroupName)) { Get-ComputeTestResourceName } else { $resourceGroupName }
-    $vaultName = if ([string]::IsNullOrEmpty($vaultName)) { 'kv' + $resourceGroupName } else { $vaultName }
-    $location = if ([string]::IsNullOrEmpty($location)) { Get-ComputeVMLocation } else { $location }
+    Param
+    (
+         [Parameter(Mandatory=$true, Position=0)]
+         [string] $resourceGroupName,
+         [Parameter(Mandatory=$true, Position=1)]
+         [string] $location,
+         [Parameter(Mandatory=$false, Position=2)]
+         [string] $vaultName
+    )
+
+	# initialize parameters if needed
+	if ([string]::IsNullOrEmpty($resourceGroupName)) { $resourceGroupName = Get-ComputeTestResourceName }
+    if ([string]::IsNullOrEmpty($location)) { $location = Get-ComputeVMLocation }
+    if ([string]::IsNullOrEmpty($vaultName)) { $vaultName = 'kv' + $resourceGroupName }
 
 	# create vault
 	$vault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location -Sku standard
 	$vault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
 
-	# enable for disk encryption 
-	Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
-	
+	# create access policy 
+	$servicePrincipalName = (get-azurermcontext).Account.Id
+	Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $servicePrincipalName -PermissionsToKeys create
+	Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDiskEncryption -EnabledForDeployment -EnabledForTemplateDeployment
+
 	# create key encryption key 
 	$kekName = 'kek' + $resourceGroupName
 	$kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
@@ -124,13 +136,22 @@ function Create-KeyVault($resourceGroupName, $vaultName, $location)
 }
 
 # Create a new virtual machine with other necessary resources configured
-function Create-VirtualMachine($rgname, $vmname, $loc)
-{
-    # Initialize parameters
-    $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
-    $vmname = if ([string]::IsNullOrEmpty($vmname)) { 'vm' + $rgname } else { $vmname }
-    $loc = if ([string]::IsNullOrEmpty($loc)) { Get-ComputeVMLocation } else { $loc }
-    Write-Host $vmname
+function Create-VirtualMachine
+{	
+    Param
+    (
+         [Parameter(Mandatory=$false, Position=0)]
+         [string] $rgname,
+         [Parameter(Mandatory=$false, Position=1)]
+         [string] $vmname,
+         [Parameter(Mandatory=$false, Position=2)]
+         [string] $loc		 
+    )
+
+    # initialize parameters if needed
+	if ([string]::IsNullOrEmpty($rgname)) { $rgname = Get-ComputeTestResourceName }
+	if ([string]::IsNullOrEmpty($vmname)) { $vmname = 'vm' + $rgname }
+	if ([string]::IsNullOrEmpty($loc)) { $loc = Get-ComputeVMLocation } 
 
     # Common
     $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;

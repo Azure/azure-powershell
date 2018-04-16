@@ -329,6 +329,9 @@ Removes an extension from the VMSS.
 ### [Remove-AzureRmVmssNetworkInterfaceConfiguration](Remove-AzureRmVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
 
+### [Repair-AzureRmVmssServiceFabricUpdateDomain](Repair-AzureRmVmssServiceFabricUpdateDomain.md)
+Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
+
 ### [Restart-AzureRmVM](Restart-AzureRmVM.md)
 Restarts an Azure virtual machine.
 

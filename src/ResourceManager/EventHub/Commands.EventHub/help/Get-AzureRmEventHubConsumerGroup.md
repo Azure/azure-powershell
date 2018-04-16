@@ -24,7 +24,7 @@ If the name of a consumer group is not provided, a list of consumer groups in th
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 
 ```
 PS C:\> Get-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName
 ```

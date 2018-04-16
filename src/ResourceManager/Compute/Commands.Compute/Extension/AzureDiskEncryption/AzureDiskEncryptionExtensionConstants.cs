@@ -15,10 +15,11 @@
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     /// <summary>
-    /// This class includes contant values used in AzureDiskEncryption
+    /// This class includes constant values used in AzureDiskEncryption
     /// </summary>
     public static class AzureDiskEncryptionExtensionConstants
     {
+        public const string singlePassParameterSet = "SinglePassParameterSet";
         public const string aadClientCertParameterSet = "AADClientCertParameterSet";
         public const string aadClientSecretParameterSet = "AADClientSecretParameterSet";
         public const string enableEncryptionOperation = "EnableEncryption";

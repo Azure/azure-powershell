@@ -16,14 +16,14 @@ Downloads a file from Data Lake Store.
 ### NoDiagnosticLogging (Default)
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
+ [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IncludeDiagnosticLogging
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [-Force]
+ [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
  [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -35,10 +35,10 @@ The **Export-AzureRmDataLakeStoreItem** cmdlet downloads a file from Data Lake S
 
 ### Example 1: Download an item from the Data Lake Store
 ```
-PS C:\>Export-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path /myFiles/TestSource.csv -Destination "C:\Test.csv"
+PS C:\>Export-AzureRmDataLakeStoreItem -AccountName "ContosoADL" -Path /myFiles/TestSource.csv -Destination "C:\Test.csv" -Concurrency 4
 ```
 
-This command downloads the file TestSource.csv from the Data Lake Store to C:\Test.csv.
+This command downloads the file TestSource.csv from the Data Lake Store to C:\Test.csv with a concurrency of 4.
 
 ## PARAMETERS
 
@@ -57,9 +57,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Concurrency
+Indicates the number of files or chunks to download in parallel. Default will be computed as a best effort based on system specifications.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ConcurrentFileCount
-Specifies the maximum number of files to download in parallel for a folder download.
-The default value is five (5).
+Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size
 
 ```yaml
 Type: Int32
@@ -74,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -165,8 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -PerFileThreadCount
-Specifies the maximum number of threads to use per file.
-The default value is ten (10).
+Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size
 
 ```yaml
 Type: Int32
@@ -196,8 +208,8 @@ Accept wildcard characters: False
 ```
 
 ### -Resume
-Indicates that the file or files being copied are a continuation of a previous download.
-The download attempts to resume from the last file that was not fully downloaded.
+Indicates that the file(s) being copied are a continuation of a previous download.
+This will cause the system to attempt to resume from the last file that was not fully downloaded.
 
 ```yaml
 Type: SwitchParameter
