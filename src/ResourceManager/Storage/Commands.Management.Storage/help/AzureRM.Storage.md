@@ -23,6 +23,9 @@ Gets a Storage account.
 ### [Get-AzureRmStorageAccountKey](Get-AzureRmStorageAccountKey.md)
 Gets the access keys for an Azure Storage account.
 
+### [Get-AzureRmStorageAccountManagementPolicy](Get-AzureRmStorageAccountManagementPolicy.md)
+Gets the management policy of an Azure Storage account.
+
 ### [Get-AzureRmStorageAccountNameAvailability](Get-AzureRmStorageAccountNameAvailability.md)
 Checks the availability of a Storage account name.
 
@@ -53,6 +56,9 @@ Creates a Storage blob container
 ### [Remove-AzureRmStorageAccount](Remove-AzureRmStorageAccount.md)
 Removes a Storage account from Azure.
 
+### [Remove-AzureRmStorageAccountManagementPolicy](Remove-AzureRmStorageAccountManagementPolicy.md)
+Removes the management policy of an Azure Storage account.
+
 ### [Remove-AzureRmStorageAccountNetworkRule](Remove-AzureRmStorageAccountNetworkRule.md)
 Removes IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage Account
 
@@ -70,6 +76,9 @@ Modifies the current Storage account of the specified subscription.
 
 ### [Set-AzureRmStorageAccount](Set-AzureRmStorageAccount.md)
 Modifies a Storage account.
+
+### [Set-AzureRmStorageAccountManagementPolicy](Set-AzureRmStorageAccountManagementPolicy.md)
+Creates or modifies the management policy of an Azure Storage account.
 
 ### [Set-AzureRmStorageContainerImmutabilityPolicy](Set-AzureRmStorageContainerImmutabilityPolicy.md)
 Creates or updates ImmutabilityPolicy of a Storage blob containers
