@@ -48,8 +48,7 @@ Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batc
 Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool2
 ```
 
- 
-To list node counts per node state for pools under current batch account context.
+List node counts per node state for pools under current batch account context.
 
 ### Example 2
 
@@ -86,8 +85,7 @@ Dedicated                                          LowPriority                  
 Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
 ```
 
- 
-To show node counts per node state for a pool given pool id:
+Show node counts per node state for a pool given pool id.
 
 ## PARAMETERS
 
