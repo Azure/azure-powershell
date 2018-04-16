@@ -96,7 +96,9 @@ Accept wildcard characters: False
 ```
 
 ### -InRemovedState
-Permanently remove the previously deleted managed storage account.```yaml
+Permanently remove the previously deleted managed storage account.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
