@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if ( certificateBundle.Tags != null )
             {
-                Tags = (Hashtable) certificateBundle.Tags;
+                Tags = (certificateBundle.Tags == null) ? null : certificateBundle.Tags.ConvertToHashtable();
             }
         }
 
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if (certificateBundle.Tags != null)
             {
-                Tags = (Hashtable)certificateBundle.Tags;
+                Tags = (certificateBundle.Tags == null) ? null : certificateBundle.Tags.ConvertToHashtable();
             }
         }
 
