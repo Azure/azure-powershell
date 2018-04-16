@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.2.1'
+ModuleVersion = '4.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -155,10 +155,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix issue with Default Resource Group in CloudShell'
+        ReleaseNotes = '* Updated cmdlets to include piping scenarios
+* Added new cmdlets around NewtorkRules: Add/Remove/Update-AzureKeyVaultNetworkRule
+* Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
