@@ -474,4 +474,10 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="RecoverManagedStorageSasDefinition" xml:space="preserve">
     <value>Recover KeyVault-managed storage account SAS definition.</value>
   </data>
+  <data name="RemoveDeletedManagedStorageAccountWarning" xml:space="preserve">
+    <value>Are you sure you want to purge managed storage account '{0}'</value>
+  </data>
+  <data name="RemoveDeletedManagedStorageAccountWhatIfMessage" xml:space="preserve">
+    <value>Purge managed storage account</value>
+  </data>
 </root>
