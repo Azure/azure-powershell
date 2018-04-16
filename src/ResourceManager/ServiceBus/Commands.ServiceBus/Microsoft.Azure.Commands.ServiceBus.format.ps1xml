@@ -23,6 +23,9 @@
                 <PropertyName>Location</PropertyName>
               </ListItem>
               <ListItem>
+                <PropertyName>Tags</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Sku </Label>
                 <ScriptBlock>"Name : " + $_.Sku.Name.ToString()  + " , Capacity : " +  $_.Sku.Capacity.ToString() + " , Tier : " +  $_.Sku.Tier.ToString() </ScriptBlock>
               </ListItem>
@@ -40,9 +43,6 @@
               </ListItem>
               <ListItem>
                 <PropertyName>ServiceBusEndpoint</PropertyName>
-              </ListItem>
-              <ListItem>
-                <PropertyName>Enabled</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -102,14 +102,17 @@
                 <ScriptBlock>
                   if ($_.CorrelationFilter -ne $null)
                   {
-                    "ContentType: " +  $_.CorrelationFilter.ContentType + "`n" +
-                    "MessageId: " + $_.CorrelationFilter.MessageId + "`n" +
-                    "To: " + $_.CorrelationFilter.To + "`n" +
-                    "ReplyTo: " + $_.CorrelationFilter.ReplyTo + "`n" +
-                    "Label: " +  $_.CorrelationFilter.Label + "`n" +
-                    "SessionId: " +  $_.CorrelationFilter.SessionId + "`n" +
-                    "ReplyToSessionId: " +  $_.CorrelationFilter.ReplyToSessionId + "`n" +
-                    "CorrelationId: " +  $_.CorrelationFilter.CorrelationId
+                  if ($_.CorrelationFilter.Properties -ne $null -and $_.CorrelationFilter.Properties.Count -ne 0) { $results = $results + "Properties: " + $results +  $_.CorrelationFilter.Properties.Keys.ForEach({"$_ $($_.CorrelationFilter.Properties.$_) `n "}) + "`n" }
+                  if ($_.CorrelationFilter.ContentType -ne $null){$results = $results + "ContentType: " +  $_.CorrelationFilter.ContentType + "`n" }
+                  if ($_.CorrelationFilterMessageId -ne $null){$results = $results + "MessageId: " + $_.CorrelationFilter.MessageId + "`n"}
+                  if ($_.CorrelationFilter.To -ne $null){$results = $results + "To: " + $_.CorrelationFilter.To + "`n" }
+                  if ($_.CorrelationFilter.ReplyTo -ne $null){$results = $results + "ReplyTo: " + $_.CorrelationFilter.ReplyTo + "`n"}
+                  if ($_.CorrelationFilter.Label -ne $null){$results = $results + "Label: " +  $_.CorrelationFilter.Label + "`n"}
+                  if ($_.CorrelationFilter.SessionId -ne $null){$results = $results + "SessionId: " +  $_.CorrelationFilter.SessionId + "`n" }
+                  if ($_.CorrelationFilter.ReplyToSessionId -ne $null){$results = $results + "ReplyToSessionId: " +  $_.CorrelationFilter.ReplyToSessionId + "`n" }
+                  if ($_.CorrelationFilter.CorrelationId -ne $null){$results = $results + "CorrelationId: " +  $_.CorrelationFilter.CorrelationId}
+
+                  $results
                   }
                 </ScriptBlock>
               </ListItem>

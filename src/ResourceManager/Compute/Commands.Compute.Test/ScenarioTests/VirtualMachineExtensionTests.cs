@@ -82,6 +82,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionExtensionSinglePass()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AzureDiskEncryptionExtensionSinglePass");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBginfoExtension()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBginfoExtension");

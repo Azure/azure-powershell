@@ -238,7 +238,7 @@ The certificate must be previously deployed to the virtual machine local compute
 ```yaml
 Type: String
 Parameter Sets: AADClientCertParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -252,8 +252,13 @@ Specifies the client ID of the Azure AD application that has permissions to writ
 
 ```yaml
 Type: String
+<<<<<<< HEAD
 Parameter Sets: AADClientCertParameterSet, AADClientSecretParameterSet
 Aliases: 
+=======
+Parameter Sets: (All)
+Aliases:
+>>>>>>> upstream/preview
 
 Required: True
 Position: 2
@@ -268,7 +273,7 @@ Specifies the client secret of the Azure AD application that has permissions to 
 ```yaml
 Type: String
 Parameter Sets: AADClientSecretParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -298,7 +303,7 @@ Indicates that this cmdlet disables auto-upgrade of the minor version of the ext
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 14
@@ -313,7 +318,7 @@ Specifies the resource ID of the **KeyVault** to which the virtual machine encry
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 5
@@ -328,7 +333,7 @@ Specifies the **KeyVault** URL to which the virtual machine encryption keys shou
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -343,7 +348,7 @@ Encrypt-Format all data drives that are not already encrypted
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -358,7 +363,7 @@ The extension publisher name. Specify this parameter only to override the defaul
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -373,7 +378,7 @@ The extension type. Specify this parameter to override its default value of "Azu
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -388,7 +393,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -404,7 +409,7 @@ The default value is RSA-OAEP.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: RSA-OAEP, RSA1_5
 
 Required: False
@@ -421,7 +426,7 @@ This must be the full versioned URL.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -437,7 +442,7 @@ This must be a full versioned URL.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -469,7 +474,7 @@ This parameter is not used for virtual machines that run the Windows operating s
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 13
@@ -484,7 +489,7 @@ Specifies the name of the resource group of the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -501,7 +506,7 @@ The Get-AzureRmVMExtension cmdlet can be used to retrieve the previous sequence 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 10
@@ -516,7 +521,7 @@ Skip backup creation for Linux VMs
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 15
@@ -563,7 +568,7 @@ The allowed values for Linux virtual machines are as follows: Data only.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: OS, Data, All
 
 Required: False

@@ -196,6 +196,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parameter Clean is deprecated. This parameter will be removed in future releases..
+        /// </summary>
+        internal static string IncorrectCleanWarning {
+            get {
+                return ResourceManager.GetString("IncorrectCleanWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter ConcurrentFileCount is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead..
+        /// </summary>
+        internal static string IncorrectConcurrentFileCountWarning {
+            get {
+                return ResourceManager.GetString("IncorrectConcurrentFileCountWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key Vault key rotation is only supported for User Managed encryption. Current account has Service Managed encryption..
         /// </summary>
         internal static string IncorrectEncryptionTypeForUpdate {
@@ -210,6 +228,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         internal static string IncorrectOutputTypeWarning {
             get {
                 return ResourceManager.GetString("IncorrectOutputTypeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter PerFileThreadCount is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead..
+        /// </summary>
+        internal static string IncorrectPerFileThreadCountWarning {
+            get {
+                return ResourceManager.GetString("IncorrectPerFileThreadCountWarning", resourceCulture);
             }
         }
         
