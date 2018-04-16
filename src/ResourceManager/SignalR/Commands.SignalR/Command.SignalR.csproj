@@ -16,6 +16,7 @@
   <ItemGroup>
     <Compile Include="Cmdlets\NewAzureRmSignalR.cs" />
     <Compile Include="Models\PSResource.cs" />
+    <Compile Include="Models\PSResourceSku.cs" />
     <Compile Include="Models\PSSignalRResource.cs" />
     <Compile Include="Models\PSTrackedResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

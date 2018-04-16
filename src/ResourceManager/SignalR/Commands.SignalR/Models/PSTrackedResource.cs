@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SignalR.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
@@ -22,12 +23,11 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public IDictionary<string, string> Tags { get; }
 
-        public PSTrackedResource(
-            string id, string name, string type, string location, IDictionary<string, string> tags)
-            : base(id: id, name: name, type: type)
+        public PSTrackedResource(TrackedResource trackedResource)
+            : base(trackedResource)
         {
-            Location = location;
-            Tags = tags;
+            Location = trackedResource.Location;
+            Tags = trackedResource.Tags;
         }
     }
 }

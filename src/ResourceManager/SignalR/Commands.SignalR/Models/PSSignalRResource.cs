@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.SignalR.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
@@ -26,34 +27,22 @@ namespace Microsoft.Azure.Commands.SignalR.Models
 
         public string ProvisioningState { get; }
 
-        public string PublicPort { get; }
+        public int? PublicPort { get; }
 
-        public string ServerPort { get; }
+        public int? ServerPort { get; }
 
-        public string Sku { get; }
+        public PSResourceSku Sku { get; }
 
-        public PSSignalRResource(
-            string id,
-            string name,
-            string type,
-            string location,
-            IDictionary<string, string> tags,
-            string externalIp,
-            string hostName,
-            string hostNamePrefix,
-            string provisioningState,
-            string publicPort,
-            string serverPort,
-            string sku)
-            : base(id: id, name: name, type: type, location: location, tags: tags)
+        public PSSignalRResource(SignalRResource signalRResource)
+            : base(signalRResource)
         {
-            ExternalIp = externalIp;
-            HostName = HostName;
-            HostNamePrefix = hostNamePrefix;
-            ProvisioningState = provisioningState;
-            PublicPort = publicPort;
-            ServerPort = serverPort;
-            Sku = Sku;
+            ExternalIp = signalRResource.ExternalIP;
+            HostName = signalRResource.HostName;
+            HostNamePrefix = signalRResource.HostNamePrefix;
+            ProvisioningState = signalRResource.ProvisioningState;
+            PublicPort = signalRResource.PublicPort;
+            ServerPort = signalRResource.ServerPort;
+            Sku = new PSResourceSku(signalRResource.Sku);
         }
     }
 }
