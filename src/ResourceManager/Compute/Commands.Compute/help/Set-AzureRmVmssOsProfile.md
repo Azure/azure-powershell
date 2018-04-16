@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 3E7B9EFA-8BC2-46EB-9AD7-43EAB7FF3891
@@ -45,7 +45,7 @@ You can use the Add-AzureRmVMAdditionalUnattendContent to create the object.
 ```yaml
 Type: AdditionalUnattendContent[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -60,7 +60,7 @@ Specifies the administrator password to use for all the virtual machine instance
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -75,7 +75,7 @@ Specifies the administrator account name to use for all the virtual machine inst
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -91,7 +91,7 @@ Computer names must be 1 to 15 characters long.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -108,7 +108,7 @@ The maximum length of the binary array is 65535 bytes.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -138,7 +138,7 @@ Indicates that this cmdlet disables password authentication.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 10
@@ -155,7 +155,7 @@ You can use the Add-AzureRmVmssWinRMListener cmdlet to create the listener.
 ```yaml
 Type: WinRMListener[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 9
@@ -171,7 +171,7 @@ You can use the Add-AzureRmVMSshPublicKey cmdlet to create the object.
 ```yaml
 Type: SshPublicKey[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 11
@@ -187,7 +187,7 @@ You can use the Add-AzureRmVmssSecret cmdlet to create the secrets object.
 ```yaml
 Type: VaultSecretGroup[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 12
@@ -202,7 +202,7 @@ Specifies the time zone for the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -218,7 +218,7 @@ You can use the New-AzureRmVmssConfig cmdlet to create the object.
 ```yaml
 Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -233,7 +233,7 @@ Indicates whether the virtual machines in the VMSS are enabled for automatic upd
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -248,7 +248,7 @@ Indicates whether virtual machine agent should be provisioned on the virtual mac
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5

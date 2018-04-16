@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             Hashtable SettingString = GetExtensionPublicSettings();
             Hashtable ProtectedSettingString = GetExtensionProtectedSettings();
-            
+
             VirtualMachineScaleSetExtension vmssExtensionParameters = null;
 
             if (OperatingSystemTypes.Windows.Equals(this.CurrentOSType))
@@ -229,6 +229,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
+                WriteWarning("Set-AzureRmVmssDiskEncrpytionExtension: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
+                             "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
+
                 if (this.ShouldProcess(VMScaleSetName, Properties.Resources.EnableDiskEncryptionAction)
                 && (this.Force.IsPresent ||
                 this.ShouldContinue(Properties.Resources.EnableAzureDiskEncryptionConfirmation, Properties.Resources.EnableAzureDiskEncryptionCaption))) // Change this.

@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Management.Storage;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -89,7 +90,11 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 url = url + "/";
             }
 
+#if NETSTANDARD
+            url = url + "subscriptions/" + (client.SubscriptionId != null ? client.SubscriptionId.Trim() : "");
+#else
             url = url + "subscriptions/" + (client.Credentials.SubscriptionId != null ? client.Credentials.SubscriptionId.Trim() : "");
+#endif
             url = url + "/resourceGroups/" + resourceGroupName;
             url = url + "/providers/Microsoft.ClassicStorage/storageAccounts/" + storageAccountName;
             url = url + "/listKeys?api-version=2014-06-01";
@@ -123,8 +128,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             Microsoft.Azure.Management.Storage.StorageManagementClient storageClient = GetCurrentStorageV2Client(Context);
             var r = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
+#if NETSTANDARD
+            string k1 = r.Keys[0].Value;
+            string k2 = r.Keys[1].Value;
+#else
             string k1 = r.StorageAccountKeys.Key1;
             string k2 = r.StorageAccountKeys.Key2;
+#endif
             Dictionary<StorageKeyKind, String> result = new Dictionary<StorageKeyKind, String>();
             result.Add(StorageKeyKind.Primary, k1);
             result.Add(StorageKeyKind.Secondary, k2);
@@ -204,7 +214,11 @@ namespace Microsoft.Azure.Commands.Sql.Common
         {
             if (StorageV2Client == null)
             {
+#if NETSTANDARD
+                StorageV2Client = AzureSession.Instance.ClientFactory.CreateArmClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+#else
                 StorageV2Client = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+#endif
             }
             return StorageV2Client;
         }
