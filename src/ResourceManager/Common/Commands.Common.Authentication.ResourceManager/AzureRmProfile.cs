@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         /// <summary>
-        /// Set the contaienr to its defautl state
+        /// Set the container to its default state
         /// </summary>
         public void Clear()
         {
@@ -566,6 +566,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public bool TryCopyProfile(AzureRmProfile other)
         {
+            this.DefaultContextKey = other.DefaultContextKey;
             this.Clear();
             foreach (var environment in other.EnvironmentTable.Where((e) => !AzureEnvironment.PublicEnvironments.ContainsKey(e.Key)))
             {
