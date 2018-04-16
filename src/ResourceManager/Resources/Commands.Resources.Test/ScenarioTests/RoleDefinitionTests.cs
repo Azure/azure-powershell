@@ -93,13 +93,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RDGetAtScopeFilterRoles()
-        {
-            ResourcesController.NewInstance.RunPsTest("Test-RDGetAtScopeFilterRoles");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDDataActionsNegativeTestCases()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RDDataActionsNegativeTestCases");
