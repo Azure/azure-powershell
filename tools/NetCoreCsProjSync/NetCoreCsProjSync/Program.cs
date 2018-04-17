@@ -33,7 +33,7 @@ namespace NetCoreCsProjSync
         {
             { Validate, ValidateCsProjFiles },
             { Create, CreateCsProjFiles },
-            { TestProj, TestCsProjfiles }
+            { TestProj, TestCsProjFiles }
         };
 
         public static void Main(string[] args)
@@ -48,7 +48,42 @@ namespace NetCoreCsProjSync
             ModeMap[mode](rmPath);
         }
 
-        private static void TestCsProjfiles(string srcPath)
+        private static readonly List<string> ReferenceSkipList = new List<string>
+        {
+            "Hyak.Common",
+            "Microsoft.Azure.Common",
+            "Microsoft.Azure.Common.NetFramework",
+            "Microsoft.Azure.Gallery",
+            "Microsoft.Azure.Management.Authorization",
+            "Microsoft.Azure.Management.ResourceManager",
+            "Microsoft.Azure.ResourceManager",
+            "Microsoft.Azure.Test.Framework",
+            "Microsoft.Azure.Test.HttpRecorder",
+            "Microsoft.IdentityModel.Clients.ActiveDirectory",
+            "Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms",
+            "Microsoft.Rest.ClientRuntime",
+            "Microsoft.Rest.ClientRuntime.Azure",
+            "Microsoft.Rest.ClientRuntime.Azure.Authentication",
+            "Microsoft.Rest.ClientRuntime.Azure.TestFramework",
+            "Microsoft.Threading.Tasks",
+            "Microsoft.Threading.Tasks.Extensions",
+            "Microsoft.Threading.Tasks.Extensions.Desktop",
+            "Microsoft.WindowsAzure.Management",
+            "Microsoft.Bcl.Build",
+            "Microsoft.Data.Edm",
+            "Microsoft.Data.OData",
+            "Microsoft.Data.Services.Client",
+            "Newtonsoft.Json",
+            "System.Net.Http.Extensions",
+            "System.Net.Http.Primitives",
+            "System.Spatial",
+            "xunit.abstractions",
+            "xunit.assert",
+            "xunit.core",
+            "xunit.execution.desktop"
+        };
+
+        private static void TestCsProjFiles(string srcPath)
         {
             //GetTestProjectFolderPaths(srcPath).ToList().ForEach(Console.WriteLine);
             var projectFolders = GetTestProjectFolderPaths(srcPath);
