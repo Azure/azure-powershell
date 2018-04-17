@@ -30,6 +30,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public const string IdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}";
 
         /// <summary>
+        /// Template to generate elastic pool id for the database
+        /// </summary>
+        public const string PoolIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/elasticPools/{3}";
+
+        /// <summary>
         /// Gets or sets the name of the resource group
         /// </summary>
         public string ResourceGroupName { get; set; }

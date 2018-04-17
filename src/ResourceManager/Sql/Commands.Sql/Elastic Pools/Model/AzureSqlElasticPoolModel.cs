@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public SqlDatabaseModel.DatabaseEdition? Edition { get; set; }
 
         /// <summary>
-        /// Gets or sets the Compute generation name of the elastic pool
+        /// Gets or sets the ServiceLelObjectName name of the elastic pool
         /// </summary>
-        public string ComputeGeneration { get; set; }
+        public string CurrentServiceLevelObjectiveName { get; set; }
 
         /// <summary>
         /// Gets or sets the Sku capacity of the elastic pool

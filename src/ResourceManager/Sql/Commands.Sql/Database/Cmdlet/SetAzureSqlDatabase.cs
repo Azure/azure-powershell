@@ -61,6 +61,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The edition to assign to the Azure SQL Database.",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The edition to assign to the Azure SQL Database.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public DatabaseEdition Edition { get; set; }
 
@@ -70,6 +73,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the service objective to assign to the Azure SQL Database.",
             ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = true,
+            HelpMessage = "The name of the service objective to assign to the Azure SQL Database.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public string RequestedServiceObjectiveName { get; set; }
 
@@ -142,20 +148,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public int Vcore { get; set; }
 
         /// <summary>
-        /// Gets or sets the Vcore service tier for the Azure Sql database.
-        /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
-            HelpMessage = "The Vcore service tier for the Azure Sql database. e.g. 'GeneralPurpose', 'BusinessCritical'.")]
-        public string VcoreTier { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Compute generation for the Azure Sql database.
-        /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
-            HelpMessage = "The compute generation for the Azure Sql Database. e.g. 'GP_Gen4', 'BC_Gen4'.")]
-        public string ComputeGeneration { get; set; }
-
-        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -206,7 +198,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     newDbModel.Sku = new Management.Sql.Models.Sku()
                     {
                         Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition.ToString() : RequestedServiceObjectiveName,
-                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null
+                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null,
+                        Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : (int?)null
                     };
                 }
 
@@ -230,11 +223,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                             : null
                 };
 
-                string skuName = string.Format("{0}_{1}", ComputeGeneration, Vcore);
+                string skuName = string.Format("{0}_{1}", RequestedServiceObjectiveName, Vcore);
+
                 newDbModel.Sku = new Management.Sql.Models.Sku()
                 {
                     Name = skuName,
-                    Tier = VcoreTier,
+                    Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null,
                     Capacity = Vcore
                 };
 

@@ -58,11 +58,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string CopyLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the Id of the Elastic Pool the database is in
-        /// </summary>
-        public string ElasticPoolId { get; set; }
-
-        /// <summary>
         /// Gets or sets the requested Sku for the copy
         /// </summary>
         public Sku Sku { get; set; }

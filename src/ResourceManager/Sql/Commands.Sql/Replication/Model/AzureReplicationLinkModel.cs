@@ -53,11 +53,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string SecondaryElasticPoolName { get; set; }
 
         /// <summary>
-        /// Gets or sets the Id of the Elastic Pool the partner is in
-        /// </summary>
-        public string SecondaryElasticPoolId { get; set; }
-
-        /// <summary>
         /// Gets or sets the id of the replication link
         /// </summary>
         public Guid LinkId { get; set; }

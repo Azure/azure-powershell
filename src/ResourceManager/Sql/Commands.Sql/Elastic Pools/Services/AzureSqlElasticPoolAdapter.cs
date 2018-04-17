@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Sku = pool.Sku,
                 PerDatabaseSettings = pool.PerDatabaseSettings,
                 Capacity = pool.Sku.Capacity,
-                ComputeGeneration = pool.Sku.Name,
+                CurrentServiceLevelObjectiveName = pool.Sku.Name,
                 MinCapacity = pool.PerDatabaseSettings.MinCapacity,
                 MaxCapacity = pool.PerDatabaseSettings.MaxCapacity
             };
