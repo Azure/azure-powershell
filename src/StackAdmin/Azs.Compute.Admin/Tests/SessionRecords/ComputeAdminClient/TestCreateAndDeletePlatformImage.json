@@ -1,0 +1,1288 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "182"
+        ],
+        "x-ms-client-request-id": [
+          "bfffbef6-2bde-491d-ba78-58bab9e9ba87"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:22 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvnRKVaLECJJbjvntCSxgpWlkxZrU2zZy+anwusuNt53SSosyz550xWSti7uyczglxPHFnh53R57zjT1fpYAXBp4NeSFnKANcdLFFc+QS2/gdZJCg+jwUU7fFtRHkRJu8FenuDEW4NWWH8QAP+tK2S"
+        ],
+        "x-ms-correlation-request-id": [
+          "8971d697-64b0-4817-ab52-691d6ea4efc5"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1181"
+        ],
+        "x-ms-request-id": [
+          "8971d697-64b0-4817-ab52-691d6ea4efc5"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195423Z:8971d697-64b0-4817-ab52-691d6ea4efc5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aa700115-6e71-40a3-8c04-c51796138739"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:23 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvgi+v1+zwFhhurynzjhLvqMK3lSiEKPzoIuarCLUmPJTRGEHmz1WKt9CILoYKGUZx1Kvx0DNoEES2W+gvXbWvu1hcFs7LtmEITannGbqGDnqjW8hB8rpwtZk091I8KYaoEivzk6NFi+7V6nN8rTG4"
+        ],
+        "x-ms-correlation-request-id": [
+          "f30437e8-73d6-4aab-93de-a6eb6bb9a7ea"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14818"
+        ],
+        "x-ms-request-id": [
+          "f30437e8-73d6-4aab-93de-a6eb6bb9a7ea"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195423Z:f30437e8-73d6-4aab-93de-a6eb6bb9a7ea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0efdadc7-82b5-4471-9c38-681d916916ed"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:53 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvCvmGsSk/EtgebL6CWtdS/lisdoqabYGunsd/3elBGhXHxLMEOUZOdNl8jH1kfSHj34xBIUPnAPTUlL80wVh8BEkCWEHXvwoTXdCzzEQVpYkQ/iN5lWzDOP1boI7dv2zb6qOuJjLVRYSJjbr5C1Gy"
+        ],
+        "x-ms-correlation-request-id": [
+          "ca090527-2c81-4b00-a4da-8fc9ab22990f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14816"
+        ],
+        "x-ms-request-id": [
+          "ca090527-2c81-4b00-a4da-8fc9ab22990f"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195453Z:ca090527-2c81-4b00-a4da-8fc9ab22990f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "18d9e245-6355-4c81-a29d-1f423eaac52d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:55:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvp9MnmnCUz3U/LRwpLIBv38RFaEshqTn1zGKAxv06OGVDX7acYpvLDIv8BjcvVEtGrmXKC4Qonfp86JWc3SsfGBOhNEgswEMSTqwErP65WJUJAotmVJtZ24mzXjL3c9QLom1djYKYot/t7mcX1q+M"
+        ],
+        "x-ms-correlation-request-id": [
+          "d5444110-8918-4b4b-8aac-d5afaaad1e08"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14826"
+        ],
+        "x-ms-request-id": [
+          "d5444110-8918-4b4b-8aac-d5afaaad1e08"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195524Z:d5444110-8918-4b4b-8aac-d5afaaad1e08"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e3813058-062d-41bb-807b-a5f503ef0dcc"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:55:54 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvNfbpBQAhSmBZptRNOV1AgceGuvuGvSeFhJq5RjRsGfzlVxsDeOn+F8oQHh9QohJJfiuhoCBH8Bortmcq474FJMKAkj65q8mJQ2C6j76Rod4Cfm51HCSFK+laU0ilhYVo4wQCsCm30AL3glXVA1ik"
+        ],
+        "x-ms-correlation-request-id": [
+          "14acb47a-a15a-42e6-b917-16b58769089a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14824"
+        ],
+        "x-ms-request-id": [
+          "14acb47a-a15a-42e6-b917-16b58769089a"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195554Z:14acb47a-a15a-42e6-b917-16b58769089a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0eb542f2-5f27-4766-812e-914eda69dbcf"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:56:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv/G87arj8vkkcBRzky9Ci/K8F9TtB6rhqNGS6PTPNPali/fxc87HOHg8eCKFN4p3Zix1f4YcMs51dx/sQQK4GWdadm7/W+V1661klljpM0yrFCxJnZuXuAENaK3WDTHpl0qJ+mX/pCZBbPB7Qfldf"
+        ],
+        "x-ms-correlation-request-id": [
+          "ead407ec-f7eb-4fd4-aa72-7df0e23298a8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14819"
+        ],
+        "x-ms-request-id": [
+          "ead407ec-f7eb-4fd4-aa72-7df0e23298a8"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195624Z:ead407ec-f7eb-4fd4-aa72-7df0e23298a8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2c8368fb-4286-4d2b-8b40-8d24e9f898a1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:56:54 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv5+v5zx/cKgSc0W2H89nD22nUIKbHr6tAPmRmHoFzsLlIbR+VKmH2t2Rd9Y3NY2xW/Pxtnm6Px/M0Ns4FbSxjLVwBj80Lf1+R8/82dhOT5jTvtdcx26Ib5OcB1DE0jXbD5YLQagKXhqTIrtibUohZ"
+        ],
+        "x-ms-correlation-request-id": [
+          "aac1777f-0afe-4425-ae2c-95749bdc293a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14816"
+        ],
+        "x-ms-request-id": [
+          "aac1777f-0afe-4425-ae2c-95749bdc293a"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195654Z:aac1777f-0afe-4425-ae2c-95749bdc293a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9a56a74c-91a7-44fc-be8d-652fe676d97a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:57:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvX2dbqESfbNH39ciwvKiA3vhDx63obQiWDP2D0fET/ngLHa82D5cG8w+zsWf0ZvUDv7M+klVfcG2E5QYzuku7DWD/B04NnFcQfrZldmJ/6SQVK+wnZzp/oh+ASITfbHpO33aIrpbhP+WOOMjQguIi"
+        ],
+        "x-ms-correlation-request-id": [
+          "da142dff-82f3-43a9-b446-333c5053167a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14812"
+        ],
+        "x-ms-request-id": [
+          "da142dff-82f3-43a9-b446-333c5053167a"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195724Z:da142dff-82f3-43a9-b446-333c5053167a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6635ea80-4120-4bae-a9a5-2bc776f7e612"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:57:54 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvm3sGpT8ycTZuPYaqxRVqOuwmDMN9DK5ReYve/r2HPhP4NietTrnniokcYmGhm2pb5ZxgDxWgWfqQtMySBz1iryL8vtZXEVMzkbYoA/vY8539JQTEjo2eDNNLh7ndoNtBHF335/BKUqVUq5PjknHf"
+        ],
+        "x-ms-correlation-request-id": [
+          "ee109968-eedc-4a98-bf4c-b7cd7fcd2bcc"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14810"
+        ],
+        "x-ms-request-id": [
+          "ee109968-eedc-4a98-bf4c-b7cd7fcd2bcc"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195754Z:ee109968-eedc-4a98-bf4c-b7cd7fcd2bcc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "00f900db-00f1-4c3d-a0e1-221efad5df9e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:58:24 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvoxAP0wSDPZkxnwQXZfXdz0IsyFLPN6E4Xhn5L5IIcx5H+wSqxoEUX3OCusrAIK6wTHgV5lcvef95i+r5SxFwKyLqD9AemSmmc5/iSgLufnuYRkMLNFbx4cEztaHAb8tPPYShI+netCqlpfAoLwd9"
+        ],
+        "x-ms-correlation-request-id": [
+          "a6463611-29e1-488f-8519-2a009e4eb92a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14809"
+        ],
+        "x-ms-request-id": [
+          "a6463611-29e1-488f-8519-2a009e4eb92a"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195824Z:a6463611-29e1-488f-8519-2a009e4eb92a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e8279717-586c-4e50-9056-553d5cc7a7f0"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:58:54 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvlqw90YxaHZfJT6g4OZNnMEKS8YSHEG2leVIAWw2QHRNrnuRNEw4S7ERC2HCuhBnY7zGK9RWbNEp2fpcOfqdt3B6B7Ag2d6vpJTLWdATjXwuyPcQZla4dVYat5NeECvfy9BbxiRFjhPz9I7hkAhEh"
+        ],
+        "x-ms-correlation-request-id": [
+          "050b0d42-73a6-49f0-ae73-b31c4eb7188c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14807"
+        ],
+        "x-ms-request-id": [
+          "050b0d42-73a6-49f0-ae73-b31c4eb7188c"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195854Z:050b0d42-73a6-49f0-ae73-b31c4eb7188c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cd2880a9-98b4-4fe0-96f5-56dda7558cfa"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:59:25 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvFzTHItHzi8dOxKawxXHo6GBTR9hDASA+nL0u4KYFS89DuU8FE1TvSTG12pgBFgFTyzSQlmPaqsyEfNhY+DrFSc2VIaagMWZ9c03cnsczVlE79q4Vj59Vvp2DT71813uw6V5DZWB4RRT7sJdRnppS"
+        ],
+        "x-ms-correlation-request-id": [
+          "1b6861a5-33a7-4942-964c-8aad8dfea33a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14805"
+        ],
+        "x-ms-request-id": [
+          "1b6861a5-33a7-4942-964c-8aad8dfea33a"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195925Z:1b6861a5-33a7-4942-964c-8aad8dfea33a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "686b5d93-8368-4b10-95a7-a1f640b19e82"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:59:55 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvjJQ3mf6Ef4uBzsnh275ebEvNTc5i++/dgJFtanJeBC7LYczopQf+ERT3DIVzIMPK/9Kg1R6mb0pzs/X4GTjIG6mfAftQ4SPcseqySUA9zjIRNVOc8bjhEcUrE0fx90KPXOIQFdGxAARIxLF7CzLr"
+        ],
+        "x-ms-correlation-request-id": [
+          "c1ad80df-b93d-43f5-9423-e075a880dfb5"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14803"
+        ],
+        "x-ms-request-id": [
+          "c1ad80df-b93d-43f5-9423-e075a880dfb5"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195955Z:c1ad80df-b93d-43f5-9423-e075a880dfb5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "96ec8c24-1b8c-4f0a-9ce8-56fec940d270"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 20:00:25 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvk8ZvqwjczRDoUTVPvtilIdsbIiTHSImTvmWLXDKG5vgzLT1peR4gGaHjQhPP4olvLxz1R4uYqPY+q8sUOf4SvHirk5ZgV0Q4Xf0UQrzUmKFSPf79dmf8hIxSRObTgGytr5jklK7RiFWATeSHcghr"
+        ],
+        "x-ms-correlation-request-id": [
+          "33f7dfbe-696d-4361-8c7c-a374990b917e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14813"
+        ],
+        "x-ms-request-id": [
+          "33f7dfbe-696d-4361-8c7c-a374990b917e"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T200025Z:33f7dfbe-696d-4361-8c7c-a374990b917e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1efd23ed-4a28-4775-a310-b99d3a2c4af1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 20:00:55 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvMzJ56ddiWFWyt+ycNLs777YO5CcV/3cubU9y0PU+ccDu2sNySIEMMX/IibelSyjCPzrVH85UfoP/1JM//VuACXWiN6LA6e0qHxKe+tE0r2CPBwNO7sItqLfOMdvf3luLJRegJEkDI+6dQhT42GVb"
+        ],
+        "x-ms-correlation-request-id": [
+          "2ff751e2-0bbd-436b-8061-df15830acaad"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14811"
+        ],
+        "x-ms-request-id": [
+          "2ff751e2-0bbd-436b-8061-df15830acaad"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T200055Z:2ff751e2-0bbd-436b-8061-df15830acaad"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7bfcc0e2-9fac-4c5a-b9be-d121c5a21250"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "526"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 20:01:25 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvs4lPOMM+Ml1TizeVOVtZhosvzeL9Swoz4HsedMIz/apeOTtQd6ueugq9RObQq/YGqdqKI0kkfXi+Ho0mNjFhUiw/0FdxBYBgiy7z5yyMfzRXn7UiW/CKgjwzVzN9HbwP0Nuhg+vl5UdZEy/9EmLg"
+        ],
+        "x-ms-correlation-request-id": [
+          "27b38c89-abfd-4965-980b-dc31a0a521a8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14806"
+        ],
+        "x-ms-request-id": [
+          "27b38c89-abfd-4965-980b-dc31a0a521a8"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T200125Z:27b38c89-abfd-4965-980b-dc31a0a521a8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3714b7c4-59a9-4312-8e74-c2857a63a82d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Creating\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "527"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 20:01:55 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv+DNua9f53/lRRYoy2EmmEq8WAgRDf7z/XzzQmY07sWE768Sm0xXaqz+rOj+xpEODwNhQ2OxlrC5HEzX3GlGcdzT2TfUAlYvqH3SPO/qiiHT+/aC9ZAjme7WpOh5unxLxRkoxmijfolAZqPJn+Mm9"
+        ],
+        "x-ms-correlation-request-id": [
+          "775170b2-5d7d-4a76-adda-70a6e78e0873"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14803"
+        ],
+        "x-ms-request-id": [
+          "775170b2-5d7d-4a76-adda-70a6e78e0873"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T200155Z:775170b2-5d7d-4a76-adda-70a6e78e0873"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7b2bbd8c-c6b2-41d7-ac6e-b029f75c1a23"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/publishers/offers/skus/versions\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"osDisk\": {\r\n      \"osType\": \"Linux\",\r\n      \"uri\": \"https://test.blob.local.azurestack.external/test/xenial-server-cloudimg-amd64-disk1.vhd\"\r\n    },\r\n    \"dataDisks\": null,\r\n    \"details\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "527"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 20:01:25 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv00VMXvyFtFb4XoaA6R7Mm+pXERiTCMwgAd+Mfy8+qWqpxZrNhbyMPBAI7FfnKdPR1G41lFWkZE2e+GjA2thFeRXc+sMGcQ/H2l0zgc+3+3p/ZJN2h7vsq14kn9nevwL+32t5ilQkM3nSbdCbQAZp"
+        ],
+        "x-ms-correlation-request-id": [
+          "2db6a3a9-37df-4f8a-9036-5e53560228fa"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14802"
+        ],
+        "x-ms-request-id": [
+          "2db6a3a9-37df-4f8a-9036-5e53560228fa"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T200156Z:2db6a3a9-37df-4f8a-9036-5e53560228fa"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e3760fc2-6f7c-4759-8256-3acb1ce170f6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 20:02:00 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvqcY7aS8kfHdvr5jicMybzK/Pv3tzlLv4P9Ht+3ZaXzOrYRE54MJKF6L/6TJzTgaS12s1biNacsBB+EhsK2lllQD/zeflAsGHlN5F0AJVLrSiomvAaxhhqQ/cInmZHiHGOt6oip+oF/j7mkSejCcC"
+        ],
+        "x-ms-correlation-request-id": [
+          "dde96f2e-e9f7-45bd-a0f4-84a0388f5148"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1180"
+        ],
+        "x-ms-request-id": [
+          "dde96f2e-e9f7-45bd-a0f4-84a0388f5148"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T200200Z:dde96f2e-e9f7-45bd-a0f4-84a0388f5148"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/platformImage/publishers/Microsoft/offers/UbuntuServer/skus/16.04-LTS/versions/1.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9wbGF0Zm9ybUltYWdlL3B1Ymxpc2hlcnMvTWljcm9zb2Z0L29mZmVycy9VYnVudHVTZXJ2ZXIvc2t1cy8xNi4wNC1MVFMvdmVyc2lvbnMvMS4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7594231d-4933-4b24-a2d6-9e62f31c645a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 20:02:05 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv5pz87mjyKx2ECL68hL5rUhwhoNYBZqTzBkp3+nBD5WStRMYEvrUmFheJU02f6iu9lNACElXa73IHy9shryiyBUEit2/QZgqC2GgoTKIcL9ekOYcheQD2Qjxa/JmTOOiBOBVX8XDulImAoxpJjqK7"
+        ],
+        "x-ms-correlation-request-id": [
+          "b1166b34-1a7c-480f-9094-cdd0bdbd2032"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14799"
+        ],
+        "x-ms-request-id": [
+          "b1166b34-1a7c-480f-9094-cdd0bdbd2032"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T200201Z:b1166b34-1a7c-480f-9094-cdd0bdbd2032"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 404
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0ff0bbbe-d68d-4314-8f68-80a808b5a6ec"
+  }
+}
