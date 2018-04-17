@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
 
@@ -29,36 +28,25 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         /// <param name="createAndStartTask"></param>
         public static void StartAndWait(
             this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
-            => new AsyncCmdlet(cmdlet).StartAndWait(createAndStartTask);
+            => new CmdletWrap(cmdlet).StartAndWait(createAndStartTask);
 
-        sealed class AsyncCmdlet : IAsyncCmdlet
+        sealed class CmdletWrap : ICmdlet
         {
-            public SyncTaskScheduler Scheduler { get; } = new SyncTaskScheduler();
-
             readonly Cmdlet _Cmdlet;
 
-            public List<ITaskProgress> TaskProgressList { get; } 
-                = new List<ITaskProgress>();
-
-            IEnumerable<ITaskProgress> IAsyncCmdlet.TaskProgressList
-                => TaskProgressList;
-
-            public AsyncCmdlet(Cmdlet cmdlet)
+            public CmdletWrap(Cmdlet cmdlet)
             {
                 _Cmdlet = cmdlet;
             }
 
             public void WriteVerbose(string message)
-                => Scheduler.BeginInvoke(() => _Cmdlet.WriteVerbose(message));
+                => _Cmdlet.WriteVerbose(message);
 
-            public Task<bool> ShouldProcessAsync(string target, string action)
-                => Scheduler.Invoke(() => _Cmdlet.ShouldProcess(target, action));
+            public bool ShouldProcess(string target, string action)
+                => _Cmdlet.ShouldProcess(target, action);
 
             public void WriteObject(object value)
-                => Scheduler.BeginInvoke(() => _Cmdlet.WriteObject(value));
-
-            public void ReportTaskProgress(ITaskProgress taskProgress)
-                => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
+                => _Cmdlet.WriteObject(value);
 
             public void WriteProgress(
                 string activity, string statusDescription, string currentOperation, int percentComplete)
