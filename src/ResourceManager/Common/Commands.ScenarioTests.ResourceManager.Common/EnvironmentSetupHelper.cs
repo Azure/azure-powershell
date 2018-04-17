@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private AzureAccount testAccount;
 
-        private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
+        private static string PackageDirectoryFromCommon { get; } = GetConfigDirectory();
 
         public static string PackageDirectory { get; }  = GetConfigDirectory();
         public static string StackDirectory { get; }  = GetConfigDirectory("Stack");
@@ -184,7 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 directoryPath = Path.Combine(directoryPath, "..");
             }
 
-            string result = Directory.Exists(directoryPath) ? Path.Combine(directoryPath, "src") : null;
+            string result = Directory.Exists(directoryPath) ? Path.GetFullPath(Path.Combine(directoryPath, "src")) : null;
             return result;
         }
 
@@ -198,6 +198,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 if (Directory.Exists(baseDirectory))
                 {
                     result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault();
+                    if (result != null)
+                    {
+                        result = Path.GetFullPath(result);
+                    }
                 }
             }
 
