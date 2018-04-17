@@ -237,23 +237,24 @@ function Get-ClientModules {
 
         $packageFolder, $resourceManagerRootFolder = Get-Directories -BuildConfig $BuildConfig -Scope $Scope
 
+        $NetSuffix = "";
+        if ($IsNetCore) {
+            $NetSuffix = ".Netcore"
+        }
+
         # Everyone but Storage
         $AllScopes = @('Stack','All', 'Latest')
         if ($Scope -in $AllScopes -or $PublishLocal) {
-            if ($IsNetCore) {
-                $targets += "$resourceManagerRootFolder\AzureRM.Profile.Netcore"
-            } else {
-                $targets += "$resourceManagerRootFolder\AzureRM.Profile"
-            }
+            $targets += "$resourceManagerRootFolder\AzureRM.Profile$NetSuffix"
         }
 
-        # Azure non-resource modules not using NetCore
-        if (-not $IsNetCore) {
-            $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage')
-            if ($Scope -in $StorageScopes) {
-                $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
-            }
+        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage')
+        if ($Scope -in $StorageScopes) {
+            $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage$NetSuffix"
+        }
 
+        # Handle things which don't support netcore yet.
+        if (-not $IsNetCore) {
             $ServiceScopes = @('All', 'Latest', 'ServiceManagement')
             if ($Scope -in $ServiceScopes) {
                 $targets += "$packageFolder\$buildConfig\ServiceManagement\Azure"
@@ -271,7 +272,7 @@ function Get-ClientModules {
             }
 
             # We should ignore these, they are handled separatly.
-            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'AzureRM.Profile.Netcore')
+            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'AzureRM.Profile.Netcore', 'AzureRM.Storage.Netcore')
 
             # Add all modules for AzureRM for Azure
             foreach ($module in $resourceManagerModules) {

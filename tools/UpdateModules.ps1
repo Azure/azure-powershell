@@ -110,10 +110,6 @@ function New-ModulePsm1 {
             $template = $template -replace "%PSVersionDeprecationMessage%", ""
         }
 
-        # Handle nested modules
-        $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -IsRMModule:$IsRMModule
-        $template = $template -replace "%COMPLETERCOMMANDS%", $completerCommands
-
         # Handle
         $contructedCommands = Find-DefaultResourceGroupCmdlets -IsRMModule:$IsRMModule -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
         $template = $template -replace "%DEFAULTRGCOMMANDS%", $contructedCommands
@@ -151,65 +147,6 @@ function Get-Cmdlets {
         $cmdlets += $dllCmdlets
     }
     return $cmdlets
-}
-
-<#
-.SYNOPSIS
-    Construct completer attributes for nested modules in resource management modules.
-
-.PARAMETER ModuleMetadata
-    Module metadata for the current module.
-
-.PARAMETER ModulePath
-    Path to the current module.
-
-.PARAMETER IsRMModule
-    Specifies if resource management module.
-
-#>
-function Find-CompleterAttribute {
-    [CmdletBinding()]
-    param(
-        [Hashtable]$ModuleMetadata,
-        [string]$ModulePath,
-        [switch]$IsRMModule
-    )
-    PROCESS {
-        # Only add for resource management modules.
-        $constructedCommands = "@("
-
-        if ($IsRMModule) {
-            $AllCmdlets = Get-Cmdlets -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
-
-            foreach ($currentCmdlet in $AllCmdlets) {
-                $parameters = $currentCmdlet.GetProperties()
-                foreach ($parameter in $parameters) {
-                    $completerAttribute = $parameter.CustomAttributes | Where-Object {$_.AttributeType.BaseType.Name -eq "PSCompleterBaseAttribute"}
-                    if ($completerAttribute -ne $null) {
-                        $attributeTypeName = "System.Management.Automation.CmdletAttribute"
-                        $constructedCommands += "@{'Command' = '" + $currentCmdlet.GetCustomAttributes($attributeTypeName).VerbName + "-" + $currentCmdlet.GetCustomAttributes($attributeTypeName).NounName + "'; "
-                        $constructedCommands += "'Parameter' = '" + $parameter.Name + "'; "
-                        $constructedCommands += "'AttributeType' = '" + $completerAttribute.AttributeType + "'; "
-                        $constructedCommands += "'ArgumentList' = @("
-                        $completerAttribute.ConstructorArguments.Value | ForEach-Object {
-                            $constructedCommands += "'" + $_.Value + "',"
-                        }
-
-                        # Remove trailing comma
-                        $constructedCommands = $constructedCommands -replace ",$", ""
-
-                        # Close
-                        $constructedCommands += ")},"
-                    }
-                }
-            }
-            # Remove trailing comma
-            $constructedCommands = $constructedCommands -replace ",$", ""
-        }
-
-        $constructedCommands += ")"
-        return $constructedCommands
-    }
 }
 
 <#
@@ -413,7 +350,7 @@ function Update-Stack {
     Write-Host "Updated profile module"
     Write-Host " "
     
-    $modulePath = "$script:StackRMRoot\$buildConfig\Storage\Azure.Storage"
+    $modulePath = "$script:StackPackages\$buildConfig\Storage\Azure.Storage"
     Write-Host "Updating AzureStorage module from $modulePath"
     New-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule:$false
     Write-Host " "
@@ -441,6 +378,10 @@ function Update-Netcore {
     Write-Host "Updating profile module"
     New-ModulePsm1 -ModulePath "$script:AzureRMRoot\AzureRM.Profile.Netcore" -TemplatePath $script:TemplateLocation -IsRMModule
     Write-Host "Updated profile module"
+    
+    $storageModulePath = "$script:AzurePackages\$buildConfig\Storage\Azure.Storage.Netcore"
+    Write-Host "Updating AzureStorage module from $modulePath"
+    New-ModulePsm1 -ModulePath $storageModulePath -TemplatePath $script:TemplateLocation
 
     $env:PSModulePath += "$([IO.Path]::PathSeparator)$script:AzureRMRoot\AzureRM.Profile.Netcore";
 
