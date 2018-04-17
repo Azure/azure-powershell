@@ -217,20 +217,25 @@ function Test-VirtualNetworkCRUDWithDDoSProtection
         Assert-AreEqual $subnetName $expected.Subnets[0].Name
         Assert-AreEqual "10.0.1.0/24" $expected.Subnets[0].AddressPrefix
         Assert-AreEqual true $expected.EnableDDoSProtection
-        Assert-AreEqual $ddosProtectionPlan.Id $expected.DdosProtectionPlan
+        Assert-AreEqual $ddosProtectionPlan.Id $expected.DdosProtectionPlan.Id
         Assert-AreEqual false $expected.EnableVmProtection
 
-        $expected.EnableDDoSProtection=$false
+        $expected.EnableDDoSProtection = $false
+        $expected.DdosProtectionPlan = $null
         Set-AzureRmVirtualNetwork -VirtualNetwork $expected
         $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual false $expected.EnableDDoSProtection
         Assert-AreEqual false $expected.EnableVmProtection
+        Assert-AreEqual $null $expected.DdosProtectionPlan
 
-        $expected.EnableVmProtection=$true
+        $expected.EnableVmProtection = $true
+        $expected.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
+        $expected.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
         Set-AzureRmVirtualNetwork -VirtualNetwork $expected
         $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual false $expected.EnableDDoSProtection
         Assert-AreEqual true $expected.EnableVmProtection
+        Assert-AreEqual $ddosProtectionPlan.Id $expected.DdosProtectionPlan.Id
 
         # Delete the virtual network
 
