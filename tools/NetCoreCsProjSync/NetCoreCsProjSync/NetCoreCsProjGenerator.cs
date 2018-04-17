@@ -156,11 +156,11 @@ namespace NetCoreCsProjSync
             return version ?? (hasVersion ? oldReference.Include.Split(',')[1].Replace(versionToken, String.Empty) : null);
         }
 
-        public static NewPackageReference ConvertOldToNewPackageReference(OldReference oldReference)
+        public static NewPackageReference ConvertOldToNewPackageReference(OldReference oldReference, IEnumerable<string> skipList)
         {
             var version = GetVersionString(oldReference);
             var include = oldReference.Include.Split(',').First();
-            return version == null || include == "System.Management.Automation" ? null : new NewPackageReference { Include = include, Version = version };
+            return version == null || skipList.Contains(include) ? null : new NewPackageReference { Include = include, Version = version };
         }
 
         private static string ModifyOutputPath(string outputPath)
@@ -201,7 +201,7 @@ namespace NetCoreCsProjSync
         public static NewProjectDefinition ConvertOldToNewNetCore(OldProjectDefinition oldDefinition)
         {
             var oldReferences = oldDefinition.ItemGroups.Where(ig => ig.References?.Any() ?? false).SelectMany(ig => ig.References);
-            var newPackageReferences = oldReferences.Select(ConvertOldToNewPackageReference).Where(r => r != null).ToList();
+            var newPackageReferences = oldReferences.Select(or => ConvertOldToNewPackageReference(or, new []{ "System.Management.Automation" })).Where(r => r != null).ToList();
             var packageReferencesItemGroup = !newPackageReferences.Any() ? null : new NewItemGroup
             {
                 PackageReferences = newPackageReferences
@@ -323,6 +323,133 @@ namespace NetCoreCsProjSync
                             }
                         }
                     }
+                }
+            };
+        }
+
+        private static readonly List<string> TestReferenceSkipList = new List<string>
+        {
+            "Hyak.Common",
+            "Microsoft.Azure.Common",
+            "Microsoft.Azure.Common.NetFramework",
+            "Microsoft.Azure.Gallery",
+            "Microsoft.Azure.Management.Authorization",
+            "Microsoft.Azure.Management.ResourceManager",
+            "Microsoft.Azure.ResourceManager",
+            "Microsoft.Azure.Test.Framework",
+            "Microsoft.Azure.Test.HttpRecorder",
+            "Microsoft.IdentityModel.Clients.ActiveDirectory",
+            "Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms",
+            "Microsoft.Rest.ClientRuntime",
+            "Microsoft.Rest.ClientRuntime.Azure",
+            "Microsoft.Rest.ClientRuntime.Azure.Authentication",
+            "Microsoft.Rest.ClientRuntime.Azure.TestFramework",
+            "Microsoft.Threading.Tasks",
+            "Microsoft.Threading.Tasks.Extensions",
+            "Microsoft.Threading.Tasks.Extensions.Desktop",
+            "Microsoft.WindowsAzure.Management",
+            "Microsoft.Bcl.Build",
+            "Microsoft.Data.Edm",
+            "Microsoft.Data.OData",
+            "Microsoft.Data.Services.Client",
+            "Newtonsoft.Json",
+            "System.Net.Http.Extensions",
+            "System.Net.Http.Primitives",
+            "System.Spatial",
+            "xunit.abstractions",
+            "xunit.assert",
+            "xunit.core",
+            "xunit.execution.desktop"
+        };
+
+        public static NewProjectDefinition ConvertOldTestToNewTestNetCore(OldProjectDefinition oldDefinition)
+        {
+            var oldReferences = oldDefinition.ItemGroups.Where(ig => ig.References?.Any() ?? false).SelectMany(ig => ig.References);
+            var newPackageReferences = oldReferences.Select(or => ConvertOldToNewPackageReference(or, TestReferenceSkipList)).Where(r => r != null).ToList();
+            var packageReferencesItemGroup = !newPackageReferences.Any() ? null : new NewItemGroup
+            {
+                PackageReferences = newPackageReferences
+            };
+            var newProjectReferences = oldDefinition.ItemGroups.Where(ig => ig.ProjectReferences?.Any() ?? false).SelectMany(ig => ig.ProjectReferences)
+                .Select(pr => new NewProjectReference { Include = ModifyProjectReferencePath(pr.Include) }).ToList();
+            var projectReferencesItemGroup = !newProjectReferences.Any() ? null : new NewItemGroup
+            {
+                ProjectReferences = newProjectReferences
+            };
+
+            var isRmModule = oldDefinition.FilePath.Contains("ResourceManager");
+            var newAssemblyName = oldDefinition.PropertyGroups.First(pg => pg.AssemblyName != null).AssemblyName;
+            var testDenoter = TestFolderDenoters.First(tfd => oldDefinition.FilePath.Contains(tfd));
+            var newDllReferenceInclude = newAssemblyName.Replace(testDenoter, String.Empty);
+            var dllReferenceItemGroup = !isRmModule ? null : new NewItemGroup
+            {
+                References = new List<NewReference>
+                {
+                    new NewReference
+                    {
+                        Include = newDllReferenceInclude,
+                        HintPath = $"..\\..\\..\\Package\\$(Configuration)\\ResourceManager\\AzureResourceManager\\AzureRM.{newDllReferenceInclude.Split('.').Last()}.Netcore\\{newDllReferenceInclude}.dll"
+                    }
+                }
+            };
+
+            var projectFolder = Path.GetDirectoryName(oldDefinition.FilePath);
+            var hasSessionRecords = Directory.Exists(Path.Combine(projectFolder, "SessionRecords"));
+            var hasScenarioTests = Directory.Exists(Path.Combine(projectFolder, "ScenarioTests"));
+            var noneItemGroup = !(hasSessionRecords || hasScenarioTests) ? null : new NewItemGroup
+            {
+                NoneItems = new List<NewNone>
+                {
+                    !hasSessionRecords ? null : new NewNone
+                    {
+                        Update = @"SessionRecords\**\*.json",
+                        CopyToOutputDirectory = "PreserveNewest"
+                    },
+                    !hasScenarioTests ? null : new NewNone
+                    {
+                        Update = @"ScenarioTests\*.ps1",
+                        CopyToOutputDirectory = "PreserveNewest"
+                    }
+                }
+            };
+
+            return new NewProjectDefinition
+            {
+                Sdk = "Microsoft.NET.Sdk",
+                Import = new NewImport
+                {
+                    Project = @"..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets"
+                },
+                PropertyGroups = new List<NewPropertyGroup>
+                {
+                    new NewPropertyGroup
+                    {
+                        TargetFramework = "netcoreapp2.0",
+                        AssemblyName = newAssemblyName,
+                        RootNamespace = oldDefinition.PropertyGroups.First(pg => pg.RootNamespace != null).RootNamespace,
+                        GenerateAssemblyInfo = false
+                    },
+                    new NewPropertyGroup
+                    {
+                        Condition = "'$(Configuration)|$(Platform)'=='Debug|AnyCPU'",
+                        DelaySign = false,
+                        DefineConstants = "TRACE;DEBUG;NETSTANDARD"
+                    },
+                    new NewPropertyGroup
+                    {
+                        Condition = "'$(Configuration)|$(Platform)'=='Release|AnyCPU'",
+                        SignAssembly = true,
+                        DelaySign = true,
+                        AssemblyOriginatorKeyFile = "MSSharedLibKey.snk",
+                        DefineConstants = "TRACE;RELEASE;NETSTANDARD;SIGN"
+                    }
+                },
+                ItemGroups = new List<NewItemGroup>
+                {
+                    packageReferencesItemGroup,
+                    projectReferencesItemGroup,
+                    dllReferenceItemGroup,
+                    noneItemGroup
                 }
             };
         }

@@ -28,12 +28,14 @@ namespace NetCoreCsProjSync
         private const string Validate = "-v";
         private const string Create = "-c";
         private const string TestProj = "-t";
+        private const string CreateTest = "-ct";
 
         private static readonly Dictionary<string, Action<string>> ModeMap = new Dictionary<string, Action<string>>
         {
             { Validate, ValidateCsProjFiles },
             { Create, CreateCsProjFiles },
-            { TestProj, TestCsProjFiles }
+            { TestProj, TestCsProjFiles },
+            { CreateTest, CreateTestCsProjFiles }
         };
 
         public static void Main(string[] args)
@@ -48,56 +50,57 @@ namespace NetCoreCsProjSync
             ModeMap[mode](rmPath);
         }
 
-        private static readonly List<string> ReferenceSkipList = new List<string>
+        private static void CreateTestCsProjFiles(string srcPath)
         {
-            "Hyak.Common",
-            "Microsoft.Azure.Common",
-            "Microsoft.Azure.Common.NetFramework",
-            "Microsoft.Azure.Gallery",
-            "Microsoft.Azure.Management.Authorization",
-            "Microsoft.Azure.Management.ResourceManager",
-            "Microsoft.Azure.ResourceManager",
-            "Microsoft.Azure.Test.Framework",
-            "Microsoft.Azure.Test.HttpRecorder",
-            "Microsoft.IdentityModel.Clients.ActiveDirectory",
-            "Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms",
-            "Microsoft.Rest.ClientRuntime",
-            "Microsoft.Rest.ClientRuntime.Azure",
-            "Microsoft.Rest.ClientRuntime.Azure.Authentication",
-            "Microsoft.Rest.ClientRuntime.Azure.TestFramework",
-            "Microsoft.Threading.Tasks",
-            "Microsoft.Threading.Tasks.Extensions",
-            "Microsoft.Threading.Tasks.Extensions.Desktop",
-            "Microsoft.WindowsAzure.Management",
-            "Microsoft.Bcl.Build",
-            "Microsoft.Data.Edm",
-            "Microsoft.Data.OData",
-            "Microsoft.Data.Services.Client",
-            "Newtonsoft.Json",
-            "System.Net.Http.Extensions",
-            "System.Net.Http.Primitives",
-            "System.Spatial",
-            "xunit.abstractions",
-            "xunit.assert",
-            "xunit.core",
-            "xunit.execution.desktop"
-        };
-
-        private static void TestCsProjFiles(string srcPath)
-        {
-            //GetTestProjectFolderPaths(srcPath).ToList().ForEach(Console.WriteLine);
             var projectFolders = GetTestProjectFolderPaths(srcPath);
             var desktopFilePaths = GetTestDesktopFilePaths(projectFolders).Where(fp => !fp.EndsWith("Commands.Common.Tests.csproj"));
             var desktopDefinitions = GetDesktopDefinitions(desktopFilePaths);
 
-            desktopDefinitions.SelectMany(d => d.ItemGroups.SelectMany(ig => ig.References.Select(ConvertOldToNewPackageReference))).Where(p => p != null)
+            var serializer = new XmlSerializer(typeof(NewProjectDefinition));
+            foreach (var desktopDefinition in desktopDefinitions)
+            {
+                var path = ConvertDesktopToNetCorePath(desktopDefinition.FilePath);
+                Console.WriteLine($"Creating {path}");
+
+                var netCoreDefinition = ConvertOldTestToNewTestNetCore(desktopDefinition);
+                //https://stackoverflow.com/a/760290/294804
+                //https://stackoverflow.com/a/3732234/294804
+                var blankNamespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+                var xmlSettings = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = true };
+                using (var stringWriter = new StringWriter())
+                using (var xmlWriter = XmlWriter.Create(stringWriter, xmlSettings))
+                {
+                    serializer.Serialize(xmlWriter, netCoreDefinition, blankNamespaces);
+                    var lines = stringWriter.ToString().Split(Environment.NewLine).ToList();
+                    var newLineIndecies = lines.Select((l, i) => (Index: i, Line: l)).Where(a =>
+                            a.Line.StartsWith("<Project") || a.Line.StartsWith("  <Import") ||
+                            a.Line.StartsWith("  </PropertyGroup>") || a.Line.StartsWith("  </ItemGroup>"))
+                        .Select(a => a.Index).ToList();
+
+                    for (var i = 0; i < newLineIndecies.Count; ++i)
+                    {
+                        lines.Insert(newLineIndecies[i] + i + 1, String.Empty);
+                    }
+                    File.WriteAllLines(path, lines.Take(lines.Count - 1));
+                    using (var streamWriter = File.AppendText(path))
+                    {
+                        streamWriter.Write(lines.Last());
+                    }
+                }
+            }
+        }
+
+        private static void TestCsProjFiles(string srcPath)
+        {
+            var projectFolders = GetTestProjectFolderPaths(srcPath);
+            var desktopFilePaths = GetTestDesktopFilePaths(projectFolders).Where(fp => !fp.EndsWith("Commands.Common.Tests.csproj"));
+            var desktopDefinitions = GetDesktopDefinitions(desktopFilePaths);
+
+            desktopDefinitions.SelectMany(d => d.ItemGroups.SelectMany(ig => ig.References.Select(or => ConvertOldToNewPackageReference(or, Enumerable.Empty<string>()))))
+                .Where(p => p != null)
                 .GroupBy(p => $"{p.Include}: {p.Version}", (k, r) => (Reference: k, Count: r.Count())).Select(g => $"{g.Reference}: {g.Count}")
                 .OrderBy(g => g)
                 .ToList().ForEach(Console.WriteLine);
-            //foreach (var desktopDefinition in desktopDefinitions)
-            //{
-            //    desktopDefinition.ItemGroups.SelectMany(ig => ig.References.Select(ConvertOldToNewPackageReference)).GroupBy(p => p.Include + p.Version)
-            //}
         }
 
         private static void ValidateCsProjFiles(string rmPath)
