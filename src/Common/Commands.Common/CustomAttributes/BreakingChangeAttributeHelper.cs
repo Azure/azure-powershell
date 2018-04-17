@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 
     ```powershell
 
-    # Old\
+    # Old
     # Sample of how the cmdlet was previously called
 
     # New
@@ -79,18 +79,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
          * */
         public static void ProcessCustomAttributesAtRuntime(Type type, InvocationInfo invocationInfo)
         {
-            bool emitWarningOrError = true;
+            bool supressWarningOrError = false;
 
             try
             {
-                emitWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
+                supressWarningOrError = bool.Parse(System.Environment.GetEnvironmentVariable(SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME));
             }
             catch (Exception)
             {
                 //no action
             }
 
-            if (!emitWarningOrError)
+            if (supressWarningOrError)
             {
                 //Do not process the attributes at runtime... The env variable to override the warning messages is set
                 return;
