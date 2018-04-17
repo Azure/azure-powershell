@@ -27,7 +27,7 @@ after_success:
     docker build . -t $DOCKER_USER/$NAME:$TRAVIS_COMMIT --build-arg CONFIG=$CONFIG;
     docker tag $DOCKER_USER/$NAME:$TRAVIS_COMMIT $DOCKER_USER/$NAME:$TRAVIS_BRANCH;
 
-    docker login -u $DOCKER_USER -p $DOCKER_PASS;
+    echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin;
 
     docker push $DOCKER_USER/$NAME:$TRAVIS_COMMIT;
     docker push $DOCKER_USER/$NAME:$TRAVIS_BRANCH;

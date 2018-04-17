@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public readonly Dictionary<OperatingSystem, string> OsToVmSkuString = new Dictionary<OperatingSystem, string>()
         {
             {OperatingSystem.WindowsServer2012R2Datacenter, "2012-R2-Datacenter"},
-            {OperatingSystem.UbuntuServer1604, "16.04"},
+            {OperatingSystem.UbuntuServer1604, "16.04-LTS"},
             {OperatingSystem.WindowsServer2016DatacenterwithContainers, "2016-Datacenter-with-Containers"},
             {OperatingSystem.WindowsServer2016Datacenter, "2016-Datacenter"}
         };
