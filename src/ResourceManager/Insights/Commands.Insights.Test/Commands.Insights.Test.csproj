@@ -148,8 +148,6 @@
     <Compile Include="ActivityLogAlerts\SetAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\EnableAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\GetAzureRmActivityLogAlertTests.cs" />
-    <Compile Include="ActivityLogAlerts\NewAzureRmActionGroupTests.cs" />
-    <Compile Include="ActivityLogAlerts\NewAzureRmActivityLogAlertConditionTests.cs" />
     <Compile Include="ActivityLogAlerts\RemoveAzureRmActivityLogAlertTests.cs" />
     <None Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
     <Compile Include="CustomPrinterTests.cs" />
