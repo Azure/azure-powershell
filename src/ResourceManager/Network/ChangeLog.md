@@ -20,6 +20,7 @@
 
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Add support for DDoS protection plan resource
 
 ## Version 5.4.2
 * Fix error message with Network cmdlets
