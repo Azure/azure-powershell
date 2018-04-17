@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.SignalR.Models;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.SignalR.Models
             ProvisioningState = signalRResource.ProvisioningState;
             PublicPort = signalRResource.PublicPort;
             ServerPort = signalRResource.ServerPort;
-            Sku = new PSResourceSku(signalRResource.Sku);
+            Sku = new PSResourceSku(signalRResource.Signalrsku);
         }
     }
 }
