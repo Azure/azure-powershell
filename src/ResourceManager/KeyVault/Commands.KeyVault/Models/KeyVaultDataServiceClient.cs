@@ -12,24 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.KeyVault.WebKey;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.KeyVault.Models;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.Net;
 using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.KeyVault.WebKey;
+using Microsoft.Rest.Azure;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
         }
 
-        public PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes)
+        public PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -75,9 +73,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             try
             {
                 keyBundle = this.keyVaultClient.CreateKeyAsync(
-                    vaultAddress,
-                    keyName,
-                    keyAttributes.KeyType,
+                    vaultBaseUrl: vaultAddress,
+                    keyName: keyName,
+                    kty: keyAttributes.KeyType,
+                    keySize: size,
                     keyOps: keyAttributes.KeyOps == null ? null : new List<string> (keyAttributes.KeyOps),
                     keyAttributes: attributes,
                     tags: keyAttributes.TagsDirectionary).GetAwaiter().GetResult();

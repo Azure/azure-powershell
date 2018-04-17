@@ -802,6 +802,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to purge managed storage account &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveDeletedManagedStorageAccountWarning {
+            get {
+                return ResourceManager.GetString("RemoveDeletedManagedStorageAccountWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purge managed storage account.
+        /// </summary>
+        internal static string RemoveDeletedManagedStorageAccountWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveDeletedManagedStorageAccountWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to purge secret &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveDeletedSecretWarning {

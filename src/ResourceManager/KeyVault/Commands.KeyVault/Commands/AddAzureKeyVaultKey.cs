@@ -201,6 +201,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
+
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet, 
+            HelpMessage = "RSA key size, in bits. If not specified, the service will provide a safe default.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet,
+            HelpMessage = "RSA key size, in bits. If not specified, the service will provide a safe default.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet,
+            HelpMessage = "RSA key size, in bits. If not specified, the service will provide a safe default.")]
+        public int? Size { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -228,7 +239,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                     keyBundle = this.DataServiceClient.CreateKey(
                             VaultName,
                             Name,
-                            CreateKeyAttributes());
+                            CreateKeyAttributes(),
+                            Size);
                 }
                 else
                 {
