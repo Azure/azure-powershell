@@ -22,12 +22,38 @@ The New-AzureRmDdosProtectionPlan cmdlet creates a DDoS protection plan.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create and associate a DDoS protection plan with a new virtual network
 ```
-PS C:\> {{ Add example code here }}
+$ddosProtectionPlan = New-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
+
+$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name SubnetName -AddressPrefix 10.0.1.0/24
+
+$vnet = New-AzureRmvirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName -Location "West US" -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
 ```
 
-{{ Add example description here }}
+First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
+
+Then, we create a new virtual network with **New-AzureRmvirtualNetwork** and we specify the ID of the newly created plan in the parameter **DdosProtectionPlanId**. In this case, since we are associating the virtual network with a plan, we can also specify the parameter **EnableDdoSProtection**.
+
+### Example 2: Create and associate a DDoS protection plan with an existing virtual network
+```
+$ddosProtectionPlan = New-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
+
+$vnet = Get-AzureRmVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
+
+$vnet.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
+$vnet.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
+
+$vnet.EnableDdosProtection = $true
+
+$vnet | Set-AzureRmVirtualNetwork
+```
+
+First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
+
+Second, we get the most updated version of the virtual network we want to associate with the plan. We update the property **DdosProtectionPlan** with a **PSResourceId** object containing a reference to the ID of the newly created plan. In this case, if we associate the virtual network with a DDoS protection plan, we can also set the flag **EnableDdosProtection** to true.
+
+Finally, we persist the new state by piping the local variable into **Set-AzureRmVirtualNetwork**.
 
 ## PARAMETERS
 

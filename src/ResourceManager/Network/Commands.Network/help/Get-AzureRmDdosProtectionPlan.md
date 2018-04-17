@@ -22,12 +22,26 @@ The Get-AzureRmDdosProtectionPlan cmdlet gets a DDoS protection plan.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get a specific DDoS protection plan
 ```
-PS C:\> {{ Add example code here }}
+Get-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName
 ```
 
-{{ Add example description here }}
+In this case, we need to specify both **ResourceGroupName** and **Name** attributes, which correspond to the resource group and the name of the DDoS protection plan, respectively.
+
+### Example 2: Get all DDoS protection plans in a resource group
+```
+Get-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName
+```
+
+In this scenario, we only specify the parameter **ResourceGroupName** to get a list of DDoS protection plans.
+
+### Example 2: Get all DDoS protection plans in a subscription
+```
+Get-AzureRmDdosProtectionPlan
+```
+
+Here, we do not specify any parameters to get a list of all DDoS protection plans in a subscription.
 
 ## PARAMETERS
 

@@ -22,12 +22,30 @@ The Remove-AzureRmDdosProtectionPlan cmdlet removes a DDoS protection plan.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove an empty DDoS protection plan
 ```
-PS C:\> {{ Add example code here }}
+Remove-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
 ```
 
-{{ Add example description here }}
+In this case, we remove a DDoS protection plan as specified. The user is prompted for confirmation, but they can avoid it by specifying the flag **Force**.
+
+### Example 2: Remove a DDoS protection plan associated with a virtual network
+```
+$vnet = Get-AzureRmVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
+
+$vnet.DdosProtectionPlan = $null
+$vnet.EnableDdosProtection = $false
+
+$vnet | Set-AzureRmVirtualNetwork
+
+Remove-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlan
+```
+
+DDoS protection plans cannot be deleted if they are associated with a virtual network. So the first step is to disassociate both objects. Here, we get the most updated version of the virtual network associated with the plan, and we set the property **DdosProtectionPlan** to an empty value and the flag **EnableDdosProtection** (this flag cannot be true without a plan).
+
+Then, we persist the new state by piping the local variable into **Set-AzureRmVirtualNetwork**. At this point, the plan is no longer associated with the virtual network.
+
+If this is the last one associated with the plan, we can remove the DDoS protection plan by using the command Remove-AzureRmDdosProtectionPlan.
 
 ## PARAMETERS
 
