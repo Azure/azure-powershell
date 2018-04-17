@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                         // write progress only if it's changed.
                         if (x != previousX || operation != previousOperation)
                         {
-                            asyncCmdlet.WriteProgress(
+                            asyncCmdlet.Cmdlet.WriteProgress(
                                 activity: "Creating Azure resources",
                                 statusDescription: percent + "% " + x,
                                 currentOperation: operation,
@@ -78,38 +78,27 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         {
             public SyncTaskScheduler Scheduler { get; } = new SyncTaskScheduler();
 
-            readonly ICmdlet _Cmdlet;
+            public ICmdlet Cmdlet { get; }
 
             public List<ITaskProgress> TaskProgressList { get; }
                 = new List<ITaskProgress>();
 
             public AsyncCmdlet(ICmdlet cmdlet)
             {
-                _Cmdlet = cmdlet;
+                Cmdlet = cmdlet;
             }
 
             public void WriteVerbose(string message)
-                => Scheduler.BeginInvoke(() => _Cmdlet.WriteVerbose(message));
+                => Scheduler.BeginInvoke(() => Cmdlet.WriteVerbose(message));
 
             public Task<bool> ShouldProcessAsync(string target, string action)
-                => Scheduler.Invoke(() => _Cmdlet.ShouldProcess(target, action));
+                => Scheduler.Invoke(() => Cmdlet.ShouldProcess(target, action));
 
             public void WriteObject(object value)
-                => Scheduler.BeginInvoke(() => _Cmdlet.WriteObject(value));
+                => Scheduler.BeginInvoke(() => Cmdlet.WriteObject(value));
 
             public void ReportTaskProgress(ITaskProgress taskProgress)
                 => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
-
-            public void WriteProgress(
-                string activity,
-                string statusDescription,
-                string currentOperation,
-                int percentComplete)
-                => _Cmdlet.WriteProgress(
-                    activity: activity,
-                    statusDescription: statusDescription,
-                    currentOperation: currentOperation,
-                    percentComplete: percentComplete);
         }
     }
 }

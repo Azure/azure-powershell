@@ -49,7 +49,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 => _Cmdlet.WriteObject(value);
 
             public void WriteProgress(
-                string activity, string statusDescription, string currentOperation, int percentComplete)
+                string activity,
+                string statusDescription,
+                string currentOperation,
+                int percentComplete)
                 => _Cmdlet.WriteProgress(
                     new ProgressRecord(
                         0,
