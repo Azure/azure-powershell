@@ -1,14 +1,10 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.SignalR.Generated;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.SignalR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.SignalR
 {
@@ -55,20 +51,20 @@ namespace Microsoft.Azure.Commands.SignalR
                 {
                     case ListSignalRServiceParameterSet:
                         var signalrs = string.IsNullOrEmpty(ResourceGroupName)
-                                     ? Client.SignalR.ListBySubscription()
-                                     : Client.SignalR.ListByResourceGroup(ResourceGroupName);
+                                     ? Client.Signalr.ListBySubscription()
+                                     : Client.Signalr.ListByResourceGroup(ResourceGroupName);
                         foreach (var s in signalrs)
                         {
                             WriteObject(new PSSignalRResource(s));
                         }
                         break;
                     case ResourceGroupParameterSet:
-                        var signalr = Client.SignalR.Get(ResourceGroupName, Name);
+                        var signalr = Client.Signalr.Get(ResourceGroupName, Name);
                         WriteObject(new PSSignalRResource(signalr));
                         break;
                     case ResourceIdParameterSet:
                         var resource = new ResourceIdentifier(ResourceId);
-                        var idSignalR = Client.SignalR.Get(resource.ResourceGroupName, resource.ResourceName);
+                        var idSignalR = Client.Signalr.Get(resource.ResourceGroupName, resource.ResourceName);
                         WriteObject(new PSSignalRResource(idSignalR));
                         break;
                     default:

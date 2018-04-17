@@ -1,14 +1,10 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.SignalR.Generated;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.SignalR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.SignalR
 {
@@ -78,7 +74,7 @@ namespace Microsoft.Azure.Commands.SignalR
 
                 if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "remove"))
                 {
-                    Client.SignalR.Delete(ResourceGroupName, Name);
+                    Client.Signalr.Delete(ResourceGroupName, Name);
                 }
 
                 if (PassThru)

@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.Commands.SignalR.Generated.Models;
+﻿using Microsoft.Azure.Management.SignalR.Models;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
 {
