@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
 
 ## Version 5.5.2
 * Updated to the latest version of the Azure ClientRuntime
