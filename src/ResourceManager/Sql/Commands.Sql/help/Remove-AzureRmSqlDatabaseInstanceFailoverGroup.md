@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmSqlDatabaseInstanceFailoverGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes an Azure SQL Database Instance Failover Group.
 
 ## SYNTAX
 
@@ -27,16 +27,18 @@ Remove-AzureRmSqlDatabaseInstanceFailoverGroup [[-ResourceGroupName] <String>] [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command removes the Instance Failover Group with the specified name, leaving all databases intact. The listener endpoint will be unregistered from DNS.
+
+The Instance Failover Group's primary region should be used to execute the command.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\> Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup
 ```
 
-{{ Add example description here }}
+Remove a Instance Failover Group.
 
 ## PARAMETERS
 

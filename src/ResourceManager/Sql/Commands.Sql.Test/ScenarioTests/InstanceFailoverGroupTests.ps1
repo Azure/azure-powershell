@@ -148,20 +148,6 @@ function Test-CreateInstanceFailoverGroup-AutomaticPolicyGracePeriodReadOnlyFail
 	}
 }
 
-function Test-CreateInstanceFailoverGroup-ZeroGracePeriod()
-{
-	Handle-InstanceFailoverGroupTest {
-		Param($location, $partnerRegion, $managedInstance, $partnerManagedInstance)
-
-        $fgName = Get-FailoverGroupName
-		$fg = $managedInstance | New-AzureRmSqlDatabaseInstanceFailoverGroup -PrimaryManagedInstanceName $managedInstance.Name -Name $fgName -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstance.Name -FailoverPolicy Automatic -GracePeriodWithDataLossHours 0 -AllowReadOnlyFailoverToPrimary Disabled
-		Validate-InstanceFailoverGroup $managedInstance $partnerManagedInstance $fg.Name Primary Secondary Automatic 1 Disabled $fg
-		Validate-InstanceFailoverGroupWithGet $fg
-
-		$fg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
-	}
-}
-
 function Test-CreateInstanceFailoverGroup-ManualPolicy()
 {
 	Handle-InstanceFailoverGroupTest {
@@ -176,23 +162,6 @@ function Test-CreateInstanceFailoverGroup-ManualPolicy()
 	}
 }
 
-function Test-CreateInstanceFailoverGroup-Overflow()
-{
-	Handle-InstanceFailoverGroupTest {
-		Param($location, $partnerRegion, $managedInstance, $partnerManagedInstance)
-
-		$expectedGracePeriod = [math]::floor([int]::MaxValue / 60)
-		$gracePeriodToSet = $expectedGracePeriod + 1
-
-        $fgName = Get-FailoverGroupName
-		$fg = $managedInstance | New-AzureRmSqlDatabaseInstanceFailoverGroup -PrimaryManagedInstanceName $managedInstance.Name -Name $fgName -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstance.Name -FailoverPolicy Automatic -GracePeriodWithDataLossHours $gracePeriodToSet
-		Validate-InstanceFailoverGroup $managedInstance $partnerManagedInstance $fg.Name Primary Secondary Automatic $expectedGracePeriod Disabled $fg
-		Validate-InstanceFailoverGroupWithGet $fg
-
-		$fg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
-	}
-}
-
 function Test-SetInstanceFailoverGroup-Named()
 {
 	Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup {
@@ -201,7 +170,7 @@ function Test-SetInstanceFailoverGroup-Named()
 		$newFg = $fg | Set-AzureRmSqlDatabaseInstanceFailoverGroup 
 		Assert-InstanceFailoverGroupsEqual $fg $newFg
 		Validate-InstanceFailoverGroupWithGet $newFg
-
+		
 		$newFg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
 	}
 }
@@ -219,21 +188,6 @@ function Test-SetInstanceFailoverGroup-Positional()
 	}
 }
 
-function Test-SetInstanceFailoverGroup-PipeServer()
-{
-	Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup {
-		Param($fg)
-        
-        $mi = Get-ManagedInstanceForTest $fg.ResourceGroupName $fg.PrimaryManagedInstanceName
-
-		$newFg = $mi | Set-AzureRmSqlDatabaseInstanceFailoverGroup -Name $fg.Name
-		Assert-InstanceFailoverGroupsEqual $fg $newFg
-		Validate-InstanceFailoverGroupWithGet $newFg
-
-		$newFg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
-	}
-}
-
 function Test-SetInstanceFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover()
 {
 	Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup {
@@ -241,19 +195,6 @@ function Test-SetInstanceFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover(
 
 		$newFg = $fg | Set-AzureRmSqlDatabaseInstanceFailoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHours 123 -AllowReadOnlyFailoverToPrimary Enabled
 		Assert-InstanceFailoverGroupsEqual $fg $newFg -failoverPolicy Automatic -gracePeriod 123 -readOnlyFailoverPolicy Enabled
-		Validate-InstanceFailoverGroupWithGet $newFg
-
-		$newFg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
-	} -failoverPolicy Manual
-}
-
-function Test-SetInstanceFailoverGroup-AutomaticWithGracePeriodZero()
-{
-	Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup {
-		Param($fg)
-
-		$newFg = $fg | Set-AzureRmSqlDatabaseInstanceFailoverGroup -FailoverPolicy Automatic -GracePeriodWithDataLossHours 0 -AllowReadOnlyFailoverToPrimary Disabled
-		Assert-InstanceFailoverGroupsEqual $fg $newFg -failoverPolicy Automatic -gracePeriod 1 -readOnlyFailoverPolicy Disabled
 		Validate-InstanceFailoverGroupWithGet $newFg
 
 		$newFg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
@@ -289,29 +230,12 @@ function Test-SetInstanceFailoverGroup-ManualToAutomaticNoGracePeriod()
 	} -failoverPolicy Manual
 }
 
-function Test-SetInstanceFailoverGroup-Overflow()
-{
-	Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup {
-		Param($fg)
-
-		$expectedGracePeriod = [math]::floor([int]::MaxValue / 60)
-		$gracePeriodToSet = $expectedGracePeriod + 1
-
-		$newFg = $fg | Set-AzureRmSqlDatabaseInstanceFailoverGroup -GracePeriodWithDataLossHours $gracePeriodToSet
-		Assert-InstanceFailoverGroupsEqual $fg $newFg -gracePeriod $expectedGracePeriod
-		Validate-InstanceFailoverGroupWithGet $newFg
-
-		$newFg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
-	} -failoverPolicy Automatic
-}
-
 function Test-SwitchInstanceFailoverGroup()
 {
 	Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup {
 		Param($fg)
 
-		$job = $fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup -AsJob
-		$job | Wait-Job
+		$fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup 
 
 		$newPrimaryFg = $fg | Get-AzureRmSqlDatabaseInstanceFailoverGroup
 
@@ -326,7 +250,7 @@ function Test-SwitchInstanceFailoverGroupAllowDataLoss()
 	Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup {
 		Param($fg)
 
-		$job = Switch-AzureRmSqlDatabaseInstanceFailoverGroup $fg.ResourceGroupName $fg.Location $fg.Name -AllowDataLoss
+		$fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup -AllowDataLoss
 		$newPrimaryFg = $fg | Get-AzureRmSqlDatabaseInstanceFailoverGroup
 
 		Validate-InstanceFailoverGroupWithGet $newPrimaryFg

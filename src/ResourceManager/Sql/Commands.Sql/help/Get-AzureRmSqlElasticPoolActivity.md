@@ -65,7 +65,9 @@ Accept wildcard characters: False
 ```
 
 ### -OperationId
-The ID of the operation to retrieve.```yaml
+The ID of the operation to retrieve.
+
+```yaml
 Type: Guid
 Parameter Sets: (All)
 Aliases:

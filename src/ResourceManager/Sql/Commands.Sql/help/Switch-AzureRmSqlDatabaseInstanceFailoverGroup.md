@@ -8,7 +8,7 @@ schema: 2.0.0
 # Switch-AzureRmSqlDatabaseInstanceFailoverGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Executes a failover of an Azure SQL Database Instance Failover Group.
 
 ## SYNTAX
 
@@ -27,16 +27,26 @@ Switch-AzureRmSqlDatabaseInstanceFailoverGroup [[-ResourceGroupName] <String>] [
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command swaps the roles of the managed instances in a Instance Failover Group. All new TDS sessions are automatically re-routed to the secondary region after the DNS client cache is refreshed. When the original primary managed instance is back online, all formerly primary databases in it will switch to the secondary role.
+
+The Instance Failover Group's secondary region must be used to execute this command.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+C:\> Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup -AllowDataLoss
 ```
 
-{{ Add example description here }}
+Issue a failover operation allowing data loss by piping in the Instance Failover Group.
+
+### Example 2
+```
+C:\> Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup
+```
+
+Issue a best effort failover operation that will either succeed without losing data or fail and roll back.
+
 
 ## PARAMETERS
 

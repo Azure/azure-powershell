@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmSqlDatabaseInstanceFailoverGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Modifies the configuration of an Azure SQL Database Instance Failover Group.
 
 ## SYNTAX
 
@@ -29,16 +29,20 @@ Set-AzureRmSqlDatabaseInstanceFailoverGroup [[-ResourceGroupName] <String>] [-Lo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This command modifies the configuration of an Azure SQL Database Instance Failover Group.
+
+The Instance Failover Group's primary region should be used to execute the command.
+
+During preview of the Instance Failover Groups feature, only values greater than or equal to 1 hour are supported for the '-GracePeriodWithDataLossHours' parameter.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\> $failoverGroup = Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Set-AzureRmSqlDatabaseFailoverGroup -FailoverPolicy Manual
 ```
 
-{{ Add example description here }}
+Sets a Instance Failover Group's failover policy to 'Manual' by piping in the Failover Group.
 
 ## PARAMETERS
 

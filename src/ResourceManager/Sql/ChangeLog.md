@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 4.5.0
 * Add commandlets for new feature - Instance Failover Groups
 	- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity
 	- New-AzureRmSqlDatabaseInstanceFailoverGroup creates a new Instance Failover Group

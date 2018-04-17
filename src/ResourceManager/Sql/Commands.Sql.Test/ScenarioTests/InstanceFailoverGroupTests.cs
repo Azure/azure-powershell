@@ -56,25 +56,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateInstanceFailoverGroup_ZeroGracePeriod()
-        {
-            RunPowerShellTest("Test-CreateInstanceFailoverGroup-ZeroGracePeriod");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateInstanceFailoverGroup_ManualPolicy()
         {
             RunPowerShellTest("Test-CreateInstanceFailoverGroup-ManualPolicy");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateInstanceFailoverGroup_Overflow()
-        {
-            RunPowerShellTest("Test-CreateInstanceFailoverGroup-Overflow");
-        }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetInstanceFailoverGroup_Named()
@@ -91,23 +77,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetInstanceFailoverGroup_PipeServer()
-        {
-            RunPowerShellTest("Test-SetInstanceFailoverGroup-PipeServer");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetInstanceFailoverGroup_AutomaticWithGracePeriodReadOnlyFailover()
         {
             RunPowerShellTest("Test-SetInstanceFailoverGroup-AutomaticWithGracePeriodReadOnlyFailover");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetInstanceFailoverGroup_AutomaticWithGracePeriodZero()
-        {
-            RunPowerShellTest("Test-SetInstanceFailoverGroup-AutomaticWithGracePeriodZero");
         }
 
         [Fact]
@@ -122,13 +94,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestSetInstanceFailoverGroup_ManualToAutomaticNoGracePeriod()
         {
             RunPowerShellTest("Test-SetInstanceFailoverGroup-ManualToAutomaticNoGracePeriod");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetInstanceFailoverGroup_Overflow()
-        {
-            RunPowerShellTest("Test-SetInstanceFailoverGroup-Overflow");
         }
 
         [Fact]

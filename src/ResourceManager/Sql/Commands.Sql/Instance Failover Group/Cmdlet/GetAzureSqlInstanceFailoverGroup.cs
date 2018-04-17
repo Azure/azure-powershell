@@ -19,13 +19,13 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseInstanceFailoverGroup")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseInstanceFailoverGroup"), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class GetAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
-        [LocationCompleter]
+        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

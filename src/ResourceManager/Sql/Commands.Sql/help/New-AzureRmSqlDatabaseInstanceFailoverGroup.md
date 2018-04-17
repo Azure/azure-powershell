@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmSqlDatabaseInstanceFailoverGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This command creates a new Azure SQL Database Instance Failover Group.
 
 ## SYNTAX
 
@@ -21,16 +21,27 @@ New-AzureRmSqlDatabaseInstanceFailoverGroup [[-ResourceGroupName] <String>] [-Lo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Creates a new Azure SQL Database Instance Failover Group between the specified regions with the noted Managed Instance pair.
+
+Two Azure SQL Database TDS endpoints are created at Name.SqlDatabaseDnsSuffix (for example, Name.database.windows.net) and Name.secondary.SqlDatabaseDnsSuffix. These endpoints may be used to connect to the primary and secondary regions of the Failover Group, respectively. If the primary region is affected by an outage, automatic failover of the endpoints and databases will be triggered as dictated by the Instance Failover Group's failover policy and grace period.
+
+During preview of the Instance Failover Groups feature, only values greater than or equal to 1 hour are supported for the '-GracePeriodWithDataLossHours' parameter.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+C:\> $failoverGroup = New-AzureRmSqlDatabaseInstanceFailoverGroup -Name fgName -Location location -ResourceGroupName rg -PrimaryManagedInstanceName $managedInstance.Name -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstance.Name -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
 ```
 
-{{ Add example description here }}
+This command creates a new Instance Failover Group with failover policy 'Automatic' for the Managed Instance pair.
+
+### Example 2
+```
+C:\> $failoverGroup = New-AzureRmSqlDatabaseInstanceFailoverGroup -Name fgName -Location location -ResourceGroupName rg -PrimaryManagedInstanceName $managedInstance.Name -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstance.Name -FailoverPolicy Manual
+```
+
+This command creates a new Instance Failover Group with failover policy 'Manual' for the Managed Instance pair.
 
 ## PARAMETERS
 

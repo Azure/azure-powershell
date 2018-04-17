@@ -15,6 +15,7 @@
 
 using Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,14 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
     /// Cmdlet to create a new Azure Sql Database Instance Failover Group
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseInstanceFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium)]
+        SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class SetAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
+        /// <summary>
+        /// Parameter set name for the default set.
+        /// </summary>
+        private const string SetIFGDefaultSet = "SetIFGDefault";
+
         /// <summary>
         /// Parameter set name for set with an Input Object.
         /// </summary>
@@ -44,8 +50,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = SetIFGDefaultSet, 
+            Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
@@ -55,19 +61,19 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the local region to use.
         /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = SetIFGDefaultSet, 
+            Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
-        [LocationCompleter]
+        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the Azure SQL Database Instance Failover Group
         /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = SetIFGDefaultSet, 
+            Mandatory = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
@@ -81,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The Instance Failover Group object to set")]
         [ValidateNotNullOrEmpty]
-        public Model.AzureSqlInstanceFailoverGroupModel InputObject { get; set; }
+        public AzureSqlInstanceFailoverGroupModel InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the resource ID of the Instance Failover Group to set.
@@ -109,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.")]
         [ValidateNotNullOrEmpty]
-        [ValidateRange(0, int.MaxValue)]
+        [ValidateRange(1, int.MaxValue/60)]
         [PSDefaultValue(Help = "1")]
         public int GracePeriodWithDataLossHours { get; set; }
 
@@ -127,6 +133,22 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlInstanceFailoverGroupModel> GetEntity()
         {
+            if (InputObject != null)
+            {
+                Location = InputObject.Location;
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
+            }
+            else if (!string.IsNullOrWhiteSpace(ResourceId))
+            {
+                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
+                Location = identifier.ResourceName;
+                identifier = new ResourceIdentifier(identifier.ParentResource);
+                Name = identifier.ResourceName;
+                identifier = new ResourceIdentifier(identifier.ParentResource);
+                ResourceGroupName = identifier.ResourceName;
+            }
+
             return new List<AzureSqlInstanceFailoverGroupModel>() {
                 ModelAdapter.GetInstanceFailoverGroup(this.ResourceGroupName, this.Location, this.Name)
             };
@@ -141,7 +163,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         {
             List<AzureSqlInstanceFailoverGroupModel> newEntity = new List<AzureSqlInstanceFailoverGroupModel>();
             AzureSqlInstanceFailoverGroupModel newModel = model.First();
-
+            object parameterValue;
             FailoverPolicy effectivePolicy = FailoverPolicy;
             if (!MyInvocation.BoundParameters.ContainsKey("FailoverPolicy"))
             {
@@ -149,8 +171,19 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 Enum.TryParse(newModel.ReadWriteFailoverPolicy, out effectivePolicy);
             }
 
+            int? gracePeriod = null;
+            if (!FailoverPolicy.ToString().Equals("Manual"))
+            {
+                int? setDefault = newModel.FailoverWithDataLossGracePeriodHours;
+                if (setDefault.Equals(null))
+                {
+                    setDefault = 1;
+                }
+                gracePeriod = MyInvocation.BoundParameters.TryGetValue("GracePeriodWithDataLossHours", out parameterValue) ? (int)parameterValue : setDefault;
+            }
+
             newModel.ReadWriteFailoverPolicy = effectivePolicy.ToString();
-            newModel.FailoverWithDataLossGracePeriodHours = ComputeEffectiveGracePeriod(effectivePolicy, originalGracePeriod: newModel.FailoverWithDataLossGracePeriodHours);
+            newModel.FailoverWithDataLossGracePeriodHours = gracePeriod;
             newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary.ToString() : newModel.ReadOnlyFailoverPolicy;
             newEntity.Add(newModel);
 

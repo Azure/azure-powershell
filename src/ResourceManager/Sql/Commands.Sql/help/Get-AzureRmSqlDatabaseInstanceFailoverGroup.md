@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSqlDatabaseInstanceFailoverGroup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets or lists Azure SQL Database Instance Failover Groups.
 
 ## SYNTAX
 
@@ -18,16 +18,25 @@ Get-AzureRmSqlDatabaseInstanceFailoverGroup [[-ResourceGroupName] <String>] [-Lo
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Gets a specific Azure SQL Database Instance Failover Group or lists the Instance Failover Groups in a region under the user's subscription.
+
+Either region in the Instance Failover Group may be used to execute the command. The returned values will reflect the state of the Managed Instances in that region with respect to the Instance Failover Group.
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
+```
+PS C:\> $failoverGroups = Get-AzureRMSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location
 ```
 
-{{ Add example description here }}
+Lists all Failover Groups in the region
+
+### Example 2
+```
+PS C:\> $failoverGroup = Get-AzureRMSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg
+```
+
+Get a specific Instance Failover Group.
 
 ## PARAMETERS
 

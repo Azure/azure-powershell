@@ -19,13 +19,19 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Switch, "AzureRmSqlDatabaseInstanceFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Switch, "AzureRmSqlDatabaseInstanceFailoverGroup", 
+        SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class SwitchAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
+        /// <summary>
+        /// Parameter set name for the default switch.
+        /// </summary>
+        private const string SwitchIFGDefaultSet = "SwitchIFGDefault";
+
         /// <summary>
         /// Parameter set name for switch with an Input Object.
         /// </summary>
@@ -37,12 +43,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// </summary>
         private const string SwitchIFGByResourceIdSet = "Switch a Instance Failover Group from Resource Id";
 
-
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = SwitchIFGDefaultSet,
+            Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
@@ -52,19 +57,19 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the region to use.
         /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = SwitchIFGDefaultSet, 
+            Mandatory = true,
             Position = 1,
             HelpMessage = "The name of the Partner Region from which to failover the Instance Failover Group.")]
-        [LocationCompleter]
+        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the InstanceFailoverGroup to use.
         /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = SwitchIFGDefaultSet, 
+            Mandatory = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
@@ -100,17 +105,27 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         public SwitchParameter AllowDataLoss { get; set; }
 
         /// <summary>
-        /// Gets or sets whether or not to run this cmdlet in the background as a job
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
-        public SwitchParameter AsJob { get; set; }
-
-        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlInstanceFailoverGroupModel> GetEntity()
         {
+            if (InputObject != null)
+            {
+                Location = InputObject.Location;
+                Name = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
+            }
+            else if (!string.IsNullOrWhiteSpace(ResourceId))
+            {
+                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
+                Location = identifier.ResourceName;
+                identifier = new ResourceIdentifier(identifier.ParentResource);
+                Name = identifier.ResourceName;
+                identifier = new ResourceIdentifier(identifier.ParentResource);
+                ResourceGroupName = identifier.ResourceName;
+            }
+
             return new List<AzureSqlInstanceFailoverGroupModel>() {
                 ModelAdapter.GetInstanceFailoverGroup(this.ResourceGroupName, this.Location, this.Name)
             };
