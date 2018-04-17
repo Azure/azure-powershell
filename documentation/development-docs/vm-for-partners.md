@@ -10,10 +10,11 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
     ```PowerShell
     $VhdSasUri = <vhd-sas-uri-requested-from-us>
     ```
-3. Create some variables..
+3. Create some variables. **_Before setting the ```$Location``` variable - make sure your subscription supports virtual machine creation in the location._**
    ```PowerShell
     $SubscriptionId = <subscription-id>
     $ResourceGroupName = <resource-group-name>
+    #Make sure your subscription supports virtual machine creation in the location.
     $Location = <location>
 
     $Random_5_digits = Get-Random -SetSeed (Get-Date).Second | ForEach-Object {$_.ToString().Substring(5)}
@@ -124,3 +125,16 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
 
     Write-Host "==> All done."
     ```
+
+# Github Settings and Repository Setup
+You will need to set up the GitHub configuration so that commits appear with your GitHub name.
+```
+git config --global user.email "<Your email on GitHub>"
+```
+```
+git config --global user.name "<Your name>"
+```
+Next, you will need to follow the steps here to set up your local fork of Azure/azure-powershell.
+
+# Building and Running Tests
+This image has been set up to build and run tests immediately. To build the project, run msbuild build.proj in the Developer Command Prompt for VS2015. Once this has completed, you can open your module in Visual Studio and start development there. To record tests, follow the instructions here.
