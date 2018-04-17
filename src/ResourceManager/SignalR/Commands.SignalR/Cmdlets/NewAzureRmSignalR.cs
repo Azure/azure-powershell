@@ -19,7 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.SignalR.Cmdlets
+namespace Microsoft.Azure.Commands.SignalR
 {
     [Cmdlet(VerbsCommon.New, "AzureRmSignalR", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSignalRResource))]
