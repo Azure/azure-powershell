@@ -1,0 +1,200 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourcegroups/System.local/providers/Microsoft.Storage.Admin/farms?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGFiMjU1MWQtNDFlNS00ODliLTkyNzMtMWNkZjFjYmM3ZGM2L3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2UuQWRtaW4vZmFybXM/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5e3610de-657d-48a1-814d-6f48aa90ccbf"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourceGroups/System.local/providers/Microsoft.Storage.Admin/farms/1346c918-6b29-4d63-afb1-7f5767f1550b\",\r\n      \"name\": \"1346c918-6b29-4d63-afb1-7f5767f1550b\",\r\n      \"type\": \"Microsoft.Storage.Admin/farms\",\r\n      \"location\": \"local\",\r\n      \"properties\": {\r\n        \"farmId\": \"1346c918-6b29-4d63-afb1-7f5767f1550b\",\r\n        \"version\": \"2015-12-01-preview\",\r\n        \"settingsStore\": \"AzS-ACS01.azurestack.local:19000\",\r\n        \"settings\": {\r\n          \"settingsPollingIntervalInSecond\": 60,\r\n          \"retentionPeriodForDeletedStorageAccountsInDays\": 0,\r\n          \"hostStyleHttpPort\": 0,\r\n          \"hostStyleHttpsPort\": 0,\r\n          \"corsAllowedOriginsList\": \"https://adminportal.local.azurestack.external/;https://adminportal.local.azurestack.external:12649/;https://portal.local.azurestack.external/;https://portal.local.azurestack.external:12649/\",\r\n          \"dataCenterUriHostSuffixes\": \"local.azurestack.external\",\r\n          \"bandwidthThrottleIsEnabled\": false,\r\n          \"usageCollectionIntervalInSeconds\": 10,\r\n          \"feedbackRefreshIntervalInSeconds\": 10,\r\n          \"numberOfAccountsToSync\": 20,\r\n          \"defaultThrottleProbabilityDecayIntervalInSeconds\": 240,\r\n          \"gracePeriodForFullThrottlingInRefreshIntervals\": 3,\r\n          \"gracePeriodMaxThrottleProbability\": 0.9,\r\n          \"overallRequestThresholdInTps\": 10000.0,\r\n          \"defaultRequestThresholdInTps\": 200.0,\r\n          \"minimumRequestThresholdInTps\": 1.0,\r\n          \"toleranceFactorForTps\": 2.0,\r\n          \"overallIngressThresholdInGbps\": 25.0,\r\n          \"defaultIngressThresholdInGbps\": 2.0,\r\n          \"minimumIngressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForIngress\": 2.0,\r\n          \"overallIntranetIngressThresholdInGbps\": 25.0,\r\n          \"defaultIntranetIngressThresholdInGbps\": 2.0,\r\n          \"minimumIntranetIngressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForIntranetIngress\": 2.0,\r\n          \"overallEgressThresholdInGbps\": 30.0,\r\n          \"defaultEgressThresholdInGbps\": 3.0,\r\n          \"minimumEgressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForEgress\": 2.0,\r\n          \"overallIntranetEgressThresholdInGbps\": 30.0,\r\n          \"defaultIntranetEgressThresholdInGbps\": 3.0,\r\n          \"minimumIntranetEgressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForIntranetEgress\": 2.0,\r\n          \"overallTotalIngressThresholdInGbps\": 50.0,\r\n          \"defaultTotalIngressThresholdInGbps\": 5.0,\r\n          \"minimumTotalIngressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForTotalIngress\": 2.0,\r\n          \"overallTotalEgressThresholdInGbps\": 50.0,\r\n          \"defaultTotalEgressThresholdInGbps\": 5.0,\r\n          \"minimumTotalEgressThresholdInGbps\": 0.0008,\r\n          \"toleranceFactorForTotalEgress\": 2.0\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2888"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Mar 2018 22:06:16 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvXuO/nyY1v511Ic/nE4UxgurW/jYLeDYOuNwxT1sH62qYesXIJdBZMWiVGsFCZqc4wl5pwZkXMOomZSC2/GXSOPkQaRjUirEtbvjLeDfPHFYxIv3t89Gm7yz2ZE7cILKRD9J05zkKMkN2qh1mRc1N"
+        ],
+        "x-ms-request-id": [
+          "c2d06b32-6676-437a-8845-c9e15cfda1b2"
+        ],
+        "x-ms-correlation-request-id": [
+          "2b6b0dde-d62e-4d7a-9d31-cecab6946aff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14411"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180320T220617Z:2b6b0dde-d62e-4d7a-9d31-cecab6946aff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourcegroups/System.local/providers/Microsoft.Storage.Admin/farms/1346c918-6b29-4d63-afb1-7f5767f1550b/ondemandgc?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGFiMjU1MWQtNDFlNS00ODliLTkyNzMtMWNkZjFjYmM3ZGM2L3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2UuQWRtaW4vZmFybXMvMTM0NmM5MTgtNmIyOS00ZDYzLWFmYjEtN2Y1NzY3ZjE1NTBiL29uZGVtYW5kZ2M/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "87599caa-34e3-4772-8298-19d6903c9ea2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Mar 2018 22:06:16 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://adminmanagement.local.azurestack.external/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourcegroups/System.local/providers/Microsoft.Storage.Admin/farms/1346c918-6b29-4d63-afb1-7f5767f1550b/operationresults/0f559383-a651-42fc-ab09-444b1ef3fe75?api-version=2015-12-01-preview"
+        ],
+        "Retry-After": [
+          "5"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvy2vmzAh4GJzalExLvwyl3b2YhXJG/fVRR1aJu4rdtiEnG5iNKkUCi33Nc7lbf9Xv8i4cYXKs8O3vMpvdZYqGFug4htLHrGjo5NIG+voARlZUrYheSgUa4Z84i7sVct1rGLCVSu1hJrFLpsXBu1hp"
+        ],
+        "x-ms-request-id": [
+          "de16c2a1-a8d6-4054-a469-29e6014f657b"
+        ],
+        "x-ms-correlation-request-id": [
+          "33516eb7-fac5-40de-8845-47d0fcda4630"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1166"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180320T220617Z:33516eb7-fac5-40de-8845-47d0fcda4630"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourcegroups/System.local/providers/Microsoft.Storage.Admin/farms/1346c918-6b29-4d63-afb1-7f5767f1550b/operationresults/0f559383-a651-42fc-ab09-444b1ef3fe75?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGFiMjU1MWQtNDFlNS00ODliLTkyNzMtMWNkZjFjYmM3ZGM2L3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlN0b3JhZ2UuQWRtaW4vZmFybXMvMTM0NmM5MTgtNmIyOS00ZDYzLWFmYjEtN2Y1NzY3ZjE1NTBiL29wZXJhdGlvbnJlc3VsdHMvMGY1NTkzODMtYTY1MS00MmZjLWFiMDktNDQ0YjFlZjNmZTc1P2FwaS12ZXJzaW9uPTIwMTUtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 20 Mar 2018 22:06:27 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvr65CSNxZMG2xrNM5K8mrb34+XY9gwDsymgI1Vzi3xroGDYmr9JWeJ2xXnZ54rbHk8H8yplzVY8fbBC8mDoIeDmdr22dOSqJ2rJQCWazq2RfmAoaQQwG0CgKqYUG0Ql9cD6R0rQHYoyC3zr+BLDaB"
+        ],
+        "x-ms-request-id": [
+          "c75284c6-f0a1-4015-b99d-0427ae90dfd8"
+        ],
+        "x-ms-correlation-request-id": [
+          "6d0ebabc-5763-43c2-be24-96c2c1efb547"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14410"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180320T220627Z:6d0ebabc-5763-43c2-be24-96c2c1efb547"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "8ab2551d-41e5-489b-9273-1cdf1cbc7dc6"
+  }
+}
