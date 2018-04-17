@@ -165,7 +165,10 @@ Gets the WAF configuration of an application gateway.
 Gets an application security group.
 
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
-{{Manually Enter Get-AzureRmBgpServiceCommunity Description Here}}
+
+
+### [Get-AzureRmDdosProtectionPlan](Get-AzureRmDdosProtectionPlan.md)
+Gets a DDoS protection plan.
 
 ### [Get-AzureRmEffectiveNetworkSecurityGroup](Get-AzureRmEffectiveNetworkSecurityGroup.md)
 Gets the effective network security group of a network interface.
@@ -401,6 +404,9 @@ Creates a WAF configuration for an application gateway.
 ### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
 Creates an application security group.
 
+### [New-AzureRmDdosProtectionPlan](New-AzureRmDdosProtectionPlan.md)
+Creates a DDoS protection plan.
+
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
 
@@ -547,6 +553,9 @@ Removes URL path mappings to a backend server pool.
 
 ### [Remove-AzureRmApplicationSecurityGroup](Remove-AzureRmApplicationSecurityGroup.md)
 Removes an application security group.
+
+### [Remove-AzureRmDdosProtectionPlan](Remove-AzureRmDdosProtectionPlan.md)
+Removes a DDoS protection plan.
 
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
