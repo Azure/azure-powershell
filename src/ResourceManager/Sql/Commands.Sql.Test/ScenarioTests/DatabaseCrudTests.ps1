@@ -116,7 +116,7 @@ function Test-CreateVcoreDatabase
 	{
 		# Create with vcore related parameters
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Vcore 2 -ComputeGeneration GP_Gen4 -VcoreTier GeneralPurpose -AsJob
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Vcore 2 -RequestedServiceObjectiveName GP_Gen4 -Edition GeneralPurpose -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -306,7 +306,7 @@ function Test-UpdateVcoreDatabase ()
 
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-Vcore 2 -VcoreTier GeneralPurpose -ComputeGeneration GP_Gen4 -MaxSizeBytes 250GB
+		-Vcore 2 -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen4 -MaxSizeBytes 250GB
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
@@ -324,14 +324,14 @@ function Test-UpdateVcoreDatabase ()
 
 		# Alter with all properties
 		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-MaxSizeBytes 5GB -Vcore 1 -VcoreTier GeneralPurpose -ComputeGeneration GP_Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
+			-MaxSizeBytes 5GB -Vcore 1 -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.MaxSizeBytes 5GB
 		Assert-AreEqual $db1.Edition GeneralPurpose
-		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4_1
 		Assert-AreEqual $db1.CollationName $db.CollationName
 		Assert-NotNull $db1.Tags
 		Assert-AreEqual True $db1.Tags.ContainsKey("tag_key")

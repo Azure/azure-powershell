@@ -161,6 +161,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The upserted Azure Sql Database from AutoRest SDK</returns>
         internal AzureSqlDatabaseModel UpsertDatabaseWithNewSdk(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
         {
+            // Construct the ARM resource Id of the pool
+            string elasticPoolId = string.IsNullOrWhiteSpace(model.Database.ElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
+                        _subscription.Id,
+                        resourceGroup,
+                        serverName,
+                        model.Database.ElasticPoolName);
+
             // Use AutoRest SDK
             var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new Management.Sql.Models.Database
             {
@@ -171,7 +178,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 MaxSizeBytes = model.Database.MaxSizeBytes,
                 ReadScale =  model.Database.ReadScale.ToString(),
                 SampleName = model.SampleName,
-                ZoneRedundant = model.Database.ZoneRedundant
+                ZoneRedundant = model.Database.ZoneRedundant,
+                ElasticPoolId = elasticPoolId
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

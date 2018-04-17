@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
@@ -47,6 +48,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
+        /// Gets or sets the AzureSqlElasticPoolCommunicator which has all the needed management clients
+        /// </summary>
+        private AzureSqlElasticPoolCommunicator ElasticPoolCommunicator { get; set; }
+
+        /// <summary>
         /// Constructs a database backup adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
@@ -56,6 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             Context = context;
             _subscription = context.Subscription;
             Communicator = new AzureSqlDatabaseBackupCommunicator(Context);
+            ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Context);
         }
 
         /// <summary>
@@ -536,34 +543,25 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <returns>Restored database object</returns>
         internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
         {
-            if (model.CreateMode.Equals("RestoreLongTermRetentionBackup", StringComparison.OrdinalIgnoreCase) && CultureInfo.CurrentCulture.CompareInfo.IndexOf(resourceId, "/providers/Microsoft.Sql", CompareOptions.IgnoreCase) >= 0)
-            {
-                // LongTermRetentionV2 Restore
-                //
-                Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, resourceId, model);
+            // Construct the ARM resource Id of the pool
+            string elasticPoolId = string.IsNullOrWhiteSpace(model.ElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
+                        _subscription.Id,
+                        resourceGroup,
+                        model.ServerName,
+                        model.ElasticPoolName);
 
-                return new AzureSqlDatabaseModel(resourceGroup, model.ServerName, database);
-            }
-            else
+            // Restore database
+            Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, new Management.Sql.Models.Database
             {
-                DatabaseCreateOrUpdateParameters parameters = new DatabaseCreateOrUpdateParameters()
-                {
-                    Location = model.Location,
-                    Properties = new DatabaseCreateOrUpdateProperties()
-                    {
-                        Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                        RequestedServiceObjectiveId = model.RequestedServiceObjectiveId,
-                        ElasticPoolName = model.ElasticPoolName,
-                        RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                        SourceDatabaseId = resourceId,
-                        RecoveryServicesRecoveryPointResourceId = resourceId,
-                        RestorePointInTime = restorePointInTime,
-                        CreateMode = model.CreateMode
-                    }
-                };
-                var resp = Communicator.LegacyRestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, parameters);
-                return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, model.ServerName, resp);
-            }
+                Location = model.Location,
+                CreateMode = model.CreateMode,
+                SourceDatabaseId = resourceId,
+                RecoveryServicesRecoveryPointId = resourceId,
+                RestorePointInTime = restorePointInTime,
+                ElasticPoolId = elasticPoolId
+            });
+
+            return new AzureSqlDatabaseModel(resourceGroup, model.ServerName, database);
         }
 
         /// <summary>

@@ -122,7 +122,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The database edition to use for the restored database.")]
+            HelpMessage = "The database edition to use for the restored database." +
+            "New supported database edition: GeneralPurpose and BusinessCritical")]
         public DatabaseEdition Edition { get; set; }
 
         /// <summary>
@@ -130,7 +131,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The service level objective to use for the restored database.")]
+            HelpMessage = "The service level objective to use for the restored database." +
+            "Existing supported database ServiceObjectiveName examples: S3, P2, DW100." +
+            "New supported database ServiceObjectiveName example: GP_Gen4_2, BC_Gen4_2")]
         public string ServiceObjectiveName { get; set; }
 
         /// <summary>
@@ -193,11 +196,18 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
                 DatabaseName = TargetDatabaseName,
-                Edition = Edition,
-                RequestedServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
                 CreateMode = createMode
             };
+
+            if (!string.IsNullOrWhiteSpace(ServiceObjectiveName) || MyInvocation.BoundParameters.ContainsKey("Edition"))
+            {
+                model.Sku = new Management.Sql.Models.Sku()
+                {
+                    Name = string.IsNullOrWhiteSpace(ServiceObjectiveName) ? Edition.ToString() : ServiceObjectiveName,
+                    Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null
+                };
+            }
 
             return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model);
         }

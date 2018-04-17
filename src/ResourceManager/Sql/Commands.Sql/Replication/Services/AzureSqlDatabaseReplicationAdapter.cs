@@ -129,13 +129,21 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <returns></returns>
         internal AzureSqlDatabaseCopyModel CopyDatabaseWithNewSdk(string copyResourceGroup, string copyServerName, AzureSqlDatabaseCopyModel model)
         {
+            // Construct the ARM resource Id of the pool
+            string elasticPoolId = string.IsNullOrWhiteSpace(model.ElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
+                        _subscription.Id,
+                        copyResourceGroup,
+                        copyServerName,
+                        model.ElasticPoolName);
+
+            // Create copy of the database
             var resp = ReplicationCommunicator.CreateCopy(copyResourceGroup, copyServerName, model.CopyDatabaseName, new Management.Sql.Models.Database
             {
                 Location = model.CopyLocation,
-                CreateMode = Management.Sql.Models.DatabaseCreateMode.Copy,
+                CreateMode = Management.Sql.Models.CreateMode.Copy,
                 SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
                         model.ResourceGroupName, model.ServerName, model.DatabaseName),
-                ElasticPoolId = model.ElasticPoolId,
+                ElasticPoolId = elasticPoolId,
                 Sku = model.Sku
             });
 
@@ -237,13 +245,20 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <returns>The Azure SQL Database ReplicationLink object</returns>
         internal AzureReplicationLinkModel CreateLinkWithNewSdk(string resourceGroupName, string serverName, AzureReplicationLinkModel model)
         {
+            // Construct the ARM resource Id of the pool
+            string elasticPoolId = string.IsNullOrWhiteSpace(model.SecondaryElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
+                        _subscription.Id,
+                        resourceGroupName,
+                        serverName,
+                        model.SecondaryElasticPoolName);
+
             var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.DatabaseName, new Management.Sql.Models.Database
             {
                 Location = model.PartnerLocation,
                 SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
                     model.ResourceGroupName, model.ServerName, model.DatabaseName),
-                CreateMode = Management.Sql.Models.DatabaseCreateMode.Secondary,
-                ElasticPoolId = model.SecondaryElasticPoolId,
+                CreateMode = Management.Sql.Models.CreateMode.Secondary,
+                ElasticPoolId = elasticPoolId,
                 Sku = model.SecondarySku,
             });
 
@@ -386,8 +401,8 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         {
             // partnerResourceGroupName is required because it is not exposed in any reponse from the service.
             // AllowConnections.ReadOnly is not yet supported
-            AllowConnections allowConnections = (resp.Role.ToString().Equals(Management.Sql.Models.DatabaseCreateMode.Secondary)
-                || resp.PartnerRole.ToString().Equals(Management.Sql.Models.DatabaseCreateMode.Secondary)) ? AllowConnections.All : AllowConnections.No;
+            AllowConnections allowConnections = (resp.Role.ToString().Equals(Management.Sql.Models.CreateMode.Secondary)
+                || resp.PartnerRole.ToString().Equals(Management.Sql.Models.CreateMode.Secondary)) ? AllowConnections.All : AllowConnections.No;
 
             AzureReplicationLinkModel model = new AzureReplicationLinkModel();
 
