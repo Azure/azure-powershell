@@ -33,7 +33,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 Description = 'Microsoft Azure PowerShell - Compute service cmdlets for Azure Resource Manager.  Manages virtual machines, hosted services, and related resources in Azure Resource Manager'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '3.0'
+PowerShellVersion = '5.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -176,14 +176,16 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Disable-AzureRmVmssDiskEncryption', 
                'Get-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssVMDiskEncryption', 
                'Export-AzureRmLogAnalyticRequestRateByInterval', 
-               'Export-AzureRmLogAnalyticThrottledRequests'
+               'Export-AzureRmLogAnalyticThrottledRequests',
+               'Repair-AzureRmVmssServiceFabricUpdateDomain'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzureRmVmssDiskEncryptionStatus', 
-               'Get-AzureRmVmssVMDiskEncryptionStatus'
+               'Get-AzureRmVmssVMDiskEncryptionStatus',
+               'Repair-AzureRmVmssServiceFabricUD'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
