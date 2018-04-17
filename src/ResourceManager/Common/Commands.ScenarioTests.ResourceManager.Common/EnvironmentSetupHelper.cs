@@ -227,7 +227,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #else
             string module = Path.Combine(baseDirectory, desktopModuleName, $"{desktopModuleName}.psd1");
 #endif
-            return File.Exists(module) ? module : null;
+            return module;
 
         }
 
