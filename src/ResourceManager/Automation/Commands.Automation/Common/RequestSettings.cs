@@ -15,7 +15,9 @@
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Management.Automation;
 using System;
-
+#if !NETSTANDARD
+using System.Diagnostics.Eventing;
+#endif
 namespace Microsoft.Azure.Commands.Automation
 {
     public class RequestSettings : IDisposable
