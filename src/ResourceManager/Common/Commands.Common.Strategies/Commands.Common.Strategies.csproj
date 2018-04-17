@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Compute\ImageVersion.cs" />
     <Compile Include="DependencyEngine.cs" />
+    <Compile Include="IAsyncCmdlet.cs" />
     <Compile Include="INestedResourceConfig.cs" />
     <Compile Include="INestedResourceConfigVisitor.cs" />
     <Compile Include="INestedResourceStrategy.cs" />
