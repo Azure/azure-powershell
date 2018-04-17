@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.SignalR.Models;
+using Microsoft.Azure.Commands.SignalR.Generated.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.SignalR.Models
