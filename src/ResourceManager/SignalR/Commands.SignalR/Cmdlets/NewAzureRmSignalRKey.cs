@@ -1,15 +1,11 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.SignalR.Generated;
-using Microsoft.Azure.Commands.SignalR.Generated.Models;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.SignalR;
+using Microsoft.Azure.Management.SignalR.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
@@ -79,7 +75,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
                 if (ShouldProcess($"{KeyType} key for {ResourceGroupName}/{Name}", "regenerate"))
                 {
-                    var keys = Client.SignalR.RegenerateKey(ResourceGroupName, Name, new RegenerateKeyParameters(KeyType));
+                    var keys = Client.Signalr.RegenerateKey(ResourceGroupName, Name, new RegenerateKeyParameters(KeyType));
                     WriteObject(new PSSignalRKeys(Name, keys));
                 }
             });

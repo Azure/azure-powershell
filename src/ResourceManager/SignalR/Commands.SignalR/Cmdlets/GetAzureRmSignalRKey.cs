@@ -1,14 +1,10 @@
 ﻿using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.SignalR.Generated;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.SignalR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
@@ -71,7 +67,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     Name = resourceId.ResourceName;
                 }
 
-                var keys = Client.SignalR.ListKeys(ResourceGroupName, Name);
+                var keys = Client.Signalr.ListKeys(ResourceGroupName, Name);
                 WriteObject(new PSSignalRKeys(Name, keys));
             });
         }
