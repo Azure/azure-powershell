@@ -41,10 +41,10 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         public string Name { get; set; }
 
         /// <summary>
-        /// TODO: smart command with default location.
+        /// TODO: smart command with default location based on ResourceGroupName
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 2)]
         [LocationCompleter("Microsoft.SignalR/signalRs")]
         [ValidateNotNullOrEmpty()]
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         /// <summary>
         /// TODO:
         /// - Assign default value.
-        /// - validation set or tab complition
+        /// - validation set or tab completion
         /// </summary>
         [Parameter(Mandatory = false)]
         public string Sku { get; set; }
 
         /// <summary>
-        /// TODO: Default host name prefix.
+        /// TODO: Default host name prefix. `DomainNameLabel`
         /// </summary>
         [Parameter(Mandatory = false)]
         public string HostNamePrefix { get; set; }
