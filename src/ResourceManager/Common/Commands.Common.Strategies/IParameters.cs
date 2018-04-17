@@ -12,24 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
-using System.Management.Automation;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    internal sealed class ShouldProcess : IShouldProcess
+    public interface IParameters<TModel>
+        where TModel : class
     {
-        readonly IAsyncCmdlet _Cmdlet;
+        string Location { get; set; }
 
-        public ShouldProcess(IAsyncCmdlet cmdlet)
-        {
-            _Cmdlet = cmdlet;
-        }
-
-        public Task<bool> ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model)
-            where TModel : class
-            => _Cmdlet.ShouldProcessAsync(
-                config.GetFullName(), VerbsCommon.New);
+        Task<ResourceConfig<TModel>> CreateConfigAsync();
     }
 }
