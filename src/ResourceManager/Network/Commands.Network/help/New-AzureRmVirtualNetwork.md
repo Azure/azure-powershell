@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 81D55C43-C9A3-4DA7-A469-A3A7550FE9A4
@@ -18,8 +18,8 @@ New-AzureRmVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <
  -AddressPrefix <System.Collections.Generic.List`1[System.String]>
  [-DnsServer <System.Collections.Generic.List`1[System.String]>]
  [-Subnet <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSubnet]>]
- [-Tag <Hashtable>] [-EnableDDoSProtection] [-EnableVmProtection] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-EnableDdosProtection] [-DdosProtectionPlanId <String>] [-EnableVmProtection] [-Force]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,6 +105,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DdosProtectionPlanId
+Reference to the DDoS protection plan resource associated with the virtual network.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -135,7 +150,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -EnableDDoSProtection
+### -EnableDdosProtection
 A switch parameter which represents if DDoS protection is enabled or not.
 
 ```yaml
@@ -309,3 +324,5 @@ This cmdlet does not accept any input.
 [Remove-AzureRmVirtualNetwork](./Remove-AzureRmVirtualNetwork.md)
 
 [Set-AzureRmVirtualNetwork](./Set-AzureRmVirtualNetwork.md)
+
+[New-AzureRmDdosProtectionPlan](./New-AzureRmDdosProtectionPlan.md)
