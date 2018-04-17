@@ -6,9 +6,9 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
     ```PowerShell
     Install-Module AzureRM.Compute --MinimumVersion  4.5.0
     ```
-2. Request a VHD SAS URI form us and assign it to the variable.
+2. Email azdevxps@microsoft.com to obtain a VHD SAS URI, and assign that unique URI to the variable below.
     ```PowerShell
-    $VhdSasUri = "https://aaa.blob.core.windows.net/bbb/ccc?some-signature"
+    $VhdSasUri = <vhd-sas-uri-requested-from-us>
     ```
 3. Create some variables..
    ```PowerShell
@@ -25,8 +25,8 @@ If you need an Azure Virtual Machine with all the [prerequisites](https://github
     $VmName = "ps-azure-env"
     $VMSize= "Standard_D4s_v3"
 
-    $VmLogin = 'psazuredev'
-    $VmPassword = "I<3PowerShell"
+    $VmLogin = <login>
+    $VmPassword = <password>
 
     $ErrorActionPreference = "Stop"
     $VmCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $VmLogin, $(ConvertTo-SecureString -String $VmPassword -AsPlainText -Force)
