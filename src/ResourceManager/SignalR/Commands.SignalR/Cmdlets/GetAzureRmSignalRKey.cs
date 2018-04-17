@@ -10,21 +10,15 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.SignalR
+namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, SignalRNoun, DefaultParameterSetName = ListSignalRServiceParameterSet)]
-    [OutputType(typeof(PSSignalRResource))]
-    public class GetAzureRmSignalR : SignalRCmdletBase
+    [Cmdlet(VerbsCommon.Get, SignalRKeyNoun, DefaultParameterSetName = ResourceGroupParameterSet)]
+    [OutputType(typeof(PSSignalRKeys))]
+    public class GetAzureRmSignalRKey : SignalRCmdletBase
     {
-        [Parameter(Position = 0,
-            Mandatory = false,
-            ParameterSetName = ListSignalRServiceParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource group name.")]
         [Parameter(Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
@@ -32,7 +26,6 @@ namespace Microsoft.Azure.Commands.SignalR
 
         [Parameter(Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "SignalR service name.")]
         [ValidateNotNullOrEmpty]
@@ -45,35 +38,41 @@ namespace Microsoft.Azure.Commands.SignalR
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "The SignalR resource object.")]
+        [ValidateNotNull]
+        public PSSignalRResource InputObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
             RunCmdlet(() =>
             {
+                ResourceIdentifier resourceId = null;
                 switch (ParameterSetName)
                 {
-                    case ListSignalRServiceParameterSet:
-                        var signalrs = string.IsNullOrEmpty(ResourceGroupName)
-                                     ? Client.SignalR.ListBySubscription()
-                                     : Client.SignalR.ListByResourceGroup(ResourceGroupName);
-                        foreach (var s in signalrs)
-                        {
-                            WriteObject(new PSSignalRResource(s));
-                        }
-                        break;
                     case ResourceGroupParameterSet:
-                        var signalr = Client.SignalR.Get(ResourceGroupName, Name);
-                        WriteObject(new PSSignalRResource(signalr));
                         break;
                     case ResourceIdParameterSet:
-                        var resource = new ResourceIdentifier(ResourceId);
-                        var idSignalR = Client.SignalR.Get(resource.ResourceGroupName, resource.ResourceName);
-                        WriteObject(new PSSignalRResource(idSignalR));
+                        resourceId = new ResourceIdentifier(ResourceId);
+                        break;
+                    case InputObjectParameterSet:
+                        resourceId = new ResourceIdentifier(InputObject.Id);
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
                 }
+                if (resourceId != null)
+                {
+                    ResourceGroupName = resourceId.ResourceGroupName;
+                    Name = resourceId.ResourceName;
+                }
+
+                var keys = Client.SignalR.ListKeys(ResourceGroupName, Name);
+                WriteObject(new PSSignalRKeys(Name, keys));
             });
         }
     }
