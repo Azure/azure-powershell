@@ -155,6 +155,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "src\Storage\Commands.Storage\Commands.Storage.Netcore.csproj", "{4F18000A-0329-4450-ADC8-8AA1C04A4666}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Keyvault.Netcore", "src\Common\Commands.Common.Keyvault\Common.Keyvault.Netcore.csproj", "{DD86A98D-693A-417F-994B-C7EE51B50A54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1065,6 +1067,18 @@ Global
 		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x64.Build.0 = Release|Any CPU
 		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x86.ActiveCfg = Release|Any CPU
 		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x86.Build.0 = Release|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Debug|x64.Build.0 = Debug|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Debug|x86.Build.0 = Debug|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Release|x64.ActiveCfg = Release|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Release|x64.Build.0 = Release|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Release|x86.ActiveCfg = Release|Any CPU
+		{DD86A98D-693A-417F-994B-C7EE51B50A54}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
