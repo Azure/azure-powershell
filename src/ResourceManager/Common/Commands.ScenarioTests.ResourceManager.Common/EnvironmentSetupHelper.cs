@@ -72,6 +72,42 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
         public EnvironmentSetupHelper()
         {
+            var module = GetModuleManifest(RmDirectory, "AzureRM.Profile");
+            if (string.IsNullOrWhiteSpace(module))
+            {
+                throw new InvalidOperationException("Could not find profile module");
+            }
+
+            LogIfNotNull($"Profile Module path: {module}");
+            RMProfileModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Resources");
+            LogIfNotNull($"Resources Module path: {module}");
+            RMResourceModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Insights");
+            LogIfNotNull($"Insights Module path: {module}");
+            RMInsightsModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Storage");
+            LogIfNotNull($"Storage Management Module path: {module}");
+            RMStorageModule = module;
+            module = GetModuleManifest(StorageDirectory, "Azure.Storage");
+            LogIfNotNull($"Storage Data Plane Module path: {module}");
+            RMStorageDataPlaneModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Network");
+            LogIfNotNull($"Network Module path: {module}");
+            RMNetworkModule = module;
+
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Profile");
+            LogIfNotNull($"Stack Profile Module path: {module}");
+            StackRMProfileModule = module;
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Resources");
+            LogIfNotNull($"Stack Resources Module path: {module}");
+            StackRMResourceModule = module;
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Storage");
+            LogIfNotNull($"Stack Storage Management Plane Module path: {module}");
+            StackRMStorageModule = module;
+            module = GetModuleManifest(StackStorageDirectory, "Azure.Storage");
+            LogIfNotNull($"Stack Storage Data Plane Module path: {module}");
+            StackRMStorageDataPlaneModule = module;
 
             TestExecutionHelpers.SetUpSessionAndProfile();
             IDataStore datastore = new MemoryDataStore();
@@ -110,27 +146,35 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        public string RMProfileModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Profile");
+        public string RMProfileModule { get; private set; }
 
-        public string RMResourceModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Resources");
+        public string RMResourceModule { get; private set; }
 
-        public string RMInsightsModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Insights");
+        public string RMInsightsModule { get; private set; } 
 
-        public string RMStorageModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Storage");
+        public string RMStorageModule { get; private set; } 
 
         //TODO: clarify (data plane should not be under ARM folder)
-        public string RMStorageDataPlaneModule { get; } = GetModuleManifest(StorageDirectory, "Azure.Storage");
+        public string RMStorageDataPlaneModule { get; private set; }
 
-        public string RMNetworkModule { get; } = GetModuleManifest(RmDirectory, "AzureRM.Network");
+        public string RMNetworkModule { get; private set; }
 
 
-        public string StackRMProfileModule { get; } = GetModuleManifest(StackRmDirectory, "AzureRM.Profile");
+        public string StackRMProfileModule { get; private set; }
 
-        public string StackRMResourceModule { get; } = GetModuleManifest(StackRmDirectory, "AzureRM.Resources");
+        public string StackRMResourceModule { get; private set; }
 
-        public string StackRMStorageModule { get; } = GetModuleManifest(StackRmDirectory, "AzureRM.Storage");
+        public string StackRMStorageModule { get; private set; }
 
-        public string StackRMStorageDataPlaneModule { get; } = GetModuleManifest(StackStorageDirectory, "AzureRM.Profile");
+        public string StackRMStorageDataPlaneModule { get; private set; }
+
+        private void LogIfNotNull(string message)
+        {
+            if (this.TracingInterceptor != null)
+            {
+                TracingInterceptor.Information($"[EnvironmentSetupHelper]: {message}");
+            }
+        }
 
         private static string ProbeForSrcDirectory()
         {
