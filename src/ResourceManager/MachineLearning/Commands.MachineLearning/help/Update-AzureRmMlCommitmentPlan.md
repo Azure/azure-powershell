@@ -141,7 +141,7 @@ Tags for the commitment plan resource.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named
