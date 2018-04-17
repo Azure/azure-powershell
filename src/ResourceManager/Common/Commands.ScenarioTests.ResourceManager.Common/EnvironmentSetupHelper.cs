@@ -215,6 +215,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             string configDirectory = GetConfigDirectory(targetDirectory);
             return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "Storage");
         }
+        
         private static string GetModuleManifest(string baseDirectory, string desktopModuleName)
         {
             if (string.IsNullOrWhiteSpace(baseDirectory) || string.IsNullOrWhiteSpace(desktopModuleName))
@@ -259,9 +260,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         /// <returns>The path to the module directory</returns>
         public string GetStackRMModulePath(string moduleName)
         {
-            if (string.IsNullOrWhiteSpace(RmDirectory))
+            if (string.IsNullOrWhiteSpace(StackRmDirectory))
             {
-                throw new InvalidOperationException("No ResourceManager Modules Directory found in build. Please build the modules before running tests.");
+                throw new InvalidOperationException("No ResourceManager Modules Directory for Azure Stack found in build. Please build the modules before running tests.");
             }
 
             if (string.IsNullOrWhiteSpace(moduleName))

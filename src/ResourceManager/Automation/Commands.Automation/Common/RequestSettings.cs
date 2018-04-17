@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Automation
             client.HttpClient.DefaultRequestHeaders.Remove(Constants.ActivityIdHeaderName);
             var activityId = Guid.NewGuid();
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ActivityIdHeaderName, activityId.ToString());
+#if !NETSTANDARD
+            EventProvider.SetActivityId(ref activityId);
+#endif
         }
 
         public void Dispose()
