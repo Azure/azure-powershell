@@ -28,7 +28,7 @@ namespace NetCoreCsProjSync
         private const string Validate = "-v";
         private const string Create = "-c";
         private const string TestProj = "-t";
-        private const string CreateTest = "-ct";
+        private const string CreateTest = "-s";
 
         private static readonly Dictionary<string, Action<string>> ModeMap = new Dictionary<string, Action<string>>
         {
