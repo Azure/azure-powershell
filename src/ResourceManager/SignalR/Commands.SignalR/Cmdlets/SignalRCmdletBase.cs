@@ -15,9 +15,11 @@ namespace Microsoft.Azure.Commands.SignalR
     public abstract class SignalRCmdletBase : AzureRMCmdlet
     {
         protected const string SignalRNoun = "AzureRmSignalR";
+        protected const string SignalRKeyNoun = "AzureRmSignalRKey";
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
-        protected const string IdParameterSet = "IdParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
         protected const string ListSignalRServiceParameterSet = "ListSignalRServiceParameterSet";
+        protected const string InputObjectParameterSet = "InputObjectParameterSet";
 
         private ISignalRManagementClient _client;
 

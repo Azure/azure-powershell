@@ -14,6 +14,9 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\GetAzureRmSignalRKey.cs" />
+    <Compile Include="Cmdlets\NewAzureRmSignalRKey.cs" />
+    <Compile Include="Cmdlets\RemoveAzureRmSignalR.cs" />
     <Compile Include="Cmdlets\GetAzureRmSignalR.cs" />
     <Compile Include="Cmdlets\NewAzureRmSignalR.cs" />
     <Compile Include="Cmdlets\SignalRCmdletBase.cs" />
@@ -44,6 +47,7 @@
     <Compile Include="Generated\SignalROperationsExtensions.cs" />
     <Compile Include="Models\PSResource.cs" />
     <Compile Include="Models\PSResourceSku.cs" />
+    <Compile Include="Models\PSSignalRKeys.cs" />
     <Compile Include="Models\PSSignalRResource.cs" />
     <Compile Include="Models\PSTrackedResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

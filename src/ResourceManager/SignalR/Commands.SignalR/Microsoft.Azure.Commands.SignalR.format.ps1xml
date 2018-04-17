@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>PSSignalR</Name>
+      <Name>PSSignalRResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.SignalR.Models.PSSignalR</TypeName>
+        <TypeName>Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource</TypeName>
       </ViewSelectedBy>
       <GroupBy>
         <ScriptBlock>$_.Location</ScriptBlock>
