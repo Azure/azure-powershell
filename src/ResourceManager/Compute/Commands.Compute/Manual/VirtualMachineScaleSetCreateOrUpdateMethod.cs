@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
