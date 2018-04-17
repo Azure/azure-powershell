@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Collections.Generic;
@@ -47,7 +46,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win2008R2SP1")]
+            "Win2008R2SP1",
+            "Win10")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         const int FirstPortRangeStart = 50000;
 
-        sealed class Parameters : IParameters<VirtualMachineScaleSet>
+        sealed class Parameters : IParameters<VirtualMachineScaleSet, ResourceGroup>
         {
             NewAzureRmVmss _cmdlet { get; }
 

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
 
@@ -22,9 +21,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 {
     static class AsyncCmdletExtensions
     {
-        public static void WriteVerbose(this IAsyncCmdlet cmdlet, string message, params object[] p)
-            => cmdlet.WriteVerbose(string.Format(message, p));
-
         /// <summary>
         /// Note: the function must be called in the main PowerShell thread.
         /// </summary>
@@ -32,78 +28,40 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         /// <param name="createAndStartTask"></param>
         public static void StartAndWait(
             this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
+            => new CmdletWrap(cmdlet).StartAndWait(createAndStartTask);
+
+        sealed class CmdletWrap : ICmdlet
         {
-            var asyncCmdlet = new AsyncCmdlet(cmdlet);
-            string previousX = null;
-            string previousOperation = null;
-            asyncCmdlet.Scheduler.Wait(
-                createAndStartTask(asyncCmdlet),
-                () =>
-                {
-                    if (asyncCmdlet.TaskProgressList.Count > 0)
-                    {
-                        var progress = 0.0;
-                        var activeTasks = new List<string>();
-                        foreach (var taskProgress in asyncCmdlet.TaskProgressList)
-                        {
-                            if (!taskProgress.IsDone)
-                            {
-                                var config = taskProgress.Config;
-                                activeTasks.Add(config.GetFullName());
-                            }
-                            progress += taskProgress.GetProgress();
-                        }
-                        var percent = (int)(progress * 100.0);
-                        var r = new[] { "|", "/", "-", "\\" };
-                        var x = r[DateTime.Now.Second % 4];
-                        var operation = activeTasks.Count > 0
-                            ? "Creating " + string.Join(", ", activeTasks) + "."
-                            : null;
-
-                        // write progress only if it's changed.
-                        if (x != previousX || operation != previousOperation)
-                        {
-                            cmdlet.WriteProgress(
-                                new ProgressRecord(
-                                    0,
-                                    "Creating Azure resources",
-                                    percent + "% " + x)
-                                {
-                                    CurrentOperation = operation,
-                                    PercentComplete = percent,
-                                });
-                            previousX = x;
-                            previousOperation = operation;
-                        }
-                    }
-                });
-        }
-
-        sealed class AsyncCmdlet : IAsyncCmdlet
-        {
-            public SyncTaskScheduler Scheduler { get; } = new SyncTaskScheduler();
-
             readonly Cmdlet _Cmdlet;
 
-            public List<ITaskProgress> TaskProgressList { get; } 
-                = new List<ITaskProgress>();
-
-            public AsyncCmdlet(Cmdlet cmdlet)
+            public CmdletWrap(Cmdlet cmdlet)
             {
                 _Cmdlet = cmdlet;
             }
 
             public void WriteVerbose(string message)
-                => Scheduler.BeginInvoke(() => _Cmdlet.WriteVerbose(message));
+                => _Cmdlet.WriteVerbose(message);
 
-            public Task<bool> ShouldProcessAsync(string target, string action)
-                => Scheduler.Invoke(() => _Cmdlet.ShouldProcess(target, action));
+            public bool ShouldProcess(string target, string action)
+                => _Cmdlet.ShouldProcess(target, action);
 
             public void WriteObject(object value)
-                => Scheduler.BeginInvoke(() => _Cmdlet.WriteObject(value));
+                => _Cmdlet.WriteObject(value);
 
-            public void ReportTaskProgress(ITaskProgress taskProgress)
-                => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
+            public void WriteProgress(
+                string activity,
+                string statusDescription,
+                string currentOperation,
+                int percentComplete)
+                => _Cmdlet.WriteProgress(
+                    new ProgressRecord(
+                        0,
+                        activity,
+                        statusDescription)
+                    {
+                        CurrentOperation = currentOperation,
+                        PercentComplete = percentComplete,
+                    });
         }
     }
 }

@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    interface IAsyncCmdlet
-    {
+    public interface IAsyncCmdlet
+    {        
         void WriteVerbose(string message);
 
         Task<bool> ShouldProcessAsync(string target, string action);

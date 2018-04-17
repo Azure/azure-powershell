@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
     {
         public static async Task<TModel> RunAsync<TModel>(
             IClient client,
-            IParameters<TModel> parameters,
+            IParameters<TModel, ResourceGroup> parameters,
             string resourceGroupName,
             IAsyncCmdlet asyncCmdlet,
             CancellationToken cancellationToken)
