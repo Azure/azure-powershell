@@ -760,13 +760,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_Named.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_Overflow.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_Positional.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_ZeroGracePeriod.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_AutomaticToManual.json">
@@ -775,19 +769,10 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_AutomaticWithGracePeriodReadOnlyFailover.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_AutomaticWithGracePeriodZero.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_ManualToAutomaticNoGracePeriod.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_Named.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_Overflow.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_PipeServer.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_Positional.json">

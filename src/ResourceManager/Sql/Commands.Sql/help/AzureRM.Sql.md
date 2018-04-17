@@ -63,7 +63,7 @@ Gets the details of an import or export of an Azure SQL Database.
 Gets the recommended index operations for a server or database.
 
 ### [Get-AzureRmSqlDatabaseInstanceFailoverGroup](Get-AzureRmSqlDatabaseInstanceFailoverGroup.md)
-{{Fill in the Synopsis}}
+Gets or lists Azure SQL Database Instance Failover Groups.
 
 ### [Get-AzureRmSqlDatabaseLongTermRetentionBackup](Get-AzureRmSqlDatabaseLongTermRetentionBackup.md)
 Gets one or more long term retention backups.
@@ -207,7 +207,7 @@ This command creates a new Azure SQL Database Failover Group.
 Imports a .bacpac file and create a new database on the server.
 
 ### [New-AzureRmSqlDatabaseInstanceFailoverGroup](New-AzureRmSqlDatabaseInstanceFailoverGroup.md)
-{{Fill in the Synopsis}}
+This command creates a new Azure SQL Database Instance Failover Group.
 
 ### [New-AzureRmSqlDatabaseRestorePoint](New-AzureRmSqlDatabaseRestorePoint.md)
 Creates a new restore point from which a SQL Database can be restored.
@@ -264,7 +264,7 @@ Removes an Azure SQL Database Failover Group.
 Removes one or more databases from an Azure SQL Database Failover Group.
 
 ### [Remove-AzureRmSqlDatabaseInstanceFailoverGroup](Remove-AzureRmSqlDatabaseInstanceFailoverGroup.md)
-{{Fill in the Synopsis}}
+Removes an Azure SQL Database Instance Failover Group.
 
 ### [Remove-AzureRmSqlDatabaseLongTermRetentionBackup](Remove-AzureRmSqlDatabaseLongTermRetentionBackup.md)
 Deletes a long term retention backup.
@@ -354,7 +354,7 @@ Modifies the configuration of an Azure SQL Database Failover Group.
 Sets a database geo backup policy.
 
 ### [Set-AzureRmSqlDatabaseInstanceFailoverGroup](Set-AzureRmSqlDatabaseInstanceFailoverGroup.md)
-{{Fill in the Synopsis}}
+Modifies the configuration of an Azure SQL Database Instance Failover Group.
 
 ### [Set-AzureRmSqlDatabaseRecommendedActionState](Set-AzureRmSqlDatabaseRecommendedActionState.md)
 Updates the state of an Azure SQL Database recommended action.
@@ -447,7 +447,7 @@ Suspends a SQL Data Warehouse database.
 Executes a failover of an Azure SQL Database Failover Group.
 
 ### [Switch-AzureRmSqlDatabaseInstanceFailoverGroup](Switch-AzureRmSqlDatabaseInstanceFailoverGroup.md)
-{{Fill in the Synopsis}}
+Executes a failover of an Azure SQL Database Instance Failover Group.
 
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.

@@ -22,7 +22,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseInstanceFailoverGroup",
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseInstanceFailoverGroup", DefaultParameterSetName = RemoveIFGDefaultSet,
         SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class RemoveAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
@@ -150,7 +150,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 Location = identifier.ResourceName;
                 identifier = new ResourceIdentifier(identifier.ParentResource);
                 Name = identifier.ResourceName;
-                identifier = new ResourceIdentifier(identifier.ParentResource);
                 ResourceGroupName = identifier.ResourceName;
             }
             if (!Force.IsPresent && !ShouldProcess(

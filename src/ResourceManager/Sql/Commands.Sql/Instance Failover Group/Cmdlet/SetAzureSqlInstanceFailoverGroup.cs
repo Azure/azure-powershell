@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database Instance Failover Group
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseInstanceFailoverGroup",
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseInstanceFailoverGroup", DefaultParameterSetName = SetIFGDefaultSet,
         SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
     public class SetAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
@@ -145,7 +145,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 Location = identifier.ResourceName;
                 identifier = new ResourceIdentifier(identifier.ParentResource);
                 Name = identifier.ResourceName;
-                identifier = new ResourceIdentifier(identifier.ParentResource);
                 ResourceGroupName = identifier.ResourceName;
             }
 
