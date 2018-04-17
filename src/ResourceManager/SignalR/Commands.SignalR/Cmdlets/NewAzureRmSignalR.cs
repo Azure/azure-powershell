@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         /// TODO: smart command with default resource group name
         /// </summary>
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 0)]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
@@ -59,7 +59,9 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         public string Sku { get; set; }
 
         /// <summary>
-        /// TODO: Default host name prefix. `DomainNameLabel`
+        /// TODO:
+        /// - Default host name prefix. 
+        /// - alias `DomainNameLabel`
         /// </summary>
         [Parameter(Mandatory = false)]
         public string HostNamePrefix { get; set; }
