@@ -57,6 +57,8 @@
     { "regex": "KeyVault", "alias": "Key Vault" }, 
 
     { "regex": "Iot", "alias": "IoT" }, 
+	
+	  { "regex": "DeviceProvisioningServices", "alias": "DPS" }, 
 
     { "regex": "Batch", "alias": "Batch" }, 
 
