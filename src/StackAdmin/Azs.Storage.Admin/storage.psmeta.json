@@ -39,7 +39,7 @@
       "post": {
         "x-ps-cmdlet-infos": [
           {
-            "name": "Stop-AzsContainerMigration",
+            "name": "Stop-AzsStorageContainerMigration",
             "description": "Cancel a container migration job.",
             "defaultParameterSet": "Containers_CancelMigration",
             "generateCommand": true

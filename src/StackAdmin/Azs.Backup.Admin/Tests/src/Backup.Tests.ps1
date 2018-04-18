@@ -35,7 +35,8 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false
+	[bool]$RunRaw = $false,
+    [bool]$UseInstalled = $false
 )
 
 $global:RunRaw = $RunRaw

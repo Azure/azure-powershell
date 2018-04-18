@@ -129,7 +129,6 @@ function Start-AzsScaleUnitNode {
                     throw 'Module failed to find operation to execute.'
                 }
 
-
                 Write-Verbose -Message "Waiting for the operation to complete."
 
                 $PSSwaggerJobScriptBlock = {

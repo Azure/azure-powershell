@@ -36,9 +36,10 @@
     Date:   March 16, 2018
 #>
 param(
-    [bool]$RunRaw = $false
+    [bool]$RunRaw = $false,
+    [bool]$UseInstalled = $false
 )
-
+$Global:UseInstalled = $UseInstalled
 $Global:RunRaw = $RunRaw
 
 . $PSScriptRoot\CommonModules.ps1
@@ -143,9 +144,9 @@ InModuleScope Azs.Subscriptions.Admin {
 			$rg = "testrg"
 			$name = "testOffer1"
 			$plan = (Get-AzsPlan)[0]
-			
+
 			$offer = New-AzsOffer -Name $name -DisplayName "Test Offer" -ResourceGroupName $rg -BasePlanIds { $plan.Id } -Location local
-			$saved = Get-AzsManagedOffer -Name $name -ResourceGroupName $rg 
+			$saved = Get-AzsManagedOffer -Name $name -ResourceGroupName $rg
 			AssertOffersSame $offer $saved
 		}
     }

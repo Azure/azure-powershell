@@ -51,7 +51,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.0'; },
         @{ModuleName = 'Azs.AzureBridge.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.1.0'; },
@@ -119,8 +119,12 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2017.10.12 - Version 1.2.12
-            * AzureStackAdmin - Everything is broken'
+            ReleaseNotes = '## 2017.10.12 - Version 1.2.11
+            * Dependency on the new AzureRm.Profile module brings many breaking changes, please refer migration guide https://aka.ms/azSpowershellmigration for the details
+            * AzureStackAdmin
+                * Get-AzsTenantSubscription has been renamed to Get-AzsUserSubscription with alias support for backward compatibility
+                * New-AzsTenantSubscription has been renamed to New-AzsUserSubscription with alias support for backward compatibility
+                * Remove-AzsTenantSubscription has been renamed to Remove-AzsUserSubscription with alias support for backward compatibility'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''
