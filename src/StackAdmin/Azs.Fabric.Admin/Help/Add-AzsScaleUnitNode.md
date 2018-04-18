@@ -14,13 +14,14 @@ Add a new scale unit.
 
 ### ScaleOut (Default)
 ```
-Add-AzsScaleUnitNode -ScaleUnitName <String> -NodeList <ScaleOutScaleUnitParameters[]>
- [-AwaitStorageConvergence] [-Location <String>] [-ResourceGroupName <String>] [-Wait] [<CommonParameters>]
+Add-AzsScaleUnitNode -Name <String> -NodeList <ScaleOutScaleUnitParameters[]> [-AwaitStorageConvergence]
+ [-Location <String>] [-ResourceGroupName <String>] [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Add-AzsScaleUnitNode -ResourceId <String> [-Wait] [<CommonParameters>]
+Add-AzsScaleUnitNode -NodeList <ScaleOutScaleUnitParameters[]> [-AwaitStorageConvergence] -ResourceId <String>
+ [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,19 +31,49 @@ Add a new scale unit.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Add-AzsScaleUnitNode -ResourceGroup "System.local" -Location "local" - ScaleUnit "Azs-ERC03" -NodeList $nodeList
+Add-AzsScaleUnitNode -ScaleUnitName "Azs-ERC03" -NodeList $nodeList
 ```
 
 Add a new scale unit node.
 
 ## PARAMETERS
 
+### -AsJob
+Run asynchronous as a job and return the job object.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AwaitStorageConvergence
 Flag indicates if the operation should wait for storage to converge before returning.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ScaleOut
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -67,12 +98,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+{{Fill Name Description}}
+
+```yaml
+Type: String
+Parameter Sets: ScaleOut
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NodeList
 List of nodes in the scale unit.
 
 ```yaml
 Type: ScaleOutScaleUnitParameters[]
-Parameter Sets: ScaleOut
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -112,32 +158,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ScaleUnitName
-Name of the scale unit.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
-Parameter Sets: ScaleOut
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

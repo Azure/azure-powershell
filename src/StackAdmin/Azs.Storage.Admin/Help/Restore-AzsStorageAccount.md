@@ -14,13 +14,13 @@ Undelete a deleted storage account.
 
 ### Undelete (Default)
 ```
-Restore-AzsStorageAccount -FarmName <String> -AccountId <String> [-ResourceGroupName <String>]
- [<CommonParameters>]
+Restore-AzsStorageAccount -FarmName <String> -Name <String> [-ResourceGroupName <String>] [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Restore-AzsStorageAccount -ResourceId <String> [<CommonParameters>]
+Restore-AzsStorageAccount -ResourceId <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,15 +30,15 @@ Undelete a deleted storage account.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Restore-AzsStorageAccount -FarmName "90987d65-eb60-42ae-b735-18bcd7ff69da" -AccountId "83fe9ac0-f1e7-433e-b04c-c61ae0712093"
+Restore-AzsStorageAccount -FarmName "90987d65-eb60-42ae-b735-18bcd7ff69da" -Name "83fe9ac0-f1e7-433e-b04c-c61ae0712093"
 ```
 
 Undelete a deleted storage account.
 
 ## PARAMETERS
 
-### -AccountId
-Internal storage account ID, which is not visible to tenant.
+### -FarmName
+Farm Id.
 
 ```yaml
 Type: String
@@ -52,8 +52,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FarmName
-Farm Id.
+### -Force
+Do not ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Internal storage account ID, which is not visible to tenant.
 
 ```yaml
 Type: String
@@ -94,6 +109,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

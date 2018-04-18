@@ -24,7 +24,14 @@ Returns a list of blob acquistions.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsStorageAcquisition -ResourceGroupName "system.local" -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
+Get-AzsStorageAcquisition -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
+```
+
+Get the list of blob acquistions.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+Get-AzsStorageAcquisition -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376 -Filter "startswith(properties/Storageaccount, 'Test'"
 ```
 
 Get the list of blob acquistions.

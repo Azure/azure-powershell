@@ -13,10 +13,10 @@ Creates a new offer.
 ## SYNTAX
 
 ```
-New-AzsOffer -Name <String> -DisplayName <String> -ResourceGroupName <String> [-BasePlanIds <String[]>]
- [-Description <String>] [-ExternalReferenceId <String>] [-State <String>] [-Location <String>]
- [-MaxSubscriptionsPerAccount <Int64>] [-SubscriptionCount <Int64>]
- [-AddonPlanDefinition <AddonPlanDefinition[]>] [<CommonParameters>]
+New-AzsOffer [-Name] <String> [-DisplayName] <String> [-ResourceGroupName] <String> [[-BasePlanIds] <String[]>]
+ [[-Description] <String>] [[-ExternalReferenceId] <String>] [[-State] <String>] [[-Location] <String>]
+ [[-MaxSubscriptionsPerAccount] <Int64>] [[-SubscriptionCount] <Int64>]
+ [[-AddonPlanDefinition] <AddonPlanDefinition[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,20 +28,6 @@ Create or update the offer.
 ```
 New-AzsOffer -Name offer1 -ResourceGroupName rg1 -State Public -DisplayName "offer1" -BasePlanIds "/subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/plans/plan1"
 ```
-
-OfferName                  : offer1
-DisplayName                : offer1
-Description                :
-State                      : Public
-SubscriptionCount          : 1
-MaxSubscriptionsPerAccount : 0
-BasePlanIds                : {/subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/plans/plan1}
-AddonPlanDefinition        :
-Id                         : /subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/offers/offer1
-Name                       : offer1
-Type                       : Microsoft.Subscriptions.Admin/offers
-Location                   : local
-Tags                       :
 
 Creates a new offer.
 
@@ -56,7 +42,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -71,7 +57,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -86,7 +72,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -101,7 +87,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -116,7 +102,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -128,10 +114,10 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ArmLocation
 
 Required: False
-Position: Named
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -146,7 +132,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 9
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -161,14 +147,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String
@@ -176,7 +162,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -191,7 +177,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -206,7 +192,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 10
 Default value: 0
 Accept pipeline input: False
 Accept wildcard characters: False

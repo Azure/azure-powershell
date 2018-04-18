@@ -35,55 +35,22 @@ Returns the list of all alerts in a given location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsAlert -Name 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
+Get-AzsAlert -AlertId 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
 ```
 
-ClosedTimestamp                :
-CreatedTimestamp               : 03/04/2018 05:22:22
-Description                    : {System.Collections.Generic.Dictionary\`2\[System.String,System.String\]}
-FaultId                        :
-AlertId                        : 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
-FaultTypeId                    : CertificateExpiration.ExternalCert.Critical
-LastUpdatedTimestamp           : 03/08/2018 05:22:33
-AlertProperties                : {}
-Remediation                    : {System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\]...}
-ResourceRegistrationId         :
-ResourceProviderRegistrationId : e56bc7b8-c8b5-4e25-b00c-4f951effb22c
-Severity                       : Critical
-State                          : Active
-Title                          : Pending external certificate expiration
-ImpactedResourceId             : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i
-                                 nfraRoleInstances/AZS-CA01
-ImpactedResourceDisplayName    : AZS-CA01
-ClosedByUserAlias              :
-Id                             : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionH
-                                 ealths/local/alerts/7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
-Name                           : 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
-Type                           : Microsoft.InfrastructureInsights.Admin/regionHealths/alerts
-Location                       : local
-Tags                           : {}
-
-Get an alert by name.
+Get an alert by AlertId.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-AzsAlert | Where State -EQ 'active' | select FaultTypeId, Title
 ```
 
-FaultTypeId                                 Title
------------                                 -----
-CertificateExpiration.ExternalCert.Critical Pending external certificate expiration
-CertificateExpiration.ExternalCert.Critical Pending external certificate expiration
-
 Get all active alerts and display their fault and title.
 
 ## PARAMETERS
 
 ### -AlertId
-The alert identifier.
+{{Fill AlertId Description}}
 
 ```yaml
 Type: String

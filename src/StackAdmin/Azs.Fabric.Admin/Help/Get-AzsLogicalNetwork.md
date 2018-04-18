@@ -35,26 +35,15 @@ Returns a list of all logical networks at a location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsLogicalNetwork -ResourceGroup "System.local" -Location "local"
+Get-AzsLogicalNetwork
 ```
-
-NetworkVirtualizationEnabled Type                                                   Metadata Name                                 Location
----------------------------- ----                                                   -------- ----                                 --------
-False                        Microsoft.Fabric.Admin/fabricLocations/logicalNetworks          00000000-2222-1111-9999-000000000001 local
-False                        Microsoft.Fabric.Admin/fabricLocations/logicalNetworks          47931036-2874-4d45-b1f1-b69666088968 local
-False                        Microsoft.Fabric.Admin/fabricLocations/logicalNetworks          B60B71AA-36BF-40AC-A9CE-A6915D1EAE1A local
-True                         Microsoft.Fabric.Admin/fabricLocations/logicalNetworks          bb6c6f28-bad9-441b-8e62-57d2be255904 local
-False                        Microsoft.Fabric.Admin/fabricLocations/logicalNetworks          F207C184-367C-4BC7-8C74-03AA39D68C24 local
-False                        Microsoft.Fabric.Admin/fabricLocations/logicalNetworks          f8f67956-3906-4303-94c5-09cf91e7e311 local
 
 Get all logical networks at a location.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsLogicalNetwork -ResourceGroup "System.local" -Location "local" -LogicalNetwork "bb6c6f28-bad9-441b-8e62-57d2be255904"
+Get-AzsLogicalNetwork -Name "bb6c6f28-bad9-441b-8e62-57d2be255904"
 ```
-
-True                         Microsoft.Fabric.Admin/fabricLocations/logicalNetworks          bb6c6f28-bad9-441b-8e62-57d2be255904 local
 
 Get a specific logical networks at a location based on a name.
 

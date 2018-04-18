@@ -36,28 +36,15 @@ Returns a list of all fabric file shares at a certain location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsInfrastructureShare -ResourceGroup "System.local" -Location local
+Get-AzsInfrastructureShare
 ```
-
-Type                                              UncPath                                               Name                 Location AssociatedVolume
-----                                              -------                                               ----                 -------- ----------------
-Microsoft.Fabric.Admin/fabricLocations/fileShares \\\\SU1FileServer.azurestack.local\SU1_Infrastructure_1 SU1_Infrastructure_1 local    a42d219b
-Microsoft.Fabric.Admin/fabricLocations/fileShares \\\\SU1FileServer.azurestack.local\SU1_Infrastructure_2 SU1_Infrastructure_2 local    a42d219b
-Microsoft.Fabric.Admin/fabricLocations/fileShares \\\\SU1FileServer.azurestack.local\SU1_Infrastructure_3 SU1_Infrastructure_3 local    a42d219b
-Microsoft.Fabric.Admin/fabricLocations/fileShares \\\\SU1FileServer.azurestack.local\SU1_ObjStore         SU1_ObjStore         local    a42d219b
-Microsoft.Fabric.Admin/fabricLocations/fileShares \\\\SU1FileServer.azurestack.local\SU1_Public           SU1_Public           local    a42d219b
-Microsoft.Fabric.Admin/fabricLocations/fileShares \\\\SU1FileServer.azurestack.local\SU1_VmTemp           SU1_VmTemp           local    a42d219b
 
 Returns a list of all file shares.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsInfrastructureShare -ResourceGroup "System.local" -Location local -Share Microsoft.AzureStack.Management.Fabric.Admin.Models.FileShare.Name
+Get-AzsInfrastructureShare -Name Microsoft.AzureStack.Management.Fabric.Admin.Models.FileShare.Name
 ```
-
-Type                                              UncPath                                               Name                 Location AssociatedVolume
-----                                              -------                                               ----                 -------- ----------------
-Microsoft.Fabric.Admin/fabricLocations/fileShares \\\\SU1FileServer.azurestack.local\SU1_Infrastructure_1 SU1_Infrastructure_1 local    a42d219b
 
 Returns a file share based on name.
 

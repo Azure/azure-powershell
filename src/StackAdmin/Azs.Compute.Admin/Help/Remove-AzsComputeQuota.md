@@ -29,7 +29,7 @@ Delete an existing quota.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Remove-AzsComputeQuota -Location local -Name ComputeQuota
+Remove-AzsComputeQuota -Name ComputeQuota
 ```
 
 Remove a compute quota given all the parameters.
@@ -44,7 +44,7 @@ Remove a compute quota given just the name.
 ## PARAMETERS
 
 ### -Force
-{{Fill Force Description}}
+Don't ask for confirmation.
 
 ```yaml
 Type: SwitchParameter

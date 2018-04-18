@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String

@@ -38,17 +38,6 @@ The locations returned can be used to get available updates at a particular loca
 Get-AzsUpdateLocation
 ```
 
-CurrentVersion    : 1.0.180302.1
-CurrentOemVersion : 1.0.1709.3
-LastUpdated       : 3/3/2018 8:09:12 AM
-State             : UpdateAvailable
-Id                : /subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond
-Name              : redmond
-Type              : Microsoft.Update.Admin/updateLocations
-Location          : redmond
-Tags              : {}
-...
-
 Get the list of update locations.
 
 ## PARAMETERS

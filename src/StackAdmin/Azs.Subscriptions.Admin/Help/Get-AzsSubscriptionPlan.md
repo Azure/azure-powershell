@@ -5,64 +5,53 @@ online version:
 schema: 2.0.0
 ---
 
-# Remove-AzsAcquiredPlan
+# Get-AzsSubscriptionPlan
 
 ## SYNOPSIS
-Deletes an acquired plan.
+Get a collection of all acquired plans that subscription has access to.
 
 ## SYNTAX
 
-### Delete (Default)
+### List (Default)
 ```
-Remove-AzsAcquiredPlan -AcquisitionId <Guid> -TargetSubscriptionId <String> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Get-AzsSubscriptionPlan -TargetSubscriptionId <Guid> [-Top <Int32>] [-Skip <Int32>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzsSubscriptionPlan -AcquisitionId <Guid> -TargetSubscriptionId <Guid> [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Remove-AzsAcquiredPlan -ResourceId <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzsSubscriptionPlan -ResourceId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an acquired plan.
+Get a collection of all acquired plans that subscription has access to.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Remove-AzsAcquiredPlan -AcquisitionId $([Guid]::NewGuid()) -TargetSubscriptionId "c90173b1-de7a-4b1d-8600-b832b0e65946"
+Get-AzsSubscriptionPlan -TargetSubscriptionId "c90173b1-de7a-4b1d-8600-b832b0e65946"
 ```
 
-Delete an acquired plan.
+Get a collection of all acquired plans that subscription has access to.
 
 ## PARAMETERS
 
 ### -AcquisitionId
-{{Fill AcquisitionId Description}}
+The plan acquisition Identifier
 
 ```yaml
 Type: Guid
-Parameter Sets: Delete
+Parameter Sets: Get
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Flag to remove the item without confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -82,12 +71,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Skip
+Skip the first N items as specified by the parameter value.
+
+```yaml
+Type: Int32
+Parameter Sets: List
+Aliases: 
+
+Required: False
+Position: Named
+Default value: -1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetSubscriptionId
 The target subscription ID.
 
 ```yaml
-Type: String
-Parameter Sets: Delete
+Type: Guid
+Parameter Sets: List, Get
 Aliases: 
 
 Required: True
@@ -97,33 +101,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Top
+Return the top N items as specified by the parameter value.
+Applies after the -Skip parameter.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: Int32
+Parameter Sets: List
+Aliases: 
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
+Default value: -1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -134,6 +123,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.AzureStack.Management.Subscriptions.Admin.Models.PlanAcquisition
 
 ## NOTES
 

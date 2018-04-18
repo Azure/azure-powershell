@@ -34,9 +34,10 @@
     Date:   August 24, 2017
 #>
 param(
-    [bool]$RunRaw = $false
+    [bool]$RunRaw = $false,
+    [bool]$UseInstalled = $false
 )
-
+$Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
 
 . $PSScriptRoot\CommonModules.ps1

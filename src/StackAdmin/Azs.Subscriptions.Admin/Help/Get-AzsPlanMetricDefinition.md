@@ -31,7 +31,7 @@ Get a plan's metric definitions.
 ## PARAMETERS
 
 ### -PlanName
-{{Fill PlanName Description}}
+Name of the plan.
 
 ```yaml
 Type: String
@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String

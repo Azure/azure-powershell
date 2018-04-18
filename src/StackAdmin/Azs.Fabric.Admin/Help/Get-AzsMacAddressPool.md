@@ -35,24 +35,15 @@ Returns a list of all MAC address pools at a location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsMacAddressPool -ResourceGroup "System.local" -Location "local"
+Get-AzsMacAddressPool
 ```
-
-NumberOfAllocatedMacAddresses Type                                                   Metadata NumberOfAvailableMacAddresses StartMacAddress
------------------------------ ----                                                   -------- ----------------------------- ---------------
-2                             Microsoft.Fabric.Admin/fabricLocations/macAddressPools          3998718                       00-1D-D8-B7-1C-00
-6                             Microsoft.Fabric.Admin/fabricLocations/macAddressPools          3998718                       01-1D-D8-B7-1C-00
 
 Get all MAC address pools at a location.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsMacAddressPool -ResourceGroup "System.local" -Location "local" -MacAddressPool "8197fd09-8a69-417e-a55c-10c2c61f5ee7"
+Get-AzsMacAddressPool -Name "8197fd09-8a69-417e-a55c-10c2c61f5ee7"
 ```
-
-NumberOfAllocatedMacAddresses Type                                                   Metadata NumberOfAvailableMacAddresses StartMacAddress
------------------------------ ----                                                   -------- ----------------------------- ---------------
-2                             Microsoft.Fabric.Admin/fabricLocations/macAddressPools          3998718                       00-1D-D8-B7-1C-00
 
 Get a specific MAC address pool at a location based on name.
 

@@ -34,15 +34,10 @@ Returns a list of all storage farms.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsStorageFarm -ResourceGroupName "system.local"
+Get-AzsStorageFarm
 ```
 
-Name              Location          HealthStatus      SettingsStore
-----              --------          ------------      -------------
-   f9b8e2e2-e4b4-...
-local                               ASACSSFClient....
-
-   Get the list of all storage farms.
+Get the list of all storage farms.
 
 ## PARAMETERS
 

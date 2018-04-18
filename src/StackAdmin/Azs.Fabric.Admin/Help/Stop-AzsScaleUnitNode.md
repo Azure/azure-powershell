@@ -14,13 +14,14 @@ Power off a scale unit node.
 
 ### Stop (Default)
 ```
-Stop-AzsScaleUnitNode -Name <String> [-Location <String>] [-ResourceGroupName <String>] [-Shutdown] [-Wait]
- [<CommonParameters>]
+Stop-AzsScaleUnitNode -Name <String> [-Location <String>] [-ResourceGroupName <String>] [-Shutdown] [-AsJob]
+ [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Stop-AzsScaleUnitNode -ResourceId <String> [-Shutdown] [-Wait] [<CommonParameters>]
+Stop-AzsScaleUnitNode -ResourceId <String> [-Shutdown] [-AsJob] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,23 +31,49 @@ Power off a scale unit node.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Stop-AzsScaleUnitNode -ResourceGroup "System.local" -Location "local" -ScaleUnitNode "HC1n25r2236" -Shutdown
+Stop-AzsScaleUnitNode -Name "HC1n25r2236" -Shutdown
 ```
-
-ProvisioningState : Succeeded
 
 Shutdown a scale unit node.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Stop-AzsScaleUnitNode -ResourceGroup "System.local" -Location "local" -ScaleUnitNode "HC1n25r2236"
+Stop-AzsScaleUnitNode -Name "HC1n25r2236"
 ```
-
-ProvisioningState : Succeeded
 
 Power down a scale unit node.
 
 ## PARAMETERS
+
+### -AsJob
+Run asynchronous as a job and return the job object.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Location of the resource.
@@ -123,17 +150,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -13,11 +13,11 @@ Create or update a quota.
 ## SYNTAX
 
 ```
-New-AzsNetworkQuota -Name <String> [-MaxNicsPerSubscription <Int64>] [-MaxPublicIpsPerSubscription <Int64>]
- [-MaxVirtualNetworkGatewayConnectionsPerSubscription <Int64>] [-MaxVnetsPerSubscription <Int64>]
- [-MaxVirtualNetworkGatewaysPerSubscription <Int64>] [-MaxSecurityGroupsPerSubscription <Int64>]
- [-MaxLoadBalancersPerSubscription <Int64>] [-Location <String>] [-MigrationPhase <String>]
- [<CommonParameters>]
+New-AzsNetworkQuota [-Name] <String> [[-MaxNicsPerSubscription] <Int64>]
+ [[-MaxPublicIpsPerSubscription] <Int64>] [[-MaxVirtualNetworkGatewayConnectionsPerSubscription] <Int64>]
+ [[-MaxVnetsPerSubscription] <Int64>] [[-MaxVirtualNetworkGatewaysPerSubscription] <Int64>]
+ [[-MaxSecurityGroupsPerSubscription] <Int64>] [[-MaxLoadBalancersPerSubscription] <Int64>]
+ [[-Location] <String>] [[-MigrationPhase] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,25 +27,17 @@ Create or update a quota.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
+New-AzsNetworkQuota -Name NetworkQuotaDefaultValues
+```
+
+Create a new network quota with all the default values.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
 New-AzsNetworkQuota -Name NetworkQuota1 -MaxNicsPerSubscription 150 -MaxPublicIpsPerSubscription 150
 ```
 
-MaxPublicIpsPerSubscription                        : 150
-MaxVnetsPerSubscription                            : 150
-MaxVirtualNetworkGatewaysPerSubscription           : 1
-MaxVirtualNetworkGatewayConnectionsPerSubscription : 2
-MaxLoadBalancersPerSubscription                    : 50
-MaxNicsPerSubscription                             : 50
-MaxSecurityGroupsPerSubscription                   : 50
-MigrationPhase                                     : None
-Id                                                 : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/providers/Microsoft.Network.Admin/locations/local/quotas/Networ
-                                                     kQuota1
-Name                                               : NetworkQuota1
-Type                                               : Microsoft.Network.Admin/quotas
-Location                                           :
-Tags                                               :
-
-Create a new network quota.
+Create a new network quota with non default values for quota.
 
 ## PARAMETERS
 
@@ -58,7 +50,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -73,7 +65,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 8
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -88,7 +80,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: 100
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -103,7 +95,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 3
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -118,7 +110,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 7
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -133,7 +125,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: 2
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -148,7 +140,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 6
 Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -163,7 +155,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 5
 Default value: 50
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -178,14 +170,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 10
 Default value: Prepare
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the resource.
+Name of the network quota resource.
 
 ```yaml
 Type: String
@@ -193,7 +185,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -24,18 +24,10 @@ Returns a list of metric definitions for a storage share.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsStorageShareMetricDefinition -ResourceGroupName "system.local" -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376 -ShareName "||SU1FileServer.azurestack.local|SU1_ObjStore"
+Get-AzsStorageShareMetricDefinition -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376 -ShareName "||SU1FileServer.azurestack.local|SU1_ObjStore"
 ```
 
-PrimaryAggregationType                                       Unit
-----------------------                                       ----
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-
-   Get the list of metric definitions for a storage share.
+Get the list of metric definitions for a storage share.
 
 ## PARAMETERS
 

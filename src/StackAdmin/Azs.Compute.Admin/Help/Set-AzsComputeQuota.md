@@ -15,19 +15,22 @@ Update an existing compute quota using the provided parameters.
 ### Update (Default)
 ```
 Set-AzsComputeQuota -Name <String> [-AvailabilitySetCount <Int32>] [-CoresLimit <Int32>]
- [-VmScaleSetCount <Int32>] [-VirtualMachineCount <Int32>] [-Location <String>] [<CommonParameters>]
+ [-VmScaleSetCount <Int32>] [-VirtualMachineCount <Int32>] [-Location <String>] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Set-AzsComputeQuota [-AvailabilitySetCount <Int32>] [-CoresLimit <Int32>] [-VmScaleSetCount <Int32>]
- [-VirtualMachineCount <Int32>] [-Location <String>] -ResourceId <String> [<CommonParameters>]
+ [-VirtualMachineCount <Int32>] [-Location <String>] -ResourceId <String> [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzsComputeQuota [-AvailabilitySetCount <Int32>] [-CoresLimit <Int32>] [-VmScaleSetCount <Int32>]
- [-VirtualMachineCount <Int32>] [-Location <String>] -InputObject <Quota> [<CommonParameters>]
+ [-VirtualMachineCount <Int32>] [-Location <String>] -InputObject <Quota> [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,15 +40,8 @@ Update an existing compute quota.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Set-AzsComputeQuota -Location local -Name Quota1 -CoresLimit 10
+Set-AzsComputeQuota -Name Quota1 -CoresLimit 10
 ```
-
-AvailabilitySet Id              Type            CoresLimit      VmScaleSetCount Name            VirtualMachineC Location
-Count                                                                                           ount
---------------- --              ----            ----------      --------------- ----            --------------- --------
-10              /subscriptio...
-Microsoft.Co...
-10              20              Quota1          20              local
 
 Update a compute quota.
 
@@ -77,6 +73,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -167,6 +178,37 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

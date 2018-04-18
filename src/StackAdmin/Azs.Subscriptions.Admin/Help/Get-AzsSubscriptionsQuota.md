@@ -37,14 +37,6 @@ Get the list of quotas at a location.
 Get-AzsSubscriptionsQuota
 ```
 
-AllowCustomPortalBranding : False
-Id                        : /subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/providers/Microsoft.Subscriptions.Admin/locations/local/quotas/delegatedProviderQuota
-Name                      : local/delegatedProviderQuota
-Type                      : Microsoft.Subscriptions.Admin/locations/quotas
-Location                  : local
-Tags                      :
-...
-
 Get the list of subscription resource provider quotas at a location.
 
 ## PARAMETERS
@@ -55,7 +47,7 @@ The AzureStack location.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases: ArmLocation
 
 Required: False
 Position: Named

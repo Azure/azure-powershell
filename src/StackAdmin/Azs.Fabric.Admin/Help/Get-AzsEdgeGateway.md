@@ -35,24 +35,15 @@ Returns the list of all edge gateways at a certain location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsEdgeGateway -ResourceGroup "System.local" -Location "local"
+Get-AzsEdgeGateway
 ```
-
-Type                                                State  TotalCapacity Name      AvailableCapacity
-----                                                -----  ------------- ----      -----------------
-Microsoft.Fabric.Admin/fabricLocations/edgeGateways Active 100000000     AzS-Gwy01 100000000
-Microsoft.Fabric.Admin/fabricLocations/edgeGateways Active 200000000     AzS-Gwy02 100000000
 
 Get a list of all edge gateways.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsEdgeGateway -ResourceGroup "System.local" -Location "local" -EdgeGateway "AzS-Gwy01"
+Get-AzsEdgeGateway -Name "AzS-Gwy01"
 ```
-
-Type                                                State  TotalCapacity Name      AvailableCapacity
-----                                                -----  ------------- ----      -----------------
-Microsoft.Fabric.Admin/fabricLocations/edgeGateways Active 100000000     AzS-Gwy01 100000000
 
 Get a specific edge gateway.
 

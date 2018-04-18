@@ -23,6 +23,9 @@
 .PARAMETER RunRaw
     Run using our client creation path.
 
+.PARAMETER UseInstalled
+    Use the locally installed modules.
+
 .EXAMPLE
     PS C:\> .\src\Activation.Tests.ps1
     Describing Activations
@@ -33,9 +36,11 @@
 .NOTES
 #>
 param(
-    [bool]$RunRaw = $false
+    [bool]$RunRaw = $false,
+    [bool]$UseInstalled = $false
 )
 
+$global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
 $global:TestName = ""
 

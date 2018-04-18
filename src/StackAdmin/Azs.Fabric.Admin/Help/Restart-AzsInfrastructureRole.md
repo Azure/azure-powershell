@@ -14,13 +14,13 @@ Restarts the requestd infrastructure role.
 
 ### Restart (Default)
 ```
-Restart-AzsInfrastructureRole -Name <String> [-Location <String>] [-ResourceGroupName <String>] [-Wait]
- [<CommonParameters>]
+Restart-AzsInfrastructureRole -Name <String> [-Location <String>] [-ResourceGroupName <String>] [-AsJob]
+ [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Restart-AzsInfrastructureRole -ResourceId <String> [-Wait] [<CommonParameters>]
+Restart-AzsInfrastructureRole -ResourceId <String> [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +30,42 @@ Restarts the requestd infrastructure role.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Restart-AzsInfrastructureRole -ResourceGroup "System.local" -Location "local" -InfraRole "Active Directory Federation Services"
+Restart-AzsInfrastructureRole -Name "Active Directory Federation Services"
 ```
 
 Restart an infrastructure role which has crashed.
 
 ## PARAMETERS
+
+### -AsJob
+Run asynchronous as a job and return the job object.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Location of the resource.
@@ -97,17 +127,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

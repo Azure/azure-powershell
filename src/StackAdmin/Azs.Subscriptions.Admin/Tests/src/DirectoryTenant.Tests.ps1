@@ -35,9 +35,10 @@
     Date:   March 16, 2018
 #>
 param(
-    [bool]$RunRaw = $false
+    [bool]$RunRaw = $false,
+    [bool]$UseInstalled = $false
 )
-
+$Global:UseInstalled = $UseInstalled
 $Global:RunRaw = $RunRaw
 
 . $PSScriptRoot\CommonModules.ps1
@@ -102,7 +103,7 @@ InModuleScope Azs.Subscriptions.Admin {
 				ValidateDirectoryTenant $DirectoryTenant
             }
         }
-		
+
 		It "TestGetAllDirectoryTenants" {
             $global:TestName = 'TestGetAllDirectoryTenants'
 

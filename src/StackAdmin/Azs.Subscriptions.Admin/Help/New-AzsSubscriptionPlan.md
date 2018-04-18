@@ -1,76 +1,76 @@
 ---
-external help file: Azs.Storage.Admin-help.xml
-Module Name: Azs.Storage.Admin
-online version:
+external help file: Azs.Subscriptions.Admin-help.xml
+Module Name: Azs.Subscriptions.Admin
+online version: 
 schema: 2.0.0
 ---
 
-# Get-AzsStorageDestinationShare
+# New-AzsSubscriptionPlan
 
 ## SYNOPSIS
-Returns a list of destination shares that the system considers as best candidates for migration.
+Creates a subscription plan.
 
 ## SYNTAX
 
 ```
-Get-AzsStorageDestinationShare -SourceShareName <String> -FarmName <String> [-ResourceGroupName <String>]
+New-AzsSubscriptionPlan [[-AcquisitionId] <Guid>] [-PlanId] <String> [-TargetSubscriptionId] <Guid>
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns a list of destination shares that the system considers as best candidates for migration.
+Creates a subscription plan.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsStorageDestinationShare -ResourceGroupName "system.local" -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376 -SourceShareName "||SU1FileServer.azurestack.local|SU1_ObjStore"
+New-AzsSubscriptionPlan -PlanId "/subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/plans/plan1" -AcquisitionId $([Guid]::NewGuid()) -TargetSubscriptionId "c90173b1-de7a-4b1d-8600-b832b0e65946"
 ```
 
-Get a list of destination shares that the system considers as best candidates for migration.
+Create an subscription plan.
 
 ## PARAMETERS
 
-### -FarmName
-Farm Id.
+### -AcquisitionId
+Acquisition identifier.
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceShareName
-Name of the share which holds containers to be migrated.
+### -PlanId
+Plan identifier in the tenant subscription context.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
-Position: Named
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSubscriptionId
+The target subscription ID.
+
+```yaml
+Type: Guid
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -82,6 +82,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### Microsoft.AzureStack.Management.Subscriptions.Admin.Models.PlanAcquisition
 
 ## NOTES
 

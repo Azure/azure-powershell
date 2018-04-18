@@ -23,11 +23,8 @@ Get the offer metrics.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsOfferMetric -ResourceGroupName rg1 -Offer offername1 | fl *
+Get-AzsOfferMetric -ResourceGroupName rg1 -OfferName offername1
 ```
-
-Value    : {Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Metric, Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Metric}
-NextLink :
 
 Get the offer metrics.
 
@@ -49,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String

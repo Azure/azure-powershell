@@ -19,7 +19,7 @@ Get-AzsStorageQuota [-Location <String>] [-Skip <Int32>] [-Top <Int32>] [<Common
 
 ### Get
 ```
-Get-AzsStorageQuota [-QuotaName] <String> [-Location <String>] [<CommonParameters>]
+Get-AzsStorageQuota [-Name] <String> [-Location <String>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -34,19 +34,17 @@ Returns a list of storage quotas at the given location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsStorageQuota -Location local
+Get-AzsStorageQuota
 ```
 
-Name       Location   CapacityIn NumberOfSt
-					  Gb         orageAccou
-								 nts
-----       --------   ---------- ----------
-local/D...
-local      2048       20
-   local/T...
-local      50         100
+Get the list of storage quotas.
 
-   Get the list of storage quotas at the given location.
+### -------------------------- EXAMPLE 2 --------------------------
+```
+Get-AzsStorageQuota -Name "storagequota1"
+```
+
+Get details of the specified storage quota by name.
 
 ## PARAMETERS
 
@@ -65,8 +63,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QuotaName
-{{Fill QuotaName Description}}
+### -Name
+The name of the storage quota.
 
 ```yaml
 Type: String

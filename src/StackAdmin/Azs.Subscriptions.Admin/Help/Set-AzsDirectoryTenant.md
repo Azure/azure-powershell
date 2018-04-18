@@ -15,19 +15,19 @@ Updates a directory tenant.
 ### Update (Default)
 ```
 Set-AzsDirectoryTenant -Name <String> -ResourceGroupName <String> [-TenantId <String>] [-Location <String>]
- [<CommonParameters>]
+ [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Set-AzsDirectoryTenant -ResourceGroupName <String> [-TenantId <String>] [-Location <String>]
- -ResourceId <String> [<CommonParameters>]
+ -ResourceId <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzsDirectoryTenant -ResourceGroupName <String> [-TenantId <String>] [-Location <String>]
- -InputObject <DirectoryTenant> [<CommonParameters>]
+ -InputObject <DirectoryTenant> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,14 +35,29 @@ Updates a directory tenant.
 
 ## EXAMPLES
 
-### Example 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-PS C:\> {{ Add example code here }}
+Set-AzsDirectoryTenant -ResourceGroupName rg1 -Name tenant1
 ```
 
-{{ Add example description here }}
+Update a directory tenant under a resource group.
 
 ## PARAMETERS
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.DirectoryTenant.
@@ -90,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String
@@ -126,6 +141,37 @@ Tenant unique identifier.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

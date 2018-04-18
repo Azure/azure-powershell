@@ -14,13 +14,13 @@ Get the list of update runs.
 
 ### List (Default)
 ```
-Get-AzsUpdateRun -UpdateName <String> [-Location <String>] [-ResourceGroupName <String>] [-Skip <Int32>]
+Get-AzsUpdateRun -DisplayName <String> [-Location <String>] [-ResourceGroupName <String>] [-Skip <Int32>]
  [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzsUpdateRun -Name <String> -UpdateName <String> [-Location <String>] [-ResourceGroupName <String>]
+Get-AzsUpdateRun -Name <String> -DisplayName <String> [-Location <String>] [-ResourceGroupName <String>]
  [<CommonParameters>]
 ```
 
@@ -37,24 +37,27 @@ Instances of the UpdateRun objects returned can be piped to Restart-AzsUpdateRun
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsUpdateRun -UpdateName Microsoft1.0.180302.1
+Get-AzsUpdateRun -DisplayName Microsoft1.0.180302.1
 ```
-
-Progress    : Microsoft.AzureStack.Management.Update.Admin.Models.Step
-TimeStarted : 3/2/2018 5:25:22 PM
-Duration    : PT14H43M50.0644552S
-State       : Succeeded
-Id          : /subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourceGroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/redmond/
-  updates/Microsoft1.0.180302.1/updateRuns/407d9b8f-debf-4058-b374-a94a1bb4de30
-Name        : 407d9b8f-debf-4058-b374-a94a1bb4de30
-Type        : Microsoft.Update.Admin/updateLocations/updates/updateRuns
-Location    : redmond
-Tags        : {}
-...
 
 Get a list of all attempts to apply a specific update.
 
 ## PARAMETERS
+
+### -DisplayName
+Name of the update.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 The name of the update location.
@@ -143,21 +146,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: -1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UpdateName
-Name of the update.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

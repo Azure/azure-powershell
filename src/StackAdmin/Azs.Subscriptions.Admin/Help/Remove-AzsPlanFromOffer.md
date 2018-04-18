@@ -14,7 +14,7 @@ Unlink a plan from an offer.
 
 ```
 Remove-AzsPlanFromOffer -PlanName <String> -OfferName <String> -ResourceGroupName <String>
- [-PlanLinkType <String>] [-MaxAcquisitionCount <Int64>] [<CommonParameters>]
+ [-PlanLinkType <String>] [-MaxAcquisitionCount <Int64>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,9 +27,22 @@ Unlink a plan from an offer.
 Remove-AzsPlanToOffer -Offer offer1 -PlanName plan1 -ResourceGroup rg1
 ```
 
-Unlink a plan from an offer.
-
 ## PARAMETERS
+
+### -Force
+Flag to remove the item without confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -MaxAcquisitionCount
 The maximum acquisition count by subscribers
@@ -92,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String
@@ -100,6 +113,37 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -13,8 +13,8 @@ Create a new compute quota used to limit compute resources.
 ## SYNTAX
 
 ```
-New-AzsComputeQuota -Name <String> [-AvailabilitySetCount <Int32>] [-CoresLimit <Int32>]
- [-VmScaleSetCount <Int32>] [-VirtualMachineCount <Int32>] [-Location <String>] [<CommonParameters>]
+New-AzsComputeQuota [-Name] <String> [[-AvailabilitySetCount] <Int32>] [[-CoresLimit] <Int32>]
+ [[-VmScaleSetCount] <Int32>] [[-VirtualMachineCount] <Int32>] [[-Location] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +24,8 @@ Create a new compute quota.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-New-AzsComputeQuota -Location local -Name testQuota5 -AvailabilitySetCount 1000 -CoresLimit 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000
+New-AzsComputeQuota -Name testQuota5 -AvailabilitySetCount 1000 -CoresLimit 1000 -VmScaleSetCount 1000 -VirtualMachineCount 1000
 ```
-
-AvailabilitySet Id              Type            CoresLimit      VmScaleSetCount Name            VirtualMachineC Location
-Count                                                                                           ount
---------------- --              ----            ----------      --------------- ----            --------------- --------
-1000            /subscriptio...
-Microsoft.Co...
-1000            1000            testQuota5      1000            local
 
 Create a new compute quota.
 
@@ -47,7 +40,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: 10
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -62,7 +55,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 3
 Default value: 100
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -77,7 +70,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,7 +85,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,7 +100,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 5
 Default value: 100
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -122,7 +115,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: 100
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -34,29 +34,15 @@ Get a list of existing quotas.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsComputeQuota -Location local
+Get-AzsComputeQuota
 ```
-
-AvailabilitySet Id              Type            CoresLimit      VmScaleSetCount Name            VirtualMachineC Location
-Count                                                                                           ount
---------------- --              ----            ----------      --------------- ----            --------------- --------
-10              /subscriptio...
-Microsoft.Co...
-50              20              Default Quota   20              local
 
 Get all compute quotas at the specified location.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsComputeQuota -Location local -Name 'Default Quota'
+Get-AzsComputeQuota 'Default Quota'
 ```
-
-AvailabilitySet Id              Type            CoresLimit      VmScaleSetCount Name            VirtualMachineC Location
-Count                                                                                           ount
---------------- --              ----            ----------      --------------- ----            --------------- --------
-10              /subscriptio...
-Microsoft.Co...
-50              20              Default Quota   20              local
 
 Get a specific compute quota.
 

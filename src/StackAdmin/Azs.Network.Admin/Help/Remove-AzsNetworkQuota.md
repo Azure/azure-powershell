@@ -14,13 +14,13 @@ Delete a quota by name.
 
 ### Delete (Default)
 ```
-Remove-AzsNetworkQuota -Name <String> [-Location <String>] [-Wait] [-Force] [-WhatIf] [-Confirm]
+Remove-AzsNetworkQuota -Name <String> [-Location <String>] [-AsJob] [-Force] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Remove-AzsNetworkQuota -ResourceId <String> [-Wait] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzsNetworkQuota -ResourceId <String> [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,12 +30,19 @@ Delete a quota by name.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
+Remove-AzsNetworkQuota -Name NetworkQuota1
+```
+
+Remove a network quota by name.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
 Get-AzsNetworkQuota -Name NetworkQuota1 | Remove-AzsNetworkQuota
 ```
 
 Remove a network quota using a pipe.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### -------------------------- EXAMPLE 3 --------------------------
 ```
 Remove-AzsNetworkQuota -Name NetworkQuota1
 ```
@@ -43,6 +50,21 @@ Remove-AzsNetworkQuota -Name NetworkQuota1
 Remove a network quota.
 
 ## PARAMETERS
+
+### -AsJob
+{{Fill AsJob Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 {{Fill Force Description}}
@@ -101,21 +123,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Wait
-{{Fill Wait Description}}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

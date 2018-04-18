@@ -37,9 +37,10 @@
     Date:   August 24, 2017
 #>
 param(
-    [bool]$RunRaw = $false
+    [bool]$RunRaw = $false,
+    [bool]$UseInstalled = $false
 )
-
+$Global:UseInstalled = $UseInstalled
 $Global:RunRaw = $RunRaw
 
 . $PSScriptRoot\CommonModules.ps1
@@ -201,23 +202,19 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             }
         }
 
-        It "TestCloseAlert" -Skip {
+        It "TestCloseAlert" {
             $global:TestName = 'TestCloseAlert'
 
-            $Regions = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
-            foreach ($Region in $Regions) {
+            $regionName = "local"
 
-                $regionName = Extract-Name -Name $Region.Name
-
-                $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Region $regionName
-                $Alerts | Should Not Be $null
-                foreach ($Alert in $Alerts) {
-                    if ($Alert.State -ne "Closed") {
-                        $Alert.State = "Closed"
-                        $alertName = Extract-Name -Name $Alert.Name
-                        Close-AzsAlert -ResourceGroupName $ResourceGroupName -Region $regionName -User "AlertCloseTests" -AlertID $AlertName
-                        return
-                    }
+            $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $regionName
+            $Alerts | Should Not Be $null
+            foreach ($Alert in $Alerts) {
+                if ($Alert.State -ne "Closed") {
+                    $Alert.State = "Closed"
+                    $alertName = Extract-Name -Name $Alert.Name
+                    Close-AzsAlert -ResourceGroupName $ResourceGroupName -Location $regionName -User "AlertCloseTests" -Name $AlertName -Force
+                    return
                 }
             }
         }

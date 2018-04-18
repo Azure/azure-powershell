@@ -13,19 +13,24 @@
 # ----------------------------------------------------------------------------------
 
 $ModuleName = "Azs.Network.Admin"
+$global:TestName = ""
 
 if (!(Get-Module -ListAvailable -Name AzureRM.Profile)) {
     Import-Module "..\..\..\Stack\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile"
 }
 
-Import-Module ..\Module\$ModuleName -Force
-
-if(Test-Path bin\Debug) {
-    Import-Module ".\bin\Debug\$ModuleName.Tests.dll" -Force
-} elseif(Test-Path bin\Release) {
-    Import-Module ".\bin\Release\$ModuleName.Tests.dll" -Force
+if ($global:UsedInstalled) {
+    Import-Module $ModuleName -Force
 } else {
-    throw "Cannot load test dll: $ModuleName.Tests.dll"
+    Import-Module ..\Module\$ModuleName -Force
 }
 
-$global:TestName = ""
+if (-not $global:RunRaw) {
+    if (Test-Path bin\Debug) {
+        Import-Module ".\bin\Debug\$ModuleName.Tests.dll" -Force
+    } elseif (Test-Path bin\Release) {
+        Import-Module ".\bin\Release\$ModuleName.Tests.dll" -Force
+    } else {
+        throw "Cannot load test dll: $ModuleName.Tests.dll"
+    }
+}

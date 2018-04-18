@@ -14,8 +14,7 @@ Delete an existing quota
 
 ### Delete (Default)
 ```
-Remove-AzsStorageQuota [-Location <String>] -QuotaName <String> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzsStorageQuota -Name <String> [-Location <String>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -30,15 +29,22 @@ Delete an existing quota
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Remove-AzsStorageQuota -Location local -QuotaName 'TestDeleteStorageQuota'
+Remove-AzsStorageQuota -Name 'TestDeleteStorageQuota'
 ```
 
-Remove a storage quota.
+Remove a storage quota by name.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+Get-AzsStorageQuota -Name 'testquota' | Remove-AzsStorageQuota
+```
+
+Remove a storage quota by piping.
 
 ## PARAMETERS
 
 ### -Force
-{{Fill Force Description}}
+Don't ask for confirmation.
 
 ```yaml
 Type: SwitchParameter
@@ -67,7 +73,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QuotaName
+### -Name
 The name of the storage quota.
 
 ```yaml

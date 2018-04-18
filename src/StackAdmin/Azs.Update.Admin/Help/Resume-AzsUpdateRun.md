@@ -14,13 +14,13 @@ Resumes a previously started update run that failed.
 
 ### UpdateRuns_Rerun (Default)
 ```
-Resume-AzsUpdateRun -Name <String> [-Location <String>] [-ResourceGroupName <String>] -UpdateName <String>
- [-Wait] [<CommonParameters>]
+Resume-AzsUpdateRun -Name <String> [-Location <String>] [-ResourceGroupName <String>] -DisplayName <String>
+ [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Resume-AzsUpdateRun [-Wait] -ResourceId <String> [<CommonParameters>]
+Resume-AzsUpdateRun [-AsJob] -ResourceId <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,12 +31,57 @@ Resumeed update runs will resume at the point they last failed.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
+Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -DisplayName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
 ```
 
 Resumes a previously started update run that failed.
 
 ## PARAMETERS
+
+### -AsJob
+{{Fill AsJob Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+Display name of the update.
+
+```yaml
+Type: String
+Parameter Sets: UpdateRuns_Rerun
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Flag to remove the item without confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 The name of the update location.
@@ -98,32 +143,33 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -UpdateName
-{{Fill UpdateName Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
-Parameter Sets: UpdateRuns_Rerun
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

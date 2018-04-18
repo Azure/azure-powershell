@@ -30,7 +30,7 @@ Delete a platform image
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Remove-AzsPlatformImage -Location local -Publisher Test -Offer UbuntuServer -Version 1.0.0 -Sku 16.04-LTS
+Remove-AzsPlatformImage -Publisher Test -Offer UbuntuServer -Version 1.0.0 -Sku 16.04-LTS
 ```
 
 Delete an existing platform image.
@@ -38,7 +38,7 @@ Delete an existing platform image.
 ## PARAMETERS
 
 ### -Force
-{{Fill Force Description}}
+Don't ask for confirmation.
 
 ```yaml
 Type: SwitchParameter

@@ -30,7 +30,7 @@ Removes the offer delegation
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Remove-AzsOfferDelegation -Offer offer1 -ResourceGroupName rg1 -Name delegation1
+Remove-AzsOfferDelegation -OfferName offer1 -ResourceGroupName rg1 -Name delegation1
 ```
 
 Removes the offer delegation
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String
