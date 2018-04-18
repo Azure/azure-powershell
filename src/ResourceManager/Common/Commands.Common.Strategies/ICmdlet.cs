@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public interface ICmdlet
@@ -26,5 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             int percentComplete);
 
         string VerbsNew { get; }
+
+        IEnumerable<KeyValuePair<string, object>> Parameters { get; }
     }
 }

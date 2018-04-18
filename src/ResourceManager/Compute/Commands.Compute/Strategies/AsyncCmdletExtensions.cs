@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Strategies;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 
@@ -26,19 +28,36 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
         /// </summary>
         /// <param name="cmdlet"></param>
         /// <param name="createAndStartTask"></param>
-        public static void StartAndWait(
-            this Cmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
-            => new CmdletWrap(cmdlet).StartAndWait(createAndStartTask);
+        public static void StartAndWait<T>(
+            this T cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
+            where T : PSCmdlet
+            => new CmdletWrap<T>(cmdlet).CmdletStartAndWait(createAndStartTask);
 
-        sealed class CmdletWrap : ICmdlet
+        sealed class CmdletWrap<T> : ICmdlet
+            where T : PSCmdlet
         {
-            readonly Cmdlet _Cmdlet;
+            readonly T _Cmdlet;
 
             public string VerbsNew => VerbsCommon.New;
 
-            public CmdletWrap(Cmdlet cmdlet)
+            public CmdletWrap(T cmdlet)
             {
                 _Cmdlet = cmdlet;
+            }
+
+            public IEnumerable<KeyValuePair<string, object>> Parameters
+            {
+                get
+                {
+                    var psName = _Cmdlet.ParameterSetName;
+                    return typeof(T)
+                        .GetProperties()
+                        .Where(p => p
+                            .GetCustomAttributes(false)
+                            .OfType<ParameterAttribute>()
+                            .Any(a => a.ParameterSetName == psName))
+                        .Select(p => new KeyValuePair<string, object>(p.Name, p.GetValue(_Cmdlet)));
+                }
             }
 
             public void WriteVerbose(string message)
