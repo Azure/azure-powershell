@@ -2,8 +2,11 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Azure.Common" Version="2.1.4" />
-    <PackageReference Include="PowerShellStandard.Library" Version="3.0.0-preview-01" />
+    <PackageReference Include="Microsoft.Azure.Common" Version="2.2.0" />
+     <PackageReference Include="Hyak.Common" Version="1.2.0" />
+    <PackageReference Include="System.Management.Automation" Version="6.0.1.1" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 </Project>
