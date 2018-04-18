@@ -23,8 +23,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Automation" Version="2.0.1" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="10.0.0.0" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,7 +33,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
-    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj" />
   </ItemGroup>
 
   <ItemGroup>
