@@ -12,19 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    interface IAsyncCmdlet
+    public interface IParameters<TModel>
+        where TModel : class
     {
-        void WriteVerbose(string message);
+        string Location { get; set; }
 
-        Task<bool> ShouldProcessAsync(string target, string action);
-
-        void WriteObject(object value);
-
-        void ReportTaskProgress(ITaskProgress taskProgress);
+        Task<ResourceConfig<TModel>> CreateConfigAsync();
     }
 }

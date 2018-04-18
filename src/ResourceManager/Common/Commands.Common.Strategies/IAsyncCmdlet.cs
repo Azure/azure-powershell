@@ -13,23 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using System.Management.Automation;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    internal sealed class ShouldProcess : IShouldProcess
+    public interface IAsyncCmdlet
     {
-        readonly IAsyncCmdlet _Cmdlet;
+        IEnumerable<KeyValuePair<string, object>> Parameters { get; }
 
-        public ShouldProcess(IAsyncCmdlet cmdlet)
-        {
-            _Cmdlet = cmdlet;
-        }
+        void WriteVerbose(string message);
 
-        public Task<bool> ShouldCreate<TModel>(ResourceConfig<TModel> config, TModel model)
-            where TModel : class
-            => _Cmdlet.ShouldProcessAsync(
-                config.GetFullName(), VerbsCommon.New);
+        Task<bool> ShouldProcessAsync(string target, string action);
+
+        void WriteObject(object value);
+
+        void ReportTaskProgress(ITaskProgress taskProgress);
+
+        string VerbsNew { get; }
     }
 }
