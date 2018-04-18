@@ -39,9 +39,11 @@
     Date:   March 15, 2018
 #>
 param(
-	[bool]$RunRaw = $false
+	[bool]$RunRaw = $false,
+    [bool]$UseInstalled = $false
 )
 
+$global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
 
 . $PSScriptRoot\CommonModules.ps1
@@ -61,7 +63,7 @@ InModuleScope Azs.Update.Admin {
 					[Parameter(Mandatory=$true)]
 					$location
 				)
-				
+
 				$location                   | Should Not Be $null
 				$location.Id                | Should Not Be $null
 				$location.CurrentOemVersion | Should Not Be $null
@@ -117,7 +119,7 @@ InModuleScope Azs.Update.Admin {
 
 				$update1                      | Should Not Be $null
 				$update2                      | Should Not Be $null
-				$update1.Id                   | Should Be $update2.Id 
+				$update1.Id                   | Should Be $update2.Id
 				$update1.DateAvailable        | Should Be $update2.DateAvailable
 				$update1.Description          | Should Be $update2.Description
 				$update1.KbLink               | Should Be $update2.KbLink
@@ -186,7 +188,7 @@ InModuleScope Azs.Update.Admin {
 
 		It "TestGetUdate" {
 			$global:TestName = "TestGetUpdate"
-			
+
 			$list = Get-AzsUpdate -ResourceGroup System.Redmond -Location redmond
 			foreach ($update in $list)
 			{

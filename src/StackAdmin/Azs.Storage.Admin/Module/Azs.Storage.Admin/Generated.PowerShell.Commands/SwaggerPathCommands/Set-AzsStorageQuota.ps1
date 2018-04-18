@@ -89,6 +89,8 @@ function Set-AzsStorageQuota {
 
         $ErrorActionPreference = 'Stop'
 
+        $Quota = $null
+
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/providers/Microsoft.Storage.Admin/locations/{location}/quotas/{quotaName}'
@@ -108,7 +110,7 @@ function Set-AzsStorageQuota {
 
         # Should process
         if ($PSCmdlet.ShouldProcess("$Name" , "Update storage quota")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Update storage quota?", "Performing operation UndeleteWithHttpMessagesAsync on $Name.")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Update storage quota?", "Performing operation update quota on $Name.")) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Storage.Admin.StorageAdminClient'

@@ -10,20 +10,20 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .DESCRIPTION
     Returns a list of storage quotas at the given location.
 
+.PARAMETER Name
+    The name of the storage quota.
+
+.PARAMETER Location
+    Resource location.
+
 .PARAMETER Skip
     Skip the first N items as specified by the parameter value.
 
 .PARAMETER ResourceId
     The resource id.
 
-.PARAMETER Location
-    Resource location.
-
 .PARAMETER Top
     Return the top N items as specified by the parameter value. Applies after the -Skip parameter.
-
-.PARAMETER Quota
-    The name of the storage quota.
 
 .EXAMPLE
 

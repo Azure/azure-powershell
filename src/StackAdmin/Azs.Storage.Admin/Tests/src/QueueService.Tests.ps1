@@ -36,9 +36,10 @@
     Date:   February 28, 2018
 #>
 param(
-	[bool]$RunRaw = $false
+	[bool]$RunRaw = $false,
+    [bool]$UseInstalled = $false
 )
-
+$Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
 
 . $PSScriptRoot\CommonModules.ps1
@@ -101,7 +102,7 @@ InModuleScope Azs.Storage.Admin {
 
 			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
 			foreach($farm in $farms) {
-				$result = Get-AzsQueueServiceMetricDefinition -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
+				Get-AzsQueueServiceMetricDefinition -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) | Out-Null
 			}
 		}
 
@@ -110,7 +111,7 @@ InModuleScope Azs.Storage.Admin {
 
 			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
 			foreach($farm in $farms) {
-				$result = Get-AzsQueueServiceMetric -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
+				Get-AzsQueueServiceMetric -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) | Out-Null
 			}
 		}
 	}
