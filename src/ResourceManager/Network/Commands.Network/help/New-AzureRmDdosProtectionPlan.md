@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azuredosprotectionplan
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates a DDoS protection plan.
 
 ```
 New-AzureRmDdosProtectionPlan -ResourceGroupName <String> -Name <String> -Location <String> [-Tag <Hashtable>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,11 +24,9 @@ The New-AzureRmDdosProtectionPlan cmdlet creates a DDoS protection plan.
 
 ### Example 1: Create and associate a DDoS protection plan with a new virtual network
 ```
-$ddosProtectionPlan = New-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
-
-$subnet = New-AzureRmVirtualNetworkSubnetConfig -Name SubnetName -AddressPrefix 10.0.1.0/24
-
-$vnet = New-AzureRmvirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName -Location "West US" -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
+D:\> $ddosProtectionPlan = New-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
+D:\> $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name SubnetName -AddressPrefix 10.0.1.0/24
+D:\> $vnet = New-AzureRmvirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName -Location "West US" -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
@@ -37,16 +35,51 @@ Then, we create a new virtual network with **New-AzureRmvirtualNetwork** and we 
 
 ### Example 2: Create and associate a DDoS protection plan with an existing virtual network
 ```
-$ddosProtectionPlan = New-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
+D:\> $ddosProtectionPlan = New-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName -Location "West US"
+D:\> $vnet = Get-AzureRmVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
+D:\> $vnet.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
+D:\> $vnet.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
+D:\> $vnet.EnableDdosProtection = $true
+D:\> $vnet | Set-AzureRmVirtualNetwork
 
-$vnet = Get-AzureRmVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
 
-$vnet.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
-$vnet.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
+Name                   : VnetName
+ResourceGroupName      : ResourceGroupName
+Location               : westus
+Id                     : /subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/virtualNetworks/VnetName
+Etag                   : W/"fbf41754-3c13-43fd-bb5b-fcc37d5e1cbb"
+ResourceGuid           : fcb7bc1e-ee0d-4005-b3f1-feda76e3756c
+ProvisioningState      : Succeeded
+Tags                   :
+AddressSpace           : {
+                           "AddressPrefixes": [
+                             "10.0.0.0/16"
+                           ]
+                         }
+DhcpOptions            : {
+                           "DnsServers": [
+                             "8.8.8.8"
+                           ]
+                         }
+Subnets                : [
+                           {
+                             "Name": "SubnetName",
+                             "Etag": "W/\"fbf41754-3c13-43fd-bb5b-fcc37d5e1cbb\"",
+                             "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/virtualNetworks/VnetName/subnets/SubnetName",
+                             "AddressPrefix": "10.0.1.0/24",
+                             "IpConfigurations": [],
+                             "ResourceNavigationLinks": [],
+                             "ServiceEndpoints": [],
+                             "ProvisioningState": "Succeeded"
+                           }
+                         ]
+VirtualNetworkPeerings : []
+EnableDdosProtection   : true
+DdosProtectionPlan     : {
+                           "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/ddosProtectionPlans/DdosProtectionPlanName"
+                         }
+EnableVmProtection     : false
 
-$vnet.EnableDdosProtection = $true
-
-$vnet | Set-AzureRmVirtualNetwork
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
@@ -87,23 +120,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
-The location.
+Specifies the location of the DDoS protection plan to be created.
 
 ```yaml
 Type: String
