@@ -46,11 +46,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to delete resource.")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Returns an object representing the item with which you are working. By default, this cmdlet does not generate any output.")]
         public SwitchParameter PassThru { get; set; }
 
@@ -59,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             ConfirmAction(
-                Force.IsPresent,
+                true,
                 string.Format(Properties.Resources.RemovingResource, Name),
                 Properties.Resources.RemoveResourceMessage,
                 Name,

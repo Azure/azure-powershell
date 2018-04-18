@@ -49,7 +49,7 @@ function Test-DdosProtectionPlanCRUD
         Assert-Null $ddosProtectionPlanGet.VirtualMachines
 
         # Remove the DDoS protection plan
-        $ddosProtectionPlanDelete = Remove-AzureRmDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgName -PassThru -Force
+        $ddosProtectionPlanDelete = Remove-AzureRmDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgName -PassThru
         Assert-AreEqual $true $ddosProtectionPlanDelete
     }
     finally
@@ -105,7 +105,7 @@ function Test-DdosProtectionPlanCRUDWithVirtualNetwork
 
         # Delete the DDoS protection plan
 
-        $deleteDdosProtectionPlan = Remove-AzureRmDdosProtectionPlan -ResourceGroupName $rgname -name $ddosProtectionPlanName -PassThru -Force
+        $deleteDdosProtectionPlan = Remove-AzureRmDdosProtectionPlan -ResourceGroupName $rgname -name $ddosProtectionPlanName -PassThru
         Assert-AreEqual true $deleteDdosProtectionPlan
     }
     finally

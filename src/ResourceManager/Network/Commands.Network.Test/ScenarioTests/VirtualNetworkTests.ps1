@@ -244,7 +244,7 @@ function Test-VirtualNetworkCRUDWithDDoSProtection
 
         # Delete the DDoS protection plan
 
-        $deleteDdosProtectionPlan = Remove-AzureRmDdosProtectionPlan -ResourceGroupName $rgname -name $ddosProtectionPlanName -PassThru -Force
+        $deleteDdosProtectionPlan = Remove-AzureRmDdosProtectionPlan -ResourceGroupName $rgname -name $ddosProtectionPlanName -PassThru
         Assert-AreEqual true $deleteDdosProtectionPlan
     }
     finally
