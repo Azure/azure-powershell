@@ -165,7 +165,7 @@ Gets the WAF configuration of an application gateway.
 Gets an application security group.
 
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
-
+Gets a BGP service community resource.
 
 ### [Get-AzureRmDdosProtectionPlan](Get-AzureRmDdosProtectionPlan.md)
 Gets a DDoS protection plan.
