@@ -24,20 +24,10 @@ Returns a list of metric definitions for a storage farm.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsStorageFarmMetricDefinition -ResourceGroupName "system.local" -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
+Get-AzsStorageFarmMetricDefinition -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
 ```
 
-PrimaryAggregationType                                       Unit
-----------------------                                       ----
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-
-   Get the list of metric definitions for a storage farm.
+Get the list of metric definitions for a storage farm.
 
 ## PARAMETERS
 

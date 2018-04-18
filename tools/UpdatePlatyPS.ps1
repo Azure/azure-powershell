@@ -40,7 +40,18 @@ $All = @(
 )
 
 # These are broken.
-$Ignored = @()
+$Ignored = @(
+    "Azs.AzureBridge.Admin",
+    "Azs.Backup.Admin",
+    "Azs.Commerce.Admin",
+    "Azs.Compute.Admin",
+    "Azs.Fabric.Admin",
+    "Azs.Gallery.Admin",
+    "Azs.InfrastructureInsights.Admin",
+    "Azs.KeyVault.Admin",
+    "Azs.Network.Admin",
+    "Azs.Storage.Admin"
+)
 
 $Scheduled = $All | Where-Object { !($_ -in $Ignored) }
 
@@ -60,9 +71,6 @@ function Update-Help {
     param(
         [string]$BuildConfig
     )
-    # Create test output
-    $TestFolder = "$($PSSCriptRoot)\..\testresults"
-    New-Item -Path $TestFolder -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 
     # Root folder where modules are located
     $rootFolder = "$($PSSCriptRoot)\..\src\StackAdmin\"
@@ -71,28 +79,28 @@ function Update-Help {
     [int]$Failures = 0
     $adminModules = Get-ChildItem -Path $rootFolder -Directory -Filter Azs.*
     foreach ($module in $adminModules) {
-        $testDir = $module.FullName + "\Module"
+        $moduleDir = $module.FullName + "\Module"
         $module = $module.FullName | Split-Path -Leaf
         if ( $module -in $Scheduled ) {
-            Push-Location $testDir | Out-Null
+            Push-Location $moduleDir | Out-Null
             try {
                 Import-Module ".\$module" -Force | Out-Null
                 if (Test-Path "..\Help") {
-                    Write-Host "updating $module..."
-                    Update-MarkdownHelpModule -Path ..\Help -RefreshModulePage -AlphabeticParamsOrder
-                    Write-Host "done..."
-                } else {
-                    Write-Host "creating $module..."
-                    New-MarkdownHelp -Module $module -AlphabeticParamsOrder -OutputFolder ..\Help -WithModulePage
-                    Update-MarkdownHelpModule -Path ..\Help -RefreshModulePage -AlphabeticParamsOrder
-                    Write-Host "done..."
+                    Write-Host "Removing old help files"
+                    Remove-Item -Path "..\Help" -Force -Recurse
                 }
+
+                Write-Host "creating $module..."
+                New-MarkdownHelp -Module $module -AlphabeticParamsOrder -OutputFolder ..\Help -WithModulePage
+                Update-MarkdownHelpModule -Path ..\Help -RefreshModulePage -AlphabeticParamsOrder
+                Write-Host "done..."
             } catch {
                 $Failures += 1
-                Write-Error "Pester Test failure, $_"
+                Write-Error "Help generation failure, $_"
                 break
+            } finally {
+                Pop-Location | Out-Null
             }
-            Pop-Location | Out-Null
         }
     }
     return $Failures

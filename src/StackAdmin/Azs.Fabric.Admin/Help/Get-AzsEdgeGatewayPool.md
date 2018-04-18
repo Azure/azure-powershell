@@ -35,24 +35,15 @@ Returns edge gateway pool objects at a location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsEdgeGatewayPool -ResourceGroup "System.local" -Location "local"
+Get-AzsEdgeGatewayPool
 ```
-
-GatewayCapacityKiloBitsPerSecond Type                                                    GreVipSubnet PublicIpAddress                      EdgeGateways
--------------------------------- ----                                                    ------------ ---------------                      ------------
-100000000                        Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools              00000000-5555-0000-0001-000000000000 {AzS-Gwy01}
-200000000                        Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools              00000000-4444-0000-0001-000000000000 {AzS-Gwy02}
 
 Get a list of all Edge Gateway pools.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsEdgeGatewayPool -ResourceGroup "System.local" -Location "local" -EdgeGatewayPool "AzS-Gwy01"
+Get-AzsEdgeGatewayPool -Name "AzS-Gwy01"
 ```
-
-GatewayCapacityKiloBitsPerSecond Type                                                    GreVipSubnet PublicIpAddress                      EdgeGateways
--------------------------------- ----                                                    ------------ ---------------                      ------------
-100000000                        Microsoft.Fabric.Admin/fabricLocations/edgeGatewayPools              00000000-5555-0000-0001-000000000000 {AzS-Gwy01}
 
 Get a specific edge gateway pool.
 

@@ -17,7 +17,8 @@ Create or update a quota.
 Set-AzsNetworkQuota -Name <String> [-MaxNicsPerSubscription <Int64>] [-MaxPublicIpsPerSubscription <Int64>]
  [-MaxVirtualNetworkGatewayConnectionsPerSubscription <Int64>] [-MaxVnetsPerSubscription <Int64>]
  [-MaxVirtualNetworkGatewaysPerSubscription <Int64>] [-MaxSecurityGroupsPerSubscription <Int64>]
- [-MaxLoadBalancersPerSubscription <Int64>] [-Location <String>] [<CommonParameters>]
+ [-MaxLoadBalancersPerSubscription <Int64>] [-Location <String>] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -25,7 +26,8 @@ Set-AzsNetworkQuota -Name <String> [-MaxNicsPerSubscription <Int64>] [-MaxPublic
 Set-AzsNetworkQuota [-MaxNicsPerSubscription <Int64>] [-MaxPublicIpsPerSubscription <Int64>]
  [-MaxVirtualNetworkGatewayConnectionsPerSubscription <Int64>] [-MaxVnetsPerSubscription <Int64>]
  [-MaxVirtualNetworkGatewaysPerSubscription <Int64>] [-MaxSecurityGroupsPerSubscription <Int64>]
- [-MaxLoadBalancersPerSubscription <Int64>] -ResourceId <String> [<CommonParameters>]
+ [-MaxLoadBalancersPerSubscription <Int64>] -ResourceId <String> [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
@@ -33,7 +35,8 @@ Set-AzsNetworkQuota [-MaxNicsPerSubscription <Int64>] [-MaxPublicIpsPerSubscript
 Set-AzsNetworkQuota [-MaxNicsPerSubscription <Int64>] [-MaxPublicIpsPerSubscription <Int64>]
  [-MaxVirtualNetworkGatewayConnectionsPerSubscription <Int64>] [-MaxVnetsPerSubscription <Int64>]
  [-MaxVirtualNetworkGatewaysPerSubscription <Int64>] [-MaxSecurityGroupsPerSubscription <Int64>]
- [-MaxLoadBalancersPerSubscription <Int64>] -InputObject <Quota> [<CommonParameters>]
+ [-MaxLoadBalancersPerSubscription <Int64>] -InputObject <Quota> [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,21 +49,6 @@ Create or update a quota.
 Set-AzsNetworkQuota -Name NetworkQuota1 -MaxVnetsPerSubscription 20
 ```
 
-MaxPublicIpsPerSubscription                        : 150
-MaxVnetsPerSubscription                            : 20
-MaxVirtualNetworkGatewaysPerSubscription           : 1
-MaxVirtualNetworkGatewayConnectionsPerSubscription : 2
-MaxLoadBalancersPerSubscription                    : 50
-MaxNicsPerSubscription                             : 50
-MaxSecurityGroupsPerSubscription                   : 50
-MigrationPhase                                     : None
-Id                                                 : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/providers/Microsoft.Network.Admin/locations/local/quotas/Networ
-                                                     kQuota1
-Name                                               : NetworkQuota1
-Type                                               : Microsoft.Network.Admin/quotas
-Location                                           :
-Tags                                               :
-
 Update a network quota by name.
 
 ### -------------------------- EXAMPLE 2 --------------------------
@@ -68,24 +56,24 @@ Update a network quota by name.
 Set-AzsNetworkQuota -Name NetworkQuota1 -MaxPublicIpsPerSubscription 75 -MaxNicsPerSubscription 100
 ```
 
-MaxPublicIpsPerSubscription                        : 75
-MaxVnetsPerSubscription                            : 20
-MaxVirtualNetworkGatewaysPerSubscription           : 1
-MaxVirtualNetworkGatewayConnectionsPerSubscription : 2
-MaxLoadBalancersPerSubscription                    : 50
-MaxNicsPerSubscription                             : 100
-MaxSecurityGroupsPerSubscription                   : 50
-MigrationPhase                                     : None
-Id                                                 : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/providers/Microsoft.Network.Admin/locations/local/quotas/Networ
-                                                     kQuota1
-Name                                               : NetworkQuota1
-Type                                               : Microsoft.Network.Admin/quotas
-Location                                           :
-Tags                                               :
-
 Update a network quota by name.
 
 ## PARAMETERS
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 The input object of type Microsoft.AzureStack.Management.Network.Admin.Models.Quota.
@@ -249,6 +237,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

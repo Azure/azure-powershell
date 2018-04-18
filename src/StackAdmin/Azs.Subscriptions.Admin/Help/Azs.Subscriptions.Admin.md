@@ -14,9 +14,6 @@ Locale: en-US
 ### [Add-AzsPlanToOffer](Add-AzsPlanToOffer.md)
 Links a plan to an offer.
 
-### [Get-AzsAcquiredPlan](Get-AzsAcquiredPlan.md)
-Get a collection of all acquired plans that subscription has access to.
-
 ### [Get-AzsDelegatedProvider](Get-AzsDelegatedProvider.md)
 Get the list of delegatedProviders.
 
@@ -50,6 +47,9 @@ Get the plan metrics.
 ### [Get-AzsPlanMetricDefinition](Get-AzsPlanMetricDefinition.md)
 Get the list of plan metric definitions.
 
+### [Get-AzsSubscriptionPlan](Get-AzsSubscriptionPlan.md)
+Get a collection of all acquired plans that subscription has access to.
+
 ### [Get-AzsSubscriptionsQuota](Get-AzsSubscriptionsQuota.md)
 Get the list of subscription resource provider quotas at a location.
 
@@ -59,9 +59,6 @@ Get the list of user subscriptions as administrator.
 ### [New-AddonPlanDefinitionObject](New-AddonPlanDefinitionObject.md)
 Contains the name of the desired plan to be linked or unlinked from an offer.
 
-### [New-AzsAcquiredPlan](New-AzsAcquiredPlan.md)
-Creates an acquired plan.
-
 ### [New-AzsOffer](New-AzsOffer.md)
 Creates a new offer.
 
@@ -69,7 +66,10 @@ Creates a new offer.
 Create a new offer delegation.
 
 ### [New-AzsPlan](New-AzsPlan.md)
-{{Fill in the Synopsis}}
+Creates a new plan
+
+### [New-AzsSubscriptionPlan](New-AzsSubscriptionPlan.md)
+Creates a subscription plan.
 
 ### [New-AzsUserSubscription](New-AzsUserSubscription.md)
 Create a new subscription.
@@ -96,9 +96,6 @@ A tenant can acquire this plan through an offer to upgrade his access to underly
 ### [New-SubscriptionObject](New-SubscriptionObject.md)
 List of supported operations.
 
-### [Remove-AzsAcquiredPlan](Remove-AzsAcquiredPlan.md)
-Deletes an acquired plan.
-
 ### [Remove-AzsOffer](Remove-AzsOffer.md)
 Delete the specified offer.
 
@@ -110,6 +107,9 @@ Removes the specified plan
 
 ### [Remove-AzsPlanFromOffer](Remove-AzsPlanFromOffer.md)
 Unlink a plan from an offer.
+
+### [Remove-AzsSubscriptionPlan](Remove-AzsSubscriptionPlan.md)
+Deletes a subscription plan.
 
 ### [Remove-AzsUserSubscription](Remove-AzsUserSubscription.md)
 Removes the specified tenant subscription.

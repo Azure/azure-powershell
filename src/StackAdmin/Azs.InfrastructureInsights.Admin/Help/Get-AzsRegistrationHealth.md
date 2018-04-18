@@ -39,74 +39,12 @@ Returns a list of each resource's health under a service.
 Get-AzsRegistrationHealth -ServiceRegistrationId e56bc7b8-c8b5-4e25-b00c-4f951effb22c
 ```
 
-AlertSummary        : Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.AlertSummary
-HealthState         : Healthy
-NamespaceProperty   : Microsoft.Fabric.Admin
-RegistrationId      : 0212cac8-242a-4133-8071-90467ac5b598
-RoutePrefix         : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local
-ResourceLocation    : local
-ResourceName        : PortalUser
-ResourceDisplayName : Portal (User)
-ResourceType        : infraRoles
-ResourceURI         : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/infr
-                      aRoles/PortalUser
-RpRegistrationId    : e56bc7b8-c8b5-4e25-b00c-4f951effb22c
-UsageMetrics        : {}
-Id                  : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionHeal
-                      ths/local/serviceHealths/e56bc7b8-c8b5-4e25-b00c-4f951effb22c/resourceHealths/0212cac8-242a-4133-8071-90467ac5b598
-Name                : 0212cac8-242a-4133-8071-90467ac5b598
-Type                : Microsoft.InfrastructureInsights.Admin/regionHealths/serviceHealths/resourceHealths
-Location            : local
-Tags                : {}
-...
-
 Returns a list of each resource's health under a service.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsRPHealth | Where {$_.NamespaceProperty -eq 'Microsoft.Fabric.Admin'} | Get-AzsRegistrationHealth | select ResourceName, HealthState
+Get-AzsRPHealth | Where {$_.NamespaceProperty -eq 'Microsoft.Fabric.Admin'} | % { Get-AzsRegistrationHealth -ServiceRegistrationId $_.RegistrationId } | select ResourceName, HealthState
 ```
-
-ResourceName                       HealthState
-------------                       -----------
-PortalUser                         Healthy
-AzureResourceManagerUser           Unknown
-SeedRing                           Unknown
-UsageServiceAdmin                  Healthy
-NetworkControllerRing              Healthy
-AzureConsistentStorageRing         Healthy
-GalleryServiceAdmin                Healthy
-ApplicationGateway                 Healthy
-ActiveDirectoryCertificateServices Unknown
-NonPrivilegedApplicationGateway    Healthy
-AzureResourceManagerAdmin          Unknown
-RASGateway                         Healthy
-StorageController                  Healthy
-PortalAdmin                        Healthy
-AzureBridge                        Healthy
-KeyVaultNamingService              Healthy
-KeyVaultDataPlane                  Healthy
-ComputeController                  Healthy
-ActiveDirectoryDomainServices      Healthy
-FabricControllerRing               Healthy
-ServicesController                 Healthy
-InsightsServiceAdmin               Healthy
-UsageBridge                        Healthy
-SubscriptionsServices              Healthy
-ActiveDirectoryFederationServices  Unknown
-KeyVaultInternalDataPlane          Healthy
-AuthorizationServiceAdmin          Healthy
-SLBMultiplexer                     Healthy
-KeyVaultInternalControlPlane       Healthy
-EnterpriseCloudEngine              Healthy
-UsageServiceUser                   Healthy
-HealthMonitoring                   Healthy
-AuthorizationServiceUser           Healthy
-InsightsServiceUser                Healthy
-BackupController                   Healthy
-GalleryServiceUser                 Healthy
-KeyVaultControlPlane               Healthy
-MicrosoftSQLServer                 Unknown
 
 Returns health status under a for Microsoft.Fabric.Admin.
 

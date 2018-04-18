@@ -16,21 +16,21 @@ Updates the specified plan
 ```
 Set-AzsPlan -Name <String> -ResourceGroupName <String> [-DisplayName <String>] [-QuotaIds <String[]>]
  [-SkuIds <String[]>] [-ExternalReferenceId <String>] [-Description <String>] [-Location <String>]
- [-SubscriptionCount <Int64>] [<CommonParameters>]
+ [-SubscriptionCount <Int64>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzsPlan [-DisplayName <String>] [-QuotaIds <String[]>] -InputObject <Plan> [-SkuIds <String[]>]
- [-ExternalReferenceId <String>] [-Description <String>] [-Location <String>] [-SubscriptionCount <Int64>]
- [<CommonParameters>]
+Set-AzsPlan [-ResourceGroupName <String>] [-DisplayName <String>] [-QuotaIds <String[]>] -InputObject <Plan>
+ [-SkuIds <String[]>] [-ExternalReferenceId <String>] [-Description <String>] [-Location <String>]
+ [-SubscriptionCount <Int64>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Set-AzsPlan [-DisplayName <String>] [-QuotaIds <String[]>] [-SkuIds <String[]>] [-ExternalReferenceId <String>]
- [-Description <String>] [-Location <String>] [-SubscriptionCount <Int64>] -ResourceId <String>
- [<CommonParameters>]
+ [-Description <String>] [-Location <String>] [-SubscriptionCount <Int64>] -ResourceId <String> [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,19 +42,6 @@ Updates the specified plan
 ```
 Set-AzsPlan -Name "plan1" -ResourceGroupName "rg1" -Description "This plan is meant to be used by accounting only."
 ```
-
-Description         : This plan is meant to be used by accounting only.
-DisplayName         : plan1
-ExternalReferenceId :
-QuotaIds            : {/subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/providers/Microsoft.Subscriptions.Admin/locations/local/quotas/delegatedProviderQuota}
-PlanName            : plan1
-SubscriptionCount   : 0
-SkuIds              :
-Id                  : /subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/plans/plan1
-Name                : plan1
-Type                : Microsoft.Subscriptions.Admin/plans
-Location            : local
-Tags                :
 
 Updates the specified plan
 
@@ -105,6 +92,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Plan.
 
@@ -126,7 +128,7 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ArmLocation
 
 Required: False
 Position: Named
@@ -166,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String
@@ -174,6 +176,18 @@ Parameter Sets: Update
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: InputObject
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -221,6 +235,37 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

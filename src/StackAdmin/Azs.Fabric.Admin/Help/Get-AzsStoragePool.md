@@ -36,24 +36,15 @@ Returns a list of all storage pools for a location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsStoragePool -ResourceGroup "System.local" -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local
+Get-AzsStoragePool -StorageSubSystem S-Cluster.azurestack.local
 ```
-
-Type                                                                  Name     SizeGB Location
-----                                                                  ----     ------ --------
-Microsoft.Fabric.Admin/fabricLocations/storageSubSystems/storagePools SU1_Pool 5614   local
-Microsoft.Fabric.Admin/fabricLocations/storageSubSystems/storagePools SU2_Pool 5614   local
 
 Get all storage pools at a given location.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsStoragePool -ResourceGroup "System.local" -Location local -StoragePool SU1_Pool -StorageSubSystem S-Cluster.azurestack.local -StoragePool "SU1_Pool"
+Get-AzsStoragePool -StorageSubSystem S-Cluster.azurestack.local -Name "SU1_Pool"
 ```
-
-Type                                                                  Name     SizeGB Location
-----                                                                  ----     ------ --------
-Microsoft.Fabric.Admin/fabricLocations/storageSubSystems/storagePools SU1_Pool 5614   local
 
 Get a storage pools at a given location given a storage pool name.
 

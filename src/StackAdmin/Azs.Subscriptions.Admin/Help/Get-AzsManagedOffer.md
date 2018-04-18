@@ -42,20 +42,6 @@ Get the list of offers.
 Get-AzsManagedOffer -Name offer -ResourceGroupName offerrg
 ```
 
-OfferName                  : offer
-DisplayName                : offer
-Description                :
-ExternalReferenceId        :
-State                      : Public
-SubscriptionCount          : 1
-MaxSubscriptionsPerAccount : 0
-BasePlanIds                : {/subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/offerrg/providers/Microsoft.Subscriptions.Admin/plans/plan1}
-AddonPlanDefinition        :
-Id                         : /subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/offerrg/providers/Microsoft.Subscriptions.Admin/offers/offer
-Name                       : offer
-Type                       : Microsoft.Subscriptions.Admin/offers
-Location                   : local
-
 Get the list of offers as the administrator.
 
 ## PARAMETERS
@@ -76,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String

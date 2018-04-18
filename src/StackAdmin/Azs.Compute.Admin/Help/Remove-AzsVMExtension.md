@@ -30,7 +30,7 @@ Deletes specified virtual machine extension image.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Remove-AzsPlatformImage -Location "local" -Publisher Canonical -Offer UbuntuServer -Sku 16.04-LTS -Version 0.1.0
+Remove-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0"
 ```
 
 Remove a platform image from the platform image repository.
@@ -38,7 +38,7 @@ Remove a platform image from the platform image repository.
 ## PARAMETERS
 
 ### -Force
-{{Fill Force Description}}
+Don't ask for confirmation.
 
 ```yaml
 Type: SwitchParameter

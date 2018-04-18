@@ -36,7 +36,7 @@ List gallery items.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsGalleryItem -GalleryItemName 'microsoft.vmss.1.3.6'
+Get-AzsGalleryItem -Name 'microsoft.vmss.1.3.6'
 ```
 
 Get a gallery item by name.

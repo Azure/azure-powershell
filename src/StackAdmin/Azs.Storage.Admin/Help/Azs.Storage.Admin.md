@@ -20,9 +20,6 @@ Returns a list of metrics for blob service.
 ### [Get-AzsBlobServiceMetricDefinition](Get-AzsBlobServiceMetricDefinition.md)
 Returns the list of metric definitions for blob service.
 
-### [Get-AzsStorageDestinationShare](Get-AzsStorageDestinationShare.md)
-Returns a list of destination shares that the system considers as best candidates for migration.
-
 ### [Get-AzsQueueService](Get-AzsQueueService.md)
 Returns the queue service.
 
@@ -46,6 +43,9 @@ Returns the list of containers which can be migrated in the specified share.
 
 ### [Get-AzsStorageContainerMigrationStatus](Get-AzsStorageContainerMigrationStatus.md)
 Returns the status of a container migration job.
+
+### [Get-AzsStorageDestinationShare](Get-AzsStorageDestinationShare.md)
+Returns a list of destination shares that the system considers as best candidates for migration.
 
 ### [Get-AzsStorageFarm](Get-AzsStorageFarm.md)
 Returns a list of all storage farms.
@@ -95,6 +95,6 @@ Start garbage collection on deleted storage objects.
 ### [Start-AzsStorageContainerMigration](Start-AzsStorageContainerMigration.md)
 Starts a container migration job to migrate containers to the specified destination share.
 
-### [Stop-AzsContainerMigration](Stop-AzsContainerMigration.md)
+### [Stop-AzsStorageContainerMigration](Stop-AzsStorageContainerMigration.md)
 Cancel a container migration job.
 

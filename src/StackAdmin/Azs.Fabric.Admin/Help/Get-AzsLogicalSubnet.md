@@ -36,23 +36,15 @@ Returns a list of all logical subnets.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsLogicalSubnet -ResourceGroup "System.local" -Location "local" -LogicalNetwork "00000000-2222-1111-9999-000000000001"
+Get-AzsLogicalSubnet -LogicalNetwork "00000000-2222-1111-9999-000000000001"
 ```
-
-Type                                                                  Metadata Name                                 Location IsPublic
-----                                                                  -------- ----                                 -------- --------
-Microsoft.Fabric.Admin/fabricLocations/logicalNetworks/logicalSubnets          d8cfef2d-c0c8-4cdb-b0a8-fb1bdf3f2ad7 local    False
 
 Get a list of all logical subnets for a given logical network and location.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsLogicalSubnet -ResourceGroup "System.local" -Location "local" -LogicalNetwork "00000000-2222-1111-9999-000000000001" -LogicalSubnet "d8cfef2d-c0c8-4cdb-b0a8-fb1bdf3f2ad7"
+Get-AzsLogicalSubnet -LogicalNetwork "00000000-2222-1111-9999-000000000001" -Name "d8cfef2d-c0c8-4cdb-b0a8-fb1bdf3f2ad7"
 ```
-
-Type                                                                  Metadata Name                                 Location IsPublic
-----                                                                  -------- ----                                 -------- --------
-Microsoft.Fabric.Admin/fabricLocations/logicalNetworks/logicalSubnets          d8cfef2d-c0c8-4cdb-b0a8-fb1bdf3f2ad7 local    False
 
 Get a specific logical subnet for a given logical network and location based on name.
 

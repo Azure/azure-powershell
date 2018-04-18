@@ -16,7 +16,7 @@ Once created an IP pool cannot be deleted or modified.
 ```
 New-AzsIpPool [[-Name] <String>] [[-AddressPrefix] <String>] [[-StartIpAddress] <String>]
  [[-EndIpAddress] <String>] [[-Location] <String>] [[-ResourceGroupName] <String>]
- [[-Tags] <System.Collections.Generic.Dictionary`2[System.String,System.String]>] [-Wait] [<CommonParameters>]
+ [[-Tags] <System.Collections.Generic.Dictionary`2[System.String,System.String]>] [-AsJob] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +26,7 @@ Create an infrastructure IP pool.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-New-AzsIpPool -ResourceGroup System.local -Name IpPool4 -StartIpAddress 192.168.99.1 -EndIpAddress 192.168.99.254 -AddressPrefix 192.168.99.0/24
+New-AzsIpPool -Name IpPool4 -StartIpAddress ***.***.***.*** -EndIpAddress ***.***.***.*** -AddressPrefix ***.***.***.***/24
 ```
 
 Create a new IP pool.
@@ -44,6 +44,21 @@ Aliases:
 Required: False
 Position: 2
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+{{Fill AsJob Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -134,21 +149,6 @@ Aliases:
 Required: False
 Position: 7
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Wait
-{{Fill Wait Description}}
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -15,19 +15,19 @@ Updates the offer delegation.
 ### Update (Default)
 ```
 Set-AzsOfferDelegation -Name <String> -OfferName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Location <String>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Location <String>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzsOfferDelegation [-SubscriptionId <String>] [-Location <String>] -InputObject <OfferDelegation>
- [<CommonParameters>]
+Set-AzsOfferDelegation [-SubscriptionId <String>] [-Location <String>] -InputObject <OfferDelegation> [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzsOfferDelegation [-SubscriptionId <String>] -ResourceId <String> [-Location <String>]
- [<CommonParameters>]
+Set-AzsOfferDelegation [-SubscriptionId <String>] -ResourceId <String> [-Location <String>] [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,16 +40,24 @@ Updates the offer delegation.
 Set-AzsOfferDelegation -Offer offer1 -ResourceGroupName rg1 -Name delegate1 -SubscriptionId "c90173b1-de7a-4b1d-8600-b832b0e65946" -Location "local"
 ```
 
-SubscriptionId : c90173b1-de7a-4b1d-8600-b832b0e65946
-Id             : /subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/offers/offer1/offerDelegations/delegate1
-Name           : offer1/delegate1
-Type           : Microsoft.Subscriptions.Admin/offers/offerDelegations
-Location       : local
-Tags           :
-
 Updates the offer delegation.
 
 ## PARAMETERS
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.OfferDelegation.
@@ -112,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String
@@ -148,6 +156,37 @@ Identifier of the subscription receiving the delegated offer.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

@@ -15,19 +15,21 @@ Create a new backup location.
 ### Update (Default)
 ```
 Set-AzsBackupShare [-ResourceGroupName <String>] [-Location <String>] -BackupShare <String> -Username <String>
- -Password <SecureString> -EncryptionKey <SecureString> [-Wait] [<CommonParameters>]
+ -Password <SecureString> -EncryptionKey <SecureString> [-AsJob] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Set-AzsBackupShare -InputObject <BackupLocation> [-BackupShare <String>] [-Username <String>]
- [-Password <SecureString>] [-EncryptionKey <SecureString>] [-Wait] [<CommonParameters>]
+ [-Password <SecureString>] [-EncryptionKey <SecureString>] [-AsJob] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Set-AzsBackupShare -ResourceId <String> -BackupShare <String> -Username <String> -Password <SecureString>
- -EncryptionKey <SecureString> [-Wait] [<CommonParameters>]
+ -EncryptionKey <SecureString> [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,24 +39,27 @@ Create a new backup location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Set-AzsBackupShare -ResourceGroupName system.local -Location local -BackupShare "\\su1fileserver\SU1_Infrastructure_3" -Username "azurestack\azurestackadmin" -Password $password  -EncryptionKey $encryptionKey
+Set-AzsBackupShare -BackupShare "\\***.***.***.***\Share" -Username "asdomain1\azurestackadmin" -Password $password  -EncryptionKey $encryptionKey
 ```
-
-BackupDataVersion :
-BackupId          : 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-RoleStatus        : {NRP, SRP, CRP, KeyVaultInternalControlPlane...}
-Status            : Succeeded
-CreatedDateTime   : 3/15/2018 1:31:01 AM
-TimeTakenToCreate : PT6M41.7853037S
-Id                : /subscriptions/b3d6379e-711c-48eb-b051-3c71305ec104/resourceGroups/system.local/providers/Microsoft.Backup.Admin/backupLocations/local/backups/4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-Name              : 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-Type              : Microsoft.Backup.Admin/backupLocations/backups
-Location          : local
-Tags              : {}
 
 Set Azure Stack backup configuration.
 
 ## PARAMETERS
+
+### -AsJob
+Run asynchronous as a job and return the job object.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -BackupShare
 Location where backups will be stored.
@@ -106,6 +111,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -224,17 +244,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

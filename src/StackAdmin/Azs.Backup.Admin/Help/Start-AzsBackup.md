@@ -14,12 +14,13 @@ Back up a specific location.
 
 ### CreateBackup (Default)
 ```
-Start-AzsBackup [-ResourceGroupName <String>] [-Location <String>] [-Wait] [<CommonParameters>]
+Start-AzsBackup [-ResourceGroupName <String>] [-Location <String>] [-AsJob] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateBackup_FromResourceId
 ```
-Start-AzsBackup -ResourceId <String> [-Wait] [<CommonParameters>]
+Start-AzsBackup -ResourceId <String> [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,24 +30,42 @@ Back up a specific location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Start-AzsBackup -ResourceGroupName system.local -Location local
+Start-AzsBackup
 ```
-
-BackupDataVersion :
-BackupId          : 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-RoleStatus        : {NRP, SRP, CRP, KeyVaultInternalControlPlane...}
-Status            : Succeeded
-CreatedDateTime   : 3/15/2018 1:31:01 AM
-TimeTakenToCreate : PT6M41.7853037S
-Id                : /subscriptions/b3d6379e-711c-48eb-b051-3c71305ec104/resourceGroups/system.local/providers/Microsoft.Backup.Admin/backupLocations/local/backups/4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-Name              : 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-Type              : Microsoft.Backup.Admin/backupLocations/backups
-Location          : local
-Tags              : {}
 
 Start an Azure Stack backup.
 
 ## PARAMETERS
+
+### -AsJob
+Run asynchronous as a job and return the job object.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Name of the backup location.
@@ -93,17 +112,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

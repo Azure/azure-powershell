@@ -12,10 +12,22 @@ Create or updates a subscription.
 
 ## SYNTAX
 
+### Set (Default)
 ```
-Set-AzsSubscription -OfferId <String> [-Id <String>] [-Type <String>]
+Set-AzsSubscription [-OfferId <String>] [-Type <String>]
  [-Tags <System.Collections.Generic.Dictionary`2[System.String,System.String]>] -SubscriptionId <String>
- -State <String> [-TenantId <String>] [-DisplayName <String>] [-Location <String>] [<CommonParameters>]
+ [-State <String>] [-TenantId <String>] [-DisplayName <String>] [-Location <String>] [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ResourceId
+```
+Set-AzsSubscription -ResourceId <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Set-AzsSubscription -InputObject <Subscription> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,13 +40,6 @@ Create or updates a subscription.
 Set-AzsSubscription -SubscriptionId 2d9f5af9-3397-44fb-8700-d98762c2422a -DisplayName MyTestSub -State Enabled -OfferId /delegatedProviders/default/offers/offer1
 ```
 
-DisplayName    : MyTestSub
-Id             : /subscriptions/2d9f5af9-3397-44fb-8700-d98762c2422a
-OfferId        : /delegatedProviders/default/offers/offer1
-State          : Enabled
-SubscriptionId : 2d9f5af9-3397-44fb-8700-d98762c2422a
-TenantId       : 1e64bce5-9f3b-4add-8be8-e550e05014d0
-
 Create or updates a subscription.
 
 ## PARAMETERS
@@ -44,7 +49,7 @@ Subscription name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Set
 Aliases: 
 
 Required: False
@@ -54,18 +59,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Fully qualified identifier.
+### -Force
+Don't ask for confirmation.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Network.Admin.Models.Quota.
+
+```yaml
+Type: Subscription
+Parameter Sets: InputObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -74,8 +94,8 @@ Location where resource is location.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Set
+Aliases: ArmLocation
 
 Required: False
 Position: Named
@@ -89,13 +109,28 @@ Identifier of the offer under the scope of a delegated provider.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Set
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource ID.
+
+```yaml
+Type: String
+Parameter Sets: ResourceId
+Aliases: id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -104,10 +139,10 @@ Subscription state.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Set
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -119,7 +154,7 @@ Subscription identifier.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Set
 Aliases: 
 
 Required: True
@@ -134,7 +169,7 @@ List of key-value pairs.
 
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
-Parameter Sets: (All)
+Parameter Sets: Set
 Aliases: 
 
 Required: False
@@ -149,7 +184,7 @@ Directory tenant identifier.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Set
 Aliases: 
 
 Required: False
@@ -164,8 +199,39 @@ Type of resource.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Set
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

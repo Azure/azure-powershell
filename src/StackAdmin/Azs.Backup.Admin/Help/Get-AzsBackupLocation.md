@@ -34,23 +34,8 @@ Returns the list of backup locations.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsBackupLocation -ResourceGroupName system.local -Location local
+Get-AzsBackupLocation
 ```
-
-Path                     : \\\\su1fileserver\SU1_Infrastructure_3
-UserName                 : azurestack\azurestackadmin
-Password                 :
-EncryptionKeyBase64      :
-BackupFrequencyInHours :
-AvailableCapacity        : 10GB
-IsBackupSchedulerEnabled : False
-NextBackupTime           :
-LastBackupTime           :
-Id                       : /subscriptions/b3d6379e-711c-48eb-b051-3c71305ec104/resourcegroups/system.local/providers/Microsoft.Backup.Admin/backupLocations/local
-Name                     : local
-Type                     : Microsoft.Backup.Admin/backupLocations
-Location                 : local
-Tags                     : {}
 
 Get Azure Stack backup configuration.
 

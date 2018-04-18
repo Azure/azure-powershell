@@ -13,8 +13,8 @@ Create a new storage quota.
 ## SYNTAX
 
 ```
-New-AzsStorageQuota -QuotaName <String> [-CapacityInGb <Int32>] [-NumberOfStorageAccounts <Int32>]
- [-Location <String>] [<CommonParameters>]
+New-AzsStorageQuota [-Name] <String> [[-CapacityInGb] <Int32>] [[-NumberOfStorageAccounts] <Int32>]
+ [[-Location] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +24,10 @@ Create a new storage quota.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-New-AzsStorageQuota -CapacityInGb 1000 -NumberOfStorageAccounts 100 -Location local -QuotaName 'TestCreateStorageQuota'
+New-AzsStorageQuota -CapacityInGb 1000 -NumberOfStorageAccounts 100 -Name 'TestCreateStorageQuota'
 ```
 
-Name       Location   CapacityInGb	NumberOfStorageAccounts
-----       --------   ----------	----------
-   local/T...
-local      1000			100
-
-   Create a new storage quota.
+Create a new storage quota with specified values.
 
 ## PARAMETERS
 
@@ -45,7 +40,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: 500
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -60,7 +55,22 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the storage quota.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -75,23 +85,8 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 3
 Default value: 20
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QuotaName
-The name of the storage quota.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

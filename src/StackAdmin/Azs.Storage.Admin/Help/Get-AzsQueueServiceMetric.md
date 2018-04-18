@@ -24,23 +24,8 @@ Returns a list of metrics for the queue service.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsQueueServiceMetric -ResourceGroupName "system.local" -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
+Get-AzsQueueServiceMetric -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
 ```
-
-TimeGrain                      MetricUnit                     StartTime                      EndTime
----------                      ----------                     ---------                      -------
-P1D                            CountPerSecond                 2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
-P1D                            Count                          2/27/2018 12:00:00 AM          3/6/2018 2:33:09 AM
 
 Get the list of metrics for queue service.
 

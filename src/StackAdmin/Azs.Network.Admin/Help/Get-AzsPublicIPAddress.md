@@ -27,19 +27,6 @@ List of public IP addresses.
 Get-AzsPublicIPAddress
 ```
 
-IpAddress         :
-IpPool            :
-AllocationMethod  : Dynamic
-ProvisioningState :
-SubscriptionId    :
-TenantResourceUri :
-Id                : /subscriptions/a35a3f50-9f21-4f04-a978-01bc4ad7aa4f/providers/Microsoft.Network.Admin/adminPublicIPAddresses/publicIp1
-Name              : publicIp1
-Type              : Microsoft.Network.Admin/adminPublicIPAddresses
-Location          :
-Tags              :
-...
-
 Get the list of public ip addresses, either allocated or not allocated.
 
 ## PARAMETERS

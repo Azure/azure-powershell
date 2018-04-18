@@ -35,28 +35,15 @@ Returns a list of all IP pools at a certain location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsIpPool -ResourceGroup "System.local" -Location "redmond"
+Get-AzsIpPool
 ```
-
-NumberOfIpAddressesInTransition StartIpAddress  Type                                           AddressPrefix NumberOfIpAddresses
-------------------------------- --------------  ----                                           ------------- -------------------
-0                               192.168.105.1   Microsoft.Fabric.Admin/fabricLocations/ipPools               255
-0                               192.168.200.112 Microsoft.Fabric.Admin/fabricLocations/ipPools               16
-0                               192.168.200.65  Microsoft.Fabric.Admin/fabricLocations/ipPools               47
-0                               192.168.200.1   Microsoft.Fabric.Admin/fabricLocations/ipPools               62
-0                               192.168.102.1   Microsoft.Fabric.Admin/fabricLocations/ipPools               255
-0                               192.168.200.224 Microsoft.Fabric.Admin/fabricLocations/ipPools               31
 
 Get an all infrastructure ip pools.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsIpPool -ResourceGroup "System.local" -Location "redmond" -IpPool "08786a0f-ad8c-43aa-a154-06083abfc1ac"
+Get-AzsIpPool -Name "08786a0f-ad8c-43aa-a154-06083abfc1ac"
 ```
-
-NumberOfIpAddressesInTransition StartIpAddress Type                                           AddressPrefix NumberOfIpAddresses
-------------------------------- -------------- ----                                           ------------- -------------------
-0                               192.168.105.1  Microsoft.Fabric.Admin/fabricLocations/ipPools               255
 
 Get an infrastructure ip pool based on name.
 

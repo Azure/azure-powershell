@@ -14,13 +14,13 @@ Apply a specific update at an update location.
 
 ### Apply (Default)
 ```
-Install-AzsUpdate [-ResourceGroupName <String>] [-Location <String>] -Name <String> [-Wait]
- [<CommonParameters>]
+Install-AzsUpdate -Name <String> [-ResourceGroupName <String>] [-Location <String>] [-AsJob] [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Install-AzsUpdate [-Wait] -ResourceId <String> [<CommonParameters>]
+Install-AzsUpdate [-AsJob] -ResourceId <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,29 +34,39 @@ After invoked, Get-AzsUpdateRun may be used to modify the progress of the update
 Get-AzsUpdate -Name Microsoft1.0.180305.1 | Install-AzsUpdate
 ```
 
-DateAvailable      :
-InstalledDate      :
-Description        :
-State              : InProgress
-KbLink             :
-MinVersionRequired :
-PackagePath        :
-PackageSizeInMb    :
-UpdateName         :
-Version            :
-UpdateOemFile      :
-Publisher          :
-PackageType        :
-Id                 : /subscriptions/23d66fd1-4743-42ff-b391-e29dc51d799e/resourcegroups/System.redmond/providers/Microsoft.Update.Admin/updateLocations/r
-		 edmond/updates/Microsoft1.0.180305.1/updateRuns/a6ad672e-097d-4d40-bc00-8d6ebe327246
-Name               : a6ad672e-097d-4d40-bc00-8d6ebe327246
-Type               : Microsoft.Update.Admin/updateLocations/updates/updateRuns
-Location           : redmond
-Tags               : {}
-
 Apply a specific update at an update location.
 
 ## PARAMETERS
+
+### -AsJob
+{{Fill AsJob Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Flag to remove the item without confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 The name of the update location.
@@ -118,17 +128,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

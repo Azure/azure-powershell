@@ -20,8 +20,7 @@ Get-AzsStorageAccount -FarmName <String> [-ResourceGroupName <String>] [-Summary
 
 ### Get
 ```
-Get-AzsStorageAccount -FarmName <String> [-AccountId <String>] [-ResourceGroupName <String>]
- [<CommonParameters>]
+Get-AzsStorageAccount -FarmName <String> [-Name <String>] [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -36,56 +35,19 @@ Returns the requested storage account.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsStorageAccount -ResourceGroupName "system.local" -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376 -Summary $false
+Get-AzsStorageAccount -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376 -Summary
 ```
-
-TenantViewId              : /subscriptions/a35a3f50-9f21-4f04-a978-01bc4ad7aa4f/resourcegroups/system.local/providers/Microsoft.Storage/storageaccounts/systemportal
-AccountType               : Standard_LRS
-ProvisioningState         : Succeeded
-PrimaryEndpoints          : {\[blob, https://systemportal.blob.local.azurestack.external/\], \[queue, https://systemportal.queue.local.azurestack.external/\], \[table, https://systemportal.table.local.azurestack.external/\]}
-CreationTime              : 03/25/2018 12:00:05
-AlternateName             :
-PrimaryLocation           : local
-StatusOfPrimary           : Available
-TenantSubscriptionId      : a35a3f50-9f21-4f04-a978-01bc4ad7aa4f
-TenantStorageAccountName  : systemportal
-TenantResourceGroupName   : system.local
-CurrentOperation          : None
-CustomDomain              :
-AcquisitionOperationCount : 0
-DeletedTime               :
-AccountStatus             : Active
-RecoveredTime             :
-RecycledTime              :
-Permissions               : Full
-AccountId                 : fc1cb9b818554f03abbd00adc59890b7
-WacInternalState          : Active
-ResourceAdminApiVersion   :
-Id                        : /subscriptions/a35a3f50-9f21-4f04-a978-01bc4ad7aa4f/resourcegroups/System.local/providers/Microsoft.Storage.Admin/farms/6925d0ee-a2eb-47b3-aeb2-b3cfbf8b2b51/storageaccounts/fc1cb9b818554f03abbd00adc59890b7
-Name                      : fc1cb9b818554f03abbd00adc59890b7
-Type                      : Microsoft.Storage.Admin/storageaccounts
-Location                  : local
-Tags                      :
-...
 
 Get a list of storage accounts.
 
-## PARAMETERS
-
-### -AccountId
-Internal storage account ID, which is not visible to tenant.
-
-```yaml
-Type: String
-Parameter Sets: Get
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+### -------------------------- EXAMPLE 2 --------------------------
 ```
+Get-AzsStorageAccount -FarmName 431e8245-9e38-43e9-bf73-5f9cb2fbbdb6 -Name f8f7ff7335cb4ba284fb855547e48f34
+```
+
+Get details of the specified storage account.
+
+## PARAMETERS
 
 ### -FarmName
 Farm Id.
@@ -96,6 +58,21 @@ Parameter Sets: List, Get
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Internal storage account ID, which is not visible to tenant.
+
+```yaml
+Type: String
+Parameter Sets: Get
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

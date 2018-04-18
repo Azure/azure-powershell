@@ -27,17 +27,6 @@ Get a list of all virtual networks.
 Get-AzsVirtualNetwork
 ```
 
-ConfigurationState : Microsoft.AzureStack.Management.Network.Admin.Models.VirtualNetworkConfigurationState
-ProvisioningState  :
-SubscriptionId     :
-TenantResourceUri  :
-Id                 : /subscriptions/a35a3f50-9f21-4f04-a978-01bc4ad7aa4f/providers/Microsoft.Network.Admin/adminVirtualNetworks/vnet1
-Name               : vnet1
-Type               : Microsoft.Network.Admin/adminVirtualNetworks
-Location           :
-Tags               :
-...
-
 Return a list of virtual networks for the Azure Stack stamp.
 
 ## PARAMETERS

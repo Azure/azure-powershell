@@ -12,15 +12,16 @@ Reboot an infrastructure role instance.
 
 ## SYNTAX
 
-### Reboot (Default)
+### Restart (Default)
 ```
-Restart-AzsInfrastructureRoleInstance -Name <String> [-Location <String>] [-ResourceGroupName <String>] [-Wait]
- [<CommonParameters>]
+Restart-AzsInfrastructureRoleInstance -Name <String> [-Location <String>] [-ResourceGroupName <String>]
+ [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Restart-AzsInfrastructureRoleInstance -ResourceId <String> [-Wait] [<CommonParameters>]
+Restart-AzsInfrastructureRoleInstance -ResourceId <String> [-AsJob] [-Force] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,21 +31,49 @@ Reboot an infrastructure role instance.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Restart-AzsInfrastructureRoleInstance -ResourceGroup "System.local" -Location "local" -InfrastructureRoleInstance "AzS-ACS01"
+Restart-AzsInfrastructureRoleInstance -Name "AzS-ACS01"
 ```
-
-ProvisioningState : Succeeded
 
 Reboot an infrastructure role instance.
 
 ## PARAMETERS
+
+### -AsJob
+Run asynchronous as a job and return the job object.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 Location of the resource.
 
 ```yaml
 Type: String
-Parameter Sets: Reboot
+Parameter Sets: Restart
 Aliases: 
 
 Required: False
@@ -59,7 +88,7 @@ Name of an infrastructure role instance.
 
 ```yaml
 Type: String
-Parameter Sets: Reboot
+Parameter Sets: Restart
 Aliases: 
 
 Required: True
@@ -74,7 +103,7 @@ Resource group in which the resource provider has been registered.
 
 ```yaml
 Type: String
-Parameter Sets: Reboot
+Parameter Sets: Restart
 Aliases: 
 
 Required: False
@@ -99,17 +128,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

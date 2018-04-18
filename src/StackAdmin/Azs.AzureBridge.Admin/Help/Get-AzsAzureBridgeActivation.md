@@ -28,7 +28,7 @@ Get-AzsAzureBridgeActivation -ResourceId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Returns the Azure Bridge Activation.
+Once Azure Stack has been registered, the activation object contains information that links an Azure Stack deployment to its registration in Azure, for example, the registration expiration date, name, etc.
 
 ## EXAMPLES
 
@@ -37,14 +37,14 @@ Returns the Azure Bridge Activation.
 Get-AzsAzureBridgeActivation -ResourceGroupName 'activationRG'
 ```
 
-Get a list of Azure Bridge Activations
+Get a list of Azure Bridge Activations under the resource group "activationRG"
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-AzsAzureBridgeActivation -Name 'myActivation' -ResourceGroupName 'activationRG'
 ```
 
-Get an Azure Bridge Activation by name
+Get an Azure Bridge Activation by name 'myActivation' situated under 'activationRG'
 
 ## PARAMETERS
 
@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group the resource is located under.
+The Resource Group used during the registration of Azure Stack; you can also view Resource Group names in the portal.
 
 ```yaml
 Type: String

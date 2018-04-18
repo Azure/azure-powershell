@@ -14,13 +14,13 @@ Restore a backup.
 
 ### Backups_Restore (Default)
 ```
-Restore-AzsBackup [-ResourceGroupName <String>] -Backup <String> [-Location <String>] [-Wait]
- [<CommonParameters>]
+Restore-AzsBackup [-ResourceGroupName <String>] -Name <String> [-Location <String>] [-AsJob] [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Restore-AzsBackup -ResourceId <String> [-Wait] [<CommonParameters>]
+Restore-AzsBackup -ResourceId <String> [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,24 +30,39 @@ Restore a backup.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Restore-AzsBackup -ResourceGroupName system.local -Location local -Backup 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
+Restore-AzsBackup -Backup 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
 ```
 
 Restore from an Azure Stack backup.
 
 ## PARAMETERS
 
-### -Backup
-Name of the backup.
+### -AsJob
+Run asynchronous as a job and return the job object.
 
 ```yaml
-Type: String
-Parameter Sets: Backups_Restore
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -61,6 +76,21 @@ Parameter Sets: Backups_Restore
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the backup.
+
+```yaml
+Type: String
+Parameter Sets: Backups_Restore
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,17 +127,33 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Wait
-{{Fill Wait Description}}
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

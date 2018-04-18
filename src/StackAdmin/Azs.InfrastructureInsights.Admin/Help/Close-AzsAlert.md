@@ -12,20 +12,20 @@ Closes the given alert.
 
 ## SYNTAX
 
-### Close
+### Close (Default)
 ```
-Close-AzsAlert -AlertId <String> [-User <String>] [-Location <String>] [-ResourceGroupName <String>]
- [<CommonParameters>]
+Close-AzsAlert -Name <String> [-User <String>] [-Location <String>] [-ResourceGroupName <String>] [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Close-AzsAlert [-User <String>] -InputObject <Alert> [<CommonParameters>]
+Close-AzsAlert [-User <String>] -InputObject <Alert> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Close-AzsAlert [-User <String>] -ResourceId <String> [<CommonParameters>]
+Close-AzsAlert [-User <String>] -ResourceId <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,84 +38,28 @@ Closes the given alert.
 Close-AzsAlert -AlertId f2147f3d-42ac-4316-8cbc-f0f9c18888b0
 ```
 
-ClosedTimestamp                : 03/08/2018 23:27:40
-CreatedTimestamp               : 03/04/2018 05:21:00
-Description                    : {System.Collections.Generic.Dictionary\`2\[System.String,System.String\]}
-FaultId                        :
-AlertId                        : f2147f3d-42ac-4316-8cbc-f0f9c18888b0
-FaultTypeId                    : CertificateExpiration.ExternalCert.Critical
-LastUpdatedTimestamp           : 03/08/2018 23:27:40
-AlertProperties                : {}
-Remediation                    : {System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\]...}
-ResourceRegistrationId         :
-ResourceProviderRegistrationId : e56bc7b8-c8b5-4e25-b00c-4f951effb22c
-Severity                       : Critical
-State                          : Closed
-Title                          : Pending external certificate expiration
-ImpactedResourceId             : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i
-                                 nfraRoleInstances/AZS-GWY01
-ImpactedResourceDisplayName    : AZS-GWY01
-ClosedByUserAlias              : user@domain.onmicrosoft.com
-Id                             : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionH
-                                 ealths/local/alerts/f2147f3d-42ac-4316-8cbc-f0f9c18888b0
-Name                           : f2147f3d-42ac-4316-8cbc-f0f9c18888b0
-Type                           : Microsoft.InfrastructureInsights.Admin/regionHealths/alerts
-Location                       : local
-Tags                           : {}
-
 Close an alert by AlertId.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsAlert -Name f2147f3d-42ac-4316-8cbc-f0f9c18888b0 | Close-AzsAlert
+Get-AzsAlert -AlertId f2147f3d-42ac-4316-8cbc-f0f9c18888b0 | Close-AzsAlert
 ```
-
-ClosedTimestamp                : 03/08/2018 23:27:40
-CreatedTimestamp               : 03/04/2018 05:21:00
-Description                    : {System.Collections.Generic.Dictionary\`2\[System.String,System.String\]}
-FaultId                        :
-AlertId                        : f2147f3d-42ac-4316-8cbc-f0f9c18888b0
-FaultTypeId                    : CertificateExpiration.ExternalCert.Critical
-LastUpdatedTimestamp           : 03/08/2018 23:27:40
-AlertProperties                : {}
-Remediation                    : {System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\],
-                                 System.Collections.Generic.Dictionary\`2\[System.String,System.String\]...}
-ResourceRegistrationId         :
-ResourceProviderRegistrationId : e56bc7b8-c8b5-4e25-b00c-4f951effb22c
-Severity                       : Critical
-State                          : Closed
-Title                          : Pending external certificate expiration
-ImpactedResourceId             : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/system.local/providers/Microsoft.Fabric.Admin/fabricLocations/local/i
-                                 nfraRoleInstances/AZS-GWY01
-ImpactedResourceDisplayName    : AZS-GWY01
-ClosedByUserAlias              : user@domain.onmicrosoft.com
-Id                             : /subscriptions/df5abebb-3edc-40c5-9155-b4ab239d79d3/resourceGroups/System.local/providers/Microsoft.InfrastructureInsights.Admin/regionH
-                                 ealths/local/alerts/f2147f3d-42ac-4316-8cbc-f0f9c18888b0
-Name                           : f2147f3d-42ac-4316-8cbc-f0f9c18888b0
-Type                           : Microsoft.InfrastructureInsights.Admin/regionHealths/alerts
-Location                       : local
-Tags                           : {}
 
 Close an alert through piping.
 
 ## PARAMETERS
 
-### -AlertId
-The alert identifier.
+### -Force
+{{Fill Force Description}}
 
 ```yaml
-Type: String
-Parameter Sets: Close
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases: 
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -144,6 +88,21 @@ Parameter Sets: Close
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The alert identifier.
+
+```yaml
+Type: String
+Parameter Sets: Close
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,6 +146,37 @@ The username used to perform the operation.
 Type: String
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

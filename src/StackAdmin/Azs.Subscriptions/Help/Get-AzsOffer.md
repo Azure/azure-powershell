@@ -13,7 +13,7 @@ Get the list of public offers.
 ## SYNTAX
 
 ```
-Get-AzsOffer [[-Skip] <Int32>] [[-Top] <Int32>] [<CommonParameters>]
+Get-AzsOffer [[-Skip] <Int32>] [[-Top] <Int32>] [[-Provider] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,15 +26,24 @@ Get the list of public offers.
 Get-AzsOffer | fl
 ```
 
-DisplayName : offer1
-Description : Basic service offering
-Name        : offer1
-Id          : /delegatedProviders/default/offers/offer1
-...
-
 Get the list of public offers.
 
 ## PARAMETERS
+
+### -Provider
+{{Fill Provider Description}}
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Skip
 Skip the first N items as specified by the parameter value.

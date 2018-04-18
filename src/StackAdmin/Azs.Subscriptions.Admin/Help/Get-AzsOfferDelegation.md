@@ -37,19 +37,12 @@ Get the list of delegated offers.
 Get-AzsOfferDelegation -OfferName offer1 -ResourceGroupName rg1
 ```
 
-SubscriptionId : c90173b1-de7a-4b1d-8600-b832b0e65946
-Id             : /subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/offers/offer1/offerDelegations/dlele
-Name           : offer1/dlele
-Type           : Microsoft.Subscriptions.Admin/offers/offerDelegations
-Location       : local
-Tags           :
-
 Get the list of delegated offers.
 
 ## PARAMETERS
 
 ### -Name
-{{Fill Name Description}}
+Name of a offer delegation.
 
 ```yaml
 Type: String
@@ -79,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String

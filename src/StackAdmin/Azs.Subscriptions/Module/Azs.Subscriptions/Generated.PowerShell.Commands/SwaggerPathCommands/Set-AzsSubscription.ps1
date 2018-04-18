@@ -45,7 +45,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .PARAMETER Force
     Don't ask for confirmation.
-	
+
 .EXAMPLE
 
     PS C:\> Set-AzsSubscription -SubscriptionId 2d9f5af9-3397-44fb-8700-d98762c2422a -DisplayName MyTestSub -State Enabled -OfferId /delegatedProviders/default/offers/offer1
@@ -91,7 +91,7 @@ function Set-AzsSubscription
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
         [string]
-        [Alias("ArmLocation")]        
+        [Alias("ArmLocation")]
         $Location,
 
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
@@ -100,7 +100,7 @@ function Set-AzsSubscription
         $ResourceId,
 
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'InputObject')]
-        [Microsoft.AzureStack.Management.Models.SubscriptionDefinition]
+        [Microsoft.AzureStack.Management.Subscriptions.Models.Subscription]
         $InputObject,
 
         [Parameter(Mandatory = $false)]

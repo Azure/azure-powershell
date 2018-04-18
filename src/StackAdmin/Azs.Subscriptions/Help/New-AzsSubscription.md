@@ -13,8 +13,8 @@ Create a subscription.
 ## SYNTAX
 
 ```
-New-AzsSubscription -OfferId <String> [-DisplayName <String>] [-TenantId <String>] [-SubscriptionId <String>]
- [-State <String>] [-Location <String>] [<CommonParameters>]
+New-AzsSubscription [-OfferId] <String> [[-DisplayName] <String>] [[-TenantId] <String>]
+ [[-SubscriptionId] <String>] [[-State] <String>] [[-Location] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,13 +26,6 @@ Create a subscription.
 ```
 New-AzsSubscription -OfferId /delegatedProviders/default/offers/offer1
 ```
-
-DisplayName    :
-Id             : /subscriptions/d387f779-85d8-40b6-8607-8306295ebff9
-OfferId        : /delegatedProviders/default/offers/offer1
-State          : Enabled
-SubscriptionId : d387f779-85d8-40b6-8607-8306295ebff9
-TenantId       : 1e64bce5-9f3b-4add-8be8-e550e05014d0
 
 Create a subscription.
 
@@ -47,7 +40,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -59,10 +52,10 @@ Location where resource is location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ArmLocation
 
 Required: False
-Position: Named
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -77,7 +70,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,7 +85,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,7 +100,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -122,7 +115,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

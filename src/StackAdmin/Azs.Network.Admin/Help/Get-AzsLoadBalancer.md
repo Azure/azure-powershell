@@ -27,18 +27,6 @@ Get a list of all load balancers.
 Get-AzsLoadBalancer
 ```
 
-PublicIpAddresses : {}
-ProvisioningState :
-SubscriptionId    :
-TenantResourceUri :
-Id                : /subscriptions/a35a3f50-9f21-4f04-a978-01bc4ad7aa4f/providers/Microsoft.Network.Admin/adminLoadBala
-                    ncers/lb1
-Name              : lb1
-Type              : Microsoft.Network.Admin/adminLoadBalancers
-Location          :
-Tags              :
-...
-
 Get a list of all load balancers.
 
 ## PARAMETERS

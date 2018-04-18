@@ -13,8 +13,8 @@ Create a new offer delegation.
 ## SYNTAX
 
 ```
-New-AzsOfferDelegation -Name <String> -OfferName <String> -SubscriptionId <String> -ResourceGroupName <String>
- [-Location <String>] [<CommonParameters>]
+New-AzsOfferDelegation [-Name] <String> [-OfferName] <String> [-SubscriptionId] <String>
+ [-ResourceGroupName] <String> [[-Location] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,15 +24,8 @@ Create a new offer delegation.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-New-AzsOfferDelegation -Offer offer1 -ResourceGroupName rg1 -Name delegate1 -SubscriptionId "c90173b1-de7a-4b1d-8600-b832b0e65946" -Location "local"
+New-AzsOfferDelegation -OfferName offer1 -ResourceGroupName rg1 -Name delegate1 -SubscriptionId "c90173b1-de7a-4b1d-8600-b832b0e65946"
 ```
-
-SubscriptionId : c90173b1-de7a-4b1d-8600-b832b0e65946
-Id             : /subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/offers/offer1/offerDelegations/delegate1
-Name           : offer1/delegate1
-Type           : Microsoft.Subscriptions.Admin/offers/offerDelegations
-Location       : local
-Tags           :
 
 Create a new offer delegation.
 
@@ -47,7 +40,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -62,7 +55,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -77,14 +70,14 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String
@@ -92,7 +85,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -107,7 +100,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

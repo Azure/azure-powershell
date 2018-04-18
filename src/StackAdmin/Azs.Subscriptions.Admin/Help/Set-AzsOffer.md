@@ -17,14 +17,15 @@ Update the offer.
 Set-AzsOffer -Name <String> -ResourceGroupName <String> [-DisplayName <String>] [-BasePlanIds <String[]>]
  [-Description <String>] [-ExternalReferenceId <String>] [-State <String>] [-Location <String>]
  [-SubscriptionCount <Int64>] [-MaxSubscriptionsPerAccount <Int64>]
- [-AddonPlanDefinition <AddonPlanDefinition[]>] [<CommonParameters>]
+ [-AddonPlanDefinition <AddonPlanDefinition[]>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzsOffer [-DisplayName <String>] [-BasePlanIds <String[]>] -InputObject <Offer> [-Description <String>]
- [-ExternalReferenceId <String>] [-State <String>] [-Location <String>] [-SubscriptionCount <Int64>]
- [-MaxSubscriptionsPerAccount <Int64>] [-AddonPlanDefinition <AddonPlanDefinition[]>] [<CommonParameters>]
+Set-AzsOffer [-ResourceGroupName <String>] [-DisplayName <String>] [-BasePlanIds <String[]>]
+ -InputObject <Offer> [-Description <String>] [-ExternalReferenceId <String>] [-State <String>]
+ [-Location <String>] [-SubscriptionCount <Int64>] [-MaxSubscriptionsPerAccount <Int64>]
+ [-AddonPlanDefinition <AddonPlanDefinition[]>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -32,7 +33,7 @@ Set-AzsOffer [-DisplayName <String>] [-BasePlanIds <String[]>] -InputObject <Off
 Set-AzsOffer [-DisplayName <String>] [-BasePlanIds <String[]>] [-Description <String>]
  [-ExternalReferenceId <String>] [-State <String>] [-Location <String>] [-SubscriptionCount <Int64>]
  [-MaxSubscriptionsPerAccount <Int64>] [-AddonPlanDefinition <AddonPlanDefinition[]>] -ResourceId <String>
- [<CommonParameters>]
+ [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,20 +45,6 @@ Update the offer.
 ```
 Set-AzsOffer -Name offer1 -ResourceGroupName rg1 -State Private
 ```
-
-OfferName                  : offer1
-DisplayName                : offer1
-Description                :
-State                      : Private
-SubscriptionCount          : 1
-MaxSubscriptionsPerAccount : 0
-BasePlanIds                : {/subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/plans/plan1}
-AddonPlanDefinition        :
-Id                         : /subscriptions/0a823c45-d9e7-4812-a138-74e22213693a/resourceGroups/rg1/providers/Microsoft.Subscriptions.Admin/offers/offer1
-Name                       : offer1
-Type                       : Microsoft.Subscriptions.Admin/offers
-Location                   : local
-Tags                       :
 
 Update the offer.
 
@@ -138,6 +125,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Don't ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Offer.
 
@@ -159,7 +161,7 @@ Location of the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: ArmLocation
 
 Required: False
 Position: Named
@@ -199,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+The resource group the resource is located under.
 
 ```yaml
 Type: String
@@ -207,6 +209,18 @@ Parameter Sets: Update
 Aliases: 
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: InputObject
+Aliases: 
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -254,6 +268,37 @@ Aliases:
 Required: False
 Position: Named
 Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

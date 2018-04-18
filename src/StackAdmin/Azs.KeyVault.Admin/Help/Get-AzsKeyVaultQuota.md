@@ -26,13 +26,6 @@ Get a list of all quota objects for KeyVault at a location.
 Get-AzsKeyVaultQuota
 ```
 
-Properties :
-Id         : /subscriptions/8dfc712d-b1c1-4f11-b639-133ab694c8be/providers/Microsoft.KeyVault.Admin/locations/local/quotas/Unlimited
-Name       : local/Unlimited
-Type       : Microsoft.KeyVault.Admin/locations/quotas
-Location   : local
-Tags       :
-
 Get a list of all quota objects for KeyVault at a location.
 
 ## PARAMETERS

@@ -28,9 +28,9 @@ Get-AzsBackup -Name <String> [-Location <String>] [-ResourceGroupName <String>] 
 Get-AzsBackup -ResourceId <String> [<CommonParameters>]
 ```
 
-### ParentObject
+### ParentResource
 ```
-Get-AzsBackup -ParentObject <BackupLocation> [-Top <Int32>] [-Skip <Int32>] [<CommonParameters>]
+Get-AzsBackup -ParentResource <BackupLocation> [-Top <Int32>] [-Skip <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,20 +40,15 @@ Returns a backup from a location based on name.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsBackup -ResourceGroupName system.local -Location local
+Get-AzsBackup
 ```
 
-BackupDataVersion :
-BackupId          : 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-RoleStatus        : {NRP, SRP, CRP, KeyVaultInternalControlPlane...}
-Status            : Succeeded
-CreatedDateTime   : 3/15/2018 1:31:01 AM
-TimeTakenToCreate : PT6M41.7853037S
-Id                : /subscriptions/b3d6379e-711c-48eb-b051-3c71305ec104/resourceGroups/system.local/providers/Microsoft.Backup.Admin/backupLocations/local/backups/4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-Name              : 4e90bd2f-c7ab-47a3-a3c7-908cddd1ad0e
-Type              : Microsoft.Backup.Admin/backupLocations/backups
-Location          : local
-Tags              : {}
+Get information sbout all Azure Stack backups.
+
+### -------------------------- EXAMPLE 2 --------------------------
+```
+Get-AzsBackup -Name 'backupName'
+```
 
 Get information for the the specified Azure Stack backup.
 
@@ -89,12 +84,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentObject
-{{Fill ParentObject Description}}
+### -ParentResource
+Passing a backup location will return the list of all backups at that backup location.
 
 ```yaml
 Type: BackupLocation
-Parameter Sets: ParentObject
+Parameter Sets: ParentResource
 Aliases: 
 
 Required: True
@@ -139,7 +134,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: List, ParentObject
+Parameter Sets: List, ParentResource
 Aliases: 
 
 Required: False
@@ -154,7 +149,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: List, ParentObject
+Parameter Sets: List, ParentResource
 Aliases: 
 
 Required: False

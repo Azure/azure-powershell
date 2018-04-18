@@ -39,29 +39,12 @@ Updates returned from this module may be piped to 'Install-AzsUpdate', if applic
 Get-AzsUpdate | ft
 ```
 
-DateAvailable        InstalledDate       Description             State     KbLink                          MinVersionRequired PackagePath
--------------        -------------       -----------             -----     ------                          ------------------ -----------
-1/1/0001 12:00:00 AM 3/3/2018 8:09:12 AM MAS Update 1.0.180302.1 Installed https://aka.ms/azurestackupdate 1.0.180103.2       \\\\SU1FileServer\SU1_Infr...
-1/1/0001 12:00:00 AM                     AzS Update 1.0.180305.1 Ready     https://aka.ms/azurestackupdate 1.0.180103.2       https://updateadminaccou...
-...
-
 Get the list of available updates.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
 Get-AzsUpdate -Name Microsoft1.0.180305.1
 ```
-
-DateAvailable      : 1/1/0001 12:00:00 AM
-InstalledDate      :
-Description        : AzS Update 1.0.180305.1
-State              : Ready
-KbLink             : https://aka.ms/azurestackupdate
-MinVersionRequired : 1.0.180103.2
-PackagePath        : https://updateadminaccount.blob.location.company.com/180305
-PackageSizeInMb    : 2954
-UpdateName         : AzS Update - 1.0.180305.1
-Version            : 1.0.180305.1
 
 Get the specific update.
 

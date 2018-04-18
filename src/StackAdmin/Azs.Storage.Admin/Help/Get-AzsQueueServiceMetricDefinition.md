@@ -24,23 +24,8 @@ Returns a list of metric definitions for queue service.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsQueueServiceMetricDefinition -ResourceGroupName "system.local" -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
+Get-AzsQueueServiceMetricDefinition -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
 ```
-
-PrimaryAggregationType                                       Unit
-----------------------                                       ----
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Total                                                        Count
-Total                                                        Count
-Total                                                        Count
-Average                                                      CountPerSecond
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
-Average                                                      Count
 
 Get the list of metric definitions for queue service.
 

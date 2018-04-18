@@ -5,22 +5,16 @@ online version:
 schema: 2.0.0
 ---
 
-# Stop-AzsContainerMigration
+# Stop-AzsStorageContainerMigration
 
 ## SYNOPSIS
 Cancel a container migration job.
 
 ## SYNTAX
 
-### CancelMigration (Default)
 ```
-Stop-AzsContainerMigration -JobId <String> [-ResourceGroupName <String>] -FarmName <String> [-Wait]
- [<CommonParameters>]
-```
-
-### ResourceId
-```
-Stop-AzsContainerMigration -ResourceId <String> [-Wait] [<CommonParameters>]
+Stop-AzsStorageContainerMigration [-JobId] <String> [[-ResourceGroupName] <String>] [-FarmName] <String>
+ [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,38 +24,68 @@ Cancel a container migration job.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Stop-AzsContainerMigration -FarmName "342fccbe-e8c0-468d-a90e-cfca5fa8877c" -JobId "ac8cde1b-804f-4ace-b39b-5322106703bf"
+Stop-AzsStorageContainerMigration -FarmName "342fccbe-e8c0-468d-a90e-cfca5fa8877c" -JobId "ac8cde1b-804f-4ace-b39b-5322106703bf"
 ```
 
 Cancel container migration.
 
 ## PARAMETERS
 
+### -AsJob
+Run asynchronous as a job and return the job object.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FarmName
 Farm Id.
 
 ```yaml
 Type: String
-Parameter Sets: CancelMigration
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Do not ask for confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JobId
-{{Fill JobId Description}}
+Operation Id.
 
 ```yaml
 Type: String
-Parameter Sets: CancelMigration
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -72,8 +96,23 @@ Resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: CancelMigration
+Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -82,32 +121,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id.
-
-```yaml
-Type: String
-Parameter Sets: ResourceId
-Aliases: id
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Wait
-{{Fill Wait Description}}
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

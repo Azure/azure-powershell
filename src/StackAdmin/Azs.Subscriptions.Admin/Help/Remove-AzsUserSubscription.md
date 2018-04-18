@@ -46,7 +46,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-{{Fill SubscriptionId Description}}
+Subscription Id parameter.
 
 ```yaml
 Type: Guid

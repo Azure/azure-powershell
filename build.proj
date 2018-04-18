@@ -102,7 +102,7 @@
 
     <StaticAnalysis   Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
-	  <LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" />
+	<LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" />
   </ItemGroup>
 
   <!-- Tasks -->
@@ -373,6 +373,7 @@
 
 
   <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
+    <Message Importance="high" Text="Building RepoTasks" />
     <MSBuild Projects="@(LocalBuildTasks)"
              Targets="Build"
              Properties="Configuration=$(Configuration);Platform=Any CPU" />
