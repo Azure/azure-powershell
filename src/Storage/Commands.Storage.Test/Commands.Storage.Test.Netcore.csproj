@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.Storage.Test</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Management.Storage.Test</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="1.0.0" />
+    <PackageReference Include="Microsoft.WindowsAzure.Configuration" Version="3.2.0" />
+    <PackageReference Include="Microsoft.WindowsAzure.Storage" Version="9.0.0" />
+    <PackageReference Include="Microsoft.WindowsAzure.Storage.DataMovement" Version="0.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\..\ServiceManagement\Common\Commands.Common.Test\Commands.Common.Test.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj" />
+    <ProjectReference Include="..\..\ServiceManagement\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.Storage\Commands.Storage.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.Common\Common.Netcore.csproj" />
+  </ItemGroup>
+
+</Project>
