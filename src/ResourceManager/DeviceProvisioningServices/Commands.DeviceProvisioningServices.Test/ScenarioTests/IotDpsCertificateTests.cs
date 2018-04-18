@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Commands.DeviceProvisioningServices.Test.ScenarioTests
+namespace Commands.DeviceProvisioningServices.Test
 {
     public class IotDpsCertificateTests : RMTestBase
     {
@@ -32,7 +32,7 @@ namespace Commands.DeviceProvisioningServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureIotDpsCertificateLifeCycle()
+        public void IotDpsCertificateLifeCycle()
         {
             var rootCertificatePath = System.AppDomain.CurrentDomain.BaseDirectory + "\\rootCertificate.cer";
             var verifyCertificatePath = System.AppDomain.CurrentDomain.BaseDirectory + "\\verifyCertificate.cer";

@@ -123,16 +123,16 @@
     <None Include="ScenarioTests\IotDpsTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.DeviceProvisioningServices.Test.ScenarioTests.IotDpsAccessPolicyTests\TestAzureIotDpsAccessPolicyLifeCycle.json">
+    <None Include="SessionRecords\Commands.DeviceProvisioningServices.Test.IotDpsAccessPolicyTests\IotDpsAccessPolicyLifeCycle.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.DeviceProvisioningServices.Test.ScenarioTests.IotDpsCertificateTests\TestAzureIotDpsCertificateLifeCycle.json">
+    <None Include="SessionRecords\Commands.DeviceProvisioningServices.Test.IotDpsCertificateTests\IotDpsCertificateLifeCycle.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.DeviceProvisioningServices.Test.ScenarioTests.IotDpsLinkedHubTests\TestAzureIotDpsLinkedHubLifeCycle.json">
+    <None Include="SessionRecords\Commands.DeviceProvisioningServices.Test.IotDpsLinkedHubTests\IotDpsLinkedHubLifeCycle.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Commands.DeviceProvisioningServices.Test.ScenarioTests.IotDpsTests\TestAzureIotDpsLifeCycle.json">
+    <None Include="SessionRecords\Commands.DeviceProvisioningServices.Test.IotDpsTests\IotDpsLifeCycle.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -237,6 +237,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.Test.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
