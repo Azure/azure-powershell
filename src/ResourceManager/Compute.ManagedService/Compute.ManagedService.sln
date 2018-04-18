@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Strategies.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "..\..\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Keyvault", "..\..\Common\Commands.Common.Keyvault\Commands.Common.Keyvault.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.ManagedService.Test", "Commands.Compute.ManagedService.Test\Commands.Compute.ManagedService.Test.csproj", "{D5952853-91FC-4CD0-9A16-F2A7129B95C8}"
 	ProjectSection(ProjectDependencies) = postProject
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E} = {142D7B0B-388A-4CEB-A228-7F6D423C5C2E}

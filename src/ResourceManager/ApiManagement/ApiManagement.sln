@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Compute", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Network", "..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj", "{1338F7AE-7111-4ED3-8916-2D0FECC876F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Keyvault", "..\..\Common\Commands.Common.Keyvault\Commands.Common.Keyvault.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

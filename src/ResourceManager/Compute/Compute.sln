@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Graph.RBAC"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Strategies.UnitTest", "..\Common\Commands.Common.Strategies.UnitTest\Commands.Common.Strategies.UnitTest.csproj", "{6756A7F2-1141-4065-BA23-0C555D2A2BC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Keyvault", "..\..\Common\Commands.Common.Keyvault\Commands.Common.Keyvault.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2C5CAF62-0533-42E6-A3AC-A31CC57E5D64}"
 	ProjectSection(SolutionItems) = preProject
 		ChangeLog.md = ChangeLog.md

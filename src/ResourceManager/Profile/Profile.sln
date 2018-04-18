@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Compute", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Compute.Tests", "..\..\Common\Commands.Common.Compute.Tests\Commands.Common.Compute.Tests.csproj", "{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Keyvault", "..\..\Common\Commands.Common.Keyvault\Commands.Common.Keyvault.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
