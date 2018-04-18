@@ -6,8 +6,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public bool CustomOnly { get; set; }
 
-        public bool ScopeAndBelow { get; set; }
-
         public string RoleDefinitionName { get; set; }
 
         // Guid Id
