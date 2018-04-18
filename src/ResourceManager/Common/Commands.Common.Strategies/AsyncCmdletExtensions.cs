@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -52,6 +53,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             var engine = new SdkEngine(subscriptionId);
             var target = config.GetTargetState(current, engine, parameters.Location);
 
+            foreach (var p in asyncCmdlet.Parameters)
+            {
+                asyncCmdlet.WriteVerbose(p.Key + " = " + ToPowerShellString(p.Value));
+            }
+
             // apply target state
             var newState = await config.UpdateStateAsync(
                 client,
@@ -61,6 +67,25 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 asyncCmdlet.ReportTaskProgress);
 
             return newState.Get(config) ?? current.Get(config);
+        }
+
+        static string ToPowerShellString(object value)
+        {
+            if (value == null)
+            {
+                return "$null";
+            }
+            var s = value as string;
+            if (s != null)
+            {
+                return "\"" + s + "\"";
+            }
+            var e = value as IEnumerable;
+            if (e != null)
+            {
+                return string.Join(",", e.Cast<object>().Select(ToPowerShellString));
+            }
+            return value.ToString();
         }
 
         sealed class ShouldProcess : IShouldProcess
@@ -82,7 +107,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// </summary>
         /// <param name="cmdlet"></param>
         /// <param name="createAndStartTask"></param>
-        public static void StartAndWait(
+        public static void CmdletStartAndWait(
             this ICmdlet cmdlet, Func<IAsyncCmdlet, Task> createAndStartTask)
         {
             var asyncCmdlet = new AsyncCmdlet(cmdlet);
@@ -137,6 +162,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 = new List<ITaskProgress>();
 
             public string VerbsNew => Cmdlet.VerbsNew;
+
+            public IEnumerable<KeyValuePair<string, object>> Parameters
+                => Cmdlet.Parameters;
 
             public AsyncCmdlet(ICmdlet cmdlet)
             {
