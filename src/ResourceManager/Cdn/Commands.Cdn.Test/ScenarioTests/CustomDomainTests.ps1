@@ -29,7 +29,7 @@ function Test-CustomDomainGetRemoveWithRunningEndpoint
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tags $tags
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tag $tags
 
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
@@ -41,12 +41,12 @@ function Test-CustomDomainGetRemoveWithRunningEndpoint
     $validateResultbyPiping = Test-AzureRmCdnCustomDomain -CdnEndpoint $endpoint -CustomDomainHostName $hostName
     Assert-True{$validateResultbyPiping.CustomDomainValidated}
 
-    $createdCustomDomain = $endpoint | New-AzureRmCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName 
+    $createdCustomDomain = $endpoint | New-AzureRmCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName
     Assert-AreEqual $customDomainName $createdCustomDomain.Name
     Assert-AreEqual $hostName $createdCustomDomain.HostName
     Assert-ThrowsContains { New-AzureRmCdnCustomDomain -HostName $hostName -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName } "existing"
 
-    $customDomain = $endpoint | Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName 
+    $customDomain = $endpoint | Get-AzureRmCdnCustomDomain -CustomDomainName $customDomainName
     Assert-AreEqual $customDomainName $customDomain.Name
     Assert-AreEqual $hostName $customDomain.HostName
 
@@ -66,8 +66,8 @@ Gets and removes custom domain with stopped endpoint
 function Test-CustomDomainGetRemoveWithStoppedEndpoint
 {
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $endpointName = "sdktest-cbc4e6fa-da15-4f37-9511-6b7df122c1de" 
-    $hostName = "sdktest-34a59412-9044-4166-b055-d777e111e810.azureedge-test.net"  
+    $endpointName = "sdktest-cbc4e6fa-da15-4f37-9511-6b7df122c1de"
+    $hostName = "sdktest-34a59412-9044-4166-b055-d777e111e810.azureedge-test.net"
 
 	$customDomainName = getAssetName
 
@@ -76,7 +76,7 @@ function Test-CustomDomainGetRemoveWithStoppedEndpoint
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tags $tags
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tag $tags
 
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
