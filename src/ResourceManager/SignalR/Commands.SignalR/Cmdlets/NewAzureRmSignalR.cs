@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.SignalR.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using System;
 using Microsoft.Azure.Commands.SignalR.Strategies.ResourceManager;
 using System.Threading;
 using Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp;
@@ -107,14 +106,16 @@ namespace Microsoft.Azure.Commands.SignalR
             public async Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
             {
                 _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
+
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
+                    _cmdlet.ResourceGroupName);
+
                 return SignalRStrategy.Strategy.CreateResourceConfig(
                     resourceGroup: resourceGroup,
                     name: _cmdlet.Name,
-                    createModel: engine =>
-                    new SignalRResource(
+                    createModel: engine => new SignalRResource(
                         tags: _cmdlet.Tag,
-                        signalrsku: new ResourceSku(_cmdlet.Sku),
+                        signalrsku: _cmdlet.Sku == null ? null : new ResourceSku(name: _cmdlet.Sku),
                         hostNamePrefix: _cmdlet.HostNamePrefix));
             }
         }
