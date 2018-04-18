@@ -10,9 +10,6 @@
 
     /t:Build
       Builds assemblies.
-`
-    /t:Generate
-      Generated help files.
 
     /t:Test
       Runs tests
@@ -65,13 +62,13 @@
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">$(LibrarySourceFolder)</NuGetPublishingSource>
     <Scope Condition="$(Scope) == ''" >All</Scope>
     <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
-    <AzurePackageFolder>$(LibrarySourceFolder)\Package</AzurePackageFolder>
+    <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
     <StackPackageFolder>$(LibrarySourceFolder)\Stack</StackPackageFolder>
     <NetCore Condition="'$(NetCore)' != 'true'">false</NetCore>
   </PropertyGroup>
 
   <PropertyGroup Condition="$(NetCore) == 'true' ">
-    <Scope>AzureRM.NetCore</Scope>
+    <Scope>NetCore</Scope>
   </PropertyGroup>
 
   <!-- Set Skips -->
@@ -212,7 +209,7 @@
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets for scope $(Scope)..." />
 
-    <MakeDir  Directories="$(AzurePackageFolder)"
+    <MakeDir  Directories="$(PackageDirectory)"
               Condition="'$(Scope)' != 'Stack'" />
     <MakeDir  Directories="$(StackPackageFolder)"
               Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'" />
@@ -231,18 +228,18 @@
           Condition="'$(CodeSign)' == 'false'"/>
 
     <Exec ContinueOnError="false"
-          Command="$(PowerShellCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(AzurePackageFolder)\index.json -BuildConfig $(Configuration) &quot;"
+          Command="$(PowerShellCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;"
           Condition=" '$(SkipHelp)' == 'false' and ('$(Scope)' == 'all' or '$(Scope)' == 'Latest')"/>
 
     <!-- Copying modules to be signed -->
 
     <!-- AzureRM -->
     <Copy SourceFiles="$(LibraryToolsFolder)\AzureRM\AzureRM.psd1"
-          DestinationFolder="$(AzurePackageFolder)\$(Configuration)"
+          DestinationFolder="$(PackageDirectory)\$(Configuration)"
           ContinueOnError="false"
           Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
     <Copy SourceFiles="$(LibraryToolsFolder)\AzureRM\AzureRM.psm1"
-          DestinationFolder="$(AzurePackageFolder)\$(Configuration)"
+          DestinationFolder="$(PackageDirectory)\$(Configuration)"
           ContinueOnError="false"
           Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
 
@@ -268,9 +265,9 @@
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
 
     <!-- AzureRM -->
-    <Copy SourceFiles="$(AzurePackageFolder)\$(Configuration)\AzureRM.psd1"
+    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psd1"
           DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
-    <Copy SourceFiles="$(AzurePackageFolder)\$(Configuration)\AzureRM.psm1"
+    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psm1"
           DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
 
     <!-- Stack -->
@@ -305,20 +302,20 @@
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
-      <RedundantDlls Include="$(AzurePackageFolder)\**\netcoreapp2.0\publish\Microsoft.Powershell.*.dll" />
-      <RedundantDlls Include="$(AzurePackageFolder)\**\netcoreapp2.0\publish\System*.dll"
-                     Exclude="$(AzurePackageFolder)\**\netcoreapp2.0\publish\System.Security.Cryptography.ProtectedData.dll" />
-      <RedundantDlls Include="$(AzurePackageFolder)\**\netcoreapp2.0\publish\Microsoft.VisualBasic.dll" />
-      <RedundantDlls Include="$(AzurePackageFolder)\**\netcoreapp2.0\publish\Microsoft.CSharp.dll" />
-      <RedundantDlls Include="$(AzurePackageFolder)\**\netcoreapp2.0\publish\Microsoft.CodeAnalysis.dll" />
-      <RedundantDlls Include="$(AzurePackageFolder)\**\netcoreapp2.0\publish\Microsoft.CodeAnalysis.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.Powershell.*.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\System*.dll"
+                     Exclude="$(PackageDirectory)\**\netcoreapp2.0\publish\System.Security.Cryptography.ProtectedData.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.VisualBasic.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CodeAnalysis.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CodeAnalysis.CSharp.dll" />
     </ItemGroup>
 
     <Delete Files="@(RedundantDlls->'%(FullPath)')"/>
 
     <!-- Copy content of the publish folder one folders up -->
     <ItemGroup>
-      <PackageContent Include="$(AzurePackageFolder)\**\netcoreapp2.0\publish\*.*" />
+      <PackageContent Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
       <SourceFile Include="@(PackageContent)">
         <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '%(FileName)%(Extension)'))</DestinationFolder>
       </SourceFile>
@@ -328,7 +325,7 @@
 
     <!-- Move PSD1 files one folders up -->
     <ItemGroup>
-      <psdFiles Include="$(AzurePackageFolder)\**\netcoreapp2.0\*.psd1" />
+      <psdFiles Include="$(PackageDirectory)\**\netcoreapp2.0\*.psd1" />
       <psdFilesTarget Include="@(psdFiles)">
         <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '%(FileName)%(Extension)'))</DestinationFolder>
       </psdFilesTarget>
@@ -338,7 +335,7 @@
 
     <!-- Delete build artifacts -->
     <ItemGroup>
-      <GetAllFiles Include="$(AzurePackageFolder)\**\netcoreapp2.0\publish\*.*" />
+      <GetAllFiles Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
       <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
     </ItemGroup>
 
@@ -346,18 +343,18 @@
                 ContinueOnError="true" />
 
     <ItemGroup>
-      <ExtraPsdFiles Include="$(AzurePackageFolder)\$(Configuration)\ResourceManager\AzureRM.Resources.Netcore\AzureRM.Tags.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(AzurePackageFolder)\$(Configuration)\ResourceManager\AzureRM.Websites.Netcore\AzureRM.Resources.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(AzurePackageFolder)\$(Configuration)\ResourceManager\AzureRM.Websites.Netcore\AzureRM.Tags.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(AzurePackageFolder)\$(Configuration)\ResourceManager\AzureRM.Network.Netcore\AzureRM.Resources.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(AzurePackageFolder)\$(Configuration)\ResourceManager\AzureRM.Network.Netcore\AzureRM.Tags.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Resources.Netcore\AzureRM.Tags.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Websites.Netcore\AzureRM.Resources.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Websites.Netcore\AzureRM.Tags.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Network.Netcore\AzureRM.Resources.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Network.Netcore\AzureRM.Tags.Netcore.psd1" />
     </ItemGroup>
 
     <Delete Files="@(ExtraPsdFiles->'%(FullPath)')"/>
 
     <!-- Update module manifests. -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope AzureRM.Netcore &quot; "
-          Condition="'$(Scope)' == 'AzureRM.Netcore'"
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope Netcore &quot; "
+          Condition="'$(Scope)' == 'Netcore'"
           ContinueOnError="false" />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
@@ -391,13 +388,13 @@
     </GetFrameworkSdkPath>
 
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM.Netcore\AzureRM.Netcore.psd1"
-          DestinationFolder="$(AzurePackageFolder)\$(Configuration)" Condition= " '$(Scope)' == 'AzureRM.Netcore' "/>
+          DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition= " '$(Scope)' == 'Netcore' "/>
 
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
-      <DelaySignedAssembliesToSign Include="$(AzurePackageFolder)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
-      <DelaySignedAssembliesToSign Include="$(AzurePackageFolder)\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
-      <DelaySignedAssembliesToSign Include="$(AzurePackageFolder)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
+      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
+      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
+      <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
     </ItemGroup>
 
     <!-- Stack -->
@@ -407,7 +404,7 @@
       <DelaySignedAssembliesToSign Include="$(StackPackageFolder)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
    </ItemGroup>
 
-    <Message Importance="high" Text="$(AzurePackageFolder)\$(Configuration) does not contains any files to sign. Code sign will skip."
+    <Message Importance="high" Text="$(PackageDirectory)\$(Configuration) does not contains any files to sign. Code sign will skip."
              Condition="'@(DelaySignedAssembliesToSign)' == ''" />
 
     <ValidateStrongNameSignatureTask
@@ -438,11 +435,11 @@
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
-          Condition="'$(Scope)' != 'AzureRM.Netcore'"/>
+          Condition="'$(Scope)' != 'Netcore'"/>
 
     <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1"
-          DestinationFolder="$(AzurePackageFolder)\$(Configuration)" Condition= "'$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
+          DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition= "'$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureRM\AzureRM.psm1"
           DestinationFolder="$(StackPackageFolder)\$(Configuration)" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"/>
     <Copy SourceFiles="$(LibrarySourceFolder)\StackAdmin\AzureStack\AzureStack.psm1"
@@ -451,10 +448,10 @@
 
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
-      <ScriptsToSign Include="$(AzurePackageFolder)\$(Configuration)\**\*.ps1"/>
-      <ScriptsToSign Include="$(AzurePackageFolder)\$(Configuration)\**\*.psm1"/>
-      <ScriptsToSign Include="$(AzurePackageFolder)\$(Configuration)\**\*.ps1xml"/>
-      <ScriptsToSign Include="$(AzurePackageFolder)\$(Configuration)\**\*.js"/>
+      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1"/>
+      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.psm1"/>
+      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1xml"/>
+      <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.js"/>
     </ItemGroup>
 
     <!-- Stack -->
@@ -476,7 +473,7 @@
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/>
 
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(AzurePackageFolder)\$(Configuration) &quot;"
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(PackageDirectory)\$(Configuration) &quot;"
           Condition="'$(Scope)' != 'Stack'"
           ContinueOnError="ErrorAndContinue" />
 
@@ -485,14 +482,14 @@
           ContinueOnError="ErrorAndContinue" />
 
     <!-- Copying signed shortcut back -->
-    <Copy SourceFiles="$(AzurePackageFolder)\$(Configuration)\AzureRM.Netcore.psd1"
-          DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(Scope)' == 'AzureRM.Netcore' "/>
+    <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.Netcore.psd1"
+          DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(Scope)' == 'Netcore' "/>
   </Target>
 
 
 
   <Target Name="BuildInstaller" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(AzurePackageFolder) -InstallationPolicy Trusted &quot; "/>
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; "/>
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; "/>
     <Exec Command="$(PowerShellCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; "/>
     <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true'" />
@@ -544,11 +541,11 @@
 
     <Message Importance="high" Text="Running dependency analysis..." />
 
-    <Exec Command="$(AzurePackageFolder)\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(AzurePackageFolder) true $(SkipHelp)"
+    <Exec Command="$(PackageDirectory)\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(PackageDirectory) true $(SkipHelp)"
           Condition="'$(Scope)' != 'Stack'"
           ContinueOnError="True"/>
 
-    <Exec Command="$(AzurePackageFolder)\StaticAnalysis.exe $(StackPackageFolder)\$(Configuration) $(StackPackageFolder)"
+    <Exec Command="$(PackageDirectory)\StaticAnalysis.exe $(StackPackageFolder)\$(Configuration) $(StackPackageFolder)"
           Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Stack'"
           ContinueOnError="True"/>
 

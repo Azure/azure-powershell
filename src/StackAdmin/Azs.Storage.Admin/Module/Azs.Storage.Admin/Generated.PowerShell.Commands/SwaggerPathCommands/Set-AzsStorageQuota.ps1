@@ -141,9 +141,7 @@ function Set-AzsStorageQuota {
                         $Key = $_
                         if ($PSBoundParameters.ContainsKey($Key)) {
                             $Value = $PSBoundParameters[$Key]
-                            "Setting $Key with value $Value" | Out-File -FilePath "Output.txt" -Append
                             $Quota.$($Key) = $Value
-                            "Updated value $($Quota.$Key)" | Out-File -FilePath "Output.txt" -Append
                         }
                     }
 

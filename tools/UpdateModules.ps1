@@ -20,7 +20,7 @@
     The build configuration, either Debug or Release
 
 .PARAMETER Scope
-    Either All, Latest, Stack, AzureRM.NetCore, ServiceManagement, AzureStorage
+    Either All, Latest, Stack, NetCore, ServiceManagement, AzureStorage
 
 #>
 param(
@@ -29,7 +29,7 @@ param(
     [string] $BuildConfig,
 
     [Parameter(Mandatory = $false, Position = 1)]
-    [ValidateSet("All", "Latest", "Stack", "AzureRM.NetCore","ServiceManagement","AzureStorage")]
+    [ValidateSet("All", "Latest", "Stack", "NetCore","ServiceManagement","AzureStorage")]
     [string] $Scope
 )
 
@@ -97,7 +97,7 @@ function New-ModulePsm1 {
         # Add deprecation messages
         if ($ModulePath -like "*Profile*") {
             $WarningMessage = "`"PowerShell version 3 and 4 will no longer be supported starting in May 2018. Please update to the latest version of PowerShell 5.1`""
-            $template = $template -replace "%PSVersionDeprecationMessage%", 
+            $template = $template -replace "%PSVersionDeprecationMessage%",
             "`$SpecialFolderPath = Join-Path -Path ([Environment]::GetFolderPath('ApplicationData')) -ChildPath 'Windows Azure Powershell' `
             `$DeprecationFile = Join-Path -Path `$SpecialFolderPath -ChildPath 'PSDeprecationWarning.txt' `
             if (!(Test-Path `$DeprecationFile)) { `
@@ -117,7 +117,7 @@ function New-ModulePsm1 {
         Write-Host "Writing psm1 manifest to $templateOutputPath"
         $template | Out-File -FilePath $templateOutputPath -Force
         $file = Get-Item -Path $templateOutputPath
-        
+
     }
 }
 
@@ -349,7 +349,7 @@ function Update-Stack {
     New-ModulePsm1 -ModulePath "$script:StackRMRoot\AzureRM.Profile" -TemplatePath $script:TemplateLocation -IsRMModule
     Write-Host "Updated profile module"
     Write-Host " "
-    
+
     $modulePath = "$script:StackPackages\$buildConfig\Storage\Azure.Storage"
     Write-Host "Updating AzureStorage module from $modulePath"
     New-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule:$false
@@ -378,7 +378,7 @@ function Update-Netcore {
     Write-Host "Updating profile module"
     New-ModulePsm1 -ModulePath "$script:AzureRMRoot\AzureRM.Profile.Netcore" -TemplatePath $script:TemplateLocation -IsRMModule
     Write-Host "Updated profile module"
-    
+
     $storageModulePath = "$script:AzurePackages\$buildConfig\Storage\Azure.Storage.Netcore"
     Write-Host "Updating AzureStorage module from $modulePath"
     New-ModulePsm1 -ModulePath $storageModulePath -TemplatePath $script:TemplateLocation
@@ -395,9 +395,9 @@ function Update-Netcore {
     }
 
     $modulePath = "$PSScriptRoot\AzureRM.Netcore"
-    Write-Host "Updating AzureRM.Netcore module from $modulePath"
+    Write-Host "Updating Netcore module from $modulePath"
     New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
-    Write-Host "Updated AzureRM.Netcore module"
+    Write-Host "Updated Netcore module"
 }
 
 <################################################
@@ -410,7 +410,7 @@ function Update-Netcore {
 $script:TemplateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
 
 # Scopes
-$script:NetCoreScopes = @('AzureRM.NetCore')
+$script:NetCoreScopes = @('NetCore')
 $script:AzureScopes = @('All', 'Latest', 'ServiceManagement', 'AzureStorage')
 $script:StackScopes = @('All', 'Stack')
 
