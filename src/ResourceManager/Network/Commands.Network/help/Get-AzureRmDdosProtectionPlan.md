@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azuredosprotectionplan
 schema: 2.0.0
 ---
 
@@ -24,21 +24,57 @@ The Get-AzureRmDdosProtectionPlan cmdlet gets a DDoS protection plan.
 
 ### Example 1: Get a specific DDoS protection plan
 ```
-Get-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName
+D:\> Get-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProtectionPlanName
+
+
+Name              : DdosProtectionPlanName
+Id                : /subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/ddosProtectionPlans/DdosProtectionPlanName
+Etag              : W/"a20e5592-9b51-423b-9758-b00cd322f744"
+ProvisioningState : Succeeded
+VirtualNetworks   : [
+                      {
+                        "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/virtualNetworks/VnetName"
+                      }
+                    ]
+
 ```
 
 In this case, we need to specify both **ResourceGroupName** and **Name** attributes, which correspond to the resource group and the name of the DDoS protection plan, respectively.
 
 ### Example 2: Get all DDoS protection plans in a resource group
 ```
-Get-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName
+D:\> Get-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName
+
+
+Name              : DdosProtectionPlanName
+Id                : /subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/ddosProtectionPlans/DdosProtectionPlanName
+Etag              : W/"a20e5592-9b51-423b-9758-b00cd322f744"
+ProvisioningState : Succeeded
+VirtualNetworks   : [
+                      {
+                        "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/virtualNetworks/VnetName"
+                      }
+                    ]
+
 ```
 
 In this scenario, we only specify the parameter **ResourceGroupName** to get a list of DDoS protection plans.
 
 ### Example 2: Get all DDoS protection plans in a subscription
 ```
-Get-AzureRmDdosProtectionPlan
+D:\> Get-AzureRmDdosProtectionPlan
+
+
+Name              : DdosProtectionPlanName
+Id                : /subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/ddosProtectionPlans/DdosProtectionPlanName
+Etag              : W/"a20e5592-9b51-423b-9758-b00cd322f744"
+ProvisioningState : Succeeded
+VirtualNetworks   : [
+                      {
+                        "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/virtualNetworks/VnetName"
+                      }
+                    ]
+
 ```
 
 Here, we do not specify any parameters to get a list of all DDoS protection plans in a subscription.
