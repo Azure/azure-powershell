@@ -146,11 +146,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
 
                 // generate a domain name label if it's not specified.
-                _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                _cmdlet.DomainNameLabel = PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
                     domainNameLabel: _cmdlet.DomainNameLabel,
-                    name: _cmdlet.VMScaleSetName,
-                    location: Location,
-                    client: _client);
+                    subscriptionId: _client.SubscriptionId,
+                    resourceGroupName: _cmdlet.ResourceGroupName,
+                    publicIpAddressName: _cmdlet.PublicIpAddressName);
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
 
