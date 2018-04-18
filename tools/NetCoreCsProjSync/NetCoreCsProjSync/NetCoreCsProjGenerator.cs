@@ -186,7 +186,8 @@ namespace NetCoreCsProjSync
             {"Commands.Common.Strategies.csproj",                   "Common.Strategies.Netcore.csproj"},
             {"Commands.ResourceManager.Common.csproj",              "Common.ResourceManager.Netcore.csproj"},
 
-            {"Commands.Resources.Rest.csproj",                      "Commands.Resources.Rest.Netcore.csproj"}
+            {"Commands.Resources.Rest.csproj",                      "Commands.Resources.Rest.Netcore.csproj"},
+            {"Commands.ScenarioTests.ResourceManager.Common.csproj","Common.ResourceManager.ScenarioTests.Netcore.csproj"}
         };
 
         private static string ModifyProjectReferencePath(string includePath)
@@ -370,17 +371,21 @@ namespace NetCoreCsProjSync
             {
                 PackageReferences = newPackageReferences
             };
+
+            var newAssemblyName = oldDefinition.PropertyGroups.First(pg => pg.AssemblyName != null).AssemblyName;
+            var testDenoter = TestFolderDenoters.First(tfd => oldDefinition.FilePath.Contains(tfd));
+            var newDllReferenceInclude = newAssemblyName.Replace(testDenoter, String.Empty);
+            var projectName = newDllReferenceInclude.Split('.').Last();
+            var isRmModule = oldDefinition.FilePath.Contains("ResourceManager");
+
             var newProjectReferences = oldDefinition.ItemGroups.Where(ig => ig.ProjectReferences?.Any() ?? false).SelectMany(ig => ig.ProjectReferences)
+                .Where(pr => !(isRmModule && pr.Include.Contains(projectName)))
                 .Select(pr => new NewProjectReference { Include = ModifyProjectReferencePath(pr.Include) }).ToList();
             var projectReferencesItemGroup = !newProjectReferences.Any() ? null : new NewItemGroup
             {
                 ProjectReferences = newProjectReferences
             };
-
-            var isRmModule = oldDefinition.FilePath.Contains("ResourceManager");
-            var newAssemblyName = oldDefinition.PropertyGroups.First(pg => pg.AssemblyName != null).AssemblyName;
-            var testDenoter = TestFolderDenoters.First(tfd => oldDefinition.FilePath.Contains(tfd));
-            var newDllReferenceInclude = newAssemblyName.Replace(testDenoter, String.Empty);
+            
             var dllReferenceItemGroup = !isRmModule ? null : new NewItemGroup
             {
                 References = new List<NewReference>
@@ -388,7 +393,7 @@ namespace NetCoreCsProjSync
                     new NewReference
                     {
                         Include = newDllReferenceInclude,
-                        HintPath = $"..\\..\\..\\Package\\$(Configuration)\\ResourceManager\\AzureResourceManager\\AzureRM.{newDllReferenceInclude.Split('.').Last()}.Netcore\\{newDllReferenceInclude}.dll"
+                        HintPath = $"..\\..\\..\\Package\\$(Configuration)\\ResourceManager\\AzureResourceManager\\AzureRM.{projectName}.Netcore\\{newDllReferenceInclude}.dll"
                     }
                 }
             };
