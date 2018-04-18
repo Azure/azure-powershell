@@ -12,11 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
+using Microsoft.Azure.Commands.SignalR.Strategies;
+using Microsoft.Azure.Management.SignalR.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading.Tasks;
+using System;
+using Microsoft.Azure.Commands.SignalR.Strategies.ResourceManager;
+using System.Threading;
+using Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp;
 
 namespace Microsoft.Azure.Commands.SignalR
 {
@@ -72,8 +80,59 @@ namespace Microsoft.Azure.Commands.SignalR
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
+            => this.StartAndWait(SimpleExecuteCmdlet);
+
+        sealed class Parameters : IParameters<SignalRResource>
         {
-            base.ExecuteCmdlet();
+            public string Location
+            {
+                get
+                {
+                    return _cmdlet.Location;
+                }
+
+                set
+                {
+                    _cmdlet.Location = value;
+                }
+            }
+
+            readonly NewAzureRmSignalR _cmdlet;
+
+            public Parameters(NewAzureRmSignalR cmdlet)
+            {
+                _cmdlet = cmdlet;
+            }
+
+            public async Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
+            {
+                _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
+                return SignalRStrategy.Strategy.CreateResourceConfig(
+                    resourceGroup: resourceGroup,
+                    name: _cmdlet.Name,
+                    createModel: engine =>
+                    new SignalRResource(
+                        tags: _cmdlet.Tag,
+                        signalrsku: new ResourceSku(_cmdlet.Sku),
+                        hostNamePrefix: _cmdlet.HostNamePrefix));
+            }
+        }
+
+        async Task SimpleExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
+        {
+            var client = new Client(DefaultProfile.DefaultContext);
+
+            var parameters = new Parameters(this);
+
+            var result = await client.RunAsync(
+                client.SubscriptionId, parameters, asyncCmdlet, new CancellationToken());
+
+            if (result != null)
+            {
+                var psResult = new PSSignalRResource(result);
+                asyncCmdlet.WriteObject(psResult);
+            }
         }
     }
 }
