@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Strategies", "..\Common\Commands.Common.Strategies\Commands.Common.Strategies.csproj", "{EEA69772-D41B-482A-9252-2B4595C59E53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA69772-D41B-482A-9252-2B4595C59E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA69772-D41B-482A-9252-2B4595C59E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA69772-D41B-482A-9252-2B4595C59E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA69772-D41B-482A-9252-2B4595C59E53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,7 +15,6 @@
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 
