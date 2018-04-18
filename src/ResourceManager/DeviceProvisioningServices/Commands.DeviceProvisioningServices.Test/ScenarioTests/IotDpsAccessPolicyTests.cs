@@ -18,7 +18,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace Commands.DeviceProvisioningServices.Test.ScenarioTests
+namespace Commands.DeviceProvisioningServices.Test
 {
     public class IotDpsAccessPolicyTests : RMTestBase
     {
@@ -29,7 +29,7 @@ namespace Commands.DeviceProvisioningServices.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureIotDpsAccessPolicyLifeCycle()
+        public void IotDpsAccessPolicyLifeCycle()
         {
             IotDpsController.NewInstance.RunPsTest("Test-AzureIotDpsAccessPolicyLifeCycle");
         }
