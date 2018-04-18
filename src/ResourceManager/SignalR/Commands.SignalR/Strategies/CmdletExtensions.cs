@@ -40,9 +40,10 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies
                     return typeof(T)
                         .GetProperties()
                         .Where(p => p
-                            .GetCustomAttributes(false)
-                            .OfType<ParameterAttribute>()
-                            .Any(a => a.ParameterSetName == psName))
+                                .GetCustomAttributes(false)
+                                .OfType<ParameterAttribute>()
+                                .Any(a => a.ParameterSetName == psName)
+                            && p.Name != "DefaultProfile")
                         .Select(p => new KeyValuePair<string, object>(p.Name, p.GetValue(_Cmdlet)));
                 }
             }
