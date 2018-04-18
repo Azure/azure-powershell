@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The location.",
+            HelpMessage = "Specifies the location of the DDoS protection plan to be created.",
             ValueFromPipelineByPropertyName = true)]
         [LocationCompleter("Microsoft.Network/DdosProtectionPlans")]
         [ValidateNotNullOrEmpty]
@@ -60,11 +60,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A hashtable which represents resource tags.",
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -100,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             ConfirmAction(
-                Force.IsPresent,
+                true,
                 string.Format(Properties.Resources.OverwritingResource, Name),
                 Properties.Resources.CreatingResourceMessage,
                 Name,
