@@ -79,7 +79,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A switch parameter which represents whether DDoS protection is enabled or not. It can only be turned on if a DDoS Protection Plan is associated with the virtual network.")]
         public SwitchParameter EnableDdosProtection { get; set; }
 
