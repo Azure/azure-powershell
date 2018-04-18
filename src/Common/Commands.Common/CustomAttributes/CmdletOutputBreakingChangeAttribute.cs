@@ -56,43 +56,43 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 
         protected override string GetAttributeSpecificMessage()
         {
-            string message = null;
+            StringBuilder message = new StringBuilder();
 
             //check for the deprecation scenario
             if (string.IsNullOrWhiteSpace(ReplacementCmdletOutputTypeName) && NewOutputProperties == null && DeprecatedOutputProperties == null && string.IsNullOrWhiteSpace(ChangeDescription))
             {
-                message = string.Format(Resources.BreakingChangesAttributesCmdLetOutputTypeDeprecated, DeprecatedCmdLetOutputType.FullName);
+                message.Append(string.Format(Resources.BreakingChangesAttributesCmdLetOutputTypeDeprecated, DeprecatedCmdLetOutputType.FullName));
             }
             else
             {
                 if (!string.IsNullOrWhiteSpace(ReplacementCmdletOutputTypeName))
                 {
-                    message = string.Format(Resources.BreakingChangesAttributesCmdLetOutputChange1, DeprecatedCmdLetOutputType.FullName, ReplacementCmdletOutputTypeName);
+                    message.Append(string.Format(Resources.BreakingChangesAttributesCmdLetOutputChange1, DeprecatedCmdLetOutputType.FullName, ReplacementCmdletOutputTypeName));
                 }
                 else
                 {
-                    message = string.Format(Resources.BreakingChangesAttributesCmdLetOutputChange2, DeprecatedCmdLetOutputType.FullName);
+                    message.Append(string.Format(Resources.BreakingChangesAttributesCmdLetOutputChange2, DeprecatedCmdLetOutputType.FullName));
                 }
 
                 if (DeprecatedOutputProperties != null && DeprecatedOutputProperties.Length > 0)
                 {
-                    message += Resources.BreakingChangesAttributesCmdLetOutputPropertiesRemoved + "\t";
-                    foreach (string propety in DeprecatedOutputProperties)
+                    message.Append(Resources.BreakingChangesAttributesCmdLetOutputPropertiesRemoved);
+                    foreach (string property in DeprecatedOutputProperties)
                     {
-                        message += "'" + propety + "' ";
+                        message.Append(" '{property}'");
                     }
                 }
 
                 if (NewOutputProperties != null && NewOutputProperties.Length > 0)
                 {
-                    message += Resources.BreakingChangesAttributesCmdLetOutputPropertiesAdded + "\t";
-                    foreach (string propety in NewOutputProperties)
+                    message.Append(Resources.BreakingChangesAttributesCmdLetOutputPropertiesAdded);
+                    foreach (string property in NewOutputProperties)
                     {
-                        message += "'" + propety + "' ";
+                        message.Append(" '{property}'");
                     }
                 }
             }
-            return message;
+            return message.ToString();
         }
     }
 }

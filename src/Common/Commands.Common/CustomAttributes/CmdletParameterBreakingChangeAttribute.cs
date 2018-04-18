@@ -58,34 +58,34 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
 
         protected override string GetAttributeSpecificMessage()
         {
-            string message = null;
+            StringBuilder message = new StringBuilder();
            if (!string.IsNullOrWhiteSpace(ReplaceMentCmdletParameterName))
             {
                 if (IsBecomingMandatory)
                 {
-                    message = string.Format(Resources.BreakingChangeAttributeParameterReplacedMandatory, NameOfParameterChanging, ReplaceMentCmdletParameterName);
+                    message.Append(string.Format(Resources.BreakingChangeAttributeParameterReplacedMandatory, NameOfParameterChanging, ReplaceMentCmdletParameterName));
                 }
                 else
                 {
-                    message = string.Format(Resources.BreakingChangeAttributeParameterReplaced, NameOfParameterChanging, ReplaceMentCmdletParameterName);
+                    message.Append(string.Format(Resources.BreakingChangeAttributeParameterReplaced, NameOfParameterChanging, ReplaceMentCmdletParameterName));
                 }
             } else
             {
                 if (IsBecomingMandatory)
                 {
-                    message = string.Format(Resources.BreakingChangeAttributeParameterMandatoryNow, NameOfParameterChanging);
+                    message.Append(string.Format(Resources.BreakingChangeAttributeParameterMandatoryNow, NameOfParameterChanging));
                 } else
                 {
-                    message = string.Format(Resources.BreakingChangeAttributeParameterChanging, NameOfParameterChanging); ;
+                    message.Append(string.Format(Resources.BreakingChangeAttributeParameterChanging, NameOfParameterChanging));
                 }
             }
 
            //See if the type of the param is changing
             if (OldParamaterType != null && !string.IsNullOrWhiteSpace(NewParameterTypeName))
             {
-                message +=  "\n" + string.Format(Resources.BreakingChangeAttributeParameterTypeChange, OldParamaterType.FullName, NewParameterTypeName);
+                message.Append("\n" + string.Format(Resources.BreakingChangeAttributeParameterTypeChange, OldParamaterType.FullName, NewParameterTypeName));
             }
-            return message;
+            return message.ToString();
         }
 
         /// <summary>
