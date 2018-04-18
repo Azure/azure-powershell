@@ -129,14 +129,6 @@ function Start-AzsScaleUnitNode {
                     throw 'Module failed to find operation to execute.'
                 }
 
-                "Testing" | Out-File "output.txt" -Force
-                if($TaskResult -eq $null) {
-                    "Task result is null" | Out-File "output.txt" -Append -Force
-                } else {
-                    $TaskResult | Out-File "output.txt" -Append -Force
-                }
-                "Done" | Out-File "output.txt" -Append -Force
-                
 
                 Write-Verbose -Message "Waiting for the operation to complete."
 

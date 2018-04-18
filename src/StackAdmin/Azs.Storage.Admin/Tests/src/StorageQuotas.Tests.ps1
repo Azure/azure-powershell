@@ -151,7 +151,6 @@ InModuleScope Azs.Storage.Admin {
             $CapInGB = $quota.CapacityInGb + 1
             $NumStorageAccounts = $quota.NumberOfStorageAccounts + 1
 
-            "Begin" | Out-File "Output.txt"
             $updated = Set-AzsStorageQuota `
                 -CapacityInGb $CapInGB `
                 -NumberOfStorageAccounts $NumStorageAccounts `
@@ -159,7 +158,6 @@ InModuleScope Azs.Storage.Admin {
                 -Name $name `
                 -Force
 
-            $Updated | Format-List * | Out-File "Output.txt" -Append
             ValidateStorageQuota -storageQuota $updated
             $updated.CapacityInGb               | Should Be $CapInGB
             $updated.NumberOfStorageAccounts    | Should Be $NumStorageAccounts

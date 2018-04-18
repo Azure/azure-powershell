@@ -17,11 +17,9 @@ if (-not (Get-Command Get-OperatingSystemInfo -Module PSSwaggerUtility -ErrorAct
 }
 
 if ((Get-OperatingSystemInfo).IsCore) {
-    . (Join-Path -Path $PSScriptRoot "Test-CoreRequirements.ps1")
     $clr = 'coreclr'
 }
 else {
-    . (Join-Path -Path $PSScriptRoot "Test-FullRequirements.ps1")
     $clr = 'fullclr'
 }
 
