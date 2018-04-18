@@ -93,10 +93,6 @@
 
     { "regex": "Scheduler", "alias": "Scheduler" }, 
 
-    { "regex": "SiteRecovery", "alias": "Site Recovery" }, 
-
-    { "regex": "ServerManagement", "alias": "Server Management" }, 
-
     { "regex": "StreamAnalytics", "alias": "Stream Analytics" }, 
 
     { "regex": "TrafficManager", "alias": "Traffic Manager" }, 
