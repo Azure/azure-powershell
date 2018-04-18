@@ -85,38 +85,38 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
          */
         public string GetBreakingChangeTextFromAttribute(Type type, bool withCmdletName)
         {
-            string breakingChangeMessage = null;
+            StringBuilder breakingChangeMessage = new StringBuilder();
 
             if (!withCmdletName)
             {
-                breakingChangeMessage = string.Format(Resources.BreakingChangesAttributesDeclarationMessage, GetAttributeSpecificMessage());
+                breakingChangeMessage.Append(string.Format(Resources.BreakingChangesAttributesDeclarationMessage, GetAttributeSpecificMessage()));
             } else
             {
-                
-                breakingChangeMessage = string.Format(Resources.BreakingChangesAttributesDeclarationMessageWithCmdletName, Utilities.GetNameFromCmdletType(type), GetAttributeSpecificMessage());
+
+                breakingChangeMessage.Append(string.Format(Resources.BreakingChangesAttributesDeclarationMessageWithCmdletName, Utilities.GetNameFromCmdletType(type), GetAttributeSpecificMessage()));
             }
 
             if (!string.IsNullOrWhiteSpace(ChangeDescription))
             {
-                breakingChangeMessage += string.Format(Resources.BreakingChangesAttributesChangeDescriptionMessage, this.ChangeDescription);
+                breakingChangeMessage.Append(string.Format(Resources.BreakingChangesAttributesChangeDescriptionMessage, this.ChangeDescription));
             }
 
             if (ChangeInEfectByDateSet)
             {
-                breakingChangeMessage += string.Format(Resources.BreakingChangesAttributesInEffectByDateMessage, this.ChangeInEfectByDate);
+                breakingChangeMessage.Append(string.Format(Resources.BreakingChangesAttributesInEffectByDateMessage, this.ChangeInEfectByDate));
             }
 
             if (DeprecateByVersionSet)
             {
-                breakingChangeMessage += string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion);
+                breakingChangeMessage.Append(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
             }
 
             if (!string.IsNullOrWhiteSpace(OldWay) && !string.IsNullOrWhiteSpace(NewWay))
             {
-                breakingChangeMessage += string.Format(Resources.BreakingChangesAttributesUsageChangeMessage, OldWay, NewWay);
+                breakingChangeMessage.Append(string.Format(Resources.BreakingChangesAttributesUsageChangeMessage, OldWay, NewWay));
             }
 
-            return breakingChangeMessage;
+            return breakingChangeMessage.ToString();
         }
 
          /**
@@ -126,34 +126,33 @@ namespace Microsoft.WindowsAzure.Commands.Common.CustomAttributes
          * 
          * We get the cmdlet name from the passed in Type (it is expected to have the CMdlet attribute decorated on the class)
          * */
-        public void PrintCustomAttributeInfo(Type type, bool withCmdletName)
+        public void PrintCustomAttributeInfo(Type type, bool withCmdletName, Action<string> writeOutput)
         {
             if (!withCmdletName) {
-                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesDeclarationMessage, GetAttributeSpecificMessage()));
+                writeOutput(string.Format(Resources.BreakingChangesAttributesDeclarationMessage, GetAttributeSpecificMessage()));
             } else
             {
-                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesDeclarationMessageWithCmdletName, Utilities.GetNameFromCmdletType(type), GetAttributeSpecificMessage()));
+                writeOutput(string.Format(Resources.BreakingChangesAttributesDeclarationMessageWithCmdletName, Utilities.GetNameFromCmdletType(type), GetAttributeSpecificMessage()));
             }
-
 
             if (!string.IsNullOrWhiteSpace(ChangeDescription))
             {
-                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesChangeDescriptionMessage, this.ChangeDescription));
+                writeOutput(string.Format(Resources.BreakingChangesAttributesChangeDescriptionMessage, this.ChangeDescription));
             }
 
             if (ChangeInEfectByDateSet)
             {
-                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesInEffectByDateMessage, this.ChangeInEfectByDate));
+                writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByDateMessage, this.ChangeInEfectByDate));
             }
 
             if (DeprecateByVersionSet)
             {
-                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
+                writeOutput(string.Format(Resources.BreakingChangesAttributesInEffectByVersion, this.DeprecateByVersion));
             }
 
             if (OldWay != null && NewWay != null)
             {
-                Console.WriteLine(string.Format(Resources.BreakingChangesAttributesUsageChangeMessageConsole, OldWay, NewWay));
+                writeOutput(string.Format(Resources.BreakingChangesAttributesUsageChangeMessageConsole, OldWay, NewWay));
             }
         }
 
