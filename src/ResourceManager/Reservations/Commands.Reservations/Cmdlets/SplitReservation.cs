@@ -17,12 +17,12 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = true)]
         [ValidateNotNull]
-        public string ReservationOrderId { get; set; }
+        public Guid ReservationOrderId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = true)]
         [ValidateNotNull]
-        public string ReservationId { get; set; }
+        public Guid ReservationId { get; set; }
 
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
             {
                 string[] name = Reservation.Name.Split('/');
-                ReservationOrderId = name[0];
-                ReservationId = name[1];
+                ReservationOrderId = new Guid(name[0]);
+                ReservationId = new Guid(name[1]);
             }
 
             var resourceInfo = $"Reservation {ReservationId} in order {ReservationOrderId}";
@@ -52,15 +52,15 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                     quantityParameter,
                     CreateResourceId(ReservationOrderId, ReservationId)
                 );
-                var response = AzureReservationAPIClient.Reservation.Split(ReservationOrderId, Split).Select(x => new PSReservation(x)).ToList();
+                var response = AzureReservationAPIClient.Reservation.Split(ReservationOrderId.ToString(), Split).Select(x => new PSReservation(x)).ToList();
                 WriteObject(response, true);
             }
 
         }
 
-        private string CreateResourceId(string ReservationOrderId, string ReservationId)
+        private string CreateResourceId(Guid reservationOrderId, Guid reservationId)
         {
-            return string.Format("/providers/Microsoft.Capacity/reservationOrders/{0}/reservations/{1}", ReservationOrderId, ReservationId);
+            return string.Format("/providers/Microsoft.Capacity/reservationOrders/{0}/reservations/{1}", reservationOrderId, reservationId);
         }
     }
 }
