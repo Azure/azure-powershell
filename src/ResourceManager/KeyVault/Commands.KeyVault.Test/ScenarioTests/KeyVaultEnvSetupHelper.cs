@@ -21,6 +21,9 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+#if NETSTANDARD
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+#endif
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
