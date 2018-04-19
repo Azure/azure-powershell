@@ -45,21 +45,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 _Cmdlet = cmdlet;
             }
 
-            public IEnumerable<KeyValuePair<string, object>> Parameters
-            {
-                get
-                {
-                    var psName = _Cmdlet.ParameterSetName;
-                    return typeof(T)
-                        .GetProperties()
-                        .Where(p => p
-                            .GetCustomAttributes(false)
-                            .OfType<ParameterAttribute>()
-                            .Any(a => a.ParameterSetName == psName))
-                        .Select(p => new KeyValuePair<string, object>(p.Name, p.GetValue(_Cmdlet)));
-                }
-            }
-
             public bool WhatIf
                 => _Cmdlet.MyInvocation.BoundParameters.ContainsKey("WhatIf");
 
