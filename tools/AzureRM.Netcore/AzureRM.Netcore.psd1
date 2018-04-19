@@ -59,7 +59,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
                @{ModuleName = 'AzureRM.ApiManagement.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.ApplicationInsights.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Automation.Netcore'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'AzureRM.Backup.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Batch.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Billing.Netcore'; RequiredVersion = '0.11.0'; }, 
                @{ModuleName = 'AzureRM.Cdn.Netcore'; RequiredVersion = '0.11.0'; }, 

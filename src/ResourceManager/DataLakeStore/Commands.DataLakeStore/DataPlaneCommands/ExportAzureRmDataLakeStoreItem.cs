@@ -76,26 +76,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             ParameterSetName = DiagnosticParameterSetName)]
         public SwitchParameter Resume { get; set; }
 
-        [Obsolete("Parameter PerFileThreadCount of ExportAzureRmDataLakeStoreItem is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
-            ParameterSetName = BaseParameterSetName)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
-            HelpMessage = "Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size",
-            ParameterSetName = DiagnosticParameterSetName)]
-        public int PerFileThreadCount { get; set; } = -1;
-
-        [Obsolete("Parameter ConcurrentFileCount of ExportAzureRmDataLakeStoreItem is deprecated. This parameter will be removed in future releases. Please use Concurrency parameter instead.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage =
-                "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
-            ParameterSetName = BaseParameterSetName)]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
-            HelpMessage =
-                "Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size",
-            ParameterSetName = DiagnosticParameterSetName)]
-        public int ConcurrentFileCount { get; set; } = -1;
-
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
             HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten",
             ParameterSetName = BaseParameterSetName)]
@@ -128,14 +108,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            if (ConcurrentFileCount != -1)
-            {
-                WriteWarning(Resources.IncorrectConcurrentFileCountWarning);
-            }
-            if (PerFileThreadCount != -1)
-            {
-                WriteWarning(Resources.IncorrectPerFileThreadCountWarning);
-            }
             // We will let this throw itself if the path they give us is invalid
             var powerShellReadyPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Destination);
             ConfirmAction(
@@ -152,23 +124,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 
-                        int threadCount;
-                        if (Concurrency > 0)
-                        {
-                            threadCount = Concurrency;
-                        }
-                        else if (ConcurrentFileCount > 0 && PerFileThreadCount <= 0)
-                        {
-                            threadCount = ConcurrentFileCount;
-                        }
-                        else if (ConcurrentFileCount <= 0 && PerFileThreadCount > 0)
-                        {
-                            threadCount = PerFileThreadCount;
-                        }
-                        else
-                        {
-                            threadCount = Math.Min(PerFileThreadCount * ConcurrentFileCount, DataLakeStoreFileSystemClient.ImportExportMaxThreads);
-                        }
+                        int threadCount = Concurrency;
                         DataLakeStoreFileSystemClient.BulkCopy(powerShellReadyPath, Account,
                             Path.TransformedPath, CmdletCancellationToken, threadCount, Recurse, Force, Resume, true, this);
                         WriteObject(powerShellReadyPath);
