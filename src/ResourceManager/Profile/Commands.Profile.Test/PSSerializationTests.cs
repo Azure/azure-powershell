@@ -231,7 +231,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             var cache = new AzureTokenCache
             {
+#if !NETSTANDARD
                 CacheData = new byte[] { 2, 0, 0, 0, 0, 0, 0, 0 }
+#else
+                CacheData = new byte[] { 3, 0, 0, 0, 0, 0, 0, 0 }
+#endif
             };
 
             return cache;

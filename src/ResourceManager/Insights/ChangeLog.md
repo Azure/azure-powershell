@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
 
 ## Version 4.0.4
 * Updated to the latest version of the Azure ClientRuntime
