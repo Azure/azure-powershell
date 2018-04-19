@@ -22,6 +22,8 @@
 * Add new cmdlet for retrieving the content summary under a directory
 * Add new cmdlet for retrieving the disk usage and Acl dump
 * Set minimum dependency of module to PowerShell 5.0
+* Correct return type of Set-AzureRmDataLakeStoreItemAcl bool to IEnumerable<DataLakeStoreItemAce>
+* Correct return type of Set-AzureRmDataLakeStoreItemAclEntry bool to IEnumerable<DataLakeStoreItemAce>
 
 ## Version 5.2.0
 * Updated to the latest version of the Azure ClientRuntime

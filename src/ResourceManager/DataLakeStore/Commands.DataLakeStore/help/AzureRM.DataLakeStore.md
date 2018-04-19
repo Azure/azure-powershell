@@ -23,6 +23,9 @@ Adds a trusted identity provider to the specified Data Lake Store account.
 ### [Enable-AzureRmDataLakeStoreKeyVault](Enable-AzureRmDataLakeStoreKeyVault.md)
 Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
+### [Export-AzureRmDataLakeStoreChildItemProperties](Export-AzureRmDataLakeStoreChildItemProperties.md)
+Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
+
 ### [Export-AzureRmDataLakeStoreItem](Export-AzureRmDataLakeStoreItem.md)
 Downloads a file from Data Lake Store.
 
@@ -31,9 +34,6 @@ Gets details of a Data Lake Store account.
 
 ### [Get-AzureRmDataLakeStoreChildItem](Get-AzureRmDataLakeStoreChildItem.md)
 Gets the list of items in a folder in Data Lake Store.
-
-### [Get-AzureRmDataLakeStoreChildItemProperties](Get-AzureRmDataLakeStoreChildItemProperties.md)
-Gets the properties (Disk usage and Acl) for the entire tree from the specified path
 
 ### [Get-AzureRmDataLakeStoreChildItemSummary](Get-AzureRmDataLakeStoreChildItemSummary.md)
 Gets the summary of total size, files and directories contained in the path specified

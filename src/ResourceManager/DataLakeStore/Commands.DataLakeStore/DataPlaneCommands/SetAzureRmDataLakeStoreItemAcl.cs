@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
@@ -21,7 +22,7 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), 
-        OutputType(typeof(object))]
+        OutputType(typeof(IEnumerable<DataLakeStoreItemAce>))]
     [Alias("Set-AdlStoreItemAcl")]
     public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage =
                 "Indicates the ACL to be set recursively to the child subdirectories and files"
         )]
-        public SwitchParameter Recursive { get; set; }
+        public SwitchParameter Recurse { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
@@ -73,10 +74,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Path.OriginalPath,
                 () =>
                 {
-                        AclProcessorStats stats = null; 
-                        if (Recursive)
+                        if (Recurse)
                         {
-                            stats = DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
+                            DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                                 Account,
                                 Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, Concurrency);
                         }
@@ -90,15 +90,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
                         if (PassThru)
                         {
-                            if (Recursive)
-                            {
-                                WriteObject(new DataLakeStoreAclProcessorSummary(stats));
-                            }
-                            else
-                            {
-                                WriteObject(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath,
+                            WriteObject(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath,
                                     Account).Entries.Select(entry => new DataLakeStoreItemAce(entry)));
-                            }
                         }
                     });
         }

@@ -56,7 +56,7 @@
     <Compile Include="Commands\GetAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreFirewallRule.cs" />
-    <Compile Include="DataPlaneCommands\GetAzureRmDataLakeStoreChildItemProperties.cs" />
+    <Compile Include="DataPlaneCommands\ExportAzureRmDataLakeStoreChildItemProperties.cs" />
     <Compile Include="DataPlaneCommands\GetAzureRmDataLakeStoreChildItemSummary.cs" />
     <Compile Include="DataPlaneCommands\SetAzureRmDataLakeStoreItemExpiry.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreTrustedIdProvider.cs" />
@@ -91,7 +91,6 @@
     <Compile Include="DataPlaneCommands\TestAzureRmDataLakeStoreItem.cs" />
     <Compile Include="DataPlaneModels\AdlsClientFactory.cs" />
     <Compile Include="DataPlaneModels\AdlsLoggerTarget.cs" />
-    <Compile Include="DataPlaneModels\DataLakeStoreAclProcessorSummary.cs" />
     <Compile Include="DataPlaneModels\DataLakeStoreChildItemSummary.cs" />
     <Compile Include="Models\DataLakeStoreClient.cs" />
     <Compile Include="Models\DataLakeStoreCmdletBase.cs" />

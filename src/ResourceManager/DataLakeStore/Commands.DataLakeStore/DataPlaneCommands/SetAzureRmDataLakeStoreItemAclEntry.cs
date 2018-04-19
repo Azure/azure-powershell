@@ -24,7 +24,7 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(object))]
+     OutputType(typeof(IEnumerable<DataLakeStoreItemAce>))]
     [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Indicates the ACL to be modified recursively to the child subdirectories and files")]
-        public SwitchParameter Recursive { get; set; }
+        public SwitchParameter Recurse { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
@@ -107,10 +107,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Path.OriginalPath,
                 () =>
                 {
-                    AclProcessorStats stats = null;
-                    if (Recursive)
+                    if (Recurse)
                     {
-                        stats = DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
+                        DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                             Account,
                             Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.ModifyAcl, Concurrency);
                     }
@@ -122,16 +121,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
                     if (PassThru)
                     {
-                        if (Recursive)
-                        {
-                            WriteObject(new DataLakeStoreAclProcessorSummary(stats));
-                        }
-                        else
-                        {
-                            var toReturn = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath,
-                                Account).Entries.Select(entry => new DataLakeStoreItemAce(entry));
-                            WriteObject(toReturn);
-                        }
+                        WriteObject(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath,
+                                Account).Entries.Select(entry => new DataLakeStoreItemAce(entry)));
                     }
                 });
         }
