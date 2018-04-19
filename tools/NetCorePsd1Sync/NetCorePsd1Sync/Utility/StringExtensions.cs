@@ -32,9 +32,9 @@ namespace NetCorePsd1Sync.Utility
             return hasDescription;
         }
 
-        private static (TProp value, string firstLeader) GetValue<TClass, TProp>(TClass @class, Expression<Func<TClass, TProp>> propertySelector)
+        private static (TProp value, string firstLeader) GetValue<TClass, TProp>(TClass targetClass, Expression<Func<TClass, TProp>> propertySelector)
         {
-            var value = propertySelector.Compile()(@class);
+            var value = propertySelector.Compile()(targetClass);
             // https://stackoverflow.com/a/7580347/294804
             var firstLeader = value != null ? String.Empty : CommentPrefix;
             var hasDisplayName = TryGetPropertyAttributeValue<TClass, TProp, DisplayNameAttribute, string>(propertySelector, attr => attr.DisplayName, out var displayName);
@@ -42,10 +42,10 @@ namespace NetCorePsd1Sync.Utility
         }
 
         // https://blogs.msdn.microsoft.com/csharpfaq/2010/03/11/how-can-i-get-objects-and-property-values-from-expression-trees/
-        public static IEnumerable<string> ToDefinitionEntry<TClass, TProp>(this TClass @class, Expression<Func<TClass, TProp>> propertySelector)
+        public static IEnumerable<string> ToDefinitionEntry<TClass, TProp>(this TClass targetClass, Expression<Func<TClass, TProp>> propertySelector)
         {
             if (GetDescription(propertySelector, out var description)) yield return description;
-            (var value, var firstLeader) = GetValue(@class, propertySelector);
+            (var value, var firstLeader) = GetValue(targetClass, propertySelector);
             yield return $"{firstLeader}{CreateValue(value, ElementPrefix, ElementPostfix)}";
             yield return String.Empty;
         }
@@ -53,18 +53,18 @@ namespace NetCorePsd1Sync.Utility
         private static string CreateValue<TProp>(TProp value, string valuePrefix, string valuePostfix) =>
             $"{valuePrefix}{(value == null ? String.Empty : value.ToString())}{valuePostfix}";
 
-        public static IEnumerable<string> ToDefinitionEntry<TClass>(this TClass @class, Expression<Func<TClass, bool?>> propertySelector)
+        public static IEnumerable<string> ToDefinitionEntry<TClass>(this TClass targetClass, Expression<Func<TClass, bool?>> propertySelector)
         {
             if (GetDescription(propertySelector, out var description)) yield return description;
-            (var value, var firstLeader) = GetValue(@class, propertySelector);
+            (var value, var firstLeader) = GetValue(targetClass, propertySelector);
             var boolValue = value != null && value.Value;
             yield return $"{firstLeader}{(boolValue ? "$true" : "$false")}";
             yield return String.Empty;
         }
 
-        public static IEnumerable<string> ToDefinitionEntry<TClass>(this TClass @class, Expression<Func<TClass, PsDefinitionHeader>> propertySelector)
+        public static IEnumerable<string> ToDefinitionEntry<TClass>(this TClass targetClass, Expression<Func<TClass, PsDefinitionHeader>> propertySelector)
         {
-            (var header, var _) = GetValue(@class, propertySelector);
+            (var header, var _) = GetValue(targetClass, propertySelector);
             if (header == null) yield break;
 
             foreach (var headerLine in header.ToDefinitionEntry())
@@ -88,10 +88,10 @@ namespace NetCorePsd1Sync.Utility
             yield return String.Empty;
         }
 
-        public static IEnumerable<string> ToDefinitionEntry<TClass, TList>(this TClass @class, Expression<Func<TClass, List<TList>>> propertySelector)
+        public static IEnumerable<string> ToDefinitionEntry<TClass, TList>(this TClass targetClass, Expression<Func<TClass, List<TList>>> propertySelector)
         {
             if (GetDescription(propertySelector, out var description)) yield return description;
-            (var values, var firstLeader) = GetValue(@class, propertySelector);
+            (var values, var firstLeader) = GetValue(targetClass, propertySelector);
 
             var isStringList = typeof(TList) == typeof(string);
             var listPrefix = isStringList ? String.Empty : ObjectListPrefix;

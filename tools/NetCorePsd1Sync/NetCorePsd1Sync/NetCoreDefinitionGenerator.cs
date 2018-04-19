@@ -109,7 +109,8 @@ namespace NetCorePsd1Sync
                     Tags = desktopPsData.GetValueAsStringList("Tags"),
                     LicenseUri = new Uri(desktopPsData.GetValueAsString("LicenseUri")),
                     ProjectUri = new Uri(desktopPsData.GetValueAsString("ProjectUri")),
-                    ReleaseNotes = String.Empty
+                    ReleaseNotes = String.Empty,
+                    Prerelease = desktopPsData.ContainsKey("Prerelease") ? desktopPsData.GetValueAsString("Prerelease") : null
                 };
             }
 
