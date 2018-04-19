@@ -57,7 +57,8 @@ namespace NetCorePsd1Sync
 
                 var oldCmdletList = desktopHashtable.GetValueAsStringList("CmdletsToExport");
                 var oldAliasesList = desktopHashtable.GetValueAsStringList("AliasesToExport");
-                if (!File.Exists(netCorePath) || !(oldCmdletList.Any() || oldAliasesList.Any()))
+                var oldFunctionsList = desktopHashtable.GetValueAsStringList("FunctionsToExport");
+                if (!File.Exists(netCorePath) || !(oldCmdletList.Any() || oldAliasesList.Any() || oldFunctionsList.Any()))
                 {
                     var priorColor = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -75,12 +76,14 @@ namespace NetCorePsd1Sync
 
                 var newCmdletList = netCoreHashtable.GetValueAsStringList("CmdletsToExport");
                 var newAliasesList = netCoreHashtable.GetValueAsStringList("AliasesToExport");
+                var newFunctionsList = netCoreHashtable.GetValueAsStringList("FunctionsToExport");
 
                 var missingCmdlets = oldCmdletList.Where(oc => !newCmdletList.Contains(oc)).ToList();
                 var missingAliases = oldAliasesList.Where(oa => !newAliasesList.Contains(oa)).ToList();
+                var missingFunctions = oldFunctionsList.Where(of => !newFunctionsList.Contains(of)).ToList();
 
                 // ReSharper disable once InvertIf
-                if (missingCmdlets.Any() || missingAliases.Any())
+                if (missingCmdlets.Any() || missingAliases.Any() || missingFunctions.Any())
                 {
                     var priorColor = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -91,6 +94,10 @@ namespace NetCorePsd1Sync
                     if (missingAliases.Any())
                     {
                         Console.WriteLine($"Missing aliases: {String.Join(", ", missingAliases)} : {netCoreFileName}");
+                    }
+                    if (missingFunctions.Any())
+                    {
+                        Console.WriteLine($"Missing functions: {String.Join(", ", missingFunctions)} : {netCoreFileName}");
                     }
                     Console.ForegroundColor = priorColor;
                     Environment.ExitCode = 1;
