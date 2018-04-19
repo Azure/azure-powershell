@@ -44,14 +44,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
         }
 
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void RaDeletedPrincipals()
-		{
-			ResourcesController.NewInstance.RunPsTest("Test-RaDeletedPrincipals");
-		}
+	[Fact]
+	[Trait(Category.AcceptanceType, Category.CheckIn)]
+	public void RaDeletedPrincipals()
+	{
+		ResourcesController.NewInstance.RunPsTest("Test-RaDeletedPrincipals");
+	}
 
-		[Fact]
+	[Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void RaPropertiesValidation() {
             ResourcesController.NewInstance.RunPsTest("Test-RaPropertiesValidation");
