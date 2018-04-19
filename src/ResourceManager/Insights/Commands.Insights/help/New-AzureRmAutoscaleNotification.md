@@ -46,7 +46,7 @@ Specifies a comma-separated list of email addresses.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: CustomEmails
+Aliases:
 
 Required: False
 Position: 1
@@ -91,7 +91,7 @@ Indicates that this operation sends an email notification to the subscription co
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: SendEmailToSubscriptionCoAdministrators
+Aliases:
 
 Required: False
 Position: Named
@@ -106,7 +106,7 @@ Specifies a comma-separated list of Autoscale webhooks.
 ```yaml
 Type: WebhookNotification[]
 Parameter Sets: (All)
-Aliases: Webhooks
+Aliases:
 
 Required: False
 Position: 0

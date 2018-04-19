@@ -39,3 +39,19 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 5.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**New-AzureRmOperationalInsightsSavedSearch**
+- The parameter alias `Tags` is being removed
+
+**New-AzureRmOperationalInsightsWorkspace**
+- The parameter alias `Tags` is being removed
+
+**Set-AzureRmOperationalInsightsSavedSearch**
+- The parameter alias `Tags` is being removed
+
+**Set-AzureRmOperationalInsightsWorkspace**
+- The parameter alias `Tags` is being removed
