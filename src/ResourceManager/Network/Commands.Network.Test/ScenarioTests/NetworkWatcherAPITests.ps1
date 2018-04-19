@@ -94,7 +94,7 @@ function Get-TestResourcesDeployment([string]$rgn)
 "@;
 
         $st = Set-Content -Path $paramFile -Value $paramContent -Force;
-        AzureRm.Resources\New-AzureRmResourceGroupDeployment -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
+        New-AzureRmResourceGroupDeployment -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
 }
 
 <#

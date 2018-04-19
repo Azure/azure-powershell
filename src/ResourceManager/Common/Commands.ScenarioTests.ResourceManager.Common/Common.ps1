@@ -308,7 +308,7 @@ function Wait-Seconds {
     param([int] $timeout)
 
     try {
-        [Microsoft.Azure.Test.TestUtilities]::Wait($timeout * 1000);
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($timeout * 1000);
     } catch {
         if ($PSItem.Exception.Message -like '*Unable to find type*') {
             Start-Sleep -Seconds $timeout;

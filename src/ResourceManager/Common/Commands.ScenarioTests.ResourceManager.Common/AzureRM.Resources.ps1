@@ -12,12 +12,12 @@
   }
   PROCESS {
     if($Name -eq $null) {
-      $getTask = $client.ResourceGroups.ListWithHttpMessagesAsync($null, [System.Threading.CancellationToken]::None)
+      $getTask = $client.ResourceGroups.ListWithHttpMessagesAsync($null, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
       $resourceGroup = List-ResourceGroup
       Write-Output $resourceGroup
     } else {
-      $getTask = $client.ResourceGroups.GetWithHttpMessagesAsync($Name, [System.Threading.CancellationToken]::None)
+      $getTask = $client.ResourceGroups.GetWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
       if($rg -eq $null) {
         $resourceGroup = $null
@@ -40,7 +40,7 @@ function Get-AzureRmResourceProvider
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $getTask = $client.Providers.GetWithHttpMessagesAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
+    $getTask = $client.Providers.GetWithHttpMessagesAsync($ProviderNamespace, $null, $null, [System.Threading.CancellationToken]::None)
     Write-Output $getTask.Result.Provider
   }
   END {}
@@ -90,7 +90,7 @@ function New-AzureRmResourceGroupDeployment
   }
   PROCESS {
     $createParams = New-Object -Type Microsoft.Azure.Management.ResourceManager.Models.Deployment
-    $createTask = $client.Deployments.CreateOrUpdateWithHttpMessagesAsync($Name, $Name, $createParams, [System.Threading.CancellationToken]::None)
+    $createTask = $client.Deployments.CreateOrUpdateWithHttpMessagesAsync($Name, $Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
   }
   END {}
@@ -107,7 +107,7 @@ function Remove-AzureRmResourceGroup
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $deleteTask = $client.ResourceGroups.DeleteWithHttpMessagesAsync($Name, [System.Threading.CancellationToken]::None)
+    $deleteTask = $client.ResourceGroups.DeleteWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
     $rg = $deleteTask.Result
   }
   END {}
