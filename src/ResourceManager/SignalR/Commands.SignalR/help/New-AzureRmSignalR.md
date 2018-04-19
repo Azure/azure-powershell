@@ -21,14 +21,22 @@ New-AzureRmSignalR [[-ResourceGroupName] <String>] [-Name] <String> [[-Location]
 ## DESCRIPTION
 Create a SignalR service.
 
+The following values will be used for the parameters if not specified:
+
+* `ResourceGroupName`: the default resource group set by `Set-AzureRmDefault -ResourceGroupName`.
+* `Location`: the location of the resource group
+* `Sku`: Basic_DS2
+
 ## EXAMPLES
 
-### Example 1
+### Create a SignalR serivce
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzureRmSignalR -ResourceGroupName myResourceGroup1 -Name mysignalr1 -Location eastus -Sku Basic_DS2
 
-{{ Add example description here }}
+HostName                                           Location       ServerPort PublicPort ProvisioningState
+--------                                           --------       ---------- ---------- -----------------
+mysignalr1.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+```
 
 ## PARAMETERS
 
@@ -63,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The SignalR service location.
+The SignalR service location. The resource group location will be used if not specified.
 
 ```yaml
 Type: String

@@ -14,19 +14,19 @@ Regenerate an access key for a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-New-AzureRmSignalRKey [[-ResourceGroupName] <String>] [-Name] <String> -KeyType <String>
+New-AzureRmSignalRKey [[-ResourceGroupName] <String>] [-Name] <String> -KeyType <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmSignalRKey -ResourceId <String> -KeyType <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmSignalRKey -ResourceId <String> -KeyType <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-New-AzureRmSignalRKey -InputObject <PSSignalRResource> -KeyType <String>
+New-AzureRmSignalRKey -InputObject <PSSignalRResource> -KeyType <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,12 +35,12 @@ Regenerate an access key for a SignalR service.
 
 ## EXAMPLES
 
-### Example 1
+### Regenerate the primary key
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzureRmSignalRKey -ResourceGroupName myResourceGroup -Name mysignalr1 -KeyType Primary -PassThru
 
-{{ Add example description here }}
+True
+```
 
 ## PARAMETERS
 
@@ -100,6 +100,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true if the regeneration was completed successfully.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

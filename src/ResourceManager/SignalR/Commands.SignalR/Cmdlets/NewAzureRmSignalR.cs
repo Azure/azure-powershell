@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.SignalR
         [Parameter(
             Mandatory = false,
             Position = 2,
-            HelpMessage = "The SignalR service location.")]
+            HelpMessage = "The SignalR service location. The resource group location will be used if not specified.")]
         [LocationCompleter("Microsoft.SignalR/SignalR")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }

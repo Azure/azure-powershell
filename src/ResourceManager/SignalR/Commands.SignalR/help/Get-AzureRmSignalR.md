@@ -34,12 +34,49 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 
 ## EXAMPLES
 
-### Example 1
+### Get all SignalR services in the subscription
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmSignalR
+
+HostName                                           Location       ServerPort PublicPort ProvisioningState
+--------                                           --------       ---------- ---------- -----------------
+mysignalr1.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+mysignalr2.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+mysignalr3.servicedev.signalr.net                  eastus         5002       5001       Creating
 ```
 
-{{ Add example description here }}
+### Get all SignalR services in a resource group
+
+```powershell
+PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup
+
+HostName                                           Location       ServerPort PublicPort ProvisioningState
+--------                                           --------       ---------- ---------- -----------------
+mysignalr1.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+mysignalr2.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+```
+
+### Get a specific SignalR service
+
+```powershell
+PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1
+
+HostName                                           Location       ServerPort PublicPort ProvisioningState
+--------                                           --------       ---------- ---------- -----------------
+mysignalr1.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+```
+
+### Get a specific SignalR service from the default resource group
+
+```powershell
+PS C:\> Get-AzureRmSignalR -Name mysignalr2
+
+HostName                                           Location       ServerPort PublicPort ProvisioningState
+--------                                           --------       ---------- ---------- -----------------
+mysignalr2.servicedev.signalr.net                  eastus         5002       5001       Succeeded
+```
+
+The default resource group can be set by `Set-AzureRmDefault -ResourceGroupName myResourceGroup`.
 
 ## PARAMETERS
 
