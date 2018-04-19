@@ -32,6 +32,8 @@ The **Get-AzureRmCdnProfileSupportedOptimizationType** cmdlet gets the supported
 ### Example 1
 ```powershell
 PS C:\> Get-AzureRmCdnProfileSupportedOptimizationType -ProfileName $profileName -ResourceGroupName $resourceGroupName
+OptimizationType: GeneralWebDelivery
+OptimizationType: DynamicSiteAcceleration
 ```
 
 Get the supported optimization types for a CDN profile.

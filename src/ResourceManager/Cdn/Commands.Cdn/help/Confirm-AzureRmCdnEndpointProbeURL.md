@@ -25,6 +25,9 @@ The **Confirm-AzureRmCdnEndpointProbeURL** cmdlet confirms if the probe URL prov
 ### Example 1
 ```powershell
 PS C:\> Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl "http://www.bing.com/images"
+IsValid: true
+ErrorCode: None
+Message: 
 ```
 
 Validates the probe url "http://www.bing.com/images"
