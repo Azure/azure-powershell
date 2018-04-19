@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add DisableVMAgent switch parameter to `Set-AzureRmVMOperatingSystem` cmdlet
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support a `Win10` image.
 * `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
 * Set minimum dependency of module to PowerShell 5.0
