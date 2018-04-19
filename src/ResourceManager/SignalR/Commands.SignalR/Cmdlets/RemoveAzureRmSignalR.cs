@@ -9,20 +9,21 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.SignalR
 {
     [Cmdlet(VerbsCommon.Remove, SignalRNoun, SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
-    public class RemoveAzureRmSignalR : SignalRCmdletBase
+    [OutputType(typeof(bool))]
+    public class RemoveAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
-            HelpMessage = "Resource group name.")]
+            HelpMessage = "The resource group name. The default one will be used if not specified.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public override string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
-            HelpMessage = "SignalR service name.")]
+            HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.SignalR
         [ValidateNotNull]
         public PSSignalRResource InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in background.")]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -52,34 +53,29 @@ namespace Microsoft.Azure.Commands.SignalR
 
             RunCmdlet(() =>
             {
-                ResourceIdentifier resourceId = null;
                 switch (ParameterSetName)
                 {
                     case ResourceGroupParameterSet:
+                        ResolveResourceGroupName();
                         break;
                     case ResourceIdParameterSet:
-                        resourceId = new ResourceIdentifier(ResourceId);
+                        this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        resourceId = new ResourceIdentifier(InputObject.Id);
+                        this.LoadFromInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
-                }
-                if (resourceId != null)
-                {
-                    ResourceGroupName = resourceId.ResourceGroupName;
-                    Name = resourceId.ResourceName;
                 }
 
                 if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "remove"))
                 {
                     Client.Signalr.Delete(ResourceGroupName, Name);
-                }
 
-                if (PassThru)
-                {
-                    WriteObject(true);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
             });
         }
