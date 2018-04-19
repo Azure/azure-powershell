@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DefaultResourceGroupKey" xml:space="preserve">
+    <value>Default Resource Group</value>
+  </data>
   <data name="ParameterSetError" xml:space="preserve">
     <value>The parameter set could not be determined from the provided parameters. Please check the documentation for appropriate parameters, and report this issue at https://github.com/azure/azure-powershell/issues</value>
   </data>

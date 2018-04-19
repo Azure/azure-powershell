@@ -27,50 +27,39 @@ using Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp;
 
 namespace Microsoft.Azure.Commands.SignalR
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmSignalR", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, SignalRNoun, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSignalRResource))]
-    public sealed class NewAzureRmSignalR : AzureRMCmdlet
+    public sealed class NewAzureRmSignalR : SignalRCmdletBase
     {
-        /// <summary>
-        /// TODO: smart command with default resource group name
-        /// </summary>
+        private const string DefaultSku = "Basic_DS2";
+
         [Parameter(
             Mandatory = false,
-            Position = 0)]
+            Position = 0,
+            HelpMessage = "The resource group name.  The default one will be used if not specified.")]
         [ValidateNotNullOrEmpty()]
-        public string ResourceGroupName { get; set; }
+        public override string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            Position = 1)]
+            Position = 1,
+            HelpMessage = "SignalR service name.")]
         [ValidateNotNullOrEmpty()]
         public string Name { get; set; }
 
-        /// <summary>
-        /// TODO: smart command with default location based on ResourceGroupName
-        /// </summary>
         [Parameter(
             Mandatory = false,
-            Position = 2)]
-        [LocationCompleter("Microsoft.SignalR/signalRs")]
+            Position = 2,
+            HelpMessage = "The SignalR service location.")]
+        [LocationCompleter("Microsoft.SignalR/SignalR")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
-        /// <summary>
-        /// TODO:
-        /// - Assign default value.
-        /// - validation set or tab completion
-        /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The SignalR service SKU. The default is " + DefaultSku)]
+        [PSArgumentCompleter("Basic_DS2")]
         public string Sku { get; set; }
-
-        /// <summary>
-        /// TODO:
-        /// - Default host name prefix. 
-        /// - alias `DomainNameLabel`
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public string HostNamePrefix { get; set; }
 
         [Parameter(Mandatory = false)]
         public IDictionary<string, string> Tag { get; set; }
@@ -106,8 +95,10 @@ namespace Microsoft.Azure.Commands.SignalR
             public async Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
             {
                 _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
-
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
+                _cmdlet.ResolveResourceGroupName();
+                _cmdlet.Sku = _cmdlet.Sku ?? DefaultSku;
+				
+				var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
                     _cmdlet.ResourceGroupName);
 
                 return SignalRStrategy.Strategy.CreateResourceConfig(
@@ -115,8 +106,8 @@ namespace Microsoft.Azure.Commands.SignalR
                     name: _cmdlet.Name,
                     createModel: engine => new SignalRResource(
                         tags: _cmdlet.Tag,
-                        signalrsku: _cmdlet.Sku == null ? null : new ResourceSku(name: _cmdlet.Sku),
-                        hostNamePrefix: _cmdlet.HostNamePrefix));
+                        signalrsku: new ResourceSku(_cmdlet.Sku, capacity: 1), // we only allow capacity 1 in public preview, this may be a parameter in future.
+                        hostNamePrefix: _cmdlet.Name)); // hostNamePrefix is just a placeholder and ignored in the resource provider.
             }
         }
 
