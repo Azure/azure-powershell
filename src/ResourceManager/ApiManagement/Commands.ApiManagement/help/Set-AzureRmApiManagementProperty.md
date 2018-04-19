@@ -144,7 +144,7 @@ Tags associated with a property. This parameter is optional.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named
