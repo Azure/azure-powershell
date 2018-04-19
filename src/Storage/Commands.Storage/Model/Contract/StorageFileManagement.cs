@@ -66,12 +66,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 
         public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
         {
-            Task.Run(() => share.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
+            try
+            {
+                Task.Run(() => share.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         public void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
         {
-            Task.Run(() => share.SetPropertiesAsync(accessCondition, options, operationContext)).Wait();
+            try
+            {
+                Task.Run(() => share.SetPropertiesAsync(accessCondition, options, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         public async Task EnumerateFilesAndDirectoriesAsync(CloudFileDirectory directory, Action<IListFileItem> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
@@ -155,14 +169,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null,
             FileRequestOptions options = null, OperationContext operationContext = null)
         {
-            return share.GetPermissionsAsync(accessCondition, options, operationContext).Result;
+            try
+            {
+                return share.GetPermissionsAsync(accessCondition, options, operationContext).Result;
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions,
             AccessCondition accessCondition = null,
             FileRequestOptions options = null, OperationContext operationContext = null)
         {
-            Task.Run(() => share.SetPermissionsAsync(permissions, accessCondition, options, operationContext)).Wait();
+            try
+            {
+                Task.Run(() => share.SetPermissionsAsync(permissions, accessCondition, options, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         public Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
