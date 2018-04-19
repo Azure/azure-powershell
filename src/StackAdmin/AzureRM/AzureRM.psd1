@@ -51,7 +51,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.3.0'; },
+    RequiredModules        = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; },
         @{ModuleName = 'Azure.Storage'; RequiredVersion = '1.0.5.4'; },
         @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '1.2.3.4'; },
         @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '4.1.1'; },
