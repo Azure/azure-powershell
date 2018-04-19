@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public interface IAsyncCmdlet
-    {        
+    {
+        IEnumerable<KeyValuePair<string, object>> Parameters { get; }
+
         void WriteVerbose(string message);
 
         Task<bool> ShouldProcessAsync(string target, string action);
@@ -25,5 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         void WriteObject(object value);
 
         void ReportTaskProgress(ITaskProgress taskProgress);
+
+        string VerbsNew { get; }
     }
 }
