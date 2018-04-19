@@ -24,11 +24,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="17.0.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Insights" Version="0.13.1-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="6.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" />
+    <!-- <PackageReference Include="Microsoft.Azure.Management.Storage" Version="6.1.0-preview" /> -->
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="18.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +37,7 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj" />
+    <!-- <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj" /> -->
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +51,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="ScenarioTests\*.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ScenarioTests\Data\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
