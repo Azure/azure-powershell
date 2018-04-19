@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.SignalR.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default Resource Group.
+        /// </summary>
+        internal static string DefaultResourceGroupKey {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parameter set could not be determined from the provided parameters. Please check the documentation for appropriate parameters, and report this issue at https://github.com/azure/azure-powershell/issues.
         /// </summary>
         internal static string ParameterSetError {
