@@ -428,6 +428,10 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.WebSites\Commands.Common.WebSites.csproj">
+      <Project>{592b3e1b-49e3-4f3c-bf6b-e5d4133b1443}</Project>
+      <Name>Commands.Common.WebSites</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.LogicApp\Commands.LogicApp.csproj">
       <Project>{ffe4e475-b32c-4f89-9d52-f7cebf709c74}</Project>
       <Name>Commands.LogicApp</Name>
