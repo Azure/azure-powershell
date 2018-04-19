@@ -2,7 +2,7 @@
 Module Name: AzureRM.SignalR
 Module Guid: 7aa1b2c0-72cb-448a-9c12-c45bdf3e088d
 Download Help Link: {{Please enter FwLink manually}}
-Help Version: 0.0.1
+Help Version: 0.1.0
 Locale: en-US
 ---
 
