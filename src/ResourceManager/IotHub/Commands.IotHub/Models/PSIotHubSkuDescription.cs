@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public string ResourceType { get; private set; }
 
         /// <summary>
+        /// Gets or sets the type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "sku")]
         public PSIotHubSkuInfo Sku { get; set; }
