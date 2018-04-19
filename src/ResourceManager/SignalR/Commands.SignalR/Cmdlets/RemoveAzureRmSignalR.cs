@@ -9,12 +9,13 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.SignalR
 {
     [Cmdlet(VerbsCommon.Remove, SignalRNoun, SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(Position = 0,
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
-            HelpMessage = "Resource group name. Default one will be used if not specified.")]
+            HelpMessage = "The resource group name. The default one will be used if not specified.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.SignalR
         [Parameter(Position = 1,
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
-            HelpMessage = "SignalR service name.")]
+            HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.SignalR
         [ValidateNotNull]
         public PSSignalRResource InputObject { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in background.")]
         public SwitchParameter AsJob { get; set; }
 
         [Parameter(Mandatory = false)]

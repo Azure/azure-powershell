@@ -83,6 +83,12 @@
     <None Include="AzureRM.SignalR.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="help\AzureRM.SignalR.md" />
+    <None Include="help\Get-AzureRmSignalR.md" />
+    <None Include="help\Get-AzureRmSignalRKey.md" />
+    <None Include="help\New-AzureRmSignalR.md" />
+    <None Include="help\New-AzureRmSignalRKey.md" />
+    <None Include="help\Remove-AzureRmSignalR.md" />
     <None Include="Microsoft.Azure.Commands.SignalR.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

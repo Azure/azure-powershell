@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.SignalR
         [Parameter(
             Mandatory = false,
             Position = 0,
-            HelpMessage = "The resource group name.  The default one will be used if not specified.")]
+            HelpMessage = "The resource group name. The default one will be used if not specified.")]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
             Position = 1,
-            HelpMessage = "SignalR service name.")]
+            HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty()]
         public string Name { get; set; }
 
@@ -57,14 +57,18 @@ namespace Microsoft.Azure.Commands.SignalR
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The SignalR service SKU. The default is " + DefaultSku)]
+            HelpMessage = "The SignalR service SKU.")]
         [PSArgumentCompleter("Basic_DS2")]
-        public string Sku { get; set; }
+        public string Sku { get; set; } = DefaultSku;
 
-        [Parameter(Mandatory = false)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The tags for the SignalR service.")]
         public IDictionary<string, string> Tag { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Run the cmdlet in background job.")]
         public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
@@ -96,9 +100,8 @@ namespace Microsoft.Azure.Commands.SignalR
             {
                 _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
                 _cmdlet.ResolveResourceGroupName();
-                _cmdlet.Sku = _cmdlet.Sku ?? DefaultSku;
-				
-				var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
+
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
                     _cmdlet.ResourceGroupName);
 
                 return SignalRStrategy.Strategy.CreateResourceConfig(
