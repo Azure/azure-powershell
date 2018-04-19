@@ -39,3 +39,32 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 5.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**New-AzureRmRedisCache**
+- The parameter `MaxMemoryPolicy` is being removed in favor of `RedisConfiguration`
+
+```powershell
+# Old
+New-AzureRmRedisCache -ResourceGroupName "MyRG" -Name "MyRedisCache" -Location "North Central US" -MaxMemoryPolicy "allkeys-lru"
+
+# New
+New-AzureRmRedisCache -ResourceGroupName "MyRG" -Name "MyRedisCache" -Location "North Central US" -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}
+```
+
+- The parameters `Subnet` and `VirtualNetwork` are being removed in favor of `SubnetId`
+- The parameter `RedisVersion` is being removed
+
+**Set-AzureRmRedisCache**
+- The parameter `MaxMemoryPolicy` is being removed in favor of `RedisConfiguration`
+
+```powershell
+# Old
+Set-AzureRmRedisCache -ResourceGroupName "MyRG" -Name "MyRedisCache" -MaxMemoryPolicy "allkeys-lru"
+
+# New
+Set-AzureRmRedisCache -ResourceGroupName "MyRG" -Name "MyRedisCache" -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}
+```

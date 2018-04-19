@@ -118,8 +118,6 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [Obsolete("New-AzureRmVm: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -190,9 +188,10 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win2008R2SP1")]
+            "Win2008R2SP1",
+            "Win10")]
         public string ImageName { get; set; } = "Win2016Datacenter";
-        
+
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string DiskFile { get; set; }

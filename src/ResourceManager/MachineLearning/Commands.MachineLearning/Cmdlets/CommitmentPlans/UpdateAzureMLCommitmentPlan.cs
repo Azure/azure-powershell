@@ -52,8 +52,6 @@ namespace Microsoft.Azure.Commands.MachineLearning
         public int SkuCapacity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Tags for the commitment plan resource.")]
-        [Obsolete("Update-AzureRmMlCommitmentPlan: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
@@ -62,7 +60,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         protected override void RunCmdlet()
         {
             if (!ShouldProcess(this.Name, @"Updating Azure ML commitment plan."))
@@ -77,11 +75,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
             int skuCapacity = this.SkuCapacity == 0 ? 1 : this.SkuCapacity;
             var sku = new ResourceSku(skuCapacity, this.SkuName, this.SkuTier);
-
-#pragma warning disable CS0618
             var tags = this.Tag.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => (string) kvp.Key, kvp => (string) kvp.Value);
-#pragma warning restore CS0618
 
             CommitmentPlanPatchPayload patchPayload = new CommitmentPlanPatchPayload
             {

@@ -112,7 +112,7 @@ The tags to associate with the Azure CDN profile.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named

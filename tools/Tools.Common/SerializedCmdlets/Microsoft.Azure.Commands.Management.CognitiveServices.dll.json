@@ -2,6 +2,579 @@
   "Cmdlets": [
     {
       "VerbName": "Get",
+      "NounName": "AzureRmCognitiveServicesAccountUsage",
+      "Name": "Get-AzureRmCognitiveServicesAccountUsage",
+      "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.GetAzureCognitiveServicesAccountUsageCommand",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "ResourceNameParameterSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
+            "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesUsage",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesUsage, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CurrentValue": "System.Nullable`1[System.Double]",
+              "Limit": "System.Nullable`1[System.Double]",
+              "Name": "System.String",
+              "Status": "System.String",
+              "Unit": "System.String",
+              "QuotaPeriod": "System.String",
+              "NextResetTime": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "usage",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
+            "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
+              "ResourceGroupName": "System.String",
+              "AccountName": "System.String",
+              "Id": "System.String",
+              "Endpoint": "System.String",
+              "Location": "System.String",
+              "AccountType": "System.String",
+              "ResourceType": "System.String",
+              "Etag": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Create",
+                "Parameters": [
+                  {
+                    "Name": "cognitiveServicesAccount",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "cognitiveServicesAccount",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceGroupName",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Name",
+          "AliasList": [
+            "CognitiveServicesAccountName",
+            "AccountName"
+          ],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
+                  "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
+                    "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+                    "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
+                    "ResourceGroupName": "System.String",
+                    "AccountName": "System.String",
+                    "Id": "System.String",
+                    "Endpoint": "System.String",
+                    "Location": "System.String",
+                    "AccountType": "System.String",
+                    "ResourceType": "System.String",
+                    "Etag": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Create",
+                      "Parameters": [
+                        {
+                          "Name": "cognitiveServicesAccount",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "cognitiveServicesAccount",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "ResourceNameParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceGroupName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [
+                  "CognitiveServicesAccountName",
+                  "AccountName"
+                ],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 1,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": []
+    },
+    {
+      "VerbName": "Get",
       "NounName": "AzureRmCognitiveServicesAccount",
       "Name": "Get-AzureRmCognitiveServicesAccount",
       "ClassName": "Microsoft.Azure.Commands.Management.CognitiveServices.GetAzureCognitiveServicesAccountCommand",
@@ -14,7 +587,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -380,7 +953,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccountKeys, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -617,7 +1190,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesSkus, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "List": "System.Collections.Generic.IEnumerable`1[System.String]"
             },
@@ -853,7 +1426,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1331,7 +1904,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys, Microsoft.Azure.Management.CognitiveServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.CognitiveServicesAccountKeys, Microsoft.Azure.Management.CognitiveServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Key1": "System.String",
               "Key2": "System.String"
@@ -1438,7 +2011,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName, Microsoft.Azure.Management.CognitiveServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName, Microsoft.Azure.Management.CognitiveServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1648,7 +2221,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
                   "Name": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName, Microsoft.Azure.Management.CognitiveServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.KeyName, Microsoft.Azure.Management.CognitiveServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2054,7 +2627,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
             "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2568,10 +3141,32 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Nullable`1[System.Double]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Double]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Double"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Management.CognitiveServices.Models.Sku": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.Sku, Microsoft.Azure.Management.CognitiveServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Tier": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]",
         "Name": "System.String"
@@ -2635,7 +3230,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier, Microsoft.Azure.Management.CognitiveServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.SkuTier, Microsoft.Azure.Management.CognitiveServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -2647,7 +3242,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.SkuTier": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.SkuTier",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.SkuTier, Microsoft.Azure.Management.CognitiveServices, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.SkuTier, Microsoft.Azure.Management.CognitiveServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -2749,16 +3344,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
     "System.Void": {
       "Namespace": "System",
       "Name": "System.Void",
@@ -2785,7 +3370,7 @@
     "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -2797,7 +3382,7 @@
     "Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState": {
       "Namespace": "Microsoft.Azure.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.CognitiveServices.Models.ProvisioningState, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -2892,7 +3477,7 @@
     "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount": {
       "Namespace": "Microsoft.Azure.Commands.Management.CognitiveServices.Models",
       "Name": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount, Microsoft.Azure.Commands.Management.CognitiveServices, Version=0.9.4.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Sku": "Microsoft.Azure.Management.CognitiveServices.Models.Sku",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",

@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using System;
     using System.Globalization;
     using System.Net;
+    using System.Threading.Tasks;
 
     internal static class Util
     {
@@ -83,7 +84,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             try
             {
-                blob.FetchAttributesAsync(accessCondition, options, operationContext).RunSynchronously();
+                Task.Run(() => blob.FetchAttributesAsync(accessCondition, options, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                if (((StorageException)e.InnerException).RequestInformation == null ||
+                    (((StorageException)e.InnerException).RequestInformation.HttpStatusCode != (int)HttpStatusCode.NotFound))
+                {
+                    throw e.InnerException;
+                }
+
+                return null;
             }
             catch (StorageException se)
             {
@@ -121,7 +132,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                         blob.Name));
             }
 
-            targetBlob.FetchAttributesAsync().RunSynchronously();
+            try
+            {
+                Task.Run(() => targetBlob.FetchAttributesAsync()).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
+
             return targetBlob;
         }
 

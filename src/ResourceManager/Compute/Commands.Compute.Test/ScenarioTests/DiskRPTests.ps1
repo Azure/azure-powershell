@@ -33,7 +33,7 @@ function Test-Disk
         $access = 'Read';
 
         # Config create test
-        $diskconfig = New-AzureRmDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+        $diskconfig = New-AzureRmDiskConfig -Location $loc -Zone "1" -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
         # Encryption test
         $diskconfig = Set-AzureRmDiskDiskEncryptionKey -Disk $diskconfig -SecretUrl $mockkey -SourceVaultId $mocksourcevault;
         $diskconfig = Set-AzureRmDiskKeyEncryptionKey -Disk $diskconfig -KeyUrl $mockkey -SourceVaultId $mocksourcevault;
@@ -52,7 +52,7 @@ function Test-Disk
         $diskconfig.EncryptionSettings.DiskEncryptionKey = $null;
         $diskconfig.EncryptionSettings.KeyEncryptionKey = $null;
         $diskconfig.CreationData.ImageReference = $null;
-        
+
         Assert-AreEqual "1" $diskconfig.Zones
         $diskconfig.Zones = $null
 
@@ -64,7 +64,7 @@ function Test-Disk
         $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname;
         Assert-AreEqual $null $disk.Zones;
         Assert-AreEqual 5 $disk.DiskSizeGB;
-        Assert-AreEqual StandardLRS $disk.Sku.Name;
+        Assert-AreEqual "Standard_LRS" $disk.Sku.Name;
         Assert-AreEqual Windows $disk.OsType;
         Assert-AreEqual Empty $disk.CreationData.CreateOption;
         Assert-AreEqual $false $disk.EncryptionSettings.Enabled;
@@ -78,7 +78,7 @@ function Test-Disk
         Assert-AreEqual "Completed" $result.State;
 
         # Config update test
-        $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
+        $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
         $job = Update-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -DiskUpdate $updateconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
@@ -112,7 +112,7 @@ function Test-Snapshot
         $access = 'Read';
 
         # Config and create test
-        $snapshotconfig = New-AzureRmSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType StandardLRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
+        $snapshotconfig = New-AzureRmSnapshotConfig -Location $loc -DiskSizeGB 5 -AccountType Standard_LRS -OsType Windows -CreateOption Empty -EncryptionSettingsEnabled $true;
 
         # Encryption test
         $snapshotconfig = Set-AzureRmSnapshotDiskEncryptionKey -Snapshot $snapshotconfig -SecretUrl $mockkey -SourceVaultId $mocksourcevault;
@@ -139,7 +139,7 @@ function Test-Snapshot
         # Get snapshot test
         $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname;
         Assert-AreEqual 5 $snapshot.DiskSizeGB;
-        Assert-AreEqual StandardLRS $snapshot.Sku.Name;
+        Assert-AreEqual "Standard_LRS" $snapshot.Sku.Name;
         Assert-AreEqual Windows $snapshot.OsType;
         Assert-AreEqual Empty $snapshot.CreationData.CreateOption;
         Assert-AreEqual $false $snapshot.EncryptionSettings.Enabled;
@@ -153,7 +153,7 @@ function Test-Snapshot
         Assert-AreEqual "Completed" $result.State;
 
         # Config update test
-        $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType PremiumLRS -OsType Windows;
+        $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
         $job = Update-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -SnapshotUpdate $updateconfig -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;

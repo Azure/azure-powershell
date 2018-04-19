@@ -369,7 +369,7 @@ The tags to associate with the Azure CDN endpoint.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named

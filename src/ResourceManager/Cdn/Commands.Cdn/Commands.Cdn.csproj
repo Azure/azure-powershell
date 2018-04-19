@@ -48,7 +48,6 @@
     <Reference Include="Microsoft.Azure.Management.Cdn, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.4.0.1-preview\lib\net452\Microsoft.Azure.Management.Cdn.dll</HintPath>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AzureCdnCmdletBase.cs" />
@@ -152,7 +151,7 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
   </ItemGroup>
   <ItemGroup>

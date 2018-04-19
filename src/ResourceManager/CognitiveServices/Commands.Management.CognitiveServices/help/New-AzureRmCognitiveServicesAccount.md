@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
 Module Name: AzureRM.CognitiveServices
 ms.assetid: A2B4ACC1-6F53-47DE-A2D4-831E8AC89A5C
@@ -53,7 +53,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -68,7 +68,7 @@ Specifies the location in which to create the account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -99,7 +99,7 @@ The resource group must already exist.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -124,7 +124,7 @@ For more information, see [Cognitive Service APIs](https://www.microsoft.com/cog
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -149,15 +149,26 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Specifies the type of account to create.The acceptable values for this parameter are:
+Specifies the type of account to create. Current acceptable values for this parameter are:
 
+- Bing.Autosuggest.v7
+- Bing.CustomSearch
+- Bing.Search.v7
+- Bing.Speech
+- Bing.SpellCheck.v7
 - ComputerVision
+- ContentModerator
+- CustomSpeech
+- CustomVision.Prediction
+- CustomVision.Training
 - Emotion
 - Face
 - LUIS
-- Recommendations
-- Speech
+- QnAMaker
+- SpeakerRecognition
+- SpeechTranslation
 - TextAnalytics
+- TextTranslation
 - WebLM
 
 ```yaml
