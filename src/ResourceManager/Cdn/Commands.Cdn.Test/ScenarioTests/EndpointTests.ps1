@@ -238,7 +238,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -OptimizationType $optimizationType -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tags $tags
+    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -OptimizationType $optimizationType -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tag $tags
 
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
