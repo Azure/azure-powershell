@@ -186,6 +186,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             protected set;
         }
 
+        public PVM.ExtendedPropertiesList ExtendedProperty
+        {
+            get;
+            protected set;
+        }
+
         public DeploymentInfoContext(DeploymentGetResponse deployment)
         {
             this.Slot             = deployment.DeploymentSlot.ToString();
@@ -320,6 +326,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                             Extensions = extList
                         });
                     }
+                }
+            }
+
+            // ExtendedProperty
+            if (deployment.ExtendedProperties != null)
+            {
+                this.ExtendedProperty = new PVM.ExtendedPropertiesList();
+                foreach (var prop in deployment.ExtendedProperties)
+                {
+                    var pair = new PVM.ExtendedProperty();
+                    pair.Name = prop.Key;
+                    pair.Value = prop.Value;
+                    this.ExtendedProperty.Add(pair);
                 }
             }
         }

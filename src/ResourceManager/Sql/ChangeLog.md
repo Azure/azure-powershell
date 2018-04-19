@@ -24,6 +24,7 @@
 	- Remove-AzureRmSqlDatabaseInstanceFailoverGroup Instance Failover Group deletes the Failover Group
 	- Set-AzureRmSqlDatabaseInstanceFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Instance Failover Group
 	- Switch-AzureRmSqlDatabaseInstanceFailoverGroup issues the failover operation with data loss or without data loss
+* Set minimum dependency of module to PowerShell 5.0
 
 ## Version 4.4.0
 * Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
