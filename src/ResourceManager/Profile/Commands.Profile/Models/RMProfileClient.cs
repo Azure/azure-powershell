@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string subscriptionId,
             string subscriptionName,
             SecureString password,
-            bool skipValidation, 
+            bool skipValidation,
             Action<string> promptAction,
             string name = null)
         {
@@ -140,7 +140,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     Id = tenantId
                 };
             }
-
             else
             {
                 // (tenant and subscription are present) OR
@@ -215,7 +214,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             newTenant == null &&
                             TryGetTenantSubscription(token, account, environment, tenant, subscriptionId, subscriptionName, out tempSubscription, out tempTenant))
                         {
-                            // If no subscription found for the given token/tenant 
+                            // If no subscription found for the given token/tenant
                             // discard tempTenant value unless current token/tenant is the last one.
                             if (tempSubscription != null || tenant.Equals(tenants[tenants.Count - 1]))
                             {
@@ -226,6 +225,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                 }
             }
+
+            bool shouldPopulateContextList = _profile.DefaultContext?.Account == null;
 
             if (newSubscription == null)
             {
@@ -261,6 +262,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             _profile.DefaultContext.TokenCache = _cache;
+            var defaultContext = _profile.DefaultContext;
+
+            if (shouldPopulateContextList)
+            {
+                var subscriptions = ListSubscriptions(tenantId);
+                foreach (var subscription in subscriptions)
+                {
+                    var tempContext = new AzureContext(subscription, account, environment, newTenant);
+                    string tempName = null;
+                    if (!_profile.TryGetContextName(tempContext, out tempName))
+                    {
+                        WriteWarningMessage(string.Format("Unable to get context name for subscription with id '{0}'.", subscription.Id));
+                        continue;
+                    }
+
+                    if (!_profile.TrySetContext(tempName, tempContext))
+                    {
+                        WriteWarningMessage(string.Format("Cannot create a context for subscription with id '{0}'.", subscription.Id));
+                    }
+                }
+
+                _profile.TrySetDefaultContext(defaultContext);
+            }
 
             return _profile.ToProfile();
         }
@@ -405,10 +429,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public IAccessToken AcquireAccessToken(string tenantId, Action<string> promptAction = null)
         {
             return AcquireAccessToken(
-                _profile.DefaultContext.Account, 
-                _profile.DefaultContext.Environment, 
+                _profile.DefaultContext.Account,
+                _profile.DefaultContext.Environment,
                 tenantId, null,
-                ShowDialog.Auto, 
+                ShowDialog.Auto,
                 promptAction);
         }
 
@@ -589,9 +613,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return result;
         }
         private List<AzureTenant> ListAccountTenants(
-			IAzureAccount account, 
-			IAzureEnvironment environment, 
-			SecureString password, 
+			IAzureAccount account,
+			IAzureEnvironment environment,
+			SecureString password,
 			string promptBehavior,
 			Action<string> promptAction)
         {
@@ -600,10 +624,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             try
             {
                 var commonTenantToken = AcquireAccessToken(
-                    account, 
-                    environment, 
+                    account,
+                    environment,
                     commonTenant,
-                    password, 
+                    password,
                     promptBehavior,
                     promptAction);
 
