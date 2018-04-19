@@ -267,7 +267,7 @@ function Test-VirtualMachine
         Assert-True {$vm2_out.Contains("AvailabilitySetReference")};
         Assert-AreEqual $vm2.AvailabilitySetReference.Id $asetId;
         Assert-True { $vm2.ResourceGroupName -eq $rgname }
-        
+
         # Remove
         Remove-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname -Force;
     }
@@ -609,7 +609,7 @@ function Test-VirtualMachineImageList
                     foreach ($ver in $versions)
                     {
                         $s3 = Get-AzureRmVMExtensionImage -Location $locStr -PublisherName $pub -Type $type -Version $ver;
-                
+
                         Assert-NotNull $s3;
                         Assert-True { $s3.Version -eq $ver; }
                         $s3.Id;
@@ -641,7 +641,7 @@ function Test-VirtualMachineImageList
 
         $offerName = Get-ComputeTestResourceName;
         Assert-ThrowsContains { $s3 = Get-AzureRmVMImageSku -Location $locStr -PublisherName $publisherName -Offer $offerName; } "was not found";
-        
+
         $skusName = Get-ComputeTestResourceName;
         Assert-ThrowsContains { $s4 = Get-AzureRmVMImage -Location $locStr -PublisherName $publisherName -Offer $offerName -Skus $skusName; } "was not found";
 
@@ -726,7 +726,7 @@ function Test-VirtualMachineSizeAndUsage
 
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        
+
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
         Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
@@ -868,7 +868,7 @@ function Test-VirtualMachinePIRv2
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
@@ -910,7 +910,7 @@ function Test-VirtualMachinePIRv2
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
         Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
@@ -977,7 +977,7 @@ function Test-VirtualMachineCapture
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
@@ -1019,7 +1019,7 @@ function Test-VirtualMachineCapture
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
         Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;
@@ -1397,7 +1397,7 @@ function Test-VirtualMachineDataDiskNegative
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
         $vmname = 'vm' + $rgname;
@@ -1435,7 +1435,7 @@ function Test-VirtualMachineDataDiskNegative
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
         # OS & Image
         $user = "Foo12";
         $password = $PLACEHOLDER;
@@ -1476,7 +1476,7 @@ function Test-VirtualMachinePlan
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
         $vmname = 'vm' + $rgname;
@@ -1556,9 +1556,9 @@ function Test-VirtualMachinePlan2
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        
+
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = Get-DefaultVMSize;
         $vmname = 'vm' + $rgname;
@@ -1607,7 +1607,7 @@ function Test-VirtualMachinePlan2
         $p = Set-AzureRmVMSourceImage -VM $p -PublisherName $imgRef.PublisherName -Offer $imgRef.Offer -Skus $imgRef.Skus -Version $imgRef.Version;
         $p = Set-AzureRmVMPlan -VM $p -Name $plan.Name -Publisher $plan.Publisher -Product $plan.Product;
         $p.OSProfile.WindowsConfiguration = $null;
-        
+
         # Negative Tests on non-purchased Plan
         Assert-ThrowsContains { New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p; } "Legal terms have not been accepted for this item on this subscription";
     }
@@ -1633,7 +1633,7 @@ function Test-VirtualMachineTags
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A0';
         $vmname = 'vm' + $rgname;
@@ -1679,7 +1679,7 @@ function Test-VirtualMachineTags
 
         # Test Tags
         $tags = @{test1 = "testval1"; test2 = "testval2" };
-        $st = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p -Tags $tags;
+        $st = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p -Tag $tags;
         #Assert-NotNull $st.RequestId;
         Assert-NotNull $st.StatusCode;
         $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
@@ -1706,7 +1706,7 @@ function Test-VirtualMachineTags
 
         # Update VM with new Tags
         $new_tags = @{test1 = "testval3"; test2 = "testval4" };
-        $st = $vm | Update-AzureRmVM -Tags $new_tags;
+        $st = $vm | Update-AzureRmVM -Tag $new_tags;
         $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname;
 
         Assert-NotNull $vm.RequestId;
@@ -2380,7 +2380,7 @@ function Test-VirtualMachineWithEmptyAuc
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
-        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;        
+        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -2938,7 +2938,7 @@ function Test-VirtualMachineManagedDiskConversion
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
         $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
-        
+
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
         Assert-AreEqual $p.StorageProfile.OSDisk.Vhd.Uri $osDiskVhdUri;

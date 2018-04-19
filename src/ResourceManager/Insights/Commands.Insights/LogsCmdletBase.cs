@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Insights
             var result = this.ProcessParticularParameters(queryFilter);
             this.WriteIdentifiedWarning(
                 cmdletName: this.GetCmdletName(),
-                topic: "Output change", 
+                topic: "Output change",
                 message: "The field EventChannels from the EventData object is being deprecated in the release 5.0.0 - November 2017 - since it now returns a constant value (Admin,Operation)");
             return result;
         }
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// A predicate to filter in/out the records from original list of records obtained from the SDK.
         /// <para>This method is intended to allow descendants of this class to further filter the results.</para>
-        /// <para>An example of this is when the filtering is needed based on Category and ResourceUri at the same time. 
+        /// <para>An example of this is when the filtering is needed based on Category and ResourceUri at the same time.
         /// The SDK does not allow these two fields to be in the query filter togheter. So the call should filter by one and then use this function to filter by the second one.</para>
         /// </summary>
         /// <param name="record">A record from the original list of records obtained from the sdk</param>
@@ -202,7 +202,7 @@ namespace Microsoft.Azure.Commands.Insights
         {
             this.WriteIdentifiedWarning(
                 cmdletName: this.GetCmdletName(),
-                topic: "Parameter deprecation", 
+                topic: "Parameter deprecation",
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             WriteDebug("Processing parameters");
             string queryFilter = this.ProcessParameters();
