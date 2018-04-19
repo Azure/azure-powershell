@@ -330,6 +330,9 @@ namespace Microsoft.Azure.Commands.Compute
                         zones: _cmdlet.Zone);
                 }
             }
+
+            public ResourceConfig<ResourceGroup> CreateResourceGroup()
+                => ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
         }
 
         async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
@@ -420,8 +423,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var result = await client.RunAsync(
-                client.SubscriptionId, parameters, asyncCmdlet, new CancellationToken());
+            var result = await client.RunAsync(parameters, asyncCmdlet, new CancellationToken());
 
             if (result != null)
             {

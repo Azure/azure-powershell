@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     {
         string Location { get; set; }
 
+        ResourceConfig<TResourceGroup> CreateResourceGroup();
+
         Task<ResourceConfig<TModel>> CreateConfigAsync(
             ResourceConfig<TResourceGroup> resourceGroupConfig);
 

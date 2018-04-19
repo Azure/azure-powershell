@@ -246,6 +246,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone);
             }
+
+            public ResourceConfig<ResourceGroup> CreateResourceGroup()
+                => ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
         }
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
@@ -263,8 +266,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
-            var result = await client.RunAsync(
-                client.SubscriptionId, parameters, asyncCmdlet, new CancellationToken());
+            var result = await client.RunAsync(parameters, asyncCmdlet, new CancellationToken());
 
             if (result != null)
             {
