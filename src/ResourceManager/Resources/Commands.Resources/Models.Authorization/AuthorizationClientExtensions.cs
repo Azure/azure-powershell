@@ -27,8 +27,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public const string CustomRole = "CustomRole";
         public const string AuthorizationDeniedException = "Authorization_RequestDenied";
+		public const string DeletedObject = "Object Deleted";
 
-        public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
+		public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {
             if (!string.IsNullOrEmpty(roleId))
             {
@@ -193,8 +194,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
-                        CanDelegate = delegationFlag
-                    });
+                        CanDelegate = delegationFlag,
+						ObjectType = DeletedObject
+					});
                 }
 
                 // Ignore the assignment if principal does not exists and excludeAssignmentsForDeletedPrincipals is set to true
