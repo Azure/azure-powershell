@@ -3,9 +3,9 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    [Alias("Get-AdlStoreChildItemProperties")]
-    public class GetAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
+    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Alias("Export-AdlStoreChildItemProperties")]
+    public class ExportAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "GetDiskUsage";
         internal const string GetAclParameterSetName = "GetAclDump";
@@ -77,11 +77,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                           "Cannot be set if IncludeFiles is not set, because consistent Acl cannot be determined without retrieving acls for the files.")]
         public SwitchParameter HideConsistentAcls { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Indicates a boolean response should be returned indicating the result of the delete operation."
+        )]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DataLakeStoreFileSystemClient.GetFileProperties(Account, Path.TransformedPath, GetAcl, OutputPath,
                 GetDiskUsage, !SaveToAdl, Concurrency, IncludeFiles, HideConsistentAcls, MaximumDepth);
-            WriteObject(true);
+            if (PassThru)
+            {
+                WriteObject(true);
+            }
         }
 
     }

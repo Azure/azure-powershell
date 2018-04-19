@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true,
          DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(object))]
+     OutputType(typeof(bool))]
     [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter PassThru { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true,  Mandatory = false, HelpMessage = "Indicates the ACL to be removed recursively to the child subdirectories and files")]
-        public SwitchParameter Recursive { get; set; }
+        public SwitchParameter Recurse { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
@@ -105,10 +105,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Path.OriginalPath,
                 () =>
                 {
-                    AclProcessorStats stats = null;
-                    if (Recursive)
+                    if (Recurse)
                     {
-                        stats = DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
+                        DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                             Account, aclSpec, RequestedAclType.RemoveAcl, Concurrency);
                     }
                     else
@@ -118,14 +117,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
                     if (PassThru)
                     {
-                        if (Recursive)
-                        {
-                            WriteObject(new DataLakeStoreAclProcessorSummary(stats));
-                        }
-                        else
-                        {
-                            WriteObject(true);
-                        }
+                        WriteObject(true);
                     }
                 });
         }
