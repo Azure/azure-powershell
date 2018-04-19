@@ -41,7 +41,6 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Commerce.UsageAggregates.1.5.0\lib\net40\Microsoft.Azure.Commerce.UsageAggregates.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GetUsageAggregatesCommand.cs" />

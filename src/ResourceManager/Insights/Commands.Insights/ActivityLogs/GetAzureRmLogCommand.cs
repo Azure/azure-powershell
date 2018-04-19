@@ -96,7 +96,6 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// Gets or sets the max number of records to fetch parameter of the cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of records to fetch. Alias: MaxRecords, MaxEvents")]
-        [Alias("MaxRecords", "MaxEvents")]
         [ValidateNotNullOrEmpty]
         public virtual int MaxRecord { get; set; }
 
@@ -107,10 +106,6 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: "Get-AzureRmLog",
-                topic: "Parameter name change", 
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             this.SetMaxEventsIfPresent(currentQueryFilter, this.MaxRecord);
 
             string extendedQuery = this.AddConditionIfPResent(currentQueryFilter, "correlationId", this.CorrelationId);

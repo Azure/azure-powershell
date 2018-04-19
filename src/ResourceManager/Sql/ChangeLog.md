@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.4.0
 * Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
 * Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response
 * Updated to the latest version of the Azure ClientRuntime
@@ -39,6 +42,7 @@
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob parameter to long running cmdlets
 * Obsoleted -DatabaseName parameter from Get-AzureRmSqlServiceObjective
+* Adding New-AzureRmSqlDatabaseRestorePoint, Remove-AzureRmSqlDatabaseRestorePoint and output model of Get-AzureRmSqlDatabaseRestorePoints will have one more field
 
 ## Version 4.1.1
 * Added ability to rename database using Set-AzureRmSqlDatabase
