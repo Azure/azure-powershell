@@ -165,7 +165,7 @@ Specifies an array of names of metrics.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: MetricNames
+Aliases:
 
 Required: False
 Position: Named

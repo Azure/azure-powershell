@@ -63,12 +63,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
                 Mandatory = false,
                 ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Deprecated - Windows Azure Diagnostics is now disabled by default")]
-        public SwitchParameter DisableWAD { get; set; }
-
-        [Parameter(
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = false,
                 HelpMessage = "If this parameter is provided, the commandlet will enable Windows Azure Diagnostics for this virtual machine.")]
         public SwitchParameter EnableWAD { get; set; }
 
@@ -106,11 +100,6 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.DisableWAD)
-                {
-                    this._Helper.WriteWarning("The parameter DisableWAD is deprecated. Windows Azure Diagnostics is disabled by default.");
-                }
-
                 this._Helper.WriteVerbose("Retrieving VM...");
 
                 var selectedVM = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
@@ -212,7 +201,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id), 
+                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
                         this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
                     if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                     {
