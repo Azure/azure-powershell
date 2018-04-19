@@ -8,7 +8,7 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp
     {
         public static ResourceStrategy<SignalRResource> Strategy { get; }
             = ResourceStrategy.Create(
-                type: new ResourceType("Microsoft.SignalR", "SignalR"),
+                type: new ResourceType("Microsoft.SignalRService", "SignalR"),
                 getOperations: (SignalRManagementClient client) => client.Signalr,
                 getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
