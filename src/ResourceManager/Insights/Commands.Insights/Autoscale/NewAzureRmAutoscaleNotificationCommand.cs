@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or sets the CustomEmails list of the action. A comma-separated list of e-mail addresses
         /// </summary>
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of comma-separated webhooks")]
-        [Alias("Webhooks")]
         public WebhookNotification[] Webhook { get; set; }
 
         /// <summary>
@@ -38,7 +37,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of custom e-mails")]
         [ValidateNotNullOrEmpty]
-        [Alias("CustomEmails")]
         public string[] CustomEmail { get; set; }
 
         /// <summary>
@@ -51,7 +49,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or sets the send e-mail to subscription coadministrators flag
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The send e-mail to subscription coadministrators flag")]
-        [Alias("SendEmailToSubscriptionCoAdministrators")]
         public SwitchParameter SendEmailToSubscriptionCoAdministrator { get; set; }
 
         /// <summary>
@@ -65,10 +62,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: "New-AzureRmAutoscaleNotification",
-                topic: "Parameter name change",
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             if (!(this.SendEmailToSubscriptionAdministrator || this.SendEmailToSubscriptionCoAdministrator) &&
                 ((this.Webhook == null || this.Webhook.Length < 1) && (this.CustomEmail == null || this.CustomEmail.Length < 1)))
             {
