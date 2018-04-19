@@ -66,7 +66,7 @@ function Check-All {
     }
     else {
         Write-Host "All files (.dll) have a strong name signature." -ForegroundColor Green
-    }    
+    }
 
     # -------------------------------------
 
@@ -74,6 +74,7 @@ function Check-All {
     $files = $files | Where-Object { ($_.FullName -notlike "*Newtonsoft.Json*") -and `
                                      ($_.FullName -notlike "*AutoMapper*") -and `
                                      ($_.FullName -notlike "*Security.Cryptography*") -and `
+                                     ($_.FullName -notlike "*NLog*") -and `
                                      ($_.FullName -notlike "*YamlDotNet*") -and `
                                      ($_.FullName -notlike "*BouncyCastle.Crypto*")}
     Write-Host "Checking the authenticode signature of $($files.Count) files (.dll, .ps1, .psm1)" -ForegroundColor Yellow
@@ -158,7 +159,7 @@ elseif ($PSCmdlet.ParameterSetName -eq "MsiInstall")
         {
             Write-Error "Modules installed on the current machine were not from MSI. Consider using the -GalleryInstall switch."
             return
-        }    
+        }
     }
 
     $EndIdx = $ModulePath.IndexOf("PowerShell\ResourceManager", [System.StringComparison]::OrdinalIgnoreCase) + "PowerShell".Length
@@ -193,7 +194,7 @@ elseif ($PSCmdlet.ParameterSetName -eq "GalleryInstall")
         {
             Write-Error "Modules installed on the current machine were not from the gallery. Consider using the -MsiInstall switch."
             return
-        }    
+        }
     }
 
     $EndIdx = $ModulePath.IndexOf("Modules\AzureRM.Profile", [System.StringComparison]::OrdinalIgnoreCase) + "Modules".Length

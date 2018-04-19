@@ -134,21 +134,7 @@ if ($Scope -in $StackScopes) {
     )
 
     # These are broken.
-    $IgnoredStackModules = @(
-        "Azs.AzureBridge.Admin",
-        "Azs.Backup.Admin",
-        "Azs.Commerce.Admin",
-        "Azs.Compute.Admin",
-        "Azs.Fabric.Admin",
-        "Azs.Gallery.Admin",
-        "Azs.InfrastructureInsights.Admin",
-        "Azs.KeyVault.Admin",
-        "Azs.Network.Admin",
-        "Azs.Storage.Admin",
-        "Azs.Subscriptions.Admin",
-        "Azs.Subscriptions",
-        "Azs.Update.Admin"
-    )
+    $IgnoredStackModules = @()
 
     [System.String[]]$ModulesToTest = $AllStackModules | Where-Object { !($_ -in $IgnoredStackModules) }
     Test-Stack -BuildConfig $BuildConfig -Modules $ModulesToTest -FailFast
