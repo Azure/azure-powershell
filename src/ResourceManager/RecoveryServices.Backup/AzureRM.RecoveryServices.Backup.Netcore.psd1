@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.11.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll', 
@@ -136,7 +136,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = ''
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

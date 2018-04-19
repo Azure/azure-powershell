@@ -46,7 +46,7 @@ When you apply the Department tag to a resource, you apply only one predefined v
 ### Example 1: Create a predefined tag
 ```
 PS C:\>New-AzureRmTag -Name "FY2015"
-Name:   Department
+Name:   FY2015
 Count:  0
 Values: 
 
@@ -83,7 +83,8 @@ Count:  0
 Values: 
         Name        Count
         =========   =====
-        Finance     0 PS C:\>New-AzureRmTag -Name "Department" -Value "IT"
+        Finance     0 
+PS C:\>New-AzureRmTag -Name "Department" -Value "IT"
 Name:   Department
 Count:  0
 Values: 
@@ -104,7 +105,8 @@ Count:  0
 Values: 
         Name        Count
         =========   =====
-        0001        0 PS C:\>Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
+        0001        0 
+PS C:\>Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -117,13 +119,15 @@ Resources:
 Tags: 
     Name         Value
     ==========   =====
-    CostCenter   0001 PS C:\>Get-AzureRmTag -Name "CostCenter"
+    CostCenter   0001 
+PS C:\>Get-AzureRmTag -Name "CostCenter"
 Name:   CostCenter
 Count:  1
 Values: 
         Name        Count
         =========   =====
-        0001        1 PS C:\>Get-AzureRmResourceGroup -Tag @{Name="CostCenter"}
+        0001        1 
+PS C:\>Get-AzureRmResourceGroup -Tag @{Name="CostCenter"}
 Name:      EngineerBlog
 Location:  East US
 Resources: 

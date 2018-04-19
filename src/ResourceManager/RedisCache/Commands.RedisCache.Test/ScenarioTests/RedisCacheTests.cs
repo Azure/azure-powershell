@@ -50,18 +50,11 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestMaxMemoryPolicyErrorCheck()
-        {
-            RedisCacheController.NewInstance.RunPowerShellTest("Test-MaxMemoryPolicyErrorCheck");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCacheClustering()
         {
             RedisCacheController.NewInstance.RunPowerShellTest("Test-RedisCacheClustering");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRedisCachePatchSchedules()

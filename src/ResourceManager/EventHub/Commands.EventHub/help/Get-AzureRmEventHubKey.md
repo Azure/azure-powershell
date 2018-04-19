@@ -35,14 +35,19 @@ The Get-AzureRmEventHubKey cmdlet returns Primary and Secondary connectionstring
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Namespace
+```
+PS C:\> Get-AzureRmEventHubKey -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -AuthorizationRuleName MyAuthRuleName
+```
+
+### Example 2 - EventHub
 ```
 PS C:\> Get-AzureRmEventHubKey -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AuthorizationRuleName MyAuthRuleName
 ```
 
 Gets details of Primary and Secondary connectionstrings and keys for the authorization rule \`MyAuthRuleName\`.
 
-### Example 1
+### Example 3 - Alias (GeoRecovery Configuration)
 ```
 PS C:\> Get-AzureRmEventHubKey -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -AliasName MyAliasName -Name MyAuthRuleName
 ```
