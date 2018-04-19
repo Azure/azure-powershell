@@ -76,7 +76,7 @@ function Test-CustomDomainEnableDisableWithRunningEndpoint
     $resourceLocation = "EastUS"
     $profileSku = "Standard_Verizon"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
-    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tags $tags
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku -Tag $tags
 
     $originName = getAssetName
     $originHostName = "www.microsoft.com"
