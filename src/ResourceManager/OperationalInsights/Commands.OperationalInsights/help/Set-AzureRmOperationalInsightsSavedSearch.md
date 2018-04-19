@@ -144,7 +144,7 @@ The saved search tags.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: 6

@@ -57,6 +57,8 @@
     { "regex": "KeyVault", "alias": "Key Vault" }, 
 
     { "regex": "Iot", "alias": "IoT" }, 
+	
+	  { "regex": "DeviceProvisioningServices", "alias": "DPS" }, 
 
     { "regex": "Batch", "alias": "Batch" }, 
 
@@ -92,10 +94,6 @@
     { "regex": "RedisCache", "alias": "Redis Cache" }, 
 
     { "regex": "Scheduler", "alias": "Scheduler" }, 
-
-    { "regex": "SiteRecovery", "alias": "Site Recovery" }, 
-
-    { "regex": "ServerManagement", "alias": "Server Management" }, 
 
     { "regex": "StreamAnalytics", "alias": "Stream Analytics" }, 
 
