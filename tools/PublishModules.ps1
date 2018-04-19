@@ -319,11 +319,11 @@ function Get-AllModules {
         [switch]$IsNetCore
     )
     Write-Host "Getting Azure client modules"
-    #$clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
+    $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
     Write-Host " "
 
     Write-Host "Getting admin modules"
-    #$adminModules = Get-AdminModules -BuildConfig $BuildConfig -Scope $Scope
+    $adminModules = Get-AdminModules -BuildConfig $BuildConfig -Scope $Scope
     Write-Host " "
 
     Write-Host "Getting rollup modules"
@@ -331,8 +331,8 @@ function Get-AllModules {
     Write-Host " "
 
     return @{
-        #ClientModules = $clientModules;
-        #AdminModules  = $adminModules;
+        ClientModules = $clientModules;
+        AdminModules  = $adminModules;
         RollUpModules = $rollUpModules
     }
 }
@@ -531,7 +531,6 @@ function Save-PackagesFromPsGallery {
                 }
             }
         }
-        exit 1
     }
 }
 
@@ -572,8 +571,11 @@ function Add-AllModules {
     foreach ($module in $Keys) {
         $modulePath = $Modules[$module]
         Write-Output "Adding $module modules to local repo"
+
         # Save missing dependencies locally from PS gallery.
         Save-PackagesFromPsGallery -TempRepo $TempRepo -TempRepoPath $TempRepoPath -ModulePaths $modulePath
+
+        # Add the modules to the local repository
         Add-Modules -TempRepo $TempRepo -TempRepoPath $TempRepoPath -ModulePath $modulePath -NugetExe $NugetExe
         Write-Output " "
     }
