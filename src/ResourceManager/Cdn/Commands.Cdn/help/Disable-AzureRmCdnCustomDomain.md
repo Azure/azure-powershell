@@ -32,6 +32,7 @@ The **Disable-AzureRmCdnCustomDomain** cmdlet disables the secured HTTPS deliver
 ### Example 1
 ```powershell
 Disable-AzureRmCdnCustomDomain -CustomDomainName $customDomainName -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroupName
+true
 ```
 
 Disable https delivery of the custom domain.
