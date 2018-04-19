@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
     public enum PSIotHubSkuTier
     {
         Free,
-        Standard
+        Standard,
+        Basic
     }
 }
 

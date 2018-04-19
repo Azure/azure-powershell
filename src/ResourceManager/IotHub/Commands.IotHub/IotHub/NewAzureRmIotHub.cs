@@ -72,8 +72,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             {
                 var iotHubDescription = new IotHubDescription()
                 {
-                    Resourcegroup = this.ResourceGroupName,
-                    Subscriptionid = this.DefaultContext.Subscription.Id.ToString(),
                     Location = this.Location,
                     Sku = new IotHubSkuInfo()
                     {

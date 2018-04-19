@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub
 {
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Management.IotHub.Common;
@@ -21,22 +22,25 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
+    using System.Collections;
+    using System.Linq;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRmIotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(IEnumerable<string>))]
-    [Alias("Remove-AzureRmIotHubEHCG")]
-    public class RemoveAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
+    [Cmdlet(VerbsData.Update, "AzureRmIotHub", DefaultParameterSetName = ResourceUpdateParameterSet, SupportsShouldProcess = true)]
+    [OutputType(typeof(PSIotHub))]
+    public class UpdateAzureRmIotHub : IotHubBaseCmdlet
     {
+        private const string ResourceUpdateParameterSet = "ResourceUpdateSet";
+
         [Parameter(
-            Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceUpdateParameterSet,
             HelpMessage = "Name of the Resource Group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Iot Hub")]
@@ -44,32 +48,38 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(
-            Position = 2,
             Mandatory = true,
-            HelpMessage = "EventHubEndpointName. Possible values events, operationsMonitoringEvents")]
+            ParameterSetName = ResourceUpdateParameterSet,
+            HelpMessage = "IoTHub Tag collection")]
         [ValidateNotNullOrEmpty]
-        [ValidateSetAttribute(EventsEndpointName, OperationsMonitoringEventsEndpointName)]
-        public string EventHubEndpointName { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
-            Position = 3,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the EventHub ConsumerGroupName")]
-        [ValidateNotNullOrEmpty]
-        public string EventHubConsumerGroupName { get; set; }
+            Mandatory = false,
+            ParameterSetName = ResourceUpdateParameterSet,
+            HelpMessage = "Reset IoTHub Tags")]
+        public SwitchParameter Reset { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(EventHubConsumerGroupName, Properties.Resources.RemoveEventHubConsumerGroup))
+            if (ShouldProcess(Name, Properties.Resources.UpdateIotHub))
             {
-                this.IotHubClient.IotHubResource.DeleteEventHubConsumerGroup(this.ResourceGroupName, this.Name, this.EventHubEndpointName, this.EventHubConsumerGroupName);
-                IEnumerable<EventHubConsumerGroupInfo> iotHubEHConsumerGroups = this.IotHubClient.IotHubResource.ListEventHubConsumerGroups(this.ResourceGroupName, this.Name, this.EventHubEndpointName);
-                this.WriteObject(IotHubUtils.ToPSEventHubConsumerGroupInfo(iotHubEHConsumerGroups), true);
+                IotHubDescription iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
+
+                if (!this.Reset.IsPresent)
+                {
+                    foreach (var tag in iotHubDescription.Tags)
+                    {
+                        if (!this.Tag.ContainsKey(tag.Key))
+                        {
+                            this.Tag.Add(tag.Key, tag.Value);
+                        }
+                    }
+                }
+
+                iotHubDescription = this.IotHubClient.IotHubResource.Update(this.ResourceGroupName, this.Name, IotHubUtils.ToTagsResource(this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value)));
+                this.WriteObject(IotHubUtils.ToPSIotHub(iotHubDescription), false);
             }
         }
-
-        private const string EventsEndpointName = "events";
-        private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }
