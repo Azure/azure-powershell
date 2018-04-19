@@ -9,15 +9,15 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.SignalR
 {
     [Cmdlet(VerbsCommon.Remove, SignalRNoun, SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
-    public class RemoveAzureRmSignalR : SignalRCmdletBase
+    public class RemoveAzureRmSignalR : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
-            HelpMessage = "Resource group name.")]
+            HelpMessage = "Resource group name. Default one will be used if not specified.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public override string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1,
             Mandatory = true,
@@ -52,24 +52,19 @@ namespace Microsoft.Azure.Commands.SignalR
 
             RunCmdlet(() =>
             {
-                ResourceIdentifier resourceId = null;
                 switch (ParameterSetName)
                 {
                     case ResourceGroupParameterSet:
+                        ResolveResourceGroupName();
                         break;
                     case ResourceIdParameterSet:
-                        resourceId = new ResourceIdentifier(ResourceId);
+                        this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        resourceId = new ResourceIdentifier(InputObject.Id);
+                        this.LoadFromInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
-                }
-                if (resourceId != null)
-                {
-                    ResourceGroupName = resourceId.ResourceGroupName;
-                    Name = resourceId.ResourceName;
                 }
 
                 if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "remove"))

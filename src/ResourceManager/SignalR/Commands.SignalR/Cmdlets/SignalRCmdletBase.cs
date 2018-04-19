@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Rest;
 using System;
@@ -42,6 +43,36 @@ namespace Microsoft.Azure.Commands.SignalR
             var instance = AzureSession.Instance.ClientFactory.CreateArmClient<T>(
                 DefaultProfile.DefaultContext, endpoint ?? AzureEnvironment.Endpoint.ResourceManager);
             return postBuild == null ? instance : postBuild(instance);
+        }
+
+        public abstract string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Returns the default resource group set by Set-AzureRmDefault, if present.
+        /// </summary>
+        protected string DefaultResourceGroupName
+        {
+            get
+            {
+                IAzureContext context;
+                TryGetDefaultContext(out context);
+                return context?.GetProperty(Resources.DefaultResourceGroupKey);
+            }
+        }
+
+        /// <summary>
+        /// Use the DefaultResourceGroupName for ResourceGroupName if not specified, and optionally validate it.
+        /// </summary>
+        protected void ResolveResourceGroupName(bool required = true)
+        {
+            if (string.IsNullOrEmpty(ResourceGroupName))
+            {
+                ResourceGroupName = DefaultResourceGroupName;
+            }
+            if (required && string.IsNullOrEmpty(ResourceGroupName))
+            {
+                throw new ArgumentException("ResourceGroupName is not specified and the default value is not present.");
+            }
         }
     }
 }

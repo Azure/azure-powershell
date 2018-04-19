@@ -10,25 +10,22 @@ namespace Microsoft.Azure.Commands.SignalR
 {
     [Cmdlet(VerbsCommon.Get, SignalRNoun, DefaultParameterSetName = ListSignalRServiceParameterSet)]
     [OutputType(typeof(PSSignalRResource))]
-    public class GetAzureRmSignalR : SignalRCmdletBase
+    public class GetAzureRmSignalR : SignalRCmdletBase, IWithResourceId
     {
         [Parameter(Position = 0,
             Mandatory = false,
             ParameterSetName = ListSignalRServiceParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name.")]
         [Parameter(Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource group name.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public override string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "SignalR service name.")]
         [ValidateNotNullOrEmpty]
@@ -58,15 +55,17 @@ namespace Microsoft.Azure.Commands.SignalR
                             WriteObject(new PSSignalRResource(s));
                         }
                         break;
+                    case ResourceIdParameterSet:
+                        this.LoadFromResourceId();
+                        var signalrById = Client.Signalr.Get(ResourceGroupName, Name);
+                        WriteObject(new PSSignalRResource(signalrById));
+                        break;
                     case ResourceGroupParameterSet:
+                        ResolveResourceGroupName();
                         var signalr = Client.Signalr.Get(ResourceGroupName, Name);
                         WriteObject(new PSSignalRResource(signalr));
                         break;
-                    case ResourceIdParameterSet:
-                        var resource = new ResourceIdentifier(ResourceId);
-                        var idSignalR = Client.Signalr.Get(resource.ResourceGroupName, resource.ResourceName);
-                        WriteObject(new PSSignalRResource(idSignalR));
-                        break;
+
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
                 }

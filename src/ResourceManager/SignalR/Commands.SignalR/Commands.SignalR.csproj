@@ -15,6 +15,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\GetAzureRmSignalRKey.cs" />
+    <Compile Include="Cmdlets\IWithInputObject.cs" />
+    <Compile Include="Cmdlets\IWithResourceGroupAndName.cs" />
+    <Compile Include="Cmdlets\IWithResourceId.cs" />
     <Compile Include="Cmdlets\NewAzureRmSignalRKey.cs" />
     <Compile Include="Cmdlets\RemoveAzureRmSignalR.cs" />
     <Compile Include="Cmdlets\GetAzureRmSignalR.cs" />

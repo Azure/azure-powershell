@@ -6,19 +6,19 @@ using Microsoft.Azure.Management.SignalR;
 using System;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.SignalR.Cmdlets
+namespace Microsoft.Azure.Commands.SignalR
 {
     [Cmdlet(VerbsCommon.Get, SignalRKeyNoun, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSSignalRKeys))]
-    public class GetAzureRmSignalRKey : SignalRCmdletBase
+    public class GetAzureRmSignalRKey : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(Position = 0,
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
-            HelpMessage = "Resource group name.")]
+            HelpMessage = "Resource group name. Default one will be used if not specified.")]
         [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public override string ResourceGroupName { get; set; }
 
         [Parameter(Position = 1,
             Mandatory = true,
@@ -47,24 +47,19 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
             RunCmdlet(() =>
             {
-                ResourceIdentifier resourceId = null;
                 switch (ParameterSetName)
                 {
                     case ResourceGroupParameterSet:
+                        ResolveResourceGroupName();
                         break;
                     case ResourceIdParameterSet:
-                        resourceId = new ResourceIdentifier(ResourceId);
+                        this.LoadFromResourceId();
                         break;
                     case InputObjectParameterSet:
-                        resourceId = new ResourceIdentifier(InputObject.Id);
+                        this.LoadFromInputObject();
                         break;
                     default:
                         throw new ArgumentException(Resources.ParameterSetError);
-                }
-                if (resourceId != null)
-                {
-                    ResourceGroupName = resourceId.ResourceGroupName;
-                    Name = resourceId.ResourceName;
                 }
 
                 var keys = Client.Signalr.ListKeys(ResourceGroupName, Name);
