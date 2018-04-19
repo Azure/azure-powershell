@@ -12,12 +12,12 @@
   }
   PROCESS {
     if($Name -eq $null) {
-      $getTask = $client.ResourceGroups.ListWithHttpMessagesAsync($null, [System.Threading.CancellationToken]::None)
+      $getTask = $client.ResourceGroups.ListWithHttpMessagesAsync($null, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
       $resourceGroup = List-ResourceGroup
       Write-Output $resourceGroup
     } else {
-      $getTask = $client.ResourceGroups.GetWithHttpMessagesAsync($Name, [System.Threading.CancellationToken]::None)
+      $getTask = $client.ResourceGroups.GetWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
       if($rg -eq $null) {
         $resourceGroup = $null
