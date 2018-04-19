@@ -51,8 +51,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource tags for the workspace.")]
-        [Obsolete("New-AzureRmOperationalInsightsWorkspace: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         public override void ExecuteCmdlet()
         {
-#pragma warning disable CS0618
             CreatePSWorkspaceParameters parameters = new CreatePSWorkspaceParameters()
             {
                 ResourceGroupName = ResourceGroupName,
@@ -78,7 +75,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction
             };
-#pragma warning restore CS0618
 
             WriteObject(OperationalInsightsClient.CreatePSWorkspace(parameters));
         }

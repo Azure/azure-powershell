@@ -286,7 +286,7 @@ The default value is 1000 and the maximum value accepted is 100000. Negative val
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: MaxRecords, MaxEvents
+Aliases:
 
 Required: False
 Position: Named
