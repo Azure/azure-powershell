@@ -103,18 +103,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Storage Service that will enable encryption.")]
-        [Obsolete("Encryption at Rest is enabled by default for this storage account.", false)]
-        public EncryptionSupportServiceEnum? EnableEncryptionService { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Storage Service that will disable encryption.")]
-        [Obsolete("Encryption at Rest is enabled by default for this storage account. This feature cannot be disabled.", false)]
-        public EncryptionSupportServiceEnum? DisableEncryptionService { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
         [AllowEmptyCollection]
@@ -148,7 +136,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool storageEncryption = false;
 
         [Parameter(HelpMessage = "Whether to set Storage Account encryption keySource to Microsoft.Keyvault or not. " +
-            "If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account Encryption KeySource will also be set to Microsoft.Keyvault weather this parameter is set or not.", 
+            "If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account Encryption KeySource will also be set to Microsoft.Keyvault weather this parameter is set or not.",
             Mandatory = false, ParameterSetName = KeyvaultEncryptionParameterSet)]
         public SwitchParameter KeyvaultEncryption
         {

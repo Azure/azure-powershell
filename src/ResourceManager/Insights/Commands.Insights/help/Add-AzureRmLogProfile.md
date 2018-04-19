@@ -48,7 +48,7 @@ Specifies the list of categories.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: Categories
+Aliases:
 
 Required: False
 Position: Named
@@ -81,7 +81,7 @@ Get-AzureLocation | Select DisplayName
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: Locations
+Aliases:
 
 Required: True
 Position: Named

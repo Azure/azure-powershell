@@ -505,7 +505,7 @@ Each resource or resource group can have a maximum of 15 tags.
 ```yaml
 Type: Hashtable
 Parameter Sets: DefaultParameterSet
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named
