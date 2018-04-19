@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using LegacyTest = Microsoft.Azure.Test;
     using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
     using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-    using Microsoft.Azure.Management.WebSites;
+    using Microsoft.Azure.Management.WebSites.Version2016_09_01;
     using System.IO;
 
     /// <summary>
