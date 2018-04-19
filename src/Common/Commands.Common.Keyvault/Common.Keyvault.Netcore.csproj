@@ -4,8 +4,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.WindowsAzure.Commands.Common.Keyvault</AssemblyName>
-    <RootNamespace>Microsoft.WindowsAzure.Commands.Common.Keyvault</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.KeyVault</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Common.KeyVault</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   

@@ -31,8 +31,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
 using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
-using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {

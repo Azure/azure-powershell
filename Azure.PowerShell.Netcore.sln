@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Resources.Netcore"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Storage.Netcore", "src\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj", "{6B91BCDC-5031-4A7A-A566-83308FF997C6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Storage.Management.Netcore", "src\Common\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj", "{4cca7339-15bf-4066-9fa1-6a23a58f2cee}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.Storage.Netcore", "src\ResourceManager\Storage\Commands.Management.Storage\Commands.Management.Storage.Netcore.csproj", "{6878D60B-AD5B-4D37-8B84-5D529090FBAC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Websites.Netcore", "src\ResourceManager\Websites\Commands.Websites\Commands.Websites.Netcore.csproj", "{59581DCA-1726-4EE2-A665-0112E681C35C}"
@@ -155,7 +157,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "src\Storage\Commands.Storage\Commands.Storage.Netcore.csproj", "{4F18000A-0329-4450-ADC8-8AA1C04A4666}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Keyvault.Netcore", "src\Common\Commands.Common.Keyvault\Common.Keyvault.Netcore.csproj", "{DD86A98D-693A-417F-994B-C7EE51B50A54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.KeyVault.Netcore", "src\Common\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj", "{DD86A98D-693A-417F-994B-C7EE51B50A54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

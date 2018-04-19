@@ -7,8 +7,8 @@
     <ProjectGuid>{836965C0-B198-4D01-B3D7-757DB62B49A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Keyvault</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Keyvault</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Common.KeyVault</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.KeyVault</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -67,42 +67,42 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generated.Version2016-10-1\IKeyVaultManagementClient.cs" />
-    <Compile Include="Generated.Version2016-10-1\IOperations.cs" />
-    <Compile Include="Generated.Version2016-10-1\IVaultsOperations.cs" />
-    <Compile Include="Generated.Version2016-10-1\KeyVaultManagementClient.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\AccessPolicyEntry.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\AccessPolicyUpdateKind.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\CertificatePermissions.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\CheckNameAvailabilityResult.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\CreateMode.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\DeletedVault.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\DeletedVaultProperties.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\KeyPermissions.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\LogSpecification.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\Operation.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\OperationDisplay.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\Page.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\Permissions.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\Reason.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\Resource.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\SecretPermissions.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\ServiceSpecification.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\Sku.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\SkuName.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\StoragePermissions.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\Vault.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\VaultAccessPolicyParameters.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\VaultAccessPolicyProperties.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\VaultCheckNameAvailabilityParameters.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\VaultCreateOrUpdateParameters.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\VaultPatchParameters.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\VaultPatchProperties.cs" />
-    <Compile Include="Generated.Version2016-10-1\Models\VaultProperties.cs" />
-    <Compile Include="Generated.Version2016-10-1\Operations.cs" />
-    <Compile Include="Generated.Version2016-10-1\OperationsExtensions.cs" />
-    <Compile Include="Generated.Version2016-10-1\VaultsOperations.cs" />
-    <Compile Include="Generated.Version2016-10-1\VaultsOperationsExtensions.cs" />
+    <Compile Include="Version2016-10-1\IKeyVaultManagementClient.cs" />
+    <Compile Include="Version2016-10-1\IOperations.cs" />
+    <Compile Include="Version2016-10-1\IVaultsOperations.cs" />
+    <Compile Include="Version2016-10-1\KeyVaultManagementClient.cs" />
+    <Compile Include="Version2016-10-1\Models\AccessPolicyEntry.cs" />
+    <Compile Include="Version2016-10-1\Models\AccessPolicyUpdateKind.cs" />
+    <Compile Include="Version2016-10-1\Models\CertificatePermissions.cs" />
+    <Compile Include="Version2016-10-1\Models\CheckNameAvailabilityResult.cs" />
+    <Compile Include="Version2016-10-1\Models\CreateMode.cs" />
+    <Compile Include="Version2016-10-1\Models\DeletedVault.cs" />
+    <Compile Include="Version2016-10-1\Models\DeletedVaultProperties.cs" />
+    <Compile Include="Version2016-10-1\Models\KeyPermissions.cs" />
+    <Compile Include="Version2016-10-1\Models\LogSpecification.cs" />
+    <Compile Include="Version2016-10-1\Models\Operation.cs" />
+    <Compile Include="Version2016-10-1\Models\OperationDisplay.cs" />
+    <Compile Include="Version2016-10-1\Models\Page.cs" />
+    <Compile Include="Version2016-10-1\Models\Permissions.cs" />
+    <Compile Include="Version2016-10-1\Models\Reason.cs" />
+    <Compile Include="Version2016-10-1\Models\Resource.cs" />
+    <Compile Include="Version2016-10-1\Models\SecretPermissions.cs" />
+    <Compile Include="Version2016-10-1\Models\ServiceSpecification.cs" />
+    <Compile Include="Version2016-10-1\Models\Sku.cs" />
+    <Compile Include="Version2016-10-1\Models\SkuName.cs" />
+    <Compile Include="Version2016-10-1\Models\StoragePermissions.cs" />
+    <Compile Include="Version2016-10-1\Models\Vault.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultAccessPolicyParameters.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultAccessPolicyProperties.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultCheckNameAvailabilityParameters.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultCreateOrUpdateParameters.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultPatchParameters.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultPatchProperties.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultProperties.cs" />
+    <Compile Include="Version2016-10-1\Operations.cs" />
+    <Compile Include="Version2016-10-1\OperationsExtensions.cs" />
+    <Compile Include="Version2016-10-1\VaultsOperations.cs" />
+    <Compile Include="Version2016-10-1\VaultsOperationsExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

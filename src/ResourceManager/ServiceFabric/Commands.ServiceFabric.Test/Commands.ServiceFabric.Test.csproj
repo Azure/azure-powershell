@@ -277,6 +277,10 @@
       <Project>{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj">
+      <Project>{4cca7339-15bf-4066-9fa1-6a23a58f2cee}</Project>
+      <Name>Commands.Common.Storage.Management</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
       <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
       <Name>Commands.Common.Graph.RBAC</Name>
