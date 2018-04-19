@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public const string CustomRole = "CustomRole";
         public const string AuthorizationDeniedException = "Authorization_RequestDenied";
-        public const string DeletedObject = "Object Deleted";
+        public const string DeletedObject = "Unknown";
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {

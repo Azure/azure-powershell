@@ -40,7 +40,7 @@ function Test-RaDeletedPrincipals
     $assignment = Get-AzureRmRoleAssignment -ObjectId $objectId
     Assert-NotNull $assignment
     Assert-NotNull $assignment.ObjectType
-    Assert-AreEqual $assignment.ObjectType "Object Deleted"
+    Assert-AreEqual $assignment.ObjectType "Unknown"
     Assert-NotNull $assignment.ObjectId
     Assert-AreEqual $assignment.ObjectId $objectId      
 }
