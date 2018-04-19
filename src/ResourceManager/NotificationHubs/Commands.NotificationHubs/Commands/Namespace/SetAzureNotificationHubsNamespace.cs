@@ -63,8 +63,6 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 5,
             HelpMessage = "Hashtables which represents resource Tags.")]
-        [Obsolete("Set-AzureRmNotificationHubsNamespace: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
@@ -89,10 +87,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
                 Namespace,
                 () =>
                 {
-                    // Update a namespace 
-#pragma warning disable CS0618
+                    // Update a namespace
                     var nsAttribute = Client.UpdateNamespace(ResourceGroup, Namespace, Location, State, Critical, ConvertTagsToDictionary(Tag), SkuTier);
-#pragma warning restore CS0618
                     WriteObject(nsAttribute);
                 });
         }
