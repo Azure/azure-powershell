@@ -97,7 +97,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule days for the recurrence")]
         [ValidateNotNull]
-        [Alias("ScheduleDays")]
         public List<string> ScheduleDay { get; set; }
 
         /// <summary>
@@ -105,7 +104,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule hours for the recurrence")]
         [ValidateNotNull]
-        [Alias("ScheduleHours")]
         public List<int?> ScheduleHour { get; set; }
 
         /// <summary>
@@ -113,7 +111,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule minutes for the recurrence")]
         [ValidateNotNull]
-        [Alias("ScheduleMinutes")]
         public List<int?> ScheduleMinute { get; set; }
 
         /// <summary>
@@ -129,7 +126,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAutoscaleProfileFixDateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [ValidateNotNullOrEmpty]
-        [Alias("Rules")]
         public List<ScaleRule> Rule { get; set; }
 
         #endregion
@@ -145,10 +141,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: "New-AzureRmAutoscaleProfile",
-                topic: "Parameter name change", 
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             AutoscaleProfile profile = this.CreateSettingProfile();
             WriteObject(profile);
         }

@@ -15,7 +15,7 @@ Lists all Azure RBAC roles that are available for assignment.
 
 ### RoleDefinitionNameParameterSet
 ```
-Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-AtScopeAndBelow]
+Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Get-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-DefaultProfile <IAzureC
 
 ### RoleDefinitionCustomParameterSet
 ```
-Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-AtScopeAndBelow]
+Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -52,21 +52,6 @@ PS C:\> Get-AzureRmRoleDefinition
 Lists all RBAC role definitions
 
 ## PARAMETERS
-
-### -AtScopeAndBelow
-If specified, displays all role definitions.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: RoleDefinitionNameParameterSet, RoleDefinitionCustomParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -Custom
 If specified, only displays the custom created roles in the directory.
