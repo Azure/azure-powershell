@@ -19,6 +19,7 @@ using System.Linq;
 using System.Xml.Serialization;
 using NetCoreCsProjSync.NewModel;
 using NetCoreCsProjSync.OldModel;
+using Newtonsoft.Json;
 
 namespace NetCoreCsProjSync
 {
@@ -62,50 +63,54 @@ namespace NetCoreCsProjSync
             }
         }
 
-        public static readonly List<string> ModuleSkipList = new List<string>
-        {
-            "Aks",
-            "AnalysisServices.Dataplane",
-            "Compute.ManagedService",
-            "Profile",
-            "RecoveryServices.Backup.Logger",
-            "Tags"
-        };
+        public static readonly List<string> ModuleSkipList = File.Exists("ModuleSkipList.json")
+            ? JsonConvert.DeserializeObject<List<string>>(File.ReadAllText("ModuleSkipList.json")) :
+            new List<string>
+            {
+                "Aks",
+                "AnalysisServices.Dataplane",
+                "Compute.ManagedService",
+                "Profile",
+                "RecoveryServices.Backup.Logger",
+                "Tags"
+            };
 
-        public static readonly Dictionary<string, List<string>> ModuleMap = new Dictionary<string, List<string>>
-        {
-            { "AnalysisServices",                           new List<string> { "Management.Analysis" } },
-            { "ApiManagement.ServiceManagement",            new List<string> { "Management.ApiManagement" } },
-            { "AzureBackup",                                new List<string> { "Management.BackupServices", "WindowsAzure.Management.Scheduler" } },
-            { "Batch",                                      new List<string> { "Azure.Batch", "Management.Batch" } },
-            { "Management.CognitiveServices",               new List<string> { "Management.CognitiveServices" } },
-            { "Compute",                                    new List<string> { "Management.Compute", "Management.KeyVault" } },
-            { "DataFactories",                              new List<string> { "Management.DataFactories", "DataTransfer.Gateway.Encryption" } },
-            { "DataFactoryV2",                              new List<string> { "Management.DataFactory" } },
-            { "DataLakeAnalytics",                          new List<string> { "Management.DataLake.Analytics" } },
-            { "DataLakeStore",                              new List<string> { "Management.DataLake.Store" } },
-            { "HDInsight",                                  new List<string> { "Management.HDInsight", "Management.HDInsight.Job" } },
-            { "Insights",                                   new List<string> { "Management.Monitor" } },
-            { "KeyVault",                                   new List<string> { "Azure.KeyVault", "Azure.KeyVault.WebKey", "Management.KeyVault" } },
-            { "LogicApp",                                   new List<string> { "Management.Logic", "Management.WebSites" } },
-            { "OperationalInsights",                        new List<string> { "Management.OperationalInsights", "Azure.OperationalInsights" } },
-            { "Partner",                                    new List<string> { "Management.ManagementPartner" } },
-            { "PowerBI",                                    new List<string> { "Management.PowerBIDedicated" } },
-            { "Management.PowerBIEmbedded",                 new List<string> { "Management.PowerBIEmbedded" } },
-            { "RecoveryServices.Backup.Cmdlets",            new List<string> { "Management.RecoveryServices.Backup" } },
-            { "RecoveryServices.Backup.Helpers",            new List<string> { "Management.RecoveryServices.Backup" } },
-            { "RecoveryServices.Backup.Models",             new List<string> { "Management.RecoveryServices.Backup" } },
-            { "RecoveryServices.Backup.Providers",          new List<string> { "Management.RecoveryServices.Backup" } },
-            { "RecoveryServices.Backup.ServiceClientAdapter", new List<string> { "Management.RecoveryServices", "Management.RecoveryServices.Backup" } },
-            { "RecoveryServices.SiteRecovery",              new List<string> { "Management.RecoveryServices", "Management.RecoveryServices.SiteRecovery" } },
-            { "RedisCache",                                 new List<string> { "Azure.Insights", "Management.Redis" } },
-            { "Resources",                                  new List<string> { "Management.Authorization" } },
-            { "Resources.Rest",                             new List<string> { "Management.ResourceManager" } },
-            { "ServiceFabric",                              new List<string> { "Azure.KeyVault", "Azure.KeyVault.WebKey", "Management.Compute", "Management.KeyVault", "Management.Network", "Management.ResourceManager", "Management.ServiceFabric", "Management.Storage" } },
-            { "Sql",                                        new List<string> { "Management.Sql", "Microsoft.Azure.Management.Storage", "WindowsAzure.Management.Storage" } },
-            { "Management.Storage",                         new List<string> { "Management.Storage" } },
-            { "UsageAggregates",                            new List<string> { "Commerce.UsageAggregates" } }
-        };
+        public static readonly Dictionary<string, List<string>> ModuleMap = File.Exists("ModuleMap.json")
+            ? JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(File.ReadAllText("ModuleMap.json")) :
+            new Dictionary<string, List<string>>
+            {
+                { "AnalysisServices",                           new List<string> { "Management.Analysis" } },
+                { "ApiManagement.ServiceManagement",            new List<string> { "Management.ApiManagement" } },
+                { "AzureBackup",                                new List<string> { "Management.BackupServices", "WindowsAzure.Management.Scheduler" } },
+                { "Batch",                                      new List<string> { "Azure.Batch", "Management.Batch" } },
+                { "Management.CognitiveServices",               new List<string> { "Management.CognitiveServices" } },
+                { "Compute",                                    new List<string> { "Management.Compute", "Management.KeyVault" } },
+                { "DataFactories",                              new List<string> { "Management.DataFactories", "DataTransfer.Gateway.Encryption" } },
+                { "DataFactoryV2",                              new List<string> { "Management.DataFactory" } },
+                { "DataLakeAnalytics",                          new List<string> { "Management.DataLake.Analytics" } },
+                { "DataLakeStore",                              new List<string> { "Management.DataLake.Store" } },
+                { "HDInsight",                                  new List<string> { "Management.HDInsight", "Management.HDInsight.Job" } },
+                { "Insights",                                   new List<string> { "Management.Monitor" } },
+                { "KeyVault",                                   new List<string> { "Azure.KeyVault", "Azure.KeyVault.WebKey", "Management.KeyVault" } },
+                { "LogicApp",                                   new List<string> { "Management.Logic", "Management.WebSites" } },
+                { "OperationalInsights",                        new List<string> { "Management.OperationalInsights", "Azure.OperationalInsights" } },
+                { "Partner",                                    new List<string> { "Management.ManagementPartner" } },
+                { "PowerBI",                                    new List<string> { "Management.PowerBIDedicated" } },
+                { "Management.PowerBIEmbedded",                 new List<string> { "Management.PowerBIEmbedded" } },
+                { "RecoveryServices.Backup.Cmdlets",            new List<string> { "Management.RecoveryServices.Backup" } },
+                { "RecoveryServices.Backup.Helpers",            new List<string> { "Management.RecoveryServices.Backup" } },
+                { "RecoveryServices.Backup.Models",             new List<string> { "Management.RecoveryServices.Backup" } },
+                { "RecoveryServices.Backup.Providers",          new List<string> { "Management.RecoveryServices.Backup" } },
+                { "RecoveryServices.Backup.ServiceClientAdapter", new List<string> { "Management.RecoveryServices", "Management.RecoveryServices.Backup" } },
+                { "RecoveryServices.SiteRecovery",              new List<string> { "Management.RecoveryServices", "Management.RecoveryServices.SiteRecovery" } },
+                { "RedisCache",                                 new List<string> { "Azure.Insights", "Management.Redis" } },
+                { "Resources",                                  new List<string> { "Management.Authorization" } },
+                { "Resources.Rest",                             new List<string> { "Management.ResourceManager" } },
+                { "ServiceFabric",                              new List<string> { "Azure.KeyVault", "Azure.KeyVault.WebKey", "Management.Compute", "Management.KeyVault", "Management.Network", "Management.ResourceManager", "Management.ServiceFabric", "Management.Storage" } },
+                { "Sql",                                        new List<string> { "Management.Sql", "Microsoft.Azure.Management.Storage", "WindowsAzure.Management.Storage" } },
+                { "Management.Storage",                         new List<string> { "Management.Storage" } },
+                { "UsageAggregates",                            new List<string> { "Commerce.UsageAggregates" } }
+            };
 
         public static Version StringToVersion(string version) => new Version(version.Split('-').First());
 
