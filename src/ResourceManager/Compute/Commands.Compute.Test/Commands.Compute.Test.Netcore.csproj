@@ -68,4 +68,43 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ConfigFiles\DiagnosticsExtensionConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithSasToken.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithSasToken.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithStorageType.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithStorageType.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithWrongName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithWrongName.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionPrivateConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionPrivateConfigWithSasToken.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionPrivateConfigWithWrongName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionPublicConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ConfigFiles\DiagnosticsExtensionPublicConfigWithStorageType.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
