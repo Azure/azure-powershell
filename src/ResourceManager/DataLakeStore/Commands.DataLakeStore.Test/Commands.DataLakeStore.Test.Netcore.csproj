@@ -34,12 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.DataLake">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.DataLake.Netcore\Microsoft.Azure.Commands.DataLake.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

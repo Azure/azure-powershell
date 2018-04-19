@@ -38,12 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.ServiceBus">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.ServiceBus.Netcore\Microsoft.Azure.Commands.ServiceBus.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="SessionRecords\**\*.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

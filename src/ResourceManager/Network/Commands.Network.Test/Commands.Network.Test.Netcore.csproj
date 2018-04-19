@@ -25,7 +25,6 @@
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="17.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.15.0-preview" />
-    <!-- <PackageReference Include="Microsoft.Azure.Management.Storage" Version="6.1.0-preview" /> -->
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="18.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="3.1.1-preview" />
   </ItemGroup>
@@ -37,13 +36,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
-    <!-- <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj" /> -->
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Network">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Network.Netcore\Microsoft.Azure.Commands.Network.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
