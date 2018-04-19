@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SignalR.Models;
 using Microsoft.Azure.Commands.SignalR.Strategies;
@@ -25,7 +24,7 @@ using Microsoft.Azure.Commands.SignalR.Strategies.ResourceManager;
 using System.Threading;
 using Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp;
 
-namespace Microsoft.Azure.Commands.SignalR
+namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, SignalRNoun, SupportsShouldProcess = true)]
     [OutputType(typeof(PSSignalRResource))]
@@ -110,7 +109,7 @@ namespace Microsoft.Azure.Commands.SignalR
                     createModel: engine => new SignalRResource(
                         tags: _cmdlet.Tag,
                         signalrsku: new ResourceSku(_cmdlet.Sku, capacity: 1), // we only allow capacity 1 in public preview, this may be a parameter in future.
-                        hostNamePrefix: _cmdlet.Name)); // hostNamePrefix is just a placeholder and ignored in the resource provider.
+                        hostNamePrefix: null /* _cmdlet.Name*/)); // hostNamePrefix is just a placeholder and ignored in the resource provider.
             }
         }
 
