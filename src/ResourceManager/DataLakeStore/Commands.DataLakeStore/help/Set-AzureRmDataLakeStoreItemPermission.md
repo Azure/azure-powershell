@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 6ACE045E-67AD-40FE-86E4-450AF522F174
@@ -68,7 +68,7 @@ Specifies the Data Lake Store path of the file or folder, starting with the root
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -84,7 +84,7 @@ The permissions to set for the file or folder, expressed as an octal (e.g.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
