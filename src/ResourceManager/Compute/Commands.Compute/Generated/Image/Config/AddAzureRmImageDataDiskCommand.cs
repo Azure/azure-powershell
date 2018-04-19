@@ -92,9 +92,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            WriteWarning("Add-AzureRmImageDataDisk: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
-
             // StorageProfile
             if (this.Image.StorageProfile == null)
             {
@@ -113,12 +110,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vDataDisks.BlobUri = this.MyInvocation.BoundParameters.ContainsKey("BlobUri") ? this.BlobUri : null;
             vDataDisks.Caching = this.MyInvocation.BoundParameters.ContainsKey("Caching") ? this.Caching : (CachingTypes?) null;
             vDataDisks.DiskSizeGB = this.MyInvocation.BoundParameters.ContainsKey("DiskSizeGB") ? this.DiskSizeGB : (int?) null;
-            if (this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
-            {
-                WriteWarning("Add-AzureRmImageDataDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
-                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
-            }
-
             vDataDisks.StorageAccountType = this.MyInvocation.BoundParameters.ContainsKey("StorageAccountType") ? this.StorageAccountType : null;
             if (this.MyInvocation.BoundParameters.ContainsKey("SnapshotId"))
             {

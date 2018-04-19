@@ -119,9 +119,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             ExecuteClientAction(() =>
             {
-                WriteWarning("New-AzureRmImage: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                             "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
-
                 if (ShouldProcess(this.ImageName, VerbsCommon.New))
                 {
                     string resourceGroupName = this.ResourceGroupName;
@@ -172,9 +169,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             ExecuteClientAction(() =>
             {
-                WriteWarning("Update-AzureRmImage: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                             "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
-
                 if (ShouldProcess(this.ImageName, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;
