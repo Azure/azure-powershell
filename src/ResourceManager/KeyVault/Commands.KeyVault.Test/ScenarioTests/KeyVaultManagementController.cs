@@ -13,30 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using LegacyTest = Microsoft.Azure.Test;
+#if NETSTANDARD
+using Microsoft.Azure.Management.ResourceManager;
+#else
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Subscriptions;
+#endif
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
     using Common.Authentication.Abstractions;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-
-    using TestBase = Microsoft.Azure.Test.TestBase;
-    using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
     public class KeyVaultManagementController
     {
@@ -54,10 +54,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
 
         public GraphRbacManagementClient GraphClient { get; private set; }
 
@@ -78,8 +74,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
+#if !NETSTANDARD
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+#else
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType.ToString();
+            var mockName = sf.GetMethod().Name;
+#endif
 
             logger.Information(string.Format("Test method entered: {0}.{1}", callingClassType, mockName));
             helper.TracingInterceptor = logger;
@@ -161,24 +163,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             ResourceManagementClient = GetResourceManagementClient();
             NewResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
-            GalleryClient = GetGalleryClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
                 NewResourceManagementClient,
                 SubscriptionClient,
                 KeyVaultManagementClient,
-                AuthorizationManagementClient,
-                GalleryClient,
                 GraphClient
                 );
-        }
-
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
         private ResourceManagementClient GetResourceManagementClient()
@@ -195,14 +187,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         {
             return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
+
         private SubscriptionClient GetSubscriptionClient()
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
         private GraphRbacManagementClient GetGraphClient(MockContext context)
