@@ -35,12 +35,17 @@ Remove a SignalR service.
 
 ## EXAMPLES
 
-### Example 1
+### Remove a SignalR service
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmSignalR -ResourceGroupName myResourceGroup -Name mysignalr1 -PassThru
+
+True
 ```
 
-{{ Add example description here }}
+### Remove all SignalR service from pipe
+```powershell
+PS C:\> Get-AzureRmSignalR -ResourceGroupName myResourceGroup | Remove-AzureRmSignalR
+```
 
 ## PARAMETERS
 
@@ -105,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns true if removal was completed successfully.
+Returns true if the removal was completed successfully.
 
 ```yaml
 Type: SwitchParameter

@@ -71,11 +71,11 @@ namespace Microsoft.Azure.Commands.SignalR
                 if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "remove"))
                 {
                     Client.Signalr.Delete(ResourceGroupName, Name);
-                }
 
-                if (PassThru)
-                {
-                    WriteObject(true);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
             });
         }

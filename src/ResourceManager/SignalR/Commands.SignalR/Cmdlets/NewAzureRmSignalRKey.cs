@@ -10,7 +10,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.SignalR
 {
     [Cmdlet(VerbsCommon.New, SignalRKeyNoun, SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
-    [OutputType(typeof(PSSignalRKeys))]
+    [OutputType(typeof(bool))]
     public class NewAzureRmSignalRKey : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(Position = 0,
@@ -47,6 +47,9 @@ namespace Microsoft.Azure.Commands.SignalR
         [ValidateSet("Primary", "Secondary", IgnoreCase = true)]
         public string KeyType { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -70,8 +73,12 @@ namespace Microsoft.Azure.Commands.SignalR
 
                 if (ShouldProcess($"{KeyType} key for {ResourceGroupName}/{Name}", "regenerate"))
                 {
-                    var keys = Client.Signalr.RegenerateKey(ResourceGroupName, Name, new RegenerateKeyParameters(KeyType));
-                    WriteObject(new PSSignalRKeys(Name, keys));
+                    Client.Signalr.RegenerateKey(ResourceGroupName, Name, new RegenerateKeyParameters(KeyType));
+
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
             });
         }
