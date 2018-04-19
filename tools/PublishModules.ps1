@@ -508,6 +508,8 @@ function Save-PackagesFromPsGallery {
 
                 foreach($module in $RequiredModules) {
 
+                    Write-Output "Module contents ($module | FL *)"
+
                     $ModuleName = $module['ModuleName']
                     $RequiredVersion = $module['RequiredVersion']
 
