@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string WindowsParamSet = "Windows";
         protected const string WinRmHttpsParamSet = "WindowsWinRmHttps";
+        protected const string WindowsDisableVMAgentParamSet = "WindowsDisableVMAgent";
+        protected const string WindowsDisableVMAgentWinRmHttpsParamSet = "WindowsDisableVMAgentWinRmHttps";
         protected const string LinuxParamSet = "Linux";
 
         [Alias("VMProfile")]
@@ -56,6 +58,18 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Windows")]
         [Parameter(
             ParameterSetName = WinRmHttpsParamSet,
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Windows")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentParamSet,
+            Mandatory = true,
+            Position = 1,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Windows")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
@@ -109,12 +123,31 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter ProvisionVMAgent { get; set; }
 
         [Parameter(
+            ParameterSetName = WindowsDisableVMAgentParamSet,
+            HelpMessage = "Disable Provision VM Agent.")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
+            HelpMessage = "Disable Provision VM Agent.")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter DisableVMAgent { get; set; }
+
+        [Parameter(
             ParameterSetName = WindowsParamSet,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable Automatic Update")]
         [Parameter(
             ParameterSetName = WinRmHttpsParamSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable Automatic Update")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentParamSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable Automatic Update")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable Automatic Update")]
@@ -131,6 +164,16 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Time Zone")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentParamSet,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Time Zone")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Time Zone")]
         [ValidateNotNullOrEmpty]
         public string TimeZone { get; set; }
 
@@ -144,6 +187,16 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable WinRM Http protocol")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentParamSet,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable WinRM Http protocol")]
+        [Parameter(
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable WinRM Http protocol")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter WinRMHttp { get; set; }
 
@@ -153,12 +206,24 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Enable WinRM Https protocol")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enable WinRM Https protocol")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter WinRMHttps { get; set; }
 
         [Parameter(
             Mandatory = true,
             ParameterSetName = WinRmHttpsParamSet,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Url for WinRM certificate")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = WindowsDisableVMAgentWinRmHttpsParamSet,
             Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Url for WinRM certificate")]
@@ -176,9 +241,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Set-AzureRmVMOperationSystem: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
-
             this.VM.OSProfile = new OSProfile
             {
                 ComputerName = this.ComputerName,
@@ -238,7 +300,17 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 // OS Profile
-                this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = this.ProvisionVMAgent.IsPresent;
+                this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent;
+
+                if (this.ProvisionVMAgent.IsPresent)
+                {
+                    this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = true;
+                }
+
+                if (this.DisableVMAgent.IsPresent)
+                {
+                    this.VM.OSProfile.WindowsConfiguration.ProvisionVMAgent = false;
+                }
 
                 this.VM.OSProfile.WindowsConfiguration.EnableAutomaticUpdates = this.EnableAutoUpdate.IsPresent;
 

@@ -46,8 +46,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook tags.")]
-        [Obsolete("Set-AzureRmAutomationRunbook: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public IDictionary Tag { get; set; }
 
         /// <summary>
@@ -68,7 +66,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-#pragma warning disable CS0618
             // ByRunbookName
             var runbook = this.AutomationClient.UpdateRunbook(
                   this.ResourceGroupName,
@@ -78,7 +75,6 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                   this.Tag,
                   this.LogProgress,
                   this.LogVerbose);
-#pragma warning restore CS0618
 
             this.WriteObject(runbook);
         }

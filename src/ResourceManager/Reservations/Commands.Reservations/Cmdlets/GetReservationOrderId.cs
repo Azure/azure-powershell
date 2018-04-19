@@ -15,13 +15,13 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
-        public string SubscriptionId { get; set; }
+        public Guid SubscriptionId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (SubscriptionId != null)
+            if (SubscriptionId != default(Guid))
             {
-                var response = new PSAppliedReservationOrderId(AzureReservationAPIClient.GetAppliedReservationList(SubscriptionId));
+                var response = new PSAppliedReservationOrderId(AzureReservationAPIClient.GetAppliedReservationList(SubscriptionId.ToString()));
                 WriteObject(response);
             }
             else

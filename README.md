@@ -38,7 +38,7 @@ To install the module containing the legacy RDFE cmdlets, run the following comm
 Install-Module -Name Azure
 ```
 
-If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session:
+If you have an earlier version of the Azure PowerShell modules installed from the PowerShell Gallery and would like to update to the latest version, run the following commands in an elevated PowerShell session. Update-Module installs the new version side-by-side with the old version. It does not remove the old version.
 
 ```powershell
 # Update to the latest version of AzureRM

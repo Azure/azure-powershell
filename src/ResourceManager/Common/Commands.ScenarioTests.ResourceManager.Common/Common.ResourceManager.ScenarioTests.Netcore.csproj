@@ -1,7 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.targets" />
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.Commands.ScenarioTest.Common</AssemblyName>
@@ -22,10 +20,15 @@
   </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.8.1" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.7.2" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.10" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.10" />
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Azure.Common" Version="2.2.0" />
+    <PackageReference Include="Hyak.Common" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.9.0" />
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
     <PackageReference Include="Moq" Version="4.7.145" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
@@ -34,7 +37,7 @@
     <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" /> 
     <PackageReference Include="xunit" Version="2.3.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />    
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />    
   </ItemGroup>
 
   <ItemGroup>
