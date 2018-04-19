@@ -40,7 +40,7 @@ function Get-AzureRmResourceProvider
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $getTask = $client.Providers.GetWithHttpMessagesAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
+    $getTask = $client.Providers.GetWithHttpMessagesAsync($ProviderNamespace, $null, $null, [System.Threading.CancellationToken]::None)
     Write-Output $getTask.Result.Provider
   }
   END {}
@@ -107,7 +107,7 @@ function Remove-AzureRmResourceGroup
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $deleteTask = $client.ResourceGroups.DeleteWithHttpMessagesAsync($Name, [System.Threading.CancellationToken]::None)
+    $deleteTask = $client.ResourceGroups.DeleteWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
     $rg = $deleteTask.Result
   }
   END {}
