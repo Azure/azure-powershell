@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => new ManagedDiskParameters
             {
                 Id = engine.GetId(disk),
-                StorageAccountType = storageAccountTypes.ToSerializedValue()
+                StorageAccountType = storageAccountTypes
             };
     }
 }

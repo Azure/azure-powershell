@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
 #else
-            return context.AcquireTokenAsync(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate))
+            return context.AcquireTokenAsync(config.ResourceClientUri, new Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(appId, certificate))
                           .ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
