@@ -203,7 +203,7 @@ To add multiple tags in the same command, separate the individual tags by using 
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: 5
