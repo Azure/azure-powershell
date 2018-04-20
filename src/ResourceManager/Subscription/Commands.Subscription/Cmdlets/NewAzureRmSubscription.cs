@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "The user(s) or group object(s) id(s) to be granted Owner access to the subscription.")]
         [Alias("OwnerId", "OwnerPrincipalId")]
         public string[] OwnerObjectId { get; set; }
-        
+
         [Parameter(Mandatory = false, HelpMessage = "The user(s) to be granted Owner access to the subscription.")]
         [Alias("OwnerEmail", "OwnerUserPrincipalName")]
         public string[] OwnerSignInName { get; set; }
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
             {
                 foreach (string spn in servicePrincipalNames)
                 {
-                    uniqueObjectIds.Add(Guid.Parse(ActiveDirectoryClient.GetObjectIdFromSPN(spn)));
+                    uniqueObjectIds.Add(ActiveDirectoryClient.GetObjectIdFromSPN(spn));
                 }
             }
 

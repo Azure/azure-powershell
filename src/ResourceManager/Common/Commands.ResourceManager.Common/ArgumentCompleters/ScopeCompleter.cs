@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     using System.Linq;
     using System.Management.Automation;
 
-    public class ScopeCompleterAttribute : PSCompleterBaseAttribute
+    public class ScopeCompleterAttribute : ArgumentCompleterAttribute
     {
         public static IDictionary<int, IList<string>> _scopeDictionary = new ConcurrentDictionary<int, IList<string>>();
         private static readonly object _lock = new object();
@@ -85,9 +85,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
             }
         }
 
-        public override string[] GetCompleterValues()
+        /// <summary>
+        /// This class will provide a list of scopes that are available to the user. This will then be available to the user to tab through.
+        /// </summary>
+        public ScopeCompleterAttribute() : base(CreateScriptBlock())
         {
-            return GetScopes();
         }
 
         public static string[] GetScopes(int timeout)

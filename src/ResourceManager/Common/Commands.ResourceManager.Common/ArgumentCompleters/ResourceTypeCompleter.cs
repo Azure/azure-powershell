@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     /// <summary>
     /// This attribute will allow the user to autocomplete the -ResourceType parameter of a cmdlet with valid resource types
     /// </summary>
-    public class ResourceTypeCompleterAttribute : PSCompleterBaseAttribute
+    public class ResourceTypeCompleterAttribute : ArgumentCompleterAttribute
     {
         private static IDictionary<int, IList<String>> _resourceTypesDictionary = new ConcurrentDictionary<int, IList<string>>();
         private static readonly object _lock = new object();
@@ -92,17 +92,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         }
 
         /// <summary>
-        /// This class will provide a list of resource groups that are available to the user (with default resource group first if it exists). This will then be available to the user to tab through.
-        /// Example: [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false), ResourceGroupCompleter()]
+        /// This class will provide a list of resource types that are available to the user. This will then be available to the user to tab through.
         /// </summary>
-        /// <param name="resourceTypes"></param>
-        public ResourceTypeCompleterAttribute()
+        public ResourceTypeCompleterAttribute() : base(CreateScriptBlock())
         {
-        }
-
-        public override string[] GetCompleterValues()
-        {
-            return GetResourceTypes();
         }
 
         public static string[] GetResourceTypes(int timeout)
@@ -147,7 +140,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 #if DEBUG
             else
             {
-                throw new Exception("Result from client.ResourceGroups is null");
+                throw new Exception("Result from client.Providers.ListAsync() is null");
             }
 #endif
             return tempResourceTypeList;
