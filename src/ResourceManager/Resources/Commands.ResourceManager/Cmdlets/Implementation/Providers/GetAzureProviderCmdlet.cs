@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System;
     using System.Linq;
     using System.Management.Automation;
+    using WindowsAzure.Commands.Utilities.Common;
     using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
     /// <summary>
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource provider namespace.", ParameterSetName = GetAzureProviderCmdlet.IndividualProviderParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string ProviderNamespace { get; set; }
+        public string[] ProviderNamespace { get; set; }
 
         /// <summary>
         /// Gets or sets the provider namespace
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var providers = this.ListPSResourceProviders();
 
-            if (!string.IsNullOrEmpty(this.ProviderNamespace))
+            if (this.IsParameterBound(c => c.ProviderNamespace))
             {
                 var expandedProviders = providers
                     .SelectMany(provider =>
@@ -106,9 +107,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 listAvailable: true);
 
             var providers = allProviders;
-            if (!string.IsNullOrEmpty(this.ProviderNamespace))
+            if (this.IsParameterBound(c => c.ProviderNamespace))
             {
-                providers = this.ResourceManagerSdkClient.ListResourceProviders(providerName: this.ProviderNamespace);
+                providers = new System.Collections.Generic.List<Management.ResourceManager.Models.Provider>();
+                foreach (var providerNamespace in this.ProviderNamespace)
+                {
+                    providers.AddRange(this.ResourceManagerSdkClient.ListResourceProviders(providerName: providerNamespace));
+                }
             }
             else if (this.ListAvailable == false)
             {
@@ -140,7 +145,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             var providerWithResourceTypes = providers.ToDictionary(
-                provider => provider, 
+                provider => provider,
                 provider => provider.ResourceTypes
                     .Where(type => !type.Locations.Any() || type.Locations.Any(loc => loc.EqualsAsLocation(this.Location)))
                     .ToList());

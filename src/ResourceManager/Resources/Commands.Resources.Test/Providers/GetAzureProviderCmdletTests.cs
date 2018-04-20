@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.VerifyListCallPatternAndReset();
 
             // 3. List a single provider by name
-            this.cmdlet.ProviderNamespace = UnregisteredProviderNamespace;
+            this.cmdlet.ProviderNamespace = new string[] { UnregisteredProviderNamespace };
 
             this.providerOperationsMock
               .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()))
