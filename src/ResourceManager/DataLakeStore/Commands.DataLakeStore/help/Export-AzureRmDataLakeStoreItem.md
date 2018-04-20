@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: B10B1F5D-5566-4129-9D42-05A6D3B72C9E
@@ -16,16 +16,16 @@ Downloads a file from Data Lake Store.
 ### NoDiagnosticLogging (Default)
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [-Force] [-Concurrency <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### IncludeDiagnosticLogging
 ```
 Export-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Destination] <String>
- [-Recurse] [-Resume] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
- [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [-Force] [-Concurrency <Int32>] [-DiagnosticLogLevel <LogLevel>]
+ -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,24 +63,10 @@ Indicates the number of files or chunks to download in parallel. Default will be
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ConcurrentFileCount
-Indicates the maximum number of files to download in parallel for a folder download.  Default will be computed as a best effort based on folder and file size
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -107,7 +93,7 @@ Specifies the local file path to which to download the file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -122,7 +108,7 @@ Optionally indicates the diagnostic log level to use to record events during the
 ```yaml
 Type: LogLevel
 Parameter Sets: IncludeDiagnosticLogging
-Aliases: 
+Aliases:
 Accepted values: Debug, Information, Error, None
 
 Required: False
@@ -138,7 +124,7 @@ Specifies the path for the diagnostic log to record events to during the file or
 ```yaml
 Type: String
 Parameter Sets: IncludeDiagnosticLogging
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -153,7 +139,7 @@ Indicates that this operation can overwrite the destination file if it already e
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -168,25 +154,10 @@ Specifies the path of the item to download from the Data Lake Store, starting fr
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PerFileThreadCount
-Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -198,7 +169,7 @@ Indicates that a folder download is recursive.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -214,7 +185,7 @@ This will cause the system to attempt to resume from the last file that was not 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4

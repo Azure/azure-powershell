@@ -32,7 +32,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     PS C:\> Close-AzsAlert -Name f2147f3d-42ac-4316-8cbc-f0f9c18888b0
 
-    Close an alert by AlertId.
+    Close an alert by Name.
 
 .EXAMPLE
 

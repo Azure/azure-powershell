@@ -155,9 +155,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             ExecuteClientAction(() =>
             {
-                WriteWarning("Get-AzureRmImage: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                              "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
-
                 string resourceGroupName = this.ResourceGroupName;
                 string imageName = this.ImageName;
                 string expand = this.Expand;
