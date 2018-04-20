@@ -537,7 +537,7 @@ namespace Microsoft.Azure.Commands.Compute
         private VirtualMachineIdentity GetVMIdentityFromArgs()
         {
             var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
-            return SystemAssignedIdentity.IsPresent || isUserAssignedEnabled
+            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
                 ? new VirtualMachineIdentity
                 {
                     Type = !isUserAssignedEnabled ? 
