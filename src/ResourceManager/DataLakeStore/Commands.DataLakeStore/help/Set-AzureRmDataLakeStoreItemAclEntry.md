@@ -216,7 +216,9 @@ Accept wildcard characters: False
 ```
 
 ### -Recurse
-Indicates the ACL to be modified recursively to the child subdirectories and files```yaml
+Indicates the ACL to be modified recursively to the child subdirectories and files
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
