@@ -84,7 +84,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of profiles")]
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of profiles")]
         [ValidateNotNullOrEmpty]
-        [Alias("AutoscaleProfiles")]
         public List<AutoscaleProfile> AutoscaleProfile { get; set; }
 
         /// <summary>
@@ -99,7 +98,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of notifications of the setting")]
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of notifications of the setting")]
-        [Alias("Notifications")]
         public List<AutoscaleNotification> Notification { get; set; }
 
         #endregion
@@ -109,10 +107,6 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         protected override void ProcessRecordInternal()
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: "Add-AzureRmAutoscaleSetting",
-                topic: "Parameter name change", 
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of he singular versions of the same names.");
             if (ShouldProcess(
                 target: string.Format("Create/update an autoscale setting: {0} from resource group: {1}", this.Name, this.ResourceGroupName),
                 action: "Create/update an autoscale setting"))
