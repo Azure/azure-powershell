@@ -179,7 +179,7 @@ The resource tags for the workspace.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: 5

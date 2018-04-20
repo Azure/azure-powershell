@@ -129,7 +129,7 @@ Tags to be associated with Property. This parameter is optional.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named

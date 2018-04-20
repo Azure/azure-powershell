@@ -223,16 +223,10 @@
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Scheduler.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ServerManagement.dll.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ServiceBus.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.ServiceFabric.dll.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.SiteRecovery.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.Sql.dll.json">
