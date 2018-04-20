@@ -15,7 +15,7 @@ Exports the properties (Disk usage and Acl) for the entire tree from the specifi
 ### GetDiskUsage
 ```
 Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-OutputPath] <String> [-SaveToAdl] [-IncludeFiles] [-MaximumDepth <Int32>] [-Concurrency <Int32>]
+ [-OutputPath] <String> [-SaveToAdl] [-IncludeFile] [-MaximumDepth <Int32>] [-Concurrency <Int32>]
  [-GetDiskUsage] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -23,16 +23,16 @@ Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <Data
 ### GetAllProperties
 ```
 Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-OutputPath] <String> [-SaveToAdl] [-IncludeFiles] [-MaximumDepth <Int32>] [-Concurrency <Int32>]
- [-GetDiskUsage] [-GetAcl] [-HideConsistentAcls] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-OutputPath] <String> [-SaveToAdl] [-IncludeFile] [-MaximumDepth <Int32>] [-Concurrency <Int32>]
+ [-GetDiskUsage] [-GetAcl] [-HideConsistentAcl] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetAclDump
 ```
 Export-AzureRmDataLakeStoreChildItemProperties [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-OutputPath] <String> [-SaveToAdl] [-IncludeFiles] [-MaximumDepth <Int32>] [-Concurrency <Int32>] [-GetAcl]
- [-HideConsistentAcls] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-OutputPath] <String> [-SaveToAdl] [-IncludeFile] [-MaximumDepth <Int32>] [-Concurrency <Int32>] [-GetAcl]
+ [-HideConsistentAcl] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -43,10 +43,10 @@ The **Export-AzureRmDataLakeStoreChildItemProperties** is used to report the ADL
 
 ### Example 1: Get the disk usage and ACL usage for all subdirectories and files
 ```
-PS C:\> Export-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -GetDiskUsage -IncludeFiles
+PS C:\> Export-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -GetDiskUsage -IncludeFile
 ```
 
-Get the disk usage and ACL usage for all subdirectories and files under /a. IncludeFiles ensures the usage is reported for files also
+Get the disk usage and ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also
 
 ### Example 2: Get the ACL usage for all subdirectories and files with the consistent ACL hidden
 ```
@@ -54,10 +54,10 @@ PS C:\> $fullAcl="user:c9d53a11-cbd5-4a04-8b7c-0d6e39d7fa35:--x|user::rwx|other:
 PS C:\> $newFullAcl = $fullAcl.Split("{|}");
 PS C:\> Set-AzureRmDataLakeStoreItemAcl -Account rdutta1 -Path /a -Acl $newFullAcl -Recurse -Debug
 
-PS C:\> Export-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcls -IncludeFiles
+PS C:\> Export-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcl -IncludeFile
 ```
 
-Get the ACL usage for all subdirectories and files under /a. IncludeFiles ensures the usage is reported for files also. HideconsistentAcl in this case will show the Acl of /a, not it's children since all of the children has same acl as /a. This flag skips the acl ouput of subtree if all it's acls are same as the root.
+Get the ACL usage for all subdirectories and files under /a. IncludeFile ensures the usage is reported for files also. HideconsistentAcl in this case will show the Acl of /a, not it's children since all of the children has same acl as /a. This flag skips the acl ouput of subtree if all it's acls are same as the root.
 
 ## PARAMETERS
 
@@ -137,7 +137,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -HideConsistentAcls
+### -HideConsistentAcl
 Do not show directory subtree if the ACLs are the same throughout the entire subtree. This makes it easier to see only the paths up to which the ACLs differ.For example if all files and folders under /a/b are the same, do not show the subtreeunder /a/b, and just output /a/b with 'True' in the Consistent ACL columnCannot be set if IncludeFiles is not set, because consistent Acl cannot be determined without retrieving acls for the files.
 
 ```yaml
@@ -152,7 +152,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncludeFiles
+### -IncludeFile
 Show stats at file level (default is to show directory-level info only)
 
 ```yaml

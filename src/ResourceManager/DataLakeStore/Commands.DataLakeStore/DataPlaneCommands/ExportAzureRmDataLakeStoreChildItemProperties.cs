@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
                 "Show stats at file level (default is to show directory-level info only)")]
-        public SwitchParameter IncludeFiles { get; set; }
+        public SwitchParameter IncludeFile { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Maximum depth from the Path specified, to which disk usage or acl is displayed")]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                           "For example if all files and folders under /a/b are the same, do not show the subtree" +
                           "under /a/b, and just output /a/b with 'True' in the Consistent ACL column" +
                           "Cannot be set if IncludeFiles is not set, because consistent Acl cannot be determined without retrieving acls for the files.")]
-        public SwitchParameter HideConsistentAcls { get; set; }
+        public SwitchParameter HideConsistentAcl { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage =
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             DataLakeStoreFileSystemClient.GetFileProperties(Account, Path.TransformedPath, GetAcl, OutputPath,
-                GetDiskUsage, !SaveToAdl, Concurrency, IncludeFiles, HideConsistentAcls, MaximumDepth);
+                GetDiskUsage, !SaveToAdl, Concurrency, IncludeFile, HideConsistentAcl, MaximumDepth);
             if (PassThru)
             {
                 WriteObject(true);
