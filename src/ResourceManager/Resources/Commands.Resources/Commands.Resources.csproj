@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveDirectory\AddAzureADGroupMemberCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADAppCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADGroupMemberCommand.cs" />
@@ -64,18 +65,21 @@
     <Compile Include="ActiveDirectory\GetAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADUserCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADAppCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADGroupCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADUserCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADAppCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADGroupCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADGroupMemberCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADUserCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADApplicationCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADServicePrincipalCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADUserCommand.cs" />
     <Compile Include="Extensions\ResourceExtensions.cs" />
     <Compile Include="Gallery\Artifact.cs" />
     <Compile Include="Gallery\DefinitionTemplates.cs" />

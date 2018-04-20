@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                     DisplayName = obj.DisplayName,
                     Type = obj.ObjectType,
                     Id = new Guid(obj.ObjectId),
-                    SecurityEnabled = obj.SecurityEnabled
+                    SecurityEnabled = obj.SecurityEnabled,
+                    MailNickname = obj.Mail
                 };
 
             }
@@ -111,7 +112,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 DisplayName = group.DisplayName,
                 Id = new Guid(group.ObjectId),
                 SecurityEnabled = group.SecurityEnabled,
-                Type = group.ObjectType
+                Type = group.ObjectType,
+                MailNickname = group.Mail
             };
         }
 

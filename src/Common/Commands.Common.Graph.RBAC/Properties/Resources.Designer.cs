@@ -133,6 +133,15 @@ namespace Microsoft.Azure.Commands.Common.Graph.RBAC.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service principal with AppId &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ServicePrincipalWithAppIdDoesntExist {
+            get {
+                return ResourceManager.GetString("ServicePrincipalWithAppIdDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service principal with SPN &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string ServicePrincipalWithSPNDoesntExist {
