@@ -18,27 +18,24 @@ using System;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
+
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
-    /// <summary>
-    /// Removes the AD application.
-    /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmADApplication", DefaultParameterSetName = ParameterSet.ObjectId, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRmADGroup", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ObjectId), OutputType(typeof(bool))]
+    public class RemoveAzureADGroupCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The application object id.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The object id of the group to be removed.")]
+        [ValidateNotNullOrEmpty]
         public Guid ObjectId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
-        public Guid ApplicationId { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The object representation of the group to be removed.")]
+        [ValidateNotNullOrEmpty]
+        public PSADGroup InputObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The application object.")]
-        public PSADApplication InputObject { get; set;}
-
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true)]
         public SwitchParameter PassThru { get; set; }
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -47,19 +44,15 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.InputObject))
                 {
-                    ObjectId = InputObject.ObjectId;
-                }
-                else if (this.IsParameterBound(c => c.ApplicationId))
-                {
-                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = InputObject.Id;
                 }
 
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(ProjectResources.RemovingApplication, ObjectId),
-                    ProjectResources.RemoveApplication,
+                    string.Format(ProjectResources.RemoveGroupConfirmation, ObjectId),
+                    ProjectResources.RemovingGroup,
                     ObjectId.ToString(),
-                    () => ActiveDirectoryClient.RemoveApplication(ObjectId));
+                    () => ActiveDirectoryClient.RemoveGroup(ObjectId.ToString()));
 
                 if (PassThru.IsPresent)
                 {
