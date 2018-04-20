@@ -59,9 +59,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var resourcesClient = GetResourcesClient();
             var newResourcesClient = GetResourcesClient(context);
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient, newResourcesClient);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -92,13 +91,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.RMStorageDataPlaneModule,
-                    helper.GetRMModulePath(@"AzureRM.Insights.psd1"),
                     helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
+                    helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
-                    "AzureRM.Resources.ps1",
-                    helper.RMNetworkModule);
+                    "AzureRM.Resources.ps1");
                 helper.RunPowerShellTest(scripts);
             }
         }
@@ -139,17 +136,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected ResourceManagementClient GetResourcesClient()
-        {
-            ResourceManagementClient client = TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationInitialTimeout = 0;
-                client.LongRunningOperationRetryTimeout = 0;
-            }
-            return client;
-        }
-
         protected Management.Internal.Resources.ResourceManagementClient GetResourcesClient(RestTestFramework.MockContext context)
         {
             Management.Internal.Resources.ResourceManagementClient client =
@@ -172,10 +158,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected Management.Network.NetworkManagementClient GetNetworkClient(RestTestFramework.MockContext context)
+        protected NetworkManagementClient GetNetworkClient(RestTestFramework.MockContext context)
         {
-            Management.Network.NetworkManagementClient client =
-                context.GetServiceClient<Management.Network.NetworkManagementClient>(
+            NetworkManagementClient client =
+                context.GetServiceClient<NetworkManagementClient>(
                     RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
