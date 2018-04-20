@@ -73,12 +73,6 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The Name of Sku")]
         public string Sku { get; set; }
 
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Managed Availability Set")]
-        [Obsolete("This parameter is obsolete.  Please use Sku parameter instead.", false)]
-        public SwitchParameter Managed { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -95,16 +89,12 @@ namespace Microsoft.Azure.Commands.Compute
                     PlatformFaultDomainCount = this.PlatformFaultDomainCount
                 };
 
-                if (this.Managed.IsPresent || !string.IsNullOrEmpty(this.Sku))
+                if (!string.IsNullOrEmpty(this.Sku))
                 {
                     avSetParams.Sku = new Sku();
                     if (!string.IsNullOrEmpty(this.Sku))
                     {
                         avSetParams.Sku.Name = this.Sku;
-                    }
-                    if (this.Managed.IsPresent)
-                    {
-                        avSetParams.Sku.Name = "Aligned";
                     }
                 }
 

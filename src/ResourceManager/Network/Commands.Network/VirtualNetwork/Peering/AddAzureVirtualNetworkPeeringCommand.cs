@@ -52,8 +52,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Flag to allow the forwarded traffic from the VMs in the remote virtual network")]
         public SwitchParameter AllowForwardedTraffic { get; set; }
 
-        [Obsolete("Add-AzureRmVirtualNetworkPeering: -AlloowGatewayTransit will be removed in an upcoming breaking change release.  Please start using -AllowGatewayTransit to avoid breaking scripts.")]
-        [Alias("AlloowGatewayTransit")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to allow gatewayLinks be used in remote virtual network's link to this virtual network")]
@@ -96,9 +94,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             vnetPeering.AllowVirtualNetworkAccess = !this.BlockVirtualNetworkAccess.IsPresent;
-#pragma warning disable CS0618
             vnetPeering.AllowGatewayTransit = this.AllowGatewayTransit;
-#pragma warning restore CS0618
             vnetPeering.AllowForwardedTraffic = this.AllowForwardedTraffic;
             vnetPeering.UseRemoteGateways = this.UseRemoteGateways;
 
