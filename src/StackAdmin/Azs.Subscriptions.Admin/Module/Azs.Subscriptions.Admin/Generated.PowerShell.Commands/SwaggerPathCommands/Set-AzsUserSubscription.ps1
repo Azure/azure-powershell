@@ -182,7 +182,7 @@ function Set-AzsUserSubscription {
                     $flattenedParameters = @('TenantId', 'SubscriptionId', 'DisplayName', 'DelegatedProviderSubscriptionId', 'Owner', 'RoutingResourceManagerType', 'ExternalReferenceId', 'State', 'Location', 'OfferId')
                     $flattenedParameters | ForEach-Object {
                         if ($PSBoundParameters.ContainsKey($_)) {
-                            $updatedSubscription[$_] = $PSBoundParameters[$_]
+                            $updatedSubscription.$($_) = $PSBoundParameters[$_]
                         }
                     }
 

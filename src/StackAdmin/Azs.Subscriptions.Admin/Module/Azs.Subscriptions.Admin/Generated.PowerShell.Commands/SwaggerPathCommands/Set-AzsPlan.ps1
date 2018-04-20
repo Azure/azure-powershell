@@ -197,7 +197,7 @@ function Set-AzsPlan {
 
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {
-                        $NewPlan[$_] = $PSBoundParameters[$_]
+                        $NewPlan.$($_) = $PSBoundParameters[$_]
                     }
                 }
 
