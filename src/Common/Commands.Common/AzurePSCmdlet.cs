@@ -157,6 +157,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get
             {
+                if (_copiedDynamicParameters == null)
+                {
+                    _copiedDynamicParameters = new RuntimeDefinedParameterDictionary();
+                    return _copiedDynamicParameters;
+                }
                 return _copiedDynamicParameters;
             }
             set
