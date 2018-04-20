@@ -16,9 +16,9 @@ Creates a Storage account.
 ```
 New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
  [-Location] <String> [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>]
- [-UseSubDomain <Boolean>] [-EnableEncryptionService <EncryptionSupportServiceEnum>] [-Tag <Hashtable>]
- [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-UseSubDomain <Boolean>] [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] 
+ [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] 
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,23 +135,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableEncryptionService
-Indicates whether this cmdlet enables Storage Service Encryption. 
-Azure Blob storage and Azure Files are supported.
-
-```yaml
-Type: EncryptionSupportServiceEnum
-Parameter Sets: (All)
-Aliases: 
-Accepted values: None, Blob, File
 
 Required: False
 Position: Named
