@@ -122,8 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
             {
-                WriteWarning("New-AzureRmDiskUpdateConfig: The accepted values for parameter SkuName will change in an upcoming breaking change release " +
-                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
                 if (vSku == null)
                 {
                     vSku = new Microsoft.Azure.Management.Compute.Models.DiskSku();
