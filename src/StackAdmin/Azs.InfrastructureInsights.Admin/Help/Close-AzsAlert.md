@@ -1,7 +1,7 @@
 ---
 external help file: Azs.InfrastructureInsights.Admin-help.xml
 Module Name: Azs.InfrastructureInsights.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -35,14 +35,14 @@ Closes the given alert.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Close-AzsAlert -AlertId f2147f3d-42ac-4316-8cbc-f0f9c18888b0
+Close-AzsAlert -Name f2147f3d-42ac-4316-8cbc-f0f9c18888b0
 ```
 
 Close an alert by AlertId.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
-Get-AzsAlert -AlertId f2147f3d-42ac-4316-8cbc-f0f9c18888b0 | Close-AzsAlert
+Get-AzsAlert -Name f2147f3d-42ac-4316-8cbc-f0f9c18888b0 | Close-AzsAlert
 ```
 
 Close an alert through piping.
@@ -55,7 +55,7 @@ Close an alert through piping.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -70,7 +70,7 @@ The input object of type Microsoft.AzureStack.Management.InfrastructureInsights.
 ```yaml
 Type: Alert
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -85,7 +85,7 @@ Name of the location.
 ```yaml
 Type: String
 Parameter Sets: Close
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -100,7 +100,7 @@ The alert identifier.
 ```yaml
 Type: String
 Parameter Sets: Close
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: Close
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -130,7 +130,7 @@ The resource id.
 ```yaml
 Type: String
 Parameter Sets: ResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -145,7 +145,7 @@ The username used to perform the operation.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

@@ -167,7 +167,7 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             foreach ($Region in $Regions) {
                 $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
                 foreach ($Alert in $Alerts) {
-                    $retrieved = Get-AzsAlert -Location $Location -AlertId $Alert.Name
+                    $retrieved = Get-AzsAlert -Location $Location -Name $Alert.Name
                     AssertAlertsAreSame -Expected $Alert -Found $retrieved
                     return
                 }
@@ -182,7 +182,7 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             foreach ($Region in $Regions) {
                 $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
                 foreach ($Alert in $Alerts) {
-                    $retrieved = Get-AzsAlert -Location $Location -AlertId $Alert.Name
+                    $retrieved = Get-AzsAlert -Location $Location -Name $Alert.Name
                     AssertAlertsAreSame -Expected $Alert -Found $retrieved
                 }
             }

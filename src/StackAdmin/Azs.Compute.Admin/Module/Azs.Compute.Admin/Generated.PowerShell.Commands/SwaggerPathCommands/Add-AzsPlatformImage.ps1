@@ -8,10 +8,10 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 <#
 .SYNOPSIS
-    Creates a new virtual machine platform image from a given image configuration.
+    Add a virtual machine platform image from a given image configuration.
 
 .DESCRIPTION
-    Creates a new platform image.
+    Add a platform image.
 
 .PARAMETER Publisher
     Name of the publisher.

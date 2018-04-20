@@ -16,9 +16,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceGroupName
     Name of the resource group.
 
-.PARAMETER Location
-    Location of the resource.
-
 .PARAMETER ResourceId
     The resource id.
 
