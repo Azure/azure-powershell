@@ -583,7 +583,6 @@ function Add-AllModules {
         [String]$NugetExe
     )
     $Keys = @('ClientModules', 'AdminModules', 'RollupModules')
-    #$Keys = @('RollupModules')
     Write-Output "adding modules to local repo"
     foreach ($module in $Keys) {
         $modulePath = $Modules[$module]
