@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 16, Mandatory = false, HelpMessage = "Enable MSI on an existing azure webapp")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable MSI on an existing azure webapp")]
         public bool AssignIdentity { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 17, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
         public bool HttpsOnly { get; set; }
 
         public override void ExecuteCmdlet()
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         {
                             Location = location,
                             ServerFarmId = WebApp.ServerFarmId,
-                            Identity = parameters.Contains("AssignIdentity") ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
+                            Identity = parameters.Contains("AssignIdentity") && AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
                         };
 
@@ -162,23 +162,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                                                                         },
                                                                         StringComparer.OrdinalIgnoreCase));
                         }
-                        else
-                        {
-                            // disabling the identity property updates the siteconfig only
-                            appSettings["WEBSITE_DISABLE_MSI"] = (!AssignIdentity).ToString();
-                        }
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, WebApp.ServerFarmId, site);
                     }
 
                     if (parameters.Contains("AppServicePlan"))
                     {
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan);
                     }
-
-                    if (parameters.Contains("AssignIdentity") || parameters.Contains("HttpsOnly"))
-                    {
-                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, WebApp.ServerFarmId, site);
-                    }
-
 
                     break;
                 case ParameterSet2Name:
