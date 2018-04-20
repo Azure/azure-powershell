@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     "Common.ps1",
                     callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.RMInsightsModule);
+                    helper.RMResourceModule
+                    );
 
                 try
                 {

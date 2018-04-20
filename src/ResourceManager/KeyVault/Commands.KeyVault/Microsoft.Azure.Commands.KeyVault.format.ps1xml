@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyIdentityItem</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyIdentityItem</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -60,9 +60,9 @@
       </ListControl>     
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyIdentityItem</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyIdentityItem</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -122,9 +122,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSSecretIdentityItem</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSSecretIdentityItem</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -180,9 +180,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedSecretIdentityItem</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedSecretIdentityItem</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -242,9 +242,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -276,9 +276,9 @@
       </ListControl>
     </View>    
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -318,9 +318,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSVault</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSVault</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -384,9 +384,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultAccessPolicy</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSVaultAccessPolicy</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultAccessPolicy</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -430,9 +430,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSSecret</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSSecret</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -551,9 +551,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedSecret</Name>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecret</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedSecret</TypeName>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecret</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>

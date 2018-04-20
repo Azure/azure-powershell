@@ -30,7 +30,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.13.1-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Redis" Version="4.4.0" />
-    <PackageReference Include="WindowsAzure.Storage" Version="8.1.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
