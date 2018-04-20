@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq.Expressions;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text;
@@ -256,7 +257,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Execute the given cmdlet in powershell usign the given pipeline parameters.  
+        /// Execute the given cmdlet in powershell usign the given pipeline parameters.
         /// </summary>
         /// <typeparam name="T">The output type for the cmdlet</typeparam>
         /// <param name="cmdlet">The cmdlet to execute</param>
@@ -353,6 +354,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return output;
         }
+
+        public static bool IsParameterBound<TPSCmdlet, TProp>(this TPSCmdlet cmdlet, Expression<Func<TPSCmdlet, TProp>> propertySelector) where TPSCmdlet : PSCmdlet
+        {
+            var propName = ((MemberExpression)propertySelector.Body).Member.Name;
+            return cmdlet.MyInvocation.BoundParameters.ContainsKey(propName);
+        }
+
         #region PowerShell Commands
 
         public static void RemoveModule(this PSCmdlet cmdlet, string moduleName)
