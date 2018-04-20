@@ -21,7 +21,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    Remove-AzsGalleryItem -GalleryItemName "microsoft.vmss.1.3.6"
+    Remove-AzsGalleryItem -Name "microsoft.vmss.1.3.6"
 
     Delete a gallery item.
 #>

@@ -33,9 +33,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Get-AzsAlert -AlertId 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
+    PS C:\> Get-AzsAlert -Name 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
 
-    Get an alert by AlertId.
+    Get an alert by Name.
 
 
 .EXAMPLE

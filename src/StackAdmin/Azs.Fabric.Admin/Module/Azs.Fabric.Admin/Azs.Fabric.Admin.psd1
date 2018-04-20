@@ -75,19 +75,18 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = 'Restart-AzsInfrastructureRoleInstance', 'Get-AzsStorageSystem',
-    'Add-AzsScaleUnitNode', 'Stop-AzsScaleUnitNode',
     'Get-AzsScaleUnitNode', 'Disable-AzsScaleUnitNode',
     'Get-AzsLogicalNetwork', 'Get-AzsInfrastructureShare',
     'Get-AzsSlbMuxInstance', 'Get-AzsScaleUnit', 'New-AzsIpPool',
     'Start-AzsInfrastructureRoleInstance', 'Get-AzsMacAddressPool',
-    'Get-AzsEdgeGatewayPool',
+    'Get-AzsEdgeGatewayPool', 'Restart-AzsInfrastructureRole',
     'Get-AzsInfrastructureVolume', 'Enable-AzsScaleUnitNode',
     'Get-AzsInfrastructureRole', 'Get-AzsIpPool', 'Get-AzsLogicalSubnet',
     'Get-AzsEdgeGateway', 'Get-AzsInfrastructureLocation',
     'Get-AzsStoragePool', 'Suspend-AzsInfrastructureRoleInstance',
     'Start-AzsScaleUnitNode', 'Get-AzsInfrastructureRoleInstance',
     'Repair-AzsScaleUnitNode', 'Stop-AzsInfrastructureRoleInstance',
-    'New-AzsScaleUnitNodeObject', 'Restart-AzsInfrastructureRole'
+    'Stop-AzsScaleUnitNode'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()

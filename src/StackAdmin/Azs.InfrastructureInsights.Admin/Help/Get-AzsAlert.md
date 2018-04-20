@@ -1,7 +1,7 @@
 ---
 external help file: Azs.InfrastructureInsights.Admin-help.xml
 Module Name: Azs.InfrastructureInsights.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -20,7 +20,7 @@ Get-AzsAlert [-Location <String>] [-ResourceGroupName <String>] [-Filter <String
 
 ### Get
 ```
-Get-AzsAlert [-AlertId] <String> [-Location <String>] [-ResourceGroupName <String>] [<CommonParameters>]
+Get-AzsAlert [-Name] <String> [-Location <String>] [-ResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -35,7 +35,7 @@ Returns the list of all alerts in a given location.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsAlert -AlertId 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
+Get-AzsAlert -Name 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
 ```
 
 Get an alert by AlertId.
@@ -49,13 +49,13 @@ Get all active alerts and display their fault and title.
 
 ## PARAMETERS
 
-### -AlertId
-{{Fill AlertId Description}}
+### -Name
+The alert identifier.
 
 ```yaml
 Type: String
 Parameter Sets: Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -70,7 +70,7 @@ OData filter parameter.
 ```yaml
 Type: String
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,7 +85,7 @@ Name of the location.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -130,7 +130,7 @@ Skip the first N items as specified by the parameter value.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -146,7 +146,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
