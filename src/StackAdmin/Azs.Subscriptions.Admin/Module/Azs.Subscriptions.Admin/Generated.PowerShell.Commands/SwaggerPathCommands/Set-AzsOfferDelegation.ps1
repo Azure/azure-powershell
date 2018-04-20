@@ -46,7 +46,7 @@ function Set-AzsOfferDelegation {
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $Name,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
@@ -63,7 +63,7 @@ function Set-AzsOfferDelegation {
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [string]
+        [System.String]
         $SubscriptionId,
 
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
@@ -74,7 +74,7 @@ function Set-AzsOfferDelegation {
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [string]
+        [System.String]
         $Location,
 
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'InputObject')]

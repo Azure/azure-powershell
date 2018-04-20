@@ -111,10 +111,10 @@ function Enable-AzsScaleUnitNode {
 
                 $FabricAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$Location"
                 }
 
@@ -136,7 +136,7 @@ function Enable-AzsScaleUnitNode {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

@@ -170,7 +170,7 @@ function Add-AzsPlatformImage {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

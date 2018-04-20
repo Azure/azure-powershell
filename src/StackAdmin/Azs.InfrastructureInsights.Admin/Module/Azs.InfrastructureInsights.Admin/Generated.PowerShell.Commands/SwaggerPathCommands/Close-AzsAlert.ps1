@@ -50,10 +50,6 @@ function Close-AzsAlert {
         [System.String]
         $Name,
 
-        [Parameter(Mandatory = $false)]
-        [System.String]
-        $User,
-
         [Parameter(Mandatory = $false, ParameterSetName = 'Close')]
         [System.String]
         $Location,
@@ -102,8 +98,8 @@ function Close-AzsAlert {
 
             if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
                 $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
-
             } else {
+                $InputObject | FL * | Out-File "output.txt"
                 $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
                 $Alert = $InputObject
             }
@@ -131,11 +127,11 @@ function Close-AzsAlert {
 
                 $InfrastructureInsightsAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
 
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$Location"
                 }
 
@@ -143,10 +139,7 @@ function Close-AzsAlert {
                     $Alert = Get-AzsAlert -Name  $Name
                 }
 
-                if (-not $User) {
-                    $ctx = Get-AzureRmContext
-                    $User = $ctx.Account.Id
-                }
+                $User = "Admin";
 
                 if ('Close' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                     Write-Verbose -Message 'Performing operation CloseWithHttpMessagesAsync on $InfrastructureInsightsAdminClient.'

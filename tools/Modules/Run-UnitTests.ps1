@@ -69,11 +69,11 @@ function Test-Stack {
     )
 
     # Create test output
-    $StackPackageRoot = "$($PSSCriptRoot)\..\src\Stack\"
+    $StackPackageRoot = "$($PSSCriptRoot)\..\..\src\Stack\"
     New-Item -Path $StackPackageRoot -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 
     # Root folder where modules are located
-    $StackSrcRoot = "$($PSSCriptRoot)\..\src\StackAdmin\"
+    $StackSrcRoot = "$($PSSCriptRoot)\..\..\src\StackAdmin\"
 
     # Number of failures we have seen
     [int]$Failures = 0
@@ -85,10 +85,11 @@ function Test-Stack {
     foreach ($modulePath in $ModulePaths) {
         $testLocation = $modulePath + "\Tests"
         $module = $modulePath | Split-Path -Leaf
+        Write-Host "Moving to $testLocation"
         Push-Location $testLocation | Out-Null
         try {
             $OutputXML = "$($TestFolder)\$($module).xml"
-            Invoke-Pester "src" -OutputFile $OutputXML -OutputFormat NUnitXml | Out-Null
+            Invoke-Pester ".\src" -OutputFile $OutputXML -OutputFormat NUnitXml | Out-Null
             [xml]$result = Get-Content -Path $OutputXML
             $Failures += ($result."test-results".failures)
         } catch {
@@ -116,6 +117,15 @@ if ($Scope -in $AzureScopes) {
 
 if ($Scope -in $StackScopes) {
 
+    # Download and add AzureRM.Profile 3.4.1 to PSModulePath
+    [System.String]$SavePath = (Join-Path -Path $PSScriptRoot -ChildPath "tmp")
+    if(-not(Test-Path $SavePath)) {
+        New-Item -Path $SavePath -ItemType Directory -Force | Out-Null
+        Save-Module -Name AzureRM.Profile -RequiredVersion 3.4.1 -Repository PSGallery -Path $SavePath | Out-Null
+    }
+    $oldModulePath = $env:PSModulePath.Clone()
+    $env:PSModulePath = "$env:PSModulePath;$SavePath"
+
     # All admin modules
     $AllStackModules = @(
         "Azs.AzureBridge.Admin",
@@ -138,5 +148,7 @@ if ($Scope -in $StackScopes) {
 
     [System.String[]]$ModulesToTest = $AllStackModules | Where-Object { !($_ -in $IgnoredStackModules) }
     Test-Stack -BuildConfig $BuildConfig -Modules $ModulesToTest -FailFast
+
+    $env:PSModulePath = $oldModulePath
 }
 

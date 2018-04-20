@@ -57,13 +57,13 @@ function Set-AzsDirectoryTenant {
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [string]
+        [System.String]
         $TenantId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [string]
+        [System.String]
         $Location,
 
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
@@ -128,7 +128,7 @@ function Set-AzsDirectoryTenant {
                 }
                 $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
 

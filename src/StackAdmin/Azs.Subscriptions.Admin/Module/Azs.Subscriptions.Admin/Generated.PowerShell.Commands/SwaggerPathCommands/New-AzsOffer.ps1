@@ -61,7 +61,7 @@ function New-AzsOffer {
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $true)]
@@ -75,20 +75,20 @@ function New-AzsOffer {
         $BasePlanIds,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $Description,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false)]
         [ValidateSet('Private', 'Public', 'Decommissioned')]
-        [string]
+        [System.String]
         $State,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         [Alias("ArmLocation")]
         $Location,
 
@@ -140,7 +140,7 @@ function New-AzsOffer {
 
         $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([String]::IsNullOrEmpty($Location)) {
+        if ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
             $PSBoundParameters.Add("Location", $Location)
         }

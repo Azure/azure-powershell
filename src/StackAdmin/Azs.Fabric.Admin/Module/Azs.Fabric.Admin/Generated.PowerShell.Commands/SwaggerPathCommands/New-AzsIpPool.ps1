@@ -43,23 +43,23 @@ function New-AzsIpPool {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $Name,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $AddressPrefix,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $StartIpAddress,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $EndIpAddress,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $Location,
 
         [Parameter(Mandatory = $false)]
@@ -68,7 +68,7 @@ function New-AzsIpPool {
         $ResourceGroupName,
 
         [Parameter(Mandatory = $false)]
-        [System.Collections.Generic.Dictionary[[string], [string]]]
+        [System.Collections.Generic.Dictionary[[System.String], [System.String]]]
         $Tags,
 
         [Parameter(Mandatory = $false)]
@@ -105,10 +105,10 @@ function New-AzsIpPool {
 
         $FabricAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([String]::IsNullOrEmpty($Location)) {
+        if ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
-        if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
             $ResourceGroupName = "System.$Location"
         }
 
@@ -134,7 +134,7 @@ function New-AzsIpPool {
                 $TaskResult,
 
                 [Parameter(Mandatory = $true)]
-                [string]
+                [System.String]
                 $TaskHelperFilePath
             )
             if ($TaskResult) {

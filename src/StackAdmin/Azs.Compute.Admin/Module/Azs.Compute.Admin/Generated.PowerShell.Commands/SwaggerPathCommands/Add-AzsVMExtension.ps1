@@ -82,7 +82,7 @@ function Add-AzsVMExtension {
         $VmOsType,
 
         [Parameter(Mandatory = $true)]
-        [string]
+        [System.String]
         [ValidateSet('IaaS', 'PaaS')]
         [ValidateNotNullOrEmpty()]
         $ComputeRole,
@@ -173,7 +173,7 @@ function Add-AzsVMExtension {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

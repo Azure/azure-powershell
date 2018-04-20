@@ -113,10 +113,10 @@ function Resume-AzsUpdateRun {
                     $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
                 }
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRmLocation).Location
                 }
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$Location"
                 }
 
@@ -140,7 +140,7 @@ function Resume-AzsUpdateRun {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

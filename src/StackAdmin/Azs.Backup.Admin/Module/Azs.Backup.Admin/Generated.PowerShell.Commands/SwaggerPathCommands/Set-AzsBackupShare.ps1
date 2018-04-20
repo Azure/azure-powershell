@@ -142,10 +142,10 @@ function Set-AzsBackupShare {
         if ($PSCmdlet.ShouldProcess("$Location" , "Set backup configuration for location.")) {
             if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Set backup configuration backup for location?", "Performing operation set backup configuration at $Location.")) {
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$($Location)"
                 }
 
@@ -191,7 +191,7 @@ function Set-AzsBackupShare {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

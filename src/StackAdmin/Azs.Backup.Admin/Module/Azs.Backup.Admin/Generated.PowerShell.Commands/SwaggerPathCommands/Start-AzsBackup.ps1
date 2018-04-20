@@ -87,10 +87,10 @@ function Start-AzsBackup {
         if ($PSCmdlet.ShouldProcess("$Location" , "Start backup at $Location")) {
             if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start backup at $Location?", "Performing operation backup at $Location.")) {
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$($Location)"
                 }
 
@@ -126,7 +126,7 @@ function Start-AzsBackup {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

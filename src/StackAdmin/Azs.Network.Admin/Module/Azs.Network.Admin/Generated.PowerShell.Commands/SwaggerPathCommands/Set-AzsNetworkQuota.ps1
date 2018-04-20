@@ -151,7 +151,7 @@ function Set-AzsNetworkQuota {
         if ($PSCmdlet.ShouldProcess("$Name" , "Update network quota")) {
             if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Update network quota?", "Performing operation update $Name."))) {
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
 

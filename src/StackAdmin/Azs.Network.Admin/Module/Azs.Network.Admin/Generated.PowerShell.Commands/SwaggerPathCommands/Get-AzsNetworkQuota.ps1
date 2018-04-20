@@ -55,7 +55,7 @@ function Get-AzsNetworkQuota {
         $ResourceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [string]
+        [System.String]
         $Filter
     )
 
@@ -103,7 +103,7 @@ function Get-AzsNetworkQuota {
 
             $location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['resourceName']
-        } elseif ([String]::IsNullOrEmpty($Location)) {
+        } elseif ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 

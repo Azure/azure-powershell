@@ -44,7 +44,7 @@ function Remove-AzsSubscriptionPlan {
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Delete')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $TargetSubscriptionId,
 
         [Parameter(Mandatory = $false)]

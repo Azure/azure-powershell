@@ -111,7 +111,7 @@ function Get-AzsUpdateRun {
         if ( -not $PSBoundParameters.ContainsKey('Location')) {
             $Location = (Get-AzureRMLocation).Location
         }
-        if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
             $ResourceGroupName = "System.$Location"
         }
 
@@ -131,10 +131,10 @@ function Get-AzsUpdateRun {
             $DisplayName = $ArmResourceIdParameterValues['update']
             $Name = $ArmResourceIdParameterValues['runId']
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRmLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }

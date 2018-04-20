@@ -92,7 +92,7 @@ function Get-AzsDirectoryTenant {
 
         $Tenant = $Name
 
-        if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
             $ResourceGroupName = "System." + (Get-AzureRMLocation).Location
             $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         }
