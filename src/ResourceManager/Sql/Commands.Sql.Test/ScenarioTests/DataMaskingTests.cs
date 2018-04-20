@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient, authorizationClient);
+            var newResourcesClient = GetResourcesClient(context);
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, authorizationClient, newResourcesClient);
         }
 
         public DataMaskingTests(ITestOutputHelper output) : base(output)

@@ -24,8 +24,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Management.Internal.Resources;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.Management.ResourceManager;
 
 
 namespace Commands.Network.Test

@@ -59,7 +59,7 @@ function New-AzureRmResourceGroup
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParams = New-Object -Type Microsoft.Azure.Management.ResourceManager.Models.ResourceGroup
+    $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup
     $createParams.Location = $Location
     $createTask = $client.ResourceGroups.CreateOrUpdateWithHttpMessagesAsync($Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
@@ -89,7 +89,7 @@ function New-AzureRmResourceGroupDeployment
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParams = New-Object -Type Microsoft.Azure.Management.ResourceManager.Models.Deployment
+    $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment
     $createTask = $client.Deployments.CreateOrUpdateWithHttpMessagesAsync($Name, $Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
   }
@@ -125,7 +125,7 @@ function Get-ResourcesClient
   [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], 
 	[string]
   $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
-  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.ResourceManager.ResourceManagementClient])
+  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient])
   $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
   $client = $closedMethod.Invoke($factory, $arguments)
   return $client
