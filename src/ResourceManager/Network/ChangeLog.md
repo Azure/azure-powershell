@@ -20,6 +20,8 @@
 
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
 * Updated below commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
     - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIpsecPolicies   [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]
     - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIPsecParameters [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]

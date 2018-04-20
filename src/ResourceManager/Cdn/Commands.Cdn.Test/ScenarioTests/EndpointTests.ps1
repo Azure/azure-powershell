@@ -31,12 +31,38 @@ function Test-EndpointCrudAndAction
     $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+		$description = 'Sample delivery policy'
+	$conditions  = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]'
+	$actions = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]'
+
+	$conditions.Add($(
+		New-Object  -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleUrlPathCondition -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSUrlPathConditionParameters -Prop(@{'Path'= '/folder' ; 'MatchType' = 'Literal'})})
+	))
+
+	$actions.Add($(
+		New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCacheExpirationAction -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCacheExpirationActionParameters -Prop(@{'CacheBehavior'= 'Override'; 'CacheDuration'= '10:10:09'})})
+	))
+
+	$rules = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]'
+
+	$rules.Add($(
+		New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryRule -Prop(@{
+			'Order' = 1;
+			'Conditions' = $conditions
+			'Actions' = $actions
+		})
+	))
+
+	$deliveryPolicy = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryPolicy -Prop(@{'Description' = $description; 'Rules' = $rules})
+
+    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
+	Assert-AreEqual $description $createdEndpoint.DeliveryPolicy.Description
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
     Assert-AreEqual $originName $createdEndpoint.Origins[0].Name
     Assert-AreEqual $originHostName $createdEndpoint.Origins[0].HostName
+
 
     $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-False{$nameAvailability.NameAvailable}
@@ -87,7 +113,32 @@ function Test-EndpointCrudAndActionWithPiping
     $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName
+	$description = 'Sample delivery policy'
+	$conditions  = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]'
+	$actions = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleAction]'
+
+	$conditions.Add($(
+		New-Object  -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleUrlPathCondition -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSUrlPathConditionParameters -Prop(@{'Path'= '/folder' ; 'MatchType' = 'Literal'})})
+	))
+
+	$actions.Add($(
+		New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCacheExpirationAction -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSCacheExpirationActionParameters -Prop(@{'CacheBehavior'= 'Override'; 'CacheDuration'= '10:10:09'})})
+	))
+
+	$rules = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]'
+
+	$rules.Add($(
+		New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryRule -Prop(@{
+			'Order' = 1;
+			'Conditions' = $conditions;
+			'Actions' = $actions
+		})
+	))
+
+	$deliveryPolicy = New-Object -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryPolicy -Prop(@{'Description' = $description; 'Rules' = $rules})
+
+    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginName $originName -OriginHostName $originHostName -DeliveryPolicy $deliveryPolicy
+	Assert-AreEqual $description $createdEndpoint.DeliveryPolicy.Description
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
@@ -120,10 +171,33 @@ function Test-EndpointCrudAndActionWithPiping
     $startedEndpoint.OriginPath = "/pictures"
     $startedEndpoint.QueryStringCachingBehavior = "UseQueryString"
 
+	$extensions = New-Object 'System.Collections.Generic.List[String]'
+	$extensions.Add('jpg')
+	$extensions.Add('mp4')
+	$newConditions  = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleCondition]'
+	$newConditions.Add($(
+		New-Object  -TypeName Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRuleUrlFileExtensionCondition -Prop(@{'Parameters' = New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSUrlFileExtensionConditionParameters -Prop(@{'Extensions'= $extensions})})
+	))
+
+
+	$newRules = New-Object 'Collections.Generic.List[Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSDeliveryRule]'
+
+	$newRules.Add($(
+		New-Object Microsoft.Azure.Commands.Cdn.Models.Endpoint.PsDeliveryRule -Prop(@{
+			'Order' = 1;
+			'Conditions' = $newConditions;
+			'Actions' = $actions
+		})
+	))
+
+	$startedEndpoint.DeliveryPolicy.Description = "Updated Delivery Policy"
+	$startedEndpoint.DeliveryPolicy.Rules = $newRules
+
     $updatedEndpoint = Set-AzureRmCdnEndpoint -CdnEndpoint $startedEndpoint
     Assert-AreEqual $startedEndpoint.OriginHostHeader $updatedEndpoint.OriginHostHeader
     Assert-AreEqual $startedEndpoint.OriginPath $updatedEndpoint.OriginPath
     Assert-AreEqual $startedEndpoint.QueryStringCachingBehavior $updatedEndpoint.QueryStringCachingBehavior
+	Assert-AreEqual $startedEndpoint.DeliveryPolicy.Description $updatedEndpoint.DeliveryPolicy.Description
 
     $endpointRemoved = Remove-AzureRmCdnEndpoint -CdnEndpoint $createdEndpoint -Force -PassThru
     Assert-True{$endpointRemoved}
@@ -156,6 +230,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     $queryStringCachingBehavior = "BypassCaching"
     $httpPort = 123
     $httpsPort = 456
+	$optimizationType = "GeneralWebDelivery"
     $tags = @{"tag1" = "value1"; "tag2" = "value2"}
 
     $originHostName = "www.microsoft.com"
@@ -163,7 +238,8 @@ function Test-EndpointCrudAndActionWithAllProperties
     $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tags $tags
+    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -OptimizationType $optimizationType -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tag $tags
+
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
@@ -174,6 +250,7 @@ function Test-EndpointCrudAndActionWithAllProperties
     Assert-AreEqual $isCompressionEnabled $createdEndpoint.IsCompressionEnabled
     Assert-AreEqual $isHttpAllowed $createdEndpoint.IsHttpAllowed
     Assert-AreEqual $isHttpsAllowed $createdEndpoint.IsHttpsAllowed
+	Assert-AreEqual $optimizationType $createdEndpoint.OptimizationType
     Assert-AreEqual $queryStringCachingBehavior $createdEndpoint.QueryStringCachingBehavior
     Assert-Tags $tags $createdEndpoint.Tags
 
@@ -242,7 +319,7 @@ function Test-EndpointCrudAndActionWithAllPropertiesWithPiping
     $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
     Assert-True{$nameAvailability.NameAvailable}
 
-    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tags $tags
+    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName -HttpPort $httpPort -HttpsPort $httpsPort -Tag $tags
     Assert-AreEqual $endpointName $createdEndpoint.Name
     Assert-AreEqual $profileName $createdEndpoint.ProfileName
     Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
@@ -422,10 +499,56 @@ function Test-EndpointGeoFilters
 	$GeoFilter_2.CountryCodes = @("GA", "AT")
 
 	$endpoint.GeoFilters.Add($GeoFilter_2)
-    
+
 	$updatedEndpoint = Set-AzureRmCdnEndpoint -CdnEndpoint $endpoint
 
 	Assert-True {$updatedEndpoint.GeoFilters.Count -eq 2}
+
+    Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Endpoint create with Dsa
+#>
+function Test-EndpointCreateWithDsa
+{
+    $profileName = getAssetName
+    $resourceGroup = TestSetup-CreateResourceGroup
+    $resourceLocation = "EastUS"
+    $profileSku = "Standard_Verizon"
+    $createdProfile = New-AzureRmCdnProfile -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -Sku $profileSku
+
+    $endpointName = getAssetName
+    $originName = getAssetName
+    $originHostHeader = "azurecdn-files.azureedge.net"
+    $originPath = "/dsa-test"
+    $contentTypeToCompress = @()
+    $isCompressionEnabled = $false
+    $isHttpAllowed = $true
+    $isHttpsAllowed = $true
+    $queryStringCachingBehavior = "NotSet"
+	$optimizationType = "DynamicSiteAcceleration"
+	$probePath = "/probe-v.txt"
+    
+    $originHostName = "www.microsoft.com"
+
+    $nameAvailability = Get-AzureRmCdnEndpointNameAvailability -EndpointName $endpointName
+    Assert-True{$nameAvailability.NameAvailable}
+
+    $createdEndpoint = New-AzureRmCdnEndpoint -EndpointName $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $resourceLocation -OriginHostHeader $originHostHeader -OriginPath $originPath -ContentTypesToCompress $contentTypeToCompress -IsCompressionEnabled $isCompressionEnabled -IsHttpAllowed $isHttpAllowed -IsHttpsAllowed $isHttpsAllowed -OptimizationType $optimizationType -ProbePath $probePath -QueryStringCachingBehavior $queryStringCachingBehavior -OriginName $originName -OriginHostName $originHostName 
+    Assert-AreEqual $endpointName $createdEndpoint.Name
+    Assert-AreEqual $profileName $createdEndpoint.ProfileName
+    Assert-AreEqual $resourceGroup.ResourceGroupName $createdEndpoint.ResourceGroupName
+    Assert-NotNull $createdEndpoint.HostName
+    Assert-AreEqual $originHostHeader $createdEndpoint.OriginHostHeader
+    Assert-AreEqual $originPath $createdEndpoint.OriginPath
+    Assert-CompressionTypes $contentTypeToCompress $createdEndpoint.ContentTypesToCompress
+    Assert-AreEqual $isCompressionEnabled $createdEndpoint.IsCompressionEnabled
+    Assert-AreEqual $isHttpAllowed $createdEndpoint.IsHttpAllowed
+    Assert-AreEqual $isHttpsAllowed $createdEndpoint.IsHttpsAllowed
+	Assert-AreEqual $optimizationType $createdEndpoint.OptimizationType
+    Assert-AreEqual "IgnoreQueryString" $createdEndpoint.QueryStringCachingBehavior
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
 }
@@ -456,4 +579,21 @@ function Test-EndpointResourceUsage
     Assert-True {$endpointResourceUsage[1].CurrentValue -eq 0}
 
     Remove-AzureRmResourceGroup -Name $resourceGroup.ResourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Endpoint validate probe url exercise
+#>
+function Test-EndpointValidateProbeUrl
+{
+	$probeUrl = "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"	
+	$validateProbeUrlResult = Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl $probeUrl
+
+	Assert-True {$validateProbeUrlResult.IsValid}
+
+	$probeUrl = "https://www.notexist.com/notexist/notexist.txt"
+	$validateProbeUrlResult = Confirm-AzureRmCdnEndpointProbeURL -ProbeUrl $probeUrl
+
+	Assert-False {$validateProbeUrlResult.IsValid}
 }
