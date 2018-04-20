@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 var keys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
 
-                if (keys != null && keys.StorageAccountKeys != null)
+                if (keys != null)
                 {
-                    var storageAccountKey = string.IsNullOrEmpty(keys.StorageAccountKeys.Key1) ? keys.StorageAccountKeys.Key2 : keys.StorageAccountKeys.Key1;
+                    var storageAccountKey = !string.IsNullOrEmpty(keys.Keys[0].Value) ? keys.Keys[0].Value : keys.Keys[1].Value;
 
                     credentials = new StorageCredentials(storageAccountName, storageAccountKey);
                 }

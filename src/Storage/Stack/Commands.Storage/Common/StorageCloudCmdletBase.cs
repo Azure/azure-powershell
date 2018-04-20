@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -237,6 +238,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         internal AzureStorageContext GetCmdletStorageContext(IStorageContext inContext)
         {
             AzureStorageContext context = inContext as AzureStorageContext;
+            if (context == null && inContext != null)
+            {
+                context = new AzureStorageContext(inContext.GetCloudStorageAccount());
+            }
+
             if (context != null)
             {
                 WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, context.StorageAccountName));
@@ -303,7 +309,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             //Storage Context is empty and have already set the current storage account in subscription
             if (Context == null && profile != null && profile.DefaultContext != null && profile.DefaultContext.Subscription != null && profile.DefaultContext.Subscription != null)
             {
-                account = profile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+				account = profile.DefaultContext.GetCurrentStorageAccountConnectionString();
+                //account = profile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
                 result = !string.IsNullOrWhiteSpace(account);
             }
 

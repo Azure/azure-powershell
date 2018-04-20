@@ -45,10 +45,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             if (!TestMockSupport.RunningMocked)
             {
                 var storageServiceResponse = storageClient.StorageAccounts.GetProperties(resourceGroupName, accountName);
-                Uri blobEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Blob;
-                Uri queueEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Queue;
-                Uri tableEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Table;
-                Uri fileEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.File;
+                Uri blobEndpoint = new Uri(storageServiceResponse.PrimaryEndpoints.Blob);
+                Uri queueEndpoint = new Uri(storageServiceResponse.PrimaryEndpoints.Queue);
+                Uri tableEndpoint = new Uri(storageServiceResponse.PrimaryEndpoints.Table);
+                Uri fileEndpoint = new Uri(storageServiceResponse.PrimaryEndpoints.File);
 
                 return new CloudStorageAccount(
                     GenerateStorageCredentials(storageClient, resourceGroupName, accountName),
@@ -143,7 +143,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             {
                 var storageKeysResponse = storageClient.StorageAccounts.ListKeys(resourceGroupName, accountName);
                 return new StorageCredentials(accountName,
-                    storageKeysResponse.StorageAccountKeys.Key1);
+                    storageKeysResponse.Keys[0].Value);
             }
             else
             {
