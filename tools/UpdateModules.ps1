@@ -326,7 +326,14 @@ function Update-Azure {
         Write-Host "Updating Azure modules"
         Update-RMModule -Modules $resourceManagerModules
         Write-Host " "
+    }
 
+    # Update AzureRM
+    if ($Scope -in $script:AzureRMScopes) {
+        $modulePath = "$PSScriptRoot\AzureRM"
+        Write-Host "Updating AzureRM module from $modulePath"
+        New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
+        Write-Host " "
     }
 }
 
