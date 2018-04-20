@@ -121,5 +121,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetForceUDWalk");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetRedeploy()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetRedeploy");
+        }
     }
 }
