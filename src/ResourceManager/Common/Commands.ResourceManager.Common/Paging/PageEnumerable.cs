@@ -19,44 +19,31 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace Microsoft.Azure.Internal.Subscriptions.Models
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Paging
 {
-    public class PageEnumerable : IEnumerable<Subscription>, IDisposable
+    public class PageEnumerable<T> : IEnumerable<T>, IDisposable
     {
-        private ISubscriptionClient _client;
+        private Func<IPage<T>> _list;
+        private Func<string, IPage<T>> _listNext;
+        private ulong _first;
+        private ulong _skip;
 
-        public PageEnumerable(ISubscriptionClient client)
+        public PageEnumerable(Func<IPage<T>> list, Func<string, IPage<T>> listNext, ulong first, ulong skip)
         {
-            _client = client;
+            _list = list;
+            _listNext = listNext;
+            _first = first;
+            _skip = skip;
         }
 
         public void Dispose()
         {
-            Dispose(true);
+
         }
 
-        public virtual void Dispose(bool disposing)
+        public IEnumerator<T> GetEnumerator()
         {
-            if (disposing )
-            {
-                ISubscriptionClient client = Interlocked.Exchange(ref _client, null);
-                if (client!= null)
-                {
-#if DEBUG
-                    if (!TestMockSupport.RunningMocked)
-                    {
-#endif
-                        client.Dispose();
-#if DEBUG
-                    }
-#endif
-                }
-            }
-        }
-
-        public IEnumerator<Subscription> GetEnumerator()
-        {
-            return new PageEnumerator(_client);
+            return new PageEnumerator<T>(_list, _listNext, _first, _skip);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
