@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             {
                 CacheDirectory = profileDirectory,
                 ContextDirectory = profileDirectory,
-                Mode = ContextSaveMode.CurrentUser,
+                Mode = ContextSaveMode.Process,
                 CacheFile = "TokenCache.dat",
                 ContextFile = "AzureRmContext.json"
             };
@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     FileUtilities.EnsureDirectoryExists(profileDirectory);
                     string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                    result.Mode = ContextSaveMode.CurrentUser;
                 }
             }
             catch
