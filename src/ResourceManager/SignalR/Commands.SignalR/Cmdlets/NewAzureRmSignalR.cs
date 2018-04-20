@@ -105,7 +105,11 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
                 return SignalRStrategy.Strategy.CreateResourceConfig(
                     resourceGroup: resourceGroup,
-                    name: _cmdlet.Name,
+                    // The SignalR service accepts only lower case characters. It's a known bug.
+                    // TODO: remove ".ToLower()" as soon as the problem is fixed in SignalR server.
+                    // See also 
+                    // https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#put-resource
+                    name: _cmdlet.Name.ToLower(),
                     createModel: engine => new SignalRResource(
                         tags: _cmdlet.Tag,
                         signalrsku: new ResourceSku(_cmdlet.Sku, capacity: 1), // we only allow capacity 1 in public preview, this may be a parameter in future.
