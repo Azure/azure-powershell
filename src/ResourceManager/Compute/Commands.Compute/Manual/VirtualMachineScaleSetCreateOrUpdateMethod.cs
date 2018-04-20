@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private VirtualMachineScaleSetIdentity GetVmssIdentityFromArgs()
         {
             var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
-            return SystemAssignedIdentity.IsPresent || isUserAssignedEnabled
+            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
                 ? new VirtualMachineScaleSetIdentity
                 {
                     Type = !isUserAssignedEnabled ?

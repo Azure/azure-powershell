@@ -85,59 +85,6 @@ function Test-SimpleNewVmssWithSystemAssignedIdentity
     }
 }
 
-function Test-SimpleNewVmssWithUserAssignedIdentity
-{
-    # Setup
-    $vmssname = "UAITG123456"
-
-    try
-    {
-        $username = "admin01"
-        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
-        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
-		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
-		
-       # To record this test run these commands first :
-       # New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
-       # New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -Name UAITG123456Identity
-       # 
-       # Now get the identity :
-       # 
-       # Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
-        #Nore down the Id and use it in the PS code
-		#$identityName = $vmname + "Identity1"
-		#$newUserIdentity =  New-AzureRmUserAssignedIdentity -ResourceGroupName $vmname -Name $identityName
-
-		#$newUserId = $newUserIdentity.Id
-
-		$newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
-
-        # Common
-        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId
-
-        Assert-AreEqual $vmssname $x.Name;
-        Assert-AreEqual $vmssname $x.ResourceGroupName;
-        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].Name;
-        Assert-AreEqual $vmssname $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name;
-        Assert-AreEqual "Standard_DS1_v2" $x.Sku.Name
-        Assert-AreEqual $username $x.VirtualMachineProfile.OsProfile.AdminUsername
-        Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
-        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
-        Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
-		Assert-AreEqual "UserAssigned" $x.Identity.Type     
-		Assert-Null  $x.Identity.PrincipalId
-		Assert-Null  $x.Identity.TenantId
-		Assert-NotNull $x.Identity.IdentityIds
-		Assert-AreEqual 1 $x.Identity.IdentityIds.Count
-		Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $vmssname
-    }
-}
-
 function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
 {
     # Setup
