@@ -143,11 +143,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get
             {
-                if (_asJobSessionState == null)
-                {
-                    _asJobSessionState = this.SessionState;
-                    return _asJobSessionState;
-                }
                 return _asJobSessionState;
             }
             set
@@ -176,7 +171,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             DebugMessages = new ConcurrentQueue<string>();
-
         }
 
 
@@ -285,6 +279,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
+            AsJobSessionState = base.SessionState;
             var profile = _dataCollectionProfile;
             //TODO: Inject from CI server
             lock (lockObject)
