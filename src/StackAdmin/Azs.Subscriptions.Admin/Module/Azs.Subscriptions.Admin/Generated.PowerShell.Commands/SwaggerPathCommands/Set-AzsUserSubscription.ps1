@@ -65,42 +65,42 @@ function Set-AzsUserSubscription {
         $SubscriptionId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $DelegatedProviderSubscriptionId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $Owner,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $TenantId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
         [ValidateSet('Default', 'Admin')]
-        [string]
+        [System.String]
         $RoutingResourceManagerType,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
         [ValidateSet('NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted')]
-        [string]
+        [System.String]
         $State,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         [Alias("ArmLocation")]
         $Location,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $OfferId,
 
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
@@ -169,7 +169,7 @@ function Set-AzsUserSubscription {
                 $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
                 $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
 

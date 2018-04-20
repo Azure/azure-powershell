@@ -49,28 +49,28 @@ function New-AzsSubscription {
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $OfferId,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $TenantId,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $SubscriptionId,
 
         [Parameter(Mandatory = $false)]
         [ValidateSet('NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted')]
-        [string]
+        [System.String]
         $State,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         [Alias("ArmLocation")]
         $Location
     )

@@ -71,7 +71,7 @@ function Get-AzsEdgeGatewayPool {
         $ResourceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [string]
+        [System.String][System.String]
         $Filter,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
@@ -132,10 +132,10 @@ function Get-AzsEdgeGatewayPool {
             $location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['edgeGatewayPool']
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }

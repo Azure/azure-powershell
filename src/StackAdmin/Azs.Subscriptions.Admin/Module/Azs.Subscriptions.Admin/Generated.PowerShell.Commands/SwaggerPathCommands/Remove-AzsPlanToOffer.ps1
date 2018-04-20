@@ -36,7 +36,7 @@ function Remove-AzsPlanFromOffer {
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Offers_Unlink')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $PlanName,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Offers_Unlink')]
@@ -52,7 +52,7 @@ function Remove-AzsPlanFromOffer {
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Offers_Unlink')]
         [ValidateSet('None', 'Base', 'Addon')]
-        [string]
+        [System.String]
         $PlanLinkType,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Offers_Unlink')]

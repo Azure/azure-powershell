@@ -131,7 +131,7 @@ function Remove-AzsAzureBridgeDownloadedProduct {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

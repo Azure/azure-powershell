@@ -81,7 +81,7 @@ function Get-AzsStorageFarmMetric {
 
         $StorageAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
             $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
         }
 

@@ -61,7 +61,7 @@ function New-AzsPlan {
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $true)]
@@ -70,7 +70,7 @@ function New-AzsPlan {
         $QuotaIds,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $Description,
 
         [Parameter(Mandatory = $false)]
@@ -78,11 +78,11 @@ function New-AzsPlan {
         $SkuIds,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         [Alias("ArmLocation")]
         $Location,
 
@@ -126,7 +126,7 @@ function New-AzsPlan {
 
         $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([String]::IsNullOrEmpty($Location)) {
+        if ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
             $PSBoundParameters.Add("Location", $Location)
         }

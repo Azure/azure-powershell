@@ -77,7 +77,7 @@ function Set-AzsOffer {
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
@@ -93,27 +93,27 @@ function Set-AzsOffer {
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [string]
+        [System.String]
         $Description,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [string]
+        [System.String]
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateSet('Private', 'Public', 'Decommissioned')]
-        [string]
+        [System.String]
         $State,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Alias('ArmLocation')]
-        [string]
+        [System.String]
         $Location,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]

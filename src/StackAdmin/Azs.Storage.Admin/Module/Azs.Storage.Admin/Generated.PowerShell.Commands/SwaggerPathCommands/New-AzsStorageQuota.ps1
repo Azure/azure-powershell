@@ -90,7 +90,7 @@ function New-AzsStorageQuota {
 
         $Parameters = New-StorageQuotaObject @utilityCmdParams
 
-        if ([String]::IsNullOrEmpty($Location)) {
+        if ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 

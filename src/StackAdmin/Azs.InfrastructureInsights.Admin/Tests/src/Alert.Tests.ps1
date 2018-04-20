@@ -211,9 +211,7 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             $Alerts | Should Not Be $null
             foreach ($Alert in $Alerts) {
                 if ($Alert.State -ne "Closed") {
-                    $Alert.State = "Closed"
-                    $alertName = Extract-Name -Name $Alert.Name
-                    Close-AzsAlert -ResourceGroupName $ResourceGroupName -Location $regionName -User "AlertCloseTests" -Name $AlertName -Force
+                    $Alert | Close-AzsAlert -Force
                     return
                 }
             }

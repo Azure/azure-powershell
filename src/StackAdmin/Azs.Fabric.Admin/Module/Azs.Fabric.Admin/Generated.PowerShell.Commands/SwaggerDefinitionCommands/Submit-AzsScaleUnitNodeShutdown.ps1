@@ -85,7 +85,7 @@ function Submit-AzsScaleUnitNodeShutdown {
                 $TaskResult,
 
                 [Parameter(Mandatory = $true)]
-                [string]
+                [System.String]
                 $TaskHelperFilePath
             )
             if ($TaskResult) {

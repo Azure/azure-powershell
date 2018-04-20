@@ -72,7 +72,7 @@ function Set-AzsPlan {
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
@@ -95,20 +95,20 @@ function Set-AzsPlan {
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [string]
+        [System.String]
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [string]
+        [System.String]
         $Description,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Alias('ArmLocation')]
-        [string]
+        [System.String]
         $Location,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
@@ -185,7 +185,7 @@ function Set-AzsPlan {
 
                 $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([String]::IsNullOrEmpty('Location')) {
+                if ([System.String]::IsNullOrEmpty('Location')) {
                     $Location = (Get-AzureRMLocation).Location
                     $PSBoundParameters.Add("Location", $Location)
                 }

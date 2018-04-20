@@ -72,7 +72,7 @@ function Start-AzsReclaimStorageCapacity {
         if ($PSCmdlet.ShouldProcess("$FarmName" , "Start garbage collection")) {
             if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start garbage collection?", "Performing operation garbage collect for farm $FarmName.")) {
 
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
                 }
 
@@ -103,7 +103,7 @@ function Start-AzsReclaimStorageCapacity {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

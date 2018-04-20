@@ -91,7 +91,7 @@ function New-AzsNetworkQuota {
 
         [Parameter(Mandatory = $false, DontShow = $true)]
         [ValidateSet('None', 'Prepare', 'Commit', 'Abort')]
-        [string]
+        [System.String]
         $MigrationPhase = 'Prepare'
     )
 
@@ -124,7 +124,7 @@ function New-AzsNetworkQuota {
 
         $NetworkAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([String]::IsNullOrEmpty($Location)) {
+        if ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 
@@ -151,7 +151,7 @@ function New-AzsNetworkQuota {
             Get-TaskResult @GetTaskResult_params
         }
     }
-    
+
     End {
         if ($tracerObject) {
             $global:DebugPreference = $oldDebugPreference

@@ -98,7 +98,7 @@ function New-AzsComputeQuota {
         $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
 
         # Default location if missing
-        if ([String]::IsNullOrEmpty($Location)) {
+        if ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRmLocation).Location
         }
 
@@ -120,7 +120,7 @@ function New-AzsComputeQuota {
             Get-TaskResult @GetTaskResult_params
         }
     }
-    
+
 
     End {
         if ($tracerObject) {

@@ -59,38 +59,38 @@ function Set-AzsSubscription
     param(
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $OfferId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $Type,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [System.Collections.Generic.Dictionary[[string],[string]]]
+        [System.Collections.Generic.Dictionary[[System.String],[System.String]]]
         $Tags,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Set')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $SubscriptionId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
         [ValidateSet('NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $State,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $TenantId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [string]
+        [System.String]
         [Alias("ArmLocation")]
         $Location,
 
