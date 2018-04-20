@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 6477ADC3-0831-493D-8904-F1D787145DD3
@@ -43,7 +43,7 @@ Specifies the endpoint that this cmdlet starts.
 ```yaml
 Type: PSEndpoint
 Parameter Sets: ByObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -73,7 +73,7 @@ Specifies the name of the endpoint that this cmdlet starts.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,7 +89,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,7 +104,7 @@ Specifies the name of the profile to which the endpoint belongs.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,7 +119,7 @@ Specifies the name of the resource group to which the endpoint belongs.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
