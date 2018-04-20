@@ -227,7 +227,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             bool shouldPopulateContextList = _profile.DefaultContext?.Account == null;
-
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -263,7 +262,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             _profile.DefaultContext.TokenCache = _cache;
             var defaultContext = _profile.DefaultContext;
-
             if (shouldPopulateContextList)
             {
                 var subscriptions = ListSubscriptions(tenantId);
