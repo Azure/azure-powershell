@@ -1,5 +1,5 @@
 ﻿---
-external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
+external help file: Microsoft.Azure.Commands.RecoveryServices.dll-Help.xml
 Module Name: AzureRM.RecoveryServices
 ms.assetid: C635D723-0F03-4EF8-9435-24DBE0859899
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesbackupproperties
