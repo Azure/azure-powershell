@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Scheduler.Models;
+    using WindowsAzure.Commands.Utilities.Common;
 
     public static class ExtensionMethods
     {
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
         /// <param name="psCmdlet">Powershell cmdlet.</param>
         /// <param name="path">path.</param>
         /// <returns>Resolved PowerShell path.</returns>
-        public static string ResolvePath(this PSCmdlet psCmdlet, string path)
+        public static string ResolvePath(this AzurePSCmdlet psCmdlet, string path)
         {
             if (path == null)
             {
