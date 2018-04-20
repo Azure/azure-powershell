@@ -20,7 +20,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Add, Constants.AzureBatchComputeNodeServiceLogs, DefaultParameterSetName = Constants.IdParameterSet), 
+    [Cmdlet(VerbsCommon.Add, Constants.AzureBatchComputeNodeServiceLogs, DefaultParameterSetName = Constants.AzureBatchComputeNodeServiceLogs), 
          OutputType(typeof(PSAddComputeNodeServiceLogsResult))]
     public class AddBatchComputeNodeServiceLogsCommand : BatchObjectModelCmdletBase
     {

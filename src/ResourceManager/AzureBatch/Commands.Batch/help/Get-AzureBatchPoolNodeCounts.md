@@ -12,7 +12,13 @@ Gets Batch node counts per node state grouped by pool id.
 
 ## SYNTAX
 
-### PoolId (Default)
+### AzureBatchPoolNodeCounts (Default)
+```
+Get-AzureBatchPoolNodeCounts -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### PoolId
 ```
 Get-AzureBatchPoolNodeCounts [-PoolId <String>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
