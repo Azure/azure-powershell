@@ -21,8 +21,9 @@ function Test-ExpressRouteBGPServiceCommunities
 	$communities = Get-AzureRmBgpServiceCommunity
 
 	Assert-NotNull $communities
-	Assert-NotNull $communities[0].BgpCommunities
-	Assert-AreEqual true $communities[0].BgpCommunities[0].IsAuthorizedToUse
+	$crmOnlineCommunity = $communities | Where-Object {$_.ServiceName -match "CRMOnline"}
+	Assert-NotNull $crmOnlineCommunity.BgpCommunities
+	Assert-AreEqual true $crmOnlineCommunity.BgpCommunities[0].IsAuthorizedToUse
 }
 
 <#

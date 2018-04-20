@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,9 +19,8 @@
 --->
 
 ## Current Release
-* Set minimum dependency of module to PowerShell 5.0
-* Introduced multiple breaking changes
-    - Please refer to the migration guide for more information
+* Bump up network sdk version from 17.0.0.preview to 18.0.0.preview
+* Rerecord all network tests with latest sdk version
 
 ## Version 5.4.2
 * Fix error message with Network cmdlets
