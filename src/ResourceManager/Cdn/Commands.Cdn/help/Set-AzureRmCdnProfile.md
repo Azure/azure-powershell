@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 863DD160-4443-4D50-804E-089255F3EA4E
@@ -36,7 +36,7 @@ Specifies the profile that this cmdlet updates.
 ```yaml
 Type: PSProfile
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

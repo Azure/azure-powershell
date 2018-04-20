@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Remove deprecated `Tags` alias from cmdlets
+    - `Set-AzureRmAutomationRunbook`
 
 ## Version 4.3.2
 * Updated to the latest version of the Azure ClientRuntime
