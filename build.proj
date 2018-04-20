@@ -302,20 +302,20 @@
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
-      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.Powershell.*.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\System*.dll"
-                     Exclude="$(PackageDirectory)\**\netcoreapp2.0\publish\System.Security.Cryptography.ProtectedData.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.VisualBasic.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CSharp.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CodeAnalysis.dll" />
-      <RedundantDlls Include="$(PackageDirectory)\**\netcoreapp2.0\publish\Microsoft.CodeAnalysis.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.Powershell.*.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\publish\System*.dll"
+                     Exclude="$(PackageDirectory)\**\publish\System.Security.Cryptography.ProtectedData.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.VisualBasic.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.CSharp.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.CodeAnalysis.dll" />
+      <RedundantDlls Include="$(PackageDirectory)\**\publish\Microsoft.CodeAnalysis.CSharp.dll" />
     </ItemGroup>
 
     <Delete Files="@(RedundantDlls->'%(FullPath)')"/>
 
     <!-- Copy content of the publish folder one folders up -->
     <ItemGroup>
-      <PackageContent Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
+      <PackageContent Include="$(PackageDirectory)\**\publish\*.*" />
       <SourceFile Include="@(PackageContent)">
         <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '%(FileName)%(Extension)'))</DestinationFolder>
       </SourceFile>
@@ -323,22 +323,12 @@
 
     <Copy SourceFiles="@(SourceFile->'%(FullPath)')" DestinationFiles="@(SourceFile->'%(DestinationFolder)')" SkipUnchangedFiles="true"/>
 
-    <!-- Move PSD1 files one folders up -->
+      <!-- Delete build artifacts -->
     <ItemGroup>
-      <psdFiles Include="$(PackageDirectory)\**\netcoreapp2.0\*.psd1" />
-      <psdFilesTarget Include="@(psdFiles)">
-        <DestinationFolder>$([System.IO.Path]::Combine('%(RelativeDir)', '..', '%(FileName)%(Extension)'))</DestinationFolder>
-      </psdFilesTarget>
-    </ItemGroup>
-
-    <Move SourceFiles="@(psdFilesTarget->'%(FullPath)')" DestinationFiles="@(psdFilesTarget->'%(DestinationFolder)')"/>
-
-    <!-- Delete build artifacts -->
-    <ItemGroup>
-      <GetAllFiles Include="$(PackageDirectory)\**\netcoreapp2.0\publish\*.*" />
+      <GetAllFiles Include="$(PackageDirectory)\**\publish\*.*" />
       <Artifacts Include="@(GetAllFiles->'%(RootDir)%(Directory)'->Distinct())" />
     </ItemGroup>
-
+ 
     <RemoveDir  Directories="%(Artifacts.Identity)"
                 ContinueOnError="true" />
 
@@ -356,8 +346,8 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope Netcore &quot; "
           Condition="'$(Scope)' == 'Netcore'"
           ContinueOnError="false" />
-
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
+    <!-- Generate the Help -->
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>
 
