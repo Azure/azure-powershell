@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string ExportBlobContainerUri { get; set; }
 
+        [Parameter(Mandatory = false)]
         public SwitchParameter ExcludeKeys { get; set; }
 
         public override void ExecuteCmdlet()
