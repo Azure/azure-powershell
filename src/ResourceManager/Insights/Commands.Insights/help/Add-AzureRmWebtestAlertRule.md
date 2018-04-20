@@ -46,7 +46,7 @@ Specifies a comma-separated list of actions.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction]
 Parameter Sets: (All)
-Aliases: Actions
+Aliases:
 
 Required: False
 Position: Named

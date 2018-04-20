@@ -63,7 +63,6 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The locations that will be enabled for logging")]
         [ValidateNotNullOrEmpty]
-        [Alias("Locations")]
         public List<string> Location { get; set; }
 
         /// <summary>
@@ -71,17 +70,12 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The categories that will be enabled for logging.  By default all categories will be enabled")]
         [ValidateNotNullOrEmpty]
-        [Alias("Categories")]
         public List<string> Category { get; set; }
 
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: "Add-AzureRmLogProfile",
-                topic: "Parameter name change", 
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             if (ShouldProcess(
                 target: string.Format("Create/update a log profile: {0}", this.Name),
                 action: "Create/update a log profile"))
