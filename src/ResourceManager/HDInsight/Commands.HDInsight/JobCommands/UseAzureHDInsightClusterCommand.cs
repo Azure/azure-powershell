@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 
             var httpEndpoint = GetClusterConnection(ResourceGroupName, ClusterName);
 
-            SessionState.PSVariable.Set(ClusterEndpoint, httpEndpoint);
-            SessionState.PSVariable.Set(ClusterCred, HttpCredential);
-            SessionState.PSVariable.Set(CurrentResourceGroup, ResourceGroupName);
+            AsJobSessionState.PSVariable.Set(ClusterEndpoint, httpEndpoint);
+            AsJobSessionState.PSVariable.Set(ClusterCred, HttpCredential);
+            AsJobSessionState.PSVariable.Set(CurrentResourceGroup, ResourceGroupName);
 
             WriteObject(string.Format("Successfully connected to cluster {0} in resource group {1}", ClusterName,
                 ResourceGroupName));

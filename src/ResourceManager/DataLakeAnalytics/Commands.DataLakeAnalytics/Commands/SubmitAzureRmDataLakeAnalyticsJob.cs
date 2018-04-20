@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             // Get the script
             if (string.IsNullOrEmpty(Script))
             {
-                var powerShellDestinationPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(ScriptPath);
+                var powerShellDestinationPath = AsJobSessionState.Path.GetUnresolvedProviderPathFromPSPath(ScriptPath);
                 if (!File.Exists(powerShellDestinationPath))
                 {
                     throw new CloudException(string.Format(Resources.ScriptFilePathDoesNotExist,

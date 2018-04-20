@@ -247,6 +247,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     this.dynamicParameters.Add(param.Name, dp);
                 }
             }
+            this.CopiedDynamicParameters = dynamicParameters;
 
             return this.dynamicParameters;
         }
@@ -269,7 +270,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             // Load dynamic parameters
-            var parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
+            var parameters = PowerShellUtilities.GetUsedDynamicParameters(CopiedDynamicParameters, MyInvocation);
             if (parameters.Count() > 0)
             {
                 return MyInvocation.BoundParameters.ToJObjectWithValue(parameters.Select(p => p.Name));

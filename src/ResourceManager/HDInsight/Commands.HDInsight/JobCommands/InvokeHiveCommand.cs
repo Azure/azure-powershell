@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Commands.HDInsight
         public override void ExecuteCmdlet()
         {
             //get variables from session
-            var clusterConnection = SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterEndpoint).Value.ToString();
+            var clusterConnection = AsJobSessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterEndpoint).Value.ToString();
             var clusterCred =
-                (PSCredential)SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterCred).Value;
+                (PSCredential)AsJobSessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterCred).Value;
             var resourceGroup =
-                SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.CurrentResourceGroup).Value.ToString();
+                AsJobSessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.CurrentResourceGroup).Value.ToString();
 
             _credential = new BasicAuthenticationCloudCredentials
             {

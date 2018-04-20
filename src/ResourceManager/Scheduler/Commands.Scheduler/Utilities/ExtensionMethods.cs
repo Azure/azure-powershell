@@ -176,13 +176,13 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
                 return null;
             }
 
-            if (psCmdlet.SessionState == null)
+            if (psCmdlet.AsJobSessionState == null)
             {
                 return path;
             }
 
             path = path.Trim('"', '\'', ' ');
-            var result = psCmdlet.SessionState.Path.GetResolvedPSPathFromPSPath(path);
+            var result = psCmdlet.AsJobSessionState.Path.GetResolvedPSPathFromPSPath(path);
             string fullPath = string.Empty;
 
             if (result != null && result.Count > 0)

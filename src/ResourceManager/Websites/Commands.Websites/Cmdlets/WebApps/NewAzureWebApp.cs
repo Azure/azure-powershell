@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             try
             {
-                this.ExecuteSynchronouslyOrAsJob( (cmdlet) => cmdlet.ExecuteCmdletActions(this.SessionState));
+                this.ExecuteSynchronouslyOrAsJob( (cmdlet) => cmdlet.ExecuteCmdletActions(this.AsJobSessionState));
             }
             catch (Exception ex) when (!IsTerminatingError(ex))
             {
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         GitRemotePassword = SecureStringExtensions.ConvertToSecureString(password)
                     };
                     output = newOutput;
-                    var git = new GitCommand(adapter.SessionState.Path, GitRepositoryPath);
+                    var git = new GitCommand(adapter.AsJobSessionState.Path, GitRepositoryPath);
                     var repository = await git.VerifyGitRepository();
                     if (repository != null)
                     {
@@ -368,7 +368,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             catch (Exception exception)
             {
                 // do not write errors for problems with adding git repository
-                var repoPath = GitRepositoryPath ?? adapter?.SessionState?.Path?.CurrentFileSystemLocation?.Path;
+                var repoPath = GitRepositoryPath ?? adapter?.AsJobSessionState?.Path?.CurrentFileSystemLocation?.Path;
                 adapter.WriteWarningAsync(String.Format(Microsoft.Azure.Commands.WebApps.Properties.Resources.GitRemoteAddFailure, repoPath, exception.Message));
             }
             adapter.WriteObjectAsync(output);
