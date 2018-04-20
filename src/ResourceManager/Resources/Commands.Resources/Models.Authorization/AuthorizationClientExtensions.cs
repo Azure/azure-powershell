@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public const string CustomRole = "CustomRole";
         public const string AuthorizationDeniedException = "Authorization_RequestDenied";
+        public const string DeletedObject = "Unknown";
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {
@@ -193,7 +194,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
-                        CanDelegate = delegationFlag
+                        CanDelegate = delegationFlag,
+                        ObjectType = DeletedObject
                     });
                 }
 
