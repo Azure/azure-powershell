@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
                     {
                         string jsonDefinition = 
                                 CmdletHelpers.GetWebServiceDefinitionFromFile(
-                                                this.SessionState.Path.CurrentFileSystemLocation.Path,
+                                                this.AsJobSessionState.Path.CurrentFileSystemLocation.Path,
                                                 this.DefinitionFile);
                         var webServiceFromJson = 
                                 ModelsSerializationUtil.GetAzureMLWebServiceFromJsonDefinition(jsonDefinition);

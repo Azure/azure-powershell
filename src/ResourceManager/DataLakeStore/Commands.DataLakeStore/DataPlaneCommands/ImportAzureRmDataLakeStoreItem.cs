@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 WriteWarning(Resources.IncorrectPerFileThreadCountWarning);
             }
-            var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
+            var powerShellSourcePath = AsJobSessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
             ConfirmAction(
                 Resources.UploadFileMessage,
                 Destination.TransformedPath,
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)
                         {
                             var diagnosticPath =
-                                SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
+                                AsJobSessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
                             DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 

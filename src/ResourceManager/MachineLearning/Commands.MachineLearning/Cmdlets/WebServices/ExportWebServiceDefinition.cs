@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 
             if (!string.IsNullOrWhiteSpace(this.OutputFile))
             {
-                var currentPath = this.SessionState.Path.CurrentFileSystemLocation.Path;
+                var currentPath = this.AsJobSessionState.Path.CurrentFileSystemLocation.Path;
                 var definitionFileFullPath =
                         Path.IsPathRooted(this.OutputFile) ?
                             this.OutputFile :

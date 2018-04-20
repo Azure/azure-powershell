@@ -376,7 +376,7 @@ namespace Microsoft.Azure.Commands.Compute
 #endif
                     Location = Location
                 });
-                var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
+                var filePath = new FileInfo(AsJobSessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
                 using (var vds = new VirtualDiskStream(filePath.FullName))
                 {
                     // 2 ^ 9 == 512

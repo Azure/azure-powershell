@@ -137,6 +137,39 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected abstract string DataCollectionWarning { get; }
 
+        private SessionState _asJobSessionState;
+
+        public SessionState AsJobSessionState
+        {
+            get
+            {
+                if (_asJobSessionState == null)
+                {
+                    _asJobSessionState = this.SessionState;
+                    return _asJobSessionState;
+                }
+                return _asJobSessionState;
+            }
+            set
+            {
+                _asJobSessionState = value;
+            }
+        }
+
+        private RuntimeDefinedParameterDictionary _copiedDynamicParameters;
+
+        public RuntimeDefinedParameterDictionary CopiedDynamicParameters
+        {
+            get
+            {
+                return _copiedDynamicParameters;
+            }
+            set
+            {
+                _copiedDynamicParameters = value;
+            }
+        }
+
         /// <summary>
         /// Initializes AzurePSCmdlet properties.
         /// </summary>
@@ -289,8 +322,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             // SessionState is only available within PowerShell so default to
             // the TestMockSupport.TestExecutionFolder when being run from tests.
-            return (SessionState != null) ?
-                SessionState.Path.CurrentLocation.Path :
+            return (AsJobSessionState != null) ?
+                AsJobSessionState.Path.CurrentLocation.Path :
                 TestMockSupport.TestExecutionFolder;
         }
 
