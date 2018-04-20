@@ -19,9 +19,14 @@
 -->
 ## Current Release
 * `New-AzureRmVm` and `New-AzureRmVmss` support verbose output of parameters
+* VMSS Redeploy and PerformMaintenance feature
+    -  Add new switch parameter -Redeploy and -PerformMaintenance to `Set-AzureRmVmss` and `Set-AzureRmVmssVM`
+* Add DisableVMAgent switch parameter to `Set-AzureRmVMOperatingSystem` cmdlet
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support a `Win10` image.
 * `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
 * Set minimum dependency of module to PowerShell 5.0
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more details
 
 ## Version 4.6.0
 * `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
