@@ -38,7 +38,7 @@ Returns the list of all alerts in a given location.
 Get-AzsAlert -Name 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
 ```
 
-Get an alert by AlertId.
+Get an alert by Name.
 
 ### -------------------------- EXAMPLE 2 --------------------------
 ```
