@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Network
                 var vpnClientIpsecParameters = this.VirtualNetworkGatewayClient.SetVpnclientIpsecParameters(this.ResourceGroupName, this.VirtualNetworkGatewayName, vpnClientIPsecParametersModel);
                 var psVpnClientIPsecParameters = NetworkResourceManagerProfile.Mapper.Map<PSVpnClientIPsecParameters>(vpnClientIpsecParameters);
 
-                WriteObject(psVpnClientIPsecParameters);
+                WriteObject(vpnClientIpsecParameters);
             }
         }
     }
