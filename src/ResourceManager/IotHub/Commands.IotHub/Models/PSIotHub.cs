@@ -50,12 +50,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
-        /// The subscription identifier.
-        /// </summary>
-        [JsonProperty(PropertyName = "subscriptionid")]
-        public string Subscriptionid { get; set; }
-
-        /// <summary>
         /// The resource group name uniquely identifies the resource group
         /// within the user subscriptionId.
         /// </summary>
