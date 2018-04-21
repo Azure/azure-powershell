@@ -78,7 +78,7 @@ If you use this parameter you cannot use the *DefaultBackendAddressPoolId* param
 ```yaml
 Type: PSApplicationGatewayBackendAddressPool
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,7 +101,7 @@ These IP addresses should either belong to the virtual network subnet or should 
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +126,7 @@ If you use this parameter you cannot use the *DefaultBackendHttpSettingsId* para
 ```yaml
 Type: PSApplicationGatewayBackendHttpSettings
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,7 +149,7 @@ If you use this parameter you cannot use the *DefaultBackendHttpSettings* parame
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -179,7 +179,7 @@ Specifies the name of the path rule configuration that this cmdlet creates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -194,7 +194,7 @@ Specifies one or more application gateway path rules.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -209,7 +209,7 @@ Application gateway RedirectConfiguration
 ```yaml
 Type: PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -224,7 +224,7 @@ ID of the application gateway RedirectConfiguration
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

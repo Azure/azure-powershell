@@ -92,7 +92,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,7 +122,7 @@ Specifies a **NetworkInterface** object that represents the goal state for a net
 ```yaml
 Type: PSNetworkInterface
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

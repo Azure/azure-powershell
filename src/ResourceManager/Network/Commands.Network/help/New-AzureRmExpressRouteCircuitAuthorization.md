@@ -69,7 +69,7 @@ Specifies a unique name for the new ExpressRoute circuit authorization.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

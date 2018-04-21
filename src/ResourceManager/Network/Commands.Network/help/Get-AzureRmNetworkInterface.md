@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: E066BBFA-2E03-431D-85D1-99F230B6AC59
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,7 +93,7 @@ Specifies the name of the network interface that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: NoExpandStandAloneNic, NoExpandScaleSetNic
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandStandAloneNic, ExpandScaleSetNic
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -120,7 +120,7 @@ Specifies the name of the resource group from which this cmdlet gets network int
 ```yaml
 Type: String
 Parameter Sets: NoExpandStandAloneNic
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandStandAloneNic, NoExpandScaleSetNic, ExpandScaleSetNic
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -147,7 +147,7 @@ Specifies the virtual machine index of the virtual machine scale set from which 
 ```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetNic
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandScaleSetNic
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -174,7 +174,7 @@ Specifies the name of the virtual machine scale set from which this cmdlet gets 
 ```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetNic
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandScaleSetNic
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

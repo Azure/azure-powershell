@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,4 +84,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

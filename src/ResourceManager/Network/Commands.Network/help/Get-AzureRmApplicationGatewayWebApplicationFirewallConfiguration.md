@@ -42,7 +42,7 @@ You can use the Get-AzureRmApplicationGateway cmdlet to get an application gatew
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

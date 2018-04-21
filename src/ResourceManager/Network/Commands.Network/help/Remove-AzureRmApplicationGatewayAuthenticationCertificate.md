@@ -37,7 +37,7 @@ Specifies the name of application gateway from which this cmdlet removes an auth
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -67,7 +67,7 @@ Specifies the name of the authentication certificate that this cmdlet removes.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

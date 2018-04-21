@@ -54,7 +54,7 @@ Specifies the backend address pool to associate with a load balancer rule config
 ```yaml
 Type: PSBackendAddressPool
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -69,7 +69,7 @@ Specifies the ID of a **BackendAddressPool** object to associate with a load bal
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,7 +84,7 @@ Specifies the backend port for traffic that is matched by a load balancer rule c
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,7 +114,7 @@ Configures SNAT for the VMs in the backend pool to use the publicIP address spec
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ Indicates that this cmdlet enables a floating IP address for a rule configuratio
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -144,7 +144,7 @@ Specifies a list of front-end IP addresses to associate with a load balancer rul
 ```yaml
 Type: PSFrontendIPConfiguration
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,7 +159,7 @@ Specifies the ID for a front-end IP address configuration.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,7 +174,7 @@ Specifies the front-end port that is matched by a load balancer rule configurati
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -189,7 +189,7 @@ Specifies the length of time, in minutes, that the state of conversations is mai
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -205,7 +205,7 @@ This cmdlet adds a rule configuration to the load balancer that this parameter s
 ```yaml
 Type: PSLoadBalancer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -220,7 +220,7 @@ Specifies a load distribution.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Default, SourceIP, SourceIPProtocol
 
 Required: False
@@ -236,7 +236,7 @@ Specifies the name of the load balancer rule configuration.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -251,7 +251,7 @@ Specifies a probe to associate with a load balancer rule configuration.
 ```yaml
 Type: PSProbe
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -266,7 +266,7 @@ Specifies the ID of the probe to associate with a load balancer rule configurati
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -282,7 +282,7 @@ The acceptable values for this parameter are: Tcp or Udp.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Tcp, Udp, All
 
 Required: False

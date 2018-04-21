@@ -39,7 +39,7 @@ The applicationGateway
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,7 +69,7 @@ The name of the request routing rule
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,4 +93,3 @@ System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Network.Model
 ## NOTES
 
 ## RELATED LINKS
-

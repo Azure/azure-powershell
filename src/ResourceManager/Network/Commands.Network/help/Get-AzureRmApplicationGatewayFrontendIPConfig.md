@@ -47,7 +47,7 @@ Specifies the application gateway object that contains the front-end IP configur
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -77,7 +77,7 @@ Specifies the name of the front-end IP configuration that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

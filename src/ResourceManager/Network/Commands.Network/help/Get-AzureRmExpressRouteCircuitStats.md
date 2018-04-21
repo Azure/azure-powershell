@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: CFE184E2-6DEF-4E92-A9C3-E82F29BB4FB8
@@ -69,7 +69,7 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: False
@@ -85,7 +85,7 @@ The name of the resource group containing the ExpressRoute circuit.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

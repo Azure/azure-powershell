@@ -23,14 +23,14 @@ The Get-AzureRmApplicationGatewayBackendHealth cmdlet gets application gateway b
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Gets backend health without expanded resources.  --------------------------
+### Example 1: Gets backend health without expanded resources.
 ```
 PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01
 ```
 
 This command gets the backend health of application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $BackendHealth variable.
 
-### --------------------------  Example 1: Gets backend health with expanded resources.  --------------------------
+### Example 1: Gets backend health with expanded resources.
 ```
 PS C:\>$BackendHealth = Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway01 -ResourceGroupName ResourceGroup01 -ExpandResource "backendhealth/applicationgatewayresource"
 ```
@@ -45,7 +45,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -103,7 +103,7 @@ Specifies the name of the resource group that contains the application gateway.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

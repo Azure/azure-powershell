@@ -86,7 +86,7 @@ This cmdlet sets the goal state for a front-end configuration for the load balan
 ```yaml
 Type: PSLoadBalancer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -101,7 +101,7 @@ Specifies the name of the front-end IP configuration to set.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,7 +117,7 @@ Specify this parameter only if you also specify the *Subnet* parameter.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,7 +132,7 @@ Specifies the **PublicIpAddress** object that is associated with the front-end I
 ```yaml
 Type: PSPublicIpAddress
 Parameter Sets: SetByResourcePublicIpAddress
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -147,7 +147,7 @@ Specifies the ID of the **PublicIpAddress** object that is associated with the f
 ```yaml
 Type: String
 Parameter Sets: SetByResourceIdPublicIpAddress
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -162,7 +162,7 @@ Specifies the **Subnet** object that contains the front-end IP configuration tha
 ```yaml
 Type: PSSubnet
 Parameter Sets: SetByResourceSubnet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -177,7 +177,7 @@ Specifies the ID of the subnet that contains the front-end IP configuration that
 ```yaml
 Type: String
 Parameter Sets: SetByResourceIdSubnet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -192,7 +192,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

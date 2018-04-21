@@ -40,7 +40,7 @@ Specifies the application gateway of the SSL policy that this cmdlet gets.
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

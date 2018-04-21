@@ -48,7 +48,7 @@ The **Get-AzureRmApplicationGatewayBackendAddressPool** cmdlet gets a back-end a
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -78,7 +78,7 @@ Specifies the name of the back-end address pool that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

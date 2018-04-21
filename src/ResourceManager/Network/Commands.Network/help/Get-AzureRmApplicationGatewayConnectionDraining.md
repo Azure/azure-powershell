@@ -41,7 +41,7 @@ The backend http settings
 ```yaml
 Type: PSApplicationGatewayBackendHttpSettings
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
