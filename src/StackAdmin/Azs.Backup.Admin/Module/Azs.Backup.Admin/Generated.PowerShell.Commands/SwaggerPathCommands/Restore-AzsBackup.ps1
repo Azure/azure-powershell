@@ -142,14 +142,7 @@ function Restore-AzsBackup {
                         $GetTaskResult_params = @{
                             TaskResult = $TaskResult
                         }
-                        try {
-                            Get-TaskResult @GetTaskResult_params
-                        } catch {
-                            @{
-                                "Code"    = $_.Exception.Body.Code;
-                                "Message" = $_.Exception.Body.Message
-                            }
-                        }
+                        Get-TaskResult @GetTaskResult_params
                     }
                 }
 

@@ -224,7 +224,7 @@ InModuleScope Azs.Compute.Admin {
 
         It "TestUpdateQuota" {
             $global:TestName = 'TestUpdateQuota'
-            Set-AzsComputeQuota -Location $global:Location -Name "UpdateQuota" -AvailabilitySetCount 100 -CoresLimit 100 -VmScaleSetCount 100 -VirtualMachineCount 100 -Force
+            Set-AzsComputeQuota -Location $global:Location -Name "UpdateQuota" -AvailabilitySetCount 100 -CoresLimit 100 -VmScaleSetCount 100 -VirtualMachineCount 100
         }
 	}
 }

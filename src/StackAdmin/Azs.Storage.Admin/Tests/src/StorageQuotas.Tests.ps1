@@ -156,8 +156,7 @@ InModuleScope Azs.Storage.Admin {
                 -CapacityInGb $CapInGB `
                 -NumberOfStorageAccounts $NumStorageAccounts `
                 -Location $global:Location `
-                -Name $name `
-                -Force
+                -Name $name
 
             ValidateStorageQuota -storageQuota $updated
             $updated.CapacityInGb               | Should Be $CapInGB

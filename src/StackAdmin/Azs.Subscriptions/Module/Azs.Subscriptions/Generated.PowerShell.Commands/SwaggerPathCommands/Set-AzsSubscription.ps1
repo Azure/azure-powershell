@@ -41,10 +41,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource ID.
 
 .PARAMETER InputObject
-    The input object of type Microsoft.AzureStack.Management.Network.Admin.Models.Quota.
-
-.PARAMETER Force
-    Don't ask for confirmation.
+    Posbbily modified network quota returned by Get-AzsNetworkQuota.
 
 .EXAMPLE
 
@@ -52,10 +49,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
     Create or updates a subscription.
 #>
-function Set-AzsSubscription
-{
+function Set-AzsSubscription {
     [OutputType([Microsoft.AzureStack.Management.Subscriptions.Models.Subscription])]
-    [CmdletBinding(DefaultParameterSetName='Set', SupportsShouldProcess = $true)]
+    [CmdletBinding(DefaultParameterSetName = 'Set', SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
         [ValidateNotNullOrEmpty()]
@@ -67,7 +63,7 @@ function Set-AzsSubscription
         $Type,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
-        [System.Collections.Generic.Dictionary[[System.String],[System.String]]]
+        [System.Collections.Generic.Dictionary[[System.String], [System.String]]]
         $Tags,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Set')]
@@ -101,98 +97,89 @@ function Set-AzsSubscription
 
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'InputObject')]
         [Microsoft.AzureStack.Management.Subscriptions.Models.Subscription]
-        $InputObject,
-
-        [Parameter(Mandatory = $false)]
-        [switch]
-        $Force
+        $InputObject
     )
 
-    Begin
-    {
-	    Initialize-PSSwaggerDependencies -Azure
+    Begin {
+        Initialize-PSSwaggerDependencies -Azure
         $tracerObject = $null
         if (('continue' -eq $DebugPreference) -or ('inquire' -eq $DebugPreference)) {
             $oldDebugPreference = $global:DebugPreference
-			$global:DebugPreference = "continue"
+            $global:DebugPreference = "continue"
             $tracerObject = New-PSSwaggerClientTracing
             Register-PSSwaggerClientTracing -TracerObject $tracerObject
         }
-	}
+    }
 
     Process {
 
-    $ErrorActionPreference = 'Stop'
+        $ErrorActionPreference = 'Stop'
 
-    if ($PSBoundParameters.ContainsKey('Location')) {
-        if( $MyInvocation.Line -match "\s-ArmLocation\s")
-        {
-            Write-Warning -Message "The parameter alias ArmLocation will be deprecated in future release. Please use the parameter Location instead"
-        }
-    }
-
-    $NewServiceClient_params = @{
-        FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
-    }
-
-    $GlobalParameterHashtable = @{}
-    $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
-    $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
-
-	$updatedSubscription = $null
-
-	if ( 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName ) {
-	    $GetArmResourceIdParameterValue_params = @{
-		    IdTemplate = '/subscriptions/{subscriptionId}'
-	    }
-
-		if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
-			$GetArmResourceIdParameterValue_params['Id'] = $ResourceId
-		} else {
-			$GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
-			$updatedSubscription = $InputObject
-		}
-		$ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
-
-	    $SubscriptionId = $ArmResourceIdParameterValues['subscriptionId']
-	}
-
-	if ($PSCmdlet.ShouldProcess("$SubscriptionId" , "Update subscription")) {
-	    if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Update subscription?", "Performing operation update on $SubscriptionId."))) {
-
-			if ('Set' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-
-				if ($updatedSubscription -eq $null)
-				{
-					$updatedSubscription = Get-AzsSubscription -SubscriptionId $SubscriptionId
-				}
-
-				$flattenedParameters = @('OfferId', 'Id', 'Type', 'Tags', 'SubscriptionId', 'State', 'TenantId', 'Location', 'DisplayName')
-				$flattenedParameters | ForEach-Object {
-					if ($PSBoundParameters.ContainsKey($_)) {
-						$updatedSubscription.$($_) = $PSBoundParameters[$_]
-					}
-				}
-
-				Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsManagementClient.'
-				$TaskResult = $SubscriptionsManagementClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $updatedSubscription)
-
-			} else {
-				Write-Verbose -Message 'Failed to map parameter set to operation method.'
-				throw 'Module failed to find operation to execute.'
-			}
-		}
-	}
-
-    if ($TaskResult) {
-        $GetTaskResult_params = @{
-            TaskResult = $TaskResult
+        if ($PSBoundParameters.ContainsKey('Location')) {
+            if ( $MyInvocation.Line -match "\s-ArmLocation\s") {
+                Write-Warning -Message "The parameter alias ArmLocation will be deprecated in future release. Please use the parameter Location instead"
+            }
         }
 
-        Get-TaskResult @GetTaskResult_params
+        $NewServiceClient_params = @{
+            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
+        }
 
-    }
+        $GlobalParameterHashtable = @{}
+        $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+
+        $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
+
+        $updatedSubscription = $null
+
+        if ( 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName ) {
+            $GetArmResourceIdParameterValue_params = @{
+                IdTemplate = '/subscriptions/{subscriptionId}'
+            }
+
+            if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
+                $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
+            } else {
+                $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
+                $updatedSubscription = $InputObject
+            }
+            $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
+
+            $SubscriptionId = $ArmResourceIdParameterValues['subscriptionId']
+        }
+
+        if ($PSCmdlet.ShouldProcess("$SubscriptionId" , "Update subscription")) {
+
+            if ('Set' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+
+                if ($updatedSubscription -eq $null) {
+                    $updatedSubscription = Get-AzsSubscription -SubscriptionId $SubscriptionId
+                }
+
+                $flattenedParameters = @('OfferId', 'Id', 'Type', 'Tags', 'SubscriptionId', 'State', 'TenantId', 'Location', 'DisplayName')
+                $flattenedParameters | ForEach-Object {
+                    if ($PSBoundParameters.ContainsKey($_)) {
+                        $updatedSubscription.$($_) = $PSBoundParameters[$_]
+                    }
+                }
+
+                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsManagementClient.'
+                $TaskResult = $SubscriptionsManagementClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $updatedSubscription)
+
+            } else {
+                Write-Verbose -Message 'Failed to map parameter set to operation method.'
+                throw 'Module failed to find operation to execute.'
+            }
+        }
+
+        if ($TaskResult) {
+            $GetTaskResult_params = @{
+                TaskResult = $TaskResult
+            }
+
+            Get-TaskResult @GetTaskResult_params
+
+        }
     }
 
     End {

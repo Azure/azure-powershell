@@ -26,7 +26,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource id.
 
 .PARAMETER InputObject
-    The input object of type Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.
+    An alert returned from Get-AzsAlert.
 
 .EXAMPLE
 

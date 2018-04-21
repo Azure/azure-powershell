@@ -29,7 +29,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource group the resource is located under.
 
 .PARAMETER InputObject
-    The input object of type Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun.
+    An attempted update run returned from Get-AzsUpdateRun.
 
 .PARAMETER DisplayName
     Name of the update.
