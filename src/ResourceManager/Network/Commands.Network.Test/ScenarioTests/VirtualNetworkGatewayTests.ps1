@@ -672,7 +672,7 @@ param
 
       # Create IkeV2 virtualnetworkgateway with custom Ipsec policy specified
 	  $vpnclientipsecpolicy1 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86471 -SADataSizeKilobytes 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
-      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol IkeV2 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientIpsecPolicies $vpnclientipsecpolicy1
+      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol IkeV2 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientIpsecPolicy $vpnclientipsecpolicy1
 
 	  # Get virtualnetworkgateway
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
@@ -691,7 +691,7 @@ param
             
       # Update P2S VPNClient Configuration :- custom Ipsec policy
 	  $vpnclientipsecpolicy2 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86472 -SADataSizeKilobytes 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
-	  $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -VpnClientIpsecPolicies $vpnclientipsecpolicy2
+	  $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -VpnClientIpsecPolicy $vpnclientipsecpolicy2
 	  Assert-AreEqual $vpnclientipsecpolicy2.SALifeTimeSeconds $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].SALifeTimeSeconds
 	  Assert-AreEqual $vpnclientipsecpolicy2.SADataSizeKilobytes $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].SADataSizeKilobytes
 	  Assert-AreEqual $vpnclientipsecpolicy2.IpsecEncryption $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecEncryption

@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies for P2S VPN client tunneling protocols.")]
-        public List<PSIpsecPolicy> VpnClientIpsecPolicies { get; set; }
+        public List<PSIpsecPolicy> VpnClientIpsecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -331,7 +331,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.VpnClientRootCertificates != null ||
                 this.VpnClientRevokedCertificates != null ||
                 this.RadiusServerAddress != null ||
-                (this.VpnClientIpsecPolicies != null && this.VpnClientIpsecPolicies.Count != 0))
+                (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0))
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -362,9 +362,9 @@ namespace Microsoft.Azure.Commands.Network
                     vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
                 }
 
-                if (this.VpnClientIpsecPolicies != null && this.VpnClientIpsecPolicies.Count != 0)
+                if (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)
                 {
-                    vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicies;
+                    vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy;
                 }
 
                 if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||

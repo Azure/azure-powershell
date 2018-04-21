@@ -18,7 +18,7 @@ using MNM = Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientIpsecParameters", SupportsShouldProcess = true), OutputType(typeof(MNM.PSVpnClientIPsecParameters))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmVpnClientIpsecParameters"), OutputType(typeof(MNM.PSVpnClientIPsecParameters))]
     public class GetAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
