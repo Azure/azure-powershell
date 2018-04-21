@@ -163,7 +163,7 @@ function Set-AzsSubscription {
                     }
                 }
 
-                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsManagementClient.'
+                Write-Verbose -Message 'Performing operation update on $SubscriptionsManagementClient.'
                 $TaskResult = $SubscriptionsManagementClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $updatedSubscription)
 
             } else {

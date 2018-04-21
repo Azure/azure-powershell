@@ -52,7 +52,7 @@ function Add-AzsGalleryItem {
         $ErrorActionPreference = 'Stop'
 
         if ($PSCmdlet.ShouldProcess("$GalleryItemUri" , "Add Gallery item")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Add Gallery item?", "Performing operation add gallery item from $GalleryItemUriUri")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Gallery item could already exist, are you sure?", "Performing operation add gallery item from $GalleryItemUriUri")) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient'
@@ -68,7 +68,7 @@ function Add-AzsGalleryItem {
 
                 $GalleryAdminClient = New-ServiceClient @NewServiceClient_params
 
-                Write-Verbose -Message 'Performing operation CreateWithHttpMessagesAsync on $GalleryAdminClient.'
+                Write-Verbose -Message 'Performing operation add on $GalleryAdminClient.'
                 $TaskResult = $GalleryAdminClient.GalleryItems.CreateWithHttpMessagesAsync($(if ($PSBoundParameters.ContainsKey('GalleryItemUri')) {
                             $GalleryItemUri
                         } else {

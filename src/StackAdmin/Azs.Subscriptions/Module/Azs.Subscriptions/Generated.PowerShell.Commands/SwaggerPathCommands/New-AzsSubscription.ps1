@@ -45,7 +45,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function New-AzsSubscription {
     [OutputType([Microsoft.AzureStack.Management.Subscriptions.Models.Subscription])]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
@@ -62,12 +62,12 @@ function New-AzsSubscription {
 
         [Parameter(Mandatory = $false)]
         [System.String]
-        $SubscriptionId,
+        $SubscriptionId = $([Guid]::NewGuid().ToString()),
 
         [Parameter(Mandatory = $false)]
         [ValidateSet('NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted')]
         [System.String]
-        $State,
+        $State = 'Enabled',
 
         [Parameter(Mandatory = $false)]
         [System.String]
@@ -96,25 +96,32 @@ function New-AzsSubscription {
             }
         }
 
-        $NewServiceClient_params = @{
-            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
-        }
-
-        $GlobalParameterHashtable = @{}
-        $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
-        $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
-
+        # Default above so that it appears in help
         if (-not $PSBoundParameters.ContainsKey('State')) {
-            $State = "Enabled"
             $PSBoundParameters.Add("State", $State)
         }
-
-        if (-not ($PSBoundParameters.ContainsKey('SubscriptionId'))) {
-            $SubscriptionId = [Guid]::NewGuid().ToString()
+        if (-not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters.Add("SubscriptionId", $SubscriptionId)
         }
 
+        # Validate this resource does not exist.
+        $_objectCheck = $null
+        try {
+            $_objectCheck = Get-AzsSubscription -SubscriptionId $SubscriptionId
+        } catch {
+            # No op
+        } finally {
+            if ($_objectCheck -ne $null) {
+                throw "A subscription with identifier $SubscriptionId already exists."
+            }
+        }
+        
+        $NewServiceClient_params = @{
+            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
+        }
+        $GlobalParameterHashtable = @{}
+        $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+        $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
 
         $flattenedParameters = @('OfferId', 'Id', 'SubscriptionId', 'State', 'TenantId', 'DisplayName')
         $utilityCmdParams = @{}
@@ -125,7 +132,7 @@ function New-AzsSubscription {
         }
         $NewSubscription = New-SubscriptionObject @utilityCmdParams
 
-        Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsManagementClient.'
+        Write-Verbose -Message 'Performing operation create on $SubscriptionsManagementClient.'
         $TaskResult = $SubscriptionsManagementClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $NewSubscription)
 
         if ($TaskResult) {
