@@ -104,44 +104,46 @@ function New-AzsSubscription {
             $PSBoundParameters.Add("SubscriptionId", $SubscriptionId)
         }
 
-        # Validate this resource does not exist.
-        $_objectCheck = $null
-        try {
-            $_objectCheck = Get-AzsSubscription -SubscriptionId $SubscriptionId
-        } catch {
-            # No op
-        } finally {
-            if ($_objectCheck -ne $null) {
-                throw "A subscription with identifier $SubscriptionId already exists."
+        if ($PSCmdlet.ShouldProcess("$SubscriptionId", "Create new subscription")) {
+
+            # Validate this resource does not exist.
+            $_objectCheck = $null
+            try {
+                $_objectCheck = Get-AzsSubscription -SubscriptionId $SubscriptionId
+            } catch {
+                # No op
+            } finally {
+                if ($_objectCheck -ne $null) {
+                    throw "A subscription with identifier $SubscriptionId already exists."
+                }
             }
-        }
         
-        $NewServiceClient_params = @{
-            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
-        }
-        $GlobalParameterHashtable = @{}
-        $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-        $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
-
-        $flattenedParameters = @('OfferId', 'Id', 'SubscriptionId', 'State', 'TenantId', 'DisplayName')
-        $utilityCmdParams = @{}
-        $flattenedParameters | ForEach-Object {
-            if ($PSBoundParameters.ContainsKey($_)) {
-                $utilityCmdParams[$_] = $PSBoundParameters[$_]
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
             }
-        }
-        $NewSubscription = New-SubscriptionObject @utilityCmdParams
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+            $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
 
-        Write-Verbose -Message 'Performing operation create on $SubscriptionsManagementClient.'
-        $TaskResult = $SubscriptionsManagementClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $NewSubscription)
-
-        if ($TaskResult) {
-            $GetTaskResult_params = @{
-                TaskResult = $TaskResult
+            $flattenedParameters = @('OfferId', 'Id', 'SubscriptionId', 'State', 'TenantId', 'DisplayName')
+            $utilityCmdParams = @{}
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
+                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
+                }
             }
+            $NewSubscription = New-SubscriptionObject @utilityCmdParams
 
-            Get-TaskResult @GetTaskResult_params
+            Write-Verbose -Message 'Performing operation create on $SubscriptionsManagementClient.'
+            $TaskResult = $SubscriptionsManagementClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $NewSubscription)
 
+            if ($TaskResult) {
+                $GetTaskResult_params = @{
+                    TaskResult = $TaskResult
+                }
+
+                Get-TaskResult @GetTaskResult_params
+            }
         }
     }
 
