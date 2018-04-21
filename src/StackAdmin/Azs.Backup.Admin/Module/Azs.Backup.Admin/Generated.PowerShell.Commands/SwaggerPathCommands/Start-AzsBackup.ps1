@@ -85,7 +85,7 @@ function Start-AzsBackup {
 
         # Should process
         if ($PSCmdlet.ShouldProcess("$Location" , "Start backup at $Location")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start backup at $Location?", "Performing operation backup at $Location.")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start backup at $($Location)?", "Performing operation backup at $Location.")) {
 
                 if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
@@ -134,19 +134,7 @@ function Start-AzsBackup {
                         $GetTaskResult_params = @{
                             TaskResult = $TaskResult
                         }
-                        try {
-                            Get-TaskResult @GetTaskResult_params
-                        } catch {
-                            $ex = $_
-                            try {
-                                throw @{
-                                    "Code"    = $ex.Exception.Body.Code;
-                                    "Message" = $ex.Exception.Body.Message
-                                }
-                            } catch {
-                                throw $ex
-                            }
-                        }
+                        Get-TaskResult @GetTaskResult_params
                     }
                 }
 

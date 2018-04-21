@@ -20,7 +20,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource id.
 
 .PARAMETER InputObject
-    The input object of type Microsoft.AzureStack.Management.Backup.Admin.Models.BackupLocation.
+    Backup location configuration returned by Get-AzsBackupLocation.
 
 .PARAMETER BackupShare
     Location where backups will be stored.
@@ -36,9 +36,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
-
-.PARAMETER Force
-    Don't ask for confirmation.
 
 .EXAMPLE
 
@@ -101,11 +98,7 @@ function Set-AzsBackupShare {
 
         [Parameter(Mandatory = $false)]
         [switch]
-        $AsJob,
-
-        [Parameter(Mandatory = $false)]
-        [switch]
-        $Force
+        $AsJob
     )
 
     Begin {
@@ -140,94 +133,85 @@ function Set-AzsBackupShare {
 
         # Should process
         if ($PSCmdlet.ShouldProcess("$Location" , "Set backup configuration for location.")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Set backup configuration backup for location?", "Performing operation set backup configuration at $Location.")) {
 
-                if ([System.String]::IsNullOrEmpty($Location)) {
-                    $Location = (Get-AzureRMLocation).Location
+            if ([System.String]::IsNullOrEmpty($Location)) {
+                $Location = (Get-AzureRMLocation).Location
+            }
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
+                $ResourceGroupName = "System.$($Location)"
+            }
+
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Backup.Admin.BackupAdminClient'
+            }
+
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+
+            $GlobalParameterHashtable['SubscriptionId'] = $null
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+            }
+
+            $BackupAdminClient = New-ServiceClient @NewServiceClient_params
+
+            if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'Update' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+
+                if ($InputObject -eq $null) {
+                    $InputObject = Get-AzsBackupLocation -ResourceGroupName $ResourceGroupName -Location $Location
                 }
-                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
-                    $ResourceGroupName = "System.$($Location)"
-                }
 
-                $NewServiceClient_params = @{
-                    FullClientTypeName = 'Microsoft.AzureStack.Management.Backup.Admin.BackupAdminClient'
-                }
+                $InputObject.Path = $BackupShare
+                $InputObject.UserName = $Username
+                $InputObject.Password = ConvertTo-String -SecureString $Password
+                $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
 
-                $GlobalParameterHashtable = @{}
-                $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+                Write-Verbose -Message 'Performing operation UpdateWithHttpMessagesAsync on $BackupAdminClient.'
+                $TaskResult = $BackupAdminClient.BackupLocations.UpdateWithHttpMessagesAsync($ResourceGroupName, $Location, $InputObject)
+            } else {
+                Write-Verbose -Message 'Failed to map parameter set to operation method.'
+                throw 'Module failed to find operation to execute.'
+            }
 
-                $GlobalParameterHashtable['SubscriptionId'] = $null
-                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                    $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
-                }
+            Write-Verbose -Message "Waiting for the operation to complete."
 
-                $BackupAdminClient = New-ServiceClient @NewServiceClient_params
+            $PSSwaggerJobScriptBlock = {
+                [CmdletBinding()]
+                param(
+                    [Parameter(Mandatory = $true)]
+                    [System.Threading.Tasks.Task]
+                    $TaskResult,
 
-                if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'Update' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-
-                    if ($InputObject -eq $null) {
-                        $InputObject = Get-AzsBackupLocation -ResourceGroupName $ResourceGroupName -Location $Location
+                    [Parameter(Mandatory = $true)]
+                    [System.String]
+                    $TaskHelperFilePath
+                )
+                if ($TaskResult) {
+                    . $TaskHelperFilePath
+                    $GetTaskResult_params = @{
+                        TaskResult = $TaskResult
                     }
-
-                    $InputObject.Path = $BackupShare
-                    $InputObject.UserName = $Username
-                    $InputObject.Password = ConvertTo-String -SecureString $Password
-                    $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
-
-                    Write-Verbose -Message 'Performing operation UpdateWithHttpMessagesAsync on $BackupAdminClient.'
-                    $TaskResult = $BackupAdminClient.BackupLocations.UpdateWithHttpMessagesAsync($ResourceGroupName, $Location, $InputObject)
-                } else {
-                    Write-Verbose -Message 'Failed to map parameter set to operation method.'
-                    throw 'Module failed to find operation to execute.'
+                    Get-TaskResult @GetTaskResult_params
                 }
+            }
 
-                Write-Verbose -Message "Waiting for the operation to complete."
+            $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
+            $TaskHelperFilePath = Join-Path -Path $ExecutionContext.SessionState.Module.ModuleBase -ChildPath 'Get-TaskResult.ps1'
+            if ($AsJob) {
+                $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
+                $ScriptBlockParameters['TaskResult'] = $TaskResult
+                $ScriptBlockParameters['AsJob'] = $true
+                $ScriptBlockParameters['TaskHelperFilePath'] = $TaskHelperFilePath
+                $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
 
-                $PSSwaggerJobScriptBlock = {
-                    [CmdletBinding()]
-                    param(
-                        [Parameter(Mandatory = $true)]
-                        [System.Threading.Tasks.Task]
-                        $TaskResult,
-
-                        [Parameter(Mandatory = $true)]
-                        [System.String]
-                        $TaskHelperFilePath
-                    )
-                    if ($TaskResult) {
-                        . $TaskHelperFilePath
-                        $GetTaskResult_params = @{
-                            TaskResult = $TaskResult
-                        }
-                        try {
-                            Get-TaskResult @GetTaskResult_params
-                        } catch {
-                            @{
-                                "Code"    = $_.Exception.Body.Code;
-                                "Message" = $_.Exception.Body.Message
-                            }
-                        }
-                    }
-                }
-
-                $PSCommonParameters = Get-PSCommonParameter -CallerPSBoundParameters $PSBoundParameters
-                $TaskHelperFilePath = Join-Path -Path $ExecutionContext.SessionState.Module.ModuleBase -ChildPath 'Get-TaskResult.ps1'
-                if ($AsJob) {
-                    $ScriptBlockParameters = New-Object -TypeName 'System.Collections.Generic.Dictionary[string,object]'
-                    $ScriptBlockParameters['TaskResult'] = $TaskResult
-                    $ScriptBlockParameters['AsJob'] = $true
-                    $ScriptBlockParameters['TaskHelperFilePath'] = $TaskHelperFilePath
-                    $PSCommonParameters.GetEnumerator() | ForEach-Object { $ScriptBlockParameters[$_.Name] = $_.Value }
-
-                    Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
-                        -CallerPSBoundParameters $ScriptBlockParameters `
-                        -CallerPSCmdlet $PSCmdlet `
-                        @PSCommonParameters
-                } else {
-                    Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
-                        -ArgumentList $TaskResult, $TaskHelperFilePath `
-                        @PSCommonParameters
-                }
+                Start-PSSwaggerJobHelper -ScriptBlock $PSSwaggerJobScriptBlock `
+                    -CallerPSBoundParameters $ScriptBlockParameters `
+                    -CallerPSCmdlet $PSCmdlet `
+                    @PSCommonParameters
+            } else {
+                Invoke-Command -ScriptBlock $PSSwaggerJobScriptBlock `
+                    -ArgumentList $TaskResult, $TaskHelperFilePath `
+                    @PSCommonParameters
             }
         }
     }

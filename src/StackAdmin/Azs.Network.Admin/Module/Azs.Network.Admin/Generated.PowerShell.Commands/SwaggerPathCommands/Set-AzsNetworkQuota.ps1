@@ -41,10 +41,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource id.
 
 .PARAMETER InputObject
-    The input object of type Microsoft.AzureStack.Management.Network.Admin.Models.Quota.
-
-.PARAMETER Force
-    Don't ask for confirmation.
+    Posbbily modified network quota returned by Get-AzsNetworkQuota
 
 .EXAMPLE
 
@@ -107,11 +104,7 @@ function Set-AzsNetworkQuota {
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'InputObject')]
         [ValidateNotNullOrEmpty()]
         [Microsoft.AzureStack.Management.Network.Admin.Models.Quota]
-        $InputObject,
-
-        [Parameter(Mandatory = $false)]
-        [switch]
-        $Force
+        $InputObject
     )
 
     Begin {
@@ -149,59 +142,57 @@ function Set-AzsNetworkQuota {
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Update network quota")) {
-            if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Update network quota?", "Performing operation update $Name."))) {
 
-                if ([System.String]::IsNullOrEmpty($Location)) {
-                    $Location = (Get-AzureRMLocation).Location
+            if ([System.String]::IsNullOrEmpty($Location)) {
+                $Location = (Get-AzureRMLocation).Location
+            }
+
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient'
+            }
+
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+
+            $GlobalParameterHashtable['SubscriptionId'] = $null
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+            }
+
+            $NetworkAdminClient = New-ServiceClient @NewServiceClient_params
+
+            if ('Quotas' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+
+                if ($Quota -eq $null) {
+                    $Quota = Get-AzsNetworkQuota -Location $Location -Name $Name
                 }
 
-                $NewServiceClient_params = @{
-                    FullClientTypeName = 'Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient'
-                }
-
-                $GlobalParameterHashtable = @{}
-                $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
-                $GlobalParameterHashtable['SubscriptionId'] = $null
-                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                    $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
-                }
-
-                $NetworkAdminClient = New-ServiceClient @NewServiceClient_params
-
-                if ('Quotas' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-
-                    if ($Quota -eq $null) {
-                        $Quota = Get-AzsNetworkQuota -Location $Location -Name $Name
+                $flattenedParameters = @(
+                    'MaxNicsPerSubscription', 'MaxPublicIpsPerSubscription',
+                    'MaxVirtualNetworkGatewayConnectionsPerSubscription', 'MaxVnetsPerSubscription',
+                    'MaxVirtualNetworkGatewaysPerSubscription', 'MaxSecurityGroupsPerSubscription',
+                    'MaxLoadBalancersPerSubscription')
+                # Update the Quota object
+                $flattenedParameters | ForEach-Object {
+                    if ($PSBoundParameters.ContainsKey($_)) {
+                        $Quota.$($_) = $PSBoundParameters[$_]
                     }
-
-                    $flattenedParameters = @(
-                        'MaxNicsPerSubscription', 'MaxPublicIpsPerSubscription',
-                        'MaxVirtualNetworkGatewayConnectionsPerSubscription', 'MaxVnetsPerSubscription',
-                        'MaxVirtualNetworkGatewaysPerSubscription', 'MaxSecurityGroupsPerSubscription',
-                        'MaxLoadBalancersPerSubscription')
-                    # Update the Quota object
-                    $flattenedParameters | ForEach-Object {
-                        if ($PSBoundParameters.ContainsKey($_)) {
-                            $Quota.$($_) = $PSBoundParameters[$_]
-                        }
-                    }
-
-                    Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $NetworkAdminClient.'
-                    $TaskResult = $NetworkAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $Quota)
-                } else {
-                    Write-Verbose -Message 'Failed to map parameter set to operation method.'
-                    throw 'Module failed to find operation to execute.'
                 }
 
-                if ($TaskResult) {
-                    $GetTaskResult_params = @{
-                        TaskResult = $TaskResult
-                    }
+                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $NetworkAdminClient.'
+                $TaskResult = $NetworkAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $Quota)
+            } else {
+                Write-Verbose -Message 'Failed to map parameter set to operation method.'
+                throw 'Module failed to find operation to execute.'
+            }
 
-                    Get-TaskResult @GetTaskResult_params
-
+            if ($TaskResult) {
+                $GetTaskResult_params = @{
+                    TaskResult = $TaskResult
                 }
+
+                Get-TaskResult @GetTaskResult_params
+
             }
         }
     }

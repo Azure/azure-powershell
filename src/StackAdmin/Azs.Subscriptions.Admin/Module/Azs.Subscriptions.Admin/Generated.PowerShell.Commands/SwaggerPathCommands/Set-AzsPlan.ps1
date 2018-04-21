@@ -43,9 +43,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER SubscriptionCount
     Subscription count.
 
-.PARAMETER Force
-    Don't ask for confirmation.
-
 .EXAMPLE
 
     PS C:\> Set-AzsPlan -Name "plan1" -ResourceGroupName "rg1" -Description "This plan is meant to be used by accounting only."
@@ -120,11 +117,7 @@ function Set-AzsPlan {
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $ResourceId,
-
-        [Parameter(Mandatory = $false)]
-        [switch]
-        $Force
+        $ResourceId
     )
 
     Begin {
@@ -162,61 +155,59 @@ function Set-AzsPlan {
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Update plan")) {
-            if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Update plan?", "Performing operation update for plan $Name."))) {
 
 
-                if ($PSBoundParameters.ContainsKey('Location')) {
-                    if ( $MyInvocation.Line -match "\s-ArmLocation\s") {
-                        Write-Warning -Message "The parameter alias ArmLocation will be deprecated in future release. Please use the parameter Location instead"
-                    }
+            if ($PSBoundParameters.ContainsKey('Location')) {
+                if ( $MyInvocation.Line -match "\s-ArmLocation\s") {
+                    Write-Warning -Message "The parameter alias ArmLocation will be deprecated in future release. Please use the parameter Location instead"
+                }
+            }
+
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
+            }
+
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+
+            $GlobalParameterHashtable['SubscriptionId'] = $null
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+            }
+
+            $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
+
+            if ([System.String]::IsNullOrEmpty('Location')) {
+                $Location = (Get-AzureRMLocation).Location
+                $PSBoundParameters.Add("Location", $Location)
+            }
+
+            $flattenedParameters = @('Description', 'SkuIds', 'ExternalReferenceId', 'DisplayName', 'Name', 'Location', 'QuotaIds', 'SubscriptionCount')
+            if ($NewPlan -eq $null) {
+                $NewPlan = Get-AzsPlan -Name $Name -ResourceGroupName $ResourceGroupName
+            }
+
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
+                    $NewPlan[$_] = $PSBoundParameters[$_]
+                }
+            }
+
+            if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsAdminClient.'
+                $TaskResult = $SubscriptionsAdminClient.Plans.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $NewPlan)
+            } else {
+                Write-Verbose -Message 'Failed to map parameter set to operation method.'
+                throw 'Module failed to find operation to execute.'
+            }
+
+            if ($TaskResult) {
+                $GetTaskResult_params = @{
+                    TaskResult = $TaskResult
                 }
 
-                $NewServiceClient_params = @{
-                    FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
-                }
+                Get-TaskResult @GetTaskResult_params
 
-                $GlobalParameterHashtable = @{}
-                $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
-                $GlobalParameterHashtable['SubscriptionId'] = $null
-                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                    $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
-                }
-
-                $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
-
-                if ([System.String]::IsNullOrEmpty('Location')) {
-                    $Location = (Get-AzureRMLocation).Location
-                    $PSBoundParameters.Add("Location", $Location)
-                }
-
-                $flattenedParameters = @('Description', 'SkuIds', 'ExternalReferenceId', 'DisplayName', 'Name', 'Location', 'QuotaIds', 'SubscriptionCount')
-                if ($NewPlan -eq $null) {
-                    $NewPlan = Get-AzsPlan -Name $Name -ResourceGroupName $ResourceGroupName
-                }
-
-                $flattenedParameters | ForEach-Object {
-                    if ($PSBoundParameters.ContainsKey($_)) {
-                        $NewPlan[$_] = $PSBoundParameters[$_]
-                    }
-                }
-
-                if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-                    Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsAdminClient.'
-                    $TaskResult = $SubscriptionsAdminClient.Plans.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $NewPlan)
-                } else {
-                    Write-Verbose -Message 'Failed to map parameter set to operation method.'
-                    throw 'Module failed to find operation to execute.'
-                }
-
-                if ($TaskResult) {
-                    $GetTaskResult_params = @{
-                        TaskResult = $TaskResult
-                    }
-
-                    Get-TaskResult @GetTaskResult_params
-
-                }
             }
         }
     }
