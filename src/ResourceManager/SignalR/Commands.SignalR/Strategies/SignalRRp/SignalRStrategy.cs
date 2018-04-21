@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp
                     p.CancellationToken),
                 getLocation: config => config.Location,
                 setLocation: (config, location) => config.Location = location,
-                createTime: c => 5,
+                createTime: c => 180,
                 compulsoryLocation: true);
     }
 }
