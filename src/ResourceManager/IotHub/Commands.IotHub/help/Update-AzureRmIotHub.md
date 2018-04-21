@@ -1,67 +1,47 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
 Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/remove-azurermiothubcertificate
+online version: 
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIotHubCertificate
+# Update-AzureRmIotHub
 
 ## SYNOPSIS
-Deletes an Azure IoT Hub certificate.
+Update an Azure IoT Hub.
 
 ## SYNTAX
 
-### ResourceSet (Default)
 ```
-Remove-AzureRmIotHubCertificate [-ResourceGroupName] <String> [-Name] <String> [-CertificateName] <String>
- [-Etag] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### InputObjectSet
-```
-Remove-AzureRmIotHubCertificate [-InputObject] <PSCertificateDescription> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceIdSet
-```
-Remove-AzureRmIotHubCertificate [-ResourceId] <String> [-Etag] <String> [-PassThru]
+Update-AzureRmIotHub -ResourceGroupName <String> -Name <String> -Tag <Hashtable> [-Reset]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-x509ca-overview
+You can update the tags properties of an IotHub.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Remove-AzureRmIotHubCertificate -ResourceGroupName "myresourcegroup" -Name "myiothub" -CertificateName "mycertificate" -Etag "AAAAAAFPazE="
+PS C:\> Update-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
+
+Id             : /subscriptions/91d1xxxx-xxxx-xxxx-xxxx-xxxxxxxxddc0/resourceGroups/myresourcegroup/providers/Microsoft.De
+                 vices/IotHubs/myiotdps
+Name           : myiotdps
+Type           : Microsoft.Devices/IotHubs
+Location       : East US
+Tags           : {[k1, v1]}
+Properties     : Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties
+Sku            : Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo
 ```
 
-Deletes MyCertificate
+Add "@tags" to the Tag of an Azure IoT Hub "myiotdps".
 
 ## PARAMETERS
 
-### -CertificateName
-Name of the Certificate
-
-```yaml
-Type: String
-Parameter Sets: ResourceSet
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -75,53 +55,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Etag
-Etag of the Certificate
-
-```yaml
-Type: String
-Parameter Sets: ResourceSet, ResourceIdSet
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Certificate Object
-
-```yaml
-Type: PSCertificateDescription
-Parameter Sets: InputObjectSet
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the Iot Hub
 
 ```yaml
 Type: String
-Parameter Sets: ResourceSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-{{Fill PassThru Description}}
+### -Reset
+Reset IoTHub Tags
 
 ```yaml
 Type: SwitchParameter
@@ -140,28 +90,28 @@ Name of the Resource Group
 
 ```yaml
 Type: String
-Parameter Sets: ResourceSet
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Certificate Resource Id
+### -Tag
+IoTHub Tag collection
 
 ```yaml
-Type: String
-Parameter Sets: ResourceIdSet
+Type: Hashtable
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -205,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
 
 ## NOTES
 
