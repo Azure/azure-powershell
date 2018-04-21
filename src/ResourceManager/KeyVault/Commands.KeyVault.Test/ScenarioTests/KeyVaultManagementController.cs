@@ -33,6 +33,7 @@ using LegacyTest = Microsoft.Azure.Test;
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
     using Common.Authentication.Abstractions;
+    using Management.Network;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
     using TestBase = Microsoft.Azure.Test.TestBase;
@@ -60,6 +61,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         public GalleryClient GalleryClient { get; private set; }
 
         public GraphRbacManagementClient GraphClient { get; private set; }
+
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -160,6 +163,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         {
             ResourceManagementClient = GetResourceManagementClient();
             NewResourceManagementClient = GetResourceManagementClient(context);
+            NetworkManagementClient = GetNetworkManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -167,6 +171,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
                 NewResourceManagementClient,
+                NetworkManagementClient,
                 SubscriptionClient,
                 KeyVaultManagementClient,
                 AuthorizationManagementClient,
@@ -175,6 +180,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 );
         }
 
+        private NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
