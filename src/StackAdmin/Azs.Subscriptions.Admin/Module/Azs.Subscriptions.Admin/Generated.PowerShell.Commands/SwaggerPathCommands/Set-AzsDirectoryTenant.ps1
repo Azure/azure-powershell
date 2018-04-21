@@ -134,7 +134,7 @@ function Set-AzsDirectoryTenant {
             $NewTenant = New-DirectoryTenantObject @utilityCmdParams
 
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsAdminClient.'
+                Write-Verbose -Message 'Performing operation update on $SubscriptionsAdminClient.'
                 $TaskResult = $SubscriptionsAdminClient.DirectoryTenants.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $NewTenant)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'

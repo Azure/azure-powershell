@@ -126,8 +126,17 @@ function Add-AzsVMExtension {
     Process {
         $ErrorActionPreference = 'Stop'
 
-        if ($PSCmdlet.ShouldProcess("$Publisher / $Type / $Version" , "Add virtual machine image extension")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Add virtual machine image extension?", "Performing operation add virtual machine image extension with publisher $Publisher, type $Type, and version $Version.")) {
+        if ($PSCmdlet.ShouldProcess("$Publisher/$Type/$Version" , "Add virtual machine image extension")) {
+
+            $dontCheck = $true
+            try {
+                $result = Get-AzsVMExtension -Publisher $Publisher -Type $Type -Sku $Sku
+                $dontCheck = $result -eq $null
+            } catch {
+                # No-op
+            }
+
+            if ($dontCheck -or ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Virtual machine image extension exists with values $Publisher/$Type/$Sku, overwrite?", "Performing operation add virtual machine image extension with publisher $Publisher, type $Type, and version $Version."))) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
@@ -160,7 +169,7 @@ function Add-AzsVMExtension {
                     $Location = (Get-AzureRMLocation).Location
                 }
 
-                Write-Verbose -Message 'Performing operation CreateWithHttpMessagesAsync on $ComputeAdminClient.'
+                Write-Verbose -Message 'Performing operation add on $ComputeAdminClient.'
                 $TaskResult = $ComputeAdminClient.VMExtensions.CreateWithHttpMessagesAsync($Location, $Publisher, $Type, $Version, $Extension)
 
                 Write-Verbose -Message "Waiting for the operation to complete."

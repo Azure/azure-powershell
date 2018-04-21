@@ -194,7 +194,7 @@ function Set-AzsPlan {
             }
 
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsAdminClient.'
+                Write-Verbose -Message 'Performing operation update on $SubscriptionsAdminClient.'
                 $TaskResult = $SubscriptionsAdminClient.Plans.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $NewPlan)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'

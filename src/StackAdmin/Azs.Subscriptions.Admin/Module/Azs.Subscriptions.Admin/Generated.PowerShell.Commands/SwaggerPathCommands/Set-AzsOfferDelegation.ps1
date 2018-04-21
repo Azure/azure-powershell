@@ -139,7 +139,7 @@ function Set-AzsOfferDelegation {
             $NewOfferDelegation = New-OfferDelegationObject @utilityCmdParams
 
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsAdminClient.'
+                Write-Verbose -Message 'Performing operation update on $SubscriptionsAdminClient.'
                 $TaskResult = $SubscriptionsAdminClient.OfferDelegations.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $OfferName, $Name, $NewOfferDelegation)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'

@@ -151,7 +151,7 @@ function Set-AzsComputeQuota {
                     }
                 }
 
-                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $ComputeAdminClient.'
+                Write-Verbose -Message 'Performing operation update on $ComputeAdminClient.'
                 $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $NewQuota)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'

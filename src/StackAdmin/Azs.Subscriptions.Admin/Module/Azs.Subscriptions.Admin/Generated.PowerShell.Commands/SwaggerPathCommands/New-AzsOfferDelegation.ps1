@@ -34,7 +34,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function New-AzsOfferDelegation {
     [OutputType([Microsoft.AzureStack.Management.Subscriptions.Admin.Models.OfferDelegation])]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
@@ -77,37 +77,50 @@ function New-AzsOfferDelegation {
 
         $ErrorActionPreference = 'Stop'
 
-        $NewServiceClient_params = @{
-            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
-        }
+        if ($PSCmdlet.ShouldProcess("$Name", "Create new offer delegation")) {
 
-        $GlobalParameterHashtable = @{}
-        $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
-        $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
-
-        if ([System.String]::IsNullOrEmpty($Location)) {
-            $Location = (Get-AzureRMLocation).Location
-            $PSBoundParameters.Add("Location", $Location)
-        }
-
-        $flattenedParameters = @('SubscriptionId', 'Location')
-        $utilityCmdParams = @{}
-        $flattenedParameters | ForEach-Object {
-            if ($PSBoundParameters.ContainsKey($_)) {
-                $utilityCmdParams[$_] = $PSBoundParameters[$_]
+            if ([System.String]::IsNullOrEmpty($Location)) {
+                $Location = (Get-AzureRMLocation).Location
+                $PSBoundParameters.Add("Location", $Location)
             }
-        }
-        $NewOfferDelegation = New-OfferDelegationObject @utilityCmdParams
 
-        Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsAdminClient.'
-        $TaskResult = $SubscriptionsAdminClient.OfferDelegations.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $OfferName, $Name, $NewOfferDelegation)
-
-        if ($TaskResult) {
-            $GetTaskResult_params = @{
-                TaskResult = $TaskResult
+            # Validate this resource does not exist.
+            $_objectCheck = $null
+            try {
+                $_objectCheck = Get-AzsOfferDelegation -ResourceGroupName $ResourceGroupName -OfferName $OfferName -Name $Name
+            } catch {
+                # No op
+            } finally {
+                if ($_objectCheck -ne $null) {
+                    throw "A delegated offer with name $Name for Offer $OfferName under the resource group $ResourceGroupName already exists."
+                }
             }
-            Get-TaskResult @GetTaskResult_params
+
+            $flattenedParameters = @('SubscriptionId', 'Location')
+            $utilityCmdParams = @{}
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
+                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
+                }
+            }
+            $NewOfferDelegation = New-OfferDelegationObject @utilityCmdParams
+
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
+            }
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+            $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
+
+            Write-Verbose -Message 'Performing operation create on $SubscriptionsAdminClient.'
+            $TaskResult = $SubscriptionsAdminClient.OfferDelegations.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $OfferName, $Name, $NewOfferDelegation)
+
+            if ($TaskResult) {
+                $GetTaskResult_params = @{
+                    TaskResult = $TaskResult
+                }
+                Get-TaskResult @GetTaskResult_params
+            }
         }
     }
 

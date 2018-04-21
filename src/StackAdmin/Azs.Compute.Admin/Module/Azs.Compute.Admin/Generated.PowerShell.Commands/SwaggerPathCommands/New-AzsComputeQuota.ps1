@@ -40,7 +40,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 #>
 function New-AzsComputeQuota {
     [OutputType([Microsoft.AzureStack.Management.Compute.Admin.Models.Quota])]
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
@@ -83,41 +83,54 @@ function New-AzsComputeQuota {
 
         $ErrorActionPreference = 'Stop'
 
-        $NewServiceClient_params = @{
-            FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
-        }
+        if ($PSCmdlet.ShouldProcess("$Name", "Create a new compute quota.")) {
 
-        $GlobalParameterHashtable = @{}
-        $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-
-        $GlobalParameterHashtable['SubscriptionId'] = $null
-        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
-        }
-
-        $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
-
-        # Default location if missing
-        if ([System.String]::IsNullOrEmpty($Location)) {
-            $Location = (Get-AzureRmLocation).Location
-        }
-
-        # Create object
-        $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'Location' )
-        $utilityCmdParams = @{}
-        $flattenedParameters | ForEach-Object {
-            $utilityCmdParams[$_] = Get-Variable -Name $_ -ValueOnly
-        }
-        $NewQuota = New-QuotaObject @utilityCmdParams
-
-        Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $ComputeAdminClient.'
-        $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $NewQuota)
-
-        if ($TaskResult) {
-            $GetTaskResult_params = @{
-                TaskResult = $TaskResult
+            # Default location if missing
+            if ([System.String]::IsNullOrEmpty($Location)) {
+                $Location = (Get-AzureRmLocation).Location
             }
-            Get-TaskResult @GetTaskResult_params
+
+            # Validate this resource does not exist.
+            $_objectCheck = $null
+            try {
+                Write-Verbose "Checking to see if compute quota already exists."
+                $_objectCheck = Get-AzsComputeQuota -Name $Name -Location $Location
+            } catch {
+                # No op
+            } finally {
+                if ($_objectCheck -ne $null) {
+                    throw "A compute quota with name $Name at location $Location already exists."
+                }
+            }
+
+            # Create object
+            $flattenedParameters = @('AvailabilitySetCount', 'CoresLimit', 'VmScaleSetCount', 'VirtualMachineCount', 'Location' )
+            $utilityCmdParams = @{}
+            $flattenedParameters | ForEach-Object {
+                $utilityCmdParams[$_] = Get-Variable -Name $_ -ValueOnly
+            }
+            $NewQuota = New-QuotaObject @utilityCmdParams
+            
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
+            }
+            $GlobalParameterHashtable = @{}
+            $GlobalParameterHashtable['SubscriptionId'] = $null
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+            }
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+            $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
+
+            Write-Verbose -Message 'Performing operation create on $ComputeAdminClient.'
+            $TaskResult = $ComputeAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $NewQuota)
+
+            if ($TaskResult) {
+                $GetTaskResult_params = @{
+                    TaskResult = $TaskResult
+                }
+                Get-TaskResult @GetTaskResult_params
+            }
         }
     }
 

@@ -179,7 +179,7 @@ function Set-AzsNetworkQuota {
                     }
                 }
 
-                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $NetworkAdminClient.'
+                Write-Verbose -Message 'Performing operation update on $NetworkAdminClient.'
                 $TaskResult = $NetworkAdminClient.Quotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $Quota)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'

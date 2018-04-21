@@ -139,7 +139,7 @@ function Set-AzsStorageQuota {
                     }
                 }
 
-                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $StorageAdminClient.'
+                Write-Verbose -Message 'Performing operation update on $StorageAdminClient.'
                 $TaskResult = $StorageAdminClient.StorageQuotas.CreateOrUpdateWithHttpMessagesAsync($Location, $Name, $Quota)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'

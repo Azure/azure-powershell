@@ -80,7 +80,18 @@ function Add-AzsPlanToOffer {
         $ErrorActionPreference = 'Stop'
 
         if ($PSCmdlet.ShouldProcess("$PlanName to $OfferName" , "Connect plan to offer")) {
-            if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Connect the plan to the offer?", "Performing operation link plan to offer with $PlanName to $OfferName."))) {
+
+            $dontCheck = $true
+            try {
+                $_offer = Get-AzsManagedOffer -Name $OfferName
+                $_planId = $_offer.BasePlanIds | Where-Object { $_ -like "*$PlanName" }
+                $_plan = Get-AzsPlan -ResourceId $_planId
+                $dontCheck = $_plan -eq $null
+            } catch {
+                # No-op
+            }
+
+            if ($dontCheck -or ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Connect the plan to the offer?", "Performing operation link plan to offer with $PlanName to $OfferName."))) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
@@ -106,7 +117,7 @@ function Add-AzsPlanToOffer {
                 }
                 $PlanLink = New-PlanLinkDefinitionObject @utilityCmdParams
 
-                Write-Verbose -Message 'Performing operation LinkWithHttpMessagesAsync on $SubscriptionsAdminClient.'
+                Write-Verbose -Message 'Performing operation link on $SubscriptionsAdminClient.'
                 $TaskResult = $SubscriptionsAdminClient.Offers.LinkWithHttpMessagesAsync($ResourceGroupName, $OfferName, $PlanLink)
 
                 if ($TaskResult) {

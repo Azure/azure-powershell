@@ -166,7 +166,7 @@ function Set-AzsBackupShare {
                 $InputObject.Password = ConvertTo-String -SecureString $Password
                 $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
 
-                Write-Verbose -Message 'Performing operation UpdateWithHttpMessagesAsync on $BackupAdminClient.'
+                Write-Verbose -Message 'Performing operation update on $BackupAdminClient.'
                 $TaskResult = $BackupAdminClient.BackupLocations.UpdateWithHttpMessagesAsync($ResourceGroupName, $Location, $InputObject)
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'
