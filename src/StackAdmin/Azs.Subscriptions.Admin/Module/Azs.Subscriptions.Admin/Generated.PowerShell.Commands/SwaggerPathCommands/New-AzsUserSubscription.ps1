@@ -56,38 +56,38 @@ function New-AzsUserSubscription {
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $Owner,
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $OfferId,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $TenantId,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $DelegatedProviderSubscriptionId,
 
         [Parameter(Mandatory = $false)]
         [ValidateSet('Default', 'Admin')]
-        [string]
+        [System.String]
         $RoutingResourceManagerType,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false)]
         [ValidateSet('NotDefined', 'Enabled', 'Warned', 'PastDue', 'Disabled', 'Deleted')]
-        [string]
+        [System.String]
         $State,
 
         [Parameter(Mandatory = $false)]

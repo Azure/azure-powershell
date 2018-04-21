@@ -121,10 +121,10 @@ function Get-AzsUpdate {
             $Location = $ArmResourceIdParameterValues['updateLocation']
             $Name = $ArmResourceIdParameterValues['update']
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRmLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }

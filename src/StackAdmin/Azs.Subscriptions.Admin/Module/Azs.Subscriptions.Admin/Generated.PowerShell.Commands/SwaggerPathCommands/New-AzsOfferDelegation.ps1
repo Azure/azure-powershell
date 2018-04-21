@@ -38,7 +38,7 @@ function New-AzsOfferDelegation {
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $Name,
 
         [Parameter(Mandatory = $true)]
@@ -48,7 +48,7 @@ function New-AzsOfferDelegation {
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $SubscriptionId,
 
         [Parameter(Mandatory = $true)]
@@ -58,7 +58,7 @@ function New-AzsOfferDelegation {
         $ResourceGroupName,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $Location
     )
 
@@ -86,7 +86,7 @@ function New-AzsOfferDelegation {
 
         $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-        if ([String]::IsNullOrEmpty($Location)) {
+        if ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
             $PSBoundParameters.Add("Location", $Location)
         }
@@ -110,7 +110,7 @@ function New-AzsOfferDelegation {
             Get-TaskResult @GetTaskResult_params
         }
     }
-    
+
     End {
         if ($tracerObject) {
             $global:DebugPreference = $oldDebugPreference

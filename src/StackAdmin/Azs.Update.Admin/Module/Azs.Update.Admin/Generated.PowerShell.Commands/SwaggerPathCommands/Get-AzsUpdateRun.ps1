@@ -29,7 +29,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource group the resource is located under.
 
 .PARAMETER InputObject
-    The input object of type Microsoft.AzureStack.Management.Update.Admin.Models.UpdateRun.
+    An attempted update run returned from Get-AzsUpdateRun.
 
 .PARAMETER DisplayName
     Name of the update.
@@ -111,7 +111,7 @@ function Get-AzsUpdateRun {
         if ( -not $PSBoundParameters.ContainsKey('Location')) {
             $Location = (Get-AzureRMLocation).Location
         }
-        if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+        if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
             $ResourceGroupName = "System.$Location"
         }
 
@@ -131,10 +131,10 @@ function Get-AzsUpdateRun {
             $DisplayName = $ArmResourceIdParameterValues['update']
             $Name = $ArmResourceIdParameterValues['runId']
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRmLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }

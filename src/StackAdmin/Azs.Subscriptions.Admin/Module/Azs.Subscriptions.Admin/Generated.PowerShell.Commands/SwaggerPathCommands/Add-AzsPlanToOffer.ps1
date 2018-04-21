@@ -36,7 +36,7 @@ function Add-AzsPlanToOffer {
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $PlanName,
 
         [Parameter(Mandatory = $true)]
@@ -52,7 +52,7 @@ function Add-AzsPlanToOffer {
 
         [Parameter(Mandatory = $false)]
         [ValidateSet('None', 'Base', 'Addon')]
-        [string]
+        [System.String]
         $PlanLinkType,
 
         [Parameter(Mandatory = $false)]

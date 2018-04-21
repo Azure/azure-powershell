@@ -49,9 +49,6 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER AddonPlanDefinition
     References to add-on plans that a tenant can optionally acquire as a part of the offer.
 
-.PARAMETER Force
-    Don't ask for confirmation.
-
 .EXAMPLE
 
     PS C:\> Set-AzsOffer -Name offer1 -ResourceGroupName rg1 -State Private
@@ -77,7 +74,7 @@ function Set-AzsOffer {
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [string]
+        [System.String]
         $DisplayName,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
@@ -93,27 +90,27 @@ function Set-AzsOffer {
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [string]
+        [System.String]
         $Description,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
-        [string]
+        [System.String]
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateSet('Private', 'Public', 'Decommissioned')]
-        [string]
+        [System.String]
         $State,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Alias('ArmLocation')]
-        [string]
+        [System.String]
         $Location,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
@@ -137,11 +134,7 @@ function Set-AzsOffer {
         [Parameter(Mandatory = $true, ValueFromPipelineByPropertyName = $true, ParameterSetName = 'ResourceId')]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $ResourceId,
-
-        [Parameter(Mandatory = $false)]
-        [switch]
-        $Force
+        $ResourceId
 
     )
 
@@ -174,65 +167,63 @@ function Set-AzsOffer {
                 $NewOffer = $InputObject
             }
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
-            $resourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
 
+            $resourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
             $Name = $ArmResourceIdParameterValues['offer']
         }
 
         if ($PSCmdlet.ShouldProcess("$Name" , "Update offer")) {
-            if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Update offer?", "Performing operation update for offer $Name."))) {
 
-                if ($PSBoundParameters.ContainsKey('Location')) {
-                    if ( $MyInvocation.Line -match "\s-ArmLocation\s") {
-                        Write-Warning -Message "The parameter alias ArmLocation will be deprecated in future release. Please use the parameter Location instead"
-                    }
+            if ($PSBoundParameters.ContainsKey('Location')) {
+                if ( $MyInvocation.Line -match "\s-ArmLocation\s") {
+                    Write-Warning -Message "The parameter alias ArmLocation will be deprecated in future release. Please use the parameter Location instead"
                 }
+            }
 
-                $NewServiceClient_params = @{
-                    FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
-                }
+            $NewServiceClient_params = @{
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
+            }
 
-                $GlobalParameterHashtable = @{}
-                $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
+            $GlobalParameterHashtable = @{}
+            $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
 
-                $GlobalParameterHashtable['SubscriptionId'] = $null
-                if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
-                    $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
-                }
+            $GlobalParameterHashtable['SubscriptionId'] = $null
+            if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+                $GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+            }
 
-                $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
+            $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if (-not $PSBoundParameters.ContainsKey('Location')) {
-                    $Location = (Get-AzureRMLocation).Location
-                    $PSBoundParameters.Add("Location", $Location)
-                }
+            if (-not $PSBoundParameters.ContainsKey('Location')) {
+                $Location = (Get-AzureRMLocation).Location
+                $PSBoundParameters.Add("Location", $Location)
+            }
 
-                $flattenedParameters = @('MaxSubscriptionsPerAccount', 'BasePlanIds', 'DisplayName', 'Description', 'ExternalReferenceId', 'State', 'Location', 'SubscriptionCount', 'AddonPlanDefinition')
+            $flattenedParameters = @('MaxSubscriptionsPerAccount', 'BasePlanIds', 'DisplayName', 'Description', 'ExternalReferenceId', 'State', 'Location', 'SubscriptionCount', 'AddonPlanDefinition')
                 if ($NewOffer -eq $null) {
                     $NewOffer = Get-AzsManagedOffer -Name $Name -ResourceGroupName $ResourceGroupName
                 }
 
-                $flattenedParameters | ForEach-Object {
-                    if ($PSBoundParameters.ContainsKey($_)) {
+            $flattenedParameters | ForEach-Object {
+                if ($PSBoundParameters.ContainsKey($_)) {
                         $NewOffer.$($_) = $PSBoundParameters[$_]
-                    }
+                }
+            }
+
+            if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
+                Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsAdminClient.'
+                $TaskResult = $SubscriptionsAdminClient.Offers.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $NewOffer)
+            } else {
+                Write-Verbose -Message 'Failed to map parameter set to operation method.'
+                throw 'Module failed to find operation to execute.'
+            }
+
+            if ($TaskResult) {
+                $GetTaskResult_params = @{
+                    TaskResult = $TaskResult
                 }
 
-                if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
-                    Write-Verbose -Message 'Performing operation CreateOrUpdateWithHttpMessagesAsync on $SubscriptionsAdminClient.'
-                    $TaskResult = $SubscriptionsAdminClient.Offers.CreateOrUpdateWithHttpMessagesAsync($ResourceGroupName, $Name, $NewOffer)
-                } else {
-                    Write-Verbose -Message 'Failed to map parameter set to operation method.'
-                    throw 'Module failed to find operation to execute.'
-                }
-
-                if ($TaskResult) {
-                    $GetTaskResult_params = @{
-                        TaskResult = $TaskResult
-                    }
-
-                    Get-TaskResult @GetTaskResult_params
-                }
+                Get-TaskResult @GetTaskResult_params
             }
         }
     }

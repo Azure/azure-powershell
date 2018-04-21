@@ -26,17 +26,17 @@ Licensed under the MIT License. See License.txt in the project root for license 
     The resource id.
 
 .PARAMETER InputObject
-    The input object of type Microsoft.AzureStack.Management.InfrastructureInsights.Admin.Models.Alert.
+    An alert returned from Get-AzsAlert.
 
 .EXAMPLE
 
-    PS C:\> Close-AzsAlert -AlertId f2147f3d-42ac-4316-8cbc-f0f9c18888b0
+    PS C:\> Close-AzsAlert -Name f2147f3d-42ac-4316-8cbc-f0f9c18888b0
 
-    Close an alert by AlertId.
+    Close an alert by Name.
 
 .EXAMPLE
 
-    PS C:\> Get-AzsAlert -AlertId f2147f3d-42ac-4316-8cbc-f0f9c18888b0 | Close-AzsAlert
+    PS C:\> Get-AzsAlert -Name f2147f3d-42ac-4316-8cbc-f0f9c18888b0 | Close-AzsAlert
 
     Close an alert through piping.
 
@@ -49,10 +49,6 @@ function Close-AzsAlert {
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Name,
-
-        [Parameter(Mandatory = $false)]
-        [System.String]
-        $User,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Close')]
         [System.String]
@@ -102,8 +98,8 @@ function Close-AzsAlert {
 
             if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
                 $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
-
             } else {
+                $InputObject | FL * | Out-File "output.txt"
                 $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
                 $Alert = $InputObject
             }
@@ -131,22 +127,19 @@ function Close-AzsAlert {
 
                 $InfrastructureInsightsAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
 
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$Location"
                 }
 
                 if ($Alert -eq $null) {
-                    $Alert = Get-AzsAlert -AlertId  $Name
+                    $Alert = Get-AzsAlert -Name  $Name
                 }
 
-                if (-not $User) {
-                    $ctx = Get-AzureRmContext
-                    $User = $ctx.Account.Id
-                }
+                $User = "Admin";
 
                 if ('Close' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                     Write-Verbose -Message 'Performing operation CloseWithHttpMessagesAsync on $InfrastructureInsightsAdminClient.'

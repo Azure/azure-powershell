@@ -64,10 +64,6 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        [Obsolete("This parameter is obsolete; use Confirm instead")]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             string zoneName = null;
@@ -90,7 +86,7 @@ namespace Microsoft.Azure.Commands.Dns
                 resourceGroupname = this.Zone.ResourceGroupName;
             }
             if(this.Name.EndsWith(zoneName.ToString()))
-            {   
+            {
                 this.WriteWarning(string.Format(ProjectResources.Error_RecordSetNameEndsWithZoneName, this.Name, zoneName.ToString()));
             }
 

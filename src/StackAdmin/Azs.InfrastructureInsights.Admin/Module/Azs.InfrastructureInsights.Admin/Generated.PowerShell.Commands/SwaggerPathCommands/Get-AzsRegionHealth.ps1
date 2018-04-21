@@ -57,7 +57,7 @@ function Get-AzsRegionHealth {
         $ResourceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [string]
+        [System.String]
         $Filter,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
@@ -114,15 +114,15 @@ function Get-AzsRegionHealth {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
             $Location = $ArmResourceIdParameterValues['region']
         } elseif ('List' -eq $PsCmdlet.ParameterSetName) {
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $Location = (Get-AzureRMLocation).Location
                 $ResourceGroupName = "System.$Location"
             }
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }
