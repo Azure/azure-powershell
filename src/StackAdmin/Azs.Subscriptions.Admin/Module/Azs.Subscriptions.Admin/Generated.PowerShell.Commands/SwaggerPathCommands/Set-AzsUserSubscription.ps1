@@ -167,7 +167,7 @@ function Set-AzsUserSubscription {
             if ( 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName -or 'Set' -eq $PsCmdlet.ParameterSetName ) {
 
                 if ( $updatedSubscription -eq $null ) {
-                        $updatedSubscription = Get-AzsUserSubscription -SubscriptionId -eq $SubscriptionId
+                        $updatedSubscription = Get-AzsUserSubscription -SubscriptionId $SubscriptionId
                 }
 
                 $flattenedParameters = @('TenantId', 'SubscriptionId', 'DisplayName', 'DelegatedProviderSubscriptionId', 'Owner', 'RoutingResourceManagerType', 'ExternalReferenceId', 'State', 'Location', 'OfferId')
