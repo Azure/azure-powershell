@@ -29,7 +29,7 @@ The Get-AzureRmNetworkWatcher cmdlet gets one or more Azure Network Watcher reso
 
 ## EXAMPLES
 
-### --------------------------  Example 1: Get a Network Watcher  --------------------------
+### Example 1: Get a Network Watcher
 ```
 Get-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
 
@@ -81,7 +81,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

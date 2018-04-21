@@ -82,7 +82,7 @@ Specifies the name of the resource group that contains the application gateway.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

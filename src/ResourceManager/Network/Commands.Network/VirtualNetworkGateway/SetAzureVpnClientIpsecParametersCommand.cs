@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Network
          "AzureRmVpnClientIpsecParameters",
          DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default,
          SupportsShouldProcess = true),
-     OutputType(typeof(MNM.VpnClientIPsecParameters))]
+     OutputType(typeof(PSVpnClientIPsecParameters))]
     public class SetAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -67,8 +67,9 @@ namespace Microsoft.Azure.Commands.Network
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Set))
             {
                 var vpnClientIpsecParameters = this.VirtualNetworkGatewayClient.SetVpnclientIpsecParameters(this.ResourceGroupName, this.VirtualNetworkGatewayName, vpnClientIPsecParametersModel);
+                var psVpnClientIPsecParameters = NetworkResourceManagerProfile.Mapper.Map<PSVpnClientIPsecParameters>(vpnClientIpsecParameters);
 
-                WriteObject(vpnClientIpsecParameters);
+                WriteObject(psVpnClientIPsecParameters);
             }
         }
     }

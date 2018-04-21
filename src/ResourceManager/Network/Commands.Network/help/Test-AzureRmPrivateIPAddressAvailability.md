@@ -61,7 +61,7 @@ Specifies the IP address to test.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -76,7 +76,7 @@ Specifies the name of the resource group for the virtual network.
 ```yaml
 Type: String
 Parameter Sets: TestByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,7 +91,7 @@ Specifies a **PSVirtualNetwork** object.
 ```yaml
 Type: PSVirtualNetwork
 Parameter Sets: TestByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +106,7 @@ Specifies the name of the virtual network.
 ```yaml
 Type: String
 Parameter Sets: TestByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
