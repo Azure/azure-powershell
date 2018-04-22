@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = ByVaultNameAndNameParameterSet,
                    HelpMessage = "Specifies the name of the vault to which this cmdlet adds the certificate.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }

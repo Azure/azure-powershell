@@ -54,7 +54,6 @@ PS C:\>Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version 
 
 This commands deletes all tags for a specific version of a key named ITSoftware.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile

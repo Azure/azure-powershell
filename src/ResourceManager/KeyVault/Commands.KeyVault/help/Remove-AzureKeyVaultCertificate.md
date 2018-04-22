@@ -21,9 +21,8 @@ Remove-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-InRemov
 
 ### ByObject
 ```
-Remove-AzureKeyVaultCertificate [-VaultName] <String> [-InputObject] <PSKeyVaultCertificateIdentityItem>
- [-InRemovedState] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureKeyVaultCertificate [-InputObject] <PSKeyVaultCertificateIdentityItem> [-InRemovedState] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,13 +154,13 @@ This cmdlet constructs the FQDN of a key vault based on the name that this param
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByVaultNameAndName
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
