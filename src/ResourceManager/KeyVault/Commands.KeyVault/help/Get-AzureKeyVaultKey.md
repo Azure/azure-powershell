@@ -43,9 +43,27 @@ Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <St
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByKInputObjecteyVersions
+### ByInputObjectKeyVersions
 ```
 Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdVaultName
+```
+Get-AzureKeyVaultKey [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdKeyName
+```
+Get-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdKeyVersions
+```
+Get-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -125,8 +143,8 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByKeyVersions, ByKInputObjecteyVersions
-Aliases:
+Parameter Sets: ByKeyVersions, ByInputObjectKeyVersions, ByResourceIdKeyVersions
+Aliases: 
 
 Required: True
 Position: Named
@@ -140,8 +158,8 @@ KeyVault object.
 
 ```yaml
 Type: PSKeyVault
-Parameter Sets: ByInputObjectVaultName, ByInputObjectKeyName, ByKInputObjecteyVersions
-Aliases:
+Parameter Sets: ByInputObjectVaultName, ByInputObjectKeyName, ByInputObjectKeyVersions
+Aliases: 
 
 Required: True
 Position: 0
@@ -155,8 +173,8 @@ Specifies whether to show the previously deleted keys in the output
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByVaultName, ByInputObjectVaultName
-Aliases:
+Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
+Aliases: 
 
 Required: False
 Position: Named
@@ -170,23 +188,38 @@ Specifies the name of the key bundle to get.
 
 ```yaml
 Type: String
-Parameter Sets: ByVaultName, ByInputObjectVaultName
+Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
 Aliases: KeyName
 
 Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: String
-Parameter Sets: ByKeyName, ByKeyVersions, ByInputObjectKeyName, ByKInputObjecteyVersions
+Parameter Sets: ByKeyName, ByKeyVersions, ByInputObjectKeyName, ByInputObjectKeyVersions, ByResourceIdKeyName, ByResourceIdKeyVersions
 Aliases: KeyName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdVaultName, ByResourceIdKeyName, ByResourceIdKeyVersions
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -199,12 +232,12 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key vault bas
 ```yaml
 Type: String
 Parameter Sets: ByVaultName, ByKeyName, ByKeyVersions
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -214,13 +247,13 @@ This cmdlet constructs the FQDN of a key based on the key vault name, your curre
 
 ```yaml
 Type: String
-Parameter Sets: ByKeyName, ByInputObjectKeyName
+Parameter Sets: ByKeyName, ByInputObjectKeyName, ByResourceIdKeyName
 Aliases: KeyVersion
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

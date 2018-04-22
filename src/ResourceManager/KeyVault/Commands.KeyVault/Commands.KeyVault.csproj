@@ -71,7 +71,7 @@
     <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Share.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Share.File.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Table.cs" />
-    <Compile Include="Commands\SetAzureKeyVaultCertificateAttribute.cs" />
+    <Compile Include="Commands\UpdateAzureKeyVaultCertificate.cs" />
     <Compile Include="Commands\StopAzureKeyVaultCertificateOperation.cs" />
     <Compile Include="Commands\GetAzureKeyVaultCertificateOperation.cs" />
     <Compile Include="Commands\ImportAzureKeyVaultCertificate.cs" />
@@ -150,9 +150,9 @@
     <Compile Include="Commands\RemoveAzureKeyVaultKey.cs" />
     <Compile Include="Commands\RemoveAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultKey.cs" />
-    <Compile Include="Commands\SetAzureKeyVaultKeyAttribute.cs" />
+    <Compile Include="Commands\UpdateAzureKeyVaultKey.cs" />
     <Compile Include="Commands\SetAzureKeyVaultSecret.cs" />
-    <Compile Include="Commands\SetAzureKeyVaultSecretAttribute.cs" />
+    <Compile Include="Commands\UpdateAzureKeyVaultSecret.cs" />
     <Compile Include="Models\ByokWebKeyConverter.cs" />
     <Compile Include="Models\DataServiceCredential.cs" />
     <Compile Include="Models\IKeyVaultDataServiceClient.cs" />

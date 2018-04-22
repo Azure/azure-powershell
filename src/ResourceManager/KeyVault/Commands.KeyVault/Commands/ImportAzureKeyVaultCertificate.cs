@@ -34,8 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsData.Import, CmdletNoun.AzureKeyVaultCertificate,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ImportCertificateFromFileParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
     public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ShouldProcess(Name, Properties.Resources.ImportCertificate))
             {
                 List<CertificateBundle> certBundleList = new List<CertificateBundle>();
-                CertificateBundle certBundle = null;
+                PSKeyVaultCertificate certBundle = null;
 
                 switch (ParameterSetName)
                 {
@@ -168,9 +167,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                         break;
                 }
-
-                var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
-                this.WriteObject(certificate);
+                
+                this.WriteObject(certBundle);
             }
         }
 

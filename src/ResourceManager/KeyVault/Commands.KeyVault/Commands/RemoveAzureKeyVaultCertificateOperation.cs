@@ -23,9 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Removes the certificate operation for the selected certificate
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateOperation,
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class RemoveAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
@@ -44,7 +42,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    ParameterSetName = DefaultParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -55,7 +52,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 1,
                    ParameterSetName = DefaultParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
@@ -94,7 +90,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name = InputObject.Name;
             }
 
-            CertificateOperation certificateOperation = null;
+            PSKeyVaultCertificateOperation certificateOperation = null;
 
             ConfirmAction(
                 Force.IsPresent,
@@ -111,8 +107,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (PassThru.IsPresent)
             {
-                var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
-                this.WriteObject(kvCertificateOperation);
+                this.WriteObject(certificateOperation);
             }
         }
     }

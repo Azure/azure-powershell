@@ -15,7 +15,7 @@ Sets a certificate issuer in a key vault.
 
 ### Expanded (Default)
 ```
-Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-IssuerProvider <String>]
+Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -IssuerProvider <String>
  [-AccountId <String>] [-ApiKey <SecureString>]
  [-OrganizationDetails <PSKeyVaultCertificateOrganizationDetails>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -48,12 +48,12 @@ Specifies the account ID for the certificate issuer.
 ```yaml
 Type: String
 Parameter Sets: Expanded
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -63,12 +63,12 @@ Specifies the API key for the certificate issuer.
 ```yaml
 Type: SecureString
 Parameter Sets: Expanded
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -98,7 +98,7 @@ Aliases: Issuer
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -108,12 +108,12 @@ Specifies the type of certificate issuer.
 ```yaml
 Type: String
 Parameter Sets: Expanded
-Aliases:
+Aliases: 
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -128,7 +128,7 @@ Aliases: IssuerName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -138,12 +138,12 @@ Organization details to be used with the issuer.
 ```yaml
 Type: PSKeyVaultCertificateOrganizationDetails
 Parameter Sets: Expanded
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -154,7 +154,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -169,12 +169,12 @@ Specifies the name of the key vault.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

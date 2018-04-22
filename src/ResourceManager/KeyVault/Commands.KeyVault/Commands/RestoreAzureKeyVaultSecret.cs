@@ -17,23 +17,24 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Restores the backup secret into a vault 
     /// </summary>
-    [Cmdlet( VerbsData.Restore, "AzureKeyVaultSecret",
+    [Cmdlet(VerbsData.Restore, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof(PSKeyVaultSecret) )]
+        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [OutputType(typeof(PSKeyVaultSecret))]
     public class RestoreAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -45,8 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    ParameterSetName = ByVaultNameParameterSet,
-                   ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -62,23 +62,39 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
+        /// KeyVault ResourceId
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = ByResourceIdParameterSet,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Resource Id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// The input file in which the backup blob is stored
         /// </summary>
-        [Parameter( Mandatory = true,
+        [Parameter(Mandatory = true,
                    Position = 1,
-                   HelpMessage = "Input file. The input file containing the backed-up blob" )]
+                   HelpMessage = "Input file. The input file containing the backed-up blob")]
         [ValidateNotNullOrEmpty]
         public string InputFile { get; set; }
 
         #endregion Input Parameter Definitions
 
-        public override void ExecuteCmdlet( )
+        public override void ExecuteCmdlet()
         {
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;
             }
-            
+            else if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(VaultName, Properties.Resources.RestoreSecret))
             {
                 var resolvedFilePath = this.GetUnresolvedProviderPathFromPSPath(InputFile);

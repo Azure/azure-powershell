@@ -37,6 +37,18 @@ Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-InRemovedState] [-Force] [-
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceIdByAvailableVault
+```
+Remove-AzureRmKeyVault [-ResourceId] <String> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByDeletedVault
+```
+Remove-AzureRmKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Remove-AzureRmKeyVault** cmdlet deletes the specified key vault.
 It also deletes all keys and secrets contained in that instance.
@@ -68,7 +80,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -99,7 +111,7 @@ By default, this cmdlet prompts you to confirm that you want to delete the key v
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -114,7 +126,7 @@ Key Vault object to be deleted.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: InputObjectByAvailableVault, InputObjectByDeletedVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -128,8 +140,8 @@ Remove the previously deleted vault permanently.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByDeletedVault, InputObjectByDeletedVault
-Aliases:
+Parameter Sets: ByDeletedVault, InputObjectByDeletedVault, ResourceIdByDeletedVault
+Aliases: 
 
 Required: True
 Position: Named
@@ -143,25 +155,25 @@ The location of the deleted vault.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableVault
-Aliases:
+Parameter Sets: ByAvailableVault, ResourceIdByAvailableVault
+Aliases: 
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: String
-Parameter Sets: ByDeletedVault
-Aliases:
+Parameter Sets: ByDeletedVault, ResourceIdByDeletedVault
+Aliases: 
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,7 +183,7 @@ This Cmdlet does not return an object by default. If this switch is specified, i
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -186,10 +198,25 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: ByAvailableVault
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdByAvailableVault, ResourceIdByDeletedVault
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -201,12 +228,12 @@ Specifies the name of the key vault to remove.
 ```yaml
 Type: String
 Parameter Sets: ByAvailableVault, ByDeletedVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
