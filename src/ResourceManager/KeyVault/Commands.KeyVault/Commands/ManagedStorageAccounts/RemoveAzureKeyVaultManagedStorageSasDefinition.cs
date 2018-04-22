@@ -22,11 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
         SupportsShouldProcess = true)]
-<<<<<<< HEAD
-    [OutputType( typeof( ManagedStorageSasDefinition ) )]
-=======
     [OutputType( typeof( PSDeletedKeyVaultManagedStorageSasDefinition ) )]
->>>>>>> 2725496c69eee04b579589f8dfadb55acf39bcbd
     public class RemoveAzureKeyVaultSasDefinition : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
