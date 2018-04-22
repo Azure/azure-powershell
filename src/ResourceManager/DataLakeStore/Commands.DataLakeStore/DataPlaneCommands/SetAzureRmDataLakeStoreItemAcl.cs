@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System.Management.Automation;
@@ -22,7 +21,7 @@ using Microsoft.Azure.DataLake.Store.AclTools;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl", SupportsShouldProcess = true), 
-        OutputType(typeof(IEnumerable<DataLakeStoreItemAce>))]
+        OutputType(typeof(DataLakeStoreItemAce))]
     [Alias("Set-AdlStoreItemAcl")]
     public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
