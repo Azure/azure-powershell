@@ -31,7 +31,16 @@ namespace Microsoft.Azure.Commands.Network.Automation
     [Cmdlet(VerbsCommon.Get, "AzureRmDdosProtectionPlan"), OutputType(typeof(PSDdosProtectionPlan))]
     public partial class GetAzureRmDdosProtectionPlan : NetworkBaseCmdlet
     {
+        internal const string GetByNameGroupParameterSet = "GetByNameAndGroup";
+        internal const string ListParameterSet = "List";
+
         [Parameter(
+            ParameterSetName = GetByNameGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "Specifies the name of the DDoS protection plan resource group.",
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = ListParameterSet,
             Mandatory = false,
             HelpMessage = "Specifies the name of the DDoS protection plan resource group.",
             ValueFromPipelineByPropertyName = true)]
@@ -41,7 +50,8 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
         [Alias("ResourceName")]
         [Parameter(
-            Mandatory = false,
+            ParameterSetName = GetByNameGroupParameterSet,
+            Mandatory = true,
             HelpMessage = "Specifies the name of the DDoS protection plan.",
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
