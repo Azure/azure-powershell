@@ -81,7 +81,7 @@ KeyVault object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: ByObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -112,7 +112,7 @@ KeyVault Resource Id.
 ```yaml
 Type: String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -127,7 +127,7 @@ Specifies the name of a key vault.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

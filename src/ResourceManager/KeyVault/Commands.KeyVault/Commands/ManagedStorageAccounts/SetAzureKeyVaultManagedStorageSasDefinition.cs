@@ -13,20 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
 using System.Text;
 using System.Xml;
+using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Set, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
         SupportsShouldProcess = true,
         DefaultParameterSetName = ParameterSetRawSas )]
-    [OutputType( typeof( ManagedStorageSasDefinition ) )]
+    [OutputType( typeof( PSKeyVaultManagedStorageSasDefinition ) )]
     public partial class SetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
     {
         private const string ParameterSetRawSas = "RawSas";
@@ -56,14 +56,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias( Constants.SasDefinitionName )]
         public string Name { get; set; }
 
+        [ValidateNotNullOrEmpty]
         [Parameter( Mandatory = true,
             Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Sas definition parameters that will be used to create the sas token.",
-            ParameterSetName = ParameterSetRawSas )]
-        [Obsolete("-Parameter will be removed and replaced by -TemplateUri and -SasType in May 2018")]
-        [ValidateNotNull]
-        public Hashtable Parameter { get; set; }
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Storage SAS definition template uri.")]
+        public string TemplateUri { get; set; }
+
+        [ValidateNotNullOrEmpty]
+        [Parameter( Mandatory = true,
+            Position = 4,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Storage SAS type.")]
+        public string SasType { get; set; }
 
         [Parameter( Mandatory = false,
             HelpMessage = "Disables the use of sas definition for generation of sas token." )]
@@ -276,16 +281,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 case ParameterSetRawSas:
                 {
-                    var dictionary = new Dictionary<string, string>();
-#pragma warning disable CS0618
-                    foreach ( DictionaryEntry p in Parameter )
-#pragma warning restore CS0618
-                    {
-                        if ( p.Key == null || string.IsNullOrEmpty( p.Key.ToString() ) )
-                            throw new ArgumentException( "An invalid parameter was specified." );
-                        dictionary[p.Key.ToString()] = ( p.Value == null ) ? string.Empty : p.Value.ToString();
-                    }
-                    return dictionary;
+                    return new Dictionary<string, string>();
                 }
                 case ParameterSetAdhocAccountSas:
                 return GetParameters( SasDefinitionParameterConstants.AccountSasTypeValue, null, null );
@@ -349,11 +345,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if ( ShouldProcess( Name, Properties.Resources.SetManagedStorageSasDefinition ) )
             {
-                var sasDefinition = DataServiceClient.SetManagedStorageSasDefinition( VaultName,
+                var sasDefinition = DataServiceClient.SetManagedStorageSasDefinition( 
+                    VaultName,
                     AccountName,
-                    Name,
-                    GetParameters(),
-                    new ManagedStorageSasDefinitionAttributes( !Disable.IsPresent ),
+                    Name, 
+                    TemplateUri, 
+                    SasType,
+                    XmlConvert.ToString(ValidityPeriod.Value), 
+                    new PSKeyVaultManagedStorageSasDefinitionAttributes( !Disable.IsPresent ),
                     Tag );
 
                 WriteObject( sasDefinition );

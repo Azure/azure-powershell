@@ -103,7 +103,7 @@ KeyVault Resource Id
 ```yaml
 Type: String
 Parameter Sets: ByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

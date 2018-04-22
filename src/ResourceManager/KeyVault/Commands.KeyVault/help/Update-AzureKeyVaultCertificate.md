@@ -71,6 +71,7 @@ The second command sets the tags value of the certificate named TestCert01 to be
 
 The final command displays the TestCert01 certificate by using the Get-AzureKeyVaultCertificate cmdlet to verify the operation.
 
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -186,8 +187,8 @@ Accept wildcard characters: False
 ```
 
 ### -Version
-Secret version.
-Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.
+Certificate version.
+Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment, certificate name and certificate version.
 
 ```yaml
 Type: String
@@ -233,7 +234,8 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -246,4 +248,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -144,7 +144,7 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByKeyVersions, ByInputObjectKeyVersions, ByResourceIdKeyVersions
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -159,7 +159,7 @@ KeyVault object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: ByInputObjectVaultName, ByInputObjectKeyName, ByInputObjectKeyVersions
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -174,7 +174,7 @@ Specifies whether to show the previously deleted keys in the output
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -216,7 +216,7 @@ KeyVault Resource Id.
 ```yaml
 Type: String
 Parameter Sets: ByResourceIdVaultName, ByResourceIdKeyName, ByResourceIdKeyVersions
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

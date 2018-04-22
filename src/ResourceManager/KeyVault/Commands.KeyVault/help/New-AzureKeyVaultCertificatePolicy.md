@@ -212,7 +212,7 @@ Specifies the key usages in the certificate.
 ```yaml
 Type: System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, EncipherOnly, CrlSign, KeyCertSign, KeyAgreement, DataEncipherment, KeyEncipherment, NonRepudiation, DigitalSignature, DecipherOnly
 
 Required: False

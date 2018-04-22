@@ -29,7 +29,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="18.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.3.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1-alpha" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.4.1" />
   </ItemGroup>
 

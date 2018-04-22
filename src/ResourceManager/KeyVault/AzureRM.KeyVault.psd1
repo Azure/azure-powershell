@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.3.0'
+ModuleVersion = '4.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -112,7 +112,13 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate', 'Update-AzureKeyVaultCertifica
                'Get-AzureKeyVaultManagedStorageSasDefinition', 
                'Set-AzureKeyVaultManagedStorageSasDefinition', 
                'Remove-AzureKeyVaultManagedStorageSasDefinition', 
-               'Undo-AzureKeyVaultCertificateRemoval'
+               'Undo-AzureKeyVaultCertificateRemoval',
+               'Backup-AzureKeyVaultCertificate', 'Restore-AzureKeyVaultCertificate',
+               'Backup-AzureKeyVaultManagedStorageAccount', 'Restore-AzureKeyVaultManagedStorageAccount',
+               'Add-AzureRmKeyVaultNetworkRule', 'Update-AzureRmKeyVaultNetworkRuleSet',
+               'Remove-AzureRmKeyVaultNetworkRule',
+               'Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval',
+			   'Undo-AzureKeyVaultManagedStorageAccountRemoval'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -154,7 +160,7 @@ PrivateData = @{
 * Updated to the latest version of the Azure ClientRuntime'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

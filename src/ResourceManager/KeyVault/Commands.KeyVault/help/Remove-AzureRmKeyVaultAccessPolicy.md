@@ -155,7 +155,7 @@ Specifies the ID of application whose permissions should be removed
 ```yaml
 Type: Guid
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ Specifies the user email address of the user whose access you want to remove.
 ```yaml
 Type: String
 Parameter Sets: ByEmail, InputObjectByEmail, ResourceIdByEmail
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -200,7 +200,7 @@ If specified, disables the retrieval of secrets from this key vault by the Micro
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -215,7 +215,7 @@ If specified, disables the retrieval of secrets from this key vault by Azure Dis
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -230,7 +230,7 @@ If specified, disables the retrieval of secrets from this key vault by Azure Res
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -260,7 +260,7 @@ Specifies the object ID of the user or service principal in Azure Active Directo
 ```yaml
 Type: String
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -307,7 +307,7 @@ KeyVault Resource Id.
 ```yaml
 Type: String
 Parameter Sets: ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmail, ResourceIdForVault
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

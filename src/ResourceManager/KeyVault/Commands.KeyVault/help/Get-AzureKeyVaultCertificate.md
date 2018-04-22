@@ -141,7 +141,7 @@ Indicates that this operation gets all versions of the certificate.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByCertificateAllVersions, ByCertificateAllVersionsInputObject, ByCertificateAllVersionsResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -171,7 +171,7 @@ Specifies whether to include previously deleted certificates in the output
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByName, ByNameInputObject, ByNameResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -213,7 +213,7 @@ KeyVault Resource Id.
 ```yaml
 Type: String
 Parameter Sets: ByNameResourceId, ByCertificateNameAndVersionResourceId, ByCertificateAllVersionsResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

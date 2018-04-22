@@ -92,7 +92,7 @@ Specifies the name of an existing resource group in which to create the key vaul
 ```yaml
 Type: String
 Parameter Sets: Default
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

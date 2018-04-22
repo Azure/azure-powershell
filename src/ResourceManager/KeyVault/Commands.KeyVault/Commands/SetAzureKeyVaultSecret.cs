@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = InputObject.VaultName;
                 Name = InputObject.Name;
             }
-
+            
             if (ShouldProcess(Name, Properties.Resources.SetSecret))
             {
                 var secret = DataServiceClient.SetSecret(

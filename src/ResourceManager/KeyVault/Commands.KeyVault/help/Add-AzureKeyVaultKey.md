@@ -16,7 +16,7 @@ Creates a key in a key vault or imports a key into a key vault.
 ### InteractiveCreate (Default)
 ```
 Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable]
- [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String
 ### InputObjectCreate
 ```
 Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
- [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <
 ### ResourceIdCreate
 ```
 Add-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable]
- [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -209,7 +209,7 @@ extension, it imports the key as a software-protected key.
 ```yaml
 Type: String
 Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
-Aliases: 
+Aliases:
 Accepted values: HSM, Software
 
 Required: True
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
-Aliases: 
+Aliases:
 Accepted values: HSM, Software
 
 Required: False
@@ -290,7 +290,7 @@ name extension.
 ```yaml
 Type: SecureString
 Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -314,7 +314,7 @@ When you specify this parameter, the *Destination* parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -390,12 +390,27 @@ Vault Resource Id.
 ```yaml
 Type: String
 Parameter Sets: ResourceIdCreate, ResourceIdImport
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Size
+RSA key size, in bits. If not specified, the service will provide a safe default.
+
+```yaml
+Type: Int32
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

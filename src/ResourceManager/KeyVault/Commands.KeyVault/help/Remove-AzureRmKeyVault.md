@@ -141,7 +141,7 @@ Remove the previously deleted vault permanently.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedVault, InputObjectByDeletedVault, ResourceIdByDeletedVault
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -156,7 +156,7 @@ The location of the deleted vault.
 ```yaml
 Type: String
 Parameter Sets: ByAvailableVault, ResourceIdByAvailableVault
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ByDeletedVault, ResourceIdByDeletedVault
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -213,7 +213,7 @@ KeyVault Resource Id.
 ```yaml
 Type: String
 Parameter Sets: ResourceIdByAvailableVault, ResourceIdByDeletedVault
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

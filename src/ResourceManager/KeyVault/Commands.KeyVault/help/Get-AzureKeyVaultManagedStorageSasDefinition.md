@@ -12,16 +12,9 @@ Gets Key Vault managed Storage SAS Definitions.
 
 ## SYNTAX
 
-### ByAccountName (Default)
 ```
-Get-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByDefinitionName
-```
-Get-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [[-Name] <String>]
+ [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,16 +69,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InRemovedState
+Specifies whether to show the previously deleted storage sas definitions in the output.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Storage sas definition name.
 Cmdlet constructs the FQDN of a storage sas definition from vault name, currently selected environment, storage account name and sas definition name.
 
 ```yaml
 Type: String
-Parameter Sets: ByDefinitionName
+Parameter Sets: (All)
 Aliases: SasDefinitionName
 
-Required: True
+Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)

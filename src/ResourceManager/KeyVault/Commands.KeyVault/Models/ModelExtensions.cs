@@ -81,6 +81,25 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             return sb.ToString();
         }
+
+        public static string ConstructNetworkRuleSet(PSModels.PSKeyVaultNetworkRuleSet ruleSet)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (ruleSet != null)
+            {
+                sb.AppendLine();
+
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Default Action", ruleSet.DefaultAction);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Bypass", ruleSet.Bypass);
+
+                sb.AppendFormat("{0, -43}: {1}\r\n", "IP Rules", ruleSet.IpAddressRangesText);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Virtual Network Rules", ruleSet.VirtualNetworkResourceIdsText);
+            }
+
+            return sb.ToString();
+        }
+
         private static string TrimWithEllipsis(string str, int maxLen)
         {
             if (str != null && str.Length > maxLen)

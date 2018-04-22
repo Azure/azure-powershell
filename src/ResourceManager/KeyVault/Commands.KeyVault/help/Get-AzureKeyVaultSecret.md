@@ -151,7 +151,7 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 ```yaml
 Type: SwitchParameter
 Parameter Sets: BySecretVersions, ByInputObjectSecretVersions, ByResourceIdSecretVersions
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -181,7 +181,7 @@ Specifies whether to show the previously deleted secrets in the output
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -223,7 +223,7 @@ KeyVault Resource Id.
 ```yaml
 Type: String
 Parameter Sets: ByResourceIdVaultName, ByResourceIdSecretName, ByResourceIdSecretVersions
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
