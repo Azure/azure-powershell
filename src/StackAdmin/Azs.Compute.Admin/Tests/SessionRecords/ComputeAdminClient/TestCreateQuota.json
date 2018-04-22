@@ -132,7 +132,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota0?api-version=2015-12-01-preview",
@@ -282,10 +282,10 @@
           "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota1\",\r\n  \"name\": \"testQuota1\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 0,\r\n    \"coresLimit\": 1,\r\n    \"availabilitySetCount\": 0,\r\n    \"vmScaleSetCount\": 0\r\n  }\r\n}",
+      "ResponseBody": "",
       "ResponseHeaders": {
         "Content-Length": [
-          "306"
+          "0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -327,7 +327,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota1?api-version=2015-12-01-preview",
@@ -477,10 +477,10 @@
           "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota2\",\r\n  \"name\": \"testQuota2\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 0,\r\n    \"coresLimit\": 0,\r\n    \"availabilitySetCount\": 0,\r\n    \"vmScaleSetCount\": 1\r\n  }\r\n}",
+      "ResponseBody": "",
       "ResponseHeaders": {
         "Content-Length": [
-          "306"
+          "0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -522,7 +522,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota2?api-version=2015-12-01-preview",
@@ -717,7 +717,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota3?api-version=2015-12-01-preview",
@@ -912,7 +912,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota4?api-version=2015-12-01-preview",
@@ -1107,7 +1107,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota5?api-version=2015-12-01-preview",
@@ -1232,7 +1232,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas?api-version=2015-12-01-preview",
@@ -1296,7 +1296,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas?api-version=2015-12-01-preview",
@@ -1360,7 +1360,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas?api-version=2015-12-01-preview",
@@ -1424,7 +1424,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas?api-version=2015-12-01-preview",
@@ -1488,7 +1488,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas?api-version=2015-12-01-preview",
@@ -1552,7 +1552,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/testQuota0?api-version=2015-12-01-preview",

@@ -126,13 +126,10 @@ InModuleScope Azs.Storage.Admin {
             $global:TestName = 'TestCreateStorageQuota'
 
             $name = "TestCreateQuota"
-            Remove-AzsStorageQuota -Location $global:Location -Name $name -Force
             $quota = New-AzsStorageQuota -CapacityInGb 1000 -NumberOfStorageAccounts 100 -Location $global:Location -Name $name
-            $quota      |    Should Not Be $null
-            $quota.CapacityInGb | Should Be 1000
-            $quota.NumberOfStorageAccounts | Should Be 100
-            $result = Get-AzsStorageQuota -Location $global:Location -Name $name
-            ValidateStorageQuota -storageQuota $result
+            $quota                          | Should Not Be $null
+            $quota.CapacityInGb             | Should Be 1000
+            $quota.NumberOfStorageAccounts  | Should Be 100
             Remove-AzsStorageQuota -Location $global:Location -Name $name -Force
         }
 

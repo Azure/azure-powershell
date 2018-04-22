@@ -152,12 +152,9 @@ InModuleScope Azs.InfrastructureInsights.Admin {
         It "TestListAlerts" {
             $global:TestName = 'TestListAlerts'
 
-            $Regions = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
-            foreach ($Region in $Regions) {
-                $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
-                foreach ($Alert in $Alerts) {
-                    ValidateAlert -Alert $Alert
-                }
+            $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $global:Location
+            foreach ($Alert in $Alerts) {
+                ValidateAlert -Alert $Alert
             }
         }
 
@@ -210,7 +207,12 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $regionName
             $Alerts | Should Not Be $null
             foreach ($Alert in $Alerts) {
-                if ($Alert.State -ne "Closed") {
+                
+                $Alert | Should not be $null
+                $Alert.State | Should not be $null
+
+                if ($Alert.State -eq "Active") {
+                    $Alert.GetType() | FL * | Out-File "output.txt"
                     $Alert | Close-AzsAlert -Force
                     return
                 }

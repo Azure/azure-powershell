@@ -99,7 +99,6 @@ function Close-AzsAlert {
             if ('ResourceId' -eq $PsCmdlet.ParameterSetName) {
                 $GetArmResourceIdParameterValue_params['Id'] = $ResourceId
             } else {
-                $InputObject | FL * | Out-File "output.txt"
                 $GetArmResourceIdParameterValue_params['Id'] = $InputObject.Id
                 $Alert = $InputObject
             }

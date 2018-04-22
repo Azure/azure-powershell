@@ -36,7 +36,7 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
 
@@ -49,182 +49,180 @@ $global:Location = "local"
 
 InModuleScope Azs.Compute.Admin {
 
-	Describe "Quota" -Tags @('Quota', 'Azs.Compute.Admin') {
+    Describe "Quota" -Tags @('Quota', 'Azs.Compute.Admin') {
 
-		BeforeEach  {
+        BeforeEach {
 
-			. $PSScriptRoot\Common.ps1
+            . $PSScriptRoot\Common.ps1
 
-			function ValidateComputeQuota {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Quota
-				)
+            function ValidateComputeQuota {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Quota
+                )
 
-				$Quota          | Should Not Be $null
+                $Quota          | Should Not Be $null
 
-				# Resource
-				$Quota.Id       | Should Not Be $null
-				$Quota.Name     | Should Not Be $null
-				$Quota.Type     | Should Not Be $null
+                # Resource
+                $Quota.Id       | Should Not Be $null
+                $Quota.Name     | Should Not Be $null
+                $Quota.Type     | Should Not Be $null
 
-				# Subscriber Usage Aggregate
-				$Quota.AvailabilitySetCount | Should Not Be $null
-				$Quota.CoresLimit           | Should Not Be $null
-				$Quota.VirtualMachineCount  | Should Not Be $null
-				$Quota.VmScaleSetCount      | Should Not Be $null
-			}
+                # Subscriber Usage Aggregate
+                $Quota.AvailabilitySetCount | Should Not Be $null
+                $Quota.CoresLimit           | Should Not Be $null
+                $Quota.VirtualMachineCount  | Should Not Be $null
+                $Quota.VmScaleSetCount      | Should Not Be $null
+            }
 
-			function AssertSame{
-				param(
-					$Expected,
-					$Found
-				)
-			}
-		}
-
-
-		It "TestListQuotas" {
-			$global:TestName = 'TestListQuotas'
-			$quotas= Get-AzsComputeQuota -Location $global:Location
-
-			$quotas | Should Not Be $null
-			foreach($quota in $quotas) {
-				ValidateComputeQuota -Quota $quota
-			}
-		}
+            function AssertSame {
+                param(
+                    $Expected,
+                    $Found
+                )
+            }
+        }
 
 
-		It "TestGetQuota" {
-			$global:TestName = 'TestGetQuota'
+        It "TestListQuotas" {
+            $global:TestName = 'TestListQuotas'
+            $quotas = Get-AzsComputeQuota -Location $global:Location
 
-			$quotas = Get-AzsComputeQuota -Location $global:Location
-			$quotas | Should Not Be $null
-			foreach($quota in $quotas) {
-				$result = Get-AzsComputeQuota -Location $global:Location -Name $quota.Name
-
-				AssertSame -Expected $quota -Found $result
-				break
-			}
-		}
+            $quotas | Should Not Be $null
+            foreach ($quota in $quotas) {
+                ValidateComputeQuota -Quota $quota
+            }
+        }
 
 
-		It "TestGetAllQuotas" {
-			$global:TestName = 'TestGetAllQuotas'
-			$quotas = Get-AzsComputeQuota -Location $global:Location
-			$quotas | Should Not Be $null
-			foreach($quota in $quotas) {
-				$result = Get-AzsComputeQuota -Location $global:Location -Name $quota.Name
-				AssertSame -Expected $quota -Found $result
-			}
-		}
+        It "TestGetQuota" {
+            $global:TestName = 'TestGetQuota'
+
+            $quotas = Get-AzsComputeQuota -Location $global:Location
+            $quotas | Should Not Be $null
+            foreach ($quota in $quotas) {
+                $result = Get-AzsComputeQuota -Location $global:Location -Name $quota.Name
+
+                AssertSame -Expected $quota -Found $result
+                break
+            }
+        }
 
 
-		It "TestCreateQuota" {
-			$global:TestName = 'TestCreateQuota'
-
-			$quotaNamePrefix = "testQuota"
-
-			$data = @(
-				@(0, 0, 0, 0, 0),
-				@(0, 1, 0, 0, 1),
-				@(0, 0, 1, 0, 2),
-				@(0, 0, 0, 1, 3),
-				@(100, 100, 100, 100, 4),
-				@(1000, 1000, 1000, 1000, 5)
-			)
-
-			$data | ForEach-Object {
-				$name = $quotaNamePrefix + $_[4]
-				$quota = New-AzsComputeQuota -Location $global:Location -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3]
-				$result = Get-AzsComputeQuota -Location $global:Location -Name $quota.Name
-				AssertSame -Expected $quota -Found $result
-			}
-
-			$data | ForEach-Object {
-				$name = $quotaNamePrefix + $_[4]
-				Get-AzsComputeQuota -Location $global:Location| Where-Object { $_.Name -eq $name} | Should not be $null
-			}
-			$data | ForEach-Object {
-				$name = $quotaNamePrefix + $_[4]
-				Remove-AzsComputeQuota -Location $global:Location -Name $name -Force
-			}
-
-		}
-
-		# Tests wth Invalid data
+        It "TestGetAllQuotas" {
+            $global:TestName = 'TestGetAllQuotas'
+            $quotas = Get-AzsComputeQuota -Location $global:Location
+            $quotas | Should Not Be $null
+            foreach ($quota in $quotas) {
+                $result = Get-AzsComputeQuota -Location $global:Location -Name $quota.Name
+                AssertSame -Expected $quota -Found $result
+            }
+        }
 
 
-		It "TestCreateInvalidQuota" {
-			$global:TestName = 'TestCreateInvalidQuota'
+        It "TestCreateQuota" {
+            $global:TestName = 'TestCreateQuota'
 
-			$data = @(
-				@(-1, 1, 1, 1),
-				@(1, -1, 1, 1),
-				@(1, 1, -1, 1),
-				@(1, 1, 1, -1),
-				@(-1, 0, 0, 0),
-				@( 0, -1, 0, 0),
-				@( 0, 0,-1, 0),
-				@( 0, 0, 0,-1),
-				@(-1,-1,-1,-1)
-			)
+            $quotaNamePrefix = "testQuota"
 
-			$name = "myQuota"
-			$data | ForEach-Object {
-				{
-					New-AzsComputeQuota -Location $global:Location -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3]
-				} | Should Throw
-			}
-		}
+            $data = @(
+                @(0, 0, 0, 0, 0),
+                @(0, 1, 0, 0, 1),
+                @(0, 0, 1, 0, 2),
+                @(0, 0, 0, 1, 3),
+                @(100, 100, 100, 100, 4),
+                @(1000, 1000, 1000, 1000, 5)
+            )
 
+            $data | ForEach-Object {
+                $name = $quotaNamePrefix + $_[4]
+                $quota = New-AzsComputeQuota -Location $global:Location -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3]
+                $quota.AvailabilitySetCount | Should be $_[0]
+                $quota.CoresLimit           | Should be $_[1]
+                $quota.VmScaleSetCount      | Should be $_[2]
+                $quota.VirtualMachineCount  | Should be $_[3]
+            }
 
-		# Apparently CRP will default to a place even if it does not exist
-		It "TestListInvalidLocation" -Skip {
-			$global:TestName = 'TestListInvalidLocation'
-			$quotas= Get-AzsComputeQuota -Location "thisisnotarealplace"
-			$quotas | Should Be $null
-		}
+            $data | ForEach-Object {
+                $name = $quotaNamePrefix + $_[4]
+                Remove-AzsComputeQuota -Location $global:Location -Name $name -Force
+            }
 
+        }
 
-		It "TestDeleteNonExistingQuota" {
-			$global:TestName = 'TestDeleteNonExistingQuota'
-
-			Remove-AzsComputeQuota -Location $global:Location -Name "thisdoesnotexistandifitdoesoops" -Force
-		}
+        # Tests wth Invalid data
 
 
-		It "TestCreateQuotaOnInvalidLocation" -Skip {
-			$global:TestName = 'TestCreateQuotaOnInvalidLocation'
+        It "TestCreateInvalidQuota" {
+            $global:TestName = 'TestCreateInvalidQuota'
 
-			$quotaNamePrefix = "testQuota"
-			$invalidLocation = "thislocationdoesnotexist"
+            $data = @(
+                @(-1, 1, 1, 1),
+                @(1, -1, 1, 1),
+                @(1, 1, -1, 1),
+                @(1, 1, 1, -1),
+                @(-1, 0, 0, 0),
+                @( 0, -1, 0, 0),
+                @( 0, 0, -1, 0),
+                @( 0, 0, 0, -1),
+                @(-1, -1, -1, -1)
+            )
 
-			$data = @(
-				@(0, 0, 0, 0, 0),
-				@(0, 1, 0, 0, 1),
-				@(0, 0, 1, 0, 2),
-				@(0, 0, 0, 1, 3),
-				@(100, 100, 100, 100, 4),
-				@(1000, 1000, 1000, 1000, 5)
-			)
+            $name = "myQuota"
+            $data | ForEach-Object {
+                {
+                    New-AzsComputeQuota -Location $global:Location -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3]
+                } | Should Throw
+            }
+        }
 
-			$data | ForEach-Object {
-				$name = $quotaNamePrefix + $_[4]
-				New-AzsComputeQuota -Location $invalidLocation -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3] | Should be $null
-				Get-AzsComputeQuota -Location $invalidLocation -Name $quota.Name | Should be $null
 
-			}
+        # Apparently CRP will default to a place even if it does not exist
+        It "TestListInvalidLocation" -Skip {
+            $global:TestName = 'TestListInvalidLocation'
+            $quotas = Get-AzsComputeQuota -Location "thisisnotarealplace"
+            $quotas | Should Be $null
+        }
 
-			$data | ForEach-Object {
-				$name = $quotaNamePrefix + $_[4]
-				Get-AzsComputeQuota -Location | Where-Object { $_.Name -eq $name} | Should be $null
-			}
+
+        It "TestDeleteNonExistingQuota" {
+            $global:TestName = 'TestDeleteNonExistingQuota'
+
+            Remove-AzsComputeQuota -Location $global:Location -Name "thisdoesnotexistandifitdoesoops" -Force
+        }
+
+
+        It "TestCreateQuotaOnInvalidLocation" -Skip {
+            $global:TestName = 'TestCreateQuotaOnInvalidLocation'
+
+            $quotaNamePrefix = "testQuota"
+            $invalidLocation = "thislocationdoesnotexist"
+
+            $data = @(
+                @(0, 0, 0, 0, 0),
+                @(0, 1, 0, 0, 1),
+                @(0, 0, 1, 0, 2),
+                @(0, 0, 0, 1, 3),
+                @(100, 100, 100, 100, 4),
+                @(1000, 1000, 1000, 1000, 5)
+            )
+
+            $data | ForEach-Object {
+                $name = $quotaNamePrefix + $_[4]
+                New-AzsComputeQuota -Location $invalidLocation -Name $name -AvailabilitySetCount $_[0] -CoresLimit $_[1] -VmScaleSetCount $_[2] -VirtualMachineCount $_[3] | Should be $null
+                Get-AzsComputeQuota -Location $invalidLocation -Name $quota.Name | Should be $null
+
+            }
+
+            $data | ForEach-Object {
+                $name = $quotaNamePrefix + $_[4]
+                Get-AzsComputeQuota -Location | Where-Object { $_.Name -eq $name} | Should be $null
+            }
         }
 
         It "TestUpdateQuota" {
             $global:TestName = 'TestUpdateQuota'
             Set-AzsComputeQuota -Location $global:Location -Name "UpdateQuota" -AvailabilitySetCount 100 -CoresLimit 100 -VmScaleSetCount 100 -VirtualMachineCount 100
         }
-	}
+    }
 }
