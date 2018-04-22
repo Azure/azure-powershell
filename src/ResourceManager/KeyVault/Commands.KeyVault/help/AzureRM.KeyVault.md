@@ -141,10 +141,10 @@ Recovers a deleted secret in a key vault into an active state.
 Recovers a deleted key vault into an active state.
 
 ### [Update-AzureKeyVaultCertificate](Update-AzureKeyVaultCertificate.md)
-{{Fill in the Synopsis}}
+Modifies editable attributes of a certificate.
 
 ### [Update-AzureKeyVaultKey](Update-AzureKeyVaultKey.md)
-{{Fill in the Synopsis}}
+Updates the attributes of a key in a key vault.
 
 ### [Update-AzureKeyVaultManagedStorageAccount](Update-AzureKeyVaultManagedStorageAccount.md)
 Update editable attributes of a Key Vault managed Azure Storage Account.
@@ -153,5 +153,5 @@ Update editable attributes of a Key Vault managed Azure Storage Account.
 Regenerates the specified key of Key Vault managed Azure Storage Account.
 
 ### [Update-AzureKeyVaultSecret](Update-AzureKeyVaultSecret.md)
-{{Fill in the Synopsis}}
+Updates attributes of a secret in a key vault.
 

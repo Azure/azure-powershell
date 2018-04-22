@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureKeyVaultSecret
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates attributes of a secret in a key vault.
 
 ## SYNTAX
 
@@ -27,16 +27,61 @@ Update-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-Vers
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Update-AzureKeyVaultSecret** cmdlet updates editable attributes of a secret in a key vault.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Modify the attributes of a secret
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
+PS C:\> $Nbf = (Get-Date).ToUniversalTime()
+PS C:\> $Tags = @{ 'Severity' = 'medium'; 'HR' = null}
+PS C:\> $ContentType= 'xml'
+PS C:\> Update-AzureKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
 ```
 
-{{ Add example description here }}
+The first four commands define attributes for the expiry date, the NotBefore date, tags, and
+context type, and store the attributes in variables.
+
+The final command modifies the attributes for the secret named HR in the key vault named
+ContosoVault, using the stored variables.
+
+### Example 2: Delete the tags and content type for a secret
+```
+PS C:\> Update-AzureKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Version '9EEA45C6EE50490B9C3176A80AC1A0DF' -ContentType '' -Tag -@{}
+```
+
+This command deletes the tags and the content type for the specified version of the secret named HR
+in the key vault named Contoso.
+
+### Example 3: Disable the current version of secrets whose name begins with IT
+```
+PS C:\> $Vault = 'ContosoVault'
+PS C:\> $Prefix = 'IT'
+PS C:\> Get-AzureKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '*'} | Update-AzureKeyVaultSecret -Enable $False
+```
+
+The first command stores the string value Contoso in the $Vault variable.
+
+The second command stores the string value IT in the $Prefix variable.
+
+The third command uses the Get-AzureKeyVaultSecret cmdlet to get the secrets in the specified key
+vault, and then passes those secrets to the **Where-Object** cmdlet. The **Where-Object** cmdlet
+filters the secrets for names that begin with the characters IT. The command pipes the secrets that
+match the filter to the Update-AzureKeyVaultSecret cmdlet, which disables them.
+
+### Example 4: Set the ContentType for all versions of a secret
+```
+PS C:\> $VaultName = 'ContosoVault'
+PS C:\> $Name = 'HR'
+PS C:\> $ContentType = 'xml'
+PS C:\> Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersions | Update-AzureKeyVaultSecret -ContentType $ContentType
+```
+
+The first three commands define string variables to use for the *VaultName*, *Name*, and
+*ContentType* parameters. The fourth command uses the Get-AzureKeyVaultKey cmdlet to get the
+specified keys, and pipes the keys to the Update-AzureKeyVaultSecret cmdlet to set their
+content type to XML.
 
 ## PARAMETERS
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureKeyVaultKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Updates the attributes of a key in a key vault.
 
 ## SYNTAX
 
@@ -27,16 +27,33 @@ Update-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Update-AzureKeyVaultKey** cmdlet updates the editable attributes of a key in a key vault.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Modify a key to enable it, and set the expiration date and tags
 ```
-PS C:\> {{ Add example code here }}
+PS C:\>$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = null}
+PS C:\> Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
 ```
 
-{{ Add example description here }}
+The first command creates a **DateTime** object by using the **Get-Date** cmdlet. That object
+specifies a time two years in the future. The command stores that date in the $Expires variable.
+For more information, type `Get-Help Get-Date`.
+
+The second command creates a variable to store tag values of high severity and Accounting.
+
+The final command modifies a key named ITSoftware. The command enables the key, sets its expiration
+time to the time stored in $Expires, and sets the tags that are stored in $Tags.
+
+### Example 2: Modify a key to delete all tags
+```
+PS C:\>Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '7EEA45C6EE50490B9C3176F80AC1A0DG' -Tag @{}
+```
+
+This commands deletes all tags for a specific version of a key named ITSoftware.
+
 
 ## PARAMETERS
 
