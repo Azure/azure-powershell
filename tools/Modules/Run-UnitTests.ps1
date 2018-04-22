@@ -78,7 +78,7 @@ function Test-Stack {
     # Number of failures we have seen
     [int]$Failures = 0
     $ModulePaths = @()
-    foreach($module in $Modules) {
+    foreach ($module in $Modules) {
         $ModulePaths += $StackSrcRoot + $module
     }
 
@@ -88,7 +88,7 @@ function Test-Stack {
         Write-Host "Moving to $testLocation"
         Push-Location $testLocation | Out-Null
         try {
-            $OutputXML = "$($TestFolder)\$($module).xml"
+            $OutputXML = "$($StackPackageRoot)\$($module).xml"
             Invoke-Pester ".\src" -OutputFile $OutputXML -OutputFormat NUnitXml | Out-Null
             [xml]$result = Get-Content -Path $OutputXML
             $Failures += ($result."test-results".failures)
@@ -119,7 +119,7 @@ if ($Scope -in $StackScopes) {
 
     # Download and add AzureRM.Profile 3.4.1 to PSModulePath
     [System.String]$SavePath = (Join-Path -Path $PSScriptRoot -ChildPath "tmp")
-    if(-not(Test-Path $SavePath)) {
+    if (-not(Test-Path $SavePath)) {
         New-Item -Path $SavePath -ItemType Directory -Force | Out-Null
         Save-Module -Name AzureRM.Profile -RequiredVersion 3.4.1 -Repository PSGallery -Path $SavePath | Out-Null
     }

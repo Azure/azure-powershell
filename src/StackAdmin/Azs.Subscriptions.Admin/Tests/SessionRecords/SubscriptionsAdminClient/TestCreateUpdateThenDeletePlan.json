@@ -178,7 +178,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     },
     {
       "RequestUri": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourcegroups/testrg/providers/Microsoft.Subscriptions.Admin/plans/testplans?api-version=2015-11-01",

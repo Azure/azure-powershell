@@ -78,8 +78,8 @@ InModuleScope Azs.Commerce.Admin {
             }
         }
 
-
-        It "TestListSubscriberUsageAggregatesFromLastTwoDays" {
+        # Record again.
+        It "TestListSubscriberUsageAggregatesFromLastTwoDays" -Skip {
             $global:TestName = 'TestListSubscriberUsageAggregatesFromLastTwoDays'
 
             [DateTime]$start = "2017-09-06T00:00:00Z"
