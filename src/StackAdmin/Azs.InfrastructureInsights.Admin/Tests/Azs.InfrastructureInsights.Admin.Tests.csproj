@@ -50,8 +50,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.7.0\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AzureStack.Management.InfrastructureInsights.Admin, Version=0.1.0-preview">
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.InfrastructureInsights.Admin.0.1.0-preview\lib\net452\Microsoft.AzureStack.Management.InfrastructureInsights.Admin.dll</HintPath>
+    <Reference Include="Microsoft.AzureStack.Management.InfrastructureInsights.Admin, Version=0.2.0-preview">
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.InfrastructureInsights.Admin.0.2.0-preview\lib\net452\Microsoft.AzureStack.Management.InfrastructureInsights.Admin.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
