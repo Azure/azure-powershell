@@ -1,0 +1,843 @@
+{
+  "info": {
+    "x-ps-code-generation-settings": {
+      "codeGenerator": "AzureCSharp",
+      "nameSpacePrefix": "Microsoft.PowerShell.",
+      "noAssembly": false,
+      "powerShellCorePath": "",
+      "includeCoreFxAssembly": false,
+      "testBuild": false,
+      "confirmBootstrap": false,
+      "path": ".",
+      "symbolPath": ".",
+      "serviceType": "azure_stack",
+      "customAuthCommand": "",
+      "hostOverrideCommand": "",
+      "noAuthChallenge": ""
+    },
+    "x-ps-module-info": {
+      "name": "UpdateAdminClient",
+      "moduleVersion": "0.0.1",
+      "guid": "e81973f4-6c61-44f9-8bc1-f13054c8ed60",
+      "description": "Update Admin Client",
+      "author": "",
+      "companyName": "",
+      "CopyRight": "",
+      "licenseUri": "",
+      "projectUri": "",
+      "helpInfoUri": "",
+      "iconUri": "",
+      "releaseNotes": "",
+      "defaultCommandPrefix": "",
+      "tags": [
+        
+      ]
+    }
+  },
+  "paths": {
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{update}/updateRuns/{runId}/rerun": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Resume-AzsUpdateRun",
+            "description": "Resumes a failed update run.",
+            "defaultParameterSet": "UpdateRuns_Rerun",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsUpdate",
+            "description": "Get the list of update locations",
+            "defaultParameterSet": "Updates_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{update}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsUpdate",
+            "description": "Get a specific update at an update location.",
+            "defaultParameterSet": "Updates_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsUpdateLocation",
+            "description": "Get the list of update locations.",
+            "defaultParameterSet": "UpdateLocations_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsUpdateLocation",
+            "description": "Get an update location based on name.",
+            "defaultParameterSet": "UpdateLocations_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{update}/updateRuns": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsUpdateRun",
+            "description": "Get the list of update runs.",
+            "defaultParameterSet": "UpdateRuns_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{update}/updateRuns/{runId}": {
+      "get": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Get-AzsUpdateRun",
+            "description": "Get the list of update locations",
+            "defaultParameterSet": "UpdateRuns_List",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}/updates/{update}/Apply": {
+      "post": {
+        "x-ps-cmdlet-infos": [
+          {
+            "name": "Install-AzsUpdate",
+            "description": "Get a specific update at an update location.",
+            "defaultParameterSet": "Updates_Update",
+            "generateCommand": true
+          }
+        ],
+        "parameters": {
+          
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Step": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsStepObject",
+          "description": "Pageable list of update runs.",
+          "defaultParameterSet": "Step",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "description": {
+          "x-ps-parameter-info": {
+            "name": "Description",
+            "description": "Description of the step."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "step": {
+          "x-ps-parameter-info": {
+            "name": "Step",
+            "description": "Inner steps"
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "endTimeUtc": {
+          "x-ps-parameter-info": {
+            "name": "EndTimeUtc",
+            "description": "Time at which this step stopped executing"
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the step."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "errorMessage": {
+          "x-ps-parameter-info": {
+            "name": "ErrorMessage",
+            "description": "Error message if any."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "status": {
+          "x-ps-parameter-info": {
+            "name": "Status",
+            "description": "State of the step."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "startTimeUtc": {
+          "x-ps-parameter-info": {
+            "name": "StartTimeUtc",
+            "description": "Time at which this step started executing"
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "RegionUpdateState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsRegionUpdateStateObject",
+          "description": "State of the region in regard to update.",
+          "defaultParameterSet": "RegionUpdateState",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "PackageType": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsPackageTypeObject",
+          "description": "Describes the components that will be updated.",
+          "defaultParameterSet": "PackageType",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "UpdateRun": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateRunObject",
+          "description": "Representation of a update run resource.",
+          "defaultParameterSet": "UpdateRun",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "UpdateRunModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateRunModelObject",
+          "description": "Properties of an update run.",
+          "defaultParameterSet": "UpdateRunModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "timeStarted": {
+          "x-ps-parameter-info": {
+            "name": "TimeStarted",
+            "description": "Update start time."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "duration": {
+          "x-ps-parameter-info": {
+            "name": "Duration",
+            "description": "Duration of the update."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "progress": {
+          "x-ps-parameter-info": {
+            "name": "Progress",
+            "description": "Current progress of update."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "State of the update run."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "UpdateRunState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateRunStateObject",
+          "description": "State of the update run.",
+          "defaultParameterSet": "UpdateRunState",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "UpdateState": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateStateObject",
+          "description": "State of the update.",
+          "defaultParameterSet": "UpdateState",
+          "generateCommand": false,
+          "generateOutputFormat": false
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "UpdateList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateListObject",
+          "description": "List of updates.",
+          "defaultParameterSet": "UpdateList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of updates."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page of updates."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Update": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateObject",
+          "description": "Information pertaining to an update.",
+          "defaultParameterSet": "Update",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "UpdateLocationList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateLocationListObject",
+          "description": "The list of update locations.",
+          "defaultParameterSet": "UpdateLocationList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "The list of update locations."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "The link to get the next page of update locations."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "UpdateLocationModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateLocationModelObject",
+          "description": "Model which holds information related to update location.",
+          "defaultParameterSet": "UpdateLocationModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "currentVersion": {
+          "x-ps-parameter-info": {
+            "name": "CurrentVersion",
+            "description": "Current version of your AzureStack deployment."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "lastUpdated": {
+          "x-ps-parameter-info": {
+            "name": "LastUpdated",
+            "description": "Date of last update."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "currentOemVersion": {
+          "x-ps-parameter-info": {
+            "name": "CurrentOemVersion",
+            "description": "Current OEM version of your AzureStack deployment."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "State with respect to the update."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        }
+      }
+    },
+    "UpdateModel": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateModelObject",
+          "description": "Properties of an update.",
+          "defaultParameterSet": "UpdateModel",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "description": {
+          "x-ps-parameter-info": {
+            "name": "Description",
+            "description": "Description of the update."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "updateName": {
+          "x-ps-parameter-info": {
+            "name": "UpdateName",
+            "description": "Name of the update."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "version": {
+          "x-ps-parameter-info": {
+            "name": "Version",
+            "description": "Version of the update."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        },
+        "packageType": {
+          "x-ps-parameter-info": {
+            "name": "PackageType",
+            "description": "Describes the components that will be updated."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "dateAvailable": {
+          "x-ps-parameter-info": {
+            "name": "DateAvailable",
+            "description": "Date uploaded by provider."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 3,
+            "width": 10
+          }
+        },
+        "packagePath": {
+          "x-ps-parameter-info": {
+            "name": "PackagePath",
+            "description": "Path to the update package."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 4,
+            "width": 10
+          }
+        },
+        "kbLink": {
+          "x-ps-parameter-info": {
+            "name": "KbLink",
+            "description": "Link to the KB article about the update."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "minVersionRequired": {
+          "x-ps-parameter-info": {
+            "name": "MinVersionRequired",
+            "description": "The minimum version required to install."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "publisher": {
+          "x-ps-parameter-info": {
+            "name": "Publisher",
+            "description": "Publisher of the update."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "packageSizeInMb": {
+          "x-ps-parameter-info": {
+            "name": "PackageSizeInMb",
+            "description": "Size of update package."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "installedDate": {
+          "x-ps-parameter-info": {
+            "name": "InstalledDate",
+            "description": "Date update was installed."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "state": {
+          "x-ps-parameter-info": {
+            "name": "State",
+            "description": "Current state of the update."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "updateOemFile": {
+          "x-ps-parameter-info": {
+            "name": "UpdateOemFile",
+            "description": "OEM version of the update."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "UpdateLocation": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateLocationObject",
+          "description": "Information related to a location\u0027s update status.",
+          "defaultParameterSet": "UpdateLocation",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        
+      }
+    },
+    "UpdateRunList": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsUpdateRunListObject",
+          "description": "Pageable list of update runs.",
+          "defaultParameterSet": "UpdateRunList",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "value": {
+          "x-ps-parameter-info": {
+            "name": "Value",
+            "description": "List of update runs on this page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "nextLink": {
+          "x-ps-parameter-info": {
+            "name": "NextLink",
+            "description": "URI to the next page."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        }
+      }
+    },
+    "Resource": {
+      "x-ps-cmdlet-infos": [
+        {
+          "name": "New-AzsResourceObject",
+          "description": "Base Resource Object",
+          "defaultParameterSet": "Resource",
+          "generateCommand": true,
+          "generateOutputFormat": true
+        }
+      ],
+      "properties": {
+        "tags": {
+          "x-ps-parameter-info": {
+            "name": "Tags",
+            "description": "List of key value pairs."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "name": {
+          "x-ps-parameter-info": {
+            "name": "Name",
+            "description": "Name of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 0,
+            "width": 10
+          }
+        },
+        "id": {
+          "x-ps-parameter-info": {
+            "name": "Id",
+            "description": "URI of the resource."
+          },
+          "x-ps-output-format-info": {
+            "include": false,
+            "position": -1,
+            "width": 10
+          }
+        },
+        "type": {
+          "x-ps-parameter-info": {
+            "name": "Type",
+            "description": "Type of resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 1,
+            "width": 10
+          }
+        },
+        "location": {
+          "x-ps-parameter-info": {
+            "name": "Location",
+            "description": "Region Location of resource."
+          },
+          "x-ps-output-format-info": {
+            "include": true,
+            "position": 2,
+            "width": 10
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "SubscriptionId",
+        "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.  The subscription ID forms part of the URI for every service call.",
+        "flatten": false
+      }
+    },
+    "ApiVersionParameter": {
+      "x-ps-parameter-info": {
+        "name": "Apiversion",
+        "description": "Client Api Version.",
+        "flatten": false
+      }
+    },
+    "ResourceGroupParameter": {
+      "x-ps-parameter-info": {
+        "name": "ResourceGroup",
+        "description": "The resource group the resource is located under.",
+        "flatten": false
+      }
+    },
+    "UpdateRunParameter": {
+      "x-ps-parameter-info": {
+        "name": "RunId",
+        "description": "Update run identifier.",
+        "flatten": false
+      }
+    },
+    "UpdateLocationParameter": {
+      "x-ps-parameter-info": {
+        "name": "UpdateLocation",
+        "description": "The name of the update location.",
+        "flatten": false
+      }
+    },
+    "UpdateParameter": {
+      "x-ps-parameter-info": {
+        "name": "Update",
+        "description": "Name of the update.",
+        "flatten": false
+      }
+    },
+    "RunIdParameter": {
+      "x-ps-parameter-info": {
+        "name": "RunId",
+        "description": "Update run identifier.",
+        "flatten": false
+      }
+    }
+  }
+}

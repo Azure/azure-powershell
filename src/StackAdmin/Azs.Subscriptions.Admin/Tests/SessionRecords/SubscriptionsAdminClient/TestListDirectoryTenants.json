@@ -1,0 +1,66 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourcegroups/System.local/providers/Microsoft.Subscriptions.Admin/directoryTenants?api-version=2015-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvOGFiMjU1MWQtNDFlNS00ODliLTkyNzMtMWNkZjFjYmM3ZGM2L3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlN1YnNjcmlwdGlvbnMuQWRtaW4vZGlyZWN0b3J5VGVuYW50cz9hcGktdmVyc2lvbj0yMDE1LTExLTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9545add7-22cd-4c54-a434-8cc47122c343"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26011.01",
+          "Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/8ab2551d-41e5-489b-9273-1cdf1cbc7dc6/resourceGroups/System.local/providers/Microsoft.Subscriptions.Admin/directoryTenants/azurestackci07.onmicrosoft.com\",\r\n      \"name\": \"azurestackci07.onmicrosoft.com\",\r\n      \"type\": \"Microsoft.Subscriptions.Admin/directoryTenants\",\r\n      \"location\": \"local\",\r\n      \"properties\": {\r\n        \"tenantId\": \"2b3697e6-a7a2-4cdd-a3d4-f4ef6505cd4f\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "368"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 14 Mar 2018 00:02:56 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14704"
+        ],
+        "x-ms-request-id": [
+          "7744ce02-9eaa-41aa-ad73-16c2f2abea04"
+        ],
+        "x-ms-correlation-request-id": [
+          "7744ce02-9eaa-41aa-ad73-16c2f2abea04"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180314T000257Z:7744ce02-9eaa-41aa-ad73-16c2f2abea04"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "8ab2551d-41e5-489b-9273-1cdf1cbc7dc6"
+  }
+}
