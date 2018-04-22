@@ -212,7 +212,6 @@ InModuleScope Azs.InfrastructureInsights.Admin {
                 $Alert.State | Should not be $null
 
                 if ($Alert.State -eq "Active") {
-                    $Alert.GetType() | FL * | Out-File "output.txt"
                     $Alert | Close-AzsAlert -Force
                     return
                 }
