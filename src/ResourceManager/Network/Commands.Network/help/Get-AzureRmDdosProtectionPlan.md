@@ -12,9 +12,16 @@ Gets a DDoS protection plan.
 
 ## SYNTAX
 
+### GetByNameAndGroup
 ```
-Get-AzureRmDdosProtectionPlan [-ResourceGroupName <String>] [-Name <String>]
+Get-AzureRmDdosProtectionPlan -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### List
+```
+Get-AzureRmDdosProtectionPlan [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +43,6 @@ VirtualNetworks   : [
                         "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/virtualNetworks/VnetName"
                       }
                     ]
-
 ```
 
 In this case, we need to specify both **ResourceGroupName** and **Name** attributes, which correspond to the resource group and the name of the DDoS protection plan, respectively.
@@ -55,7 +61,6 @@ VirtualNetworks   : [
                         "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/virtualNetworks/VnetName"
                       }
                     ]
-
 ```
 
 In this scenario, we only specify the parameter **ResourceGroupName** to get a list of DDoS protection plans.
@@ -74,7 +79,6 @@ VirtualNetworks   : [
                         "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/virtualNetworks/VnetName"
                       }
                     ]
-
 ```
 
 Here, we do not specify any parameters to get a list of all DDoS protection plans in a subscription.
@@ -101,10 +105,10 @@ Specifies the name of the DDoS protection plan.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetByNameAndGroup
 Aliases: ResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -116,7 +120,19 @@ Specifies the name of the DDoS protection plan resource group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetByNameAndGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: List
 Aliases:
 
 Required: False
