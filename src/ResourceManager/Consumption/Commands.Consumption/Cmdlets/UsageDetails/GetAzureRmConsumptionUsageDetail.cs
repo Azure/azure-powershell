@@ -37,14 +37,6 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         [ValidateNotNull]
         public string Expand { get; set; }
 
-        //[Parameter(Mandatory = false, HelpMessage = "AdditionalDetails used to expand the usages.")]
-        //[ValidateNotNull]
-        //public string AdditionalProperties { get; set; }
-
-        //[Parameter(Mandatory = false, HelpMessage = "MeterDetails used to expand the usages.")]
-        //[ValidateNotNull]
-        //public string MeterDetails { get; set; }
-
         [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages to filter.")]
         [ValidateNotNull]
         public DateTime? StartDate { get; set; }
