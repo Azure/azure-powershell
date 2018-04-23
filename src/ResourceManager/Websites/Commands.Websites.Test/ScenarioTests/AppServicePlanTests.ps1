@@ -334,7 +334,8 @@ function Test-CreateNewAppServicePlanInAse
 	$location = "West US"
 	$capacity = 1
 	$skuName = "I1"
-	$aseName = "asedemops2"
+	$skuTier = "Isolated"
+	$aseName = "asedemops"
 	$aseResourceGroupName = "asedemorg"
 
 	try
@@ -343,7 +344,7 @@ function Test-CreateNewAppServicePlanInAse
 		New-AzureRmResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Isolated" -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
+		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $skuTier -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
 		
 		# Assert
 		Assert-AreEqual $whpName $createResult.Name

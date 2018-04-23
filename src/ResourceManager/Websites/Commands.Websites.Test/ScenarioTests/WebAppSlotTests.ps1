@@ -366,13 +366,6 @@ function Test-CloneWebAppSlot
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -Force
-		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
-
-		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slotname -Force
-		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $destAppName -Force
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $destPlanName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
 	}
 }
@@ -754,6 +747,9 @@ function Test-ManageSlotSlotConfigName
 
 		# Test - Mark all app settings as slot setting
 		$appSettingNames = $webApp.SiteConfig.AppSettings | Select-Object -ExpandProperty Name
+
+		Assert-NotNull $appSettingNames
+		
 		$webApp | Set-AzureRmWebAppSlotConfigName -AppSettingNames $appSettingNames 
 		$slotConfigNames = $webApp | Get-AzureRmWebAppSlotConfigName
 		Assert-AreEqual $webApp.SiteConfig.AppSettings.Count $slotConfigNames.AppSettingNames.Count
@@ -774,8 +770,6 @@ function Test-ManageSlotSlotConfigName
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
 	}
 }
@@ -903,9 +897,6 @@ function Test-SlotSwapWithPreview($swapWithPreviewAction)
 	finally
 	{
 		# Cleanup
-		Remove-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname  -Slot $sourceSlotName -Force
-		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Force
-		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $planName -Force
 		Remove-AzureRmResourceGroup -Name $rgname -Force
 	}
 
