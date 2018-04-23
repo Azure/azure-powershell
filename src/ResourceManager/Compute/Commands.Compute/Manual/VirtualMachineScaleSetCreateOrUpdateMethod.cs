@@ -22,7 +22,6 @@ using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -31,6 +30,8 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    using Rm = Azure.Management.Internal.Resources.Models;
+
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         // SimpleParameterSet
@@ -129,7 +130,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         const int FirstPortRangeStart = 50000;
 
-        sealed class Parameters : IParameters<VirtualMachineScaleSet, ResourceGroup>
+        sealed class Parameters : IParameters<VirtualMachineScaleSet, Rm.ResourceGroup>
         {
             NewAzureRmVmss _cmdlet { get; }
 
@@ -153,7 +154,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 => _cmdlet.OutputTemplateFile;
 
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync(
-                ResourceConfig<ResourceGroup> resourceGroup)
+                ResourceConfig<Rm.ResourceGroup> resourceGroup)
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                     ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -255,7 +256,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     identity: _cmdlet.GetVmssIdentityFromArgs());
             }
 
-            public ResourceConfig<ResourceGroup> CreateResourceGroup()
+            public ResourceConfig<Rm.ResourceGroup> CreateResourceGroup()
                 => ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
         }
 

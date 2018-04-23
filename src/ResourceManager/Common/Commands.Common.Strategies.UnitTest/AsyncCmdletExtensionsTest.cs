@@ -11,13 +11,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
     {
         class Client : IClient
         {
+            public string SubscriptionId => "subscription";
+
             public T GetClient<T>() where T : ServiceClient<T>
                 => null;
         }
 
         class RG { }
 
-        class Parameters : IParameters<RG>
+        class Parameters : IParameters<RG, RG>
         {
             public string Location
             {
@@ -31,19 +33,37 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 }
             }
 
+            public string OutputTemplateFile
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
             public async Task<ResourceConfig<RG>> CreateConfigAsync()
                 => new ResourceConfig<RG>(
                     new ResourceStrategy<RG>(
-                        null, 
+                        null,
+                        null,
                         async (c, p) => new RG(),
                         null,
                         null,
-                        null,
-                        false),
+                        null),
                     null,
                     null,
                     null,
                     null);
+
+            public Task<ResourceConfig<RG>> CreateConfigAsync(ResourceConfig<RG> resourceGroupConfig)
+            {
+                throw new NotImplementedException();
+            }
+
+            public ResourceConfig<RG> CreateResourceGroup()
+            {
+                throw new NotImplementedException();
+            }
         }
 
         class AsyncCmdlet : IAsyncCmdlet
@@ -93,7 +113,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var parameters = new Parameters();
             var asyncCmdlet = new AsyncCmdlet();
 
-            await client.RunAsync("subscriptionId", parameters, asyncCmdlet, new System.Threading.CancellationToken());
+            await client.RunAsync(parameters, asyncCmdlet, new System.Threading.CancellationToken());
         }
     }
 }

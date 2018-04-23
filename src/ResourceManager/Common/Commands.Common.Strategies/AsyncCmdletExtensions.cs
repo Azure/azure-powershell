@@ -36,10 +36,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static void WriteVerbose(this IAsyncCmdlet cmdlet, string message, params object[] p)
             => cmdlet.WriteVerbose(string.Format(message, p));
 
-        public static string UpdateLocation(
-            this IState current, string location, IResourceConfig config)
-            => location ?? current.GetLocation(config) ?? "eastus";
-
         /// <summary>
         /// The function read current Azure state and update it according to the `parameters`.
         /// </summary>
@@ -137,7 +133,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return newState.Get(config) ?? current.Get(config);
         }
 
-        static string UpdateLocation(
+        public static string UpdateLocation(
             this IState current, string location, IResourceConfig config)
             => location ?? current.GetLocation(config) ?? "eastus";
 
