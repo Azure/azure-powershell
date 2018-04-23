@@ -88,7 +88,7 @@
 
   <ItemGroup>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;"
-                            Exclude=".\src\ResourceManager\Intune\*.sln"
+                           Exclude=".\src\ResourceManager\Intune\*.sln"
                             Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
 
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
@@ -382,7 +382,7 @@
           DestinationFolder="$(PackageDirectory)\$(Configuration)" Condition= " '$(Scope)' == 'Netcore' "/>
 
     <!-- Azure -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
+    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
       <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
       <DelaySignedAssembliesToSign Include="$(PackageDirectory)\$(Configuration)\**\Microsoft.Azure.Management.Sql.Legacy.dll" />
@@ -438,7 +438,7 @@
 
 
     <!-- Azure -->
-    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
+    <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
       <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1"/>
       <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.psm1"/>
       <ScriptsToSign Include="$(PackageDirectory)\$(Configuration)\**\*.ps1xml"/>
