@@ -25,10 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlClient = GetSqlClient(context);
-            var sqlLegacyClient = GetLegacySqlClient();
             var newResourcesClient = GetResourcesClient(context);
             var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient, networkClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
         }
         public VirtualNetworkRuleTest(ITestOutputHelper output) : base(output)
         {
