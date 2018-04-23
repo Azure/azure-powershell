@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Rest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
@@ -48,6 +49,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
         class AsyncCmdlet : IAsyncCmdlet
         {
+            public CancellationToken CancellationToken { get; } 
+                = new CancellationToken();
+
             public IEnumerable<KeyValuePair<string, object>> Parameters
             {
                 get
@@ -93,7 +97,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var parameters = new Parameters();
             var asyncCmdlet = new AsyncCmdlet();
 
-            await client.RunAsync("subscriptionId", parameters, asyncCmdlet, new System.Threading.CancellationToken());
+            await client.RunAsync("subscriptionId", parameters, asyncCmdlet);
         }
     }
 }
