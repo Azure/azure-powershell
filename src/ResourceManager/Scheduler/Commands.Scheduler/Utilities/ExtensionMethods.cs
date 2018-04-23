@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Management.Scheduler.Models;
-    using WindowsAzure.Commands.Utilities.Common;
 
     public static class ExtensionMethods
     {
