@@ -34,14 +34,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             }
 
             public string OutputTemplateFile
-            {
-                get
-                {
-                    throw new NotImplementedException();
-                }
-            }
+                => null;
 
-            public async Task<ResourceConfig<RG>> CreateConfigAsync()
+            public async Task<ResourceConfig<RG>> CreateConfigAsync(ResourceConfig<RG> resourceGroupConfig)
                 => new ResourceConfig<RG>(
                     new ResourceStrategy<RG>(
                         null,
@@ -55,15 +50,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                     null,
                     null);
 
-            public Task<ResourceConfig<RG>> CreateConfigAsync(ResourceConfig<RG> resourceGroupConfig)
-            {
-                throw new NotImplementedException();
-            }
-
             public ResourceConfig<RG> CreateResourceGroup()
-            {
-                throw new NotImplementedException();
-            }
+                => null;
         }
 
         class AsyncCmdlet : IAsyncCmdlet
