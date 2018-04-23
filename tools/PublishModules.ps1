@@ -153,7 +153,7 @@ function Get-RollupModules {
             $targets += "$PSScriptRoot\..\src\StackAdmin\AzureStack"
         }
 
-        if ($Scope -eq 'All' -or $Scope -eq 'Latest' or $Scope -eq 'NetCore') {
+        if ($Scope -eq 'All' -or $Scope -eq 'Latest' -or $Scope -eq 'NetCore') {
             if ($IsNetCore) {
                 # For .NetCore publish AzureRM.Netcore
                 $targets += "$PSScriptRoot\AzureRM.Netcore"
