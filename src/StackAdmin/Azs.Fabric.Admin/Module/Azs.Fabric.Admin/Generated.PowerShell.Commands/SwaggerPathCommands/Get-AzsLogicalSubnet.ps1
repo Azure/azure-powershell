@@ -80,7 +80,7 @@ function Get-AzsLogicalSubnet {
         $ResourceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [string]
+        [System.String]
         $Filter,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
@@ -140,10 +140,10 @@ function Get-AzsLogicalSubnet {
             $logicalNetwork = $ArmResourceIdParameterValues['logicalNetwork']
             $Name = $ArmResourceIdParameterValues['logicalSubnet']
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }

@@ -101,7 +101,7 @@ function Get-AzsStorageFarm {
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
 
             $Name = $ArmResourceIdParameterValues['FarmName']
-        } elseif ([String]::IsNullOrEmpty($ResourceGroupName)) {
+        } elseif ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
             $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
         }
 

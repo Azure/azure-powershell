@@ -101,10 +101,10 @@ function Stop-AzsScaleUnitNode {
         if ($PSCmdlet.ShouldProcess("$Name" , "Stop scale unit node")) {
             if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Stop scale unit node?", "Performing operation stop for scale unit node $Name")) {
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$Location"
                 }
 

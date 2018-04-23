@@ -254,7 +254,7 @@
           "nosniff"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     }
   ],
   "Names": {},

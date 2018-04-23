@@ -97,7 +97,7 @@ function Get-AzsStorageShare {
             $FarmName = $ArmResourceIdParameterValues['FarmName']
 
             $ShareName = $ArmResourceIdParameterValues['shareName']
-        } elseif ([String]::IsNullOrEmpty($ResourceGroupName)) {
+        } elseif ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
             $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
         }
 

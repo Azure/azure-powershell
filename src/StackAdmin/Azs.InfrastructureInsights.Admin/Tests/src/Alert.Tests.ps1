@@ -152,12 +152,9 @@ InModuleScope Azs.InfrastructureInsights.Admin {
         It "TestListAlerts" {
             $global:TestName = 'TestListAlerts'
 
-            $Regions = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
-            foreach ($Region in $Regions) {
-                $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
-                foreach ($Alert in $Alerts) {
-                    ValidateAlert -Alert $Alert
-                }
+            $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $global:Location
+            foreach ($Alert in $Alerts) {
+                ValidateAlert -Alert $Alert
             }
         }
 
@@ -167,7 +164,7 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             foreach ($Region in $Regions) {
                 $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
                 foreach ($Alert in $Alerts) {
-                    $retrieved = Get-AzsAlert -Location $Location -AlertId $Alert.Name
+                    $retrieved = Get-AzsAlert -Location $Location -Name $Alert.Name
                     AssertAlertsAreSame -Expected $Alert -Found $retrieved
                     return
                 }
@@ -182,7 +179,7 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             foreach ($Region in $Regions) {
                 $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
                 foreach ($Alert in $Alerts) {
-                    $retrieved = Get-AzsAlert -Location $Location -AlertId $Alert.Name
+                    $retrieved = Get-AzsAlert -Location $Location -Name $Alert.Name
                     AssertAlertsAreSame -Expected $Alert -Found $retrieved
                 }
             }
@@ -210,10 +207,12 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $regionName
             $Alerts | Should Not Be $null
             foreach ($Alert in $Alerts) {
-                if ($Alert.State -ne "Closed") {
-                    $Alert.State = "Closed"
-                    $alertName = Extract-Name -Name $Alert.Name
-                    Close-AzsAlert -ResourceGroupName $ResourceGroupName -Location $regionName -User "AlertCloseTests" -Name $AlertName -Force
+                
+                $Alert | Should not be $null
+                $Alert.State | Should not be $null
+
+                if ($Alert.State -eq "Active") {
+                    $Alert | Close-AzsAlert -Force
                     return
                 }
             }

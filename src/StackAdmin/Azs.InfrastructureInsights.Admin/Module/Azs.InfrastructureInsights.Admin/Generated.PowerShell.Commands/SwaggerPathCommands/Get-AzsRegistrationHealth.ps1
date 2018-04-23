@@ -83,7 +83,7 @@ function Get-AzsRegistrationHealth {
         [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [string]
+        [System.String]
         $Filter,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
@@ -142,10 +142,10 @@ function Get-AzsRegistrationHealth {
             $serviceRegistrationId = $ArmResourceIdParameterValues['serviceRegistrationId']
             $resourceRegistrationId = $ArmResourceIdParameterValues['resourceRegistrationId']
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }

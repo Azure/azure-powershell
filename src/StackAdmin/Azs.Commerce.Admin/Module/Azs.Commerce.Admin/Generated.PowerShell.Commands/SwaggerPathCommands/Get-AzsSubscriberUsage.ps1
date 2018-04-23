@@ -5,10 +5,10 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-    Gets a collection of SubscriberUsageAggregates, which are UsageAggregates from users.
+    Get usage data from during the specified timespan.
 
 .DESCRIPTION
-    Gets a collection of SubscriberUsageAggregates, which are UsageAggregates from users.
+    Get usage data from during the specified timespan.
 
 .PARAMETER SubscriberId
     The tenant subscription identifier.

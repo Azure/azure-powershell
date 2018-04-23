@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Gallery.Admin-help.xml
 Module Name: Azs.Gallery.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -29,7 +29,7 @@ Delete a specific gallery item.
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Remove-AzsGalleryItem -GalleryItemName "microsoft.vmss.1.3.6"
+Remove-AzsGalleryItem -Name "microsoft.vmss.1.3.6"
 ```
 
 Delete a gallery item.
@@ -42,7 +42,7 @@ Don't ask for confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -58,7 +58,7 @@ Includes publisher name, item name, and may include version separated by period 
 ```yaml
 Type: String
 Parameter Sets: Delete
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

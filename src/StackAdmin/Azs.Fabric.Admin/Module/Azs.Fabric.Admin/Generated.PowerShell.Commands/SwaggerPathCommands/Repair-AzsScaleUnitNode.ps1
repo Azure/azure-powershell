@@ -48,7 +48,7 @@ function Repair-AzsScaleUnitNode {
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $BMCIPv4Address,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'Repair')]
@@ -129,10 +129,10 @@ function Repair-AzsScaleUnitNode {
                 }
                 $BareMetalNode = New-BareMetalNodeDescriptionObject @utilityCmdParams
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$Location"
                 }
 
@@ -154,7 +154,7 @@ function Repair-AzsScaleUnitNode {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

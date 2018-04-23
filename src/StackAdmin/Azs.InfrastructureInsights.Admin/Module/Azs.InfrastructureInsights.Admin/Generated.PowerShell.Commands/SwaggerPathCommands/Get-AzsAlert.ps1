@@ -33,9 +33,9 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\> Get-AzsAlert -AlertId 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
+    PS C:\> Get-AzsAlert -Name 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
 
-    Get an alert by AlertId.
+    Get an alert by Name.
 
 
 .EXAMPLE
@@ -52,7 +52,7 @@ function Get-AzsAlert {
         [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $AlertId,
+        $Name,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Get')]
@@ -72,7 +72,7 @@ function Get-AzsAlert {
         $ResourceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [string]
+        [System.String]
         $Filter,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
@@ -128,12 +128,12 @@ function Get-AzsAlert {
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroupName']
             $Location = $ArmResourceIdParameterValues['region']
-            $AlertId = $ArmResourceIdParameterValues['alertName']
+            $Name = $ArmResourceIdParameterValues['alertName']
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }
@@ -141,7 +141,7 @@ function Get-AzsAlert {
         $filterInfos = @(
             @{
                 'Type'     = 'powershellWildcard'
-                'Value'    = $AlertId
+                'Value'    = $Name
                 'Property' = 'Name'
             })
         $applicableFilters = Get-ApplicableFilters -Filters $filterInfos
@@ -176,7 +176,7 @@ function Get-AzsAlert {
                     }))
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $InfrastructureInsightsAdminClient.'
-            $TaskResult = $InfrastructureInsightsAdminClient.Alerts.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $AlertId)
+            $TaskResult = $InfrastructureInsightsAdminClient.Alerts.GetWithHttpMessagesAsync($ResourceGroupName, $Location, $Name)
         } else {
             Write-Verbose -Message 'Failed to map parameter set to operation method.'
             throw 'Module failed to find operation to execute.'

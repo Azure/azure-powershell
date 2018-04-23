@@ -70,7 +70,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    # RequiredModules = @()
+    RequiredModules      = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()

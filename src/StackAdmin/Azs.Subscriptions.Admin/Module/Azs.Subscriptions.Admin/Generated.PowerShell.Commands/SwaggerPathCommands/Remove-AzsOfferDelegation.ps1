@@ -36,7 +36,7 @@ function Remove-AzsOfferDelegation {
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Delete')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $Name,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Delete')]

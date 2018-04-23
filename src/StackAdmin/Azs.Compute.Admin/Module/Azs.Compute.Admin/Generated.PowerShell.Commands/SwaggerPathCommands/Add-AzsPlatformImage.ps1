@@ -8,10 +8,10 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
 <#
 .SYNOPSIS
-    Creates a new virtual machine platform image from a given image configuration.
+    Add a virtual machine platform image from a given image configuration.
 
 .DESCRIPTION
-    Creates a new platform image.
+    Add a platform image.
 
 .PARAMETER Publisher
     Name of the publisher.
@@ -122,8 +122,17 @@ function Add-AzsPlatformImage {
     Process {
         $ErrorActionPreference = 'Stop'
 
-        if ($PSCmdlet.ShouldProcess("$Publisher / $Offer / $Sku / $Version" , "Add new virtual machine image")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Add new virtual machine image?", "Performing operation add virtual machine image with publisher $Publisher, offer $Offer, SKU $Sku, and version $Version.")) {
+        if ($PSCmdlet.ShouldProcess("$Publisher/$Offer/$Sku/$Version" , "Add new virtual machine image")) {
+
+            $dontCheck = $true
+            try {
+                $result = Get-AzsPlatformImage -Publisher $Publisher -Offer $Offer -Sku $Sku -Version $Version
+                $dontCheck = $result -eq $null
+            } catch {
+                # No-op
+            }
+
+            if ($dontCheck -or ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Virtual machine image exists with values $Publisher/$Offer/$Sku/$Version, overwrite?", "Performing operation add virtual machine image with publisher $Publisher, offer $Offer, SKU $Sku, and version $Version."))) {
 
                 $NewServiceClient_params = @{
                     FullClientTypeName = 'Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient'
@@ -157,7 +166,7 @@ function Add-AzsPlatformImage {
                     $Location = (Get-AzureRMLocation).Location
                 }
 
-                Write-Verbose -Message 'Performing operation CreateWithHttpMessagesAsync on $ComputeAdminClient.'
+                Write-Verbose -Message 'Performing operation add on $ComputeAdminClient.'
                 $TaskResult = $ComputeAdminClient.PlatformImages.CreateWithHttpMessagesAsync($Location, $Publisher, $Offer, $Sku, $Version, $NewImage)
 
                 Write-Verbose -Message "Waiting for the operation to complete."
@@ -170,7 +179,7 @@ function Add-AzsPlatformImage {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

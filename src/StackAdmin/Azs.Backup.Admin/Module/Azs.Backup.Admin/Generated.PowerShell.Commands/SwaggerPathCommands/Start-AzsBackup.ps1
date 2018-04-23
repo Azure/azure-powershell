@@ -85,12 +85,12 @@ function Start-AzsBackup {
 
         # Should process
         if ($PSCmdlet.ShouldProcess("$Location" , "Start backup at $Location")) {
-            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start backup at $Location?", "Performing operation backup at $Location.")) {
+            if ($Force.IsPresent -or $PSCmdlet.ShouldContinue("Start backup at $($Location)?", "Performing operation backup at $Location.")) {
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$($Location)"
                 }
 
@@ -126,7 +126,7 @@ function Start-AzsBackup {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {
@@ -134,19 +134,7 @@ function Start-AzsBackup {
                         $GetTaskResult_params = @{
                             TaskResult = $TaskResult
                         }
-                        try {
-                            Get-TaskResult @GetTaskResult_params
-                        } catch {
-                            $ex = $_
-                            try {
-                                throw @{
-                                    "Code"    = $ex.Exception.Body.Code;
-                                    "Message" = $ex.Exception.Body.Message
-                                }
-                            } catch {
-                                throw $ex
-                            }
-                        }
+                        Get-TaskResult @GetTaskResult_params
                     }
                 }
 

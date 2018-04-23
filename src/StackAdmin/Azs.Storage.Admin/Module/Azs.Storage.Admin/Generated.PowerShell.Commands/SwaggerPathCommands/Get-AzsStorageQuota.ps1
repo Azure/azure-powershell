@@ -105,7 +105,7 @@ function Get-AzsStorageQuota {
             $ArmResourceIdParameterValues = Get-ArmResourceIdParameterValue @GetArmResourceIdParameterValue_params
             $location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['quotaName']
-        } elseif ([String]::IsNullOrEmpty($Location)) {
+        } elseif ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 
