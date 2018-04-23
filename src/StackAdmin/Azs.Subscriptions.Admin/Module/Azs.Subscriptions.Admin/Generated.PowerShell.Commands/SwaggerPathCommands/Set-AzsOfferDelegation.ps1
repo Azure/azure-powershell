@@ -138,7 +138,7 @@ function Set-AzsOfferDelegation {
             $flattenedParameters = @('SubscriptionId', 'Location')
             $flattenedParameters | ForEach-Object {
                 if ($PSBoundParameters.ContainsKey($_)) {
-                        $NewOfferDelegation.$($_) = $PSBoundParameters[$_]
+                    $NewOfferDelegation.$($_) = $PSBoundParameters[$_]
                 }
             }
 
