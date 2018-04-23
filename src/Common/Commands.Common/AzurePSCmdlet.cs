@@ -137,6 +137,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected abstract string DataCollectionWarning { get; }
 
+        [Obsolete("Please use 'AsJobSessionState' in place of 'SessionState'", true)]
+        public new SessionState SessionState
+        {
+            get
+            {
+                throw new Exception("Please use 'AsJobSessionState' in place of 'SessionState'");
+            }
+        }
+
         private SessionState _asJobSessionState;
 
         public SessionState AsJobSessionState
@@ -151,22 +160,21 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        private RuntimeDefinedParameterDictionary _copiedDynamicParameters;
+        private RuntimeDefinedParameterDictionary _asJobDynamicParameters;
 
-        public RuntimeDefinedParameterDictionary CopiedDynamicParameters
+        public RuntimeDefinedParameterDictionary AsJobDynamicParameters
         {
             get
             {
-                if (_copiedDynamicParameters == null)
+                if (_asJobDynamicParameters == null)
                 {
-                    _copiedDynamicParameters = new RuntimeDefinedParameterDictionary();
-                    return _copiedDynamicParameters;
+                    _asJobDynamicParameters = new RuntimeDefinedParameterDictionary();
                 }
-                return _copiedDynamicParameters;
+                return _asJobDynamicParameters;
             }
             set
             {
-                _copiedDynamicParameters = value;
+                _asJobDynamicParameters = value;
             }
         }
 
@@ -176,6 +184,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             DebugMessages = new ConcurrentQueue<string>();
+        }
+
+        // Register Dynamic Parameters for use in long running jobs
+        public void RegisterDynamicParameters(RuntimeDefinedParameterDictionary parameters)
+        {
+            this.AsJobDynamicParameters = parameters;
         }
 
 

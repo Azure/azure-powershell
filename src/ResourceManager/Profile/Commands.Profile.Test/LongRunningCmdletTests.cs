@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Mock<ICommandRuntime> mock = new Mock<ICommandRuntime>();
             var cmdlet = new AzureParameterSetCmdlet();
             cmdlet.SetParameterSet("ParameterSetIsSet");
-            cmdlet.CopiedDynamicParameters = new RuntimeDefinedParameterDictionary();
+            cmdlet.AsJobDynamicParameters = new RuntimeDefinedParameterDictionary();
             cmdlet.CommandRuntime = mock.Object;
             var job = cmdlet.ExecuteAsJob("Test parameter set job") as AzureLongRunningJob<AzureParameterSetCmdlet>;
             WaitForCompletion(job, j =>
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 {
                     throw new InvalidOperationException("Parameter set must be set");
                 }
-                if (this.CopiedDynamicParameters == null)
+                if (this.AsJobDynamicParameters == null)
                 {
                     throw new InvalidOperationException("Dynamic parameters must be set");
                 }
