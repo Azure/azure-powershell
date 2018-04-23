@@ -54,7 +54,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             // read current Azure state.
             var current = await config.GetStateAsync(client, asyncCmdlet.CancellationToken);
             // update location.
-            parameters.Location = current.UpdateLocation(parameters.Location, config);
+            parameters.Location =
+                parameters.Location ?? current.GetLocation(config) ?? parameters.DefaultLocation;
             // update a DAG of configs.
             config = await parameters.CreateConfigAsync();
             // create a target.
@@ -76,11 +77,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             // return a resource model
             return newState.Get(config) ?? current.Get(config);
         }
-
-        static string UpdateLocation(
-            this IState current, string location, IResourceConfig config)
-            => location ?? current.GetLocation(config) ?? "eastus";
-
 
         static string ToPowerShellString(object value)
         {
