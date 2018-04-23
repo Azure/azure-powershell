@@ -105,6 +105,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string BackendPoolName { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentity { get; set; }
+
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false,
@@ -241,7 +248,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         ? _cmdlet.UpgradePolicyMode
                         : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
-                    zones: _cmdlet.Zone);
+                    zones: _cmdlet.Zone,
+                    identity: _cmdlet.GetVmssIdentityFromArgs());
             }
         }
 
@@ -290,6 +298,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     range);
                 asyncCmdlet.WriteObject(psObject);
             }
+        }
+
+        /// <summary>
+        /// Heres whats happening here :
+        /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
+        /// defined identity in the VMSS identity object.
+        /// If only "SystemAssignedIdentity" is present, we just set the type of the Identity to "SystemAssigned" and no identity ids are set as its created by Azure
+        /// If only "UserAssignedIdentity" is present, we set the type of the Identity to be "UserAssigned" and set the Identity in the VMSS identity object.
+        /// If neither is present, we return a null.
+        /// </summary>
+        /// <returns>Returning the Identity generated form the cmdlet parameters "SystemAssignedIdentity" and "UserAssignedIdentity"</returns>
+        private VirtualMachineScaleSetIdentity GetVmssIdentityFromArgs()
+        {
+            var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
+            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
+                ? new VirtualMachineScaleSetIdentity
+                {
+                    Type = !isUserAssignedEnabled ?
+                           ResourceIdentityType.SystemAssigned :
+                           (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
+                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
+                }
+                : null;
         }
     }
 }
