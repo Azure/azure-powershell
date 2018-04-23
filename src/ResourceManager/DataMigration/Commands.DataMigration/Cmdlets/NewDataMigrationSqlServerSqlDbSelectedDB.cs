@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationSqlServerSqlDbSelectedDB", SupportsShouldProcess = true), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationSqlServerSqlDbSelectedDB"), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
     [Alias("New-AzureRmDmsSqlServerSqlDbSelectedDB")]
     public class NewDataMigrationSqlServerSqlDbSelectedDB : DataMigrationCmdlet
     {
@@ -54,11 +54,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         {
             if (ShouldProcess(this.Name, Resources.createSelectedDB))
             {
-                MigrateSqlServerSqlDbDatabaseInput input = new MigrateSqlServerSqlDbDatabaseInput();
-                input.Name = Name;
-                input.MakeSourceDbReadOnly = MakeSourceDbReadOnly;
-                input.TargetDatabaseName = TargetDatabaseName;
-                input.TableMap = TableMap;
+                MigrateSqlServerSqlDbDatabaseInput input = new MigrateSqlServerSqlDbDatabaseInput
+                {
+                    Name = Name,
+                    MakeSourceDbReadOnly = MakeSourceDbReadOnly,
+                    TargetDatabaseName = TargetDatabaseName,
+                    TableMap = TableMap
+                };
 
                 WriteObject(input);
             }

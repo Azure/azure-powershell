@@ -16,6 +16,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataMigration.Common;
 using Microsoft.Azure.Commands.DataMigration.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataMigration;
 using Microsoft.Azure.Management.DataMigration.Models;
 
@@ -79,12 +80,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             HelpMessage = "Source platform type for project.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("SQL")]
         public string SourceType { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "Target platform type for project.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("SQLDB", "SQLMI")]
         public string TargetType { get; set; }
 
         [Parameter(
