@@ -20,8 +20,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
 {
     interface IAsyncCmdlet
     {
-        bool WhatIf { get; }
-
         IEnumerable<KeyValuePair<string, object>> Parameters { get; }
 
         void WriteVerbose(string message);
