@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Consumption.Common;
 using System;
 using System.Collections.Generic;
 using ApiUsageDetail = Microsoft.Azure.Management.Consumption.Models.UsageDetail;
@@ -26,10 +25,10 @@ namespace Microsoft.Azure.Commands.Consumption.Models
         public string Name { get; private set; }
         public string Type { get; private set; }
         public IDictionary<string, string> Tags { get; private set; }
+        public string BillingPeriodId { get; set; }
+        public string InvoiceId { get; set; }
         public DateTime? UsageStart { get; private set; }
-        public DateTime? UsageEnd { get; private set; }
-        public string BillingPeriodName { get; set; }
-        public string InvoiceName { get; set; }
+        public DateTime? UsageEnd { get; private set; }        
         public string InstanceName { get; set; }
         public string InstanceId { get; set; }
         public string InstanceLocation { get; set; }
@@ -40,7 +39,14 @@ namespace Microsoft.Azure.Commands.Consumption.Models
         public bool? IsEstimated { get; set; }
         public string MeterId { get; set; }
         public MeterDetails MeterDetails { get; set; }
-        public IDictionary<string, string> AdditionalProperties { get; set; }
+        public string SubscriptionGuid { get; set; }
+        public string SubscriptionName { get; set; }
+        public string AccountName { get; set; }
+        public string DepartmentName { get; set; }
+        public string Product { get; set; }
+        public string ConsumedService { get; set; }
+        public string CostCenter { get; set; }
+        public string AdditionalProperties { get; set; }
 
         public PSUsageDetail()
         {
@@ -54,12 +60,12 @@ namespace Microsoft.Azure.Commands.Consumption.Models
                 this.Type = usageDetail.Type;
                 this.Name = usageDetail.Name;
                 this.Tags = usageDetail.Tags;
+                this.BillingPeriodId = usageDetail.BillingPeriodId;
+                this.InvoiceId = usageDetail.InvoiceId;
                 this.UsageStart = usageDetail.UsageStart;
                 this.UsageEnd = usageDetail.UsageEnd;
-                this.BillingPeriodName = Utilities.GetResourceNameFromId(usageDetail.BillingPeriodId);
-                this.InvoiceName = Utilities.GetResourceNameFromId(usageDetail.InvoiceId);
-                this.InstanceId = usageDetail.InstanceId;
                 this.InstanceName = usageDetail.InstanceName;
+                this.InstanceId = usageDetail.InstanceId;                
                 this.InstanceLocation = usageDetail.InstanceLocation;
                 this.Currency = usageDetail.Currency;
                 this.UsageQuantity = usageDetail.UsageQuantity;
@@ -68,6 +74,13 @@ namespace Microsoft.Azure.Commands.Consumption.Models
                 this.IsEstimated = usageDetail.IsEstimated;
                 this.MeterId = usageDetail.MeterId;
                 this.MeterDetails = usageDetail.MeterDetails;
+                this.SubscriptionGuid = usageDetail.SubscriptionGuid;
+                this.SubscriptionName = usageDetail.SubscriptionName;
+                this.AccountName = usageDetail.AccountName;
+                this.DepartmentName = usageDetail.DepartmentName;
+                this.Product = usageDetail.Product;
+                this.ConsumedService = usageDetail.ConsumedService;
+                this.CostCenter = usageDetail.CostCenter;
                 this.AdditionalProperties = usageDetail.AdditionalProperties;
             }
         }
