@@ -134,7 +134,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         MyInvocation.MyCommand.Parameters.Keys.ToArray());
                 }
             }
-            this.CopiedDynamicParameters = dynamicParameters;
+
+            RegisterDynamicParameters(dynamicParameters);
 
             return dynamicParameters;
         }
@@ -173,7 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             // Load dynamic parameters
-            IEnumerable<RuntimeDefinedParameter> parameters = PowerShellUtilities.GetUsedDynamicParameters(this.CopiedDynamicParameters, MyInvocation);
+            IEnumerable<RuntimeDefinedParameter> parameters = PowerShellUtilities.GetUsedDynamicParameters(this.AsJobDynamicParameters, MyInvocation);
             if (parameters.Any())
             {
                 parameters.ForEach(dp => prameterObject[((ParameterAttribute)dp.Attributes[0]).HelpMessage] = new Hashtable { { "value", dp.Value } });
