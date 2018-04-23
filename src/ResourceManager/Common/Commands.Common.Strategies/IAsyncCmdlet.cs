@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
@@ -54,5 +55,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// A `New` verb.
         /// </summary>
         string VerbsNew { get; }
+
+        /// <summary>
+        /// Cancellation token for asynchonous operations.
+        /// </summary>
+        CancellationToken CancellationToken { get; }
     }
 }
