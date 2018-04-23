@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         throw new ArgumentException(Resources.ParameterSetError);
                 }
 
-                var keys = Client.Signalr.ListKeys(ResourceGroupName, Name);
+                var keys = Client.SignalR.ListKeys(ResourceGroupName, Name);
                 WriteObject(new PSSignalRKeys(Name, keys));
             });
         }
