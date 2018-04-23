@@ -474,7 +474,7 @@
 
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.Netcore.psd1"
-          DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(Scope)' == 'Netcore' "/>
+          DestinationFolder="$(LibraryRoot)tools\AzureRM.NetCore" Condition= " '$(Scope)' == 'Latest' "/>
   </Target>
 
 
@@ -563,7 +563,7 @@
           Condition="'$(Scope)' =='All' or '$(Scope)' =='Stack'"
           ContinueOnError="false"/>
 
-    <CallTarget Targets="BuildInstaller" />
+    <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" />
  </Target>
 
   <PropertyGroup>

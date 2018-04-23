@@ -153,7 +153,7 @@ function Get-RollupModules {
             $targets += "$PSScriptRoot\..\src\StackAdmin\AzureStack"
         }
 
-        if ($Scope -eq 'All' -or $Scope -eq 'Latest') {
+        if ($Scope -eq 'All' -or $Scope -eq 'Latest' or $Scope -eq 'NetCore') {
             if ($IsNetCore) {
                 # For .NetCore publish AzureRM.Netcore
                 $targets += "$PSScriptRoot\AzureRM.Netcore"
@@ -243,12 +243,12 @@ function Get-ClientModules {
         }
 
         # Everyone but Storage
-        $AllScopes = @('Stack', 'All', 'Latest')
+        $AllScopes = @('Stack', 'All', 'Latest', 'NetCore')
         if ($Scope -in $AllScopes -or $PublishLocal) {
             $targets += "$resourceManagerRootFolder\AzureRM.Profile$NetSuffix"
         }
 
-        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage')
+        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage', 'NetCore')
         if ($Scope -in $StorageScopes) {
             $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage$NetSuffix"
         }
