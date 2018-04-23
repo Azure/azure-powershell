@@ -153,6 +153,8 @@ function Set-AzsOffer {
 
         $ErrorActionPreference = 'Stop'
 
+        $NewOffer = $null
+
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}'
@@ -198,13 +200,15 @@ function Set-AzsOffer {
             }
 
             $flattenedParameters = @('MaxSubscriptionsPerAccount', 'BasePlanIds', 'DisplayName', 'Description', 'ExternalReferenceId', 'State', 'Location', 'SubscriptionCount', 'AddonPlanDefinition')
-            $utilityCmdParams = @{}
+                if ($NewOffer -eq $null) {
+                    $NewOffer = Get-AzsManagedOffer -Name $Name -ResourceGroupName $ResourceGroupName
+                }
+
             $flattenedParameters | ForEach-Object {
                 if ($PSBoundParameters.ContainsKey($_)) {
-                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
+                    $NewOffer.$($_) = $PSBoundParameters[$_]
                 }
             }
-            $NewOffer = New-OfferObject @utilityCmdParams
 
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                 Write-Verbose -Message 'Performing operation update on $SubscriptionsAdminClient.'
