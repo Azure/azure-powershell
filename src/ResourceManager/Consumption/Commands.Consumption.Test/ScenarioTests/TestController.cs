@@ -32,8 +32,6 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 {
-    using System.Net;
-
     public class TestController : RMTestBase
     {
         private CSMTestEnvironmentFactory _csmTestFactory;
