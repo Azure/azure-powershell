@@ -54,9 +54,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         protected virtual void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlClient = GetSqlClient(context);
-            var sqlLegacyClient = GetLegacySqlClient();
             var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -104,19 +103,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
-                client.LongRunningOperationRetryTimeout = 0;
-            }
-            return client;
-        }
-
-        protected Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient()
-        {
-            Management.Sql.LegacySdk.SqlManagementClient client =
-                TestBase.GetServiceClient<Management.Sql.LegacySdk.SqlManagementClient>(
-                    new CSMTestEnvironmentFactory());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationInitialTimeout = 0;
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;
@@ -177,14 +163,19 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected StorageManagementClient GetStorageV2Client()
+        protected StorageManagementClient GetStorageV2Client(RestTestFramework.MockContext context)
         {
-            var client =
-                TestBase.GetServiceClient<StorageManagementClient>(new CSMTestEnvironmentFactory());
+#if NETSTANDARD
+            var client = context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+#else
+            var client = TestBase.GetServiceClient<StorageManagementClient>(new CSMTestEnvironmentFactory());
+#endif
 
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
+#if !NETSTANDARD
                 client.LongRunningOperationInitialTimeout = 0;
+#endif
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;

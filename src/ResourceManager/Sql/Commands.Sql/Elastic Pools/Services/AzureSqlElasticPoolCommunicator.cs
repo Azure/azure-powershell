@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 {
@@ -109,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                     resourceGroupName, serverName, elasticPoolName, parameters).Result;
 
             // Sleep 5 seconds
-            Thread.Sleep(5000);
+            TestMockSupport.Delay(5000);
 
             return client.GetPutOrPatchOperationResultAsync(
                 createOrUpdateResponse, null, CancellationToken.None).Result.Body;

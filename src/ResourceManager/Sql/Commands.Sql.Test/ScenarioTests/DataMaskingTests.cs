@@ -25,9 +25,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlClient = GetSqlClient(context);
-            var sqlLegacyClient = GetLegacySqlClient();
             var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
         }
 
         public DataMaskingTests(ITestOutputHelper output) : base(output)
