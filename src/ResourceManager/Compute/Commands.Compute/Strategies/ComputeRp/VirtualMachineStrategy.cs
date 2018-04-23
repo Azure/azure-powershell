@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminPassword,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet,
+            VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
             IList<string> zones)
             => Strategy.CreateResourceConfig(
@@ -60,6 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     },
+                    Identity = identity,
                     NetworkProfile = new NetworkProfile
                     {
                         NetworkInterfaces = new[]
@@ -89,6 +91,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             ResourceConfig<Disk> disk,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet,
+            VirtualMachineIdentity identity,
             IEnumerable<int> dataDisks,
             IList<string> zones)
             => Strategy.CreateResourceConfig(
@@ -118,6 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
                     },
+                    Identity = identity,
                     AvailabilitySet = engine.GetReference(availabilitySet),
                     Zones = zones
                 });

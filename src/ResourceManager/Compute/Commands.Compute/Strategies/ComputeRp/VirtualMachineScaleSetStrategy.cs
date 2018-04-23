@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminPassword,
             string vmSize,
             int instanceCount,
+            VirtualMachineScaleSetIdentity identity,
             UpgradeMode? upgradeMode,
             IEnumerable<int> dataDisks,
             IList<string> zones)
@@ -56,17 +57,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                 createModel: engine => new VirtualMachineScaleSet()
                 {
                     Zones = zones,
-
                     UpgradePolicy = new UpgradePolicy
                     {
                         Mode = upgradeMode ?? UpgradeMode.Manual
                     },
-
                     Sku = new Azure.Management.Compute.Models.Sku()
                     {
                         Capacity = instanceCount,
                         Name = vmSize,
                     },
+                    Identity = identity,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
                         OsProfile = new VirtualMachineScaleSetOSProfile
