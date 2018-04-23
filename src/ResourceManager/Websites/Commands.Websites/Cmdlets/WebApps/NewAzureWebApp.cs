@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             try
             {
-                this.ExecuteSynchronouslyOrAsJob( (cmdlet) => cmdlet.ExecuteCmdletActions(this.AsJobSessionState));
+                this.ExecuteSynchronouslyOrAsJob( (cmdlet) => cmdlet.ExecuteCmdletActions(this.SessionState));
             }
             catch (Exception ex) when (!IsTerminatingError(ex))
             {

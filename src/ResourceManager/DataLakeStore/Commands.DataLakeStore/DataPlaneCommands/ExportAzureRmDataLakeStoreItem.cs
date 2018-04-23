@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             // We will let this throw itself if the path they give us is invalid
-            var powerShellReadyPath = AsJobSessionState.Path.GetUnresolvedProviderPathFromPSPath(Destination);
+            var powerShellReadyPath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Destination);
             ConfirmAction(
                 VerbsData.Export,
                 Path.TransformedPath,
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)
                         {
                             var diagnosticPath =
-                                AsJobSessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
+                                SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
                             DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 

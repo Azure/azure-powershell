@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
                         StringComparison.OrdinalIgnoreCase))
             {
                 jsonDefinition = CmdletHelpers.GetWebServiceDefinitionFromFile(
-                                        this.AsJobSessionState.Path.CurrentFileSystemLocation.Path, 
+                                        this.SessionState.Path.CurrentFileSystemLocation.Path, 
                                         this.InputFile);
             }
 

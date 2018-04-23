@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             var storageCredentialsFactory = CreateStorageCredentialsFactory();
 
-            PathIntrinsics currentPath = AsJobSessionState.Path;
+            PathIntrinsics currentPath = SessionState.Path;
             var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
 
             using (var vds = new VirtualDiskStream(filePath.FullName))

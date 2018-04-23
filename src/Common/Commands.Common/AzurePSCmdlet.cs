@@ -137,26 +137,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected abstract string DataCollectionWarning { get; }
 
-        [Obsolete("Please use 'AsJobSessionState' in place of 'SessionState'", true)]
+        private SessionState _sessionState;
+
         public new SessionState SessionState
         {
             get
             {
-                throw new Exception("Please use 'AsJobSessionState' in place of 'SessionState'");
-            }
-        }
-
-        private SessionState _asJobSessionState;
-
-        public SessionState AsJobSessionState
-        {
-            get
-            {
-                return _asJobSessionState;
+                return _sessionState;
             }
             set
             {
-                _asJobSessionState = value;
+                _sessionState = value;
             }
         }
 
@@ -298,7 +289,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
-            AsJobSessionState = base.SessionState;
+            SessionState = base.SessionState;
             var profile = _dataCollectionProfile;
             //TODO: Inject from CI server
             lock (lockObject)
@@ -336,8 +327,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             // SessionState is only available within PowerShell so default to
             // the TestMockSupport.TestExecutionFolder when being run from tests.
-            return (AsJobSessionState != null) ?
-                AsJobSessionState.Path.CurrentLocation.Path :
+            return (SessionState != null) ?
+                SessionState.Path.CurrentLocation.Path :
                 TestMockSupport.TestExecutionFolder;
         }
 
