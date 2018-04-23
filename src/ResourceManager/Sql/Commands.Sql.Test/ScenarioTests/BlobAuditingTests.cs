@@ -26,11 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
             var newResourcesClient = GetResourcesClient(context);
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, newResourcesClient, authorizationClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageV2Client, newResourcesClient);
         }
 
         public BlobAuditingTests(ITestOutputHelper output) : base(output)

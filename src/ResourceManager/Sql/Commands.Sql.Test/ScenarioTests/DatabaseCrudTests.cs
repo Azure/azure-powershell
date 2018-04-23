@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -33,9 +30,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             // Only SqlClient is needed.
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var authorizationClient = GetAuthorizationManagementClient();
             var newResourcesClient = GetResourcesClient(context);
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, authorizationClient, newResourcesClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient);
         }
 
         [Fact]
