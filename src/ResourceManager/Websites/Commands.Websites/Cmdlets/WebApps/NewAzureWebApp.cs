@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "The source web app to clone", ValueFromPipeline = true, ParameterSetName = CopyWebAppParameterSet)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The source web app to clone", ValueFromPipeline = true, ParameterSetName = CopyWebAppParameterSet)]
         [ValidateNotNullOrEmpty]
         public Site SourceWebApp { get; set; }
 
@@ -161,16 +161,20 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         {
             string trafficManagerProfielId = IsResource(TrafficManagerProfile) ? TrafficManagerProfile : null;
             string trafficManagerProfileName = IsResource(TrafficManagerProfile) ? null : TrafficManagerProfile;
-            CloningInfo cloningInfo = new CloningInfo
+            CloningInfo cloningInfo = null;
+            if (SourceWebApp != null)
             {
-                SourceWebAppId = SourceWebApp.Id,
-                CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
-                CloneSourceControl = !IgnoreSourceControl.IsPresent,
-                TrafficManagerProfileId = trafficManagerProfielId,
-                TrafficManagerProfileName = trafficManagerProfileName,
-                ConfigureLoadBalancing = !string.IsNullOrEmpty(TrafficManagerProfile),
-                AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
-            };
+                cloningInfo = new CloningInfo
+                {
+                    SourceWebAppId = SourceWebApp.Id,
+                    CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
+                    CloneSourceControl = !IgnoreSourceControl.IsPresent,
+                    TrafficManagerProfileId = trafficManagerProfielId,
+                    TrafficManagerProfileName = trafficManagerProfileName,
+                    ConfigureLoadBalancing = !string.IsNullOrEmpty(TrafficManagerProfile),
+                    AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
+                };
+            }
 
             var cloneWebAppSlots = false;
             string[] slotNames = null;
