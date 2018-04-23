@@ -98,6 +98,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AzureRM.DataMigration.Netcore.psd1" />
+    <None Include="ChangeLog.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="..\AzureRM.DataMigration.psd1">
       <Link>AzureRM.DataMigration.psd1</Link>
