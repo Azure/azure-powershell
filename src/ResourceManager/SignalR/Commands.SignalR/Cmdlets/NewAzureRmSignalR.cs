@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.SignalR.Strategies.ResourceManager;
-using System.Threading;
 using Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
@@ -88,6 +87,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 }
             }
 
+            public string DefaultLocation => "eastus";
+
             readonly NewAzureRmSignalR _cmdlet;
 
             public Parameters(NewAzureRmSignalR cmdlet)
@@ -124,7 +125,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             var parameters = new Parameters(this);
 
             var result = await client.RunAsync(
-                client.SubscriptionId, parameters, asyncCmdlet, new CancellationToken());
+                client.SubscriptionId, parameters, asyncCmdlet);
 
             if (result != null)
             {
