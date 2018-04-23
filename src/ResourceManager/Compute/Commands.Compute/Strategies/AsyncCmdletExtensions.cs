@@ -96,9 +96,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                 _Cmdlet = cmdlet;
             }
 
-            public bool WhatIf
-                => _Cmdlet.MyInvocation.BoundParameters.ContainsKey("WhatIf");
-
             public IEnumerable<KeyValuePair<string, object>> Parameters
             {
                 get
