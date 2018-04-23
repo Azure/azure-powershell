@@ -45,9 +45,6 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateSet(SkuStrings.Basic, SkuStrings.Standard, SkuStrings.Premium, IgnoreCase = false)]
         public string Sku { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "MaxMemoryPolicy is deprecated. Please use RedisConfiguration instead.")]
-        public string MaxMemoryPolicy { get; set; }
-
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents redis configuration properties.")]
         public Hashtable RedisConfiguration { get; set; }
 
@@ -66,11 +63,6 @@ namespace Microsoft.Azure.Commands.RedisCache
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
-            if (!string.IsNullOrEmpty(MaxMemoryPolicy))
-            {
-                throw new ArgumentException(Resources.MaxMemoryPolicyException);
-            }
-
             RedisResource response = null;
             if (string.IsNullOrEmpty(ResourceGroupName))
             {
@@ -117,7 +109,7 @@ namespace Microsoft.Azure.Commands.RedisCache
               Name,
               () =>
               {
-                  var redisResource = CacheClient.UpdateCache(ResourceGroupName, Name, skuFamily, skuCapacity, 
+                  var redisResource = CacheClient.UpdateCache(ResourceGroupName, Name, skuFamily, skuCapacity,
                       skuName, RedisConfiguration, EnableNonSslPort, TenantSettings, ShardCount, Tag);
                   var redisAccessKeys = CacheClient.GetAccessKeys(ResourceGroupName, Name);
                   WriteObject(new RedisCacheAttributesWithAccessKeys(redisResource, redisAccessKeys, ResourceGroupName));
