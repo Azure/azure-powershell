@@ -95,7 +95,7 @@ function Get-AzsSubscriptionsQuota {
             $location = $ArmResourceIdParameterValues['location']
 
             $quota = $ArmResourceIdParameterValues['quota']
-        } elseif ([String]::IsNullOrEmpty($Location)) {
+        } elseif ([System.String]::IsNullOrEmpty($Location)) {
             $Location = (Get-AzureRMLocation).Location
         }
 

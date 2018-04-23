@@ -32,7 +32,7 @@ function Get-AzsUserSubscription {
         $SubscriptionId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [string]
+        [System.String]
         $Filter
     )
 

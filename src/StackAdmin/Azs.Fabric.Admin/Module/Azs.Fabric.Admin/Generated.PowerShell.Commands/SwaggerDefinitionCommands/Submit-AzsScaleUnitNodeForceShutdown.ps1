@@ -88,7 +88,7 @@ function Stop-AzsScaleUnitNode {
                 $TaskResult,
 
                 [Parameter(Mandatory = $true)]
-                [string]
+                [System.String]
                 $TaskHelperFilePath
             )
             if ($TaskResult) {

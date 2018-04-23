@@ -14,7 +14,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 @{
 
     # Script module or binary module file associated with this manifest.
-    RootModule = 'Azs.Commerce.Admin.psm1'
+    RootModule        = 'Azs.Commerce.Admin.psm1'
 
     # Version number of this module.
     ModuleVersion     = '0.1.0'
@@ -56,7 +56,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    # RequiredModules = @()
+    RequiredModules   = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '3.4.1'; })
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -68,7 +68,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     # TypesToProcess = @()
 
     # Format files (.ps1xml) to be loaded when importing this module
-    FormatsToProcess =  @('Generated.Powershell.Commands/FormatFiles/Azs.Commerce.Admin.Format.ps1xml')
+    FormatsToProcess  = @('Generated.Powershell.Commands/FormatFiles/Azs.Commerce.Admin.Format.ps1xml')
 
     # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
     NestedModules     = @()

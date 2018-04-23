@@ -40,7 +40,7 @@ function Get-AzsOfferDelegation {
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $Name,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'List')]

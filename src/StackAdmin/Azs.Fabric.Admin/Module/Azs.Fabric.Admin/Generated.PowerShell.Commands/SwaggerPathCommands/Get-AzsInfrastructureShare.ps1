@@ -64,7 +64,7 @@ function Get-AzsInfrastructureShare {
         $ResourceId,
 
         [Parameter(Mandatory = $false, ParameterSetName = 'List')]
-        [string]
+        [System.String]
         $Filter
     )
 
@@ -115,10 +115,10 @@ function Get-AzsInfrastructureShare {
             $location = $ArmResourceIdParameterValues['location']
             $Name = $ArmResourceIdParameterValues['fileShare']
         } else {
-            if ([String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location)) {
                 $Location = (Get-AzureRMLocation).Location
             }
-            if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+            if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                 $ResourceGroupName = "System.$Location"
             }
         }

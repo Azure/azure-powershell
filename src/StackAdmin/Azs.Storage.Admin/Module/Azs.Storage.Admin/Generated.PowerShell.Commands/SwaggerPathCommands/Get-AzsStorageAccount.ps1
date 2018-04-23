@@ -124,7 +124,7 @@ function Get-AzsStorageAccount {
             $FarmName = $ArmResourceIdParameterValues['FarmName']
             $Name = $ArmResourceIdParameterValues['accountId']
 
-        } elseif ([String]::IsNullOrEmpty($ResourceGroupName)) {
+        } elseif ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
             $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
         }
 

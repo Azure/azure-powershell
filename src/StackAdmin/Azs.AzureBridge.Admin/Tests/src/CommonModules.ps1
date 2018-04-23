@@ -14,10 +14,6 @@
 
 $ModuleName = "Azs.AzureBridge.Admin"
 
-if (!(Get-Module -ListAvailable -Name AzureRM.Profile)) {
-    Import-Module "..\..\..\Stack\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile"
-}
-
 if ($global:UsedInstalled) {
     Import-Module $ModuleName -Force
 } else {

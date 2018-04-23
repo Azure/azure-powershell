@@ -283,7 +283,7 @@ InModuleScope Azs.Network.Admin {
             AssertQuotasAreSame -expected $quota -found $created
 
             # Post update
-            $updatedQuota = Set-AzsNetworkQuota -Name $quotaName -Location $location -MaxNicsPerSubscription 8 -Force
+            $updatedQuota = Set-AzsNetworkQuota -Name $quotaName -Location $location -MaxNicsPerSubscription 8
             $getUpdatedQuota = Get-AzsNetworkQuota -Name $quotaName -Location $location
             AssertQuotasAreSame -expected $updatedQuota -found $getUpdatedQuota
 

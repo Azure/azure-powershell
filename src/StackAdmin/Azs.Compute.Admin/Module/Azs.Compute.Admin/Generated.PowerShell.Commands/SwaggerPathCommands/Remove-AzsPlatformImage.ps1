@@ -125,7 +125,7 @@ function Remove-AzsPlatformImage {
 
                 $ComputeAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([String]::IsNullOrEmpty($Location)) {
+                if ([System.String]::IsNullOrEmpty($Location)) {
                     $Location = (Get-AzureRMLocation).Location
                 }
 

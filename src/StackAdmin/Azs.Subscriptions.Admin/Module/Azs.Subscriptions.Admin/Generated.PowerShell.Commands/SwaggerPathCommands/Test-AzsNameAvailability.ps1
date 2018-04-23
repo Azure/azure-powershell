@@ -28,12 +28,12 @@ function Test-AzsNameAvailability {
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Subscriptions_CheckNameAvailability')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $Name,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'Subscriptions_CheckNameAvailability')]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $ResourceType
     )
 

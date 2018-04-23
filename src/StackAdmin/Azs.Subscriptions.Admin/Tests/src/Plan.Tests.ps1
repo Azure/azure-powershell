@@ -138,9 +138,6 @@ InModuleScope Azs.Subscriptions.Admin {
             $result = New-AzsPlan -Name $name -ResourceGroupName $rg -Location $location -DisplayName $name -QuotaIds $quota.Id -Description $description
             ValidatePlan -Plan $result
 
-            $plan = Get-AzsPlan -Name $name -ResourceGroupName $rg
-            ValidatePlan -Plan $plan
-
             Remove-AzsPlan -Name $name -ResourceGroupName $rg -Force
         }
     }

@@ -36,7 +36,7 @@ function Get-AzsOffer {
         $Top = -1,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $Provider
     )
 
@@ -58,7 +58,7 @@ function Get-AzsOffer {
         if ($PSBoundParameters.ContainsKey('Provider')) {
             Write-Warning -Message "The parameter Provider will be deprecated in a future release. This parameter is not used anymore. Please use Get-AzsDelegatedProviderOffer cmdlet to get Provider specific offers"
         }
-    
+
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
         }

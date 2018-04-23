@@ -46,13 +46,13 @@ function Start-AzsStorageContainerMigration {
     param(
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $StorageAccountName,
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [Alias('Name')]
-        [string]
+        [System.String]
         $ContainerName,
 
         [Parameter(Mandatory = $true)]
@@ -72,7 +72,7 @@ function Start-AzsStorageContainerMigration {
 
         [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [System.String]
         $DestinationShareUncPath,
 
         [Parameter(Mandatory = $false)]
@@ -123,7 +123,7 @@ function Start-AzsStorageContainerMigration {
 
                 $StorageAdminClient = New-ServiceClient @NewServiceClient_params
 
-                if ([String]::IsNullOrEmpty($ResourceGroupName)) {
+                if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
                     $ResourceGroupName = "System.$((Get-AzureRmLocation).Location)"
                 }
 
@@ -149,7 +149,7 @@ function Start-AzsStorageContainerMigration {
                         $TaskResult,
 
                         [Parameter(Mandatory = $true)]
-                        [string]
+                        [System.String]
                         $TaskHelperFilePath
                     )
                     if ($TaskResult) {

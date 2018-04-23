@@ -37,11 +37,11 @@ function Get-AzsVirtualNetwork {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $Filter,
 
         [Parameter(Mandatory = $false)]
-        [string]
+        [System.String]
         $OrderBy,
 
         [Parameter(Mandatory = $false)]
