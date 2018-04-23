@@ -18,12 +18,12 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             Mandatory = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNull]
-        public string ReservationOrderId { get; set; }
+        public Guid ReservationOrderId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
-        public string ReservationId { get; set; }
+        public Guid ReservationId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
             Mandatory = false,
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         private void PageResults()
         {
-            var response = new PSReservationPage(AzureReservationAPIClient.Reservation.List(ReservationOrderId));
+            var response = new PSReservationPage(AzureReservationAPIClient.Reservation.List(ReservationOrderId.ToString()));
             WriteObject(response, true);
             while (response.NextPageLink != null)
             {
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         {
             if (ParameterSetName.Equals(Constants.ParameterSetNames.CommandParameterSet))
             {
-                if (ReservationId != null)
+                if (ReservationId != default(Guid))
                 {
-                    var response = new PSReservation(AzureReservationAPIClient.Reservation.Get(ReservationId, ReservationOrderId));
+                    var response = new PSReservation(AzureReservationAPIClient.Reservation.Get(ReservationId.ToString(), ReservationOrderId.ToString()));
                     WriteObject(response);
                 }
                 else
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             {
                 if (ReservationOrder != null)
                 {
-                    ReservationOrderId = ReservationOrder.Name;
+                    ReservationOrderId = new Guid(ReservationOrder.Name);
                     PageResults();
                 }
             }
@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             {
                 if (ReservationOrderPage != null)
                 {
-                    foreach (PSReservationOrder ReservationOrder in ReservationOrderPage)
+                    foreach (PSReservationOrder reservationOrder in ReservationOrderPage)
                     {
-                        ReservationOrderId = ReservationOrder.Name;
+                        ReservationOrderId = new Guid(reservationOrder.Name);
                         PageResults();
                     }
                     while (ReservationOrderPage.NextPageLink != null)
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                         ReservationOrderPage =
                             new PSReservationOrderPage(
                                 AzureReservationAPIClient.ReservationOrder.ListNext(ReservationOrderPage.NextPageLink));
-                        foreach (PSReservationOrder ReservationOrder in ReservationOrderPage)
+                        foreach (PSReservationOrder reservationOrder in ReservationOrderPage)
                         {
-                            ReservationOrderId = ReservationOrder.Name;
+                            ReservationOrderId = new Guid(reservationOrder.Name);
                             PageResults();
                         }
                     }

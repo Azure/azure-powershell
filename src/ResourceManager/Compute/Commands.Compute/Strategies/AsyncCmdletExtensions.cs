@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies
                         .Where(p => p
                             .GetCustomAttributes(false)
                             .OfType<ParameterAttribute>()
-                            .Any(a => a.ParameterSetName == psName))
+                            .Any(a => a.ParameterSetName == psName
+                                || a.ParameterSetName == null))
                         .Select(p => new KeyValuePair<string, object>(p.Name, p.GetValue(_Cmdlet)));
                 }
             }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.Reservations.Common;
+﻿using System;
+using Microsoft.Azure.Commands.Reservations.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Reservations;
 using Microsoft.Azure.Commands.Reservations.Models;
@@ -11,13 +12,13 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
     {
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
-        public string ReservationOrderId { get; set; }
+        public Guid ReservationOrderId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ReservationOrderId != null)
+            if (ReservationOrderId != default(Guid))
             {
-                var response = new PSReservationOrder(AzureReservationAPIClient.ReservationOrder.Get(ReservationOrderId));
+                var response = new PSReservationOrder(AzureReservationAPIClient.ReservationOrder.Get(ReservationOrderId.ToString()));
                 WriteObject(response);
             }
             else

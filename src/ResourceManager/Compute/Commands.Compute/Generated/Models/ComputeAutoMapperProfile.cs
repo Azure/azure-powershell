@@ -64,82 +64,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSContainerServiceList, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, TO.PSContainerServiceList>();
                 cfg.CreateMap<FROM.Disk, TO.PSDiskList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToUnserializedValue();
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDiskList, TO.PSDisk>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, TO.PSDiskList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
-                cfg.CreateMap<FROM.Image, TO.PSImageList>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.StorageProfile != null &&
-                            dest.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.StorageProfile.DataDisks)
-                            {
-                                disk.StorageAccountType = disk.StorageAccountType.ToUnserializedValue();
-                            }
-                        }
-                    });
+                cfg.CreateMap<FROM.Image, TO.PSImageList>();
                 cfg.CreateMap<TO.PSImageList, TO.PSImage>();
                 cfg.CreateMap<TO.PSImage, TO.PSImageList>();
-                cfg.CreateMap<FROM.Snapshot, TO.PSSnapshotList>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToUnserializedValue();
-                        }
-                    });
+                cfg.CreateMap<FROM.Snapshot, TO.PSSnapshotList>();
                 cfg.CreateMap<TO.PSSnapshotList, TO.PSSnapshot>();
                 cfg.CreateMap<TO.PSSnapshot, TO.PSSnapshotList>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.VirtualMachineProfile != null &&
-                            dest.VirtualMachineProfile.StorageProfile != null &&
-                            dest.VirtualMachineProfile.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.VirtualMachineProfile.StorageProfile.DataDisks)
-                            {
-                                if (disk != null &&
-                                    disk.ManagedDisk != null)
-                                {
-                                    disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToUnserializedValue();
-                                }
-                            }
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.VirtualMachineProfile != null &&
-                            dest.VirtualMachineProfile.StorageProfile != null &&
-                            dest.VirtualMachineProfile.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.VirtualMachineProfile.StorageProfile.DataDisks)
-                            {
-                                if (disk != null &&
-                                    disk.ManagedDisk != null)
-                                {
-                                    disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToUnserializedValue();
-                                }
-                            }
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetList, TO.PSVirtualMachineScaleSet>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, TO.PSVirtualMachineScaleSetList>()
@@ -148,83 +91,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVMList, TO.PSVirtualMachineScaleSetVM>();
                 cfg.CreateMap<TO.PSVirtualMachineScaleSetVM, TO.PSVirtualMachineScaleSetVMList>();
                 cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.StorageProfile != null &&
-                            dest.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.StorageProfile.DataDisks)
-                            {
-                                if (disk != null &&
-                                    disk.ManagedDisk != null)
-                                {
-                                    disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToUnserializedValue();
-                                }
-                            }
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachineList>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.StorageProfile != null &&
-                            dest.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.StorageProfile.DataDisks)
-                            {
-                                if (disk != null &&
-                                    disk.ManagedDisk != null)
-                                {
-                                    disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToUnserializedValue();
-                                }
-                            }
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineList, TO.PSVirtualMachine>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachine, TO.PSVirtualMachineList>()
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.Disk, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.DiskUpdate, FROM.Disk>();
-                cfg.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToUnserializedValue();
-                        }
-                    });
-                cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToSerializedValue();
-                        }
-                    });
+                cfg.CreateMap<FROM.DiskUpdate, TO.PSDiskUpdate>();
+                cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
-                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToUnserializedValue();
-                        }
-                    });
-                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToSerializedValue();
-                        }
-                    });
+                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
+                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
                 cfg.CreateMap<TO.PSAvailabilitySet, FROM.AvailabilitySet>();
                 cfg.CreateMap<FROM.OperationStatusResponse, TO.PSOperationStatusResponse>();
@@ -234,69 +119,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.ContainerService, TO.PSContainerService>();
                 cfg.CreateMap<TO.PSContainerService, FROM.ContainerService>();
                 cfg.CreateMap<FROM.Disk, TO.PSDisk>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToUnserializedValue();
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSDisk, FROM.Disk>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToSerializedValue();
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.AccessUri, TO.PSAccessUri>();
                 cfg.CreateMap<TO.PSAccessUri, FROM.AccessUri>();
-                cfg.CreateMap<FROM.Image, TO.PSImage>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.StorageProfile != null &&
-                            dest.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.StorageProfile.DataDisks)
-                            {
-                                disk.StorageAccountType = disk.StorageAccountType.ToUnserializedValue();
-                            }
-                        }
-                    });
-                cfg.CreateMap<TO.PSImage, FROM.Image>()
-                    .AfterMap((src, dest) =>
-                     {
-                         if (dest.StorageProfile != null &&
-                             dest.StorageProfile.DataDisks != null)
-                         {
-                             foreach (var disk in dest.StorageProfile.DataDisks)
-                             {
-                                 disk.StorageAccountType = disk.StorageAccountType.ToSerializedValue();
-                             }
-                         }
-                     });
+                cfg.CreateMap<FROM.Image, TO.PSImage>();
+                cfg.CreateMap<TO.PSImage, FROM.Image>();
                 cfg.CreateMap<FROM.LogAnalyticsOperationResult, TO.PSLogAnalyticsOperationResult>();
                 cfg.CreateMap<TO.PSLogAnalyticsOperationResult, FROM.LogAnalyticsOperationResult>();
                 cfg.CreateMap<FROM.ResourceSku, TO.PSResourceSku>();
                 cfg.CreateMap<TO.PSResourceSku, FROM.ResourceSku>();
-                cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToUnserializedValue();
-                        }
-                    });
-                cfg.CreateMap<TO.PSSnapshot, FROM.Snapshot>()
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.Sku != null)
-                        {
-                            dest.Sku.Name = dest.Sku.Name.ToSerializedValue();
-                        }
-                    });
+                cfg.CreateMap<FROM.Snapshot, TO.PSSnapshot>();
+                cfg.CreateMap<TO.PSSnapshot, FROM.Snapshot>();
                 cfg.CreateMap<FROM.RunCommandDocument, TO.PSRunCommandDocument>();
                 cfg.CreateMap<TO.PSRunCommandDocument, FROM.RunCommandDocument>();
                 cfg.CreateMap<FROM.RunCommandDocumentBase, TO.PSRunCommandDocumentBase>();
@@ -304,41 +139,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.RollingUpgradeStatusInfo, TO.PSRollingUpgradeStatusInfo>();
                 cfg.CreateMap<TO.PSRollingUpgradeStatusInfo, FROM.RollingUpgradeStatusInfo>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSet, TO.PSVirtualMachineScaleSet>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.VirtualMachineProfile != null &&
-                            dest.VirtualMachineProfile.StorageProfile != null &&
-                            dest.VirtualMachineProfile.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.VirtualMachineProfile.StorageProfile.DataDisks)
-                            {
-                                if (disk != null &&
-                                    disk.ManagedDisk != null)
-                                {
-                                    disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToUnserializedValue();
-                                }
-                            }
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachineScaleSet, FROM.VirtualMachineScaleSet>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.VirtualMachineProfile != null &&
-                            dest.VirtualMachineProfile.StorageProfile != null &&
-                            dest.VirtualMachineProfile.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.VirtualMachineProfile.StorageProfile.DataDisks)
-                            {
-                                if (disk != null &&
-                                    disk.ManagedDisk != null)
-                                {
-                                    disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToSerializedValue();
-                                }
-                            }
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.RecoveryWalkResponse, TO.PSRecoveryWalkResponse>();
                 cfg.CreateMap<TO.PSRecoveryWalkResponse, FROM.RecoveryWalkResponse>();
                 cfg.CreateMap<FROM.VirtualMachineScaleSetInstanceView, TO.PSVirtualMachineScaleSetInstanceView>();
@@ -352,39 +155,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<FROM.VirtualMachineCaptureResult, TO.PSVirtualMachineCaptureResult>();
                 cfg.CreateMap<TO.PSVirtualMachineCaptureResult, FROM.VirtualMachineCaptureResult>();
                 cfg.CreateMap<FROM.VirtualMachine, TO.PSVirtualMachine>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.StorageProfile != null &&
-                            dest.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.StorageProfile.DataDisks)
-                            {
-                                if (disk != null &&
-                                    disk.ManagedDisk != null)
-                                {
-                                    disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToUnserializedValue();
-                                }
-                            }
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<TO.PSVirtualMachine, FROM.VirtualMachine>()
-                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)))
-                    .AfterMap((src, dest) =>
-                    {
-                        if (dest.StorageProfile != null &&
-                            dest.StorageProfile.DataDisks != null)
-                        {
-                            foreach (var disk in dest.StorageProfile.DataDisks)
-                            {
-                                if (disk != null &&
-                                    disk.ManagedDisk != null)
-                                {
-                                    disk.ManagedDisk.StorageAccountType = disk.ManagedDisk.StorageAccountType.ToSerializedValue();
-                                }
-                            }
-                        }
-                    });
+                    .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
                 cfg.CreateMap<TO.PSVirtualMachineInstanceView, FROM.VirtualMachineInstanceView>();
                 cfg.CreateMap<FROM.RunCommandResult, TO.PSRunCommandResult>();

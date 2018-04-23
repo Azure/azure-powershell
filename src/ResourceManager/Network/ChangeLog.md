@@ -20,6 +20,8 @@
 
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
 
 ## Version 5.4.2
 * Fix error message with Network cmdlets

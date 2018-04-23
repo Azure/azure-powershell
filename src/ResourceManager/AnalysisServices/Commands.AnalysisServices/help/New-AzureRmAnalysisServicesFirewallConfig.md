@@ -13,7 +13,7 @@ Creates a new Analysis Services firewall config
 ## SYNTAX
 
 ```
-New-AzureRmAnalysisServicesFirewallConfig [-EnablePowerBIService] [-FirewallRules] List<Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesFirewallRule> 
+New-AzureRmAnalysisServicesFirewallConfig [-EnablePowerBIService] [-FirewallRule] List<Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesFirewallRule> 
 ```
 
 ## DESCRIPTION
@@ -25,15 +25,15 @@ The New-AzureRmAnalysisServicesFirewallConfig creates a new firewall config obje
 ```
 PS C:\> $rule1 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName rule1 -RangeStart 0.0.0.0 -RangeEnd 255.255.255.255
 PS C:\> $rule2 = New-AzureRmAnalysisServicesFirewallRule -FirewallRuleName rule2 -RangeStart 6.6.6.6 -RangeEnd 7.7.7.7
-PS C:\> New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService -FirewallRules $rule1,$rule2
+PS C:\> $config = New-AzureRmAnalysisServicesFirewallConfig -EnablePowerBIService -FirewallRule $rule1,$rule2
 ```
 
-Creates a firewall rule config without enabling power bi service.
+Creates a firewall config object with two rules while also enabling access from Power BI service.
 
 ## PARAMETERS
 
 ### -EnablePowerBIService
-A flag to indicate if enable PowerBI service
+A flag to indicate if the firewall is allowing access from Power BI
 
 ```yaml
 Type: SwitchParameter
@@ -47,7 +47,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FirewallRules
+### -FirewallRule
 A list of firewall rules
 
 ```yaml
@@ -70,4 +70,4 @@ Accept wildcard characters: False
 
 ## RELATED LINKS
 
-[New-AzureRmAnalysisServicesFirewallConfig](./New-AzureRmAnalysisServicesFirewallConfig.md)
+[New-AzureRmAnalysisServicesFirewallRule](./New-AzureRmAnalysisServicesFirewallRule.md)
