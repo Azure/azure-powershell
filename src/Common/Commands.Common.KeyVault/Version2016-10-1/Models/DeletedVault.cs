@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Common.Keyvault.Version2016_10_1.Models
+namespace Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models
 {
     using Newtonsoft.Json;
     using System.Linq;

@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Commands.Common.Keyvault.Version2016_10_1
+namespace Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;

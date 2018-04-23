@@ -32,7 +32,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
 using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview;
-using Microsoft.Azure.Commands.Common.Keyvault.Version2016_10_1.Models;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Management.Internal.Resources;

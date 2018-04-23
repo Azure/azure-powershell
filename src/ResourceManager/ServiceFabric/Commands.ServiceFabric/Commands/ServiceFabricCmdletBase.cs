@@ -41,8 +41,8 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview;
 using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
-using Microsoft.Azure.Commands.Common.Keyvault.Version2016_10_1;
-using Microsoft.Azure.Commands.Common.Keyvault.Version2016_10_1.Models;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Location = vaultLocation,
                 Properties = new VaultProperties
                 {
-                    Sku = new Azure.Commands.Common.Keyvault.Version2016_10_1.Models.Sku
+                    Sku = new Azure.Commands.Common.KeyVault.Version2016_10_1.Models.Sku
                     {
                         Name = SkuName.Standard,
                     },

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Keyvault.Version2016_10_1.Models;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
