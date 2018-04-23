@@ -40,9 +40,11 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public override ConnectionInfo ProcessConnectionInfoCmdlet()
         {
-            SqlConnectionInfo connectionInfo = new SqlConnectionInfo();
-            connectionInfo.DataSource = MyInvocation.BoundParameters[dataSource] as string;
-            connectionInfo.Authentication = MyInvocation.BoundParameters[authType] as string;
+            SqlConnectionInfo connectionInfo = new SqlConnectionInfo
+            {
+                DataSource = MyInvocation.BoundParameters[dataSource] as string,
+                Authentication = MyInvocation.BoundParameters[authType] as string
+            };
 
             if (MyInvocation.BoundParameters.ContainsKey(additionalSettings))
             {

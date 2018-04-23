@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationProject
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/New-AzureRmDataMigrationSelectedDB
 schema: 2.0.0
 ---
 
