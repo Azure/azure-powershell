@@ -248,6 +248,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string RecoveryAvailabilitySetId { get; set; }
 
         /// <summary>
+        /// Gets or sets BootDiagnosticStorageAccountId.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithMultipleStorageAccount)]
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
+        public string RecoveryBootDiagStorageAccountId { get; set; }
+
+        /// <summary>
         ///     Gets or sets retention Volume on the master target server to be used.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToVMware, Mandatory = true)]
@@ -523,9 +530,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     RecoveryContainerId =
                         this.ProtectionContainerMapping.TargetProtectionContainerId,
                     VmDisks = new List<A2AVmDiskInputDetails>(),
+                    VmManagedDisks = new List<A2AVmManagedDiskInputDetails>(),
                     RecoveryResourceGroupId = this.RecoveryResourceGroupId,
                     RecoveryCloudServiceId = this.RecoveryCloudServiceId,
-                    RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId
+                    RecoveryAvailabilitySetId = this.RecoveryAvailabilitySetId,
+                    RecoveryBootDiagStorageAccountId = this.RecoveryBootDiagStorageAccountId,
                 };
 
                 // Fetch the latest Protected item objects
@@ -543,63 +552,102 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         this.ProtectionContainerMapping.TargetFabricFriendlyName));
                 }
 
-                // At a time only Disk or managedDisk details will be present.
-                // Will check with retieved protectedItem weather correct disk mapping is passed and then create the relevant object 
-                // and pass as input to service.
-                if (this.AzureToAzureDiskReplicationConfiguration == null || this.AzureToAzureDiskReplicationConfiguration.Length == 0)
+                // unmanagedDisk case
+                if (((A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).ProtectedDisks != null &&
+                    ((A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).ProtectedDisks.Count > 0)
                 {
-                    if (fabricFriendlyName !=
-                        this.ProtectionContainerMapping.TargetFabricFriendlyName &&
-                        RecoveryAzureStorageAccountId == null)
+                    if (this.AzureToAzureDiskReplicationConfiguration == null ||
+                      this.AzureToAzureDiskReplicationConfiguration.Length == 0)
                     {
-                        throw new ArgumentException(Resources.InvalidRecoveryAzureStorageAccountId);
-                    }
-
-                    foreach (var disk in ((A2AReplicationDetails)replicationProtectedItemResponse
-                        .Properties.ProviderSpecificDetails)
-                        .ProtectedDisks)
-                    {
-                        a2aSwitchInput.VmDisks.Add(new A2AVmDiskInputDetails
+                        if (fabricFriendlyName !=
+                            this.ProtectionContainerMapping.TargetFabricFriendlyName &&
+                            this.RecoveryAzureStorageAccountId == null)
                         {
-                            DiskUri = disk.RecoveryDiskUri,
-                            RecoveryAzureStorageAccountId =
-                                fabricFriendlyName ==
-                                    this.ProtectionContainerMapping.TargetFabricFriendlyName &&
-                                this.RecoveryAzureStorageAccountId == null ?
-                                    disk.PrimaryDiskAzureStorageAccountId :
-                                    this.RecoveryAzureStorageAccountId,
-                            PrimaryStagingAzureStorageAccountId =
-                                this.LogStorageAccountId,
-                        });
+                            throw new ArgumentException(string.Format(Resources.InvalidRecoveryAzureStorageAccountIdDiskInput));
+                        }
+
+                        foreach (var disk in ((A2AReplicationDetails)replicationProtectedItemResponse
+                            .Properties.ProviderSpecificDetails)
+                            .ProtectedDisks)
+                        {
+                            a2aSwitchInput.VmDisks.Add(new A2AVmDiskInputDetails
+                            {
+                                DiskUri = disk.RecoveryDiskUri,
+                                RecoveryAzureStorageAccountId =
+                                    fabricFriendlyName ==
+                                        this.ProtectionContainerMapping.TargetFabricFriendlyName &&
+                                    this.RecoveryAzureStorageAccountId == null ?
+                                        disk.PrimaryDiskAzureStorageAccountId :
+                                        this.RecoveryAzureStorageAccountId,
+                                PrimaryStagingAzureStorageAccountId =
+                                    this.LogStorageAccountId,
+                            });
+                        }
+                    }
+                    else
+                    {
+                        foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
+                        {
+                            if (string.IsNullOrEmpty(disk.LogStorageAccountId))
+                            {
+                                throw new PSArgumentException(
+                                    string.Format(
+                                        Properties.Resources.InvalidPrimaryStagingAzureStorageAccountIdDiskInput,
+                                        disk.VhdUri));
+                            }
+
+                            if (string.IsNullOrEmpty(disk.RecoveryAzureStorageAccountId))
+                            {
+                                throw new PSArgumentException(
+                                    string.Format(
+                                        Properties.Resources.InvalidRecoveryAzureStorageAccountIdDiskInput,
+                                        disk.VhdUri));
+                            }
+
+                            a2aSwitchInput.VmDisks.Add(new A2AVmDiskInputDetails
+                            {
+                                DiskUri = disk.VhdUri,
+                                RecoveryAzureStorageAccountId = disk.RecoveryAzureStorageAccountId,
+                                PrimaryStagingAzureStorageAccountId =
+                                    disk.LogStorageAccountId
+                            });
+                        }
                     }
                 }
-                else
+                else if (this.AzureToAzureDiskReplicationConfiguration == null &&
+                  ((A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails).ProtectedManagedDisks != null)
                 {
-                    foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
+                    if (this.AzureToAzureDiskReplicationConfiguration == null ||
+                            this.AzureToAzureDiskReplicationConfiguration.Length == 0)
                     {
-                        if (string.IsNullOrEmpty(disk.LogStorageAccountId))
+                        // Passing all managedDisk data if no details is passed.
+                        foreach (var disk in ((A2AReplicationDetails)replicationProtectedItemResponse
+                        .Properties.ProviderSpecificDetails)
+                        .ProtectedManagedDisks)
                         {
-                            throw new PSArgumentException(
-                                string.Format(
-                                    Properties.Resources.InvalidPrimaryStagingAzureStorageAccountIdDiskInput,
-                                    disk.VhdUri));
+                            a2aSwitchInput.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                            {
+                                DiskId = disk.DiskId,
+                                RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
+                                RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
+                                RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
+                                PrimaryStagingAzureStorageAccountId = this.LogStorageAccountId,
+                            });
                         }
-
-                        if (string.IsNullOrEmpty(disk.RecoveryAzureStorageAccountId))
+                    }
+                    else
+                    {
+                        foreach (ASRAzuretoAzureDiskReplicationConfig disk in this.AzureToAzureDiskReplicationConfiguration)
                         {
-                            throw new PSArgumentException(
-                                string.Format(
-                                    Properties.Resources.InvalidRecoveryAzureStorageAccountIdDiskInput,
-                                    disk.VhdUri));
+                            a2aSwitchInput.VmManagedDisks.Add(new A2AVmManagedDiskInputDetails
+                            {
+                                DiskId = disk.DiskId,
+                                RecoveryResourceGroupId = disk.RecoveryResourceGroupId,
+                                RecoveryReplicaDiskAccountType = disk.RecoveryReplicaDiskAccountType,
+                                RecoveryTargetDiskAccountType = disk.RecoveryTargetDiskAccountType,
+                                PrimaryStagingAzureStorageAccountId = this.LogStorageAccountId,
+                            });
                         }
-
-                        a2aSwitchInput.VmDisks.Add(new A2AVmDiskInputDetails
-                        {
-                            DiskUri = disk.VhdUri,
-                            RecoveryAzureStorageAccountId = disk.RecoveryAzureStorageAccountId,
-                            PrimaryStagingAzureStorageAccountId =
-                                disk.LogStorageAccountId
-                        });
                     }
                 }
 

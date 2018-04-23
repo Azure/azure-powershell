@@ -12,13 +12,26 @@ Sets recovery properties such as target network and virtual machine size for the
 
 ## SYNTAX
 
+### ByObject (Default)
 ```
 Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem>
  [-Name <String>] [-Size <String>] [-PrimaryNic <String>] [-RecoveryNetworkId <String>]
  [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
  [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
- [-RecoveryAvailabilitySet <String>] [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RecoveryAvailabilitySet <String>] [-RecoveryBootDiagStorageAccountId <String>] [-UseManagedDisk <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureToAzureManagedDisk
+```
+Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem>
+ [-Name <String>] [-Size <String>] [-PrimaryNic <String>] [-RecoveryNetworkId <String>]
+ [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
+ [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
+ [-RecoveryAvailabilitySet <String>] [-RecoveryBootDiagStorageAccountId <String>]
+ -AzureToAzureUpdateReplicationConfiguration <ASRAzuretoAzureDiskReplicationConfig[]>
+ [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +47,21 @@ PS C:\> $currentJob = Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -Re
 Starts the operation of updating the replication protect item settings using the specified parameters and returns the ASR job used to track the operation.
 
 ## PARAMETERS
+
+### -AzureToAzureUpdateReplicationConfiguration
+Specifies the disk replication configration to be udated for replication.
+
+```yaml
+Type: ASRAzuretoAzureDiskReplicationConfig[]
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -144,6 +172,21 @@ Accept wildcard characters: False
 
 ### -RecoveryAvailabilitySet
 Availability set for replication protected item after failover.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryBootDiagStorageAccountId
+Specifies the storage account for boot diagnostics for recovery azure VM.
 
 ```yaml
 Type: String

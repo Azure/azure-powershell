@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -494,6 +495,243 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string PoweredOn { get; set; }
     }
 
+
+    /// <summary>
+    ///     HyperV replica 2012 replication details.
+    public class HyperVReplicaSpecificRPIDetails
+    {
+
+        /// <summary>
+        ///    Gets or sets the Last replication time.
+        /// </summary>
+        public DateTime? LastReplicatedTime { get; set; }
+
+        /// <summary>
+        ///    Gets or sets the PE Network details.
+        /// </summary>
+        public IList<VMNicDetails> VmNics { get; set; }
+
+        /// <summary>
+        ///    Gets or sets the virtual machine Id.
+        /// </summary>
+        public string VmId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the protection state for the vm.
+        /// </summary>
+        public string VmProtectionState { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the protection state description for the vm.
+        /// </summary>
+        public string VmProtectionStateDescription { get; set; }
+
+        /// <summary>
+        ///Gets or sets VM disk details.
+        /// </summary>
+        public IList<ASRHyperVReplicaDiskDetails> VMDiskDetails { get; set; }
+    }
+
+    /// <summary>
+    /// Onprem disk details data.
+    /// </summary>
+    public class ASRHyperVReplicaDiskDetails
+    {
+
+        /// <summary>
+        ///    Gets or sets the hard disk max size in MB.
+        /// </summary>
+        public long? MaxSizeMB { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the type of the volume.
+        /// </summary>
+        public string VhdType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the VHD Id.
+        /// </summary>
+        public string VhdId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the VHD name.
+        /// </summary>
+        public string VhdName { get; set; }
+    }
+
+    public class ASRHyperVReplicaAzureVmDiskDetails
+    {
+        /// <summary>
+        ///    Gets or sets VHD type.
+        /// </summary>
+        public string VhdType { get; set; }
+
+        /// <summary>
+        ///    Gets or sets the VHD id.
+        /// </summary>
+        public string VhdId { get; set; }
+
+        /// <summary>
+        ///    Gets or sets VHD name.
+        /// </summary>
+        public string VhdName { get; set; }
+
+        /// <summary>
+        ///    Gets or sets max side in MB.
+        /// </summary>
+        public string MaxSizeMB { get; set; }
+
+        /// <summary>
+        ///    Gets or sets blob uri of the Azure disk.
+        /// </summary>
+        public string TargetDiskLocation { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the target Azure disk name.
+        /// </summary>
+        public string TargetDiskName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets ordinal\LunId of the disk for the Azure VM.
+        /// </summary>
+        public string LunId { get; set; }
+    }
+
+    /// <summary>
+    ///     Disk Details.
+    /// </summary>
+    public class ASRHyperVReplicaAzureOsDetails
+    {
+        /// <summary>
+        ///     Gets or sets VM Disk details.
+        /// </summary>
+        public string OsType { get; set; }
+
+        /// <summary>
+        ///  Gets or sets product type.
+        /// </summary>
+        public string ProductType { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the OSEdition.
+        /// </summary>
+        public string OsEdition { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the OS Version.
+        /// </summary>
+        public string OSVersion { get; set; }
+
+        /// <summary>
+        ///    Gets or sets the OS Major Version.
+        /// </summary>
+        public string OSMajorVersion { get; set; }
+
+        /// <summary>
+        ///    Gets or sets the OS Minor Version.
+        /// </summary>
+        public string OSMinorVersion { get; set; }
+    }
+
+    /// <summary>
+    ///     InMageAzureV2 Specific Replication Protected Item Details.
+    /// </summary>
+    public class ASRHyperVReplicaAzureSpecificRPIDetails : ASRProviderSpecificRPIDetails
+    {
+        /// <summary>
+        ///     Gets or sets the recovery availability set Id.
+        /// <summary>
+        public string RecoveryAvailabilitySetId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the selected option to enable RDP\SSH on target vm after failover.
+        ///     String value of {SrsDataContract.EnableRDPOnTargetOption} enum.
+        /// <summary>
+        public string EnableRDPOnTargetOption { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the CPU count of the VM on the primary side.
+        /// <summary>
+        public int? SourceVmCPUCount { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the RAM size of the VM on the primary side.
+        /// <summary>
+        public int? SourceVmRAMSizeInMB { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the operating system info.
+        /// <summary>
+        public ASRHyperVReplicaAzureOsDetails OsDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the encryption info.
+        /// <summary>
+        public string Encryption { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the selected recovery azure network Id.
+        /// <summary>
+        public string SelectedRecoveryAzureNetworkId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the protection state description for the vm.
+        /// <summary>
+        public string VmProtectionStateDescription { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the protection state for the vm.
+        /// <summary>
+        public string VmProtectionState { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the virtual machine Id.
+        /// <summary>
+        public string VmId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Last replication time.
+        /// </summary>
+        public DateTime? LastReplicatedTime { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ARM id of the log storage account used for replication. This
+        ///     will be set to null if no log storage account was provided during enable protection.
+        /// </summary>
+        public string RecoveryAzureLogStorageAccountId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the recovery Azure storage account.
+        /// </summary>
+        public string RecoveryAzureStorageAccount { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Recovery Azure VM size.
+        /// </summary>
+        public string RecoveryAzureVMSize { get; set; }
+
+        /// <summary>
+        ///     Gets or sets recovery Azure given name.
+        /// </summary>
+        public string RecoveryAzureVMName { get; set; }
+
+        /// <summary>
+        ///     Gets or sets azure VM Disk details.
+        /// </summary>
+        public IList<ASRHyperVReplicaAzureVmDiskDetails> AzureVMDiskDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether managed disks should be used during failover.
+        /// </summary>
+        public string UseManagedDisks { get; set; }
+
+        /// <summary>
+        ///     Gets or sets license Type of the VM to be used.
+        /// </summary>
+        public string LicenseType { get; set; }
+
+    }
+
     /// <summary>
     ///     InMageAzureV2 Specific Replication Protected Item Details.
     /// </summary>
@@ -647,14 +885,127 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class ASRAzureToAzureSpecificRPIDetails : ASRProviderSpecificRPIDetails
     {
         /// <summary>
+        /// Initializes a new instance of the<see cref="ASRAzureToAzureSpecificRPIDetails" /> class.
+        /// </summary>
+        public ASRAzureToAzureSpecificRPIDetails(A2AReplicationDetails details)
+        {
+            this.FabricObjectId = details.FabricObjectId;
+            this.MultiVmGroupId = details.MultiVmGroupId;
+            this.MultiVmGroupName = details.MultiVmGroupName;
+            this.OSType = details.OsType;
+            this.PrimaryFabricLocation = details.PrimaryFabricLocation;
+            this.RecoveryFabricObjectId = details.RecoveryFabricObjectId;
+            this.RecoveryAzureResourceGroupId = details.RecoveryAzureResourceGroupId;
+            this.RecoveryAzureCloudService = details.RecoveryCloudService;
+            this.RecoveryFabricLocation = details.RecoveryFabricLocation;
+            this.RecoveryAvailabilitySet = details.RecoveryAvailabilitySet;
+            this.TestFailoverRecoveryFabricObjectId = details.TestFailoverRecoveryFabricObjectId;
+            this.MonitoringJobType = details.MonitoringJobType;
+            this.MonitoringPercentageCompletion = details.MonitoringPercentageCompletion;
+            this.AgentVersion = details.AgentVersion;
+            this.LastRpoCalculatedTime = details.LastRpoCalculatedTime;
+            this.RpoInSeconds = details.RpoInSeconds;
+            this.IsReplicationAgentUpdateRequired = details.IsReplicationAgentUpdateRequired;
+
+            if (details.LastHeartbeat != null)
+            {
+                this.LastHeartbeat = details.LastHeartbeat.Value.ToLocalTime();
+            }
+
+            if (details.ProtectedDisks != null)
+            {
+                this.A2ADiskDetails =
+                    details.ProtectedDisks.ToList()
+                    .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
+            }
+
+            if (details.ProtectedManagedDisks != null)
+            {
+                this.A2ADiskDetails =
+                    details.ProtectedManagedDisks.ToList()
+                    .ConvertAll(disk => new ASRAzureToAzureProtectedDiskDetails(disk));
+            }
+
+            if (details.VmSyncedConfigDetails != null)
+            {
+                this.VmSyncedConfigDetails =
+                    new ASRAzureToAzureVmSyncedConfigDetails(details.VmSyncedConfigDetails);
+            }
+
+        }
+
+        /// <summary>
+        /// Fabric object ARM Id.
+        /// </summary>
+        public string FabricObjectId { get; set; }
+
+        /// <summary>
+        /// Multi vm group Id.
+        /// </summary>
+        public string MultiVmGroupId { get; set; }
+
+        /// <summary>
+        /// Multi vm group name.
+        /// </summary>
+        public string MultiVmGroupName { get; set; }
+        /// </summary>
+
+        /// <summary>
+        /// Operating system type.
+        /// </summary>
+        public string OSType { get; set; }
+
+        /// <summary>
+        /// Primary fabric location.
+        /// </summary>
+        public string PrimaryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Recovery azure resource group id.
+        /// </summary>
+        public string RecoveryAzureResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Recovery azure cloud service.
+        /// </summary>
+        public string RecoveryAzureCloudService { get; set; }
+
+        /// <summary>
+        /// Recovery fabric location.
+        /// </summary>
+        public string RecoveryFabricLocation { get; set; }
+
+        /// <summary>
+        /// Recovery availability set.
+        /// </summary>
+        public string RecoveryAvailabilitySet { get; set; }
+
+        /// <summary>
+        /// Synced configuration details of the virtual machine.
+        /// </summary>
+        public ASRAzureToAzureVmSyncedConfigDetails VmSyncedConfigDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of the monitoring job. The progress is contained in
+        /// MonitoringPercentageCompletion property.
+        /// </summary>
+        public string MonitoringJobType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the percentage of the monitoring job. The type of the monitoring job
+        /// is defined by MonitoringJobType property.
+        /// </summary>
+        public int? MonitoringPercentageCompletion { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last heartbeat received from the source server.
+        /// </summary>
+        public DateTime? LastHeartbeat { get; set; }
+
+        /// <summary>
         /// Gets or sets A2A specific protected disk details.
         /// </summary>
         public List<ASRAzureToAzureProtectedDiskDetails> A2ADiskDetails { get; set; }
-
-        /// <summary>
-        /// Fabric Object Id of the Virtual machine(AzureVm).
-        /// </summary>
-        public string FabricObjectId { get; set; }
 
         /// <summary>
         /// Gets or sets the recovery fabric object Id.
@@ -667,14 +1018,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string TestFailoverRecoveryFabricObjectId { get; set; }
 
         /// <summary>
-        /// Gets or sets Multi vm group name.
+        //     Gets or sets the agent version.
         /// </summary>
-        public string MultiVmGroupName { get; set; }
+        public string AgentVersion;
 
         /// <summary>
-        /// Gets or sets Multi vm group id.
+        //  Gets or sets the time (in UTC) when the last RPO value was calculated by Protection service.
         /// </summary>
-        public string MultiVmGroupId { get; set; }
+        public DateTime? LastRpoCalculatedTime;
+
+        /// <summary>
+        //     Gets or sets the last RPO value in seconds.
+        /// </summary>
+        public long? RpoInSeconds;
+
+        /// <summary>
+        //     Gets or sets a value indicating whether replication agent update is required.
+        /// </summary>
+        public bool? IsReplicationAgentUpdateRequired;
+
+        // check do we need to expoxed these 2 (TODO)
+        // public string RecoveryFabricObjectId;  //how it is different from parent RecoveryFabricId
+        // public string LifecycleId;
+        // public string managementId;
     }
 
     /// <summary>

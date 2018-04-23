@@ -12,9 +12,18 @@ Creates a disk mapping object for Azure virtual machine disks to be replicated.
 
 ## SYNTAX
 
+### AzureToAzure (Default)
 ```
 New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri <String> -LogStorageAccountId <String>
  -RecoveryAzureStorageAccountId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### AzureToAzureManagedDisk
+```
+New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig [-managed] -LogStorageAccountId <String>
+ -DiskId <String> -RecoveryResourceGroupId <String> -RecoveryReplicaDiskAccountType <String>
+ -RecoveryTargetDiskAccountType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -62,6 +71,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiskId
+Specifies the disk id of managed disk.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LogStorageAccountId
 Specifies the log or cache storage account Id to be used to store replication logs.
 
@@ -82,8 +106,55 @@ Specifies the ID of the Azure storage account to replicate to.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: AzureToAzure
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryReplicaDiskAccountType
+Specifies the account type of replicated managed disk.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+Accepted values: Premium_LRS, Standard_LRS
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryResourceGroupId
+Specifies the recovery resource group id for replicated managed disk.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryTargetDiskAccountType
+Specifies the recovery target disk for replicated managed disk.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+Accepted values: Premium_LRS, Standard_LRS
 
 Required: True
 Position: Named
@@ -97,7 +168,7 @@ Specify the VHD URI of the disk that this mapping corresponds to.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: AzureToAzure
 Aliases:
 
 Required: True
@@ -117,6 +188,21 @@ Parameter Sets: (All)
 Aliases: wi
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -managed
+Specifies the disk details is for managed disk.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

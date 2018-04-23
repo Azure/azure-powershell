@@ -215,15 +215,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
 
-        /// <summary>
-        ///     Gets or sets if encryption should be enabled or disabled.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.HyperVToAzure)]
-        [DefaultValue(Constants.Disable)]
-        [ValidateSet(
-            Constants.Enable,
-            Constants.Disable)]
-        public string Encryption { get; set; }
+        // todo : vipin add in breaking changes list
+	// public string Encryption { get; set; }
 
         /// <summary>
         ///     Gets or sets the multiVm sync status for the policy.
@@ -304,10 +297,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 ApplicationConsistentSnapshotFrequencyInHours =
                     this.ApplicationConsistentSnapshotFrequencyInHours,
-                Encryption =
-                    this.MyInvocation.BoundParameters.ContainsKey(
-                        Utilities.GetMemberName(() => this.Encryption)) ? this.Encryption
-                        : Constants.Disable,
                 OnlineReplicationStartTime =
                     this.ReplicationStartTime == null ? null : this.ReplicationStartTime.ToString(),
                 RecoveryPointHistoryDuration = this.NumberOfRecoveryPointsToRetain,

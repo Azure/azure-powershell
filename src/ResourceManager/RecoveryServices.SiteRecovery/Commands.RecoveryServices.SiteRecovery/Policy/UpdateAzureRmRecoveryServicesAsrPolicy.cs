@@ -198,15 +198,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
 
-        /// <summary>
-        ///     Gets or sets encryption should be enabled or disabled.
-        /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.HyperVToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.Default)]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            Constants.Enable,
-            Constants.Disable)]
+	// todo :: vipin breaking change release
         public string Encryption { get; set; }
 
         /// <summary>
@@ -349,20 +341,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     Utilities.GetMemberName(() => this.RecoveryAzureStorageAccountId))
                     ? this.RecoveryAzureStorageAccountId
                     : replicationProviderSettings.ActiveStorageAccountId;
-            this.encryption =
-                this.MyInvocation.BoundParameters.ContainsKey(
-                    Utilities.GetMemberName(() => this.Encryption)) ? this.Encryption
-                    : (string.Compare(
-                           replicationProviderSettings.Encryption,
-                           "Disabled",
-                           StringComparison.OrdinalIgnoreCase) ==
-                       0 ? Constants.Disable : Constants.Enable);
-
+            
             var hyperVReplicaAzurePolicyInput = new HyperVReplicaAzurePolicyInput
             {
                 ApplicationConsistentSnapshotFrequencyInHours =
                     this.applicationConsistentSnapshotFrequencyInHours,
-                Encryption = this.encryption,
                 OnlineReplicationStartTime = this.replicationStartTime.ToString(),
                 RecoveryPointHistoryDuration = this.recoveryPoints,
                 ReplicationInterval = this.replicationFrequencyInSeconds
@@ -809,7 +792,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private TimeSpan? replicationStartTime { get; set; }
         private string replicaDeletion { get; set; }
         private string recoveryAzureStorageAccountId { get; set; }
-        private string encryption { get; set; }
         private int applicationConsistentSnapshotFrequencyInMinutes { get; set; }
         private int rpoWarningThresholdInMinutes { get; set; }
         private int crashConsistentFrequencyInMinutes { get; set; }
