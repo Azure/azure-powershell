@@ -170,20 +170,20 @@ namespace Microsoft.Azure.Commands.Scheduler.Utilities
         /// <param name="psCmdlet">Powershell cmdlet.</param>
         /// <param name="path">path.</param>
         /// <returns>Resolved PowerShell path.</returns>
-        public static string ResolvePath(this AzurePSCmdlet psCmdlet, string path)
+        public static string ResolvePath(this PSCmdlet psCmdlet, string path)
         {
             if (path == null)
             {
                 return null;
             }
 
-            if (psCmdlet.AsJobSessionState == null)
+            if (psCmdlet.SessionState == null)
             {
                 return path;
             }
 
             path = path.Trim('"', '\'', ' ');
-            var result = psCmdlet.AsJobSessionState.Path.GetResolvedPSPathFromPSPath(path);
+            var result = psCmdlet.SessionState.Path.GetResolvedPSPathFromPSPath(path);
             string fullPath = string.Empty;
 
             if (result != null && result.Count > 0)

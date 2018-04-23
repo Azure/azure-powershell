@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         public override void ExecuteCmdlet()
         {
-            var powerShellSourcePath = AsJobSessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
+            var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
             ConfirmAction(
                 Resources.UploadFileMessage,
                 Destination.TransformedPath,
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         if (ParameterSetName.Equals(DiagnosticParameterSetName) && DiagnosticLogLevel != LogLevel.None)
                         {
                             var diagnosticPath =
-                                AsJobSessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
+                                SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiagnosticLogPath);
                             DataLakeStoreFileSystemClient.SetupFileLogging(DiagnosticLogLevel, diagnosticPath);
                         }
 
