@@ -12,24 +12,47 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Asynchronous cmdlet interface.
+    /// </summary>
     public interface IAsyncCmdlet
     {
+        /// <summary>
+        /// Cmdlet parameters.
+        /// </summary>
         IEnumerable<KeyValuePair<string, object>> Parameters { get; }
 
+        /// <summary>
+        /// Thread-safe `WriteVerbose` function.
+        /// </summary>
+        /// <param name="message"></param>
         void WriteVerbose(string message);
 
+        /// <summary>
+        /// Asynchronous, thread-safe `ShouldProcess` function.
+        /// </summary>
         Task<bool> ShouldProcessAsync(string target, string action);
 
+        /// <summary>
+        /// Thread-safe `WriteVerbose` function.
+        /// </summary>
+        /// <param name="value"></param>
         void WriteObject(object value);
 
+        /// <summary>
+        /// Report task progress. The function is used to report current task and cmdlet progress.
+        /// </summary>
+        /// <param name="taskProgress"></param>
         void ReportTaskProgress(ITaskProgress taskProgress);
 
+        /// <summary>
+        /// A `New` verb.
+        /// </summary>
         string VerbsNew { get; }
     }
 }

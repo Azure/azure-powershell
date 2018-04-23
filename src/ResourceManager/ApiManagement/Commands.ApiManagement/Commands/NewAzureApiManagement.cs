@@ -1,11 +1,11 @@
-﻿//  
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
-// 
+//
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
 //  You may obtain a copy of the License at
 //    http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS,
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "Virtual Network Type of the ApiManagement Deployment. Valid Values are " +
-                     " - None (Default Value. ApiManagement is not part of any Virtual Network)" + 
+                     " - None (Default Value. ApiManagement is not part of any Virtual Network)" +
                      " - External (ApiManagement Deployment is setup inside a Virtual Network having an Internet Facing Endpoint) " +
                      " - Internal (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)")]
         [ValidateSet("None", "External", "Internal"), PSDefaultValue(Value = "None")]
@@ -93,8 +93,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags dictionary.")]
-        [Obsolete("New-AzureRmApiManagement: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public Dictionary<string, string> Tag { get; set; }
 
         [Parameter(
@@ -105,7 +103,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-#pragma warning disable CS0618
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginCreateApiManagementService(
                     ResourceGroupName,
@@ -120,7 +117,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     VirtualNetwork,
                     AdditionalRegions),
                 passThru: true);
-#pragma warning restore CS0618
         }
     }
 }
