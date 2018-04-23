@@ -48,21 +48,6 @@ Starts the operation of updating the replication protect item settings using the
 
 ## PARAMETERS
 
-### -AzureToAzureUpdateReplicationConfiguration
-Specifies the disk replication configration to be udated for replication.
-
-```yaml
-Type: ASRAzuretoAzureDiskReplicationConfig[]
-Parameter Sets: AzureToAzureManagedDisk
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -172,21 +157,6 @@ Accept wildcard characters: False
 
 ### -RecoveryAvailabilitySet
 Availability set for replication protected item after failover.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryBootDiagStorageAccountId
-Specifies the storage account for boot diagnostics for recovery azure VM.
 
 ```yaml
 Type: String
@@ -314,6 +284,36 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureToAzureUpdateReplicationConfiguration
+Specifies the update relication configration.
+
+```yaml
+Type: ASRAzuretoAzureDiskReplicationConfig[]
+Parameter Sets: AzureToAzureManagedDisk
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryBootDiagStorageAccountId
+Specifies the storage account for boot diagnostics for recovery azure VM.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

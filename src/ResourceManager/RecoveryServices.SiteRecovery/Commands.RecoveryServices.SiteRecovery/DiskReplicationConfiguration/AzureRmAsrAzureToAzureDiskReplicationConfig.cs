@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureToAzureManagedDisk,
             Mandatory = true)]
-        public SwitchParameter managed { get; set; }
+        public SwitchParameter ManagedDisk { get; set; }
 
         /// <summary>
         ///     Gets or sets the disk uri.

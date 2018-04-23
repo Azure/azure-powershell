@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Recovery Services client.
         /// </summary>
-        private PSComputeManagementClient computeManagementClient;
+        private PSAsrComputeManagementClient computeManagementClient;
 
         /// <summary>
         ///     Gets or sets a value indicating whether stop processing has been triggered.
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             }
         }
 
-        internal PSComputeManagementClient ComputeManagementClient
+        internal PSAsrComputeManagementClient ComputeManagementClient
         {
             get
             {
                 if (this.computeManagementClient == null)
                 {
-                    this.computeManagementClient = new PSComputeManagementClient(this.DefaultProfile);
+                    this.computeManagementClient = new PSAsrComputeManagementClient(this.DefaultProfile);
                 }
 
                 return this.computeManagementClient;

@@ -57,6 +57,15 @@ New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### AzureToAzureWithoutDiskDetails
+```
+New-AzureRmRecoveryServicesAsrReplicationProtectedItem [-AzureToAzure] -AzureVmId <String> -Name <String>
+ [-RecoveryVmName <String>] -ProtectionContainerMapping <ASRProtectionContainerMapping>
+ [-RecoveryAzureStorageAccountId <String>] -LogStorageAccountId <String> -RecoveryResourceGroupId <String>
+ [-RecoveryAvailabilitySetId <String>] [-RecoveryBootDiagStorageAccountId <String>] [-WaitForCompletion]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **New-AzureRmRecoveryServicesAsrReplicationProtectedItem** cmdlet creates a new replication protected item.
 Use this cmdlet to enable replication for an ASR protectable item.
@@ -122,7 +131,7 @@ Switch parameter to specify that the replicated item is an Azure virtual machine
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: AzureToAzure
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: False
@@ -152,7 +161,7 @@ Specifies the azure vm id to be replicated.
 
 ```yaml
 Type: String
-Parameter Sets: AzureToAzure
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: True
@@ -230,6 +239,18 @@ Parameter Sets: VMwareToAzure, HyperVSiteToAzure
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzureWithoutDiskDetails
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -333,7 +354,7 @@ The ID of the AvailabilitySet to recover the machine to in the event of a failov
 
 ```yaml
 Type: String
-Parameter Sets: AzureToAzure
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: False
@@ -373,12 +394,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryAzureSubnetName
-The subnet within the recovery Azure virtual network to which the failed over virtual machine should be attached in the event of a failover.
-
 ```yaml
 Type: String
-Parameter Sets: VMwareToAzure, HyperVSiteToAzure
+Parameter Sets: AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: False
@@ -388,12 +406,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryBootDiagStorageAccountId
-Specifies the storage account for boot diagnostics for recovery azure VM.
+### -RecoveryAzureSubnetName
+The subnet within the recovery Azure virtual network to which the failed over virtual machine should be attached in the event of a failover.
 
 ```yaml
 Type: String
-Parameter Sets: AzureToAzure
+Parameter Sets: VMwareToAzure, HyperVSiteToAzure
 Aliases:
 
 Required: False
@@ -423,7 +441,7 @@ Specifies the ARM identifier of the resource group in which the virtual machine 
 
 ```yaml
 Type: String
-Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure
+Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: True
@@ -438,7 +456,7 @@ Name of the recovery Vm created after failover.
 
 ```yaml
 Type: String
-Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure
+Parameter Sets: VMwareToAzure, EnterpriseToAzure, HyperVSiteToAzure, AzureToAzure, AzureToAzureWithoutDiskDetails
 Aliases:
 
 Required: False
@@ -516,6 +534,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryBootDiagStorageAccountId
+Specifies the storage account for boot diagnostics for recovery azure VM.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure, AzureToAzureWithoutDiskDetails
+Aliases:
 
 Required: False
 Position: Named

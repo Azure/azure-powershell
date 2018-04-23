@@ -367,21 +367,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RecoveryBootDiagStorageAccountId
-Specifies the storage account for boot diagnostics for recovery azure VM.
-
-```yaml
-Type: String
-Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RecoveryCloudServiceId
 The resource ID of the recovery cloud service to failover this virtual machine to.
 
@@ -494,6 +479,21 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryBootDiagStorageAccountId
+Specifies the storage account for boot diagnostics for recovery azure VM.
+
+```yaml
+Type: String
+Parameter Sets: AzureToAzure, AzureToAzureWithMultipleStorageAccount
+Aliases:
 
 Required: False
 Position: Named
