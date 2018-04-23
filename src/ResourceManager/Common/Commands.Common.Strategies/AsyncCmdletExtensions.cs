@@ -23,13 +23,25 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public static class AsyncCmdletExtensions
     {
+        /// <summary>
+        /// WriteVerbose function with formatting.
+        /// </summary>
+        /// <param name="cmdlet">Cmdlet</param>
+        /// <param name="message">message with formatting</param>
+        /// <param name="p">message parameters</param>
         public static void WriteVerbose(this IAsyncCmdlet cmdlet, string message, params object[] p)
             => cmdlet.WriteVerbose(string.Format(message, p));
 
-        public static string UpdateLocation(
-            this IState current, string location, IResourceConfig config)
-            => location ?? current.GetLocation(config) ?? "eastus";
-
+        /// <summary>
+        /// The function read current Azure state and update it according to the `parameters`.
+        /// </summary>
+        /// <typeparam name="TModel">A resource model type.</typeparam>
+        /// <param name="client">Azure SDK client.</param>
+        /// <param name="subscriptionId">Subbscription Id.</param>
+        /// <param name="parameters">Cmdlet parameters.</param>
+        /// <param name="asyncCmdlet">Asynchronous cmdlet interface.</param>
+        /// <param name="cancellationToken">Cancellation token.</param>
+        /// <returns></returns>
         public static async Task<TModel> RunAsync<TModel>(
             this IClient client,
             string subscriptionId,
@@ -40,34 +52,36 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         {
             // create a DAG of configs.
             var config = await parameters.CreateConfigAsync();
-
-            // reade current Azure state.
+            // read current Azure state.
             var current = await config.GetStateAsync(client, cancellationToken);
-
             // update location.
             parameters.Location = current.UpdateLocation(parameters.Location, config);
-
             // update a DAG of configs.
             config = await parameters.CreateConfigAsync();
-
-            var engine = new SdkEngine(subscriptionId);
-            var target = config.GetTargetState(current, engine, parameters.Location);
-
+            // create a target.
+            var target = config.GetTargetState(
+                current, new SdkEngine(subscriptionId), parameters.Location);
+            // print paramaters to a verbose stream.
             foreach (var p in asyncCmdlet.Parameters)
             {
                 asyncCmdlet.WriteVerbose(p.Key + " = " + ToPowerShellString(p.Value));
             }
 
-            // apply target state
+            // apply the target state
             var newState = await config.UpdateStateAsync(
                 client,
                 target,
                 cancellationToken,
                 new ShouldProcess(asyncCmdlet),
                 asyncCmdlet.ReportTaskProgress);
-
+            // return a resource model
             return newState.Get(config) ?? current.Get(config);
         }
+
+        static string UpdateLocation(
+            this IState current, string location, IResourceConfig config)
+            => location ?? current.GetLocation(config) ?? "eastus";
+
 
         static string ToPowerShellString(object value)
         {
@@ -75,16 +89,19 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             {
                 return "$null";
             }
+
             var s = value as string;
             if (s != null)
             {
                 return "\"" + s + "\"";
             }
+
             var e = value as IEnumerable;
             if (e != null)
             {
                 return string.Join(",", e.Cast<object>().Select(ToPowerShellString));
             }
+
             return value.ToString();
         }
 
@@ -128,8 +145,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                                 var config = taskProgress.Config;
                                 activeTasks.Add(config.GetFullName());
                             }
+
                             progress += taskProgress.GetProgress();
                         }
+
                         var percent = (int)(progress * 100.0);
                         var r = new[] { "|", "/", "-", "\\" };
                         var x = r[DateTime.Now.Second % 4];
