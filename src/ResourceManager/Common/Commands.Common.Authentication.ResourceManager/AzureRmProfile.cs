@@ -566,7 +566,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
 
         public bool TryCopyProfile(AzureRmProfile other)
         {
-            this.DefaultContextKey = other.DefaultContextKey;
             this.Clear();
             foreach (var environment in other.EnvironmentTable.Where((e) => !AzureEnvironment.PublicEnvironments.ContainsKey(e.Key)))
             {
@@ -578,6 +577,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 TrySetContext(context.Key, context.Value);
             }
 
+            this.DefaultContextKey = other.DefaultContextKey;
             if (other.DefaultContext != null && this.DefaultContext != other.DefaultContext)
             {
                 this.TrySetDefaultContext(other.DefaultContext);
