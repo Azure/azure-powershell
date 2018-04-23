@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var result = await client.RunAsync(parameters, asyncCmdlet, new CancellationToken());
+            var result = await client.RunAsync(parameters, asyncCmdlet);
 
             if (result != null)
             {

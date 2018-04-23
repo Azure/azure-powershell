@@ -49,8 +49,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         public static async Task<TModel> RunAsync<TModel, TResourceGroup>(
             this IClient client,
             IParameters<TModel, TResourceGroup> parameters,
-            IAsyncCmdlet asyncCmdlet,
-            CancellationToken cancellationToken)
+            IAsyncCmdlet asyncCmdlet)
             where TModel : class
             where TResourceGroup : class
         {
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             // create a DAG of configs.
             var config = await parameters.CreateConfigAsync(resourceGroup);
             // read current Azure state.
-            var current = await config.GetStateAsync(client, cancellationToken);
+            var current = await config.GetStateAsync(client, asyncCmdlet.CancellationToken);
             // update location.
             parameters.Location = current.UpdateLocation(parameters.Location, config);
             // update a DAG of configs.
@@ -126,7 +125,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             var newState = await config.UpdateStateAsync(
                 client,
                 target,
-                cancellationToken,
+                asyncCmdlet.CancellationToken,
                 new ShouldProcess(asyncCmdlet),
                 asyncCmdlet.ReportTaskProgress);
             // return a resource model
@@ -240,6 +239,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             public IEnumerable<KeyValuePair<string, object>> Parameters
                 => Cmdlet.Parameters;
 
+            public CancellationToken CancellationToken { get; }
+                = new CancellationToken();
+
             public AsyncCmdlet(ICmdlet cmdlet)
             {
                 Cmdlet = cmdlet;
@@ -256,6 +258,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public void ReportTaskProgress(ITaskProgress taskProgress)
                 => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
+
+
         }
     }
 }
