@@ -13,19 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ScenarioTest.Mocks;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Xunit.Abstractions;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -34,12 +31,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     using Graph.RBAC;
     using Common.Authentication.Abstractions;
-    using ResourceManager.Common;
     using System.IO;
 
     public class SqlTestsBase : RMTestBase
     {
-        protected SqlEvnSetupHelper helper;
+        protected EnvironmentSetupHelper Helper;
 
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
@@ -48,11 +44,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected SqlTestsBase(ITestOutputHelper output)
         {
-            helper = new SqlEvnSetupHelper();
+            Helper = new EnvironmentSetupHelper();
 
             XunitTracingInterceptor tracer = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(tracer);
-            helper.TracingInterceptor = tracer;
+            Helper.TracingInterceptor = tracer;
         }
 
         protected virtual void SetupManagementClients(RestTestFramework.MockContext context)
@@ -60,14 +56,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
             var newResourcesClient = GetResourcesClient(context);
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
@@ -85,18 +82,18 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             {
                 SetupManagementClients(context);
 
-                helper.SetupEnvironment();
+                Helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                Helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMStorageDataPlaneModule,
-                    helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
-                    helper.RMNetworkModule,
+                    Helper.RMProfileModule,
+                    Helper.RMStorageDataPlaneModule,
+                    Helper.GetRMModulePath(@"AzureRM.Sql.psd1"),
+                    Helper.RMNetworkModule,
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
-                helper.RunPowerShellTest(scripts);
+                Helper.RunPowerShellTest(scripts);
             }
         }
 
@@ -125,34 +122,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected StorageManagementClient GetStorageClient()
-        {
-            StorageManagementClient client = TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationInitialTimeout = 0;
-                client.LongRunningOperationRetryTimeout = 0;
-            }
-            return client;
-        }
-
         protected Management.Internal.Resources.ResourceManagementClient GetResourcesClient(RestTestFramework.MockContext context)
         {
             Management.Internal.Resources.ResourceManagementClient client =
                 context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
-                client.LongRunningOperationRetryTimeout = 0;
-            }
-            return client;
-        }
-
-        protected AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            AuthorizationManagementClient client = TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                client.LongRunningOperationInitialTimeout = 0;
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;
@@ -202,10 +177,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected Management.Storage.StorageManagementClient GetStorageV2Client()
+        protected StorageManagementClient GetStorageV2Client()
         {
             var client =
-                TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+                TestBase.GetServiceClient<StorageManagementClient>(new CSMTestEnvironmentFactory());
 
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {

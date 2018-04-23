@@ -270,7 +270,6 @@
     <Compile Include="ScenarioTests\AuditingTests.cs" />
     <Compile Include="ScenarioTests\ServerCrudTests.cs" />
     <Compile Include="ScenarioTests\ServerDisasterRecoveryConfigurationTests.cs" />
-    <Compile Include="ScenarioTests\SqlEvnSetupHelper.cs" />
     <Compile Include="ScenarioTests\SqlTestsBase.cs" />
     <Compile Include="ScenarioTests\TransparentDataEncryptionCrudTests.cs" />
     <Compile Include="ScenarioTests\ServerKeyVaultKeyTests.cs" />
@@ -737,7 +736,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticPoolCrudTests\TestElasticPoolUpdateWithZoneRedundancy.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticPoolCrudTests\TestElasticPoolCancelOperation.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticPoolCrudTests\TestElasticPoolCancelOperation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.FailoverGroupTests\TestCreateFailoverGroup_AutomaticPolicy.json">

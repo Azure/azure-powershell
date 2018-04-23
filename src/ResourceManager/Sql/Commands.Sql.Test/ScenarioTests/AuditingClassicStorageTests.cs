@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -27,11 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var storageClient = GetStorageClient();
             var storageV2Client = GetStorageV2Client();
             var newResourcesClient = GetResourcesClient(context);
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, newResourcesClient, authorizationClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageV2Client, newResourcesClient);
         }
 
         public AuditingClassicStorageTests(ITestOutputHelper output) : base(output)

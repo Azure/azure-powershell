@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -27,9 +26,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             var sqlClient = GetSqlClient(context);
             var sqlLegacyClient = GetLegacySqlClient();
-            var authorizationClient = GetAuthorizationManagementClient();
             var newResourcesClient = GetResourcesClient(context);
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, authorizationClient, newResourcesClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient);
         }
 
         public DataMaskingTests(ITestOutputHelper output) : base(output)

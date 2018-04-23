@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var sqlLegacyClient = GetLegacySqlClient();
             var newResourcesClient = GetResourcesClient(context);
             var networkClient = GetNetworkClient(context);
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient, networkClient);
+            Helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, newResourcesClient, networkClient);
         }
         public VirtualNetworkRuleTest(ITestOutputHelper output) : base(output)
         {
