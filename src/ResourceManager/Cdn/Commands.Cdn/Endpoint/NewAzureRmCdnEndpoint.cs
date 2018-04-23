@@ -90,8 +90,14 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [Parameter(Mandatory = false, HelpMessage = "Specifies any optimization this endpoint has.")]
         public string OptimizationType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the probe path for Dynamic Site Acceleration")]
+        public string ProbePath { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The list of geo filters that applies to this endpoint.")]
         public PSGeoFilter[] GeoFilters { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The delivery policy for this endpoint.")]
+        public PSDeliveryPolicy DeliveryPolicy { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
@@ -140,7 +146,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                             QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
                             (QueryStringCachingBehavior?)null,
                 OptimizationType = OptimizationType,
-                GeoFilters = GeoFilters == null ? null : GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
+                ProbePath = ProbePath,
+                GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
+                DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
                 Tags = Tag.ToDictionaryTags()
             });
 
