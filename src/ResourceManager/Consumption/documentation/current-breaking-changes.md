@@ -39,3 +39,6 @@
 -->
 
 ## Current Breaking Changes
+* Remove parameter InvoiceName, AdditionalProperties, and MeterDetails on Cmdlet Get-AzureRmConsumptionUsageDetail
+* Change parameter MaxCount to Top on Cmdlet Get-AzureRmConsumptionUsageDetail
+* Add new parameter Expand, ResourceGroup, InstanceName, InstanceId, and Tags on Cmdlet Get-AzureRmConsumptionUsageDetail
