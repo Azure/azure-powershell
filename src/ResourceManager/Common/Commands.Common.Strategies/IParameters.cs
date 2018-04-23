@@ -29,6 +29,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         string Location { get; set; }
 
         /// <summary>
+        /// Default location. It's used if Location is null and it can't be infered.
+        /// </summary>
+        string DefaultLocation { get; }
+
+        /// <summary>
         /// Create an Azure resource configuration according to the parameters.
         /// </summary>
         /// <returns></returns>
