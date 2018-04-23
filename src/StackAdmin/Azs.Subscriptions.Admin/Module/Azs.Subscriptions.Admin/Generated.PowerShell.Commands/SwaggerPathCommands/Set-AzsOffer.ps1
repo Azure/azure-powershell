@@ -206,7 +206,7 @@ function Set-AzsOffer {
 
             $flattenedParameters | ForEach-Object {
                 if ($PSBoundParameters.ContainsKey($_)) {
-                        $NewOffer.$($_) = $PSBoundParameters[$_]
+                    $NewOffer.$($_) = $PSBoundParameters[$_]
                 }
             }
 
