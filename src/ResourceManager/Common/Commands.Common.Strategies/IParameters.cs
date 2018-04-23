@@ -16,14 +16,25 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// Describes Azure operation parameter and a target resource.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public interface IParameters<TModel, TResourceGroup>
         where TModel : class
         where TResourceGroup : class
     {
+        /// <summary>
+        /// Azure location. For example, "eastus".
+        /// </summary>
         string Location { get; set; }
 
         ResourceConfig<TResourceGroup> CreateResourceGroup();
 
+        /// <summary>
+        /// Create an Azure resource configuration according to the parameters.
+        /// </summary>
+        /// <returns></returns>
         Task<ResourceConfig<TModel>> CreateConfigAsync(
             ResourceConfig<TResourceGroup> resourceGroupConfig);
 

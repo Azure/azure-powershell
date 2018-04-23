@@ -16,19 +16,52 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
+    /// <summary>
+    /// An interface for a cmdlet for dependency injection.
+    /// </summary>
     public interface ICmdlet
     {
+        /// <summary>
+        /// Verbose output. See also PowerShell `WriteVerbose`.
+        /// </summary>
+        /// <param name="message"></param>
         void WriteVerbose(string message);
+
+        /// <summary>
+        /// See PowerShell `ShouldProcess`.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="action"></param>
+        /// <returns></returns>
         bool ShouldProcess(string target, string action);
+
+        /// <summary>
+        /// See also PowerShell `WriteObject`.
+        /// </summary>
+        /// <param name="value"></param>
         void WriteObject(object value);
+
+        /// <summary>
+        /// See also PowerShell `WriteProgress`.
+        /// </summary>
+        /// <param name="activity"></param>
+        /// <param name="statusDescription"></param>
+        /// <param name="currentOperation"></param>
+        /// <param name="percentComplete"></param>
         void WriteProgress(
             string activity,
             string statusDescription,
             string currentOperation,
             int percentComplete);
 
+        /// <summary>
+        /// See also `VerbsCommon.New`.
+        /// </summary>
         string VerbsNew { get; }
 
+        /// <summary>
+        /// Cmdlet parameters.
+        /// </summary>
         IEnumerable<KeyValuePair<string, object>> Parameters { get; }
     }
 }
