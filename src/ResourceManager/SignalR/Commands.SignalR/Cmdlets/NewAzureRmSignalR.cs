@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                     name: _cmdlet.Name.ToLower(),
                     createModel: engine => new SignalRResource(
                         tags: _cmdlet.Tag,
-                        signalrsku: new ResourceSku(_cmdlet.Sku, capacity: 1), // we only allow capacity 1 in public preview, this may be a parameter in future.
+                        sku: new ResourceSku(_cmdlet.Sku, capacity: 1), // we only allow capacity 1 in public preview, this may be a parameter in future.
                         hostNamePrefix: null /* _cmdlet.Name*/)); // hostNamePrefix is just a placeholder and ignored in the resource provider.
             }
         }

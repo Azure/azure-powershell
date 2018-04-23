@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp
         public static ResourceStrategy<SignalRResource> Strategy { get; }
             = ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.SignalRService", "SignalR"),
-                getOperations: (SignalRManagementClient client) => client.Signalr,
+                getOperations: (SignalRManagementClient client) => client.SignalR,
                 getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
                     p.ResourceGroupName,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp
                     new SignalRCreateParameters(
                         p.Model.Location,
                         p.Model.Tags,
-                        p.Model.Signalrsku,
+                        p.Model.Sku,
                         new SignalRCreateOrUpdateProperties(p.Model.HostNamePrefix)),
                     p.CancellationToken),
                 getLocation: config => config.Location,

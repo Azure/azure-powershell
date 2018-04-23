@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 {
                     case ListSignalRServiceParameterSet:
                         var signalrs = string.IsNullOrEmpty(ResourceGroupName)
-                                     ? Client.Signalr.ListBySubscription()
-                                     : Client.Signalr.ListByResourceGroup(ResourceGroupName);
+                                     ? Client.SignalR.ListBySubscription()
+                                     : Client.SignalR.ListByResourceGroup(ResourceGroupName);
                         foreach (var s in signalrs)
                         {
                             WriteObject(new PSSignalRResource(s));
@@ -70,12 +70,12 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         break;
                     case ResourceIdParameterSet:
                         this.LoadFromResourceId();
-                        var signalrById = Client.Signalr.Get(ResourceGroupName, Name);
+                        var signalrById = Client.SignalR.Get(ResourceGroupName, Name);
                         WriteObject(new PSSignalRResource(signalrById));
                         break;
                     case ResourceGroupParameterSet:
                         ResolveResourceGroupName();
-                        var signalr = Client.Signalr.Get(ResourceGroupName, Name);
+                        var signalr = Client.SignalR.Get(ResourceGroupName, Name);
                         WriteObject(new PSSignalRResource(signalr));
                         break;
 

@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
                 if (ShouldProcess($"SignalR service {ResourceGroupName}/{Name}", "remove"))
                 {
-                    Client.Signalr.Delete(ResourceGroupName, Name);
+                    Client.SignalR.Delete(ResourceGroupName, Name);
 
                     if (PassThru)
                     {
