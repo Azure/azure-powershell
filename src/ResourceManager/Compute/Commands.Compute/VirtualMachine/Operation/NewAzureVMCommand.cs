@@ -260,6 +260,8 @@ namespace Microsoft.Azure.Commands.Compute
                 set { _cmdlet.Location = value; }
             }
 
+            public string DefaultLocation => "eastus";
+
             public BlobUri DestinationUri;
 
             public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
@@ -423,8 +425,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var result = await client.RunAsync(
-                client.SubscriptionId, parameters, asyncCmdlet, new CancellationToken());
+            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
 
             if (result != null)
             {
