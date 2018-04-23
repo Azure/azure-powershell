@@ -198,8 +198,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 if (Directory.Exists(baseDirectory))
                 {
                     result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault(
-                        (dir) => string.Equals(dir, "Debug", StringComparison.OrdinalIgnoreCase)
-                        || string.Equals(dir, "Release", StringComparison.OrdinalIgnoreCase));
+                        (dir) => ! string.IsNullOrWhiteSpace(dir) 
+                        && (dir.EndsWith("Debug", StringComparison.OrdinalIgnoreCase)
+                        || dir.EndsWith("Release", StringComparison.OrdinalIgnoreCase)));
                     if (result != null)
                     {
                         result = Path.GetFullPath(result);
