@@ -29,121 +29,162 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
     {
         const int MaxNumberToFetch = 1000;
 
-        [Parameter(Mandatory = true, HelpMessage = "Name of a specific invoice to get the usage details that associate with.", ParameterSetName = Constants.ParameterSetNames.InvoiceItemParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string InvoiceName { get; set; }
-
-        [Parameter(Mandatory = true, HelpMessage = "Name of a specific billing period to get the usage details that associate with.", ParameterSetName = Constants.ParameterSetNames.BillingPeriodItemParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of a specific billing period to get the usage details that associate with.", ParameterSetName = Constants.ParameterSetNames.BillingPeriodItemParameterSet)]
         [ValidateNotNullOrEmpty]
         public string BillingPeriodName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
+        [Parameter(Mandatory = false, HelpMessage = "Expand the usages based on MeterDetails, or AdditionalDetails.")]
         [ValidateNotNull]
-        public int? MaxCount { get; set; }
+        public string Expand { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Include meter details in the usages.")]
-        public SwitchParameter IncludeMeterDetails { get; set; }
+        //[Parameter(Mandatory = false, HelpMessage = "AdditionalDetails used to expand the usages.")]
+        //[ValidateNotNull]
+        //public string AdditionalProperties { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Include additional properties in the usages.")]
-        public SwitchParameter IncludeAdditionalProperties { get; set; }
+        //[Parameter(Mandatory = false, HelpMessage = "MeterDetails used to expand the usages.")]
+        //[ValidateNotNull]
+        //public string MeterDetails { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages.")]
+        [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages to filter.")]
         [ValidateNotNull]
         public DateTime? StartDate { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The end date (in UTC) of the usages.")]
+        [Parameter(Mandatory = false, HelpMessage = "The end date (in UTC) of the usages to filter.")]
         [ValidateNotNull]
         public DateTime? EndDate { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The resource group of the usages to filter.")]
+        [ValidateNotNull]
+        public string ResourceGroup { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The instance name of the usages to filter.")]
+        [ValidateNotNull]
+        public string InstanceName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The instance id of the usages to filter.")]
+        [ValidateNotNull]
+        public string InstanceId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The tag of the usages to filter.")]
+        [ValidateNotNull]
+        public string Tags { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
+        [ValidateNotNull]
+        public int? Top { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            string expand = null;
-            List<string> expandProperties = new List<string>();
-            if (this.IncludeMeterDetails.IsPresent)
+            var expand = default(string);
+            if (!string.IsNullOrWhiteSpace(this.Expand))
             {
-                expandProperties.Add(Constants.Expands.MeterDetails);
-            }
-            if (this.IncludeAdditionalProperties.IsPresent)
-            {
-                expandProperties.Add(Constants.Expands.AdditionalProperties);
-            }
-            if (expandProperties.Count > 0)
-            {
-                expand = string.Join(",", expandProperties);
+                expand = "properties/" + this.Expand;
             }
 
             string filter = null;
+          
             if (this.StartDate.HasValue)
             {
-                // query is on usageEnd, which is always the 23:59:59 of the day
-                var from = this.StartDate.Value.Date.AddDays(1).AddSeconds(-1);
-                filter = "usageEnd ge " + from.ToString(Constants.Formats.DateTimeParameterFormat);
-            }
+                var from = this.StartDate.Value.Date;
+                string fromFilter = "properties/usageStart ge " + "'" + from.ToString(Constants.Formats.DateTimeParameterFormat) + "'";
+                filter = fromFilter;
+            }            
+
             if (this.EndDate.HasValue)
             {
-                var to = this.EndDate.Value.Date.AddDays(1).AddSeconds(-1);
-                var toFilter = "usageEnd le " + to.ToString(Constants.Formats.DateTimeParameterFormat);
-                if (!string.IsNullOrWhiteSpace(filter))
-                {
-                    filter = string.Concat(filter, " and ", toFilter);
-                }
-                else
+                var to = this.EndDate.Value.Date;
+                string toFilter = "properties/usageEnd le " + "'" + to.ToString(Constants.Formats.DateTimeParameterFormat) + "'";
+                if (string.IsNullOrWhiteSpace(filter))
                 {
                     filter = toFilter;
                 }
-            }
-
-            string scope = null;
-
-            if (ParameterSetName.Equals(Constants.ParameterSetNames.BillingPeriodItemParameterSet))
-            {
-                scope = string.Format(Constants.Formats.BillingPeriodScopeFormat, ConsumptionManagementClient.SubscriptionId, this.BillingPeriodName);
-            }
-            else if (ParameterSetName.Equals(Constants.ParameterSetNames.InvoiceItemParameterSet))
-            {
-                scope = string.Format(Constants.Formats.InvoiceScopeFormat, ConsumptionManagementClient.SubscriptionId, this.InvoiceName);
-            }
-            else
-            {
-                scope = string.Format(Constants.Formats.SubscriptionScopeFormat, ConsumptionManagementClient.SubscriptionId);
-            }
-            int count = 0;
-            string continuationToken = null;
-            IPage<UsageDetail> usageDetails;
-            do
-            {
-                int? numberToFetch = null;
-                if (this.MaxCount.HasValue)
+                else
                 {
-                    numberToFetch = this.MaxCount.Value - count;
-                    if (numberToFetch > MaxNumberToFetch)
-                    {
-                        numberToFetch = MaxNumberToFetch;
-                    }
+                    filter = string.Concat(filter, " and ", toFilter);
                 }
+            }
 
-                try
+            if (!string.IsNullOrWhiteSpace(this.ResourceGroup))
+            {
+                string resourceGroupFilter = "properties/resourceGroup eq " + "'" + this.ResourceGroup + "'";
+                if (string.IsNullOrWhiteSpace(filter))
                 {
-                    usageDetails = ConsumptionManagementClient.UsageDetails.List(scope, expand, filter, continuationToken, numberToFetch);
-                }
-                catch (ErrorResponseException e)
-                {
-                    WriteWarning(e.Body.Error.Message);
-                    break;
-                }
-
-                if (usageDetails != null)
-                {
-                    count += usageDetails.Count();
-                    WriteObject(usageDetails.Select(x => new PSUsageDetail(x)), true);
-                    continuationToken = Utilities.ExtractContinuationToken(usageDetails.NextPageLink);
+                    filter = resourceGroupFilter;
                 }
                 else
                 {
-                    continuationToken = null;
+                    filter = string.Concat(filter, " and ", resourceGroupFilter);
                 }
             }
-            while (!string.IsNullOrWhiteSpace(continuationToken) && (!this.MaxCount.HasValue || count < this.MaxCount.Value));
+
+            
+            if (!string.IsNullOrWhiteSpace(this.InstanceName))
+            {
+                string instanceNameFilter = "properties/instanceName eq " + "'" + this.InstanceName + "'";
+                if (string.IsNullOrWhiteSpace(filter))
+                {
+                    filter = instanceNameFilter;
+                }
+                else
+                {
+                    filter = string.Concat(filter, " and ", instanceNameFilter);
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.InstanceId))
+            {
+                string instanceIdFilter = "properties/instanceId eq " + "'" + this.InstanceId + "'";
+                if (string.IsNullOrWhiteSpace(filter))
+                {
+                    filter = instanceIdFilter;
+                }
+                else
+                {
+                    filter = string.Concat(filter, " and ", instanceIdFilter);
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(this.Tags))
+            {
+                string tagsFilter = "properties/tags eq " + "'" + this.Tags + "'";
+                if (string.IsNullOrWhiteSpace(filter))
+                {
+                    filter = tagsFilter;
+                }
+                else
+                {
+                    filter = string.Concat(filter, " and ", tagsFilter);
+                }
+            }
+
+            int numberToFetch = MaxNumberToFetch;
+            if (this.Top.HasValue && this.Top.Value < MaxNumberToFetch)
+            {
+                numberToFetch = this.Top.Value;
+            }
+
+            IPage<UsageDetail> usageDetails = null;         
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(this.BillingPeriodName))
+                {
+                    usageDetails = ConsumptionManagementClient.UsageDetails.ListByBillingPeriod(BillingPeriodName,
+                        expand, filter, default(string), numberToFetch);
+                }
+                else
+                {
+                    usageDetails = ConsumptionManagementClient.UsageDetails.List(expand, filter, default(string), numberToFetch);
+                }                
+            }
+            catch (ErrorResponseException e)
+            {
+                WriteWarning(e.Body.Error.Message);
+            }
+
+            if (usageDetails != null)
+            {
+                WriteObject(usageDetails.Select(x => new PSUsageDetail(x)), true);
+            }            
         }
     }
 }
