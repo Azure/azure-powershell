@@ -73,7 +73,7 @@ Specifies the input file that contains the backup of the secret to restore.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -88,7 +88,7 @@ KeyVault object
 ```yaml
 Type: PSKeyVault
 Parameter Sets: ByInputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -118,7 +118,7 @@ Specifies the name of the key vault into which to restore the secret.
 ```yaml
 Type: String
 Parameter Sets: ByVaultName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

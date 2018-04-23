@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 15DFF66F-3D78-422B-BA40-71058DE66BA2
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -104,7 +104,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: FileSystemCmdletProviderEncoding
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Unknown, String, Unicode, Byte, BigEndianUnicode, UTF8, UTF7, UTF32, Ascii, Default, Oem, BigEndianUTF32
 
 Required: False
@@ -120,7 +120,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: PreviewFileContent
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -135,7 +135,7 @@ The number of rows (new line delimited) from the beginning of the file to previe
 ```yaml
 Type: Int32
 Parameter Sets: PreviewFileRowsFromHead
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -150,7 +150,7 @@ Specifies the length, in bytes, of the content to get.
 ```yaml
 Type: Int64
 Parameter Sets: PreviewFileContent
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -165,7 +165,7 @@ Specifies the number of bytes to skip in a file before getting content.
 ```yaml
 Type: Int64
 Parameter Sets: PreviewFileContent
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -180,7 +180,7 @@ Specifies the Data Lake Store path of a file, starting with the root directory (
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -195,7 +195,7 @@ The number of rows (new line delimited) from the end of the file to preview. If 
 ```yaml
 Type: Int32
 Parameter Sets: PreviewFileRowsFromTail
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -254,4 +254,3 @@ The string representation (in the specified encoding) of the file contents retri
 ## NOTES
 
 ## RELATED LINKS
-

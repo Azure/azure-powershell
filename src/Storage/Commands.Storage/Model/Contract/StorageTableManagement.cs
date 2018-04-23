@@ -17,6 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Table;
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -65,7 +66,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of tables that begin with the specified prefix</returns>
         public IEnumerable<CloudTable> ListTables(string prefix, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            return tableClient.ListTables(prefix, requestOptions, operationContext);
+            //https://ahmet.im/blog/azure-listblobssegmentedasync-listcontainerssegmentedasync-how-to/
+            TableContinuationToken continuationToken = null;
+            var results = new List<CloudTable>();
+            do
+            {
+                try
+                {
+                    var response = tableClient.ListTablesSegmentedAsync(prefix, null, continuationToken, requestOptions, operationContext).Result;
+                    continuationToken = response.ContinuationToken;
+                    results.AddRange(response.Results);
+                }
+                catch (AggregateException e) when (e.InnerException is StorageException)
+                {
+                    throw e.InnerException;
+                }
+            } while (continuationToken != null);
+            return results;
         }
 
         /// <summary>
@@ -87,7 +104,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>True if table was created; otherwise, false.</returns>
         public bool CreateTableIfNotExists(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            return table.CreateIfNotExists(requestOptions, operationContext);
+            try
+            {
+                return table.CreateIfNotExistsAsync(requestOptions, operationContext).Result;
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -98,7 +122,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void Delete(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            table.Delete(requestOptions, operationContext);
+            try
+            {
+                Task.Run(() => table.DeleteAsync(requestOptions, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -110,7 +141,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>True if table exists; otherwise, false.</returns>
         public bool DoesTableExist(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            return table.Exists(requestOptions, operationContext);
+            try
+            {
+                return table.ExistsAsync(requestOptions, operationContext).Result;
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -121,7 +159,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public TablePermissions GetTablePermissions(CloudTable table, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            return table.GetPermissions(requestOptions, operationContext);
+            try
+            {
+                return table.GetPermissionsAsync(requestOptions, operationContext).Result;
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -146,7 +191,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns></returns>
         public void SetTablePermissions(CloudTable table, TablePermissions tablePermissions, TableRequestOptions requestOptions, OperationContext operationContext)
         {
-            table.SetPermissions(tablePermissions, requestOptions, operationContext);
+            try
+            {
+                Task.Run(() => table.SetPermissionsAsync(tablePermissions, requestOptions, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
 

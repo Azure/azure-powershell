@@ -340,7 +340,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 // Update the vault
                 var updatedVault = KeyVaultManagementClient.UpdateVault(
-                    existingVault, 
+                    existingVault,
                     updatedPolicies,
                     EnabledForDeployment.IsPresent ? false : existingVault.EnabledForDeployment,
                     EnabledForTemplateDeployment.IsPresent ? false : existingVault.EnabledForTemplateDeployment,

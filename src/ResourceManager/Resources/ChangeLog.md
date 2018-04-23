@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
+* Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+
+## Version 5.5.2
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 5.5.1
 * Fix issue with Default Resource Group in CloudShell

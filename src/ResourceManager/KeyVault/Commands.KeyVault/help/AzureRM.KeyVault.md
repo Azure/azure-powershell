@@ -128,17 +128,11 @@ Restores a managed storage account in a key vault from a backup file.
 ### [Restore-AzureKeyVaultSecret](Restore-AzureKeyVaultSecret.md)
 Creates a secret in a key vault from a backed-up secret.
 
-### [Set-AzureKeyVaultCertificateAttribute](Set-AzureKeyVaultCertificateAttribute.md)
-Modifies editable attributes of a certificate.
-
 ### [Set-AzureKeyVaultCertificateIssuer](Set-AzureKeyVaultCertificateIssuer.md)
 Sets a certificate issuer in a key vault.
 
 ### [Set-AzureKeyVaultCertificatePolicy](Set-AzureKeyVaultCertificatePolicy.md)
 Creates or updates the policy for a certificate in a key vault.
-
-### [Set-AzureKeyVaultKeyAttribute](Set-AzureKeyVaultKeyAttribute.md)
-Updates the attributes of a key in a key vault.
 
 ### [Set-AzureKeyVaultManagedStorageSasDefinition](Set-AzureKeyVaultManagedStorageSasDefinition.md)
 Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key Vault managed Azure Storage Account.
@@ -167,11 +161,20 @@ Recovers a deleted secret in a key vault into an active state.
 ### [Undo-AzureRmKeyVaultRemoval](Undo-AzureRmKeyVaultRemoval.md)
 Recovers a deleted key vault into an active state.
 
+### [Update-AzureKeyVaultCertificate](Update-AzureKeyVaultCertificate.md)
+Modifies editable attributes of a certificate.
+
+### [Update-AzureKeyVaultKey](Update-AzureKeyVaultKey.md)
+Updates the attributes of a key in a key vault.
+
 ### [Update-AzureKeyVaultManagedStorageAccount](Update-AzureKeyVaultManagedStorageAccount.md)
 Update editable attributes of a Key Vault managed Azure Storage Account.
 
 ### [Update-AzureKeyVaultManagedStorageAccountKey](Update-AzureKeyVaultManagedStorageAccountKey.md)
 Regenerates the specified key of Key Vault managed Azure Storage Account.
+
+### [Update-AzureKeyVaultSecret](Update-AzureKeyVaultSecret.md)
+Updates attributes of a secret in a key vault.
 
 ### [Update-AzureRmKeyVaultNetworkRuleSet](Update-AzureRmKeyVaultNetworkRuleSet.md)
 Updates the network rule set on a key vault.

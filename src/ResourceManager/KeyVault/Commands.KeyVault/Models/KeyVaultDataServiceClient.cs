@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
-        }        
+        }
 
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
         {
@@ -193,8 +193,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentException(KeyVaultProperties.Resources.ImportByokAsSoftkeyError);
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
-            
-            webKey.KeyOps = keyAttributes.KeyOps;            
+
+            webKey.KeyOps = keyAttributes.KeyOps;
             var keyBundle = new Azure.KeyVault.Models.KeyBundle()
             {
                 Attributes = (Azure.KeyVault.Models.KeyAttributes)keyAttributes,
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 throw new ArgumentNullException(nameof(keyName));
             if (keyAttributes == null)
                 throw new ArgumentNullException(nameof(keyAttributes));
-            
+
             var attributes = (Azure.KeyVault.Models.KeyAttributes)keyAttributes;
             var keyIdentifier = new KeyIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), keyName, keyVersion);
 
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetKeysAsync(vaultAddress).GetAwaiter().GetResult();
                 else
                     result = this.keyVaultClient.GetKeysNextAsync(options.NextLink).GetAwaiter().GetResult();
-                
+
                 options.NextLink = result.NextPageLink;
                 return (result == null) ? new List<PSKeyVaultKeyIdentityItem>() :
                     result.Select((keyItem) => new PSKeyVaultKeyIdentityItem(keyItem, this.vaultUriHelper));
@@ -450,7 +450,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetKeyVersionsAsync(vaultAddress, options.Name).GetAwaiter().GetResult();
                 else
                     result = this.keyVaultClient.GetKeyVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
-               
+
                 options.NextLink = result.NextPageLink;
                 return result.Select((keyItem) => new PSKeyVaultKeyIdentityItem(keyItem, this.vaultUriHelper));
             }
@@ -631,7 +631,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                 options.NextLink = result.NextPageLink;
                 return (result == null) ? new List<PSKeyVaultSecretIdentityItem>() :
-                    result.Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));            
+                    result.Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));
             }
             catch (Exception ex)
             {
@@ -658,7 +658,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     result = this.keyVaultClient.GetSecretVersionsAsync(vaultAddress, options.Name).GetAwaiter().GetResult();
                 else
                     result = this.keyVaultClient.GetSecretVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
-                
+
                 options.NextLink = result.NextPageLink;
                 return result.Select((secretItem) => new PSKeyVaultSecretIdentityItem(secretItem, this.vaultUriHelper));
             }
@@ -739,20 +739,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public void PurgeCertificate(string vaultName, string certName)
         {
-            if ( string.IsNullOrEmpty( vaultName ) )
-                throw new ArgumentNullException( "vaultName" );
-            if ( string.IsNullOrEmpty( certName ) )
-                throw new ArgumentNullException( "certName" );
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException("certName");
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
             try
             {
-                this.keyVaultClient.PurgeDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+                this.keyVaultClient.PurgeDeletedCertificateAsync(vaultAddress, certName).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
-                throw GetInnerException( ex );
+                throw GetInnerException(ex);
             }
         }
 
@@ -904,13 +904,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultKey(keyBundle, this.vaultUriHelper);
         }
 
-        public string BackupSecret( string vaultName, string secretName, string outputBlobPath )
+        public string BackupSecret(string vaultName, string secretName, string outputBlobPath)
         {
-            if ( string.IsNullOrEmpty( vaultName ) )
+            if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
-            if ( string.IsNullOrEmpty( secretName ) )
+            if (string.IsNullOrEmpty(secretName))
                 throw new ArgumentNullException(nameof(secretName));
-            if ( string.IsNullOrEmpty( outputBlobPath ) )
+            if (string.IsNullOrEmpty(outputBlobPath))
                 throw new ArgumentNullException(nameof(outputBlobPath));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
@@ -918,23 +918,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             BackupSecretResult backupSecretResult;
             try
             {
-                backupSecretResult = this.keyVaultClient.BackupSecretAsync( vaultAddress, secretName ).GetAwaiter( ).GetResult( );
+                backupSecretResult = this.keyVaultClient.BackupSecretAsync(vaultAddress, secretName).GetAwaiter().GetResult();
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                throw GetInnerException( ex );
+                throw GetInnerException(ex);
             }
 
-            File.WriteAllBytes( outputBlobPath, backupSecretResult.Value );
+            File.WriteAllBytes(outputBlobPath, backupSecretResult.Value);
 
             return outputBlobPath;
         }
 
-        public PSKeyVaultSecret RestoreSecret( string vaultName, string inputBlobPath )
+        public PSKeyVaultSecret RestoreSecret(string vaultName, string inputBlobPath)
         {
-            if ( string.IsNullOrEmpty( vaultName ) )
+            if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
-            if ( string.IsNullOrEmpty( inputBlobPath ) )
+            if (string.IsNullOrEmpty(inputBlobPath))
                 throw new ArgumentNullException(nameof(inputBlobPath));
 
             var backupBlob = File.ReadAllBytes(inputBlobPath);
@@ -944,14 +944,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             Azure.KeyVault.Models.SecretBundle secretBundle;
             try
             {
-                secretBundle = this.keyVaultClient.RestoreSecretAsync( vaultAddress, backupBlob ).GetAwaiter( ).GetResult( );
+                secretBundle = this.keyVaultClient.RestoreSecretAsync(vaultAddress, backupBlob).GetAwaiter().GetResult();
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                throw GetInnerException( ex );
+                throw GetInnerException(ex);
             }
 
-            return new PSKeyVaultSecret( secretBundle, this.vaultUriHelper );
+            return new PSKeyVaultSecret(secretBundle, this.vaultUriHelper);
         }
 
         public PSKeyVaultCertificatePolicy GetCertificatePolicy(string vaultName, string certificateName)
@@ -1113,7 +1113,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return PSKeyVaultCertificateIssuer.FromIssuer(resultantIssuer);
-        }        
+        }
 
         public PSKeyVaultCertificateIssuer DeleteCertificateIssuer(string vaultName, string issuerName)
         {
@@ -1457,7 +1457,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
             catch (KeyVaultErrorException ex)
             {
-                if(ex.Response.StatusCode == HttpStatusCode.NotFound)
+                if (ex.Response.StatusCode == HttpStatusCode.NotFound)
                     return null;
                 else
                     throw;
@@ -1638,41 +1638,41 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new PSKeyVaultSecret(recoveredSecret, this.vaultUriHelper);
         }
 
-        public PSDeletedKeyVaultCertificate GetDeletedCertificate( string vaultName, string certName )
+        public PSDeletedKeyVaultCertificate GetDeletedCertificate(string vaultName, string certName)
         {
-            if ( string.IsNullOrEmpty( vaultName ) )
-                throw new ArgumentNullException( nameof(vaultName) );
-            if ( string.IsNullOrEmpty( certName ) )
-                throw new ArgumentNullException( nameof(certName) );
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException(nameof(vaultName));
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException(nameof(certName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
             DeletedCertificateBundle deletedCertificate;
             try
             {
-                deletedCertificate = this.keyVaultClient.GetDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+                deletedCertificate = this.keyVaultClient.GetDeletedCertificateAsync(vaultAddress, certName).GetAwaiter().GetResult();
             }
-            catch ( KeyVaultErrorException ex )
+            catch (KeyVaultErrorException ex)
             {
-                if ( ex.Response.StatusCode == HttpStatusCode.NotFound )
+                if (ex.Response.StatusCode == HttpStatusCode.NotFound)
                     return null;
                 else
                     throw;
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                throw GetInnerException( ex );
+                throw GetInnerException(ex);
             }
 
             return new PSDeletedKeyVaultCertificate(deletedCertificate);
         }
 
-        public IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options )
+        public IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates(KeyVaultObjectFilterOptions options)
         {
-            if ( options == null )
-                throw new ArgumentNullException( nameof( options ) );
-            if ( string.IsNullOrEmpty( options.VaultName ) )
-                throw new ArgumentException( KeyVaultProperties.Resources.InvalidVaultName );
+            if (options == null)
+                throw new ArgumentNullException(nameof(options));
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
 
@@ -1680,38 +1680,38 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 IPage<DeletedCertificateItem> result;
 
-                if ( string.IsNullOrEmpty( options.NextLink ) )
-                    result = this.keyVaultClient.GetDeletedCertificatesAsync( vaultAddress ).GetAwaiter( ).GetResult( );
+                if (string.IsNullOrEmpty(options.NextLink))
+                    result = this.keyVaultClient.GetDeletedCertificatesAsync(vaultAddress).GetAwaiter().GetResult();
                 else
-                    result = this.keyVaultClient.GetDeletedCertificatesNextAsync( options.NextLink ).GetAwaiter( ).GetResult( );
+                    result = this.keyVaultClient.GetDeletedCertificatesNextAsync(options.NextLink).GetAwaiter().GetResult();
 
                 options.NextLink = result.NextPageLink;
-                return ( result == null ) ? new List<PSDeletedKeyVaultCertificateIdentityItem>( ) :
-                    result.Select( ( deletedItem ) => new PSDeletedKeyVaultCertificateIdentityItem( deletedItem, this.vaultUriHelper ) );
+                return (result == null) ? new List<PSDeletedKeyVaultCertificateIdentityItem>() :
+                    result.Select((deletedItem) => new PSDeletedKeyVaultCertificateIdentityItem(deletedItem, this.vaultUriHelper));
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                throw GetInnerException( ex );
+                throw GetInnerException(ex);
             }
         }
 
-        public PSKeyVaultCertificate RecoverCertificate( string vaultName, string certName )
+        public PSKeyVaultCertificate RecoverCertificate(string vaultName, string certName)
         {
-            if ( string.IsNullOrEmpty( vaultName ) )
-                throw new ArgumentNullException( nameof( vaultName ) );
-            if ( string.IsNullOrEmpty( certName ) )
-                throw new ArgumentNullException( nameof( certName ) );
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException(nameof(vaultName));
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException(nameof(certName));
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
             CertificateBundle recoveredCertificate;
             try
             {
-                recoveredCertificate = this.keyVaultClient.RecoverDeletedCertificateAsync( vaultAddress, certName ).GetAwaiter( ).GetResult( );
+                recoveredCertificate = this.keyVaultClient.RecoverDeletedCertificateAsync(vaultAddress, certName).GetAwaiter().GetResult();
             }
-            catch ( Exception ex )
+            catch (Exception ex)
             {
-                throw GetInnerException( ex );
+                throw GetInnerException(ex);
             }
 
             return new PSKeyVaultCertificate(recoveredCertificate);

@@ -132,6 +132,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
                         WriteObject(psObject);
                     }
+                    else if (this.ParameterSetName.Equals("RedeployMethodParameter"))
+                    {
+                        var result = VirtualMachineScaleSetVMsClient.Redeploy(resourceGroupName, vmScaleSetName, instanceId);
+                        var psObject = new PSOperationStatusResponse();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        WriteObject(psObject);
+                    }
+                    else if (this.ParameterSetName.Equals("PerformMaintenanceMethodParameter"))
+                    {
+                        var result = VirtualMachineScaleSetVMsClient.PerformMaintenance(resourceGroupName, vmScaleSetName, instanceId);
+                        var psObject = new PSOperationStatusResponse();
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
+                        WriteObject(psObject);
+                    }
                     else
                     {
                         var result = VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
@@ -145,50 +159,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
-            Position = 1,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
-            Position = 2,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
-        [AllowNull]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
-            ParameterSetName = "DefaultParameter",
             Position = 3,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [Parameter(
-            ParameterSetName = "FriendMethod",
-            Position = 3,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
 
         [Parameter(
@@ -200,6 +187,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "FriendMethod",
             Mandatory = true)]
         public SwitchParameter ReimageAll { get; set; }
+
+        [Parameter(
+            ParameterSetName = "RedeployMethodParameter",
+            Mandatory = true)]
+        public SwitchParameter Redeploy { get; set; }
+
+        [Parameter(
+            ParameterSetName = "PerformMaintenanceMethodParameter",
+            Mandatory = true)]
+        public SwitchParameter PerformMaintenance { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }

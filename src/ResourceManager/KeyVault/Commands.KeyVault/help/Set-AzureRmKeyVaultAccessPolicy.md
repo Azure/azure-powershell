@@ -341,7 +341,7 @@ Key Vault Object
 ```yaml
 Type: PSKeyVault
 Parameter Sets: InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, InputObjectForVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -373,7 +373,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -497,7 +497,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, ForVault
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -563,7 +563,7 @@ This cmdlet modifies the access policy for the key vault that this parameter spe
 ```yaml
 Type: String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, ForVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

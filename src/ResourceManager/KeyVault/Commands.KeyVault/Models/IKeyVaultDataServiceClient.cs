@@ -83,11 +83,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultCertificate GetCertificate(string vaultName, string certName, string certificateVersion);
 
-        PSDeletedKeyVaultCertificate GetDeletedCertificate( string vaultName, string certName );
+        PSDeletedKeyVaultCertificate GetDeletedCertificate(string vaultName, string certName);
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
 
-        IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates( KeyVaultObjectFilterOptions options );
+        IEnumerable<PSDeletedKeyVaultCertificateIdentityItem> GetDeletedCertificates(KeyVaultObjectFilterOptions options);
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 
@@ -99,9 +99,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName);
 
-        void PurgeCertificate( string vaultName, string certName );
+        void PurgeCertificate(string vaultName, string certName);
 
-        PSKeyVaultCertificate RecoverCertificate( string vaultName, string certName );
+        PSKeyVaultCertificate RecoverCertificate(string vaultName, string certName);
 
         PSKeyVaultCertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags);
 

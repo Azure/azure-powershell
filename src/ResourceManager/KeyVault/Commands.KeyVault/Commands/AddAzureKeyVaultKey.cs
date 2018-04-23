@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Set key in disabled state if present       
         /// </summary>
-        [Parameter(Mandatory = false,                            
+        [Parameter(Mandatory = false,
             HelpMessage = "Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use the key will fail. Use this parameter if you are preloading keys that you intend to enable later.")]
         public SwitchParameter Disable { get; set; }
 

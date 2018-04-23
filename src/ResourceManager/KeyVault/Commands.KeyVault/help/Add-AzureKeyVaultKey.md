@@ -73,7 +73,7 @@ For any of these operations, you can provide key attributes or accept default se
 If you create or import a key that has the same name as an existing key in your key vault, the
 original key is updated with the values that you specify for the new key. You can access the
 previous values by using the version-specific URI for that version of the key. To learn about key
-versions and the URI structure, see [About Keys andSecrets](http://go.microsoft.com/fwlink/?linkid=518560)
+versions and the URI structure, see [About Keys and Secrets](http://go.microsoft.com/fwlink/?linkid=518560)
 in the Key Vault REST API documentation.
 
 Note: To import a key from your own hardware security module, you must first generate a BYOK
@@ -239,7 +239,7 @@ the key will fail. Use this parameter if you are preloading keys that you intend
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -257,7 +257,7 @@ parameter, the key does not expire.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -272,7 +272,7 @@ Vault object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: InputObjectCreate, InputObjectImport
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -340,7 +340,7 @@ the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=61
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -375,7 +375,7 @@ parameter, the key can be used immediately.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -438,7 +438,7 @@ FQDN of a key vault based on the name that this parameter specifies and your cur
 ```yaml
 Type: String
 Parameter Sets: InteractiveCreate, InteractiveImport
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

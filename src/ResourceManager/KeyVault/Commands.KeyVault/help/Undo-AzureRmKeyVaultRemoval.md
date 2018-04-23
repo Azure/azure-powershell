@@ -62,7 +62,7 @@ Deleted vault object
 ```yaml
 Type: PSDeletedKeyVault
 Parameter Sets: InputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -77,7 +77,7 @@ Specifies the deleted vault original Azure region.
 ```yaml
 Type: String
 Parameter Sets: Default
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -109,7 +109,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -125,7 +125,7 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 ```yaml
 Type: String
 Parameter Sets: Default
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

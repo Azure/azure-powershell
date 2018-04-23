@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             ParameterSetName = ByInputObjectParameterSet,
             HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
-        [Alias("CertificateVersion")]        
+        [Alias("CertificateVersion")]
         public string Version { get; set; }
 
         /// <summary>

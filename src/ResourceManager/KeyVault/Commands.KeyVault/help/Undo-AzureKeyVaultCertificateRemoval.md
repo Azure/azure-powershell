@@ -61,7 +61,7 @@ Deleted Certificate object
 ```yaml
 Type: PSDeletedKeyVaultCertificateIdentityItem
 Parameter Sets: InputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -93,7 +93,7 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 ```yaml
 Type: String
 Parameter Sets: Default
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

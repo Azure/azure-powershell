@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemexpiry
@@ -12,10 +12,18 @@ Sets or removes the expire time for a file in an Azure Data Lake Store account.
 
 ## SYNTAX
 
+### SetAbsoluteNeverExpireExpiry (Default)
 ```
 Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePathInstance>
  [[-Expiration] <DateTimeOffset>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### SetRelativeExpiry
+```
+Set-AzureRmDataLakeStoreItemExpiry [-Account] <String> [-Path] <DataLakeStorePathInstance>
+ [-RelativeFileExpiryOption] <PathRelativeExpiryOptions> [[-RelativeTime] <Int64>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,6 +47,16 @@ PS C:\> Set-AzureRmDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfi
 Removes any expiration that was previously set on file 'myfile.txt' in account 'ContosoADL'.
 This means the file will not automatically expire (be marked for delete) and will need to be manually deleted or set to expire again.
 
+### Example 3: Set expiration time for a file relative to now
+```
+PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToNow -RelativeTime 240000
+PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToCreationDate -RelativeTime 240000
+```
+
+The first command sets the expiration time of the file /myfile.txt 240 seconds relative to current time at server.
+
+The second command sets the expiration time of the file /myfile.txt 240 seconds relative to creation time at server.
+
 ## PARAMETERS
 
 ### -Account
@@ -57,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -77,8 +95,8 @@ If no value or set to MaxValue, the file will never expire.
 
 ```yaml
 Type: DateTimeOffset
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: SetAbsoluteNeverExpireExpiry
+Aliases:
 
 Required: False
 Position: 2
@@ -93,10 +111,39 @@ Specifies the Data Lake Store path of the file item for which to set or remove e
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RelativeFileExpiryOption
+Relative expiry options. RelativeToNow or RelativeToCreationDate are current options
+```yaml
+Type: PathRelativeExpiryOptions
+Parameter Sets: SetRelativeExpiry
+Aliases:
+Accepted values: RelativeToNow, RelativeToCreationDate
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RelativeTime
+The relative time in milliseconds with respect to now or creation time
+```yaml
+Type: Int64
+Parameter Sets: SetRelativeExpiry
+Aliases:
+
+Required: False
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -97,7 +97,7 @@ If not specified, the existing value of the certificate's enabled/disabled state
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -112,7 +112,7 @@ Certificate object
 ```yaml
 Type: PSKeyVaultCertificateIdentityItem
 Parameter Sets: ByInputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -144,7 +144,7 @@ If this switch is specified, return certificate object.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -161,7 +161,7 @@ Remove a tag by specifying an empty Hashtable.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -177,7 +177,7 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -241,11 +241,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
-
 
 ## NOTES
 

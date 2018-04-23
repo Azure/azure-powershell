@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Sql</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Sql\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -62,9 +62,15 @@
     <Compile Include="Auditing\Model\DatabaseBlobAuditingSettingsModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingSettingsModel.cs" />
     <Compile Include="Common\ResourceIdentityHelper.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseLongTermRetentionBackupCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\RemoveAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseLongTermRetentionBackupModel.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseLongTermRetentionPolicyModel.cs" />
     <Compile Include="Database\Cmdlet\StopAzureSqlDatabaseActivity.cs" />
     <Compile Include="Database\Model\DatabaseReadScale.cs" />
     <Compile Include="Database\Model\AzureSqlDatabaseCreateOrUpdateModel.cs" />
+    <Compile Include="Elastic Pools\Cmdlet\StopAzureSqlElasticPoolActivity.cs" />
     <Compile Include="Failover Group\Cmdlet\AddAzureSqlDatabaseToFailoverGroup.cs" />
     <Compile Include="Failover Group\Cmdlet\AzureSqlFailoverGroupCmdletBase.cs" />
     <Compile Include="Failover Group\Cmdlet\GetAzureSqlFailoverGroup.cs" />
@@ -228,7 +234,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="StartupScripts\*.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
     <None Include="..\MSSharedLibKey.snk" />
     <Content Include="Microsoft.Azure.Commands.Sql.Types.ps1xml">
@@ -278,6 +284,8 @@
     <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationCommunicator.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseRestorePointCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseRestorePoints.cs" />
+    <Compile Include="Database Backup\Cmdlet\NewAzureSqlDatabaseRestorePoint.cs" />
+    <Compile Include="Database Backup\Cmdlet\RemoveAzureSqlDatabaseRestorePoint.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseRestorePointModel.cs" />
     <Compile Include="Database Backup\Services\AzureSqlDatabaseBackupAdapter.cs" />
     <Compile Include="Database Backup\Services\AzureSqlDatabaseBackupCommunicator.cs" />
@@ -447,10 +455,9 @@
       <Project>{04B53727-16E6-4EF0-9116-04C7F1C33842}</Project>
       <Name>SqlManagement</Name>
     </ProjectReference>
-    <!--<Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.3.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>-->
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.10.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.13.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -458,9 +465,6 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
     </Reference>
   </ItemGroup>
   <ItemGroup>

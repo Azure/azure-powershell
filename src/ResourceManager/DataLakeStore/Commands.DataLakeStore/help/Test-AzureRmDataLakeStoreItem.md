@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 0937A390-6AC2-4611-AA6C-99936AC0ABFD
@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -68,7 +68,7 @@ Specifies the Data Lake Store path of the item to test, starting with the root d
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -88,7 +88,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: PathType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Any, File, Folder
 
 Required: False

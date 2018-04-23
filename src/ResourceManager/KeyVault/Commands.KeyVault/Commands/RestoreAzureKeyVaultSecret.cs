@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores the backup secret into a vault 
     /// </summary>
-    [Cmdlet( VerbsData.Restore, "AzureKeyVaultSecret",
+    [Cmdlet(VerbsData.Restore, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
         DefaultParameterSetName = ByVaultNameParameterSet)]
-    [OutputType( typeof(PSKeyVaultSecret) )]
+    [OutputType(typeof(PSKeyVaultSecret))]
     public class RestoreAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    ParameterSetName = ByVaultNameParameterSet,
-                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
+                   HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -75,15 +75,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// The input file in which the backup blob is stored
         /// </summary>
-        [Parameter( Mandatory = true,
+        [Parameter(Mandatory = true,
                    Position = 1,
-                   HelpMessage = "Input file. The input file containing the backed-up blob" )]
+                   HelpMessage = "Input file. The input file containing the backed-up blob")]
         [ValidateNotNullOrEmpty]
         public string InputFile { get; set; }
 
         #endregion Input Parameter Definitions
 
-        public override void ExecuteCmdlet( )
+        public override void ExecuteCmdlet()
         {
             if (InputObject != null)
             {

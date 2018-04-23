@@ -21,7 +21,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.KeyVault</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.KeyVault\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,7 +32,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.KeyVault</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.KeyVault\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -99,7 +99,6 @@
     <Compile Include="Commands\UndoAzureKeyVaultRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultKeyRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultSecretRemoval.cs" />
-    <Compile Include="Commands\UpdateAzureKeyVaultSecret.cs" />
     <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageAccountIdentityItem.cs" />
     <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageSasDefinition.cs" />
@@ -157,7 +156,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="StartupScripts\*.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <!--<CopyToOutputDirectory>Always</CopyToOutputDirectory>-->
     </None>
     <Compile Include="Commands\BackupAzureKeyVaultKey.cs" />
     <Compile Include="Commands\GetAzureKeyVaultKey.cs" />
@@ -168,6 +167,7 @@
     <Compile Include="Commands\RestoreAzureKeyVaultKey.cs" />
     <Compile Include="Commands\UpdateAzureKeyVaultKey.cs" />
     <Compile Include="Commands\SetAzureKeyVaultSecret.cs" />
+    <Compile Include="Commands\UpdateAzureKeyVaultSecret.cs" />
     <Compile Include="Models\ByokWebKeyConverter.cs" />
     <Compile Include="Models\DataServiceCredential.cs" />
     <Compile Include="Models\IKeyVaultDataServiceClient.cs" />
@@ -216,7 +216,6 @@
     <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Security" />
     <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>

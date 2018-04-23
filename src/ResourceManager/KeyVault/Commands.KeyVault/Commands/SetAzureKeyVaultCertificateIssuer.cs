@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (InputObject != null)
                 {
-                    issuerToUse = (PSKeyVaultCertificateIssuer) InputObject;
+                    issuerToUse = (PSKeyVaultCertificateIssuer)InputObject;
                 }
                 else
                 {

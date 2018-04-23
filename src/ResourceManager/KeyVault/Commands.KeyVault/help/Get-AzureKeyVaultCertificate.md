@@ -156,7 +156,7 @@ KeyVault object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: ByNameInputObject, ByCertificateNameAndVersionInputObject, ByCertificateAllVersionsInputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -228,7 +228,7 @@ Specifies the name of a key vault.
 ```yaml
 Type: String
 Parameter Sets: ByName, ByCertificateNameAndVersion, ByCertificateAllVersions
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

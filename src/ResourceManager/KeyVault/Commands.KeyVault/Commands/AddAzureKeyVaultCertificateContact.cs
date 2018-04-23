@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     newContactList = new List<PSKeyVaultCertificateContact>(existingContacts);
                 }
-                
+
                 foreach (var email in EmailAddress)
                 {
                     if (newContactList.FindIndex(

@@ -106,7 +106,7 @@ Specifies whether to show the previously deleted vaults in the output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedVault, ListAllDeletedVaultsInSubscription
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -121,7 +121,7 @@ The location of the deleted vault.
 ```yaml
 Type: String
 Parameter Sets: ByDeletedVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -136,7 +136,7 @@ Specifies the name of the resource group associated with the key vault or key va
 ```yaml
 Type: String
 Parameter Sets: GetVaultByName
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -153,7 +153,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: ListAllVaultsInSubscription
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named

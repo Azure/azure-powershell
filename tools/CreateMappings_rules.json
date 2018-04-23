@@ -57,6 +57,8 @@
     { "regex": "KeyVault", "alias": "Key Vault" }, 
 
     { "regex": "Iot", "alias": "IoT" }, 
+	
+	  { "regex": "DeviceProvisioningServices", "alias": "DPS" }, 
 
     { "regex": "Batch", "alias": "Batch" }, 
 
@@ -84,16 +86,14 @@
 
     { "regex": "OperationalInsights", "alias": "Operational Insights" }, 
 
+    { "regex": "PolicyInsights", "alias": "Policy Insights" }, 
+
     { "regex": "PowerBIEmbedded", "group": "Power BI", "alias": "Power BI Embedded Capacity" }, 
     { "regex": "PowerBIWorkspace", "group": "Power BI", "alias": "Power BI Workspace Collections" }, 
 
     { "regex": "RedisCache", "alias": "Redis Cache" }, 
 
     { "regex": "Scheduler", "alias": "Scheduler" }, 
-
-    { "regex": "SiteRecovery", "alias": "Site Recovery" }, 
-
-    { "regex": "ServerManagement", "alias": "Server Management" }, 
 
     { "regex": "StreamAnalytics", "alias": "Stream Analytics" }, 
 

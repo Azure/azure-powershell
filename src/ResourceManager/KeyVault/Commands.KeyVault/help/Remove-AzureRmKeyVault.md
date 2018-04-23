@@ -80,7 +80,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -111,7 +111,7 @@ By default, this cmdlet prompts you to confirm that you want to delete the key v
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -126,7 +126,7 @@ Key Vault object to be deleted.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: InputObjectByAvailableVault, InputObjectByDeletedVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -183,7 +183,7 @@ This Cmdlet does not return an object by default. If this switch is specified, i
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -198,7 +198,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: ByAvailableVault
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -228,7 +228,7 @@ Specifies the name of the key vault to remove.
 ```yaml
 Type: String
 Parameter Sets: ByAvailableVault, ByDeletedVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

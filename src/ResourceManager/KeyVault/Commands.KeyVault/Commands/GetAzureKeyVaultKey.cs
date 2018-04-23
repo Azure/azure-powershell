@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
+    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",
         DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(List<PSKeyVaultKeyIdentityItem>), typeof(PSKeyVaultKey), typeof(List<PSDeletedKeyVaultKeyIdentityItem>), typeof(PSDeletedKeyVaultKey))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
@@ -246,27 +246,27 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void GetAndWriteKeys(string vaultName) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null
-                },
+            {
+                VaultName = vaultName,
+                NextLink = null
+            },
                 (options) => DataServiceClient.GetKeys(options));
 
         private void GetAndWriteDeletedKeys(string vaultName) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null
-                },
+            {
+                VaultName = vaultName,
+                NextLink = null
+            },
                 (options) => DataServiceClient.GetDeletedKeys(options));
 
         private void GetAndWriteKeyVersions(string vaultName, string name, string currentKeyVersion) =>
             GetAndWriteObjects(new KeyVaultObjectFilterOptions
-                {
-                    VaultName = vaultName,
-                    NextLink = null,
-                    Name = name
-                }, 
+            {
+                VaultName = vaultName,
+                NextLink = null,
+                Name = name
+            },
                 (options) => DataServiceClient.GetKeyVersions(options).Where(k => k.Version != currentKeyVersion));
     }
 }

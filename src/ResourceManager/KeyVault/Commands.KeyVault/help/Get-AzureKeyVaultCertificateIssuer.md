@@ -71,7 +71,7 @@ KeyVault object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: ByInputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -116,7 +116,7 @@ Specifies the name of a key vault.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

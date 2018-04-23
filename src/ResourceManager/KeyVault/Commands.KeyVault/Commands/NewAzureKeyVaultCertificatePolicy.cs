@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// ReuseKeyOnRenewal
         /// </summary>
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies whether the certificate policy is enabled or not.")]
         public SwitchParameter Disabled { get; set; }
@@ -119,8 +119,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// Key Usage
         /// </summary>
-        [Parameter(Mandatory = false, 
-                   ValueFromPipelineByPropertyName = true,            
+        [Parameter(Mandatory = false,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the key usages in the certificate.")]
         public List<X509KeyUsageFlags> KeyUsage { get; set; }
 
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// CertificateType
         /// </summary>
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the type of certificate to the issuer.")]
         public string CertificateType { get; set; }
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// EmailAtNumberOfDaysBeforeExpiry
         /// </summary>
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies how many days before expiry the automatic notification process begins.")]
         public int? EmailAtNumberOfDaysBeforeExpiry { get; set; }
@@ -159,15 +159,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// EmailAtPercentageLifetime
         /// </summary>
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the percentage of the lifetime after which the automatic process for the notification begins.")]
-        public int? EmailAtPercentageLifetime { get; set; }        
+        public int? EmailAtPercentageLifetime { get; set; }
 
         /// <summary>
         /// Key type
         /// </summary>
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the key type of the key backing the certificate.")]
         [ValidateSet(Constants.RSA, Constants.RSAHSM)]
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// KeyNotExportable
         /// </summary>
-        [Parameter(Mandatory = false, 
+        [Parameter(Mandatory = false,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies whether the key is not exportable.")]
         public SwitchParameter KeyNotExportable { get; set; }

@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] Zone { get; set; }
 
@@ -117,8 +118,6 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        [Obsolete("New-AzureRmVm: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -189,9 +188,10 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win2008R2SP1")]
+            "Win2008R2SP1",
+            "Win10")]
         public string ImageName { get; set; } = "Win2016Datacenter";
-        
+
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string DiskFile { get; set; }
@@ -273,11 +273,15 @@ namespace Microsoft.Azure.Commands.Compute
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
                     domainNameLabel: _cmdlet.DomainNameLabel,
-                    allocationMethod: _cmdlet.AllocationMethod);
+                    allocationMethod: _cmdlet.AllocationMethod,
+                    sku: PublicIPAddressStrategy.Sku.Basic,
+                    zones: _cmdlet.Zone);
+
+                _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
+
                 var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
                     name: _cmdlet.SecurityGroupName,
-                    openPorts: _cmdlet.OpenPorts,
-                    imageAndOsType: ImageAndOsType);
+                    openPorts: _cmdlet.OpenPorts);
 
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup);
@@ -297,7 +301,8 @@ namespace Microsoft.Azure.Commands.Compute
                             new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeInGb);
+                        dataDisks: _cmdlet.DataDiskSizeInGb,
+                        zones: _cmdlet.Zone);
                 }
                 else
                 {
@@ -312,7 +317,8 @@ namespace Microsoft.Azure.Commands.Compute
                         disk: disk,
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
-                        dataDisks: _cmdlet.DataDiskSizeInGb);
+                        dataDisks: _cmdlet.DataDiskSizeInGb,
+                        zones: _cmdlet.Zone);
                 }
             }
         }

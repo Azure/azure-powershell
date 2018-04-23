@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificate,        
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificate,
         DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(List<PSKeyVaultCertificateIdentityItem>), typeof(PSKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificate), typeof(List<PSDeletedKeyVaultCertificateIdentityItem>))]
     public class GetAzureKeyVaultCertificate : KeyVaultCmdletBase
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 1,
                    ParameterSetName = ByCertificateVersionsParameterSet,
-                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name." )]
+                   HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.")]
         [Parameter(Mandatory = true,
                    Position = 1,
                    ParameterSetName = InputObjectByCertificateVersionsParameterSet,
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
                    ParameterSetName = ByVaultNameParameterSet,
-                   HelpMessage = "Specifies whether to show the previously deleted certificates in the output." )]
+                   HelpMessage = "Specifies whether to show the previously deleted certificates in the output.")]
         [Parameter(Mandatory = false,
                    ParameterSetName = InputObjectByVaultNameParameterSet,
                    HelpMessage = "Specifies whether to show the previously deleted certificates in the output.")]
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
 
-        private void GetAndWriteDeletedCertificates( string vaultName )
+        private void GetAndWriteDeletedCertificates(string vaultName)
         {
             KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
             {
@@ -281,8 +281,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             do
             {
                 var pageResults = DataServiceClient.GetDeletedCertificates(options);
-                WriteObject( pageResults, true );
-            } while ( !string.IsNullOrEmpty( options.NextLink ) );
+                WriteObject(pageResults, true);
+            } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }
 }

@@ -18,6 +18,21 @@
         - Additional information about change #1
 -->
 ## Current Release
+* VMSS Redeploy and PerformMaintenance feature
+    -  Add new switch parameter -Redeploy and -PerformMaintenance to `Set-AzureRmVmss` and `Set-AzureRmVmssVM`
+* Add DisableVMAgent switch parameter to `Set-AzureRmVMOperatingSystem` cmdlet
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support a `Win10` image.
+* `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
+* Set minimum dependency of module to PowerShell 5.0
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more details
+
+## Version 4.6.0
+* `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
+* `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
+* Update for Zone Resilient
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support availability zones.
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.5.0
 * `New-AzureRmVM` and `New-AzureRmVMSS` support data disks.

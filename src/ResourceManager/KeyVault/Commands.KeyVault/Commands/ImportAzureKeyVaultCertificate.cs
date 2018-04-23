@@ -174,7 +174,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                         break;
                 }
-
                 this.WriteObject(certBundle);
             }
         }

@@ -76,7 +76,7 @@ Certificate Object.
 ```yaml
 Type: PSKeyVaultCertificateIdentityItem
 Parameter Sets: InputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -106,7 +106,7 @@ Specifies the name of a key vault.
 ```yaml
 Type: String
 Parameter Sets: VaultAndCertName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

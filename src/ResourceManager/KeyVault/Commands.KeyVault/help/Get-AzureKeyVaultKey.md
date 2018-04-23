@@ -232,7 +232,7 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key vault bas
 ```yaml
 Type: String
 Parameter Sets: ByVaultName, ByKeyName, ByKeyVersions
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

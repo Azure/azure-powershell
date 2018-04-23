@@ -245,7 +245,7 @@ Key Vault object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmail, InputObjectForVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -276,7 +276,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -292,7 +292,7 @@ If not specified, this cmdlet searches for the key vault in the current subscrip
 ```yaml
 Type: String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmail, ForVault
-Aliases:
+Aliases: 
 
 Required: False
 Position: 1
@@ -354,7 +354,7 @@ This cmdlet removes permissions for the key vault that this parameter specifies.
 ```yaml
 Type: String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmail, ForVault
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

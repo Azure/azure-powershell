@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                             if (PassThru)
                             {
-                                WriteObject(true); 
+                                WriteObject(true);
                             }
                         });
             }

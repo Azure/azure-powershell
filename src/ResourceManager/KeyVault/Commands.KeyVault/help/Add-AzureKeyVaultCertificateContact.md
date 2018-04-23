@@ -68,7 +68,7 @@ Specifies the email address of the contact.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -83,7 +83,7 @@ KeyVault object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: ByObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -99,7 +99,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -129,7 +129,7 @@ Specifies the name of the key vault.
 ```yaml
 Type: String
 Parameter Sets: Interactive
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

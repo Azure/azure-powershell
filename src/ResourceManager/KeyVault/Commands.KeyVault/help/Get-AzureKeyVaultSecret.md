@@ -166,7 +166,7 @@ KeyVault Object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: ByInputObjectVaultName, ByInputObjectSecretName, ByInputObjectSecretVersions
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -239,7 +239,7 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key vault bas
 ```yaml
 Type: String
 Parameter Sets: ByVaultName, BySecretName, BySecretVersions
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0

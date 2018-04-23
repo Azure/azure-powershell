@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 415C5854-FE03-4D4E-BE84-408EA5F95E34
@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -68,7 +68,7 @@ Specifies the object ID of the AzureActive Directory user, group, or service pri
 ```yaml
 Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -83,7 +83,7 @@ Indicates the resulting updated owner should be returned.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +98,7 @@ Specifies the Data Lake Store path of the item to modify, starting with the root
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -114,7 +114,7 @@ The acceptable values for this parameter are: User and Group.
 ```yaml
 Type: Owner
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: User, Group
 
 Required: True
