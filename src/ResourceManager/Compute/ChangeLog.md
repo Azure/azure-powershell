@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * `New-AzureRmVm` and `New-AzureRmVmss` support verbose output of parameters
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).
 * VMSS Redeploy and PerformMaintenance feature
     -  Add new switch parameter -Redeploy and -PerformMaintenance to `Set-AzureRmVmss` and `Set-AzureRmVmssVM`
 * Add DisableVMAgent switch parameter to `Set-AzureRmVMOperatingSystem` cmdlet
