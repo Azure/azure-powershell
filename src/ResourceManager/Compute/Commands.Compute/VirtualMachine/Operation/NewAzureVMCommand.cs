@@ -260,6 +260,8 @@ namespace Microsoft.Azure.Commands.Compute
                 set { _cmdlet.Location = value; }
             }
 
+            public string DefaultLocation => "eastus";
+
             public BlobUri DestinationUri;
 
             public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()

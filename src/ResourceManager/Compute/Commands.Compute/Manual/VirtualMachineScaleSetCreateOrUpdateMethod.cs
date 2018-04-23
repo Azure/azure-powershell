@@ -146,6 +146,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public ImageAndOsType ImageAndOsType { get; set; }
 
+            public string DefaultLocation => "eastus";
+
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
