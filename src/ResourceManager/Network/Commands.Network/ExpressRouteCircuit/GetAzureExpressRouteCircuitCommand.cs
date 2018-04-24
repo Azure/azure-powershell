@@ -16,9 +16,10 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Management.Network.Models;
+using MNM =  Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -48,11 +49,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 var circuit = this.GetExpressRouteCircuit(this.ResourceGroupName, this.Name);
 
-                WriteObject(circuit);
+                WriteObject(circuit);                
             }
             else
             {
-                IPage<ExpressRouteCircuit> circuitPage;
+                IPage<Microsoft.Azure.Management.Network.Models.ExpressRouteCircuit> circuitPage;
                 if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     circuitPage = this.ExpressRouteCircuitClient.List(this.ResourceGroupName);
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Get all resources by polling on next page link
-                var circuitList = ListNextLink<ExpressRouteCircuit>.GetAllResourcesByPollingNextLink(circuitPage, this.ExpressRouteCircuitClient.ListNext);
+                var circuitList = ListNextLink<MNM.ExpressRouteCircuit>.GetAllResourcesByPollingNextLink(circuitPage, this.ExpressRouteCircuitClient.ListNext);
 
                 var psCircuits = new List<PSExpressRouteCircuit>();
                 foreach (var ExpressRouteCircuit in circuitList)

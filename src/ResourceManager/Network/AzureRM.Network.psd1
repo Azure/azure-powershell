@@ -315,7 +315,12 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript', 
                'New-AzureRmApplicationSecurityGroup', 
                'Remove-AzureRmApplicationSecurityGroup', 
-               'Get-AzureRmApplicationSecurityGroup', 'New-AzureRmPublicIpTag'
+               'Get-AzureRmApplicationSecurityGroup', 'New-AzureRmPublicIpTag',
+			   'Add-AzureRmExpressRouteCircuitConnectionConfig', 
+               'Get-AzureRmExpressRouteCircuitConnectionConfig', 
+               'New-AzureRmExpressRouteCircuitConnectionConfig', 
+               'Remove-AzureRmExpressRouteCircuitConnectionConfig', 
+               'Set-AzureRmExpressRouteCircuitConnectionConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()

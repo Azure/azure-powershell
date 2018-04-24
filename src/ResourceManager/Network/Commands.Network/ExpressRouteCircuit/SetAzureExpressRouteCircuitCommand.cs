@@ -19,6 +19,7 @@ using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -40,7 +41,30 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.IsExpressRouteCircuitPresent(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-            }
+            }   
+
+            //// TODO To be removed later once NRP fix is checked in.
+            //var peering = this.ExpressRouteCircuit.Peerings.First(
+            //                resource =>
+            //                string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
+
+            //if (peering != null)
+            //{
+            //    if (peering.Connections.Any())
+            //    {
+            //        var connection = peering.Connections.First();
+
+            //        // Create Circuit Connection
+            //        if (connection != null)
+            //        {
+            //            WriteObject(connection);
+            //            var circuitConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuitConnection>(connection);
+            //            NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.CreateOrUpdate(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, "AzurePrivatePeering", connection.Name, circuitConnectionModel);
+            //        }
+            //    }               
+            //}
+            //var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
+            //WriteObject(getExpressRouteCircuit); // To be removed end
 
             // Map to the sdk object
             var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(this.ExpressRouteCircuit);
@@ -49,8 +73,8 @@ namespace Microsoft.Azure.Commands.Network
             // Execute the Create ExpressRouteCircuit call
             this.ExpressRouteCircuitClient.CreateOrUpdate(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, circuitModel);
 
-            var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
-            WriteObject(getExpressRouteCircuit);
+            var updatedExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
+            WriteObject(updatedExpressRouteCircuit);
         }
     }
 }

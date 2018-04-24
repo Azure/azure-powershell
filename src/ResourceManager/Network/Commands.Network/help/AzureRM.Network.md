@@ -53,6 +53,9 @@ Adds an ExpressRoute circuit authorization.
 ### [Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
 
+### [Add-AzureRmExpressRouteCircuitConnectionConfig](Add-AzureRmExpressRouteCircuitConnectionConfig.md)
+Adds a circuit connection configuration t Private Peering of an ExpressRoute circuit.
+
 ### [Add-AzureRmLoadBalancerBackendAddressPoolConfig](Add-AzureRmLoadBalancerBackendAddressPoolConfig.md)
 Adds a backend address pool configuration to a load balancer.
 
@@ -184,6 +187,9 @@ Gets information about ExpressRoute circuit authorizations.
 
 ### [Get-AzureRmExpressRouteCircuitPeeringConfig](Get-AzureRmExpressRouteCircuitPeeringConfig.md)
 Gets an ExpressRoute circuit peering configuration.
+
+### [Get-AzureRmExpressRouteCircuitConnectionConfig](Get-AzureRmExpressRouteCircuitConnectionConfig.md)
+Gets an ExpressRoute circuit connection configuration.
 
 ### [Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
 Gets a route table from an ExpressRoute circuit.
@@ -410,6 +416,9 @@ Creates an ExpressRoute circuit authorization.
 ### [New-AzureRmExpressRouteCircuitPeeringConfig](New-AzureRmExpressRouteCircuitPeeringConfig.md)
 Creates a new peering configuration to be added to an ExpressRoute circuit.
 
+### [New-AzureRmExpressRouteCircuitConnectionConfig](New-AzureRmExpressRouteCircuitConnectionConfig.md)
+Creates a new circuit connection configuration to be added to Private Peering of an ExpressRoute circuit.
+
 ### [New-AzureRmIpsecPolicy](New-AzureRmIpsecPolicy.md)
 Creates an IPSec Policy.
 
@@ -556,6 +565,9 @@ Removes an existing ExpressRoute configuration authorization.
 
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
+
+### [Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md)
+Removes an ExpressRoute circuit connection configuration.
 
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
@@ -706,6 +718,9 @@ Modifies an ExpressRoute circuit.
 
 ### [Set-AzureRmExpressRouteCircuitPeeringConfig](Set-AzureRmExpressRouteCircuitPeeringConfig.md)
 Saves a modified ExpressRoute peering configuration.
+
+### [Set-AzureRmExpressRouteCircuitConnectionConfig](Set-AzureRmExpressRouteCircuitConnectionConfig.md)
+Saves a modified ExpressRoute circuit connection configuration.
 
 ### [Set-AzureRmLoadBalancer](Set-AzureRmLoadBalancer.md)
 Sets the goal state for a load balancer.
