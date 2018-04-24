@@ -31,6 +31,12 @@ Remove-AzureRmADServicePrincipal -ServicePrincipalName <String> [-PassThru] [-Fo
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DisplayNameParameterSet
+```
+Remove-AzureRmADServicePrincipal -DisplayName <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### InputObjectParameterSet
 ```
 Remove-AzureRmADServicePrincipal -InputObject <PSADServicePrincipal> [-PassThru] [-Force]
@@ -132,6 +138,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the service principal.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

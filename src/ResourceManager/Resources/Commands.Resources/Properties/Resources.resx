@@ -414,4 +414,7 @@
   <data name="RemovingGroup" xml:space="preserve">
     <value>Removing group ...</value>
   </data>
+  <data name="ApplicationWithDisplayNameDoesntExist" xml:space="preserve">
+    <value>Application with display name '{0}' does not exist.</value>
+  </data>
 </root>

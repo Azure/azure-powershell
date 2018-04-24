@@ -90,6 +90,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string ApplicationIdWithCertValue = "ApplicationIdWithCertValueParameterSet";
 
+        public const string DisplayNameWithPassword = "DisplayNameWithPasswordParameterSet";
+
+        public const string DisplayNameWithCertValue = "DisplayNameWithCertValueParameterSet";
+
         public const string Empty = "EmptyParameterSet";
 
         public const string InputFile = "InputFileParameterSet";
@@ -140,6 +144,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public const string ServicePrincipalObjectWithPassword = "ServicePrincipalObjectWithPasswordParameterSet";
 
+        public const string DisplayNameWithKeyId = "DisplayNameWithKeyIdParameterSet";
+
         public const string ObjectIdWithKeyId = "ObjectIdWithKeyIdParameterSet";
 
         public const string ObjectIdWithAll = "ObjectIdWithAllParameterSet";
@@ -153,6 +159,8 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public const string ApplicationObjectIdWithUpdateParams = "ApplicationObjectIdWithUpdateParamsParameterSet";
 
         public const string ApplicationIdWithUpdateParams = "ApplicationIdWithUpdateParamsParameterSet";
+
+        public const string DisplayName = "DisplayNameParameterSet";
 
         public const string DisplayNameWithoutCredential = "DisplayNameWithoutCredentialParameterSet";
 
@@ -175,5 +183,17 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 		public const string RoleAssignment = "RoleAssignmentParameterSet";
 
         public const string Explicit = "ExplicitParameterSet";
+
+        public const string MemberUPNWithGroupDisplayName = "MemberUPNWithGroupDisplayNameParameterSet";
+
+        public const string MemberUPNWithGroupObjectId = "MemberUPNWithGroupObjectIdParameterSet";
+
+        public const string MemberUPNWithGroupObject = "MemberUPNWithGroupObjectParameterSet";
+
+        public const string MemberObjectIdWithGroupDisplayName = "MemberObjectIdWithGroupDisplayName";
+
+        public const string MemberObjectIdWithGroupObjectId = "MemberObjectIdWithGroupObjectId";
+
+        public const string MemberObjectIdWithGroupObject = "MemberObjectIdWithGroupObject";
 	}
 }

@@ -39,6 +39,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public Guid ObjectId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the user to be deleted.")]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The user object to be deleted.")]
         [ValidateNotNullOrEmpty]
         public PSADUser InputObject { get; set; }
@@ -66,6 +70,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 else if (this.IsParameterBound(c => c.ObjectId))
                 {
                     UPNOrObjectId = ObjectId.ToString();
+                }
+                else if (this.IsParameterBound(c => c.DisplayName))
+                {
+                    UPNOrObjectId = ActiveDirectoryClient.GetUserObjectIdFromDisplayName(DisplayName).ToString();
                 }
 
                 ConfirmAction(

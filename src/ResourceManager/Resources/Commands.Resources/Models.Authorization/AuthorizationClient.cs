@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
-            return new PageEnumerable<RoleDefinition>(
+            return new GenericPageEnumerable<RoleDefinition>(
                 delegate ()
                 {
                     return AuthorizationManagementClient.RoleDefinitions.List(scope, odataFilter);
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> GetAllRoleDefinitionsAtScopeAndBelow(string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             var odataQuery = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>();
-            return new PageEnumerable<RoleDefinition>(
+            return new GenericPageEnumerable<RoleDefinition>(
                 delegate()
                 {
                     return AuthorizationManagementClient.RoleDefinitions.List(scope ?? string.Empty, odataQuery);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             var odataQuery = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.Type == AuthorizationClientExtensions.CustomRole);
-            return new PageEnumerable<RoleDefinition>(
+            return new GenericPageEnumerable<RoleDefinition>(
                 delegate()
                 {
                     return AuthorizationManagementClient.RoleDefinitions.List(scope, odataQuery : null);
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
                 if (!string.IsNullOrEmpty(options.Scope))
                 {
-                    var tempResult = new PageEnumerable<RoleAssignment>(
+                    var tempResult = new GenericPageEnumerable<RoleAssignment>(
                         delegate ()
                         {
                             return AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 else
                 {
-                    var tempResult = new PageEnumerable<RoleAssignment>(
+                    var tempResult = new GenericPageEnumerable<RoleAssignment>(
                         delegate ()
                         {
                             return AuthorizationManagementClient.RoleAssignments.List(odataQuery);
@@ -248,7 +248,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             else if (!string.IsNullOrEmpty(options.Scope))
             {
                 // Filter by scope and above directly
-                var tempResult = new PageEnumerable<RoleAssignment>(
+                var tempResult = new GenericPageEnumerable<RoleAssignment>(
                     delegate ()
                     {
                         return AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else
             {
-                var tempResult = new PageEnumerable<RoleAssignment>(
+                var tempResult = new GenericPageEnumerable<RoleAssignment>(
                     delegate ()
                     {
                         return AuthorizationManagementClient.RoleAssignments.List(odataQuery);

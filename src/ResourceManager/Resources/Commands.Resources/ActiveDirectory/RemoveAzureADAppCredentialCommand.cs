@@ -35,6 +35,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public Guid ApplicationId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationDisplayName, HelpMessage = "The display name of the application.")]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithKeyId, HelpMessage = "The keyCredential Id.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithKeyId, HelpMessage = "The keyCredential Id.")]
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ApplicationObjectWithKeyId, HelpMessage = "The keyCredential Id.")]
@@ -61,6 +65,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 else if (this.IsParameterBound(c => c.ApplicationId))
                 {
                     ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
+                }
+                else if (this.IsParameterBound(c => c.DisplayName))
+                {
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromDisplayName(DisplayName);
                 }
 
                 if (this.IsParameterBound(c => c.KeyId))

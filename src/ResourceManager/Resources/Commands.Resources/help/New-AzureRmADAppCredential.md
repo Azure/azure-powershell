@@ -37,6 +37,18 @@ New-AzureRmADAppCredential -ApplicationId <Guid> -Password <SecureString> [-Star
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DisplayNameWithPasswordParameterSet
+```
+New-AzureRmADAppCredential -DisplayName <String> -Password <SecureString> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DisplayNameWithCertValueParameterSet
+```
+New-AzureRmADAppCredential -DisplayName <String> -CertValue <String> [-StartDate <DateTime>]
+ [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ApplicationObjectWithCertValueParameterSet
 ```
 New-AzureRmADAppCredential -ApplicationObject <PSADApplication> -CertValue <String> [-StartDate <DateTime>]
@@ -135,7 +147,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: ApplicationObjectWithCertValueParameterSet
+Parameter Sets: DisplayNameWithCertValueParameterSet, ApplicationObjectWithCertValueParameterSet
 Aliases:
 
 Required: True
@@ -157,6 +169,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the application.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameWithPasswordParameterSet, DisplayNameWithCertValueParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -207,7 +234,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: SecureString
-Parameter Sets: ApplicationObjectWithPasswordParameterSet
+Parameter Sets: DisplayNameWithPasswordParameterSet, ApplicationObjectWithPasswordParameterSet
 Aliases:
 
 Required: True

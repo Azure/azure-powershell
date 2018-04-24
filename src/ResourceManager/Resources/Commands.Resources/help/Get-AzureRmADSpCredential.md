@@ -24,6 +24,11 @@ Get-AzureRmADSpCredential -ServicePrincipalName <String> [-DefaultProfile <IAzur
  [<CommonParameters>]
 ```
 
+### DisplayNameParameterSet
+```
+Get-AzureRmADSpCredential -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### SPNObjectParameterSet
 ```
 Get-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal>
@@ -74,6 +79,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the service principal
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

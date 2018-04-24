@@ -21,7 +21,13 @@ Get-AzureRmADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>]
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADGroup -SearchString <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzureRmADGroup -DisplayNameStartsWith <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzureRmADGroup -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -84,8 +90,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the group.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayNameStartsWith
+Used to find groups that begin with the provided string.
+
+```yaml
+Type: String
+Parameter Sets: SearchStringParameterSet
+Aliases: SearchString
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -First
-Gets the first N objects.
+The maximum number of objects to return.
 
 ```yaml
 Type: UInt64
@@ -132,21 +168,6 @@ Accept wildcard characters: False
 ```yaml
 Type: Guid
 Parameter Sets: ObjectIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SearchString
-The group display name
-
-```yaml
-Type: String
-Parameter Sets: SearchStringParameterSet
 Aliases:
 
 Required: True

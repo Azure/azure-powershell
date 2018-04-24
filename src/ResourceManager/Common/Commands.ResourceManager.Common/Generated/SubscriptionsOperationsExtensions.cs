@@ -159,6 +159,11 @@ namespace Microsoft.Azure.Internal.Subscriptions
                 }
             }
 
+            public static PageEnumerable ListAll(this ISubscriptionClient client)
+            {
+                return new PageEnumerable(client);
+            }
+
             /// <summary>
             /// Gets all subscriptions for a tenant.
             /// </summary>
@@ -166,11 +171,11 @@ namespace Microsoft.Azure.Internal.Subscriptions
             /// The ISubscriptionClient responsible for making the List and ListNext calls.
             /// </param>
             /// <returns>
-            /// PageEnumerable object containing all of the subscriptions for the given tenant used in the client.
+            /// GenericPageEnumerable object containing all of the subscriptions for the given tenant used in the client.
             /// </returns>
-            public static PageEnumerable<Subscription> ListAll(this ISubscriptionClient client)
+            public static GenericPageEnumerable<Subscription> ListAllSubscriptions(this ISubscriptionClient client)
             {
-                return new PageEnumerable<Subscription>(client.Subscriptions.List, client.Subscriptions.ListNext, ulong.MaxValue, 0);
+                return new GenericPageEnumerable<Subscription>(client.Subscriptions.List, client.Subscriptions.ListNext, ulong.MaxValue, 0);
             }
     }
 }

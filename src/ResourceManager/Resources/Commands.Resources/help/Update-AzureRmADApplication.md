@@ -35,7 +35,7 @@ Update-AzureRmADApplication -InputObject <PSADApplication> [-DisplayName <String
 
 ## DESCRIPTION
 Updates an existing azure active directory application.
-To update the credentials associated with this application, please use New-AzureRmADAppCredential cmdlet.
+To update the credentials associated with this application, please use the New-AzureRmADAppCredential cmdlet.
 
 ## EXAMPLES
 

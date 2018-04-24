@@ -38,6 +38,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public Guid ApplicationId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPassword, HelpMessage = "The display name of the application.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithCertValue, HelpMessage = "The display name of the application.")]
+        public string DisplayName { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithCertValue, HelpMessage = "The application object.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithPassword, HelpMessage = "The application object.")]
         [ValidateNotNullOrEmpty]
@@ -49,6 +53,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPassword,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayNameWithPassword,
+            HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public SecureString Password { get; set; }
 
@@ -57,6 +63,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithCertValue,
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithCertValue,
+            HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayNameWithCertValue,
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public string CertValue { get; set; }
@@ -82,10 +90,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     ObjectId = ApplicationObject.ObjectId;
                 }
-
-                if (this.IsParameterBound(c => c.ApplicationId))
+                else if (this.IsParameterBound(c => c.ApplicationId))
                 {
                     ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
+                }
+                else if (this.IsParameterBound(c => c.DisplayName))
+                {
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromDisplayName(DisplayName);
                 }
 
                 if (Password != null && Password.Length > 0)

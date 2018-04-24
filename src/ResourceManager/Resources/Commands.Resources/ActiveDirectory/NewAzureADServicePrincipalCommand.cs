@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     try
                     {
-                        Thread.Sleep(5000);
+                        TestMockSupport.Delay(5000);
                         PoliciesClient.CreateRoleAssignment(parameters);
                         var ra = PoliciesClient.FilterRoleAssignments(parameters, subscriptionId);
                         if (ra != null)

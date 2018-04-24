@@ -21,7 +21,13 @@ Get-AzureRmADServicePrincipal [-DefaultProfile <IAzureContextContainer>] [-Inclu
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADServicePrincipal -SearchString <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmADServicePrincipal -DisplayNameBeginsWith <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzureRmADServicePrincipal -DisplayName <String> [-DefaultProfile <IAzureContextContainer>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -141,8 +147,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The service principal display name.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisplayNameBeginsWith
+The service principal search string.
+
+```yaml
+Type: String
+Parameter Sets: SearchStringParameterSet
+Aliases: SearchString
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -First
-Gets the first N objects.
+The maximum number of objects to return.
 
 ```yaml
 Type: UInt64
@@ -177,21 +213,6 @@ Object id of the service principal.
 ```yaml
 Type: Guid
 Parameter Sets: ObjectIdParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SearchString
-Fetches all service principals that have the display name starting with this value.
-
-```yaml
-Type: String
-Parameter Sets: SearchStringParameterSet
 Aliases:
 
 Required: True

@@ -15,7 +15,6 @@ Gets resources.
 ## SYNTAX
 
 ### ByTagNameValueParameterSet (Default)
-
 ```
 Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
  [-ResourceGroupName <String>] [-TagName <String>] [-TagValue <String>] [-ApiVersion <String>] [-Pre]
@@ -23,14 +22,12 @@ Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <St
 ```
 
 ### ByResourceId
-
 ```
 Get-AzureRmResource -ResourceId <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTagObjectParameterSet
-
 ```
 Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
  [-ResourceGroupName <String>] -Tag <Hashtable> [-ApiVersion <String>] [-Pre]
@@ -97,7 +94,7 @@ This command gets all of the resources whose resource group they belong in being
 ### Example 4: Get all resources with a given name
 
 ```
-PS C:\> Get-AzureRmResource -Name testVM | ft
+PS C:\> Get-AzureRmResource -Name testVM | fl
 
 Name              : testVM
 ResourceGroupName : testRG
@@ -285,7 +282,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-
 ```
 
 ### -TagName
@@ -319,7 +315,6 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS

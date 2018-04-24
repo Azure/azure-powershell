@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationId, HelpMessage = "The application id.")]
         public Guid ApplicationId { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationDisplayName, HelpMessage = "The display name of the application.")]
+        public string DisplayName { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The application object.")]
         public PSADApplication InputObject { get; set;}
 
@@ -52,6 +55,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 else if (this.IsParameterBound(c => c.ApplicationId))
                 {
                     ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
+                }
+                else if (this.IsParameterBound(c => c.DisplayName))
+                {
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromDisplayName(DisplayName);
                 }
 
                 ConfirmAction(
