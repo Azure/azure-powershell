@@ -161,11 +161,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
         /// </summary>
         public void Validate()
         {
-            if (string.IsNullOrEmpty(this.Location))
-            {
-                throw new ArgumentException("Please specify Location");
-            }
+            ValidateRegistryParameters();
+            ValidateAzureFileVolumeParameters();
+        }
 
+        private void ValidateRegistryParameters()
+        {
             if (!string.IsNullOrEmpty(this.RegistryServer))
             {
                 if (string.IsNullOrEmpty(this.RegistryUsername) || string.IsNullOrEmpty(this.RegistryPassword))
@@ -189,7 +190,10 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Models
 
                 this.RegistryServer = acrServer;
             }
+        }
 
+        private void ValidateAzureFileVolumeParameters()
+        {
             if (!string.IsNullOrWhiteSpace(this.AzureFileVolumeMountPath) && this.AzureFileVolumeMountPath.Contains(":"))
             {
                 throw new ArgumentException("Azure File volume mount path must not contain ':'");

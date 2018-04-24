@@ -13,7 +13,7 @@ Creates a configurable disk update object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskUpdateConfig [[-SkuName] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+New-AzureRmDiskUpdateConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>]
  [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -72,7 +72,7 @@ Specifies the disk encryption key object on a disk.
 ```yaml
 Type: KeyVaultAndSecretReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -87,7 +87,7 @@ Specifies the size of the disk in GB.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -102,7 +102,7 @@ Enable encryption settings.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +117,7 @@ Specifies the Key encryption key on a disk.
 ```yaml
 Type: KeyVaultAndKeyReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,7 +132,7 @@ Specifies the OS type.
 ```yaml
 Type: OperatingSystemTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Windows, Linux
 
 Required: False
@@ -146,10 +146,9 @@ Accept wildcard characters: False
 Specifies the Sku name of the storage account.
 
 ```yaml
-Type: StorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases: AccountType
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: 0
@@ -166,7 +165,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -220,4 +219,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

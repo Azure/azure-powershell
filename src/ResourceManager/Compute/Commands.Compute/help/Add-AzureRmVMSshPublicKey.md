@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 3CE367B1-7685-4046-8E9C-CE680B5AE03F
@@ -58,7 +58,7 @@ You can connect to a virtual machine by using SSH or by using the key that this 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -74,7 +74,7 @@ If the file already exists, this cmdlet appends the key to the file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2

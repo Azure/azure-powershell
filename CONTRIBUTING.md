@@ -21,7 +21,7 @@ In the Azure Developer Experience, you are at Step 5:
 
 [Filing Issues](#filing-issues)
 
-[Making Changes](#making-changes)
+[Submitting Changes](#submitting-changes)
 - [Pull Requests](#pull-requests)
 - [SDK for .NET](#sdk-for-net)
 - [Pull Request Guidelines](#pull-request-guidelines)

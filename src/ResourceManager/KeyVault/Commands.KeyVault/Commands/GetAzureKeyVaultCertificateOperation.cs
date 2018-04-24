@@ -20,17 +20,26 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Gets the status of the certificate operation
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateOperation,        
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateOperation,
+        DefaultParameterSetName = ByNameParameterSet,  
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateOperation))]
+    [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class GetAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByNameParameterSet = "ByName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
         /// VaultName
         /// </summary>
         [Parameter(Mandatory = true,
+                   ParameterSetName = ByNameParameterSet,
                    Position = 0,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
@@ -41,6 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Name
         /// </summary>       
         [Parameter(Mandatory = true,
+                   ParameterSetName = ByNameParameterSet,
                    Position = 1,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate operation from vault name, currently selected environment and certificate name.")]
@@ -48,12 +58,31 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias(Constants.CertificateName)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Certificate Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   Position = 0,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Certificate Object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultCertificateIdentityItem InputObject { get; set; }
+
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName.ToString();
+                Name = InputObject.Name.ToString();
+            }
+
             var certificateOperation = this.DataServiceClient.GetCertificateOperation(VaultName, Name);
-            var kvCertificateOperation = KeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
+            var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
+            kvCertificateOperation.VaultName = VaultName;
+            kvCertificateOperation.Name = Name;
             this.WriteObject(kvCertificateOperation);
         }
     }

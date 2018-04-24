@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.HDInsight
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 3fd1475f-cb23-4ffb-bf08-33d94b7d1acb
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US

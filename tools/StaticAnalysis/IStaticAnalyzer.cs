@@ -15,6 +15,8 @@ namespace StaticAnalysis
 {
     using System;
     using System.Collections.Generic;
+    using Tools.Common.Issues;
+    using Tools.Common.Loggers;
 
     /// <summary>
     /// Defines the public object model for a static analysis tool

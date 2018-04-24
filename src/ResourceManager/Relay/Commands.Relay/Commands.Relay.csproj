@@ -56,7 +56,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\AuthorizationRule\GetAzureRelayAuthorizationRules.cs" />

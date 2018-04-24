@@ -99,12 +99,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Storage Service that will enable encryption.")]
-        [Obsolete("Encryption at Rest is already enabled by default for this storage account.", false)]
-        public EncryptionSupportServiceEnum? EnableEncryptionService { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "Storage Account Tags.")]
         [ValidateNotNull]
         [Alias(TagsAlias)]

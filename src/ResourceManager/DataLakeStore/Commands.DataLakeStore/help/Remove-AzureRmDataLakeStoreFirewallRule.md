@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 6C7A7E1A-87A2-4F0D-9091-413C111F47F0
@@ -69,7 +69,7 @@ The name of the firewall rule to delete.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -84,7 +84,7 @@ Indicates a boolean response should be returned indicating the result of the del
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ Specifies the name of the resource group that contains the account to remove the
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -152,4 +152,3 @@ If PassThru is specified, returns true upon successful completion.
 ## NOTES
 
 ## RELATED LINKS
-

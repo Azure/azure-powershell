@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -43,7 +44,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminUsername,
             string adminPassword,
             string size,
-            ResourceConfig<AvailabilitySet> availabilitySet)
+            ResourceConfig<AvailabilitySet> availabilitySet,
+            VirtualMachineIdentity identity,
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -57,6 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     },
+                    Identity = identity,
                     NetworkProfile = new NetworkProfile
                     {
                         NetworkInterfaces = new[]
@@ -70,9 +75,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     StorageProfile = new StorageProfile
                     {
-                        ImageReference = imageAndOsType?.Image
+                        ImageReference = imageAndOsType?.Image,
+                        DataDisks = DataDiskStrategy.CreateDataDisks(
+                            imageAndOsType?.DataDiskLuns, dataDisks)
                     },
-                    AvailabilitySet = engine.GetReference(availabilitySet)
+                    AvailabilitySet = engine.GetReference(availabilitySet),
+                    Zones = zones,
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -82,7 +90,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             OperatingSystemTypes osType,
             ResourceConfig<Disk> disk,
             string size,
-            ResourceConfig<AvailabilitySet> availabilitySet)
+            ResourceConfig<AvailabilitySet> availabilitySet,
+            VirtualMachineIdentity identity,
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -106,10 +117,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
-                            ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
-                        }
+                            ManagedDisk = engine.GetReference(disk, "PremiumLRS"),
+                        },
+                        DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
                     },
-                    AvailabilitySet = engine.GetReference(availabilitySet)
+                    Identity = identity,
+                    AvailabilitySet = engine.GetReference(availabilitySet),
+                    Zones = zones
                 });
     }
 }

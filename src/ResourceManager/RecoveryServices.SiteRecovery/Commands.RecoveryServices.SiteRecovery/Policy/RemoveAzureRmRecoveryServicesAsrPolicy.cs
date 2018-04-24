@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Removes Azure Site Recovery Policy.
+    ///     Deletes the specified ASR replication policy from the Recovery Services vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Policy.
+        ///     Gets or sets replication policy object corresponding to the replication policy to be deleted.
         /// </summary>
         [Parameter(
             Mandatory = true,

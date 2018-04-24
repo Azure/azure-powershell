@@ -35,6 +35,8 @@ The Remove-AzureRmEventHubAuthorizationRule cmdlet removes and deletes the speci
 PS C:\> Remove-AzureRmEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyAuthRuleName
 ```
 
+Removes the authorization rule \`MyAuthRuleName\` from the Namespace \`MyNamespaceName\`.
+
 ### Example 2
 ```
 PS C:\> Remove-AzureRmEventHubAuthorizationRule -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyAuthRuleName

@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.KeyVault.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.New, "AzureRmKeyVault",
         SupportsShouldProcess = true,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyVaultModels.PSVault))]
+    [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Input Parameter Definitions
@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                 "Specifies a name of the key vault to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique."
             )]
         [ValidateNotNullOrEmpty]
-        public string VaultName { get; set; }
+        [Alias("VaultName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Resource group name
@@ -102,11 +103,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(VaultName, Properties.Resources.CreateKeyVault))
+            if (ShouldProcess(Name, Properties.Resources.CreateKeyVault))
             {
-                if (VaultExistsInCurrentSubscription(this.VaultName))
+                if (VaultExistsInCurrentSubscription(Name))
                 {
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.VaultAlreadyExists);
+                    throw new ArgumentException(Resources.VaultAlreadyExists);
                 }
 
                 var userObjectId = string.Empty;
@@ -122,6 +123,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     // This is to unblock Key Vault in Fairfax as Graph has issues in this environment.
                     WriteWarning(ex.Message);
                 }
+
                 if (!string.IsNullOrWhiteSpace(userObjectId))
                 {
                     accessPolicy = new AccessPolicyEntry()
@@ -138,9 +140,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                     };
                 }
 
-                var newVault = KeyVaultManagementClient.CreateNewVault(new PSKeyVaultModels.VaultCreationParameters()
+                var newVault = KeyVaultManagementClient.CreateNewVault(new VaultCreationParameters()
                 {
-                    VaultName = this.VaultName,
+                    VaultName = this.Name,
                     ResourceGroupName = this.ResourceGroupName,
                     Location = this.Location,
                     EnabledForDeployment = this.EnabledForDeployment.IsPresent,
@@ -160,7 +162,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (accessPolicy == null)
                 {
-                    WriteWarning(PSKeyVaultProperties.Resources.VaultNoAccessPolicyWarning);
+                    WriteWarning(Resources.VaultNoAccessPolicyWarning);
                 }
             }
         }

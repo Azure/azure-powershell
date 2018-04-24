@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         {
             var resourceGroupId = new[] 
             {
-                ResourceType.ResourceGroups, config.GetResourceGroupName()
+                ResourceId.ResourceGroups, config.GetResourceGroupName()
             };
             return config.ResourceGroup == null
                 ? resourceGroupId
@@ -40,6 +40,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         internal static IEnumerable<string> GetProvidersId(this IEntityConfig config)
-            => new[] { "providers" }.Concat(config.GetIdFromResourceGroup());
+            => new[] { ResourceId.Providers }.Concat(config.GetIdFromResourceGroup());
     }
 }

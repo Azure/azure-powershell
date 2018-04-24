@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
     public class SetKeyVaultKeyAttributeTests : KeyVaultUnitTestBase
     {
         private SetAzureKeyVaultKeyAttribute cmdlet;
-        private KeyAttributes keyAttributes;
+        private PSKeyVaultKeyAttributes keyAttributes;
         private WebKey.JsonWebKey webKey;
-        private KeyBundle keyBundle;
+        private PSKeyVaultKey keyBundle;
 
         public SetKeyVaultKeyAttributeTests()
         {
             base.SetupTest();
 
-            keyAttributes = new KeyAttributes(true, DateTime.Now, DateTime.Now, null, null, null);
+            keyAttributes = new PSKeyVaultKeyAttributes(true, DateTime.Now, DateTime.Now, null, null, null);
             webKey = new WebKey.JsonWebKey();
-            keyBundle = new KeyBundle() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName, Version = KeyVersion };
+            keyBundle = new PSKeyVaultKey() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName, Version = KeyVersion };
 
             cmdlet = new SetAzureKeyVaultKeyAttribute()
             {
@@ -56,9 +56,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
 
-            KeyBundle expected = keyBundle;
+            PSKeyVaultKey expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, string.Empty,
-                It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
+                It.Is<PSKeyVaultKeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore
                         && kt.KeyType == keyAttributes.KeyType
@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(KeyName, It.IsAny<string>())).Returns(true);
 
-            KeyBundle expected = keyBundle;
+            PSKeyVaultKey expected = keyBundle;
             keyVaultClientMock.Setup(kv => kv.UpdateKey(VaultName, KeyName, string.Empty,
-                It.Is<KeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
+                It.Is<PSKeyVaultKeyAttributes>(kt => kt.Enabled == keyAttributes.Enabled
                         && kt.Expires == keyAttributes.Expires
                         && kt.NotBefore == keyAttributes.NotBefore
                         && kt.KeyType == keyAttributes.KeyType
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 
             // Assert
             keyVaultClientMock.VerifyAll();
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<KeyBundle>()), Times.Never());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSKeyVaultKey>()), Times.Never());
         }
     }
 }

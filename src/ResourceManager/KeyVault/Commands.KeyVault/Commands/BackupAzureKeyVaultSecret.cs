@@ -16,7 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -54,22 +54,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string VaultName { get; set; }
 
         /// <summary>
-        /// The secret object to be backed up.
-        /// </summary>
-        /// <remarks>
-        /// Note that the backup applies to the entire family of a secret (current and all its versions); 
-        /// since a key bundle represents a single version, the intent of this parameter is to allow pipelining.
-        /// The backup cmdlet will use the Name and VaultName properties of the KeyBundle parameter.
-        /// </remarks>
-        [Parameter( Mandatory = true,
-                    Position = 0,
-                    ValueFromPipelineByPropertyName = true,
-                    ParameterSetName = BySecretObjectParameterSet,
-                    HelpMessage = "Secret to be backed up, pipelined in from the output of a retrieval call." )]
-        [ValidateNotNullOrEmpty]
-        public Secret Secret { get; set; }
-
-        /// <summary>
         /// Secret name
         /// </summary>
         [Parameter( Mandatory = true,
@@ -80,6 +64,24 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         [Alias( Constants.SecretName )]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The secret object to be backed up.
+        /// </summary>
+        /// <remarks>
+        /// Note that the backup applies to the entire family of a secret (current and all its versions); 
+        /// since a key bundle represents a single version, the intent of this parameter is to allow pipelining.
+        /// The backup cmdlet will use the Name and VaultName properties of the KeyBundle parameter.
+        /// </remarks>
+        [Parameter(Mandatory = true,
+                    Position = 0,
+                    ValueFromPipelineByPropertyName = true,
+                    ValueFromPipeline = true,
+                    ParameterSetName = BySecretObjectParameterSet,
+                    HelpMessage = "Secret to be backed up, pipelined in from the output of a retrieval call.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("Secret")]
+        public PSKeyVaultSecretIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// The output file in which the backup blob is to be stored
@@ -104,19 +106,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet( )
         {
-            switch ( ParameterSetName )
+            if (InputObject != null)
             {
-                case BySecretNameParameterSet:
-                    //  no op
-                    break;
-
-                case BySecretObjectParameterSet:
-                    Name = Secret.Name;
-                    VaultName = Secret.VaultName;
-                    break;
-
-                default:
-                    throw new ArgumentException( KeyVaultProperties.Resources.BadParameterSetName );
+                Name = InputObject.Name;
+                VaultName = InputObject.VaultName;
             }
 
             if ( ShouldProcess( Name, Properties.Resources.BackupSecret ) )
@@ -131,7 +124,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 // deny request if the file exists and overwrite is not authorized
                 if ( !AzureSession.Instance.DataStore.FileExists( filePath )
                     || Force.IsPresent
-                    || ShouldContinue( string.Format( KeyVaultProperties.Resources.FileOverwriteMessage, filePath ), KeyVaultProperties.Resources.FileOverwriteCaption ) )
+                    || ShouldContinue( string.Format(Resources.FileOverwriteMessage, filePath ), Resources.FileOverwriteCaption ) )
                 {
                     var backupBlobPath = this.DataServiceClient.BackupSecret(VaultName, Name, filePath);
                     this.WriteObject( backupBlobPath );
