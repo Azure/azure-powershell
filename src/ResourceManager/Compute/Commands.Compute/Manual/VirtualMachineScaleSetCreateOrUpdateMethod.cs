@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -147,6 +146,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public ImageAndOsType ImageAndOsType { get; set; }
 
+            public string DefaultLocation => "eastus";
+
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
@@ -268,8 +269,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
-            var result = await StrategyCmdlet.RunAsync(
-                client, parameters, asyncCmdlet, new CancellationToken());
+            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
 
             if (result != null)
             {

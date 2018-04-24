@@ -12,19 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
 using System.Threading.Tasks;
 
-namespace Microsoft.Azure.Commands.Compute.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    interface IAsyncCmdlet
+    /// <summary>
+    /// Describes Azure operation parameter and a target resource.
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    public interface IParameters<TModel>
+        where TModel : class
     {
-        void WriteVerbose(string message);
+        /// <summary>
+        /// Azure location. For example, "eastus".
+        /// </summary>
+        string Location { get; set; }
 
-        Task<bool> ShouldProcessAsync(string target, string action);
+        /// <summary>
+        /// Default location. It's used if Location is null and it can't be infered.
+        /// </summary>
+        string DefaultLocation { get; }
 
-        void WriteObject(object value);
-
-        void ReportTaskProgress(ITaskProgress taskProgress);
+        /// <summary>
+        /// Create an Azure resource configuration according to the parameters.
+        /// </summary>
+        /// <returns></returns>
+        Task<ResourceConfig<TModel>> CreateConfigAsync();
     }
 }
