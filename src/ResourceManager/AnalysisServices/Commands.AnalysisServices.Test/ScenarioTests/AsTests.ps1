@@ -612,3 +612,30 @@ function Test-AnalysisServicesServerLoginWithSPN
 
 	}
 }
+
+<#
+.SYNOPSIS
+Tests Analysis Services server lifecycle  Failure scenarios (Create, Update, Get, Delete).
+#>
+function Test-AnalysisServicesServerGateway
+{
+	try
+	{
+				
+		# Updating server
+		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
+		#$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tag $tagsToUpdate -GatewayName 'azsdktest' -GatewayResourceGroupName 'TestRG' -GatewaySubscriptionId 'ba59a556-5034-4bbb-80b4-4c37cf1083e9' -PassThru
+        $serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName 'TestRG' -Name 'azsdktest0309' -Tag $tagsToUpdate -DisassociateGateway -PassThru
+		Assert-NotNull $serverUpdated.Tag "Tag do not exists"
+		Assert-NotNull $serverUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
+		Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
+		Assert-AreEqual 1 $serverUpdated.Sku.Capacity
+
+	}
+	finally
+	{
+		# cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+		Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+		Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+	}
+}
