@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
@@ -30,6 +31,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
     {
+        private const string DtuDatabaseParameterSet = "DtuBasedDatabase";
+        private const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
+
         /// <summary>
         /// Gets or sets the name of the database to be copied.
         /// </summary>
@@ -43,16 +47,15 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <summary>
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database copy
         /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The name of the service objective to assign to the Azure SQL Database copy. " +
-            "Possible ServiceObjectiveName could be S3, P2, GP_Gen4_2")]
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
+            HelpMessage = "The name of the service objective to assign to the Azure SQL Database copy.")]
         [ValidateNotNullOrEmpty]
         public string ServiceObjectiveName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the Elastic Pool to put the database copy in
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the database copy in.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
@@ -94,6 +97,34 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The edition of the Azure Sql Database copy.")]
+        [PSArgumentCompleter("GeneralPurpose", "BusinessCritical")]
+        [ValidateNotNullOrEmpty]
+        public string CopyEdition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the compute generation of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The compute generation of teh Azure Sql Database copy.")]
+        [Alias("Family")]
+        [PSArgumentCompleter("Gen4", "Gen5")]
+        [ValidateNotNullOrEmpty]
+        public string CopyComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Vcore numbers of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The Vcore numbers of the Azure Sql Database copy.")]
+        [Alias("Capacity")]
+        [ValidateNotNullOrEmpty]
+        public int CopyVCores { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -165,13 +196,43 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true)
             };
 
-            if (!string.IsNullOrWhiteSpace(ServiceObjectiveName))
+            if(ParameterSetName == DtuDatabaseParameterSet)
             {
+                if (!string.IsNullOrWhiteSpace(ServiceObjectiveName))
+                {
+                    copyModel.Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = ServiceObjectiveName
+                    };
+                }
+                else
+                {
+                    copyModel.Sku = sourceDb.Sku;
+                }
+            }
+            else
+            {
+                string skuNamePrefix = null;
+                switch (CopyEdition.ToLower())
+                {
+                    case "generalpurpose":
+                        skuNamePrefix = "GP";
+                        break;
+                    case "businesscritical":
+                        skuNamePrefix = "BC";
+                        break;
+                    default:
+                        throw new PSArgumentException("Invalid CopyEdition value.");
+                }
+
                 copyModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = ServiceObjectiveName
+                    Name = skuNamePrefix,
+                    Tier = CopyEdition,
+                    Capacity = CopyVCores,
+                    Family = CopyComputeGeneration
                 };
-            }
+            }           
 
             newEntity.Add(copyModel);
             return newEntity;

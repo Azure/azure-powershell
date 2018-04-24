@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using System.Collections;
@@ -64,8 +65,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The edition to assign to the Azure SQL Database.",
             ParameterSetName = VcoreDatabaseParameterSet)]
+        [PSArgumentCompleter("None",
+            Management.Sql.Models.DatabaseEdition.Basic,
+            Management.Sql.Models.DatabaseEdition.Standard,
+            Management.Sql.Models.DatabaseEdition.Premium,
+            Management.Sql.Models.DatabaseEdition.DataWarehouse,
+            Management.Sql.Models.DatabaseEdition.Free,
+            Management.Sql.Models.DatabaseEdition.Stretch,
+            "GeneralPurpose", "BusinessCritical")]
         [ValidateNotNullOrEmpty]
-        public DatabaseEdition Edition { get; set; }
+        public string Edition { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database
@@ -73,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the service objective to assign to the Azure SQL Database.",
             ParameterSetName = UpdateParameterSetName)]
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             HelpMessage = "The name of the service objective to assign to the Azure SQL Database.",
             ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -143,9 +152,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the Vcore number for the Azure Sql database
         /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The Vcore number for the Azure Sql database")]
-        public int Vcore { get; set; }
+        [Alias("Capacity")]
+        public int VCores { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ComputeGeneration for the Azure Sql database.
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false, 
+            HelpMessage = "The Compute generation for the Azure Sql database.")]
+        [Alias("Family")]
+        [PSArgumentCompleter("Gen4", "Gen5")]
+        public string ComputeGeneration { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -174,32 +193,33 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         protected override IEnumerable<AzureSqlDatabaseModel> ApplyUserInputToModel(IEnumerable<AzureSqlDatabaseModel> model)
         {
             List<Model.AzureSqlDatabaseModel> newEntity = new List<AzureSqlDatabaseModel>();
+            AzureSqlDatabaseModel newDbModel = new AzureSqlDatabaseModel()
+            {
+                ResourceGroupName = ResourceGroupName,
+                ServerName = ServerName,
+                DatabaseName = DatabaseName,
+                MaxSizeBytes = MaxSizeBytes,
+                Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
+                ElasticPoolName = ElasticPoolName,
+                Location = model.FirstOrDefault().Location,
+                ReadScale = ReadScale,
+                ZoneRedundant =
+                       MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
+                           ? (bool?)ZoneRedundant.ToBool()
+                           : null
+            };
+
+            var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
+            Management.Sql.Models.Sku databaseCurrentSku = database.Sku;
 
             if (this.ParameterSetName == UpdateParameterSetName)
             {
-                AzureSqlDatabaseModel newDbModel = new AzureSqlDatabaseModel()
-                {
-                    ResourceGroupName = ResourceGroupName,
-                    ServerName = ServerName,
-                    DatabaseName = DatabaseName,
-                    MaxSizeBytes = MaxSizeBytes,
-                    Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
-                    ElasticPoolName = ElasticPoolName,
-                    Location = model.FirstOrDefault().Location,
-                    ReadScale = ReadScale,
-                    ZoneRedundant =
-                        MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
-                            ? (bool?)ZoneRedundant.ToBool()
-                            : null
-                };
-
                 if (!string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) || MyInvocation.BoundParameters.ContainsKey("Edition"))
                 {
                     newDbModel.Sku = new Management.Sql.Models.Sku()
                     {
-                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition.ToString() : RequestedServiceObjectiveName,
-                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null,
-                        Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : (int?)null
+                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition: RequestedServiceObjectiveName,
+                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : null,
                     };
                 }
 
@@ -207,30 +227,33 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             }
             else if(this.ParameterSetName == VcoreDatabaseParameterSet)
             {
-                AzureSqlDatabaseModel newDbModel = new AzureSqlDatabaseModel()
+                if(MyInvocation.BoundParameters.ContainsKey("Edition") ||
+                    MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ||
+                    MyInvocation.BoundParameters.ContainsKey("VCores"))
                 {
-                    ResourceGroupName = ResourceGroupName,
-                    ServerName = ServerName,
-                    DatabaseName = DatabaseName,
-                    MaxSizeBytes = MaxSizeBytes,
-                    Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
-                    ElasticPoolName = ElasticPoolName,
-                    Location = model.FirstOrDefault().Location,
-                    ReadScale = ReadScale,
-                    ZoneRedundant =
-                        MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
-                            ? (bool?)ZoneRedundant.ToBool()
-                            : null
-                };
+                    string skuNamePrefix = null;
+                    string skuTier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : databaseCurrentSku.Tier;
 
-                string skuName = string.Format("{0}_{1}", RequestedServiceObjectiveName, Vcore);
+                    switch (skuTier.ToLower())
+                    {
+                        case GeneralPurpose:
+                            skuNamePrefix = "GP";
+                            break;
+                        case BusinessCritical:
+                            skuNamePrefix = "BC";
+                            break;
+                        default:
+                            throw new PSArgumentException("Invalid Edition value.");
+                    }
 
-                newDbModel.Sku = new Management.Sql.Models.Sku()
-                {
-                    Name = skuName,
-                    Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null,
-                    Capacity = Vcore
-                };
+                    newDbModel.Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = skuNamePrefix,
+                        Tier = skuTier,
+                        Family = MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ? ComputeGeneration : databaseCurrentSku.Family,
+                        Capacity = MyInvocation.BoundParameters.ContainsKey("VCores") ? VCores : (int)databaseCurrentSku.Capacity
+                    };
+                }
 
                 newEntity.Add(newDbModel);
             }

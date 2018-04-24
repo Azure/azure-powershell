@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
@@ -30,6 +31,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     public class NewAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
+        private const string DtuDatabaseParameterSet = "DtuBasedDatabase";
+        private const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
+
         /// <summary>
         /// Gets or sets the name of the Azure SQL Database to act as primary.
         /// </summary>
@@ -43,16 +47,15 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <summary>
         /// Gets or sets the name of the service objective to assign to the secondary.
         /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The name of the service objective to assign to the secondary." +
-            "Possible ServiceObjectiveName could be S3, P2, GP_Gen4_2. GP_Gen4_2 is new supported service tier.")]
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
+            HelpMessage = "The name of the service objective to assign to the secondary.")]
         [ValidateNotNullOrEmpty]
         public string SecondaryServiceObjectiveName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the Elastic Pool to put the secondary in.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the secondary in.")]
         [ValidateNotNullOrEmpty]
         public string SecondaryElasticPoolName { get; set; }
@@ -94,6 +97,34 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The edition of the Azure Sql Database secondary.")]
+        [PSArgumentCompleter("GeneralPurpose", "BusinessCritical")]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryEdition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the compute generation of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The compute generation of teh Azure Sql Database secondary.")]
+        [Alias("Family")]
+        [PSArgumentCompleter("Gen4", "Gen5")]
+        [ValidateNotNullOrEmpty]
+        public string SecondaryComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Vcore numbers of the database copy
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The Vcore numbers of the Azure Sql Database secondary.")]
+        [Alias("Capacity")]
+        [ValidateNotNullOrEmpty]
+        public int SecondaryVCores { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -154,11 +185,37 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
             };
 
-            if(!string.IsNullOrWhiteSpace(SecondaryServiceObjectiveName))
+            if(ParameterSetName == DtuDatabaseParameterSet)
             {
+                if (!string.IsNullOrWhiteSpace(SecondaryServiceObjectiveName))
+                {
+                    linkModel.SecondarySku = new Management.Sql.Models.Sku()
+                    {
+                        Name = SecondaryServiceObjectiveName
+                    };
+                }
+            }
+            else
+            {
+                string skuNamePrefix = null;
+                switch (SecondaryEdition.ToLower())
+                {
+                    case "generalpurpose":
+                        skuNamePrefix = "GP";
+                        break;
+                    case "businesscritical":
+                        skuNamePrefix = "BC";
+                        break;
+                    default:
+                        throw new PSArgumentException("Invalid SecondaryEdition value.");
+                }
+
                 linkModel.SecondarySku = new Management.Sql.Models.Sku()
                 {
-                    Name = SecondaryServiceObjectiveName
+                    Name = skuNamePrefix,
+                    Tier = SecondaryEdition,
+                    Capacity = SecondaryVCores,
+                    Family = SecondaryComputeGeneration
                 };
             }
 
