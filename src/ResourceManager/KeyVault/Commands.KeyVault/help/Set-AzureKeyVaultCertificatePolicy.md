@@ -18,7 +18,7 @@ Creates or updates the policy for a certificate in a key vault.
 Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String> [-RenewAtPercentageLifetime <Int32>]
  [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>] [-Disabled] [-SubjectName <String>]
  [-DnsName <System.Collections.Generic.List`1[System.String]>]
- [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
+ [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
  [-KeyType <String>] [-KeyNotExportable] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -38,7 +38,7 @@ Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
 Set-AzureKeyVaultCertificatePolicy [-VaultName] <String> [-Name] <String>
  -RenewAtNumberOfDaysBeforeExpiry <Int32> [-SecretContentType <String>] [-ReuseKeyOnRenewal <Boolean>]
  [-Disabled] [-SubjectName <String>] [-DnsName <System.Collections.Generic.List`1[System.String]>]
- [-KeyUsage <System.Collections.Generic.List`1[System.String]>]
+ [-KeyUsage <System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]>]
  [-Ekus <System.Collections.Generic.List`1[System.String]>] [-ValidityInMonths <Int32>] [-IssuerName <String>]
  [-CertificateType <String>] [-EmailAtNumberOfDaysBeforeExpiry <Int32>] [-EmailAtPercentageLifetime <Int32>]
  [-KeyType <String>] [-KeyNotExportable] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
@@ -65,12 +65,12 @@ Specifies the type of certificate to the issuer.
 ```yaml
 Type: String
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -95,12 +95,12 @@ Indicates that the certificate policy is disabled.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -115,7 +115,7 @@ Aliases: DnsNames
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -125,12 +125,12 @@ Specifies the enhanced key usages (EKUs) in the certificate.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -140,12 +140,12 @@ Specifies the number of days before expiration when automatic renewal should sta
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -155,12 +155,12 @@ Specifies the percentage of the lifetime after which the automatic process for t
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -185,12 +185,12 @@ Specifies the name of the issuer for this certificate.
 ```yaml
 Type: String
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -200,12 +200,12 @@ Indicates that the key is not exportable.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -219,13 +219,13 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: RSA, RSA-HSM
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -233,14 +233,15 @@ Accept wildcard characters: False
 Specifies the key usages in the certificate.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.Collections.Generic.List`1[System.Security.Cryptography.X509Certificates.X509KeyUsageFlags]
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
+Accepted values: None, EncipherOnly, CrlSign, KeyCertSign, KeyAgreement, DataEncipherment, KeyEncipherment, NonRepudiation, DigitalSignature, DecipherOnly
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -255,7 +256,7 @@ Aliases: CertificateName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -266,7 +267,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -281,12 +282,12 @@ Specifies the number of days before expiry after which the automatic process for
 ```yaml
 Type: Int32
 Parameter Sets: ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -296,12 +297,12 @@ Specifies the percentage of the lifetime after which the automatic process for c
 ```yaml
 Type: Int32
 Parameter Sets: ExpandedRenewPercentage
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -311,12 +312,12 @@ Indicates that the certificate reuse the key during renewal.
 ```yaml
 Type: Boolean
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -330,13 +331,13 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 Accepted values: application/x-pkcs12, application/x-pem-file
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -346,12 +347,12 @@ Specifies the subject name of the certificate.
 ```yaml
 Type: String
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -361,12 +362,12 @@ Specifies the number of months the certificate is valid.
 ```yaml
 Type: Int32
 Parameter Sets: ExpandedRenewPercentage, ExpandedRenewNumber
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -376,12 +377,12 @@ Specifies the name of a key vault.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

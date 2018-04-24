@@ -76,7 +76,7 @@ Certificate Object.
 ```yaml
 Type: PSKeyVaultCertificateIdentityItem
 Parameter Sets: InputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -96,7 +96,7 @@ Aliases: CertificateName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -106,12 +106,12 @@ Specifies the name of a key vault.
 ```yaml
 Type: String
 Parameter Sets: VaultAndCertName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

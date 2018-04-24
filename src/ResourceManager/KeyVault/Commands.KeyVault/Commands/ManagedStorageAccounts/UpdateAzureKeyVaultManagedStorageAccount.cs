@@ -20,8 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsData.Update, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri )]
+        SupportsShouldProcess = true)]
     [OutputType( typeof( ManagedStorageAccount ) )]
     public class UpdateAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {

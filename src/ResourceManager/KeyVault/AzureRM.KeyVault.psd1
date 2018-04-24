@@ -77,8 +77,7 @@ NestedModules = @('.\Microsoft.Azure.Commands.KeyVault.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzureKeyVaultCertificate', 
-               'Set-AzureKeyVaultCertificateAttribute', 
+CmdletsToExport = 'Add-AzureKeyVaultCertificate', 'Update-AzureKeyVaultCertificate', 
                'Stop-AzureKeyVaultCertificateOperation', 
                'Get-AzureKeyVaultCertificateOperation', 
                'Import-AzureKeyVaultCertificate', 
@@ -100,9 +99,8 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate',
                'Undo-AzureKeyVaultKeyRemoval', 'Undo-AzureKeyVaultSecretRemoval', 
                'Add-AzureKeyVaultKey', 'Remove-AzureKeyVaultKey', 
                'Remove-AzureKeyVaultSecret', 'Restore-AzureKeyVaultKey', 
-               'Set-AzureKeyVaultKeyAttribute', 'Set-AzureKeyVaultSecret', 
-               'Set-AzureKeyVaultSecretAttribute', 
-               'Get-AzureKeyVaultCertificatePolicy', 
+               'Update-AzureKeyVaultKey', 'Set-AzureKeyVaultSecret', 
+               'Update-AzureKeyVaultSecret', 'Get-AzureKeyVaultCertificatePolicy', 
                'New-AzureKeyVaultCertificateAdministratorDetails', 
                'New-AzureKeyVaultCertificateOrganizationDetails', 
                'Backup-AzureKeyVaultSecret', 'Restore-AzureKeyVaultSecret', 
@@ -120,7 +118,9 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate',
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Set-AzureKeyVaultKey'
+AliasesToExport = 'Set-AzureKeyVaultKey', 'Set-AzureKeyVaultSecretAttribute', 
+               'Set-AzureKeyVaultKeyAttribute', 
+               'Set-AzureKeyVaultCertificateAttribute'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -173,4 +173,3 @@ PrivateData = @{
 # DefaultCommandPrefix = ''
 
 }
-

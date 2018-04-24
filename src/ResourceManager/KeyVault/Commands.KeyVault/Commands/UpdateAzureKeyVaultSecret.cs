@@ -19,11 +19,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute",
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsData.Update, "AzureKeyVaultSecret",
+        DefaultParameterSetName = DefaultParameterSet,
+        SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultSecret))]
-    public class SetAzureKeyVaultSecretAttribute : KeyVaultCmdletBase
+    [Alias("Set-AzureKeyVaultSecretAttribute")]
+    public class UpdateAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -40,7 +41,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
@@ -73,7 +72,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
         [Alias("SecretVersion")]
         public string Version { get; set; }
@@ -91,7 +89,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Secret expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The expiration time of a secret in UTC time. If not specified, the existing value of the secret's expiration time remains unchanged.")]
         public DateTime? Expires { get; set; }
 
@@ -99,7 +96,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// The UTC time before which secret can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
             HelpMessage = "The UTC time before which secret can't be used. If not specified, the existing value of the secret's NotBefore attribute remains unchanged.")]
         public DateTime? NotBefore { get; set; }
 
@@ -108,7 +104,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// TODO: check if content type is null, will it replace the server data
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret's content type. If not specified, the existing value of the secret's content type remains unchanged. Remove the existing content type value by specifying an empty string.")]
         public string ContentType { get; set; }
 
@@ -116,7 +111,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Secret tags
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing secret tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
@@ -142,6 +136,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name,
                 Version ?? string.Empty,
                 new PSKeyVaultSecretAttributes(Enable, Expires, NotBefore, ContentType, Tag));
+
                 if (PassThru)
                 {
                     WriteObject(secret);

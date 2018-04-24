@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Set, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition,
         SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri,
         DefaultParameterSetName = ParameterSetRawSas )]
     [OutputType( typeof( ManagedStorageSasDefinition ) )]
     public partial class SetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase

@@ -76,12 +76,12 @@ To delete the existing content type, specify an empty string.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -106,7 +106,7 @@ Indicates that this cmdlet disables a secret.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -123,12 +123,12 @@ This parameter uses Coordinated Universal Time (UTC). To obtain a **DateTime** o
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -138,7 +138,7 @@ Secret object
 ```yaml
 Type: PSKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -160,7 +160,7 @@ Aliases: SecretName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,12 +171,12 @@ parameter uses UTC. To obtain a **DateTime** object, use the **Get-Date** cmdlet
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -188,7 +188,7 @@ ConvertTo-SecureString`.
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 2
@@ -210,7 +210,7 @@ Aliases: Tags
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -221,12 +221,12 @@ of a key vault based on the name that this parameter specifies and your current 
 ```yaml
 Type: String
 Parameter Sets: Default
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

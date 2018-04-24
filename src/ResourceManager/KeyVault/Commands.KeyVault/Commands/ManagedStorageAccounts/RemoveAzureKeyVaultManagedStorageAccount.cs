@@ -20,9 +20,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        SupportsShouldProcess = true,
-         ConfirmImpact = ConfirmImpact.Medium,
-        HelpUri = Constants.KeyVaultHelpUri )]
+        SupportsShouldProcess = true)]
     [OutputType( typeof( ManagedStorageAccount ) )]
     public class RemoveAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {

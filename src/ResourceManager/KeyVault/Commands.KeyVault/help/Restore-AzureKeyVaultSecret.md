@@ -25,6 +25,12 @@ Restore-AzureKeyVaultSecret [-InputObject] <PSKeyVault> [-InputFile] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByResourceId
+```
+Restore-AzureKeyVaultSecret [-ResourceId] <String> [-InputFile] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Restore-AzureKeyVaultSecret** cmdlet creates a secret in the specified key vault.
 This secret is a replica of the backed-up secret in the input file and has the same name as the original secret.
@@ -67,7 +73,7 @@ Specifies the input file that contains the backup of the secret to restore.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -82,12 +88,27 @@ KeyVault object
 ```yaml
 Type: PSKeyVault
 Parameter Sets: ByInputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id
+
+```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases: 
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -97,12 +118,12 @@ Specifies the name of the key vault into which to restore the secret.
 ```yaml
 Type: String
 Parameter Sets: ByVaultName
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

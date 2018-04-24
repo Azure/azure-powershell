@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultkeyattribute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/update-azurekeyvaultkey
 schema: 2.0.0
 ---
 
-# Set-AzureKeyVaultKeyAttribute
+# Update-AzureKeyVaultKey
 
 ## SYNOPSIS
 Updates the attributes of a key in a key vault.
@@ -14,20 +14,20 @@ Updates the attributes of a key in a key vault.
 
 ### Default (Default)
 ```
-Set-AzureKeyVaultKeyAttribute [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
+Update-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>] [-Enable <Boolean>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzureKeyVaultKeyAttribute [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <String>]
- [-Enable <Boolean>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [[-Version] <String>] [-Enable <Boolean>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-KeyOps <String[]>] [-Tag <Hashtable>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureKeyVaultKeyAttribute** cmdlet updates the editable attributes of a key in a key vault.
+The **Update-AzureKeyVaultKey** cmdlet updates the editable attributes of a key in a key vault.
 
 ## EXAMPLES
 
@@ -35,7 +35,7 @@ The **Set-AzureKeyVaultKeyAttribute** cmdlet updates the editable attributes of 
 ```
 PS C:\>$Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = null}
-PS C:\> Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+PS C:\> Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
 ```
 
 The first command creates a **DateTime** object by using the **Get-Date** cmdlet. That object
@@ -49,7 +49,7 @@ time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
 ### Example 2: Modify a key to delete all tags
 ```
-PS C:\>Set-AzureKeyVaultKeyAttribute -VaultName 'Contoso' -Name 'ITSoftware' -Version '7EEA45C6EE50490B9C3176F80AC1A0DG' -Tag @{}
+PS C:\>Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '7EEA45C6EE50490B9C3176F80AC1A0DG' -Tag @{}
 ```
 
 This commands deletes all tags for a specific version of a key named ITSoftware.
@@ -57,7 +57,7 @@ This commands deletes all tags for a specific version of a key named ITSoftware.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -72,14 +72,13 @@ Accept wildcard characters: False
 ```
 
 ### -Enable
-Specifies whether to enable or disable a key. A value of $True enables the key. A value of $False
-disables the key. If you do not specify this parameter, this cmdlet does not modify the status of
-the key.
+Value of true enables the key and a value of false disabless the key.
+If not specified, the existing enabled/disabled state remains unchanged.
 
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -89,19 +88,18 @@ Accept wildcard characters: False
 ```
 
 ### -Expires
-Specifies the expiration time, as a **DateTime** object, for the key that this cmdlet updates. This
-parameter uses Coordinated Universal Time (UTC). To obtain a **DateTime** object, use the
-**Get-Date** cmdlet. For more information, type `Get-Help Get-Date`.
+The expiration time of a key in UTC time.
+If not specified, the existing expiration time of the key remains unchanged.
 
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,7 +109,7 @@ Key object
 ```yaml
 Type: PSKeyVaultKeyIdentityItem
 Parameter Sets: InputObject
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -121,37 +119,24 @@ Accept wildcard characters: False
 ```
 
 ### -KeyOps
-Specifies an array of operations that can be performed by using the key that this cmdlet adds.
-If you do not specify this parameter, all operations can be performed.
-
-The acceptable values for this parameter are a comma-separated list of key operations as defined by
-the JSON Web Key specification. These values (case-sensitive) are:
-
-- encrypt
-- decrypt
-- wrap
-- unwrap
-- sign
-- verify
-- backup
-- restore
+The operations that can be performed with the key.
+If not specified, the existing key operations of the key remain unchanged.
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the key to update. This cmdlet constructs the fully qualified domain name
-(FQDN) of a key based on the name that this parameter specifies, the name of the key vault, and
-your current environment.
+Key name.
+Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.
 
 ```yaml
 Type: String
@@ -161,35 +146,34 @@ Aliases: KeyName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -NotBefore
-Specifies the time, as a **DateTime** object, before which the key cannot be used.
-This parameter uses UTC.
-To obtain a **DateTime** object, use the **Get-Date** cmdlet.
+The UTC time before which key can't be used.
+If not specified, the existing NotBefore attribute of the key remains unchanged.
 
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+Cmdlet does not return an object by default.
+If this switch is specified, returns the updated key bundle object.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -199,9 +183,8 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table. For example:
-
-@{key0="value0";key1=$null;key2="value2"}
+A hashtable represents key tags.
+If not specified, the existings tags of the key remain unchanged.
 
 ```yaml
 Type: Hashtable
@@ -211,29 +194,29 @@ Aliases: Tags
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultName
-Specifies the name of the key vault in which this cmdlet modifies the key.
-This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
+Vault name.
+Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
 Type: String
 Parameter Sets: Default
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Version
-Specifies the key version.
-This cmdlet constructs the FQDN of a key based on the key vault name, your currently selected environment, the key name, and the key version.
+Key version.
+Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.
 
 ```yaml
 Type: String
@@ -243,7 +226,7 @@ Aliases: KeyVersion
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -283,8 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 
 ## OUTPUTS
 
@@ -294,8 +276,3 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[Add-AzureKeyVaultKey](./Add-AzureKeyVaultKey.md)
-
-[Get-AzureKeyVaultKey](./Get-AzureKeyVaultKey.md)
-
-[Remove-AzureKeyVaultKey](./Remove-AzureKeyVaultKey.md)

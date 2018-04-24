@@ -43,6 +43,21 @@ Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceIdCreate
+```
+Add-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable]
+ [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdImport
+```
+Add-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
+ [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Add-AzureKeyVaultKey** cmdlet creates a key in a key vault in Azure Key Vault, or imports a key into a key vault.
 Use this cmdlet to add keys by using any of the following methods:
@@ -193,8 +208,8 @@ extension, it imports the key as a software-protected key.
 
 ```yaml
 Type: String
-Parameter Sets: InteractiveCreate, InputObjectCreate
-Aliases:
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
+Aliases: 
 Accepted values: HSM, Software
 
 Required: True
@@ -206,8 +221,8 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: InteractiveImport, InputObjectImport
-Aliases:
+Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Aliases: 
 Accepted values: HSM, Software
 
 Required: False
@@ -224,7 +239,7 @@ the key will fail. Use this parameter if you are preloading keys that you intend
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -242,12 +257,12 @@ parameter, the key does not expire.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -257,7 +272,7 @@ Vault object.
 ```yaml
 Type: PSKeyVault
 Parameter Sets: InputObjectCreate, InputObjectImport
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
@@ -274,8 +289,8 @@ name extension.
 
 ```yaml
 Type: SecureString
-Parameter Sets: InteractiveImport, InputObjectImport
-Aliases:
+Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Aliases: 
 
 Required: False
 Position: Named
@@ -298,8 +313,8 @@ When you specify this parameter, the *Destination* parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: InteractiveImport, InputObjectImport
-Aliases:
+Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Aliases: 
 
 Required: True
 Position: Named
@@ -325,12 +340,12 @@ the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=61
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -360,10 +375,25 @@ parameter, the key can be used immediately.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Vault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdCreate, ResourceIdImport
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -382,7 +412,7 @@ Aliases: Tags
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -393,12 +423,12 @@ FQDN of a key vault based on the name that this parameter specifies and your cur
 ```yaml
 Type: String
 Parameter Sets: InteractiveCreate, InteractiveImport
-Aliases:
+Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
