@@ -122,9 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             ExecuteClientAction(() =>
             {
-                WriteWarning("Update-AzureRmSnapshot: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                             "The Name property for a Sku will return Standard_LRS and Premium_LRS");
-
                 if (ShouldProcess(this.SnapshotName, VerbsData.Update))
                 {
                     string resourceGroupName = this.ResourceGroupName;

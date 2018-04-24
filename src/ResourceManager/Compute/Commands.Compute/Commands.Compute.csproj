@@ -127,7 +127,6 @@
     <Compile Include="Common\ComputeClientInstancViewMethod.cs" />
     <Compile Include="Common\ComputeCloudException.cs" />
     <Compile Include="Common\DiagnosticsHelper.cs" />
-    <Compile Include="Common\StorageAccountTypesExtensions.cs" />
     <Compile Include="Common\StorageManagementClient.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageTypeCommand.cs" />
     <Compile Include="ExtensionImages\GetAzureVMExtensionImageCommand.cs" />
@@ -283,9 +282,6 @@
     <Compile Include="Strategies\ComputeRp\VirtualMachineScaleSetStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\VirtualMachineStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\WindowsConfigurationStrategy.cs" />
-    <Compile Include="Strategies\IAsyncCmdlet.cs" />
-    <Compile Include="Strategies\IParameters.cs" />
-    <Compile Include="Strategies\Location.cs" />
     <Compile Include="Strategies\Network\BackendAddressPoolStrategy.cs" />
     <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
     <Compile Include="Strategies\Network\InboundNetPoolStrategy.cs" />
@@ -299,8 +295,6 @@
     <Compile Include="Strategies\Network\SubnetStrategy.cs" />
     <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
-    <Compile Include="Strategies\ShouldProcess.cs" />
-    <Compile Include="Strategies\StrategyCmdlet.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
