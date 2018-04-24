@@ -114,8 +114,6 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate',
     'Undo-AzureKeyVaultCertificateRemoval',
     'Backup-AzureKeyVaultCertificate', 'Restore-AzureKeyVaultCertificate',
     'Backup-AzureKeyVaultManagedStorageAccount', 'Restore-AzureKeyVaultManagedStorageAccount',
-    'Add-AzureRmKeyVaultNetworkRule', 'Update-AzureRmKeyVaultNetworkRuleSet',
-    'Remove-AzureRmKeyVaultNetworkRule',
     'Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval',
     'Undo-AzureKeyVaultManagedStorageAccountRemoval'
 

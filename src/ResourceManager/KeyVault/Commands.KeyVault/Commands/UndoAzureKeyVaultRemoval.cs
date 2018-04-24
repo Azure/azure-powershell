@@ -88,7 +88,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             if (InputObject != null)
             {
-                WriteWarning("Undo-AzureRmKeyVaultRemoval: ResourceGroupName will be removed from the InputObject parameter set in May 2018, and will instead be obtained from the ResourceId.");
                 VaultName = InputObject.VaultName;
                 Location = InputObject.Location;
                 var resourceIdentifier = new ResourceIdentifier(InputObject.ResourceId);
