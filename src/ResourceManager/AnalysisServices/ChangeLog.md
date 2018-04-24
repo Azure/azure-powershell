@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Bumped up Azure.AnalysisServices module version.
 
 ## Version 0.6.6
 * Updated to the latest version of the Azure ClientRuntime
