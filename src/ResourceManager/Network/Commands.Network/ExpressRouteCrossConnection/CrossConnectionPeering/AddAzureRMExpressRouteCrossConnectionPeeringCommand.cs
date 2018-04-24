@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRMExpressRouteCrossConnection", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCrossConnection))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmExpressRouteCrossConnectionPeering", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCrossConnection))]
     public class AddAzureRMExpressRouteCrossConnectionPeeringCommand : AzureRMExpressRouteCrossConnectionPeeringBase
     {
         [Parameter(
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The ExpressRouteCircuit")]
+            HelpMessage = "The ExpressRouteCrossConnection")]
         public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
 
         public override void Execute()

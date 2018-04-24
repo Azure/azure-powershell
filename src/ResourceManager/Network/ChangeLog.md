@@ -18,7 +18,29 @@
         - Additional information about change #1
 --->
 
-## Current Release
+## Current
+* Added cmdlet to update an Express Route Cross Connection
+    - Set-AzureRmExpressRouteCrossConnection
+* Added cmdlet to get an Express Route Cross Connection
+    - Get-AzureRmExpressRouteCrossConnection
+* Added cmdlet to get an Express Route Cross Connection Peering
+    - Get-AzureRmExpressRouteCrossConnectionPeering
+* Added cmdlet to create a new Express Route Cross Connection Peering
+    - New-AzureRMExpressRouteCrossConnectionPeering
+* Added cmdlet to add an Express Route Cross Connection Peering
+    - Add-AzureRmExpressRouteCrossConnectionPeering	
+* Added cmdlet to delete an Express Route Cross Connection Peering
+    - Remove-AzureRmExpressRouteCrossConnectionPeering
+* Added cmdlet to update an Express Route Cross Connection Peering
+    - Set-AzureRmExpressRouteCrossConnectionPeering
+* Added cmdlet to get Express Route Cross Connection Peering Arp Table
+    - Get-AzureRMExpressRouteCrossConnectionArpTable	
+* Added cmdlet to get Express Route Cross Connection Peering Route Table
+    - Get-AzureRMExpressRouteCrossConnectionRouteTable	
+* Added cmdlet to get Express Route Cross Connection Peering Route Table Summary
+    - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary	
+	
+## Version 5.4.3
 * Set minimum dependency of module to PowerShell 5.0
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information
