@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             HelpMessage = "Set migration type to SQL Server to SQL DB MI Migration."
         )]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter MigrateSqlServerSqlDbMi { get; set; }
 
         [Parameter(
@@ -74,7 +73,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             HelpMessage = "Set migration type to SQL Server to SQL DB Migration."
         )]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter MigrateSqlServerSqlDb { get; set; }
 
         [Parameter(
@@ -82,7 +80,6 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             HelpMessage = "Set Database to readonly before migration",
             ParameterSetName = SqlServerSqlDbParameterSet
         )]
-        [ValidateNotNullOrEmpty]
         public SwitchParameter MakeSourceDbReadOnly { get; set; }
 
         [Parameter(
