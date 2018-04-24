@@ -15,6 +15,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
@@ -38,12 +39,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public RuntimeDefinedParameterDictionary RuntimeDefinedParams { get; private set; }
 
-        public void SimpleParam(string paramName, Type type, string helpMessage, bool mandatory = false)
+        public void SimpleParam(string paramName, Type type, string helpMessage, bool mandatory = false, params string[] argumentCompleterList)
         {
             RuntimeDefinedParameter param = new RuntimeDefinedParameter(paramName, type, new Collection<Attribute>()
                 {
                     new ParameterAttribute { Mandatory=mandatory, HelpMessage = helpMessage },
-                    new ValidateNotNullOrEmptyAttribute()
+                    new ValidateNotNullOrEmptyAttribute(),
+                    new PSArgumentCompleterAttribute(argumentCompleterList)
                 });
 
             this.RuntimeDefinedParams.Add(param.Name, param);
