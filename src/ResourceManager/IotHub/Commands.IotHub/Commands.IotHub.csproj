@@ -166,7 +166,9 @@
     </None>
     <None Include="help\Update-AzureRmIotHub.md" />
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="StartupScripts\*.ps1">
       <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
