@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermaccount
@@ -21,9 +21,10 @@ Connect-AzureRmAccount [-Environment <String>] [[-Credential] <PSCredential>] [-
 
 ### ServicePrincipalWithSubscriptionId
 ```
-Connect-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal] -TenantId <String>
- [-Subscription <String>] [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Connect-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal]
+ -TenantId <String> [-Subscription <String>] [-ContextName <String>] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateWithSubscriptionId
@@ -44,7 +45,7 @@ Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken
 
 ### ManagedServiceLogin
 ```
-Add-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <String>] [-ManagedService]
+Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <String>] [-Identity]
  [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-Subscription <String>]
  [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -312,6 +313,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Identity
+Login using managed service identity in the current environment.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ManagedServiceLogin
+Aliases: MSI, ManagedService
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyVaultAccessToken
 AccessToken for KeyVault Service
 
@@ -321,21 +337,6 @@ Parameter Sets: AccessTokenWithSubscriptionId
 Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedService
-Login using managed service identity in the current environment
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: ManagedServiceLogin
-Aliases: MSI
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -509,3 +510,4 @@ Credentials, subscription, account, and tenant information for the logged in use
 ## NOTES
 
 ## RELATED LINKS
+

@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         #region Parameters
 
         /// <summary>
-        /// Gets or sets the vault name
+        /// Gets or sets the vault name.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group name
+        /// Gets or sets the resource group name.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ResourceGroupCompleter]

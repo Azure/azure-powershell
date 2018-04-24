@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
@@ -32,11 +33,19 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: _ => 15);
 
+        public enum Sku
+        {
+            Basic,
+            Standard,
+        }
+
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             string domainNameLabel,
-            string allocationMethod)
+            string allocationMethod,
+            Sku sku,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -46,7 +55,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     DnsSettings = new PublicIPAddressDnsSettings
                     {
                         DomainNameLabel = domainNameLabel,
-                    }
+                    },
+                    Sku = new PublicIPAddressSku
+                    {
+                        Name = sku.ToString(),
+                    },
+                    Zones = zones,
                 });
 
         public static async Task<string> UpdateDomainNameLabelAsync(

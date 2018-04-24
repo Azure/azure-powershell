@@ -43,15 +43,12 @@ $ErrorActionPreference = "Stop"
 ########################################################################################################################
 # Section1:  Log-in to Azure and select appropriate subscription. 
 ########################################################################################################################
-  
 
     Select-AzureRmSubscription -SubscriptionId $subscriptionId;
-
 
 ########################################################################################################################
 # Section2:  Create AAD app . Fill in $aadClientSecret variable if AAD app was already created
 ########################################################################################################################
-
 
     # Check if AAD app with $aadAppName was already created
     $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
@@ -145,7 +142,18 @@ $ErrorActionPreference = "Stop"
     Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys wrapKey -PermissionsToSecrets set;
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption;
-    
+
+    # Enable soft delete on KeyVault to not lose encryption secrets
+    Write-Host "Enabling Soft Delete on KeyVault $keyVaultName";
+    $resource = Get-AzureRmResource -ResourceId $keyVault.ResourceId;
+    $resource.Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true" -Force;
+    Set-AzureRmResource -resourceid $resource.ResourceId -Properties $resource.Properties -Force;
+
+    # Enable ARM resource lock on KeyVault to prevent accidental key vault deletion
+    Write-Host "Adding resource lock on  KeyVault $keyVaultName";
+    $lockNotes = "KeyVault may contain AzureDiskEncryption secrets required to boot encrypted VMs";
+    New-AzureRmResourceLock -LockLevel CanNotDelete -LockName "LockKeyVault" -ResourceName $resource.Name -ResourceType $resource.ResourceType -ResourceGroupName $resource.ResourceGroupName -LockNotes $lockNotes -Force;
+
     $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 	$keyVaultResourceId = $keyVault.ResourceId;
 
@@ -187,7 +195,36 @@ $ErrorActionPreference = "Stop"
     Read-Host;
 
 ########################################################################################################################
-# For each VM you want to encrypt, run the below cmdlet
-#    $vmName = 'Name of VM to encrypt';
-#    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType $volumeType
+# To encrypt one VM in given resource group of the logged in subscritpion, assign $vmName and uncomment below section
 ########################################################################################################################
+#$vmName = "Your VM Name";
+#$allVMs = Get-AzureRmVm -ResourceGroupName $resourceGroupName -Name $vmName;
+
+########################################################################################################################
+# To encrypt all the VMs in the given resource group of the logged in subscription uncomment below section
+########################################################################################################################
+#$allVMs = Get-AzureRmVm -ResourceGroupName $resourceGroupName;
+
+########################################################################################################################
+# To encrypt all the VMs in the all the resource groups of the logged in subscription, uncomment below section
+########################################################################################################################
+#$allVMs = Get-AzureRmVm;
+
+########################################################################################################################
+# Loop through the selected list of VMs and enable encryption
+########################################################################################################################
+
+foreach($vm in $allVMs)
+{
+    Write-Host "Encrypting VM: $($vm.Name) in ResourceGroup: $($vm.ResourceGroupName) " -foregroundcolor Green;
+    if(-not $kek)
+    {
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';    
+    }
+    else
+    {
+        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';            
+    }
+    # Show encryption status of the VM
+    Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name;
+}

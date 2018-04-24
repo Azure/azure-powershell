@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.MachineLearningCompute
-Module Guid: 
+Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018f
 Download Help Link: 
 Help Version: 
 Locale: en-US

@@ -341,29 +341,6 @@ function Test-RDGetCustomRoles
 
 <#
 .SYNOPSIS
-Tests verify scenarios for RoleDefinitions creation.
-#>
-function Test-RDGetAtScopeFilterRoles
-{
-    # Setup
-    # Basic positive case - read from file
-    $rdName = 'Another tests role'
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("3d95b97a-5745-4c39-950c-0b608dea635f")
-    $rd = New-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json
-    
-    $rd = Get-AzureRmRoleDefinition -Name $rdName -AtScopeAndBelow
-    Assert-AreEqual "Test role" $rd.Description 
-    Assert-AreEqual $true $rd.IsCustom
-    Assert-NotNull $rd.AssignableScopes
-    Assert-NotNull $rd.Actions
-    Assert-NotNull $rd.NotActions
-    
-    # Basic positive case - read from object
-    Remove-AzureRmRoleDefinition -Id $rd.Id -Force
-}
-
-<#
-.SYNOPSIS
 Tests validate input parameters 
 #>
 function Test-RdValidateInputParameters ($cmdName)

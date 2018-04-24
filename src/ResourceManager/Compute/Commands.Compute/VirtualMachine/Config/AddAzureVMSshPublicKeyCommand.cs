@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-
             if (this.VM.OSProfile == null)
             {
                 this.VM.OSProfile = new OSProfile();

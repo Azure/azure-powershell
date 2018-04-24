@@ -12,14 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.ContainerRegistry.Models;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
-using Microsoft.Azure.Management.ContainerRegistry.Models;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using DeploymentState = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.ProvisioningState;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -28,6 +27,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     public class NewAzureContainerRegistry : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -78,12 +78,12 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                     Location = ResourceManagerClient.GetResourceGroupLocation(ResourceGroupName);
                 }
 
-                if(string.Equals(Sku, SkuName.Classic) && StorageAccountName == null)
+                if (string.Equals(Sku, SkuName.Classic) && StorageAccountName == null)
                 {
                     DeploymentExtended result = ResourceManagerClient.CreateClassicRegistry(
                         ResourceGroupName, Name, Location, EnableAdminUser, tags);
 
-                    if (result.Properties.ProvisioningState == DeploymentState.Succeeded.ToString())
+                    if (result.Properties.ProvisioningState == "Succeeded")
                     {
                         var registry = RegistryClient.GetRegistry(ResourceGroupName, Name);
                         WriteObject(new PSContainerRegistry(registry));
@@ -91,14 +91,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                 }
                 else
                 {
-                    var registry = new Registry 
-                    { 
-                        Sku = new Microsoft.Azure.Management.ContainerRegistry.Models.Sku(Sku), 
+                    var registry = new Registry
+                    {
+                        Sku = new Microsoft.Azure.Management.ContainerRegistry.Models.Sku(Sku),
                         AdminUserEnabled = EnableAdminUser,
                         Tags = tags,
                         Location = Location
                     };
-                    
+
                     if (StorageAccountName != null)
                     {
                         var storageAccountId = ResourceManagerClient.GetStorageAccountId(StorageAccountName);

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: C453485D-67A7-480E-83F6-527D4F5EBC93
@@ -16,14 +16,14 @@ Modifies properties of a virtual machine data disk.
 ### ChangeWithName
 ```
 Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Name] <String> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [-StorageAccountType <StorageAccountTypes>] [-WriteAccelerator]
+ [[-DiskSizeInGB] <Int32>] [-StorageAccountType <String>] [-WriteAccelerator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ChangeWithLun
 ```
 Set-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [-Lun] <Int32> [[-Caching] <CachingTypes>]
- [[-DiskSizeInGB] <Int32>] [-StorageAccountType <StorageAccountTypes>] [-WriteAccelerator]
+ [[-DiskSizeInGB] <Int32>] [-StorageAccountType <String>] [-WriteAccelerator]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ This setting affects the consistency and performance of the disk.
 ```yaml
 Type: CachingTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
@@ -93,7 +93,7 @@ Specifies the size, in gigabytes, for the data disk.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -108,7 +108,7 @@ Specifies the logical unit number (LUN) of the data disk that this cmdlet modifi
 ```yaml
 Type: Int32
 Parameter Sets: ChangeWithLun
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -123,7 +123,7 @@ Specifies the name of the data disk that this cmdlet modifies.
 ```yaml
 Type: String
 Parameter Sets: ChangeWithName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -136,10 +136,9 @@ Accept wildcard characters: False
 The virtual machine managed disk's account type.
 
 ```yaml
-Type: StorageAccountTypes
+Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Aliases:
 
 Required: False
 Position: Named
@@ -170,7 +169,7 @@ Specifies whether WriteAccelerator should be enabled or disabled on the data dis
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

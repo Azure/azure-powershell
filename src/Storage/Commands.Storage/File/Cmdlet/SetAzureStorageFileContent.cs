@@ -80,6 +80,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 throw new FileNotFoundException(string.Format(CultureInfo.CurrentCulture, Resources.SourceFileNotFound, this.Source));
             }
 
+            // if FIPS policy is enabled, must use native MD5
+            if (fipsEnabled)
+            {
+                CloudStorageAccount.UseV1MD5 = false;
+            }
+
             bool isDirectory;
             string[] path = NamingUtil.ValidatePath(this.Path, out isDirectory);
             var cloudFileToBeUploaded =
