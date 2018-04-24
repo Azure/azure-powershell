@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             ExecuteClientAction(() =>
             {
-                string location = this.Location;
+                string location = this.Location.Canonicalize();
                 string commandId = this.CommandId;
 
                 if (!string.IsNullOrEmpty(location) && !string.IsNullOrEmpty(commandId))
