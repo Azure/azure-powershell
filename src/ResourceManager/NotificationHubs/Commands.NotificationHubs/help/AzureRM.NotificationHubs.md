@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.NotificationHubs
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US

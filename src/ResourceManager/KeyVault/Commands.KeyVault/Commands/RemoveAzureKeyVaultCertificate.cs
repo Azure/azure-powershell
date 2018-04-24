@@ -15,7 +15,7 @@
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -24,11 +24,17 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificate,
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(DeletedKeyVaultCertificate))]
+        DefaultParameterSetName = ByVaultNameAndNameParameterSet)]
+    [OutputType(typeof(PSDeletedKeyVaultCertificate))]
     public class RemoveAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByVaultNameAndNameParameterSet = "ByVaultNameAndName";
+        private const string ByObjectParameterSet = "ByObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -36,7 +42,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = ByVaultNameAndNameParameterSet,
                    HelpMessage = "Specifies the name of the vault to which this cmdlet adds the certificate.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -46,10 +52,28 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>       
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = ByVaultNameAndNameParameterSet,
                    HelpMessage = "Specifies the name of the certificate in key vault.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Vault Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = ByObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Certificate Object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultCertificateIdentityItem InputObject { get; set; }
+
+        /// <summary>
+        /// If present, operate on the deleted entity.
+        /// </summary>
+        [Parameter(Mandatory = false,
+                    HelpMessage = "Permanently remove the previously deleted certificate.")]
+        public SwitchParameter InRemovedState { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -58,32 +82,31 @@ namespace Microsoft.Azure.Commands.KeyVault
                     HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        /// <summary>
-        /// If present, operate on the deleted key entity.
-        /// </summary>
-        [Parameter( Mandatory = false,
-                    HelpMessage = "Permanently remove the previously deleted certificate." )]
-        public SwitchParameter InRemovedState { get; set; }
-
         [Parameter( Mandatory = false,
                     HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, the cmdlet returns the certificate object that was deleted.")]
         public SwitchParameter PassThru { get; set; }
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                Name = InputObject.Name;
+            }
+
             if ( InRemovedState.IsPresent )
             {
                 ConfirmAction(
                     Force.IsPresent,
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        KeyVaultProperties.Resources.RemoveDeletedCertificateWarning,
+                        Resources.RemoveDeletedCertificateWarning,
                         Name ),
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        KeyVaultProperties.Resources.RemoveDeletedCertificateWhatIfMessage,
+                        Resources.RemoveDeletedCertificateWhatIfMessage,
                         Name ),
                     Name,
                     ( ) => { DataServiceClient.PurgeCertificate( VaultName, Name ); } );
@@ -91,20 +114,20 @@ namespace Microsoft.Azure.Commands.KeyVault
                 return;
             }
 
-            DeletedKeyVaultCertificate certBundle = null;
+            PSDeletedKeyVaultCertificate certBundle = null;
 
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
                     CultureInfo.InvariantCulture,
-                    KeyVaultProperties.Resources.RemoveCertWarning,
+                    Resources.RemoveCertWarning,
                     Name),
                 string.Format(
                     CultureInfo.InvariantCulture,
-                    KeyVaultProperties.Resources.RemoveCertWhatIfMessage,
+                    Resources.RemoveCertWhatIfMessage,
                     Name),
                 Name,
-                () => { certBundle = DeletedKeyVaultCertificate.FromDeletedCertificateBundle( this.DataServiceClient.DeleteCertificate(VaultName, Name) ); });
+                () => { certBundle = this.DataServiceClient.DeleteCertificate(VaultName, Name); });
 
             if (PassThru.IsPresent)
             {

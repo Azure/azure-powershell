@@ -39,3 +39,26 @@
 -->
 
 ## Current Breaking Changes
+The following cmdlets were affected this release:
+
+**Get-AzureRmSubscriptionDefinition**
+- Removed. Use Get-AzureRmSubscription instead.
+
+```powershell
+# Old
+# Get-AzureRmSubscriptionDefinition
+
+# New
+# Get-AzureRmSubscription
+```
+
+**New-AzureRmSubscriptionDefinition**
+- Replaced by New-AzureRmSubscription.
+
+```powershell
+# Old
+# New-AzureRmSubscriptionDefinition -Name mysubdef -OfferType ...
+
+# New
+# New-AzureRmSubscription -EnrollmentAccountObjectId ... -OfferType ...
+```

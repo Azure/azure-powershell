@@ -125,5 +125,12 @@ namespace CognitiveServices.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-GetWithPaging");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetUsages()
+        {
+            TestController.NewInstance.RunPsTest("Test-GetUsages");
+        }
     }
 }

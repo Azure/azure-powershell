@@ -24,16 +24,16 @@ function Test-AddAzureRmAutoscaleSetting
 
     #$webhook1 = New-AzureRmAutoscaleWebhook -ServiceUri "http://myservice.com"
     #$notification1 = New-AzureRmAutoscaleNotification -Cust gu@ms.com, ge@ns.net -SendEmailToSubscriptionAdministrator -SendEmailToSubscriptionCoAdministrators -webhooks $webhook1
-  
-	$rule1 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId $resourceId -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionValue "1" 
-	$rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId $resourceId -Operator GreaterThan -MetricStatistic Average -Threshold 15 -TimeGrain 00:02:00 -ScaleActionCooldown 00:06:00 -ScaleActionDirection Decrease -ScaleActionValue "2"
-	$profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -StartTimeWindow 2015-03-05T14:00:00 -EndTimeWindow 2015-03-05T14:30:00 -TimeWindowTimeZone GMT -Rules $rule1, $rule2 -Name "adios"
-	$profile2 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -Rules $rule1, $rule2 -Name "saludos" -RecurrenceFrequency Week -ScheduleDays "1" -ScheduleHours 5 -ScheduleMinutes 15 -ScheduleTimeZone UTC
 
-    try 
+	$rule1 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId $resourceId -Operator GreaterThan -MetricStatistic Average -Threshold 10 -TimeGrain 00:01:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionValue "1"
+	$rule2 = New-AzureRmAutoscaleRule -MetricName Requests -MetricResourceId $resourceId -Operator GreaterThan -MetricStatistic Average -Threshold 15 -TimeGrain 00:02:00 -ScaleActionCooldown 00:06:00 -ScaleActionDirection Decrease -ScaleActionValue "2"
+	$profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -StartTimeWindow 2015-03-05T14:00:00 -EndTimeWindow 2015-03-05T14:30:00 -TimeWindowTimeZone GMT -Rule $rule1, $rule2 -Name "adios"
+	$profile2 = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapacity "10" -MinimumCapacity "1" -Rule $rule1, $rule2 -Name "saludos" -RecurrenceFrequency Week -ScheduleDay "1" -ScheduleHour 5 -ScheduleMinute 15 -ScheduleTimeZone UTC
+
+    try
     {
         # Test
-		Add-AzureRmAutoscaleSetting -Location "East US" -Name MySetting -ResourceGroup $resourceGroup -TargetResourceId $resourceId -AutoscaleProfiles $profile1, $profile2
+		Add-AzureRmAutoscaleSetting -Location "East US" -Name MySetting -ResourceGroup $resourceGroup -TargetResourceId $resourceId -AutoscaleProfile $profile1, $profile2
     }
     finally
     {
@@ -51,7 +51,7 @@ function Test-GetAzureRmAutoscaleSetting
     # Setup
     $rgname = 'TestingMetricsScaleSet'
 
-    try 
+    try
     {
 	    $actual = Get-AzureRmAutoscaleSetting -ResourceGroup $rgname -detailedOutput
 
@@ -74,7 +74,7 @@ function Test-GetAzureRmAutoscaleSettingByName
     # Setup
     $rgname = 'TestingMetricsScaleSet'
 
-    try 
+    try
     {
 		$actual = Get-AzureRmAutoscaleSetting -ResourceGroup $rgname -Name "MySetting" -detailedOutput
 
@@ -97,7 +97,7 @@ function Test-RemoveAzureRmAutoscaleSetting
     # Setup
     $rgname = 'Default-Web-EastUS'
 
-    try 
+    try
     {
 		Remove-AzureRmAutoscaleSetting -ResourceGroup $rgname -name DefaultServerFarm-Default-Web-EastUS
     }
@@ -114,7 +114,7 @@ Tests getting the logs associated to an autoscale setting in a subscription.
 #>
 function Test-GetAzureRmAutoscaleHistory
 {
-    try 
+    try
     {
 		$actual = Get-AzureRmAutoscaleHistory -StartTime 2015-02-10T02:35:00Z -endTime 2015-02-10T02:40:00Z -detailedOutput
 
@@ -135,11 +135,11 @@ Tests creating a new Autoscale notification.
 #>
 function Test-NewAzureRmAutoscaleNotification
 {
-    try 
+    try
     {
 		Assert-Throws { New-AzureRmAutoscaleNotification } "At least one Webhook or one CustomeEmail must be present, or the notification must be sent to the admin or co-admin"
 
-		$actual = New-AzureRmAutoscaleNotification -CustomEmails gu@ms.com, fu@net.net
+		$actual = New-AzureRmAutoscaleNotification -CustomEmail gu@ms.com, fu@net.net
 
         # Assert
 		Assert-Null $actual.Webhooks "webhooks"
@@ -158,7 +158,7 @@ function Test-NewAzureRmAutoscaleNotification
 		Assert-True { $actual.Email.SendToSubscriptionAdministrator } "SendToSubscriptionAdministrator"
 		Assert-False { $actual.Email.SendToSubscriptionCoAdministrators } "SendToSubscriptionCoAdministrators"
 
-		$actual = New-AzureRmAutoscaleNotification -SendEmailToSubscriptionCoAdministrators
+		$actual = New-AzureRmAutoscaleNotification -SendEmailToSubscriptionCoAdministrator
 
         # Assert
 		Assert-Null $actual.Webhooks
@@ -180,7 +180,7 @@ Tests creating a new Autoscale webhook.
 #>
 function Test-NewAzureRmAutoscaleWebhook
 {
-    try 
+    try
     {
 		$actual = New-AzureRmAutoscaleWebhook -ServiceUri "http://myservice.com"
 

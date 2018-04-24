@@ -56,9 +56,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                     CdnEndpoint.IsCompressionEnabled,
                     CdnEndpoint.IsHttpAllowed,
                     CdnEndpoint.IsHttpsAllowed,
-                    (QueryStringCachingBehavior) Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
+                    (QueryStringCachingBehavior)Enum.Parse(typeof(QueryStringCachingBehavior), CdnEndpoint.QueryStringCachingBehavior.ToString()),
                     CdnEndpoint.OptimizationType,
-                    CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList()));
+                    CdnEndpoint.ProbePath,
+                    CdnEndpoint.GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
+                    CdnEndpoint.DeliveryPolicy?.ToSdkDeliveryPolicy()));
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());
