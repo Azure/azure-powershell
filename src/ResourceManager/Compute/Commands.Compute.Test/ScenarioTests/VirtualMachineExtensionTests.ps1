@@ -1046,9 +1046,6 @@ function Test-AzureDiskEncryptionExtensionSinglePass
 			-VMName $vm.Name `
 			-DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
 			-DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
-			-KeyEncryptionKeyUrl $kv.KeyEncryptionKeyUrl `
-			-KeyEncryptionKeyVaultId $kv.KeyEncryptionKeyVaultId `
-			-VolumeType "ALL" `
 			-Force
 
 		# verify encryption state

@@ -116,21 +116,22 @@ function Create-KeyVault
 	$vault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location -Sku standard
 	$vault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
 
-	# create access policy 
-	$servicePrincipalName = (get-azurermcontext).Account.Id
-	Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $servicePrincipalName -PermissionsToKeys create
+	# create access policy
+	$servicePrincipalName = (Get-AzureRmContext).Account.Id
+	Assert-NotNull $servicePrincipalName
+	#Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $servicePrincipalName -PermissionsToKeys Create
 	Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDiskEncryption -EnabledForDeployment -EnabledForTemplateDeployment
 
 	# create key encryption key 
-	$kekName = 'kek' + $resourceGroupName
-	$kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
+	#$kekName = 'kek' + $resourceGroupName
+	#$kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
 
 	# return the newly created key vault properties
 	$properties = New-Object PSObject -Property @{
 		DiskEncryptionKeyVaultId = $vault.ResourceId
 		DiskEncryptionKeyVaultUrl = $vault.VaultUri
-		KeyEncryptionKeyVaultId = $vault.ResourceId
-		KeyEncryptionKeyUrl = $kek.Key.kid
+		#KeyEncryptionKeyVaultId = $vault.ResourceId
+		#KeyEncryptionKeyUrl = $kek.Key.kid
 	}
 	return $properties
 }
