@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         private readonly AnalysisServicesManagementClient _client;
         private readonly Guid _subscriptionId;
         private readonly string _currentUser;
+		public const string gatewayResourceIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/connectionGateways/{2}";
 
         public AnalysisServicesClient(IAzureContext context)
         {
@@ -65,7 +66,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             string backupBlobContainerUri = null,
             int ReadonlyReplicaCount = 0,
             string DefaultConnectionMode = null,
-            IPv4FirewallSettings setting = null)
+            IPv4FirewallSettings setting = null,
+			string gatewayId = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -87,7 +89,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 }
             }
 
-            AnalysisServicesServer newOrUpdatedServer = null;
+			GatewayDetails gatewayDetails = null;
+			if (gatewayId == "-")
+			{
+				gatewayDetails = new GatewayDetails("", "", "");
+			}
+			else
+			{
+				gatewayDetails = new GatewayDetails(gatewayId);
+			}
+
+			AnalysisServicesServer newOrUpdatedServer = null;
             if (existingServer != null)
             {
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
@@ -121,6 +133,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     updateParameters.IpV4FirewallSettings = setting;
                 }
 
+                if (gatewayId != null && gatewayId != "-")
+                {
+                    updateParameters.GatewayDetails = gatewayDetails;
+                }
+
                 newOrUpdatedServer = _client.Servers.Update(resourceGroupName, serverName, updateParameters);
             }
             else
@@ -142,8 +159,9 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                         Sku = GetResourceSkuFromName(skuName, ReadonlyReplicaCount + 1),
                         Tags = tags,
                         QuerypoolConnectionMode = connectionMode,
-                        IpV4FirewallSettings = setting
-            });
+                        IpV4FirewallSettings = setting,
+						GatewayDetails = gatewayDetails
+					});
             }            
 
             return newOrUpdatedServer;
@@ -263,6 +281,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             _client.Servers.Resume(resourceGroupName, serverName);
         }
 
-        #endregion
-    }
+		public string GetGatewayResourceId(string gatewayName, string resourceGroupName, string subscriptionId)
+		{
+			string resourcdId = null;
+			if (!string.IsNullOrEmpty(gatewayName))
+			{
+				if (string.IsNullOrEmpty(subscriptionId))
+				{
+					subscriptionId = _client.SubscriptionId;
+				}
+
+				resourcdId = string.Format(gatewayResourceIdFormat, subscriptionId, resourceGroupName, gatewayName);
+			}
+
+			return resourcdId;
+		}
+
+		#endregion
+	}
 }
