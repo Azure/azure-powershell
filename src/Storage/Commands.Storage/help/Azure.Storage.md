@@ -1,8 +1,8 @@
 ---
 Module Name: Azure.Storage
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: ./Azure.Storage.md
-Help Version: 
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azure.storage
+Help Version: 4.2.1.0
 Locale: en-US
 ---
 
