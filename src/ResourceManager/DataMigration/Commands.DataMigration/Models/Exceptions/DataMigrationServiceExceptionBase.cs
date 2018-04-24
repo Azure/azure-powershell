@@ -17,7 +17,7 @@ using System;
 namespace Microsoft.Azure.Commands.DataMigration.Models.Exceptions
 {
     /// <summary>
-    /// Base for all Data Migration Service cmdlet Exceptions
+    /// Base for all Database Migration Service cmdlet Exceptions
     /// </summary>
     [Serializable]
     public class DataMigrationServiceExceptionBase : Exception

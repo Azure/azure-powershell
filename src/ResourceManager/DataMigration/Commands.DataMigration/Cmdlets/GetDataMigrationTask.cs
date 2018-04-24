@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Mandatory = true,
             ParameterSetName = ListByComponent,
-            HelpMessage = "Data Migration Service Name.")]
+            HelpMessage = "Database Migration Service Name.")]
         [ValidateNotNullOrEmpty]
         [Parameter(ParameterSetName = GetByComponent, Mandatory = true)]
         [Parameter(ParameterSetName = GetByComponentResultType, Mandatory = true)]

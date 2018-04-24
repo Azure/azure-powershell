@@ -34,14 +34,14 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Data Migration Service Name.")]
+            HelpMessage = "Database Migration Service Name.")]
         [ValidateNotNullOrEmpty]
         [Alias("ServiceName")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The location of the instance of the Data Migration Service to be created. "
+            HelpMessage = "The location of the instance of the Database Migration Service to be created. "
                           + "This corresponds to an Azure region.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The name of the subnet under the specified virtual network to be used for the Data Migration Service instance.")]
+            HelpMessage = "The name of the subnet under the specified virtual network to be used for the Database Migration Service instance.")]
         [ValidateNotNullOrEmpty]
         public string VirtualSubnetId { get; set; }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
 
         /// <summary>
-        /// Helper method that calls the creation of an instance of the Data Migration Service
+        /// Helper method that calls the creation of an instance of the Database Migration Service
         /// </summary>
         /// <returns>The instance of PSDataMigrationService that was created.</returns>
         public DataMigrationService CreateService()
