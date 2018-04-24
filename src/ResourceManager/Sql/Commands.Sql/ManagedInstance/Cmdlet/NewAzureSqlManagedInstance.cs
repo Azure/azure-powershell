@@ -86,16 +86,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = true,
             HelpMessage = "Determines how much VCores to associate with Managed instance")]
         [ValidateNotNullOrEmpty]
-        public int VCoreCount { get; set; }
+        public int Vcore { get; set; }
 
         /// <summary>
         /// Gets or sets the managed instance version
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "Determines the SKU for Sql Azure Managed Instance")]
+            HelpMessage = "The compute generation for the Sql Azure Managed Instance. e.g. 'GP_Gen4', 'BC_Gen4'.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(Constants.GeneralPurposeGen4, Constants.GeneralPurposeGen5, Constants.BusinessCriticalGen4, Constants.BusinessCriticalGen5, IgnoreCase = false)]
-        public string ManagedInstanceSku { get; set; }
+        public string RequestedSkuName { get; set; }
 
         /// <summary>
         /// Gets or sets the tags to associate with the Azure Sql Managed Instance
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             List<Model.AzureSqlManagedInstanceModel> newEntity = new List<Model.AzureSqlManagedInstanceModel>();
             Management.Internal.Resources.Models.Sku Sku = new Management.Internal.Resources.Models.Sku();
-            Sku.Name = ManagedInstanceSku;
+            Sku.Name = RequestedSkuName;
 
             newEntity.Add(new Model.AzureSqlManagedInstanceModel()
             {
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB,
                 SubnetId = this.SubnetId,
-                VCores = this.VCoreCount,
+                VCores = this.Vcore,
                 Sku = Sku
             });
             return newEntity;

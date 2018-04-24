@@ -21,6 +21,7 @@
 * Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
 * Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response
 * Updated to the latest version of the Azure ClientRuntime
+* Added new cmdlets for CRUD operations on Managed Instance and Managed Database 
 
 ## Version 4.3.1
 * Fix issue with Default Resource Group in CloudShell

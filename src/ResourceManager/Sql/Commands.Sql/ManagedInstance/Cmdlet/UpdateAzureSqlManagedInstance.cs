@@ -88,11 +88,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int? StorageSizeInGB { get; set; }
 
         /// <summary>
-        /// Gets or sets the VCores for Managed instance
+        /// Gets or sets the VCore for Managed instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Determines how much VCores to associate with Managed instance")]
-        public int? VCoreCount { get; set; }
+            HelpMessage = "Determines how much VCore to associate with Managed instance")]
+        public int? Vcore { get; set; }
 
         /// <summary>
         /// The tags to associate with the Managed instance.
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 AdministratorPassword = this.AdministratorPassword,
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB,
-                VCores = this.VCoreCount,
+                VCores = this.Vcore,
                 Tags = TagsConversionHelper.ReadOrFetchTags(this, model.FirstOrDefault().Tags),
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
             });
