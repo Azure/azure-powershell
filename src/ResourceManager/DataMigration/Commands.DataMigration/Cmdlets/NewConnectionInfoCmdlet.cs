@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// <summary>
     /// Class that creates a new instance of the Sql Server Connection Info.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationConnectionInfo", SupportsShouldProcess = true), OutputType(typeof(ConnectionInfo))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationConnectionInfo"), OutputType(typeof(ConnectionInfo))]
     [Alias("New-AzureRmDmsConnInfo")]
     public class NewConnectionInfoCmdlet : DataMigrationCmdlet, IDynamicParameters
     {
@@ -50,18 +50,15 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.ServerType.ToString(), Resources.createDbInfo))
-            {
-                base.ExecuteCmdlet();
+            base.ExecuteCmdlet();
 
-                if (connCmdlet != null)
-                {
-                    WriteObject(connCmdlet.ProcessConnectionInfoCmdlet());
-                }
-                else
-                {
-                    throw new PSArgumentException("Invalid Argument List");
-                }
+            if (connCmdlet != null)
+            {
+                WriteObject(connCmdlet.ProcessConnectionInfoCmdlet());
+            }
+            else
+            {
+                throw new PSArgumentException("Invalid Argument List");
             }
         }
 
