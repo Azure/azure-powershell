@@ -16,7 +16,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The requested resource of type 'Microsoft.Sql/locations/instanceFailoverGroups' with name 'ps117' was not found.\"\r\n  }\r\n}",
@@ -73,7 +73,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"readWriteEndpoint\": {\r\n      \"failoverPolicy\": \"Automatic\",\r\n      \"failoverWithDataLossGracePeriodMinutes\": 60\r\n    },\r\n    \"readOnlyEndpoint\": {\r\n      \"failoverPolicy\": \"Disabled\"\r\n    },\r\n    \"replicationRole\": \"Primary\",\r\n    \"replicationState\": \"CATCH_UP\",\r\n    \"partnerRegions\": [\r\n      {\r\n        \"location\": \"Southeast Asia\",\r\n        \"replicationRole\": \"Secondary\"\r\n      }\r\n    ],\r\n    \"managedInstancePairs\": [\r\n      {\r\n        \"primaryManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/tdstage-haimb-dont-delete-3\",\r\n        \"partnerManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/threat-detection-test-1\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/locations/Southeast Asia/instanceFailoverGroups/ps117\",\r\n  \"name\": \"ps117\",\r\n  \"type\": \"Microsoft.Sql/locations/instanceFailoverGroups\"\r\n}",
@@ -142,7 +142,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"operation\": \"CreateManagedFailoverGroup\",\r\n  \"startTime\": \"2018-04-18T18:42:59.58Z\"\r\n}",
@@ -208,7 +208,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"name\": \"3891819b-0d1e-4a24-ac7f-9e3aa12707a3\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-04-18T18:42:59.58Z\"\r\n}",
@@ -268,7 +268,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"name\": \"3891819b-0d1e-4a24-ac7f-9e3aa12707a3\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-04-18T18:42:59.58Z\"\r\n}",
@@ -334,7 +334,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"readWriteEndpoint\": {\r\n      \"failoverPolicy\": \"Automatic\",\r\n      \"failoverWithDataLossGracePeriodMinutes\": 60\r\n    },\r\n    \"readOnlyEndpoint\": {\r\n      \"failoverPolicy\": \"Disabled\"\r\n    },\r\n    \"replicationRole\": \"Primary\",\r\n    \"replicationState\": \"CATCH_UP\",\r\n    \"partnerRegions\": [\r\n      {\r\n        \"location\": \"Southeast Asia\",\r\n        \"replicationRole\": \"Secondary\"\r\n      }\r\n    ],\r\n    \"managedInstancePairs\": [\r\n      {\r\n        \"primaryManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/tdstage-haimb-dont-delete-3\",\r\n        \"partnerManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/threat-detection-test-1\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/locations/Southeast Asia/instanceFailoverGroups/ps117\",\r\n  \"name\": \"ps117\",\r\n  \"type\": \"Microsoft.Sql/locations/instanceFailoverGroups\"\r\n}",
@@ -397,7 +397,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"readWriteEndpoint\": {\r\n      \"failoverPolicy\": \"Automatic\",\r\n      \"failoverWithDataLossGracePeriodMinutes\": 60\r\n    },\r\n    \"readOnlyEndpoint\": {\r\n      \"failoverPolicy\": \"Disabled\"\r\n    },\r\n    \"replicationRole\": \"Primary\",\r\n    \"replicationState\": \"CATCH_UP\",\r\n    \"partnerRegions\": [\r\n      {\r\n        \"location\": \"Southeast Asia\",\r\n        \"replicationRole\": \"Secondary\"\r\n      }\r\n    ],\r\n    \"managedInstancePairs\": [\r\n      {\r\n        \"primaryManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/threat-detection-test-1\",\r\n        \"partnerManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/tdstage-haimb-dont-delete-3\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/locations/Southeast Asia/instanceFailoverGroups/ps117\",\r\n  \"name\": \"ps117\",\r\n  \"type\": \"Microsoft.Sql/locations/instanceFailoverGroups\"\r\n}",
@@ -460,7 +460,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"readWriteEndpoint\": {\r\n      \"failoverPolicy\": \"Automatic\",\r\n      \"failoverWithDataLossGracePeriodMinutes\": 60\r\n    },\r\n    \"readOnlyEndpoint\": {\r\n      \"failoverPolicy\": \"Disabled\"\r\n    },\r\n    \"replicationRole\": \"Primary\",\r\n    \"replicationState\": \"CATCH_UP\",\r\n    \"partnerRegions\": [\r\n      {\r\n        \"location\": \"Southeast Asia\",\r\n        \"replicationRole\": \"Secondary\"\r\n      }\r\n    ],\r\n    \"managedInstancePairs\": [\r\n      {\r\n        \"primaryManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/threat-detection-test-1\",\r\n        \"partnerManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/tdstage-haimb-dont-delete-3\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/locations/Southeast Asia/instanceFailoverGroups/ps117\",\r\n  \"name\": \"ps117\",\r\n  \"type\": \"Microsoft.Sql/locations/instanceFailoverGroups\"\r\n}",
@@ -523,7 +523,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"readWriteEndpoint\": {\r\n      \"failoverPolicy\": \"Automatic\",\r\n      \"failoverWithDataLossGracePeriodMinutes\": 60\r\n    },\r\n    \"readOnlyEndpoint\": {\r\n      \"failoverPolicy\": \"Disabled\"\r\n    },\r\n    \"replicationRole\": \"Primary\",\r\n    \"replicationState\": \"CATCH_UP\",\r\n    \"partnerRegions\": [\r\n      {\r\n        \"location\": \"Southeast Asia\",\r\n        \"replicationRole\": \"Secondary\"\r\n      }\r\n    ],\r\n    \"managedInstancePairs\": [\r\n      {\r\n        \"primaryManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/threat-detection-test-1\",\r\n        \"partnerManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/tdstage-haimb-dont-delete-3\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/locations/Southeast Asia/instanceFailoverGroups/ps117\",\r\n  \"name\": \"ps117\",\r\n  \"type\": \"Microsoft.Sql/locations/instanceFailoverGroups\"\r\n}",
@@ -586,7 +586,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"operation\": \"FailoverFailoverGroup\",\r\n  \"startTime\": \"2018-04-18T18:43:22.677Z\"\r\n}",
@@ -652,7 +652,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"name\": \"7ed89ed4-62c9-47b8-9ed9-c3978c1065cd\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-04-18T18:43:22.677Z\"\r\n}",
@@ -712,7 +712,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"properties\": {\r\n    \"readWriteEndpoint\": {\r\n      \"failoverPolicy\": \"Automatic\",\r\n      \"failoverWithDataLossGracePeriodMinutes\": 60\r\n    },\r\n    \"readOnlyEndpoint\": {\r\n      \"failoverPolicy\": \"Disabled\"\r\n    },\r\n    \"replicationRole\": \"Primary\",\r\n    \"replicationState\": \"CATCH_UP\",\r\n    \"partnerRegions\": [\r\n      {\r\n        \"location\": \"Southeast Asia\",\r\n        \"replicationRole\": \"Secondary\"\r\n      }\r\n    ],\r\n    \"managedInstancePairs\": [\r\n      {\r\n        \"primaryManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/threat-detection-test-1\",\r\n        \"partnerManagedInstanceId\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/managedInstances/tdstage-haimb-dont-delete-3\"\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/8cfb8b62-bcd6-4713-89ad-18097f75cc5b/resourceGroups/testclrg/providers/Microsoft.Sql/locations/Southeast Asia/instanceFailoverGroups/ps117\",\r\n  \"name\": \"ps117\",\r\n  \"type\": \"Microsoft.Sql/locations/instanceFailoverGroups\"\r\n}",
@@ -775,7 +775,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"operation\": \"DropManagedFailoverGroup\",\r\n  \"startTime\": \"2018-04-18T18:43:35.557Z\"\r\n}",
@@ -841,7 +841,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"name\": \"b63efa65-4220-4c16-b3ef-251f6580b428\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-04-18T18:43:35.557Z\"\r\n}",
@@ -901,7 +901,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "{\r\n  \"name\": \"b63efa65-4220-4c16-b3ef-251f6580b428\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-04-18T18:43:35.557Z\"\r\n}",
@@ -961,7 +961,7 @@
           "FxVersion/4.7.2563.0",
           "OSName/WindowsServer2012R2Datacenter",
           "OSVersion/6.3.9600",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.15.0.0"
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.13.1.0"
         ]
       },
       "ResponseBody": "",
