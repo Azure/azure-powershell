@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public string LastModifiedBy { get; set; }
         [JsonProperty(Order = 1)]
-        public PSExpressRouteCircuitPeeringConfig MicrosoftPeeringConfig { get; set; }
+        public PSPeeringConfig MicrosoftPeeringConfig { get; set; }
         [JsonProperty(Order = 1)]
-        public PSIpv6ExpressRouteCircuitPeeringConfig Ipv6PeeringConfig { get; set; }
+        public PSIpv6PeeringConfig Ipv6PeeringConfig { get; set; }
 
         [JsonIgnore]
         public string MicrosoftPeeringConfigText

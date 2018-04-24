@@ -544,13 +544,13 @@ namespace Microsoft.Azure.Commands.Network
                 // ExpressRouteCrossConnectionPeering
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSExpressRouteCrossConnectionPeering, MNM.ExpressRouteCrossConnectionPeering>();
-                cfg.CreateMap<CNM.PSExpressRouteCircuitPeeringConfig, MNM.ExpressRouteCircuitPeeringConfig>();
-                cfg.CreateMap<CNM.PSIpv6ExpressRouteCircuitPeeringConfig, MNM.Ipv6ExpressRouteCircuitPeeringConfig>();
+                cfg.CreateMap<CNM.PSPeeringConfig, MNM.ExpressRouteCircuitPeeringConfig>();
+                cfg.CreateMap<CNM.PSIpv6PeeringConfig, MNM.Ipv6ExpressRouteCircuitPeeringConfig>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRouteCrossConnectionPeering, CNM.PSExpressRouteCrossConnectionPeering>();
-                cfg.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSExpressRouteCircuitPeeringConfig>();
-                cfg.CreateMap<MNM.Ipv6ExpressRouteCircuitPeeringConfig, CNM.PSIpv6ExpressRouteCircuitPeeringConfig>();
+                cfg.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSPeeringConfig>();
+                cfg.CreateMap<MNM.Ipv6ExpressRouteCircuitPeeringConfig, CNM.PSIpv6PeeringConfig>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitArpTable, CNM.PSExpressRouteCircuitArpTable>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitRoutesTable, CNM.PSExpressRouteCircuitRoutesTable>();
                 cfg.CreateMap<MNM.ExpressRouteCrossConnectionRoutesTableSummary, CNM.PSExpressRouteCrossConnectionRoutesTableSummary>();

@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.Network
 
             // Map to the sdk object
             var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCrossConnection>(this.ExpressRouteCrossConnection);
-            crossConnectionModel.PeeringLocation = this.ExpressRouteCrossConnection.PeeringLocation;
             crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCrossConnection.Tag, validate: true);
 
             // Execute the Update ExpressRouteCrossConnection call
