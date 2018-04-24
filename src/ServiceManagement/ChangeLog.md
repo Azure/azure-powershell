@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 6.0.0
+## Version 5.2.0
 * Add -ExtendedProperty parameter to New-AzureDeployment and Set-AzureDeployment
 
 ## Version 5.1.2
