@@ -41,14 +41,24 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ThreatDetectionGetDefualtPolicy");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionDatabaseUpdatePolicy()
         {
             RunPowerShellTest("Test-ThreatDetectionDatabaseUpdatePolicy");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ThreatDetectionServerUpdatePolicy()
         {
@@ -56,7 +66,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisablingThreatDetection()
         {

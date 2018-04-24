@@ -606,8 +606,8 @@ Gets dns name according to environment
 function Get-DNSNameBasedOnEnvironment ()
 {
      $connectingString = [System.Environment]::GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION")
-     $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectingString)
-     $environment = $parsedString[[Microsoft.Azure.Test.TestEnvironment]::EnvironmentKey]
+     $parsedString = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::ParseConnectionString($connectingString)
+     $environment = $parsedString[[Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringKeys]::EnvironmentKey]
      if ($environment -eq "Dogfood"){
          return ".sqltest-eg1.mscds.com"
      }

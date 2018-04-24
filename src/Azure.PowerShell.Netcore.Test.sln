@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Network.Test.Netco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Storage.Netcore", "Common\Commands.Common.Storage\Common.Storage.Netcore.csproj", "{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Sql.Test.Netcore", "ResourceManager\Sql\Commands.Sql.Test\Commands.Sql.Test.Netcore.csproj", "{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,18 @@ Global
 		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|x64.Build.0 = Release|Any CPU
 		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|x86.ActiveCfg = Release|Any CPU
 		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|x86.Build.0 = Release|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|x64.Build.0 = Debug|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|x86.Build.0 = Debug|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Release|x64.ActiveCfg = Release|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Release|x64.Build.0 = Release|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Release|x86.ActiveCfg = Release|Any CPU
+		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

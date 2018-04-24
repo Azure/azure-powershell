@@ -25,14 +25,24 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Cannot run Get-SqlDatabaseImportExportTestEnvironmentParameters -> GetName due to version differences")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportDatabase()
         {
             RunPowerShellTest("Test-ExportDatabase");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Cannot run Get-SqlDatabaseImportExportTestEnvironmentParameters -> GetName due to version differences")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImportDatabase()
         {
