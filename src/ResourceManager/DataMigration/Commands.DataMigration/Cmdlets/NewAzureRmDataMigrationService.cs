@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataMigration.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataMigration;
 using Microsoft.Azure.Management.DataMigration.Models;
 
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             HelpMessage = "The SKU for DataMigration service instance, possible values are Basic_1vCore, Basic_2vCores, GeneralPurpose_4vCores"
         )]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Basic_1vCore", "Basic_2vCores", "GeneralPurpose_4vCores")]
         public string Sku { get; set; }
 
         [Parameter(
