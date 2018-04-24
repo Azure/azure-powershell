@@ -284,15 +284,25 @@ function Test-MigrateSqlSqlDB
 		$tableMap.Add("HR.LOCATIONS","HR.LOCATIONS")
 		$tableMap.Add("HR.REGIONS","HR.REGIONS")
 
-		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name HR -TargetDatabaseName psTarget -TableMap $tableMap
+		$sourceDbName = "HR"
+		$targetDbName = "psTarget"
+
+		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name $sourceDbName -TargetDatabaseName $targetDbName -TableMap $tableMap
+		Assert-AreEqual $sourceDbName $selectedDbs[0].Name
+		Assert-AreEqual $targetDbName $selectedDbs[0].TargetDatabaseName
+		Assert-AreEqual 6 $selectedDbs[0].TableMap.Count
+		Assert-AreEqual true $selectedDbs[0].TableMap.ContainsKey("HR.COUNTRIES")
+		Assert-AreEqual "HR.COUNTRIES" $selectedDbs[0].TableMap["HR.COUNTRIES"]
 
 		$migTask = New-AzureRmDmsTask -TaskType MigrateSqlServerSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -SourceCred $sourceCred -TargetConnection $targetConnectionInfo -TargetCred $targetCred -SelectedDatabase  $selectedDbs
 
 		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
-		Assert-AreEqual 1 $task.Count
-		
+		Assert-AreEqual 1 $task.Count		
+		Assert-AreEqual $sourceDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].Name
+		Assert-AreEqual $targetDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].TargetDatabaseName
+
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
 			SleepTask 15
@@ -379,8 +389,18 @@ function Test-MigrateSqlSqlDBMi
 		$fileShareCred = Get-Creds $fileShareUsername $fileSharePassword
 
 		$backupFileShare = New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+		Assert-AreEqual $fileSharePath $backupFileShare.Path
+		Assert-AreEqual $fileShareUserName $backupFileShare.Username
+		Assert-AreEqual $fileSharePassword $backupFileShare.Password
 
-		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
+		$sourceDbName = "HR"
+		$targetDbName = "HR_PSTEST"
+
+		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
+
+		Assert-AreEqual $sourceDbName $selectedDbs[0].Name
+		Assert-AreEqual $targetDbName $selectedDbs[0].RestoreDatabaseName
+		Assert-AreEqual $backupFileShare.Path $selectedDbs[0].BackupFileShare.Path
 
         $selectedLogins = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_LOGINS")
         $selectedLogins = $selectedLogins -split ","
@@ -406,6 +426,12 @@ function Test-MigrateSqlSqlDBMi
 		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual $backupFileShare.Path $task.ProjectTask.Properties.Input.BackupFileShare.Path
+		Assert-AreEqual $selectedJobs[0] $task.ProjectTask.Properties.Input.SelectedAgentJobs[0]
+		Assert-AreEqual $selectedLogins[0] $task.ProjectTask.Properties.Input.SelectedLogins[0]
+		Assert-AreEqual $sourceDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].Name
+		Assert-AreEqual $targetDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].RestoreDatabaseName
+
 		Assert-AreEqual 1 $task.Count
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
