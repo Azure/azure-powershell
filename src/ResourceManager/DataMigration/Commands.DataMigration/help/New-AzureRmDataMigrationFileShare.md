@@ -25,6 +25,10 @@ The New-AzureRmDataMigrationFileShare cmdlet creates the FileShare object that s
 ### Example 1
 ```
 PS C:\> New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+
+UserName    Password     Path
+--------    --------     ----
+domain\user testadmin123 \\fileshare\folder1
 ```
 
 ## PARAMETERS
