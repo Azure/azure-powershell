@@ -17,6 +17,8 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -24,21 +26,33 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Adds a user to a group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmADGroupMember", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.Explicit), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmADGroupMember", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.MemberObjectIdWithGroupObjectId), OutputType(typeof(bool))]
     public class AddAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Explicit, HelpMessage = "The object id of the member.")]
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.GroupObject, HelpMessage = "The object id of the member.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupDisplayName, HelpMessage = "The object id of the member(s) to add to the group.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObject, HelpMessage = "The object id of the member(s) to add to the group.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObjectId, HelpMessage = "The object id of the member(s) to add to the group.")]
         [ValidateNotNullOrEmpty]
-        public Guid MemberObjectId { get; set; }
+        public Guid[] MemberObjectId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Explicit, HelpMessage = "The object id of the group to add the member to.")]
-        [ValidateNotNullOrEmpty]
-        public Guid GroupObjectId { get; set; }
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupDisplayName, HelpMessage = "The UPN of the member(s) to add to the group.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObject, HelpMessage = "The UPN of the member(s) to add to the group.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObjectId, HelpMessage = "The UPN of the member(s) to add to the group.")]
+        public string[] MemberUserPrincipalName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.GroupObject, HelpMessage = "The object representation of the group to add the member to.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObjectId, HelpMessage = "The object id of the group to add the member(s) to.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObjectId, HelpMessage = "The object id of the group to add the member(s) to.")]
         [ValidateNotNullOrEmpty]
-        public PSADGroup GroupObject { get; set; }
+        public Guid TargetGroupObjectId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObject, HelpMessage = "The object representation of the group to add the member(s) to.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.MemberUPNWithGroupObject, HelpMessage = "The object representation of the group to add the member(s) to.")]
+        [ValidateNotNullOrEmpty]
+        public PSADGroup TargetGroupObject { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupDisplayName, HelpMessage = "The display name of the group to add the member(s) to.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupDisplayName, HelpMessage = "The display name of the group to add the member(s) to.")]
+        public string TargetGroupDisplayName { get; set; }
 
         [Parameter(Mandatory = true)]
         public SwitchParameter PassThru { get; set; }
@@ -47,22 +61,41 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (this.IsParameterBound(c => GroupObject))
+                if (this.IsParameterBound(c => c.TargetGroupObject))
                 {
-                    GroupObjectId = GroupObject.Id;
+                    TargetGroupObjectId = TargetGroupObject.Id;
+                }
+                else if (this.IsParameterBound(c => c.TargetGroupDisplayName))
+                {
+                    var targetGroup = ActiveDirectoryClient.GetGroupByDisplayName(TargetGroupDisplayName);
+                    TargetGroupObjectId = targetGroup.Id;
                 }
 
-                var groupAddMemberParams = new GroupAddMemberParameters()
+                if (this.IsParameterBound(c => c.MemberUserPrincipalName))
                 {
-                    Url = string.Format("{0}/{1}/directoryObjects/{2}",
+                    var memberObjectId = new List<Guid>();
+                    foreach (var memberUPN in MemberUserPrincipalName)
+                    {
+                        memberObjectId.Add(ActiveDirectoryClient.GetObjectIdFromUPN(memberUPN));
+                    }
+
+                    MemberObjectId = memberObjectId.ToArray();
+                }
+
+                foreach (var memberObjectId in MemberObjectId)
+                {
+                    var groupAddMemberParams = new GroupAddMemberParameters()
+                    {
+                        Url = string.Format("{0}/{1}/directoryObjects/{2}",
                                             AzureEnvironmentConstants.AzureGraphEndpoint,
                                             AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant,
-                                            MemberObjectId)
-                };
+                                            memberObjectId)
+                    };
 
-                if (ShouldProcess(target: MemberObjectId.ToString(), action: string.Format("Adding user with object id '{0}' to group with object id '{1}'.", MemberObjectId, GroupObjectId)))
-                {
-                    ActiveDirectoryClient.AddGroupMember(GroupObjectId.ToString(), groupAddMemberParams);
+                    if (ShouldProcess(target: memberObjectId.ToString(), action: string.Format("Adding user with object id '{0}' to group with object id '{1}'.", memberObjectId, TargetGroupObjectId)))
+                    {
+                        ActiveDirectoryClient.AddGroupMember(TargetGroupObjectId.ToString(), groupAddMemberParams);
+                    }
                 }
 
                 if (PassThru.IsPresent)

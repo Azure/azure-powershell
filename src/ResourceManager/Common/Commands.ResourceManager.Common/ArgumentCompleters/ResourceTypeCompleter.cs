@@ -54,12 +54,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                                 instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
                                 instance.ClientFactory.GetCustomHandlers());
                             client.SubscriptionId = context.Subscription.Id;
-                            // Retrieve only the first page of resource types to display to the user
-                            var resourceTypes = client.Providers.ListAsync();
-                            if (resourceTypes.Wait(TimeSpan.FromSeconds(_timeout)))
+                            var resourceTypes = new List<Provider>();
+                            var task = client.Providers.ListAsync();
+                            if (task.Wait(TimeSpan.FromSeconds(_timeout)))
                             {
-                                tempResourceTypeList = CreateResourceTypeList(resourceTypes.Result);
-                                if (resourceTypes.Result != null)
+                                var page = task.Result;
+                                resourceTypes.AddRange(page);
+                                while (!string.IsNullOrEmpty(page.NextPageLink))
+                                {
+                                    task = client.Providers.ListNextAsync(page.NextPageLink);
+                                    if (task.Wait(TimeSpan.FromSeconds(_timeout)))
+                                    {
+                                        page = task.Result;
+                                        resourceTypes.AddRange(page);
+                                    }
+#if DEBUG
+                                    else
+                                    {
+                                        throw new InvalidOperationException("client.Providers.ListNextAsync() call timed out");
+                                    }
+#endif
+                                }
+
+                                tempResourceTypeList = CreateResourceTypeList(resourceTypes);
+                                if (tempResourceTypeList != null)
                                 {
                                     _resourceTypesDictionary[contextHash] = tempResourceTypeList;
                                 }
@@ -123,7 +141,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
             return (context.Account.Id + context.Environment.Name + context.Subscription.Id + context.Tenant.Id).GetHashCode();
         }
 
-        public static List<string> CreateResourceTypeList(IPage<Provider> result)
+        public static List<string> CreateResourceTypeList(List<Provider> result)
         {
             var tempResourceTypeList = new List<string>();
             if (result != null)

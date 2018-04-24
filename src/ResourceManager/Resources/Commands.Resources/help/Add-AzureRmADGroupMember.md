@@ -12,15 +12,39 @@ Adds a user to an existing AD group.
 
 ## SYNTAX
 
-### ExplicitParameterSet (Default)
+### MemberObjectIdWithGroupObjectId (Default)
 ```
-Add-AzureRmADGroupMember -MemberObjectId <Guid> -GroupObjectId <Guid> [-PassThru]
+Add-AzureRmADGroupMember -MemberObjectId <Guid[]> -TargetGroupObjectId <Guid> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GroupObjectParameterSet
+### MemberObjectIdWithGroupDisplayName
 ```
-Add-AzureRmADGroupMember -MemberObjectId <Guid> -GroupObject <PSADGroup> [-PassThru]
+Add-AzureRmADGroupMember -MemberObjectId <Guid[]> -TargetGroupDisplayName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberObjectIdWithGroupObject
+```
+Add-AzureRmADGroupMember -MemberObjectId <Guid[]> -TargetGroupObject <PSADGroup> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupDisplayNameParameterSet
+```
+Add-AzureRmADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupDisplayName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObjectParameterSet
+```
+Add-AzureRmADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObject <PSADGroup> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObjectIdParameterSet
+```
+Add-AzureRmADGroupMember -MemberUserPrincipalName <String[]> -TargetGroupObjectId <Guid> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,60 +86,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GroupObject
-The object representation of the group to add the member to.
-
-```yaml
-Type: PSADGroup
-Parameter Sets: GroupObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -GroupObjectId
-The object id of the group to add the member to.
-
-```yaml
-Type: Guid
-Parameter Sets: ExplicitParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -MemberObjectId
 The object id of the member.
 
 ```yaml
-Type: Guid
-Parameter Sets: ExplicitParameterSet
+Type: Guid[]
+Parameter Sets: MemberObjectIdWithGroupObjectId, MemberObjectIdWithGroupDisplayName, MemberObjectIdWithGroupObject
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MemberUserPrincipalName
+The UPN of the member(s) to add to the group.
+
 ```yaml
-Type: Guid
-Parameter Sets: GroupObjectParameterSet
+Type: String[]
+Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -125,6 +122,51 @@ Specifying this will return true if the command was successful.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetGroupDisplayName
+The display name of the group to add the member(s) to.
+
+```yaml
+Type: String
+Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetGroupObject
+The object representation of the group to add the member(s) to.
+
+```yaml
+Type: PSADGroup
+Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -TargetGroupObjectId
+The object id of the group to add the member(s) to.
+
+```yaml
+Type: Guid
+Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
 Required: True

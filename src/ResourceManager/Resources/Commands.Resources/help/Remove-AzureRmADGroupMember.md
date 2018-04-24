@@ -14,13 +14,43 @@ Removes a user from an AD group.
 
 ### ExplicitParameterSet (Default)
 ```
-Remove-AzureRmADGroupMember -MemberObjectId <Guid> -GroupObjectId <Guid> [-PassThru]
+Remove-AzureRmADGroupMember [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### MemberObjectIdWithGroupDisplayName
+```
+Remove-AzureRmADGroupMember -MemberObjectId <Guid[]> -GroupDisplayName <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### GroupObjectParameterSet
+### MemberObjectIdWithGroupObject
 ```
-Remove-AzureRmADGroupMember -MemberObjectId <Guid> -GroupObject <PSADGroup> [-PassThru]
+Remove-AzureRmADGroupMember -MemberObjectId <Guid[]> -GroupObject <PSADGroup> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberObjectIdWithGroupObjectId
+```
+Remove-AzureRmADGroupMember -MemberObjectId <Guid[]> -GroupObjectId <Guid> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupDisplayNameParameterSet
+```
+Remove-AzureRmADGroupMember -MemberUserPrincipalName <String[]> -GroupDisplayName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObjectParameterSet
+```
+Remove-AzureRmADGroupMember -MemberUserPrincipalName <String[]> -GroupObject <PSADGroup> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### MemberUPNWithGroupObjectIdParameterSet
+```
+Remove-AzureRmADGroupMember -MemberUserPrincipalName <String[]> -GroupObjectId <Guid> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,12 +92,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GroupDisplayName
+The display name of the group to remove the member(s) from.
+
+```yaml
+Type: String
+Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberUPNWithGroupDisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -GroupObject
 The object representation of the group to remove the member from.
 
 ```yaml
 Type: PSADGroup
-Parameter Sets: GroupObjectParameterSet
+Parameter Sets: MemberObjectIdWithGroupObject, MemberUPNWithGroupObjectParameterSet
 Aliases:
 
 Required: True
@@ -82,13 +127,13 @@ The object id of the group to remove the member from.
 
 ```yaml
 Type: Guid
-Parameter Sets: ExplicitParameterSet
+Parameter Sets: MemberObjectIdWithGroupObjectId, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,26 +141,27 @@ Accept wildcard characters: False
 The object id of the member.
 
 ```yaml
-Type: Guid
-Parameter Sets: ExplicitParameterSet
+Type: Guid[]
+Parameter Sets: MemberObjectIdWithGroupDisplayName, MemberObjectIdWithGroupObject, MemberObjectIdWithGroupObjectId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: Guid
-Parameter Sets: GroupObjectParameterSet
+### -MemberUserPrincipalName
+The UPN of the member(s) to remove.```yaml
+Type: String[]
+Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

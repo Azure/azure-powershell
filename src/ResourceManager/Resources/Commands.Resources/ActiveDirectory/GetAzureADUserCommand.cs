@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -26,9 +27,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     public class GetAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
-            HelpMessage = "The user search string.")]
+            HelpMessage = "Used to find users that begin with the provided string.")]
+        [Alias("SearchString")]
         [ValidateNotNullOrEmpty]
-        public string SearchString { get; set; }
+        public string StartsWith { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the user.")]
+        public string DisplayName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The user object id.")]
@@ -54,7 +59,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 ADObjectFilterOptions options = new ADObjectFilterOptions
                 {
-                    SearchString = SearchString,
+                    SearchString = this.IsParameterBound(c => c.StartsWith) ? StartsWith + "*" : DisplayName,
                     UPN = UserPrincipalName,
                     Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
                     Paging = true,

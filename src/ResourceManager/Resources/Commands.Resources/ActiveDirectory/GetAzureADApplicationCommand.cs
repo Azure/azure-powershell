@@ -36,9 +36,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateGuidNotEmpty]
         public Guid ApplicationId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationDisplayName, HelpMessage = "The display name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString, HelpMessage = "Used to find applications that begin with the provided string.")]
         [ValidateNotNullOrEmpty]
         public string DisplayNameStartWith { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the application.")]
+        public string DisplayName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdentifierUri, HelpMessage = "The identifierUri of the application.")]
         [ValidateNotNullOrEmpty]
@@ -68,6 +71,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     else if (this.IsParameterBound(c => c.IdentifierUri))
                     {
                         odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.IdentifierUris.Contains(IdentifierUri));
+                    }
+                    else if (this.IsParameterBound(c => c.DisplayName))
+                    {
+                        odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.DisplayName == DisplayName);
                     }
 
                     ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;

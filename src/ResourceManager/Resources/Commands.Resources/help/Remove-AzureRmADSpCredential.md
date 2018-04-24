@@ -25,6 +25,12 @@ Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-Pa
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### DisplayNameWithKeyIdParameterSet
+```
+Remove-AzureRmADSpCredential -DisplayName <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ServicePrincipalObjectParameterSet
 ```
 Remove-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-KeyId <Guid>] [-PassThru]
@@ -80,6 +86,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the service principal.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameWithKeyIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
 Switch to delete credential without a confirmation.
 
@@ -101,7 +122,7 @@ The key Ids for a service principal can be obtained using the Get-AzureRmADSpCre
 
 ```yaml
 Type: Guid
-Parameter Sets: (All)
+Parameter Sets: ObjectIdWithKeyIdParameterSet, SPNWithKeyIdParameterSet, ServicePrincipalObjectParameterSet
 Aliases:
 
 Required: False

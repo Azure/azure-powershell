@@ -48,11 +48,23 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public PSADServicePrincipal InputObject { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The display name for the application.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithDisplayName, HelpMessage = "The display name for the application.")]
-        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.InputObjectWithDisplayName, HelpMessage = "The display name for the application")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The display name for the service principal.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPNWithDisplayName, HelpMessage = "The display name for the service principal.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithDisplayName, HelpMessage = "The display name for the service principal.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The homepage for the service principal.")]
+        public string Homepage { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The identifier URI(s) for the service principal.")]
+        public string[] IdentifierUri { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The key credential(s) for the service principal.")]
+        public KeyCredential[] KeyCredential { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The password credential(s) for the service principal.")]
+        public PasswordCredential[] PasswordCredential { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -90,7 +102,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 var applicationObjectId = sp.Id;
                 ApplicationUpdateParameters parameters = new ApplicationUpdateParameters()
                 {
-                    DisplayName = DisplayName
+                    DisplayName = DisplayName,
+                    Homepage = Homepage,
+                    IdentifierUris = IdentifierUri,
+                    KeyCredentials = KeyCredential,
+                    PasswordCredentials = PasswordCredential
                 };
 
                 if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))

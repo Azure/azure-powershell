@@ -29,8 +29,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
             HelpMessage = "The service principal search string.")]
+        [Alias("SearchString")]
         [ValidateNotNullOrEmpty]
-        public string SearchString { get; set; }
+        public string DisplayNameBeginsWith { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The service principal display name.")]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The service principal object id.")]
@@ -75,9 +80,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(ServicePrincipalName));
                 }
-                else if (this.IsParameterBound(c => c.SearchString))
+                else if (this.IsParameterBound(c => c.DisplayNameBeginsWith))
                 {
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(SearchString));
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(DisplayNameBeginsWith));
+                }
+                else if (this.IsParameterBound(c => c.DisplayName))
+                {
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName == DisplayName);
                 }
 
                 ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;

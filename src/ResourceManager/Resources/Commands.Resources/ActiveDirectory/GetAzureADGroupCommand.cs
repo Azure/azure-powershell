@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -26,9 +27,13 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     public class GetAzureADGroupCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
-            HelpMessage = "The user or group name.")]
+            HelpMessage = "Used to find groups that begin with the provided string.")]
+        [Alias("SearchString")]
         [ValidateNotNullOrEmpty]
-        public string SearchString { get; set; }
+        public string DisplayNameStartsWith { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the group.")]
+        public string DisplayName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "The group id.")]
@@ -43,7 +48,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 ADObjectFilterOptions options = new ADObjectFilterOptions
                 {
-                    SearchString = SearchString,
+                    SearchString = this.IsParameterBound(c => c.DisplayNameStartsWith) ? DisplayNameStartsWith + "*" : DisplayName,
                     Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
                     Paging = true
                 };

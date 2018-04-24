@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
     public class PSResource
     {
+        public string ResourceId { get; set; }
+
         public string Id { get; set; }
 
         public Identity Identity { get; set; }
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public PSResource(GenericResource resource)
         {
+            this.ResourceId = resource.Id;
             this.Id = resource.Id;
             this.Identity = resource.Identity;
             this.Kind = resource.Kind;

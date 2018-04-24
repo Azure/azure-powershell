@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                                 instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
                                 instance.ClientFactory.GetCustomHandlers());
                             client.SubscriptionId = context.Subscription.Id;
-                            // Retrieve only the first page of ResourceGroups to display to the user
+                            // Retrieve only the first page of ResourceGroups to use for scopes
                             var resourceGroups = client.ResourceGroups.ListAsync();
                             if (resourceGroups.Wait(TimeSpan.FromSeconds(_timeout)))
                             {

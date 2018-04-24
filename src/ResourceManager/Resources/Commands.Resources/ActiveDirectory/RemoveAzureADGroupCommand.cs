@@ -15,6 +15,7 @@
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Linq;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
@@ -27,6 +28,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The object id of the group to be removed.")]
         [ValidateNotNullOrEmpty]
         public Guid ObjectId { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the group to be removed.")]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The object representation of the group to be removed.")]
         [ValidateNotNullOrEmpty]
@@ -45,6 +50,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 if (this.IsParameterBound(c => c.InputObject))
                 {
                     ObjectId = InputObject.Id;
+                }
+                else if (this.IsParameterBound(c => c.DisplayName))
+                {
+                    var group = ActiveDirectoryClient.GetGroupByDisplayName(DisplayName);
+                    ObjectId = group.Id;
                 }
 
                 ConfirmAction(

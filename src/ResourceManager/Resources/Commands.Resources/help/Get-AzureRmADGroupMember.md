@@ -15,8 +15,14 @@ Lists members of an AD group in the current tenant.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzureRmADGroupMember [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
- [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+Get-AzureRmADGroupMember [-GroupObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzureRmADGroupMember -GroupDisplayName <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
@@ -72,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -First
-Gets the first N objects.
+The maximum number of objects to return.
 
 ```yaml
 Type: UInt64
@@ -80,6 +86,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GroupDisplayName
+The display name of the group.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -101,6 +122,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -GroupObjectId
+Object Id of the group.
+
+```yaml
+Type: Guid
+Parameter Sets: ObjectIdParameterSet
+Aliases: Id, ObjectId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -IncludeTotalCount
 Reports the number of objects in the data set. Currently, this parameter does nothing.
 
@@ -113,21 +149,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ObjectId
-Object Id of the group.
-
-```yaml
-Type: Guid
-Parameter Sets: ObjectIdParameterSet
-Aliases: Id, GroupObjectId
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

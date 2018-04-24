@@ -30,8 +30,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "Object Id of the group.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Id", "GroupObjectId")]
-        public Guid ObjectId { get; set; }
+        [Alias("Id", "ObjectId")]
+        public Guid GroupObjectId { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the group.")]
+        [ValidateNotNullOrEmpty]
+        public string GroupDisplayName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.GroupObject, HelpMessage = "The group object.")]
         [ValidateNotNullOrEmpty]
@@ -43,19 +47,24 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.GroupObject))
                 {
-                    ObjectId = GroupObject.Id;
+                    GroupObjectId = GroupObject.Id;
+                }
+                else if (this.IsParameterBound(c => c.GroupDisplayName))
+                {
+                    var targetGroup = ActiveDirectoryClient.GetGroupByDisplayName(GroupDisplayName);
+                    GroupObjectId = targetGroup.Id;
                 }
 
                 ADObjectFilterOptions options = new ADObjectFilterOptions
                 {
-                    Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
+                    Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
                     Paging = true
                 };
 
                 PSADObject group = ActiveDirectoryClient.FilterGroups(options).FirstOrDefault();
                 if (group == null)
                 {
-                    throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, ObjectId));
+                    throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, GroupObjectId));
                 }
 
                 ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;

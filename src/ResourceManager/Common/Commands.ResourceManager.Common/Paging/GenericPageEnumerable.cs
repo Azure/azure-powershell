@@ -21,14 +21,14 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Paging
 {
-    public class PageEnumerable<T> : IEnumerable<T>, IDisposable
+    public class GenericPageEnumerable<T> : IEnumerable<T>, IDisposable
     {
         private Func<IPage<T>> _list;
         private Func<string, IPage<T>> _listNext;
         private ulong _first;
         private ulong _skip;
 
-        public PageEnumerable(Func<IPage<T>> list, Func<string, IPage<T>> listNext, ulong first, ulong skip)
+        public GenericPageEnumerable(Func<IPage<T>> list, Func<string, IPage<T>> listNext, ulong first, ulong skip)
         {
             _list = list;
             _listNext = listNext;
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Paging
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new PageEnumerator<T>(_list, _listNext, _first, _skip);
+            return new GenericPageEnumerator<T>(_list, _listNext, _first, _skip);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

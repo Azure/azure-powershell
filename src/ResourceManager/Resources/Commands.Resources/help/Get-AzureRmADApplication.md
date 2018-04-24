@@ -31,10 +31,16 @@ Get-AzureRmADApplication -ApplicationId <Guid> [-DefaultProfile <IAzureContextCo
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
-### ApplicationDisplayNameParameterSet
+### SearchStringParameterSet
 ```
 Get-AzureRmADApplication -DisplayNameStartWith <String> [-DefaultProfile <IAzureContextContainer>]
  [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzureRmADApplication -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ApplicationIdentifierUriParameterSet
@@ -114,12 +120,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the application.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DisplayNameStartWith
 Fetch all applications starting with the display name.
 
 ```yaml
 Type: String
-Parameter Sets: ApplicationDisplayNameParameterSet
+Parameter Sets: SearchStringParameterSet
 Aliases:
 
 Required: True
@@ -130,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -First
-Gets the first N objects.
+The maximum number of objects to return.
 
 ```yaml
 Type: UInt64

@@ -21,7 +21,13 @@ Get-AzureRmADUser [-UserPrincipalName <String>] [-DefaultProfile <IAzureContextC
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADUser -SearchString <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+Get-AzureRmADUser -StartsWith <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzureRmADUser -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
  [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
@@ -97,8 +103,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the user.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -First
-Gets the first N objects.
+The maximum number of objects to return.
 
 ```yaml
 Type: UInt64
@@ -157,21 +178,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SearchString
-The user display name
-
-```yaml
-Type: String
-Parameter Sets: SearchStringParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Skip
 Ignores the first N objects and then gets the remaining objects.
 
@@ -184,6 +190,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StartsWith
+Used to find users that begin with the provided string.
+
+```yaml
+Type: String
+Parameter Sets: SearchStringParameterSet
+Aliases: SearchString
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
