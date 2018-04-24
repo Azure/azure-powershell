@@ -252,13 +252,8 @@ Specifies the client ID of the Azure AD application that has permissions to writ
 
 ```yaml
 Type: String
-<<<<<<< HEAD
 Parameter Sets: AADClientCertParameterSet, AADClientSecretParameterSet
 Aliases: 
-=======
-Parameter Sets: (All)
-Aliases:
->>>>>>> upstream/preview
 
 Required: True
 Position: 2
