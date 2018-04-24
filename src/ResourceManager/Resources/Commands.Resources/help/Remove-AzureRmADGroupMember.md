@@ -153,7 +153,9 @@ Accept wildcard characters: False
 ```
 
 ### -MemberUserPrincipalName
-The UPN of the member(s) to remove.```yaml
+The UPN of the member(s) to remove.
+
+```yaml
 Type: String[]
 Parameter Sets: MemberUPNWithGroupDisplayNameParameterSet, MemberUPNWithGroupObjectParameterSet, MemberUPNWithGroupObjectIdParameterSet
 Aliases:
