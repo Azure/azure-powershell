@@ -14,11 +14,12 @@ Creates a new Connection Info object specifying the server type and name for con
 
 ```
 New-AzureRmDataMigrationConnectionInfo -ServerType <ServerTypeEnum> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The New-AzureRmDataMigrationConnectionInfo cmdlet creates new a Connection Info object specifying the server type for connection. 
+
+
 
 ## EXAMPLES
 
@@ -26,8 +27,8 @@ The New-AzureRmDataMigrationConnectionInfo cmdlet creates new a Connection Info 
 ```
 PS C:\> New-AzureRmDmsConnInfo -ServerType SQL -DataSource mySourceServer -AuthType SqlAuthentication -TrustServerCertificate:$true
 ```
-
 The preceding example creates a new Connection Info object providing SQL as ServerType parameter.
+
 
 ## PARAMETERS
 
@@ -45,7 +46,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -62,13 +62,60 @@ Accept wildcard characters: False
 ```
 
 ### -ServerType
-Enum that describes server type to connect to. Currently supported values are SQL for SQL Server and SQLDB for SQL Azure Database. 
+Enum that describes server type to connect to. Currently supported values are SQL for SQL Server, Azure SQL Managed Instance and Azure SQL Database. 
 
 ```yaml
 Type: ServerTypeEnum
 Parameter Sets: (All)
 Aliases: 
-Accepted values: SQL, SQLDB
+Accepted values: SQL
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+### -AuthType
+Authentication type to use for connection. Possible values are SqlAuthentication and WindowsAuthentication
+
+```yaml
+Type: AuthenticationTypeEnum
+Parameter Sets: (All)
+Aliases: 
+Accepted values: SQL
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataSource
+Server address\name to connect to. 
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: SQL
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TrustServerCertificate
+Boolean indicating to guarantee that encryption takes place.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: 
+Accepted values: SQL
 
 Required: True
 Position: Named
@@ -93,16 +140,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
+
+
 
 ## INPUTS
 
 ### None
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo
+
 
 ## NOTES
 
