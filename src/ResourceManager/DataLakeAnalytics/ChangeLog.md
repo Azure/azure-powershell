@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.2.4
+## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
 
 ## Version 4.2.3

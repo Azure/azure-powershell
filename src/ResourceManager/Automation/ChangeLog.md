@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.4.0
+## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Remove deprecated `Tags` alias from cmdlets
     - `Set-AzureRmAutomationRunbook`
