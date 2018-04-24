@@ -31,14 +31,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public static NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> CreateFrontendIPConfiguration(
             this ResourceConfig<LoadBalancer> loadBalancer,
             string name,
-            IList<string> zones,
             ResourceConfig<PublicIPAddress> publicIpAddress)
                 => loadBalancer.CreateNested(
                     strategy: Strategy,
                     name: name,
                     createModel: engine => new FrontendIPConfiguration
                     {
-                        Zones = zones,
                         PublicIPAddress = engine.GetReference(publicIpAddress)
                     });
     }

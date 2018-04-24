@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "Azure CDN profile object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSProfile CdnProfile { get; set; }
-        
+
         [Parameter(Mandatory = true, HelpMessage = "The location of the CDN endpoint.", ParameterSetName = FieldsParameterSet)]
         [LocationCompleter("Microsoft.Cdn/profiles/endpoints")]
         [ValidateNotNullOrEmpty]
@@ -90,13 +90,17 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [Parameter(Mandatory = false, HelpMessage = "Specifies any optimization this endpoint has.")]
         public string OptimizationType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the probe path for Dynamic Site Acceleration")]
+        public string ProbePath { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The list of geo filters that applies to this endpoint.")]
         public PSGeoFilter[] GeoFilters { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The delivery policy for this endpoint.")]
+        public PSDeliveryPolicy DeliveryPolicy { get; set; }
+
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
-        [Obsolete("New-AzureRmCdnEndpoint: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
@@ -120,12 +124,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             ConfirmAction(MyInvocation.InvocationName,
                 EndpointName,
                 () => NewEndpoint());
-          
+
         }
 
         private void NewEndpoint()
         {
-#pragma warning disable CS0618
             var endpoint = CdnManagementClient.Endpoints.Create(
                 ResourceGroupName,
                 ProfileName,
@@ -143,10 +146,11 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                             QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
                             (QueryStringCachingBehavior?)null,
                 OptimizationType = OptimizationType,
-                GeoFilters = GeoFilters == null ? null : GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
+                ProbePath = ProbePath,
+                GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
+                DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
                 Tags = Tag.ToDictionaryTags()
             });
-#pragma warning restore CS0618
 
             WriteVerbose(Resources.Success);
             WriteObject(endpoint.ToPsEndpoint());

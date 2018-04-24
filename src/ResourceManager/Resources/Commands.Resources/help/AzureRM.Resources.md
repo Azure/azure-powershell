@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.Resources
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US

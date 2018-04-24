@@ -1,6 +1,6 @@
 ﻿---
 Module Name: AzureRM.Backup
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+Module Guid: 0b1d76f5-a928-4b8f-9c83-df26947568d4
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US

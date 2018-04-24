@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     public class GetAzureContainerRegistryCredential : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             else if (MyInvocation.BoundParameters.ContainsKey("ResourceId") || !string.IsNullOrWhiteSpace(ResourceId))
             {
                 string resourceGroup, registryName, childResourceName;
-                if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
+                if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
                 {
                     WriteInvalidResourceIdError(InvalidRegistryResourceIdErrorMessage);
                     return;
