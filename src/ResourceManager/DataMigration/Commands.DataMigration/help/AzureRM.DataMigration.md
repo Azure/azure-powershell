@@ -37,8 +37,8 @@ Locale: en-US
 ### [New-AzureRmDataMigrationSqlServerSqlDbSelectedDB](New-AzureRmDataMigrationSqlServerSqlDbSelectedDB.md)
 {{Creates a MigrateSqlServerSqlDbDatabaseInput object that contains information about source and target databases for migration.}}
 
-### [New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB](New-AzureRmDataMigrationSqlServerSqlDbMiSelectedDB.md)
-{{Creates a MigrateSqlServerSqlDbMiDatabaseInput object that contains information about source and target databases for migration.}}
+### [New-AzureRmDataMigrationSelectedDB](New-AzureRmDataMigrationSelectedDB.md)
+{{Creates a Database info object that contains information about source and target databases for migration.}}
 
 ### [New-AzureRmDataMigrationTask](New-AzureRmDataMigrationTask.md)
 {{Creates and starts a data migration task in the Azure Database Migration Service.}}

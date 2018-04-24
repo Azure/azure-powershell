@@ -31,7 +31,20 @@ The New-AzureRmDataMigrationSelectedDB cmdlet creates a database info object tha
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDataMigrationSelectedDB -Name "HR" -RestoreDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
+PS C:\> New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name "HR" -TargetDatabaseName "HR_PSTEST" -TableMap $tableMap
+
+Name TargetDatabaseName MakeSourceDbReadOnly TableMap
+---- ------------------ -------------------- --------
+HR   HR_PSTEST                         False {[HR.COUNTRIES, HR.COUNTRIES]}
+```
+
+### Example 2
+```
+PS C:\> New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST" -BackupFileShare $backupFileShare
+
+Name RestoreDatabaseName BackupFileShare
+---- ------------------- ---------------
+HR   HRTest              Microsoft.Azure.Management.DataMigration.Models.FileShare
 ```
 
 ## PARAMETERS

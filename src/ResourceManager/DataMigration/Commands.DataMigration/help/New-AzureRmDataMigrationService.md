@@ -24,7 +24,7 @@ The New-AzureRmDataMigrationService cmdlet creates a new instance of the Azure D
 
 ### Example 1
 ```
-PS C:\> New-AzureRmDataMigrationService -ResourceGroupName myResourceGroup -ServiceName TestService -Location "Central US" -Sku Basic_2vCores -VirtualSubnetId $virtualSubNetId
+PS C:\> New-AzureRmDataMigrationService -ResourceGroupName myResourceGroup -Name TestService -Location "Central US" -Sku Basic_2vCores -VirtualSubnetId $virtualSubNetId
 ```
 
 The above example shows how to create a new instance of the Azure Database Migration Service named TestService in Central US region.
