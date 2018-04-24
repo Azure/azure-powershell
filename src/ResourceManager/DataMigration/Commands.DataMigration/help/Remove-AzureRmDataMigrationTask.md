@@ -190,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Data Migration Service Name.
+Database Migration Service Name.
 
 ```yaml
 Type: String

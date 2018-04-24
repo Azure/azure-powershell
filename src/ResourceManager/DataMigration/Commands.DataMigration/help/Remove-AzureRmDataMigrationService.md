@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Data Migration Service.
+The name of the Database Migration Service.
 
 ```yaml
 Type: String

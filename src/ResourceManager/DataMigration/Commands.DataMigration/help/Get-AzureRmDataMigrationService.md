@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Data Migration Service.
+Name of Database Migration Service.
 
 ```yaml
 Type: String

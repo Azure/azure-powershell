@@ -59,13 +59,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            HelpMessage = "Data Migration Service Name.")]
+            HelpMessage = "Database Migration Service Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The location of the instance of the Data Migration Service")]
+            HelpMessage = "The location of the instance of the Database Migration Service")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

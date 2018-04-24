@@ -32,7 +32,7 @@ New-AzureRmDataMigrationTask [-ResourceId] <String> -TaskType <TaskTypeEnum> -Na
 ```
 
 ## DESCRIPTION
-The New-AzureRmDataMigrationTask cmdlet creates data migration task. This cmdlet takes in parameters for Task Type enumerator, Azure Resource Group, name of associated Azure Data Migration Service and Project as input. 
+The New-AzureRmDataMigrationTask cmdlet creates data migration task. This cmdlet takes in parameters for Task Type enumerator, Azure Resource Group, name of associated Azure Database Migration Service and Project as input. 
 
 ## EXAMPLES
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceName
-Data Migration Service Name.
+Database Migration Service Name.
 
 ```yaml
 Type: String
