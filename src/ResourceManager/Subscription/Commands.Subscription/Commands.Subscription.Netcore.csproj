@@ -13,13 +13,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Subscription.Preview.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Subscription.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Subscription.Preview.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Subscription.Netcore\</OutputPath>
     <DocumentationFile />
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Subscription.Preview.Netcore.psd1" Link="AzureRM.Subscription.Preview.Netcore.psd1">
+    <None Include="..\AzureRM.Subscription.Netcore.psd1" Link="AzureRM.Subscription.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

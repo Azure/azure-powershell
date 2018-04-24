@@ -134,9 +134,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            WriteWarning("Set-AzureRmVmssStorageProfile: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
-
             if (this.MyInvocation.BoundParameters.ContainsKey("ImageReferencePublisher"))
             {
                 // VirtualMachineProfile
@@ -381,8 +378,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.MyInvocation.BoundParameters.ContainsKey("ManagedDisk"))
             {
-                WriteWarning("Set-AzureRmVmssStorageProfile: The accepted values for parameter ManagedDisk will change in an upcoming breaking change release " +
-                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
                 {

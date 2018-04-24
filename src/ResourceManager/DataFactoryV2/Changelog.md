@@ -20,6 +20,13 @@
 
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Updated the ADF .Net SDK version to 0.7.0-preview containing following changes:
+    - Added execution parameters and connection managers property on ExecuteSSISPackage Activity
+    - Updated PostgreSql, MySql llinked service to use full connection string instead of server, database, schema, username and password
+    - Removed the schema from DB2 linked service
+    - Removed schema property from Teradata linked service
+    - Added LinkedService, Dataset, CopySource for Responsys
+
 
 ## Version 0.5.3
 * Updated to the latest version of the Azure ClientRuntime

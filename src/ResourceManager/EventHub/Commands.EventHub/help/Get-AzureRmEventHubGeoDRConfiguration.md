@@ -44,6 +44,7 @@ Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourc
 Type              : Microsoft.EventHub/Namespaces/disasterrecoveryconfigs
 ProvisioningState : Accepted
 PartnerNamespace  : SampleNamespace_Secondary
+AlternateName	  :
 Role              : Primary
 ```
 
