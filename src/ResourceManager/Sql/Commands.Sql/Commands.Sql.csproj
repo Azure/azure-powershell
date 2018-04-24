@@ -84,6 +84,17 @@
     <Compile Include="Failover Group\Model\AllowReadOnlyFailoverToPrimary.cs" />
     <Compile Include="Failover Group\Services\AzureSqlFailoverGroupAdapter.cs" />
     <Compile Include="Failover Group\Services\AzureSqlFailoverGroupCommunicator.cs" />
+    <Compile Include="Instance Failover Group\Cmdlet\AzureSqlInstanceFailoverGroupCmdletBase.cs" />
+    <Compile Include="Instance Failover Group\Cmdlet\GetAzureSqlInstanceFailoverGroup.cs" />
+    <Compile Include="Instance Failover Group\Cmdlet\NewAzureSqlInstanceFailoverGroup.cs" />
+    <Compile Include="Instance Failover Group\Cmdlet\RemoveAzureSqlInstanceFailoverGroup.cs" />
+    <Compile Include="Instance Failover Group\Cmdlet\SetAzureSqlInstanceFailoverGroup.cs" />
+    <Compile Include="Instance Failover Group\Cmdlet\Switch-AzureSqlDatabaseInstanceFailoverGroup.cs" />
+    <Compile Include="Instance Failover Group\Model\AzureSqlInstanceFailoverGroupModel.cs" />
+    <Compile Include="Instance Failover Group\Model\FailoverPolicy.cs" />
+    <Compile Include="Instance Failover Group\Model\AllowReadOnlyFailoverToPrimary.cs" />
+    <Compile Include="Instance Failover Group\Services\AzureSqlInstanceFailoverGroupAdapter.cs" />
+    <Compile Include="Instance Failover Group\Services\AzureSqlInstanceFailoverGroupCommunicator.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlElasticPoolRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlServerRecommendedActionCmdletBase.cs" />
@@ -457,7 +468,7 @@
     </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.13.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.13.1-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
