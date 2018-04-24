@@ -54,7 +54,6 @@
     <Compile Include="Cmdlets\NewConnectionInfoCmdlet.cs" />
     <Compile Include="Cmdlets\NewDatabaseInfoCmdlet.cs" />
     <Compile Include="Cmdlets\NewDataMigrationSelectedDB.cs" />
-    <Compile Include="Cmdlets\NewDataMigrationSqlServerSqlDbSelectedDB.cs" />
     <Compile Include="Cmdlets\NewDataMigrationTask.cs" />
     <Compile Include="Cmdlets\NewProjectCmdlet.cs" />
     <Compile Include="Cmdlets\RemoveDataMigrationProject.cs" />
@@ -103,6 +102,10 @@
       <Link>AzureRM.DataMigration.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="..\AzureRM.DataMigration.Netcore.psd1">
+      <Link>AzureRM.DataMigration.Netcore.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +118,6 @@
     <None Include="help\New-AzureRmDataMigrationFileShare.md" />
     <None Include="help\New-AzureRmDataMigrationProject.md" />
     <None Include="help\New-AzureRmDataMigrationService.md" />
-    <None Include="help\New-AzureRmDataMigrationSqlServerSqlDbSelectedDB.md" />
     <None Include="help\New-AzureRmDataMigrationTask.md" />
     <None Include="help\Remove-AzureRmDataMigrationProject.md" />
     <None Include="help\Remove-AzureRmDataMigrationService.md" />

@@ -77,7 +77,6 @@ CmdletsToExport =
       'New-AzureRmDataMigrationConnectionInfo', 
       'New-AzureRmDataMigrationProject', 
       'Remove-AzureRmDataMigrationProject', 
-      'New-AzureRmDataMigrationSqlServerSqlDbSelectedDB', 
       'Get-AzureRmDataMigrationProject', 
       'Get-AzureRmDataMigrationService', 
       'New-AzureRmDataMigrationService', 
@@ -102,7 +101,7 @@ AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject
                'Remove-AzureRmDms', 'Remove-AzureRmDmsTask', 
                'Start-AzureRmDmsService', 'Stop-AzureRmDmsTask', 
                'Stop-AzureRmDmsService',
-               'New-AzureRmDataMigrationSelectedDB',
+               'New-AzureRmDmsSelectedDB',
                'New-AzureRmDmsFileShare'
 
 # DSC resources to export from this module

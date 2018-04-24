@@ -34,9 +34,6 @@ Locale: en-US
 ### [New-AzureRmDataMigrationService](New-AzureRmDataMigrationService.md)
 {{Creates a new instance of the Azure Database Migration Service.}}
 
-### [New-AzureRmDataMigrationSqlServerSqlDbSelectedDB](New-AzureRmDataMigrationSqlServerSqlDbSelectedDB.md)
-{{Creates a MigrateSqlServerSqlDbDatabaseInput object that contains information about source and target databases for migration.}}
-
 ### [New-AzureRmDataMigrationSelectedDB](New-AzureRmDataMigrationSelectedDB.md)
 {{Creates a Database info object that contains information about source and target databases for migration.}}
 
