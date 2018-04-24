@@ -99,7 +99,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
                 else
                 {
-                    FileUtilities.EnsureDirectoryExists(profileDirectory);
+                    string directoryPath = Path.GetDirectoryName(profileDirectory);
+                    if (!store.DirectoryExists(directoryPath))
+                    {
+                        store.CreateDirectory(directoryPath);
+                    }
                     string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                     result.Mode = ContextSaveMode.CurrentUser;
