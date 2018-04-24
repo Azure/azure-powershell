@@ -43,37 +43,37 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }   
 
-            // TODO To be removed later once NRP fix is checked in.
-            var peering = this.ExpressRouteCircuit.Peerings.First(
-                            resource =>
-                            string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
+            //// TODO To be removed later once NRP fix is checked in.
+            //var peering = this.ExpressRouteCircuit.Peerings.First(
+            //                resource =>
+            //                string.Equals(resource.Name, "AzurePrivatePeering", System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (peering != null)
-            {
-                if (peering.Connections.Any())
-                {
-                    var connection = peering.Connections.First();
+            //if (peering != null)
+            //{
+            //    if (peering.Connections.Any())
+            //    {
+            //        var connection = peering.Connections.First();
 
-                    // Create Circuit Connection
-                    if (connection != null)
-                    {
-                        WriteObject(connection);
-                        var circuitConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuitConnection>(connection);
-                        NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.CreateOrUpdate(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, "AzurePrivatePeering", connection.Name, circuitConnectionModel);
-                    }
-                }               
-            }
-            var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
-            WriteObject(getExpressRouteCircuit); // To be removed end
+            //        // Create Circuit Connection
+            //        if (connection != null)
+            //        {
+            //            WriteObject(connection);
+            //            var circuitConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuitConnection>(connection);
+            //            NetworkClient.NetworkManagementClient.ExpressRouteCircuitConnections.CreateOrUpdate(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, "AzurePrivatePeering", connection.Name, circuitConnectionModel);
+            //        }
+            //    }               
+            //}
+            //var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
+            //WriteObject(getExpressRouteCircuit); // To be removed end
 
             // Map to the sdk object
-            var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(getExpressRouteCircuit);
-            circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(getExpressRouteCircuit.Tag, validate: true);
+            var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(this.ExpressRouteCircuit);
+            circuitModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCircuit.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call
-            this.ExpressRouteCircuitClient.CreateOrUpdate(getExpressRouteCircuit.ResourceGroupName, getExpressRouteCircuit.Name, circuitModel);
+            this.ExpressRouteCircuitClient.CreateOrUpdate(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, circuitModel);
 
-            var updatedExpressRouteCircuit = this.GetExpressRouteCircuit(getExpressRouteCircuit.ResourceGroupName, getExpressRouteCircuit.Name);
+            var updatedExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
             WriteObject(updatedExpressRouteCircuit);
         }
     }
