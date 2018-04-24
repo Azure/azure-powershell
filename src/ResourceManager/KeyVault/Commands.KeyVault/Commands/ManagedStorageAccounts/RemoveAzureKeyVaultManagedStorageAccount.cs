@@ -16,14 +16,14 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Globalization;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        SupportsShouldProcess = true,
-         ConfirmImpact = ConfirmImpact.Medium,
-        HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( ManagedStorageAccount ) )]
+        SupportsShouldProcess = true)]
+    [OutputType( typeof( PSDeletedKeyVaultManagedStorageAccount ) )]
     public class RemoveAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -44,6 +44,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string AccountName { get; set; }
 
         /// <summary>
+        /// If present, operate on the deleted entity.
+        /// </summary>
+        [Parameter(Mandatory = false,
+                    HelpMessage = "Permanently remove the previously deleted managed storage account.")]
+        public SwitchParameter InRemovedState { get; set; }
+
+        /// <summary>
         /// If present, do not ask for confirmation
         /// </summary>
         [Parameter( Mandatory = false,
@@ -58,7 +65,25 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            ManagedStorageAccount managedManagedStorageAccount = null;
+            if (InRemovedState.IsPresent)
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveDeletedManagedStorageAccountWarning,
+                        AccountName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveDeletedManagedStorageAccountWhatIfMessage,
+                        AccountName),
+                    AccountName,
+                    () => { DataServiceClient.PurgeManagedStorageAccount(VaultName, AccountName); });
+
+                return;
+            }
+
+            PSDeletedKeyVaultManagedStorageAccount managedManagedStorageAccount = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(
