@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.2.2
 * Set minimum dependency of module to PowerShell 5.0
 * Support $web as Storage blob container name
 	- New-AzureStorageBlobContainer

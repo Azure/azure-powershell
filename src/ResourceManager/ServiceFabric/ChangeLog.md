@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.3.5
 * Update default Linux image version sku
   - NewAzureServiceFabricCluster.cs default UbuntuServer1604 Sku update
 * Set minimum dependency of module to PowerShell 5.0

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.7.0
 * `New-AzureRmVm` and `New-AzureRmVmss` support verbose output of parameters
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).
 * VMSS Redeploy and PerformMaintenance feature
