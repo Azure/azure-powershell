@@ -59,9 +59,9 @@ function Test-RestoreGeoBackup
 	# Setup
 	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
-	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb-geo2 -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName payi-testdb-geo2 -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_georestored"
 
 	$geobackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName 
@@ -74,8 +74,8 @@ function Test-RestoreDeletedDatabaseBackup
 	# Setup
 	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test2
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr2 -ResourceGroupName $rg.ResourceGroupName
 	$droppedDbName = "powershell_db_georestored"
 	$restoredDbName = "powershell_db_deleted"
 
@@ -89,13 +89,13 @@ function Test-RestorePointInTimeBackup
 	# Setup
 	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName payi-testdb -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_restored"
 
 	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | 
-	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2016-02-20T00:06:00Z" -TargetDatabaseName $restoredDbName
+	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredDbName
 }
 
 function Test-ServerBackupLongTermRetentionVault

@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 Properties = new DatabaseCreateOrUpdateProperties()
                 {
                     Collation = model.Database.CollationName,
-                    Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
+                    Edition = model.Database.Edition,
                     MaxSizeBytes = model.Database.MaxSizeBytes,
                     ElasticPoolName = model.Database.ElasticPoolName,
                     RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,

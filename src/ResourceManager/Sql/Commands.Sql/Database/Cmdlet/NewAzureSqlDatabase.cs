@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
@@ -65,17 +66,25 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the edition to assign to the Azure SQL Database
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
+            HelpMessage = "The edition to assign to the Azure SQL Database.")]
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
-        public DatabaseEdition Edition { get; set; }
+        [PSArgumentCompleter("None",
+            Management.Sql.Models.DatabaseEdition.Basic,
+            Management.Sql.Models.DatabaseEdition.Standard,
+            Management.Sql.Models.DatabaseEdition.Premium,
+            Management.Sql.Models.DatabaseEdition.DataWarehouse,
+            Management.Sql.Models.DatabaseEdition.Free,
+            Management.Sql.Models.DatabaseEdition.Stretch,
+            "GeneralPurpose", "BusinessCritical")]
+        public string Edition { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the service objective to assign to the Azure SQL Database
         /// </summary>
         [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
-            HelpMessage = "The name of the service objective to assign to the Azure SQL Database.")]
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
             HelpMessage = "The name of the service objective to assign to the Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         public string RequestedServiceObjectiveName { get; set; }
@@ -83,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Elastic Pool to put the database in
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the database in.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
@@ -127,7 +136,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
             HelpMessage = "The Vcore number for the Azure Sql database")]
-        public int Vcore { get; set; }
+        [Alias("Capacity")]
+        public int VCores { get; set; }
+
+        /// <summary>
+        /// Gets or sets the compute generation for the Azure Sql database
+        /// </summary>
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
+            HelpMessage = "The compute generation assign to the Azure SQL Database.")]
+        [Alias("Family")]
+        [PSArgumentCompleter("Gen4", "Gen5")]
+        public string ComputeGeneration { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -196,21 +215,32 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 {
                     newDbModel.Sku = new Management.Sql.Models.Sku()
                     {
-                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition.ToString() : RequestedServiceObjectiveName,
-                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null,
-                        Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : (int?)null
+                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition : RequestedServiceObjectiveName,
+                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : null
                     };
                 }
             }
             else
             {
-                string skuName = string.Format("{0}_{1}", RequestedServiceObjectiveName, Vcore);
+                string skuNamePrefix = null;
+                switch (Edition.ToLower())
+                {
+                    case GeneralPurpose:
+                        skuNamePrefix = "GP";
+                        break;
+                    case BusinessCritical:
+                        skuNamePrefix = "BC";
+                        break;
+                    default:
+                        throw new PSArgumentException("Invalid Edition value.");
+                }
 
                 newDbModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = skuName,
-                    Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition.ToString() : null,
-                    Capacity = Vcore
+                    Name = skuNamePrefix,
+                    Tier = Edition,
+                    Capacity = VCores,
+                    Family = ComputeGeneration
                 };
             }          
 

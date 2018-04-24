@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// <summary>
         /// Gets or sets the edition of the elastic pool
         /// </summary>
-        public SqlDatabaseModel.DatabaseEdition? Edition { get; set; }
+        public string Edition { get; set; }
 
         /// <summary>
         /// Gets or sets the ServiceLelObjectName name of the elastic pool

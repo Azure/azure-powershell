@@ -70,16 +70,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         {
             ICollection<AzureReplicationLinkModel> results;
 
-            //if (ParameterSetName == ByPartnerServerName)
-            //{
-            //    results = new List<AzureReplicationLinkModel>();
-            //    results.Add(ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName));
-            //}
-            //else
-            //{
-            //    results = ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
-            //}
-
             if (ParameterSetName == ByPartnerServerName)
             {
                 results = new List<AzureReplicationLinkModel>();

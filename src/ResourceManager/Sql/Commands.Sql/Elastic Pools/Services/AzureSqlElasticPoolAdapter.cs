@@ -340,9 +340,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The converted model</returns>
         private AzureSqlElasticPoolModel CreateElasticPoolModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ElasticPool pool)
         {
-            DatabaseEdition edition = DatabaseEdition.None;
-            Enum.TryParse<DatabaseEdition>(pool.Edition, out edition);
-
             AzureSqlElasticPoolModel model = new AzureSqlElasticPoolModel
             {
                 ResourceId = pool.Id,
@@ -355,7 +352,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Tags =
                     TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(pool.Tags), false),
                 Location = pool.Location,
-                Edition = edition,
+                Edition = pool.Edition,
                 ZoneRedundant = pool.ZoneRedundant,
                 Sku = pool.Sku,
                 PerDatabaseSettings = pool.PerDatabaseSettings,

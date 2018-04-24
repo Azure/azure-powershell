@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the edition of the database
         /// </summary>
-        public DatabaseEdition Edition { get; set; }
+        public string Edition { get; set; }
 
         /// <summary>
         /// Gets or sets the database collation
@@ -161,7 +161,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
         {
             Guid id = Guid.Empty;
-            DatabaseEdition edition = DatabaseEdition.None;
             DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
             ResourceGroupName = resourceGroup;
@@ -182,8 +181,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Guid.TryParse(database.Properties.DatabaseId, out id);
             DatabaseId = id;
 
-            Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
-            Edition = edition;
+            Edition = database.Properties.Edition;
 
             Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
             ReadScale = readScale;
@@ -199,7 +197,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <param name="database">Database object</param>
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
-            DatabaseEdition edition = DatabaseEdition.None;
             DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
             ResourceGroupName = resourceGroup;
@@ -221,8 +218,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             DatabaseId = database.DatabaseId.Value;
 
-            Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
-            Edition = edition;
+            Edition = database.Edition;
 
             RequestedServiceObjectiveName = database.RequestedServiceObjectiveName;
 
