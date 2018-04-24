@@ -32,6 +32,15 @@ function Get-ResourceName
 
 <#
 .SYNOPSIS
+Gets valid password string for a VM
+#>
+function Get-PasswordForVM
+{
+	return (getAssetName) + '_196Ab!@'
+}
+
+<#
+.SYNOPSIS
 Gets valid application display name
 #>
 function Get-ApplicatonDisplayName

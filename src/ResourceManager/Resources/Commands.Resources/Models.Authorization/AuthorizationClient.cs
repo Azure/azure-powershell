@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// </summary>
         /// <param name="name">The role name</param>
         /// <returns>The matched role Definitions</returns>
-        public List<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, bool scopeAndBelow = false)
+        public List<PSRoleDefinition> FilterRoleDefinitions(string name, string scope)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
 
@@ -112,12 +112,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             else if (options.CustomOnly)
             {
                 // Special case - if custom only flag is specified then you don't need to lookup on a specific id or name since it will be a bit redundant
-                return FilterRoleDefinitionsByCustom(options.Scope, options.ScopeAndBelow);
+                return FilterRoleDefinitionsByCustom(options.Scope);
             }
             else
             {
                 // If RoleDefinition name is not specified (null/empty), service will handle it and return all roles
-                return FilterRoleDefinitions(options.RoleDefinitionName, options.Scope, options.ScopeAndBelow);
+                return FilterRoleDefinitions(options.RoleDefinitionName, options.Scope);
             }
         }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Filters the existing role Definitions by CustomRole.
         /// </summary>
         /// <returns>The custom role Definitions</returns>
-        public List<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope, bool scopeAndBelow)
+        public List<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope)
         {
             List<PSRoleDefinition> result = new List<PSRoleDefinition>();
 			result.AddRange(AuthorizationManagementClient.RoleDefinitions.List(

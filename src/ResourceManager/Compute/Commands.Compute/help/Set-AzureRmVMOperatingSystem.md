@@ -28,6 +28,21 @@ Set-AzureRmVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### WindowsDisableVMAgent
+```
+Set-AzureRmVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
+ [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+ [[-TimeZone] <String>] [-WinRMHttp] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### WindowsDisableVMAgentWinRmHttps
+```
+Set-AzureRmVMOperatingSystem [-VM] <PSVirtualMachine> [-Windows] [-ComputerName] <String>
+ [-Credential] <PSCredential> [[-CustomData] <String>] [-DisableVMAgent] [-EnableAutoUpdate]
+ [[-TimeZone] <String>] [-WinRMHttp] [-WinRMHttps] [-WinRMCertificateUrl] <Uri>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### Linux
 ```
 Set-AzureRmVMOperatingSystem [-VM] <PSVirtualMachine> [-Linux] [-ComputerName] <String>
@@ -155,12 +170,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisableVMAgent
+Disable Provision VM Agent.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableAutoUpdate
 Indicates that this cmdlet enables auto update.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Windows, WindowsWinRmHttps
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
 Aliases:
 
 Required: False
@@ -205,7 +235,7 @@ Specifies the time zone for the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: Windows, WindowsWinRmHttps
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
 Aliases:
 
 Required: False
@@ -237,7 +267,7 @@ Indicates that the type of operating system is Windows.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Windows, WindowsWinRmHttps
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
 Aliases:
 
 Required: True
@@ -253,7 +283,7 @@ This needs to be stored in a Key Vault.
 
 ```yaml
 Type: Uri
-Parameter Sets: WindowsWinRmHttps
+Parameter Sets: WindowsWinRmHttps, WindowsDisableVMAgentWinRmHttps
 Aliases:
 
 Required: True
@@ -268,7 +298,7 @@ Indicates that this operating system uses HTTP WinRM.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Windows, WindowsWinRmHttps
+Parameter Sets: Windows, WindowsWinRmHttps, WindowsDisableVMAgent, WindowsDisableVMAgentWinRmHttps
 Aliases:
 
 Required: False
@@ -283,7 +313,7 @@ Indicates that this operating system uses HTTPS WinRM.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: WindowsWinRmHttps
+Parameter Sets: WindowsWinRmHttps, WindowsDisableVMAgentWinRmHttps
 Aliases:
 
 Required: True
