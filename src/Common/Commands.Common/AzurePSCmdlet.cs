@@ -137,13 +137,50 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected abstract string DataCollectionWarning { get; }
 
+        private SessionState _sessionState;
+
+        public new SessionState SessionState
+        {
+            get
+            {
+                return _sessionState;
+            }
+            set
+            {
+                _sessionState = value;
+            }
+        }
+
+        private RuntimeDefinedParameterDictionary _asJobDynamicParameters;
+
+        public RuntimeDefinedParameterDictionary AsJobDynamicParameters
+        {
+            get
+            {
+                if (_asJobDynamicParameters == null)
+                {
+                    _asJobDynamicParameters = new RuntimeDefinedParameterDictionary();
+                }
+                return _asJobDynamicParameters;
+            }
+            set
+            {
+                _asJobDynamicParameters = value;
+            }
+        }
+
         /// <summary>
         /// Initializes AzurePSCmdlet properties.
         /// </summary>
         public AzurePSCmdlet()
         {
             DebugMessages = new ConcurrentQueue<string>();
+        }
 
+        // Register Dynamic Parameters for use in long running jobs
+        public void RegisterDynamicParameters(RuntimeDefinedParameterDictionary parameters)
+        {
+            this.AsJobDynamicParameters = parameters;
         }
 
 
@@ -252,6 +289,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
+            SessionState = base.SessionState;
             var profile = _dataCollectionProfile;
             //TODO: Inject from CI server
             lock (lockObject)
