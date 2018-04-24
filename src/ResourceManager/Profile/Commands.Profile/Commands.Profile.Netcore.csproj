@@ -53,7 +53,7 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Keyvault\Common.Keyvault.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>

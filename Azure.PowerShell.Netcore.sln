@@ -147,7 +147,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "src\Storage\Commands.Storage\Commands.Storage.Netcore.csproj", "{4F18000A-0329-4450-ADC8-8AA1C04A4666}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Keyvault.Netcore", "src\Common\Commands.Common.Keyvault\Common.Keyvault.Netcore.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.KeyVault.Netcore", "src\Common\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
