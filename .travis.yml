@@ -5,7 +5,7 @@ dotnet: 2.1.2
 dist: trusty
 
 env:
-  - NAME="azure-powershell-core" CONFIG="Release"
+  - NAME="azure-powershell-core" CONFIG="Debug"
 
 services:
  - docker
@@ -21,6 +21,7 @@ before_install:
 
 script:
  - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=$CONFIG
+ - dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter="AcceptanceType=CheckIn" --configuration $CONFIG
  
 after_success:
  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then

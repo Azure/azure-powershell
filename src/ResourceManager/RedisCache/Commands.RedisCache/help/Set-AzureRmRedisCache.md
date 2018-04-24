@@ -15,9 +15,9 @@ Modifies a Redis Cache.
 
 ```
 Set-AzureRmRedisCache [-ResourceGroupName <String>] -Name <String> [-Size <String>] [-Sku <String>]
- [-MaxMemoryPolicy <String>] [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>]
- [-TenantSettings <Hashtable>] [-ShardCount <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RedisConfiguration <Hashtable>] [-EnableNonSslPort <Boolean>] [-TenantSettings <Hashtable>]
+  [-ShardCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] 
+  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,25 +74,6 @@ The default value is $False (the non-SSL port is disabled).
 
 ```yaml
 Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MaxMemoryPolicy
-This parameter has been deprecated.
-Use the *RedisConfiguration* parameter to set maxmemory-policy.
-For example: 
-
-`-RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}`
-
-```yaml
-Type: String
 Parameter Sets: (All)
 Aliases:
 
