@@ -31,6 +31,22 @@ function Test-RaClassicAdmins
 
 <#
 .SYNOPSIS
+Tests retrieval of assignments to deleted principals/Users/Groups
+This test will fail if the objectId is changed or the role assignment deleted
+#>
+function Test-RaDeletedPrincipals
+{
+    $objectId = "d49bc32d-d030-4ab6-8c98-e90a5b88f602"
+    $assignment = Get-AzureRmRoleAssignment -ObjectId $objectId
+    Assert-NotNull $assignment
+    Assert-NotNull $assignment.ObjectType
+    Assert-AreEqual $assignment.ObjectType "Unknown"
+    Assert-NotNull $assignment.ObjectId
+    Assert-AreEqual $assignment.ObjectId $objectId      
+}
+
+<#
+.SYNOPSIS
 Tests verifies negative scenarios for RoleAssignments
 #>
 function Test-RaNegativeScenarios
