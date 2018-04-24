@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.2.3
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.2.2
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 4.2.1
 * Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'

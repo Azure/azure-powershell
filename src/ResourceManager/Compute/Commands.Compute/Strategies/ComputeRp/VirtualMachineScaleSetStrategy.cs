@@ -39,37 +39,34 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
             NestedResourceConfig<Subnet, VirtualNetwork> subnet,
-            IEnumerable<NestedResourceConfig<FrontendIPConfiguration, LoadBalancer>> frontendIpConfigurations,
             NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAdressPool,
             IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
+            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup,
             ImageAndOsType imageAndOsType,
             string adminUsername,
             string adminPassword,
             string vmSize,
             int instanceCount,
-            UpgradeMode? upgradeMode)
+            VirtualMachineScaleSetIdentity identity,
+            UpgradeMode? upgradeMode,
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
                 createModel: engine => new VirtualMachineScaleSet()
                 {
-                    Zones = frontendIpConfigurations
-                        ?.Select(f => f.CreateModel(engine))
-                        ?.Where(z => z?.Zones != null)
-                        .SelectMany(z => z.Zones)
-                        .Where(z => z != null)
-                        .ToList(),
-
+                    Zones = zones,
                     UpgradePolicy = new UpgradePolicy
                     {
                         Mode = upgradeMode ?? UpgradeMode.Manual
                     },
-
                     Sku = new Azure.Management.Compute.Models.Sku()
                     {
                         Capacity = instanceCount,
                         Name = vmSize,
                     },
+                    Identity = identity,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
                         OsProfile = new VirtualMachineScaleSetOSProfile
@@ -82,7 +79,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         },
                         StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {
-                            ImageReference = imageAndOsType?.Image
+                            ImageReference = imageAndOsType?.Image,
+                            DataDisks = DataDiskStrategy.CreateVmssDataDisks(
+                                imageAndOsType?.DataDiskLuns, dataDisks)
                         },
                         NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                         {
@@ -106,7 +105,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                                 .ToList()
                                         }
                                     },
-                                    Primary = true
+                                    Primary = true,
+                                    NetworkSecurityGroup = engine.GetReference(networkSecurityGroup)
                                 }
                             }
                         }

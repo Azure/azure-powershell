@@ -16,7 +16,7 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -25,21 +25,41 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet( VerbsData.Restore, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
+        DefaultParameterSetName = ByVaultNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( Secret ) )]
+    [OutputType( typeof(PSKeyVaultSecret) )]
     public class RestoreAzureKeyVaultSecret : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByVaultNameParameterSet = "ByVaultName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
         /// Vault name
         /// </summary>
-        [Parameter( Mandatory = true,
+        [Parameter(Mandatory = true,
                    Position = 0,
+                   ParameterSetName = ByVaultNameParameterSet,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
+
+        /// <summary>
+        /// KeyVault object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "KeyVault object")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVault InputObject { get; set; }
 
         /// <summary>
         /// The input file in which the backup blob is stored
@@ -54,18 +74,23 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet( )
         {
-            if ( ShouldProcess( VaultName, Properties.Resources.RestoreSecret ) )
+            if (InputObject != null)
             {
-                var resolvedFilePath = this.GetUnresolvedProviderPathFromPSPath( InputFile );
+                VaultName = InputObject.VaultName;
+            }
+            
+            if (ShouldProcess(VaultName, Properties.Resources.RestoreSecret))
+            {
+                var resolvedFilePath = this.GetUnresolvedProviderPathFromPSPath(InputFile);
 
-                if ( !AzureSession.Instance.DataStore.FileExists( resolvedFilePath ) )
-                { 
-                    throw new FileNotFoundException( string.Format( KeyVaultProperties.Resources.BackupSecretFileNotFound, resolvedFilePath ) );
+                if (!AzureSession.Instance.DataStore.FileExists(resolvedFilePath))
+                {
+                    throw new FileNotFoundException(string.Format(Resources.BackupSecretFileNotFound, resolvedFilePath));
                 }
 
                 var restoredSecret = this.DataServiceClient.RestoreSecret(VaultName, resolvedFilePath);
 
-                this.WriteObject( restoredSecret );
+                this.WriteObject(restoredSecret);
             }
         }
     }

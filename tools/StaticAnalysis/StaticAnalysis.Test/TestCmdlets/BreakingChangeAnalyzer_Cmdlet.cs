@@ -1,7 +1,7 @@
 ﻿namespace StaticAnalysis.Test.CmdletTest.BreakingChange.RemoveCmdletAlias
 {
     using System.Management.Automation;
-    
+
     [Cmdlet(VerbsDiagnostic.Test, "RemoveCmdletAlias")]
     public class TestRemoveCmdletAlias : Cmdlet
     {

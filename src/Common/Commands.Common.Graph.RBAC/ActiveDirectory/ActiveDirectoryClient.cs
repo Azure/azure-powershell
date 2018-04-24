@@ -689,6 +689,18 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             PatchSpPasswordCredentials(spObjectId, passwordCredentials: null);
         }
 
+        public string GetObjectIdFromUPN(string upn)
+        {
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<User>(s => s.UserPrincipalName == upn);
+            var user = GraphClient.Users.List(odataQueryFilter.ToString()).SingleOrDefault();
+            if (user == null)
+            {
+                throw new InvalidOperationException(String.Format(ProjectResources.UserWithUPNDoesntExist, upn));
+            }
+
+            return user.ObjectId;
+        }
+
         public string GetObjectIdFromSPN(string spn)
         {
             var odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));

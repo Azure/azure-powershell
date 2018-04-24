@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 817BF177-519F-47BA-86CF-4591FB402E2Dl
@@ -13,8 +13,15 @@ Deletes a key in a key vault.
 
 ## SYNTAX
 
+### ByVaultName (Default)
 ```
 Remove-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Remove-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [-Force] [-PassThru] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -80,12 +87,27 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+KeyBundle Object
+
+```yaml
+Type: PSKeyVaultKeyIdentityItem
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -95,7 +117,7 @@ Remove the previously deleted key permanently.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,7 +132,7 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key based on 
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByVaultName
 Aliases: KeyName
 
 Required: True
@@ -127,7 +149,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -142,8 +164,8 @@ This cmdlet constructs the FQDN of a key vault based on the name that this param
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByVaultName
+Aliases:
 
 Required: True
 Position: 0
@@ -193,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKey
 This cmdlet returns a value only if you specify the *PassThru* parameter.
 
 ## NOTES

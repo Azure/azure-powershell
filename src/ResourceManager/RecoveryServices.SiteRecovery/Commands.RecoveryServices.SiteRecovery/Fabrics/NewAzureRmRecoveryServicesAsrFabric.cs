@@ -12,13 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Creates Azure Site Recovery Fabric object.
+    ///     Creates an Azure Site Recovery Fabric.
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
@@ -30,24 +32,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class NewAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets the name of the fabric to be created
+        ///    Switch parameter indicates creation of azure fabric.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.Azure, Mandatory = true)]
+        public SwitchParameter Azure { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name of the Azure Site Recovery Fabric.
         /// </summary>
         [Parameter(
-            ParameterSetName = ASRParameterSets.Default,
             Mandatory = true,
             HelpMessage = "Name of the fabric to be created")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or Sets the Fabric type
+        ///     Gets or Sets the Azure Site Recovery Fabric Type.
         /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.Default,
-            Mandatory = false)]
+        [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(Constants.HyperVSite)]
         public string Type { get; set; }
+
+        /// <summary>
+        ///     Gets or Sets the Azure region corresponding to the Fabric object being created.
+        ///     The Azure Site Recovery fabric object represents a region. 
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.Azure, Mandatory = true)]
+        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -60,13 +74,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 this.Name,
                 VerbsCommon.New))
             {
-                var fabricType = string.IsNullOrEmpty(this.Type) ? FabricProviders.HyperVSite
-                    : this.Type;
-
                 var input = new FabricCreationInput();
                 input.Properties = new FabricCreationInputProperties();
+                
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.Azure:
 
-                input.Properties.CustomDetails = new FabricSpecificCreationInput();
+                        input.Properties.CustomDetails = new AzureFabricCreationInput()
+                        {
+                            Location = this.Location
+                        };
+                        break;
+
+                    case ASRParameterSets.Default:
+
+                        input.Properties.CustomDetails = new FabricSpecificCreationInput();
+                        break;
+                }
 
                 var response = this.RecoveryServicesClient.CreateAzureSiteRecoveryFabric(
                     this.Name,

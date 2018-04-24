@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 5008F83F-AF3E-47CF-99A3-55129E654128
@@ -69,7 +69,7 @@ You can only specify this parameter for virtual machines that run the Windows op
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -95,7 +95,7 @@ Currently, dataType accepts only .pfx files.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3

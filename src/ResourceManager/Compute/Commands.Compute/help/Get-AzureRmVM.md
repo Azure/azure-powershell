@@ -101,7 +101,7 @@ Valid values are:
 ```yaml
 Type: DisplayHintType
 Parameter Sets: GetVirtualMachineInResourceGroupParamSet
-Aliases: 
+Aliases:
 Accepted values: Compact, Expand
 
 Required: False
@@ -132,7 +132,7 @@ Specifies the next link.
 ```yaml
 Type: Uri
 Parameter Sets: ListNextLinkVirtualMachinesParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -147,7 +147,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: ListVirtualMachineInResourceGroupParamSet, GetVirtualMachineInResourceGroupParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -162,7 +162,7 @@ Indicates that this cmdlet gets only the instance view of the virtual machine.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2

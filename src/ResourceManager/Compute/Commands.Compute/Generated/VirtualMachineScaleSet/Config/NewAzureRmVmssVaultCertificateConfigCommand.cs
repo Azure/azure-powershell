@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         {
             var vVaultCertificates = new Microsoft.Azure.Management.Compute.Models.VaultCertificate();
 
-            vVaultCertificates.CertificateUrl = this.CertificateUrl;
-            vVaultCertificates.CertificateStore = this.CertificateStore;
+            vVaultCertificates.CertificateUrl = this.MyInvocation.BoundParameters.ContainsKey("CertificateUrl") ? this.CertificateUrl : null;
+            vVaultCertificates.CertificateStore = this.MyInvocation.BoundParameters.ContainsKey("CertificateStore") ? this.CertificateStore : null;
 
             WriteObject(vVaultCertificates);
         }

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     static class ModelExtensions
     {
 
-        public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
+        public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return sb.ToString();
         }
 
-        public static string ConstructAccessPoliciesList(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
+        public static string ConstructAccessPoliciesList(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -117,6 +117,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                         displayName = servicePrincipal.DisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                     }
+                    else if (obj.Type.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var group = adClient.FilterGroups(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        displayName = group.DisplayName;
+                    }
                 }
 #else
                 var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
@@ -133,6 +138,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                         var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
                         displayName = servicePrincipal.AppDisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                    }
+                    else if (obj.ObjectType.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var group = adClient.Groups.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = group.DisplayName;
+                        upnOrSpn = group.MailNickname;
                     }
                 }
 

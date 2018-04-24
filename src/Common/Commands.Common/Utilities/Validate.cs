@@ -209,8 +209,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
             {
                 throw new Exception(Resources.NoInternetConnection);
             }
-#else
-			throw new NotSupportedException();			
 #endif
         }
 

@@ -21,10 +21,18 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultCertificateAttribute",
         SupportsShouldProcess = true,
+        DefaultParameterSetName = ByNameParameterSet,
         HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificate))]
+    [OutputType(typeof(PSKeyVaultCertificate))]
     public class SetAzureKeyVaultCertificateAttribute : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByNameParameterSet = "ByName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -32,6 +40,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
+            ParameterSetName = ByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
@@ -42,6 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
+            ParameterSetName = ByNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
@@ -49,10 +59,27 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string Name { get; set; }
 
         /// <summary>
+        /// Certificate Object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Certificate object")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultCertificateIdentityItem InputObject { get; set; }
+
+        /// <summary>
         /// Certificate version.
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 2,
+            ParameterSetName = ByNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
+        [Parameter(Mandatory = false,
+            Position = 1,
+            ParameterSetName = ByInputObjectParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
         [Alias("CertificateVersion")]        
@@ -83,6 +110,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                Name = InputObject.Name;
+            }
+
             if (ShouldProcess(Name, Properties.Resources.SetCertificateAttributes))
             {
                 var certificateBundle = DataServiceClient.UpdateCertificate(
@@ -97,7 +130,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru)
                 {
-                    var certificate = KeyVaultCertificate.FromCertificateBundle(certificateBundle);
+                    var certificate = PSKeyVaultCertificate.FromCertificateBundle(certificateBundle);
                     this.WriteObject(certificate);
                 }
             }

@@ -18,7 +18,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Removes the Azure Site Recovery vCenter.
+    ///     Removes the vCenter server from the ASR fabric and stops discovery of virtual machines from the vCenter server.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Resource Id.
+        ///     Gets or sets the resourceId of vCenter to remove.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.ByResourceId,
             Mandatory = true,
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ResourceId { get; set; }
 
         /// <summary>
-        ///     Gets or sets the vCenter.
+        ///     Gets or sets the vCenter object representing the vCenter server to be removed.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRvCenter InputObject { get; set; }
 
         /// <summary>
-        ///     Gets or sets Fabric server of the vCenter.
+        ///     Gets or sets fabric object representing the Configuration Server.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRFabric Fabric { get; set; }
 
         /// <summary>
-        ///     Gets or sets friendly name of the vCenter.
+        ///     Gets or sets name of the vCenter.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
