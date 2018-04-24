@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Parameter Set Names
 
         private const string ByDefinitionNameParameterSet = "ByDefinitionName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
 
         #endregion
 
@@ -51,6 +52,17 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName )]
         public string AccountName { get; set; }
+
+        /// <summary>
+        /// Vault object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "Vault object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVault InputObject { get; set; }
 
         [Parameter( Mandatory = false,
             Position = 2,
