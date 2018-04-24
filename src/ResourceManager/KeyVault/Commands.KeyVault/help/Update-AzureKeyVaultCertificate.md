@@ -1,12 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-ms.assetid: 3BD243C7-A40E-4061-93FF-DDE7DECAD0A7
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultcertificateattribute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/update-azurekeyvaultcertificate
 schema: 2.0.0
 ---
 
-# Set-AzureKeyVaultCertificateAttribute
+# Update-AzureKeyVaultCertificate
 
 ## SYNOPSIS
 Modifies editable attributes of a certificate.
@@ -15,27 +14,27 @@ Modifies editable attributes of a certificate.
 
 ### ByName (Default)
 ```
-Set-AzureKeyVaultCertificateAttribute [-VaultName] <String> [-Name] <String> [[-Version] <String>]
+Update-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [[-Version] <String>]
  [-Enable <Boolean>] [-Tag <Hashtable>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Set-AzureKeyVaultCertificateAttribute [-InputObject] <PSKeyVaultCertificateIdentityItem> [[-Version] <String>]
+Update-AzureKeyVaultCertificate [-InputObject] <PSKeyVaultCertificateIdentityItem> [[-Version] <String>]
  [-Enable <Boolean>] [-Tag <Hashtable>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureKeyVaultCertificateAttribute** cmdlet modifies the editable attributes of a certificate.
+The **Update-AzureKeyVaultCertificate** cmdlet modifies the editable attributes of a certificate.
 
 ## EXAMPLES
 
 ### Example 1: Modify the tags associated with a certificate
 ```
 PS C:\>$Tags = @{ "Team" = "Azure" ; "Role" = "Engg" }
-PS C:\> Set-AzureKeyVaultCertificateAttribute -VaultName "ContosoKV01" -Name "TestCert01" -Tag $Tags
+PS C:\> Update-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" -Tag $Tags
 PS C:\> Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
 Name        : "TestCert01"
 Certificate : [Subject]
@@ -72,10 +71,11 @@ The second command sets the tags value of the certificate named TestCert01 to be
 
 The final command displays the TestCert01 certificate by using the Get-AzureKeyVaultCertificate cmdlet to verify the operation.
 
+
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -90,8 +90,9 @@ Accept wildcard characters: False
 ```
 
 ### -Enable
-Indicates whether to enable or disable a certificate.
-Specify $True to enable or $False to disable.
+If present, enable a certificate if value is true.
+Disable a certificate if value is false.
+If not specified, the existing value of the certificate's enabled/disabled state remains unchanged.
 
 ```yaml
 Type: Boolean
@@ -121,9 +122,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the certificate to modify. This cmdlet constructs the FQDN of a certificate
-based on the key vault name, your currently selected environment, the certificate name, and the
-certificate version.
+Certificate name.
+Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
 Type: String
@@ -133,13 +133,13 @@ Aliases: CertificateName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns an object representing the item with which you are working.
-By default, this cmdlet does not generate any output.
+Cmdlet does not return object by default.
+If this switch is specified, return certificate object.
 
 ```yaml
 Type: SwitchParameter
@@ -154,9 +154,9 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Key-value pairs in the form of a hash table. For example:
-
-@{key0="value0";key1=$null;key2="value2"}
+A hashtable representing certificate tags.
+If not specified, the existing tags of the sertificate remain unchanged.
+Remove a tag by specifying an empty Hashtable.
 
 ```yaml
 Type: Hashtable
@@ -166,13 +166,13 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultName
-Specifies the key vault name in which this cmdlet modifies a certificate.
-This cmdlet constructs the FQDN of a key vault based on the name and currently selected environment.
+Vault name.
+Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
 Type: String
@@ -182,13 +182,13 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Version
-Specifies the version of a certificate.
-This cmdlet constructs the FQDN of a certificate based on the key vault name, your currently selected environment, the certificate name, and the certificate version.
+Certificate version.
+Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment, certificate name and certificate version.
 
 ```yaml
 Type: String
@@ -198,7 +198,7 @@ Aliases: CertificateVersion
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -234,19 +234,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
 
+
 ## NOTES
 
 ## RELATED LINKS
-
-[Add-AzureKeyVaultCertificate](./Add-AzureKeyVaultCertificate.md)

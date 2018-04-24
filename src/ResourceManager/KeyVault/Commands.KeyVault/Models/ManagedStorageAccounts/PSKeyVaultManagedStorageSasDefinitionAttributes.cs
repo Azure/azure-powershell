@@ -17,26 +17,33 @@ using System;
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     /// <summary>
-    /// Secret attributes from PSH perspective
+    /// Storage SAS definition attributes from PSH perspective
     /// </summary>
-    public class ManagedStorageAccountAttributes
+    public sealed class PSKeyVaultManagedStorageSasDefinitionAttributes
     {
-        public ManagedStorageAccountAttributes(bool? enabled)
+        public PSKeyVaultManagedStorageSasDefinitionAttributes( bool? enabled )
         {
             this.Enabled = enabled;
         }
 
-        internal ManagedStorageAccountAttributes( bool? enabled, DateTime? created, DateTime? updated ) :
-             this(enabled)
+        internal PSKeyVaultManagedStorageSasDefinitionAttributes( bool? enabled, DateTime? created, DateTime? updated, string recoveryLevel )
+            : this( enabled )
         {
             this.Created = created;
             this.Updated = updated;
+            this.RecoveryLevel = recoveryLevel;
         }
+
+        internal PSKeyVaultManagedStorageSasDefinitionAttributes( Microsoft.Azure.KeyVault.Models.SasDefinitionAttributes modelAttributes )
+            : this(modelAttributes.Enabled, modelAttributes.Created, modelAttributes.Updated, modelAttributes.RecoveryLevel)
+        { }
 
         public bool? Enabled { get; set; }
 
         public DateTime? Created { get; private set; }
 
         public DateTime? Updated { get; private set; }
+
+        public string RecoveryLevel { get; private set; }
     }
 }
