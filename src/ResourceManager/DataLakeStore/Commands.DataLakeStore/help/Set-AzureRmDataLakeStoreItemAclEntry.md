@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 0671D833-8B3A-4480-A576-92F1A9E8CE92
@@ -68,7 +68,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: AceType
 Parameter Sets: SetSpecificACE
-Aliases: 
+Aliases:
 Accepted values: User, Group, Mask, Other
 
 Required: True
@@ -84,7 +84,7 @@ Specifies the ACL object that contains the entries to modify.
 ```yaml
 Type: DataLakeStoreItemAce[]
 Parameter Sets: SetByACLObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -99,7 +99,7 @@ Indicates that this operation modifies the default ACE from the specified ACL.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: SetSpecificACE
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -129,7 +129,7 @@ Specifies the object ID of the AzureActive Directory user, group, or service pri
 ```yaml
 Type: Guid
 Parameter Sets: SetSpecificACE
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -144,7 +144,7 @@ Indicates the resulting ACL should be returned.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,7 +159,7 @@ Specifies the Data Lake Store path of the item for which to modify an ACE, start
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -184,7 +184,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: Permission
 Parameter Sets: SetSpecificACE
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4

@@ -97,7 +97,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.6.0';
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.3'; }, 
                @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.4'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.4'; }, 
-               @{ModuleName = 'AzureRM.SiteRecovery'; RequiredVersion = '5.0.6'; }, 
                @{ModuleName = 'AzureRM.Sql'; RequiredVersion = '4.4.0'; }, 
                @{ModuleName = 'AzureRM.Storage'; RequiredVersion = '4.2.3'; }, 
                @{ModuleName = 'AzureRM.StreamAnalytics'; RequiredVersion = '4.0.4'; }, 

@@ -64,7 +64,7 @@ Specifies a list of profiles to add to the Autoscale setting, or $Null to add no
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]
 Parameter Sets: (All)
-Aliases: AutoscaleProfiles
+Aliases:
 
 Required: False
 Position: Named
@@ -139,7 +139,7 @@ Specifies a list of comma-separated notifications.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]
 Parameter Sets: (All)
-Aliases: Notifications
+Aliases:
 
 Required: False
 Position: Named
