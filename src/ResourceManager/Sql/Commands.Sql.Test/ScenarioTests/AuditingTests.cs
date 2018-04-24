@@ -34,63 +34,108 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorage");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithStorage");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithEventTypes");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithEventTypes");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDisableDatabaseAuditing()
         {
             RunPowerShellTest("Test-AuditingDisableDatabaseAuditing");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDisableServerAuditing()
         {
             RunPowerShellTest("Test-AuditingDisableServerAuditing");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseDisableEnableKeepProperties()
         {
             RunPowerShellTest("Test-AuditingDatabaseDisableEnableKeepProperties");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerDisableEnableKeepProperties()
         {
             RunPowerShellTest("Test-AuditingServerDisableEnableKeepProperties");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingUseServerDefault()
         {
@@ -118,28 +163,48 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditingFailedUseServerDefault");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithEventTypeShortcuts()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithEventTypeShortcuts");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyWithEventTypeShortcuts()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithEventTypeShortcuts");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyKeepPreviousStorage");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyKeepPreviousStorage()
         {
@@ -160,77 +225,132 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditingFailWithBadServerIndentity");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-AuditingDatabaseStorageKeyRotation");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerStorageKeyRotation()
         {
             RunPowerShellTest("Test-AuditingServerStorageKeyRotation");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithRetention");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithRetention");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerRetentionKeepProperties()
         {
             RunPowerShellTest("Test-AuditingServerRetentionKeepProperties");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseRetentionKeepProperties()
         {
             RunPowerShellTest("Test-AuditingDatabaseRetentionKeepProperties");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditingOnDatabase()
         {
             RunPowerShellTest("Test-BlobAuditingOnDatabase");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditingOnServer()
         {
             RunPowerShellTest("Test-BlobAuditingOnServer");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatatabaseAuditingTypeMigration()
         {
             RunPowerShellTest("Test-DatatabaseAuditingTypeMigration");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerAuditingTypeMigration()
         {
             RunPowerShellTest("Test-ServerAuditingTypeMigration");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
@@ -244,7 +364,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetServerAndDatabaseAuditingInUkRegion");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditingWithAuditActionGroups()
         {
