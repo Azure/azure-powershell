@@ -18,5 +18,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
     {
         // request headers names
         public const string ClientSessionIdHeaderName = "x-ms-client-session-id";
+
+        // Managed instance constants
+        public const string LicenseTypeBasePrice = "BasePrice";
+        public const string LicenseTypeLicenseIncluded = "LicenseIncluded";
+        public const string GeneralPurposeGen4 = "GP_Gen4";
+        public const string GeneralPurposeGen5 = "GP_Gen5";
+        public const string BusinessCriticalGen4 = "BC_Gen4";
+        public const string BusinessCriticalGen5 = "BC_Gen5";
     }
 }
