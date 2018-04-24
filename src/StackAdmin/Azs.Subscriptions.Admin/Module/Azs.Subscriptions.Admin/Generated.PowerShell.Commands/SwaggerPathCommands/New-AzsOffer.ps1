@@ -83,7 +83,7 @@ function New-AzsOffer {
         $ExternalReferenceId,
 
         [Parameter(Mandatory = $false)]
-        [ValidateSet('Private', 'Public', 'Decommissioned')]
+        [ValidateSet('Private', 'Decommissioned')]
         [System.String]
         $State = 'Private',
 

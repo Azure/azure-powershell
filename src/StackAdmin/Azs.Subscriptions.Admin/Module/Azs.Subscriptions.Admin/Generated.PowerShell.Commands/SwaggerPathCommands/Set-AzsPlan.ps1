@@ -182,7 +182,7 @@ function Set-AzsPlan {
                 $PSBoundParameters.Add("Location", $Location)
             }
 
-            $flattenedParameters = @('Description', 'SkuIds', 'ExternalReferenceId', 'DisplayName', 'Name', 'Location', 'QuotaIds', 'SubscriptionCount')
+            $flattenedParameters = @('Description', 'SkuIds', 'ExternalReferenceId', 'DisplayName', 'Location', 'QuotaIds', 'SubscriptionCount')
             if ($NewPlan -eq $null) {
                 $NewPlan = Get-AzsPlan -Name $Name -ResourceGroupName $ResourceGroupName
             }
