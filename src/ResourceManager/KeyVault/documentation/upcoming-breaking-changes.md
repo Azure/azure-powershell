@@ -27,6 +27,90 @@
 
 # Upcoming Breaking Changes
 
+The following cmdlets were affected this release:
+
+**Add-AzureKeyVaultCertificate**
+- The -Certificate parameter has become mandatory.
+
+**Set-AzureKeyVaultManagedStorageSasDefinition**
+- The -Parameter parameter has been removed and replaced by -TemplateUri and -SasType
+
+**Set-AzureKeyVaultCertificateIssuer**
+- The -IssuerProvider parameter has become mandatory.
+
+**Undo-AzureKeyVaultCertificateRemoval**
+- The output of this cmdlet has changed from CertificateBundle to PSKeyVaultCertificate.
+
+**Undo-AzureRmKeyVaultRemoval**
+- ResourceGroupName has been removed from the InputObject parameter set, and is instead obtained from the InputObject parameter's ResourceId property.
+
+**Set-AzureRmKeyVaultAccessPolicy**
+- The "all" permission was removed from "PermissionsToKeys", "PermissionsToSecrets", and "PermissionsToCertificates".
+
+**General**
+- ValueFromPipelineByPropertyName was removed from all cmdlets where piping by InputObject was enabled.  These cmdlets are:
+    - Add-AzureKeyVaultCertificate
+    - Add-AzureKeyVaultCertificateContact
+    - Add-AzureKeyVaultKey
+    - Backup-AzureKeyVaultKey
+    - Backup-AzureKeyVaultSecret
+    - Get-AzureKeyVaultCertficate
+    - Get-AzureKeyVaultCertificateContact
+    - Get-AzureKeyVaultCertificateIssuer
+    - Get-AzureKeyVaultCertificateOperation
+    - Get-AzureKeyVaultCertificatePolicy
+    - Get-AzureKeyVaultKey
+    - Get-AzureKeyVaultSecret
+    - Remove-AzureRmKeyVault
+    - Remove-AzureRmKeyVaultAccessPolicy
+    - Remove-AzureKeyVaultCertificate
+    - Remove-AzureKeyVaultCertificateContact
+    - Remove-AzureKeyVaultCertificateIssuer
+    - Remove-AzureKeyVaultCertificateOperation
+    - Remove-AzureKeyVaultKey
+    - Remove-AzureKeyVaultSecret
+    - Restore-AzureKeyVaultKey
+    - Restore-AzureKeyVaultSecret
+    - Set-AzureRmKeyVaultAccessPolicy
+    - Set-AzureKeyVaultCertificateAttribute
+    - Set-AzureKeyVaultCertificateIssuer
+    - Set-AzureKeyVaultCertificatePolicy
+    - Set-AzureKeyVaultKeyAttribute
+    - Set-AzureKeyVaultSecret
+    - Set-AzureKeyVaultSecretAttribute
+    - Stop-AzureKeyVaultCertificateOperation
+    - Undo-AzureKeyVaultCertificateRemoval
+    - Undo-AzureKeyVaultKeyRemoval
+    - Undo-AzureRmKeyVaultRemoval
+    - Undo-AzureKeyVaultSecretRemoval
+- ConfirmImpact levels were removed from all cmdlets.  Those affected are:
+    - Remove-AzureRmKeyVault
+    - Remove-AzureKeyVaultCertificate
+    - Remove-AzureKeyVaultCertificateIssuer
+    - Remove-AzureKeyVaultCertificateOperation
+    - Remove-AzureKeyVaultKey
+    - Remove-AzureKeyVaultSecret
+    - Stop-AzureKeyVaultCertificateOperation
+- The IKeyVaultDataServiceClient was updated so all Certificate operations return PSTypes instead of SDK types. This includes:
+    - SetCertificateContacts
+    - GetCertificateContacts
+    - GetCertificate
+    - GetDeletedCertificate
+    - MergeCertificate
+    - ImportCertificate
+    - DeleteCertificate
+    - RecoverCertificate
+    - EnrollCertificate
+    - UpdateCertificate
+    - GetCertificateOperation
+    - DeleteCertificateOperation
+    - CancelCertificateOperation
+    - GetCertificatePolicy
+    - UpdateCertificatePolicy
+    - GetCertificateIssuer
+    - SetCertificateIssuer
+    - DeleteCertificateIssuer
+
 ## Release 3.0.0
 
     The following cmdlets were affected this release:

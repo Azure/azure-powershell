@@ -103,7 +103,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentAndProviderRegistration");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveDeployment()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");

@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         [TestMethod]
         public void IsValidContainerNameTest()
         {
-            string[] positives = { "$root", "$logs", "abc", "abc987", "abc2de", "4abc", "abc-def", new String('a', 63) };
+            string[] positives = { "$root", "$logs", "$web", "abc", "abc987", "abc2de", "4abc", "abc-def", new String('a', 63) };
             NameValidateHelper(positives, true, NameUtil.IsValidContainerName);
 
             string[] negatives =
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         [TestMethod]
         public void IsValidContainerPrefixTest()
         {
-            string[] positives = { "$", "$ro", "$l", "$root", "a", "ab", "abc", "$logs", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 63) };
+            string[] positives = { "$", "$ro", "$l", "$root", "a", "ab", "abc", "$logs", "$web", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 63) };
             NameValidateHelper(positives, true, NameUtil.IsValidContainerPrefix);
 
             string[] negatives =
@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         [TestMethod]
         public void IsValidBlobNameTest()
         {
-            string[] positives = { "$", "$ro", "$l", "$root", "a", "*&(&^$^*", "ab", "abc", "$logs", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 1024)};
+            string[] positives = { "$", "$ro", "$l", "$root", "a", "*&(&^$^*", "ab", "abc", "$logs", "$web", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 1024)};
             NameValidateHelper(positives, true, NameUtil.IsValidBlobName);
 
             string[] negatives =
@@ -88,7 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         [TestMethod]
         public void IsValidBlobPrefixTest()
         {
-            string[] positives = { "$", "$ro", "$l", "$root", "a", "*&(&^$^*", "ab", "abc", "$logs", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 1024) };
+            string[] positives = { "$", "$ro", "$l", "$root", "a", "*&(&^$^*", "ab", "abc", "$logs", "$web", "abc", "abc987", "abc2de", "4abc", "abc-def", "a-c", "ac-", new String('a', 1024) };
             NameValidateHelper(positives, true, NameUtil.IsValidBlobPrefix);
 
             string[] negatives =

@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = true)]
         [ValidateNotNull]
-        public string ReservationOrderId { get; set; }
+        public Guid ReservationOrderId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = true)]
         [ValidateNotNull]
-        public string ReservationId { get; set; }
+        public Guid ReservationId { get; set; }
 
         [Parameter(Mandatory = true)]
         [ValidateNotNull]
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
             {
                 string[] name = Reservation.Name.Split('/');
-                ReservationOrderId = name[0];
-                ReservationId = name[1];
+                ReservationOrderId = new Guid(name[0]);
+                ReservationId = new Guid(name[1]);
             }
 
             var resourceInfo = $"Reservation {ReservationId} in order {ReservationOrderId}";
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                 {
                     Patch = new Patch(AppliedScopeType);
                 }
-                var response = new PSReservation(AzureReservationAPIClient.Reservation.Update(ReservationOrderId, ReservationId, Patch));
+                var response = new PSReservation(AzureReservationAPIClient.Reservation.Update(ReservationOrderId.ToString(), ReservationId.ToString(), Patch));
                 WriteObject(response);
             }
         }

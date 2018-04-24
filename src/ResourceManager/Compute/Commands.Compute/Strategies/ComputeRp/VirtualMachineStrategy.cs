@@ -45,7 +45,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string adminPassword,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet,
-            IEnumerable<int> dataDisks)
+            VirtualMachineIdentity identity,
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -59,6 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         AdminUsername = adminUsername,
                         AdminPassword = adminPassword,
                     },
+                    Identity = identity,
                     NetworkProfile = new NetworkProfile
                     {
                         NetworkInterfaces = new[]
@@ -76,7 +79,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         DataDisks = DataDiskStrategy.CreateDataDisks(
                             imageAndOsType?.DataDiskLuns, dataDisks)
                     },
-                    AvailabilitySet = engine.GetReference(availabilitySet)
+                    AvailabilitySet = engine.GetReference(availabilitySet),
+                    Zones = zones,
                 });
 
         public static ResourceConfig<VirtualMachine> CreateVirtualMachineConfig(
@@ -87,7 +91,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             ResourceConfig<Disk> disk,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet,
-            IEnumerable<int> dataDisks)
+            VirtualMachineIdentity identity,
+            IEnumerable<int> dataDisks,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -111,11 +117,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             Name = disk.Name,
                             CreateOption = DiskCreateOptionTypes.Attach,
                             OsType = osType,
-                            ManagedDisk = engine.GetReference(disk, StorageAccountTypes.PremiumLRS),
+                            ManagedDisk = engine.GetReference(disk, "PremiumLRS"),
                         },
                         DataDisks = DataDiskStrategy.CreateDataDisks(null, dataDisks)
                     },
-                    AvailabilitySet = engine.GetReference(availabilitySet)
+                    Identity = identity,
+                    AvailabilitySet = engine.GetReference(availabilitySet),
+                    Zones = zones
                 });
     }
 }
