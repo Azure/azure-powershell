@@ -64,12 +64,12 @@
     <Reference Include="Microsoft.Azure.Gallery, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.KeyVault.dll</HintPath>
+    <Reference Include="Microsoft.Azure.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.3.0.0-alpha\lib\net452\Microsoft.Azure.KeyVault.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.WebKey, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.WebKey.2.0.6\lib\net452\Microsoft.Azure.KeyVault.WebKey.dll</HintPath>
+    <Reference Include="Microsoft.Azure.KeyVault.WebKey, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.WebKey.3.0.0-alpha\lib\net452\Microsoft.Azure.KeyVault.WebKey.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager">
@@ -83,7 +83,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.18.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.4.1-alpha\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network">
