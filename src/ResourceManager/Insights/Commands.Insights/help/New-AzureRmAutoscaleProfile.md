@@ -243,7 +243,7 @@ Specifies the list of rules to add to the profile.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule]
 Parameter Sets: (All)
-Aliases: Rules
+Aliases:
 
 Required: True
 Position: Named
@@ -258,7 +258,7 @@ Specifies the scheduled days.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
-Aliases: ScheduleDays
+Aliases:
 
 Required: True
 Position: Named
@@ -273,7 +273,7 @@ Specifies the scheduled hours.
 ```yaml
 Type: System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]
 Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
-Aliases: ScheduleHours
+Aliases:
 
 Required: True
 Position: Named
@@ -288,7 +288,7 @@ Specifies the scheduled minutes.
 ```yaml
 Type: System.Collections.Generic.List`1[System.Nullable`1[System.Int32]]
 Parameter Sets: Parameters for New-AzureRmAutoscaleProfile cmdlet using recurrent scheduling
-Aliases: ScheduleMinutes
+Aliases:
 
 Required: True
 Position: Named
