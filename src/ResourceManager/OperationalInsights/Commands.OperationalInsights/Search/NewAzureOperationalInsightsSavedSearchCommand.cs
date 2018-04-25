@@ -57,8 +57,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true,
         HelpMessage = "The saved search tags.")]
-        [Obsolete("New-AzureRmOperationalInsightsSavedSearch: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
@@ -80,10 +78,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 Version = this.Version
             };
 
-#pragma warning disable CS0618
             properties.Tags = SearchCommandHelper.PopulateAndValidateTagsForProperties(this.Tag, properties.Query);
-#pragma warning restore CS0618
-
             WriteObject(OperationalInsightsClient.CreateOrUpdateSavedSearch(ResourceGroupName, WorkspaceName, SavedSearchId, properties, Force, ConfirmAction), true);
         }
 
