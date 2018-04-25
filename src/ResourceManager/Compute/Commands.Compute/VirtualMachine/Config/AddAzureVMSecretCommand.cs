@@ -64,9 +64,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Add-AzureRmVMSecret: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
-
             if (this.VM.OSProfile == null)
             {
                 this.VM.OSProfile = new OSProfile();

@@ -53,7 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.DataFactory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.0.6.0-preview\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.0.7.0-preview\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncCmdletExtensionsTest.cs" />
     <Compile Include="Compute\ImageVersionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TargetStateTest.cs" />

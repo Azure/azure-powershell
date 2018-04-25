@@ -54,7 +54,7 @@ The following prerequisites should be completed before contributing to the Azure
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the latest version of [WiX](http://wixtoolset.org/releases/)
     - After installation, ensure that the path to "WiX Toolset\bin" has been added to your `PATH` environment variable
-- Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/preview/documentation/help-generation.md#installing-platyps)
+- Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/help-generation.md#installing-platyps)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
     - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
     - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
