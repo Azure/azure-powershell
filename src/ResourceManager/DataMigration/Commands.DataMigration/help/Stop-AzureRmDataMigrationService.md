@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/stop-azurermdatamigrationservice
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Stop-AzureRmDataMigrationService
 schema: 2.0.0
 ---
 
@@ -15,19 +15,19 @@ Stops an instance of the Azure Database Migration Service that is in a running s
 ### ComponentNameParameterSet (Default)
 ```
 Stop-AzureRmDataMigrationService -ResourceGroupName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
 ```
 Stop-AzureRmDataMigrationService [-InputObject] <PSDataMigrationService> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Stop-AzureRmDataMigrationService [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,19 +37,17 @@ The Stop-AzureRmDataMigrationService cmdlet stops an instance of the Azure Datab
 
 ### Example 1
 ```
-PS C:\> Stop-AzureRmDataMigrationService -ResourceGroupName MyResourceGroup –ServiceName TestService
-
+PS C:\> Stop-AzureRmDataMigrationService -ResourceGroupName MyResourceGroup -ServiceName TestService
 ```
+
 The above example stops an instance of the Azure Database Migration Service called TestService based on service name passed in as input parameter
 
 ### Example 2
 ```
 PS C:\> Stop-AzureRmDataMigrationService -InputObject $TestService
-
 ```
+
 The above example stops an instance of the Azure Database Migration Service based on PSDataMigrationService object passed as input parameter.
-
-
 
 ## PARAMETERS
 
@@ -99,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Data Migration Service Name.
+Database Migration Service Name.
 
 ```yaml
 Type: String
@@ -175,16 +173,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
 System.String
 
-
 ## OUTPUTS
 
 ### System.Boolean
-
 
 ## NOTES
 
