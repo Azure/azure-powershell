@@ -1,7 +1,7 @@
 ﻿---
 Module Name: AzureRM.Consumption
 Module Guid: c1f34ce9-bf46-4180-b36c-be232a1f8f65
-Download Help Link: 
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption
 Help Version: 1.0.0.0
 Locale: en-US
 ---

@@ -1,7 +1,8 @@
 ﻿---
 Module Name: AzureRM.DataMigration
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
-Help Version: 0.1.0
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration
+Help Version: 0.1.0.0
 Locale: en-US
 ---
 
