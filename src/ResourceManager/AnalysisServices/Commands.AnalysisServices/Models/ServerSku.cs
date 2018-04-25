@@ -15,14 +15,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public int Capacity { get; set; }
 
-		internal static ServerSku FromResourceSku(ResourceSku resourceSku)
-		{
-			return new ServerSku()
-			{
-				Name = resourceSku.Name,
-				Tier = resourceSku.Tier,
-				Capacity = resourceSku.Capacity == null ? 1 : resourceSku.Capacity.Value
-			};
+        internal static ServerSku FromResourceSku(ResourceSku resourceSku)
+        {
+            return new ServerSku()
+            {
+                Name = resourceSku.Name,
+                Tier = resourceSku.Tier,
+                Capacity = resourceSku.Capacity == null ? 1 : resourceSku.Capacity.Value
+            };
         }
     }
 }
