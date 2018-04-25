@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+  <Import Project="..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -22,21 +22,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="1.0.0" />
-    <PackageReference Include="Microsoft.WindowsAzure.Configuration" Version="3.2.0" />
-    <PackageReference Include="Microsoft.WindowsAzure.Storage" Version="9.0.0" />
-    <PackageReference Include="Microsoft.WindowsAzure.Storage.DataMovement" Version="0.7.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\..\ServiceManagement\Common\Commands.Common.Test\Commands.Common.Test.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj" />
-    <ProjectReference Include="..\..\ServiceManagement\Common\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj" />
     <ProjectReference Include="..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.Storage\Commands.Storage.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\..\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.WindowsAzure.Commands.Storage">
+      <HintPath>..\..\Package\$(Configuration)\Storage\Azure.Storage.Netcore\Microsoft.WindowsAzure.Commands.Storage.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
