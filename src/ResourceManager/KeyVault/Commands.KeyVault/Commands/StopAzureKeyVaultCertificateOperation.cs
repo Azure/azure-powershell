@@ -24,9 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, CmdletNoun.AzureKeyVaultCertificateOperation,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet,
-        ConfirmImpact = ConfirmImpact.High,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class StopAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
@@ -45,7 +43,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 0,
                    ParameterSetName = DefaultParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -56,7 +53,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 1,
                    ParameterSetName = DefaultParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate operation from vault name, currently selected environment and certificate name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.CertificateName)]
@@ -89,7 +85,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name = InputObject.Name;
             }
 
-            CertificateOperation certificateOperation = null;
+            PSKeyVaultCertificateOperation certificateOperation = null;
 
             ConfirmAction(
                 Force.IsPresent,
@@ -105,8 +101,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 () =>
                 {
                     certificateOperation = this.DataServiceClient.CancelCertificateOperation(VaultName, Name);
-                    var kvCertificateOperation = PSKeyVaultCertificateOperation.FromCertificateOperation(certificateOperation);
-                    this.WriteObject(kvCertificateOperation);
+                    this.WriteObject(certificateOperation);
                 });
         }
     }

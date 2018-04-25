@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Breaking changes in Export-AzureRmDataLakeStoreItem, Import-AzureRmDataLakeStoreItem, Remove-AzureRmDataLakeStoreItem
 
 ## Version 5.2.0
 * Updated to the latest version of the Azure ClientRuntime
