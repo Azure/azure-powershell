@@ -114,9 +114,21 @@ function Test-CreateVcoreDatabase
 
 	try
 	{
-		# Create with vcore related parameters
+		# Create with Edition and RequestedServiceObjectiveName
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Vcore 2 -RequestedServiceObjectiveName GP_Gen4 -Edition GeneralPurpose -AsJob
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_2 -Edition GeneralPurpose -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $databaseName $db.DatabaseName 
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual 2 $db.Capacity
+		Assert-AreEqual GeneralPurpose $db.Edition
+
+		# Create with VCore parameter set
+		$databaseName = Get-DatabaseName
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCores 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -306,7 +318,7 @@ function Test-UpdateVcoreDatabase ()
 
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-Vcore 2 -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen4 -MaxSizeBytes 250GB
+		-Vcores 2 -Edition GeneralPurpose -ComputeGeneration Gen4 -MaxSizeBytes 250GB
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
@@ -324,7 +336,7 @@ function Test-UpdateVcoreDatabase ()
 
 		# Alter with all properties
 		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-MaxSizeBytes 5GB -Vcore 1 -Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
+			-MaxSizeBytes 5GB -Vcores 1 -Edition GeneralPurpose -ComputeGeneration Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 
@@ -336,6 +348,36 @@ function Test-UpdateVcoreDatabase ()
 		Assert-NotNull $db1.Tags
 		Assert-AreEqual True $db1.Tags.ContainsKey("tag_key")
 		Assert-AreEqual "tag_new_value" $db1.Tags["tag_key"]
+
+		# Alter Edition only (can't only specify -Edition since Edition is shared parameter in two difference parameter sets)
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition BusinessCritical -ComputeGeneration Gen4 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition BusinessCritical
+		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen4_1
+
+		# Alter Vcore only
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-VCores 2 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition BusinessCritical
+		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen4_2
+
+		# Alter with Dtu based parameters (-Edition and -RequestedServiceObjectiveName)
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen4_2 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition GeneralPurpose
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4_2
+
+		# Alter ComputeGeneration only
+		# Need to add later, currently the service not support other Generations besides Gen4
 	}
 	finally
 	{
