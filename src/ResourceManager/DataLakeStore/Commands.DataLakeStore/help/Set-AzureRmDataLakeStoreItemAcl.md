@@ -15,8 +15,8 @@ Modifies the ACL of a file or folder in Data Lake Store.
 
 ```
 Set-AzureRmDataLakeStoreItemAcl [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Recurse] [-Concurrency <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,6 +33,16 @@ PS C:\> Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyFile
 The first command gets the ACL for the root directory of the ContosoADL account, and then stores it in the $ACL variable.
 
 The second command sets the ACL for the file Test.txt to the one in $ACL.
+
+### Example 2: Set the ACL for folder recursively
+```
+PS C:\>$ACL = Get-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path /Folder1
+PS C:\> Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/Folder2" -Acl $ACL -Recursive -Concurrency 128
+```
+
+The first command gets the ACL for the directory Folder1 of the ContosoADL account, and then stores it in the $ACL variable.
+
+The second command sets the ACL recursively to Folder2 and its sub directories and files to the one in $ACL.
 
 ## PARAMETERS
 
@@ -63,6 +73,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -Concurrency
+Number of files/directories processed in parallel. Optional: a reasonable default will be selected.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -106,6 +131,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Recurse
+Indicates the ACL to be set recursively to the child subdirectories and files
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
