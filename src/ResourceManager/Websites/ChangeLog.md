@@ -32,6 +32,10 @@
 * Fixed issue with importing aliases
 * New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
 
+## Version 5.0.0-preview
+* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp
+
 ## Version 4.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
