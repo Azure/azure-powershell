@@ -18,6 +18,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Queue;
     using Microsoft.WindowsAzure.Storage.Queue.Protocol;
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -73,9 +74,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
             var results = new List<CloudQueue>();
             do
             {
-                var response = queueClient.ListQueuesSegmentedAsync(prefix, queueListingDetails, null, continuationToken, options, operationContext).Result;
-                continuationToken = response.ContinuationToken;
-                results.AddRange(response.Results);
+                try
+                {
+                    var response = queueClient.ListQueuesSegmentedAsync(prefix, queueListingDetails, null, continuationToken, options, operationContext).Result;
+                    continuationToken = response.ContinuationToken;
+                    results.AddRange(response.Results);
+                }
+                catch (AggregateException e) when (e.InnerException is StorageException)
+                {
+                    throw e.InnerException;
+                }
             } while (continuationToken != null);
             return results;
         }
@@ -90,13 +98,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public CloudQueue GetQueueReferenceFromServer(string name, QueueRequestOptions options, OperationContext operationContext)
         {
             CloudQueue queue = queueClient.GetQueueReference(name);
-            if (queue.ExistsAsync(options, operationContext).Result)
+            try
             {
-                return queue;
+                if (queue.ExistsAsync(options, operationContext).Result)
+                {
+                    return queue;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (AggregateException e) when (e.InnerException is StorageException)
             {
-                return null;
+                throw e.InnerException;
             }
         }
 
@@ -108,7 +123,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void FetchAttributes(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext)
         {
-            Task.Run(() => queue.FetchAttributesAsync(options, operationContext)).Wait();
+            try
+            {
+                Task.Run(() => queue.FetchAttributesAsync(options, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -130,7 +152,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>True if the queue did not already exist and was created; otherwise false.</returns>
         public bool CreateQueueIfNotExists(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext)
         {
-            return queue.CreateIfNotExistsAsync(options, operationContext).Result;
+            try
+            {
+                return queue.CreateIfNotExistsAsync(options, operationContext).Result;
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -141,7 +170,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         public void DeleteQueue(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext)
         {
-            Task.Run(() => queue.DeleteAsync(options, operationContext)).Wait();
+            try
+            {
+                Task.Run(() => queue.DeleteAsync(options, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -153,7 +189,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>True if the queue exists, otherwise false</returns>
         public bool DoesQueueExist(CloudQueue queue, QueueRequestOptions requestOptions, OperationContext operationContext)
         {
-            return queue.ExistsAsync(requestOptions, operationContext).Result;
+            try
+            {
+                return queue.ExistsAsync(requestOptions, operationContext).Result;
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -164,7 +207,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>QueuePermissions object</returns>
         public QueuePermissions GetPermissions(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext)
         {
-            return queue.GetPermissionsAsync(options, operationContext).Result;
+            try
+            {
+                return queue.GetPermissionsAsync(options, operationContext).Result;
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
 
         /// <summary>
@@ -188,7 +238,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext"></param>
         public void SetPermissions(CloudQueue queue, QueuePermissions queuePermissions, QueueRequestOptions requestOptions, OperationContext operationContext)
         {
-            Task.Run(() => queue.SetPermissionsAsync(queuePermissions, requestOptions, operationContext)).Wait();
+            try
+            {
+                Task.Run(() => queue.SetPermissionsAsync(queuePermissions, requestOptions, operationContext)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
         }
     }
 }

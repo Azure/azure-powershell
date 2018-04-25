@@ -52,26 +52,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\AddAzureKeyVaultCertificate.cs" />
+    <Compile Include="Commands\BackupAzureKeyVaultCertificate.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\BackupAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\BackupAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\GetAzureKeyVaultManagedStorageAccount.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\UndoAzureKeyVaultManagedStorageAccountRemoval.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\UndoAzureKeyVaultManagedStorageSasDefinitionRemoval.cs" />
+    <Compile Include="Commands\RestoreAzureKeyVaultCertificate.cs" />
+    <Compile Include="Commands\ManagedStorageAccounts\RestoreAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\GetAzureKeyVaultManagedStorageSasDefinition.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\UpdateAzureKeyVaultManagedStorageAccountKey.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\RemoveAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\RemoveAzureKeyVaultManagedStorageSasDefinition.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SasDefinitionParameterConstants.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\AddAzureKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\UpdateAzureKeyVaultManagedStorageAccount.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Account.cs" />
     <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Container.Blob.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Container.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Queue.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Share.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Share.File.cs" />
-    <Compile Include="Commands\ManagedStorageAccounts\SetAzureKeyVaultManagedStorageSasDefinition.Service.Table.cs" />
-    <Compile Include="Commands\SetAzureKeyVaultCertificateAttribute.cs" />
+    <Compile Include="Commands\UpdateAzureKeyVaultCertificate.cs" />
     <Compile Include="Commands\StopAzureKeyVaultCertificateOperation.cs" />
     <Compile Include="Commands\GetAzureKeyVaultCertificateOperation.cs" />
     <Compile Include="Commands\ImportAzureKeyVaultCertificate.cs" />
@@ -93,10 +90,19 @@
     <Compile Include="Commands\UndoAzureKeyVaultRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultKeyRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultSecretRemoval.cs" />
+    <Compile Include="Commands\UpdateAzureKeyVaultSecret.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageAccount.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageAccountIdentityItem.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageSasDefinition.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem.cs" />
     <Compile Include="Models\PSDeletedKeyVaultCertificateIdentityItem.cs" />
     <Compile Include="Models\PSDeletedKeyVaultCertificate.cs" />
     <Compile Include="Models\PSDeletedKeyVault.cs" />
     <Compile Include="Models\PSKeyVaultCertificateIdentityItem.cs" />
+    <Compile Include="Commands\VirtualNetworkRuleSet\AddAzureKeyVaultNetworkRule.cs" />
+    <Compile Include="Commands\VirtualNetworkRuleSet\KeyVaultNetworkRuleSetBase.cs" />
+    <Compile Include="Commands\VirtualNetworkRuleSet\RemoveAzureRmKeyVaultNetworkRule.cs" />
+    <Compile Include="Commands\VirtualNetworkRuleSet\UpdateAzureKeyVaultNetworkRuleSet.cs" />
     <Compile Include="Commands\Constants.cs" />
     <Compile Include="Models\PSKeyVaultCertificateIssuerIdentityItem.cs" />
     <Compile Include="Models\PSDeletedKeyVaultKey.cs" />
@@ -110,13 +116,14 @@
     <Compile Include="Models\PSKeyVaultCertificateOperation.cs" />
     <Compile Include="Models\PSKeyVaultCertificateOrganizationDetails.cs" />
     <Compile Include="Models\PSKeyVaultCertificatePolicy.cs" />
-    <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccount.cs" />
-    <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccountAttributes.cs" />
-    <Compile Include="Models\ManagedStorageAccounts\ManagedStorageAccountListItem.cs" />
-    <Compile Include="Models\ManagedStorageAccounts\ManagedStorageSasDefinition.cs" />
-    <Compile Include="Models\ManagedStorageAccounts\ManagedStorageSasDefinitionAttributes.cs" />
-    <Compile Include="Models\ManagedStorageAccounts\ManagedStorageSasDefinitionListItem.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSKeyVaultManagedStorageAccount.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSKeyVaultManagedStorageAccountAttributes.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSKeyVaultManagedStorageAccountIdentityItem.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSKeyVaultManagedStorageSasDefinition.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSKeyVaultManagedStorageSasDefinitionAttributes.cs" />
+    <Compile Include="Models\ManagedStorageAccounts\PSKeyVaultManagedStorageSasDefinitionIdentityItem.cs" />
     <Compile Include="Models\ManagedStorageAccounts\ManagedStorageSasDefinitiontFilterOptions.cs" />
+    <Compile Include="Models\PSKeyVaultNetworkRuleSet.cs" />
     <Compile Include="Models\VaultManagementClient.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\PSKeyVault.cs" />
@@ -150,9 +157,8 @@
     <Compile Include="Commands\RemoveAzureKeyVaultKey.cs" />
     <Compile Include="Commands\RemoveAzureKeyVaultSecret.cs" />
     <Compile Include="Commands\RestoreAzureKeyVaultKey.cs" />
-    <Compile Include="Commands\SetAzureKeyVaultKeyAttribute.cs" />
+    <Compile Include="Commands\UpdateAzureKeyVaultKey.cs" />
     <Compile Include="Commands\SetAzureKeyVaultSecret.cs" />
-    <Compile Include="Commands\SetAzureKeyVaultSecretAttribute.cs" />
     <Compile Include="Models\ByokWebKeyConverter.cs" />
     <Compile Include="Models\DataServiceCredential.cs" />
     <Compile Include="Models\IKeyVaultDataServiceClient.cs" />
@@ -183,17 +189,14 @@
     <Reference Include="Microsoft.Azure.ActiveDirectory.GraphClient">
       <HintPath>..\..\..\packages\Microsoft.Azure.ActiveDirectory.GraphClient.2.1.0\lib\portable-net4+sl5+win+wpa+wp8\Microsoft.Azure.ActiveDirectory.GraphClient.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.2.3.2\lib\net452\Microsoft.Azure.KeyVault.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.KeyVault, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.3.0.0-alpha\lib\net452\Microsoft.Azure.KeyVault.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.KeyVault.WebKey, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.WebKey.2.0.7\lib\net452\Microsoft.Azure.KeyVault.WebKey.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.KeyVault.WebKey, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.WebKey.3.0.0-alpha\lib\net452\Microsoft.Azure.KeyVault.WebKey.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.4.1-alpha\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>

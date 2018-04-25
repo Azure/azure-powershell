@@ -39,4 +39,28 @@
 -->
 
 ## Current Breaking Changes
+**Export-AzureRmDataLakeStoreItem**
+- Parameters PerFileThreadCount, ConcurrentFileCount are deprecated. Will be removed in future releases. Introduced Concurrency parameter.
+```powershell
+# Old
+# Export-AzureRmDataLakeStoreItem -Account contoso -Path /test -Destination C:\test -Recurse -Resume -PerFileThreadCount 2 -ConcurrentFileCount 80
+# New
+# Export-AzureRmDataLakeStoreItem -Account contoso -Path /test -Destination C:\test -Recurse -Resume -Concurrency 160
+```
+**Import-AzureRmDataLakeStoreItem**
+- Parameters PerFileThreadCount, ConcurrentFileCount are deprecated. Will be removed in future releases. Introduced Concurrency parameter.
+```powershell
+# Old
+# Import-AzureRmDataLakeStoreItem -Account contoso -Path C:\test -Destination /test -Recurse -Resume -ForceBinary -PerFileThreadCount 2 -ConcurrentFileCount 80
+# New
+# Import-AzureRmDataLakeStoreItem -Account contoso -Path C:\test -Destination /test -Recurse -Resume -ForceBinary -Concurrency 160
+```
 
+**Remove-AzureRmDataLakeStoreItem**
+- Parameter Clean is deprecated.
+```powershell
+# Old
+# Remove-AzureRmDataLakeStoreItem -Account "ContosoADL" -path /myFolder -Recurse -Clean
+# New
+# Remove-AzureRmDataLakeStoreItem -Account "ContosoADL" -path /myFolder -Recurse
+```
