@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Sql.Test.Netcore",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Test.Netcore", "Storage\Commands.Storage.Test\Commands.Storage.Test.Netcore.csproj", "{8D9F4550-CFF7-4F43-8188-A8C263157B1E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Management.Storage.Test.Netcore", "ResourceManager\Storage\Commands.Management.Storage.Test\Commands.Management.Storage.Test.Netcore.csproj", "{4504227B-3BAF-4DDB-8081-BB57CC21AD87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -181,6 +183,18 @@ Global
 		{8D9F4550-CFF7-4F43-8188-A8C263157B1E}.Release|x64.Build.0 = Release|Any CPU
 		{8D9F4550-CFF7-4F43-8188-A8C263157B1E}.Release|x86.ActiveCfg = Release|Any CPU
 		{8D9F4550-CFF7-4F43-8188-A8C263157B1E}.Release|x86.Build.0 = Release|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Debug|x64.Build.0 = Debug|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Debug|x86.Build.0 = Debug|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Release|x64.ActiveCfg = Release|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Release|x64.Build.0 = Release|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Release|x86.ActiveCfg = Release|Any CPU
+		{4504227B-3BAF-4DDB-8081-BB57CC21AD87}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
