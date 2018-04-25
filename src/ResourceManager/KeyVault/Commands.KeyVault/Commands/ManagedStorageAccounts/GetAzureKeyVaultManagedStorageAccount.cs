@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageAccount, DefaultParameterSetName = ByAccountNameParameterSet)]
-    [OutputType( typeof(PSKeyVaultManagedStorageAccountIdentityItem))]
+    [OutputType( typeof(PSKeyVaultManagedStorageAccountIdentityItem), typeof(PSKeyVaultManagedStorageAccount), typeof(PSDeletedKeyVaultManagedStorageAccountIdentityItem), typeof(PSDeletedKeyVaultManagedStorageAccount) )]
     public class GetAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Parameter Set Names
