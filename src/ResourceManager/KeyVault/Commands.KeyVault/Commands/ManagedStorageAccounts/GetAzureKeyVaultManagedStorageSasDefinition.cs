@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition)]
+    [Cmdlet( VerbsCommon.Get, CmdletNoun.AzureKeyVaultManagedStorageSasDefinition, DefaultParameterSetName = ByDefinitionNameParameterSet)]
     [OutputType( typeof( List<PSKeyVaultManagedStorageSasDefinitionIdentityItem> ), typeof( PSKeyVaultManagedStorageSasDefinition ), typeof(PSDeletedKeyVaultManagedStorageSasDefinition), typeof(PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem) )]
     public class GetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
     {
@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         [Parameter( Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
                     "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
@@ -54,20 +54,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string AccountName { get; set; }
 
         /// <summary>
-        /// Vault object
+        /// PSKeyVaultManagedStorageAccountIdentityItem object
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByInputObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "Vault object.")]
+            HelpMessage = "ManagedStorageAccount object.")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVault InputObject { get; set; }
+        public PSKeyVaultManagedStorageAccountIdentityItem InputObject { get; set; }
 
         [Parameter( Mandatory = false,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Storage sas definition name. Cmdlet constructs the FQDN of a storage sas definition from vault name, currently " +
                           "selected environment, storage account name and sas definition name." )]
         [ValidateNotNullOrEmpty]
@@ -81,6 +79,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                AccountName = InputObject.AccountName;
+            }
+
             if (InRemovedState)
             {
                 if (String.IsNullOrWhiteSpace(Name))
