@@ -824,26 +824,30 @@ function Test-NetworkRuleSet
 		$rg = New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
 		$vault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $vaultLocation
 
-		$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+		$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault 
 		$virtualNetwork = New-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName -Location $virtualNetworkLocation -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
 
 		$myNetworkResId = (Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName).Subnets[0].Id
-		$networkRule = Add-AzureRmKeyVaultNetworkRule -VaultName $vaultName -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId
+		Add-AzureRmKeyVaultNetworkRule -VaultName $vaultName -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId
 		$vault = Get-AzureRmKeyVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		Assert-AreEqual $vault.NetworkAcls.Count() 1
-		Assert-AreEqual $vault.NetworkAcls.First() $networkRule
-		Assert-AreEqual $networkRule.IpAddressRanges.Count() 1
-		Assert-AreEqual $networkRule.IpAddressRanges.First() "10.0.1.0/24"
-		Assert-AreEqual $networkRule.VirtualNetworkResourceIds.Count() 1
-		Assert-AreEqual $networkRule.VirtualNetworkResourceIds.First() "10.0.1.0/24"
+		Assert-AreEqual $vault.NetworkAcls.IpAddressRanges.Count 1
+		Assert-AreEqual $vault.NetworkAcls.IpAddressRanges[0] "10.0.1.0/24"
+		Assert-AreEqual $vault.NetworkAcls.VirtualNetworkResourceIds.Count 1
+		Assert-AreEqual $vault.NetworkAcls.VirtualNetworkResourceIds[0] $myNetworkResId
+		Assert-AreEqual $vault.NetworkAcls.Bypass.toString() "AzureServices"
+		Assert-AreEqual $vault.NetworkAcls.DefaultAction.toString() "Allow"
 
-		$networkRule = Update-AzureRmKeyVaultNetworkRuleSet -VaultName $vaultName -ResourceGroupName $resourceGroupName -Bypass AzureServices -DefaultAction Allow -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId -PassThru
-		Assert-AreEqual $networkRule.Bypass.toString() "AzureServices"
-		Assert-AreEqual $networkRule.DefaultAction.toString() "Allow"
-
-		Remove-AzureRmKeyVaultNetworkRuleSet -VaultName $vaultName -ResourceGroupName $resourceGroupName -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
+		$networkRule = Update-AzureRmKeyVaultNetworkRuleSet -VaultName $vaultName -ResourceGroupName $resourceGroupName -Bypass None -DefaultAction Deny -PassThru
+		Assert-AreEqual $networkRule.NetworkAcls.Bypass.toString() "None"
+		Assert-AreEqual $networkRule.NetworkAcls.DefaultAction.toString() "Deny"
 		$vault = Get-AzureRmKeyVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		Assert-AreEqual $vault.NetworkAcls.Count() 0
+		Assert-AreEqual $vault.NetworkAcls.Bypass.toString() "None"
+		Assert-AreEqual $vault.NetworkAcls.DefaultAction.toString() "Deny"
+
+		Remove-AzureRmKeyVaultNetworkRule -VaultName $vaultName -ResourceGroupName $resourceGroupName -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId
+		$vault = Get-AzureRmKeyVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		Assert-AreEqual $vault.NetworkAcls.IpAddressRanges.Count 0
+		Assert-AreEqual $vault.NetworkAcls.VirtualNetworkResourceIds.Count 0
 	}
 	finally
 	{
