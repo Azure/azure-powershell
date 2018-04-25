@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.IotHub
 Module Guid: 51a3a993-fe39-4f8f-a437-2cb751584af5
 Download Help Link: {{Please enter FwLink manually}}
