@@ -80,8 +80,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-AzureDiskEncryptionExtension");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "TODO: only works for live mode due to key vault dependency")]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAzureDiskEncryptionExtensionSinglePass()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AzureDiskEncryptionExtensionSinglePass");
