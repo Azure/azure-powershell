@@ -1,4 +1,107 @@
-﻿## 5.7.0 - April 2018
+﻿## 6.0.0 - May 2018
+#### General
+* Set minimum dependency of modules to PowerShell 5.0
+
+#### Azure.Storage
+* Support  as Storage blob container name
+	- New-AzureStorageBlobContainer
+	- Remove-AzureStorageBlobContainer
+	- Set-AzureStorageBlobContent
+	- Get-AzureStorageBlobContent
+* Fix the issue that some Storage cmdlets failure output not contain detail failure information
+
+#### AzureRM.ApiManagement
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Automation
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'Set-AzureRmAutomationRunbook'
+
+#### AzureRM.Batch
+* Updated New-AzureBatchPool documentation to remove deprecated example
+
+#### AzureRM.Cdn
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Compute
+* 'New-AzureRmVm' and 'New-AzureRmVmss' support verbose output of parameters
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).
+* VMSS Redeploy and PerformMaintenance feature
+    -  Add new switch parameter -Redeploy and -PerformMaintenance to 'Set-AzureRmVmss' and 'Set-AzureRmVmssVM'
+* Add DisableVMAgent switch parameter to 'Set-AzureRmVMOperatingSystem' cmdlet
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support a 'Win10' image.
+* 'Repair-AzureRmVmssServiceFabricUpdateDomain' cmdlet is added.
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more details
+
+#### AzureRM.DataFactories
+* Remove deprecated 'Tags' alias from cmdlets
+    - New-AzureRmDataFactory
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 0.7.0-preview containing following changes:
+    - Added execution parameters and connection managers property on ExecuteSSISPackage Activity
+    - Updated PostgreSql, MySql llinked service to use full connection string instead of server, database, schema, username and password
+    - Removed the schema from DB2 linked service
+    - Removed schema property from Teradata linked service
+    - Added LinkedService, Dataset, CopySource for Responsys
+
+#### AzureRM.DataLakeStore
+* Breaking changes in Export-AzureRmDataLakeStoreItem, Import-AzureRmDataLakeStoreItem, Remove-AzureRmDataLakeStoreItem
+
+#### AzureRM.Dns
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.EventHub
+* Updated Help for cmdlets with missing examples
+
+#### AzureRM.Insights
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.KeyVault
+* Breaking changes to support piping scenarios
+* Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
+
+#### AzureRM.MachineLearning
+* Remove deprecated 'Tags' alias from cmdlets
+    - Update-AzureRmMlCommitmentPlan
+
+#### AzureRM.Media
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'Set-AzureRmMediaService'
+
+#### AzureRM.Network
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.NotificationHubs
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.OperationalInsights
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.RedisCache
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Resources
+* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
+* Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+
+#### AzureRM.ServiceFabric
+* Update default Linux image version sku
+  - NewAzureServiceFabricCluster.cs default UbuntuServer1604 Sku update
+
+#### AzureRM.Storage
+* Updated to the latest version of the Azure ClientRuntime
+
+## 5.7.0 - April 2018
 
 #### General
 * Updated to the latest version of the Azure ClientRuntime
