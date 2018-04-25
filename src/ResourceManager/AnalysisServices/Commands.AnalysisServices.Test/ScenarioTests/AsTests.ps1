@@ -621,16 +621,21 @@ function Test-AnalysisServicesServerGateway
 {
     try
     {
+        # Creating server
+		$location = Get-Location
+		$resourceGroupName = Get-ResourceGroupName
+		$serverName = Get-AnalysisServicesServerName
+        $gatewayName = $env:GATEWAY_NAME
+        $gateway = Get-AzureRmResource -ResourceName $gatewayName -ResourceGroupName $resourceGroupName
+        $serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku S0 -GatewayResourceId $gateway.ResourceId -PassThru
 
-        # Updating server
-        $tagsToUpdate = @{"TestTag" = "TestUpdate"}
-        #$serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Tag $tagsToUpdate -GatewayName 'azsdktest' -GatewayResourceGroupName 'TestRG' -GatewaySubscriptionId 'ba59a556-5034-4bbb-80b4-4c37cf1083e9' -PassThru
-        $serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName 'TestRG' -Name 'azsdktest0309' -Tag $tagsToUpdate -DisassociateGateway -PassThru
-        Assert-NotNull $serverUpdated.Tag "Tag do not exists"
-        Assert-NotNull $serverUpdated.Tag["TestTag"] "The updated tag 'TestTag' does not exist"
-        Assert-AreEqual $serverUpdated.AsAdministrators.Count 2
-        Assert-AreEqual 1 $serverUpdated.Sku.Capacity
+        Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
+        Assert-True {$serverCreated.State -like "Succeeded"}
+        Assert-AreEqual $gateway.ResourceId $serverCreated.GatewayDetails.GatewayResourceId
 
+        # Dissociate gateway from server
+        $serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -DisassociateGateway -PassThru
+        Assert-True {[string]::IsNullOrEmpty($serverUpdated.GatewayDetails.GatewayResourceId)}
     }
     finally
     {

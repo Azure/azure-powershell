@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         private readonly AnalysisServicesManagementClient _client;
         private readonly Guid _subscriptionId;
         private readonly string _currentUser;
-		public const string gatewayResourceIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Web/connectionGateways/{2}";
 
         public AnalysisServicesClient(IAzureContext context)
         {
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             int ReadonlyReplicaCount = 0,
             string DefaultConnectionMode = null,
             IPv4FirewallSettings setting = null,
-            string gatewayId = null)
+            string gatewayResourceId = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -90,13 +89,13 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
 
             GatewayDetails gatewayDetails = null;
-            if (gatewayId == "-")
+            if (gatewayResourceId == "-")
             {
                 gatewayDetails = new GatewayDetails();
             }
-            else
+            else if (gatewayResourceId != null)
             {
-                gatewayDetails = new GatewayDetails(gatewayId);
+                gatewayDetails = new GatewayDetails(gatewayResourceId);
             }
 
             AnalysisServicesServer newOrUpdatedServer = null;
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     updateParameters.IpV4FirewallSettings = setting;
                 }
 
-                if (gatewayId != null)
+                if (gatewayDetails != null)
                 {
                     updateParameters.GatewayDetails = gatewayDetails;
                 }
@@ -146,6 +145,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 if (DefaultConnectionMode != null)
                 {
                     connectionMode = (ConnectionMode)Enum.Parse(typeof(ConnectionMode), DefaultConnectionMode, true); 
+                }
+
+                if (adminList.Count == 0)
+                {
+                    adminList.Add(_currentUser);
                 }
 
                 newOrUpdatedServer = _client.Servers.Create(
@@ -279,22 +283,6 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
 
             _client.Servers.Resume(resourceGroupName, serverName);
-        }
-
-        public string GetGatewayResourceId(string gatewayName, string resourceGroupName, string subscriptionId)
-        {
-            string resourcdId = null;
-            if (!string.IsNullOrEmpty(gatewayName))
-            {
-                if (string.IsNullOrEmpty(subscriptionId))
-                {
-                    subscriptionId = _client.SubscriptionId;
-                }
-
-                resourcdId = string.Format(gatewayResourceIdFormat, subscriptionId, resourceGroupName, gatewayName);
-            }
-
-            return resourcdId;
         }
 
         #endregion

@@ -89,16 +89,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Gateway resource name")]
-        public string GatewayName { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Gateway resource group name")]
-        public string GatewayResourceGroupName { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "Gateway subscription Id")]
-        public string GatewaySubscriptionId { get; set; }
+            HelpMessage = "Gateway resource ID")]
+        public string GatewayResourceId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Disassociate current gateway")]
@@ -163,22 +155,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     ReadonlyReplicaCount = -1;
                 }
 
-                if (string.IsNullOrEmpty(GatewayResourceGroupName))
-                {
-                    GatewayResourceGroupName = ResourceGroupName;
-                }
-
-                string gatewayResourceId = null;
                 if (DisassociateGateway.IsPresent)
                 {
-                    gatewayResourceId = "-";
-                }
-                else
-                {
-                    gatewayResourceId = AnalysisServicesClient.GetGatewayResourceId(GatewayName, GatewayResourceGroupName, GatewaySubscriptionId);
+                    GatewayResourceId = "-";
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, gatewayResourceId);
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, GatewayResourceId);
 
                 if(PassThru.IsPresent)
                 {
