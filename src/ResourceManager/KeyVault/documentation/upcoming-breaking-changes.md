@@ -60,6 +60,8 @@ The following cmdlets were affected this release:
     - Get-AzureKeyVaultCertificateOperation
     - Get-AzureKeyVaultCertificatePolicy
     - Get-AzureKeyVaultKey
+    - Get-AzureKeyVaultManagedStorageAccount
+    - Get-AzureKeyVaultManagedStorageSasDefinition
     - Get-AzureKeyVaultSecret
     - Remove-AzureRmKeyVault
     - Remove-AzureRmKeyVaultAccessPolicy
@@ -68,6 +70,8 @@ The following cmdlets were affected this release:
     - Remove-AzureKeyVaultCertificateIssuer
     - Remove-AzureKeyVaultCertificateOperation
     - Remove-AzureKeyVaultKey
+    - Remove-AzureKeyVaultManagedStorageAccount
+    - Remove-AzureKeyVaultManagedStorageSasDefinition
     - Remove-AzureKeyVaultSecret
     - Restore-AzureKeyVaultKey
     - Restore-AzureKeyVaultSecret
@@ -76,6 +80,7 @@ The following cmdlets were affected this release:
     - Set-AzureKeyVaultCertificateIssuer
     - Set-AzureKeyVaultCertificatePolicy
     - Set-AzureKeyVaultKeyAttribute
+    - Set-AzureKeyVaultManagedStorageSasDefinition
     - Set-AzureKeyVaultSecret
     - Set-AzureKeyVaultSecretAttribute
     - Stop-AzureKeyVaultCertificateOperation
@@ -83,14 +88,19 @@ The following cmdlets were affected this release:
     - Undo-AzureKeyVaultKeyRemoval
     - Undo-AzureRmKeyVaultRemoval
     - Undo-AzureKeyVaultSecretRemoval
+    - Update-AzureKeyVaultManagedStorageAccount
+    - Update-AzureKeyVaultManagedStorageAccountKey
 - ConfirmImpact levels were removed from all cmdlets.  Those affected are:
     - Remove-AzureRmKeyVault
     - Remove-AzureKeyVaultCertificate
     - Remove-AzureKeyVaultCertificateIssuer
     - Remove-AzureKeyVaultCertificateOperation
     - Remove-AzureKeyVaultKey
+    - Remove-AzureKeyVaultManagedStorageAccount
+    - Remove-AzureKeyVaultManagedStorageSasDefinition
     - Remove-AzureKeyVaultSecret
     - Stop-AzureKeyVaultCertificateOperation
+    - Update-AzureKeyVaultManagedStorageAccountKey
 - The IKeyVaultDataServiceClient was updated so all Certificate operations return PSTypes instead of SDK types. This includes:
     - SetCertificateContacts
     - GetCertificateContacts
