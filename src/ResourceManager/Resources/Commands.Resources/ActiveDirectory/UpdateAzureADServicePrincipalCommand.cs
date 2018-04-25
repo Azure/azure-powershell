@@ -70,32 +70,33 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>();
-                if (this.IsParameterBound(c => c.ObjectId))
-                {
-                    var objectId = ObjectId.ToString();
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId == objectId);
-                }
-                else if (this.IsParameterBound(c => c.ApplicationId))
-                {
-                    var appId = ApplicationId.ToString();
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.AppId == appId);
-                }
-                else if (this.IsParameterBound(c => c.ServicePrincipalName))
-                {
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(ServicePrincipalName));
-                }
-
                 var sp = InputObject;
                 if (sp == null)
                 {
-                    // At max 1 SP can be returned with SPN and Id options
-                    sp = ActiveDirectoryClient.FilterServicePrincipals(odataQuery).FirstOrDefault();
+                    IEnumerable<PSADServicePrincipal> result = null;
+                    if (this.IsParameterBound(c => c.ApplicationId))
+                    {
+                        var appId = ApplicationId.ToString();
+                        Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.AppId == appId);
+                        result = ActiveDirectoryClient.FilterServicePrincipals(odataQuery);
+                    }
+                    else
+                    {
+                        ADObjectFilterOptions options = new ADObjectFilterOptions()
+                        {
+                            SPN = ServicePrincipalName,
+                            Id = ObjectId.ToString()
+                        };
 
-                    if (sp == null)
+                        result = ActiveDirectoryClient.FilterServicePrincipals(options);
+                    }
+
+                    if (result == null)
                     {
                         throw new InvalidOperationException("ServicePrincipal does not exist.");
                     }
+
+                    sp = result.FirstOrDefault();
                 }
 
                 // Get AppObjectId
@@ -112,7 +113,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 if (ShouldProcess(target: sp.Id.ToString(), action: string.Format("Updating properties on application associated with a service principal with object id '{0}'", sp.Id)))
                 {
                     ActiveDirectoryClient.UpdateApplication(applicationObjectId, parameters);
-                    WriteObject(ActiveDirectoryClient.FilterServicePrincipals(odataQuery).FirstOrDefault());
+                    WriteObject(ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { Id = applicationObjectId.ToString() }).FirstOrDefault());
                 }
             });
         }

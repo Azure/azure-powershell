@@ -17,20 +17,20 @@ Gets resources.
 ### ByTagNameValueParameterSet (Default)
 ```
 Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
- [-ResourceGroupName <String>] [-TagName <String>] [-TagValue <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ResourceGroupName <String>] [-TagName <String>] [-TagValue <String>] [-ExpandProperties]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Get-AzureRmResource -ResourceId <String> [-ApiVersion <String>] [-Pre]
+Get-AzureRmResource -ResourceId <String> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByTagObjectParameterSet
 ```
 Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
- [-ResourceGroupName <String>] -Tag <Hashtable> [-ApiVersion <String>] [-Pre]
+ [-ResourceGroupName <String>] -Tag <Hashtable> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -169,6 +169,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandProperties
+When specified, expands the properties of the resource.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

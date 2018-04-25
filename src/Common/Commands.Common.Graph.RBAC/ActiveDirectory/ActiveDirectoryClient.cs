@@ -59,9 +59,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
             if (result == null && IsSet(options.SPN, options.Id))
             {
-                Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery =
-                    new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId.Equals(options.Id));
-                result = FilterServicePrincipals(odataQuery).FirstOrDefault();
+                result = FilterServicePrincipals(options).FirstOrDefault();
             }
 
             if (result == null && IsSet(options.Mail, options.Id))
@@ -82,6 +80,31 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return string.IsNullOrEmpty(s) ? null : s;
         }
 
+        public PSADServicePrincipal GetServicePrincipalByObjectId(string objectId)
+        {
+            PSADServicePrincipal servicePrincipal = null;
+            try
+            {
+                servicePrincipal = GraphClient.ServicePrincipals.Get(objectId).ToPSADServicePrincipal();
+            }
+            catch { /* The service principal does not exist, ignore the exception. */ }
+
+            return servicePrincipal;
+        }
+
+        public PSADServicePrincipal GetServicePrincipalBySPN(string spn)
+        {
+            PSADServicePrincipal servicePrincipal = null;
+            try
+            {
+                var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
+                servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery.ToString()).FirstOrDefault()?.ToPSADServicePrincipal();
+            }
+            catch { /* The service principal does not exist, ignore the exception. */ }
+
+            return servicePrincipal;
+        }
+
         public IEnumerable<PSADServicePrincipal> FilterServicePrincipals(Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             return new GenericPageEnumerable<ServicePrincipal>(
@@ -91,9 +114,55 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 }, GraphClient.ServicePrincipals.ListNext, first, skip).Select(s => s.ToPSADServicePrincipal());
         }
 
-        public IEnumerable<PSADServicePrincipal> FilterServices()
+        public IEnumerable<PSADServicePrincipal> FilterServicePrincipals(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            return FilterServicePrincipals(new Rest.Azure.OData.ODataQuery<ServicePrincipal>());
+            List<PSADServicePrincipal> servicePrincipals = new List<PSADServicePrincipal>();
+            ServicePrincipal servicePrincipal = null;
+
+            if (!string.IsNullOrEmpty(options.Id))
+            {
+                try
+                {
+                    servicePrincipal = GraphClient.ServicePrincipals.Get(options.Id);
+                }
+                catch {  /* The user does not exist, ignore the exception. */ }
+
+                if (servicePrincipal != null)
+                {
+                    servicePrincipals.Add(servicePrincipal.ToPSADServicePrincipal());
+                }
+            }
+            else if (!string.IsNullOrEmpty(options.SPN))
+            {
+                try
+                {
+                    var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(options.SPN));
+                    servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery.ToString()).FirstOrDefault();
+                }
+                catch {  /* The user does not exist, ignore the exception. */ }
+
+                if (servicePrincipal != null)
+                {
+                    servicePrincipals.Add(servicePrincipal.ToPSADServicePrincipal());
+                }
+            }
+            else
+            {
+                Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = null;
+                if (!string.IsNullOrEmpty(options.SearchString) && options.SearchString.EndsWith("*"))
+                {
+                    options.SearchString = options.SearchString.TrimEnd('*');
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(options.SearchString));
+                }
+                else
+                {
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName == options.SearchString);
+                }
+
+                return FilterServicePrincipals(odataQuery, first, skip);
+            }
+
+            return servicePrincipals;
         }
 
         public PSADUser CreateUser(UserCreateParameters userCreateParam)
@@ -738,8 +807,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public PSADServicePrincipal RemoveServicePrincipal(Guid objectId)
         {
             var objectIdString = objectId.ToString();
-            Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId == objectIdString);
-            PSADServicePrincipal servicePrincipal = FilterServicePrincipals(odataQuery).FirstOrDefault();
+            PSADServicePrincipal servicePrincipal = FilterServicePrincipals(new ADObjectFilterOptions() { Id = objectId.ToString() }).FirstOrDefault();
             if (servicePrincipal != null)
             {
                 GraphClient.ServicePrincipals.Delete(objectIdString);
