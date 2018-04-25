@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
@@ -207,11 +208,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             {
                 string edition = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : null;
 
-                if (string.IsNullOrWhiteSpace(edition))
+                if (!string.IsNullOrWhiteSpace(edition))
                 {
                     newModel.Sku = new Management.Sql.Models.Sku()
                     {
-                        Name = string.Format("{0}{1}", edition, NormalElasticPoolSkuNamesPostfix),
+                        Name = AzureSqlElasticPoolAdapter.getPoolSkuName(edition),
                         Tier = edition,
                         Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
                     };
@@ -225,22 +226,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             }
             else
             {
-                string skuNamePrefix = null;
-                switch (Edition.ToLower())
-                {
-                    case GeneralPurpose:
-                        skuNamePrefix = "GP";
-                        break;
-                    case BusinessCritical:
-                        skuNamePrefix = "BC";
-                        break;
-                    default:
-                        throw new PSArgumentException("Invalid Edition value.");
-                }
-
                 newModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = skuNamePrefix,
+                    Name = AzureSqlElasticPoolAdapter.getPoolSkuName(Edition),
                     Tier = Edition,
                     Capacity = VCores,
                     Family = ComputeGeneration

@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -28,8 +29,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public const string DtuDatabaseParameterSet = "DtuBasedDatabase";
         public const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
         public const string DefaultDatabaseSkuName = "Standard";
-        public const string GeneralPurpose = "generalpurpose";
-        public const string BusinessCritical = "businesscritical";
 
         /// <summary>
         /// Gets or sets the name of the database server to use.

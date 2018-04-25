@@ -16,6 +16,7 @@ using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -218,7 +219,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 {
                     newDbModel.Sku = new Management.Sql.Models.Sku()
                     {
-                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition: RequestedServiceObjectiveName,
+                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition): RequestedServiceObjectiveName,
                         Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : null,
                     };
                 }
@@ -231,24 +232,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ||
                     MyInvocation.BoundParameters.ContainsKey("VCores"))
                 {
-                    string skuNamePrefix = null;
                     string skuTier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : databaseCurrentSku.Tier;
-
-                    switch (skuTier.ToLower())
-                    {
-                        case GeneralPurpose:
-                            skuNamePrefix = "GP";
-                            break;
-                        case BusinessCritical:
-                            skuNamePrefix = "BC";
-                            break;
-                        default:
-                            throw new PSArgumentException("Invalid Edition value.");
-                    }
+                    string skuName = AzureSqlDatabaseAdapter.getDatabaseSkuName(skuTier);
 
                     newDbModel.Sku = new Management.Sql.Models.Sku()
                     {
-                        Name = skuNamePrefix,
+                        Name = skuName,
                         Tier = skuTier,
                         Family = MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ? ComputeGeneration : databaseCurrentSku.Family,
                         Capacity = MyInvocation.BoundParameters.ContainsKey("VCores") ? VCores : (int)databaseCurrentSku.Capacity

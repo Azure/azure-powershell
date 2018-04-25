@@ -350,5 +350,26 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         {
             Communicator.Rename(resourceGroupName, serverName, databaseName, newName);
         }
+
+        /// <summary>
+        /// Get database sku name based on edition
+        ///    Edition              | SkuName
+        ///    GeneralPurpose       | GP
+        ///    BusinessCritical     | BC
+        ///    Standard             | Standard
+        ///    Basic                | Basic
+        ///    Premium              | Premium
+        /// </summary>
+        /// <param name="tier">Azure Sql database edition</param>
+        /// <returns>The sku name</returns>
+        public static string getDatabaseSkuName(string tier)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            dic.Add("GeneralPurpose", "GP");
+            dic.Add("BusinessCritical", "BC");
+
+            string value;
+            return dic.TryGetValue(tier, out value) ? value : tier;
+        }
     }
 }

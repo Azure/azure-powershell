@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Linq;
@@ -215,29 +216,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 {
                     newDbModel.Sku = new Management.Sql.Models.Sku()
                     {
-                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? Edition : RequestedServiceObjectiveName,
+                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition) : RequestedServiceObjectiveName,
                         Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : null
                     };
                 }
             }
             else
             {
-                string skuNamePrefix = null;
-                switch (Edition.ToLower())
-                {
-                    case GeneralPurpose:
-                        skuNamePrefix = "GP";
-                        break;
-                    case BusinessCritical:
-                        skuNamePrefix = "BC";
-                        break;
-                    default:
-                        throw new PSArgumentException("Invalid Edition value.");
-                }
+                string skuName = AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition);
 
                 newDbModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = skuNamePrefix,
+                    Name = skuName,
                     Tier = Edition,
                     Capacity = VCores,
                     Family = ComputeGeneration
