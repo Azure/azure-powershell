@@ -96,7 +96,7 @@ CmdletsToExport =
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject', 
                'New-AzureRmDms', 'New-AzureRmDmsConnInfo', 'New-AzureRmDmsDBInfo', 
-               'New-AzureRmDmsSqlServerSqlDbSelectedDB', 'New-AzureRmDmsTask', 
+               'New-AzureRmDmsTask', 
                'New-AzureRmDmsProject', 'Remove-AzureRmDmsProject', 
                'Remove-AzureRmDms', 'Remove-AzureRmDmsTask', 
                'Start-AzureRmDmsService', 'Stop-AzureRmDmsTask', 
