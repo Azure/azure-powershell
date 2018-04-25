@@ -316,6 +316,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestSetRemoveAccessPolicyByUPN.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestNetworkSet.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
