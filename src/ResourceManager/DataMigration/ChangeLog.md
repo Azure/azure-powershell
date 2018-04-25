@@ -19,3 +19,8 @@
 -->
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Add powershell cmdlets for SQL to Azure SQL DB Managed Instance migration scenario.
+
+## Version 0.1.0
+* Add powershell cmdlets for creating Azure Database Migration service and projects.
+* Add powershell cmdlets for SQL to Azure SQL DB migration scenario.
