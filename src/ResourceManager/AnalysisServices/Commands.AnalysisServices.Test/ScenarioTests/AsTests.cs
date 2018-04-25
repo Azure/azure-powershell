@@ -94,12 +94,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
             NewInstance.RunPsTest("Test-AnalysisServicesServerLoginWithSPN");
         }
 
-		[Fact]
-		[Trait(Category.RunType, Category.LiveOnly)]
-		public void TestAnalysisServicesServerGateway()
-		{
-			NewInstance.RunPsTest("Test-AnalysisServicesServerGateway");
-		}
+        [Fact]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestAnalysisServicesServerGateway()
+        {
+            NewInstance.RunPsTest("Test-AnalysisServicesServerGateway");
+        }
 
     }
 }
