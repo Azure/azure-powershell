@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 6BCB36BC-F5E6-4EDD-983C-8BDE7A9B004D
@@ -13,18 +13,18 @@ Enables encryption on a running IaaS virtual machine in Azure.
 
 ## SYNTAX
 
-### SimpleParameterSet (Default)
+### SinglePassParameterSet (Default)
 ```
-Set-AzureRmVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> 
- [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String>
- [[-KeyEncryptionKeyUrl] <String>] [[-KeyEncryptionKeyVaultId] <String>] [[-KeyEncryptionAlgorithm] <String>]
- [[-VolumeType] <String>] [[-SequenceVersion] <String>] [[-TypeHandlerVersion] <String>] [[-Name] <String>]
- [[-Passphrase] <String>] [-Force] [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>]
+Set-AzureRmVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String>
+ [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String> [[-KeyEncryptionKeyUrl] <String>]
+ [[-KeyEncryptionKeyVaultId] <String>] [[-KeyEncryptionAlgorithm] <String>] [[-VolumeType] <String>]
+ [[-SequenceVersion] <String>] [[-TypeHandlerVersion] <String>] [[-Name] <String>] [[-Passphrase] <String>]
+ [-Force] [-DisableAutoUpgradeMinorVersion] [-SkipVmBackup] [-ExtensionType <String>]
  [-ExtensionPublisherName <String>] [-EncryptFormatAll] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### AADClientSecretParameterSet 
+### AADClientSecretParameterSet
 ```
 Set-AzureRmVMDiskEncryptionExtension [-ResourceGroupName] <String> [-VMName] <String> [-AadClientID] <String>
  [-AadClientSecret] <String> [-DiskEncryptionKeyVaultUrl] <String> [-DiskEncryptionKeyVaultId] <String>
@@ -55,7 +55,7 @@ It is advised that you save your work on the virtual machine before you run this
 
 ## EXAMPLES
 
-### Example 1: Enable encryption 
+### Example 1: Enable encryption
 ```
 $RGName = "MyResourceGroup"
 $VMName = "MyTestVM"
@@ -80,7 +80,7 @@ $params = New-Object PSObject -Property @{
     VolumeType = "All"
 }
 
-$params | Set-AzureRmVmDiskEncryptionExtension 
+$params | Set-AzureRmVmDiskEncryptionExtension
 ```
 
 This example demonstrates sending parameters using pipelined input to enable encryption without specifying AD credentials.  
@@ -252,8 +252,8 @@ Specifies the client ID of the Azure AD application that has permissions to writ
 
 ```yaml
 Type: String
-Parameter Sets: AADClientCertParameterSet, AADClientSecretParameterSet
-Aliases: 
+Parameter Sets: AADClientSecretParameterSet, AADClientCertParameterSet
+Aliases:
 
 Required: True
 Position: 2
