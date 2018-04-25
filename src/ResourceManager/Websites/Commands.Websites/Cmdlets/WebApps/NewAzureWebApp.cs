@@ -293,6 +293,27 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             var target = siteStrategy.GetTargetState(current, engine, Location);
             var endState = await siteStrategy.UpdateStateAsync(client, target, default(CancellationToken), adapter, adapter.ReportTaskProgress);
             var output = endState.Get(siteStrategy) ?? current.Get(siteStrategy);
+            output.SiteConfig = WebsitesClient.WrappedWebsitesClient.WebApps().GetConfiguration(output.ResourceGroup, output.Name).ConvertToSiteConfig();
+
+            try
+            {
+                var appSettings = WebsitesClient.WrappedWebsitesClient.WebApps().ListApplicationSettings(output.ResourceGroup, output.Name);
+                output.SiteConfig.AppSettings = appSettings.Properties.Select(s => new NameValuePair { Name = s.Key, Value = s.Value }).ToList();
+                var connectionStrings = WebsitesClient.WrappedWebsitesClient.WebApps().ListConnectionStrings(output.ResourceGroup, output.Name);
+                output.SiteConfig.ConnectionStrings = connectionStrings
+                    .Properties
+                    .Select(s => new ConnStringInfo()
+                    {
+                        Name = s.Key,
+                        ConnectionString = s.Value.Value,
+                        Type = s.Value.Type
+                    }).ToList();
+            }
+            catch
+            {
+                //ignore if this call fails as it will for reader RBAC
+            }
+
             string userName = null, password = null;
             try
             {
