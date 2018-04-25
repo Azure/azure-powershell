@@ -88,23 +88,23 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             HelpMessage = "Firewall configuration")]
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
-		[Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-			HelpMessage = "Gateway resource name")]
-		public string GatewayName { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Gateway resource name")]
+        public string GatewayName { get; set; }
 
-		[Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-			HelpMessage = "Gateway resource group name")]
-		public string GatewayResourceGroupName { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Gateway resource group name")]
+        public string GatewayResourceGroupName { get; set; }
 
-		[Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-			HelpMessage = "Gateway subscription Id")]
-		public string GatewaySubscriptionId { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Gateway subscription Id")]
+        public string GatewaySubscriptionId { get; set; }
 
-		[Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-			HelpMessage = "Disassociate current gateway")]
-		public SwitchParameter DisassociateGateway { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Disassociate current gateway")]
+        public SwitchParameter DisassociateGateway { get; set; }
 
-		public override void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(Name))
             {
@@ -165,17 +165,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
                 if (string.IsNullOrEmpty(GatewayResourceGroupName))
                 {
-	                GatewayResourceGroupName = ResourceGroupName;
+                    GatewayResourceGroupName = ResourceGroupName;
                 }
 
                 string gatewayResourceId = null;
                 if (DisassociateGateway.IsPresent)
                 {
-	                gatewayResourceId = "-";
+                    gatewayResourceId = "-";
                 }
                 else
                 {
-	                gatewayResourceId = AnalysisServicesClient.GetGatewayResourceId(GatewayName, GatewayResourceGroupName, GatewaySubscriptionId);
+                    gatewayResourceId = AnalysisServicesClient.GetGatewayResourceId(GatewayName, GatewayResourceGroupName, GatewaySubscriptionId);
                 }
 
                 AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, gatewayResourceId);
