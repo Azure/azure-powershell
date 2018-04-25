@@ -15,14 +15,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public string DmtsClusterUri { get; set; }
 
-		internal static ServerGateway FromResourceGateway(GatewayDetails resourceGateway)
-		{
-			return new ServerGateway()
-			{
-				GatewayResourceId = resourceGateway.GatewayResourceId,
-				GatewayObjectId = resourceGateway.GatewayObjectId != null ? resourceGateway.GatewayObjectId : null,
-				DmtsClusterUri = resourceGateway.DmtsClusterUri != null ? resourceGateway.DmtsClusterUri : null
-			};
+        internal static ServerGateway FromResourceGateway(GatewayDetails resourceGateway)
+        {
+            return new ServerGateway()
+            {
+               GatewayResourceId = resourceGateway.GatewayResourceId,
+                GatewayObjectId = resourceGateway.GatewayObjectId != null ? resourceGateway.GatewayObjectId : null,
+               DmtsClusterUri = resourceGateway.DmtsClusterUri != null ? resourceGateway.DmtsClusterUri : null
+            };
         }
     }
 }

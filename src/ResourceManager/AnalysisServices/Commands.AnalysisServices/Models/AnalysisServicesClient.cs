@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             int ReadonlyReplicaCount = 0,
             string DefaultConnectionMode = null,
             IPv4FirewallSettings setting = null,
-			string gatewayId = null)
+            string gatewayId = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -89,17 +89,17 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 }
             }
 
-			GatewayDetails gatewayDetails = null;
-			if (gatewayId == "-")
-			{
-				gatewayDetails = new GatewayDetails("", "", "");
-			}
-			else
-			{
-				gatewayDetails = new GatewayDetails(gatewayId);
-			}
+            GatewayDetails gatewayDetails = null;
+            if (gatewayId == "-")
+            {
+                gatewayDetails = new GatewayDetails();
+            }
+            else
+            {
+                gatewayDetails = new GatewayDetails(gatewayId);
+            }
 
-			AnalysisServicesServer newOrUpdatedServer = null;
+            AnalysisServicesServer newOrUpdatedServer = null;
             if (existingServer != null)
             {
                 var updateParameters = new AnalysisServicesServerUpdateParameters()
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                     updateParameters.IpV4FirewallSettings = setting;
                 }
 
-                if (gatewayId != null && gatewayId != "-")
+                if (gatewayId != null)
                 {
                     updateParameters.GatewayDetails = gatewayDetails;
                 }
@@ -160,8 +160,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                         Tags = tags,
                         QuerypoolConnectionMode = connectionMode,
                         IpV4FirewallSettings = setting,
-						GatewayDetails = gatewayDetails
-					});
+                        GatewayDetails = gatewayDetails
+                    });
             }            
 
             return newOrUpdatedServer;
@@ -281,22 +281,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             _client.Servers.Resume(resourceGroupName, serverName);
         }
 
-		public string GetGatewayResourceId(string gatewayName, string resourceGroupName, string subscriptionId)
-		{
-			string resourcdId = null;
-			if (!string.IsNullOrEmpty(gatewayName))
-			{
-				if (string.IsNullOrEmpty(subscriptionId))
-				{
-					subscriptionId = _client.SubscriptionId;
-				}
+        public string GetGatewayResourceId(string gatewayName, string resourceGroupName, string subscriptionId)
+        {
+            string resourcdId = null;
+            if (!string.IsNullOrEmpty(gatewayName))
+            {
+                if (string.IsNullOrEmpty(subscriptionId))
+                {
+                    subscriptionId = _client.SubscriptionId;
+                }
 
-				resourcdId = string.Format(gatewayResourceIdFormat, subscriptionId, resourceGroupName, gatewayName);
-			}
+                resourcdId = string.Format(gatewayResourceIdFormat, subscriptionId, resourceGroupName, gatewayName);
+            }
 
-			return resourcdId;
-		}
+            return resourcdId;
+        }
 
-		#endregion
-	}
+        #endregion
+        }
 }
