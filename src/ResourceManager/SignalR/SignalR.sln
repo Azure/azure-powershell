@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Strategies", "..\Common\Commands.Common.Strategies\Commands.Common.Strategies.csproj", "{EEA69772-D41B-482A-9252-2B4595C59E53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SignalR.Test", "Commands.SignalR.Test\Commands.SignalR.Test.csproj", "{3BFE35EB-75A6-4370-8E49-4D8C9A359884}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EEA69772-D41B-482A-9252-2B4595C59E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEA69772-D41B-482A-9252-2B4595C59E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEA69772-D41B-482A-9252-2B4595C59E53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BFE35EB-75A6-4370-8E49-4D8C9A359884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BFE35EB-75A6-4370-8E49-4D8C9A359884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BFE35EB-75A6-4370-8E49-4D8C9A359884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BFE35EB-75A6-4370-8E49-4D8C9A359884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
