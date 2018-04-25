@@ -60,38 +60,47 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>();
                 if (this.IsParameterBound(c => c.ApplicationObject))
                 {
                     ApplicationId = ApplicationObject.ApplicationId;
                 }
 
-                if (ApplicationId != Guid.Empty)
-                {
-                    var appId = ApplicationId.ToString();
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.AppId == appId);
-                }
-                else if (this.IsParameterBound(c => c.ObjectId))
+                if (this.IsParameterBound(c => c.ObjectId))
                 {
                     var objectId = ObjectId.ToString();
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ObjectId == objectId);
+                    var servicePrincipal = ActiveDirectoryClient.GetServicePrincipalByObjectId(objectId);
+                    if (servicePrincipal != null)
+                    {
+                        WriteObject(servicePrincipal);
+                    }
                 }
                 else if (this.IsParameterBound(c => c.ServicePrincipalName))
                 {
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(ServicePrincipalName));
+                    var servicePrincipal = ActiveDirectoryClient.GetServicePrincipalBySPN(ServicePrincipalName);
+                    if (servicePrincipal != null)
+                    {
+                        WriteObject(servicePrincipal);
+                    }
                 }
-                else if (this.IsParameterBound(c => c.DisplayNameBeginsWith))
+                else
                 {
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(DisplayNameBeginsWith));
+                    ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                    ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+                    if (ApplicationId != Guid.Empty)
+                    {
+                        var appId = ApplicationId.ToString();
+                        Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.AppId == appId);
+                        WriteObject(ActiveDirectoryClient.FilterServicePrincipals(odataQuery, first, skip), true);
+                    }
+                    else
+                    {
+                        ADObjectFilterOptions options = new ADObjectFilterOptions()
+                        {
+                            SearchString = this.IsParameterBound(c => c.DisplayNameBeginsWith) ? DisplayNameBeginsWith + "*" : DisplayName
+                        };
+                        WriteObject(ActiveDirectoryClient.FilterServicePrincipals(options, first, skip), true);
+                    }
                 }
-                else if (this.IsParameterBound(c => c.DisplayName))
-                {
-                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName == DisplayName);
-                }
-
-                ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
-                ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
-                WriteObject(ActiveDirectoryClient.FilterServicePrincipals(odataQuery, first, skip), true);
             });
         }
     }

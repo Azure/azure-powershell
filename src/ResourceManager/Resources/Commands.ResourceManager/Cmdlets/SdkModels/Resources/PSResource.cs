@@ -44,6 +44,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public string ResourceGroupName { get; set; }
 
+        public string ResourceType { get; set; }
+
         public Sku Sku { get; set; }
 
         public IDictionary<string, string> Tags { get; set; }
@@ -61,6 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.Name = resource.Name;
             this.Plan = resource.Plan;
             this.Properties = resource.Properties;
+            this.ResourceType = resource.Type;
             this.Sku = resource.Sku;
             this.Tags = resource.Tags;
             this.Type = resource.Type;
