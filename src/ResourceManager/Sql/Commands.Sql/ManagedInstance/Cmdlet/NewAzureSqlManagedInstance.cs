@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the New-AzureSqlManagedInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedInstance",
-        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedInstance", SupportsShouldProcess = true)]
     public class NewAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         /// <summary>
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "Determines which License Type of Sql Azure Managed instance to use")]
-        [ValidateSet(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded, IgnoreCase = false)]
+        [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -94,8 +93,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = true,
             HelpMessage = "The compute generation for the Sql Azure Managed Instance. e.g. 'GP_Gen4', 'BC_Gen4'.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(Constants.GeneralPurposeGen4, Constants.GeneralPurposeGen5, Constants.BusinessCriticalGen4, Constants.BusinessCriticalGen5, IgnoreCase = false)]
-        public string RequestedSkuName { get; set; }
+        [PSArgumentCompleter(Constants.GeneralPurposeGen4, Constants.GeneralPurposeGen5, Constants.BusinessCriticalGen4, Constants.BusinessCriticalGen5)]
+        public string SkuName { get; set; }
 
         /// <summary>
         /// Gets or sets the tags to associate with the Azure Sql Managed Instance
@@ -106,11 +105,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public Hashtable Tags { get; set; }
 
         /// <summary>
-        /// The tags to associate with the Azure Sql Managed Instance
+        /// Gets or sets whether or not to assign identity for Managed instance
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Do not generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.")]
-        public SwitchParameter DoNotAssignIdentity { get; set; }
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -163,7 +162,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             List<Model.AzureSqlManagedInstanceModel> newEntity = new List<Model.AzureSqlManagedInstanceModel>();
             Management.Internal.Resources.Models.Sku Sku = new Management.Internal.Resources.Models.Sku();
-            Sku.Name = RequestedSkuName;
+            Sku.Name = SkuName;
 
             newEntity.Add(new Model.AzureSqlManagedInstanceModel()
             {
@@ -173,7 +172,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 AdministratorLogin = this.AdministratorCredential.UserName,
                 AdministratorPassword = this.AdministratorCredential.Password,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(!this.DoNotAssignIdentity.IsPresent),
+                Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB,
                 SubnetId = this.SubnetId,

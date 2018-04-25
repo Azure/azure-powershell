@@ -27,13 +27,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     public class RemoveAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string RemoveByNameAndResourceGroupParameterSet =
-            "Remove a Managed Instance from cmdlet input parameters";
+            "RemoveMManagedInstanceFromInputParameters";
 
         protected const string RemoveByInputObjectParameterSet =
-            "Remove a Managed Instance from AzureSqlManagedInstanceModel instance definition";
+            "RemoveMManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition";
 
         protected const string RemoveByResourceIdParameterSet =
-            "Remove a Managed Instance from an Azure resource id";
+            "RemoveMManagedInstanceFromAzureResourceId";
 
         /// <summary>
         /// Gets or sets the name of the Managed instance to use.
@@ -64,8 +64,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(ParameterSetName = RemoveByInputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The Server Dns Alias object to remove")]
+            HelpMessage = "The AzureSqlManagedInstanceModel object to remove")]
         [ValidateNotNullOrEmpty]
+        [Alias("ManagedInstance")]
         public Model.AzureSqlManagedInstanceModel InputObject { get; set; }
 
         /// <summary>

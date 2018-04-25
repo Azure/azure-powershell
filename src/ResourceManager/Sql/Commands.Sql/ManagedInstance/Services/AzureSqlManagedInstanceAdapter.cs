@@ -70,10 +70,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
         public List<AzureSqlManagedInstanceModel> ListManagedInstances()
         {
             var resp = Communicator.List();
-            return resp.Select((s) =>
-            {
-                return CreateManagedInstanceModelFromResponse(s);
-            }).ToList();
+
+            return resp.Select((s) => CreateManagedInstanceModelFromResponse(s)).ToList();
         }
 
         /// <summary>

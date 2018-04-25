@@ -80,10 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         {
             var resp = Communicator.List(resourceGroupName, managedInstanceName);
 
-            return resp.Select((db) =>
-            {
-                return CreateManagedDatabaseModelFromResponse(resourceGroupName, managedInstanceName, db);
-            }).ToList();
+            return resp.Select((db) => CreateManagedDatabaseModelFromResponse(resourceGroupName, managedInstanceName, db)).ToList();
         }
 
         /// <summary>

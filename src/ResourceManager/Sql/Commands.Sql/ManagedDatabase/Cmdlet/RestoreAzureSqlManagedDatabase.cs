@@ -12,22 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Backup.Services;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsData.Restore, "AzureRmSqlManagedDatabase",
-        ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsData.Restore, "AzureRmSqlManagedDatabase", SupportsShouldProcess = true)]
     public class RestoreAzureRmSqlDatabase
         : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
+        protected const string RestoreFromNameAndResourceGroupParameterSet =
+            "RestoreManagedDatabaseFromInputParameters";
+
+        protected const string RestoreFropmInputObjectParameterSet =
+            "RestoreManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition";
+
+        protected const string RestoreFromResourceIdParameterSet =
+            "RestoreManagedDatabaseFromAzureResourceId";
+
         /// <summary>
         /// Gets or sets flag indicating a restore from a point-in-time backup.
         /// </summary>
@@ -39,16 +44,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary> 
         /// Gets or sets the managed database name to restore
         /// </summary>
-        [Alias("Id")]
-        [Parameter(Mandatory = true,
+        [Parameter(ParameterSetName = RestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
             Position = 0,
             HelpMessage = "The managed database name to restore.")]
+        [Alias("Name")]
         public string ManagedDatabaseName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the Managed instance to use
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(ParameterSetName = RestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
             Position = 1,
             HelpMessage = "The Managed instance name.")]
         [ValidateNotNullOrEmpty]
@@ -57,12 +64,34 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(ParameterSetName = RestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
             Position = 2,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Managed database object to remove
+        /// </summary>
+        [Parameter(ParameterSetName = RestoreFropmInputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The Managed Database object to restore")]
+        [ValidateNotNullOrEmpty]
+        [Alias("ManagedDatabase")]
+        public AzureSqlManagedDatabaseModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the Managed database to remove
+        /// </summary>
+        [Parameter(ParameterSetName = RestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of Managed Database object to restore")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the point in time to restore the managed database to
@@ -93,6 +122,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             AzureSqlManagedDatabaseModel model;
             DateTime restorePointInTime = DateTime.MinValue;
             string location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, ManagedInstanceName);
+
+            if (string.Equals(this.ParameterSetName, RestoreFropmInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                ManagedInstanceName = InputObject.ManagedInstanceName;
+                ManagedDatabaseName = InputObject.Name;
+            }
+            else if (string.Equals(this.ParameterSetName, RestoreFromResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                ManagedInstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
+                ManagedDatabaseName = resourceInfo.ResourceName;
+            }
 
             model = new AzureSqlManagedDatabaseModel()
             {

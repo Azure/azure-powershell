@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -21,16 +23,53 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedDatabase", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<IEnumerable<AzureSqlManagedDatabaseModel>>
     {
+        protected const string GetByNameAndResourceGroupParameterSet =
+            "GetManagedDatabaseFromInputParameters";
+
+        protected const string GetByResourceIdParameterSet =
+            "GetManagedDatabaseFromAzureResourceId";
+
         /// <summary>
         /// Gets or sets the name of the managed database to use.
         /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 0,
             HelpMessage = "The name of the Azure SQL Managed Database to retrieve.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ManagedDatabaseName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the Azure Sql Managed Instance
+        /// </summary>
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The Azure Sql Managed Instance name.")]
+        [ValidateNotNullOrEmpty]
+        public override string ManagedInstanceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            Position = 2,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the Managed database to get
+        /// </summary>
+        [Parameter(ParameterSetName = GetByResourceIdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of Managed Database object to get")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -39,6 +78,15 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected override IEnumerable<AzureSqlManagedDatabaseModel> GetEntity()
         {
             ICollection<AzureSqlManagedDatabaseModel> results;
+
+            if (string.Equals(this.ParameterSetName, GetByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                ManagedInstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
+                ManagedDatabaseName = resourceInfo.ResourceName;
+            }
 
             if (MyInvocation.BoundParameters.ContainsKey("ManagedDatabaseName"))
             {

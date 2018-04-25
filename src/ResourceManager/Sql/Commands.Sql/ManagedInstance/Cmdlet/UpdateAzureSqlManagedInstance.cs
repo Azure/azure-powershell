@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     public class UpdateAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string UpdateByNameAndResourceGroupParameterSet =
-            "Update a Managed Instance from cmdlet input parameters";
+            "UpdateManagedInstanceFromInputParameters";
 
         protected const string UpdateByInputObjectParameterSet =
-            "Update a Managed Instance from AzureSqlManagedInstanceModel instance definition";
+            "UpdateManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition";
 
         protected const string UpdateByResourceIdParameterSet =
-            "Update a Managed Instance from an Azure resource id";
+            "UpdateManagedInstanceFromAzureResourceId";
 
         /// <summary>
         /// Gets or sets the name of the Managed instance to use.
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Determines which License Type of Sql Azure Managed Instance to use")]
-        [ValidateSet(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded, IgnoreCase = false)]
+        [PSArgumentCompleter(Constants.LicenseTypeBasePrice, Constants.LicenseTypeLicenseIncluded)]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -101,6 +101,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             HelpMessage = "The tags to associate with the Managed instance.")]
         public Hashtable Tag { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether or not to assign identity for Managed instance
+        /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
@@ -113,6 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The AzureSqlManagedInstanceModel object to remove")]
         [ValidateNotNullOrEmpty]
+        [Alias("ManagedInstance")]
         public Model.AzureSqlManagedInstanceModel InputObject { get; set; }
 
         /// <summary>

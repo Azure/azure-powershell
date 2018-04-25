@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -25,10 +26,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedInstance", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
+        protected const string GetByNameAndResourceGroupParameterSet =
+            "GetManagedInstanceFromInputParameters";
+
+        protected const string GetByResourceIdParameterSet =
+            "GetManagedInstanceFromAzureResourceId";
+
         /// <summary>
         /// Gets or sets the name of the resource group.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group.")]
@@ -39,14 +47,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the name of the managed instance.
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "SQL managed instance name.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ManagedInstanceName { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the resource id of the Managed instance
+        /// </summary>
+        [Parameter(ParameterSetName = GetByResourceIdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of Managed instance object to get")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         /// <summary>
         /// Gets a managed instance from the service.
         /// </summary>
@@ -54,6 +73,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected override IEnumerable<AzureSqlManagedInstanceModel> GetEntity()
         {
             ICollection<AzureSqlManagedInstanceModel> results = null;
+
+            if (string.Equals(this.ParameterSetName, GetByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                ManagedInstanceName = resourceInfo.ResourceName;
+            }
 
             if (MyInvocation.BoundParameters.ContainsKey("ManagedInstanceName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
             {

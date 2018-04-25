@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     public class RemoveAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<IEnumerable<AzureSqlManagedDatabaseModel>>
     {
         protected const string RemoveByNameAndResourceGroupParameterSet =
-            "Remove a Managed Database from cmdlet input parameters";
+            "RemoveManagedDatabaseFromInputParameters";
 
         protected const string RemoveByInputObjectParameterSet =
-            "Remove a Managed Database from AzureSqlManagedDatabaseModel instance definition";
+            "RemoveManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition";
 
         protected const string RemoveByResourceIdParameterSet =
-            "Remove a Managed Database from an Azure resource id";
+            "RemoveManagedDatabaseFromAzureResourceId";
 
         /// <summary>
         /// Gets or sets the name of the managed database to remove.
@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The Managed Database object to remove")]
         [ValidateNotNullOrEmpty]
+        [Alias("ManagedDatabase")]
         public AzureSqlManagedDatabaseModel InputObject { get; set; }
 
         /// <summary>

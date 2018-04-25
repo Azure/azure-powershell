@@ -25,15 +25,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Managed Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedDatabase", SupportsShouldProcess = true)]
     public class NewAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
         protected const string CreateNewByNameAndResourceGroupParameterSet =
-            "Create a new Managed Database from cmdlet input parameters";
+            "CreateNewManagedDatabaseFromInputParameters";
 
         protected const string CreateNewByInputObjectParameterSet =
-            "Create a new Managed Database from AzureSqlManagedInstanceModel instance definition";
+            "CreateNewManagedDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition";
 
         /// <summary>
         /// Gets or sets the name of the managed database to create.
@@ -90,6 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The Azure Sql Managed Instance object")]
         [ValidateNotNullOrEmpty]
+        [Alias("InputObject")]
         public AzureSqlManagedInstanceModel ManagedInstance { get; set; }
 
         /// <summary>
