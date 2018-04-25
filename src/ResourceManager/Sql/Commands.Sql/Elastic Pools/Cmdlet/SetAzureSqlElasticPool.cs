@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <summary>
         /// Gets or sets the total shared VCore number for the Sql Azure Elastic Pool.
         /// </summary>
-        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
             HelpMessage = "The total shared number of Vcores for the Sql Azure Elastic Pool.")]
         [ValidateNotNullOrEmpty]
         public int VCores { get; set; }
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the compute generation for the Sql Azure Elastic Pool
         ///   (Available ComputeGeneration in the format of: Gen4, Gen5).
         /// </summary>
-        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
             HelpMessage = "The compute generation for the Sql Azure Elastic Pool. e.g. 'Gen4', 'Gen5'.")]
         [ValidateNotNullOrEmpty]
         [Alias("Family")]
@@ -187,6 +187,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
             var elasticPool = ModelAdapter.GetElasticPool(ResourceGroupName, ServerName, ElasticPoolName);
             Management.Sql.Models.Sku poolCurrentSku = elasticPool.Sku;
+            Management.Sql.Models.ElasticPoolPerDatabaseSettings poolCurrentDbSetting = elasticPool.PerDatabaseSettings;
 
             if (ParameterSetName == DtuPoolParameterSet)
             {
@@ -201,47 +202,39 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
                 {
-                    MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null,
-                    MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null
+                    MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : poolCurrentDbSetting.MinCapacity,
+                    MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : poolCurrentDbSetting.MaxCapacity
                 };
             }
             else
             {
-                if(MyInvocation.BoundParameters.ContainsKey("Edition") ||
-                    MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ||
-                    MyInvocation.BoundParameters.ContainsKey("VCores"))
+                string skuNamePrefix = null;
+                string skuTier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : poolCurrentSku.Tier;
+
+                switch (skuTier.ToLower())
                 {
-                    string skuNamePrefix = null;
-                    string skuTier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : poolCurrentSku.Tier;
-                    int skuCapacity = MyInvocation.BoundParameters.ContainsKey("VCores") ? VCores : (int)poolCurrentSku.Capacity;
-
-                    switch (skuTier.ToLower())
-                    {
-                        case GeneralPurpose:
-                            skuNamePrefix = "GP";
-                            break;
-                        case BusinessCritical:
-                            skuNamePrefix = "BC";
-                            break;
-                        default:
-                            break; ;
-                    }
-
-                    newModel.Sku = new Management.Sql.Models.Sku()
-                    {
-                        Name = string.Format("{0}_{1}_{2}",
-                            skuNamePrefix,
-                            MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ? ComputeGeneration : poolCurrentSku.Family,
-                            skuCapacity),
-                        Tier = skuTier,
-                        Capacity = skuCapacity
-                    };
+                    case GeneralPurpose:
+                        skuNamePrefix = "GP";
+                        break;
+                    case BusinessCritical:
+                        skuNamePrefix = "BC";
+                        break;
+                    default:
+                        break; ;
                 }
+
+                newModel.Sku = new Management.Sql.Models.Sku()
+                {
+                    Name = skuNamePrefix,
+                    Tier = skuTier,
+                    Capacity = MyInvocation.BoundParameters.ContainsKey("VCores") ? VCores : (int)poolCurrentSku.Capacity,
+                    Family = MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ? ComputeGeneration : poolCurrentSku.Family
+                };
 
                 newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
                 {
-                    MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") ? (double?)DatabaseVCoreMin : null,
-                    MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax") ? (double?)DatabaseVCoreMax : null
+                    MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") ? (double?)DatabaseVCoreMin : poolCurrentDbSetting.MinCapacity,
+                    MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax") ? (double?)DatabaseVCoreMax : poolCurrentDbSetting.MaxCapacity
                 };
             }
 

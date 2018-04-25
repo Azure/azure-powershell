@@ -240,9 +240,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 newModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = string.Format("{0}_{1}_{2}", skuNamePrefix, ComputeGeneration, VCores),
+                    Name = skuNamePrefix,
                     Tier = Edition,
-                    Capacity = VCores
+                    Capacity = VCores,
+                    Family = ComputeGeneration
                 };
 
                 newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
