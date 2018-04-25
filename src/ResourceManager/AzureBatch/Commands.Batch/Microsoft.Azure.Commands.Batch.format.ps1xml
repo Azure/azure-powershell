@@ -16,7 +16,7 @@
                     <!-- Omit the keys from display by default. -->
                     <!-- Also omit Tags, since there's a separate TagsTable property specifically for display purposes. -->
                     <ScriptBlock>
-                      $str = $_ | Select-Object -Property * -ExcludeProperty PrimaryAccessKey,SecondaryAccessKey,Tags | Format-List -Property * | Out-String
+                      $str = $_ | Select-Object -Property * -ExcludeProperty PrimaryAccountKey,SecondaryAccountKey,Tags | Format-List -Property * | Out-String
                       $str
                     </ScriptBlock>
                   </ExpressionBinding>
@@ -26,6 +26,32 @@
           </CustomEntry>
         </CustomEntries>
       </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Batch.Models.PSPoolNodeCounts</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Batch.Models.PSPoolNodeCounts</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>PoolId</Label>
+                <PropertyName>PoolId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Dedicated</Label>
+                <ScriptBlock>[Microsoft.Azure.Commands.Batch.Models.PSNodeCounts]::FormatObject($_.Dedicated)</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>LowPriority</Label>
+                <ScriptBlock>[Microsoft.Azure.Commands.Batch.Models.PSNodeCounts]::FormatObject($_.LowPriority)</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
     </View>
   </ViewDefinitions>
 </Configuration>
