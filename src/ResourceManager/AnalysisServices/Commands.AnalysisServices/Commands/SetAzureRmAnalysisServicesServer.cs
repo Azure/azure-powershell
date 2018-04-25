@@ -163,22 +163,22 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     ReadonlyReplicaCount = -1;
                 }
 
-				if (string.IsNullOrEmpty(GatewayResourceGroupName))
-				{
-					GatewayResourceGroupName = ResourceGroupName;
-				}
+                if (string.IsNullOrEmpty(GatewayResourceGroupName))
+                {
+	                GatewayResourceGroupName = ResourceGroupName;
+                }
 
-				string gatewayResourceId = null;
-				if (DisassociateGateway.IsPresent)
-				{
-					gatewayResourceId = "-";
-				}
-				else
-				{
-					gatewayResourceId = AnalysisServicesClient.GetGatewayResourceId(GatewayName, GatewayResourceGroupName, GatewaySubscriptionId);
-				}
+                string gatewayResourceId = null;
+                if (DisassociateGateway.IsPresent)
+                {
+	                gatewayResourceId = "-";
+                }
+                else
+                {
+	                gatewayResourceId = AnalysisServicesClient.GetGatewayResourceId(GatewayName, GatewayResourceGroupName, GatewaySubscriptionId);
+                }
 
-				AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, gatewayResourceId);
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, gatewayResourceId);
 
                 if(PassThru.IsPresent)
                 {

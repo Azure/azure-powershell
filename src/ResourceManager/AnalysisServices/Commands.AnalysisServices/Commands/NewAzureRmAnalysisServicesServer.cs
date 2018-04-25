@@ -82,19 +82,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             HelpMessage = "Firewall configuration")]
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
-		[Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-			HelpMessage = "Gateway resource name")]
-		public string GatewayName { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Gateway resource name")]
+        public string GatewayName { get; set; }
 
-		[Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-			HelpMessage = "Gateway resource group name")]
-		public string GatewayResourceGroupName { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Gateway resource group name")]
+          public string GatewayResourceGroupName { get; set; }
 
-		[Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-			HelpMessage = "Gateway subscription Id")]
-		public string GatewaySubscriptionId { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Gateway subscription Id")]
+        public string GatewaySubscriptionId { get; set; }
 
-		public override void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Resources.CreateNewAnalysisServicesServer))
             {
@@ -156,14 +156,14 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     ReadonlyReplicaCount = 0;
                 }
 
-				if (string.IsNullOrEmpty(GatewayResourceGroupName))
-				{
-					GatewayResourceGroupName = ResourceGroupName;
-				}
+                if (string.IsNullOrEmpty(GatewayResourceGroupName))
+                {
+                   GatewayResourceGroupName = ResourceGroupName;
+                }
 
-				string gatewayId = AnalysisServicesClient.GetGatewayResourceId(GatewayName, GatewayResourceGroupName, GatewaySubscriptionId);
+                string gatewayId = AnalysisServicesClient.GetGatewayResourceId(GatewayName, GatewayResourceGroupName, GatewaySubscriptionId);
 
-				var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, gatewayId);
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, gatewayId);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }
