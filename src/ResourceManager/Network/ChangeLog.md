@@ -20,6 +20,7 @@
 
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Add support for DDoS protection plan resource
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information
 
