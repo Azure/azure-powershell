@@ -17,30 +17,36 @@ using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    /// <summary>
-    /// Class that creates a new instance of the Sql Server Connection Info.
-    /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationDatabaseInfo"), OutputType(typeof(DatabaseInfo))]
-    [Alias("New-AzureRmDmsDBInfo")]
-    public class NewDatabaseInfoCmdlet : DataMigrationCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationFileShare"), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
+    [Alias("New-AzureRmDmsFileShare")]
+    public class NewFileShare : DataMigrationCmdlet
     {
         [Parameter(
-           Mandatory = true,
-           HelpMessage = "Source Database Name.")]
+                   Mandatory = true,
+                   HelpMessage = "File share path."
+               )]
         [ValidateNotNullOrEmpty]
-        [Alias("SourceDBName")]
-        public string SourceDatabaseName { get; set; }
+        public string Path { get; set; }
+
+        [Parameter(
+           Mandatory = true,
+           HelpMessage = "Credentials to access the file share."
+        )]
+        public PSCredential Credential { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
+            var userName = Credential.UserName;
+            var password = TaskCmdlet.Decrypt(Credential.Password);
 
-            DatabaseInfo dbInfo = new DatabaseInfo
+            var fileShare = new FileShare
             {
-                SourceDatabaseName = SourceDatabaseName
+                Path = Path,
+                UserName = userName,
+                Password = password
             };
 
-            WriteObject(dbInfo);
+            WriteObject(fileShare, false);
         }
     }
 }

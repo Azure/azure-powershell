@@ -12,38 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
-    public class GetUserTableSqlCmdlet : TaskCmdlet
+    public class ConnectToTargetSqlDbMiTaskCmdlet : TaskCmdlet
     {
-        private readonly string SelectedDatabase = "SelectedDatabase";
-
-        public GetUserTableSqlCmdlet(InvocationInfo myInvocation) : base(myInvocation)
+        public ConnectToTargetSqlDbMiTaskCmdlet(InvocationInfo myInvocation) : base(myInvocation)
         {
         }
 
         public override void CustomInit()
         {
-            this.SourceConnectionInfoParam(true);
-            this.SimpleParam(SelectedDatabase, typeof(string[]), "List of database names to collect tables for", true);
+            this.TargetConnectionInfoParam(true);
         }
 
         public override ProjectTaskProperties ProcessTaskCmdlet()
         {
-            GetUserTablesSqlTaskProperties properties = new GetUserTablesSqlTaskProperties();
+            ConnectToTargetSqlMITaskProperties properties = new ConnectToTargetSqlMITaskProperties();
 
-            if (MyInvocation.BoundParameters.ContainsKey(SourceConnection))
+            if (MyInvocation.BoundParameters.ContainsKey(TargetConnection))
             {
-                properties.Input = new GetUserTablesSqlTaskInput();
-                properties.Input.ConnectionInfo = (SqlConnectionInfo)MyInvocation.BoundParameters[SourceConnection];
-                PSCredential cred = (PSCredential)MyInvocation.BoundParameters[SourceCred];
-                properties.Input.ConnectionInfo.UserName = cred.UserName;
-                properties.Input.ConnectionInfo.Password = Decrypt(cred.Password);
-                properties.Input.SelectedDatabases = ((string[])MyInvocation.BoundParameters[SelectedDatabase]).ToList();
+                var targetConnectionInfo = (SqlConnectionInfo)MyInvocation.BoundParameters[TargetConnection];
+                PSCredential cred = (PSCredential)MyInvocation.BoundParameters[TargetCred];
+                targetConnectionInfo.UserName = cred.UserName;
+                targetConnectionInfo.Password = Decrypt(cred.Password);
+                properties.Input = new ConnectToTargetSqlMITaskInput
+                {
+                    TargetConnectionInfo = targetConnectionInfo
+                };
             }
             else
             {
