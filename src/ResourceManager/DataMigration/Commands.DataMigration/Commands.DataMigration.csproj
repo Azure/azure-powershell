@@ -102,10 +102,6 @@
       <Link>AzureRM.DataMigration.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\AzureRM.DataMigration.Netcore.psd1">
-      <Link>AzureRM.DataMigration.Netcore.psd1</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
