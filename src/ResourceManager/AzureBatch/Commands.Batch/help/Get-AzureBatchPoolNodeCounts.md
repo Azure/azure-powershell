@@ -48,10 +48,17 @@ powershell
 PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
 PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext
 
-Dedicated                                          LowPriority                                        PoolId
----------                                          -----------                                        ------
-Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
-Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool2
+PoolId      : contosopool1
+Dedicated   : Creating: 1,Idle: 1,Offline: 0,Preempted: 0,Rebooting: 1,Reimaging: 0,Running: 5,Starting:
+              0,StartTaskFailed: 0,Total: 8,Unknown: 0,Unusable: 0,WaitingForStartTask: 0
+LowPriority : Creating: 0,Idle: 0,Offline: 0,Preempted: 0,Rebooting: 0,Reimaging: 0,Running: 0,Starting:
+              0,StartTaskFailed: 0,Total: 0,Unknown: 0,Unusable: 0,WaitingForStartTask: 0
+
+PoolId      : contosopool2
+Dedicated   : Creating: 1,Idle: 1,Offline: 0,Preempted: 0,Rebooting: 1,Reimaging: 0,Running: 5,Starting:
+              0,StartTaskFailed: 0,Total: 8,Unknown: 0,Unusable: 0,WaitingForStartTask: 0
+LowPriority : Creating: 0,Idle: 0,Offline: 0,Preempted: 0,Rebooting: 0,Reimaging: 0,Running: 0,Starting:
+              0,StartTaskFailed: 0,Total: 0,Unknown: 0,Unusable: 0,WaitingForStartTask: 0
 ```
 
 List node counts per node state for pools under current batch account context.
@@ -62,9 +69,11 @@ List node counts per node state for pools under current batch account context.
 powershell
 PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 
-Dedicated                                          LowPriority                                        PoolId
----------                                          -----------                                        ------
-Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
+PoolId      : contosopool1
+Dedicated   : Creating: 1,Idle: 1,Offline: 0,Preempted: 0,Rebooting: 1,Reimaging: 0,Running: 5,Starting:
+              0,StartTaskFailed: 0,Total: 8,Unknown: 0,Unusable: 0,WaitingForStartTask: 0
+LowPriority : Creating: 0,Idle: 0,Offline: 0,Preempted: 0,Rebooting: 0,Reimaging: 0,Running: 0,Starting:
+              0,StartTaskFailed: 0,Total: 0,Unknown: 0,Unusable: 0,WaitingForStartTask: 0
 
 PS C:\> $poolnodecounts = Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 PS C:\> $poolnodecounts.Dedicated
@@ -86,9 +95,11 @@ WaitingForStartTask : 0
 
 PS C:\> Get-AzureBatchPool -Id "contosopool1" -BatchContext $batchContext | Get-AzureBatchPoolNodeCounts -BatchContext $batchContext
 
-Dedicated                                          LowPriority                                        PoolId
----------                                          -----------                                        ------
-Microsoft.Azure.Commands.Batch.Models.PSNodeCounts Microsoft.Azure.Commands.Batch.Models.PSNodeCounts contosopool1
+PoolId      : contosopool1
+Dedicated   : Creating: 1,Idle: 1,Offline: 0,Preempted: 0,Rebooting: 1,Reimaging: 0,Running: 5,Starting:
+              0,StartTaskFailed: 0,Total: 8,Unknown: 0,Unusable: 0,WaitingForStartTask: 0
+LowPriority : Creating: 0,Idle: 0,Offline: 0,Preempted: 0,Rebooting: 0,Reimaging: 0,Running: 0,Starting:
+              0,StartTaskFailed: 0,Total: 0,Unknown: 0,Unusable: 0,WaitingForStartTask: 0
 ```
 
 Show node counts per node state for a pool given pool id.

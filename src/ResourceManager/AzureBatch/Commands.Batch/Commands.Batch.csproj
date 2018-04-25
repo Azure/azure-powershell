@@ -173,6 +173,7 @@
     <Compile Include="Models\NodeFileOperationParameters.cs" />
     <Compile Include="Models\PoolOperationParameters.cs" />
     <Compile Include="Models\PSBatchLocationQuotas.cs" />
+    <Compile Include="Models\PSNodeCounts.FormatObject.cs" />
     <Compile Include="Models\PSPagedEnumerable.cs" />
     <Compile Include="Models\PoolResizeParameters.cs" />
     <Compile Include="Models\ComputeNodeUserOperationParameters.cs" />
