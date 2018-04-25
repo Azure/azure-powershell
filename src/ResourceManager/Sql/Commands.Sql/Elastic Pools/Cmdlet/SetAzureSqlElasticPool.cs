@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -195,7 +196,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 newModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = string.Format("{0}{1}", edition, NormalElasticPoolSkuNamesPostfix),
+                    Name = AzureSqlElasticPoolAdapter.getPoolSkuName(edition),
                     Tier = edition,
                     Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
                 };
@@ -208,24 +209,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             }
             else
             {
-                string skuNamePrefix = null;
                 string skuTier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : poolCurrentSku.Tier;
-
-                switch (skuTier.ToLower())
-                {
-                    case GeneralPurpose:
-                        skuNamePrefix = "GP";
-                        break;
-                    case BusinessCritical:
-                        skuNamePrefix = "BC";
-                        break;
-                    default:
-                        break; ;
-                }
 
                 newModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = skuNamePrefix,
+                    Name = AzureSqlElasticPoolAdapter.getPoolSkuName(skuTier),
                     Tier = skuTier,
                     Capacity = MyInvocation.BoundParameters.ContainsKey("VCores") ? VCores : (int)poolCurrentSku.Capacity,
                     Family = MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ? ComputeGeneration : poolCurrentSku.Family

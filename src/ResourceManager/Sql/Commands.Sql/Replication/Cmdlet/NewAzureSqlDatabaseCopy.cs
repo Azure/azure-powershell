@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
@@ -212,22 +213,11 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             }
             else
             {
-                string skuNamePrefix = null;
-                switch (CopyEdition.ToLower())
-                {
-                    case "generalpurpose":
-                        skuNamePrefix = "GP";
-                        break;
-                    case "businesscritical":
-                        skuNamePrefix = "BC";
-                        break;
-                    default:
-                        throw new PSArgumentException("Invalid CopyEdition value.");
-                }
+                string skuName = AzureSqlDatabaseAdapter.getDatabaseSkuName(CopyEdition);
 
                 copyModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = skuNamePrefix,
+                    Name = skuName,
                     Tier = CopyEdition,
                     Capacity = CopyVCores,
                     Family = CopyComputeGeneration

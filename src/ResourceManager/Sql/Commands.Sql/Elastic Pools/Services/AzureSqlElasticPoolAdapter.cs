@@ -364,5 +364,26 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 
             return model;
         }
+
+        /// <summary>
+        /// Get elastic pool sku name based on tier
+        ///    Edition              | SkuName
+        ///    GeneralPurpose       | GP
+        ///    BusinessCritical     | BC
+        ///    Standard             | StandardPool
+        ///    Basic                | BasicPool
+        ///    Premium              | PremiumPool
+        /// </summary>
+        /// <param name="tier">Azure Sql elastic pool edition</param>
+        /// <returns>The sku name</returns>
+        public static string getPoolSkuName(string tier)
+        {
+            Dictionary<string, string> dic = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+            dic.Add("GeneralPurpose", "GP");
+            dic.Add("BusinessCritical", "BC");
+
+            string value;
+            return dic.TryGetValue(tier, out value) ? value : string.Format("{0}Pool", tier);
+        }
     }
 }
