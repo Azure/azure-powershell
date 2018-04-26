@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.KeyVault.Test.Netc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Rbac.Netcore", "Common\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj", "{E1DE9947-4044-41D3-BE5A-067F75D75B7D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Insights.Test.Netcore", "ResourceManager\Insights\Commands.Insights.Test\Commands.Insights.Test.Netcore.csproj", "{B097AB81-F9DA-4142-8DDE-BE87D5635D56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -251,6 +253,18 @@ Global
 		{E1DE9947-4044-41D3-BE5A-067F75D75B7D}.Release|x64.Build.0 = Release|Any CPU
 		{E1DE9947-4044-41D3-BE5A-067F75D75B7D}.Release|x86.ActiveCfg = Release|Any CPU
 		{E1DE9947-4044-41D3-BE5A-067F75D75B7D}.Release|x86.Build.0 = Release|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Debug|x64.Build.0 = Debug|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Debug|x86.Build.0 = Debug|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|x64.ActiveCfg = Release|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|x64.Build.0 = Release|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|x86.ActiveCfg = Release|Any CPU
+		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
