@@ -155,6 +155,7 @@
     <Reference Include="Microsoft.Azure.Management.ServiceFabric">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceFabric.1.0.0-preview\lib\net45\Microsoft.Azure.Management.ServiceFabric.dll</HintPath>
     </Reference>
+    <Reference Include="System.Management.Automation" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
