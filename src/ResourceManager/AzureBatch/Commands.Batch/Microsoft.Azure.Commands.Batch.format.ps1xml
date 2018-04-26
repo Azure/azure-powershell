@@ -32,26 +32,36 @@
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Batch.Models.PSPoolNodeCounts</TypeName>
       </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>PoolId</Label>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>PoolId</Label>
+            <Width>30</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Dedicated</Label>
+            <Width>60</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LowPriority</Label>
+            <Width>60</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
                 <PropertyName>PoolId</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Dedicated</Label>
+              </TableColumnItem>
+              <TableColumnItem>
                 <ScriptBlock>[Microsoft.Azure.Commands.Batch.Models.PSNodeCounts]::FormatObject($_.Dedicated)</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>LowPriority</Label>
+              </TableColumnItem>
+              <TableColumnItem>
                 <ScriptBlock>[Microsoft.Azure.Commands.Batch.Models.PSNodeCounts]::FormatObject($_.LowPriority)</ScriptBlock>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>    </View>
   </ViewDefinitions>
 </Configuration>
