@@ -120,12 +120,20 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2017.10.12 - Version 1.2.11
-            * Dependency on the new AzureRm.Profile module brings many breaking changes, please refer migration guide https://aka.ms/azSpowershellmigration for the details
-            * AzureStackAdmin
-                * Get-AzsTenantSubscription has been renamed to Get-AzsUserSubscription with alias support for backward compatibility
-                * New-AzsTenantSubscription has been renamed to New-AzsUserSubscription with alias support for backward compatibility
-                * Remove-AzsTenantSubscription has been renamed to Remove-AzsUserSubscription with alias support for backward compatibility'
+            ReleaseNotes = '## 2018.05 - Version 1.2.12
+            * Azurestack 1.2.12 version brings in many breaking changes from the existing version of 1.2.11. Please refer https://aka.ms/azspsh1212migration for the details
+            * AzureRM.AzureStackAdmin module is replaced with Azs.Subscriptions.Admin and Azs.Subscriptions module
+            * AzureRM.AzureStackStorage module is replaced with Azs.Storage.Admin module
+            * The following new modules are added to the AzureStack rollup module
+                * Azs.AzureBridge.Admin
+                * Azs.Backup.Admin
+                * Azs.Commerce.Admin
+                * Azs.Fabric.Admin
+                * Azs.Gallery.Admin
+                * Azs.InfrastructureInsights.Admin
+                * Azs.Keyvault.Admin
+                * Azs.Network.Admin
+                * Azs.Update.Admin'
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''
