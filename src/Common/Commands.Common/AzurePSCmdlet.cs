@@ -682,6 +682,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        private string _implementationBackgroundJobDescription;
+
         /// <summary>
         /// Job Name paroperty iof this cmdlet is run as a job
         /// </summary>
@@ -689,15 +691,43 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get
             {
-                string name = "Long Running Azure Operation";
-                string commandName = MyInvocation?.MyCommand?.Name;
-                if (!string.IsNullOrWhiteSpace(commandName))
+                if (_implementationBackgroundJobDescription != null)
                 {
-                    name = string.Format("Long Running Operation for '{0}'", commandName);
+                    return _implementationBackgroundJobDescription;
                 }
+                else
+                {
+                    string name = "Long Running Azure Operation";
+                    string commandName = MyInvocation?.MyCommand?.Name;
+                    string objectName = null;
+                    if (MyInvocation?.BoundParameters?.ContainsKey("Name") == true)
+                    {
+                        objectName = MyInvocation?.BoundParameters?["Name"] as string;
+                    }
+                    if (!string.IsNullOrWhiteSpace(commandName))
+                    {
+                        if (!string.IsNullOrWhiteSpace(objectName))
+                        {
+                            name = string.Format("Long Running Operation for '{0}' : '{1}'", commandName, objectName);
+                        }
+                        else
+                        {
+                            name = string.Format("Long Running Operation for '{0}'", commandName);
+                        }
+                    }
 
-                return name;
+                    return name;
+                }
             }
+            set
+            {
+                _implementationBackgroundJobDescription = value;
+            }
+        }
+
+        public void SetBackgroundJobDescription(string jobName)
+        {
+            ImplementationBackgroundJobDescription = jobName;
         }
 
         protected virtual void Dispose(bool disposing)
