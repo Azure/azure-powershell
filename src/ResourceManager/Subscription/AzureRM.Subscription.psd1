@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -107,8 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime
-* New cmdlet New-AzureRmSubscription to enable subscription creation under a specific EA enrollment account.'
+        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
         Prerelease = 'preview'

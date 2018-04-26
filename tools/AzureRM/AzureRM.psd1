@@ -52,7 +52,7 @@ CLRVersion = '4.0'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '4.6.1'; }, 
-               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.2.2'; }, 
+               @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.3.0'; }, 
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.7'; }, 
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.1'; }, 
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '6.0.0'; }, 
@@ -211,6 +211,11 @@ AzureRM.DataFactoryV2
     - Added LinkedService, Dataset, CopySource for Responsys
 
 AzureRM.DataLakeStore
+* Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
+* Add new cmdlet for retrieving the content summary under a directory
+* Add new cmdlet for retrieving the disk usage and Acl dump
+* Correct return type of Set-AzureRmDataLakeStoreItemAcl bool to IEnumerable<DataLakeStoreItemAce>
+* Correct return type of Set-AzureRmDataLakeStoreItemAclEntry bool to IEnumerable<DataLakeStoreItemAce>
 * Breaking changes in Export-AzureRmDataLakeStoreItem, Import-AzureRmDataLakeStoreItem, Remove-AzureRmDataLakeStoreItem
 
 AzureRM.Dns

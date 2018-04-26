@@ -12,7 +12,7 @@
 RootModule = '.\AzureRM.Compute.ManagedService.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -108,7 +108,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added ConvertTo-AzureRmVhd cmdlet that enables users to convert Hyper-V VM to Azure supported VHD files.'
+        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime
+* Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
         Prerelease = 'preview'

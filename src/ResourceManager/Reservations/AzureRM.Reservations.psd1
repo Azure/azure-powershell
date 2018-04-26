@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.2'
+ModuleVersion = '0.1.3'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -110,7 +110,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime'
+        ReleaseNotes = '* Change Guid paramters to Guid type, not string
+* Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
         # Prerelease = ''

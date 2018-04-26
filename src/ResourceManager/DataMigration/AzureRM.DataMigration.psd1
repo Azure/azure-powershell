@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '0.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -131,7 +131,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
+* Add powershell cmdlets for SQL to Azure SQL DB Managed Instance migration scenario.'
 
         # External dependent modules of this module
         # ExternalModuleDependencies = ''
