@@ -1,5 +1,9 @@
 [
     { "regex": "ApiManagement", "alias": "API Management" }, 
+
+    { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" }, 
+    { "regex": "MlOp", "group": "Machine Learning Compute", "alias": "Machine Learning Compute" }, 
+    { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" }, 
     
     { "regex": "Snapshot", "group": "Virtual Machines", "alias": "VM Snapshots" }, 
     { "regex": "Image", "group": "Virtual Machines", "alias": "VM Images" }, 
@@ -38,9 +42,6 @@
 
     { "regex": "DataFactory", "group": "Data Factories", "alias": "Data Factories" }, 
     { "regex": "DataFactories", "group": "Data Factories", "alias": "Data Factories" }, 
-
-    { "regex": "MachineLearning", "group": "Machine Learning", "alias": "Machine Learning" }, 
-    { "regex": "Ml", "group": "Machine Learning", "alias": "Machine Learning" }, 
 
     { "regex": "Storage", "alias": "Storage" }, 
 
