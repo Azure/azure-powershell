@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
 Module Name: AzureRM.WebSites
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/restore-azurermwebappsnapshot
 schema: 2.0.0
 ---
 
@@ -87,7 +87,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Azure Web App snapshot.```yaml
+The Azure Web App snapshot.
+```yaml
 Type: AzureWebAppSnapshot
 Parameter Sets: (All)
 Aliases: 
@@ -100,7 +101,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the web app.```yaml
+The name of the web app.
+```yaml
 Type: String
 Parameter Sets: FromResourceName
 Aliases: 
@@ -128,7 +130,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.```yaml
+The name of the resource group.
+```yaml
 Type: String
 Parameter Sets: FromResourceName
 Aliases: 
@@ -141,7 +144,8 @@ Accept wildcard characters: False
 ```
 
 ### -Slot
-The name of the web app slot.```yaml
+The name of the web app slot.
+```yaml
 Type: String
 Parameter Sets: FromResourceName
 Aliases: 
@@ -154,7 +158,8 @@ Accept wildcard characters: False
 ```
 
 ### -WebApp
-The web app object```yaml
+The web app object
+```yaml
 Type: Site
 Parameter Sets: FromWebApp
 Aliases: 
