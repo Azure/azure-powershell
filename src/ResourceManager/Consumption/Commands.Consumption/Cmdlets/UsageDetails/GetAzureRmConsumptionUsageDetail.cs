@@ -33,9 +33,15 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         [ValidateNotNullOrEmpty]
         public string BillingPeriodName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Expand the usages based on MeterDetails, or AdditionalDetails.")]
+        [Parameter(Mandatory = false, HelpMessage = "Expand the usages based on MeterDetails, or AdditionalProperties.")]
         [ValidateNotNull]
         public string Expand { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Include meter details in the usages.")]
+        public SwitchParameter IncludeMeterDetails { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Include additional properties in the usages.")]
+        public SwitchParameter IncludeAdditionalProperties { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages to filter.")]
         [ValidateNotNull]
@@ -63,14 +69,33 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
         [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
+        [ValidateNotNull]
         public int? Top { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var expand = default(string);
-            if (!string.IsNullOrWhiteSpace(this.Expand))
+            if (!string.IsNullOrWhiteSpace(this.Expand) &&
+                 this.Expand.Equals(Constants.Expands.MeterDetails, StringComparison.InvariantCultureIgnoreCase) ||
+                this.IncludeMeterDetails.IsPresent)
             {
-                expand = "properties/" + this.Expand;
+                expand = "properties/meterDetails";
+            }
+            if (!string.IsNullOrWhiteSpace(this.Expand) &&
+                this.Expand.Equals(Constants.Expands.AdditionalProperties, StringComparison.InvariantCultureIgnoreCase) ||
+                this.IncludeAdditionalProperties.IsPresent)
+            {
+                if (expand == default(string))
+                {
+                    expand = "properties/additionalProperties";
+                }
+                else
+                {
+                    expand = string.Concat(expand, " and ", "properties/additionalProperties");
+                }
             }
 
             string filter = null;
@@ -150,9 +175,13 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
             }
 
             int numberToFetch = MaxNumberToFetch;
-            if (this.Top.HasValue && this.Top.Value < MaxNumberToFetch)
+            if (this.Top.HasValue && this.Top.Value < numberToFetch)
             {
                 numberToFetch = this.Top.Value;
+            }
+            if (this.MaxCount.HasValue && this.MaxCount.Value < numberToFetch)
+            {
+                numberToFetch = this.MaxCount.Value;
             }
 
             IPage<UsageDetail> usageDetails = null;         
