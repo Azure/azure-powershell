@@ -11,7 +11,7 @@
     <AssemblyName>Microsoft.Azure.Commands.DataMigration</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile /> 
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,17 +39,21 @@
   <ItemGroup>
     <Compile Include="Cmdlets\ConnectionInfoCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToSourceSqlServerTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\NewFileShare.cs" />
+    <Compile Include="Cmdlets\ValidateSqlServerSqlDbMiTaskCmdlet.cs" />
+    <Compile Include="Cmdlets\ConnectToTargetSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\GetUserTableSqlCmdlet.cs" />
     <Compile Include="Cmdlets\ConnectToTargetSqlDbTaskCmdlet.cs" />
     <Compile Include="Cmdlets\DynamicCmdlet.cs" />
     <Compile Include="Cmdlets\GetAzureDataMigrationService.cs" />
     <Compile Include="Cmdlets\GetDataMigrationTask.cs" />
     <Compile Include="Cmdlets\GetProjectCmdlet.cs" />
+    <Compile Include="Cmdlets\MigrateSqlServerSqlDbMiTaskCmdlet.cs" />
     <Compile Include="Cmdlets\MigrateSqlServerSqlDbTaskCmdlet.cs" />
     <Compile Include="Cmdlets\NewAzureRmDataMigrationService.cs" />
     <Compile Include="Cmdlets\NewConnectionInfoCmdlet.cs" />
     <Compile Include="Cmdlets\NewDatabaseInfoCmdlet.cs" />
-    <Compile Include="Cmdlets\NewDataMigrationSqlServerSqlDbSelectedDB.cs" />
+    <Compile Include="Cmdlets\NewDataMigrationSelectedDB.cs" />
     <Compile Include="Cmdlets\NewDataMigrationTask.cs" />
     <Compile Include="Cmdlets\NewProjectCmdlet.cs" />
     <Compile Include="Cmdlets\RemoveDataMigrationProject.cs" />
@@ -101,9 +105,28 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.1.2-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
-	  <Private>True</Private>
+    <None Include="help\AzureRM.DataMigration.md" />
+    <None Include="help\Get-AzureRmDataMigrationProject.md" />
+    <None Include="help\Get-AzureRmDataMigrationService.md" />
+    <None Include="help\Get-AzureRmDataMigrationTask.md" />
+    <None Include="help\New-AzureRmDataMigrationConnectionInfo.md" />
+    <None Include="help\New-AzureRmDataMigrationDatabaseInfo.md" />
+    <None Include="help\New-AzureRmDataMigrationFileShare.md" />
+    <None Include="help\New-AzureRmDataMigrationProject.md" />
+    <None Include="help\New-AzureRmDataMigrationService.md" />
+    <None Include="help\New-AzureRmDataMigrationTask.md" />
+    <None Include="help\Remove-AzureRmDataMigrationProject.md" />
+    <None Include="help\Remove-AzureRmDataMigrationService.md" />
+    <None Include="help\Remove-AzureRmDataMigrationTask.md" />
+    <None Include="help\Start-AzureRmDataMigrationService.md" />
+    <None Include="help\Stop-AzureRmDataMigrationService.md" />
+    <None Include="help\Stop-AzureRmDataMigrationTask.md" />
+    <None Include="help\New-AzureRmDataMigrationSelectedDB.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataMigration.0.3.0-preview\lib\net452\Microsoft.Azure.Management.DataMigration.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression.FileSystem" />

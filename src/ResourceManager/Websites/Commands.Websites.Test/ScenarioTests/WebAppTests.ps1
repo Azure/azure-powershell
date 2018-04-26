@@ -530,7 +530,7 @@ function Test-CreateNewWebAppOnAse
 	$rgname = "appdemorg"
 	$wname = Get-WebsiteName
 	$location = "West US"
-	$whpName = "travel_production_plan"
+	$whpName = "travelproductionplan"
 	$aseName = "asedemops"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"

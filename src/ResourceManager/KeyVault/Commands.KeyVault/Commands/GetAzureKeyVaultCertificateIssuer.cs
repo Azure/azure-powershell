@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -22,8 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateIssuer,        
-        DefaultParameterSetName = ByNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(List<PSKeyVaultCertificateIssuerIdentityItem>), typeof(PSKeyVaultCertificateIssuer))]
     public class GetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private const string ByNameParameterSet = "ByName";
         private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -42,7 +43,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = ByNameParameterSet,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -59,11 +59,21 @@ namespace Microsoft.Azure.Commands.KeyVault
         public PSKeyVault InputObject { get; set; }
 
         /// <summary>
+        /// Vault resource id
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ByResourceIdParameterSet,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "KeyVault Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Name.
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
@@ -77,6 +87,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 VaultName = InputObject.VaultName.ToString();
             }
+            else if (!string.IsNullOrEmpty(ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                VaultName = parsedResourceId.ResourceName;
+            }
 
             if (string.IsNullOrEmpty(Name))
             {
@@ -85,12 +100,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             else
             {
                 var issuer = this.DataServiceClient.GetCertificateIssuer(VaultName, Name);
-                var psissuer = PSKeyVaultCertificateIssuer.FromIssuer(issuer);
-                if (psissuer != null)
+                if (issuer != null)
                 {
-                    psissuer.VaultName = VaultName;
+                    issuer.VaultName = VaultName;
                 }
-                this.WriteObject(psissuer);
+                this.WriteObject(issuer);
             }
         }
 
