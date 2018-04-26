@@ -627,6 +627,57 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
         #endregion
 
+
+
+
+
+        #region MigrationConfiguration
+        public PSServiceBusMigrationConfigurationAttributes GetServiceBusMigrationConfiguration(string resourceGroupName, string namespaceName)
+        {
+            var response = Client.MigrationConfigurations.Get(resourceGroupName, namespaceName);
+            return new PSServiceBusMigrationConfigurationAttributes(response);
+        }
+
+        public PSServiceBusMigrationConfigurationAttributes StartServiceBusMigrationConfiguration(string resourceGroupName, string namespaceName, PSServiceBusMigrationConfigurationAttributes parameter)
+        {
+            var Parameter1 = new Management.ServiceBus.Models.MigrationConfigProperties();
+
+            if (!string.IsNullOrEmpty(parameter.PostMigrationName))
+                Parameter1.PostMigrationName = parameter.PostMigrationName;
+
+            if (!string.IsNullOrEmpty(parameter.TargetNamespace))
+                Parameter1.TargetNamespace = parameter.TargetNamespace;
+
+            var response = Client.MigrationConfigurations.StartMigration(resourceGroupName, namespaceName, Parameter1);
+            return new PSServiceBusMigrationConfigurationAttributes(response);
+        }
+
+        public bool DeleteServiceBusMigrationConfiguration(string resourceGroupName, string namespaceName)
+        {
+            Client.MigrationConfigurations.Delete(resourceGroupName, namespaceName);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+            return true;
+        }
+
+        public void SetServiceBusCompleteMigrationConfiguration(string resourceGroupName, string namespaceName)
+        {
+            Client.MigrationConfigurations.CompleteMigration(resourceGroupName, namespaceName);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+        }
+
+        public void SetServiceBusStartMigrationConfiguration(string resourceGroupName, string namespaceName)
+        {
+            Client.MigrationConfigurations.CompleteMigration(resourceGroupName, namespaceName);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+        }
+
+        public void SetServiceBusRevertMigrationConfiguration(string resourceGroupName, string namespaceName)
+        {
+            Client.MigrationConfigurations.Revert(resourceGroupName, namespaceName);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+        }
+        #endregion
+
         public static string GenerateRandomKey()
         {
             byte[] key256 = new byte[32];
