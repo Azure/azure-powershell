@@ -622,9 +622,9 @@ function Test-AnalysisServicesServerGateway
     try
     {
         # Creating server
-		$location = Get-Location
-		$resourceGroupName = Get-ResourceGroupName
-		$serverName = Get-AnalysisServicesServerName
+        $location = Get-Location
+        $resourceGroupName = Get-ResourceGroupName
+        $serverName = Get-AnalysisServicesServerName
         $gatewayName = $env:GATEWAY_NAME
         $gateway = Get-AzureRmResource -ResourceName $gatewayName -ResourceGroupName $resourceGroupName
         $serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku S0 -GatewayResourceId $gateway.ResourceId -PassThru
