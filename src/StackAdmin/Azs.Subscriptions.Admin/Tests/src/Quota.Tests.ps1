@@ -69,7 +69,7 @@ InModuleScope Azs.Subscriptions.Admin {
         It "TestListQuotas" {
             $global:TestName = 'TestListQuotas'
 
-            $allQuotas = Get-AzsSubscriptionsQuota -Location local
+            $allQuotas = Get-AzsSubscriptionsQuota -Location redmond
             $resourceGroups = New-Object  -TypeName System.Collections.Generic.HashSet[System.String]
 
             foreach($Quota in $allQuotas) {

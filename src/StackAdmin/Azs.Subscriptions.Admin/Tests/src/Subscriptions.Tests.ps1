@@ -25,8 +25,10 @@
 
 .EXAMPLE
     PS C:\> .\src\Subscriptions.Tests.ps1
-	Describing Subscription
-	  [+] TestListSubscriptions 128ms
+	  Describing Subscription
+		[+] TestListSubscriptions 493ms
+		[+] CheckNameAvailability 49ms
+		[+] CreateUpdateDeleteSubscription 205ms
 
 .NOTES
     Author: Bala Ganapathy
@@ -80,5 +82,29 @@ InModuleScope Azs.Subscriptions.Admin {
                 ValidateSubscription -Subscription $Subscription
             }
         }
+
+		It "TestSetSubscription" {
+			$global:TestName = "TestSetSubscription"
+			
+			$Subscriptions = Get-AzsUserSubscription
+			foreach ($sub in $subscriptions) {
+				$sub.DisplayName += "-test"
+				$sub.Owner = "user@microsoft.com"
+
+				$sub | Set-AzsUserSubscription
+
+				$updated = Get-AzsUserSubscription -SubscriptionId $sub.SubscriptionId
+
+				$updated.DisplayName | Should Be $sub.DisplayName
+				$updated.Owner       | Should Be "user@microsoft.com"
+
+				break;
+			}
+		}
+		It "CheckNameAvailability" {
+			$global:TEstName = 'CheckNameAvailability'
+
+			Test-AzsNameAvailability -Name "Test Sub" -ResourceType "Microsoft.Subscriptions.Admin/plans"
+		}
     }
 }

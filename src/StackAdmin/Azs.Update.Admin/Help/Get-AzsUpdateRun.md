@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Update.Admin-help.xml
 Module Name: Azs.Update.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -14,13 +14,13 @@ Get the list of update runs.
 
 ### List (Default)
 ```
-Get-AzsUpdateRun -DisplayName <String> [-Location <String>] [-ResourceGroupName <String>] [-Skip <Int32>]
+Get-AzsUpdateRun -UpdateName <String> [-Location <String>] [-ResourceGroupName <String>] [-Skip <Int32>]
  [-Top <Int32>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzsUpdateRun -Name <String> -DisplayName <String> [-Location <String>] [-ResourceGroupName <String>]
+Get-AzsUpdateRun -Name <String> -UpdateName <String> [-Location <String>] [-ResourceGroupName <String>]
  [<CommonParameters>]
 ```
 
@@ -30,27 +30,27 @@ Get-AzsUpdateRun -ResourceId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the list of update runs. 
+Get the list of update runs.
 Instances of the UpdateRun objects returned can be piped to Restart-AzsUpdateRun, when applicable.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsUpdateRun -DisplayName Microsoft1.0.180302.1
+Get-AzsUpdateRun -UpdateName Microsoft1.0.180302.1
 ```
 
 Get a list of all attempts to apply a specific update.
 
 ## PARAMETERS
 
-### -DisplayName
+### -UpdateName
 Name of the update.
 
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -65,7 +65,7 @@ The name of the update location.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -80,7 +80,7 @@ Update run identifier.
 ```yaml
 Type: String
 Parameter Sets: Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,7 +95,7 @@ The resource group the resource is located under.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,7 +125,7 @@ Skip the first N items as specified by the parameter value.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,7 +141,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

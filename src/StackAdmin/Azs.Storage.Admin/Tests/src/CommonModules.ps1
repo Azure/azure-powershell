@@ -14,7 +14,7 @@
 
 $ModuleName = "Azs.Storage.Admin"
 
-if ($global:UsedInstalled) {
+if ($global:UseInstalled) {
     Import-Module $ModuleName -Force
 } else {
     Import-Module ..\Module\$ModuleName -Force

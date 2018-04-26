@@ -26,8 +26,9 @@
 .EXAMPLE
     PS C:\> .\src\DirectoryTenant.Tests.ps1
 	Describing DirectoryTenant
-	  [+] TestListDirectoryTenants 1.33s
-	  [+] TestGetAllDirectoryTenants 2.14s
+	  [+] TestListDirectoryTenants 240ms
+	  [+] TestGetAllDirectoryTenants 159ms
+	  [+] TestGetDirectoryTenant 144ms
 
 .NOTES
     Author: Mike Giesler
@@ -97,7 +98,7 @@ InModuleScope Azs.Subscriptions.Admin {
         It "TestListDirectoryTenants" {
             $global:TestName = 'TestListDirectoryTenants'
 
-            $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName System.local
+            $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
 
             foreach($DirectoryTenant in $allDirectoryTenants) {
 				ValidateDirectoryTenant $DirectoryTenant
@@ -107,12 +108,20 @@ InModuleScope Azs.Subscriptions.Admin {
 		It "TestGetAllDirectoryTenants" {
             $global:TestName = 'TestGetAllDirectoryTenants'
 
-            $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName System.local
+            $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
 
             foreach($DirectoryTenant in $allDirectoryTenants) {
-				$tenant2 = Get-AzsDirectoryTenant -Name $DirectoryTenant.Name -ResourceGroupName System.local
+				$tenant2 = Get-AzsDirectoryTenant -Name $DirectoryTenant.Name -ResourceGroupName System.redmond
 				AssertDirectoryTenantsSame $DirectoryTenant $tenant2
             }
+		}
+
+		It "TestGetDirectoryTenant" {
+			$global:TestName = 'TestGetDirectoryTenant'
+
+			$tenant = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
+			$tenant2 = Get-AzsDirectoryTenant -ResourceGroupName System.redmond -Name $tenant.Name
+			AssertDirectoryTenantsSame $tenant $tenant2
 		}
 	}
 }

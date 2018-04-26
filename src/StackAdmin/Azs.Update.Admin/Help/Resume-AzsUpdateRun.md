@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Update.Admin-help.xml
 Module Name: Azs.Update.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Resumes a previously started update run that failed.
 
 ### UpdateRuns_Rerun (Default)
 ```
-Resume-AzsUpdateRun -Name <String> [-Location <String>] [-ResourceGroupName <String>] -DisplayName <String>
+Resume-AzsUpdateRun -Name <String> [-Location <String>] [-ResourceGroupName <String>] -UpdateName <String>
  [-AsJob] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ Resume-AzsUpdateRun [-AsJob] -ResourceId <String> [-Force] [-WhatIf] [-Confirm] 
 ```
 
 ## DESCRIPTION
-Resumes a previously started update run that failed. 
+Resumes a previously started update run that failed.
 Resumeed update runs will resume at the point they last failed.
 
 ## EXAMPLES
 
 ### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -DisplayName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
+Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
 ```
 
 Resumes a previously started update run that failed.
@@ -44,7 +44,7 @@ Resumes a previously started update run that failed.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -53,13 +53,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisplayName
-Display name of the update.
+### -UpdateName
+Name of the update.
 
 ```yaml
 Type: String
 Parameter Sets: UpdateRuns_Rerun
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -74,7 +74,7 @@ Flag to remove the item without confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,7 +89,7 @@ The name of the update location.
 ```yaml
 Type: String
 Parameter Sets: UpdateRuns_Rerun
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -104,7 +104,7 @@ Update run identifier.
 ```yaml
 Type: String
 Parameter Sets: UpdateRuns_Rerun
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,7 +119,7 @@ The resource group the resource is located under.
 ```yaml
 Type: String
 Parameter Sets: UpdateRuns_Rerun
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
