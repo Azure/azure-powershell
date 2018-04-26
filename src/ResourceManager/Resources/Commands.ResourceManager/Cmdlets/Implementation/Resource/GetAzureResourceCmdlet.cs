@@ -129,8 +129,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnEndProcessing()
         {
             base.OnEndProcessing();
+            this.DefaultApiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ResourcesApiVersion : this.ApiVersion;
+            var resourceId = string.Empty;
+            if (ShouldConstructResourceId(out resourceId))
+            {
+                ResourceId = resourceId;
+            }
 
-            if (this.IsParameterBound(c => c.ApiVersion) || this.IsParameterBound(c => c.ExpandProperties))
+            if (!string.IsNullOrEmpty(ResourceId))
+            {
+                var resource = ResourceManagerSdkClient.GetById(ResourceId, DefaultApiVersion);
+                WriteObject(resource);
+            }
+            else if (this.IsParameterBound(c => c.ApiVersion) || this.IsParameterBound(c => c.ExpandProperties))
             {
                 this.RunCmdlet();
             }
@@ -142,14 +153,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
         private void RunSimpleCmdlet()
         {
-            if (this.IsParameterBound(c => c.ResourceId))
-            {
-                var resourceIdentifier = new ResourceIdentifier(this.ResourceId);
-                this.ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                this.Name = resourceIdentifier.ResourceName;
-                this.ResourceType = resourceIdentifier.ResourceType;
-            }
-
             if (this.IsParameterBound(c => c.Tag))
             {
                 this.TagName = TagsHelper.GetTagNameFromParameters(this.Tag, null);
@@ -196,6 +199,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             WriteObject(result, true);
+        }
+
+        private bool ShouldConstructResourceId(out string resourceId)
+        {
+            resourceId = null;
+            if (this.IsParameterBound(c => c.Name) && !ContainsWildcard(Name) &&
+                this.IsParameterBound(c => c.ResourceGroupName) && !ContainsWildcard(ResourceGroupName) &&
+                this.IsParameterBound(c => c.ResourceType) && ResourceType.Split('/').Count() == 2)
+            {
+                resourceId = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}",
+                                            DefaultContext.Subscription.Id,
+                                            ResourceGroupName,
+                                            ResourceType,
+                                            Name);
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool ContainsWildcard(string parameter)
+        {
+            return !string.IsNullOrEmpty(parameter) && (parameter.StartsWith("*") || parameter.EndsWith("*"));
         }
 
         private IEnumerable<PSResource> FilterResourceGroupByWildcard(IEnumerable<PSResource> result)
@@ -255,7 +281,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
-            this.DefaultApiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ResourcesApiVersion : this.ApiVersion;
             if (string.IsNullOrEmpty(this.ResourceId))
             {
                 this.SubscriptionId = DefaultContext.Subscription.GetId();

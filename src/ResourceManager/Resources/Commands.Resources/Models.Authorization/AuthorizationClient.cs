@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return new GenericPageEnumerable<RoleDefinition>(
                 delegate()
                 {
-                    return AuthorizationManagementClient.RoleDefinitions.List(scope, odataQuery : null);
+                    return AuthorizationManagementClient.RoleDefinitions.List(scope, odataQuery : odataQuery);
                 }, AuthorizationManagementClient.RoleDefinitions.ListNext, first, skip)
                 .Select(r => r.ToPSRoleDefinition());
         }
