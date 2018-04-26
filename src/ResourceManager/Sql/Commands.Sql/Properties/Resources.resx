@@ -315,8 +315,11 @@
   <data name="RemoveAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Database Failover Group '{0}' on server '{1}'.</value>
   </data>
+  <data name="RemoveAzureSqlDatabaseInstanceFailoverGroupDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Database Instance Failover Group '{0}' on managed instance '{1}'.</value>
+  </data>
   <data name="RemoveAzureSqlDatabaseFailoverGroupWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Azure Sql Database Failover Group '{0}' on server '{1}'?</value>
+    <value>Are you sure you want to remove the Azure Sql Database Failover Group '{0}' on region '{1}'?</value>
   </data>
   <data name="RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription" xml:space="preserve">
     <value>Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group '{0}' on server '{1}'.</value>
