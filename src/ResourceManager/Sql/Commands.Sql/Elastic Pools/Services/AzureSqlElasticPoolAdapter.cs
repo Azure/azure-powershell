@@ -378,6 +378,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The sku name</returns>
         public static string getPoolSkuName(string tier)
         {
+            if (string.IsNullOrWhiteSpace(tier))
+                return null;
+
             Dictionary<string, string> dic = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
             dic.Add("GeneralPurpose", "GP");
             dic.Add("BusinessCritical", "BC");

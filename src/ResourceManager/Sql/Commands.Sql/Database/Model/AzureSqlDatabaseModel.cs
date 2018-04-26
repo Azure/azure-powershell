@@ -203,7 +203,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             ServerName = serverName;
             CollationName = database.Collation;
             CreationDate = database.CreationDate.Value;
-            CurrentServiceObjectiveName = database.ServiceLevelObjective;
             MaxSizeBytes = database.MaxSizeBytes;
             DatabaseName = database.Name;
             Status = database.Status;
