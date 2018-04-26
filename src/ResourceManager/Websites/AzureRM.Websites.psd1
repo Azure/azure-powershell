@@ -129,7 +129,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime'
+        ReleaseNotes = '* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -139,6 +140,8 @@ PrivateData = @{
 
         # External dependent modules of this module
         # ExternalModuleDependencies = @()
+
+        # Prerelease = ''
 
     } # End of PSData hashtable
     
