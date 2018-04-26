@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 
@@ -72,6 +73,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
 
             _tokenGetter = factory.GetHttpOperations<ManagedServiceTokenInfo>(true).WithHeader("Metadata", new[] { "true" });
+            if (account.IsPropertySet(AzureAccount.Property.MSILoginSecret))
+            {
+                _tokenGetter = _tokenGetter.WithHeader("Secret", new[] { account.GetProperty(AzureAccount.Property.MSILoginSecret) });
+            }
         }
 
         public string AccessToken
@@ -119,11 +124,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         RequestUris.Clear();
                         RequestUris.Enqueue(currentRequestUri);
                     }
-                    catch (CloudException) when (RequestUris.Count > 0)
+                    catch (Exception e) when ( (e is CloudException || e is HttpRequestException) && RequestUris.Count > 0)
                     {
-                        // do nothing
+                        // skip to the next uri
                     }
                 }
+
                 SetToken(info);
             }
         }

@@ -18,11 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 4.4.0-preview
-* Updated cmdlets to include piping scenarios
-* Added new cmdlets around NewtorkRules: Add/Remove/Update-AzureKeyVaultNetworkRule
+* Breaking changes to support piping scenarios
 * Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.3.0
+* Updated cmdlets to include piping scenarios
+* Add deprecation messages for upcoming breaking change release
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.2.1
 * Fix issue with Default Resource Group in CloudShell

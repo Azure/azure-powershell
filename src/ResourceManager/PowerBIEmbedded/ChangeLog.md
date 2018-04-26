@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.1.4
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.1.3
 * Fix issue with Default Resource Group in CloudShell

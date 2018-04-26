@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+* Remove deprecated `Tags` alias from cmdlets
+    - `New-AzureRmDataLakeAnalyticsAccount`
+    - `Set-AzureRmDataLakeAnalyticsAccount`
+
+## Version 4.2.3
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.2.2
 * Fix issue with Default Resource Group in CloudShell

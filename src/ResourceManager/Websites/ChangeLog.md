@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Set minimum dependency of module to PowerShell 5.0
+* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp
+
+## Version 4.2.2
+* Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.2.1
 * Fixed the help for Remove-AzureRmWebAppSlot
@@ -27,6 +33,10 @@
 ## Version 4.2.0
 * Fixed issue with importing aliases
 * New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
+
+## Version 5.0.0-preview
+* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp
 
 ## Version 4.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

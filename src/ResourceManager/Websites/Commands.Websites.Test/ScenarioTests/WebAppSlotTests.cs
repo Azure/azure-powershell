@@ -98,22 +98,24 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-ManageSlotSlotConfigName");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestWebAppRegularSlotSwap()
         {
             WebsitesController.NewInstance.RunPsTest("Test-WebAppRegularSlotSwap");
         }
 
-        [Fact]
+        [Fact(Skip = "iss#6044 The test needs to be re-written")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSwapWithPreviewResetSlotSwap()
         {
             WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewResetSlotSwap");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestWebAppSwapWithPreviewCompleteSlotSwap()
         {
             WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewCompleteSlotSwap");

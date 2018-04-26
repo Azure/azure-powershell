@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ShowReplicationByNameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ListReplicationByNameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
-            if(string.Equals(ParameterSetName, ShowReplicationByRegistryObjectParameterSet) || 
+            if (string.Equals(ParameterSetName, ShowReplicationByRegistryObjectParameterSet) ||
                 string.Equals(ParameterSetName, ListReplicationByRegistryObjectParameterSet))
             {
                 ResourceGroupName = Registry.ResourceGroupName;
@@ -77,7 +78,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private void ShowReplicationByResourceId()
         {
             string resourceGroup, registryName, childResourceName;
-            if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
+            if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
             {
                 WriteInvalidResourceIdError(InvalidRegistryOrReplicationResourceIdErrorMessage);
                 return;
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             Name = childResourceName;
             RegistryName = registryName;
 
-            if(string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(Name))
             {
                 ListReplication();
             }

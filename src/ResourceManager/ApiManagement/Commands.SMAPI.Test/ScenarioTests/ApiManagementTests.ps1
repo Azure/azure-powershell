@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+﻿ # ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -97,8 +97,8 @@ function Api-CrudTest {
         Assert-AreEqual https $newApi.Protocols[1]
         Assert-Null $newApi.AuthorizationServerId
         Assert-Null $newApi.AuthorizationScope
-        Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName      
-        Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName  
+        Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
+        Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
 
         # set api
         $newApiName = getAssetName
@@ -150,7 +150,7 @@ function Api-CrudTest {
     }
     finally {
         # remove created api
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $newApiId -PassThru 
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $newApiId -PassThru
         Assert-True {$removed}
     }
 }
@@ -182,7 +182,7 @@ function Api-ImportExportWadlTest {
     }
     finally {
         # remove created api
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wadlApiId -PassThru 
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wadlApiId -PassThru
         Assert-True {$removed}
     }
 }
@@ -211,7 +211,7 @@ function Api-ImportExportSwaggerTest {
         Assert-AreEqual $path1 $api.Path
 
         # export api to pipeline
-        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId1 -SpecificationFormat Swagger		
+        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId1 -SpecificationFormat Swagger
         Assert-NotNull $result
         Assert-True {$result -like '*"title": "Swagger Petstore Extensive"*'}
 
@@ -223,10 +223,10 @@ function Api-ImportExportSwaggerTest {
     }
     finally {
         # remove created api
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId1 -PassThru 
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId1 -PassThru
         Assert-True {$removed}
 
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId2 -PassThru 
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $swaggerApiId2 -PassThru
         Assert-True {$removed}
     }
 }
@@ -251,7 +251,7 @@ function Api-ImportExportWsdlTest {
     $wsdlEndpointName1 = "WeatherSoap" # from file Weather.wsdl
     $wsdlServiceName2 = "StockQuote" # from Url StockQuote
     $wsdlEndpointName2 = "StockQuoteSoap" # from Url StockQuote
-	
+
     try {
         # import api from file
         $api = Import-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -SpecificationPath $wsdlPath1 -SpecificationFormat Wsdl -Path $path1 -WsdlServiceName $wsdlServiceName1 -WsdlEndpointName $wsdlEndpointName1
@@ -260,7 +260,7 @@ function Api-ImportExportWsdlTest {
         Assert-AreEqual $path1 $api.Path
 
         # export api to pipeline
-        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -SpecificationFormat Wsdl		
+        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -SpecificationFormat Wsdl
         Assert-NotNull $result
         Assert-True {$result -like '*<wsdl:service name="Weather"*'}
 
@@ -271,17 +271,17 @@ function Api-ImportExportWsdlTest {
         Assert-AreEqual $path2 $api.Path
 
         # export api to pipeline
-        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId2 -SpecificationFormat Wsdl		
+        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId2 -SpecificationFormat Wsdl
         Assert-NotNull $result
         Assert-True {$result -like '*<wsdl:service name="StockQuote"*'}
     }
     finally {
         # remove created api
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -PassThru 
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -PassThru
         Assert-True {$removed}
 
         # remove created api
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId2 -PassThru 
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId2 -PassThru
         Assert-True {$removed}
     }
 }
@@ -297,11 +297,11 @@ function Api-ImportWsdlToCreateSoapToRestApi {
 
     $wsdlPath1 = "$TestOutputRoot/Resources/Weather.wsdl"
     $path1 = "soapToRestApi"
-    $wsdlApiId1 = getAssetName	
+    $wsdlApiId1 = getAssetName
     $wsdlServiceName1 = "Weather" # from file Weather.wsdl
     $wsdlEndpointName1 = "WeatherSoap" # from file Weather.wsdl
-	
-    try {		 
+
+    try {
         # import api from Url
         $api = Import-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -SpecificationPath $wsdlPath1 -SpecificationFormat Wsdl -Path $path1 -WsdlServiceName $wsdlServiceName1 -WsdlEndpointName $wsdlEndpointName1 -ApiType Soap
 
@@ -315,7 +315,7 @@ function Api-ImportWsdlToCreateSoapToRestApi {
     }
     finally {
         # remove created api
-        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -PassThru 
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wsdlApiId1 -PassThru
         Assert-True {$removed}
     }
 }
@@ -458,7 +458,7 @@ function Operations-CrudTest {
         Assert-AreEqual $dummyQp.Type $newOperation.Request.QueryParameters[0].Type
         Assert-AreEqual $dummyQp.Required $newOperation.Request.QueryParameters[0].Required
         Assert-AreEqual $dummyQp.DefaultValue $newOperation.Request.QueryParameters[0].DefaultValue
-    
+
         Assert-AreEqual 1 $newOperation.Request.Headers.Count
         Assert-AreEqual $header.Name $newOperation.Request.Headers[0].Name
         Assert-AreEqual $header.Description $newOperation.Request.Headers[0].Description
@@ -583,7 +583,7 @@ function Operations-CrudTest {
         Assert-AreEqual $dummyQp.Type $newOperation.Request.QueryParameters[0].Type
         Assert-AreEqual $dummyQp.Required $newOperation.Request.QueryParameters[0].Required
         Assert-AreEqual $dummyQp.DefaultValue $newOperation.Request.QueryParameters[0].DefaultValue
-    
+
         Assert-AreEqual 1 $newOperation.Request.Headers.Count
         Assert-AreEqual $header.Name $newOperation.Request.Headers[0].Name
         Assert-AreEqual $header.Description $newOperation.Request.Headers[0].Description
@@ -637,7 +637,7 @@ function Product-CrudTest {
         Assert-NotNull $products[$i].ProductId
         Assert-NotNull $products[$i].Description
         Assert-AreEqual Published $products[$i].State
-        
+
         if ($products[$i].Title -eq 'Starter') {
             $found += 1;
         }
@@ -663,7 +663,7 @@ function Product-CrudTest {
             –LegalTerms $productTerms –SubscriptionRequired $productSubscriptionRequired `
             –ApprovalRequired $productApprovalRequired –State $productState -SubscriptionsLimit $productSubscriptionsLimit
 
-        Assert-AreEqual $productId $newProduct.ProductId 
+        Assert-AreEqual $productId $newProduct.ProductId
         Assert-AreEqual $productName $newProduct.Title
         Assert-AreEqual $productApprovalRequired $newProduct.ApprovalRequired
         Assert-AreEqual $productDescription $newProduct.Description
@@ -694,7 +694,7 @@ function Product-CrudTest {
             –LegalTerms $productTerms -ApprovalRequired $productApprovalRequired `
             –SubscriptionRequired $TRUE –State $productState -SubscriptionsLimit $productSubscriptionsLimit -PassThru
 
-        Assert-AreEqual $productId $newProduct.ProductId 
+        Assert-AreEqual $productId $newProduct.ProductId
         Assert-AreEqual $productName $newProduct.Title
         Assert-AreEqual $productApprovalRequired $newProduct.ApprovalRequired
         Assert-AreEqual $productDescription $newProduct.Description
@@ -708,10 +708,10 @@ function Product-CrudTest {
 
         $apis = Get-AzureRmApiManagementApi -Context $context -ProductId $productId
         Assert-AreEqual 0 $apis.Count
-    } 
+    }
     finally {
         # remove created product
-        $removed = Remove-AzureRmApiManagementProduct -Context $context -ProductId $productId -DeleteSubscriptions -PassThru 
+        $removed = Remove-AzureRmApiManagementProduct -Context $context -ProductId $productId -DeleteSubscriptions -PassThru
         Assert-True {$removed}
     }
 }
@@ -900,7 +900,7 @@ function User-CrudTest {
 
         #find user by FirstName and LastName
         $user = Get-AzureRmApiManagementUser -Context $context -LastName $userLastName -FirstName $userFirstName
-                
+
         Assert-AreEqual $userId $user.UserId
         Assert-AreEqual $userEmail $user.Email
         Assert-AreEqual $userLastName $user.LastName
@@ -923,7 +923,7 @@ function User-CrudTest {
         Assert-AreEqual $userEmail $user.Email
         Assert-AreEqual $userLastName $user.LastName
         Assert-AreEqual $userState $user.State
-        
+
         # update State to Active
         $userState = "Active"
         $user = Set-AzureRmApiManagementUser -Context $context -UserId $userId -State $userState -PassThru
@@ -976,7 +976,7 @@ function Group-CrudTest {
         Assert-NotNull $groups[$i].Description
         Assert-NotNull $groups[$i].System
         Assert-NotNull $groups[$i].Type
-        
+
         # get by id
         $group = Get-AzureRmApiManagementGroup -Context $context -GroupId $groups[$i].GroupId
 
@@ -989,7 +989,7 @@ function Group-CrudTest {
 
     # create group with default parameters
     $groupId = getAssetName
-    $externalgroupId = getAssetName	
+    $externalgroupId = getAssetName
     try {
         $newGroupName = getAssetName
         $newGroupDescription = getAssetName
@@ -1014,7 +1014,7 @@ function Group-CrudTest {
         Assert-AreEqual $newGroupDescription $group.Description
         Assert-AreEqual $false $group.System
         Assert-AreEqual 'Custom' $group.Type
-		
+
         # add Product to Group
         $product = Get-AzureRmApiManagementProduct -Context $context | Select -First 1
         Add-AzureRmApiManagementProductToGroup -Context $context -GroupId $groupId -ProductId $product.ProductId
@@ -1041,7 +1041,7 @@ function Group-CrudTest {
         Remove-AzureRmApiManagementUserFromGroup -Context $context -GroupId $groupId -UserId $user.UserId
         $groups = Get-AzureRmApiManagementGroup -Context $context -UserId $user.UserId
         Assert-AreEqual 2 $groups.Count
-		
+
         # create an external group
         $externalgroupname = getAssetName
         $externalgroupdescription = getAssetName
@@ -1057,7 +1057,7 @@ function Group-CrudTest {
         # remove created group
         $removed = Remove-AzureRmApiManagementGroup -Context $context -GroupId $groupId -PassThru
         Assert-True {$removed}
-		
+
         $group = $null
         try {
             # check it was removed
@@ -1065,7 +1065,7 @@ function Group-CrudTest {
         }
         catch {
         }
-		
+
         Assert-Null $group
 
         # remove created external group
@@ -1078,7 +1078,7 @@ function Group-CrudTest {
         }
         catch {
         }
-		
+
         Assert-Null $group
     }
 }
@@ -1104,15 +1104,15 @@ function Policy-CrudTest {
         $set = Set-AzureRmApiManagementPolicy -Context $context  -PolicyFilePath $tenantValidPath -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureRmApiManagementPolicy -Context $context 
+        $policy = Get-AzureRmApiManagementPolicy -Context $context
         Assert-NotNull $policy
         Assert-True {$policy -like '*<find-and-replace from="aaa" to="BBB" />*'}
     }
     finally {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru 
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureRmApiManagementPolicy -Context $context 
+        $policy = Get-AzureRmApiManagementPolicy -Context $context
         Assert-Null $policy
     }
 
@@ -1127,7 +1127,7 @@ function Policy-CrudTest {
         Assert-True {$policy -like '*<rate-limit calls="5" renewal-period="60" />*'}
     }
     finally {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru 
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId
@@ -1145,7 +1145,7 @@ function Policy-CrudTest {
         Assert-True {$policy -like '*<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none">*'}
     }
     finally {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru 
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId
@@ -1165,7 +1165,7 @@ function Policy-CrudTest {
         Assert-True {$policy -like '*<rewrite-uri template="/resource" />*'}
     }
     finally {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru 
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
@@ -1186,10 +1186,10 @@ function Policy-CrudTest {
         Assert-True {$policy -like '*<find-and-replace from="aaa" to="BBB" />*'}
     }
     finally {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru 
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureRmApiManagementPolicy -Context $context 
+        $policy = Get-AzureRmApiManagementPolicy -Context $context
         Assert-Null $policy
     }
 
@@ -1200,13 +1200,13 @@ function Policy-CrudTest {
         $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $productValid -ProductId $product.ProductId -PassThru
         Assert-AreEqual $true $set
 
-        Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs "$TestOutputRoot/ProductPolicy.xml" -Force 
+        Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs "$TestOutputRoot/ProductPolicy.xml" -Force
         $exists = [System.IO.File]::Exists("$TestOutputRoot/ProductPolicy.xml")
         $policy = gc "$TestOutputRoot/ProductPolicy.xml"
         Assert-True {$policy -like '*<rate-limit calls="5" renewal-period="60" />*'}
     }
     finally {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru 
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId
@@ -1231,7 +1231,7 @@ function Policy-CrudTest {
         Assert-True {$policy -like '*<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none">*'}
     }
     finally {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru 
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId
@@ -1259,7 +1259,7 @@ function Policy-CrudTest {
         Assert-True {$policy -like '*<rewrite-uri template="/resource" />*'}
     }
     finally {
-        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru 
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru
         Assert-AreEqual $true $removed
 
         $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
@@ -1533,10 +1533,10 @@ function Logger-CrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
-	
+
     # create logger
     $loggerId = getAssetName
-    try {        
+    try {
         $newLoggerDescription = getAssetName
         $eventHubName = "sdkeventhub"
         $eventHubConnectionString = "TestConnectionString"
@@ -1547,7 +1547,7 @@ function Logger-CrudTest {
         Assert-AreEqual $newLoggerDescription $logger.Description
         Assert-AreEqual 'AzureEventHub' $logger.Type
         Assert-AreEqual $true $logger.IsBuffered
-        
+
         # update logger to non-buffered
         $newLoggerDescription = getAssetName
 
@@ -1558,13 +1558,13 @@ function Logger-CrudTest {
         Assert-AreEqual $newLoggerDescription $logger.Description
         Assert-AreEqual 'AzureEventHub' $logger.Type
         Assert-AreEqual $false $logger.IsBuffered
-       
+
         # get all Loggers
         $loggers = Get-AzureRmApiManagementLogger -Context $context
-		
+
         Assert-NotNull $loggers
         Assert-AreEqual 1 $loggers.Count
-		
+
         # get a specific logger
         $logger = $null
         $logger = Get-AzureRmApiManagementLogger -Context $context -LoggerId $loggerId
@@ -1572,7 +1572,7 @@ function Logger-CrudTest {
         Assert-AreEqual $newLoggerDescription $logger.Description
         Assert-AreEqual 'AzureEventHub' $logger.Type
         Assert-AreEqual $false $logger.IsBuffered
-        
+
     }
     finally {
         # remove created logger
@@ -1599,10 +1599,10 @@ function OpenIdConnectProvider-CrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
-	
+
     # create openIdConnectProvider with default parameters
     $openIdConnectProviderId = getAssetName
-    try {        
+    try {
         $openIdConnectProviderName = getAssetName
         $metadataEndpoint = "https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration"
         $clientId = getAssetName
@@ -1620,20 +1620,20 @@ function OpenIdConnectProvider-CrudTest {
         # get openIdConnectProvider using Name
         $openIdConectProvider = $null
         $openIdConectProvider = Get-AzureRmApiManagementOpenIdConnectProvider -Context $context -Name $openIdConnectProviderName
-		
+
         Assert-NotNull $openIdConectProvider
         Assert-AreEqual $openIdConnectProviderId $openIdConectProvider.OpenIdConnectProviderId
-		
+
         # get OpenId Connect Provider using Id
         $openIdConectProvider = Get-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId
-		
+
         Assert-NotNull $openIdConectProvider
         Assert-AreEqual $openIdConnectProviderId $openIdConectProvider.OpenIdConnectProviderId
-				
+
         #get all openId Connect Providers
         $openIdConectProviders = Get-AzureRmApiManagementOpenIdConnectProvider -Context $context
         Assert-AreEqual 1 $openIdConectProviders.Count
-		        
+
         Assert-NotNull $openIdConectProviders
         Assert-AreEqual $openIdConnectProviderId $openIdConectProvider.OpenIdConnectProviderId
 
@@ -1646,11 +1646,11 @@ function OpenIdConnectProvider-CrudTest {
         Assert-AreEqual $clientId $openIdConectProvider.ClientId
         Assert-AreEqual $metadataEndpoint $openIdConectProvider.MetadataEndpoint
         Assert-AreEqual $openIdConnectProviderName $openIdConectProvider.Name
-        
+
         #remove openIdConnectProvider
         $removed = Remove-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -PassThru
         Assert-True {$removed}
-        
+
         $openIdConectProvider = $null
         try {
             # check it was removed
@@ -1658,13 +1658,13 @@ function OpenIdConnectProvider-CrudTest {
         }
         catch {
         }
-		
+
         Assert-Null $openIdConectProvider
     }
     finally {
-        $removed = Remove-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -PassThru 
+        $removed = Remove-AzureRmApiManagementOpenIdConnectProvider -Context $context -OpenIdConnectProviderId $openIdConnectProviderId -PassThru
         Assert-True {$removed}
-        
+
         $openIdConectProvider = $null
         try {
             # check it was removed
@@ -1672,7 +1672,7 @@ function OpenIdConnectProvider-CrudTest {
         }
         catch {
         }
-		
+
         Assert-Null $openIdConectProvider
     }
 }
@@ -1685,15 +1685,15 @@ function Properties-CrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
-	
+
     # create non-Secret Property
     $propertyId = getAssetName
     $secretPropertyId = $null
-    try {        
+    try {
         $propertyName = getAssetName
         $propertyValue = getAssetName
         $tags = 'sdk', 'powershell'
-        $property = New-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -Name $propertyName -Value $propertyValue -Tags $tags
+        $property = New-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -Name $propertyName -Value $propertyValue -Tag $tags
 
         Assert-NotNull $property
         Assert-AreEqual $propertyId $property.PropertyId
@@ -1701,11 +1701,11 @@ function Properties-CrudTest {
         Assert-AreEqual $propertyValue $property.Value
         Assert-AreEqual $false  $property.Secret
         Assert-AreEqual 2 $property.Tags.Count
-		
+
         #create Secret Property
         $secretPropertyId = getAssetName
         $secretPropertyName = getAssetName
-        $secretPropertyValue = getAssetName		
+        $secretPropertyValue = getAssetName
         $secretProperty = New-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -Name $secretPropertyName -Value $secretPropertyValue -Secret
 
         Assert-NotNull $secretProperty
@@ -1718,30 +1718,30 @@ function Properties-CrudTest {
 
         # get all properties
         $properties = Get-AzureRmApiManagementProperty -Context $context
-		
+
         Assert-NotNull $properties
         # there should be 2 properties
         Assert-AreEqual 2 $properties.Count
-		
+
         # get properties by name
         $properties = $null
         $properties = Get-AzureRmApiManagementProperty -Context $context -Name 'onesdk'
-		
+
         Assert-NotNull $properties
         # both the properties created start with 'onesdk'
         Assert-AreEqual 2 $properties.Count
-		
+
         # get properties by tag
         $properties = $null
         $properties = Get-AzureRmApiManagementProperty -Context $context -Tag 'sdk'
-		
+
         Assert-NotNull $property
         Assert-AreEqual 1 $properties.Count
-		
+
         # get property by Id
         $secretProperty = $null
         $secretProperty = Get-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId
-		
+
         Assert-NotNull $secretProperty
         Assert-AreEqual $secretPropertyId $secretProperty.PropertyId
         Assert-AreEqual $secretPropertyName $secretProperty.Name
@@ -1749,11 +1749,11 @@ function Properties-CrudTest {
         Assert-AreEqual $true  $secretProperty.Secret
         Assert-NotNull $secretProperty.Tags
         Assert-AreEqual 0 $secretProperty.Tags.Count
-		
+
         # update the secret property with a tag
         $secretProperty = $null
-        $secretProperty = Set-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -Tags $tags -PassThru
-				
+        $secretProperty = Set-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -Tag $tags -PassThru
+
         Assert-NotNull $secretProperty
         Assert-AreEqual $secretPropertyId $secretProperty.PropertyId
         Assert-AreEqual $secretPropertyName $secretProperty.Name
@@ -1761,11 +1761,11 @@ function Properties-CrudTest {
         Assert-AreEqual $true  $secretProperty.Secret
         Assert-NotNull $secretProperty.Tags
         Assert-AreEqual 2 $secretProperty.Tags.Count
-		
+
         #convert a non secret property to secret
         $property = $null
         $property = Set-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -Secret $true -PassThru
-				
+
         Assert-NotNull $property
         Assert-AreEqual $propertyId $property.PropertyId
         Assert-AreEqual $propertyName $property.Name
@@ -1773,11 +1773,11 @@ function Properties-CrudTest {
         Assert-AreEqual $true  $property.Secret
         Assert-NotNull $property.Tags
         Assert-AreEqual 2 $property.Tags.Count
-				
+
         #remove secret property
         $removed = Remove-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -PassThru
         Assert-True {$removed}
-        
+
         $secretProperty = $null
         try {
             # check it was removed
@@ -1785,13 +1785,13 @@ function Properties-CrudTest {
         }
         catch {
         }
-		
+
         Assert-Null $secretProperty
     }
     finally {
-        $removed = Remove-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -PassThru 
+        $removed = Remove-AzureRmApiManagementProperty -Context $context -PropertyId $propertyId -PassThru
         Assert-True {$removed}
-        
+
         $property = $null
         try {
             # check it was removed
@@ -1799,12 +1799,12 @@ function Properties-CrudTest {
         }
         catch {
         }
-		
+
         Assert-Null $property
-		
+
         # cleanup other Property
         try {
-            Remove-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -PassThru 
+            Remove-AzureRmApiManagementProperty -Context $context -PropertyId $secretPropertyId -PassThru
         }
         catch {
         }
@@ -1819,21 +1819,21 @@ function TenantGitConfiguration-CrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
-	
-    try {        
+
+    try {
         $tenantGitAccess = Get-AzureRmApiManagementTenantGitAccess -Context $context
 
         Assert-NotNull $tenantGitAccess
-        Assert-AreEqual $true $tenantGitAccess.Enabled        
-		
+        Assert-AreEqual $true $tenantGitAccess.Enabled
+
         #get Tenant Sync state
         $tenantSyncState = Get-AzureRmApiManagementTenantSyncState -Context $context
         Assert-NotNull $tenantSyncState
         Assert-AreEqual $true $tenantSyncState.IsGitEnabled
 
-        # Do a initial Save to populate the master Branch with current state of Configuration database		
+        # Do a initial Save to populate the master Branch with current state of Configuration database
         $saveResponse = Save-AzureRmApiManagementTenantGitConfiguration -Context $context -Branch 'master' -PassThru
-		
+
         Assert-NotNull $saveResponse
         Assert-AreEqual "Succeeded" $saveResponse.State
         Assert-Null $saveResponse.Error
@@ -1844,17 +1844,17 @@ function TenantGitConfiguration-CrudTest {
         Assert-NotNull $tenantSyncState
         Assert-AreEqual $true $tenantSyncState.IsGitEnabled
         Assert-AreEqual "master" $tenantSyncState.Branch
-		
+
         # Do a Validate to populate the master Branch with current state of Configuration database
         $validateResponse = Publish-AzureRmApiManagementTenantGitConfiguration -Context $context -Branch 'master' -ValidateOnly -PassThru
-		
+
         Assert-NotNull $validateResponse
         Assert-AreEqual "Succeeded" $validateResponse.State
         Assert-Null $validateResponse.Error
-		
+
         # Do a Deploy to populate the master Branch with current state of Configuration database
         $deployResponse = Publish-AzureRmApiManagementTenantGitConfiguration -Context $context -Branch 'master' -PassThru
-		
+
         Assert-NotNull $deployResponse
         Assert-AreEqual "Succeeded" $deployResponse.State
         Assert-Null $deployResponse.Error
@@ -1868,7 +1868,7 @@ function TenantGitConfiguration-CrudTest {
         Assert-AreEqual $true $tenantSyncState.IsSynced
     }
     finally {
-		
+
     }
 }
 
@@ -1880,13 +1880,13 @@ function TenantAccessConfiguration-CrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
-	
-    try {        
+
+    try {
         $tenantAccess = Get-AzureRmApiManagementTenantAccess -Context $context
 
         Assert-NotNull $tenantAccess
         Assert-AreEqual $false $tenantAccess.Enabled
-		
+
         #enable Tenant Access
         $tenantAccess = $null
         $tenantAccess = Set-AzureRmApiManagementTenantAccess -Context $context -Enabled $true -PassThru
@@ -1907,10 +1907,10 @@ function IdentityProvider-CrudTest {
     Param($resourceGroupName, $serviceName)
 
     $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
-	
+
     # create facebook identity provider configuration with default parameters
     $identityProviderName = 'Facebook'
-    try {   
+    try {
         $clientId = getAssetName
         $clientSecret = getAssetName
 
@@ -1918,21 +1918,21 @@ function IdentityProvider-CrudTest {
 
         Assert-NotNull $identityProvider
         Assert-AreEqual $identityProviderName $identityProvider.Type
-        Assert-AreEqual $clientId $identityProvider.ClientId		
+        Assert-AreEqual $clientId $identityProvider.ClientId
         Assert-AreEqual $clientSecret $identityProvider.ClientSecret
 
         # get identity provider using Name
         $identityProvider = $null
         $identityProvider = Get-AzureRmApiManagementIdentityProvider -Context $context -Type $identityProviderName
-		
+
         Assert-NotNull $identityProvider
         Assert-AreEqual $identityProviderName $identityProvider.Type
-					
+
         #get all Identity Providers
         $identityProviders = Get-AzureRmApiManagementIdentityProvider -Context $context
-		
+
         Assert-NotNull $identityProviders
-        Assert-AreEqual 1 $identityProviders.Count		        
+        Assert-AreEqual 1 $identityProviders.Count
 
         #update the provider with Secret
         $clientSecret = getAssetName
@@ -1941,11 +1941,11 @@ function IdentityProvider-CrudTest {
         Assert-AreEqual $identityProviderName $identityProvider.Type
         Assert-AreEqual $clientSecret $identityProvider.ClientSecret
         Assert-AreEqual $clientId $identityProvider.ClientId
-        
+
         #remove identity provider configuration
         $removed = Remove-AzureRmApiManagementIdentityProvider -Context $context -Type $identityProviderName -PassThru
         Assert-True {$removed}
-        
+
         $identityProvider = $null
         try {
             # check it was removed
@@ -1953,13 +1953,13 @@ function IdentityProvider-CrudTest {
         }
         catch {
         }
-		
+
         Assert-Null $identityProvider
     }
     finally {
-        $removed = Remove-AzureRmApiManagementIdentityProvider -Context $context -Type $identityProviderName -PassThru 
+        $removed = Remove-AzureRmApiManagementIdentityProvider -Context $context -Type $identityProviderName -PassThru
         Assert-True {$removed}
-        
+
         $identityProvider = $null
         try {
             # check it was removed
@@ -1967,7 +1967,7 @@ function IdentityProvider-CrudTest {
         }
         catch {
         }
-		
+
         Assert-Null $identityProvider
     }
 }
@@ -1983,7 +1983,7 @@ function Backend-CrudTest {
 
     # create backend
     $backendId = getAssetName
-    try {        
+    try {
         $title = getAssetName
         $urlEndpoint = 'https://contoso.com/awesomeapi'
         $description = getAssetName
@@ -1991,7 +1991,7 @@ function Backend-CrudTest {
 
         $credential = New-AzureRmApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}
         $backend = New-AzureRmApiManagementBackend -Context $context -BackendId $backendId -Url $urlEndpoint -Protocol http -Title $title -SkipCertificateChainValidation $skipCertificateChainValidation -Credential $credential -Description $description
-			
+
         Assert-AreEqual $backendId $backend.BackendId
         Assert-AreEqual $description $backend.Description
         Assert-AreEqual $urlEndpoint $backend.Url
@@ -2013,13 +2013,13 @@ function Backend-CrudTest {
 
         Assert-AreEqual $backendId $backend.BackendId
         Assert-AreEqual $newBackendDescription $backend.Description
-       
+
         # get all backends
         $backends = Get-AzureRmApiManagementBackend -Context $context
-		
+
         Assert-NotNull $backends
         Assert-AreEqual 1 $backends.Count
-		
+
         # get a specific backend
         $backend = $null
         $backend = Get-AzureRmApiManagementBackend -Context $context -BackendId $backendId
@@ -2036,7 +2036,7 @@ function Backend-CrudTest {
         Assert-AreEqual 1 $backend.Credentials.Header.Count
         Assert-NotNull $backend.Properties
         Assert-AreEqual 1 $backend.Properties.Count
-        
+
         #backend with proxy
         $secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
         $proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)

@@ -86,6 +86,16 @@ function Create-DataMigrationService($rg)
 
 function Create-ProjectSqlSqlDb($rg, $service)
 {
+	return Create-Project $rg $service SQLDB
+}
+
+function Create-ProjectSqlSqlDbMi($rg, $service)
+{
+	return Create-Project $rg $service SQLMI
+}
+
+function Create-Project($rg, $service, $targetPlatform)
+{
 	$ProjectName = Get-ProjectName
 	$db1 = New-ProjectDbInfos
 	$db2 = New-ProjectDbInfos
@@ -93,7 +103,7 @@ function Create-ProjectSqlSqlDb($rg, $service)
 	$sourceConnInfo = New-SourceSqlConnectionInfo
 	$targetConnInfo = New-TargetSqlConnectionInfo
 
-    $project = New-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType SQL -TargetType SQLDB -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo -DatabaseInfo $dbList
+    $project = New-AzureRmDataMigrationProject -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $ProjectName -Location $rg.Location -SourceType SQL -TargetType $targetPlatform -SourceConnection $sourceConnInfo -TargetConnection $targetConnInfo -DatabaseInfo $dbList
 
 	return $project
 }
@@ -116,6 +126,14 @@ function New-SourceSqlConnectionInfo
 function New-TargetSqlConnectionInfo
 {
 	$dataSource = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_TARGET_DATASOURCE")
+	$connectioninfo = New-AzureRmDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
+
+	return $connectioninfo
+}
+
+function New-TargetSqlMiConnectionInfo
+{
+	$dataSource = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_TARGET_DATASOURCE")
 	$connectioninfo = New-AzureRmDmsConnInfo -ServerType SQL -DataSource $dataSource -AuthType SqlAuthentication -TrustServerCertificate:$true
 
 	return $connectioninfo

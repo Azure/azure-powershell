@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -86,19 +87,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
             this.PopulateExtensions(other);
         }
 
-        /// <summary>
-        /// The subscription id.
-        /// </summary>
+        /// <inheritdoc />
+        [Ps1Xml(Label = "Subscription Id", Target = ViewControl.Table)]
         public string Id { get; set; }
 
-        /// <summary>
-        /// The name of the subscription.
-        /// </summary>
+        /// <inheritdoc />
+        [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table)]
         public string Name { get; set; }
 
-        /// <summary>
-        /// Gets or sets subscription State
-        /// </summary>
+        /// <inheritdoc />
+        [Ps1Xml]
         public string State { get; set; }
 
         /// <summary>
@@ -109,6 +107,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The tenant home for the subscription.
         /// </summary>
+        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table)]
         public string TenantId
         {
             get
