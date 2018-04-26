@@ -14,21 +14,19 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
 
     /// <summary>
-    /// Defines values for IotHubScaleType.
+    /// A container holding only the Tags for a resource, allowing the user to
+    /// update the tags on an IotHub instance.
     /// </summary>
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PSIotHubSku
+    public partial class PSTagsResource
     {
-        F1 = 0,
-        S1 = 1,
-        S2 = 2,
-        S3 = 3,
-        B1 = 4,
-        B2 = 5,
-        B3 = 6
+        /// <summary>
+        /// Gets or sets resource tags
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
     }
 }
