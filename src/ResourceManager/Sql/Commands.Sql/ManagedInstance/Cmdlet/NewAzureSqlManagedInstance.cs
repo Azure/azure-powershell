@@ -30,6 +30,12 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedInstance", SupportsShouldProcess = true)]
     public class NewAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
+        protected const string NewBySkuNameParameterSet =
+            "NewBySkuNameParameterSetParameter";
+
+        protected const string NewByEditionAndComputeGenerationParameterSet =
+            "NewByEditionAndComputeGenerationParameterSet";
+
         /// <summary>
         /// Gets or sets the name of the managed instance name.
         /// </summary>
@@ -88,13 +94,34 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public int Vcore { get; set; }
 
         /// <summary>
-        /// Gets or sets the managed instance version
+        /// Gets or sets the managed instance SKU name
         /// </summary>
-        [Parameter(Mandatory = true,
-            HelpMessage = "The compute generation for the Sql Azure Managed Instance. e.g. 'GP_Gen4', 'BC_Gen4'.")]
+        [Parameter(ParameterSetName = NewBySkuNameParameterSet,
+            Mandatory = true,
+            HelpMessage = "The SKU name for the Sql Azure Managed Instance e.g. 'GP_Gen4', 'BC_Gen4'.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter(Constants.GeneralPurposeGen4, Constants.GeneralPurposeGen5, Constants.BusinessCriticalGen4, Constants.BusinessCriticalGen5)]
         public string SkuName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance edition
+        /// </summary>
+        [Parameter(ParameterSetName = NewByEditionAndComputeGenerationParameterSet,
+            Mandatory = true,
+            HelpMessage = "The edition for the Sql Azure Managed Instance.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(Constants.GeneralPurposeEdition, Constants.BusinessCriticalEdition)]
+        public string Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance compute generation
+        /// </summary>
+        [Parameter(ParameterSetName = NewByEditionAndComputeGenerationParameterSet,
+            Mandatory = true,
+            HelpMessage = "The compute generation for the Sql Azure Managed Instance.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(Constants.ComputeGenerationGen4, Constants.ComputeGenerationGen5)]
+        public string ComputeGeneration { get; set; }
 
         /// <summary>
         /// Gets or sets the tags to associate with the Azure Sql Managed Instance
@@ -162,6 +189,17 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             List<Model.AzureSqlManagedInstanceModel> newEntity = new List<Model.AzureSqlManagedInstanceModel>();
             Management.Internal.Resources.Models.Sku Sku = new Management.Internal.Resources.Models.Sku();
+
+            if (string.Equals(this.ParameterSetName, NewBySkuNameParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                Sku.Name = SkuName;
+            }
+            else if (string.Equals(this.ParameterSetName, NewByEditionAndComputeGenerationParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                string editionShort = Edition.Equals(Constants.GeneralPurposeEdition) ? "GP" : Edition.Equals(Constants.BusinessCriticalEdition) ? "BC" : "Unknown";
+                Sku.Name = editionShort + "_" + ComputeGeneration;
+            }
+
             Sku.Name = SkuName;
 
             newEntity.Add(new Model.AzureSqlManagedInstanceModel()

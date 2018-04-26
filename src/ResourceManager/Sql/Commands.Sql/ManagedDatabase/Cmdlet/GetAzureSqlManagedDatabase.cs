@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// Gets or sets the name of the managed database to use.
         /// </summary>
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
-            Mandatory = true,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the Azure SQL Managed Database to retrieve.")]
         [Alias("Name")]
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The Azure Sql Managed Instance name.")]
         [ValidateNotNullOrEmpty]
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
             Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]

@@ -26,5 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public const string GeneralPurposeGen5 = "GP_Gen5";
         public const string BusinessCriticalGen4 = "BC_Gen4";
         public const string BusinessCriticalGen5 = "BC_Gen5";
+        public const string BusinessCriticalEdition = "BusinessCritical";
+        public const string GeneralPurposeEdition = "GeneralPurpose";
+        public const string ComputeGenerationGen4 = "Gen4";
+        public const string ComputeGenerationGen5 = "Gen5";
     }
 }
