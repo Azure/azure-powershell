@@ -14,20 +14,39 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class PSExportDevicesRequest
+    public class PSEventHubConsumerGroupInfo
     {
         /// <summary>
-        /// The export BLOB container URI.
+        /// Gets or sets the tags.
         /// </summary>
-        [JsonProperty(PropertyName = "exportBlobContainerUri")]
-        public string ExportBlobContainerUri { get; set; }
+        [JsonProperty(PropertyName = "properties")]
+        public IDictionary<string, string> Properties { get; set; }
 
         /// <summary>
-        /// The value indicating whether keys should be excluded during export.
+        /// Gets the Event Hub-compatible consumer group identifier.
         /// </summary>
-        [JsonProperty(PropertyName = "excludeKeys")]
-        public bool ExcludeKeys { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; private set; }
+
+        /// <summary>
+        /// Gets the Event Hub-compatible consumer group name.
+        /// </summary>
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets the resource type.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Gets the etag.
+        /// </summary>
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
     }
 }

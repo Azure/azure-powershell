@@ -1,38 +1,47 @@
 ---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
 Module Name: AzureRM.IotHub
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/remove-azurermiothub
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/update-azurermiothub
 schema: 2.0.0
 ---
 
-# Remove-AzureRmIotHub
+# Update-AzureRmIotHub
 
 ## SYNOPSIS
-Deletes an IotHub.
+Update an Azure IoT Hub.
 
 ## SYNTAX
 
 ```
-Remove-AzureRmIotHub [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmIotHub -ResourceGroupName <String> -Name <String> -Tag <Hashtable> [-Reset]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an IotHub.
+You can update the tags properties of an IotHub.
 
 ## EXAMPLES
 
-### Example 1 Remove an IotHub
+### Example 1
 ```
-PS C:\> Remove-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiothub"
+PS C:\> Update-AzureRmIotHub -ResourceGroupName "myresourcegroup" -Name "myiotdps" -Tag @tags
+
+Id             : /subscriptions/91d1xxxx-xxxx-xxxx-xxxx-xxxxxxxxddc0/resourceGroups/myresourcegroup/providers/Microsoft.De
+                 vices/IotHubs/myiotdps
+Name           : myiotdps
+Type           : Microsoft.Devices/IotHubs
+Location       : East US
+Tags           : {[k1, v1]}
+Properties     : Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubProperties
+Sku            : Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSkuInfo
 ```
 
-Removes an IotHub named "myiothub"
+Add "@tags" to the Tag of an Azure IoT Hub "myiotdps".
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -47,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the IotHub
+Name of the Iot Hub
 
 ```yaml
 Type: String
@@ -55,14 +64,29 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Reset
+Reset IoTHub Tags
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Resource Group Name
+Name of the Resource Group
 
 ```yaml
 Type: String
@@ -70,9 +94,24 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+IoTHub Tag collection
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -86,7 +125,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -102,7 +141,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -116,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
 
 ## NOTES
 
