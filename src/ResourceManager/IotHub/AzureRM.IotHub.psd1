@@ -80,7 +80,7 @@ CmdletsToExport = 'Add-AzureRmIotHubKey', 'Get-AzureRmIotHubEventHubConsumerGrou
                'Add-AzureRmIotHubEventHubConsumerGroup', 'New-AzureRmIotHub', 
                'New-AzureRmIotHubExportDevices', 'New-AzureRmIotHubImportDevices', 
                'Remove-AzureRmIotHub', 'Remove-AzureRmIotHubEventHubConsumerGroup', 
-               'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub', 
+               'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub', 'Update-AzureRmIotHub',
                'Add-AzureRmIotHubCertificate', 'Get-AzureRmIotHubCertificate', 
                'Get-AzureRmIotHubCertificateVerificationCode', 
                'Set-AzureRmIotHubVerifiedCertificate', 
@@ -121,7 +121,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0'
+        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
+* Enable tags and Basic Sku to the IotHub'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -48,6 +48,11 @@
     - Removed schema property from Teradata linked service
     - Added LinkedService, Dataset, CopySource for Responsys
 
+#### AzureRM.DataLakeAnalytics
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'New-AzureRmDataLakeAnalyticsAccount'
+    - 'Set-AzureRmDataLakeAnalyticsAccount'
+
 #### AzureRM.DataLakeStore
 * Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
 * Add new cmdlet for retrieving the content summary under a directory
@@ -106,6 +111,10 @@
 #### AzureRM.Storage
 * Updated to the latest version of the Azure ClientRuntime
 
+#### AzureRM.Websites
+* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp
+
 ## 5.7.0 - April 2018
 
 #### General
@@ -144,6 +153,9 @@
 
 #### AzureRM.EventHub
 * Fixed AlternameName in New-AzureRmEventHubGeoDRConfiguration
+
+#### AzureRM.IotHub
+* Enable tags and Basic Sku to the IotHub
 
 #### AzureRM.KeyVault
 * Updated cmdlets to include piping scenarios
