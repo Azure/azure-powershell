@@ -897,5 +897,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     return ResourceManagementClient.Resources.ListByResourceGroup(resourceGroupName, filter);
                 }, ResourceManagementClient.Resources.ListByResourceGroupNext, first, skip).Select(r => new PSResource(r));
         }
+
+        public virtual PSResource GetById(string resourceId, string apiVersion)
+        {
+            PSResource result = null;
+            var resourceIdentifier = new ResourceIdentifier(resourceId);
+            var providers = ResourceManagementClient.Providers.List();
+            foreach (var provider in providers)
+            {
+                var resourceType = provider.ResourceTypes
+                                            .Where(t => string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType) == resourceIdentifier.ResourceType)
+                                            .FirstOrDefault();
+                if (resourceType != null)
+                {
+                    apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();
+                    if (!string.IsNullOrEmpty(apiVersion))
+                    {
+                        return new PSResource(ResourceManagementClient.Resources.GetById(resourceId, apiVersion));
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }
