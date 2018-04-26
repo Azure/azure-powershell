@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
 {
     public class SetKeyVaultKeyAttributeTests : KeyVaultUnitTestBase
     {
-        private SetAzureKeyVaultKeyAttribute cmdlet;
+        private UpdateAzureKeyVaultKey cmdlet;
         private PSKeyVaultKeyAttributes keyAttributes;
         private WebKey.JsonWebKey webKey;
         private PSKeyVaultKey keyBundle;
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.UnitTests
             webKey = new WebKey.JsonWebKey();
             keyBundle = new PSKeyVaultKey() { Attributes = keyAttributes, Key = webKey, Name = KeyName, VaultName = VaultName, Version = KeyVersion };
 
-            cmdlet = new SetAzureKeyVaultKeyAttribute()
+            cmdlet = new UpdateAzureKeyVaultKey()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 DataServiceClient = keyVaultClientMock.Object,

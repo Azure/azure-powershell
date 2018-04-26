@@ -15,13 +15,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Azure.KeyVault;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class ManagedStorageAccountListItem
+    public class PSKeyVaultManagedStorageAccountIdentityItem : ObjectIdentifier
     {
-        public ManagedStorageAccountListItem()
+        public PSKeyVaultManagedStorageAccountIdentityItem()
         { }
 
         /// <summary>
@@ -29,33 +29,44 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="managedStorageAccountBundleListItem">managed storage bundle returned from service</param>
         /// <param name="vaultUriHelper">helper class</param>
-        internal ManagedStorageAccountListItem( Azure.KeyVault.Models.StorageAccountItem managedStorageAccountBundleListItem, VaultUriHelper vaultUriHelper )
+        internal PSKeyVaultManagedStorageAccountIdentityItem( Azure.KeyVault.Models.StorageAccountItem managedStorageAccountBundleListItem, VaultUriHelper vaultUriHelper )
         {
             if ( managedStorageAccountBundleListItem == null )
-                throw new ArgumentNullException( "managedStorageAccountBundleListItem" );
+                throw new ArgumentNullException(nameof(managedStorageAccountBundleListItem));
 
             if ( vaultUriHelper == null )
-                throw new ArgumentNullException( "vaultUriHelper" );
+                throw new ArgumentNullException(nameof(vaultUriHelper));
 
-            var identifier = new StorageAccountIdentifier( managedStorageAccountBundleListItem.Id );
+            SetObjectIdentifier(vaultUriHelper, managedStorageAccountBundleListItem.Identifier);
 
-            Id = identifier.Identifier;
-            VaultName = vaultUriHelper.GetVaultName( identifier.Identifier );
-            AccountName = identifier.Name;
+            AccountName = this.Name;
             AccountResourceId = managedStorageAccountBundleListItem.ResourceId;
-            Attributes = managedStorageAccountBundleListItem.Attributes == null ? null : new ManagedStorageAccountAttributes( managedStorageAccountBundleListItem.Attributes.Enabled, managedStorageAccountBundleListItem.Attributes.Created, managedStorageAccountBundleListItem.Attributes.Updated );
+            Attributes = managedStorageAccountBundleListItem.Attributes == null 
+                ? null 
+                : new PSKeyVaultManagedStorageAccountAttributes(managedStorageAccountBundleListItem.Attributes);
             Tags = managedStorageAccountBundleListItem.Tags == null ? null : managedStorageAccountBundleListItem.Tags.ConvertToHashtable();
         }
 
-        public string Id { get; set; }
+        internal PSKeyVaultManagedStorageAccountIdentityItem(PSKeyVaultManagedStorageAccount managedStorageAccountBundle)
+        {
+            if (managedStorageAccountBundle == null)
+                throw new ArgumentNullException(nameof(managedStorageAccountBundle));
+            if (managedStorageAccountBundle.Attributes == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidManagedStorageObjectAttributes);
 
-        public string VaultName { get; set; }
+            SetObjectIdentifier(managedStorageAccountBundle);
+
+            AccountName = this.Name;
+            AccountResourceId = managedStorageAccountBundle.AccountResourceId;
+            Attributes = managedStorageAccountBundle.Attributes;
+            Tags = managedStorageAccountBundle.Tags;
+        }
 
         public string AccountName { get; set; }
 
         public string AccountResourceId { get; set; }
 
-        public ManagedStorageAccountAttributes Attributes { get; set; }
+        public PSKeyVaultManagedStorageAccountAttributes Attributes { get; set; }
 
         public Hashtable Tags { get; set; }
 

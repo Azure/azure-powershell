@@ -37,6 +37,18 @@ Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-InRemovedState] [-Force] [-
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceIdByAvailableVault
+```
+Remove-AzureRmKeyVault [-ResourceId] <String> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByDeletedVault
+```
+Remove-AzureRmKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Remove-AzureRmKeyVault** cmdlet deletes the specified key vault.
 It also deletes all keys and secrets contained in that instance.
@@ -128,7 +140,7 @@ Remove the previously deleted vault permanently.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByDeletedVault, InputObjectByDeletedVault
+Parameter Sets: ByDeletedVault, InputObjectByDeletedVault, ResourceIdByDeletedVault
 Aliases:
 
 Required: True
@@ -143,25 +155,25 @@ The location of the deleted vault.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableVault
+Parameter Sets: ByAvailableVault, ResourceIdByAvailableVault
 Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: String
-Parameter Sets: ByDeletedVault
+Parameter Sets: ByDeletedVault, ResourceIdByDeletedVault
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -191,6 +203,21 @@ Aliases:
 Required: False
 Position: 1
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdByAvailableVault, ResourceIdByDeletedVault
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -206,7 +233,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

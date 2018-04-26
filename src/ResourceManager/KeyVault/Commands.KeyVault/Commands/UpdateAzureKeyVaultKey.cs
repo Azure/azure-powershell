@@ -19,11 +19,15 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecretAttribute",
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyVaultSecret))]
-    public class SetAzureKeyVaultSecretAttribute : KeyVaultCmdletBase
+    /// <summary>
+    /// Update attribute of a key vault key.
+    /// </summary>
+    [Alias("Set-AzureKeyVaultKey", "Set-AzureKeyVaultKeyAttribute")]
+    [Cmdlet(VerbsData.Update, "AzureKeyVaultKey",
+        SupportsShouldProcess = true, 
+        DefaultParameterSetName = DefaultParameterSet)]
+    [OutputType(typeof(PSKeyVaultKey))]
+    public class UpdateAzureKeyVaultKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -40,89 +44,78 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         /// <summary>
-        /// Secret name
+        /// key name
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
+            HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]
-        [Alias(Constants.SecretName)]
+        [Alias(Constants.KeyName)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Secret object
+        /// key object
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = InputObjectParameterSet,
             ValueFromPipeline = true,
-            HelpMessage = "Secret object")]
+            HelpMessage = "Key object")]
         [ValidateNotNullOrEmpty]
-        public PSKeyVaultSecretIdentityItem InputObject { get; set; }
+        public PSKeyVaultKeyIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// Key version.
         /// </summary>
         [Parameter(Mandatory = false,
             Position = 2,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Secret version. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.")]
-        [Alias("SecretVersion")]
+            HelpMessage = "Key version. Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.")]
+        [Alias("KeyVersion")]
         public string Version { get; set; }
 
         /// <summary>
-        /// If present, enable a secret if value is true. 
-        /// Disable a secret if value is false.
-        /// If not present, no change on current secret enabled/disabled state.
+        /// If present, enable a key if value is true. 
+        /// Disable a key if value is false.
+        /// If not present, no change on current key enabled/disabled state.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "If present, enable a secret if value is true. Disable a secret if value is false. If not specified, the existing value of the secret's enabled/disabled state remains unchanged.")]
+            HelpMessage = "Value of true enables the key and a value of false disabless the key. If not specified, the existing enabled/disabled state remains unchanged.")]
         public bool? Enable { get; set; }
 
         /// <summary>
-        /// Secret expires time in UTC time
+        /// Key expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The expiration time of a secret in UTC time. If not specified, the existing value of the secret's expiration time remains unchanged.")]
+            HelpMessage = "The expiration time of a key in UTC time. If not specified, the existing expiration time of the key remains unchanged.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
-        /// The UTC time before which secret can't be used 
+        /// The UTC time before which key can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which secret can't be used. If not specified, the existing value of the secret's NotBefore attribute remains unchanged.")]
+            HelpMessage = "The UTC time before which key can't be used. If not specified, the existing NotBefore attribute of the key remains unchanged.")]
         public DateTime? NotBefore { get; set; }
 
         /// <summary>
-        /// Content type
-        /// TODO: check if content type is null, will it replace the server data
+        /// Key operations 
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Secret's content type. If not specified, the existing value of the secret's content type remains unchanged. Remove the existing content type value by specifying an empty string.")]
-        public string ContentType { get; set; }
+            HelpMessage = "The operations that can be performed with the key. If not specified, the existing key operations of the key remain unchanged.")]
+        public string[] KeyOps { get; set; }
 
-        /// <summary>
-        /// Secret tags
-        /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "A hashtable representing secret tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.")]
+           HelpMessage = "A hashtable represents key tags. If not specified, the existings tags of the key remain unchanged.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
-           HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return Secret object.")]
+           HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, returns the updated key bundle object.")]
         public SwitchParameter PassThru { get; set; }
 
         #endregion
@@ -135,16 +128,17 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name = InputObject.Name;
             }
 
-            if (ShouldProcess(Name, Properties.Resources.SetSecretAttribute))
+            if (ShouldProcess(Name, Properties.Resources.SetKeyAttribute))
             {
-                var secret = DataServiceClient.UpdateSecret(
+                var keyBundle = DataServiceClient.UpdateKey(
                 VaultName,
                 Name,
                 Version ?? string.Empty,
-                new PSKeyVaultSecretAttributes(Enable, Expires, NotBefore, ContentType, Tag));
+                new PSKeyVaultKeyAttributes(Enable, Expires, NotBefore, null, KeyOps, Tag));
+
                 if (PassThru)
                 {
-                    WriteObject(secret);
+                    WriteObject(keyBundle);
                 }
             }
         }
