@@ -15,7 +15,9 @@ Modifies  an instance of Analysis Services server
 ### Default (Default)
 ```
 Set-AzureRmAnalysisServicesServer [-Name] <String> [[-ResourceGroupName] <String>] [[-Sku] <String>]
- [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>] [-PassThru]
+ [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>] 
+ [[-FirewallConfig] <Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesFirewallConfig>]
+ [[-GatewayResourceId] <String>] [-DisassociateGateway] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -221,6 +223,36 @@ Required: False
 Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GatewayResourceId
+Gateway resource Id for assocaite to an Analysis server
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisassociateGateway
+Disassociate Gateway resource from an Analysis server
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True
 Accept wildcard characters: False
 ```
 
