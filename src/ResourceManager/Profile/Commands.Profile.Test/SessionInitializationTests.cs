@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 AzureSessionInitializer.CreateOrReplaceSession(store.Object);
                 var session = AzureSession.Instance;
                 Assert.NotNull(session);
-                Assert.Equal(ContextSaveMode.CurrentUser, session.ARMContextSaveMode);
+                Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
                 Assert.NotNull(session.TokenCache);
                 Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
                 Assert.NotNull(AzureRmProfileProvider.Instance);
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 AzureSessionInitializer.CreateOrReplaceSession(store.Object);
                 var session = AzureSession.Instance;
                 Assert.NotNull(session);
-                Assert.Equal(ContextSaveMode.CurrentUser, session.ARMContextSaveMode);
+                Assert.Equal(ContextSaveMode.Process, session.ARMContextSaveMode);
                 Assert.NotNull(session.TokenCache);
                 Assert.Equal(typeof(AuthenticationStoreTokenCache), session.TokenCache.GetType());
                 Assert.NotNull(AzureRmProfileProvider.Instance);
