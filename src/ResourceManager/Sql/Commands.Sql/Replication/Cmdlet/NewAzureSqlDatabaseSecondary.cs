@@ -100,15 +100,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Gets or sets the edition of the database copy
-        /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
-            HelpMessage = "The edition of the Azure Sql Database secondary.")]
-        [PSArgumentCompleter("GeneralPurpose", "BusinessCritical")]
-        [ValidateNotNullOrEmpty]
-        public string SecondaryEdition { get; set; }
-
-        /// <summary>
         /// Gets or sets the compute generation of the database copy
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
@@ -173,6 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         {
             string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName);
             List<Model.AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
+            Database.Model.AzureSqlDatabaseModel primaryDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
             AzureReplicationLinkModel linkModel = new AzureReplicationLinkModel()
             {
                 PartnerLocation = location,
@@ -195,15 +187,17 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                         Name = SecondaryServiceObjectiveName
                     };
                 }
+                else
+                {
+                    linkModel.SecondarySku = primaryDb.Sku;
+                }
             }
             else
             {
-                string skuNamePrefix = AzureSqlDatabaseAdapter.getDatabaseSkuName(SecondaryEdition);
-
                 linkModel.SecondarySku = new Management.Sql.Models.Sku()
                 {
-                    Name = skuNamePrefix,
-                    Tier = SecondaryEdition,
+                    Name = AzureSqlDatabaseAdapter.getDatabaseSkuName(primaryDb.Sku.Tier),
+                    Tier = primaryDb.Sku.Tier,
                     Capacity = SecondaryVCores,
                     Family = SecondaryComputeGeneration
                 };

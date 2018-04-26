@@ -100,15 +100,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
-        /// Gets or sets the edition of the database copy
-        /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
-            HelpMessage = "The edition of the Azure Sql Database copy.")]
-        [PSArgumentCompleter("GeneralPurpose", "BusinessCritical")]
-        [ValidateNotNullOrEmpty]
-        public string CopyEdition { get; set; }
-
-        /// <summary>
         /// Gets or sets the compute generation of the database copy
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
@@ -213,12 +204,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             }
             else
             {
-                string skuName = AzureSqlDatabaseAdapter.getDatabaseSkuName(CopyEdition);
-
                 copyModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = skuName,
-                    Tier = CopyEdition,
+                    Name = AzureSqlDatabaseAdapter.getDatabaseSkuName(sourceDb.Sku.Tier),
+                    Tier = sourceDb.Sku.Tier,
                     Capacity = CopyVCores,
                     Family = CopyComputeGeneration
                 };
