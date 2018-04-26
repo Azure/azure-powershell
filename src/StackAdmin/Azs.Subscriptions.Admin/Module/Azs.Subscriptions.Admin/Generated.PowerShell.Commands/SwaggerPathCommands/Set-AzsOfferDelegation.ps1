@@ -95,6 +95,8 @@ function Set-AzsOfferDelegation {
 
         $ErrorActionPreference = 'Stop'
 
+        $NewOfferDelegation = $null
+
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
                 IdTemplate = '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}'
@@ -129,14 +131,16 @@ function Set-AzsOfferDelegation {
                 $PSBoundParameters.Add("Location", $Location)
             }
 
+                if ($NewOfferDelegation -eq $null) {
+                    $NewOfferDelegation = Get-AzsOfferDelegation -Name $Name -OfferName $OfferName -ResourceGroupName $ResourceGroupName
+                }
+
             $flattenedParameters = @('SubscriptionId', 'Location')
-            $utilityCmdParams = @{}
             $flattenedParameters | ForEach-Object {
                 if ($PSBoundParameters.ContainsKey($_)) {
-                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
+                    $NewOfferDelegation.$($_) = $PSBoundParameters[$_]
                 }
             }
-            $NewOfferDelegation = New-OfferDelegationObject @utilityCmdParams
 
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                 Write-Verbose -Message 'Performing operation update on $SubscriptionsAdminClient.'

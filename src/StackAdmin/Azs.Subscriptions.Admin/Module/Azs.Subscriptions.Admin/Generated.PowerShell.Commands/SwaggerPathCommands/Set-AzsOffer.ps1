@@ -71,14 +71,10 @@ function Set-AzsOffer {
         [System.String]
         $ResourceGroupName,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [System.String]
         $DisplayName,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [string[]]
         $BasePlanIds,
@@ -87,46 +83,32 @@ function Set-AzsOffer {
         [Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Offer]
         $InputObject,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [System.String]
         $Description,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [System.String]
         $ExternalReferenceId,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateSet('Private', 'Public', 'Decommissioned')]
         [System.String]
         $State,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Alias('ArmLocation')]
         [System.String]
         $Location,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [int64]
         $SubscriptionCount,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [int64]
         $MaxSubscriptionsPerAccount,
 
-        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
-        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
         [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [Microsoft.AzureStack.Management.Subscriptions.Admin.Models.AddonPlanDefinition[]]
         $AddonPlanDefinition,
@@ -152,6 +134,8 @@ function Set-AzsOffer {
     Process {
 
         $ErrorActionPreference = 'Stop'
+
+        $NewOffer = $null
 
         if ('InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             $GetArmResourceIdParameterValue_params = @{
@@ -192,19 +176,21 @@ function Set-AzsOffer {
 
             $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-            if (-not $PSBoundParameters.ContainsKey('Location')) {
+            if (-not $PSBoundParameters.ContainsKey('Location') -and 'Update' -eq $PsCmdlet.ParameterSetName) {
                 $Location = (Get-AzureRMLocation).Location
                 $PSBoundParameters.Add("Location", $Location)
             }
 
             $flattenedParameters = @('MaxSubscriptionsPerAccount', 'BasePlanIds', 'DisplayName', 'Description', 'ExternalReferenceId', 'State', 'Location', 'SubscriptionCount', 'AddonPlanDefinition')
-            $utilityCmdParams = @{}
+                if ($NewOffer -eq $null) {
+                    $NewOffer = Get-AzsManagedOffer -Name $Name -ResourceGroupName $ResourceGroupName
+                }
+
             $flattenedParameters | ForEach-Object {
                 if ($PSBoundParameters.ContainsKey($_)) {
-                    $utilityCmdParams[$_] = $PSBoundParameters[$_]
+                    $NewOffer.$($_) = $PSBoundParameters[$_]
                 }
             }
-            $NewOffer = New-OfferObject @utilityCmdParams
 
             if ('Update' -eq $PsCmdlet.ParameterSetName -or 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                 Write-Verbose -Message 'Performing operation update on $SubscriptionsAdminClient.'

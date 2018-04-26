@@ -24,14 +24,14 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function Test-AzsNameAvailability {
     [OutputType([Microsoft.AzureStack.Management.Subscriptions.Admin.Models.CheckNameAvailabilityResponse])]
-    [CmdletBinding(DefaultParameterSetName = 'Subscriptions_CheckNameAvailability')]
+    [CmdletBinding(DefaultParameterSetName = 'Test')]
     param(
-        [Parameter(Mandatory = $true, ParameterSetName = 'Subscriptions_CheckNameAvailability')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'Test')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Name,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'Subscriptions_CheckNameAvailability')]
+        [Parameter(Mandatory = $true, ParameterSetName = 'Test')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $ResourceType
@@ -74,7 +74,7 @@ function Test-AzsNameAvailability {
         }
         $NameAvailabilityDefinition = New-CheckNameAvailabilityDefinitionObject @utilityCmdParams
 
-        if ('Subscriptions_CheckNameAvailability' -eq $PsCmdlet.ParameterSetName) {
+        if ('Test' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation CheckNameAvailabilityWithHttpMessagesAsync on $SubscriptionsAdminClient.'
             $TaskResult = $SubscriptionsAdminClient.Subscriptions.CheckNameAvailabilityWithHttpMessagesAsync($NameAvailabilityDefinition)
         } else {

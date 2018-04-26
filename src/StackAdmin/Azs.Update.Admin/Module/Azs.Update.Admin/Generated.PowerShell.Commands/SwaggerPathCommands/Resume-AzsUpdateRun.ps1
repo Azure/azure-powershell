@@ -19,7 +19,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER ResourceGroupName
     The resource group the resource is located under.
 
-.PARAMETER DisplayName
+.PARAMETER UpdateName
     Display name of the update.
 
 .PARAMETER ResourceId
@@ -29,7 +29,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Flag to remove the item without confirmation.
 
 .EXAMPLE
-	PS C:\> Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -DisplayName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
+	PS C:\> Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
 
     Resumes a previously started update run that failed.
 
@@ -54,7 +54,7 @@ function Resume-AzsUpdateRun {
         [Parameter(Mandatory = $true, ParameterSetName = 'UpdateRuns_Rerun')]
         [ValidateNotNullOrEmpty()]
         [System.String]
-        $DisplayName,
+        $UpdateName,
 
         [Parameter(Mandatory = $false)]
         [switch]
@@ -95,7 +95,7 @@ function Resume-AzsUpdateRun {
 
             $ResourceGroupName = $ArmResourceIdParameterValues['resourceGroup']
             $Location = $ArmResourceIdParameterValues['updateLocation']
-            $DisplayName = $ArmResourceIdParameterValues['update']
+            $UpdateName = $ArmResourceIdParameterValues['update']
             $Name = $ArmResourceIdParameterValues['runId']
         }
 
@@ -124,7 +124,7 @@ function Resume-AzsUpdateRun {
 
                 if ('UpdateRuns_Rerun' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
                     Write-Verbose -Message 'Performing operation RerunWithHttpMessagesAsync on $UpdateAdminClient.'
-                    $TaskResult = $UpdateAdminClient.UpdateRuns.RerunWithHttpMessagesAsync($ResourceGroupName, $Location, $DisplayName, $Name)
+                    $TaskResult = $UpdateAdminClient.UpdateRuns.RerunWithHttpMessagesAsync($ResourceGroupName, $Location, $UpdateName, $Name)
                 } else {
                     Write-Verbose -Message 'Failed to map parameter set to operation method.'
                     throw 'Module failed to find operation to execute.'
