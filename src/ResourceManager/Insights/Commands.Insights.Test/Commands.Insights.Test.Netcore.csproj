@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.16.1-preview" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +31,12 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Commands.Insights">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Insights.Netcore\Microsoft.Azure.Commands.Insights.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
