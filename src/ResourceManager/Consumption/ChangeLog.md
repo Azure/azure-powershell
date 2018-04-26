@@ -19,7 +19,8 @@
 -->
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
-* Upgrade parameters on Cmdlet Get-AzureRmConsumptionUsageDetail
+* Remove parameter InvoiceName on Cmdlet Get-AzureRmConsumptionUsageDetail
+* Add new parameters Expand, ResourceGroup, InstanceName, InstanceId, Tags, and Top on Cmdlet Get-AzureRmConsumptionUsageDetail
 
 ## Version 0.3.1
 * Updated to the latest version of the Azure ClientRuntime
