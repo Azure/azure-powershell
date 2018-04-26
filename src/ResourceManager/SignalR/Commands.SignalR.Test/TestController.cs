@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Xunit;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.SignalR.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.SignalR.Test
 {
-    public class NewAzureRmSignalRTest
+    class TestController : RMTestBase
     {
-        [Fact]
-        public void TestNewAzureRmSignalR()
+        public static TestController NewInstance => new TestController();
+
+        public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
 
         }
