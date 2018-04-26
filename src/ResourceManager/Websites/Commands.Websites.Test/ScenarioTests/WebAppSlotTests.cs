@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-WebAppRegularSlotSwap");
         }
 
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSwapWithPreviewResetSlotSwap()
         {
