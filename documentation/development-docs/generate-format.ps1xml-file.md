@@ -1,4 +1,4 @@
-# introduction
+# Introduction
 Output is the most important part of any interactive console application including Powershell. PowerShell has a set of  [format cmdlets](https://docs.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-format-commands-to-change-output-view?view=powershell-6) that allow you to control the cmdlet output format:
 1. Format-Wide
 2. Format-List
@@ -258,11 +258,22 @@ E:\git\azure-powershell\Microsoft.Azure.Commands.Profile.generated.format.ps1xml
 
 # How to test the format.ps1xml file.
 
-1. **Copy** the generated format.ps1xml file to the module folder.
+**Note:** All the paths used in the example in the section are under **_azure-powershell/src/Package/Debug_**
 
-2. In the module manifest file (*.psd1) there is a variable to set the format.ps1xml files which is **FormatsToProcess**
+1. **Copy** the generated format.ps1xml file to the built module folder (this is where your module manifest file psd1 is located ). In our example the module folder is 
+```
+E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile
+```
+
+2. Modify your module manifest file. 
+* In our example the module manifest is AzureRM.Profile.psd1: 
+```
+E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1 
+``` 
+
+* In the module manifest file there is a variable called **FormatsToProcess** to reference format.ps1xml files.
 If the variable already has a value - **insert** you generated file before the value following by comma (or just replace it).
-In our example let's insert our generated file ```'.\Microsoft.Azure.Commands.Profile.generated.format.ps1xml'``` before the existing one ```'.\Microsoft.Azure.Commands.Profile.format.ps1xml'```:
+In our example insert the generated file ```'.\Microsoft.Azure.Commands.Profile.generated.format.ps1xml'``` before the existing one ```'.\Microsoft.Azure.Commands.Profile.format.ps1xml'```:
 
 ```Powershell
 # script omitted for brevity
@@ -296,6 +307,9 @@ c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled 72f988bf-
 
 
 # How to add the format.ps1xml file to your project.
+
+**Note:** All the paths used in the example in the section are under **_azure-powershell/src/ResourceManager/Profile_**
+
 
 1. Copy the generated file into your project source folder. In our example this is [src/ResourceManager/Profile/Commands.Profile](https://github.com/Azure/azure-powershell/tree/preview/src/ResourceManager/Profile/Commands.Profile) folder.
 
