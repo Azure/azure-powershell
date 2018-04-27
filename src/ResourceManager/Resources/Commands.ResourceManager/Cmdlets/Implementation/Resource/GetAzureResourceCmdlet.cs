@@ -339,11 +339,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     : new ResponseWithContinuation<JObject[]> { Value = resource.AsArray() };
             }
 
-            if (this.IsResourceTypeCollectionGet())
-            {
-                return await this.ListResourcesTypeCollection().ConfigureAwait(continueOnCapturedContext: false);
-            }
-
             if (this.IsResourceGroupLevelQuery())
             {
                 return await this.ListResourcesInResourceGroup().ConfigureAwait(continueOnCapturedContext: false);
@@ -580,16 +575,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.IsResourceGroupLevelResourceGet() ||
                 this.IsSubscriptionLevelResourceGet() ||
                 this.IsTenantLevelResourceGet();
-        }
-
-        /// <summary>
-        /// Returns true if this is get on a resource type collection, at any scope.
-        /// </summary>
-        private bool IsResourceTypeCollectionGet()
-        {
-            return this.IsResourceGroupLevelResourceTypeCollectionGet() ||
-                this.IsSubscriptionLevelResourceTypeCollectionGet() ||
-                this.IsTenantLevelResourceTypeCollectionGet();
         }
 
         /// <summary>
