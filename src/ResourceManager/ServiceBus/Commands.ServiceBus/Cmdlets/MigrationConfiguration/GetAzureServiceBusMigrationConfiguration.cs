@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
         [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
-        public string Namespace { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace Object")]
         [ValidateNotNullOrEmpty]
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
             if (ParameterSetName == MigrationConfigurationParameterSet)
             {
-                PSServiceBusMigrationConfigurationAttributes migrationConfiguration = Client.GetServiceBusMigrationConfiguration(ResourceGroupName, Namespace);
+                PSServiceBusMigrationConfigurationAttributes migrationConfiguration = Client.GetServiceBusMigrationConfiguration(ResourceGroupName, Name);
                 WriteObject(migrationConfiguration);
             }
         }
