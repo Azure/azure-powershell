@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Rbac.Netcore", "Comm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Insights.Test.Netcore", "ResourceManager\Insights\Commands.Insights.Test\Commands.Insights.Test.Netcore.csproj", "{B097AB81-F9DA-4142-8DDE-BE87D5635D56}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Batch.Test.Netcore", "ResourceManager\AzureBatch\Commands.Batch.Test\Commands.Batch.Test.Netcore.csproj", "{154A5A95-6977-4DC5-BB65-EC669069DC07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -265,6 +267,18 @@ Global
 		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|x64.Build.0 = Release|Any CPU
 		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|x86.ActiveCfg = Release|Any CPU
 		{B097AB81-F9DA-4142-8DDE-BE87D5635D56}.Release|x86.Build.0 = Release|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Debug|x64.Build.0 = Debug|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Debug|x86.Build.0 = Debug|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Release|x64.ActiveCfg = Release|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Release|x64.Build.0 = Release|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Release|x86.ActiveCfg = Release|Any CPU
+		{154A5A95-6977-4DC5-BB65-EC669069DC07}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
