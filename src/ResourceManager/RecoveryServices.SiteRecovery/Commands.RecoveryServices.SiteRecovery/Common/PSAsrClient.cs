@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 2);
             cikTokenDetails.PropertyBag = new Dictionary<string, object>();
 
-            var shaInput = JsonConvert.SerializeObject(cikTokenDetails);
+            var shaInput = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(cikTokenDetails);
 
             if (null == asrVaultCreds.ChannelIntegrityKey)
             {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(shaInput)));
             cikTokenDetails.HashFunction = CikSupportedHashFunctions.HMACSHA256.ToString();
 
-            return JsonConvert.SerializeObject(cikTokenDetails);
+            return new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(cikTokenDetails);
         }
 
         /// <summary>
