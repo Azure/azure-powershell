@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the resource name parameter.
         /// </summary>
         [Alias("Id")]
-        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = true)]
+        [Parameter(ParameterSetName = ByResourceIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -121,14 +121,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-        }
-
-        /// <summary>
-        /// Finishes the pipeline execution and runs the cmdlet.
-        /// </summary>
-        protected override void OnEndProcessing()
-        {
-            base.OnEndProcessing();
             this.DefaultApiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ResourcesApiVersion : this.ApiVersion;
             var resourceId = string.Empty;
             if (ShouldConstructResourceId(out resourceId))
@@ -149,6 +141,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 this.RunSimpleCmdlet();
             }
+        }
+
+        /// <summary>
+        /// Finishes the pipeline execution and runs the cmdlet.
+        /// </summary>
+        protected override void OnEndProcessing()
+        {
+            base.OnEndProcessing();
         }
 
         private void RunSimpleCmdlet()
