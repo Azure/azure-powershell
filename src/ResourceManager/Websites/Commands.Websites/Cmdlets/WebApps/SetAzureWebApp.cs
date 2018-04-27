@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public SwitchParameter AsJob { get; set; }
         
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable MSI on an existing azure webapp")]
-        public SwitchParameter AssignIdentity { get; set; }
+        public bool AssignIdentity { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
-        public SwitchParameter HttpsOnly { get; set; }
+        public bool HttpsOnly { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -145,21 +145,22 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
                     if (parameters.Any(p => CmdletHelpers.SiteParameters.Contains(p)))
                     {
+
                         site = new Site
                         {
                             Location = location,
                             ServerFarmId = WebApp.ServerFarmId,
-                            Identity = AssignIdentity.IsPresent ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
-                            HttpsOnly = HttpsOnly.IsPresent
+                            Identity = parameters.Contains("AssignIdentity") && AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
+                            HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
                         };
 
                         Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);
-                        if (AssignIdentity.IsPresent)
+                        if (parameters.Contains("AssignIdentity"))
                         {
 
                             // Add or update the appsettings property
                             appSettings["WEBSITE_DISABLE_MSI"] = (!AssignIdentity).ToString();
-                            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, WebApp.SiteConfig, appSettings, 
+                            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, WebApp.SiteConfig, appSettings,
                                                                      WebApp.SiteConfig.ConnectionStrings.
                                                                         ToDictionary(nvp => nvp.Name,
                                                                         nvp => new ConnStringValueTypePair
@@ -169,12 +170,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                                                                         },
                                                                         StringComparer.OrdinalIgnoreCase));
                         }
-                        else
-                        {
-                            // disabling the identity property updates the siteconfig only
-                            appSettings["WEBSITE_DISABLE_MSI"] = (!AssignIdentity.IsPresent).ToString();
-                        }
-                        
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, site);
                     }
 
