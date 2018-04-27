@@ -18,13 +18,48 @@ List billing periods
 #>
 function Test-NewAzureRmSignalR
 {
-	$rgName = Get-ResourceName
+	$rgName = getAssetName
 	try
 	{
 		$signalR = New-AzureRmSignalR -Name $rgName
 	}
 	finally
 	{
-		Clean-ResourceGroup $rgName
+		Remove-AzureRmResourceGroup -Name $rgname -Force
 	}
+}
+
+function Get-Context
+{
+      return [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext
+}
+
+function Get-ResourcesClient
+{
+  param([Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext] $context)
+  $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
+  [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], 
+	[string]
+  $method = [Microsoft.Azure.Commands.Common.Authentication.IHyakClientFactory].GetMethod("CreateClient", $types)
+  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Resources.ResourceManagementClient])
+  $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
+  $client = $closedMethod.Invoke($factory, $arguments)
+  return $client
+}
+
+function Remove-AzureRmResourceGroup 
+{
+	[CmdletBinding()]
+	param(
+		[string] [Parameter(Position=0, ValueFromPipelineByPropertyName=$true)] [alias("ResourceGroupName")] $Name,
+		[switch] $Force)
+	BEGIN {
+		$context = Get-Context
+		$client = Get-ResourcesClient $context
+	}
+	PROCESS {
+		$deleteTask = $client.ResourceGroups.DeleteAsync($Name, [System.Threading.CancellationToken]::None)
+		$rg = $deleteTask.Result
+	}
+	END {}
 }
