@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         {
             string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
                 "$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceTypeCompleterAttribute]::GetResourceTypes()\n" +
-                "$locations | Where-Object { $_ -Like \"$wordToComplete*\" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
+                "$locations | Where-Object { $_ -Like \"*$wordToComplete*\" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
             ScriptBlock scriptBlock = ScriptBlock.Create(script);
             return scriptBlock;
         }

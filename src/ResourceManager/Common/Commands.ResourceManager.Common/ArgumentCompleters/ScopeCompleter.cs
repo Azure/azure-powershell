@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         {
             string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
                 "$scopes = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ScopeCompleterAttribute]::GetScopes()\n" +
-                "$scopes | Where-Object { $_ -Like \"$wordToComplete*\" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
+                "$scopes | Where-Object { $_ -Like \"*$wordToComplete*\" } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
             ScriptBlock scriptBlock = ScriptBlock.Create(script);
             return scriptBlock;
         }
