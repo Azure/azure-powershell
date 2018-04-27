@@ -702,8 +702,34 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     string objectName = null;
                     if (MyInvocation?.BoundParameters?.ContainsKey("Name") == true)
                     {
-                        objectName = MyInvocation?.BoundParameters?["Name"] as string;
+                        objectName = MyInvocation.BoundParameters["Name"].ToString();
                     }
+                    else if (MyInvocation?.BoundParameters?.ContainsKey("InputObject") == true)
+                    {
+                        var type = MyInvocation.BoundParameters["InputObject"].GetType();
+                        var inputObject = Convert.ChangeType(MyInvocation.BoundParameters["InputObject"], type);
+                        if (type.GetProperty("Name") != null)
+                        {
+                            objectName = inputObject.GetType().GetProperty("Name").GetValue(inputObject).ToString();
+                        }
+                        else if (type.GetProperty("ResourceId") != null)
+                        {
+                            string[] tokens = inputObject.GetType().GetProperty("ResourceId").GetValue(inputObject).ToString().Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                            if (tokens.Length >= 8)
+                            {
+                                objectName = tokens[tokens.Length - 1];
+                            }
+                        }
+                    }
+                    else if (MyInvocation?.BoundParameters?.ContainsKey("ResourceId") == true)
+                    {
+                        string[] tokens = MyInvocation.BoundParameters["ResourceId"].ToString().Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (tokens.Length >= 8)
+                        {
+                            objectName = tokens[tokens.Length - 1];
+                        }
+                    }
+
                     if (!string.IsNullOrWhiteSpace(commandName))
                     {
                         if (!string.IsNullOrWhiteSpace(objectName))
