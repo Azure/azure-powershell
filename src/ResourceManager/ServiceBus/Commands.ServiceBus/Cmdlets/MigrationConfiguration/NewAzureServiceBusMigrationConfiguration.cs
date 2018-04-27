@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
         [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Standard Namespace Name")]
         [ValidateNotNullOrEmpty]
-        public string Namespace { get; set; }
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Standard Namespace Object")]
         [ValidateNotNullOrEmpty]
@@ -87,9 +87,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
             if (ParameterSetName == MigrationConfigurationParameterSet)
             {
-                if (ShouldProcess(target: Namespace, action: string.Format(Resources.StartMigrationConfiguration)))
+                if (ShouldProcess(target: Name, action: string.Format(Resources.StartMigrationConfiguration)))
                 {
-                    WriteObject(Client.StartServiceBusMigrationConfiguration(ResourceGroupName, Namespace, migrationConfiguration));
+                    WriteObject(Client.StartServiceBusMigrationConfiguration(ResourceGroupName, Name, migrationConfiguration));
                 }
             }
         }
