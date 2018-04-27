@@ -525,15 +525,18 @@ function Test-SetWebAppSlot
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm1.Id $slot.ServerFarmId
+        Assert-Null $webApp.Identity
 		
-		# Change service plan
-		$job = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -AsJob
+		# Change service plan & set properties
+		$job = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -HttpsOnly $true -AssignIdentity $true -AsJob
 		$job | Wait-Job
 		$slot = $job | Receive-Job
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
+        Assert-AreEqual $true $slot.HttpsOnly
+		Assert-NotNull  $slot.Identity
 
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
