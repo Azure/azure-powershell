@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
@@ -20,6 +21,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -54,8 +56,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
+        public Azure.Management.Storage.Version2017_10_01.StorageManagementClient StorageClient { get; private set; }
 
-        public StorageManagementClient StorageClient { get; private set; }
+        public Azure.Management.Storage.StorageManagementClient StorageClientPublic { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
@@ -124,6 +127,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             d.Add("Microsoft.Compute", null);
             d.Add("Microsoft.Network", null);
+            d.Add("Microsoft.KeyVault", null);
+            d.Add("Microsoft.Storage", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
@@ -160,6 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
+
                 try
                 {
                     if (scriptBuilder != null)
@@ -188,6 +194,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             SubscriptionClient = GetSubscriptionClient();
             StorageClient = GetStorageManagementClient(context);
             GalleryClient = GetGalleryClient();
+            StorageClientPublic = GetPublicStorageManagementClient(context);
             //var eventsClient = GetEventsClient();
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
@@ -201,6 +208,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 SubscriptionClient,
                 StorageClient,
                 GalleryClient,
+                StorageClientPublic,
                 //eventsClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
@@ -260,11 +268,18 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
 
-        private StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
+        private Azure.Management.Storage.Version2017_10_01.StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
         {
             return testViaCsm
-                ? context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
-                : TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+                ? context.GetServiceClient<Azure.Management.Storage.Version2017_10_01.StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Azure.Management.Storage.Version2017_10_01.StorageManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private Azure.Management.Storage.StorageManagementClient GetPublicStorageManagementClient(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Azure.Management.Storage.StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Azure.Management.Storage.StorageManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         private GalleryClient GetGalleryClient()

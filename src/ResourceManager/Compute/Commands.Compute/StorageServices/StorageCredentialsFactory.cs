@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Sync.Download;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                     throw new ArgumentException(Rsrc.StorageCredentialsFactoryCurrentSubscriptionNotSet, "SubscriptionId");
                 }
                 var storageKeys = this.client.StorageAccounts.ListKeys(this.resourceGroupName, destination.StorageAccountName);
-                return new StorageCredentials(destination.StorageAccountName, storageKeys.GetKey1());
+                return new StorageCredentials(destination.StorageAccountName, storageKeys.Keys[0].Value, storageKeys.Keys[0].KeyName);
             }
 
             return new StorageCredentials(destination.Uri.Query);
