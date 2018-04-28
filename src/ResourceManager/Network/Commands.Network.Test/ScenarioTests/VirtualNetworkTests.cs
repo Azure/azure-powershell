@@ -33,7 +33,8 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkCRUD");
         }
 
-        [Fact(Skip = "Test is currently failing, Need to be rerecord by the service team.")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkCRUDWithDDoSProtection()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkCRUDWithDDoSProtection");
