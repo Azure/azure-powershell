@@ -106,7 +106,7 @@ function New-QuotaObject {
         $MaxLoadBalancersPerSubscription
     )
 
-    $Object = New-Object -TypeName Microsoft.AzureStack.Management.Network.Admin.Models.Quota -ArgumentList @($id, $name, $type, $location, $tags, $maxPublicIpsPerSubscription, $maxVnetsPerSubscription, $maxVirtualNetworkGatewaysPerSubscription, $maxVirtualNetworkGatewayConnectionsPerSubscription, $maxLoadBalancersPerSubscription, $maxNicsPerSubscription, $maxSecurityGroupsPerSubscription, $migrationPhase)
+    $Object = New-Object -TypeName Microsoft.AzureStack.Management.Network.Admin.Models.Quota -ArgumentList @($id, $name, $type, $location, $tags, $null, $maxPublicIpsPerSubscription, $maxVnetsPerSubscription, $maxVirtualNetworkGatewaysPerSubscription, $maxVirtualNetworkGatewayConnectionsPerSubscription, $maxLoadBalancersPerSubscription, $maxNicsPerSubscription, $maxSecurityGroupsPerSubscription, $migrationPhase)
 
     if (Get-Member -InputObject $Object -Name Validate -MemberType Method) {
         $Object.Validate()
