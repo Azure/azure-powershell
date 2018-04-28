@@ -62,11 +62,18 @@ function Test-RestoreGeoBackup
 	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
 	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName payi-testdb-geo2 -ResourceGroupName $rg.ResourceGroupName
-	$restoredDbName = "powershell_db_georestored"
+	$restoredDbName = "powershell_db_georestored2"
+	$restoredVcoreDbName = "powershell_db_georestored_vcore"
 
 	$geobackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName 
-	$job = $geobackup | Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName -AsJob
+	# Restore to a same db as it in geo backup
+	$job = Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName -ResourceGroupName $geobackup.ResourceGroupName `
+		-ServerName $geobackup.ServerName -ResourceId $geobackup.ResourceId -AsJob
 	$job | Wait-Job
+
+	# restore to a vcore db using geobackup
+	Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $geobackup.ResourceGroupName `
+		-ServerName $geobackup.ServerName -ResourceId $geobackup.ResourceId -Edition "GeneralPurpose" -VCores 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestoreDeletedDatabaseBackup
@@ -74,14 +81,24 @@ function Test-RestoreDeletedDatabaseBackup
 	# Setup
 	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test2
-	$server = Get-AzureRmSqlServer -ServerName payi-testsvr2 -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$droppedDbName = "powershell_db_georestored"
 	$restoredDbName = "powershell_db_deleted"
+	$restoredVcoreDbName = "powershell_db_deleted_vcore"
 
+	# this Get command has regression in MS when specifying Deletiondate. Fix should be in Prod by 5/7/2018. so currently use another way to do testing
 	$deletedDb = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName `
-		-DatabaseName $droppedDbName -DeletionDate "2016-02-23T00:21:22.847Z" 
-	$deletedDb | Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName
+		-DatabaseName $droppedDbName #-DeletionDate "2018-04-20 20:21:37.397Z" 
+
+	# restore to a db same as the deleted db
+	Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
+		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId
+	
+	# restore to a vcore db
+	Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredVcoreDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
+		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId -Edition "GeneralPurpose" `
+		-VCores 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestorePointInTimeBackup
@@ -93,9 +110,15 @@ function Test-RestorePointInTimeBackup
 	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName payi-testdb -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_restored"
+	$restoredVcoreDbName = "powershell_db_restored_vcore"
 
-	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | 
-	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredDbName
+	# Restore to same with source db
+	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredDbName -ResourceGroupName $db.ResourceGroupName `
+	-ServerName $db.ServerName -ResourceId $db.ResourceId
+
+	# Restore to a Vcore db
+	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $db.ResourceGroupName `
+		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCores 2 -ComputeGeneration 'Gen4'
 }
 
 function Test-ServerBackupLongTermRetentionVault
