@@ -1029,6 +1029,45 @@ function Test-VirtualMachineAccessExtension
 
 <#
 .SYNOPSIS
+Test the Set-AzureRmVMDiskEncryptionExtension single pass scenario
+#>
+function Test-AzureDiskEncryptionExtensionSinglePass
+{
+	$resourceGroupName = Get-ComputeTestResourceName	
+	try 
+	{ 
+		# create virtual machine and key vault prerequisites
+		$vm = Create-VirtualMachine $resourceGroupName
+		$kv = Create-KeyVault $vm.ResourceGroupName $vm.Location
+
+		# enable encryption with single pass syntax (omits AD parameters)
+		Set-AzureRmVMDiskEncryptionExtension `
+			-ResourceGroupName $vm.ResourceGroupName `
+			-VMName $vm.Name `
+			-DiskEncryptionKeyVaultUrl $kv.DiskEncryptionKeyVaultUrl `
+			-DiskEncryptionKeyVaultId $kv.DiskEncryptionKeyVaultId `
+			-Force
+
+		# verify encryption state
+		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
+		Assert-NotNull $status
+		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
+		Assert-AreEqual $status.DataVolumesEncrypted NotEncrypted
+
+		# verify encryption settings 
+		$settings = $status.OsVolumeEncryptionSettings
+		Assert-NotNull $settings
+		Assert-NotNull $settings.DiskEncryptionKey.SecretUrl
+		Assert-NotNull $settings.DiskEncryptionKey.SourceVault
+	}
+	finally
+	{
+		Clean-ResourceGroup($resourceGroupName)
+	}
+}
+
+<#
+.SYNOPSIS
 Test AzureDiskEncryption extension
 #>
 function Test-AzureDiskEncryptionExtension

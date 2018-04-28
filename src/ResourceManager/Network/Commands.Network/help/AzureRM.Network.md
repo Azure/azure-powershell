@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Network
 Module Guid: eb75c732-e274-4a20-b502-e9958e63484a
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.network
+Help Version: 5.4.2.0
 Locale: en-US
 ---
 

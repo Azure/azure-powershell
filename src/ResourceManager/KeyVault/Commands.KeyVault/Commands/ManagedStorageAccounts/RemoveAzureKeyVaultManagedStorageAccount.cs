@@ -21,27 +21,45 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageAccount,
+    [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageAccount, DefaultParameterSetName = ByDefinitionNameParameterSet,
         SupportsShouldProcess = true)]
     [OutputType( typeof( PSDeletedKeyVaultManagedStorageAccount ) )]
     public class RemoveAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByDefinitionNameParameterSet = "ByDefinitionName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
         [Parameter( Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         [Parameter( Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
                           "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName, Constants.Name )]
         public string AccountName { get; set; }
+
+        /// <summary>
+        /// PSKeyVaultManagedStorageAccountIdentityItem object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "ManagedStorageAccount object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultManagedStorageAccountIdentityItem InputObject { get; set; }
 
         /// <summary>
         /// If present, operate on the deleted entity.
@@ -65,6 +83,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                AccountName = InputObject.AccountName;
+            }
+
             if (InRemovedState.IsPresent)
             {
                 ConfirmAction(
