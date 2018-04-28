@@ -197,6 +197,7 @@ AzureRM.Compute
 * ''Repair-AzureRmVmssServiceFabricUpdateDomain'' cmdlet is added.
 * Introduce multiple breaking changes
     - Please refer to the migration guide for more details
+* ''Set-AzureRmVmDiskEncryptionExtension'' makes AAD parameters optional 
 
 AzureRM.DataFactories
 * Remove deprecated ''Tags'' alias from cmdlets
@@ -261,6 +262,9 @@ AzureRM.OperationalInsights
 * Introduce multiple breaking changes
     - Please refer to the migration guide for more information
 
+AzureRM.Profile
+* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
+
 AzureRM.RedisCache
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information
@@ -278,7 +282,8 @@ AzureRM.Storage
 
 AzureRM.Websites
 * Upgrade to latest version of the Websites SDK
-* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp
+* Added -AssignIdentity & -Httpsonly properties for Set-AzureRmWebApp and Set-AzureRmWebAppSlot
+- Added two new cmdlets: Get-AzureRmWebAppSnapshots and Restore-AzureRmWebAppSnapshot
 '
 
         # Prerelease string of this module

@@ -223,7 +223,8 @@ PrivateData = @{
 * ''Repair-AzureRmVmssServiceFabricUpdateDomain'' cmdlet is added.
 * Set minimum dependency of module to PowerShell 5.0
 * Introduce multiple breaking changes
-    - Please refer to the migration guide for more details'
+    - Please refer to the migration guide for more details
+* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional '
 
         # Prerelease string of this module
         # Prerelease = ''

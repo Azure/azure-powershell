@@ -22,7 +22,8 @@
 ## Version 5.0.1
 * Set minimum dependency of module to PowerShell 5.0
 * Upgrade to latest version of the Websites SDK
-* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp
+* Added -AssignIdentity & -Httpsonly properties for Set-AzureRmWebApp and Set-AzureRmWebAppSlot
+- Added two new cmdlets: Get-AzureRmWebAppSnapshots and Restore-AzureRmWebAppSnapshot
 
 ## Version 5.0.0-preview
 * Upgrade to latest version of the Websites SDK

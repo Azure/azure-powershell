@@ -132,7 +132,8 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
 * Upgrade to latest version of the Websites SDK
-* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp'
+* Added -AssignIdentity & -Httpsonly properties for Set-AzureRmWebApp and Set-AzureRmWebAppSlot
+- Added two new cmdlets: Get-AzureRmWebAppSnapshots and Restore-AzureRmWebAppSnapshot'
 
         # Prerelease string of this module
         # Prerelease = ''
