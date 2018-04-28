@@ -50,6 +50,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
+        /// Gets the Vcore edition dictionary.
+        /// </summary>
+        private static readonly Dictionary<string, string> _vcoreEditionDic = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
+        {
+            { "GeneralPurpose", "GP"},
+            { "BusinessCritical", "BC"}
+        };
+
+        /// <summary>
         /// Constructs a database adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
@@ -381,12 +390,21 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             if (string.IsNullOrWhiteSpace(tier))
                 return null;
 
-            Dictionary<string, string> dic = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-            dic.Add("GeneralPurpose", "GP");
-            dic.Add("BusinessCritical", "BC");
-
             string value;
-            return dic.TryGetValue(tier, out value) ? value : string.Format("{0}Pool", tier);
+            return _vcoreEditionDic.TryGetValue(tier, out value) ? value : string.Format("{0}Pool", tier);
+        }
+
+        /// <summary>
+        /// Check if the tier is Vcore tier.
+        /// </summary>
+        /// <param name="tier">Azure sql elastic pool edition</param>
+        /// <returns>True if it is Vcore tier</returns>
+        public static bool isVcorePool(string tier)
+        {
+            if (string.IsNullOrWhiteSpace(tier))
+                return false;
+
+            return _vcoreEditionDic.ContainsKey(tier);
         }
     }
 }

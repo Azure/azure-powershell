@@ -591,19 +591,25 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 Location = model.Location,
                 CreateMode = model.CreateMode,
-                SourceDatabaseId = resourceId,
+                //SourceDatabaseId = resourceId,
                 RecoveryServicesRecoveryPointId = resourceId,
                 RestorePointInTime = restorePointInTime,
-                ElasticPoolId = elasticPoolId
+                ElasticPoolId = elasticPoolId,
+                Sku = model.Sku
             };
 
             if(model.CreateMode.Equals("Recovery"))
             {
+                dbModel.SourceDatabaseId = resourceId;
                 dbModel.RecoverableDatabaseId = resourceId;
             }
             else if(model.CreateMode.Equals("Restore"))
             {
                 dbModel.RestorableDroppedDatabaseId = resourceId;
+            }
+            else
+            {
+                dbModel.SourceDatabaseId = resourceId;
             }
 
             Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);

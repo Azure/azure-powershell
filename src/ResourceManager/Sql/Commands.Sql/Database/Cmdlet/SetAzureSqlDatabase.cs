@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = UpdateParameterSetName)]
     public class SetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         private const string UpdateParameterSetName = "Update";

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Backup.Services;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Commands.Sql.Database.Services;
 using System;
 using System.Management.Automation;
 
@@ -28,17 +29,25 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     public class RestoreAzureRmSqlDatabase
         : AzureSqlCmdletBase<Database.Model.AzureSqlDatabaseModel, AzureSqlDatabaseBackupAdapter>
     {
-
         private const string FromPointInTimeBackupSetName = "FromPointInTimeBackup";
         private const string FromDeletedDatabaseBackupSetName = "FromDeletedDatabaseBackup";
         private const string FromGeoBackupSetName = "FromGeoBackup";
         private const string FromLongTermRetentionBackupSetName = "FromLongTermRetentionBackup";
+
+        private const string FromPointInTimeBackupWithVcoreSetName = "FromPointInTimeBackupWithVcore";
+        private const string FromDeletedDatabaseBackupWithVcoreSetName = "FromDeletedDatabaseBackupWithVcore";
+        private const string FromGeoBackupWithVcoreSetName = "FromGeoBackupWithVcore";
+        private const string FromLongTermRetentionBackupWithVcoreSetName = "FromLongTermRetentionBackupWithVcore";
 
         /// <summary>
         /// Gets or sets flag indicating a restore from a point-in-time backup.
         /// </summary>
         [Parameter(
             ParameterSetName = FromPointInTimeBackupSetName,
+            Mandatory = true,
+            HelpMessage = "Restore from a point-in-time backup.")]
+        [Parameter(
+            ParameterSetName = FromPointInTimeBackupWithVcoreSetName,
             Mandatory = true,
             HelpMessage = "Restore from a point-in-time backup.")]
         public SwitchParameter FromPointInTimeBackup { get; set; }
@@ -50,6 +59,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = FromDeletedDatabaseBackupSetName,
             Mandatory = true,
             HelpMessage = "Restore a deleted database.")]
+        [Parameter(
+            ParameterSetName = FromDeletedDatabaseBackupWithVcoreSetName,
+            Mandatory = true,
+            HelpMessage = "Restore a deleted database.")]
         public SwitchParameter FromDeletedDatabaseBackup { get; set; }
 
         /// <summary>
@@ -59,6 +72,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             ParameterSetName = FromGeoBackupSetName,
             Mandatory = true,
             HelpMessage = "Restore from a geo backup.")]
+        [Parameter(
+            ParameterSetName = FromGeoBackupWithVcoreSetName,
+            Mandatory = true,
+            HelpMessage = "Restore from a geo backup.")]
         public SwitchParameter FromGeoBackup { get; set; }
 
         /// <summary>
@@ -66,6 +83,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// </summary>
         [Parameter(
             ParameterSetName = FromLongTermRetentionBackupSetName,
+            Mandatory = true,
+            HelpMessage = "Restore from a long term retention backup backup.")]
+        [Parameter(
+            ParameterSetName = FromLongTermRetentionBackupWithVcoreSetName,
             Mandatory = true,
             HelpMessage = "Restore from a long term retention backup backup.")]
         public SwitchParameter FromLongTermRetentionBackup { get; set; }
@@ -78,7 +99,15 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             Mandatory = true,
             HelpMessage = "The point in time to restore the database to.")]
         [Parameter(
+            ParameterSetName = FromPointInTimeBackupWithVcoreSetName,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
             ParameterSetName = FromDeletedDatabaseBackupSetName,
+            Mandatory = false,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(
+            ParameterSetName = FromDeletedDatabaseBackupWithVcoreSetName,
             Mandatory = false,
             HelpMessage = "The point in time to restore the database to.")]
         public DateTime PointInTime { get; set; }
@@ -89,7 +118,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         [Parameter(
             ParameterSetName = FromDeletedDatabaseBackupSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true, 
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The deletion DateTime of the deleted database to restore.")]
+        [Parameter(
+            ParameterSetName = FromDeletedDatabaseBackupWithVcoreSetName,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The deletion DateTime of the deleted database to restore.")]
         public DateTime DeletionDate { get; set; }
 
@@ -105,9 +139,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary> 
         /// Gets or sets the name of the database server to use. 
         /// </summary> 
-        [Parameter(Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the Azure SQL Server to restore the database to.")] 
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the Azure SQL Server to restore the database to.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -121,8 +155,21 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets the target edition of the database to restore
         /// </summary>
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = FromPointInTimeBackupSetName, Mandatory = false,
+            HelpMessage = "The database edition to use for the restored database.")]
+        [Parameter(ParameterSetName = FromDeletedDatabaseBackupSetName, Mandatory = false,
+            HelpMessage = "The database edition to use for the restored database.")]
+        [Parameter(ParameterSetName = FromGeoBackupSetName, Mandatory = false,
+            HelpMessage = "The database edition to use for the restored database.")]
+        [Parameter(ParameterSetName = FromLongTermRetentionBackupSetName, Mandatory = false,
+            HelpMessage = "The database edition to use for the restored database.")]
+        [Parameter(ParameterSetName = FromPointInTimeBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The database edition to use for the restored database.")]
+        [Parameter(ParameterSetName = FromDeletedDatabaseBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The database edition to use for the restored database.")]
+        [Parameter(ParameterSetName = FromGeoBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The database edition to use for the restored database.")]
+        [Parameter(ParameterSetName = FromLongTermRetentionBackupWithVcoreSetName, Mandatory = true,
             HelpMessage = "The database edition to use for the restored database.")]
         [PSArgumentCompleter("None",
             Management.Sql.Models.DatabaseEdition.Basic,
@@ -138,6 +185,22 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the SLO of the database to restore
         /// </summary>
         [Parameter(Mandatory = false,
+            ParameterSetName = FromPointInTimeBackupSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The service level objective to use for the restored database." +
+            "Refer Get-AzureRmSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = FromDeletedDatabaseBackupSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The service level objective to use for the restored database." +
+            "Refer Get-AzureRmSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = FromGeoBackupSetName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The service level objective to use for the restored database." +
+            "Refer Get-AzureRmSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = FromLongTermRetentionBackupSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The service level objective to use for the restored database." +
             "Refer Get-AzureRmSqlCapability cmdlet to see what ServiceObjectiveNames are valid")]
@@ -147,6 +210,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the target elastic pool name
         /// </summary>
         [Parameter(Mandatory = false,
+                    ParameterSetName = FromPointInTimeBackupSetName,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "The name of the elastic pool into which the database should be restored.")]
+        [Parameter(Mandatory = false,
+                    ParameterSetName = FromDeletedDatabaseBackupSetName,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "The name of the elastic pool into which the database should be restored.")]
+        [Parameter(Mandatory = false,
+                    ParameterSetName = FromGeoBackupSetName,
+                    ValueFromPipelineByPropertyName = true,
+                    HelpMessage = "The name of the elastic pool into which the database should be restored.")]
+        [Parameter(Mandatory = false,
+                    ParameterSetName = FromLongTermRetentionBackupSetName,
                     ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The name of the elastic pool into which the database should be restored.")]
         public string ElasticPoolName { get; set; }
@@ -160,7 +236,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets the compute generation of the database copy
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = FromPointInTimeBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The compute generation of the restored Azure Sql Database.")]
+        [Parameter(ParameterSetName = FromDeletedDatabaseBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The compute generation of the restored Azure Sql Database.")]
+        [Parameter(ParameterSetName = FromGeoBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The compute generation of the restored Azure Sql Database.")]
+        [Parameter(ParameterSetName = FromLongTermRetentionBackupWithVcoreSetName, Mandatory = true,
             HelpMessage = "The compute generation of the restored Azure Sql Database.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
@@ -170,11 +252,25 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// <summary>
         /// Gets or sets the Vcore numbers of the database copy
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = FromPointInTimeBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The Vcore numbers of the restored Azure Sql Database.")]
+        [Parameter(ParameterSetName = FromDeletedDatabaseBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The Vcore numbers of the restored Azure Sql Database.")]
+        [Parameter(ParameterSetName = FromGeoBackupWithVcoreSetName, Mandatory = true,
+            HelpMessage = "The Vcore numbers of the restored Azure Sql Database.")]
+        [Parameter(ParameterSetName = FromLongTermRetentionBackupWithVcoreSetName, Mandatory = true,
             HelpMessage = "The Vcore numbers of the restored Azure Sql Database.")]
         [Alias("Capacity")]
         [ValidateNotNullOrEmpty]
         public int VCores { get; set; }
+
+        /// <summary>
+        /// The start of the cmdlet.
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            base.ExecuteCmdlet();
+        }
 
         /// <summary>
         /// Initializes the adapter
@@ -199,17 +295,21 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             switch (ParameterSetName)
             {
                 case FromPointInTimeBackupSetName:
+                case FromPointInTimeBackupWithVcoreSetName:
                     createMode = "PointInTimeRestore";
                     restorePointInTime = PointInTime;
                     break;
                 case FromDeletedDatabaseBackupSetName:
+                case FromDeletedDatabaseBackupWithVcoreSetName:
                     createMode = "Restore";
                     restorePointInTime = PointInTime == DateTime.MinValue ? DeletionDate : PointInTime;
                     break;
                 case FromGeoBackupSetName:
+                case FromGeoBackupWithVcoreSetName:
                     createMode = "Recovery";
                     break;
                 case FromLongTermRetentionBackupSetName:
+                case FromLongTermRetentionBackupWithVcoreSetName:
                     createMode = "RestoreLongTermRetentionBackup";
                     break;
                 default:
@@ -228,28 +328,30 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 CreateMode = createMode
             };
 
-            string skuNamePrefix = null;
-            if(MyInvocation.BoundParameters.ContainsKey("Edition"))
+            if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||
+                ParameterSetName == FromGeoBackupWithVcoreSetName || ParameterSetName == FromLongTermRetentionBackupWithVcoreSetName)
             {
+                string skuName = AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition);
+                model.Sku = new Management.Sql.Models.Sku()
+                {
+                    Name = skuName,
+                    Tier = Edition,
+                    Capacity = VCores,
+                    Family = ComputeGeneration
+                };
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(ServiceObjectiveName) || !string.IsNullOrWhiteSpace(Edition))
+                {
+                    model.Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = string.IsNullOrWhiteSpace(ServiceObjectiveName) ? AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition) : ServiceObjectiveName,
+                        Tier = Edition
+                    };
+                }
+            }
 
-            }
-            switch (Edition.ToLower())
-            {
-                case "generalpurpose":
-                    skuNamePrefix = "GP";
-                    break;
-                case "businesscritical":
-                    skuNamePrefix = "BC";
-                    break;
-                default:
-                    throw new PSArgumentException("Invalid Edition value.");
-            }
-
-            model.Sku = new Management.Sql.Models.Sku()
-            {
-                Name = 
-            }
-     
             return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model);
         }
     }

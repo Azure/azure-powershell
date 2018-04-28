@@ -242,7 +242,7 @@ function Test-UpdateVcoreElasticPool
 		# Update Vcore pool only on VCores
 		$sep4 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCores 1
 		Assert-NotNull $sep4
-		Assert-AreEqual 1 $ep4.Capacity
+		Assert-AreEqual 1 $sep4.Capacity
 		Assert-AreEqual 0.1 $sep4.MinCapacity
     }
     finally
