@@ -107,7 +107,7 @@ function Get-AzsSubscriptionPlan {
             $TaskResult = $SubscriptionsAdminClient.AcquiredPlans.ListWithHttpMessagesAsync($TargetSubscriptionId)
         } elseif ('Get' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName) {
             Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $SubscriptionsAdminClient.'
-            $TaskResult = $SubscriptionsAdminClient.AcquiredPlans.GetWithHttpMessagesAsync($TargetSubscriptionId.ToString(), $PlanAcquisitionId.ToString())
+            $TaskResult = $SubscriptionsAdminClient.AcquiredPlans.GetWithHttpMessagesAsync($TargetSubscriptionId.ToString(), $AcquisitionId.ToString())
         } else {
             Write-Verbose -Message 'Failed to map parameter set to operation method.'
             throw 'Module failed to find operation to execute.'

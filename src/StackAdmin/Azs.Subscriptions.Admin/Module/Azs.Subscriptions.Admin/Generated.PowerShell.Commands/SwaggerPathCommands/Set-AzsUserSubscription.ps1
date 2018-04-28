@@ -160,20 +160,20 @@ function Set-AzsUserSubscription {
             $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
             $SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
-            if ([System.String]::IsNullOrEmpty($Location)) {
+            if ([System.String]::IsNullOrEmpty($Location) -and $PsCmdlet.ParameterSetName -eq 'Set') {
                 $Location = (Get-AzureRMLocation).Location
             }
 
             if ( 'InputObject' -eq $PsCmdlet.ParameterSetName -or 'ResourceId' -eq $PsCmdlet.ParameterSetName -or 'Set' -eq $PsCmdlet.ParameterSetName ) {
 
                 if ( $updatedSubscription -eq $null ) {
-                    $updatedSubscription = Get-AzsUserSubscription | Where-Object { $_.SubscriptionId -eq $SubscriptionId }
+                    $updatedSubscription = Get-AzsUserSubscription -SubscriptionId $SubscriptionId
                 }
 
                 $flattenedParameters = @('TenantId', 'SubscriptionId', 'DisplayName', 'DelegatedProviderSubscriptionId', 'Owner', 'RoutingResourceManagerType', 'ExternalReferenceId', 'State', 'Location', 'OfferId')
                 $flattenedParameters | ForEach-Object {
                     if ($PSBoundParameters.ContainsKey($_)) {
-                        $updatedSubscription[$_] = $PSBoundParameters[$_]
+                        $updatedSubscription.$($_) = $PSBoundParameters[$_]
                     }
                 }
 

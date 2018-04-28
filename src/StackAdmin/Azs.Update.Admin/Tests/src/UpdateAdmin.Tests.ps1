@@ -203,7 +203,7 @@ InModuleScope Azs.Update.Admin {
 			$list = Get-AzsUpdate -ResourceGroup System.Redmond -Location redmond
 			foreach ($update in $list)
 			{
-				$runList = Get-AzsUpdateRun -DisplayName $update.Name -ResourceGroup System.Redmond -Location redmond
+				$runList = Get-AzsUpdateRun -UpdateName $update.Name -ResourceGroup System.Redmond -Location redmond
 				foreach ($run in $runList)
 				{
 					ValidateUpdateRun $run
@@ -218,10 +218,10 @@ InModuleScope Azs.Update.Admin {
 			foreach ($update in $list)
 			{
 				$update | fl
-				$runList = Get-AzsUpdateRun -DisplayName $update.Name -ResourceGroup System.Redmond -Location redmond
+				$runList = Get-AzsUpdateRun -UpdateName $update.Name -ResourceGroup System.Redmond -Location redmond
 				foreach ($run in $runList)
 				{
-					$run1 = Get-AzsUpdateRun -Name $run.Name -ResourceGroup System.Redmond -Location redmond -DisplayName $update.Name
+					$run1 = Get-AzsUpdateRun -Name $run.Name -ResourceGroup System.Redmond -Location redmond -UpdateName $update.Name
 					ValidateSameUpdateRun $run $run1
 				}
 			}

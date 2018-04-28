@@ -159,4 +159,3 @@ function Set-AzsDirectoryTenant {
         }
     }
 }
-

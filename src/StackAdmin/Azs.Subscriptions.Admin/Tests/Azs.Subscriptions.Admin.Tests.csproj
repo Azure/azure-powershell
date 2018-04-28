@@ -62,7 +62,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="SessionRecords\SubscriptionsAdminClient\TestCreateUpdateThenDeleteDirectoryTenant.json" />
     <None Include="SessionRecords\SubscriptionsAdminClient\TestCreateUpdateThenDeleteOffer.json" />
     <None Include="SessionRecords\SubscriptionsAdminClient\TestCreateUpdateThenDeletePlan.json" />
     <None Include="SessionRecords\SubscriptionsAdminClient\TestGetAcquiredPlan.json" />
@@ -81,6 +80,9 @@
     <None Include="SessionRecords\SubscriptionsAdminClient\TestListPlans.json" />
     <None Include="SessionRecords\SubscriptionsAdminClient\TestListQuotas.json" />
     <None Include="SessionRecords\SubscriptionsAdminClient\TestListSubscriptions.json" />
+    <None Include="SessionRecords\SubscriptionsAdminClient\TestSetOffer.json" />
+    <None Include="SessionRecords\SubscriptionsAdminClient\TestSetPlan.json" />
+    <None Include="SessionRecords\SubscriptionsAdminClient\TestSetSubscription.json" />
     <None Include="src\*.ps1" />
   </ItemGroup>
   <ItemGroup>
