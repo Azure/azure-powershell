@@ -29,13 +29,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         #region Parameter Set Names
 
         private const string DefaultParameterSet = "Default";
+        private const string ByInputObjectParameterSet = "ByInputObject";
 
         #endregion
 
         #region Input Parameter Definitions
         [Parameter( Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         [Parameter( Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
                           "selected environment and manged storage account name." )]
@@ -51,10 +50,19 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Alias( Constants.StorageAccountName )]
         public string AccountName { get; set; }
 
+        /// <summary>
+        /// PSKeyVaultManagedStorageAccountIdentityItem object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "ManagedStorageAccount object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultManagedStorageAccountIdentityItem InputObject { get; set; }
+
         [Parameter( Mandatory = true,
             Position = 2,
-            ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage sas definition name. Cmdlet constructs the FQDN of a storage sas definition from vault name, currently " +
                           "selected environment, storage account name and sas definition name." )]
         [ValidateNotNullOrEmpty]
@@ -64,16 +72,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateNotNullOrEmpty]
         [Parameter( Mandatory = true,
             Position = 3,
-            ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = false,
             HelpMessage = "Storage SAS definition template uri.")]
         public string TemplateUri { get; set; }
 
         [ValidateNotNullOrEmpty]
         [Parameter( Mandatory = true,
             Position = 4,
-            ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = false,
             HelpMessage = "Storage SAS type.")]
         public string SasType { get; set; }
 
@@ -82,14 +86,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter Disable { get; set; }
 
         [Parameter( Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing tags of sas definition." )]
         [Alias( Constants.TagsAlias )]
         public Hashtable Tag { get; set; }
 
         private const string ValidityPeriodHelpMessage = "Validity period that will get used to set the expiry time of sas token from the time it gets generated";
         [Parameter( Mandatory = true,
-            ParameterSetName = DefaultParameterSet, 
             HelpMessage = ValidityPeriodHelpMessage)]
         [ValidateNotNull]
         public TimeSpan? ValidityPeriod { get; set; }
@@ -97,6 +99,12 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                AccountName = InputObject.AccountName;
+            }
+
             if ( ShouldProcess( Name, Properties.Resources.SetManagedStorageSasDefinition ) )
             {
                 var sasDefinition = DataServiceClient.SetManagedStorageSasDefinition( 
