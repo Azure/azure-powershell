@@ -30,6 +30,7 @@
 * Set minimum dependency of module to PowerShell 5.0
 * Introduce multiple breaking changes
     - Please refer to the migration guide for more details
+* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional 
 
 ## Version 4.6.0
 * `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level

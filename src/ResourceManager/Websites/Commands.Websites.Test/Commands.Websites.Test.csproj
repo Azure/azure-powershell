@@ -214,7 +214,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestGetWebAppBackupList.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestGetWebAppSnapshots.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestGetWebAppSnapshot.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppBackupRestoreTests\TestRestoreWebAppSnapshot.json">
@@ -243,6 +243,12 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestWebAppSlotPublishingProfile.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestWebAppSwapWithPreviewResetSlotSwap.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestWebAppSwapWithPreviewCompleteSlotSwap.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebApp.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -300,7 +306,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup />
-  <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.Test.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
