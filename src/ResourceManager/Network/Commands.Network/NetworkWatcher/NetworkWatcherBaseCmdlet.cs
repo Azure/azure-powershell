@@ -15,8 +15,10 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
+using System;
 using System.Collections.Generic;
 using System.Net;
 
@@ -69,6 +71,28 @@ namespace Microsoft.Azure.Commands.Network
                 TagsConversionHelper.CreateTagHashtable(networkWatcher.Tags);
 
             return psNetworkWatcher;
+        }
+
+        public PSNetworkWatcher GetNetworkWatcherByLocation(string location)
+        {
+            var nwList = this.NetworkClient.NetworkManagementClient.NetworkWatchers.ListAll();
+            foreach (var nw in nwList)
+            {
+                if (nw.Location == location)
+                {
+                    PSNetworkWatcher psNetworkWatcher = ToPsNetworkWatcher(nw);
+                    psNetworkWatcher.ResourceGroupName = this.GetResourceGroupNameFromResourceId(nw.Id);
+                    return psNetworkWatcher;
+                }
+            }
+
+            return null;
+        }
+
+        public string GetResourceGroupNameFromResourceId(string resourceId)
+        {
+            ResourceIdentifier resourceInfo = new ResourceIdentifier(resourceId);
+            return resourceInfo.ResourceGroupName;
         }
     }
 }
