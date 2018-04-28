@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
 * Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
