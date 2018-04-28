@@ -40,13 +40,15 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
         }
 
-        [Fact(Skip = "Test is currently failing due to service changes, Need to be rerecord by the service team.")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitPrivatePublicPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitPrivatePublicPeeringCRUD");
         }
 
-        [Fact(Skip = "Need to re-record")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteCircuitMicrosoftPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitMicrosoftPeeringCRUD");
@@ -66,7 +68,8 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteBGPServiceCommunities");
         }
 
-        [Fact(Skip = "Need to re-record")]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExpressRouteRouteFilterCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteRouteFilters");
