@@ -1,7 +1,7 @@
 ﻿---
 Module Name: AzureRM.Tags
 Module Guid: 59713673-194f-418a-b1f2-ac60db82edf9
-Download Help Link: None
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags
 Help Version: 4.0.0.0
 Locale: en-US
 ---

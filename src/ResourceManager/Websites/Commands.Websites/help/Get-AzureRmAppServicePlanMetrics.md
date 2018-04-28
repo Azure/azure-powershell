@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.WebSites
 ms.assetid: 0AC0C4F9-4138-49EA-88CB-DC220DE7E9F4
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermappserviceplanmetrics
 schema: 2.0.0
@@ -22,7 +22,7 @@ Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [
 ### S2
 ```
 Get-AzureRmAppServicePlanMetrics [-Metrics] <String[]> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
- [-Granularity] <String> [-InstanceDetails] [-AppServicePlan] <ServerFarmWithRichSku>
+ [-Granularity] <String> [-InstanceDetails] [-AppServicePlan] <AppServicePlan>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ This command gets CPU percentage of the App Service Plan
 App Service Plan Object
 
 ```yaml
-Type: ServerFarmWithRichSku
+Type: AppServicePlan
 Parameter Sets: S2
 Aliases: 
 

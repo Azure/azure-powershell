@@ -1,7 +1,7 @@
 ---
 Module Name: AzureRM.DataLakeStore
 Module Guid: 90dfd814-abce-4e1f-99b6-fe16760c079a
-Download Help Link: None
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -23,6 +23,9 @@ Adds a trusted identity provider to the specified Data Lake Store account.
 ### [Enable-AzureRmDataLakeStoreKeyVault](Enable-AzureRmDataLakeStoreKeyVault.md)
 Attempts to enable a user managed Key Vault for encryption of the specified Data Lake Store account.
 
+### [Export-AzureRmDataLakeStoreChildItemProperties](Export-AzureRmDataLakeStoreChildItemProperties.md)
+Exports the properties (Disk usage and Acl) for the entire tree from the specified path to a ouput path
+
 ### [Export-AzureRmDataLakeStoreItem](Export-AzureRmDataLakeStoreItem.md)
 Downloads a file from Data Lake Store.
 
@@ -31,6 +34,9 @@ Gets details of a Data Lake Store account.
 
 ### [Get-AzureRmDataLakeStoreChildItem](Get-AzureRmDataLakeStoreChildItem.md)
 Gets the list of items in a folder in Data Lake Store.
+
+### [Get-AzureRmDataLakeStoreChildItemSummary](Get-AzureRmDataLakeStoreChildItemSummary.md)
+Gets the summary of total size, files and directories contained in the path specified
 
 ### [Get-AzureRmDataLakeStoreFirewallRule](Get-AzureRmDataLakeStoreFirewallRule.md)
 Gets the specified firewall rules in the specified Data Lake Store.
