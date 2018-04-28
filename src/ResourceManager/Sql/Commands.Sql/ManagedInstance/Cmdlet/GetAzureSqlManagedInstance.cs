@@ -80,9 +80,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 ManagedInstanceName = resourceInfo.ResourceName;
-            }
 
-            if (MyInvocation.BoundParameters.ContainsKey("ManagedInstanceName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+                results = new List<AzureSqlManagedInstanceModel>();
+                results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.ManagedInstanceName));
+            }
+            else if (MyInvocation.BoundParameters.ContainsKey("ManagedInstanceName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
             {
                 results = new List<AzureSqlManagedInstanceModel>();
                 results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.ManagedInstanceName));

@@ -96,7 +96,6 @@
     <Compile Include="ManagedInstance\Cmdlet\RemoveAzureSqlManagedInstance.cs" />
     <Compile Include="ManagedInstance\Cmdlet\UpdateAzureSqlManagedInstance.cs" />
     <Compile Include="ManagedInstance\Cmdlet\SetAzureSqlManagedInstance.cs" />
-    <Compile Include="ManagedInstance\Model\ManagedInstanceSku.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlElasticPoolRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlServerRecommendedActionCmdletBase.cs" />

@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
     [Cmdlet(VerbsData.Restore, "AzureRmSqlManagedDatabase", SupportsShouldProcess = true)]
-    public class RestoreAzureRmSqlDatabase
+    public class RestoreAzureRmSqlManagedDatabase
         : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
         protected const string RestoreFromNameAndResourceGroupParameterSet =
@@ -32,14 +32,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
         protected const string RestoreFromResourceIdParameterSet =
             "RestoreManagedDatabaseFromAzureResourceId";
-
-        /// <summary>
-        /// Gets or sets flag indicating a restore from a point-in-time backup.
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Restore from a point-in-time backup.")]
-        public SwitchParameter FromPointInTimeBackup { get; set; }
 
         /// <summary> 
         /// Gets or sets the managed database name to restore

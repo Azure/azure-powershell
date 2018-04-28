@@ -200,8 +200,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
                 Sku.Name = editionShort + "_" + ComputeGeneration;
             }
 
-            Sku.Name = SkuName;
-
             newEntity.Add(new Model.AzureSqlManagedInstanceModel()
             {
                 Location = this.Location,

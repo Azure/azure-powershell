@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
@@ -44,8 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Managed instance to use.
         /// </summary>
-        [Parameter(
-            ParameterSetName = UpdateByNameAndResourceGroupParameterSet, 
+        [Parameter(ParameterSetName = UpdateByNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 0,
             HelpMessage = "SQL Database Managed instance name.")]
@@ -99,7 +99,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Managed instance.")]
-        public Hashtable Tag { get; set; }
+        [Alias("Tag")]
+        public Hashtable Tags { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to assign identity for Managed instance
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
-        
+
         /// <summary>
         /// Get the Managed instance to update
         /// </summary>
@@ -151,26 +152,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <returns>The model to send to the update</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlManagedInstanceModel> model)
         {
-            if (string.Equals(this.ParameterSetName, UpdateByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
-            {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                ManagedInstanceName = InputObject.ManagedInstanceName;
-            }
-            else if (string.Equals(this.ParameterSetName, UpdateByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
-            {
-                var resourceInfo = new ResourceIdentifier(ResourceId);
-
-                ResourceGroupName = resourceInfo.ResourceGroupName;
-                ManagedInstanceName = resourceInfo.ResourceName;
-            }
-
             // Construct a new entity so we only send the relevant data to the Managed instance
             List<Model.AzureSqlManagedInstanceModel> updateData = new List<Model.AzureSqlManagedInstanceModel>();
             updateData.Add(new Model.AzureSqlManagedInstanceModel()
             {
                 ResourceGroupName = this.ResourceGroupName,
-                Location = model.FirstOrDefault().Location,
+                ManagedInstanceName = this.ManagedInstanceName,
                 FullyQualifiedDomainName = this.ManagedInstanceName,
+                Location = model.FirstOrDefault().Location,
                 AdministratorPassword = this.AdministratorPassword,
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB,
@@ -189,6 +178,35 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> PersistChanges(IEnumerable<Model.AzureSqlManagedInstanceModel> entity)
         {
             return new List<Model.AzureSqlManagedInstanceModel>() { ModelAdapter.UpdateManagedInstance(entity.First()) };
+        }
+
+        /// <summary>
+        /// Entry point for the cmdlet
+        /// </summary>
+        public override void ExecuteCmdlet()
+        {
+            if (!Force.IsPresent && !ShouldProcess(
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.ManagedInstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.ManagedInstanceName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+            {
+                return;
+            }
+
+            if (string.Equals(this.ParameterSetName, UpdateByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                ManagedInstanceName = InputObject.ManagedInstanceName;
+            }
+            else if (string.Equals(this.ParameterSetName, UpdateByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                ManagedInstanceName = resourceInfo.ResourceName;
+            }
+
+            base.ExecuteCmdlet();
         }
     }
 }

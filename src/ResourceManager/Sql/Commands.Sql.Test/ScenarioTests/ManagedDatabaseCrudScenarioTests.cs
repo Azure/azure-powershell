@@ -28,35 +28,32 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        protected override void SetupManagementClients(Rest.ClientRuntime.Azure.TestFramework.MockContext context)
-        {
-            // Only SqlClient is needed.
-            var sqlClient = GetSqlClient(context);
-            var sqlLegacyClient = GetLegacySqlClient();
-            var resourcesClient = GetResourcesClient();
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient, authorizationClient);
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManagedDatabaseCreate()
+        public void TestCreateManagedDatabase()
         {
             RunPowerShellTest("Test-CreateManagedDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManagedDatabaseGet()
+        public void TestGetManagedDatabase()
         {
             RunPowerShellTest("Test-GetManagedDatabase");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestManagedDatabaseRemove()
+        public void TestRemoveManagedDatabase()
         {
             RunPowerShellTest("Test-RemoveManagedDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreManagedDatabase()
+        {
+            RunPowerShellTest("Test-RestoreManagedDatabase");
         }
     }
 }

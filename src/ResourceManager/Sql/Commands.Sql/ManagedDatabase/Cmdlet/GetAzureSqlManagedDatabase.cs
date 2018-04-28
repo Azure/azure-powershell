@@ -89,9 +89,11 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 ManagedInstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
                 ManagedDatabaseName = resourceInfo.ResourceName;
-            }
 
-            if (MyInvocation.BoundParameters.ContainsKey("ManagedDatabaseName"))
+                results = new List<AzureSqlManagedDatabaseModel>();
+                results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.ManagedDatabaseName));
+            }
+            else if (MyInvocation.BoundParameters.ContainsKey("ManagedDatabaseName"))
             {
                 results = new List<AzureSqlManagedDatabaseModel>();
                 results.Add(ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.ManagedDatabaseName));
