@@ -1,15 +1,24 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="NewProjectCmdlet.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.DataMigration.Common;
-using Microsoft.Azure.Commands.DataMigration.Models;
-using Microsoft.Azure.Management.DataMigration;
-using Microsoft.Azure.Management.DataMigration.Models;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.DataMigration.Common;
+using Microsoft.Azure.Commands.DataMigration.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.DataMigration;
+using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
@@ -50,13 +59,13 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         [Parameter(
             Mandatory = true,
             ParameterSetName = ComponentNameParameterSet,
-            HelpMessage = "Data Migration Service Name.")]
+            HelpMessage = "Database Migration Service Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The location of the instance of the Data Migration Service")]
+            HelpMessage = "The location of the instance of the Database Migration Service")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -71,13 +80,15 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
             Mandatory = true,
             HelpMessage = "Source platform type for project.")]
         [ValidateNotNullOrEmpty]
-        public ProjectSourcePlatform SourceType { get; set; }
+        [PSArgumentCompleter("SQL")]
+        public string SourceType { get; set; }
 
         [Parameter(
             Mandatory = true,
             HelpMessage = "Target platform type for project.")]
         [ValidateNotNullOrEmpty]
-        public ProjectTargetPlatform TargetType { get; set; }
+        [PSArgumentCompleter("SQLDB", "SQLMI")]
+        public string TargetType { get; set; }
 
         [Parameter(
             Mandatory = false,
