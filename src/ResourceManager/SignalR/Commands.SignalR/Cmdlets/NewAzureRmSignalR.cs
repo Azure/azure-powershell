@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 _cmdlet = cmdlet;
             }
 
-            public async Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
+            public Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
             {
                 _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
                 _cmdlet.ResolveResourceGroupName();
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
                     _cmdlet.ResourceGroupName);
 
-                return SignalRStrategy.Strategy.CreateResourceConfig(
+                var result = SignalRStrategy.Strategy.CreateResourceConfig(
                     resourceGroup: resourceGroup,
                     // The SignalR service accepts only lower case characters. It's a known bug.
                     // TODO: remove ".ToLower()" as soon as the problem is fixed in SignalR server.
@@ -115,6 +115,8 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                         tags: _cmdlet.Tag,
                         sku: new ResourceSku(_cmdlet.Sku, capacity: 1), // we only allow capacity 1 in public preview, this may be a parameter in future.
                         hostNamePrefix: null /* _cmdlet.Name*/)); // hostNamePrefix is just a placeholder and ignored in the resource provider.
+
+                return Task.FromResult(result);
             }
         }
 
