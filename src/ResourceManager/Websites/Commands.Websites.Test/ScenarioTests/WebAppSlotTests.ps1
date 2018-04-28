@@ -889,13 +889,17 @@ function Test-SlotSwapWithPreview($swapWithPreviewAction)
 		Switch-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction 'ApplySlotConfig'
 		Wait-Seconds 30
 		$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
-		Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalDestinationAppSettingValue
+		Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
 
 		# Let's finish the current slot swap operation (complete or reset)
 		Switch-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction $swapWithPreviewAction
 		Wait-Seconds 30
 		$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
-		#Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
+		If ($swapWithPreviewAction -eq 'ResetSlotSwap') {
+			Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
+		} Else {
+			Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalDestinationAppSettingValue
+		}
 	}
 	finally
 	{
