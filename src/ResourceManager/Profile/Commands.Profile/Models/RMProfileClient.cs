@@ -282,6 +282,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
 
                 _profile.TrySetDefaultContext(defaultContext);
+                _profile.TryRemoveContext("Default");
             }
 
             return _profile.ToProfile();
