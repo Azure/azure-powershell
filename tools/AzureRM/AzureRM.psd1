@@ -278,7 +278,8 @@ AzureRM.ServiceFabric
   - NewAzureServiceFabricCluster.cs default UbuntuServer1604 Sku update
 
 AzureRM.Storage
-* Updated to the latest version of the Azure ClientRuntime
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
 
 AzureRM.Websites
 * Upgrade to latest version of the Websites SDK
