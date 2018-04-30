@@ -86,6 +86,7 @@
     - 'Set-AzureRmMediaService'
 
 #### AzureRM.Network
+* Add support for DDoS protection plan resource
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information
 

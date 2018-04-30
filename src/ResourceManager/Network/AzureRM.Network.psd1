@@ -314,8 +314,12 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice', 
                'Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript', 
                'New-AzureRmApplicationSecurityGroup', 
-               'Remove-AzureRmApplicationSecurityGroup', 
-               'Get-AzureRmApplicationSecurityGroup', 'New-AzureRmPublicIpTag'
+               'Remove-AzureRmApplicationSecurityGroup',
+               'Get-AzureRmApplicationSecurityGroup',
+               'New-AzureRmPublicIpTag',
+               'New-AzureRmDdosProtectionPlan',
+               'Get-AzureRmDdosProtectionPlan',
+               'Remove-AzureRmDdosProtectionPlan'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -353,6 +357,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
+* Add support for DDoS protection plan resource
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information'
 
