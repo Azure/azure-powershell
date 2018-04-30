@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
@@ -128,9 +129,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
-        protected StorageManagementClient GetStorageClient()
+        protected Management.Storage.StorageManagementClient GetStorageClient()
         {
-            StorageManagementClient client = TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+            Management.Storage.StorageManagementClient client = TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new RDFETestEnvironmentFactory());
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;
@@ -224,6 +225,18 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected Management.Storage.Version2017_10_01.StorageManagementClient GetCommonStorageClient(RestTestFramework.MockContext context)
+        {
+            var client =
+                context.GetServiceClient<Management.Storage.Version2017_10_01.StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;

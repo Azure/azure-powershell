@@ -45,11 +45,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AEM
         private PSHostUserInterface _UI = null;
         private Dictionary<string, StorageAccount> _StorageCache = new Dictionary<string, StorageAccount>(StringComparer.InvariantCultureIgnoreCase);
         private Dictionary<string, string> _StorageKeyCache = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-        private StorageManagementClient _StorageClient;
+        private Azure.Management.Storage.Version2017_10_01.StorageManagementClient _StorageClient;
         private IAzureSubscription _Subscription;
 
         public AEMHelper(Action<ErrorRecord> errorAction, Action<string> verboseAction, Action<string> warningAction,
-            PSHostUserInterface ui, StorageManagementClient storageClient, IAzureSubscription subscription)
+            PSHostUserInterface ui, Azure.Management.Storage.Version2017_10_01.StorageManagementClient storageClient, IAzureSubscription subscription)
         {
             this._ErrorAction = errorAction;
             this._VerboseAction = verboseAction;

@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Rest.Azure;
-using Microsoft.WindowsAzure.Management.Storage;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
