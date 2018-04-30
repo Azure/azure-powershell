@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/set-azurermrecoveryservicesasralertsetting
@@ -65,13 +65,13 @@ Set notification for custom email address(s) and for subscription owner.
 
 ## PARAMETERS
 
-### -CustomEmailAddress
-Alert / Notification sent to emails.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String[]
-Parameter Sets: Set, EmailToSubscriptionOwner, DisableEmailToSubcriptionOwner
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -80,28 +80,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableNotification
-Flag to disable all notification.
+### -CustomEmailAddress
+Alert / Notification sent to emails.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Disable
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -LocaleID
-Email language of alert /notifcation to user(supported culture codes from microsoft). 
-
-```yaml
-Type: String
+Type: String[]
 Parameter Sets: Set, EmailToSubscriptionOwner, DisableEmailToSubcriptionOwner
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,13 +110,58 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DisableEmailToSubscriptionOwner
+Switch parameter specifies enable notification to subscription owner.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Parameter Sets: DisableEmailToSubcriptionOwner
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableNotification
+Flag to disable all notification.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Disable
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableEmailSubscriptionOwner
+Switch paramter specifies enable notification to subscription owner.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: EmailToSubscriptionOwner
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LocaleID
+Email language of alert /notifcation to user(supported culture codes from microsoft). 
+
+```yaml
+Type: String
+Parameter Sets: Set, EmailToSubscriptionOwner, DisableEmailToSubcriptionOwner
+Aliases:
 
 Required: False
 Position: Named
@@ -155,36 +185,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableEmailToSubscriptionOwner
-Switch parameter specifies enable notification to subscription owner.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: DisableEmailToSubcriptionOwner
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EnableEmailSubscriptionOwner
-Switch paramter specifies enable notification to subscription owner.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: EmailToSubscriptionOwner
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -199,4 +199,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

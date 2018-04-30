@@ -17,15 +17,14 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
-using System.IO;
 using System.Management.Automation;
-using System.Reflection;
 using System.Security;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -42,6 +41,8 @@ namespace Microsoft.Azure.Commands.Profile
         public const string ServicePrincipalCertificateParameterSet= "ServicePrincipalCertificateWithSubscriptionId";
         public const string AccessTokenParameterSet = "AccessTokenWithSubscriptionId";
         public const string ManagedServiceParameterSet = "ManagedServiceLogin";
+        public const string MSIEndpointVariable = "MSI_ENDPOINT";
+        public const string MSISecretVariable = "MSI_SECRET";
 
         protected IAzureEnvironment _environment =AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
 
@@ -103,13 +104,13 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = AccessTokenParameterSet, 
                     Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
-                    Mandatory = false, HelpMessage = "Account Id for managed service")]
+                    Mandatory = false, HelpMessage = "Account Id for managed service. Can be a managed service resource Id, or the associated client id. To use the SyatemAssigned identity, leave this field blank.")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
 
         [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory =true, HelpMessage = "Login using managed service identity in the current environment.")]
-        [Alias("MSI")]
-        public SwitchParameter ManagedService { get; set; }
+        [Alias("MSI", "ManagedService")]
+        public SwitchParameter Identity { get; set; }
 
         [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Port number for managed service login.")]
         [PSDefaultValue(Help = "50342", Value = 50342)]
@@ -118,7 +119,12 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Host name for managed service login.")]
         [PSDefaultValue(Help = "localhost", Value = "localhost")]
         public string ManagedServiceHostName { get; set; } = "localhost";
-        
+
+        [Parameter(ParameterSetName = ManagedServiceParameterSet, Mandatory = false, HelpMessage = "Secret, used for some kinds of managed service login.")]
+        [ValidateNotNullOrEmpty]
+        public SecureString ManagedServiceSecret { get; set; }
+
+
         [Alias("SubscriptionName", "SubscriptionId")]
         [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Subscription Name or ID", ValueFromPipeline = true)]
@@ -201,13 +207,36 @@ namespace Microsoft.Azure.Commands.Profile
                     break;
                 case ManagedServiceParameterSet:
                     azureAccount.Type = AzureAccount.AccountType.ManagedService;
-                    azureAccount.Id = MyInvocation.BoundParameters.ContainsKey(nameof(AccountId))? AccountId : string.Format("MSI@{0}", ManagedServicePort);
                     var builder = new UriBuilder();
                     builder.Scheme = "http";
                     builder.Host = ManagedServiceHostName;
                     builder.Port = ManagedServicePort;
                     builder.Path = "/oauth2/token";
-                    azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, builder.Uri.ToString());
+
+                    string msiSecret = this.IsBound(nameof(ManagedServiceSecret)) 
+                        ? ManagedServiceSecret.ConvertToString() 
+                        : System.Environment.GetEnvironmentVariable(MSISecretVariable);
+
+                    string suppliedUri = this.IsBound(nameof(ManagedServiceHostName))
+                        ? builder.Uri.ToString()
+                        : System.Environment.GetEnvironmentVariable(MSIEndpointVariable);
+
+                    if (!string.IsNullOrWhiteSpace(msiSecret))
+                    {
+                        azureAccount.SetProperty(AzureAccount.Property.MSILoginSecret, msiSecret);
+                    }
+                       
+                    if (!string.IsNullOrWhiteSpace(suppliedUri))
+                    {
+                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, suppliedUri);
+                    }
+                    else
+                    {
+                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUriBackup, builder.Uri.ToString());
+                        azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, AuthenticationFactory.DefaultMSILoginUri);
+                    }
+
+                    azureAccount.Id = this.IsBound(nameof(AccountId)) ? AccountId : string.Format("MSI@{0}", ManagedServicePort);
                     break;
                 default:
                     azureAccount.Type = AzureAccount.AccountType.User;

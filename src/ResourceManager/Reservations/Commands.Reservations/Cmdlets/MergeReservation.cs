@@ -15,13 +15,13 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet, 
             Mandatory = true)]
         [ValidateNotNull]
-        public string ReservationOrderId { get; set; }
+        public Guid ReservationOrderId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet, 
             Mandatory = true)]
         [ValidateNotNull]
         [ValidateCount (2, 2)]
-        public string[] ReservationId { get; set; }
+        public Guid[] ReservationId { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
             Mandatory = true)]
@@ -33,15 +33,15 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         {
             if (ParameterSetName.Equals(Constants.ParameterSetNames.ObjectParameterSet))
             {
-                ReservationOrderId = Reservation[0].Name.Split('/')[0];
-                ReservationId = Reservation.Select(x => x.Name.Split('/')[1]).ToArray();
+                ReservationOrderId = new Guid(Reservation[0].Name.Split('/')[0]);
+                ReservationId = Reservation.Select(x => x.Name.Split('/')[1]).Select(x => new Guid(x)).ToArray();
             }
 
             var resourceInfo = $"Reservation {ReservationId[0]} and {ReservationId[1]} in order {ReservationOrderId}";
             if (ShouldProcess(resourceInfo, "Merge"))
             {
                 MergeRequest Merge = new MergeRequest(ListOfResourceId());
-                var response = AzureReservationAPIClient.Reservation.Merge(ReservationOrderId, Merge).Select(x => new PSReservation(x));
+                var response = AzureReservationAPIClient.Reservation.Merge(ReservationOrderId.ToString(), Merge).Select(x => new PSReservation(x));
                 WriteObject(response, true);
             }
         }
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             return ReservationId.Select(x => CreateResourceId(ReservationOrderId, x)).ToList();
         }
 
-        private string CreateResourceId(string ReservationOrderId, string ReservationId)
+        private string CreateResourceId(Guid reservationOrderId, Guid reservationId)
         {
-            return string.Format("/providers/Microsoft.Capacity/reservationOrders/{0}/reservations/{1}", ReservationOrderId, ReservationId);
+            return string.Format("/providers/Microsoft.Capacity/reservationOrders/{0}/reservations/{1}", reservationOrderId, reservationId);
         }
     }
 }

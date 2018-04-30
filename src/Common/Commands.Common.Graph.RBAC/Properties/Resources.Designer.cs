@@ -140,5 +140,14 @@ namespace Microsoft.Azure.Commands.Common.Graph.RBAC.Properties {
                 return ResourceManager.GetString("ServicePrincipalWithSPNDoesntExist", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User with UPN &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string UserWithUPNDoesntExist {
+            get {
+                return ResourceManager.GetString("UserWithUPNDoesntExist", resourceCulture);
+            }
+        }
     }
 }

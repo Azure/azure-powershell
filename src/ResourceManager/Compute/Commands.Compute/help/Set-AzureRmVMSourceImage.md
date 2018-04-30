@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 91B2DE2F-442D-4428-8A6F-9C2CEC181CA7
@@ -69,7 +69,7 @@ Specifies the ID.
 ```yaml
 Type: String
 Parameter Sets: ImageReferenceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -85,7 +85,7 @@ To obtain an image offer, use the Get-AzureRmVMImageOffer cmdlet.
 ```yaml
 Type: String
 Parameter Sets: ImageReferenceSkuParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -101,7 +101,7 @@ To obtain a publisher, use the Get-AzureRmVMImagePublisher cmdlet.
 ```yaml
 Type: String
 Parameter Sets: ImageReferenceSkuParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -117,7 +117,7 @@ To obtain SKUs, use the Get-AzureRmVMImageSku cmdlet.
 ```yaml
 Type: String
 Parameter Sets: ImageReferenceSkuParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -133,7 +133,7 @@ To use the latest version, specify a value of latest instead of a particular ver
 ```yaml
 Type: String
 Parameter Sets: ImageReferenceSkuParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
