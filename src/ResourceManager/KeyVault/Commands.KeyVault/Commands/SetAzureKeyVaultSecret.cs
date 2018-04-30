@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Set, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultSecret))]
     public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
@@ -42,7 +41,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -53,7 +51,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 1,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.SecretName)]
@@ -89,7 +86,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Secret expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The expiration time of a secret in UTC time. If not specified, the secret will not expire.")]
         public DateTime? Expires { get; set; }
 
@@ -97,7 +93,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// The UTC time before which secret can't be used 
         /// </summary>
         [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
             HelpMessage = "The UTC time before which secret can't be used. If not specified, there is no limitation.")]
         public DateTime? NotBefore { get; set; }
 
@@ -105,7 +100,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Content type
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Secret's content type.")]
         public string ContentType { get; set; }
 
@@ -113,7 +107,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Secret tags
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing secret tags.")]
         [Alias(Constants.TagsAlias)]
         public Hashtable Tag { get; set; }
@@ -127,7 +120,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 VaultName = InputObject.VaultName;
                 Name = InputObject.Name;
             }
-
+            
             if (ShouldProcess(Name, Properties.Resources.SetSecret))
             {
                 var secret = DataServiceClient.SetSecret(
