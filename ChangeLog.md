@@ -167,9 +167,6 @@
 #### AzureRM.EventHub
 * Fixed AlternameName in New-AzureRmEventHubGeoDRConfiguration
 
-#### AzureRM.IotHub
-* Enable tags and Basic Sku to the IotHub
-
 #### AzureRM.KeyVault
 * Updated cmdlets to include piping scenarios
 * Add deprecation messages for upcoming breaking change release
