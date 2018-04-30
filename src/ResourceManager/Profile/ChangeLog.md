@@ -21,6 +21,7 @@
 * Set minimum dependency of module to PowerShell 5.0
 * Enable context autosave by default
 * Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
+* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
 
 ## Version 4.6.0
 * Updated to the latest version of the Azure ClientRuntime

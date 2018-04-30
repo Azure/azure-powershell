@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
 
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
-        PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes);
+        PSKeyVaultKey CreateKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, int? size);
 
         PSKeyVaultKey ImportKey(string vaultName, string keyName, PSKeyVaultKeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
@@ -76,13 +77,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         #region Certificate actions
 
-        Contacts SetCertificateContacts(string vaultName, Contacts contacts);
+        IEnumerable<PSKeyVaultCertificateContact> SetCertificateContacts(string vaultName, IEnumerable<PSKeyVaultCertificateContact> contacts);
 
-        Contacts GetCertificateContacts(string vaultName);
+        IEnumerable<PSKeyVaultCertificateContact> GetCertificateContacts(string vaultName);
 
-        CertificateBundle GetCertificate(string vaultName, string certName, string certificateVersion);
+        PSKeyVaultCertificate GetCertificate(string vaultName, string certName, string certificateVersion);
 
-        DeletedCertificateBundle GetDeletedCertificate( string vaultName, string certName );
+        PSDeletedKeyVaultCertificate GetDeletedCertificate( string vaultName, string certName );
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
 
@@ -90,62 +91,83 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         IEnumerable<PSKeyVaultCertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
 
-        CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags);
+        PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags);
 
-        CertificateBundle ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags);
+        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags);
 
-        CertificateBundle ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags);
+        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags);
 
-        DeletedCertificateBundle DeleteCertificate(string vaultName, string certName);
+        PSDeletedKeyVaultCertificate DeleteCertificate(string vaultName, string certName);
 
         void PurgeCertificate( string vaultName, string certName );
 
-        CertificateBundle RecoverCertificate( string vaultName, string certName );
+        PSKeyVaultCertificate RecoverCertificate( string vaultName, string certName );
 
-        CertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags);
+        PSKeyVaultCertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags);
 
-        CertificateBundle UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags);
+        PSKeyVaultCertificate UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags);
 
-        CertificateOperation GetCertificateOperation(string vaultName, string certificateName);
+        PSKeyVaultCertificateOperation GetCertificateOperation(string vaultName, string certificateName);
 
-        CertificateOperation DeleteCertificateOperation(string vaultName, string certificateName);
+        PSKeyVaultCertificateOperation DeleteCertificateOperation(string vaultName, string certificateName);
 
-        CertificateOperation CancelCertificateOperation(string vaultName, string certificateName);
+        PSKeyVaultCertificateOperation CancelCertificateOperation(string vaultName, string certificateName);
 
-        CertificatePolicy GetCertificatePolicy(string vaultName, string certificateName);
+        PSKeyVaultCertificatePolicy GetCertificatePolicy(string vaultName, string certificateName);
 
-        CertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy);
+        PSKeyVaultCertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy);
 
-        IssuerBundle GetCertificateIssuer(string vaultName, string issuerName);
+        PSKeyVaultCertificateIssuer GetCertificateIssuer(string vaultName, string issuerName);
 
         IEnumerable<PSKeyVaultCertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
 
-        IssuerBundle SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);  
-              
-        IssuerBundle DeleteCertificateIssuer(string vaultName, string issuerName);
-        
+        PSKeyVaultCertificateIssuer SetCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, PSKeyVaultCertificateOrganizationDetails organizationDetails);
+
+        PSKeyVaultCertificateIssuer DeleteCertificateIssuer(string vaultName, string issuerName);
+
+        string BackupCertificate(string vaultName, string certificateName, string outputBlobPath);
+
+        PSKeyVaultCertificate RestoreCertificate(string vaultName, string inputBlobPath);
         #endregion
 
         #region Managed Storage actions
-        IEnumerable<ManagedStorageAccountListItem> GetManagedStorageAccounts( KeyVaultObjectFilterOptions options );
+        IEnumerable<PSKeyVaultManagedStorageAccountIdentityItem> GetManagedStorageAccounts( KeyVaultObjectFilterOptions options );
 
-        ManagedStorageAccount GetManagedStorageAccount( string vaultName, string managedStorageAccountName );
+        PSKeyVaultManagedStorageAccount GetManagedStorageAccount( string vaultName, string managedStorageAccountName );
 
-        ManagedStorageAccount SetManagedStorageAccount( string vaultName, string managedStorageAccountName, string storageResourceId, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, ManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags );
+        PSKeyVaultManagedStorageAccount SetManagedStorageAccount( string vaultName, string managedStorageAccountName, string storageResourceId, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, PSKeyVaultManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags );
 
-        ManagedStorageAccount UpdateManagedStorageAccount( string vaultName, string managedStorageAccountName, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, ManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags );
+        PSKeyVaultManagedStorageAccount UpdateManagedStorageAccount( string vaultName, string managedStorageAccountName, string activeKeyName, bool? autoRegenerateKey, TimeSpan? regenerationPeriod, PSKeyVaultManagedStorageAccountAttributes managedStorageAccountAttributes, Hashtable tags );
 
-        ManagedStorageAccount DeleteManagedStorageAccount( string vaultName, string managedStorageAccountName );
+        PSDeletedKeyVaultManagedStorageAccount DeleteManagedStorageAccount( string vaultName, string managedStorageAccountName );
 
-        ManagedStorageAccount RegenerateManagedStorageAccountKey( string vaultName, string managedStorageAccountName, string keyName );
+        PSKeyVaultManagedStorageAccount RegenerateManagedStorageAccountKey( string vaultName, string managedStorageAccountName, string keyName );
 
-        ManagedStorageSasDefinition GetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName );
+        PSKeyVaultManagedStorageSasDefinition GetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName );
 
-        IEnumerable<ManagedStorageSasDefinitionListItem> GetManagedStorageSasDefinitions( KeyVaultStorageSasDefinitiontFilterOptions options );
+        IEnumerable<PSKeyVaultManagedStorageSasDefinitionIdentityItem> GetManagedStorageSasDefinitions( KeyVaultStorageSasDefinitiontFilterOptions options );
 
-        ManagedStorageSasDefinition SetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName, IDictionary<string, string> parameters, ManagedStorageSasDefinitionAttributes sasDefinitionAttributes, Hashtable tags );
+        PSKeyVaultManagedStorageSasDefinition SetManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName, string templateUri, string sasType, string validityPeriod, PSKeyVaultManagedStorageSasDefinitionAttributes sasDefinitionAttributes, Hashtable tags );
 
-        ManagedStorageSasDefinition DeleteManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName );
+        PSDeletedKeyVaultManagedStorageSasDefinition DeleteManagedStorageSasDefinition( string vaultName, string managedStorageAccountName, string sasDefinitionName );
+
+        PSDeletedKeyVaultManagedStorageAccount GetDeletedManagedStorageAccount(string vaultName, string managedStorageAccountName);
+
+        PSDeletedKeyVaultManagedStorageSasDefinition GetDeletedManagedStorageSasDefinition(string vaultName, string managedStorageAccountName, string sasDefinitionName);
+
+        IEnumerable<PSDeletedKeyVaultManagedStorageAccountIdentityItem> GetDeletedManagedStorageAccounts(KeyVaultObjectFilterOptions options);
+
+        IEnumerable<PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem> GetDeletedManagedStorageSasDefinitions(KeyVaultObjectFilterOptions options);
+
+        PSKeyVaultManagedStorageAccount RecoverManagedStorageAccount(string vaultName, string deletedManagedStorageAccountName);
+
+        PSKeyVaultManagedStorageSasDefinition RecoverManagedStorageSasDefinition(string vaultname, string managedStorageAccountName, string sasDefinitionName);
+
+        void PurgeManagedStorageAccount(string vaultName, string managedStorageAccountName);
+
+        string BackupManagedStorageAccount(string vaultName, string managedStorageAccountName, string outputBlobPath);
+
+        PSKeyVaultManagedStorageAccount RestoreManagedStorageAccount(string vaultName, string inputBlobPath);
         #endregion
     }
 }

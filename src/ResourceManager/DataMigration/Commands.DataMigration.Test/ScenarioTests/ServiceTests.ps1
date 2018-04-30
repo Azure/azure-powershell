@@ -146,7 +146,7 @@ function Test-ConnectToSourceSqlServer
 		$project = Create-ProjectSqlSqlDb $rg $service
 		$taskName = Get-TaskName
 		$connectionInfo = New-SourceSqlConnectionInfo
-		$userName = "psadmin"
+		$userName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_USERNAME")
 		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$cred = Get-Creds $userName $password
 
@@ -185,8 +185,8 @@ function Test-ConnectToTargetSqlDb
 		$project = Create-ProjectSqlSqlDb $rg $service
 		$taskName = Get-TaskName
 		$connectionInfo = New-TargetSqlConnectionInfo
-		$userName = "admin0"
-		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_PASSWORD") 
+		$userName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_USERNAME") 
+		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_PASSWORD") 
 		$cred = Get-Creds $userName $password
 
 		$task = New-AzureRmDataMigrationTask -TaskType ConnectToTargetSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -TargetConnection $connectioninfo -TargetCred $cred
@@ -224,10 +224,10 @@ function Test-GetUserTableTask
 		$project = Create-ProjectSqlSqlDb $rg $service
 		$taskName = Get-TaskName
 		$connectionInfo = New-SourceSqlConnectionInfo
-		$userName = "psadmin"
+		$userName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_USERNAME")
 		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$cred = Get-Creds $userName $password
-		$selectedDbs = @("tpcc_528MB")
+		$selectedDbs = @("tpcc")
 
 		$task = New-AzureRmDataMigrationTask -TaskType GetUserTablesSql -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $connectioninfo -SourceCred $cred -SelectedDatabase $selectedDbs
 
@@ -266,30 +266,228 @@ function Test-MigrateSqlSqlDB
 
 		#Source Connection Details
 		$sourceConnectionInfo = New-SourceSqlConnectionInfo
-		$sourceUserName = "psadmin"
+		$sourceUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_USERNAME")
 		$sourcePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
 		$sourceCred = Get-Creds $sourceUserName $sourcePassword
 
 		#Target Connection Details
 		$targetConnectionInfo = New-TargetSqlConnectionInfo
-		$targetUserName = "admin0"
+		$targetUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_USERNAME")
 		$targetPassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDB_PASSWORD")
 		$targetCred = Get-Creds $targetUserName $targetPassword
 
 		$tableMap = New-Object 'system.collections.generic.dictionary[string,string]'
-		$tableMap.Add("dbo.CUSTOMER", "dbo.CUSTOMER")
-		$tableMap.Add("dbo.DISTRICT","dbo.DISTRICT")
-		$tableMap.Add("dbo.HISTORY","dbo.HISTORY")
-		$tableMap.Add("dbo.ITEM","dbo.ITEM")
-		$tableMap.Add("dbo.NEW_ORDER","dbo.NEW_ORDER")
-		$tableMap.Add("dbo.ORDER_LINE","dbo.ORDER_LINE")
-		$tableMap.Add("dbo.ORDERS","dbo.ORDERS")
-		$tableMap.Add("dbo.STOCK","dbo.STOCK")
-		$tableMap.Add("dbo.WAREHOUSE","dbo.WAREHOUSE")
+		$tableMap.Add("HR.COUNTRIES", "HR.COUNTRIES")
+		$tableMap.Add("HR.DEPARTMENTS","HR.DEPARTMENTS")
+		$tableMap.Add("HR.EMPLOYEES","HR.EMPLOYEES")
+		$tableMap.Add("HR.JOBS","HR.JOBS")
+		$tableMap.Add("HR.LOCATIONS","HR.LOCATIONS")
+		$tableMap.Add("HR.REGIONS","HR.REGIONS")
 
-		$selectedDbs = New-AzureRmDmsSqlServerSqlDbSelectedDB -Name tpcc_528MB -TargetDatabaseName psTarget -TableMap $tableMap
+		$sourceDbName = "HR"
+		$targetDbName = "psTarget"
+
+		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDb -Name $sourceDbName -TargetDatabaseName $targetDbName -TableMap $tableMap
+		Assert-AreEqual $sourceDbName $selectedDbs[0].Name
+		Assert-AreEqual $targetDbName $selectedDbs[0].TargetDatabaseName
+		Assert-AreEqual 6 $selectedDbs[0].TableMap.Count
+		Assert-AreEqual true $selectedDbs[0].TableMap.ContainsKey("HR.COUNTRIES")
+		Assert-AreEqual "HR.COUNTRIES" $selectedDbs[0].TableMap["HR.COUNTRIES"]
 
 		$migTask = New-AzureRmDmsTask -TaskType MigrateSqlServerSqlDb -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -SourceConnection $sourceConnectionInfo -SourceCred $sourceCred -TargetConnection $targetConnectionInfo -TargetCred $targetCred -SelectedDatabase  $selectedDbs
+
+		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual 1 $task.Count		
+		Assert-AreEqual $sourceDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].Name
+		Assert-AreEqual $targetDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].TargetDatabaseName
+
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			SleepTask 15
+			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-ConnectToTargetSqlDbMi
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectSqlSqlDbMi $rg $service
+		$taskName = Get-TaskName
+		$connectionInfo = New-TargetSqlMiConnectionInfo
+		$userName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_USERNAME")
+		$password = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_PASSWORD")
+		$cred = Get-Creds $userName $password
+
+		$task = New-AzureRmDataMigrationTask -TaskType ConnectToTargetSqlDbMi -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -TargetConnection $connectioninfo -TargetCred $cred
+
+		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual 1 $task.Count
+		
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			SleepTask 15
+			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-MigrateSqlSqlDBMi
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectSqlSqlDbMi $rg $service
+		$taskName = Get-TaskName
+
+		#Source Connection Details
+		$sourceConnectionInfo = New-SourceSqlConnectionInfo
+		$sourceUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_USERNAME")
+		$sourcePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQL_PASSWORD")
+		$sourceCred = Get-Creds $sourceUserName $sourcePassword
+
+		#Target Connection Details
+		$targetConnectionInfo = New-TargetSqlMiConnectionInfo
+		$targetUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_USERNAME")
+		$targetPassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_PASSWORD")
+		$targetCred = Get-Creds $targetUserName $targetPassword
+		
+		$blobSasUri = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("BLOB_SAS_URI")
+		$fileSharePath = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PATH")
+		$fileShareUsername = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_USERNAME")
+		$fileSharePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PASSWORD")
+		$fileShareCred = Get-Creds $fileShareUsername $fileSharePassword
+
+		$backupFileShare = New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+		Assert-AreEqual $fileSharePath $backupFileShare.Path
+		Assert-AreEqual $fileShareUserName $backupFileShare.Username
+		Assert-AreEqual $fileSharePassword $backupFileShare.Password
+
+		$sourceDbName = "HR"
+		$targetDbName = "HR_PSTEST"
+
+		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name $sourceDbName -TargetDatabaseName $targetDbName -BackupFileShare $backupFileShare
+
+		Assert-AreEqual $sourceDbName $selectedDbs[0].Name
+		Assert-AreEqual $targetDbName $selectedDbs[0].RestoreDatabaseName
+		Assert-AreEqual $backupFileShare.Path $selectedDbs[0].BackupFileShare.Path
+
+        $selectedLogins = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_LOGINS")
+        $selectedLogins = $selectedLogins -split ","
+
+        $selectedJobs = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("MI_AGENTJOBS")
+        $selectedJobs = $selectedJobs -split ","
+
+		$migTask = New-AzureRmDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
+		  -ResourceGroupName $rg.ResourceGroupName `
+		  -ServiceName $service.Name `
+		  -ProjectName $project.Name `
+		  -TaskName $taskName `
+		  -TargetConnection $targetConnectionInfo `
+		  -TargetCred $targetCred `
+		  -SourceConnection $sourceConnectionInfo `
+		  -SourceCred $sourceCred `
+		  -BackupBlobSasUri $blobSasUri `
+		  -BackupFileShare $backupFileShare `
+		  -SelectedDatabase $selectedDbs `
+          -SelectedAgentJobs $selectedJobs `
+          -SelectedLogins $selectedLogins 
+
+		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+
+		Assert-AreEqual $taskName $task[0].Name
+		Assert-AreEqual $backupFileShare.Path $task.ProjectTask.Properties.Input.BackupFileShare.Path
+		Assert-AreEqual $selectedJobs[0] $task.ProjectTask.Properties.Input.SelectedAgentJobs[0]
+		Assert-AreEqual $selectedLogins[0] $task.ProjectTask.Properties.Input.SelectedLogins[0]
+		Assert-AreEqual $sourceDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].Name
+		Assert-AreEqual $targetDbName $task.ProjectTask.Properties.Input.SelectedDatabases[0].RestoreDatabaseName
+
+		Assert-AreEqual 1 $task.Count
+		
+		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
+		{
+			SleepTask 15
+			$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
+		}
+
+		Assert-AreEqual "Succeeded" $task.ProjectTask.Properties.State
+
+		Remove-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Force
+		
+		Assert-ThrowsContains { $all = Get-AzureRmDmsTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand ;} "NotFound"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+function Test-ValidateMigrationInputSqlSqlDbMi
+{
+	$rg = Create-ResourceGroupForTest
+	
+	try
+	{
+		$service = Create-DataMigrationService($rg)
+		$project = Create-ProjectSqlSqlDbMi $rg $service
+		$taskName = Get-TaskName
+
+		#Target Connection Details
+		$targetConnectionInfo = New-TargetSqlMiConnectionInfo
+		$targetUserName = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_USERNAME")
+		$targetPassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("SQLDBMI_PASSWORD")
+		$targetCred = Get-Creds $targetUserName $targetPassword
+		
+		$blobSasUri = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("BLOB_SAS_URI")
+		$fileSharePath = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PATH")
+		$fileShareUsername = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_USERNAME")
+		$fileSharePassword = [Microsoft.Azure.Commands.DataMigrationConfig]::GetConfigString("FILESHARE_PASSWORD")
+		$fileShareCred = Get-Creds $fileShareUsername $fileSharePassword
+
+		$backupFileShare = New-AzureRmDmsFileShare -Path $fileSharePath -Credential $fileShareCred
+
+		$selectedDbs = New-AzureRmDataMigrationSelectedDB -MigrateSqlServerSqlDbMi -Name "HR" -TargetDatabaseName "HR_PSTEST1" -BackupFileShare $backupFileShare
+
+		$migTask = New-AzureRmDataMigrationTask -TaskType ValidateSqlServerSqlDbMi `
+		  -ResourceGroupName $rg.ResourceGroupName `
+		  -ServiceName $service.Name `
+		  -ProjectName $project.Name `
+		  -TaskName $taskName `
+		  -TargetConnection $targetConnectionInfo `
+		  -TargetCred $targetCred `
+		  -BackupBlobSasUri $blobSasUri `
+		  -BackupFileShare $backupFileShare `
+		  -SelectedDatabase $selectedDbs
 
 		$task = Get-AzureRmDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 

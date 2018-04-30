@@ -80,7 +80,7 @@ CmdletsToExport = 'Add-AzureRmIotHubKey', 'Get-AzureRmIotHubEventHubConsumerGrou
                'Add-AzureRmIotHubEventHubConsumerGroup', 'New-AzureRmIotHub', 
                'New-AzureRmIotHubExportDevices', 'New-AzureRmIotHubImportDevices', 
                'Remove-AzureRmIotHub', 'Remove-AzureRmIotHubEventHubConsumerGroup', 
-               'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub', 
+               'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub', 'Update-AzureRmIotHub',
                'Add-AzureRmIotHubCertificate', 'Get-AzureRmIotHubCertificate', 
                'Get-AzureRmIotHubCertificateVerificationCode', 
                'Set-AzureRmIotHubVerifiedCertificate', 

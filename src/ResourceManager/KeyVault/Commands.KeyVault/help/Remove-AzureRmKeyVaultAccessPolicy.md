@@ -78,6 +78,37 @@ Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> [-EnabledForDeplo
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ResourceIdByObjectId
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> -ObjectId <String> [-ApplicationId <Guid>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByServicePrincipalName
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> -ServicePrincipalName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByUserPrincipalName
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> -UserPrincipalName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByEmail
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> -EmailAddress <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdForVault
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> [-EnabledForDeployment]
+ [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Remove-AzureRmKeyVaultAccessPolicy** cmdlet removes all permissions for a user or application or for all users and applications from a key vault.
 Even if you remove all permissions, the owner of the Azure subscription that contains the key vault can add permissions to the key vault.
@@ -123,13 +154,13 @@ Specifies the ID of application whose permissions should be removed
 
 ```yaml
 Type: Guid
-Parameter Sets: ByObjectId, InputObjectByObjectId
+Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -153,13 +184,13 @@ Specifies the user email address of the user whose access you want to remove.
 
 ```yaml
 Type: String
-Parameter Sets: ByEmail, InputObjectByEmail
+Parameter Sets: ByEmail, InputObjectByEmail, ResourceIdByEmail
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -168,13 +199,13 @@ If specified, disables the retrieval of secrets from this key vault by the Micro
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ForVault, InputObjectForVault
+Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -183,13 +214,13 @@ If specified, disables the retrieval of secrets from this key vault by Azure Dis
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ForVault, InputObjectForVault
+Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -198,13 +229,13 @@ If specified, disables the retrieval of secrets from this key vault by Azure Res
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ForVault, InputObjectForVault
+Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -228,13 +259,13 @@ Specifies the object ID of the user or service principal in Azure Active Directo
 
 ```yaml
 Type: String
-Parameter Sets: ByObjectId, InputObjectByObjectId
+Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -266,6 +297,21 @@ Aliases:
 Required: False
 Position: 1
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmail, ResourceIdForVault
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
@@ -276,13 +322,13 @@ Specify the application ID, also known as client ID, registered for the applicat
 
 ```yaml
 Type: String
-Parameter Sets: ByServicePrincipalName, InputObjectByServicePrincipalName
+Parameter Sets: ByServicePrincipalName, InputObjectByServicePrincipalName, ResourceIdByServicePrincipalName
 Aliases: SPN
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -291,13 +337,13 @@ Specifies the user principal name of the user whose access you want to remove.
 
 ```yaml
 Type: String
-Parameter Sets: ByUserPrincipalName, InputObjectByUserPrincipalName
+Parameter Sets: ByUserPrincipalName, InputObjectByUserPrincipalName, ResourceIdByUserPrincipalName
 Aliases: UPN
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -313,7 +359,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
