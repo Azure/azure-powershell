@@ -49,7 +49,7 @@ $ErrorActionPreference = "Stop"
     Select-AzureRmSubscription -SubscriptionId $subscriptionId;
 
 ####################################################################################################################################
-# Section2:  Create AAD app if encryption is enabled using AAD. Fill in $aadClientSecret variable if AAD app was already created
+# Section2:  Create AAD app if encryption is enabled using AAD. Fill in $aadClientSecret variable if AAD app was already created.
 ####################################################################################################################################
 
     $azureResourcesModule = Get-Module 'AzureRM.Resources';
@@ -101,14 +101,6 @@ $ErrorActionPreference = "Stop"
                 return;
             }
             $aadClientID = $SvcPrincipals[0].ApplicationId;
-        }
-    }
-    else
-    {
-        if($azureResourcesModule.Version.Major -lt 6)
-        {
-            Write-Error "Please specify AAD application details, or install AzurePowershell version 6.0.0.0 or above to use AzureDiskEncryption without AAD";
-            return;
         }
     }
 
@@ -200,17 +192,17 @@ $ErrorActionPreference = "Stop"
 ########################################################################################################################
 # Section3:  Displays values that should be used while enabling encryption. Please note these down
 ########################################################################################################################
-    Write-Host "Please note down below aadClientID, aadClientSecret, diskEncryptionKeyVaultUrl, keyVaultResourceId values that will be needed to enable encryption on your VMs " -foregroundcolor Green;
+    Write-Host "Please note down below details that will be needed to enable encryption on your VMs " -foregroundcolor Green;
     if($aadAppName)
     {
         Write-Host "`t aadClientID: $aadClientID" -foregroundcolor Green;
         Write-Host "`t aadClientSecret: $aadClientSecret" -foregroundcolor Green;
     }
-    Write-Host "`t diskEncryptionKeyVaultUrl: $diskEncryptionKeyVaultUrl" -foregroundcolor Green;
-    Write-Host "`t keyVaultResourceId: $keyVaultResourceId" -foregroundcolor Green;
+    Write-Host "`t DiskEncryptionKeyVaultUrl: $diskEncryptionKeyVaultUrl" -foregroundcolor Green;
+    Write-Host "`t DiskEncryptionKeyVaultId: $keyVaultResourceId" -foregroundcolor Green;
     if($keyEncryptionKeyName)
     {
-        Write-Host "`t keyEncryptionKeyURL: $keyEncryptionKeyUrl" -foregroundcolor Green;
+        Write-Host "`t KeyEncryptionKeyURL: $keyEncryptionKeyUrl" -foregroundcolor Green;
         Write-Host "`t KeyEncryptionKeyVaultId: $keyVaultResourceId" -foregroundcolor Green;
     }
     Write-Host "Please Press [Enter] after saving values displayed above. They are needed to enable encryption using Set-AzureRmVmDiskEncryptionExtension cmdlet" -foregroundcolor Green;
@@ -258,6 +250,12 @@ foreach($vm in $allVMs)
     }
     else
     {
+        if($azureResourcesModule.Version.Major -lt 6)
+        {
+            Write-Error "Please specify AAD application details, or install AzurePowershell version 6.0.0.0 or above to use AzureDiskEncryption without AAD";
+            return;
+        }
+
         if(-not $kek)
         {
             Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
