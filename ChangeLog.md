@@ -73,6 +73,9 @@
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information
 
+#### AzureRM.IotHub
+* Enable tags and Basic Sku to the IotHub
+
 #### AzureRM.KeyVault
 * Breaking changes to support piping scenarios
 * Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
