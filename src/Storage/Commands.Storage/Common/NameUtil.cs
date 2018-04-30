@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>True for valid container name, otherwise return false</returns>
         public static bool IsValidContainerName(string containerName)
         {
-            Regex regex = new Regex(@"^\$root$|^\$logs$|^[a-z0-9]([a-z0-9]|(?<=[a-z0-9])-(?=[a-z0-9])){2,62}$");
+            Regex regex = new Regex(@"^\$root$|^\$logs$|^\$web$|^[a-z0-9]([a-z0-9]|(?<=[a-z0-9])-(?=[a-z0-9])){2,62}$");
             return regex.IsMatch(containerName);
         }
 
@@ -88,8 +88,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 string root = "$root";
                 string logs = "$logs";
+                string web = "$web";
 
-                if (root.IndexOf(containerPrefix) == 0 || logs.IndexOf(containerPrefix) == 0)
+                if (root.IndexOf(containerPrefix) == 0 || logs.IndexOf(containerPrefix) == 0 || web.IndexOf(containerPrefix) == 0)
                 {
                     return true;
                 }

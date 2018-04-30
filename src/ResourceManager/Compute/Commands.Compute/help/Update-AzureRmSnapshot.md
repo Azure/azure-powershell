@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermsnapshot
@@ -70,7 +70,7 @@ Run cmdlet in the background and return a Job to track progress.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -100,7 +100,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -115,7 +115,7 @@ Specifies a local snapshot object.
 ```yaml
 Type: PSSnapshot
 Parameter Sets: FriendMethod
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -145,7 +145,7 @@ Specifies a local snapshot update object.
 ```yaml
 Type: PSSnapshotUpdate
 Parameter Sets: DefaultParameter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -201,4 +201,3 @@ Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshot
 ## NOTES
 
 ## RELATED LINKS
-

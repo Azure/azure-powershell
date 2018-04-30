@@ -266,7 +266,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement
                       .ForMember(c => c.SshSettings, o => o.MapFrom(r => r.SSH));
                 cfg.CreateMap<PVM.WindowsProvisioningConfigurationSet, NSM.ConfigurationSet>()
                       .ForMember(c => c.PublicIPs, o => o.Ignore())
-                      .ForMember(c => c.StoredCertificateSettings, o => o.Ignore())
                       .ForMember(c => c.AdminPassword, o => o.MapFrom(r => r.AdminPassword == null ? null : r.AdminPassword.ConvertToUnsecureString()));
                 cfg.CreateMap<PVM.ProvisioningConfigurationSet, NSM.ConfigurationSet>()
                       .ForMember(c => c.PublicIPs, o => o.Ignore());

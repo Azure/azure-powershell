@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         public string Status { get; set; }
         public string Scope { get; set; }
         public IList<string> Actions { get; set; }
-        public string ProvisioningState { get; set;}
+        public string ProvisioningState { get; set; }
         public CallbackConfig Config { get; set; }
 
     }

@@ -19,11 +19,18 @@ using Microsoft.Azure.KeyVault.Models;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Undo, "AzureKeyVaultCertificateRemoval",
-    SupportsShouldProcess = true,
-    HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( CertificateBundle ) )]
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = DefaultParameterSet)]
+    [OutputType(typeof(PSKeyVaultCertificate))]
     public class UndoAzureKeyVaultCertificateRemoval : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string DefaultParameterSet = "Default";
+        private const string InputObjectParameterSet = "InputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         /// <summary>
@@ -31,7 +38,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DefaultParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -41,20 +48,36 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DefaultParameterSet,
             HelpMessage = "Certificate name. Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.CertificateName )]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Certificate object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = InputObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "Deleted Certificate object")]
+        [ValidateNotNullOrEmpty]
+        public PSDeletedKeyVaultCertificateIdentityItem InputObject { get; set; }
+
         #endregion
 
-        public override void ExecuteCmdlet( )
+        public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                Name = InputObject.Name;
+            }
+
             if ( ShouldProcess( Name, Properties.Resources.RecoverCertificate ) )
             {
-                CertificateBundle certificate = DataServiceClient.RecoverCertificate(VaultName, Name);
-
+                PSKeyVaultCertificate certificate = DataServiceClient.RecoverCertificate(VaultName, Name);
                 WriteObject( certificate );
             }
         }

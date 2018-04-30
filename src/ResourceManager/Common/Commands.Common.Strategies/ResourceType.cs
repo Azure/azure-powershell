@@ -15,11 +15,9 @@
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public sealed class ResourceType
-    {
-        public const string ResourceGroups = "resourceGroups";
-
+    {       
         public static ResourceType ResourceGroup { get; }
-            = new ResourceType(null, ResourceGroups);
+            = new ResourceType(null, ResourceId.ResourceGroups);
 
         /// <summary>
         /// A resource type namespace, for example 'Microsoft.Network'.

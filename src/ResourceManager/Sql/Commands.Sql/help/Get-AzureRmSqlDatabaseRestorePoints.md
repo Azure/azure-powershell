@@ -38,6 +38,7 @@ Location                 : Central US
 RestorePointType         : CONTINUOUS
 RestorePointCreationDate : 
 EarliestRestoreDate      : 8/12/2015 12:00:00 AM
+RestorePointLabel        : RestorePoint01
 ```
 
 This command returns all available restore points for the Azure SQL Database named Database01.

@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Models
 {
-    using AutoMapper;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.Azure.Management.ApiManagement.Models;
     using System;

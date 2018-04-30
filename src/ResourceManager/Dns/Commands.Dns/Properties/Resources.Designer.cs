@@ -214,6 +214,15 @@ namespace Microsoft.Azure.Commands.Dns.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zone &apos;{0}&apos; was created in resource group &apos;{1}&apos;. The SOA record for this zone has been created automatically. Use Get-AzureRmDnsRecordSet to retrieve it..
+        /// </summary>
+        internal static string Success_NewPrivateZone {
+            get {
+                return ResourceManager.GetString("Success_NewPrivateZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Record set &apos;{0}&apos; was created in zone &apos;{1}&apos;.The record set is empty. Use Add-AzureRmDnsRecordConfig to add {2} records to it and Set-AzureRmDnsRecordSet to save your changes..
         /// </summary>
         internal static string Success_NewRecordSet {

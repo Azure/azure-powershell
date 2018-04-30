@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate a failover operation.
+    ///    Starts a unplanned failover operation.
     /// </summary>
     [Cmdlet(
         VerbsLifecycle.Start,
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrUnplannedFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Recovery Plan object.
+        ///     Gets or sets an ASR recovery plan object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets an ASR replication protected item.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPIObject,
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
         /// <summary>
-        ///     Gets or sets Failover direction for the recovery plan.
+        ///     Gets or sets the failover direction.
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateSet(
@@ -69,28 +69,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Direction { get; set; }
 
         /// <summary>
-        ///     Gets or sets switch parameter. This is required to PerformSourceSideActions.
+        ///     Switch parameter to perform operation in source side before starting unplanned failover.
         /// </summary>
         [Parameter]
         [Alias("PerformSourceSideActions")]
         public SwitchParameter PerformSourceSideAction { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets data encryption certificate file path for failover of protected item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionPrimaryCertFile { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets data encryption certificate file path for failover of protected item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionSecondaryCertFile { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Point object.
+        ///     Gets or sets a custom recovery point to test failover the protected machine to.
         /// </summary>
         [Parameter(
            ParameterSetName = ASRParameterSets.ByRPIObject,
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPoint RecoveryPoint { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Tag for the Recovery Point Type.
+        ///     Gets or sets recovery tag to failover to.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -111,7 +111,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateSet(
             Constants.RecoveryTagLatest,
             Constants.RecoveryTagLatestAvailable,
-            Constants.RecoveryTagLatestAvailableApplicationConsistent)]
+            Constants.RecoveryTagLatestAvailableApplicationConsistent,
+            Constants.RecoveryTagLatestAvailableCrashConsistent)]
         public string RecoveryTag { get; set; }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Starts RPI Unplanned failover.
+        ///     Starts replication protected item unplanned failover.
         /// </summary>
         private void StartRPIUnplannedFailover()
         {
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         PrimaryKekCertificatePfx = this.primaryKekCertpfx,
                         SecondaryKekCertificatePfx = this.secondaryKekCertpfx,
                         VaultLocation = "dummy",
-                        RecoveryPointId = this.RecoveryPoint ==null ? null : this.RecoveryPoint.ID
+                        RecoveryPointId = this.RecoveryPoint == null ? null : this.RecoveryPoint.ID
                     };
                     input.Properties.ProviderSpecificDetails = failoverInput;
                 }
@@ -206,6 +207,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             {
                 this.InMageUnplannedFailover(input);
             }
+            else if (0 == string.Compare(
+               this.ReplicationProtectedItem.ReplicationProvider,
+               Constants.A2A,
+               StringComparison.OrdinalIgnoreCase))
+            {
+                var failoverInput = new A2AFailoverProviderInput()
+                {
+                    RecoveryPointId = this.RecoveryPoint == null ? null : this.RecoveryPoint.ID
+                };
+
+                input.Properties.ProviderSpecificDetails = failoverInput;
+            }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryUnplannedFailover(
                 this.fabricName,
@@ -220,7 +233,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     InMage Unplanned failover.
+        ///     InMage unplanned failover.
         /// </summary>
         private void InMageUnplannedFailover(UnplannedFailoverInput input)
         {
@@ -271,7 +284,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     InMageAzureV2 Unplanned failover.
+        ///     InMageAzureV2 unplanned failover.
         /// </summary>
         private void InMageAzureV2UnplannedFailover(UnplannedFailoverInput input)
         {
@@ -315,7 +328,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Starts RP Unplanned failover.
+        ///     Starts recovery plan unplanned failover.
         /// </summary>
         private void StartRpUnplannedFailover()
         {
@@ -385,7 +398,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 ? InMageV2RpRecoveryPointType.LatestApplicationConsistent
                                 : this.RecoveryTag == Constants.RecoveryTagLatestAvailable
                                     ? InMageV2RpRecoveryPointType.LatestProcessed
-                                    : InMageV2RpRecoveryPointType.Latest;
+                                    : this.RecoveryTag == Constants.RecoveryTagLatestAvailableCrashConsistent
+                                        ? InMageV2RpRecoveryPointType.LatestCrashConsistent
+                                        : InMageV2RpRecoveryPointType.Latest;
 
                         // Create the InMageAzureV2 Provider specific input.
                         var recoveryPlanInMageAzureV2FailoverInput =
@@ -426,6 +441,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         recoveryPlanUnplannedFailoverInputProperties.ProviderSpecificDetails.Add(
                             recoveryPlanInMageFailoverInput);
                     }
+                }
+                else if (0 == string.Compare(
+                   replicationProvider,
+                   Constants.A2A,
+                   StringComparison.OrdinalIgnoreCase))
+                {
+                    A2ARpRecoveryPointType recoveryPointType = A2ARpRecoveryPointType.Latest;
+
+                    switch (this.RecoveryTag)
+                    {
+                        case Constants.RecoveryTagLatestAvailableCrashConsistent:
+                            recoveryPointType = A2ARpRecoveryPointType.LatestCrashConsistent;
+                            break;
+                        case Constants.RecoveryTagLatestAvailableApplicationConsistent:
+                            recoveryPointType = A2ARpRecoveryPointType.LatestApplicationConsistent;
+                            break;
+                        case Constants.RecoveryTagLatestAvailable:
+                            recoveryPointType = A2ARpRecoveryPointType.LatestProcessed;
+                            break;
+                        case Constants.RecoveryTagLatest:
+                            recoveryPointType = A2ARpRecoveryPointType.Latest;
+                            break;
+                    }
+
+                    var recoveryPlanA2AFailoverInput = new RecoveryPlanA2AFailoverInput()
+                    {
+                        RecoveryPointType = recoveryPointType
+                    };
+                    recoveryPlanUnplannedFailoverInputProperties.ProviderSpecificDetails.Add(recoveryPlanA2AFailoverInput);
                 }
             }
 

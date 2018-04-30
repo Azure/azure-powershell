@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Sets Azure Site Revcovery Notification / Alert.
+    ///    Configure Azure Site Recovery notification settings (email notification) for the vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
@@ -36,16 +36,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class SetAzureRmRecoveryServicesAsrAlertSetting : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets EmailSubscriptionOwner .Mail to subscription owner.
+        ///     Switch paramter specifies enable notification to subscription owner.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EmailToSubscriptionOwner, Mandatory = true)]
         public SwitchParameter EnableEmailSubscriptionOwner { get; set; }
 
+        /// <summary>
+        ///     Switch parameter specifies enable notification to subscription owner.
+        /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.DisableEmailToSubcriptionOwner, Mandatory = true)]
         public SwitchParameter DisableEmailToSubscriptionOwner { get; set; }
 
         /// <summary>
-        ///     Gets or sets the custom email list.
+        ///     Gets or sets  alert / notification sent to emails.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Set, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.DisableEmailToSubcriptionOwner)]
@@ -54,7 +57,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string[] CustomEmailAddress { get; set; }
 
         /// <summary>
-        ///     Gets or sets locale.
+        ///     Gets or sets mail language of alert /notifcation to user(supported culture codes from microsoft). 
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Set, Mandatory = false)]
         [Parameter(ParameterSetName = ASRParameterSets.DisableEmailToSubcriptionOwner)]
@@ -63,7 +66,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string LocaleID { get; set; }
 
         /// <summary>
-        ///     Gets or sets switch parameter to disable notification.
+        ///     Switch parameter flag to disable all notification.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Disable, Mandatory = true)]
         public SwitchParameter DisableNotification { get; set; }

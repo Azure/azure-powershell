@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// Engine for REST API calls using Azure SDK.
     /// </summary>
     public sealed class SdkEngine : IEngine
-    {
+    {        
         string _SubscriptionId { get; }
 
         public SdkEngine(string subscriptionId)
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         }
 
         public string GetId(IEntityConfig config)
-            => new[] { "subscriptions", _SubscriptionId } 
+            => new[] { ResourceId.Subscriptions, _SubscriptionId } 
                 .Concat(config.GetIdFromSubscription()) 
                 .IdToString();
     }
