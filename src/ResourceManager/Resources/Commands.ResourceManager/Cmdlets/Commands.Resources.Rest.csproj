@@ -50,7 +50,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="System.Management.Automation" />
     <Reference Include="System.Runtime.Caching" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
@@ -13,16 +13,46 @@ Creates a key in a key vault or imports a key into a key vault.
 
 ## SYNTAX
 
-### Create (Default)
+### InteractiveCreate (Default)
 ```
 Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable]
- [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>]
+ [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Import
+### InteractiveImport
 ```
 Add-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
+ [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectCreate
+```
+Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -Destination <String> [-Disable]
+ [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectImport
+```
+Add-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <String>
+ [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
+ [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdCreate
+```
+Add-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> -Destination <String> [-Disable]
+ [-KeyOps <String[]>] [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdImport
+```
+Add-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
  [-KeyFilePassword <SecureString>] [-Destination <String>] [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -43,7 +73,7 @@ For any of these operations, you can provide key attributes or accept default se
 If you create or import a key that has the same name as an existing key in your key vault, the
 original key is updated with the values that you specify for the new key. You can access the
 previous values by using the version-specific URI for that version of the key. To learn about key
-versions and the URI structure, see [About Keys andSecrets](http://go.microsoft.com/fwlink/?linkid=518560)
+versions and the URI structure, see [About Keys and Secrets](http://go.microsoft.com/fwlink/?linkid=518560)
 in the Key Vault REST API documentation.
 
 Note: To import a key from your own hardware security module, you must first generate a BYOK
@@ -178,8 +208,8 @@ extension, it imports the key as a software-protected key.
 
 ```yaml
 Type: String
-Parameter Sets: Create
-Aliases: 
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
+Aliases:
 Accepted values: HSM, Software
 
 Required: True
@@ -191,8 +221,8 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Import
-Aliases: 
+Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Aliases:
 Accepted values: HSM, Software
 
 Required: False
@@ -209,7 +239,7 @@ the key will fail. Use this parameter if you are preloading keys that you intend
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -227,12 +257,27 @@ parameter, the key does not expire.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Vault object.
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: InputObjectCreate, InputObjectImport
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -244,8 +289,8 @@ name extension.
 
 ```yaml
 Type: SecureString
-Parameter Sets: Import
-Aliases: 
+Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Aliases:
 
 Required: False
 Position: Named
@@ -268,8 +313,8 @@ When you specify this parameter, the *Destination* parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: Import
-Aliases: 
+Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
+Aliases:
 
 Required: True
 Position: Named
@@ -295,12 +340,12 @@ the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=61
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -330,12 +375,42 @@ parameter, the key can be used immediately.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Vault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdCreate, ResourceIdImport
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Size
+RSA key size, in bits. If not specified, the service will provide a safe default.
+
+```yaml
+Type: Int32
+Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -352,7 +427,7 @@ Aliases: Tags
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -362,13 +437,13 @@ FQDN of a key vault based on the name that this parameter specifies and your cur
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: InteractiveCreate, InteractiveImport
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -413,7 +488,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
 
 ## NOTES
 

@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Removes Azure Site Recovery Network mapping.
+    ///     Deletes the specified ASR network mapping from the Recovery Services vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Network mapping object.
+        ///     Gets or sets network mapping object corresponding to the ASR network mapping to be deleted.
         /// </summary>
         [Parameter(
             Mandatory = true,

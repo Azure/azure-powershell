@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="16.3.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="10.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="17.5.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="17.0.0-preview" />
   </ItemGroup>
 </Project>

@@ -40,6 +40,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Insights", "..\Insights\Commands.Insights\Commands.Insights.csproj", "{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Compute", "..\..\Common\Commands.Common.Compute\Commands.Common.Compute.csproj", "{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Compute.Tests", "..\..\Common\Commands.Common.Compute.Tests\Commands.Common.Compute.Tests.csproj", "{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +122,14 @@ Global
 		{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,5 +140,6 @@ Global
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{CFF09E81-1E31-444E-B4D4-A21E946C29E2} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{C2CF99A2-D35E-4AED-AFB9-C26960AF1D0D} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{8A4E00AA-5F65-4A95-B9B0-FEC06486555E} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

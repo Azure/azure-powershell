@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate resync / repair replication.
+    ///    Starts replication resynchronization.
     /// </summary>
     [Cmdlet(
         VerbsLifecycle.Start,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrResynchronizeReplicationJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Resource Id.
+        ///     Gets or sets resource Id of replication protected item to resynchronize.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByResourceId,
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ResourceId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item to resynchronize replication for.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,

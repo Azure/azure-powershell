@@ -61,7 +61,7 @@ Indicates that this cmdlet launches Remote Desktop after it gets the .rdp file.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Launch
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -76,7 +76,7 @@ Specifies the local full path where this cmdlet stores the .rdp file.
 ```yaml
 Type: String
 Parameter Sets: Download
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: Launch
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -118,7 +118,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -140,4 +140,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

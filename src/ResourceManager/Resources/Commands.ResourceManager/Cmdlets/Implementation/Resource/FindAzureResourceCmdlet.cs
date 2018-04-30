@@ -204,6 +204,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+        	WriteWarning("Find-AzureRmResource: This cmdlet will be deprecated in an upcoming breaking change release. The functionality of this cmdlet will be moved into Get-AzureRmResource.");
             this.DefaultApiVersion = string.IsNullOrWhiteSpace(this.ApiVersion) ? Constants.ResourcesApiVersion : this.ApiVersion;
 
             if (!this.TenantLevel)
