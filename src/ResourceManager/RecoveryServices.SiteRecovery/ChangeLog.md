@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.2.5
 * Fixed Authentication Header
 * Set minimum dependency of module to PowerShell 5.0
 

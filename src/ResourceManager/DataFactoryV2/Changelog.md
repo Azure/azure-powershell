@@ -19,6 +19,8 @@
 -->
 
 ## Current Release
+
+## Version 0.5.4
 * Set minimum dependency of module to PowerShell 5.0
 * Updated the ADF .Net SDK version to 0.7.0-preview containing following changes:
     - Added execution parameters and connection managers property on ExecuteSSISPackage Activity
