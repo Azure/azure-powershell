@@ -549,50 +549,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                         resourceGroup,
                         model.ServerName,
                         model.ElasticPoolName);
-            /**
-                        if (model.CreateMode.Equals("RestoreLongTermRetentionBackup") && resourceId.Contains("/providers/Microsoft.Sql"))
-                        {
-                            // Restore database
-                            Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, new Management.Sql.Models.Database
-                            {
-                                Location = model.Location,
-                                CreateMode = model.CreateMode,
-                                SourceDatabaseId = resourceId,
-                                RecoveryServicesRecoveryPointId = resourceId,
-                                RestorePointInTime = restorePointInTime,
-                                ElasticPoolId = elasticPoolId
-                            });
 
-                            return new AzureSqlDatabaseModel(resourceGroup, model.ServerName, database);
-                        }
-                        else
-                        {
-                            DatabaseCreateOrUpdateParameters parameters = new DatabaseCreateOrUpdateParameters()
-                            {
-                                Location = model.Location,
-                                Properties = new DatabaseCreateOrUpdateProperties()
-                                {
-                                    Edition = model.Edition == DatabaseEdition.None ? null : model.Edition.ToString(),
-                                    ElasticPoolName = model.ElasticPoolName,
-                                    RequestedServiceObjectiveName = model.RequestedServiceObjectiveName,
-                                    SourceDatabaseId = resourceId,
-                                    RecoveryServicesRecoveryPointResourceId = resourceId,
-                                    RestorePointInTime = restorePointInTime,
-                                    CreateMode = model.CreateMode
-                                }
-                            };
-                            var resp = Communicator.LegacyRestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, parameters);
-                            return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroup, model.ServerName, resp);
-
-                        }
-*/
             // Restore database
             var dbModel = new Management.Sql.Models.Database()
             {
                 Location = model.Location,
                 CreateMode = model.CreateMode,
-                //SourceDatabaseId = resourceId,
-                RecoveryServicesRecoveryPointId = resourceId,
+                //RecoveryServicesRecoveryPointId = resourceId,
                 RestorePointInTime = restorePointInTime,
                 ElasticPoolId = elasticPoolId,
                 Sku = model.Sku
@@ -602,14 +565,23 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 dbModel.SourceDatabaseId = resourceId;
                 dbModel.RecoverableDatabaseId = resourceId;
+                dbModel.RecoveryServicesRecoveryPointId = resourceId;
             }
             else if(model.CreateMode.Equals("Restore"))
             {
                 dbModel.RestorableDroppedDatabaseId = resourceId;
+                dbModel.RecoveryServicesRecoveryPointId = resourceId;
+            }
+            else if(model.CreateMode.Equals("RestoreLongTermRetentionBackup") && resourceId.Contains("/providers/Microsoft.Sql"))
+            {
+                // LTR V2
+                dbModel.LongTermRetentionBackupResourceId = resourceId;
+                dbModel.SourceDatabaseId = resourceId;
             }
             else
             {
                 dbModel.SourceDatabaseId = resourceId;
+                dbModel.RecoveryServicesRecoveryPointId = resourceId;
             }
 
             Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);

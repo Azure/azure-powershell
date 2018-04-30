@@ -155,6 +155,7 @@ function Test-DatabaseBackupLongTermRetentionPolicy
 	Assert-True { $result.RecoveryServicesBackupPolicyResourceId -eq $policyResourceId }
 }
 
+# LTR-V1 restore tests need to be removed once the service is retired completely
 function Test-RestoreLongTermRetentionBackup
 {
 	$location = "North Europe"
@@ -246,7 +247,7 @@ function Test-LongTermRetentionV2
 	$databaseName = "testdb2"
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
-	$restoredDatabase = "testdb3"
+	$restoredDatabase = "testdb5"
 	$databaseWithRemovableBackup = "testdb";
 
 	# Basic Get Tests
@@ -279,9 +280,12 @@ function Test-LongTermRetentionV2
 	Assert-AreEqual $db.DatabaseName $restoredDatabase
 
 	# Test Remove with Piping
-	#Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $removalDatabase -BackupName $backups[0].BackupName | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+	#Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
 	$backups = Get-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseWithRemovableBackup | Get-AzureRmSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
 	Assert-AreEqual $backups.Count 0
+
+	# drop the restored db
+	Remove-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $restoredDatabase
 }
 
 function Test-DatabaseGeoBackupPolicy
