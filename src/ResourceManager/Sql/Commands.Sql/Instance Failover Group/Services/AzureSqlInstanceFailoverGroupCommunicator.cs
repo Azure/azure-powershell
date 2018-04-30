@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         public IAzureContext Context { get; set; }
 
         /// <summary>
-        /// Creates a communicator for Azure SQL Database Instance Failover Group
+        /// Creates a communicator for Instance Failover Group
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database Instance Failover Group
+        /// Gets the Instance Failover Group
         /// </summary>
         public Management.Sql.Models.InstanceFailoverGroup Get(string resourceGroupName, string location, string instanceFailoverGroupName)
         {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         }
 
         /// <summary>
-        /// Lists Azure Sql Database Instance Failover Groups
+        /// Lists Instance Failover Groups
         /// </summary>
         public IList<Management.Sql.Models.InstanceFailoverGroup> List(string resourceGroupName, string location)
         {

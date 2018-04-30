@@ -23,34 +23,12 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
     public class GetAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
         /// <summary>
-        /// Gets or sets the name of the resource group to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the local region to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
-        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the InstanceFailoverGroup to use.
         /// </summary>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database Instance Failover Group to retrieve.")]
+            HelpMessage = "The name of the Instance Failover Group to retrieve.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

@@ -33,28 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
     public class NewAzureSqlInstanceFailoverGroup : AzureSqlInstanceFailoverGroupCmdletBase
     {
         /// <summary>
-        /// Gets or sets the name of the resource group to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the local region to use.
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "The name of the Local Region on which to create the Instance Failover Group.")]
-        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the Instance Failover Group to create.
         /// </summary>
         [Parameter(Mandatory = true,
@@ -63,34 +41,34 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner resource group name for Azure SQL Database Instance Failover Group
+        /// Gets or sets the partner resource group name for Instance Failover Group
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The name of the secondary resource group of the Azure SQL Database Instance Failover Group.")]
+            HelpMessage = "The name of the secondary resource group of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the partner region for Azure SQL Database Instance Failover Group
+        /// Gets or sets the partner region for Instance Failover Group
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The name of the secondary server of the Azure SQL Database Instance Failover Group.")]
+            HelpMessage = "The name of the partner region of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string PartnerRegion { get; set; }
         
         /// <summary>
-        /// Gets or sets the name of the Managed Instance on the local region
+        /// Gets or sets the name of the Managed Instance in the local region
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The name of the Managed Instance on the local region to be added to the Azure SQL Database Instance Failover Group.")]
+            HelpMessage = "The name of the Managed Instance in the local region to be added to the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string PrimaryManagedInstanceName { get; set; }
         
         /// <summary>
-        /// Gets or sets the name of the Managed Instance on the partner region
+        /// Gets or sets the name of the Managed Instance in the partner region
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The name of the Managed Instance on the partner region to be added to the Azure SQL Database Instance Failover Group.")]
+            HelpMessage = "The name of the Managed Instance in the partner region to be added to the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string PartnerManagedInstanceName { get; set; }
 
@@ -98,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the failover policy without data loss for the Sql Azure Instance Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The failover policy of the Azure SQL Database Instance Failover Group.")]
+            HelpMessage = "The failover policy of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         [PSDefaultValue(Help = "Automatic")]
         public FailoverPolicy FailoverPolicy { get; set; }

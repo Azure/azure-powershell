@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model;
 using Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -24,6 +25,28 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
     public abstract class AzureSqlInstanceFailoverGroupCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlInstanceFailoverGroupModel>, AzureSqlInstanceFailoverGroupAdapter>
     {
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the local region to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
+        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         /// <summary>
         /// Initializes the Azure Sql Instance Failover Group Adapter
         /// </summary>

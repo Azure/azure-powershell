@@ -42,36 +42,14 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Parameter set name for switch with a resource ID.
         /// </summary>
         private const string SwitchIFGByResourceIdSet = "Switch a Instance Failover Group from Resource Id";
-
-        /// <summary>
-        /// Gets or sets the name of the resource group to use.
-        /// </summary>
-        [Parameter(ParameterSetName = SwitchIFGDefaultSet,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the region to use.
-        /// </summary>
-        [Parameter(ParameterSetName = SwitchIFGDefaultSet, 
-            Mandatory = true,
-            Position = 1,
-            HelpMessage = "The name of the Partner Region from which to failover the Instance Failover Group.")]
-        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the name of the InstanceFailoverGroup to use.
         /// </summary>
         [Parameter(ParameterSetName = SwitchIFGDefaultSet, 
             Mandatory = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database Instance Failover Group.")]
+            HelpMessage = "The name of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

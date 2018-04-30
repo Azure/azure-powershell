@@ -25,7 +25,7 @@ using System;
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
     /// <summary>
-    /// Cmdlet to create a new Azure Sql Database Instance Failover Group
+    /// Cmdlet to create a new Instance Failover Group
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseInstanceFailoverGroup", DefaultParameterSetName = SetIFGDefaultSet,
         SupportsShouldProcess = true), OutputType(typeof(AzureSqlInstanceFailoverGroupModel))]
@@ -46,36 +46,14 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Parameter set name for set with a resource ID.
         /// </summary>
         private const string SetIFGByResourceIdSet = "Set a Instance Failover Group from Resource Id";
-
+        
         /// <summary>
-        /// Gets or sets the name of the resource group to use.
-        /// </summary>
-        [Parameter(ParameterSetName = SetIFGDefaultSet, 
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the local region to use.
-        /// </summary>
-        [Parameter(ParameterSetName = SetIFGDefaultSet, 
-            Mandatory = true,
-            Position = 1,
-            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
-        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the Azure SQL Database Instance Failover Group
+        /// Gets or sets the name of the Instance Failover Group
         /// </summary>
         [Parameter(ParameterSetName = SetIFGDefaultSet, 
             Mandatory = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database Instance Failover Group.")]
+            HelpMessage = "The name of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -104,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the failover policy without data loss for the Sql Azure Instance Failover Group.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The failover policy of the Azure SQL Database Instance Failover Group.")]
+            HelpMessage = "The failover policy of the Instance Failover Group.")]
         [ValidateNotNullOrEmpty]
         [PSDefaultValue(Help = "Automatic")]
         public FailoverPolicy FailoverPolicy { get; set; }

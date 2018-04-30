@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model
         /// <summary>
         /// template to generate the Primary Managed Instance Id
         /// </summary>
-        public static string PrimaryManagedInstanceIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/ManagedInstances/{2}";
+        public const string PrimaryManagedInstanceIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/ManagedInstances/{2}";
         
         /// <summary>
         /// template to generate the Partner Managed Instance Id
         /// </summary>
-        public static string PartnerManagedInstanceIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/ManagedInstances/{2}";
+        public const string PartnerManagedInstanceIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/ManagedInstances/{2}";
 
         /// <summary>
         /// Gets or sets the name of the resource group

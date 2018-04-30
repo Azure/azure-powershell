@@ -41,43 +41,21 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Parameter set name for remove with a resource ID.
         /// </summary>
         private const string RemoveIFGByResourceIdSet = "Remove a Instance Failover Group from Resource Id";
-
-        /// <summary>
-        /// Gets or sets the name of the resource group to use.
-        /// </summary>
-        [Parameter(ParameterSetName = RemoveIFGDefaultSet, 
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the local region to use.
-        /// </summary>
-        [Parameter(ParameterSetName = RemoveIFGDefaultSet, 
-            Mandatory = true,
-            Position = 1,
-            HelpMessage = "The name of the Primary Region of the Instance Failover Group.")]
-        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the name of the InstanceFailoverGroup to remove.
         /// </summary>
         [Parameter(ParameterSetName = RemoveIFGDefaultSet, 
             Mandatory = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database Instance Failover Group to remove.")]
+            HelpMessage = "The name of the Instance Failover Group to remove.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-		/// Instance Failover Group object to remove
-		/// </summary>
-		[Parameter(ParameterSetName = RemoveIFGByInputObjectParameterSet,
+	    /// Instance Failover Group object to remove
+	    /// </summary>
+	    [Parameter(ParameterSetName = RemoveIFGByInputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Instance Failover Group object to remove")]
