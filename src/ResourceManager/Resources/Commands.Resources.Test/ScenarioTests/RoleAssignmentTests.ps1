@@ -496,7 +496,7 @@ function Test-RaPropertiesValidation
     $roleDef.Name = "Custom Reader Properties Test"
     $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
-    $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
+    $roleDef.AssignableScopes[0] = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590"
 
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("ff9cd1ab-d763-486f-b253-51a816c92bbf")
     New-AzureRmRoleDefinition -Role $roleDef
