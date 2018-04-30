@@ -59,6 +59,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public int LeavingPool
+        {
+            get
+            {
+                return this.omObject.LeavingPool;
+            }
+        }
+        
         public int Offline
         {
             get

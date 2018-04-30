@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     10,
                     11,
                     12,
-                    78), // Total
+                    13,
+                    91), // Total
                 LowPriority = new ProxyModels.NodeCounts(
                     1,
                     2,
@@ -87,7 +88,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     10,
                     11,
                     12,
-                    78) // Total
+                    13,
+                    91) // Total
             };
 
             var poolNodeCounts2 = new ProxyModels.PoolNodeCounts()
@@ -106,7 +108,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     20,
                     21,
                     22,
-                    198), // Total
+                    23,
+                    221), // Total
                 LowPriority = new ProxyModels.NodeCounts(
                     11,
                     12,
@@ -120,7 +123,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                     20,
                     21,
                     22,
-                    198) // Total
+                    23,
+                    221) // Total
             };
 
             // Simulate node state counts for two pools are returned
