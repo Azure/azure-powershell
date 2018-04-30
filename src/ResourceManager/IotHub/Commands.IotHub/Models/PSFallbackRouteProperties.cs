@@ -29,28 +29,6 @@ namespace Microsoft.Azure.Management.IotHub.Models
     public partial class PSFallbackRouteMetadata
     {
         /// <summary>
-        /// Initializes a new instance of the FallbackRouteProperties class.
-        /// </summary>
-        public PSFallbackRouteMetadata() { }
-
-        /// <summary>
-        /// Initializes a new instance of the FallbackRouteProperties class.
-        /// </summary>
-        public PSFallbackRouteMetadata(IList<string> endpointNames, bool isEnabled, string condition = default(string))
-        {
-            Condition = condition;
-            EndpointNames = endpointNames;
-            IsEnabled = isEnabled;
-        }
-        /// <summary>
-        /// Static constructor for FallbackRouteProperties class.
-        /// </summary>
-        static PSFallbackRouteMetadata()
-        {
-            Source = "DeviceMessages";
-        }
-
-        /// <summary>
         /// The condition which is evaluated in order to apply the fallback
         /// route.
         /// </summary>
@@ -78,25 +56,11 @@ namespace Microsoft.Azure.Management.IotHub.Models
         public static string Source { get; private set; }
 
         /// <summary>
-        /// Validate the object. Throws ValidationException if validation fails.
+        /// Gets or sets the name of the route. The name can only include
+        /// alphanumeric characters, periods, underscores, hyphens, has a
+        /// maximum length of 64 characters, and must be unique.
         /// </summary>
-        public virtual void Validate()
-        {
-            if (EndpointNames == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "EndpointNames");
-            }
-            if (this.EndpointNames != null)
-            {
-                if (this.EndpointNames.Count > 1)
-                {
-                    throw new ValidationException(ValidationRules.MaxItems, "EndpointNames", 1);
-                }
-                if (this.EndpointNames.Count < 1)
-                {
-                    throw new ValidationException(ValidationRules.MinItems, "EndpointNames", 1);
-                }
-            }
-        }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
     }
 }

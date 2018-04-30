@@ -19,11 +19,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.DataLake.Store.Acl;
+using Microsoft.Azure.DataLake.Store.AclTools;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAclEntry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(bool))]
+     OutputType(typeof(DataLakeStoreItemAce))]
     [Alias("Set-AdlStoreItemAclEntry")]
     public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
@@ -48,8 +49,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             Mandatory = true,
             HelpMessage =
                 "The path in the specified Data Lake account that should have ACL entries set. Can be a file or folder " +
-                "In the format '/folder/file.txt', " +
-                "where the first '/' after the DNS indicates the root of the file system.")]
+                "In the format '/folder/file.txt', where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
@@ -83,9 +83,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public SwitchParameter Default { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage =
-                "Indicates the resulting ACL should be returned.")]
+            HelpMessage = "Indicates the resulting ACL should be returned.")]
         public SwitchParameter PassThru { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Indicates the ACL to be modified recursively to the child subdirectories and files")]
+        public SwitchParameter Recurse { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "Number of files/directories processed in parallel. Optional: a reasonable default will be selected"
+        )]
+        public int Concurrency { get; set; } = -1;
 
         public override void ExecuteCmdlet()
         {
@@ -99,15 +107,22 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 Path.OriginalPath,
                 () =>
                 {
-                    DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
-                        aclSpec);
+                    if (Recurse)
+                    {
+                        DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
+                            Account,
+                            Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.ModifyAcl, Concurrency);
+                    }
+                    else
+                    {
+                        DataLakeStoreFileSystemClient.ModifyAcl(Path.TransformedPath, Account,
+                            aclSpec);
+                    }
 
                     if (PassThru)
                     {
-
-                        var toReturn = DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath,
-                            Account).Entries.Select(entry => new DataLakeStoreItemAce(entry));
-                        WriteObject(toReturn);
+                        WriteObject(DataLakeStoreFileSystemClient.GetAclStatus(Path.TransformedPath,
+                                Account).Entries.Select(entry => new DataLakeStoreItemAce(entry)));
                     }
                 });
         }
