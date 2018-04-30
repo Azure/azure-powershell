@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.5.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.LocationBasedServices.dll'
@@ -111,7 +111,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* First release of Location Based Services management cmdlets'
+        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime
+* Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
         Prerelease = 'preview'
