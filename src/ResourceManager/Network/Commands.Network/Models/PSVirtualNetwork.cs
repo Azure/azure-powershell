@@ -14,11 +14,12 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Newtonsoft.Json;
     using System.Collections.Generic;
     using System.Management.Automation;
-
-    public class PSVirtualNetwork : PSTopLevelResource
+    using Microsoft.Azure.Management.Internal.Network.Common;
+    using Newtonsoft.Json;
+    
+    public class PSVirtualNetwork : PSTopLevelResource, IResourceReference
     {
         public PSAddressSpace AddressSpace { get; set; }
 

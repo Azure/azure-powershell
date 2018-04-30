@@ -193,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -RunOn
-Optional name of the hybrid agent which should execute the runbook
+Optional name of the hybrid worker group which should execute the runbook
 
 ```yaml
 Type: String

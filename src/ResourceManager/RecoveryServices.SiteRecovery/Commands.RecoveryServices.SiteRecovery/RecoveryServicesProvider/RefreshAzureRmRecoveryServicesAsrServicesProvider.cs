@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Services Provider.
+    ///     Refreshes (Refresh server) the information received from the Azure Site Recovery Services Provider.
     /// </summary>
     [Cmdlet(
         VerbsData.Update,
@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class UpdateAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets the Recovery Services Provider.
+        ///     Gets or sets the Recovery Services Provider object 
+        ///     that identifies the server for which information is to updated(refreshed).
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,

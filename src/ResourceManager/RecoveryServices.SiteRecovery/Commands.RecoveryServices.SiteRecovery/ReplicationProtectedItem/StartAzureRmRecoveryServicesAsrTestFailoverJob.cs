@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate a Test failover operation.
+    ///     Starts a test failover operation.
     /// </summary>
     [Cmdlet(
         VerbsLifecycle.Start,
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrTestFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Recovery Plan object.
+        ///     Gets or sets an recovery plan object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets an site recovery replication protected item.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPIObject,
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Direction { get; set; }
 
         /// <summary>
-        ///     Gets or sets Network.
+        ///     Gets or sets the Site Recovery virtual machine network to connect the test failover virtual machine(s) to..
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObjectWithVMNetwork,
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRNetwork VMNetwork { get; set; }
 
         /// <summary>
-        ///     Gets or sets Network.
+        ///     Gets or sets the Azure virtual network ID to connect the test fail over virtual machine(s) to.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObjectWithAzureVMNetworkId,
@@ -104,14 +104,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string AzureVMNetworkId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets whether a new cloud service should be created or the recovery cloud service configured
+        ///     for the VM should be used for the test failover.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObject)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObject)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPObjectWithAzureVMNetworkId)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByRPIObjectWithAzureVMNetworkId)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(Constants.UseRecoveryCloudService, Constants.AutoCreateCloudService)]
+        public string CloudServiceCreationOption { get; set; }
+
+        /// <summary>
+        ///     Gets or sets data encryption priamry certificate file path for failover of protected item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionPrimaryCertFile { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets data encryption secondary certificate file path for failover of protected item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -307,6 +319,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     string.Format(
                         Resources.UnsupportedReplicationProviderForTestFailover,
                         this.ReplicationProtectedItem.ReplicationProvider));
+            }else if (Constants.A2A.Equals(
+              this.ReplicationProtectedItem.ReplicationProvider,
+               StringComparison.OrdinalIgnoreCase))
+            {
+                var failoverInput = new A2AFailoverProviderInput()
+                {
+                    RecoveryPointId = this.RecoveryPoint != null ? this.RecoveryPoint.ID : null,
+                    CloudServiceCreationOption = this.CloudServiceCreationOption
+                };
+
+                input.Properties.ProviderSpecificDetails = failoverInput;
+                input.Properties.SkipTestFailoverCleanup = true.ToString();
             }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryTestFailover(
@@ -411,6 +435,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                         string.Format(
                             Resources.UnsupportedReplicationProviderForTestFailover,
                             this.ReplicationProtectedItem.ReplicationProvider));
+                }
+                else if (string.Compare(
+                       replicationProvider,
+                       Constants.A2A,
+                       StringComparison.OrdinalIgnoreCase) ==
+                   0)
+                {
+                    // Set the Recovery Point Types for InMage.
+                    var recoveryPointType =
+                        this.RecoveryTag ==
+                        Constants.RecoveryTagLatestAvailableApplicationConsistent
+                            ? A2ARpRecoveryPointType.LatestApplicationConsistent
+                            : this.RecoveryTag == Constants.RecoveryTagLatest
+                                ? A2ARpRecoveryPointType.Latest
+                                 : this.RecoveryTag == Constants.RecoveryTagLatestAvailableCrashConsistent
+                                     ? A2ARpRecoveryPointType.LatestCrashConsistent
+                                      : A2ARpRecoveryPointType.LatestProcessed;
+
+                    // Create the InMageAzureV2 Provider specific input.
+                    var recoveryPlanInMageAzureV2FailoverInput =
+                        new RecoveryPlanA2AFailoverInput
+                        {
+                            RecoveryPointType = recoveryPointType,
+                            CloudServiceCreationOption = this.CloudServiceCreationOption
+                        };
+
+                    // Add the InMageAzureV2 Provider specific input in the Test Failover Input.
+                    recoveryPlanTestFailoverInputProperties.ProviderSpecificDetails.Add(
+                        recoveryPlanInMageAzureV2FailoverInput);
                 }
             }
 

@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionBasicWindowsWAD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindowsWAD");
@@ -58,7 +59,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsWAD");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionAdvancedWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindows");
@@ -78,7 +80,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinux");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestAEMExtensionAdvancedWindowsMD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsMD");

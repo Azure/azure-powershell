@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Discovers Protectable Items.
+    ///    Add(Discover) a physical server to the list of protectable items.
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #region Public Parameters
 
         /// <summary>
-        ///     Gets or sets Protection Container.
+        ///     Gets or sets the protection container object to which the protectable item should be added.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRProtectionContainer ProtectionContainer { get; set; }
 
         /// <summary>
-        ///     Gets or sets Friendly Name of the Protectable Item.
+        ///     Gets or sets the friendly name for the protectable item.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.Default, Mandatory = true)]
         [ValidateNotNullOrEmpty]

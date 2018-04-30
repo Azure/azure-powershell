@@ -19,7 +19,7 @@ using Job = Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Job;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Set Protection Entity protection state.
+    ///     Stops/Disables replication for an Azure Site Recovery replication protected item.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private PSSiteRecoveryLongRunningOperation response;
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item object corresponding to the 
+        ///     replication protected item for which replication is to be disabled.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.DisableDR,

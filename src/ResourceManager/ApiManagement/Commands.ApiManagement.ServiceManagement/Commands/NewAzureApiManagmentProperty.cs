@@ -1,11 +1,11 @@
-﻿//  
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
-// 
+//
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
 //  You may obtain a copy of the License at
 //    http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS,
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -64,15 +64,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags to be associated with Property. This parameter is optional.")]
-        [Obsolete("New-AzureRmApiManagementProperty: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
-        [Alias("Tags")]
         public string[] Tag { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
             string propertyId = PropertyId ?? Guid.NewGuid().ToString("N");
 
-#pragma warning disable CS0618
             var logger = Client.PropertyCreate(
                 Context,
                 propertyId,
@@ -80,7 +77,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 Value,
                 Secret,
                 Tag);
-#pragma warning restore CS0618
 
             WriteObject(logger);
         }
