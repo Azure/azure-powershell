@@ -268,6 +268,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 foreach (var subscription in subscriptions)
                 {
                     var tempContext = new AzureContext(subscription, account, environment, newTenant);
+                    tempContext.TokenCache = _cache;
                     string tempName = null;
                     if (!_profile.TryGetContextName(tempContext, out tempName))
                     {
