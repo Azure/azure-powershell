@@ -19,9 +19,10 @@
 --->
 
 ## Current Release
+
+## Version 6.0.0
 * Bump up network sdk version from 17.0.0.preview to 18.0.0.preview
-* Rerecord all network tests with latest sdk version
-* Set minimum dependency of module to PowerShell 5.0
+* Rerecord all network tests with latest sdk version* Set minimum dependency of module to PowerShell 5.0
 * Add support for DDoS protection plan resource
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information
