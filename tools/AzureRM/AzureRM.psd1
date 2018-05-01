@@ -265,7 +265,6 @@ AzureRM.OperationalInsights
 
 AzureRM.Profile
 * Enable context autosave by default
-* Create a context for each subscription when running Connect-AzureRmAccount
 * Add USGovernment OperationalInsights endpoints to Azure environment for US Gov.
 
 AzureRM.RecoveryServices.SiteRecovery
