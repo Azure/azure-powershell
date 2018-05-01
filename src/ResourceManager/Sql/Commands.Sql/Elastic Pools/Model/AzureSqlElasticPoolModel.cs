@@ -70,6 +70,21 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public string CurrentServiceLevelObjectiveName { get; set; }
 
         /// <summary>
+        /// Gets or sets the Dtu for the elastic pool
+        /// </summary>
+        public int? Dtu { get; set; }
+
+        /// <summary>
+        /// Gets or sets the max Dtu per database in the elastic pool
+        /// </summary>
+        public int? DatabaseDtuMax { get; set; }
+
+        /// <summary>
+        /// Gets or sets the min Dtu per database in the elastic pool
+        /// </summary>
+        public int? DatabaseDtuMin { get; set; }
+
+        /// <summary>
         /// Gets or sets the Sku capacity of the elastic pool
         /// </summary>
         public int? Capacity { get; set; }
@@ -105,7 +120,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the Sku of the elastic pool.
         /// </summary>
         public Sku Sku { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the per database settings of the elastic pool.
         /// </summary>

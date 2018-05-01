@@ -67,7 +67,7 @@ function Test-CreateVcoreElasticPool
 		## Create Vcore based pool with all VcorePoolParameterSet
 		$poolName = Get-ElasticPoolName
 		$job = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-		        -ElasticPoolName $poolName -VCores 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -AsJob
+		        -ElasticPoolName $poolName -Vcore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -AsJob
 		$job | Wait-Job
 		$ep1 = $job.Output
 
@@ -81,7 +81,7 @@ function Test-CreateVcoreElasticPool
 		# Create BC_Gen4_1 elastic pool which is not supported and check the error Message
 		$poolName = Get-ElasticPoolName
 		Assert-ThrowsContains -script { New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-		-ElasticPoolName $poolName -VCores 1 -VcoreTier BusinessCritial -ComputeGeneration BC_Gen4 -StorageMB 204800 } -message "Mismatch between SKU name 'BC_Gen4_1' and tier 'BusinessCritical'"
+		-ElasticPoolName $poolName -Vcore 1 -Edition BusinessCritial -ComputeGeneration BC_Gen4 -StorageMB 204800 } -message "Mismatch between SKU name 'BC_Gen4_1' and tier 'BusinessCritical'"
     }
     finally
     {
@@ -197,7 +197,7 @@ function Test-UpdateVcoreElasticPool
 	# Create a Vcore Pool
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-        -ElasticPoolName $poolName -VCores 2 -Edition GeneralPurpose -ComputeGeneration Gen4
+        -ElasticPoolName $poolName -Vcore 2 -Edition GeneralPurpose -ComputeGeneration Gen4
     Assert-NotNull $ep1
     
 	# Create a Dtu pool
@@ -223,7 +223,7 @@ function Test-UpdateVcoreElasticPool
         Assert-AreEqual 50 $sep1.MaxCapacity
 
         # Update a Dtu pool to Vcore pool using piping
-        $sep2 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCores 2 `
+        $sep2 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -Vcore 2 `
             -Edition GeneralPurpose -ComputeGeneration Gen4 -StorageMB 204800
 
         Assert-NotNull $sep2
@@ -240,7 +240,7 @@ function Test-UpdateVcoreElasticPool
 		Assert-AreEqual 0.1 $sep3.MinCapacity
 
 		# Update Vcore pool only on VCores
-		$sep4 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCores 1
+		$sep4 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -Vcore 1
 		Assert-NotNull $sep4
 		Assert-AreEqual 1 $sep4.Capacity
 		Assert-AreEqual 0.1 $sep4.MinCapacity

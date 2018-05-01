@@ -73,7 +73,7 @@ function Test-RestoreGeoBackup
 
 	# restore to a vcore db using geobackup
 	Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $geobackup.ResourceGroupName `
-		-ServerName $geobackup.ServerName -ResourceId $geobackup.ResourceId -Edition "GeneralPurpose" -VCores 2 -ComputeGeneration "Gen4"
+		-ServerName $geobackup.ServerName -ResourceId $geobackup.ResourceId -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestoreDeletedDatabaseBackup
@@ -98,7 +98,7 @@ function Test-RestoreDeletedDatabaseBackup
 	# restore to a vcore db
 	Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredVcoreDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
 		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId -Edition "GeneralPurpose" `
-		-VCores 2 -ComputeGeneration "Gen4"
+		-Vcore 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestorePointInTimeBackup
@@ -118,7 +118,7 @@ function Test-RestorePointInTimeBackup
 
 	# Restore to a Vcore db
 	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $db.ResourceGroupName `
-		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCores 2 -ComputeGeneration 'Gen4'
+		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -Vcore 2 -ComputeGeneration 'Gen4'
 }
 
 function Test-ServerBackupLongTermRetentionVault

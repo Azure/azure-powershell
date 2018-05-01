@@ -27,5 +27,10 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
         /// Gets or sets the units for the max size limit
         /// </summary>
         public string Unit { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status for this max size for the given: Subscription, Server Version, Edition, Service Level Objective combination.
+        /// </summary>
+        public string Status { get; set; }
     }
 }

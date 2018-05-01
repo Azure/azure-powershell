@@ -71,27 +71,11 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Gets the specified Azure Sql Database replication link with new Autorest sdk
-        /// </summary>
-        public Management.Sql.Models.ReplicationLink GetLinkWithNewSdk(string resourceGroupName, string serverName, string databaseName, Guid linkId)
-        {
-            return GetCurrentSqlClient().ReplicationLinks.Get(resourceGroupName, serverName, databaseName, linkId.ToString());
-        }
-
-        /// <summary>
         /// Lists Azure SQL Databases replication links with Legacy sdk
         /// </summary>
         public IList<Management.Sql.LegacySdk.Models.ReplicationLink> ListLinks(string resourceGroupName, string serverName, string databaseName)
         {
             return GetLegacySqlClient().DatabaseReplicationLinks.List(resourceGroupName, serverName, databaseName).ReplicationLinks;
-        }
-
-        /// <summary>
-        /// List Azure Sql database replication links with new Autorest sdk
-        /// </summary>
-        public IList<Management.Sql.Models.ReplicationLink> ListLinksWithNewSdk(String resourceGroupName, string serverName, string databaseName)
-        {
-            return GetCurrentSqlClient().ReplicationLinks.ListByDatabase(resourceGroupName, serverName, databaseName).ToList();
         }
 
         /// <summary>
@@ -119,14 +103,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Deletes a Replication Link with new autorest sdk
-        /// </summary>
-        public void RemoveLinkWithNewSdk(string resourceGroupName, string serverName, string databaseName, Guid linkId)
-        {
-            GetCurrentSqlClient().ReplicationLinks.Delete(resourceGroupName, serverName, databaseName, linkId.ToString());
-        }
-
-        /// <summary>
         /// Fails over a Replication Link without data loss
         /// </summary>
         public void FailoverLink(string resourceGroupName, string serverName, string databaseName, Guid linkId)
@@ -135,27 +111,11 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Fails over a replication link without data loss using new autorest sdk
-        /// </summary>
-        public void FailoverLinkWithNewSdk(string resourceGroupName, string serverName, string databaseName, Guid linkId)
-        {
-            GetCurrentSqlClient().ReplicationLinks.Failover(resourceGroupName, serverName, databaseName, linkId.ToString());
-        }
-
-        /// <summary>
         /// Fails over a Replication Link with data loss
         /// </summary>
         public void FailoverLinkAllowDataLoss(string resourceGroupName, string serverName, string databaseName, Guid linkId)
         {
             GetLegacySqlClient().DatabaseReplicationLinks.FailoverAllowDataLoss(resourceGroupName, serverName, databaseName, linkId.ToString());
-        }
-
-        /// <summary>
-        /// Fails over a replication link with data loss using new autorest sdk
-        /// </summary>
-        public void FailoverLinkAllowDatalossWithNewSdk(string resourceGroupName, string serverName, string databaseName, Guid linkId)
-        {
-            GetCurrentSqlClient().ReplicationLinks.FailoverAllowDataLoss(resourceGroupName, serverName, databaseName, linkId.ToString());
         }
 
         /// <summary>

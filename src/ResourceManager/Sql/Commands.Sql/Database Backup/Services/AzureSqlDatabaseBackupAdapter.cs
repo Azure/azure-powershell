@@ -561,18 +561,18 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 Sku = model.Sku
             };
 
-            if(model.CreateMode.Equals("Recovery"))
+            if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Recovery))
             {
                 dbModel.SourceDatabaseId = resourceId;
                 dbModel.RecoverableDatabaseId = resourceId;
                 dbModel.RecoveryServicesRecoveryPointId = resourceId;
             }
-            else if(model.CreateMode.Equals("Restore"))
+            else if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Restore))
             {
                 dbModel.RestorableDroppedDatabaseId = resourceId;
                 dbModel.RecoveryServicesRecoveryPointId = resourceId;
             }
-            else if(model.CreateMode.Equals("RestoreLongTermRetentionBackup") && resourceId.Contains("/providers/Microsoft.Sql"))
+            else if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup) && resourceId.Contains("/providers/Microsoft.Sql"))
             {
                 // LTR V2
                 dbModel.LongTermRetentionBackupResourceId = resourceId;

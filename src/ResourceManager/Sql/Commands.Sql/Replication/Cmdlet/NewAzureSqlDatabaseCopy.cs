@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         [ValidateNotNullOrEmpty]
-        public string CopyComputeGeneration { get; set; }
+        public string ComputeGeneration { get; set; }
 
         /// <summary>
         /// Gets or sets the Vcore numbers of the database copy
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             HelpMessage = "The Vcore numbers of the Azure Sql Database copy.")]
         [Alias("Capacity")]
         [ValidateNotNullOrEmpty]
-        public int CopyVCores { get; set; }
+        public int Vcore { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -206,10 +206,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 copyModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = AzureSqlDatabaseAdapter.getDatabaseSkuName(sourceDb.Sku.Tier),
+                    Name = AzureSqlDatabaseAdapter.GetDatabaseSkuName(sourceDb.Sku.Tier),
                     Tier = sourceDb.Sku.Tier,
-                    Capacity = CopyVCores,
-                    Family = CopyComputeGeneration
+                    Capacity = Vcore,
+                    Family = ComputeGeneration
                 };
             }           
 

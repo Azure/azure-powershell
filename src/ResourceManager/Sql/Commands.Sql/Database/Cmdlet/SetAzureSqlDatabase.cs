@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The Vcore number for the Azure Sql database")]
         [Alias("Capacity")]
-        public int VCores { get; set; }
+        public int Vcore { get; set; }
 
         /// <summary>
         /// Gets or sets the ComputeGeneration for the Azure Sql database.
@@ -215,32 +215,25 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             if (this.ParameterSetName == UpdateParameterSetName)
             {
-                if (!string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) || MyInvocation.BoundParameters.ContainsKey("Edition"))
-                {
-                    newDbModel.Sku = new Management.Sql.Models.Sku()
-                    {
-                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition): RequestedServiceObjectiveName,
-                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : null,
-                    };
-                }
+                newDbModel.Sku = AzureSqlDatabaseAdapter.GetDtuDatabaseSku(RequestedServiceObjectiveName, Edition);
 
                 newEntity.Add(newDbModel);
             }
             else if(this.ParameterSetName == VcoreDatabaseParameterSet)
             {
-                if(MyInvocation.BoundParameters.ContainsKey("Edition") ||
-                    MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ||
-                    MyInvocation.BoundParameters.ContainsKey("VCores"))
+                if(!string.IsNullOrWhiteSpace(Edition) ||
+                    !string.IsNullOrWhiteSpace(ComputeGeneration) ||
+                    MyInvocation.BoundParameters.ContainsKey("Vcore"))
                 {
-                    string skuTier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : databaseCurrentSku.Tier;
-                    string skuName = AzureSqlDatabaseAdapter.getDatabaseSkuName(skuTier);
+                    string skuTier = string.IsNullOrWhiteSpace(Edition) ? databaseCurrentSku.Tier : Edition;
+                    string skuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(skuTier);
 
                     newDbModel.Sku = new Management.Sql.Models.Sku()
                     {
                         Name = skuName,
                         Tier = skuTier,
-                        Family = MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ? ComputeGeneration : databaseCurrentSku.Family,
-                        Capacity = MyInvocation.BoundParameters.ContainsKey("VCores") ? VCores : (int)databaseCurrentSku.Capacity
+                        Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? databaseCurrentSku.Family : ComputeGeneration,
+                        Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : (int)databaseCurrentSku.Capacity
                     };
                 }
 

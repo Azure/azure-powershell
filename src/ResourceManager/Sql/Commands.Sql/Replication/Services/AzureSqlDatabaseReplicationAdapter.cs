@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 Sku = model.SecondarySku,
             });
 
-            return GetLinkWithNewSdk(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
+            return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
         }
 
         /// <summary>
@@ -282,24 +282,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             var resp = ReplicationCommunicator.GetLink(resourceGroupName, serverName, databaseName, linkId);
 
             return CreateReplicationLinkModelFromReplicationLinkResponse(resourceGroupName, serverName, databaseName, partnerResourceGroupName, resp);
-        }
-
-        /// <summary>
-        /// Gets the Secondary Link by linkId with new autorest sdk
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the Resource Group containing the primary database</param>
-        /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
-        /// <param name="databaseName">The name of primary database</param>
-        /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
-        /// <param name="linkId">The linkId of the replication link to the secondary</param>
-        /// <returns>The Azure SQL Database ReplicationLink object</returns>
-        internal AzureReplicationLinkModel GetLinkWithNewSdk(string resourceGroupName, string serverName, string databaseName,
-            string partnertResourceGroupName, Guid linkId)
-        {
-            // partnerResourceGroupName is required because it is not exposed in any reponse from the service.
-            var resp = ReplicationCommunicator.GetLinkWithNewSdk(resourceGroupName, serverName, databaseName, linkId);
-
-            return CreateReplicationLinkModelFromResponse(resourceGroupName, serverName, databaseName, partnertResourceGroupName, resp);
         }
 
         /// <summary>
@@ -327,26 +309,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         {
             // checking if the resource group is valid as a partner resource group
             ServerCommunicator.ListByResourceGroup(partnerResourceGroupName);
-        }
-
-        /// <summary>
-        /// Lists Azure SQL Database Secondaries for the specified primary for the specified partner resource group with new Autorest sdk
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the Resource Group containing the primary database</param>
-        /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
-        /// <param name="databaseName">The name of primary database</param>
-        /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
-        /// <returns>The collection of Azure SQL Database ReplicationLink objects for the primary</returns>
-        internal ICollection<AzureReplicationLinkModel> ListLinksWithNewSdk(string resourceGroupName, string serverName, string databaseName, string partnerResourceGroupName)
-        {
-            CheckPartnerResourceGroupValid(partnerResourceGroupName);
-
-            var resp = ReplicationCommunicator.ListLinksWithNewSdk(resourceGroupName, serverName, databaseName);
-
-            return resp.Select((link) =>
-            {
-                return CreateReplicationLinkModelFromResponse(resourceGroupName, serverName, databaseName, partnerResourceGroupName, link);
-            }).ToList();
         }
 
         /// <summary>
@@ -443,23 +405,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Gets the Secondary Link by the secondary resource group and Azure Sql Server with new Autorest sdk
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the Resource Group containing the primary database</param>
-        /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
-        /// <param name="databaseName">The name of primary database</param>
-        /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
-        /// <param name="partnerServerName"The name of the Azure SQL Server containing the secondary database</param>
-        /// <returns>The Azure SQL Database ReplicationLink object</returns>
-        internal AzureReplicationLinkModel GetLinkWithNewSdk(string resourceGroupName, string serverName, string databaseName,
-            string partnetResourceGroupName, string partnerServerName)
-        {
-            IList<AzureReplicationLinkModel> links = ListLinksWithNewSdk(resourceGroupName, serverName, databaseName, partnetResourceGroupName).ToList();
-
-            return links.FirstOrDefault(l => l.PartnerServerName == partnerServerName);
-        }
-
-        /// <summary>
         /// Finds and removes the Secondary Link by the secondary resource group and Azure SQL Server
         /// </summary>
         /// <param name="resourceGroupName">The name of the Resource Group containing the primary database</param>
@@ -472,21 +417,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             AzureReplicationLinkModel link = GetLink(resourceGroupName, serverName, databaseName, partnerResourceGroupName, partnerServerName);
 
             ReplicationCommunicator.RemoveLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId);
-        }
-
-        /// <summary>
-        /// Finds and removes the Secondary Link by the secondary resource group and Azure SQL Server using new autorest sdk
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the Resource Group containing the primary database</param>
-        /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
-        /// <param name="databaseName">The name of primary database</param>
-        /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
-        /// <param name="partnerServerName">The name of the Azure SQL Server containing the secondary database</param>
-        internal void RemoveLinkWithNewSdk(string resourceGroupName, string serverName, string databaseName, string partnerResourceGroupName, string partnerServerName)
-        {
-            AzureReplicationLinkModel link = GetLinkWithNewSdk(resourceGroupName, serverName, databaseName, partnerResourceGroupName, partnerServerName);
-
-            ReplicationCommunicator.RemoveLinkWithNewSdk(resourceGroupName, serverName, databaseName, link.LinkId);
         }
 
         /// <summary>
@@ -516,35 +446,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             }
 
             return GetLink(link.PartnerResourceGroupName, link.PartnerServerName, link.DatabaseName, link.PartnerResourceGroupName, link.PartnerServerName);
-        }
-
-        /// <summary>
-        /// Finds and removes the Secondary Link by the secondary resource group and Azure SQL Server using new autorest sdk
-        /// </summary>
-        /// <param name="resourceGroupName">The name of the Resource Group containing the primary database</param>
-        /// <param name="serverName">The name of the Azure SQL Server containing the primary database</param>
-        /// <param name="databaseName">The name of primary database</param>
-        /// <param name="partnerResourceGroupName">The name of the Resource Group containing the secondary database</param>
-        /// <param name="partnerServerName">The name of the Azure SQL Server containing the secondary database</param>
-        /// <param name="allowDataLoss">Whether the failover operation will allow data loss</param>
-        /// <returns>The Azure SQL Database ReplicationLink object</returns>
-        internal AzureReplicationLinkModel FailoverLinkWithNewSdk(string resourceGroupName, string serverName, string databaseName, string partnerResourceGroupName, bool allowDataLoss)
-        {
-            IList<AzureReplicationLinkModel> links = ListLinksWithNewSdk(resourceGroupName, serverName, databaseName, partnerResourceGroupName).ToList();
-
-            // Resource Management executes in context of the Secondary
-            AzureReplicationLinkModel link = links.First();
-
-            if(allowDataLoss)
-            {
-                ReplicationCommunicator.FailoverLinkAllowDatalossWithNewSdk(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId);
-            }
-            else
-            {
-                ReplicationCommunicator.FailoverLinkWithNewSdk(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId);
-            }
-
-            return GetLinkWithNewSdk(link.PartnerResourceGroupName, link.PartnerServerName, link.DatabaseName, link.PartnerResourceGroupName, link.PartnerServerName);
         }
     }
 }

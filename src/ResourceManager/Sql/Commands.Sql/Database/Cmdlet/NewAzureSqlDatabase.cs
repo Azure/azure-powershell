@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = "DtuBasedDatabase")]
+        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuDatabaseParameterSet)]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase<AzureSqlDatabaseCreateOrUpdateModel>
     {
         /// <summary>
@@ -138,13 +138,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
             HelpMessage = "The Vcore number for the Azure Sql database")]
         [Alias("Capacity")]
-        public int VCores { get; set; }
+        public int VCore { get; set; }
 
         /// <summary>
         /// Gets or sets the compute generation for the Azure Sql database
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
-            HelpMessage = "The compute generation assign to the Azure SQL Database.")]
+            HelpMessage = "The compute generation to assign to the Azure SQL Database.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         public string ComputeGeneration { get; set; }
@@ -212,24 +212,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             if(ParameterSetName == DtuDatabaseParameterSet)
             {
-                if (!string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) || MyInvocation.BoundParameters.ContainsKey("Edition"))
-                {
-                    newDbModel.Sku = new Management.Sql.Models.Sku()
-                    {
-                        Name = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition) : RequestedServiceObjectiveName,
-                        Tier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : null
-                    };
-                }
+                newDbModel.Sku = AzureSqlDatabaseAdapter.GetDtuDatabaseSku(RequestedServiceObjectiveName, Edition);
             }
             else
             {
-                string skuName = AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition);
+                string skuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition);
 
                 newDbModel.Sku = new Management.Sql.Models.Sku()
                 {
                     Name = skuName,
                     Tier = Edition,
-                    Capacity = VCores,
+                    Capacity = VCore,
                     Family = ComputeGeneration
                 };
             }          

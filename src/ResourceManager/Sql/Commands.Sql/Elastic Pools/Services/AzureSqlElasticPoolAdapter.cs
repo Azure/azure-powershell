@@ -24,7 +24,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using DatabaseEdition = Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition;
 using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
@@ -48,15 +47,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// Gets or sets the Azure Subscription
         /// </summary>
         private IAzureSubscription _subscription { get; set; }
-
-        /// <summary>
-        /// Gets the Vcore edition dictionary.
-        /// </summary>
-        private static readonly Dictionary<string, string> _vcoreEditionDic = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
-        {
-            { "GeneralPurpose", "GP"},
-            { "BusinessCritical", "BC"}
-        };
 
         /// <summary>
         /// Constructs a database adapter
@@ -368,7 +358,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Capacity = pool.Sku.Capacity,
                 CurrentServiceLevelObjectiveName = pool.Sku.Name,
                 MinCapacity = pool.PerDatabaseSettings.MinCapacity,
-                MaxCapacity = pool.PerDatabaseSettings.MaxCapacity
+                MaxCapacity = pool.PerDatabaseSettings.MaxCapacity,
+                Dtu = pool.Dtu,
+                DatabaseDtuMin = pool.DatabaseDtuMin,
+                DatabaseDtuMax = pool.DatabaseDtuMax
             };
 
             return model;
@@ -385,26 +378,23 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         /// <param name="tier">Azure Sql elastic pool edition</param>
         /// <returns>The sku name</returns>
-        public static string getPoolSkuName(string tier)
+        public static string GetPoolSkuName(string tier)
         {
             if (string.IsNullOrWhiteSpace(tier))
                 return null;
 
-            string value;
-            return _vcoreEditionDic.TryGetValue(tier, out value) ? value : string.Format("{0}Pool", tier);
-        }
-
-        /// <summary>
-        /// Check if the tier is Vcore tier.
-        /// </summary>
-        /// <param name="tier">Azure sql elastic pool edition</param>
-        /// <returns>True if it is Vcore tier</returns>
-        public static bool isVcorePool(string tier)
-        {
             if (string.IsNullOrWhiteSpace(tier))
-                return false;
+                return null;
 
-            return _vcoreEditionDic.ContainsKey(tier);
+            switch (tier.ToLower())
+            {
+                case "generalpurpose":
+                    return "GP";
+                case "businesscritical":
+                    return "BC";
+                default:
+                    return string.Format("{0}Pool", tier);
+            }
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// Cmdlet to create a new Azure Sql ElasticPool
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlElasticPool", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = "DtuBasedPool")]
+        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuPoolParameterSet)]
     public class NewAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the total shared VCore number for the Sql Azure Elastic Pool.
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
-            HelpMessage = "The total shared number of Vcores for the Sql Azure Elastic Pool.")]
+            HelpMessage = "The total shared number of Vcore for the Sql Azure Elastic Pool.")]
         [ValidateNotNullOrEmpty]
-        public int VCores { get; set; }
+        public int Vcore { get; set; }
 
         /// <summary>
         /// Gets or sets the compute generation for the Sql Azure Elastic Pool
@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 {
                     newModel.Sku = new Management.Sql.Models.Sku()
                     {
-                        Name = AzureSqlElasticPoolAdapter.getPoolSkuName(edition),
+                        Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition),
                         Tier = edition,
                         Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
                     };
@@ -228,9 +228,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             {
                 newModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = AzureSqlElasticPoolAdapter.getPoolSkuName(Edition),
+                    Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(Edition),
                     Tier = Edition,
-                    Capacity = VCores,
+                    Capacity = Vcore,
                     Family = ComputeGeneration
                 };
 
