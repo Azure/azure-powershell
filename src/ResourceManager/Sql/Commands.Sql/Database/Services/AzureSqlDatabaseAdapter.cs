@@ -24,7 +24,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Management.Sql.Models;
-using DatabaseEdition = Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -122,34 +121,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             {
                 return CreateExpandedDatabaseModelFromResponse(resourceGroupName, serverName, db);
             }).ToList();
-        }
-
-        /// <summary>
-        /// Creates or updates an Azure Sql Database with Hyak SDK.
-        /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql Database Server</param>
-        /// <param name="model">The input parameters for the create/update operation</param>
-        /// <returns>The upserted Azure Sql Database from Hyak SDK</returns>
-        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
-        {
-            // Use Hyak SDK
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new DatabaseCreateOrUpdateParameters
-            {
-                Location = model.Database.Location,
-                Tags = model.Database.Tags,
-                Properties = new DatabaseCreateOrUpdateProperties()
-                {
-                    Collation = model.Database.CollationName,
-                    Edition = model.Database.Edition,
-                    MaxSizeBytes = model.Database.MaxSizeBytes,
-                    ElasticPoolName = model.Database.ElasticPoolName,
-                    RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
-                    ReadScale = model.Database.ReadScale.ToString(),
-                }
-            });
-
-            return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
         }
 
         /// <summary>
@@ -362,17 +333,41 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         /// <param name="tier">Azure Sql database edition</param>
         /// <returns>The sku name</returns>
-        public static string getDatabaseSkuName(string tier)
+        public static string GetDatabaseSkuName(string tier)
         {
             if (string.IsNullOrWhiteSpace(tier))
                 return null;
 
-            Dictionary<string, string> dic = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-            dic.Add("GeneralPurpose", "GP");
-            dic.Add("BusinessCritical", "BC");
+            switch(tier.ToLower())
+            {
+                case "generalpurpose":
+                    return "GP";
+                case "businesscritical":
+                    return "BC";
+                default:
+                    return tier;
+            }
+        }
 
-            string value;
-            return dic.TryGetValue(tier, out value) ? value : tier;
+        /// <summary>
+        /// Gets the Sku for the Dtu database.
+        /// </summary>
+        /// <param name="requestedServiceObjectiveName">Requested service objective name of the Azure Sql database</param>
+        /// <param name="edition">Edition of the Azure Sql database</param>
+        /// <returns></returns>
+        public static Sku GetDtuDatabaseSku(string requestedServiceObjectiveName, string edition)
+        {
+            Sku sku = null;
+            if (!string.IsNullOrWhiteSpace(requestedServiceObjectiveName) || !string.IsNullOrWhiteSpace(edition))
+            {
+                sku = new Sku()
+                {
+                    Name = string.IsNullOrWhiteSpace(requestedServiceObjectiveName) ? GetDatabaseSkuName(edition) : requestedServiceObjectiveName,
+                    Tier = edition
+                };
+            }
+
+            return sku;
         }
     }
 }

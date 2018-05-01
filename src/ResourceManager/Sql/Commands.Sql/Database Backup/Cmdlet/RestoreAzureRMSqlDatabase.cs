@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "The Vcore numbers of the restored Azure Sql Database.")]
         [Alias("Capacity")]
         [ValidateNotNullOrEmpty]
-        public int VCores { get; set; }
+        public int Vcore { get; set; }
 
         /// <summary>
         /// The start of the cmdlet.
@@ -331,25 +331,18 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||
                 ParameterSetName == FromGeoBackupWithVcoreSetName || ParameterSetName == FromLongTermRetentionBackupWithVcoreSetName)
             {
-                string skuName = AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition);
+                string skuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition);
                 model.Sku = new Management.Sql.Models.Sku()
                 {
                     Name = skuName,
                     Tier = Edition,
-                    Capacity = VCores,
+                    Capacity = Vcore,
                     Family = ComputeGeneration
                 };
             }
             else
             {
-                if (!string.IsNullOrWhiteSpace(ServiceObjectiveName) || !string.IsNullOrWhiteSpace(Edition))
-                {
-                    model.Sku = new Management.Sql.Models.Sku()
-                    {
-                        Name = string.IsNullOrWhiteSpace(ServiceObjectiveName) ? AzureSqlDatabaseAdapter.getDatabaseSkuName(Edition) : ServiceObjectiveName,
-                        Tier = Edition
-                    };
-                }
+                model.Sku = AzureSqlDatabaseAdapter.GetDtuDatabaseSku(ServiceObjectiveName, Edition);
             }
 
             return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model);

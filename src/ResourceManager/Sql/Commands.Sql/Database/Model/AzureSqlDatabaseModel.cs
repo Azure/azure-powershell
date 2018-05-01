@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             ZoneRedundant = database.ZoneRedundant;
 
-            Sku = database.Sku;
+            Sku = database.CurrentSku;
 
             Capacity = database.Sku == null ? (int?)null : database.Sku.Capacity;
         }

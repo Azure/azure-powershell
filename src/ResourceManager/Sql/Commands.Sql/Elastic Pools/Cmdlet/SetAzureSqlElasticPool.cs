@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// Cmdlet to create a new Azure Sql Database ElasticPool
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlElasticPool", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = "DtuBasedPool")]
+        ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = DtuPoolParameterSet)]
     public class SetAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>
@@ -96,9 +96,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the total shared VCore number for the Sql Azure Elastic Pool.
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
-            HelpMessage = "The total shared number of Vcores for the Sql Azure Elastic Pool.")]
+            HelpMessage = "The total shared number of Vcore for the Sql Azure Elastic Pool.")]
         [ValidateNotNullOrEmpty]
-        public int VCores { get; set; }
+        public int Vcore { get; set; }
 
         /// <summary>
         /// Gets or sets the compute generation for the Sql Azure Elastic Pool
@@ -197,33 +197,16 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 newModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = AzureSqlElasticPoolAdapter.getPoolSkuName(edition),
+                    Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition),
                     Tier = edition,
                     Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
                 };
-
-                // If update from Vcore pool to Dtu pool, PerDatabaseSettings will be set to:
-                //   Default if not provided
-                //   Values specified if provided.
-                // If update from Dtu to Dtu pool, PerDatabaseSettings will be keep same.
-                if (AzureSqlElasticPoolAdapter.isVcorePool(edition) && !AzureSqlElasticPoolAdapter.isVcorePool(poolCurrentSku.Tier) ||
-                    !AzureSqlElasticPoolAdapter.isVcorePool(edition) && AzureSqlElasticPoolAdapter.isVcorePool(poolCurrentSku.Tier))
-                {
-                    newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
-                    {
-                        MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null,
-                        MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null
-                    };
-                }
-                else
-                {
-                    newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
-                    {
-                        MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? DatabaseDtuMin : poolCurrentDbSetting.MinCapacity,
-                        MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? DatabaseDtuMax : poolCurrentDbSetting.MaxCapacity
-                    };
-                }
                 
+                newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
+                {
+                    MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null,
+                    MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null
+                };     
             }
             else
             {
@@ -231,33 +214,20 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 newModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = AzureSqlElasticPoolAdapter.getPoolSkuName(skuTier),
+                    Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(skuTier),
                     Tier = skuTier,
-                    Capacity = MyInvocation.BoundParameters.ContainsKey("VCores") ? VCores : poolCurrentSku.Capacity,
+                    Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : poolCurrentSku.Capacity,
                     Family = MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ? ComputeGeneration : poolCurrentSku.Family
                 };
 
-                // If update from Dtu pool to Vcore pool, PerDatabaseSettings will be set to:
-                //   Default if not provided
-                //   Values specified if provided.
-                // If update from Vcore to Vcore pool, PerDatabaseSettings will be keep same.
-                if (AzureSqlElasticPoolAdapter.isVcorePool(skuTier) && !AzureSqlElasticPoolAdapter.isVcorePool(poolCurrentSku.Tier) ||
-                    !AzureSqlElasticPoolAdapter.isVcorePool(skuTier) && AzureSqlElasticPoolAdapter.isVcorePool(poolCurrentSku.Tier))
+                if (MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") || MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax"))
                 {
                     newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
                     {
                         MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") ? (double?)DatabaseVCoreMin : null,
                         MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax") ? (double?)DatabaseVCoreMax : null
                     };
-                }
-                else
-                {
-                    newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
-                    {
-                        MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") ? DatabaseVCoreMin : Math.Min((double)newModel.Sku.Capacity, (double)poolCurrentDbSetting.MinCapacity),
-                        MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax") ? DatabaseVCoreMax : Math.Min((double)newModel.Sku.Capacity, (double)poolCurrentDbSetting.MaxCapacity)
-                    };
-                }      
+                }     
             }
 
             newEntity.Add(newModel);

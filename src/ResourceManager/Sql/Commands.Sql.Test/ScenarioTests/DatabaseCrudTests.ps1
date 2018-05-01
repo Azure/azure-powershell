@@ -128,7 +128,7 @@ function Test-CreateVcoreDatabase
 
 		# Create with VCore parameter set
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCores 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -AsJob
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Vcore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -318,7 +318,7 @@ function Test-UpdateVcoreDatabase ()
 
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-Vcores 2 -Edition GeneralPurpose -ComputeGeneration Gen4 -MaxSizeBytes 250GB
+		-Vcore 2 -Edition GeneralPurpose -ComputeGeneration Gen4 -MaxSizeBytes 250GB
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
@@ -336,7 +336,7 @@ function Test-UpdateVcoreDatabase ()
 
 		# Alter with all properties
 		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-MaxSizeBytes 5GB -Vcores 1 -Edition GeneralPurpose -ComputeGeneration Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
+			-MaxSizeBytes 5GB -Vcore 1 -Edition GeneralPurpose -ComputeGeneration Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 
@@ -360,7 +360,7 @@ function Test-UpdateVcoreDatabase ()
 
 		# Alter Vcore only
 		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-VCores 2 -AsJob
+			-Vcore 2 -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
