@@ -7,3 +7,37 @@ schema: 2.0.0
 ---
 
 # Set-AzureRmExpressRouteCircuitConnectionConfig
+
+## SYNOPSIS
+Saves a modified ExpressRoute circuit connection configuration.
+
+## DESCRIPTION
+The **Set-AzureRmExpressRouteCircuitConnectionConfig** cmdlets saves a modified ExpressRoute circuit connection
+configuration back to Azure.
+
+## EXAMPLES
+
+## PARAMETERS
+
+## INPUTS
+
+### PSExpressRouteCircuit
+Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+
+## NOTES
+
+## RELATED LINKS
+
+[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+
+[Get-AzureRmExpressRouteCircuitConnectionConfig](Get-AzureRmExpressRouteCircuitConnectionConfig.md)
+
+[Add-AzureRmExpressRouteCircuitConnectionConfig](Add-AzureRmExpressRouteCircuitConnectionConfig.md)
+
+[Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md)
+
+[New-AzureRmExpressRouteCircuitConnectionConfig](New-AzureRmExpressRouteCircuitConnectionConfig.md)

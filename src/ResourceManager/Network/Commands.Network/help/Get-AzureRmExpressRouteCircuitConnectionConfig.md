@@ -6,3 +6,36 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.netwo
 schema: 2.0.0
 ---
 # Get-AzureRmExpressRouteCircuitConnectionConfig
+
+## SYNOPSIS
+Gets an ExpressRoute circuit connection configuration associated with Private Peering of ExpressRouteCircuit.
+
+## DESCRIPTION
+The **Get-AzureRmExpressRouteCircuitConnectionConfig** cmdlet retrieves the configuration of a circuit connection
+associated with Private Peering for an ExpressRoute circuit.
+
+## EXAMPLES
+
+## PARAMETERS
+
+## INPUTS
+
+### PSExpressRouteCircuit
+Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitConnection
+
+## NOTES
+## RELATED LINKS
+
+[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
+
+[Add-AzureRmExpressRouteCircuitConnectionConfig](Add-AzureRmExpressRouteCircuitConnectionConfig.md)
+
+[Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md)
+
+[Set-AzureRmExpressRouteCircuitConnectionConfig](Set-AzureRmExpressRouteCircuitConnectionConfig.md)
+
+[New-AzureRmExpressRouteCircuitConnectionConfig](New-AzureRmExpressRouteCircuitConnectionConfig.md)
