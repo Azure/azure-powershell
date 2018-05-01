@@ -318,6 +318,14 @@
       <Project>{69ed499e-6f3c-488f-86b8-b74cfda4d47e}</Project>
       <Name>Commands.Sql</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj">
+      <Project>{4cca7339-15bf-4066-9fa1-6a23a58f2cee}</Project>
+      <Name>Commands.Common.Storage.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Commands.Common.KeyVault.csproj">
+      <Project>{836965C0-B198-4D01-B3D7-757DB62B49A0}</Project>
+      <Name>Commands.Common.KeyVault</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

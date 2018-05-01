@@ -55,8 +55,8 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.6.0'; }
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.dll', 
-               '.\Microsoft.Azure.Management.KeyVault.dll', 
-               '.\Microsoft.Azure.Management.Storage.dll', 
+               '.\Microsoft.Azure.Commands.Common.Storage.Management.dll',
+               '.\Microsoft.Azure.Commands.Common.KeyVault.dll',
                '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
                '.\Microsoft.Data.Services.Client.dll', 
                '.\Microsoft.WindowsAzure.Commands.Sync.dll', 
