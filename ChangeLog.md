@@ -102,6 +102,8 @@
     - Please refer to the migration guide for more information
 
 #### AzureRM.Profile
+* Enable context autosave by default
+* Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
 * Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
 
 #### AzureRM.RecoveryServices.SiteRecovery
@@ -114,6 +116,18 @@
 #### AzureRM.Resources
 * Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
 * Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Add Tab completers for Scope and ResourceType
+* Add convenience cmdlet for creating ServicePrincipals
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add AD Cmdlets:
+  - Remove-AzureRmADGroupMember
+  - Get-AzureRmADGroup
+  - New-AzureRmADGroup
+  - Remove-AzureRmADGroup
+  - Remove-AzureRmADUser
+  - Update-AzureRmADApplication
+  - Update-AzureRmADServicePrincipal
+  - Update-AzureRmADUser
 
 #### AzureRM.ServiceFabric
 * Update default Linux image version sku

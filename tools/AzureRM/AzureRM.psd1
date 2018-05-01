@@ -264,7 +264,9 @@ AzureRM.OperationalInsights
     - Please refer to the migration guide for more information
 
 AzureRM.Profile
-* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
+* Enable context autosave by default
+* Create a context for each subscription when running Connect-AzureRmAccount
+* Add USGovernment OperationalInsights endpoints to Azure environment for US Gov.
 
 AzureRM.RecoveryServices.SiteRecovery
 * Fixed Authentication Header
@@ -274,6 +276,9 @@ AzureRM.RedisCache
     - Please refer to the migration guide for more information
 
 AzureRM.Resources
+* Add Tab completers for Scope and ResourceType
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add convenience cmdlet for creating ServicePrincipals
 * Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
 * Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
 

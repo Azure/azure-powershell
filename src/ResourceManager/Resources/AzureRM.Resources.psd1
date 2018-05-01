@@ -80,19 +80,21 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Get-AzureRmRoleDefinition', 'New-AzureRmRoleDefinition', 
                'Set-AzureRmRoleDefinition', 'Remove-AzureRmRoleDefinition', 
                'Get-AzureRmADAppCredential', 'Get-AzureRmADApplication', 
-               'Get-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
+               'Add-AzureRmADGroupMember', 'Get-AzureRmADGroupMember', 
+               'Remove-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
+               'New-AzureRmADGroup', 'Remove-AzureRmADGroup', 
                'Get-AzureRmADServicePrincipal', 'Get-AzureRmADSpCredential', 
                'Get-AzureRmADUser', 'New-AzureRmADAppCredential', 
                'New-AzureRmADSpCredential', 'New-AzureRmADUser', 
                'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication', 
                'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
                'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
-               'Remove-AzureRmADUser', 'Set-AzureRmADApplication', 
-               'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser', 
+               'Remove-AzureRmADUser', 'Update-AzureRmADApplication', 
+               'Update-AzureRmADServicePrincipal', 'Update-AzureRmADUser', 
                'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
                'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
-               'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup', 
-               'Get-AzureRmResourceProvider', 'Register-AzureRmResourceProvider', 
+               'Export-AzureRmResourceGroup', 'Get-AzureRmResourceProvider', 
+               'Register-AzureRmResourceProvider', 
                'Unregister-AzureRmResourceProvider', 
                'Get-AzureRmResourceGroupDeployment', 
                'New-AzureRmResourceGroupDeployment', 
@@ -103,12 +105,11 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Save-AzureRmResourceGroupDeploymentTemplate', 
                'Get-AzureRmResourceGroupDeploymentOperation', 
                'Get-AzureRmResourceLock', 'Invoke-AzureRmResourceAction', 
-               'Find-AzureRmResource', 'Move-AzureRmResource', 
-               'New-AzureRmResourceLock', 'Get-AzureRmPolicyAssignment', 
-               'Get-AzureRmPolicyDefinition', 'Get-AzureRmPolicySetDefinition', 
-               'New-AzureRmPolicyAssignment', 'New-AzureRmPolicyDefinition', 
-               'New-AzureRmPolicySetDefinition', 'Remove-AzureRmPolicyAssignment', 
-               'Remove-AzureRmPolicyDefinition', 
+               'Move-AzureRmResource', 'New-AzureRmResourceLock', 
+               'Get-AzureRmPolicyAssignment', 'Get-AzureRmPolicyDefinition', 
+               'Get-AzureRmPolicySetDefinition', 'New-AzureRmPolicyAssignment', 
+               'New-AzureRmPolicyDefinition', 'New-AzureRmPolicySetDefinition', 
+               'Remove-AzureRmPolicyAssignment', 'Remove-AzureRmPolicyDefinition', 
                'Remove-AzureRmPolicySetDefinition', 'Set-AzureRmPolicyAssignment', 
                'Set-AzureRmPolicyDefinition', 'Set-AzureRmPolicySetDefinition', 
                'Remove-AzureRmResource', 'Remove-AzureRmResourceLock', 
@@ -125,7 +126,12 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzureRmResourceProviderAction'
+AliasesToExport = 'Get-AzureRmResourceProviderAction', 
+               'Get-AzureRmADServicePrincipalCredential', 
+               'New-AzureRmADServicePrincipalCredential', 
+               'Remove-AzureRmADServicePrincipalCredential', 
+               'Set-AzureRmADApplication', 'Set-AzureRmADServicePrincipal', 
+               'Set-AzureRmADUser'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -156,7 +162,19 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
 * Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
-* Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result'
+* Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Add convenience cmdlet for creating ServicePrincipals
+* Add Tab completers for Scope and ResourceType
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add AD Cmdlets:
+  - Remove-AzureRmADGroupMember
+  - Get-AzureRmADGroup
+  - New-AzureRmADGroup
+  - Remove-AzureRmADGroup
+  - Remove-AzureRmADUser
+  - Update-AzureRmADApplication
+  - Update-AzureRmADServicePrincipal
+  - Update-AzureRmADUser'
 
         # Prerelease string of this module
         # Prerelease = ''
