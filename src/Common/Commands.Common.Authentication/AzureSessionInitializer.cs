@@ -105,13 +105,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                         store.CreateDirectory(directoryPath);
                     }
                     string autoSavePath = Path.Combine(profileDirectory, settingsFile);
-                    store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                     result.Mode = ContextSaveMode.CurrentUser;
+                    store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
             }
             catch
             {
                 // ignore exceptions in reading settings from disk
+                result.Mode = ContextSaveMode.Process;
             }
 
             return result;
