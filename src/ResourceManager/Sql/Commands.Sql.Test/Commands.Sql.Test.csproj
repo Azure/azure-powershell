@@ -798,6 +798,42 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.FailoverGroupTests\TestSwitchFailoverGroupAllowDataLoss.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+	<None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_AutomaticPolicy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_AutomaticPolicyGracePeriodReadOnlyFailover.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_ManualPolicy.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_Named.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestCreateInstanceFailoverGroup_Positional.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_AutomaticToManual.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_AutomaticWithGracePeriodReadOnlyFailover.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_ManualToAutomaticNoGracePeriod.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_Named.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\TestSetInstanceFailoverGroup_Positional.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\Test_SwitchInstanceFailoverGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.InstanceFailoverGroupTests\Test_SwitchInstanceFailoverGroupAllowDataLoss.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.FailoverGroupTests\Test_AddRemoveDatabasesToFromFailoverGroup.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
