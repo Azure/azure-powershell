@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudPool Pool { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet), ValidateRange(1, 100)]
         public int MaxCount { get; set; } = defaultMaxCount;
 
         public override void ExecuteCmdlet()
