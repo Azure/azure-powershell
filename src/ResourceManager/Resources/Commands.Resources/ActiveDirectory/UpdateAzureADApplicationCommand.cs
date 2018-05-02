@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -21,28 +23,37 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new AD application.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmADApplication", SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
-    public class SetAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+    [Cmdlet(VerbsData.Update, "AzureRmADApplication", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams), OutputType(typeof(PSADApplication))]
+    [Alias("Set-AzureRmADApplication")]
+    public class UpdateAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationId { get; set; }
+        public Guid ApplicationId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObjectWithUpdateParams, HelpMessage = "The application object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADApplication InputObject { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
+            HelpMessage = "The display name for the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
             HelpMessage = "The display name for the application.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
-            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+            HelpMessage = "The URL to the application's homepage.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
-            HelpMessage = "The URL to the applicationâ€™s homepage.")]
+            HelpMessage = "The URL to the application's homepage.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
+            HelpMessage = "The URL to the application's homepage.")]
         [ValidateNotNullOrEmpty]
         public string HomePage { get; set; }
 
@@ -50,18 +61,26 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The URIs that identify the application.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
             HelpMessage = "The URIs that identify the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
+            HelpMessage = "The URIs that identify the application.")]
         [ValidateNotNullOrEmpty]
-        public string[] IdentifierUris { get; set; }
+        [Alias("IdentifierUris")]
+        public string[] IdentifierUri { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
             HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
             HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
-        public string[] ReplyUrls { get; set; }
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
+            HelpMessage = "Specifies the URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.")]
+        [Alias("ReplyUrls")]
+        public string[] ReplyUrl { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams,
             HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithUpdateParams,
+            HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.InputObjectWithUpdateParams,
             HelpMessage = "True if the application is shared with other tenants; otherwise, false.")]
         public bool AvailableToOtherTenants { get; set; }
 
@@ -69,23 +88,28 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         {
             ExecutionBlock(() =>
             {
-                if (!string.IsNullOrEmpty(ApplicationId))
+                if (this.IsParameterBound(c => c.InputObject))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = InputObject.ObjectId;
+                }
+                else if (this.IsParameterBound(c => c.ApplicationId))
+                {
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
                 }
 
                 ApplicationUpdateParameters parameters = new ApplicationUpdateParameters
                 {
                     DisplayName = DisplayName,
                     Homepage = HomePage,
-                    IdentifierUris = IdentifierUris,
-                    ReplyUrls = ReplyUrls,
+                    IdentifierUris = IdentifierUri,
+                    ReplyUrls = ReplyUrl,
                     AvailableToOtherTenants = AvailableToOtherTenants
                 };
 
-                if (ShouldProcess(target: ObjectId, action: string.Format("Updating an application with object id '{0}'", ObjectId)))
+                if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Updating an application with object id '{0}'", ObjectId)))
                 {
                     ActiveDirectoryClient.UpdateApplication(ObjectId, parameters);
+                    WriteObject(ActiveDirectoryClient.GetApplication(ObjectId));
                 }
             });
         }
