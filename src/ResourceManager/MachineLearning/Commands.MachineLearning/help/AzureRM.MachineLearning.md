@@ -1,14 +1,14 @@
 ﻿---
 Module Name: AzureRM.MachineLearning
 Module Guid: bb030259-49f9-46ef-806f-2a3f5a2e018e
-Download Help Link: 
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # AzureRM.MachineLearning Module
 ## Description
-{{Manually Enter Description Here}}
+Machine Learning Web Services cmdlets for Azure Resource Manager
 
 ## AzureRM.MachineLearning Cmdlets
 ### [Add-AzureRmMlWebServiceRegionalProperty](Add-AzureRmMlWebServiceRegionalProperty.md)
