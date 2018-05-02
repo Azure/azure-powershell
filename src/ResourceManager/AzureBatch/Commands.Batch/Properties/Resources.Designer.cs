@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No start time specified. Start time is the time when compute node log serarch begins..
+        ///   Looks up a localized string similar to No start time specified..
         /// </summary>
         internal static string NoStartTime {
             get {
