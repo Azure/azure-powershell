@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.3
 * Change Guid paramters to Guid type, not string
 * Set minimum dependency of module to PowerShell 5.0
 

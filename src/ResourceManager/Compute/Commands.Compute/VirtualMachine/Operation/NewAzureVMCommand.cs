@@ -191,7 +191,8 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2012Datacenter",
             "Win2008R2SP1",
             "Win10")]
-        public string ImageName { get; set; } = "Win2016Datacenter";
+        [Alias("ImageName")]
+        public string Image { get; set; } = "Win2016Datacenter";
 
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -269,7 +270,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (_cmdlet.DiskFile == null)
                 {
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
-                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
+                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.Image, Location);
                 }
 
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(

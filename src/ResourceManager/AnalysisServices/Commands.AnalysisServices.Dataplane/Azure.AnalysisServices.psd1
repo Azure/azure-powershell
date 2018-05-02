@@ -12,7 +12,7 @@
 # RootModule = ''
   
 # Version number of this module.  
-ModuleVersion = '0.5.0'
+ModuleVersion = '0.5.1'
   
 # ID used to uniquely identify this module  
 GUID = 'c717b5a4-1f1b-4a2f-8aa1-bfd09934626e'  
@@ -48,7 +48,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.6.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()
@@ -104,7 +104,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'https://github.com/Azure/azure-powershell/blob/dev/ChangeLog.md'
+        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0'
 
     } # End of PSData hashtable
 
