@@ -163,7 +163,7 @@ PrivateData = @{
 * Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
-        Prerelease = 'Preview'
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
