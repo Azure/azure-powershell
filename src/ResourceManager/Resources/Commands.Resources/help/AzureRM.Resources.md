@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources
+Help Version: 5.5.2.0
 Locale: en-US
 ---
 
@@ -11,14 +11,11 @@ Locale: en-US
 This topic displays help topics for the Azure Resource Manager Cmdlets.
 
 ## AzureRM.Resources Cmdlets
+### [Add-AzureRmADGroupMember](Add-AzureRmADGroupMember.md)
+Adds a user to an existing AD group.
+
 ### [Export-AzureRmResourceGroup](Export-AzureRmResourceGroup.md)
 Captures a resource group as a template and saves it to a file.
-
-### [Find-AzureRmResource](Find-AzureRmResource.md)
-Searches for resources based on specified parameters.
-
-### [Find-AzureRmResourceGroup](Find-AzureRmResourceGroup.md)
-Searches for resource groups.
 
 ### [Get-AzureRmADAppCredential](Get-AzureRmADAppCredential.md)
 Retrieves a list of credentials associated with an application.
@@ -30,7 +27,7 @@ Lists existing azure active directory applications.
 Filters active directory groups.
 
 ### [Get-AzureRmADGroupMember](Get-AzureRmADGroupMember.md)
-Get a group members.
+Lists members of an AD group in the current tenant.
 
 ### [Get-AzureRmADServicePrincipal](Get-AzureRmADServicePrincipal.md)
 Filters active directory service principals.
@@ -103,6 +100,9 @@ Adds a credential to an existing application.
 ### [New-AzureRmADApplication](New-AzureRmADApplication.md)
 Creates a new azure active directory application.
 
+### [New-AzureRmADGroup](New-AzureRmADGroup.md)
+Creates a new active directory group.
+
 ### [New-AzureRmADServicePrincipal](New-AzureRmADServicePrincipal.md)
 Creates a new azure active directory service principal.
 
@@ -161,6 +161,12 @@ Removes a credential from an application.
 ### [Remove-AzureRmADApplication](Remove-AzureRmADApplication.md)
 Deletes the azure active directory application.
 
+### [Remove-AzureRmADGroup](Remove-AzureRmADGroup.md)
+Deletes an active directory group.
+
+### [Remove-AzureRmADGroupMember](Remove-AzureRmADGroupMember.md)
+Removes a user from an AD group.
+
 ### [Remove-AzureRmADServicePrincipal](Remove-AzureRmADServicePrincipal.md)
 Deletes the azure active directory service principal.
 
@@ -208,15 +214,6 @@ Delete will fail if there are existing role assignments made to the custom role.
 ### [Save-AzureRmResourceGroupDeploymentTemplate](Save-AzureRmResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
 
-### [Set-AzureRmADApplication](Set-AzureRmADApplication.md)
-Updates an existing azure active directory application.
-
-### [Set-AzureRmADServicePrincipal](Set-AzureRmADServicePrincipal.md)
-Updates an existing azure active directory service principal.
-
-### [Set-AzureRmADUser](Set-AzureRmADUser.md)
-Updates an existing active directory user.
-
 ### [Set-AzureRmManagedApplication](Set-AzureRmManagedApplication.md)
 Updates managed application
 
@@ -256,4 +253,13 @@ Validates a resource group deployment.
 
 ### [Unregister-AzureRmResourceProvider](Unregister-AzureRmResourceProvider.md)
 Unregisters a resource provider.
+
+### [Update-AzureRmADApplication](Update-AzureRmADApplication.md)
+Updates an existing azure active directory application.
+
+### [Update-AzureRmADServicePrincipal](Update-AzureRmADServicePrincipal.md)
+Updates an existing azure active directory service principal.
+
+### [Update-AzureRmADUser](Update-AzureRmADUser.md)
+Updates an existing active directory user.
 
