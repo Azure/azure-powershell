@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                     "Scripts\\ControlPlane\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
                     helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.KeyVault.psd1");
+                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"));
 
                 try
                 {
