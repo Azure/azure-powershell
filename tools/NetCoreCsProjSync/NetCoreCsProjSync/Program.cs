@@ -46,7 +46,7 @@ namespace NetCoreCsProjSync
                 throw new ArgumentException($"Directory [{rmPath}] does not exist");
             }
             //https://stackoverflow.com/a/17563994/294804
-            var mode = ModeMap.Keys.FirstOrDefault(k => args.Any(a => a.IndexOf(k, StringComparison.InvariantCultureIgnoreCase) >= 0)) ?? TestProj;
+            var mode = ModeMap.Keys.FirstOrDefault(k => args.Any(a => a.IndexOf(k, StringComparison.InvariantCultureIgnoreCase) >= 0)) ?? Validate;
             ModeMap[mode](rmPath);
         }
 
