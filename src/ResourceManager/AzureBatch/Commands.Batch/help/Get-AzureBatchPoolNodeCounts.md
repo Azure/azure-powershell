@@ -43,8 +43,7 @@ The Get-AzureBatchPoolNodeCounts cmdlet allows customers to get back node counts
 
 ### Example 1
 
-```
-powershell
+```powershell
 PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
 PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext
 
@@ -58,8 +57,7 @@ List node counts per node state for pools under current batch account context.
 
 ### Example 2
 
-```
-powershell
+```powershell
 PS C:\> Get-AzureBatchPoolNodeCounts -BatchContext $batchContext -PoolId "contosopool1"
 
 PoolId                         Dedicated                                                    LowPriority
