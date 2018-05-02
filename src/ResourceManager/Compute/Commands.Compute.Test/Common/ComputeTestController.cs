@@ -59,9 +59,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public Azure.Management.Storage.Version2017_10_01.StorageManagementClient StorageClient { get; private set; }
 
+        public Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.KeyVaultManagementClient KeyVaultClient { get; private set; }
+
         public Azure.Management.Storage.StorageManagementClient StorageClientPublic { get; private set; }
 
-        public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
+        public Azure.Management.KeyVault.KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
@@ -200,6 +202,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             StorageClientPublic = GetPublicStorageManagementClient(context);
             //var eventsClient = GetEventsClient();
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
+            KeyVaultClient = GetCommonKeyVaultClient(context);
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -215,6 +218,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 StorageClientPublic,
                 //eventsClient,
                 KeyVaultManagementClient,
+                KeyVaultClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
                 AuthorizationManagementClient,
@@ -297,11 +301,18 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         //    return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
         //}
 
-        private KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
+        private Azure.Management.KeyVault.KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
         {
             return testViaCsm
-                ? context.GetServiceClient<KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
-                : TestBase.GetServiceClient<KeyVaultManagementClient>(new RDFETestEnvironmentFactory());
+                ? context.GetServiceClient<Azure.Management.KeyVault.KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Azure.Management.KeyVault.KeyVaultManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private Commands.Common.KeyVault.Version2016_10_1.KeyVaultManagementClient GetCommonKeyVaultClient(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Commands.Common.KeyVault.Version2016_10_1.KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Commands.Common.KeyVault.Version2016_10_1.KeyVaultManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
