@@ -63,30 +63,7 @@ namespace NetCoreCsProjSync
                 Console.WriteLine($"Creating {path}");
 
                 var netCoreDefinition = ConvertOldTestToNewTestNetCore(desktopDefinition);
-                //https://stackoverflow.com/a/760290/294804
-                //https://stackoverflow.com/a/3732234/294804
-                var blankNamespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
-                var xmlSettings = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = true };
-                using (var stringWriter = new StringWriter())
-                using (var xmlWriter = XmlWriter.Create(stringWriter, xmlSettings))
-                {
-                    serializer.Serialize(xmlWriter, netCoreDefinition, blankNamespaces);
-                    var lines = stringWriter.ToString().Split(Environment.NewLine).ToList();
-                    var newLineIndecies = lines.Select((l, i) => (Index: i, Line: l)).Where(a =>
-                            a.Line.StartsWith("<Project") || a.Line.StartsWith("  <Import") ||
-                            a.Line.StartsWith("  </PropertyGroup>") || a.Line.StartsWith("  </ItemGroup>"))
-                        .Select(a => a.Index).ToList();
-
-                    for (var i = 0; i < newLineIndecies.Count; ++i)
-                    {
-                        lines.Insert(newLineIndecies[i] + i + 1, String.Empty);
-                    }
-                    File.WriteAllLines(path, lines.Take(lines.Count - 1));
-                    using (var streamWriter = File.AppendText(path))
-                    {
-                        streamWriter.Write(lines.Last());
-                    }
-                }
+                WriteProjectFile(serializer, netCoreDefinition, path);
             }
         }
 
@@ -189,29 +166,34 @@ namespace NetCoreCsProjSync
                 Console.WriteLine($"Creating {path}");
 
                 var netCoreDefinition = ConvertOldToNewNetCore(desktopDefinition);
-                //https://stackoverflow.com/a/760290/294804
-                //https://stackoverflow.com/a/3732234/294804
-                var blankNamespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
-                var xmlSettings = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = true };
-                using (var stringWriter = new StringWriter())
-                using (var xmlWriter = XmlWriter.Create(stringWriter, xmlSettings))
-                {
-                    serializer.Serialize(xmlWriter, netCoreDefinition, blankNamespaces);
-                    var lines = stringWriter.ToString().Split(Environment.NewLine).ToList();
-                    var newLineIndecies = lines.Select((l, i) => (Index: i, Line: l)).Where(a =>
-                            a.Line.StartsWith("<Project") || a.Line.StartsWith("  <Import") ||
-                            a.Line.StartsWith("  </PropertyGroup>") || a.Line.StartsWith("  </ItemGroup>"))
-                        .Select(a => a.Index).ToList();
+                WriteProjectFile(serializer, netCoreDefinition, path);
+            }
+        }
 
-                    for (var i = 0; i < newLineIndecies.Count; ++i)
-                    {
-                        lines.Insert(newLineIndecies[i] + i + 1, String.Empty);
-                    }
-                    File.WriteAllLines(path, lines.Take(lines.Count - 1));
-                    using (var streamWriter = File.AppendText(path))
-                    {
-                        streamWriter.Write(lines.Last());
-                    }
+        private static void WriteProjectFile(XmlSerializer serializer, NewProjectDefinition netCoreDefinition, string path)
+        {
+            //https://stackoverflow.com/a/760290/294804
+            //https://stackoverflow.com/a/3732234/294804
+            var blankNamespaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+            var xmlSettings = new XmlWriterSettings { OmitXmlDeclaration = true, Indent = true };
+            using (var stringWriter = new StringWriter())
+            using (var xmlWriter = XmlWriter.Create(stringWriter, xmlSettings))
+            {
+                serializer.Serialize(xmlWriter, netCoreDefinition, blankNamespaces);
+                var lines = stringWriter.ToString().Split(Environment.NewLine).ToList();
+                var newLineIndecies = lines.Select((l, i) => (Index: i, Line: l)).Where(a =>
+                        a.Line.StartsWith("<Project") || a.Line.StartsWith("  <Import") ||
+                        a.Line.StartsWith("  </PropertyGroup>") || a.Line.StartsWith("  </ItemGroup>"))
+                    .Select(a => a.Index).ToList();
+
+                for (var i = 0; i < newLineIndecies.Count; ++i)
+                {
+                    lines.Insert(newLineIndecies[i] + i + 1, String.Empty);
+                }
+                File.WriteAllLines(path, lines.Take(lines.Count - 1));
+                using (var streamWriter = File.AppendText(path))
+                {
+                    streamWriter.Write(lines.Last());
                 }
             }
         }
