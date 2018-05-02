@@ -27,6 +27,3 @@ Register for the [Load Balancer Standard Preview](https://docs.microsoft.com/en-
 ### PublicIpAddressTests
 [Enable Availability Zones](https://ms.portal.azure.com/#blade/Microsoft_Azure_Compute/EnableAvailabilityZonesBlade) for your subscription.  
 Register for the [Standard SKU Preview](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-public-ip-address#register-for-the-standard-sku-preview) on your subscription.
-
-### VirtualNetworkTests
-Register the feature `AllowSecureVnets` for `Microsoft.Network` to your subscription. Unfortunately, this cannot be registered via the `Register-AzureRmProviderFeature` cmdlet. Attempting to will simply show `Pending` as the `RegistrationState` indefinitely. You must contact [Anupam Vij](Anupam.Vij@microsoft.com) to enable the feature on your subscription.

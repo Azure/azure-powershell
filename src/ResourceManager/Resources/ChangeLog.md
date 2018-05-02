@@ -18,9 +18,23 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
-* Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Add convenience cmdlet for creating ServicePrincipals
+* Add Tab completers for Scope and ResourceType
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add AD Cmdlets:
+  - Remove-AzureRmADGroupMember
+  - Get-AzureRmADGroup
+  - New-AzureRmADGroup
+  - Remove-AzureRmADGroup
+  - Remove-AzureRmADUser
+  - Update-AzureRmADApplication
+  - Update-AzureRmADServicePrincipal
+  - Update-AzureRmADUser
 
 ## Version 5.5.2
 * Updated to the latest version of the Azure ClientRuntime

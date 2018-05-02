@@ -210,6 +210,16 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<CertificateWithNonceDescription, PSCertificateWithNonceDescription>(certificateWithNonceDescription);
         }
 
+        public static IEnumerable<PSEventHubConsumerGroupInfo> ToPSEventHubConsumerGroupInfo(IEnumerable<EventHubConsumerGroupInfo> eventHubConsumerGroupInfo)
+        {
+            return ConvertObject<IEnumerable<EventHubConsumerGroupInfo>, IEnumerable<PSEventHubConsumerGroupInfo>>(eventHubConsumerGroupInfo.ToList());
+        }
+
+        public static TagsResource ToTagsResource(IDictionary<string, string> tags)
+        {
+            return new TagsResource(tags);
+        }
+
         public static string GetResourceGroupName(string Id)
         {
             if (string.IsNullOrEmpty(Id)) return null;
