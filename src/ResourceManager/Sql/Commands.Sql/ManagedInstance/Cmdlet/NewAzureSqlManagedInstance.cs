@@ -40,10 +40,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// Gets or sets the name of the managed instance name.
         /// </summary>
         [Parameter(Mandatory = true,
+            Position = 0,
             HelpMessage = "SQL Database Managed Instance name.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ManagedInstanceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the admin credential of the Managed instance
@@ -110,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             Mandatory = true,
             HelpMessage = "The edition for the Sql Azure Managed Instance.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(Constants.GeneralPurposeEdition, Constants.BusinessCriticalEdition)]
+        [PSArgumentCompleter(Constants.GeneralPurposeEdition, Constants.BusinessCriticalEdition)]
         public string Edition { get; set; }
 
         /// <summary>
@@ -120,7 +131,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             Mandatory = true,
             HelpMessage = "The compute generation for the Sql Azure Managed Instance.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(Constants.ComputeGenerationGen4, Constants.ComputeGenerationGen5)]
+        [PSArgumentCompleter(Constants.ComputeGenerationGen4, Constants.ComputeGenerationGen5)]
         public string ComputeGeneration { get; set; }
 
         /// <summary>

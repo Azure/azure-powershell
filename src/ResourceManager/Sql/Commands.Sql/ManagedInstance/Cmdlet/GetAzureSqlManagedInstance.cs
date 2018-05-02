@@ -33,28 +33,28 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             "GetManagedInstanceFromAzureResourceId";
 
         /// <summary>
-        /// Gets or sets the name of the resource group.
-        /// </summary>
-        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the managed instance.
         /// </summary>
         [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "SQL managed instance name.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string ManagedInstanceName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the resource group.
+        /// </summary>
+        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id of the Managed instance

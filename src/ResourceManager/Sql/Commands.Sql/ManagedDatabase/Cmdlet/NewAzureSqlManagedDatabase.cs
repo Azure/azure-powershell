@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The collation of the Azure SQL Managed Database collation to use.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("SQL_Latin1_General_CP1_CI_AS", "Latin1_General_100_CS_AS_SC")]
         public string Collation { get; set; }
 
         /// <summary>
