@@ -34,8 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsData.Import, CmdletNoun.AzureKeyVaultCertificate,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ImportCertificateFromFileParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
     public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
@@ -122,17 +121,25 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (ShouldProcess(Name, Properties.Resources.ImportCertificate))
             {
                 List<CertificateBundle> certBundleList = new List<CertificateBundle>();
-                CertificateBundle certBundle = null;
+                PSKeyVaultCertificate certBundle = null;
 
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
 
-                        if (Password != null)
-                        {
-                            X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
-                            X509Certificate2Collection certColl = new X509Certificate2Collection();
+                        bool doImport = false;
+                        X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
 
+                        // look for at least one certificate which contains a private key
+                        foreach (var cert in userProvidedCertColl)
+                        {
+                            doImport |= cert.HasPrivateKey;
+                            if (doImport)
+                                break;
+                        }
+
+                        if (doImport)
+                        {
                             byte[] base64Bytes;
 
                             if (Password == null)
@@ -146,16 +153,15 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                             string base64CertCollection = Convert.ToBase64String(base64Bytes);
                             certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, base64CertCollection, Password, Tag == null ? null : Tag.ConvertToDictionary());
-
-                            break;
                         }
-
-                        certBundle = this.DataServiceClient.MergeCertificate(
-                            VaultName,
-                            Name,
-                            LoadCertificateFromFile(),
-                            Tag == null ? null : Tag.ConvertToDictionary());
-
+                        else
+                        {
+                            certBundle = this.DataServiceClient.MergeCertificate(
+                                VaultName,
+                                Name,
+                                userProvidedCertColl,
+                                Tag == null ? null : Tag.ConvertToDictionary());
+                        }
                         break;
 
                     case ImportWithPrivateKeyFromCollectionParameterSet:
@@ -169,22 +175,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                         break;
                 }
 
-                var certificate = PSKeyVaultCertificate.FromCertificateBundle(certBundle);
-                this.WriteObject(certificate);
+                this.WriteObject(certBundle);
             }
-        }
-
-        internal X509Certificate2Collection LoadCertificateFromFile()
-        {
-            FileInfo certFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.FilePath));
-            if (!certFile.Exists)
-            {
-                throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.CertificateFileNotFound, this.FilePath));
-            }
-
-            var certificates = new X509Certificate2Collection();
-            certificates.Import(certFile.FullName);
-            return certificates;
         }
 
         internal X509Certificate2Collection InitializeCertificateCollection()

@@ -87,9 +87,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         private void Run()
         {
-            WriteWarning("New-AzureRmSnapshotUpdateConfig: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                         "The Name property for a Sku will return Standard_LRS and Premium_LRS");
-
             // EncryptionSettings
             Microsoft.Azure.Management.Compute.Models.EncryptionSettings vEncryptionSettings = null;
 
@@ -125,8 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             if (this.MyInvocation.BoundParameters.ContainsKey("SkuName"))
             {
-                WriteWarning("New-AzureRmSnapshotUpdateConfig: The accepted values for parameter SkuName will change in an upcoming breaking change release " +
-                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
                 if (vSku == null)
                 {
                     vSku = new Microsoft.Azure.Management.Compute.Models.DiskSku();

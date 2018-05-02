@@ -142,7 +142,18 @@ $ErrorActionPreference = "Stop"
     Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys wrapKey -PermissionsToSecrets set;
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption;
-    
+
+    # Enable soft delete on KeyVault to not lose encryption secrets
+    Write-Host "Enabling Soft Delete on KeyVault $keyVaultName";
+    $resource = Get-AzureRmResource -ResourceId $keyVault.ResourceId;
+    $resource.Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true" -Force;
+    Set-AzureRmResource -resourceid $resource.ResourceId -Properties $resource.Properties -Force;
+
+    # Enable ARM resource lock on KeyVault to prevent accidental key vault deletion
+    Write-Host "Adding resource lock on  KeyVault $keyVaultName";
+    $lockNotes = "KeyVault may contain AzureDiskEncryption secrets required to boot encrypted VMs";
+    New-AzureRmResourceLock -LockLevel CanNotDelete -LockName "LockKeyVault" -ResourceName $resource.Name -ResourceType $resource.ResourceType -ResourceGroupName $resource.ResourceGroupName -LockNotes $lockNotes -Force;
+
     $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 	$keyVaultResourceId = $keyVault.ResourceId;
 

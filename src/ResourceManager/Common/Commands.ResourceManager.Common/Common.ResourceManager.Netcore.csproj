@@ -22,9 +22,9 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.2.12" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.12" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
   </ItemGroup>
 
   <ItemGroup>

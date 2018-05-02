@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.0.2
 * Updated to the latest version of the Azure ClientRuntime
+* Set minimum dependency of module to PowerShell 5.0
 
 ## Version 0.0.1
 * Initial command set for AKS

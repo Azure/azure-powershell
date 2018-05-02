@@ -12,19 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 {
-    public class PSArgumentCompleterAttribute : PSCompleterBaseAttribute
+    public class PSArgumentCompleterAttribute : ArgumentCompleterAttribute
     {
-        private static string[] _argumentList;
-        public PSArgumentCompleterAttribute(params string[] argumentList)
+        public PSArgumentCompleterAttribute(params string[] argumentList) : base(CreateScriptBlock(argumentList))
         {
-            _argumentList = argumentList;
         }
 
-        public override string[] GetCompleterValues()
+        public static ScriptBlock CreateScriptBlock(string[] resourceTypes)
         {
-            return _argumentList;
+            string scriptResourceTypeList = "'" + String.Join("' , '", resourceTypes) + "'";
+            string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
+                String.Format("$values = {0}\n", scriptResourceTypeList) +
+                "$values | Where-Object { $_ -Like \"$wordToComplete*\" } | Sort-Object | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
+            ScriptBlock scriptBlock = ScriptBlock.Create(script);
+            return scriptBlock;
         }
     }
 }

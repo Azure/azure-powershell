@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     /// <summary>
     /// This attribute will allow the user to autocomplete the -ResourceGroup parameter of a cmdlet with valid resource groups
     /// </summary>
-    public class ResourceGroupCompleterAttribute : PSCompleterBaseAttribute
+    public class ResourceGroupCompleterAttribute : ArgumentCompleterAttribute
     {
         private static IDictionary<int, IList<String>> _resourceGroupNamesDictionary = new ConcurrentDictionary<int, IList<string>>();
         private static readonly object _lock = new object();
@@ -96,13 +96,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         /// Example: [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false), ResourceGroupCompleter()]
         /// </summary>
         /// <param name="resourceTypes"></param>
-        public ResourceGroupCompleterAttribute()
+        public ResourceGroupCompleterAttribute() : base(CreateScriptBlock())
         {
-        }
-
-        public override string[] GetCompleterValues()
-        {
-            return GetResourceGroups();
         }
 
         public static string[] GetResourceGroups(int timeout)

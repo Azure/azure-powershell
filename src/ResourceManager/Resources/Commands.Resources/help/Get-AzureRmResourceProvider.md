@@ -21,7 +21,7 @@ Get-AzureRmResourceProvider [-Location <String>] [-ListAvailable] [-ApiVersion <
 
 ### IndividualProvider
 ```
-Get-AzureRmResourceProvider -ProviderNamespace <String> [-Location <String>] [-ApiVersion <String>] [-Pre]
+Get-AzureRmResourceProvider -ProviderNamespace <String[]> [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Specifies the namespace of the resource provider.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: IndividualProvider
 Aliases:
 

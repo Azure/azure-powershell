@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 9983EA1E-2515-4F5D-8476-8D0EE9837E88
@@ -69,7 +69,7 @@ The end of the valid ip range for the firewall rule
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -84,7 +84,7 @@ The name of the firewall rule.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -99,7 +99,7 @@ Specifies the name of the resource group that contains the account to update the
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -114,7 +114,7 @@ The start of the valid ip range for the firewall rule
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -167,4 +167,3 @@ The details of the updated firewall rule.
 ## NOTES
 
 ## RELATED LINKS
-

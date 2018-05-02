@@ -52,12 +52,11 @@
     <Reference Include="Microsoft.Azure.Gallery">
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Authorization">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.1\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.3.0.0-preview\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Cdn, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.4.0.1-preview\lib\net452\Microsoft.Azure.Management.Cdn.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -91,9 +90,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
@@ -142,10 +138,19 @@
     <None Include="ScenarioTests\SubscriptionTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.CustomDomainTests\TestCustomDomainEnableDisableWithRunningEndpoint.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.CustomDomainTests\TestCustomDomainGetRemoveWithRunningEndpoint.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.CustomDomainTests\TestCustomDomainGetRemoveWithStoppedEndpoint.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.EndpointTests\EndpointValidateProbeUrl.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.EndpointTests\TestEndpointCreateWithDsa.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.EndpointTests\TestEndpointCrudAndAction.json">
@@ -173,6 +178,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.OriginTests\TestOriginGetSetWithStoppedEndpoint.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.ProfileTests\ProfileGetSupportedOptimizationType.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest.ProfileTests\TestProfileCrud.json">
