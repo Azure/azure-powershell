@@ -94,7 +94,7 @@ Flag to allow gatewayLinks be used in remote virtual network's link to this virt
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: AlloowGatewayTransit
+Aliases:
 
 Required: False
 Position: Named
