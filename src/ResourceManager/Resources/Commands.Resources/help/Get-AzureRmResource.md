@@ -9,95 +9,147 @@ schema: 2.0.0
 # Get-AzureRmResource
 
 ## SYNOPSIS
+
 Gets resources.
 
 ## SYNTAX
 
-### GetAllResources (Default)
+### ByTagNameValueParameterSet (Default)
 ```
-Get-AzureRmResource [-ExpandProperties] [-ODataQuery <String>] [-ApiVersion <String>] [-Pre]
+Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
+ [-ResourceGroupName <String>] [-TagName <String>] [-TagValue <String>] [-ExpandProperties]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzureRmResource -ResourceId <String> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetByResourceId
+### ByTagObjectParameterSet
 ```
-Get-AzureRmResource -ResourceId <String> [-ExpandProperties] [-ODataQuery <String>] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByTenantLevel
-```
-Get-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
- [-ExtensionResourceType <String>] [-ExpandProperties] [-IsCollection] [-ODataQuery <String>] [-TenantLevel]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetBySpecifiedScopeAtTenantLevel
-```
-Get-AzureRmResource [-ResourceName <String>] [-ResourceType <String>] [-ExtensionResourceName <String>]
- [-ExtensionResourceType <String>] [-ExpandProperties] [-IsCollection] [-Top <Int32>] [-ODataQuery <String>]
- [-TenantLevel] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByNameAndGroup
-```
-Get-AzureRmResource [-ResourceName <String>] [-ExtensionResourceName <String>]
- [-ExtensionResourceType <String>] [-ExpandProperties] [-IsCollection] [-ODataQuery <String>]
- [-ResourceGroupName <String>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetByResourceNameAndType
-```
-Get-AzureRmResource [-ResourceName <String>] [-ResourceType <String>] [-ExtensionResourceName <String>]
- [-ExtensionResourceType <String>] [-ExpandProperties] [-IsCollection] [-ODataQuery <String>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByNameGroupAndType
-```
-Get-AzureRmResource -ResourceName <String> -ResourceType <String> [-ExtensionResourceName <String>]
- [-ExtensionResourceType <String>] [-ExpandProperties] [-ODataQuery <String>] -ResourceGroupName <String>
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetResourceCollection
-```
-Get-AzureRmResource [-ResourceType <String>] [-ExtensionResourceType <String>] [-ExpandProperties]
- [-IsCollection] [-ODataQuery <String>] [-ResourceGroupName <String>] [-ApiVersion <String>] [-Pre]
+Get-AzureRmResource [[-Name] <String>] [-ResourceType <String>] [-ODataQuery <String>]
+ [-ResourceGroupName <String>] -Tag <Hashtable> [-ExpandProperties] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 The **Get-AzureRmResource** cmdlet gets Azure resources.
 
 ## EXAMPLES
 
-### Example 1: Get all the resources of a particular type
+### Example 1: Get all resources in the current subscription
+
 ```
-PS C:\>Get-AzureRmResource -ResourceGroupName ResourceGroup11 -ResourceType microsoft.web/sites
+PS C:\> Get-AzureRmResource | ft
+
+Name    ResourceGroupName  ResourceType                            Location
+----    -----------------  ------------                            --------
+testVM  testRG             Microsoft.Compute/virtualMachines       westus
+disk    testRG             Microsoft.Compute/disks                 westus
+nic     testRG             Microsoft.Network/networkInterfaces     westus
+nsg     testRG             Microsoft.Network/networkSecurityGroups westus
+ip      testRG             Microsoft.Network/publicIPAddresses     westus
+vnet    testRG             Microsoft.Network/virtualNetworks       westus
+testKV  otherRG            Microsoft.KeyVault/vaults               eastus
+storage otherResourceGroup Microsoft.Storage/storageAccounts       eastus
+testVM2 otherResourceGroup Microsoft.Compute/virtualMachines       eastus
 ```
 
-This command gets a resource of the type microsoft.web/sites under ResourceGroup11.
+This command gets all of the resources in the current subscription.
 
-### Example 2: Get a resource by name
+### Example 2: Get all resources in a resource group
+
 ```
-PS C:\>Get-AzureRmResource -ResourceGroupName ResourceGroup11 -ResourceName ContosoWebsite
+PS C:\> Get-AzureRmResource -ResourceGroupName testRG | ft
+
+Name   ResourceGroupName ResourceType                            Location
+----   ----------------- ------------                            --------
+testVM testRG            Microsoft.Compute/virtualMachines       westus
+disk   testRG            Microsoft.Compute/disks                 westus
+nic    testRG            Microsoft.Network/networkInterfaces     westus
+nsg    testRG            Microsoft.Network/networkSecurityGroups westus
+ip     testRG            Microsoft.Network/publicIPAddresses     westus
+vnet   testRG            Microsoft.Network/virtualNetworks       westus
 ```
 
-This command gets a resource  named ContosoWebsite under ResourceGroup11.
+This command gets all of the resources in the resource group "testRG".
 
-### Example 3: Show all the status of storage accounts in a Resource Group
+### Example 3: Get all resources whose resource group matches the provided wildcard
+
 ```
-PS C:\>Get-AzureRmResource -ResourceGroupName ResourceGroup11 -ResourceType Microsoft.ClassicStorage/storageAccounts -ExpandProperties |
-   Select * -Expand Properties |
-   Sort Name |
-   Format-Table Name,Status*
+PS C:\> Get-AzureRmResource -ResourceGroupName other* | ft
+
+Name    ResourceGroupName  ResourceType                      Location
+----    -----------------  ------------                      --------
+testKV  otherRG            Microsoft.KeyVault/vaults         eastus
+storage otherResourceGroup Microsoft.Storage/storageAccounts eastus
+testVM2 otherResourceGroup Microsoft.Compute/virtualMachines eastus
 ```
+
+This command gets all of the resources whose resource group they belong in beings with "other".
+
+### Example 4: Get all resources with a given name
+
+```
+PS C:\> Get-AzureRmResource -Name testVM | fl
+
+Name              : testVM
+ResourceGroupName : testRG
+ResourceType      : Microsoft.Compute/virtualMachines
+Location          : westus
+ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
+```
+
+This command gets all of the resources whose resource name is "testVM".
+
+### Example 5: Get all resources whose name matches the provided wildcard
+
+```
+PS C:\> Get-AzureRmResource -Name test* | ft
+
+Name    ResourceGroupName  ResourceType                      Location
+----    -----------------  ------------                      --------
+testVM  testRG             Microsoft.Compute/virtualMachines westus
+testKV  otherRG            Microsoft.KeyVault/vaults         eastus
+testVM2 otherResourceGroup Microsoft.Compute/virtualMachines eastus
+```
+
+This command gets all of the resources whose resource name begins with "test".
+
+### Example 6: Get all resources of a given resource type
+
+```
+PS C:\> Get-AzureRmResource -ResourceType Microsoft.Compute/virtualMachines | ft
+
+Name    ResourceGroupName  ResourceType                      Location
+----    -----------------  ------------                      --------
+testVM  testRG             Microsoft.Compute/virtualMachines westus
+testVM2 otherResourceGroup Microsoft.Compute/virtualMachines eastus
+```
+
+This command gets all of the resources in the current subscriptions that are virtual machines.
+
+### Example 7: Get a resource by resource id
+
+```
+PS C:\> Get-AzureRmResource -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
+
+Name              : testVM
+ResourceGroupName : testRG
+ResourceType      : Microsoft.Compute/virtualMachines
+Location          : westus
+ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM
+```
+
+This command gets the resource with the provided resource id, which is a virtual machine called "testVM" in the resource group "testRG".
 
 ## PARAMETERS
 
 ### -ApiVersion
+
 ```yaml
 Type: String
 Parameter Sets: (All)
@@ -126,6 +178,8 @@ Accept wildcard characters: False
 ```
 
 ### -ExpandProperties
+When specified, expands the properties of the resource.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -138,61 +192,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtensionResourceName
-```yaml
-Type: String
-Parameter Sets: GetByTenantLevel, GetBySpecifiedScopeAtTenantLevel, GetByNameAndGroup, GetByResourceNameAndType, GetByNameGroupAndType
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ExtensionResourceType
-```yaml
-Type: String
-Parameter Sets: GetByTenantLevel, GetBySpecifiedScopeAtTenantLevel, GetByNameAndGroup, GetByResourceNameAndType, GetByNameGroupAndType
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
+### -Name
+The name of the resource(s) to be retrieved. This parameter supports wildcards at the beginning and/or end of the string.
 
 ```yaml
 Type: String
-Parameter Sets: GetResourceCollection
-Aliases:
+Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
+Aliases: ResourceName
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IsCollection
-```yaml
-Type: SwitchParameter
-Parameter Sets: GetByTenantLevel, GetBySpecifiedScopeAtTenantLevel, GetByNameAndGroup, GetByResourceNameAndType, GetResourceCollection
-Aliases:
-
-Required: False
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ODataQuery
+
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases:
 
 Required: False
@@ -203,6 +222,7 @@ Accept wildcard characters: False
 ```
 
 ### -Pre
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -216,129 +236,60 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+The resource group the resource(s) that is retireved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
+
+
 ```yaml
 Type: String
-Parameter Sets: GetByNameAndGroup
+Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: GetByNameGroupAndType
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: GetResourceCollection
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Specifies the fully qualified resource ID, including the subscription, as in the following example: 
+Specifies the fully qualified resource ID, as in the following example
 
-`/subscriptions/`subscription ID`/providers/Microsoft.Sql/servers/ContosoServer/databases/ContosoDatabase`
-
-This cmdlet gets the resource that has this ID.
+`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Compute/virtualMachines`
 
 ```yaml
 Type: String
-Parameter Sets: GetByResourceId
+Parameter Sets: ByResourceId
 Aliases: Id
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceName
-```yaml
-Type: String
-Parameter Sets: GetByTenantLevel, GetByNameGroupAndType
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: GetBySpecifiedScopeAtTenantLevel, GetByNameAndGroup, GetByResourceNameAndType
-Aliases: Name
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceType
-```yaml
-Type: String
-Parameter Sets: GetByTenantLevel, GetByNameGroupAndType
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
+The resource type of the resource(s) to be retrieved. For example, Microsoft.Compute/virtualMachines
 
 ```yaml
 Type: String
-Parameter Sets: GetBySpecifiedScopeAtTenantLevel, GetByResourceNameAndType
+Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-```yaml
-Type: String
-Parameter Sets: GetResourceCollection
-Aliases:
+### -Tag
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TenantLevel
-Indicates that this cmdlet operates at the tenant level.
+Gets resources that have the specified Azure tag. Enter a hash table with a Name key or Name and Value keys. Wildcard characters are not supported.A "tag" is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. To add a tag to a resource, use the Tag parameter of the New-AzureRmResource or Set-AzureRmResource cmdlets. To create a predefined tag, use the New-AzureRmTag cmdlet. For help with hash tables in Windows PowerShell, run 'Get-Help about_Hashtables'.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: GetByTenantLevel, GetBySpecifiedScopeAtTenantLevel
+Type: Hashtable
+Parameter Sets: ByTagObjectParameterSet
 Aliases:
 
 Required: True
@@ -348,10 +299,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Top
+### -TagName
+The key in the tag of the resource(s) to be retrieved.
+
 ```yaml
-Type: Int32
-Parameter Sets: GetBySpecifiedScopeAtTenantLevel
+Type: String
+Parameter Sets: ByTagNameValueParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TagValue
+The value in the tag of the resource(s) to be retrieved.
+
+```yaml
+Type: String
+Parameter Sets: ByTagNameValueParameterSet
 Aliases:
 
 Required: False
@@ -367,11 +335,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource
 
 ## NOTES
 
@@ -386,5 +355,3 @@ This cmdlet does not accept any input.
 [Remove-AzureRmResource](./Remove-AzureRmResource.md)
 
 [Set-AzureRmResource](./Set-AzureRmResource.md)
-
-

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Deletes a given role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition", SupportsShouldProcess = true, 
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRoleDefinition", SupportsShouldProcess = true,
         DefaultParameterSetName = ParameterSet.RoleDefinitionId), OutputType(typeof(bool))]
     public class RemoveAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
@@ -38,6 +39,10 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.InputObject, HelpMessage = "The object representing the role definition to be removed.")]
+        [ValidateNotNullOrEmpty]
+        public PSRoleDefinition InputObject { get; set; }
 
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "Scope of the existing role definition.")]
@@ -54,6 +59,18 @@ namespace Microsoft.Azure.Commands.Resources
         {
             PSRoleDefinition roleDefinition = null;
             string confirmMessage = null;
+            if (this.IsParameterBound(c => c.InputObject))
+            {
+                var tempId = Guid.Empty;
+                if (!string.IsNullOrEmpty(InputObject.Id) && Guid.TryParse(InputObject.Id, out tempId))
+                {
+                    Id = tempId;
+                }
+                else
+                {
+                    Name = InputObject.Name;
+                }
+            }
 
             if (Id != Guid.Empty)
             {

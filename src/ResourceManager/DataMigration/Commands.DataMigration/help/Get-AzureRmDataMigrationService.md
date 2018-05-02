@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataMigration.dll-Help.xml
 Module Name: AzureRM.DataMigration
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/get-azurermdatamigrationservice
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datamigration/Get-AzureRmDataMigrationService
 schema: 2.0.0
 ---
 
@@ -15,18 +15,21 @@ Retrieves the properties associated with an instance of the Azure Database Migra
 ### ResourceGroupSet (Default)
 ```
 Get-AzureRmDataMigrationService [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 Get-AzureRmDataMigrationService [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ServiceNameGroupSet
 ```
 Get-AzureRmDataMigrationService [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
+
 ## DESCRIPTION
 The Get-AzureRmDataMigrationService cmdlet retrieves the properties associated with an instance of the Azure Database Migration Service based on Service name and Azure Resource Group name as input parameters. 
 
@@ -41,7 +44,7 @@ The above example retrieves the properties of the Azure Database Migration Servi
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmDataMigrationService -ResourceGroupName testResourceGroup 
+PS C:\> Get-AzureRmDataMigrationService -ResourceGroupName testResourceGroup
 ```
 
 The above example retrieves Azure Database Migration Services in the resource group called testResourceGroup. 
@@ -64,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Data Migration Service.
+Name of Database Migration Service.
 
 ```yaml
 Type: String
@@ -120,21 +123,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
 ### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
-
 ## NOTES
 
 ## RELATED LINKS
-
-
-
-
 
