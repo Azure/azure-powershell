@@ -130,7 +130,8 @@ Accept wildcard characters: False
 ```
 
 ### -MaxCount
-{{Fill MaxCount Description}}
+Specifies the maximum number of pools to return.
+The default value is 10.
 
 ```yaml
 Type: Int32
@@ -145,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -Pool
-{{Fill Pool Description}}
+Specifies the **PSCloudPool** for which to get node counts.
 
 ```yaml
 Type: PSCloudPool

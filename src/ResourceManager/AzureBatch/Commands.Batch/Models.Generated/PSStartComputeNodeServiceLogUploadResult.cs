@@ -29,12 +29,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSAddComputeNodeServiceLogsResult
+    public partial class PSStartComputeNodeServiceLogUploadResult
     {
         
         internal Microsoft.Azure.Batch.UploadBatchServiceLogsResult omObject;
         
-        internal PSAddComputeNodeServiceLogsResult(Microsoft.Azure.Batch.UploadBatchServiceLogsResult omObject)
+        internal PSStartComputeNodeServiceLogUploadResult(Microsoft.Azure.Batch.UploadBatchServiceLogsResult omObject)
         {
             if ((omObject == null))
             {

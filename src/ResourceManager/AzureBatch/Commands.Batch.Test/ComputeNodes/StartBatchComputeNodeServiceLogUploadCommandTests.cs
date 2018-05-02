@@ -27,14 +27,15 @@ using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 {
-    public class AddBatchComputeNodeServiceLogsCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class StartBatchComputeNodeServiceLogUploadCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        private AddBatchComputeNodeServiceLogsCommand addComputeNodeServiceLogsCommand;
+        private StartBatchComputeNodeServiceLogUploadCommand startComputeNodeServiceLogUploadCommand;
         private GetBatchComputeNodeCommand getComputeNodeCommand;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
+        private const string fakeUrl = "https://containerUrl?sv==";
 
-        public AddBatchComputeNodeServiceLogsCommandTests(Xunit.Abstractions.ITestOutputHelper output)
+        public StartBatchComputeNodeServiceLogUploadCommandTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             batchClientMock = new Mock<BatchClient>();
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
                 BatchClient = batchClientMock.Object,
             };
 
-            addComputeNodeServiceLogsCommand = new AddBatchComputeNodeServiceLogsCommand()
+            startComputeNodeServiceLogUploadCommand = new StartBatchComputeNodeServiceLogUploadCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -55,15 +56,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void WhenAddBatchComputeNodeServiceLogsCommandIsCalledWithPoolIdAndComputeNodeId_ShouldSucceed()
+        public void WhenStartBatchComputeNodeServiceLogUploadCommandIsCalledWithPoolIdAndComputeNodeId_ShouldSucceed()
         {
             // Setup cmdlet to get a compute node by id
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
-            addComputeNodeServiceLogsCommand.BatchContext = context;
-            addComputeNodeServiceLogsCommand.PoolId = "pool";
-            addComputeNodeServiceLogsCommand.ComputeNodeId = "tvm";
-            addComputeNodeServiceLogsCommand.ContainerUrl = "https://containerUrl?sv==";
-            addComputeNodeServiceLogsCommand.StartTime = DateTime.UtcNow;
+            startComputeNodeServiceLogUploadCommand.BatchContext = context;
+            startComputeNodeServiceLogUploadCommand.PoolId = "pool";
+            startComputeNodeServiceLogUploadCommand.ComputeNodeId = "tvm";
+            startComputeNodeServiceLogUploadCommand.ContainerUrl = fakeUrl;
+            startComputeNodeServiceLogUploadCommand.StartTime = DateTime.UtcNow;
 
             const int numberOfFilesUploaded = 2;
             const string virtualDirectoryName = "pool1/tvm";
@@ -76,13 +77,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
                 ProxyModels.ComputeNodeUploadBatchServiceLogsOptions,
                 AzureOperationResponse<ProxyModels.UploadBatchServiceLogsResult, ProxyModels.ComputeNodeUploadBatchServiceLogsHeaders>>(response);
 
-            addComputeNodeServiceLogsCommand.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            startComputeNodeServiceLogUploadCommand.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            PSAddComputeNodeServiceLogsResult result = null;
-            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSAddComputeNodeServiceLogsResult>())).Callback<object>(c => result = (PSAddComputeNodeServiceLogsResult)c);
+            PSStartComputeNodeServiceLogUploadResult result = null;
+            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSStartComputeNodeServiceLogUploadResult>())).Callback<object>(c => result = (PSStartComputeNodeServiceLogUploadResult)c);
 
-            addComputeNodeServiceLogsCommand.ExecuteCmdlet();
+            startComputeNodeServiceLogUploadCommand.ExecuteCmdlet();
 
             Assert.NotNull(result);
             Assert.Equal(result.NumberOfFilesUploaded, numberOfFilesUploaded);
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void WhenAddBatchComputeNodeServiceLogsCommandIsCalledWithComputeNode_ShouldSucceed()
+        public void WhenStartBatchComputeNodeServiceLogUploadCommandIsCalledWithComputeNode_ShouldSucceed()
         {
             // First get a fake tvm
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
@@ -115,15 +116,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 
             getComputeNodeCommand.ExecuteCmdlet();
 
-
-            // test AddBatchComputeNodeServiceLogsCommand
-            addComputeNodeServiceLogsCommand.BatchContext = context;
-            addComputeNodeServiceLogsCommand.ComputeNode = computeNodes[0];
-            addComputeNodeServiceLogsCommand.ContainerUrl = "https://containerUrl?sv==";
+            // test StartBatchComputeNodeServiceLogUploadCommand
+            startComputeNodeServiceLogUploadCommand.BatchContext = context;
+            startComputeNodeServiceLogUploadCommand.ComputeNode = computeNodes[0];
+            startComputeNodeServiceLogUploadCommand.ContainerUrl = fakeUrl;
 
             var utcNow = DateTime.UtcNow;
-            addComputeNodeServiceLogsCommand.StartTime = utcNow.AddDays(-1);
-            addComputeNodeServiceLogsCommand.EndTime = utcNow;
+            startComputeNodeServiceLogUploadCommand.StartTime = utcNow.AddDays(-1);
+            startComputeNodeServiceLogUploadCommand.EndTime = utcNow;
 
             const int numberOfFilesUploaded = 2;
             const string virtualDirectoryName = "pool1/tvm";
@@ -135,13 +135,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
                 ProxyModels.ComputeNodeUploadBatchServiceLogsOptions,
                 AzureOperationResponse<ProxyModels.UploadBatchServiceLogsResult, ProxyModels.ComputeNodeUploadBatchServiceLogsHeaders>>(response2);
 
-            addComputeNodeServiceLogsCommand.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor2 };
+            startComputeNodeServiceLogUploadCommand.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor2 };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
-            PSAddComputeNodeServiceLogsResult result = null;
-            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSAddComputeNodeServiceLogsResult>())).Callback<object>(c => result = (PSAddComputeNodeServiceLogsResult)c);
+            PSStartComputeNodeServiceLogUploadResult result = null;
+            commandRuntimeMock.Setup(r => r.WriteObject(It.IsAny<PSStartComputeNodeServiceLogUploadResult>())).Callback<object>(c => result = (PSStartComputeNodeServiceLogUploadResult)c);
 
-            addComputeNodeServiceLogsCommand.ExecuteCmdlet();
+            startComputeNodeServiceLogUploadCommand.ExecuteCmdlet();
 
             Assert.NotNull(result);
             Assert.Equal(result.NumberOfFilesUploaded, numberOfFilesUploaded);

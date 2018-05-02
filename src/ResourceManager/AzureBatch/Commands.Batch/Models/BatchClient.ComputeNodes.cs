@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             return psRemoteLoginSettings;
         }
 
-        public PSAddComputeNodeServiceLogsResult AddComputeNodeServiceLogs(AddComputeNodeServiceLogsParameters parameters)
+        public PSStartComputeNodeServiceLogUploadResult StartComputeNodeServiceLogUpload(StartComputeNodeServiceLogUploadParameters parameters)
         {
             UploadBatchServiceLogsResult result = null;
 
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     parameters.AdditionalBehaviors);
             }
 
-            return new PSAddComputeNodeServiceLogsResult(result);
+            return new PSStartComputeNodeServiceLogUploadResult(result);
         }
     }
 }

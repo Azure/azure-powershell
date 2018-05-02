@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class AddComputeNodeServiceLogsParameters : ComputeNodeOperationParameters
+    public class StartComputeNodeServiceLogUploadParameters : ComputeNodeOperationParameters
     {
         public string ContainerUrl { get; }
 
@@ -26,7 +26,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
         public DateTime? EndTime { get; }
 
-        public AddComputeNodeServiceLogsParameters(BatchAccountContext context, string poolId, string computeNodeId, PSComputeNode computeNode, string containerUrl, DateTime startTime, DateTime? endTime,
+        public StartComputeNodeServiceLogUploadParameters(BatchAccountContext context, 
+            string poolId, 
+            string computeNodeId, 
+            PSComputeNode computeNode, 
+            string containerUrl, 
+            DateTime startTime, 
+            DateTime? endTime,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, poolId, computeNodeId, computeNode, additionalBehaviors)
         {
