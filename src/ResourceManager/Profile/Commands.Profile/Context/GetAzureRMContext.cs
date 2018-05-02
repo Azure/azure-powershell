@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.Profile.Properties;
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
-    /// Cmdlet to get current context. 
+    /// Cmdlet to get current context.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmContext", DefaultParameterSetName = GetSingleParameterSet)]
     [OutputType(typeof(PSAzureContext))]
@@ -53,13 +53,10 @@ namespace Microsoft.Azure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+            // If no context is found, return
             if (DefaultContext == null)
             {
-                WriteError(new ErrorRecord(
-                        new PSInvalidOperationException(Resources.RunLoginCmdlet),
-                        string.Empty,
-                        ErrorCategory.AuthenticationError,
-                        null));
+                return;
             }
 
             if (ListAvailable.IsPresent)
@@ -100,6 +97,15 @@ namespace Microsoft.Azure.Commands.Profile
             if (name != null)
             {
                 context.Name = name;
+            }
+
+            // Don't write the default (empty) context to the output stream
+            if (context.Account == null &&
+                context.Environment == null &&
+                context.Subscription == null &&
+                context.Tenant == null)
+            {
+                return;
             }
 
             WriteObject(context);

@@ -1,6 +1,258 @@
 {
   "Cmdlets": [
     {
+      "VerbName": "New",
+      "NounName": "AzureRmDataMigrationFileShare",
+      "Name": "New-AzureRmDataMigrationFileShare",
+      "ClassName": "Microsoft.Azure.Commands.DataMigration.Cmdlets.NewFileShare",
+      "SupportsShouldProcess": false,
+      "ConfirmImpact": 2,
+      "SupportsPaging": false,
+      "DefaultParameterSetName": "__AllParameterSets",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
+            "Name": "Microsoft.Azure.Management.DataMigration.Models.MigrateSqlServerSqlDbDatabaseInput",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.MigrateSqlServerSqlDbDatabaseInput, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "TableMap": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "MakeSourceDbReadOnly": "System.Nullable`1[System.Boolean]",
+              "Name": "System.String",
+              "TargetDatabaseName": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetDatabaseName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "makeSourceDbReadOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tableMap",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
+      "Parameters": [
+        {
+          "Name": "Path",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "Credential",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.PSCredential",
+            "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "DefaultProfile",
+          "AliasList": [
+            "AzureRmContext",
+            "AzureCredential"
+          ],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+            "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+              "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+              "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+              "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              }
+            ],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        }
+      ],
+      "ParameterSets": [
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Path",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Credential",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.PSCredential",
+                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        }
+      ],
+      "AliasList": [
+        "New-AzureRmDmsFileShare"
+      ]
+    },
+    {
       "VerbName": "Get",
       "NounName": "AzureRmDataMigrationService",
       "Name": "Get-AzureRmDataMigrationService",
@@ -14,7 +266,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -408,7 +660,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -431,7 +683,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -602,7 +854,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -705,7 +957,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -765,7 +1017,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -832,7 +1084,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -903,7 +1155,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -1065,7 +1317,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -1182,7 +1434,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1358,7 +1610,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -1618,7 +1870,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1842,7 +2094,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -2198,7 +2450,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ResultTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2402,7 +2654,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataMigration.Models.PSProject]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -2425,7 +2677,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -2599,7 +2851,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -3022,7 +3274,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -3378,7 +3630,7 @@
       "NounName": "AzureRmDataMigrationConnectionInfo",
       "Name": "New-AzureRmDataMigrationConnectionInfo",
       "ClassName": "Microsoft.Azure.Commands.DataMigration.Cmdlets.NewConnectionInfoCmdlet",
-      "SupportsShouldProcess": true,
+      "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -3387,7 +3639,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
             "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "UserName": "System.String",
               "Password": "System.String"
@@ -3455,7 +3707,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3596,7 +3848,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.ServerTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3748,7 +4000,7 @@
       "NounName": "AzureRmDataMigrationDatabaseInfo",
       "Name": "New-AzureRmDataMigrationDatabaseInfo",
       "ClassName": "Microsoft.Azure.Commands.DataMigration.Cmdlets.NewDatabaseInfoCmdlet",
-      "SupportsShouldProcess": true,
+      "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
@@ -3757,7 +4009,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
             "Name": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "SourceDatabaseName": "System.String"
             },
@@ -3949,19 +4201,19 @@
     },
     {
       "VerbName": "New",
-      "NounName": "AzureRmDataMigrationSqlServerSqlDbSelectedDB",
-      "Name": "New-AzureRmDataMigrationSqlServerSqlDbSelectedDB",
-      "ClassName": "Microsoft.Azure.Commands.DataMigration.Cmdlets.NewDataMigrationSqlServerSqlDbSelectedDB",
-      "SupportsShouldProcess": true,
+      "NounName": "AzureRmDataMigrationSelectedDB",
+      "Name": "New-AzureRmDataMigrationSelectedDB",
+      "ClassName": "Microsoft.Azure.Commands.DataMigration.Cmdlets.NewDataMigrationSelectedDB",
+      "SupportsShouldProcess": false,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "MigrateSqlServerSqlDb",
       "OutputTypes": [
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
             "Name": "Microsoft.Azure.Management.DataMigration.Models.MigrateSqlServerSqlDbDatabaseInput",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.MigrateSqlServerSqlDbDatabaseInput, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.MigrateSqlServerSqlDbDatabaseInput, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "TableMap": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "MakeSourceDbReadOnly": "System.Nullable`1[System.Boolean]",
@@ -4070,6 +4322,119 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "MigrateSqlServerSqlDbMi",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "BackupFileShare",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
+            "Name": "Microsoft.Azure.Management.DataMigration.Models.FileShare",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.FileShare, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "UserName": "System.String",
+              "Password": "System.String",
+              "Path": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "userName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "password",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "MigrateSqlServerSqlDb",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "MakeSourceDbReadOnly",
           "AliasList": [],
           "Type": {
@@ -4085,7 +4450,7 @@
           "ValidateSet": [],
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
-          "ValidateNotNullOrEmpty": true
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "TableMap",
@@ -4143,7 +4508,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "MigrateSqlServerSqlDbMi",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -4164,7 +4529,7 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -4188,7 +4553,229 @@
                 "ValidateRangeMax": null,
                 "ValidateNotNullOrEmpty": true
               },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MigrateSqlServerSqlDbMi",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "BackupFileShare",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
+                  "Name": "Microsoft.Azure.Management.DataMigration.Models.FileShare",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.FileShare, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {
+                    "UserName": "System.String",
+                    "Password": "System.String",
+                    "Path": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Validate",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "userName",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        },
+                        {
+                          "Name": "password",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
               "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "MigrateSqlServerSqlDb",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Name",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "TargetDatabaseName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "MigrateSqlServerSqlDb",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -4210,7 +4797,7 @@
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
                 "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
+                "ValidateNotNullOrEmpty": false
               },
               "Mandatory": false,
               "Position": -2147483648,
@@ -4283,10 +4870,53 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": [
-        "New-AzureRmDmsSqlServerSqlDbSelectedDB"
+        "New-AzureRmDmsSelectedDB"
       ]
     },
     {
@@ -4303,7 +4933,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -4367,7 +4997,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -4446,7 +5076,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -4663,7 +5293,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -4730,7 +5360,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4932,7 +5562,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5110,7 +5740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5360,7 +5990,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -5547,7 +6177,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -5611,7 +6241,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -5761,98 +6391,13 @@
           "Name": "SourceType",
           "AliasList": [],
           "Type": {
-            "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-            "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Equals",
-                "Parameters": [
-                  {
-                    "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
-              },
-              {
-                "Name": "GetHashCode",
-                "Parameters": [],
-                "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "ToString",
-                "Parameters": [
-                  {
-                    "Name": "format",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "provider",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "CompareTo",
-                "Parameters": [
-                  {
-                    "Name": "target",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "ToString",
-                "Parameters": [
-                  {
-                    "Name": "format",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "ToString",
-                "Parameters": [
-                  {
-                    "Name": "provider",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "HasFlag",
-                "Parameters": [
-                  {
-                    "Name": "flag",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
-              },
-              {
-                "Name": "GetTypeCode",
-                "Parameters": [],
-                "ReturnType": "System.TypeCode"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
-              }
-            ],
+            "Methods": [],
             "Constructors": []
           },
           "ValidateSet": [],
@@ -5864,98 +6409,13 @@
           "Name": "TargetType",
           "AliasList": [],
           "Type": {
-            "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-            "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "Equals",
-                "Parameters": [
-                  {
-                    "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
-              },
-              {
-                "Name": "GetHashCode",
-                "Parameters": [],
-                "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "ToString",
-                "Parameters": [
-                  {
-                    "Name": "format",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "provider",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "CompareTo",
-                "Parameters": [
-                  {
-                    "Name": "target",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "ToString",
-                "Parameters": [
-                  {
-                    "Name": "format",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "ToString",
-                "Parameters": [
-                  {
-                    "Name": "provider",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "HasFlag",
-                "Parameters": [
-                  {
-                    "Name": "flag",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
-              },
-              {
-                "Name": "GetTypeCode",
-                "Parameters": [],
-                "ReturnType": "System.TypeCode"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
-              }
-            ],
+            "Methods": [],
             "Constructors": []
           },
           "ValidateSet": [],
@@ -5969,7 +6429,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
             "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "UserName": "System.String",
               "Password": "System.String"
@@ -6036,7 +6496,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
             "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "UserName": "System.String",
               "Password": "System.String"
@@ -6103,7 +6563,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
             "Name": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo",
             "GenericTypeArguments": [],
@@ -6161,7 +6621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -6275,98 +6735,13 @@
                 "Name": "SourceType",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-                  "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "CompareTo",
-                      "Parameters": [
-                        {
-                          "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetTypeCode",
-                      "Parameters": [],
-                      "ReturnType": "System.TypeCode"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
+                  "Methods": [],
                   "Constructors": []
                 },
                 "ValidateSet": [],
@@ -6384,98 +6759,13 @@
                 "Name": "TargetType",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-                  "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "CompareTo",
-                      "Parameters": [
-                        {
-                          "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetTypeCode",
-                      "Parameters": [],
-                      "ReturnType": "System.TypeCode"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
+                  "Methods": [],
                   "Constructors": []
                 },
                 "ValidateSet": [],
@@ -6495,7 +6785,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "UserName": "System.String",
                     "Password": "System.String"
@@ -6568,7 +6858,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "UserName": "System.String",
                     "Password": "System.String"
@@ -6641,7 +6931,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo",
                   "GenericTypeArguments": [],
@@ -6780,98 +7070,13 @@
                 "Name": "SourceType",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-                  "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "CompareTo",
-                      "Parameters": [
-                        {
-                          "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetTypeCode",
-                      "Parameters": [],
-                      "ReturnType": "System.TypeCode"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
+                  "Methods": [],
                   "Constructors": []
                 },
                 "ValidateSet": [],
@@ -6889,98 +7094,13 @@
                 "Name": "TargetType",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-                  "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "CompareTo",
-                      "Parameters": [
-                        {
-                          "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetTypeCode",
-                      "Parameters": [],
-                      "ReturnType": "System.TypeCode"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
+                  "Methods": [],
                   "Constructors": []
                 },
                 "ValidateSet": [],
@@ -7000,7 +7120,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "UserName": "System.String",
                     "Password": "System.String"
@@ -7073,7 +7193,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "UserName": "System.String",
                     "Password": "System.String"
@@ -7146,7 +7266,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo",
                   "GenericTypeArguments": [],
@@ -7309,98 +7429,13 @@
                 "Name": "SourceType",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-                  "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "CompareTo",
-                      "Parameters": [
-                        {
-                          "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetTypeCode",
-                      "Parameters": [],
-                      "ReturnType": "System.TypeCode"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
+                  "Methods": [],
                   "Constructors": []
                 },
                 "ValidateSet": [],
@@ -7418,98 +7453,13 @@
                 "Name": "TargetType",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-                  "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "CompareTo",
-                      "Parameters": [
-                        {
-                          "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetTypeCode",
-                      "Parameters": [],
-                      "ReturnType": "System.TypeCode"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
+                  "Methods": [],
                   "Constructors": []
                 },
                 "ValidateSet": [],
@@ -7529,7 +7479,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "UserName": "System.String",
                     "Password": "System.String"
@@ -7602,7 +7552,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "UserName": "System.String",
                     "Password": "System.String"
@@ -7675,7 +7625,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo",
                   "GenericTypeArguments": [],
@@ -7790,98 +7740,13 @@
                 "Name": "SourceType",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-                  "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "CompareTo",
-                      "Parameters": [
-                        {
-                          "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetTypeCode",
-                      "Parameters": [],
-                      "ReturnType": "System.TypeCode"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
+                  "Methods": [],
                   "Constructors": []
                 },
                 "ValidateSet": [],
@@ -7899,98 +7764,13 @@
                 "Name": "TargetType",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-                  "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [
-                    {
-                      "Name": "Equals",
-                      "Parameters": [
-                        {
-                          "Name": "obj",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetHashCode",
-                      "Parameters": [],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        },
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "CompareTo",
-                      "Parameters": [
-                        {
-                          "Name": "target",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Int32"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "format",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "ToString",
-                      "Parameters": [
-                        {
-                          "Name": "provider",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.String"
-                    },
-                    {
-                      "Name": "HasFlag",
-                      "Parameters": [
-                        {
-                          "Name": "flag",
-                          "Type": "System.Reflection.RuntimeParameterInfo"
-                        }
-                      ],
-                      "ReturnType": "System.Boolean"
-                    },
-                    {
-                      "Name": "GetTypeCode",
-                      "Parameters": [],
-                      "ReturnType": "System.TypeCode"
-                    },
-                    {
-                      "Name": "GetType",
-                      "Parameters": [],
-                      "ReturnType": "System.Type"
-                    }
-                  ],
+                  "Methods": [],
                   "Constructors": []
                 },
                 "ValidateSet": [],
@@ -8010,7 +7790,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "UserName": "System.String",
                     "Password": "System.String"
@@ -8083,7 +7863,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "UserName": "System.String",
                     "Password": "System.String"
@@ -8156,7 +7936,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
                   "Name": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo[], Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo",
                   "GenericTypeArguments": [],
@@ -8253,7 +8033,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
               "ResourceGroupName": "System.String",
@@ -8482,7 +8262,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
                     "ResourceGroupName": "System.String",
@@ -9137,7 +8917,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -9347,7 +9127,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -9977,7 +9757,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -10206,7 +9986,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
                     "ResourceGroupName": "System.String",
@@ -10789,7 +10569,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -10963,7 +10743,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -11401,7 +11181,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
               "ResourceGroupName": "System.String",
@@ -11612,7 +11392,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
                     "ResourceGroupName": "System.String",
@@ -12099,7 +11879,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
             "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
               "ResourceGroupName": "System.String",
@@ -12273,7 +12053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
                   "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
                     "ResourceGroupName": "System.String",
@@ -12818,263 +12598,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService": {
-      "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
-      "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
-        "ResourceGroupName": "System.String",
-        "Name": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "service",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService": {
-      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-      "Name": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Sku": "Microsoft.Azure.Management.DataMigration.Models.ServiceSku",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.ServiceProvisioningState]",
-        "Etag": "System.String",
-        "Kind": "System.String",
-        "PublicKey": "System.String",
-        "VirtualSubnetId": "System.String",
-        "Location": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "virtualSubnetId",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "etag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "kind",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "publicKey",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sku",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.DataMigration.Models.ServiceSku": {
-      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-      "Name": "Microsoft.Azure.Management.DataMigration.Models.ServiceSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ServiceSku, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Capacity": "System.Nullable`1[System.Int32]",
-        "Name": "System.String",
-        "Tier": "System.String",
-        "Family": "System.String",
-        "Size": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tier",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "family",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "size",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "capacity",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "System.Nullable`1[System.Int32]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.Int32]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Int32"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13088,127 +12611,22 @@
       "Methods": [],
       "Constructors": []
     },
-    "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.ServiceProvisioningState]": {
+    "System.Nullable`1[System.Boolean]": {
       "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.ServiceProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataMigration.Models.ServiceProvisioningState, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Nullable`1[System.Boolean]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
-        "Microsoft.Azure.Management.DataMigration.Models.ServiceProvisioningState"
+        "System.Boolean"
       ],
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.DataMigration.Models.ServiceProvisioningState": {
-      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-      "Name": "Microsoft.Azure.Management.DataMigration.Models.ServiceProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ServiceProvisioningState, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "CompareTo",
-          "Parameters": [
-            {
-              "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetTypeCode",
-          "Parameters": [],
-          "ReturnType": "System.TypeCode"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
-    "System.TypeCode": {
+    "System.Type": {
       "Namespace": "System",
-      "Name": "System.TypeCode",
-      "AssemblyQualifiedName": "System.TypeCode, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Void": {
-      "Namespace": "System",
-      "Name": "System.Void",
-      "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13347,6 +12765,16 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Void": {
+      "Namespace": "System",
+      "Name": "System.Void",
+      "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
@@ -13383,10 +12811,257 @@
       "Methods": [],
       "Constructors": []
     },
+    "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService": {
+      "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
+      "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "Service": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
+        "ResourceGroupName": "System.String",
+        "Name": "System.String",
+        "Location": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "service",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService": {
+      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
+      "Name": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DataMigrationService, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Sku": "Microsoft.Azure.Management.DataMigration.Models.ServiceSku",
+        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+        "Etag": "System.String",
+        "Kind": "System.String",
+        "ProvisioningState": "System.String",
+        "PublicKey": "System.String",
+        "VirtualSubnetId": "System.String",
+        "Location": "System.String",
+        "Id": "System.String",
+        "Name": "System.String",
+        "Type": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Validate",
+          "Parameters": [],
+          "ReturnType": "System.Void"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "location",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "virtualSubnetId",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "id",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "name",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "type",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "tags",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "etag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "kind",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provisioningState",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "publicKey",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "sku",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "Microsoft.Azure.Management.DataMigration.Models.ServiceSku": {
+      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
+      "Name": "Microsoft.Azure.Management.DataMigration.Models.ServiceSku",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ServiceSku, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Capacity": "System.Nullable`1[System.Int32]",
+        "Name": "System.String",
+        "Tier": "System.String",
+        "Family": "System.String",
+        "Size": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "name",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "tier",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "family",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "size",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "capacity",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask": {
       "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
       "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProjectTask, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ProjectTask": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
         "ResourceGroupName": "System.String",
@@ -13439,7 +13114,7 @@
     "Microsoft.Azure.Management.DataMigration.Models.ProjectTask": {
       "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
       "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTask, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Properties": "Microsoft.Azure.Management.DataMigration.Models.ProjectTaskProperties",
         "Etag": "System.String",
@@ -13513,10 +13188,10 @@
     "Microsoft.Azure.Management.DataMigration.Models.ProjectTaskProperties": {
       "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
       "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectTaskProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTaskProperties, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTaskProperties, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Errors": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataMigration.Models.ODataError]",
-        "State": "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.TaskState]"
+        "State": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -13572,7 +13247,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataMigration.Models.ODataError]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataMigration.Models.ODataError]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataMigration.Models.ODataError, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataMigration.Models.ODataError, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -13584,7 +13259,7 @@
     "Microsoft.Azure.Management.DataMigration.Models.ODataError": {
       "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
       "Name": "Microsoft.Azure.Management.DataMigration.Models.ODataError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ODataError, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ODataError, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Details": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataMigration.Models.ODataError]",
         "Message": "System.String",
@@ -13645,126 +13320,19 @@
         }
       ]
     },
-    "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.TaskState]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.TaskState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataMigration.Models.TaskState, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.DataMigration.Models.TaskState"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.DataMigration.Models.TaskState": {
-      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-      "Name": "Microsoft.Azure.Management.DataMigration.Models.TaskState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.TaskState, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "CompareTo",
-          "Parameters": [
-            {
-              "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetTypeCode",
-          "Parameters": [],
-          "ReturnType": "System.TypeCode"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
     "Microsoft.Azure.Management.DataMigration.Models.Project": {
       "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
       "Name": "Microsoft.Azure.Management.DataMigration.Models.Project",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.Project, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.Project, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "SourceConnectionInfo": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
         "TargetConnectionInfo": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-        "SourcePlatform": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform",
-        "TargetPlatform": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "DatabasesInfo": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo]",
-        "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.ProjectProvisioningState]",
         "CreationTime": "System.Nullable`1[System.DateTimeOffset]",
+        "SourcePlatform": "System.String",
+        "TargetPlatform": "System.String",
+        "ProvisioningState": "System.String",
         "Location": "System.String",
         "Id": "System.String",
         "Name": "System.String",
@@ -13869,7 +13437,7 @@
     "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo": {
       "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
       "Name": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ConnectionInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "UserName": "System.String",
         "Password": "System.String"
@@ -13925,200 +13493,10 @@
         }
       ]
     },
-    "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform": {
-      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-      "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectSourcePlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "CompareTo",
-          "Parameters": [
-            {
-              "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetTypeCode",
-          "Parameters": [],
-          "ReturnType": "System.TypeCode"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform": {
-      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-      "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectTargetPlatform, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "CompareTo",
-          "Parameters": [
-            {
-              "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetTypeCode",
-          "Parameters": [],
-          "ReturnType": "System.TypeCode"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -14130,7 +13508,7 @@
     "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo": {
       "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
       "Name": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.DatabaseInfo, Microsoft.Azure.Management.DataMigration, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "SourceDatabaseName": "System.String"
       },
@@ -14186,113 +13564,6 @@
         }
       ]
     },
-    "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.ProjectProvisioningState]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[Microsoft.Azure.Management.DataMigration.Models.ProjectProvisioningState]",
-      "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Management.DataMigration.Models.ProjectProvisioningState, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "Microsoft.Azure.Management.DataMigration.Models.ProjectProvisioningState"
-      ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Management.DataMigration.Models.ProjectProvisioningState": {
-      "Namespace": "Microsoft.Azure.Management.DataMigration.Models",
-      "Name": "Microsoft.Azure.Management.DataMigration.Models.ProjectProvisioningState",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataMigration.Models.ProjectProvisioningState, Microsoft.Azure.Management.DataMigration, Version=0.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "CompareTo",
-          "Parameters": [
-            {
-              "Name": "target",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "format",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "HasFlag",
-          "Parameters": [
-            {
-              "Name": "flag",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetTypeCode",
-          "Parameters": [],
-          "ReturnType": "System.TypeCode"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
     "System.Nullable`1[System.DateTimeOffset]": {
       "Namespace": "System",
       "Name": "System.Nullable`1[System.DateTimeOffset]",
@@ -14315,10 +13586,20 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.TypeCode": {
+      "Namespace": "System",
+      "Name": "System.TypeCode",
+      "AssemblyQualifiedName": "System.TypeCode, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum": {
       "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
       "Name": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.TaskTypeEnum, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -14413,7 +13694,7 @@
     "Microsoft.Azure.Commands.DataMigration.Models.PSProject": {
       "Namespace": "Microsoft.Azure.Commands.DataMigration.Models",
       "Name": "Microsoft.Azure.Commands.DataMigration.Models.PSProject",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataMigration.Models.PSProject, Microsoft.Azure.Commands.DataMigration, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Project": "Microsoft.Azure.Management.DataMigration.Models.Project",
         "ResourceGroupName": "System.String",
@@ -14462,18 +13743,6 @@
           ]
         }
       ]
-    },
-    "System.Nullable`1[System.Boolean]": {
-      "Namespace": "System",
-      "Name": "System.Nullable`1[System.Boolean]",
-      "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [
-        "System.Boolean"
-      ],
-      "Methods": [],
-      "Constructors": []
     }
   }
 }

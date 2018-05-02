@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
+* Enable context autosave by default
+* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
 
 ## Version 4.6.0
 * Updated to the latest version of the Azure ClientRuntime
