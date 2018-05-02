@@ -41,11 +41,15 @@ This cmdlet gathers Azure Batch service log files from compute nodes if you are 
 ### Example 1
 
 ```powershell
-$storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
-$sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
-$containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
-$batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
-Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z"
+PS C:\> $storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
+PS C:\> $sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
+PS C:\> $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
+PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
+PS C:\> Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z"
+
+NumberOfFilesUploaded VirtualDirectoryName
+--------------------- --------------------
+                    4 contosobatch-22F48D278AD60CC2/contosopool/tvm-1612030122_1-20180405t234700z/bc3dd583-19a5-4665-aa83-87e4e1237d35
 ```
 
 Upload compute node service logs written on or after January 1, 2018 midnight, which were obtained from the compute node, given pool id of the pool in which the compute node resides, and compute node id.
@@ -53,11 +57,15 @@ Upload compute node service logs written on or after January 1, 2018 midnight, w
 ### Example 2
 
 ```powershell
-$storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
-$sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
-$containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
-$batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
-Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
+PS C:\> $storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
+PS C:\> $sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
+PS C:\> $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
+PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
+PS C:\> Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
+
+NumberOfFilesUploaded VirtualDirectoryName
+--------------------- --------------------
+                    2 contosobatch-22F48D278AD60CC2/contosopool/tvm-1612030122_1-20180405t234700z/bc3dd583-19a5-4665-aa83-87e4e1237d35
 ```
 
 Upload compute node service logs written on or after January 1, 2018 midnight and before January 10, 2018 midnight, which were obtained from the compute node, given pool id of the pool in which the compute node resides, and compute node id.
@@ -65,11 +73,16 @@ Upload compute node service logs written on or after January 1, 2018 midnight an
 ### Example 3
 
 ```powershell
-$storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
-$sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
-$containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
-$batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
-Get-AzureBatchComputeNode -BatchContext $batchContext -Id "tvm-1612030122_1-20180405t234700z" -PoolId "contosopool" | Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
+PS C:\> $storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -StorageAccountKey "<Storage Key for ContosoGeneral ends with ==>"
+PS C:\> $sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
+PS C:\> $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
+PS C:\> $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
+PS C:\> Get-AzureBatchComputeNode -BatchContext $batchContext -Id "tvm-1612030122_1-20180405t234700z" -PoolId "contosopool" | Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
+
+NumberOfFilesUploaded VirtualDirectoryName
+--------------------- --------------------
+                    2 contosobatch-22F48D278AD60CC2/contosopool/tvm-1612030122_1-20180405t234700z/bc3dd583-19a5-4665-aa83-87e4e1237d35
+
 ```
 
 Upload compute node service logs written on or after January 1, 2018 midnight and before January 10, 2018 midnight, which were obtained from the compute node object.
