@@ -630,19 +630,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNetworkSet()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { "Test-NetworkRuleSet" }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
         #region Helper Methods
         private string GetUser(TestEnvironment environment)
         {
