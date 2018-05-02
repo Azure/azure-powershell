@@ -27,6 +27,12 @@ Remove-AzureRmRoleDefinition [-Name] <String> [-Scope <String>] [-Force] [-PassT
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Remove-AzureRmRoleDefinition -InputObject <PSRoleDefinition> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Remove-AzureRmRoleDefinition cmdlet deletes a custom role in Azure Role-Based Access Control.
         Provide the Id parameter of an existing custom role to delete that custom role.
@@ -93,6 +99,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The object representing the role definition to be removed.
+
+```yaml
+Type: PSRoleDefinition
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the Role definition to be deleted.
 
@@ -126,7 +147,7 @@ Role definition scope.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: RoleDefinitionIdParameterSet, RoleDefinitionNameParameterSet
 Aliases:
 
 Required: False
