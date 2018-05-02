@@ -60,8 +60,12 @@ function Get-TargetModules
           }
         }
 
-        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage')) -and ($isNetCore -eq "false") ) {
-          $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
+        if ((($Scope -eq 'All') -or ($Scope -eq 'AzureStorage'))) {
+            if($isNetCore -eq "false") {
+                $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage"
+            } else {
+                $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage.Netcore"                
+            }
         } 
 
         if ((($Scope -eq 'All') -or ($Scope -eq 'ServiceManagement')) -and ($isNetCore -eq "false") -and ($Profile -ne "Stack")) {
@@ -73,7 +77,7 @@ function Get-TargetModules
           foreach ($module in $resourceManagerModules) {
             # filter out AzureRM.Profile which always gets published first 
             # And "Azure.Storage" which is built out as test dependencies  
-            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and ($module.Name -ne "AzureRM.Profile.Netcore")) {
+            if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage") -and ($module.Name -ne "AzureRM.Profile.Netcore") -and ($module.Name -ne "Azure.Storage.Netcore")) {
               $targets += $module.FullName
             }
           }
@@ -190,6 +194,7 @@ function Change-RMModule
         {
             return
         }
+
         Write-Output "Changing to directory for module modifications $TempRepoPath"
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
         if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)
@@ -214,6 +219,7 @@ function Change-RMModule
             Write-Output "Expanding $zipPath"
             Expand-Archive $zipPath -DestinationPath $dirPath
             Write-Output "Adding PSM1 dependency to $unzippedManifest"
+            Add-PSM1Dependency -Path $unzippedManifest
             Write-Output "Removing module manifest dependencies for $unzippedManifest"
             Remove-ModuleDependencies -Path $unzippedManifest
             Remove-Item -Path $zipPath -Force
@@ -224,6 +230,23 @@ function Change-RMModule
         {
             popd
         }
+    }
+}
+
+function Add-PSM1Dependency {
+    [CmdletBinding()]
+    param(
+        [string] $Path)
+
+    PROCESS {
+        $file = Get-Item -Path $Path
+        $manifestFile = $file.Name
+        $psm1file = $manifestFile -replace ".psd1", ".psm1"
+        Write-Output "Adding RootModule dependency ($psm1file) to psd1 '$path'"
+        $regex = New-Object System.Text.RegularExpressions.Regex "#\s*RootModule\s*=\s*''"
+        $content = (Get-Content -Path $Path) -join "`r`n"
+        $text = $regex.Replace($content, "RootModule = '$psm1file'")
+        $text | Out-File -FilePath $Path
     }
 }
 

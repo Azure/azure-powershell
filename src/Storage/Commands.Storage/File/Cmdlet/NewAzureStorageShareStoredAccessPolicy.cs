@@ -15,11 +15,13 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Common;
+    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.File;
     using System;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// create a new stored access policy to a specific azure share.
@@ -68,7 +70,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             //Get existing permissions
             CloudFileShare fileShare = this.Channel.GetShareReference(this.ShareName);
 
-            FileSharePermissions fileSharePermissions = fileShare.GetPermissionsAsync().Result;
+            FileSharePermissions fileSharePermissions;
+            try
+            {
+                fileSharePermissions = fileShare.GetPermissionsAsync().Result;
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
 
             //Add new policy
             if (fileSharePermissions.SharedAccessPolicies.Keys.Contains(this.Policy))
@@ -81,7 +91,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             fileSharePermissions.SharedAccessPolicies.Add(this.Policy, policy);
 
             //Set permissions back to container
-            fileShare.SetPermissionsAsync(fileSharePermissions).RunSynchronously();
+            try
+            {
+                Task.Run(() => fileShare.SetPermissionsAsync(fileSharePermissions)).Wait();
+            }
+            catch (AggregateException e) when (e.InnerException is StorageException)
+            {
+                throw e.InnerException;
+            }
+
             WriteObject(Policy);
         }
     }

@@ -42,6 +42,41 @@ function Test-SimpleNewVm
 
 <#
 .SYNOPSIS
+Test Simple Paremeter Set for New Vm win Win10 and data disks
+#>
+function Test-NewVmWin10
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+		$passwordSuffix = Get-ResourceName
+        $password = "werWER345#%^$passwordSuffix" | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+		$x = New-AzureRmVM `
+			-Name $vmname `
+			-Credential $cred `
+			-DomainNameLabel $domainNameLabel `
+			-ImageName "Win10" `
+			-DataDiskSizeInGb 32,64
+
+		Assert-AreEqual 2 $x.StorageProfile.DataDisks.Count
+        Assert-AreEqual $vmname $x.Name;        
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
 Test Simple Paremeter Set for New Vm
 #>
 function Test-SimpleNewVmWithAvailabilitySet

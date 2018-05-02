@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
 using System.Management.Automation;
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             Position = 5,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
-        public DiskCreateOptionTypes CreateOption { get; set; }
+        public string CreateOption { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsParamSet,
@@ -161,7 +162,8 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             HelpMessage = HelpMessages.VMManagedDiskAccountType)]
         [ValidateNotNullOrEmpty]
-        public StorageAccountTypes? StorageAccountType { get; set; }
+        [PSArgumentCompleter("Standard_LRS", "Premium_LRS")]
+        public string StorageAccountType { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -170,6 +172,9 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("Set-AzureRmVMOSDisk: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
+                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
+
             if (this.VM.StorageProfile == null)
             {
                 this.VM.StorageProfile = new StorageProfile();
@@ -245,6 +250,12 @@ namespace Microsoft.Azure.Commands.Compute
                         },
                     }
                 };
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
+            {
+                WriteWarning("Set-AzureRmVMOSDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
+                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
             }
 
             if (!string.IsNullOrEmpty(this.ManagedDiskId) || this.StorageAccountType != null)

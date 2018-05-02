@@ -114,5 +114,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetWriteAcceleratorUpdate");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetForceUDWalk()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetForceUDWalk");
+        }
     }
 }

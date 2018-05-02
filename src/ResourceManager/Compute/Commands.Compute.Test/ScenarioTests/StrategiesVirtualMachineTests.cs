@@ -39,6 +39,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
+        public void TestNewVmWin10()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-NewVmWin10");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithAvailabilitySet()
         {

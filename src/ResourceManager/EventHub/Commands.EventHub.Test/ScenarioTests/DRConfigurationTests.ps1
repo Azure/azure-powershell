@@ -244,3 +244,150 @@ function DRConfigurationTests
 	Write-Debug " Delete resourcegroup"
 	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
+
+function DRConfigurationTestsAlternateName
+{
+	# Setup
+	$location_south =  Get-Location "Microsoft.ServiceBus" "namespaces" "South Central US"
+	$location_north = Get-Location "Microsoft.ServiceBus" "namespaces" "North Central US"
+	$resourceGroupName = getAssetName
+	$namespaceName1 = getAssetName "Eventhub-Namespace-"
+	$namespaceName2 = getAssetName "Eventhub-Namespace-"
+	$drConfigName = $namespaceName1 
+	$authRuleName = getAssetName "Eventhub-Namespace-AuthorizationRule"
+	$AlternateName = getAssetName "AlternateName"
+
+	# Create Resource Group
+	Write-Debug "Create resource group"
+	Write-Debug " Resource Group Name : $resourceGroupName"
+	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location_south -Force
+	
+		
+	# Create EventHub Namespace - 1
+	Write-Debug "  Create new eventhub namespace 1"
+	Write-Debug " Namespace 1 name : $namespaceName1"
+	$result1 = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1 -Location $location_south
+
+	# Assert
+	Assert-AreEqual $result1.Name $namespaceName1
+
+
+	# Create EventHub Namespace - 2
+	Write-Debug "  Create new eventhub namespace 2"
+	Write-Debug " Namespace 2 name : $namespaceName2"
+	$result2 = New-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2 -Location $location_north
+
+	# Assert
+	Assert-AreEqual $result2.Name $namespaceName2
+
+	# get the created Eventhub Namespace  1
+	Write-Debug " Get the created namespace within the resource group"
+	$createdNamespace1 = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
+	
+	Assert-AreEqual $createdNamespace1.Name $namespaceName1 "Namespace created earlier is not found."
+
+	# get the created Eventhub Namespace  2
+	Write-Debug " Get the created namespace within the resource group"
+	$createdNamespace2 = Get-AzureRmEventHubNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
+	
+	Assert-AreEqual $createdNamespace2.Name $namespaceName2 "Namespace created earlier is not found."
+
+	# Create AuthorizationRule
+	Write-Debug "Create a Namespace Authorization Rule"
+    Write-Debug "Auth Rule name : $authRuleName"
+    $result = New-AzureRmEventHubAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $authRuleName -Rights @("Listen","Send")
+																																	  
+    Assert-AreEqual $authRuleName $result.Name
+    Assert-AreEqual 2 $result.Rights.Count
+    Assert-True { $result.Rights -Contains "Listen" }
+    Assert-True { $result.Rights -Contains "Send" }
+
+	# Check DR Configuration Name Availability
+
+	$checkNameResult = Test-AzureRmEventHubName -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName
+	Assert-True { $checkNameResult.NameAvailable}
+
+	# Create a DRConfiguration
+	Write-Debug " Create new DRConfiguration"
+	$result = New-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id -AlternateName $AlternateName
+
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$newDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	Assert-AreEqual $newDRConfig.Role "Primary"
+
+	# Get AuthorizationRule through DRConfiguration
+	Write-Debug "Get Namespace Authorization Rule details"
+	Write-Debug "Auth Rule name : $authRuleName"
+    $resultAuthRuleDR = Get-AzureRmEventHubAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName -Name $authRuleName
+
+    Assert-AreEqual $authRuleName $resultAuthRuleDR.Name
+    Assert-AreEqual 2 $resultAuthRuleDR.Rights.Count
+    Assert-True { $resultAuthRuleDR.Rights -Contains "Listen" }
+    Assert-True { $resultAuthRuleDR.Rights -Contains "Send" }
+	
+	# Get the connectionStrings for DRConfiguration
+
+	Write-Debug "Get namespace authorizationRules connectionStrings using DRConfiguration"
+    $DRnamespaceListKeys = Get-AzureRmEventHubKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -AliasName $drConfigName -Name $authRuleName
+	
+	Write-Debug " Get the created DRConfiguration"
+	$createdDRConfig = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName
+	# Assert
+	Assert-AreEqual $createdDRConfig.PartnerNamespace $createdNamespace2.Id "DRConfig created earlier is not found."	
+	
+	Write-Debug " Get the created DRConfiguration for Secondary Namespace"
+	$createdDRConfigSecondary = Get-AzureRmEventHubGeoDRConfiguration -ResourceId $createdNamespace2.Id -Name $drConfigName
+	Assert-AreEqual $createdDRConfigSecondary.Role "Secondary"
+	
+
+	# BreakPairing on Primary Namespace - Parameters
+	Write-Debug "BreakPairing on Primary Namespace"
+	Set-AzureRmEventHubGeoDRConfigurationBreakPair -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName
+
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$breakPairingDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	Assert-AreEqual $breakPairingDRConfig.Role "PrimaryNotReplicating"
+
+	# Create a DRConfiguration
+	Write-Debug " Create new DRConfiguration"
+	$DRBreakPair_withInputObject = New-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $drConfigName -PartnerNamespace $createdNamespace2.Id -AlternateName $AlternateName
+	
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$UpdateDRConfig = WaitforStatetoBeSucceded $resourceGroupName $namespaceName1 $drConfigName
+	Assert-AreEqual $UpdateDRConfig.Role "Primary"
+	
+	# FailOver on Secondary Namespace - Parameters
+	Write-Debug "FailOver on Secondary Namespace"
+	Set-AzureRmEventHubGeoDRConfigurationFailOver -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName
+
+	# Wait till the Alias Provisioning  state changes to succeeded
+	$failoverDrConfiguration = WaitforStatetoBeSucceded $resourceGroupName $namespaceName2 $drConfigName
+	Assert-AreEqual $failoverDrConfiguration.Role "PrimaryNotReplicating"
+	Assert-AreEqual $failoverDrConfiguration.PartnerNamespace "" "FaileOver: PartnerNamespace exists"	
+	
+	# Remove the Alias created
+	Remove-AzureRmEventHubGeoDRConfiguration -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $drConfigName
+	Wait-Seconds 120
+
+	# Get the Created GeoDRConfiguration
+	Write-Debug " Get all the created GeoDRConfiguration"
+	$createdServiceBusDRConfigList_delete = Get-AzureRmEventHubGeoDRConfiguration -ResourceGroup $resourceGroupName -Namespace $namespaceName1
+
+	# Assert
+	Assert-AreEqual $createdServiceBusDRConfigList_delete.Count 0 "DR Config List: after delete the DRCoinfig was listed"
+
+	# Wait till the Namespace Provisioning  state changes to succeeded
+	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName1
+
+	Write-Debug " Delete namespaces"
+    Remove-AzureRmEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1
+
+	# Wait till the Namespace Provisioning  state changes to succeeded\
+	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName2
+
+	Write-Debug " Delete namespaces"
+    Remove-AzureRmEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
+
+	Write-Debug " Delete resourcegroup"
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}

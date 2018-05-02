@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated to the latest version of the Azure ClientRuntime
+* Set minimum dependency of module to PowerShell 5.0
 
 ## Version 0.1.0
 * Added ConvertTo-AzureRmVhd cmdlet that enables users to convert Hyper-V VM to Azure supported VHD files.
