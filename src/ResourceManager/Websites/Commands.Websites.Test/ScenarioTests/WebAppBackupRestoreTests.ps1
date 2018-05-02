@@ -328,7 +328,7 @@ function Test-EditAndGetWebAppBackupConfigurationPiping
     }
 }
 
-function Test-GetWebAppSnapshots
+function Test-GetWebAppSnapshot
 {
 	# Test named parameters
 	$snapshots = Get-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName
@@ -364,17 +364,13 @@ function Test-RestoreWebAppSnapshot
 {
 	# Test overwrite
 	$snapshot = (Get-AzureRmWebAppSnapshot $snapshotRgName $snapshotAppName)[0]
-	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime -Force -RecoverConfiguration
+	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -InputObject $snapshot -Force -RecoverConfiguration
 
 	# Test restore to target slot
-	$target = Get-AzureRmWebAppSlot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -Slot $snapshotAppSlot
-	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -SnapshotTime $snapshot.SnapshotTime -RecoverConfiguration -TargetApp $target
+	Restore-AzureRmWebAppSnapshot $snapshotRgName $snapshotAppName $snapshotAppSlot $snapshot -RecoverConfiguration -Force
 
-	# Test piping
-	$snapshot | Restore-AzureRmWebAppSnapshot -Force
-
-	# Test background job
-	$snapshot | Restore-AzureRmWebAppSnapshot -Force -AsJob
+	# Test piping and background job
+	$job = $snapshot | Restore-AzureRmWebAppSnapshot -Force -AsJob
 	$job | Wait-Job
 }
 
