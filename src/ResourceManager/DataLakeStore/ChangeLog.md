@@ -18,7 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.0.0
+* Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
+* Add new cmdlet for retrieving the content summary under a directory
+* Add new cmdlet for retrieving the disk usage and Acl dump
 * Set minimum dependency of module to PowerShell 5.0
+* Correct return type of Set-AzureRmDataLakeStoreItemAcl bool to IEnumerable<DataLakeStoreItemAce>
+* Correct return type of Set-AzureRmDataLakeStoreItemAclEntry bool to IEnumerable<DataLakeStoreItemAce>
 * Breaking changes in Export-AzureRmDataLakeStoreItem, Import-AzureRmDataLakeStoreItem, Remove-AzureRmDataLakeStoreItem
 
 ## Version 5.2.0

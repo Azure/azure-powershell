@@ -12,7 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.DataMigration.Test;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataMigration;
 using Microsoft.Azure.Management.Resources;
@@ -21,11 +26,6 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Microsoft.Azure.Commands.DataMigration.Test;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
 {
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         {
             helper = new EnvironmentSetupHelper();
             DataMigrationAppSettings settings = DataMigrationAppSettings.Instance;
-            if(settings == null)
+            if (settings == null)
             {
                 throw new ArgumentException("DMS Config File Appsettings.json not loaded properly");
             }
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         private DataMigrationServiceClient GetDmsClient(MockContext context)
         {
             DataMigrationServiceClient client = context.GetServiceClient<DataMigrationServiceClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
-           
+
             client.LongRunningOperationRetryTimeout = DefaultTimeOut;
 
             return client;
@@ -173,6 +173,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
                 return defaultTimeOut;
             }
         }
-      
+
     }
 }

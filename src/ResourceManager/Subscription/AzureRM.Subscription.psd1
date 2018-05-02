@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.6.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Subscription.dll'
@@ -107,8 +107,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime
-* New cmdlet New-AzureRmSubscription to enable subscription creation under a specific EA enrollment account.'
+        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
         Prerelease = 'preview'
