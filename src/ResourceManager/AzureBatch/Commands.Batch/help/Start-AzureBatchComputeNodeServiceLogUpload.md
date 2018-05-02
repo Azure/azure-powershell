@@ -1,39 +1,40 @@
 ---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/add-azurebatchcomputenodeservicelogs
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/Start-AzureBatchComputeNodeServiceLogUpload
 schema: 2.0.0
 ---
 
-# Add-AzureBatchComputeNodeServiceLogs
+# Start-AzureBatchComputeNodeServiceLogUpload
 
 ## SYNOPSIS
 Upload compute node service log files to an Azure Storage container.
 
 ## SYNTAX
 
-### AzureBatchComputeNodeServiceLogs (Default)
+### AzureBatchComputeNodeServiceLogUpload (Default)
 ```
-Add-AzureBatchComputeNodeServiceLogs [-ContainerUrl] <String> [-StartTime] <DateTime> [[-EndTime] <DateTime>]
- -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Start-AzureBatchComputeNodeServiceLogUpload [-ContainerUrl] <String> [-StartTime] <DateTime>
+ [[-EndTime] <DateTime>] -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
 ```
-Add-AzureBatchComputeNodeServiceLogs [-PoolId] <String> [-ComputeNodeId] <String> [-ContainerUrl] <String>
- [-StartTime] <DateTime> [[-EndTime] <DateTime>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Start-AzureBatchComputeNodeServiceLogUpload [-PoolId] <String> [-ComputeNodeId] <String>
+ [-ContainerUrl] <String> [-StartTime] <DateTime> [[-EndTime] <DateTime>] -BatchContext <BatchAccountContext>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentObject
 ```
-Add-AzureBatchComputeNodeServiceLogs [[-ComputeNode] <PSComputeNode>] [-ContainerUrl] <String>
+Start-AzureBatchComputeNodeServiceLogUpload [[-ComputeNode] <PSComputeNode>] [-ContainerUrl] <String>
  [-StartTime] <DateTime> [[-EndTime] <DateTime>] -BatchContext <BatchAccountContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet gathers Azure Batch service log files in an automated fashion from nodes if you are experiencing an error and wish to escalate to Azure support. The Azure Batch service log files should be shared with Azure support to aid in debugging issues with the Batch service. 
+This cmdlet gathers Azure Batch service log files from compute nodes if you are experiencing an error and wish to escalate to Azure support. The Azure Batch service log files should be shared with Azure support to aid in debugging issues with the Batch service. 
 
 ## EXAMPLES
 
@@ -44,7 +45,7 @@ $storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -
 $sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
 $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
 $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
-Add-AzureBatchComputeNodeServiceLogs -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z"
+Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z"
 ```
 
 Upload compute node service logs written on or after January 1, 2018 midnight, which were obtained from the compute node, given pool id of the pool in which the compute node resides, and compute node id.
@@ -56,7 +57,7 @@ $storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -
 $sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
 $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
 $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
-Add-AzureBatchComputeNodeServiceLogs -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
+Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -PoolId "contosopool" -ComputeNodeId "tvm-1612030122_1-20180405t234700z" -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
 ```
 
 Upload compute node service logs written on or after January 1, 2018 midnight and before January 10, 2018 midnight, which were obtained from the compute node, given pool id of the pool in which the compute node resides, and compute node id.
@@ -68,7 +69,7 @@ $storageContext = New-AzureStorageContext -StorageAccountName "contosogeneral" -
 $sasToken = New-AzureStorageContainerSASToken -Name "contosocontainer" -Context $storageContext
 $containerUrl = "https://contosogeneral.blob.core.windows.net/contosocontainer" + $sasToken
 $batchContext = Get-AzureRmBatchAccountKeys -AccountName "contosobatch"
-Get-AzureBatchComputeNode -BatchContext $batchContext -Id "tvm-1612030122_1-20180405t234700z" -PoolId "contosopool" | Add-AzureBatchComputeNodeServiceLogs -BatchContext $batchContext -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
+Get-AzureBatchComputeNode -BatchContext $batchContext -Id "tvm-1612030122_1-20180405t234700z" -PoolId "contosopool" | Start-AzureBatchComputeNodeServiceLogUpload -BatchContext $batchContext -ContainerUrl $containerUrl -StartTime "2018-01-01 00:00:00Z" -EndTime "2018-01-10 00:00:00Z"
 ```
 
 Upload compute node service logs written on or after January 1, 2018 midnight and before January 10, 2018 midnight, which were obtained from the compute node object.
@@ -95,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeNode
-{{Fill ComputeNode Description}}
+Specifies the **PSComputeNode** object from which service logs are retrieved.
 
 ```yaml
 Type: PSComputeNode
@@ -155,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndTime
-The end time of service log to be added (optional).
+The end time of service log to be uploaded (optional).
 
 ```yaml
 Type: DateTime
@@ -185,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -StartTime
-The start time of service log to be added.
+The start time of service log to be uploaded.
 
 ```yaml
 Type: DateTime
@@ -194,6 +195,36 @@ Aliases:
 
 Required: True
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -209,7 +240,7 @@ Microsoft.Azure.Commands.Batch.BatchAccountContext
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Batch.Models.PSAddComputeNodeServiceLogsResult
+### Microsoft.Azure.Commands.Batch.Models.PSStartComputeNodeServiceLogUploadResult
 
 ## NOTES
 

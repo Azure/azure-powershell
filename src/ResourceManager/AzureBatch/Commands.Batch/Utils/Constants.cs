@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureBatchCertificateDeletion = "AzureBatchCertificateDeletion";
         public const string AzureBatchNodeAgentSku = "AzureBatchNodeAgentSku";
         public const string AzureBatchPoolNodeCounts = "AzureBatchPoolNodeCounts";
-        public const string AzureBatchComputeNodeServiceLogs = "AzureBatchComputeNodeServiceLogs";
+        public const string AzureBatchComputeNodeServiceLogUpload = "AzureBatchComputeNodeServiceLogUpload";
 
         // Parameter sets
         public const string IdParameterSet = "Id";

@@ -20,9 +20,9 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Add, Constants.AzureBatchComputeNodeServiceLogs, DefaultParameterSetName = Constants.AzureBatchComputeNodeServiceLogs), 
-         OutputType(typeof(PSAddComputeNodeServiceLogsResult))]
-    public class AddBatchComputeNodeServiceLogsCommand : BatchObjectModelCmdletBase
+    [Cmdlet(VerbsLifecycle.Start, Constants.AzureBatchComputeNodeServiceLogUpload, DefaultParameterSetName = Constants.AzureBatchComputeNodeServiceLogUpload, SupportsShouldProcess = true),         
+         OutputType(typeof(PSStartComputeNodeServiceLogUploadResult))]
+    public class StartBatchComputeNodeServiceLogUploadCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool that contains the compute node.")]
@@ -39,22 +39,22 @@ namespace Microsoft.Azure.Commands.Batch
         public PSComputeNode ComputeNode { get; set; }
 
         [Parameter(Position = 2, Mandatory = true,
-            HelpMessage = "The container url to Azure Storage.")]
+            HelpMessage = "The URL of the container within Azure Blob Storage to which to upload the Batch Service log file(s)")]
         [ValidateNotNullOrEmpty]
         public string ContainerUrl { get; set; }
 
         [Parameter(Position = 3, Mandatory = true,
-            HelpMessage = "The start time of service log to be added.")]
+            HelpMessage = "The start of the time range from which to upload Batch Service log file(s).")]
         [ValidateNotNullOrEmpty]
         public DateTime StartTime { get; set; }
 
         [Parameter(Position = 4, Mandatory = false,
-            HelpMessage = "The end time of service log to be added (optional).")]
+            HelpMessage = "The end of the time range from which to upload Batch Service log file(s).")]
         public DateTime? EndTime { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            AddComputeNodeServiceLogsParameters parameters = new AddComputeNodeServiceLogsParameters(
+            StartComputeNodeServiceLogUploadParameters parameters = new StartComputeNodeServiceLogUploadParameters(
                 this.BatchContext,
                 this.PoolId,
                 this.ComputeNodeId,
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch
                 this.EndTime,
                 this.AdditionalBehaviors);
 
-            WriteObject(BatchClient.AddComputeNodeServiceLogs(parameters));
+            WriteObject(BatchClient.StartComputeNodeServiceLogUpload(parameters));
         }
     }
 }
