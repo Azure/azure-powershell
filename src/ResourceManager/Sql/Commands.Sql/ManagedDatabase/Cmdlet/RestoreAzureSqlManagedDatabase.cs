@@ -24,19 +24,36 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     public class RestoreAzureRmSqlManagedDatabase
         : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
-        protected const string RestoreFromNameAndResourceGroupParameterSet =
-            "RestoreManagedDatabaseFromInputParameters";
+        protected const string PointInTimeRestoreFromNameAndResourceGroupParameterSet =
+            "PointInTimeRestoreManagedDatabaseFromInputParameters";
 
-        protected const string RestoreFropmInputObjectParameterSet =
-            "RestoreManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition";
+        protected const string PointInTimeRestoreFropmInputObjectParameterSet =
+            "PointInTimeRestoreManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition";
 
-        protected const string RestoreFromResourceIdParameterSet =
-            "RestoreManagedDatabaseFromAzureResourceId";
+        protected const string PointInTimeRestoreFromResourceIdParameterSet =
+            "PointInTimeRestoreManagedDatabaseFromAzureResourceId";
+
+        /// <summary>
+        /// Gets or sets flag indicating a restore from a point-in-time backup.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = PointInTimeRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a point-in-time backup.")]
+        [Parameter(
+            ParameterSetName = PointInTimeRestoreFropmInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a point-in-time backup.")]
+        [Parameter(
+            ParameterSetName = PointInTimeRestoreFromResourceIdParameterSet,
+            Mandatory = true,
+            HelpMessage = "Restore from a point-in-time backup.")]
+        public SwitchParameter FromPointInTimeBackup { get; set; }
 
         /// <summary> 
         /// Gets or sets the managed database name to restore
         /// </summary>
-        [Parameter(ParameterSetName = RestoreFromNameAndResourceGroupParameterSet,
+        [Parameter(ParameterSetName = PointInTimeRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 0,
             HelpMessage = "The managed database name to restore.")]
@@ -46,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the name of the Managed instance to use
         /// </summary>
-        [Parameter(ParameterSetName = RestoreFromNameAndResourceGroupParameterSet,
+        [Parameter(ParameterSetName = PointInTimeRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 1,
             HelpMessage = "The Managed instance name.")]
@@ -56,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(ParameterSetName = RestoreFromNameAndResourceGroupParameterSet,
+        [Parameter(ParameterSetName = PointInTimeRestoreFromNameAndResourceGroupParameterSet,
             Mandatory = true,
             Position = 2,
             HelpMessage = "The name of the resource group.")]
@@ -67,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Managed database object to remove
         /// </summary>
-        [Parameter(ParameterSetName = RestoreFropmInputObjectParameterSet,
+        [Parameter(ParameterSetName = PointInTimeRestoreFropmInputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Managed Database object to restore")]
@@ -78,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the resource id of the Managed database to remove
         /// </summary>
-        [Parameter(ParameterSetName = RestoreFromResourceIdParameterSet,
+        [Parameter(ParameterSetName = PointInTimeRestoreFromResourceIdParameterSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of Managed Database object to restore")]
@@ -88,7 +105,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the point in time to restore the managed database to
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(ParameterSetName = PointInTimeRestoreFromNameAndResourceGroupParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(ParameterSetName = PointInTimeRestoreFropmInputObjectParameterSet,
+            Mandatory = true,
+            HelpMessage = "The point in time to restore the database to.")]
+        [Parameter(ParameterSetName = PointInTimeRestoreFromResourceIdParameterSet,
+            Mandatory = true,
             HelpMessage = "The point in time to restore the database to.")]
         public DateTime PointInTime { get; set; }
 
@@ -115,13 +139,13 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             DateTime restorePointInTime = DateTime.MinValue;
             string location = ModelAdapter.GetManagedInstanceLocation(ResourceGroupName, ManagedInstanceName);
 
-            if (string.Equals(this.ParameterSetName, RestoreFropmInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(this.ParameterSetName, PointInTimeRestoreFropmInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 ManagedInstanceName = InputObject.ManagedInstanceName;
                 ManagedDatabaseName = InputObject.Name;
             }
-            else if (string.Equals(this.ParameterSetName, RestoreFromResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(this.ParameterSetName, PointInTimeRestoreFromResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
 
