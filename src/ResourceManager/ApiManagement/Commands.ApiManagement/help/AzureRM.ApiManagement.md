@@ -1,7 +1,7 @@
 ﻿---
 Module Name: AzureRM.ApiManagement
 Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
-Download Help Link: None
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement
 Help Version: 4.0.0.0
 Locale: en-US
 ---

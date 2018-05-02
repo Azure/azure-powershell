@@ -17,7 +17,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -34,7 +36,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -47,7 +51,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -63,7 +67,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -85,7 +153,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -104,7 +174,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -120,7 +190,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -154,7 +288,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -171,7 +307,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -187,7 +325,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -200,7 +340,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -216,7 +356,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -238,7 +442,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -260,7 +466,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -279,7 +487,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -295,7 +503,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -329,7 +601,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -346,7 +620,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -362,7 +638,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -375,7 +653,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -391,7 +669,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -413,7 +755,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -435,7 +779,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -454,7 +800,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -470,7 +816,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -501,12 +911,14 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.WindowsAzure.Commands.TrafficManager.Models.SimpleProfile]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.WindowsAzure.Commands.TrafficManager.Models.SimpleProfile, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.WindowsAzure.Commands.TrafficManager.Models.SimpleProfile, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
               "Microsoft.WindowsAzure.Commands.TrafficManager.Models.SimpleProfile"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -523,7 +935,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -536,7 +950,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -552,7 +966,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -574,7 +1052,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -593,7 +1073,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -609,7 +1089,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -640,10 +1184,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -660,7 +1212,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -676,7 +1230,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -692,7 +1248,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Performance",
@@ -712,7 +1270,9 @@
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -728,7 +1288,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Http",
@@ -747,7 +1309,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -763,7 +1327,9 @@
             "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -776,7 +1342,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -792,7 +1358,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -814,7 +1444,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -836,7 +1468,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -858,7 +1492,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Performance",
@@ -884,7 +1520,9 @@
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -906,7 +1544,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Http",
@@ -931,7 +1571,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -953,7 +1595,9 @@
                   "AssemblyQualifiedName": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -972,7 +1616,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -988,7 +1632,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1022,7 +1730,9 @@
             "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1039,7 +1749,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1055,7 +1767,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1071,7 +1785,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1084,7 +1800,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1100,7 +1816,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1122,7 +1902,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1144,7 +1926,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1166,7 +1950,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1185,7 +1971,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1201,7 +1987,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1232,10 +2082,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1252,7 +2110,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1268,7 +2128,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Performance",
@@ -1290,7 +2152,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1306,7 +2170,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Http",
@@ -1325,7 +2191,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1343,7 +2211,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1356,10 +2226,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1372,7 +2250,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1388,7 +2266,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1410,7 +2352,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1432,7 +2376,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Performance",
@@ -1460,7 +2406,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1482,7 +2430,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Http",
@@ -1507,7 +2457,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1531,7 +2483,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1550,10 +2504,18 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "GetInstance",
+                      "Parameters": [],
+                      "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1572,7 +2534,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1588,7 +2550,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1619,10 +2645,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1639,7 +2673,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1655,7 +2691,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1671,7 +2709,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "CloudService",
@@ -1692,7 +2732,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Enabled",
@@ -1713,7 +2755,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1731,7 +2775,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1744,10 +2790,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1760,7 +2814,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1776,7 +2830,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -1798,7 +2916,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1820,7 +2940,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1842,7 +2964,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "CloudService",
@@ -1869,7 +2993,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Enabled",
@@ -1896,7 +3022,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1920,7 +3048,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1939,10 +3069,18 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "GetInstance",
+                      "Parameters": [],
+                      "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -1961,7 +3099,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1977,7 +3115,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2008,10 +3210,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -2028,7 +3238,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2044,7 +3256,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2060,7 +3274,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "CloudService",
@@ -2081,7 +3297,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [
             "Enabled",
@@ -2102,7 +3320,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2120,7 +3340,9 @@
             "ElementType": null,
             "GenericTypeArguments": [
               "System.Int32"
-            ]
+            ],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2133,10 +3355,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2149,7 +3379,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2165,7 +3395,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2187,7 +3481,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2209,7 +3505,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2231,7 +3529,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "CloudService",
@@ -2258,7 +3558,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [
                   "Enabled",
@@ -2285,7 +3587,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2309,7 +3613,9 @@
                   "ElementType": null,
                   "GenericTypeArguments": [
                     "System.Int32"
-                  ]
+                  ],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2328,10 +3634,18 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "GetInstance",
+                      "Parameters": [],
+                      "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2350,7 +3664,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2366,7 +3680,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2397,10 +3775,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -2417,7 +3803,9 @@
             "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2433,7 +3821,9 @@
             "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2446,10 +3836,18 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
             "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "GetInstance",
+                "Parameters": [],
+                "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+              }
+            ],
+            "Constructors": []
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2462,7 +3860,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2478,7 +3876,71 @@
               "ProfilePath": "System.String"
             },
             "ElementType": null,
-            "GenericTypeArguments": []
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Save",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Save",
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Clear",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "path",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -2500,7 +3962,9 @@
                   "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2522,7 +3986,9 @@
                   "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2541,10 +4007,18 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
                   "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.IProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "GetInstance",
+                      "Parameters": [],
+                      "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+                    }
+                  ],
+                  "Constructors": []
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2563,7 +4037,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2579,7 +4053,71 @@
                     "ProfilePath": "System.String"
                   },
                   "ElementType": null,
-                  "GenericTypeArguments": []
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Save",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Save",
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "path",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -2604,7 +4142,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Boolean": {
       "Namespace": null,
@@ -2612,7 +4152,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Byte": {
       "Namespace": null,
@@ -2620,7 +4162,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.SByte": {
       "Namespace": null,
@@ -2628,7 +4172,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Int16": {
       "Namespace": null,
@@ -2636,7 +4182,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.UInt16": {
       "Namespace": null,
@@ -2644,7 +4192,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Int32": {
       "Namespace": null,
@@ -2652,7 +4202,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.UInt32": {
       "Namespace": null,
@@ -2660,7 +4212,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Int64": {
       "Namespace": null,
@@ -2668,7 +4222,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.UInt64": {
       "Namespace": null,
@@ -2676,7 +4232,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Single": {
       "Namespace": null,
@@ -2684,7 +4242,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Double": {
       "Namespace": null,
@@ -2692,7 +4252,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Decimal": {
       "Namespace": null,
@@ -2700,7 +4262,9 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Char": {
       "Namespace": null,
@@ -2708,12 +4272,14 @@
       "AssemblyQualifiedName": null,
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Account": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
         "Environment": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
@@ -2723,12 +4289,14 @@
         "VersionProfile": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "TenantMap": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Id": "System.String",
@@ -2736,7 +4304,9 @@
         "Type": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
@@ -2747,12 +4317,14 @@
       "GenericTypeArguments": [
         "System.String",
         "System.String"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "OnPremise": "System.Boolean",
         "VersionProfiles": "System.Collections.Generic.IList`1[System.String]",
@@ -2778,7 +4350,9 @@
         "Name": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IList`1[System.String]": {
       "Namespace": "System.Collections.Generic",
@@ -2788,40 +4362,54 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "System.String"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String",
         "Name": "System.String",
         "State": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTenant, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Id": "System.String",
         "Directory": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
       "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureTokenCache, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "CacheData": "System.Byte[]"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Clear",
+          "Parameters": [],
+          "ReturnType": "System.Void"
+        }
+      ],
+      "Constructors": []
     },
     "System.Byte[]": {
       "Namespace": "System",
@@ -2829,18 +4417,32 @@
       "AssemblyQualifiedName": "System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": "System.Byte",
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Void": {
+      "Namespace": "System",
+      "Name": "System.Void",
+      "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IDictionary`2[System.Guid,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.Guid,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "System.Guid",
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Guid": {
       "Namespace": "System",
@@ -2848,59 +4450,71 @@
       "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "System.String",
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
     },
     "System.Collections.Generic.List`1[System.String]": {
       "Namespace": "System.Collections.Generic",
@@ -2910,19 +4524,70 @@
       "ElementType": null,
       "GenericTypeArguments": [
         "System.String"
-      ]
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     },
     "Microsoft.WindowsAzure.Commands.TrafficManager.Models.SimpleProfile": {
       "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
       "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.SimpleProfile",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.SimpleProfile, Microsoft.WindowsAzure.Commands.TrafficManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.SimpleProfile, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Status": "Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileDefinitionStatus",
         "DomainName": "System.String",
         "Name": "System.String"
       },
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "profile",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
     },
     "Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileDefinitionStatus": {
       "Namespace": "Microsoft.WindowsAzure.Management.TrafficManager.Models",
@@ -2930,7 +4595,820 @@
       "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileDefinitionStatus, Microsoft.WindowsAzure.Management.TrafficManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {},
       "ElementType": null,
-      "GenericTypeArguments": []
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.TypeCode": {
+      "Namespace": "System",
+      "Name": "System.TypeCode",
+      "AssemblyQualifiedName": "System.TypeCode, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition": {
+      "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
+      "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "MonitorProtocol": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorProtocol",
+        "MonitorStatus": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyMonitorStatus",
+        "LoadBalancingMethod": "Microsoft.WindowsAzure.Management.TrafficManager.Models.LoadBalancingMethod",
+        "Status": "Microsoft.WindowsAzure.Management.TrafficManager.Models.ProfileDefinitionStatus",
+        "Endpoints": "System.Collections.Generic.IList`1[Microsoft.WindowsAzure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
+        "TimeToLiveInSeconds": "System.Int32",
+        "MonitorPort": "System.Int32",
+        "MonitorRelativePath": "System.String",
+        "Name": "System.String",
+        "DomainName": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "GetInstance",
+          "Parameters": [],
+          "ReturnType": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.ProfileWithDefinition"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "profile",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "definition",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
+    },
+    "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorProtocol": {
+      "Namespace": "Microsoft.WindowsAzure.Management.TrafficManager.Models",
+      "Name": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorProtocol",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionMonitorProtocol, Microsoft.WindowsAzure.Management.TrafficManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyMonitorStatus": {
+      "Namespace": "Microsoft.WindowsAzure.Management.TrafficManager.Models",
+      "Name": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyMonitorStatus",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionPolicyMonitorStatus, Microsoft.WindowsAzure.Management.TrafficManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.WindowsAzure.Management.TrafficManager.Models.LoadBalancingMethod": {
+      "Namespace": "Microsoft.WindowsAzure.Management.TrafficManager.Models",
+      "Name": "Microsoft.WindowsAzure.Management.TrafficManager.Models.LoadBalancingMethod",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.TrafficManager.Models.LoadBalancingMethod, Microsoft.WindowsAzure.Management.TrafficManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.Collections.Generic.IList`1[Microsoft.WindowsAzure.Commands.TrafficManager.Models.TrafficManagerEndpoint]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.WindowsAzure.Commands.TrafficManager.Models.TrafficManagerEndpoint]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.WindowsAzure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.WindowsAzure.Commands.TrafficManager.Models.TrafficManagerEndpoint"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.WindowsAzure.Commands.TrafficManager.Models.TrafficManagerEndpoint": {
+      "Namespace": "Microsoft.WindowsAzure.Commands.TrafficManager.Models",
+      "Name": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.TrafficManagerEndpoint",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.TrafficManager.Models.TrafficManagerEndpoint, Microsoft.WindowsAzure.Commands.TrafficManager, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "Properties": {
+        "MonitorStatus": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointMonitorStatus",
+        "Status": "Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointStatus",
+        "Type": "Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointType",
+        "Weight": "System.Nullable`1[System.Int32]",
+        "MinChildEndpoints": "System.Nullable`1[System.Int32]",
+        "DomainName": "System.String",
+        "Location": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        }
+      ]
+    },
+    "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointMonitorStatus": {
+      "Namespace": "Microsoft.WindowsAzure.Management.TrafficManager.Models",
+      "Name": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointMonitorStatus",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.TrafficManager.Models.DefinitionEndpointMonitorStatus, Microsoft.WindowsAzure.Management.TrafficManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointStatus": {
+      "Namespace": "Microsoft.WindowsAzure.Management.TrafficManager.Models",
+      "Name": "Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointStatus",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointStatus, Microsoft.WindowsAzure.Management.TrafficManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointType": {
+      "Namespace": "Microsoft.WindowsAzure.Management.TrafficManager.Models",
+      "Name": "Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointType",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.TrafficManager.Models.EndpointType, Microsoft.WindowsAzure.Management.TrafficManager, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "CompareTo",
+          "Parameters": [
+            {
+              "Name": "target",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "format",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [
+            {
+              "Name": "provider",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "HasFlag",
+          "Parameters": [
+            {
+              "Name": "flag",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetTypeCode",
+          "Parameters": [],
+          "ReturnType": "System.TypeCode"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": []
+    },
+    "System.Nullable`1[System.Int32]": {
+      "Namespace": "System",
+      "Name": "System.Nullable`1[System.Int32]",
+      "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "System.Int32"
+      ],
+      "Methods": [],
+      "Constructors": []
     }
   }
 }

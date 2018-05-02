@@ -7,6 +7,6 @@
         "Microsoft.Support/*"
     ],
     "NotActions": [],
-    "AssignableScopes": ["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f",
-                        "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups/rbactest"]
+    "AssignableScopes": ["/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590",
+                        "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/ResourceGroups/rbactest"]
 }

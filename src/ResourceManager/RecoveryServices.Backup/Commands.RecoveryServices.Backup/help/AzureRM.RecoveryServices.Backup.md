@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.RecoveryServices.Backup
 Module Guid: 3d444bee-6742-4ce2-b573-dfd1b7c4144c
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.backup
+Help Version: 4.1.2.0
 Locale: en-US
 ---
 
