@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 90630395-8747-4446-A879-323274811956
@@ -16,16 +16,16 @@ Uploads a local file or directory to a Data Lake Store.
 ### NoDiagnosticLogging (Default)
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
- [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [-ForceBinary] [-Force] [-Concurrency <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IncludeDiagnosticLogging
 ```
 Import-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <String> [-Destination] <DataLakeStorePathInstance>
- [-Recurse] [-Resume] [-ForceBinary] [[-PerFileThreadCount] <Int32>] [[-ConcurrentFileCount] <Int32>] [[-Concurrency] <Int32>] [-Force]
- [-DiagnosticLogLevel <LogLevel>] -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Recurse] [-Resume] [-ForceBinary] [-Force] [-Concurrency <Int32>] [-DiagnosticLogLevel <LogLevel>]
+ -DiagnosticLogPath <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,24 +63,10 @@ Indicates the number of files or chunks to upload in parallel. Default will be c
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ConcurrentFileCount
-Indicates the maximum number of files to upload in parallel for a folder upload.  Default will be computed as a best effort based on folder and file size
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -107,7 +93,7 @@ Specifies the Data Lake Store path to which to upload a file or folder, starting
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -122,7 +108,7 @@ Optionally indicates the diagnostic log level to use to record events during the
 ```yaml
 Type: LogLevel
 Parameter Sets: IncludeDiagnosticLogging
-Aliases: 
+Aliases:
 Accepted values: Debug, Information, Error, None
 
 Required: False
@@ -138,7 +124,7 @@ Specifies the path for the diagnostic log to record events to during the file or
 ```yaml
 Type: String
 Parameter Sets: IncludeDiagnosticLogging
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -153,7 +139,7 @@ Indicates that this operation can overwrite the destination file if it already e
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -168,7 +154,7 @@ Indicates that the file(s) being copied should be copied with no concern for new
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -183,25 +169,10 @@ Specifies the local path of the file or folder to upload.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PerFileThreadCount
-Indicates the maximum number of threads to use per file.  Default will be computed as a best effort based on folder and file size
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -213,7 +184,7 @@ Indicates that this operation should upload all items in all subfolders.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -228,7 +199,7 @@ Indicates that the file(s) being copied are a continuation of a previous upload.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4

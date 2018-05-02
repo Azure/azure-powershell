@@ -18,7 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.0
+* Breaking changes to support piping scenarios
+* Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
 * Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.4.0-preview
+* Updated cmdlets to include piping scenarios
+* Added new cmdlets around NewtorkRules: Add/Remove/Update-AzureKeyVaultNetworkRule
+* Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
 
 ## Version 4.3.0
 * Updated cmdlets to include piping scenarios

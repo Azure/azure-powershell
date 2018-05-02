@@ -172,9 +172,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("Set-AzureRmVMOSDisk: A property of the output of this cmdlet will change in an upcoming breaking change release. " +
-                         "The StorageAccountType property for a DataDisk will return Standard_LRS and Premium_LRS");
-
             if (this.VM.StorageProfile == null)
             {
                 this.VM.StorageProfile = new StorageProfile();
@@ -250,12 +247,6 @@ namespace Microsoft.Azure.Commands.Compute
                         },
                     }
                 };
-            }
-
-            if (MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
-            {
-                WriteWarning("Set-AzureRmVMOSDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
-                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
             }
 
             if (!string.IsNullOrEmpty(this.ManagedDiskId) || this.StorageAccountType != null)
