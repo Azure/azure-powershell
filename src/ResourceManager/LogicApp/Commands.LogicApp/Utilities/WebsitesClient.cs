@@ -66,10 +66,18 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="appServicePlanName">Name of the App Service Plan name</param>
         /// <returns>Object represents the AppServicePlan</returns>
+#if NETSTANDARD
+        public AppServicePlan GetAppServicePlan(string resourceGroupName, string appServicePlanName)
+        {
+            return WrappedWebsitesClient.AppServicePlans.Get(resourceGroupName, appServicePlanName);
+        }
+#else
         public ServerFarmWithRichSku GetAppServicePlan(string resourceGroupName, string appServicePlanName)
         {
             return WrappedWebsitesClient.ServerFarms.GetServerFarm(resourceGroupName, appServicePlanName);
         }
+
+#endif
 
         /// <summary>
         /// Writes verbose

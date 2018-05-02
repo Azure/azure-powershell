@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermaccount
@@ -21,9 +21,10 @@ Connect-AzureRmAccount [-Environment <String>] [[-Credential] <PSCredential>] [-
 
 ### ServicePrincipalWithSubscriptionId
 ```
-Connect-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal] -TenantId <String>
- [-Subscription <String>] [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Connect-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal]
+ -TenantId <String> [-Subscription <String>] [-ContextName <String>] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServicePrincipalCertificateWithSubscriptionId
@@ -44,7 +45,7 @@ Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken
 
 ### ManagedServiceLogin
 ```
-Add-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <String>] [-ManagedService]
+Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <String>] [-Identity]
  [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-Subscription <String>]
  [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -123,14 +124,14 @@ This command connects to an Azure account and configured AzureRM PowerShell to r
 
 ### Example 5: Add an Account Using Managed Service Identity Login
 ```
-PS C:\>Add-AzureRmAccount -MSI
+PS C:\> Connect-AzureRmAccount -MSI
 Account: MSI@50342
 Environment: AzureCloud
 Subscription: yyyy-yyyy-yyyy-yyyy
 Tenant: xxxx-xxxx-xxxx-xxxx
 ```
 
-This command logs in using the managed service identity of the host environment (for example, if executed on a 
+This command connects using the managed service identity of the host environment (for example, if executed on a 
 VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
 
 ## PARAMETERS
@@ -312,6 +313,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Identity
+Login using managed service identity in the current environment.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ManagedServiceLogin
+Aliases: MSI, ManagedService
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KeyVaultAccessToken
 AccessToken for KeyVault Service
 
@@ -321,21 +337,6 @@ Parameter Sets: AccessTokenWithSubscriptionId
 Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedService
-Login using managed service identity in the current environment
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: ManagedServiceLogin
-Aliases: MSI
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -509,3 +510,4 @@ Credentials, subscription, account, and tenant information for the logged in use
 ## NOTES
 
 ## RELATED LINKS
+

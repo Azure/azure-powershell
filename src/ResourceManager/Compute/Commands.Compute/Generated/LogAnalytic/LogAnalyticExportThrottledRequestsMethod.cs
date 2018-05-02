@@ -199,7 +199,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-
         public SwitchParameter GroupByOperationName { get; set; }
 
         [Parameter(
@@ -211,7 +210,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-
         public SwitchParameter GroupByThrottlePolicy { get; set; }
 
         [Parameter(
@@ -223,7 +221,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-
         public SwitchParameter GroupByResourceName { get; set; }
 
         [Parameter(
@@ -236,8 +233,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/locations/logAnalytics")]
         public string Location { get; set; }
 

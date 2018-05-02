@@ -29,14 +29,12 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of custom e-mails")]
         [ValidateNotNullOrEmpty]
-        [Alias("CustomEmails")]
         public string[] CustomEmail { get; set; }
 
         /// <summary>
         /// Gets or sets the SendToServiceOwners flag of the action
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The send to service owner flag")]
-        [Alias("SendToServiceOwners")]
         public SwitchParameter SendToServiceOwner { get; set; }
 
         /// <summary>
@@ -50,10 +48,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: "New-AzureRmAlertRuleEmail",
-                topic: "Parameter name change",
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             if (!this.SendToServiceOwner && (this.CustomEmail == null || this.CustomEmail.Length < 1))
             {
                 throw new ArgumentException("Either SendToServiceOwners must be set or at least one custom email must be present");

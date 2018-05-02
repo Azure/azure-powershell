@@ -26,7 +26,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
     public class AuthenticationFactory : IAuthenticationFactory
     {
-        public const string CommonAdTenant = "Common", DefaultMSILoginUri = "http://localhost:50342/oauth2/token";
+        public const string CommonAdTenant = "Common", 
+            DefaultMSILoginUri = "http://169.254.169.254/metadata/identity/oauth2/token", 
+            DefaultBackupMSILoginUri = "http://localhost:50342/oauth2/token";
 
         public AuthenticationFactory()
         {
@@ -394,6 +396,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             if (!account.IsPropertySet(AzureAccount.Property.MSILoginUri))
             {
                 account.SetProperty(AzureAccount.Property.MSILoginUri, DefaultMSILoginUri);
+            }
+
+            if (!account.IsPropertySet(AzureAccount.Property.MSILoginUriBackup))
+            {
+                account.SetProperty(AzureAccount.Property.MSILoginUriBackup, DefaultBackupMSILoginUri);
             }
 
             if (string.IsNullOrWhiteSpace(tenant))

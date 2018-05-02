@@ -1,0 +1,83 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\tools\Common.Netcore.Dependencies.targets" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Microsoft.WindowsAzure.Commands.Storage</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.Storage</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\Package\Debug\Storage\Azure.Storage.Netcore\</OutputPath>
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Package\Release\Storage\Azure.Storage.Netcore\</OutputPath>
+    <DocumentationFile />
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Azure.Storage.Netcore.psd1" Link="Azure.Storage.Netcore.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Microsoft.WindowsAzure.Commands.Storage.format.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Microsoft.WindowsAzure.Commands.Storage.types.ps1xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs" Link="Common\Cmdlet\AzureContextAdapterExtensions.cs" />
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageBlob.cs" Link="Common\AzureStorageBlob.cs" />
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageContainer.cs" Link="Common\AzureStorageContainer.cs" />
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageQueue.cs" Link="Common\AzureStorageQueue.cs" />
+    <Compile Include="..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.8\ResourceModel\AzureStorageTable.cs" Link="Common\AzureStorageTable.cs" />
+  </ItemGroup>
+
+</Project>

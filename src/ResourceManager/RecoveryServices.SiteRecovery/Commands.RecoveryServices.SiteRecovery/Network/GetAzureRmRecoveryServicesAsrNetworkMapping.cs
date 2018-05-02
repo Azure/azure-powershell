@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Network mappings.
+    ///     Gets information about Site Recovery network mappings for the current vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
@@ -31,27 +33,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class GetAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Azure VM Network Id.
+        ///     Gets or sets name of the ASR network mapping object to get.
         /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.ByObjectWithName,
-            Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByFabricObject)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Primary Network object.
+        ///     Gets or sets the ASR network mappings corresponding to the specified network ASR object.
         /// </summary>
-        [Parameter(
-            ParameterSetName = ASRParameterSets.ByObjectWithName,
-            Mandatory = true,
-            ValueFromPipeline = true)]
-        [Parameter(
-            ParameterSetName = ASRParameterSets.ByObject,
-            Mandatory = true,
-            ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.ByObject, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRNetwork Network { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ASR network mappings corresponding to the specified primary fabric object.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.ByFabricObject, Mandatory = true, ValueFromPipeline = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRFabric PrimaryFabric { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -62,11 +63,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             switch (this.ParameterSetName)
             {
-                case ASRParameterSets.ByObjectWithName:
-                    this.ByObjectWithName();
-                    break;
                 case ASRParameterSets.ByObject:
                     this.ByObject();
+                    break;
+
+                case ASRParameterSets.ByFabricObject:
+                    this.GetNetworkMappingByFabric();
                     break;
             }
         }
@@ -76,29 +78,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void ByObject()
         {
-            var networkMappingList =
-                this.RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
-                    Utilities.GetValueFromArmId(
-                        this.Network.ID,
-                        ARMResourceTypeConstants.ReplicationFabrics),
-                    this.Network.Name);
+            var tokens =
+                    this.Network.ID.UnFormatArmId(ARMResourceIdPaths.NetworkResourceIdPath);
 
-            this.WriteNetworkMappings(networkMappingList);
-        }
+            if (this.Network.FabricType.Equals(Constants.Azure))
+            {
+                this.PrimaryFabric = new ASRFabric(this.RecoveryServicesClient.GetAzureSiteRecoveryFabric(tokens[0]));
+                this.GetNetworkMappingByFabric();
+            }
+            else
+            {
+                if (this.Name == null)
+                {
+                    var networkMappingList =
+                    this.RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
+                        tokens[0],
+                        this.Network.Name);
 
-        /// <summary>
-        ///     Get network mapping by name.
-        /// </summary>
-        private void ByObjectWithName()
-        {
-            var networkMapping = this.RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
-                Utilities.GetValueFromArmId(
-                    this.Network.ID,
-                    ARMResourceTypeConstants.ReplicationFabrics),
-                this.Network.Name,
-                this.Name);
+                    this.WriteNetworkMappings(networkMappingList);
+                }
+                else
+                {
+                    var networkMapping = this.RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
+                            tokens[0],
+                            this.Network.Name,
+                            this.Name);
 
-            this.WriteNetworkMapping(networkMapping);
+                    this.WriteNetworkMapping(networkMapping);
+                }
+            }
         }
 
         /// <summary>
@@ -121,6 +129,44 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.WriteObject(
                 networkMappings.Select(nm => new ASRNetworkMapping(nm)),
                 true);
+        }
+
+        /// <summary>
+        /// Get Azure to Azure Network mapping.
+        /// </summary>
+        private void GetNetworkMappingByFabric()
+        {
+            if (string.Equals(
+                this.PrimaryFabric.FabricType,
+                Constants.Azure,
+                StringComparison.InvariantCultureIgnoreCase))
+            {
+                if (string.IsNullOrEmpty(this.Name))
+                {
+                    var networkMappingList = RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
+                        this.PrimaryFabric.Name,
+                        ARMResourceTypeConstants.AzureNetwork);
+                    this.WriteNetworkMappings(networkMappingList);
+                }
+                else
+                {
+                    var networkMapping =
+                    RecoveryServicesClient.GetAzureSiteRecoveryNetworkMappings(
+                        this.PrimaryFabric.Name,
+                        ARMResourceTypeConstants.AzureNetwork,
+                        this.Name);
+                    this.WriteNetworkMapping(networkMapping);
+                }
+            }
+            else
+            {
+                var networks = this.RecoveryServicesClient.GetAzureSiteRecoveryNetworks(this.PrimaryFabric.Name);
+                foreach (var network in networks)
+                {
+                    this.Network = new ASRNetwork(network);
+                    this.ByObject();
+                }
+            }
         }
     }
 }

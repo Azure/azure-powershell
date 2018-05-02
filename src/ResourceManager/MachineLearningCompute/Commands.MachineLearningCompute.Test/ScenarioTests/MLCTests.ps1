@@ -19,7 +19,7 @@ Creates an operationalization cluster for use in tests.
 function GetDefaultClusterProperties
 {
     $orchestratorType = "Kubernetes"
-    $location = "East US 2 EUAP"
+    $location = "East US 2"
     $clusterType = "ACS"
     $description = "Deployed from powershell"
 
@@ -38,7 +38,7 @@ Creates a local operationalization cluster for use in tests.
 #>
 function GetDefaultLocalClusterProperties
 {
-    $location = "East US 2 EUAP"
+    $location = "East US 2"
     $clusterType = "Local"
     $description = "Deployed from powershell"
 
@@ -121,7 +121,7 @@ function Test-NewGetRemove
 		-MasterCount 1 -AgentCount 2 -AgentVmSize Standard_D3_v2
 
     Assert-True { $result.ProvisioningState -eq "Succeeded" }
-    
+
     # Get the cluster
     $result = Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 
@@ -162,7 +162,7 @@ function Test-NewGetRemove
 	$managedByResourceGroupName = GetManagedByResourceGroupName -ResourceGroupName $resourceGroupName
 
     # Remove the cluster
-    Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Remove-AzureRmMlOpCluster 
+    Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Remove-AzureRmMlOpCluster
 
     Assert-ThrowsContains { Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
 
@@ -249,7 +249,7 @@ function Test-UpdateSystemServices
     Assert-NotNull { $updateAvailability }
 
 	# Test for updates - pipelining
-	$updateAvailability = Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Test-AzureRmMlOpClusterSystemServicesUpdateAvailability 
+	$updateAvailability = Get-AzureRmMlOpCluster -ResourceGroupName $resourceGroupName -Name $clusterName | Test-AzureRmMlOpClusterSystemServicesUpdateAvailability
     Assert-NotNull { $updateAvailability }
 
 	# Update the cluster

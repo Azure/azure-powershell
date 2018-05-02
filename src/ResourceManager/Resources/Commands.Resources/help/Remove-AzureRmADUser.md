@@ -13,9 +13,34 @@ Deletes an active directory user.
 
 ## SYNTAX
 
+### UPNOrObjectIdParameterSet (Default)
 ```
-Remove-AzureRmADUser -UPNOrObjectId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Remove-AzureRmADUser -UPNOrObjectId <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UPNParameterSet
+```
+Remove-AzureRmADUser -UserPrincipalName <String> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ObjectIdParameterSet
+```
+Remove-AzureRmADUser -ObjectId <Guid> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Remove-AzureRmADUser -DisplayName <String> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzureRmADUser -InputObject <PSADUser> [-PassThru] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,12 +48,29 @@ Deletes an active directory user (work/school account also popularly known as or
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Remove a user by user principal name
+
 ```
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmADUser -UserPrincipalName foo@domain.com
 ```
 
-{{ Add example description here }}
+Removes the user with user principal name "foo@domain.com" from the tenant.
+
+### Example 2 - Remove a user by object id
+
+```
+PS C:\> Remove-AzureRmADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69
+```
+
+Removes the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' from the tenant.
+
+### Example 3 - Remove a user by piping
+
+```
+PS C:\> Get-AzureRmADUser -ObjectId 7a9582cf-88c4-4319-842b-7a5d60967a69 | Remove-AzureRmADUser
+```
+
+Gets the user with object id '7a9582cf-88c4-4319-842b-7a5d60967a69' and pipes that to the Remove-AzureRmADUser cmdlet to remove the user from the tenant.
 
 ## PARAMETERS
 
@@ -47,8 +89,68 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+The display name of the user to be deleted.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Force
-If specified, doesn't ask for confirmation for deleting user.
+If specified, doesn't ask for confirmation for deleting the user.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The user object to be deleted.
+
+```yaml
+Type: PSADUser
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ObjectId
+The object id of the user to be deleted.
+
+```yaml
+Type: Guid
+Parameter Sets: ObjectIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Specifying this will return true if the command was successful.
 
 ```yaml
 Type: SwitchParameter
@@ -67,8 +169,23 @@ The user principal name or the objectId of the user to be deleted.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: UPNOrObjectIdParameterSet
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserPrincipalName
+The user principal name of the user to be deleted.
+
+```yaml
+Type: String
+Parameter Sets: UPNParameterSet
+Aliases: UPN
 
 Required: True
 Position: Named
@@ -93,6 +210,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -110,10 +230,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADUser
+
+This cmdlet accepts a PSADUser object from the pipeline. You can pipe the output of Get-AzureRmADUser to this cmdlet to remove the provided user.
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

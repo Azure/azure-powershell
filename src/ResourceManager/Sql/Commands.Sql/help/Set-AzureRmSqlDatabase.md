@@ -193,9 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSizeBytes
-Specifies the new maximum size for the database in bytes.
-You can specify either this parameter or *MaxSizeGB*.
-See the *MaxSizeGB* parameter for acceptable values per edition.
+The maximum size of the Azure SQL Database in bytes.
 
 ```yaml
 Type: Int64

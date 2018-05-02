@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery vCenter server.
+    ///     Gets details of the vCenter servers registered for discovery on the Configuration server specified by the ASR fabric.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class GetAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Resource Id.
+        ///     Gets or sets the resourceId of vCenter.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByResourceId,
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string ResourceId { get; set; }
 
         /// <summary>
-        ///     Gets or sets Fabric server of the vCenter.
+        ///     Gets or sets ASR fabric object representing the Configuration Server.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRFabric Fabric { get; set; }
 
         /// <summary>
-        ///     Gets or sets friendly name of the vCenter.
+        ///     Gets or sets name of the vCenter.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Queries by vCenter name.
+        ///     Queries vCenter by Arm resourceId.
         /// </summary>
         private void GetvCenterByResourceId()
         {

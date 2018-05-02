@@ -80,9 +80,34 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
         /// <returns>List of restore points</returns>
-        public IList<Management.Sql.LegacySdk.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName)
+        public IEnumerable<Management.Sql.Models.RestorePoint> ListRestorePoints(string resourceGroupName, string serverName, string databaseName)
         {
-            return GetLegacySqlClient().DatabaseBackup.ListRestorePoints(resourceGroupName, serverName, databaseName).RestorePoints;
+            return GetCurrentSqlClient().RestorePoints.ListByDatabaseWithHttpMessagesAsync(resourceGroupName, serverName, databaseName).Result.Body;
+        }
+
+        /// <summary>
+        /// Creates a new restore point for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <returns>A restore point</returns>
+        public Management.Sql.Models.RestorePoint NewRestorePoint(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.CreateDatabaseRestorePointDefinition restoreDefinition)
+        {
+            return GetCurrentSqlClient().RestorePoints.CreateWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, restoreDefinition).Result.Body;
+        }
+
+        /// <summary>
+        /// Removes a given restore point for a given Sql Azure Database.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="restorePointCreationDate">The name of the restore point</param>
+        /// <returns>void</returns>
+        public void RemoveRestorePoint(string resourceGroupName, string serverName, string databaseName, string restorePointCreationDate)
+        {
+            GetCurrentSqlClient().RestorePoints.DeleteWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, restorePointCreationDate);
         }
 
         /// <summary>

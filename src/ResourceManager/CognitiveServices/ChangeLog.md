@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.9.5
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 0.9.4
+* Updated to the latest version of the Azure ClientRuntime
+* Integrate with Cognitive Services Management SDK version 4.0.0.
+* Add Get-AzureRmCognitiveServicesAccountUsage operation.
+
+## Version 0.9.3
 * Fix issue with Default Resource Group in CloudShell
 
 ## Version 0.9.2

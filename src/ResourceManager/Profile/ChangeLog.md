@@ -19,6 +19,18 @@
 -->
 ## Current Release
 
+## Version 5.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Enable context autosave by default
+* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
+
+## Version 4.6.0
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.5.0
+* Enable MSI authentication in unsupported scenarios
+* Add support for user-defined Managed Service Identity
+
 ## Version 4.4.0
 * Fixed issue with importing aliases
 * Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8
