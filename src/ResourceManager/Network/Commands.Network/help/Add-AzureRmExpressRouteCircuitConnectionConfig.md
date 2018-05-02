@@ -19,6 +19,13 @@ you must call the Set-AzureRmExpressRouteCircuit cmdlet to activate the configur
 
 ## EXAMPLES
 ### Example 1: Add a circuit connection resource to an existing ExpressRoute circuit
+```
+$circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
+$circuit_peer = Get-AzureRmExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
+$addressSpace = '60.0.0.0/29'
+Add-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit_init
+```
 
 ## PARAMETERS
 
@@ -68,6 +75,50 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PeerExpressRouteCircuitPeering
+Resource Id for Private Peering of remote circuit which will be peered with the current circuit.
+```yaml
+Type: String
+Parameter Sets: SetByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AddressPrefix
+A minimum /29 customer address space to create VxLan tunnels between Express Route Circuits
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthorizationKey
+Authorization Key to peer Express Route Circuit in another subscription. Authorization on peer circuit can be created using existing commands.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -92,3 +143,7 @@ Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' fr
 [Set-AzureRmExpressRouteCircuitConnectionConfig](Set-AzureRmExpressRouteCircuitConnectionConfig.md)
 
 [New-AzureRmExpressRouteCircuitConnectionConfig](New-AzureRmExpressRouteCircuitConnectionConfig.md)
+
+[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
+
+[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)

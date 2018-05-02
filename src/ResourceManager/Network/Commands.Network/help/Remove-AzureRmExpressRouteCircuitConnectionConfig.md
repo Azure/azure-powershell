@@ -16,6 +16,11 @@ connection configuration associated with a given Express Route Circuit.
 
 ## EXAMPLES
 ### Example 1: Remove a circuit connection configuration from an ExpressRoute circuit
+```
+$circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
+Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
+Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit_init
+```
 
 ## PARAMETERS
 
@@ -89,3 +94,7 @@ Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' fr
 [Set-AzureRmExpressRouteCircuitConnectionConfig](Set-AzureRmExpressRouteCircuitConnectionConfig.md)
 
 [New-AzureRmExpressRouteCircuitConnectionConfig](New-AzureRmExpressRouteCircuitConnectionConfig.md)
+
+[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
+
+[Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)
