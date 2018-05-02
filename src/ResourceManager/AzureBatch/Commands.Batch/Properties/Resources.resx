@@ -494,6 +494,6 @@
     <value>No container url specified. The container url should include Shared access signature for the Azure Storage container.</value>
   </data>
   <data name="NoStartTime" xml:space="preserve">
-    <value>No start time specified. Start time is the time when compute node log serarch begins.</value>
+    <value>No start time specified.</value>
   </data>
 </root>
