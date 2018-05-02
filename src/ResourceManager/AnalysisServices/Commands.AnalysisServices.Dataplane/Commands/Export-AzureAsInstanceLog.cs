@@ -13,20 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Globalization;
-using System.Linq;
 using System.Management.Automation;
-using System.Management.Instrumentation;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models;
 using Microsoft.Azure.Commands.AnalysisServices.Dataplane.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json.Linq;
 
@@ -146,7 +140,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             if (ShouldProcess(Instance, Resources.ExportingLogFromAnalysisServicesServer))
             {
                 var context = AsAzureClientSession.Instance.Profile.Context;
+#if NETSTANDARD
+                AsAzureClientSession.Instance.Login(context, null, null);
+#else
                 AsAzureClientSession.Instance.Login(context, null);
+#endif
                 string accessToken = this.TokenCacheItemProvider.GetTokenFromTokenCache(
                     AsAzureClientSession.TokenCache, context.Account.UniqueId);
 

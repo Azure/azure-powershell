@@ -136,7 +136,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Name,
                 Version ?? string.Empty,
                 new PSKeyVaultSecretAttributes(Enable, Expires, NotBefore, ContentType, Tag));
-
                 if (PassThru)
                 {
                     WriteObject(secret);

@@ -132,9 +132,15 @@ namespace Microsoft.Azure.Commands.KeyVault
                     }
                     else if (obj.Type.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var servicePrincipal = adClient.FilterServicePrincipals(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ObjectId == objectId);
+                        var servicePrincipal = adClient.FilterServicePrincipals(odataQuery).FirstOrDefault();
                         displayName = servicePrincipal.DisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                    }
+                    else if (obj.Type.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var group = adClient.FilterGroups(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        displayName = group.DisplayName;
                     }
                 }
 #else
@@ -152,6 +158,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                         var servicePrincipal = adClient.ServicePrincipals.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
                         displayName = servicePrincipal.AppDisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                    }
+                    else if (obj.ObjectType.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var group = adClient.Groups.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = group.DisplayName;
+                        upnOrSpn = group.MailNickname;
                     }
                 }
 

@@ -298,3 +298,90 @@ function Test-RemoveElasticPool
         Remove-ResourceGroupForTest $rg
     }
 }
+
+<#
+	.SYNOPSIS
+	Test listing and cancelling a elastic pool operation
+#>
+function Test-ListAndCancelElasticPoolOperation
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	$poolName = Get-ElasticPoolName
+	$ep1 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		-ElasticPoolName $poolName -Edition Premium -Dtu 125 -DatabaseDtuMin 0 -DatabaseDtuMax 50
+	Assert-NotNull $ep1
+
+	$poolName = Get-ElasticPoolName
+	$ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName -Edition Premium -Dtu 250 -DatabaseDtuMin 0 `
+         -DatabaseDtuMax 50
+	Assert-NotNull $ep2
+
+	# Elastic pool will be Premium with DTU 125
+
+	try
+	{
+		# Update the elastic pool ep1 to premium with 250 Dtu
+		$ep1update = Set-AzureRmSqlElasticPool -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName `
+			-Edition Premium -Dtu 250 -DatabaseDtuMin 25 -DatabaseDtuMax 125
+		Assert-AreEqual $ep1.ElasticPoolName $ep1update.ElasticPoolName
+		Assert-AreEqual Premium $ep1update.Edition
+		Assert-AreEqual 250 $ep1update.Dtu
+
+		# List and Cancel the elastic pool update operation
+		$epactivity = Get-AzureRmSqlElasticPoolActivity -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $ep1update.ElasticPoolName
+		$epactivityId
+
+		For($i=0; $i -lt $epactivity.Length; $i++) {
+			if($epactivity[$i].Operation -eq "UPDATE"){
+				$epactivityId = $epactivity[$i].OperationId
+			}
+		}
+
+		try
+		{
+			# cancel a pool update operation with all values
+			$activityCancel = Stop-AzureRmSqlElasticPoolActivity -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName -OperationId $epactivityId
+		}
+		Catch
+		{
+			$ErrorMessage = $_.Exception.Message
+			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel management operation '" + $epactivityId + "' in the current state") $ErrorMessage
+		}
+
+		# piping test on related pool operations
+		# Update ep2 tp Premium with 500 Dtu
+		$ep2update = Set-AzureRmSqlElasticPool -ResourceGroupName $ep2.ResourceGroupName -ServerName $ep2.ServerName -ElasticPoolName $ep2.ElasticPoolName `
+			-Edition Premium -Dtu 500 -DatabaseDtuMin 25 -DatabaseDtuMax 250
+		Assert-AreEqual $ep2.ElasticPoolName $ep2update.ElasticPoolName
+		Assert-AreEqual Premium $ep2update.Edition
+		Assert-AreEqual 500 $ep2update.Dtu
+
+		$epactivity = $ep2update | Get-AzureRmSqlElasticPoolActivity
+		For($i=0; $i -lt $epactivity.Length; $i++) {
+			if($epactivity[$i].Operation -eq "UPDATE"){
+				$epactivityId = $epactivity[$i].OperationId
+			}
+		}
+
+		$epactivity = $ep2update | Get-AzureRmSqlElasticPoolActivity -OperationId $epactivityId
+		
+		try
+		{
+			# cancel a pool update operation using piping
+			$activityCancel = $epactivity | Stop-AzureRmSqlElasticPoolActivity
+		}
+		Catch
+		{
+			$ErrorMessage = $_.Exception.Message
+			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel management operation '" + $epactivityId + "' in the current state") $ErrorMessage
+		}
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

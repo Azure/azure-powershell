@@ -183,8 +183,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
                 {
                     AsAzureClientSession.Instance.SetCurrentContext(azureAccount, AsEnvironment);
                 }
-
+#if NETSTANDARD
+                var asAzureProfile = AsAzureClientSession.Instance.Login(currentProfile.Context, password, WriteWarning);
+#else
                 var asAzureProfile = AsAzureClientSession.Instance.Login(currentProfile.Context, password);
+#endif
 
                 WriteObject(asAzureProfile);
             }

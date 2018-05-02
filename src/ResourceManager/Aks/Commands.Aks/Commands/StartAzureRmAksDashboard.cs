@@ -30,7 +30,6 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 #if NETSTANDARD
 using Microsoft.Extensions.DependencyInjection;
-
 #endif
 
 namespace Microsoft.Azure.Commands.Aks

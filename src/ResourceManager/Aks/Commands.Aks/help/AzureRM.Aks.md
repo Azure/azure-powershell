@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Aks
 Module Guid: a97e0c3e-e389-46a6-b73d-2b9bd6909bdb
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.aks
+Help Version: 0.0.1.0
 Locale: en-US
 ---
 

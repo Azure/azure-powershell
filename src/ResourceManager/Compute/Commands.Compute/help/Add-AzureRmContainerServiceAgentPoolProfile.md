@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: C3C65F3E-1192-4B57-87DB-5D371C8FF68E
@@ -40,7 +40,7 @@ To obtain a **ContainerService** object, use the [New-AzureRmContainerServiceCon
 ```yaml
 Type: PSContainerService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -57,7 +57,7 @@ The default value is 1.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -87,7 +87,7 @@ Specifies the DNS prefix that this cmdlet uses to create the fully qualified dom
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -103,7 +103,7 @@ This value must be unique in the context of the subscription and resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -118,7 +118,7 @@ Specifies the size of the virtual machines for the agents.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3

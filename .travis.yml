@@ -5,7 +5,7 @@ dotnet: 2.1.2
 dist: trusty
 
 env:
-  - NAME="azure-powershell-core" CONFIG="Release"
+  - NAME="azure-powershell-core" CONFIG="Debug"
 
 services:
  - docker
@@ -21,13 +21,14 @@ before_install:
 
 script:
  - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=$CONFIG
+ - dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter="AcceptanceType=CheckIn" --configuration $CONFIG
  
 after_success:
  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     docker build . -t $DOCKER_USER/$NAME:$TRAVIS_COMMIT --build-arg CONFIG=$CONFIG;
     docker tag $DOCKER_USER/$NAME:$TRAVIS_COMMIT $DOCKER_USER/$NAME:$TRAVIS_BRANCH;
 
-    docker login -u $DOCKER_USER -p $DOCKER_PASS;
+    echo "$DOCKER_PASS" | docker login -u $DOCKER_USER --password-stdin;
 
     docker push $DOCKER_USER/$NAME:$TRAVIS_COMMIT;
     docker push $DOCKER_USER/$NAME:$TRAVIS_BRANCH;
