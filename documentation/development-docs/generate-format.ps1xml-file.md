@@ -98,9 +98,11 @@ c9cbd920-c00c-427c-852b-c329e824c3a8 Azure SDK Powershell Test Enabled c9cbd920-
 ```
 
 The default table output reveals some issues:
-1. **SubscriptionId** property values duplicates the **Id** property values, 
-2. **CurrentStorageAccountName** property values are empty 
-3. **ExtendedProperties** property values don't fit the console window and are omitted.
+* The selected fields don't fit in a standard window
+* The columns are not displayed in order of importance to the customer for doing their work.
+* **SubscriptionId** property values duplicates the **Id** property values, 
+* **CurrentStorageAccountName** property values are empty 
+* **ExtendedProperties** property values don't fit in the console window and omitted.
 
 # File format.ps1xml.
 
@@ -113,7 +115,7 @@ To provide a better PowerShell Azure cmdlets output experience we worked out a m
 2. Run the New-FormatPs1Xml cmdlet to generate the format.ps1xml file.
 
 ---
- We presume that for the [output type](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-design-guidelines.md#output-type) you created a new class that, for example,  wraps a returning .NET SDK type, rather to use PSObject.
+ We presume that for the [output type](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-design-guidelines.md#output-type) you created a new class that, for example,  wraps a returning .NET SDK type, rather than PSObject.
 
 ---
 
@@ -153,7 +155,6 @@ Let's say for our example we want to only show these parameters in the output:
 * Id
 * Name
 * State
-* SubscriptionId
 * TenantId
 
 We just need to add the Ps1Xml attribute to the selected properties:
@@ -205,8 +206,14 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
 // code omitted for brevity 
 ```
+* The column order in the output table will be the same as the order of the properties in the class:
+  ```
+  Id Name State TenantId
+  == ==== ===== ========
+  ```
+* If **Label** is not specified - the property name will be used. 
 
-Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell/tree/preview/src/Common/Commands.Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
+* Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell/tree/preview/src/Common/Commands.Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
 
 
 # How to generate format.ps1xml file.
@@ -260,7 +267,7 @@ E:\git\azure-powershell\Microsoft.Azure.Commands.Profile.generated.format.ps1xml
 
 **Note:** All the paths used in the example in the section are under **_azure-powershell/src/Package/Debug_**
 
-1. **Copy** the generated format.ps1xml file to the built module folder (this is where your module manifest file psd1 is located ). In our example the module folder is 
+1. **Copy** the generated format.ps1xml file to the built module folder (this is where your module manifest file psd1 is located). In our example the module folder is 
 ```
 E:\git\azure-powershell\src\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile
 ```
