@@ -16,6 +16,7 @@ The **Set-AzureRmExpressRouteCircuitConnectionConfig** cmdlets saves a modified 
 configuration back to Azure.
 
 ## EXAMPLES
+### Example 1: Change an existing circuit connection configuration. Currently none of the circuit connection fields can be updated by customer.
 
 ## PARAMETERS
 

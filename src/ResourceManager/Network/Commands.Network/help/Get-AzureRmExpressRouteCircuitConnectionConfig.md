@@ -15,6 +15,7 @@ The **Get-AzureRmExpressRouteCircuitConnectionConfig** cmdlet retrieves the conf
 associated with Private Peering for an ExpressRoute circuit.
 
 ## EXAMPLES
+### Example 1: Display the circuit connection configuration for an ExpressRoute circuit
 
 ## PARAMETERS
 
