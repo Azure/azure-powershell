@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet(VerbsCommon.Get, 
         Constants.AzureBatchPoolNodeCounts, 
-        SupportsPaging = true,
         DefaultParameterSetName = Constants.AzureBatchPoolNodeCounts),         
         OutputType(typeof(PSPoolNodeCounts))]
     public class GetBatchPoolNodeCountsCommand : BatchObjectModelCmdletBase
