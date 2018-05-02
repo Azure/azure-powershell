@@ -26,3 +26,20 @@
 -->
 
 # Upcoming Breaking Changes
+
+### Release 6.0.0 - May 2018
+
+The following cmdlets were affected by this release:
+
+**New-AzureRmVirtualNetwork**
+
+- Parameter `DdosProtectionPlanId` is now needed to set the switch parameter `EnableDdosProtection`. This was not needed in previous releases.
+
+```powershell
+# Old:
+New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -EnableDdosProtection 
+
+# New:
+
+New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -DdosProtectionPlanId $ddosPlanId -EnableDdosProtection 
+```

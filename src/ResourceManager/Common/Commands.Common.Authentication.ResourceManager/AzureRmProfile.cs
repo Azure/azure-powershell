@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public IDictionary<string, IAzureContext> Contexts { get; set; } = new ConcurrentDictionary<string, IAzureContext>(StringComparer.CurrentCultureIgnoreCase);
 
         /// <summary>
-        /// Gets the path of the profile file. 
+        /// Gets the path of the profile file.
         /// </summary>
         [JsonIgnore]
         [XmlIgnore]
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                     writer.Write(contents);
                     writer.Flush();
 
-                    // When writing to a stream, ensure that the file is truncated 
+                    // When writing to a stream, ensure that the file is truncated
                     // so that previous data is overwritten
                     provider.Stream.SetLength(provider.Stream.Position);
                 }
@@ -386,20 +386,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (context != null)
             {
 
-                if ((context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id)) || context.Subscription != null)
+                if (context.Subscription != null)
                 {
-                    List<string> components = new List<string>();
-                    if (context.Account != null && !string.IsNullOrWhiteSpace(context.Account.Id))
-                    {
-                        components.Add(context.Account.Id);
-                    }
-
-                    if (context.Subscription != null)
-                    {
-                        components.Add(context.Subscription.GetId().ToString());
-                    }
-
-                    name = string.Format("[{0}]", string.Join(", ", components));
+                    name = string.Format("{0} - {1}", context.Subscription.Name, context.Subscription.Id);
                     result = true;
                 }
                 else

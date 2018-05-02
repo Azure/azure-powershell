@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/set-azurekeyvaultmanagedstoragesasdefinition
@@ -12,10 +12,19 @@ Sets a Shared Access Signature (SAS) definition with Key Vault for a given Key V
 
 ## SYNTAX
 
+### Default (Default)
 ```
 Set-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
- -TemplateUri <String> -SasType <String> [-Disable] [-Tag <Hashtable>] -ValidityPeriod <TimeSpan>
+ [-TemplateUri] <String> [-SasType] <String> [-Disable] [-Tag <Hashtable>] -ValidityPeriod <TimeSpan>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Set-AzureKeyVaultManagedStorageSasDefinition [-InputObject] <PSKeyVaultManagedStorageAccountIdentityItem>
+ [-Name] <String> [-TemplateUri] <String> [-SasType] <String> [-Disable] [-Tag <Hashtable>]
+ -ValidityPeriod <TimeSpan> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +47,7 @@ PS C:\> $at=New-AzureStorageAccountSasToken -Service blob,file,Table,Queue -Reso
 PS C:\> $sas=Set-AzureKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
 PS C:\> Get-AzureKeyVaultSecret -VaultName $kv.VaultName -Name $sas.Sid.Substring($sas.Sid.LastIndexOf('/')+1)
 ```
+
 Sets an account SAS definition 'accountsas' on a KeyVault-managed storage account 'mysa' in vault 'mykv'. Specifically, the sequence above performs the following:
   - gets a (pre-existing) storage account
   - gets a (pre-existing) key vault
@@ -55,13 +65,13 @@ name from vault name, currently selected environment and manged storage account 
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases: StorageAccountName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -95,6 +105,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+ManagedStorageAccount object.
+
+```yaml
+Type: PSKeyVaultManagedStorageAccountIdentityItem
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Storage sas definition name. Cmdlet constructs the FQDN of a storage sas definition from vault
 name, currently selected environment, storage account name and sas definition name.
@@ -107,7 +132,7 @@ Aliases: SasDefinitionName
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -120,7 +145,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -139,7 +164,7 @@ Aliases: Tags
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -152,7 +177,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -179,13 +204,13 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -15,17 +15,26 @@ Filters active directory groups.
 
 ### EmptyParameterSet (Default)
 ```
-Get-AzureRmADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADGroup [-ObjectId <Guid>] [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet
 ```
-Get-AzureRmADGroup -SearchString <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADGroup -DisplayNameStartsWith <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeTotalCount] [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
+```
+
+### DisplayNameParameterSet
+```
+Get-AzureRmADGroup -DisplayName <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ### ObjectIdParameterSet
 ```
-Get-AzureRmADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmADGroup -ObjectId <Guid> [-DefaultProfile <IAzureContextContainer>] [-IncludeTotalCount]
+ [-Skip <UInt64>] [-First <UInt64>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,26 +42,36 @@ Filters active directory groups.
 
 ## EXAMPLES
 
-### Filters groups using object id
-```
-PS C:\> Get-AzureRmADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
-```
-
-Gets group with 85F89C90-780E-4AA6-9F4F-6F268D322EEE id
-
-### Filters groups using Search String
-```
-PS C:\> Get-AzureRmADGroup -SearchString Joe
-```
-
-Filters all ad groups that has Joe in the display name.
-
-### List AD groups
+### Example 1 - List all AD groups
 ```
 PS C:\> Get-AzureRmADGroup
 ```
 
-Gets all AD groups
+Lists all AD groups in a tenant.
+
+### Example 2 - List all AD groups using paging
+
+```
+PS C:\> Get-AzureRmADGroup -First 100
+```
+
+Lists the first 100 AD groups in a tenant.
+
+### Example 3 - Get AD group by object id
+
+```
+PS C:\> Get-AzureRmADGroup -ObjectId 85F89C90-780E-4AA6-9F4F-6F268D322EEE
+```
+
+Gets an AD group with object id '85F89C90-780E-4AA6-9F4F-6F268D322EEE'.
+
+### Example 4 - List groups by search string
+
+```
+PS C:\> Get-AzureRmADGroup -SearchString Joe
+```
+
+Lists all AD groups whose display name begins with 'Joe'.
 
 ## PARAMETERS
 
@@ -63,6 +82,66 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the group.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayNameStartsWith
+Used to find groups that begin with the provided string.
+
+```yaml
+Type: String
+Parameter Sets: SearchStringParameterSet
+Aliases: SearchString
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -First
+The maximum number of objects to return.
+
+```yaml
+Type: UInt64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeTotalCount
+Reports the number of objects in the data set. Currently, this parameter does nothing.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -98,18 +177,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SearchString
-The group display name
+### -Skip
+Ignores the first N objects and then gets the remaining objects.
 
 ```yaml
-Type: String
-Parameter Sets: SearchStringParameterSet
+Type: UInt64
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -119,11 +198,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup]
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
 
 ## NOTES
 
