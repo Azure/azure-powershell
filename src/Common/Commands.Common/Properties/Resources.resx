@@ -1643,4 +1643,86 @@ Use the Enable-AzureDataCollection cmdlet to turn the feature On. The cmdlet can
     <value>[AzureLongRunningJob]: ShouldMethod '{0}' unblocked.</value>
     <comment>0(string): methodType</comment>
   </data>
+  <data name="BreakingChangeAttributeParameterChanging" xml:space="preserve">
+    <value>The parameter : '{0}' is changing.</value>
+  </data>
+  <data name="BreakingChangeAttributeParameterMandatoryNow" xml:space="preserve">
+    <value>The parameter : '{0}' is becoming mandatory.</value>
+  </data>
+  <data name="BreakingChangeAttributeParameterReplaced" xml:space="preserve">
+    <value>The parameter : '{0}' is being replaced by parameter : '{1}'.</value>
+  </data>
+  <data name="BreakingChangeAttributeParameterReplacedMandatory" xml:space="preserve">
+    <value>The parameter : '{0}' is being replaced by mandatory parameter : '{1}'.</value>
+  </data>
+  <data name="BreakingChangesAttributesChangeDescriptionMessage" xml:space="preserve">
+    <value>	Change description : {0}
+</value>
+  </data>
+  <data name="BreakingChangesAttributesCmdLetDeprecationMessageNoReplacement" xml:space="preserve">
+    <value>The cmdlet is being deprecated. There will be no replacement for it.</value>
+  </data>
+  <data name="BreakingChangesAttributesCmdLetDeprecationMessageWithReplacement" xml:space="preserve">
+    <value>The cmdlet '{0}' is replacing this cmdlet.</value>
+  </data>
+  <data name="BreakingChangesAttributesCmdLetOutputChange1" xml:space="preserve">
+    <value>The output type is changing from the existing type :'{0}' to the new type :'{1}'</value>
+  </data>
+  <data name="BreakingChangesAttributesCmdLetOutputChange2" xml:space="preserve">
+    <value>"The output type '{0}' is changing"</value>
+  </data>
+  <data name="BreakingChangesAttributesCmdLetOutputPropertiesAdded" xml:space="preserve">
+    <value>
+- The following properties are being added to the output type :
+</value>
+  </data>
+  <data name="BreakingChangesAttributesCmdLetOutputPropertiesRemoved" xml:space="preserve">
+    <value>
+ - The following properties in the output type are being deprecated :
+</value>
+  </data>
+  <data name="BreakingChangesAttributesDeclarationMessage" xml:space="preserve">
+    <value> - {0}
+
+</value>
+  </data>
+  <data name="BreakingChangesAttributesDeclarationMessageWithCmdletName" xml:space="preserve">
+    <value> - Cmdlet : '{0}'
+ - {1}
+</value>
+  </data>
+  <data name="BreakingChangesAttributesHeaderMessage" xml:space="preserve">
+    <value>Breaking changes in the cmdlet '{0}' :</value>
+  </data>
+  <data name="BreakingChangesAttributesInEffectByDateMessage" xml:space="preserve">
+    <value>	Note : This change will take effect on '{0}'
+</value>
+  </data>
+  <data name="BreakingChangesAttributesInEffectByVersion" xml:space="preserve">
+    <value>Note :The change is expected to take effect from the version :  '{0}'
+
+</value>
+  </data>
+  <data name="BreakingChangesAttributesUsageChangeMessage" xml:space="preserve">
+    <value>```powershell
+# Old
+{0}
+
+# New
+{1}
+```
+
+</value>
+  </data>
+  <data name="BreakingChangesAttributesUsageChangeMessageConsole" xml:space="preserve">
+    <value>Cmdlet invocation changes :
+	Old Way : {0}
+	New Way : {1}</value>
+  </data>
+  <data name="BreakingChangesAttributesCmdLetOutputTypeDeprecated" xml:space="preserve">
+    <value>The output type '{0}' is being deprecated without a replacement.</value>
+  </data>
+  <data name="BreakingChangeAttributeParameterTypeChange" xml:space="preserve">
+    <value>	The type of the parameter is changing from '{0}' to '{1}'.</value>
+  </data>
 </root>
