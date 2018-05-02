@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.Network
                 // For example if the peering has only IPv4 properties set and the user tries to remove IPv6 address family peering, we can ignore the remove operation
                 bool validateAddressFamilyPresent = true;
 
-                if ((this.PeerAddressType == IPv4 && peering.PeeringType == MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering && peering.MicrosoftPeeringConfig == null) ||
-                    (this.PeerAddressType == IPv6 && peering.PeeringType == MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering && (peering.Ipv6PeeringConfig == null || peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)))
+                if ((this.PeerAddressType == IPv4 && peering.PeeringType == MNM.ExpressRoutePeeringType.MicrosoftPeering && peering.MicrosoftPeeringConfig == null) ||
+                    (this.PeerAddressType == IPv6 && peering.PeeringType == MNM.ExpressRoutePeeringType.MicrosoftPeering && (peering.Ipv6PeeringConfig == null || peering.Ipv6PeeringConfig.MicrosoftPeeringConfig == null)))
                 {
                     validateAddressFamilyPresent = false;
                 }

@@ -26,7 +26,17 @@ Test Get-AzureRmIotHub for listing all iothubs in a subscription
 
 function Test-AzureRmIotHubLifecycle
 {
-	Param($Location, $IotHubName, $ResourceGroupName, $Sku)
+	$Location = Get-Location "Microsoft.Devices" "IotHub" 
+	$IotHubName = getAssetName 
+	$ResourceGroupName = getAssetName 
+	$Sku = "B1"
+	$namespaceName = getAssetName
+	$eventHubName = getAssetName
+	$authRuleName = getAssetName
+	$Tag1Key = "key1"
+	$Tag2Key = "key2"
+	$Tag1Value = "value1"
+	$Tag2Value = "value2"
 
 	# Get all Iot hubs in the subscription
 	$allIotHubs = Get-AzureRmIotHub
@@ -38,7 +48,6 @@ function Test-AzureRmIotHubLifecycle
 	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	Write-Debug " Create new eventHub " 
-	$namespaceName = "IotHubPSEHNamespaceTest"
     $result = New-AzureRmEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
 
 	Wait-Seconds 15
@@ -47,13 +56,11 @@ function Test-AzureRmIotHubLifecycle
 	Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     Write-Debug " Create new eventHub "    
-	$eventHubName = "IotHubPSEHTest"
 	$msgRetentionInDays = 3
 	$partionCount = 2
     $result = New-AzureRmEventHub -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -EventHubName $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
 
 	# Create AuthRule
-	$authRuleName = "IotHubPSEHAuthRule"
 	$rights = "Listen","Send"
 	$authRule = New-AzureRmEventHubAuthorizationRule -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName  -EventHubName $eventHubName -AuthorizationRuleName $authRuleName -Rights $rights
 	$keys = Get-AzureRmEventHubKey -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName  -EventHubName $eventHubName -AuthorizationRuleName $authRuleName
@@ -226,13 +233,34 @@ function Test-AzureRmIotHubLifecycle
 	$iotHubUpdated = Set-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -FallbackRoute $iothub.Properties.Routing.FallbackRoute	
     Assert-True { $iotHubUpdated.Properties.Routing.FallbackRoute.IsEnabled -eq 1}
 
+	# Add Tags to Iot Hub
+	$tags = @{}
+	$tags.Add($Tag1Key, $Tag1Value)
+	$updatedIotHub = Update-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags
+	Assert-True { $updatedIotHub.Tags.Count -eq 1 }
+	Assert-True { $updatedIotHub.Tags.Item($Tag1Key) -eq $Tag1Value }
+
+	# Add more Tags to Iot Hub
+	$tags.Clear()
+	$tags.Add($Tag2Key, $Tag2Value)
+	$updatedIotHub = Update-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags
+	Assert-True { $updatedIotHub.Tags.Count -eq 2 }
+	Assert-True { $updatedIotHub.Tags.Item($Tag1Key) -eq $Tag1Value }
+	Assert-True { $updatedIotHub.Tags.Item($Tag2Key) -eq $Tag2Value }
+
+	# Add Tags to Iot Hub with Reset option
+	$tags.Clear()
+	$tags.Add($Tag1Key, $Tag1Value)
+	$updatedIotHub = Update-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName -Tag $tags -Reset
+	Assert-True { $updatedIotHub.Tags.Count -eq 1 }
+	Assert-True { $updatedIotHub.Tags.Item($Tag1Key) -eq $Tag1Value }
+
 	# Remove IotHub
 	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
 }
 
 function Test-AzureRmIotHubCertificateLifecycle
 {
-	#Param($Location, $IotHubName, $ResourceGroupName, $Sku)
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
 	$IotHubName = getAssetName 
 	$ResourceGroupName = getAssetName 
