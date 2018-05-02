@@ -457,11 +457,7 @@
       <Name>SqlManagement</Name>
     </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <!--<HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.10.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>-->
-      <HintPath>F:\GitHub\azure-sdk-for-net\src\SDKs\SqlManagement\Management.Sql\bin\Debug\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.15.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>

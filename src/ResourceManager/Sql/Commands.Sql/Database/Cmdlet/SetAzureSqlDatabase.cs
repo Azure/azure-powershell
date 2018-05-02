@@ -83,9 +83,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the service objective to assign to the Azure SQL Database.",
             ParameterSetName = UpdateParameterSetName)]
-        [Parameter(Mandatory = false,
-            HelpMessage = "The name of the service objective to assign to the Azure SQL Database.",
-            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public string RequestedServiceObjectiveName { get; set; }
 
@@ -95,9 +92,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The name of the Elastic Pool to put the database in.",
             ParameterSetName = UpdateParameterSetName)]
-        [Parameter(Mandatory = false,
-            HelpMessage = "The name of the Elastic Pool to put the database in.",
-            ParameterSetName = VcoreDatabaseParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
 
