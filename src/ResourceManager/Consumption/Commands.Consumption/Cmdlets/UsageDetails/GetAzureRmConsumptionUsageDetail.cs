@@ -75,6 +75,10 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         [ValidateNotNull]
         public int? Top { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Name of a specific invoice to get the usage details that associate with.", ParameterSetName = Constants.ParameterSetNames.InvoiceItemParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string InvoiceName { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var expand = default(string);
