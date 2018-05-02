@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application with display name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ApplicationWithDisplayNameDoesntExist {
+            get {
+                return ResourceManager.GetString("ApplicationWithDisplayNameDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to cancel the active deployment of resource group &apos;{0}&apos;?.
         /// </summary>
         internal static string CancelResourceGroupDeployment {
@@ -547,11 +556,11 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removed management partner with id &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove group with object id &apos;{0}&apos;?.
         /// </summary>
-        internal static string RemovedManagementPartner {
+        internal static string RemoveGroupConfirmation {
             get {
-                return ResourceManager.GetString("RemovedManagementPartner", resourceCulture);
+                return ResourceManager.GetString("RemoveGroupConfirmation", resourceCulture);
             }
         }
         
@@ -642,6 +651,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemovingApplication {
             get {
                 return ResourceManager.GetString("RemovingApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing group ....
+        /// </summary>
+        internal static string RemovingGroup {
+            get {
+                return ResourceManager.GetString("RemovingGroup", resourceCulture);
             }
         }
         

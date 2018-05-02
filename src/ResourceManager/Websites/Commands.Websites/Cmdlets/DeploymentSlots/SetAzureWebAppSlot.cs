@@ -89,10 +89,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable MSI on an existing azure webapp")]
+        public bool AssignIdentity { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
+        public bool HttpsOnly { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
             SiteConfig siteConfig = null;
+            Site site = null;
             string location = null;
             switch (ParameterSetName)
             {
@@ -128,11 +135,40 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     // Update web app configuration
                     WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
 
+                    if (parameters.Any(p => CmdletHelpers.SiteParameters.Contains(p)))
+                    {
+
+                        site = new Site
+                        {
+                            Location = location,
+                            ServerFarmId = WebApp.ServerFarmId,
+                            Identity = parameters.Contains("AssignIdentity") && AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
+                            HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
+                        };
+
+                        Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);
+                        if (parameters.Contains("AssignIdentity"))
+                        {
+
+                            // Add or update the appsettings property
+                            appSettings["WEBSITE_DISABLE_MSI"] = (!AssignIdentity).ToString();
+                            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, WebApp.SiteConfig, appSettings,
+                                                                     WebApp.SiteConfig.ConnectionStrings.
+                                                                        ToDictionary(nvp => nvp.Name,
+                                                                        nvp => new ConnStringValueTypePair
+                                                                        {
+                                                                            Type = nvp.Type.Value,
+                                                                            Value = nvp.ConnectionString
+                                                                        },
+                                                                        StringComparer.OrdinalIgnoreCase));
+                        }
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, WebApp.ServerFarmId, site);
+                    }
+
                     if (parameters.Contains("AppServicePlan"))
                     {
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan);
                     }
-
 
                     break;
                 case ParameterSet2Name:
