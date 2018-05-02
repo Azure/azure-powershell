@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.2'
+ModuleVersion = '0.1.3'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.5.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.0.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Reservations.dll'
@@ -110,7 +110,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime'
+        ReleaseNotes = '* Change Guid paramters to Guid type, not string
+* Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
         # Prerelease = ''
