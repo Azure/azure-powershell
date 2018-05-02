@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.Insights
 Module Guid: 698c387c-bd6b-41c6-82ce-721f1ef39548
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights
+Help Version: 4.0.4.0
 Locale: en-US
 ---
 

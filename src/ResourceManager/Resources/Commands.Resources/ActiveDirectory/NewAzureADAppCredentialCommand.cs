@@ -15,6 +15,7 @@
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 using System.Security;
@@ -30,16 +31,29 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithCertValue, HelpMessage = "The application object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithPassword, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
-        public string ObjectId { get; set; }
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithCertValue, HelpMessage = "The application id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithPassword, HelpMessage = "The application id.")]
         [ValidateNotNullOrEmpty]
-        public string ApplicationId { get; set; }
+        public Guid ApplicationId { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithPassword, HelpMessage = "The display name of the application.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithCertValue, HelpMessage = "The display name of the application.")]
+        public string DisplayName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithCertValue, HelpMessage = "The application object.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.ApplicationObjectWithPassword, HelpMessage = "The application object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADApplication ApplicationObject { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithPassword,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithPassword,
+            HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPassword,
+            HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayNameWithPassword,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public SecureString Password { get; set; }
@@ -48,29 +62,41 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationIdWithCertValue,
             HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithCertValue,
+            HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayNameWithCertValue,
+            HelpMessage = "The base64 encoded value for the AsymmetricX509Cert associated with the application that will be valid for one year by default.")]
         [ValidateNotNullOrEmpty]
         public string CertValue { get; set; }
-        
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The start date after which password or key would be valid. Default value is current time.")]
         public DateTime StartDate { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end date till which password or key is valid. Default value is one year after current time.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end date till which password or key is valid. Default value is one year after the start date.")]
         public DateTime EndDate { get; set; }
 
         public NewAzureADAppCredentialCommand()
         {
             DateTime currentTime = DateTime.UtcNow;
             StartDate = currentTime;
-            EndDate = currentTime.AddYears(1);
         }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                if (!string.IsNullOrEmpty(ApplicationId))
+                EndDate = StartDate.AddYears(1);
+                if (this.IsParameterBound(c => c.ApplicationObject))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ApplicationObject.ObjectId;
+                }
+                else if (this.IsParameterBound(c => c.ApplicationId))
+                {
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromApplicationId(ApplicationId);
+                }
+                else if (this.IsParameterBound(c => c.DisplayName))
+                {
+                    ObjectId = ActiveDirectoryClient.GetAppObjectIdFromDisplayName(DisplayName);
                 }
 
                 if (Password != null && Password.Length > 0)
@@ -84,12 +110,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         KeyId = Guid.NewGuid().ToString(),
                         Value = decodedPassword
                     };
-                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new password to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppPasswordCredential(ObjectId, passwordCredential));
                     }
                 }
-                else if (!string.IsNullOrEmpty(CertValue))
+                else if (this.IsParameterBound(c => c.CertValue))
                 {
                     // Create object for key credential
                     var keyCredential = new KeyCredential()
@@ -101,7 +127,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         Type = "AsymmetricX509Cert",
                         Usage = "Verify"
                     };
-                    if (ShouldProcess(target: ObjectId, action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
+                    if (ShouldProcess(target: ObjectId.ToString(), action: string.Format("Adding a new certificate to application with objectId {0}", ObjectId)))
                     {
                         WriteObject(ActiveDirectoryClient.CreateAppKeyCredential(ObjectId, keyCredential));
                     }
@@ -110,7 +136,6 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     throw new InvalidOperationException("No valid keyCredential or passowrdCredential to update!!");
                 }
-
             });
         }
     }
