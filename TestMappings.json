@@ -94,6 +94,9 @@
   "src/ResourceManager/IotHub/": [
     ".\\src\\ResourceManager\\IotHub\\Commands.IotHub.Test\\bin\\Debug\\Microsoft.Azure.Commands.IotHub.Test.dll"
   ],
+  "src/ResourceManager/DeviceProvisioningServices/": [
+    ".\\src\\ResourceManager\\DeviceProvisioningServices\\Commands.DeviceProvisioningServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.DeviceProvisioningServices.dll"
+  ],
   "src/ResourceManager/KeyVault/": [
     ".\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\bin\\Debug\\Microsoft.Azure.Commands.Compute.Test.dll",
     ".\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\bin\\Debug\\Microsoft.Azure.Commands.KeyVault.Test.dll",
@@ -127,6 +130,9 @@
   "src/ResourceManager/OperationalInsights/": [
     ".\\src\\ResourceManager\\OperationalInsights\\Commands.OperationalInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.OperationalInsights.Test.dll"
   ],
+  "src/ResourceManager/PolicyInsights/": [
+    ".\\src\\ResourceManager\\PolicyInsights\\Commands.PolicyInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.PolicyInsights.Test.dll"
+  ],
   "src/ResourceManager/PowerBIEmbedded/": [
     ".\\src\\ResourceManager\\PowerBIEmbedded\\Commands.PowerBIEmbedded.Test\\bin\\Debug\\Microsoft.Azure.Commands.PowerBIEmbedded.Test.dll"
   ],
@@ -138,8 +144,7 @@
   ],
   "src/ResourceManager/RecoveryServices/": [
     ".\\src\\ResourceManager\\RecoveryServices.Backup\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll",
-    ".\\src\\ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll",
-    ".\\src\\ResourceManager\\SiteRecovery\\Commands.SiteRecovery.Test\\bin\\Debug\\Microsoft.Azure.Commands.SiteRecovery.Test.dll"
+    ".\\src\\ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll"
   ],
   "src/ResourceManager/RedisCache/": [
     ".\\src\\ResourceManager\\RedisCache\\Commands.RedisCache.Test\\bin\\Debug\\Microsoft.Azure.Commands.RedisCache.Test.dll"
@@ -156,15 +161,11 @@
   "src/ResourceManager/Scheduler/": [
     ".\\src\\ResourceManager\\Scheduler\\Commands.Scheduler.Test\\bin\\Debug\\Microsoft.Azure.Commands.Scheduler.Test.dll"
   ],
-  "src/ResourceManager/ServerManagement/": [],
   "src/ResourceManager/ServiceBus/": [
     ".\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceBus.Test.dll"
   ],
   "src/ResourceManager/ServiceFabric/": [
     ".\\src\\ResourceManager\\ServiceFabric\\Commands.ServiceFabric.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceFabric.Test.dll"
-  ],
-  "src/ResourceManager/SiteRecovery/": [
-    ".\\src\\ResourceManager\\SiteRecovery\\Commands.SiteRecovery.Test\\bin\\Debug\\Microsoft.Azure.Commands.SiteRecovery.Test.dll"
   ],
   "src/ResourceManager/Sql/": [
     ".\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\bin\\Debug\\Microsoft.Azure.Commands.Sql.Test.dll"

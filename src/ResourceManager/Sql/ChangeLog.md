@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.4.1
+* Set minimum dependency of module to PowerShell 5.0
+
 ## Version 4.4.0
 * Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
 * Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response

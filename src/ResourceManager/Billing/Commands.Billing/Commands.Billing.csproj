@@ -45,7 +45,6 @@
     <Reference Include="Microsoft.Azure.Management.Billing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Billing.2.1.0-preview\lib\net452\Microsoft.Azure.Management.Billing.dll</HintPath>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\BillingPeriods\GetAzureRmBillingPeriod.cs" />

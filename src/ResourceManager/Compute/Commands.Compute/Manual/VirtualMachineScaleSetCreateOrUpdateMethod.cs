@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +46,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win2008R2SP1")]
+            "Win2008R2SP1",
+            "Win10")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
@@ -104,6 +104,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public string BackendPoolName { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentity { get; set; }
+
         [Parameter(
             ParameterSetName = SimpleParameterSet,
             Mandatory = false,
@@ -138,6 +145,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             public ImageAndOsType ImageAndOsType { get; set; }
+
+            public string DefaultLocation => "eastus";
 
             public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
             {
@@ -240,7 +249,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         ? _cmdlet.UpgradePolicyMode
                         : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
-                    zones: _cmdlet.Zone);
+                    zones: _cmdlet.Zone,
+                    identity: _cmdlet.GetVmssIdentityFromArgs());
             }
         }
 
@@ -259,8 +269,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
-            var result = await StrategyCmdlet.RunAsync(
-                client, parameters, asyncCmdlet, new CancellationToken());
+            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
 
             if (result != null)
             {
@@ -289,6 +298,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     range);
                 asyncCmdlet.WriteObject(psObject);
             }
+        }
+
+        /// <summary>
+        /// Heres whats happening here :
+        /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
+        /// defined identity in the VMSS identity object.
+        /// If only "SystemAssignedIdentity" is present, we just set the type of the Identity to "SystemAssigned" and no identity ids are set as its created by Azure
+        /// If only "UserAssignedIdentity" is present, we set the type of the Identity to be "UserAssigned" and set the Identity in the VMSS identity object.
+        /// If neither is present, we return a null.
+        /// </summary>
+        /// <returns>Returning the Identity generated form the cmdlet parameters "SystemAssignedIdentity" and "UserAssignedIdentity"</returns>
+        private VirtualMachineScaleSetIdentity GetVmssIdentityFromArgs()
+        {
+            var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
+            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
+                ? new VirtualMachineScaleSetIdentity
+                {
+                    Type = !isUserAssignedEnabled ?
+                           ResourceIdentityType.SystemAssigned :
+                           (SystemAssignedIdentity.IsPresent ? ResourceIdentityType.SystemAssignedUserAssigned : ResourceIdentityType.UserAssigned),
+                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
+                }
+                : null;
         }
     }
 }

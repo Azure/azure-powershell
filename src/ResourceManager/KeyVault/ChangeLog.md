@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 5.0.0
+* Breaking changes to support piping scenarios
+* Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
+* Set minimum dependency of module to PowerShell 5.0
+
 ## Version 4.3.0
 * Updated cmdlets to include piping scenarios
 * Add deprecation messages for upcoming breaking change release

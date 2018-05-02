@@ -114,12 +114,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         public override void ExecuteCmdlet()
         {
-            if (MyInvocation.BoundParameters.ContainsKey("StorageAccountType"))
-            {
-                WriteWarning("Add-AzureRmVMDataDisk: The accepted values for parameter StorageAccountType will change in an upcoming breaking change release " +
-                             "from StandardLRS and PremiumLRS to Standard_LRS and Premium_LRS, respectively.");
-            }
-
             var storageProfile = this.VM.StorageProfile;
 
             if (storageProfile == null)

@@ -101,10 +101,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
@@ -152,8 +148,6 @@
     <Compile Include="ActivityLogAlerts\SetAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\EnableAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\GetAzureRmActivityLogAlertTests.cs" />
-    <Compile Include="ActivityLogAlerts\NewAzureRmActionGroupTests.cs" />
-    <Compile Include="ActivityLogAlerts\NewAzureRmActivityLogAlertConditionTests.cs" />
     <Compile Include="ActivityLogAlerts\RemoveAzureRmActivityLogAlertTests.cs" />
     <None Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
     <Compile Include="CustomPrinterTests.cs" />
