@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherTroubleshootingResult", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSViewNsgRules))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherTroubleshootingResult", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSTroubleshootingResult))]
 
     public class GetAzureNetworkWatcherTroubleshootingResult : NetworkWatcherBaseCmdlet
     {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             MNM.QueryTroubleshootingParameters parameters = new MNM.QueryTroubleshootingParameters();
             parameters.TargetResourceId = this.TargetResourceId;
 
-            PSTroubleshootResult troubleshoot = new PSTroubleshootResult();
+            PSTroubleshootingResult troubleshoot = new PSTroubleshootingResult();
             if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
             {
                 var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
@@ -100,11 +100,11 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(troubleshoot);
         }
 
-        public PSTroubleshootResult GetTroubleshooting(string resourceGroupName, string name, MNM.QueryTroubleshootingParameters parameters)
+        public PSTroubleshootingResult GetTroubleshooting(string resourceGroupName, string name, MNM.QueryTroubleshootingParameters parameters)
         {
             MNM.TroubleshootingResult troubleshoot = this.NetworkWatcherClient.GetTroubleshootingResult(resourceGroupName, name, parameters);
 
-            PSTroubleshootResult psTroubleshoot = NetworkResourceManagerProfile.Mapper.Map<PSTroubleshootResult>(troubleshoot);
+            PSTroubleshootingResult psTroubleshoot = NetworkResourceManagerProfile.Mapper.Map<PSTroubleshootingResult>(troubleshoot);
             return psTroubleshoot;
         }
     }
