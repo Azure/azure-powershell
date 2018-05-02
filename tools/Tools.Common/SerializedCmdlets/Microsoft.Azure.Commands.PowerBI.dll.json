@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "System.Collections.Generic",
             "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -335,7 +335,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -756,7 +756,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -877,7 +877,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1205,7 +1205,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1418,7 +1418,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1539,7 +1539,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1867,7 +1867,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2080,7 +2080,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2262,7 +2262,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2894,7 +2894,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3119,7 +3119,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3240,7 +3240,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3568,7 +3568,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -4061,7 +4061,7 @@
     "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity": {
       "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
       "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.Commands.PowerBI, Version=4.1.5.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Administrator": "System.Collections.Generic.List`1[System.String]",

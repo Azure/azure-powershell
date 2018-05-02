@@ -26,9 +26,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   name: other.Name,
                   type: other.Type,
                   tags: other.Tags,
-#if !NETSTANDARD
-                  siteName: other.SiteName,
-#endif
                   state: other.State,
                   hostNames: other.HostNames,
                   repositorySiteName: other.RepositorySiteName,
@@ -36,15 +33,14 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   enabled: other.Enabled,
                   enabledHostNames: other.EnabledHostNames,
                   availabilityState: other.AvailabilityState,
-                  hostNameSslStates: other.HostNameSslStates, serverFarmId: other.ServerFarmId,
+                  hostNameSslStates: other.HostNameSslStates, 
+                  serverFarmId: other.ServerFarmId,
                   lastModifiedTimeUtc: other.LastModifiedTimeUtc,
                   siteConfig: other.SiteConfig,
                   trafficManagerHostNames: other.TrafficManagerHostNames,
-                  premiumAppDeployed: other.PremiumAppDeployed, scmSiteAlsoStopped: other.ScmSiteAlsoStopped,
+                  scmSiteAlsoStopped: other.ScmSiteAlsoStopped,
                   targetSwapSlot: other.TargetSwapSlot,
                   hostingEnvironmentProfile: other.HostingEnvironmentProfile,
-                  microService: other.MicroService,
-                  gatewaySiteName: other.GatewaySiteName,
                   clientAffinityEnabled: other.ClientAffinityEnabled,
                   clientCertEnabled: other.ClientCertEnabled,
                   hostNamesDisabled: other.HostNamesDisabled,
@@ -54,7 +50,16 @@ namespace Microsoft.Azure.Commands.WebApps.Models
                   cloningInfo: other.CloningInfo,
                   resourceGroup: other.ResourceGroup,
                   isDefaultContainer: other.IsDefaultContainer,
-                  defaultHostName: other.DefaultHostName)
+                  defaultHostName: other.DefaultHostName,
+                  reserved: other.Reserved,
+                  possibleOutboundIpAddresses: other.PossibleOutboundIpAddresses,
+                  dailyMemoryTimeQuota: other.DailyMemoryTimeQuota,
+                  suspendedTill:other.SuspendedTill,
+                  snapshotInfo: other.SnapshotInfo,
+                  slotSwapStatus: other.SlotSwapStatus,
+                  httpsOnly: other.HttpsOnly,
+                  identity: other.Identity
+                  )
         {
         }
 
