@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public class PSTroubleshootDetails
+    public class PSTroubleshootingDetails
     {
         public string Detail { get; set; }
 
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ReasonType { get; set; }
 
-        public List<PSTroubleshootRecommendedActions> RecommendedActions { get; set; }
+        public List<PSTroubleshootingRecommendedActions> RecommendedActions { get; set; }
 
         public string Summary { get; set; }
 
