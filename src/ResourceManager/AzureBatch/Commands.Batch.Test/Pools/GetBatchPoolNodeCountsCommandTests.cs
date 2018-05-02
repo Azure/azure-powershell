@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 poolNodeCounts2
             };
 
-            // Build a TaskCounts instead of querying the service on a Get TaskCounts call
+            // Build a PoolNodeCounts instead of querying the service on a Get PoolNodeCounts call
             AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders> response =
                 BatchTestHelpers.CreatePoolNodeCountsGetResponse(poolsNodeCounts);
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
@@ -226,6 +226,105 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(requestFilter, $"(poolId eq '{fakeCloudPool.Id}')");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WhenPSNodeCountsFormatObjectIsCalled_ShouldSerlializeNodeCountsToString()
+        {
+            const int creating = 1;
+            const int idle = 2;
+            const int offline = 3;
+            const int preempted = 4;
+            const int rebooting = 5;
+            const int reimaging = 6;
+            const int running = 7;
+            const int starting = 8;
+            const int startTaskFailed = 9;
+            const int leavingPool = 10;
+            const int unknown = 11;
+            const int unusable = 12;
+            const int waitingForStartTask = 13;
+            const int total = 91;
+
+            var poolNodeCounts = new ProxyModels.PoolNodeCounts()
+            {
+                PoolId = "Pool1",
+                // all non-zero properties
+                Dedicated = new ProxyModels.NodeCounts(
+                    creating: creating,
+                    idle: idle,
+                    offline: offline,
+                    preempted: preempted,
+                    rebooting: rebooting,
+                    reimaging: reimaging,
+                    running: running,
+                    starting: starting,
+                    startTaskFailed: startTaskFailed,
+                    leavingPool: leavingPool,
+                    unknown: unknown,
+                    unusable: unusable,
+                    waitingForStartTask: waitingForStartTask,
+                    total: total), // Total
+                // all zero properties
+                LowPriority = new ProxyModels.NodeCounts(
+                    creating: 0,
+                    idle: 0,
+                    offline: 0,
+                    preempted: 0,
+                    rebooting: 0,
+                    reimaging: 0,
+                    running: 0,
+                    starting: 0,
+                    startTaskFailed: 0,
+                    leavingPool: 0,
+                    unknown: 0,
+                    unusable: 0,
+                    waitingForStartTask: 0,
+                    total: 0), // Total
+            };
+
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+
+            // Build a PoolNodeCounts instead of querying the service on a Get PoolNodeCounts call
+            AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders> response =
+                BatchTestHelpers.CreatePoolNodeCountsGetResponse(new [] { poolNodeCounts });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
+                ProxyModels.AccountListPoolNodeCountsOptions,
+                AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders>>(response);
+
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+
+            List<PSPoolNodeCounts> psPoolsNodeCounts = new List<PSPoolNodeCounts>();
+            commandRuntimeMock.Setup(r =>
+                    r.WriteObject(It.IsAny<PSPoolNodeCounts>()))
+                .Callback<object>(p => psPoolsNodeCounts.Add((PSPoolNodeCounts)p));
+
+            cmdlet.ExecuteCmdlet();
+
+            var str = PSNodeCounts.FormatObject(psPoolsNodeCounts[0].Dedicated);
+            const string segmentFormat = "{0}: {1}";
+
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Creating), creating)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Idle), idle)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Offline), offline)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Preempted), preempted)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Rebooting), rebooting)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Reimaging), reimaging)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Running), running)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Starting), starting)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.StartTaskFailed), startTaskFailed)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.LeavingPool), leavingPool)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Unknown), unknown)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Unusable), unusable)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.WaitingForStartTask), waitingForStartTask)));
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Total), total)));
+            Assert.True(str.EndsWith(string.Format(segmentFormat, nameof(PSNodeCounts.Total), total)));
+
+            str = PSNodeCounts.FormatObject(psPoolsNodeCounts[0].LowPriority);
+
+            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Total), 0)));
         }
 
         public class PoolNodeCountsObjectComparer
