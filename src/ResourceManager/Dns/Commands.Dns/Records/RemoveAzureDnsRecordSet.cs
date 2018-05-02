@@ -58,10 +58,6 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
         public SwitchParameter Overwrite { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        [Obsolete("This parameter is obsolete; use Confirm instead")]
-        public SwitchParameter Force { get; set; }
-
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 

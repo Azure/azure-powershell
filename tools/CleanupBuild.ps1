@@ -58,17 +58,20 @@ foreach ($RMFolder in $resourceManagerFolders)
     $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
 }
 
-$stackFolders = Get-ChildItem -Path $stackPath -Directory
-foreach ($stackFolder in $stackFolders)
+if (Test-Path $stackPath)
 {
-    Write-Verbose "Removing scripts and psd1 in $($stackFolder.FullName)"
-    if (Test-Path -Path "$($stackFolder.FullName)\StartupScripts")
+    $stackFolders = Get-ChildItem -Path $stackPath -Directory
+    foreach ($stackFolder in $stackFolders)
     {
-        $scriptName = "$($stackFolder.FullName)$([IO.Path]::DirectorySeparatorChar)StartupScripts$([IO.Path]::DirectorySeparatorChar)$($stackFolder.Name.replace('.', ''))Startup.ps1"
-        Write-Verbose $scriptName
-        $removedScripts = Get-ChildItem -Path "$($stackFolder.FullName)\StartupScripts" -Filter "*.ps1" | where { $_.FullName -ne $scriptName }
-        $removedScripts | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
+        Write-Verbose "Removing scripts and psd1 in $($stackFolder.FullName)"
+        if (Test-Path -Path "$($stackFolder.FullName)\StartupScripts")
+        {
+            $scriptName = "$($stackFolder.FullName)$([IO.Path]::DirectorySeparatorChar)StartupScripts$([IO.Path]::DirectorySeparatorChar)$($stackFolder.Name.replace('.', ''))Startup.ps1"
+            Write-Verbose $scriptName
+            $removedScripts = Get-ChildItem -Path "$($stackFolder.FullName)\StartupScripts" -Filter "*.ps1" | where { $_.FullName -ne $scriptName }
+            $removedScripts | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
+        }
+        $removedPsd1 = Get-ChildItem -Path "$($stackFolder.FullName)" -Filter "*.psd1" | where { $_.FullName -ne "$($stackFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($stackFolder.Name).psd1" }
+        $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
     }
-    $removedPsd1 = Get-ChildItem -Path "$($stackFolder.FullName)" -Filter "*.psd1" | where { $_.FullName -ne "$($stackFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($stackFolder.Name).psd1" }
-    $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
 }

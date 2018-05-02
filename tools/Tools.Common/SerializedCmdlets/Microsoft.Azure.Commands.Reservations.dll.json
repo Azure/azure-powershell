@@ -34,8 +34,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -90,8 +90,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -242,8 +242,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -298,8 +298,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -515,8 +515,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -571,8 +571,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -713,8 +713,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -731,8 +731,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -886,8 +886,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -910,8 +910,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1339,8 +1339,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1357,8 +1357,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1558,8 +1558,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1582,8 +1582,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -1963,8 +1963,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -1981,10 +1981,10 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String[]",
-            "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid[]",
+            "AssemblyQualifiedName": "System.Guid[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
-            "ElementType": "System.String",
+            "ElementType": "System.Guid",
             "GenericTypeArguments": [],
             "Methods": [],
             "Constructors": []
@@ -2055,8 +2055,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2079,10 +2079,10 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String[]",
-                  "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid[]",
+                  "AssemblyQualifiedName": "System.Guid[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
-                  "ElementType": "System.String",
+                  "ElementType": "System.Guid",
                   "GenericTypeArguments": [],
                   "Methods": [],
                   "Constructors": []
@@ -2363,8 +2363,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2381,8 +2381,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -2575,8 +2575,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -2599,8 +2599,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3038,8 +3038,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3056,8 +3056,8 @@
           "AliasList": [],
           "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Guid",
+            "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3229,8 +3229,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3253,8 +3253,8 @@
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Name": "System.Guid",
+                  "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -4978,6 +4978,16 @@
           ]
         }
       ]
+    },
+    "System.Guid": {
+      "Namespace": "System",
+      "Name": "System.Guid",
+      "AssemblyQualifiedName": "System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
     }
   }
 }

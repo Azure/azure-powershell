@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -21,23 +23,41 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Gets AD service principal credentials.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmADSpCredential", DefaultParameterSetName = ParameterSet.ObjectId), OutputType(typeof(PSADCredential))]
+    [Alias("Get-AzureRmADServicePrincipalCredential")]
     public class GetAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
-        public string ObjectId { get; set; }
+        [Alias("Id")]
+        public Guid ObjectId { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPN, HelpMessage = "The servicePrincipal name.")]
         [ValidateNotNullOrEmpty]
         public string ServicePrincipalName { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the service principal")]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.SPNObject, HelpMessage = "The service principal object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADServicePrincipal ServicePrincipalObject { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                if (!string.IsNullOrEmpty(ServicePrincipalName))
+                if (this.IsParameterBound(c => c.ServicePrincipalObject))
+                {
+                    ObjectId = ServicePrincipalObject.Id;
+                }
+                else if (this.IsParameterBound(c => c.ServicePrincipalName))
                 {
                     ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
+                }
+                else if (this.IsParameterBound(c => c.DisplayName))
+                {
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromServicePrincipalDisplayName(DisplayName);
                 }
 
                 WriteObject(ActiveDirectoryClient.GetSpCredentials(ObjectId), enumerateCollection: true);

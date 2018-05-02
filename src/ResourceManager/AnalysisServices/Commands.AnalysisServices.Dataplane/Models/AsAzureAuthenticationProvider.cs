@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane.Models
                             throw new ArgumentException(string.Format(Resources.CertificateNotFoundInStore, asAzureContext.Account.CertificateThumbprint));
                         }
 #if NETSTANDARD
-                        result = authenticationContext.AcquireTokenAsync(resourceUri, new ClientAssertionCertificate(asAzureContext.Account.Id, certificate)).Result;
+                        result = authenticationContext.AcquireTokenAsync(resourceUri, new Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(asAzureContext.Account.Id, certificate)).Result;
 #else
                         result = authenticationContext.AcquireToken(resourceUri, new ClientAssertionCertificate(asAzureContext.Account.Id, certificate));
 #endif

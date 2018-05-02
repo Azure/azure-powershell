@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,17 +25,36 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD groups members.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADGroupMember", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADObject>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADGroupMember", DefaultParameterSetName = ParameterSet.ObjectId, SupportsPaging = true), OutputType(typeof(List<PSADObject>))]
     public class GetAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The user email address.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "Object Id of the group.")]
         [ValidateNotNullOrEmpty]
+        [Alias("Id", "ObjectId")]
         public Guid GroupObjectId { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the group.")]
+        [ValidateNotNullOrEmpty]
+        public string GroupDisplayName { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ParameterSet.GroupObject, HelpMessage = "The group object.")]
+        [ValidateNotNullOrEmpty]
+        public PSADGroup GroupObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
+                if (this.IsParameterBound(c => c.GroupObject))
+                {
+                    GroupObjectId = GroupObject.Id;
+                }
+                else if (this.IsParameterBound(c => c.GroupDisplayName))
+                {
+                    var targetGroup = ActiveDirectoryClient.GetGroupByDisplayName(GroupDisplayName);
+                    GroupObjectId = targetGroup.Id;
+                }
+
                 ADObjectFilterOptions options = new ADObjectFilterOptions
                 {
                     Id = GroupObjectId == Guid.Empty ? null : GroupObjectId.ToString(),
@@ -47,10 +67,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     throw new KeyNotFoundException(string.Format(ProjectResources.GroupDoesntExist, GroupObjectId));
                 }
 
-                do
-                {
-                    WriteObject(ActiveDirectoryClient.GetGroupMembers(options), true);
-                } while (!string.IsNullOrEmpty(options.NextLink));
+                ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+                WriteObject(ActiveDirectoryClient.GetGroupMembers(options, first, skip), true);
             });
         }
     }
