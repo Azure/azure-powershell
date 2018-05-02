@@ -18,6 +18,7 @@ across regions or subscriptions.Note that, after running **Add-AzureRmExpressRou
 you must call the Set-AzureRmExpressRouteCircuit cmdlet to activate the configuration.
 
 ## EXAMPLES
+### Example 1: Add a circuit connection resource to an existing ExpressRoute circuit
 
 ## PARAMETERS
 

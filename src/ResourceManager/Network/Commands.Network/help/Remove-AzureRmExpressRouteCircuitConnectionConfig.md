@@ -15,6 +15,7 @@ The **Remove-AzureRmExpressRouteCircuitConnectionConfig** cmdlet removes an Expr
 connection configuration associated with a given Express Route Circuit.
 
 ## EXAMPLES
+### Example 1: Remove a circuit connection configuration from an ExpressRoute circuit
 
 ## PARAMETERS
 

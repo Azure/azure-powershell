@@ -16,6 +16,7 @@ Private Peering of an ExpressRoute circuit. ExpressRoute circuits connect your o
 by using a connectivity provider instead of the public Internet.
 
 ## EXAMPLES
+### Example 1: Create a new Express Route Circuit Connection configuration
 
 ## PARAMETERS
 
