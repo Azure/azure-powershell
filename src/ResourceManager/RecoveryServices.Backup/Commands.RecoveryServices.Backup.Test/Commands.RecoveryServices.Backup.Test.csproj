@@ -290,6 +290,10 @@
       <Project>{3b3e879a-f856-46bf-aff9-8ad6760cf7b9}</Project>
       <Name>Commands.RecoveryServices.Backup.Cmdlets</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj">
+      <Project>{4cca7339-15bf-4066-9fa1-6a23a58f2cee}</Project>
+      <Name>Commands.Common.Storage.Management</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
