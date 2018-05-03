@@ -19,8 +19,10 @@
 -->
 ## Current Release
 
-## Version 0.2.0
+## Version 0.2.1
 * Set minimum dependency of module to PowerShell 5.0
+
+## Version 0.2.0
 * New cmdlet New-AzureRmSubscription to enable subscription creation under a specific EA enrollment account.
 * Updated to the latest version of the Azure ClientRuntime
 

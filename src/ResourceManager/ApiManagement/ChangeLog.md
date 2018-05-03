@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Introduce multiple breaking changes
     - Please refer to the migration guide for more information

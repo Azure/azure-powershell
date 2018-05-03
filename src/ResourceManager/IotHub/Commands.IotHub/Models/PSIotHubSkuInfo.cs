@@ -20,13 +20,13 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
     {
         /// <summary>
         /// The name of the Sku. Possible values include: 'F1', 'S1', 'S2',
-        /// 'S3'
+        /// 'S3' , 'B1' , 'B2' , 'B3'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public PSIotHubSku Name { get; set; }
 
         /// <summary>
-        /// The tier. Possible values include: 'Free', 'Standard'
+        /// The tier. Possible values include: 'Free', 'Standard', 'Basic'
         /// </summary>
         [JsonProperty(PropertyName = "tier")]
         public PSIotHubSkuTier Tier
@@ -41,6 +41,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
                     case PSIotHubSku.S2:
                     case PSIotHubSku.S3:
                         return PSIotHubSkuTier.Standard;
+                    case PSIotHubSku.B1:
+                    case PSIotHubSku.B2:
+                    case PSIotHubSku.B3:
+                        return PSIotHubSkuTier.Basic;
                     default:
                         return PSIotHubSkuTier.Free;
                 }
