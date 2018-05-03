@@ -15,6 +15,7 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -24,6 +25,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -137,13 +139,50 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected abstract string DataCollectionWarning { get; }
 
+        private SessionState _sessionState;
+
+        public new SessionState SessionState
+        {
+            get
+            {
+                return _sessionState;
+            }
+            set
+            {
+                _sessionState = value;
+            }
+        }
+
+        private RuntimeDefinedParameterDictionary _asJobDynamicParameters;
+
+        public RuntimeDefinedParameterDictionary AsJobDynamicParameters
+        {
+            get
+            {
+                if (_asJobDynamicParameters == null)
+                {
+                    _asJobDynamicParameters = new RuntimeDefinedParameterDictionary();
+                }
+                return _asJobDynamicParameters;
+            }
+            set
+            {
+                _asJobDynamicParameters = value;
+            }
+        }
+
         /// <summary>
         /// Initializes AzurePSCmdlet properties.
         /// </summary>
         public AzurePSCmdlet()
         {
             DebugMessages = new ConcurrentQueue<string>();
+        }
 
+        // Register Dynamic Parameters for use in long running jobs
+        public void RegisterDynamicParameters(RuntimeDefinedParameterDictionary parameters)
+        {
+            this.AsJobDynamicParameters = parameters;
         }
 
 
@@ -252,6 +291,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
+            SessionState = base.SessionState;
             var profile = _dataCollectionProfile;
             //TODO: Inject from CI server
             lock (lockObject)
@@ -271,6 +311,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             SetupDebuggingTraces();
             SetupHttpClientPipeline();
             base.BeginProcessing();
+
+            //Now see if the cmdlet has any Breaking change attributes on it and process them if it does
+            //This will print any breaking change attribute messages that are applied to the cmdlet
+            BreakingChangeAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), this.MyInvocation, WriteWarning);
         }
 
         /// <summary>
