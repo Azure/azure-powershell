@@ -160,6 +160,10 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
         public string AzureOperationalInsightsEndpoint { get; set; }
 
+        [Parameter(Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The audience for tokens authenticating with Azure Storage.")]
+        public string StorageOAuthEndpointResourceId { get; set; }
+
         protected override void BeginProcessing()
         {
             // do not call begin processing there is no context needed for this cmdlet
@@ -305,6 +309,8 @@ namespace Microsoft.Azure.Commands.Profile
                                     nameof(AzureOperationalInsightsEndpointResourceId));
                                 SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint,
                                     nameof(AzureOperationalInsightsEndpoint));
+                                SetEndpointIfBound(newEnvironment, AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId,
+                                    nameof(StorageOAuthEndpointResourceId));
                                 WriteObject(new PSAzureEnvironment(profileClient.AddOrSetEnvironment(newEnvironment)));
                             }
                         });
