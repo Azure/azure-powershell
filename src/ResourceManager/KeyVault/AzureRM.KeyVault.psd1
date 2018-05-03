@@ -118,7 +118,10 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate', 'Update-AzureKeyVaultCertifica
                'Backup-AzureKeyVaultManagedStorageAccount', 
                'Restore-AzureKeyVaultManagedStorageAccount', 
                'Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval', 
-               'Undo-AzureKeyVaultManagedStorageAccountRemoval'
+               'Undo-AzureKeyVaultManagedStorageAccountRemoval',
+               'Add-AzureRmKeyVaultNetworkRule', 
+               'Update-AzureRmKeyVaultNetworkRuleSet', 
+               'Remove-AzureRmKeyVaultNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -160,7 +163,7 @@ PrivateData = @{
 * Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
