@@ -110,6 +110,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             AzureOperationalInsightsEndpointResourceId =
                 other.GetProperty<string>(nameof(AzureOperationalInsightsEndpointResourceId));
             AzureOperationalInsightsEndpoint = other.GetProperty<string>(nameof(AzureOperationalInsightsEndpoint));
+            StorageOAuthEndpointResourceId = other.GetProperty<string>(nameof(StorageOAuthEndpointResourceId));
             VersionProfiles.Populate(nameof(VersionProfiles), other);
             this.PopulateExtensions(other);
         }
@@ -257,6 +258,21 @@ namespace Microsoft.Azure.Commands.Profile.Models
             }
         }
 
+        /// <summary>
+        /// The audience for tokens authenticating with Azure Storage.
+        /// </summary>
+        public string StorageOAuthEndpointResourceId
+        {
+            get
+            {
+                return this.GetEndpoint(AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId);
+            }
+            set
+            {
+                this.SetEndpoint(AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId, value);
+            }
+        }
+
         public IList<string> VersionProfiles { get; } = new List<string>();
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -296,7 +312,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
                        && TrafficManagerDnsSuffix == other.TrafficManagerDnsSuffix
                        && BatchEndpointResourceId == other.BatchEndpointResourceId
                        && AzureOperationalInsightsEndpointResourceId == other.AzureOperationalInsightsEndpointResourceId
-                       && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint;
+                       && AzureOperationalInsightsEndpoint == other.AzureOperationalInsightsEndpoint
+                       && StorageOAuthEndpointResourceId == other.StorageOAuthEndpointResourceId;
             }
 
             return false;
