@@ -24,8 +24,8 @@ New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <Stri
 ### VcoreBasedDatabase
 ```
 New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
- [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -CopyComputeGeneration <String>
- -CopyVCores <Int32> [-ServerName] <String> [-ResourceGroupName] <String>
+ [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String>
+ -Vcore <Int32> [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,8 +61,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CopyComputeGeneration
-The compute generation of teh Azure Sql Database copy.```yaml
+### -ComputeGeneration
+The compute generation of teh Azure Sql Database copy.
+
+```yaml
 Type: String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
@@ -119,8 +121,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CopyVCores
-The Vcore numbers of the Azure Sql Database copy.```yaml
+### -Vcore
+The Vcore numbers of the Azure Sql Database copy.
+
+```yaml
 Type: Int32
 Parameter Sets: VcoreBasedDatabase
 Aliases: Capacity

@@ -25,7 +25,7 @@ Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Editio
 ```
 Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCores <Int32>] [-ComputeGeneration <String>]
+ [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-Vcore <Int32>] [-ComputeGeneration <String>]
  [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -134,7 +134,9 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The Compute generation for the Azure Sql database.```yaml
+The Compute generation for the Azure Sql database.
+
+```yaml
 Type: String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
@@ -324,8 +326,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VCores
-The Vcore number for the Azure Sql database```yaml
+### -Vcore
+The Vcore number for the Azure Sql database
+
+```yaml
 Type: Int32
 Parameter Sets: VcoreBasedDatabase
 Aliases: Capacity
