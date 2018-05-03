@@ -157,6 +157,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     helper.RMStorageModule,
                     helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
+                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
                     helper.GetRMModulePath("AzureRM.ServiceFabric.psd1"),
                     helper.RMStorageDataPlaneModule,
                     "AzureRM.Storage.ps1",
