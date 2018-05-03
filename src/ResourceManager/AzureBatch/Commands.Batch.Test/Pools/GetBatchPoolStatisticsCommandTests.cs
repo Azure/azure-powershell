@@ -59,12 +59,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             AzureOperationResponse<
                 ProxyModels.PoolStatistics,
-                ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders> response =
+                ProxyModels.PoolGetAllLifetimeStatisticsHeaders> response =
                 BatchTestHelpers.CreatePoolStatisticsResponse(avgCPUPercentage, startTime);
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.PoolGetAllPoolsLifetimeStatisticsOptions,
-                AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllPoolsLifetimeStatisticsHeaders>>(responseToUse: response);
+                ProxyModels.PoolGetAllLifetimeStatisticsOptions,
+                AzureOperationResponse<ProxyModels.PoolStatistics, ProxyModels.PoolGetAllLifetimeStatisticsHeaders>>(responseToUse: response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 

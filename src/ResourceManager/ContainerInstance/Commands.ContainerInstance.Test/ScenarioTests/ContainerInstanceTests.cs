@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestContainerGroupCommands()
+        public void TestCreateContainerGroup()
         {
             TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroup");
         }
@@ -41,6 +41,20 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
         public void TestContainerInstanceLog()
         {
             TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerInstanceLog");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithVolume()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithVolumeMount");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateContainerGroupWithDnsNameLabel()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-AzureRmContainerGroupWithDnsNameLabel");
         }
     }
 }

@@ -90,7 +90,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 requiredFieldName: "resourceType",
                 requiredFieldValue: GetAzureRmAlertHistoryCommand.AlertResourceType,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }

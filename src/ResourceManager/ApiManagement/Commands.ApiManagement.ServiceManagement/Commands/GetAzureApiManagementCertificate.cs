@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(PsApiManagementCertificate), ParameterSetName = new[] { GetById })]
     public class GetAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
-        private const string GetAll = "Get all certificates";
-        private const string GetById = "Get certificate by ID";
+        private const string GetAll = "GetAllCertificates";
+        private const string GetById = "GetByCertificateId";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

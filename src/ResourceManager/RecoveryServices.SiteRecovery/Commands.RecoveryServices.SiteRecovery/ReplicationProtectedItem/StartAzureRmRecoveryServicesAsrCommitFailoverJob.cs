@@ -12,12 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate a commit operation.
+    ///     Starts the commit failover action for a site recovery object.
     /// </summary>
     [Cmdlet(
         VerbsLifecycle.Start,
@@ -31,22 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrCommitFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Fabric.
-        /// </summary>
-        public string fabricName;
-
-        /// <summary>
-        ///     Gets or sets ID of the Protection Container.
-        /// </summary>
-        public string protectionContainerName;
-
-        /// <summary>
-        ///     Gets or sets ID of the PE.
-        /// </summary>
-        public string protectionEntityName;
-
-        /// <summary>
-        ///     Gets or sets Recovery Plan object.
+        ///     Gets or sets recovery plan object corresponding to recovery plan to be failovered .
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -56,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan RecoveryPlan { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item object corresponding to replication protected item  to be failovered.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPIObject,
@@ -99,6 +86,74 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         private void SetRPICommit()
         {
+            // Check if the Replication Provider is InMageAzureV2.
+            if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageAzureV2,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                // Validate if the Replication Protection Item is part of any Replication Group.
+                Guid guidResult;
+                var parseFlag = Guid.TryParse(
+                    ((ASRInMageAzureV2SpecificRPIDetails)this
+                        .ReplicationProtectedItem
+                        .ProviderSpecificDetails).MultiVmGroupName,
+                    out guidResult);
+                if (parseFlag == false ||
+                    guidResult == Guid.Empty ||
+                    string.Compare(
+                        ((ASRInMageAzureV2SpecificRPIDetails)this
+                            .ReplicationProtectedItem
+                            .ProviderSpecificDetails).MultiVmGroupName,
+                        ((ASRInMageAzureV2SpecificRPIDetails)this
+                            .ReplicationProtectedItem
+                            .ProviderSpecificDetails).MultiVmGroupId) !=
+                    0)
+                {
+                    // Replication Group was created at the time of Protection.
+                    throw new InvalidOperationException(
+                        string.Format(
+                            Resources
+                                .UnsupportedReplicationProtectionActionForCommit,
+                            this.ReplicationProtectedItem
+                                .ReplicationProvider));
+                }
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMage,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                // Validate if the Replication Protection Item is part of any Replication Group.
+                Guid guidResult;
+                var parseFlag = Guid.TryParse(
+                    ((ASRInMageSpecificRPIDetails)this
+                        .ReplicationProtectedItem
+                        .ProviderSpecificDetails).MultiVmGroupName,
+                    out guidResult);
+                if (parseFlag == false ||
+                    guidResult == Guid.Empty ||
+                    string.Compare(
+                        ((ASRInMageSpecificRPIDetails)this.ReplicationProtectedItem
+                            .ProviderSpecificDetails)
+                        .MultiVmGroupName,
+                        ((ASRInMageSpecificRPIDetails)this.ReplicationProtectedItem
+                            .ProviderSpecificDetails)
+                        .MultiVmGroupId) !=
+                    0)
+                {
+                    // Replication Group was created at the time of Protection.
+                    throw new InvalidOperationException(
+                        string.Format(
+                            Resources
+                                .UnsupportedReplicationProtectionActionForCommit,
+                            this.ReplicationProtectedItem
+                                .ReplicationProvider));
+                }
+            }
+
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
                 this.fabricName,
                 this.protectionContainerName,
@@ -124,5 +179,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             this.WriteObject(new ASRJob(jobResponse));
         }
+
+        #region local Variable
+
+        /// <summary>
+        ///     Gets or sets Name of the Fabric.
+        /// </summary>
+        private string fabricName;
+
+        /// <summary>
+        ///     Gets or sets ID of the Protection Container.
+        /// </summary>
+        private string protectionContainerName;
+
+        /// <summary>
+        ///     Gets or sets ID of the PE.
+        /// </summary>
+        private string protectionEntityName;
+
+        #endregion
     }
 }

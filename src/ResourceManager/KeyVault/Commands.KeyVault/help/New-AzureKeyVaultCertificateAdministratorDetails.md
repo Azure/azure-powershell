@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 775AB0E8-EC3C-4F96-8AF8-51C1DFEEF082
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/new-azurekeyvaultcertificateadministratordetails
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Creates an in-memory certificate administrator details object.
 
 ```
 New-AzureKeyVaultCertificateAdministratorDetails [-FirstName <String>] [-LastName <String>]
- [-EmailAddress <String>] [-PhoneNumber <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EmailAddress <String>] [-PhoneNumber <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,13 +33,28 @@ This command creates an in-memory certificate administrator details object, and 
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EmailAddress
 Specifies the email address for the certificate administrator.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -52,7 +69,7 @@ Specifies the first name of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -67,7 +84,7 @@ Specifies the last name of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,7 +99,7 @@ Specifies the phone number of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -127,9 +144,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateAdministratorDetails
 
 ## NOTES
 

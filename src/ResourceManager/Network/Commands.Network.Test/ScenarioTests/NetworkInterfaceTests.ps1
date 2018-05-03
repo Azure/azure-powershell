@@ -42,8 +42,10 @@ function Test-NetworkInterfaceExpandResource
         $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
-        $expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
+        $job = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -AsJob
+        $job | Wait-Job
+		$actualNic = $job | Receive-Job
+		$expectedNic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $expectedNic.Name $actualNic.Name	
@@ -113,7 +115,8 @@ function Test-NetworkInterfaceCRUD
     try 
     {
         # Create the resource group
-        
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
@@ -157,7 +160,9 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $actualNic.Etag $list[0].Etag
 
         # Delete NetworkInterface
-        $delete = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
+        $job = Remove-AzureRmNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force -AsJob
+		$job | Wait-Job
+		$delete = $job | Receive-Job
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmNetworkInterface -ResourceGroupName $rgname
@@ -432,7 +437,8 @@ function Test-NetworkInterfaceSet
         # Edit Nic with a new publicIpAddress
         $nic.IpConfigurations[0].PublicIpAddress = $publicip2
 
-        $nic | Set-AzureRmNetworkInterface
+        $job = $nic | Set-AzureRmNetworkInterface -AsJob
+	$job | Wait-Job
 
         $nic = Get-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgname
 

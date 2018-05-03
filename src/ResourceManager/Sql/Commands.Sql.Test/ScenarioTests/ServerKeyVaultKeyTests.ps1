@@ -23,7 +23,12 @@ function Test-AddServerKeyVaultKey
 
 	try
 	{
-		$keyResult = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		$job = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
+		$job | Wait-Job
+		$keyResult = $job.Output
+
+		# $keyResult = Add-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+
 		Assert-AreEqual $params.keyId $keyResult.Uri 
 		Assert-AreEqual $params.serverKeyName $keyResult.ServerKeyName 
 	}
@@ -77,7 +82,10 @@ function Test-RemoveServerKeyVaultKey
 		Assert-AreEqual $params.keyId $keyGet.Uri
 		Assert-AreEqual $params.serverKeyName $keyGet.ServerKeyName
 
-		$keyRemove = Remove-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId
+		$job = Remove-AzureRmSqlServerKeyVaultKey -ServerName $params.serverName -ResourceGroupName $params.rgName -KeyId $params.keyId -AsJob
+		$job | Wait-Job
+		$keyRemove = $job.Output
+
 		Assert-AreEqual $params.keyId $keyRemove.Uri
 		Assert-AreEqual $params.serverKeyName $keyRemove.ServerKeyName
 	}

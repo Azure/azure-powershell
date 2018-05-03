@@ -21,7 +21,8 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     using Microsoft.Azure.Commands.Scheduler.Properties;
     using Microsoft.Azure.Commands.Scheduler.Utilities;
     using SchedulerModels = Microsoft.Azure.Management.Scheduler.Models;
-    
+    using ResourceManager.Common.ArgumentCompleters;
+
     /// <summary>
     /// Creates new storage queue job.
     /// </summary>
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     public class NewAzureSchedulerStorageQueueJobCommand : JobBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

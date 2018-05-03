@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+Module Name: AzureRM.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermdiskupdateconfig
 schema: 2.0.0
 ---
 
@@ -12,12 +13,10 @@ Creates a configurable disk update object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskUpdateConfig [[-SkuName] <StorageAccountTypes>] [[-OsType] <OperatingSystemTypes>]
+New-AzureRmDiskUpdateConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>]
  [[-DiskSizeGB] <Int32>] [[-Tag] <Hashtable>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
- [-CreateOption <DiskCreateOption>] [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>]
- [-SourceUri <String>] [-SourceResourceId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,23 +51,6 @@ This command updates an existing disk with name 'Disk01' in resource group 'Reso
 
 ## PARAMETERS
 
-### -CreateOption
-Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image,
-creates an empty disk, or attaches an existing disk.
-
-```yaml
-Type: DiskCreateOption
-Parameter Sets: (All)
-Aliases: 
-Accepted values: Empty, Attach, FromImage, Import, Copy
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -90,7 +72,7 @@ Specifies the disk encryption key object on a disk.
 ```yaml
 Type: KeyVaultAndSecretReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -105,7 +87,7 @@ Specifies the size of the disk in GB.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -120,22 +102,7 @@ Enable encryption settings.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ImageReference
-Specifies the image reference on a disk.
-
-```yaml
-Type: ImageDiskReference
-Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -150,7 +117,7 @@ Specifies the Key encryption key on a disk.
 ```yaml
 Type: KeyVaultAndKeyReference
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -165,7 +132,7 @@ Specifies the OS type.
 ```yaml
 Type: OperatingSystemTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Windows, Linux
 
 Required: False
@@ -179,58 +146,12 @@ Accept wildcard characters: False
 Specifies the Sku name of the storage account.
 
 ```yaml
-Type: StorageAccountTypes
+Type: String
 Parameter Sets: (All)
 Aliases: AccountType
-Accepted values: StandardLRS, PremiumLRS
 
 Required: False
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SourceResourceId
-Specifies the source resource ID.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SourceUri
-Specifies the source Uri.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StorageAccountId
-Specifies the storage account ID.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -244,7 +165,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -288,6 +209,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSDiskUpdate
@@ -295,4 +219,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

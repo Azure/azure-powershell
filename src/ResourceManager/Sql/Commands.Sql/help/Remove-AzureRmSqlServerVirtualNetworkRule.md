@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
-online version: 
+Module Name: AzureRM.Sql
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/remove-azurermsqlservervirtualnetworkrule
 schema: 2.0.0
 ---
 
@@ -12,8 +13,9 @@ Deletes an Azure SQL Server Virtual Network Rule.
 ## SYNTAX
 
 ```
-Remove-AzureRmSqlServerVirtualNetworkRule -VirtualNetworkRuleName <String> [-Force] -ServerName <String>
- [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
+Remove-AzureRmSqlServerVirtualNetworkRule -VirtualNetworkRuleName <String> [-AsJob] -ServerName <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,13 +32,28 @@ Deletes an existing Azure SQL Server virtual network rule
 
 ## PARAMETERS
 
-### -Force
-Skip confirmation message for performing the action
-
+### -AsJob
+Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -51,7 +68,7 @@ The name of the resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -66,7 +83,7 @@ The Azure Sql Server name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,7 +98,7 @@ Azure Sql Server Virtual Network Rule name
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,10 +138,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
@@ -133,4 +152,3 @@ Accept wildcard characters: False
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+Module Name: AzureRM.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermimage
 schema: 2.0.0
 ---
 
@@ -12,7 +13,7 @@ Creats an image.
 ## SYNTAX
 
 ```
-New-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <PSImage>
+New-AzureRmImage [-ResourceGroupName] <String> [-ImageName] <String> [-Image] <PSImage> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,6 +46,21 @@ The final command creates an image named 'ImageName01' in resource group 'Resour
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -66,7 +82,7 @@ Specifies a local image object.
 ```yaml
 Type: PSImage
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -96,7 +112,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -153,4 +169,3 @@ Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 ## NOTES
 
 ## RELATED LINKS
-

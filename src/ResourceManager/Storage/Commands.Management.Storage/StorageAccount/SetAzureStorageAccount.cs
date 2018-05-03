@@ -20,13 +20,15 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     /// <summary>
     /// Lists all storage services underneath the subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(StorageModels.StorageAccount))]
+    [Cmdlet(VerbsCommon.Set, StorageAccountNounStr, SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(PSStorageAccount))]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
 
@@ -45,6 +47,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -100,16 +103,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Storage Service that will enable encryption.")]
-        public EncryptionSupportServiceEnum? EnableEncryptionService { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Storage Service that will disable encryption.")]
-        public EncryptionSupportServiceEnum? DisableEncryptionService { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
         [AllowEmptyCollection]
@@ -143,7 +136,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool storageEncryption = false;
 
         [Parameter(HelpMessage = "Whether to set Storage Account encryption keySource to Microsoft.Keyvault or not. " +
-            "If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account Encryption KeySource will also be set to Microsoft.Keyvault weather this parameter is set or not.", 
+            "If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account Encryption KeySource will also be set to Microsoft.Keyvault weather this parameter is set or not.",
             Mandatory = false, ParameterSetName = KeyvaultEncryptionParameterSet)]
         public SwitchParameter KeyvaultEncryption
         {
@@ -185,6 +178,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             get; set;
         }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
+        public SwitchParameter UpgradeToStorageV2 { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -233,17 +234,22 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         updateParameters.Identity = new Identity();
                     }
 
-                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null || StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
+                    if (StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
                     {
                         if (ParameterSetName == KeyvaultEncryptionParameterSet)
                         {
                             keyvaultEncryption = true;
                         }
-                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService, StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
+                        updateParameters.Encryption = ParseEncryption(StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
                     }
                     if (NetworkRuleSet != null)
                     {
-                        updateParameters.NetworkAcls = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                        updateParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+                    }
+
+                    if (UpgradeToStorageV2.IsPresent)
+                    {
+                        updateParameters.Kind = Kind.StorageV2;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

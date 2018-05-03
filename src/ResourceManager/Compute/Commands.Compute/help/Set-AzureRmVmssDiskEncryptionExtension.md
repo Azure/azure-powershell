@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+Module Name: AzureRM.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension
 schema: 2.0.0
 ---
 
@@ -63,7 +64,7 @@ Disable auto-upgrade of minor version
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,7 +79,7 @@ ResourceID of the KeyVault where generated encryption key will be placed to
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -93,7 +94,7 @@ URL of the KeyVault where generated encryption key will be placed to
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -109,7 +110,7 @@ If this parameter is not specified, default values used are AzureDiskEncryption 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,7 +125,7 @@ To force enabling encryption on the virtual machine scale set.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -134,10 +135,12 @@ Accept wildcard characters: False
 ```
 
 ### -ForceUpdate
-Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.```yaml
+Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -152,7 +155,7 @@ KeyEncryption Algorithm used to encrypt the volume encryption key
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: RSA-OAEP, RSA1_5
 
 Required: False
@@ -168,7 +171,7 @@ Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encrypti
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,7 +186,7 @@ ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the d
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -199,7 +202,7 @@ This parameter only works for Linux VM.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -214,7 +217,7 @@ The resource group name to which the VM Scale Set belongs to
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -259,7 +262,7 @@ Type of the volume (OS or Data) to perform encryption operation
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: OS, Data, All
 
 Required: False
@@ -315,4 +318,3 @@ System.Management.Automation.SwitchParameter
 ## NOTES
 
 ## RELATED LINKS
-

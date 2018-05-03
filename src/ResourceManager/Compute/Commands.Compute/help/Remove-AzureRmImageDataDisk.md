@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+Module Name: AzureRM.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermimagedatadisk
 schema: 2.0.0
 ---
 
@@ -51,7 +52,7 @@ Specifies a local image object.
 ```yaml
 Type: PSImage
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -66,7 +67,7 @@ Specifies the logical unit number (LUN).
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -120,4 +121,3 @@ System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, Pub
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 25E3F297-1D91-4102-B4D3-1E7195A5D33D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/add-azurermtrafficmanagerendpointconfig
 schema: 2.0.0
 ---
 
@@ -16,7 +17,8 @@ Adds an endpoint to a local Traffic Manager profile object.
 Add-AzureRmTrafficManagerEndpointConfig -EndpointName <String> -TrafficManagerProfile <TrafficManagerProfile>
  -Type <String> [-TargetResourceId <String>] [-Target <String>] -EndpointStatus <String> [-Weight <UInt32>]
  [-Priority <UInt32>] [-EndpointLocation <String>] [-MinChildEndpoints <UInt32>]
- [-GeoMapping <System.Collections.Generic.List`1[System.String]>] [<CommonParameters>]
+ [-GeoMapping <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +48,21 @@ This command changes only the local object.
 The final command updates the Traffic Manager profile in Azure to match the local value in $TrafficManagerProfile.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -EndpointLocation
 Specifies the location of the endpoint to use in the Performance traffic-routing method.

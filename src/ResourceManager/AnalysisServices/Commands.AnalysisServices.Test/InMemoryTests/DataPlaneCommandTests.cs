@@ -390,7 +390,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
 
             // set up sync respnose
             var postResponse = new HttpResponseMessage(HttpStatusCode.Accepted);
-            postResponse.Headers.Location = new Uri("https://1");
+            postResponse.Headers.Location = new Uri("https://done");
             postResponse.Headers.RetryAfter = new RetryConditionHeaderValue(TimeSpan.FromMilliseconds(500));
             postResponse.Headers.Add("x-ms-root-activity-id", Guid.NewGuid().ToString());
             postResponse.Headers.Add("x-ms-current-utc-date", Guid.NewGuid().ToString());

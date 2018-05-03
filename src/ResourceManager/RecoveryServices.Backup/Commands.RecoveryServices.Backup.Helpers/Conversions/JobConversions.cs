@@ -193,13 +193,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// <summary>
         /// Helper function to get job type from ps backup management type.
         /// </summary>
-        public static BackupManagementType GetJobTypeForService(
+        public static string GetJobTypeForService(
             CmdletModel.BackupManagementType mgmtType)
         {
             switch (mgmtType)
             {
                 case CmdletModel.BackupManagementType.AzureVM:
-                    return BackupManagementType.AzureIaasVM;
+                    return BackupManagementType.AzureIaasVM.ToString();
                 default:
                     throw new Exception("Invalid BackupManagementType provided: " + mgmtType);
             }

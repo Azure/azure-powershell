@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
+Module Name: AzureRM.Batch
 ms.assetid: B6229D26-D38C-44CD-B9CA-7F39365C8B9D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/new-azurebatchjob
 schema: 2.0.0
 ---
 
@@ -18,7 +19,7 @@ New-AzureBatchJob [-Id] <String> [-CommonEnvironmentSettings <IDictionary>] [-Di
  [-JobPreparationTask <PSJobPreparationTask>] [-JobReleaseTask <PSJobReleaseTask>] [-Metadata <IDictionary>]
  -PoolInformation <PSPoolInformation> [-Priority <Int32>] [-UsesTaskDependencies]
  [-OnTaskFailure <OnTaskFailure>] [-OnAllTasksComplete <OnAllTasksComplete>]
- -BatchContext <BatchAccountContext> [<CommonParameters>]
+ -BatchContext <BatchAccountContext> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +47,7 @@ Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context v
 
 ### -BatchContext
 Specifies the **BatchAccountContext** instance that this cmdlet uses to interact with the Batch service.
-To obtain a **BatchAccountContext** object that contains access keys for your subscription, use the Get-AzureRmBatchAccountKeys cmdlet.
+If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
 Type: BatchAccountContext
@@ -68,7 +69,7 @@ The value is the environment variable value.
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases: CommonEnvironmentSetting
 
 Required: False
 Position: Named
@@ -84,6 +85,21 @@ Specifies the execution constraints for the job.
 Type: PSJobConstraints
 Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -273,7 +289,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### BatchAccountContext
-
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
 ## OUTPUTS

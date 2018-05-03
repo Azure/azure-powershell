@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Common.ArgumentCompleters;
     using Common.Tags;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the location.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The resource location.")]
+        [LocationCompleter("Microsoft.Resources/resourceGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -80,6 +82,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set indicates that the full object is passed in to the -PropertyObject parameter.")]
         public SwitchParameter IsFullObject { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.

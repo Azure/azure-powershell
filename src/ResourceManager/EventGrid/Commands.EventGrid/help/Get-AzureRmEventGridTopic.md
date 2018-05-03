@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopic
 schema: 2.0.0
 ---
 
@@ -12,19 +12,22 @@ Gets the details of an Event Grid topic, or gets a list of all Event Grid topics
 
 ## SYNTAX
 
-### TopicNameParameterSet (Default)
+### ResourceGroupNameParameterSet (Default)
 ```
-Get-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+Get-AzureRmEventGridTopic [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### ResourceGroupNameParameterSet
+### TopicNameParameterSet
 ```
-Get-AzureRmEventGridTopic [[-ResourceGroupName] <String>] [<CommonParameters>]
+Get-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-Get-AzureRmEventGridTopic [-ResourceId] <String> [<CommonParameters>]
+Get-AzureRmEventGridTopic [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,6 +67,21 @@ List all the Event Grid topics in the subscription.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 EventGrid Topic Name.
 
@@ -84,10 +102,10 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: TopicNameParameterSet
+Parameter Sets: ResourceGroupNameParameterSet
 Aliases: ResourceGroup
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -96,10 +114,10 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupNameParameterSet
+Parameter Sets: TopicNameParameterSet
 Aliases: ResourceGroup
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)

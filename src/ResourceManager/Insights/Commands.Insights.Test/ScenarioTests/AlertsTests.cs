@@ -48,13 +48,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAddAzureRmLogAlertRule()
-        {
-            TestsController.NewInstance.RunPsTest("Test-AddAzureRmLogAlertRule");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmWebtestAlertRule()
         {
             TestsController.NewInstance.RunPsTest("Test-AddAzureRmWebtestAlertRule");

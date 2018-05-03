@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string resourceGroup = "resourceGroup";
             AccountKeyType keyType = AccountKeyType.Primary;
             BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
             expected.PrimaryAccountKey = newPrimaryKey;
             expected.SecondaryAccountKey = newSecondaryKey;
 

@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceBus.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands
 {
@@ -23,54 +24,37 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     [Cmdlet(VerbsCommon.Remove, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = QueueAuthoRuleParameterSet)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = TopicAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = QueueAuthoRuleParameterSet,
-            HelpMessage = "Queue Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasQueueName)]
         public string Queue { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = TopicAuthoRuleParameterSet,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicName)]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 4,
-            HelpMessage = "ServiceBus AuthorizationRule Object.")]        
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 4, HelpMessage = "ServiceBus AuthorizationRule Object")]        
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
-        public SharedAccessAuthorizationRuleAttributes InputObject { get; set; }
+        public PSSharedAccessAuthorizationRuleAttributes InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -81,7 +65,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public override void ExecuteCmdlet()
         {
             // Delete Namespace authorizationRule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingNamespaceAuthorizationRule, Name, Namespace),
@@ -98,7 +82,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 });
 
             // Delete Queue authorizationRule
-            if (ParameterSetName == QueueAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingQueueAuthorizationRule, Namespace, Queue, Name),
@@ -114,7 +98,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 });
 
             // Delete Topic authorizationRule
-            if (ParameterSetName == TopicAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
                 ConfirmAction(
                 Force.IsPresent,
                 string.Format(Resources.RemovingTopicAuthorizationRule, Namespace, Topic, Name),

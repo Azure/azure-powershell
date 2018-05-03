@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             HelpMessage = "The location in which to create the server")]
+        [LocationCompleter("Microsoft.Sql/servers")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -73,6 +75,12 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         /// Overriding to add warning message

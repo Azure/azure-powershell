@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermtenant
 schema: 2.0.0
 ---
 
@@ -22,7 +23,7 @@ The Get-AzureRmTenant cmdlet gets tenants authorized for the current user.
 
 ### Example 1: Getting all tenants
 ```
-PS C:\> Add-AzureRmAccount
+PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmTenant
 
 TenantId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -36,7 +37,7 @@ This example shows how to get all of the authorized tenants of an Azure account.
 
 ### Example 2: Getting a specific tenant
 ```
-PS C:\> Add-AzureRmAccount
+PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmTenant -TenantId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 TenantId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -81,6 +82,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

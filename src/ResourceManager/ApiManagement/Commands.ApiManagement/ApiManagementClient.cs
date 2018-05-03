@@ -42,6 +42,28 @@ namespace Microsoft.Azure.Commands.ApiManagement
             _context = context;
         }
 
+        private static IMapper _mapper;
+
+        private static readonly object _lock = new object();
+
+        public static IMapper Mapper
+        {
+            get
+            {
+                lock(_lock)
+                {
+                    if (_mapper == null)
+                    {
+                        var config = new MapperConfiguration(cfg => { });
+
+                        _mapper = config.CreateMapper();
+                    }
+
+                    return _mapper;
+                }
+            }
+        }
+
         private IApiManagementClient Client
         {
             get

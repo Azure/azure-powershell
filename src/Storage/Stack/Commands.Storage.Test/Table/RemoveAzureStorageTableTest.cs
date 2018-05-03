@@ -13,20 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
 using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
-    [TestClass]
     public class RemoveAzureStorageTableTest: StorageTableStorageTestBase
     {
         internal FakeRemoveAzureTableCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public RemoveAzureStorageTableTest()
         {
             command = new FakeRemoveAzureTableCommand(tableMock)
                 {
@@ -34,13 +33,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveTableWithInvalidNameTest()
         {
             string name = "a*b";
@@ -48,7 +42,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 String.Format(Resources.InvalidTableName, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemvoeTableWithNotExistsTableTest()
         {
             string name = "test";
@@ -56,29 +51,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
                 String.Format(Resources.TableNotFound, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveTableSuccessfullyTest()
         {
             AddTestTables();
             string name = "test";
             bool removed = command.RemoveAzureTable(name);
-            Assert.IsTrue(removed);
+            Assert.False(removed);
 
             AddTestTables();
             name = "text";
             command.confirm = true;
             removed = command.RemoveAzureTable(name);
-            Assert.IsTrue(removed);
+            Assert.True(removed);
 
             AddTestTables();
             name = "text";
             command.Force = true;
             command.confirm = false;
             removed = command.RemoveAzureTable(name);
-            Assert.IsTrue(removed);
+            Assert.True(removed);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCommandRemoveAzureTable()
         {
             string name = "test";

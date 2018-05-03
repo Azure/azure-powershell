@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
+Module Name: AzureRM.Cdn
 ms.assetid: 7ADF4CDE-638B-4E00-88B1-688702B084A5
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/remove-azurermcdnendpoint
 schema: 2.0.0
 ---
 
@@ -12,16 +13,16 @@ Removes a CDN endpoint.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters
+### ByFieldsParameterSet
 ```
 Remove-AzureRmCdnEndpoint -EndpointName <String> -ProfileName <String> -ResourceGroupName <String> [-PassThru]
- [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
-Remove-AzureRmCdnEndpoint -CdnEndpoint <PSEndpoint> [-PassThru] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmCdnEndpoint -CdnEndpoint <PSEndpoint> [-PassThru] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,8 +42,8 @@ Specifies the endpoint that this cmdlet removes.
 
 ```yaml
 Type: PSEndpoint
-Parameter Sets: Parameter Set for object parameters
-Aliases: 
+Parameter Sets: ByObjectParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -51,13 +52,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Specifies the name of the endpoint that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -72,7 +88,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -88,7 +104,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,8 +118,8 @@ Specifies the name of the profile to which the endpoint belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -117,8 +133,8 @@ Specifies the name of the resource group to which the endpoint belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -164,7 +180,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSEndpoint
-
 Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
 
 ## OUTPUTS

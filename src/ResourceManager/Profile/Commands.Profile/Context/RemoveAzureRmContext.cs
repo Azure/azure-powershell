@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(PSAzureContext))]
     public class RemoveAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
-        const string NamedContextParameterSet = "Named Context", InputObjectParameterSet = "Input Object";
+        const string NamedContextParameterSet = "RemoveByName", InputObjectParameterSet = "RemoveByInputObject";
         [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "A context object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
         public PSAzureContext InputObject { get; set; }

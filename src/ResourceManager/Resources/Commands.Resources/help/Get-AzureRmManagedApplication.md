@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermmanagedapplication
 schema: 2.0.0
 ---
 
@@ -12,21 +12,22 @@ Gets managed applications
 
 ## SYNTAX
 
-### The list all managed applications parameter set. (Default)
+### GetBySubscription (Default)
 ```
 Get-AzureRmManagedApplication [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### The managed application name parameter set.
+### GetByNameAndResourceGroup
 ```
 Get-AzureRmManagedApplication [-Name <String>] -ResourceGroupName <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### The managed application Id parameter set.
+### GetById
 ```
 Get-AzureRmManagedApplication -Id <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +58,7 @@ If not specified, the API version is automatically determined as the latest avai
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -88,7 +89,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application Id parameter set.
+Parameter Sets: GetById
 Aliases: ResourceId, ManagedApplicationId
 
 Required: True
@@ -103,8 +104,8 @@ The managed application name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
-Aliases: 
+Parameter Sets: GetByNameAndResourceGroup
+Aliases:
 
 Required: False
 Position: Named
@@ -119,7 +120,7 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -133,8 +134,8 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: The managed application name parameter set.
-Aliases: 
+Parameter Sets: GetByNameAndResourceGroup
+Aliases:
 
 Required: True
 Position: Named
@@ -143,17 +144,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
 ### System.Management.Automation.PSObject
 
-
 ## NOTES
 
 ## RELATED LINKS
-

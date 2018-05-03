@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: CBD157D2-37C5-491F-A806-6B39F1D0415A
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageblobcopystate
 schema: 2.0.0
 ---
 

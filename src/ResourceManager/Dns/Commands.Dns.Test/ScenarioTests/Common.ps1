@@ -32,27 +32,36 @@ function Get-ResourceName
 
 <#
 .SYNOPSIS
+Gets valid virtual network name
+#>
+function Get-VirtualNetworkName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
 	{
-		$namespace = $provider.Split("/")[0]  
-		if($provider.Contains("/"))  
-		{  
-			$type = $provider.Substring($namespace.Length + 1)  
-			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
-  
-			if ($location -eq $null) 
-			{  
-				return "West US"  
-			} else 
-			{  
-				return $location.Locations[0]  
-			}  
+		$namespace = $provider.Split("/")[0]
+		if($provider.Contains("/"))
+		{
+			$type = $provider.Substring($namespace.Length + 1)
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+
+			if ($location -eq $null)
+			{
+				return "West US"
+			} else
+			{
+				return $location.Locations[0]
+			}
 		}
-		
+
 		return "West US"
 	}
 
@@ -69,6 +78,18 @@ function TestSetup-CreateResourceGroup
 	$rglocation = Get-ProviderLocation "microsoft.compute"
     $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
+}
+
+<#
+.SYNOPSIS
+Creates a virtual network to use in tests
+#>
+function TestSetup-CreateVirtualNetwork($resourceGroup)
+{
+    $virtualNetworkName = Get-VirtualNetworkName
+	$location = Get-ProviderLocation "microsoft.network/virtualNetworks"
+    $virtualNetwork = New-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroup.ResourceGroupName -Location $location -AddressPrefix "10.0.0.0/8"
+	return $virtualNetwork
 }
 
 function Get-RandomZoneName

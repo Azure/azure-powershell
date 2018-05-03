@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Dns.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Dns.Models;
 using System;
 using System.Management.Automation;
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Dns
         public string ZoneName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = "Fields")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -55,10 +57,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the RecordSet parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
         public SwitchParameter Overwrite { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        [Obsolete("This parameter is obsolete; use Confirm instead")]
-        public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }

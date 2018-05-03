@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/enable-azurermactivitylogalert
 schema: 2.0.0
 ---
 
@@ -12,8 +13,22 @@ Enables an activity log alert and sets its Tags.
 
 ## SYNTAX
 
+### EnableByNameAndResourceGroup
 ```
-Enable-AzureRmActivityLogAlert [-InputObject <PSActivityLogAlertResource>] [-ResourceId <String>] [-Name <String> -ResourceGroupName <String>] [<CommonParameters>]
+Enable-AzureRmActivityLogAlert -Name <String> -ResourceGroupName <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableByInputObject
+```
+Enable-AzureRmActivityLogAlert -InputObject <PSActivityLogAlertResource>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EnableByResourceId
+```
+Enable-AzureRmActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +46,6 @@ This command enables the activity log alert called alert1 in the resource group 
 
 ### Example 2: Enable an activity log alert using a PSActivityLogAlertResource object as input
 ```
-
 PS C:\>$obj = Get-AzureRmActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
 PS C:\>Enable-AzureRmActivityLogAlert -InputObject $obj
 ```
@@ -40,21 +54,49 @@ This command enables an activity log alert called alert1. For this it uses a PSA
 
 ### Example 3: Enable the ActivityLogAlert using the ResourceId parameter
 ```
-
 PS C:\>Find-AzureRmResource -ResourceGroupEquals "myResourceGroup" -ResourceNameEquals "myLogAlert" | Enable-AzureRmActivityLogAlert
-
 ```
 
 This command enables the ActivityLogAlert using the ResourceId parameter from the pipe.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Sets the InputObject tags property of the call to extract the required name, resource group name, and the optional tags properties.
+
+```yaml
+Type: PSActivityLogAlertResource
+Parameter Sets: EnableByInputObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the activity log alert.
 
 ```yaml
-Type: System.String
-Parameter Sets: EnableActivityLogAlertDeafultParamGroup
+Type: String
+Parameter Sets: EnableByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -68,29 +110,14 @@ Accept wildcard characters: False
 The name of the resource group where the alert resource is going to exist.
 
 ```yaml
-Type: System.String
-Parameter Sets: EnableActivityLogAlertDeafultParamGroup
+Type: String
+Parameter Sets: EnableByNameAndResourceGroup
 Aliases: 
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -InputObject
-Sets the InputObject tags property of the call to extract the required name, resource group name, and the optional tags properties.
-
-```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
-Parameter Sets: EnableActivityLogAlertFromPipeParamGroup
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (FromPipeline)
 Accept wildcard characters: False
 ```
 
@@ -98,8 +125,8 @@ Accept wildcard characters: False
 Sets the ResourceId tags property of the call to extract the required name, resource group name properties.
 
 ```yaml
-Type: System.String
-Parameter Sets: EnableActivityLogAlertFromResourceIdParamGroup
+Type: String
+Parameter Sets: EnableByResourceId
 Aliases: 
 
 Required: True
@@ -109,10 +136,43 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

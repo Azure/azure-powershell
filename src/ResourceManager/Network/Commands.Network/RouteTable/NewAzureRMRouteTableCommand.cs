@@ -31,8 +31,9 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-namespace Microsoft.Azure.Commands.Network.Automation
+namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, "AzureRmRouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public partial class NewAzureRmRouteTable : NetworkBaseCmdlet
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             HelpMessage = "The resource group name of route table.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Network/routeTables")]
         public string Location { get; set; }
 
         [Parameter(
@@ -72,8 +75,16 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Disable BGP Route auto propagation.")]
+        public SwitchParameter DisableBgpRoutePropagation { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
@@ -84,9 +95,10 @@ namespace Microsoft.Azure.Commands.Network.Automation
             {
                 Location = this.Location,
                 Routes = this.Route,
+                DisableBgpRoutePropagation = this.DisableBgpRoutePropagation
             };
 
-            var vRouteTableModel = Mapper.Map<MNM.RouteTable>(vRouteTable);
+            var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(vRouteTable);
             vRouteTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
             var present = true;
             try
@@ -115,7 +127,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             {
                 this.NetworkClient.NetworkManagementClient.RouteTables.CreateOrUpdate(this.ResourceGroupName, this.Name, vRouteTableModel);
                 var getRouteTable = this.NetworkClient.NetworkManagementClient.RouteTables.Get(this.ResourceGroupName, this.Name);
-                var psRouteTable = Mapper.Map<PSRouteTable>(getRouteTable);
+                var psRouteTable = NetworkResourceManagerProfile.Mapper.Map<PSRouteTable>(getRouteTable);
                 psRouteTable.ResourceGroupName = this.ResourceGroupName;
                 psRouteTable.Tag = TagsConversionHelper.CreateTagHashtable(getRouteTable.Tags);
                 WriteObject(psRouteTable, true);

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: C4E7ACDF-22FB-4D49-93B3-69E787B7E0CD
-online version: http://go.microsoft.com/fwlink/?LinkId=690301
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 schema: 2.0.0
 ---
 
@@ -12,8 +13,22 @@ Creates a key in a key vault from a backed-up key.
 
 ## SYNTAX
 
+### ByVaultName (Default)
 ```
-Restore-AzureKeyVaultKey [-VaultName] <String> [-InputFile] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzureKeyVaultKey [-VaultName] <String> [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Restore-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-InputFile] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Restore-AzureKeyVaultKey [-ResourceId] <String> [-InputFile] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,18 +52,63 @@ This command restores a key, including all of its versions, from the backup file
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputFile
 Specifies the input file that contains the backup of the key to restore.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+KeyVault object
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id
+
+```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -57,13 +117,13 @@ Specifies the name of the key vault into which to restore the key.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByVaultName
+Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -103,9 +163,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
 
 ## NOTES
 

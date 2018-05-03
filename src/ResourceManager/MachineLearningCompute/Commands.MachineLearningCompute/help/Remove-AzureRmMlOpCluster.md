@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
 Module Name: AzureRM.MachineLearningCompute
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/remove-azurermmlopcluster
 schema: 2.0.0
 ---
 
@@ -12,19 +12,22 @@ Removes an operationalization cluster.
 
 ## SYNTAX
 
-### Remove an operationalization cluster from cmdlet input parameters.
+### RemoveByNameAndResourceGroup
 ```
-Remove-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-WhatIf] [-Confirm]
-```
-
-### Remove an operationalization cluster from an OperationalizationCluster instance definition.
-```
-Remove-AzureRmMlOpCluster -InputObject <PSOperationalizationCluster> [-WhatIf] [-Confirm]
+Remove-AzureRmMlOpCluster -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeAllResources] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove an operationalization cluster from an Azure resouce id.
+### RemoveByInputObject
 ```
-Remove-AzureRmMlOpCluster -ResourceId <String> [-WhatIf] [-Confirm]
+Remove-AzureRmMlOpCluster -InputObject <PSOperationalizationCluster> [-DefaultProfile <IAzureContextContainer>]
+ [-IncludeAllResources] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveByResourceId
+```
+Remove-AzureRmMlOpCluster -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-IncludeAllResources] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,23 +42,98 @@ PS C:\> Remove-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster | Remove-AzureRmMlOpCluster 
+PS C:\> Get-AzureRmMlOpCluster -ResourceGroupName my-group -Name my-cluster | Remove-AzureRmMlOpCluster
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludeAllResources
+Removes all resources that were created with the cluster.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 The operationalization cluster object.
 
 ```yaml
 Type: PSOperationalizationCluster
-Parameter Sets: Remove an operationalization cluster from an OperationalizationCluster instance definition.
+Parameter Sets: RemoveByInputObject
 Aliases: Cluster
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the operationalization cluster.
+
+```yaml
+Type: String
+Parameter Sets: RemoveByNameAndResourceGroup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group for the operationalization cluster.
+
+```yaml
+Type: String
+Parameter Sets: RemoveByNameAndResourceGroup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource id for the operationalization cluster.
+
+```yaml
+Type: String
+Parameter Sets: RemoveByResourceId
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -71,51 +149,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the operationalization cluster.
-
-```yaml
-Type: String
-Parameter Sets: Remove an operationalization cluster from cmdlet input parameters.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group for the operationalization cluster.
-
-```yaml
-Type: String
-Parameter Sets: Remove an operationalization cluster from cmdlet input parameters.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The Azure resource id for the operationalization cluster.
-
-```yaml
-Type: String
-Parameter Sets: Remove an operationalization cluster from an Azure resouce id.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -135,16 +168,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
-### System.String
 
+### System.String
 
 ## OUTPUTS
 
 ### System.Void
-
 
 ## NOTES
 

@@ -62,7 +62,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
                     var operation = GetOperation(response.RequestId);
                     WriteVerboseWithTimestamp(string.Format(Resources.AzureVNetSiteCompletedOperation, CommandRuntime.ToString()));
-                    result = sites.Select(site => ContextFactory<NetworkListResponse.VirtualNetworkSite, VirtualNetworkSiteContext>(site, operation));
+                    result = sites.Select(site => ContextFactory(site, operation,
+                                                    ServiceManagementProfile.Mapper.Map<NetworkListResponse.VirtualNetworkSite, VirtualNetworkSiteContext>,
+                                                    ServiceManagementProfile.Mapper.Map));
                 }
                 catch (CloudException ex)
                 {

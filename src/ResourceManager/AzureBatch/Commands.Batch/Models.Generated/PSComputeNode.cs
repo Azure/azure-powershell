@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IReadOnlyList<PSCertificateReference> certificateReferences;
         
+        private PSComputeNodeEndpointConfiguration endpointConfiguration;
+        
         private IReadOnlyList<PSComputeNodeError> errors;
         
         private IReadOnlyList<PSTaskInformation> recentTasks;
@@ -92,6 +94,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public PSComputeNodeEndpointConfiguration EndpointConfiguration
+        {
+            get
+            {
+                if (((this.endpointConfiguration == null) 
+                            && (this.omObject.EndpointConfiguration != null)))
+                {
+                    this.endpointConfiguration = new PSComputeNodeEndpointConfiguration(this.omObject.EndpointConfiguration);
+                }
+                return this.endpointConfiguration;
+            }
+        }
+        
         public IReadOnlyList<PSComputeNodeError> Errors
         {
             get
@@ -128,6 +143,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             get
             {
                 return this.omObject.IPAddress;
+            }
+        }
+        
+        public System.Boolean? IsDedicated
+        {
+            get
+            {
+                return this.omObject.IsDedicated;
             }
         }
         

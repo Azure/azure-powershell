@@ -1,8 +1,8 @@
----
+﻿---
 Module Name: AzureRM.MarketplaceOrdering
 Module Guid: 6e0e216b-1dff-4992-b943-b3a4f14679ab
-Download Help Link: 
-Help Version: 0.1.0
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.marketplaceordering
+Help Version: 0.1.0.0
 Locale: en-US
 ---
 
@@ -15,5 +15,5 @@ The topics in this section document the Azure PowerShell cmdlets for Azure Marke
 Get the agreement terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). The terms object which is returned by this command should be passed to Set-AzureRmMarketplaceTerms to accept the legal terms.
 
 ### [Set-AzureRmMarketplaceTerms](Set-AzureRmMarketplaceTerms.md)
-Accept or reject the legal terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). Please use Get-AzureRmMarketplaceTerms to get the agreement terms.
+Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name). Please use Get-AzureRmMarketplaceTerms to get the agreement terms.
 

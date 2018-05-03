@@ -14,16 +14,16 @@
 
 using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
 {
     /// <summary>
     /// unit test for RemoveAzureStorageContainer
     /// </summary>
-    [TestClass]
     public class RemoveAzureStorageContainerTest : StorageBlobTestBase
     {
         /// <summary>
@@ -31,8 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         /// </summary>
         internal RemoveAzureStorageContainerCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public RemoveAzureStorageContainerTest()
         {
             command = new RemoveAzureStorageContainerCommand(BlobMock)
             {
@@ -41,13 +40,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             CurrentBlobCmd = command;
         }
 
-        [TestCleanup]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CleanCommand()
         {
             command = null;
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveContainerWithInvalidContainerNameTest()
         {
             string name = "a*b";
@@ -55,7 +56,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
                 String.Format(Resources.InvalidContainerName, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveContainerForNotExistsContainerTest()
         {
             string name = "test";
@@ -63,7 +65,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
                 String.Format(Resources.ContainerNotFound, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveContainerCancelledTest()
         {
             AddTestContainers();
@@ -74,10 +77,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             this.Confirmed = false;
             RunAsyncCommand(() => command.ExecuteCmdlet());
             string result = (string)MockCmdRunTime.VerboseStream.FirstOrDefault();
-            Assert.AreEqual(String.Format(Resources.RemoveContainerCancelled, name), result);
+            Assert.Equal(String.Format(Resources.RemoveContainerCancelled, name), result);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveContainerSuccessfullyTest()
         {
             AddTestContainers();
@@ -89,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             this.Confirmed = true;
             RunAsyncCommand(() => command.ExecuteCmdlet());
             string result = (string)MockCmdRunTime.VerboseStream.FirstOrDefault();
-            Assert.AreEqual(String.Format(Resources.RemoveContainerSuccessfully, name), result);
+            Assert.Equal(String.Format(Resources.RemoveContainerSuccessfully, name), result);
 
             MockCmdRunTime.ResetPipelines();
             name = "text";
@@ -97,16 +101,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             command.Force = true;
             RunAsyncCommand(() => command.ExecuteCmdlet());
             result = (string)MockCmdRunTime.VerboseStream.FirstOrDefault();
-            Assert.AreEqual(String.Format(Resources.RemoveContainerSuccessfully, name), result);
+            Assert.Equal(String.Format(Resources.RemoveContainerSuccessfully, name), result);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCommandRemoveContainer()
         {
             string name = "test";
             command.Name = name;
             RunAsyncCommand(() => command.ExecuteCmdlet());
-            Assert.AreEqual(String.Format(Resources.ContainerNotFound, name), MockCmdRunTime.ErrorStream[0].Exception.Message);
+            Assert.Equal(String.Format(Resources.ContainerNotFound, name), MockCmdRunTime.ErrorStream[0].Exception.Message);
         }
     }
 }

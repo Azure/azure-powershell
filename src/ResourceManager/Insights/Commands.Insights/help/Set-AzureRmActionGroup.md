@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
+Module Name: AzureRM.Insights
 ms.assetid: 4A6816DB-0E46-44F0-8AE9-180B1C4AAB22
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.insights/set-azurermactiongroup
 schema: 2.0.0
 ---
 
@@ -12,10 +13,28 @@ Creates a new or updates an existing action group.
 
 ## SYNTAX
 
+### ByPropertyName (Default)
 ```
-Set-AzureRmActionGroup -Name <String> -ResourceGroup <String> -ShortName <string>
- -Receiver <System.Collections.Generic.List`1[PSActionGroupReceiverBase]>
- [-DisableGroup] [-Tags <System.Collections.Generic.Dictionary`1[<string>, <string>]>]
+Set-AzureRmActionGroup -ResourceGroupName <String> -Name <String> -ShortName <String>
+ -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
+ [-DisableGroup] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Set-AzureRmActionGroup -ShortName <String>
+ -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
+ [-DisableGroup] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Set-AzureRmActionGroup [-ShortName <String>] [-DisableGroup]
+ [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ -InputObject <PSActionGroupResource> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +47,6 @@ The **Set-AzureRmActionGroup** cmdlet creates a new or updates an existing actio
 PS C:\>$email1 = New-AzureRmActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 PS C:\>$sms1 = New-AzureRmActionGroupReceiver -Name 'user2' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
 PS C:\>Set-AzureRmActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1
-
 ```
 
 The first two commands create two receivers.
@@ -36,42 +54,69 @@ The final command creates an Action Group including the two receivers.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableGroup
+Disables the action group.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByPropertyName, ByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByInputObject
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The action group resourc
+
+```yaml
+Type: PSActionGroupResource
+Parameter Sets: ByInputObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the action group.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroup
-The name of the resource group where the action group is going to exist.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ShortName
-The short name of the action group.
-
-```yaml
-Type: <System.Collections.Generic.List`1[System.String]>
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByPropertyName
 Aliases: 
 
 Required: True
@@ -85,8 +130,8 @@ Accept wildcard characters: False
 The list of receivers of the action group.
 
 ```yaml
-Type: <System.Collections.Generic.List`1[PSActionGroupReceiverBase]>
-Parameter Sets: (All)
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]
+Parameter Sets: ByPropertyName, ByResourceId
 Aliases: 
 
 Required: True
@@ -96,40 +141,127 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DisableGroup
-Disables the action group.
+### -ResourceGroupName
+The resource group nam
+
+```yaml
+Type: String
+Parameter Sets: ByPropertyName
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The resource i
+
+```yaml
+Type: String
+Parameter Sets: ByResourceId
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShortName
+The short name of the action group.
+
+```yaml
+Type: String
+Parameter Sets: ByPropertyName, ByResourceId
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByInputObject
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Tag
+The tags of the action group resourc
+
+```yaml
+Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
+Parameter Sets: ByPropertyName, ByResourceId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
+Parameter Sets: ByInputObject
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-Sets the tags property of the activity log alert resource.
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Collections.Generic.Dictionary`1[<string>, <string>]
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Force, -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -19,12 +19,7 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Commands.Compute.Automation.Models;
-using Microsoft.Azure.Management.Compute.Models;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
@@ -32,18 +27,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     public partial class NewAzureRmVmssConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [Obsolete("This parameter is obsolete.", false)]
-        public RecoveryMode? RecoveryPolicyMode { get; set; }
-
-    }
-
-    public enum RecoveryMode
-    {
-        None = 0,
-        OverProvision = 1,
-        Reprovision = 2
+            Mandatory = true,
+            ParameterSetName = "AssignIdentityParameterSet")]
+        public SwitchParameter AssignIdentity { get; set; }
     }
 }
 

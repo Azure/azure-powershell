@@ -1,25 +1,27 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
-online version: 
+Module Name: AzureRM.Cdn
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/get-azurermcdnendpointresourceusage
 schema: 2.0.0
 ---
 
 # Get-AzureRmCdnEndpointResourceUsage
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets the resource usage of a CDN endpoint.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Get-AzureRmCdnEndpointResourceUsage [-EndpointName <String>] -ProfileName <String> -ResourceGroupName <String>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
-Get-AzureRmCdnEndpointResourceUsage [-EndpointName <String>] -CdnEndpoint <PSEndpoint> [<CommonParameters>]
+Get-AzureRmCdnEndpointResourceUsage [-EndpointName <String>] -CdnEndpoint <PSEndpoint>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,13 +43,28 @@ The CDN endpoint object.
 
 ```yaml
 Type: PSEndpoint
-Parameter Sets: Parameter Set for object parameters
-Aliases: 
+Parameter Sets: ByObjectParameterSet
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -57,7 +74,7 @@ Azure CDN endpoint name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -71,8 +88,8 @@ Azure CDN profile name.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -86,8 +103,8 @@ The resource group of the Azure CDN Profile.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -110,4 +127,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

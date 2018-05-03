@@ -87,7 +87,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 requiredFieldName: "resourceType",
                 requiredFieldValue: GetAzureRmAutoscaleHistoryCommand.AutoscaleResourceType,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }

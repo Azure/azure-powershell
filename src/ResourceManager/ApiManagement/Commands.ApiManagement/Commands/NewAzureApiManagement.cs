@@ -1,11 +1,11 @@
-﻿//  
+﻿//
 // Copyright (c) Microsoft.  All rights reserved.
-// 
+//
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
 //  You may obtain a copy of the License at
 //    http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 //  Unless required by applicable law or agreed to in writing, software
 //  distributed under the License is distributed on an "AS IS" BASIS,
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,6 +15,8 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Collections.Generic;
     using System.Management.Automation;
 
@@ -25,6 +27,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which you want to create API Management.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -36,6 +39,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Location where want to create API Management.")]
+        [LocationCompleter("Microsoft.ApiManagement/service")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -73,7 +77,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "Virtual Network Type of the ApiManagement Deployment. Valid Values are " +
-                     " - None (Default Value. ApiManagement is not part of any Virtual Network)" + 
+                     " - None (Default Value. ApiManagement is not part of any Virtual Network)" +
                      " - External (ApiManagement Deployment is setup inside a Virtual Network having an Internet Facing Endpoint) " +
                      " - Internal (ApiManagement Deployment is setup inside a Virtual Network having an Intranet Facing Endpoint)")]
         [ValidateSet("None", "External", "Internal"), PSDefaultValue(Value = "None")]
@@ -89,7 +93,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags dictionary.")]
-        public Dictionary<string, string> Tags { get; set; }
+        public Dictionary<string, string> Tag { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -109,7 +113,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
                     VpnType,
-                    Tags,
+                    Tag,
                     VirtualNetwork,
                     AdditionalRegions),
                 passThru: true);

@@ -41,13 +41,7 @@ function Get-AzureRmResourceProvider
   }
   PROCESS {
     $getTask = $client.Providers.GetAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
-    $pr = $getTask.Result
-    if($pr -eq $null) {
-      $provider = $null
-    } else {
-      $provider = Get-Provider $pr.Provider.Namespace
-    }
-    Write-Output $provider
+    Write-Output $getTask.Result.Provider
   }
   END {}
 }
@@ -141,13 +135,6 @@ function Get-ResourceGroup {
   param([string] $name, [string] $location, [string] $id)
   $rg = New-Object PSObject -Property @{"ResourceGroupName" = $name; "Location" = $location; "ResourceId" = $id}
   return $rg
-}
-
-function Get-Provider {
-  param([string] $name)
-  $rtype = New-Object PSObject -Property @{"ResourceTypeName" = "virtualMachines"; "Locations" = @("East US"); "ApiVersions" = @("2015-01-01"); }
-  $pr = New-Object PSObject -Property @{"ProviderNamespace" = $name; "RegistrationState" = "Registered"; "Locations" = @("East US"); "ResourceTypes" = $rtype;}
-  return $pr
 }
 
 function List-ResourceGroup {

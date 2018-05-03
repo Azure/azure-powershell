@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
 using System.Management.Automation;
 
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSVirtualMachineExtensionImageType))]
     public class GetAzureVMExtensionImageTypeCommand : VirtualMachineExtensionImageBaseCmdlet
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty, LocationCompleter("Microsoft.Compute/locations/publishers")]
         public string Location { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]

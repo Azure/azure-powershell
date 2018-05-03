@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 2BE34AE1-06FA-4F66-8FDB-CED22C2E0978
-online version: http://go.microsoft.com/fwlink/?LinkId=690297
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurekeyvaultkey
 schema: 2.0.0
 ---
 
@@ -14,22 +15,56 @@ Gets Key Vault keys.
 
 ### ByVaultName (Default)
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyName
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [[-Version] <String>] [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByKeyVersions
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions] [<CommonParameters>]
+Get-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByDeletedKey
+### ByInputObjectVaultName
 ```
-Get-AzureKeyVaultKey [-VaultName] <String> [[-Name] <String>] [-InRemovedState] [<CommonParameters>]
+Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByInputObjectKeyName
+```
+Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByInputObjectKeyVersions
+```
+Get-AzureKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdVaultName
+```
+Get-AzureKeyVaultKey [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdKeyName
+```
+Get-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> [-Version] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceIdKeyVersions
+```
+Get-AzureKeyVaultKey [-ResourceId] <String> [-Name] <String> [-IncludeVersions]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,6 +119,21 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IncludeVersions
 Indicates that this cmdlet gets all versions of a key.
 The current version of a key is the first one on the list.
@@ -93,8 +143,8 @@ If you do not specify the *IncludeVersions* parameter, this cmdlet gets the curr
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByKeyVersions
-Aliases: 
+Parameter Sets: ByKeyVersions, ByInputObjectKeyVersions, ByResourceIdKeyVersions
+Aliases:
 
 Required: True
 Position: Named
@@ -103,13 +153,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InRemovedState
-Specifies whether to show the previously deleted keys in the output.```yaml
-Type: SwitchParameter
-Parameter Sets: ByDeletedKey
-Aliases: 
+### -InputObject
+KeyVault object.
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: ByInputObjectVaultName, ByInputObjectKeyName, ByInputObjectKeyVersions
+Aliases:
 
 Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to show the previously deleted keys in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -121,23 +188,38 @@ Specifies the name of the key bundle to get.
 
 ```yaml
 Type: String
-Parameter Sets: ByKeyName, ByKeyVersions
+Parameter Sets: ByVaultName, ByInputObjectVaultName, ByResourceIdVaultName
 Aliases: KeyName
 
-Required: True
-Position: 2
+Required: False
+Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: String
-Parameter Sets: ByDeletedKey
+Parameter Sets: ByKeyName, ByKeyVersions, ByInputObjectKeyName, ByInputObjectKeyVersions, ByResourceIdKeyName, ByResourceIdKeyVersions
 Aliases: KeyName
 
-Required: False
-Position: 2
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdVaultName, ByResourceIdKeyName, ByResourceIdKeyVersions
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -149,13 +231,13 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key vault bas
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByVaultName, ByKeyName, ByKeyVersions
+Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,13 +247,13 @@ This cmdlet constructs the FQDN of a key based on the key vault name, your curre
 
 ```yaml
 Type: String
-Parameter Sets: ByKeyName
+Parameter Sets: ByKeyName, ByInputObjectKeyName, ByResourceIdKeyName
 Aliases: KeyVersion
 
-Required: False
-Position: 3
+Required: True
+Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -184,7 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.KeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.KeyBundle, List<Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyBundle
+### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey, List<Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKey
 
 ## NOTES
 

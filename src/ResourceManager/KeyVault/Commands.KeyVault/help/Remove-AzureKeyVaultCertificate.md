@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 34985F06-4D8D-463B-B113-972666D18485
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurekeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -12,9 +13,16 @@ Removes a certificate from a key vault.
 
 ## SYNTAX
 
+### ByVaultNameAndName (Default)
 ```
-Remove-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-Force] [-InRemovedState] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-InRemovedState] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByObject
+```
+Remove-AzureKeyVaultCertificate [-InputObject] <PSKeyVaultCertificateIdentityItem> [-InRemovedState] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,13 +56,13 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 
 ## PARAMETERS
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -63,11 +71,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InRemovedState
-If present, removes the previously deleted certificate permanently.```yaml
+### -Force
+Forces the command to run without asking for user confirmation.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Certificate Object.
+
+```yaml
+Type: PSKeyVaultCertificateIdentityItem
+Parameter Sets: ByObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+If present, removes the previously deleted certificate permanently
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -82,13 +122,13 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a certificate b
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByVaultNameAndName
+Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -99,7 +139,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,13 +154,13 @@ This cmdlet constructs the FQDN of a key vault based on the name that this param
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByVaultNameAndName
+Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -161,9 +201,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.CertificateBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificate
 
 ## NOTES
 

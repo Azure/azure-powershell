@@ -1,12 +1,12 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "clusterLocation": {
-      "value": "southcentralus"
+      "value": "westus"
     },
     "clusterName": {
-      "value": "newcreatedps1cluster"
+      "value": "azurermsfcluster2"
     },
     "adminUserName": {
       "value": "username"
@@ -21,7 +21,7 @@
       "value": "WindowsServer"
     },
     "vmImageSku": {
-      "value": "2012-R2-Datacenter"
+      "value": "2016-Datacenter-with-Containers"
     },
     "vmImageVersion": {
       "value": "latest"
@@ -32,20 +32,20 @@
     "loadBalancedAppPort2": {
       "value": 8081
     },
+    "clusterProtectionLevel": {
+      "value": "EncryptAndSign"
+    },
     "certificateStorevalue": {
       "value": "My"
     },
     "certificateThumbprint": {
-      "value": "99912345o458045827c723047234"
+      "value": "GEN-CUSTOM-DOMAIN-SSLCERT-THUMBPRINT"
     },
     "sourceVaultvalue": {
-      "value": "/subscriptions/<Sub ID>/resourceGroups/<Resource group name>/providers/Microsoft.KeyVault/vaults/<vault name>"
+      "value": "GEN-KEYVAULT-RESOURCE-ID"
     },
     "certificateUrlvalue": {
-      "value": "https://<name of the vault>.vault.azure.net:443/secrets/<exact location>"
-    },
-    "clusterProtectionLevel": {
-      "value": "EncryptAndSign"
+      "value": "GEN-KEYVAULT-SSL-SECRET-URI"
     },
     "storageAccountType": {
       "value": "Standard_LRS"
@@ -58,6 +58,9 @@
     },
     "nt0InstanceCount": {
       "value": 5
+    },
+    "vmNodeType0Size": {
+      "value": "Standard_D2_V2"
     }
   }
 }

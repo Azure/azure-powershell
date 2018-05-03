@@ -14,22 +14,21 @@
 
 using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
 {
-    [TestClass]
     public class RemoveAzureStorageBlobTest : StorageBlobTestBase
     {
         public RemoveStorageAzureBlobCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public RemoveAzureStorageBlobTest()
         {
             command = new RemoveStorageAzureBlobCommand(BlobMock)
             {
@@ -38,13 +37,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
             CurrentBlobCmd = command;
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatePipelineCloudBlobContainerTest()
         {
             CloudBlobContainer container = null;
@@ -60,7 +54,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
             command.ValidatePipelineCloudBlobContainer(container);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatePipelineCloudBlobTest()
         {
             CloudBlockBlob blockBlob = null;
@@ -77,7 +72,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
             command.ValidatePipelineCloudBlob(blockBlob);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByCloudBlobWithInvliadCloudBlob()
         {
             CloudBlockBlob blockBlob = null;
@@ -85,7 +81,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByCloudBlobWithNoExistsContainer()
         {
             CloudBlobContainer container = BlobMock.GetContainerReference("test");
@@ -94,7 +91,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 MockStorageBlobManagement.ContainerNotFound);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByCloudBlobWithNoExistsBlobTest()
         {
             AddTestContainers();
@@ -104,7 +102,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 MockStorageBlobManagement.BlobNotFound);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByCloudBlobSuccessfulyTest()
         {
             AddTestBlobs();
@@ -122,7 +121,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 MockStorageBlobManagement.BlobNotFound);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByCloudBlobContainerWithInvalidNameTest()
         {
             CloudBlobContainer container = null;
@@ -141,7 +141,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.InvalidContainerName, container.Name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByCloudBlobContainerWithNotExistsContianerTest()
         {
             string blobName = "blob";
@@ -150,7 +151,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.BlobNotFound, blobName, container.Name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByCloudBlobContainerWithNotExistsBlobTest()
         {
             AddTestContainers();
@@ -160,7 +162,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.BlobNotFound, blobName, container.Name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByCloudBlobContainerSuccessfullyTest()
         {
             AddTestBlobs();
@@ -171,7 +174,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.BlobNotFound, blobName, "container1"));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByNameWithInvalidNameTest()
         {
             string containerName = string.Empty;
@@ -183,7 +187,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.InvalidContainerName, containerName));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureBlobByNameTest()
         {
             AddTestBlobs();
@@ -194,7 +199,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.BlobNotFound, blobName, containerName));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCommandRemoveBlobTest()
         {
             AddTestBlobs();
@@ -204,9 +210,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
             command.Blob = blobName;
             RunAsyncCommand(() => command.ExecuteCmdlet());
             string result = (string)MockCmdRunTime.VerboseStream.FirstOrDefault();
-            Assert.AreEqual(String.Format(Resources.RemoveBlobSuccessfully, blobName, containerName), result);
+            Assert.Equal(String.Format(Resources.RemoveBlobSuccessfully, blobName, containerName), result);
             RunAsyncCommand(() => command.ExecuteCmdlet());
-            Assert.AreEqual(String.Format(Resources.BlobNotFound, blobName, containerName), 
+            Assert.Equal(String.Format(Resources.BlobNotFound, blobName, containerName), 
                 MockCmdRunTime.ErrorStream[0].Exception.Message);
         }
     }

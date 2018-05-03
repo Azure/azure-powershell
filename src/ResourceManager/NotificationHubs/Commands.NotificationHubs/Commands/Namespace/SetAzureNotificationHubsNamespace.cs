@@ -15,6 +15,8 @@ using Microsoft.Azure.Commands.NotificationHubs.Models;
 using System.Collections;
 using System.Management.Automation;
 using System.Globalization;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
@@ -26,6 +28,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
@@ -40,6 +43,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Namespace Location.")]
+        [LocationCompleter("Microsoft.NotificationHubs/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -59,7 +63,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 5,
             HelpMessage = "Hashtables which represents resource Tags.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false,
           ValueFromPipelineByPropertyName = true,
@@ -83,8 +87,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
                 Namespace,
                 () =>
                 {
-                    // Update a namespace 
-                    var nsAttribute = Client.UpdateNamespace(ResourceGroup, Namespace, Location, State, Critical, ConvertTagsToDictionary(Tags), SkuTier);
+                    // Update a namespace
+                    var nsAttribute = Client.UpdateNamespace(ResourceGroup, Namespace, Location, State, Critical, ConvertTagsToDictionary(Tag), SkuTier);
                     WriteObject(nsAttribute);
                 });
         }

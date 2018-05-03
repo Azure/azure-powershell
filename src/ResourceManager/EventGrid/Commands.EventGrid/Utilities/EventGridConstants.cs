@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string EndpointHelp = "Event subscription destination endpoint. This can be a webhook URL or the Azure resource ID of an EventHub.";
 
         public const string TopicInputObject = "EventGrid Topic object.";
+        public const string EventSubscriptionInputObject = "EventGridSubscription object.";
 
         public const string ResourceGroupName = "The name of the resource group";
         public const string TopicName = "The name of the topic";

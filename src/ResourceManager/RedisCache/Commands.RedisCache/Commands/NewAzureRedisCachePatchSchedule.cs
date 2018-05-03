@@ -17,15 +17,17 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Redis.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
     using DayOfWeekEnum = Management.Redis.Models.DayOfWeek;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmRedisCachePatchSchedule"), OutputType(typeof(List<PSScheduleEntry>))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRedisCachePatchSchedule", SupportsShouldProcess = true), OutputType(typeof(List<PSScheduleEntry>))]
     public class NewAzureRedisCachePatchSchedule : RedisCacheCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group in which cache exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -36,10 +38,12 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "List of patch schedules (PSScheduleEntry) that needed to be set on redis cache.")]
         [ValidateNotNullOrEmpty]
         public PSScheduleEntry[] Entries { get; set; }
-        
+
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
+            ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
+            
             // Convert from PSScheduleEntry to ScheduleEntry
             List<ScheduleEntry> requestData = new List<ScheduleEntry>();
             foreach (var schedule in Entries)
@@ -52,18 +56,24 @@ namespace Microsoft.Azure.Commands.RedisCache
                 });
             }
 
-            IList<ScheduleEntry> response = CacheClient.SetPatchSchedules(ResourceGroupName, Name, requestData);
-            List<PSScheduleEntry> returnValue = new List<PSScheduleEntry>();
-            foreach (var schedule in response)
-            {
-                returnValue.Add(new PSScheduleEntry
-                {
-                    DayOfWeek = schedule.DayOfWeek.ToString(),
-                    StartHourUtc = schedule.StartHourUtc,
-                    MaintenanceWindow = schedule.MaintenanceWindow
-                });
-            }
-            WriteObject(returnValue);
+            ConfirmAction(
+              string.Format(Resources.CreatePatchSchedule, Name),
+              Name,
+              () => 
+              {
+                  IList<ScheduleEntry> response = CacheClient.SetPatchSchedules(ResourceGroupName, Name, requestData);
+                  List<PSScheduleEntry> returnValue = new List<PSScheduleEntry>();
+                  foreach (var schedule in response)
+                  {
+                      returnValue.Add(new PSScheduleEntry
+                      {
+                          DayOfWeek = schedule.DayOfWeek.ToString(),
+                          StartHourUtc = schedule.StartHourUtc,
+                          MaintenanceWindow = schedule.MaintenanceWindow
+                      });
+                  }
+                  WriteObject(returnValue);
+              });
         }
     }
 }

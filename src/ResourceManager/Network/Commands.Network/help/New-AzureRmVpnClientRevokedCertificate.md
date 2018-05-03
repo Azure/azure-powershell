@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 973E1E53-983F-45A7-A7CF-18A8D96EC4E6
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvpnclientrevokedcertificate
 schema: 2.0.0
 ---
 

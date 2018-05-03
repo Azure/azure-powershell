@@ -21,8 +21,10 @@ using System.Linq.Expressions;
 using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.Rest.Azure;
@@ -139,32 +141,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         {
             return data.UnFormatArmId(ARMResourceIdPaths.SRSArmUrlPattern)[2];
         }
-
-        public static void GetResourceProviderNamespaceAndType(
-            string resourceId,
-            out string resourceProviderNamespace,
-            out string resourceType)
-        {
-            var armFields = resourceId.Split('/');
-            var dictionary = new Dictionary<string, string>();
-
-            if (armFields.Length % 2 == 0)
-            {
-                throw new Exception("Invalid ARM ID");
-            }
-
-            for (var i = 1; i < armFields.Length; i = i + 2)
-            {
-                dictionary.Add(
-                    armFields[i],
-                    armFields[i + 1]);
-            }
-
-            resourceProviderNamespace = dictionary[ARMResourceTypeConstants.Providers];
-            resourceType = dictionary.ContainsKey("SiteRecoveryVault") ? "SiteRecoveryVault"
-                : "RecoveryServicesVault";
-        }
-
+        
         /// <summary>
         ///     Get Value from ARM ID
         /// </summary>
@@ -305,7 +282,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 multiPropQuery) +
                             " )");
                     }
-                    /*Add DateTime, others if required*/ else
+                    /*Add DateTime, others if required*/
+                    else
                     {
                         if (propValue.ToString()
                             .Contains("Hyak.Common.LazyList"))
@@ -450,6 +428,64 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     asrVaultCreds.ResourceNamespace;
                 PSRecoveryServicesClient.asrVaultCreds.ARMResourceType =
                     asrVaultCreds.ARMResourceType;
+            }
+        }
+
+        /// <summary>
+        ///     Validate the email addresses.
+        /// </summary>
+        /// <param name="emails">list of email addresses.</param>
+        public static void ValidateCustomEmails(string[] emails)
+        {
+            var emailPattern = "^[a-zA-Z0-9\\\".!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]" +
+                "(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9]" +
+                "(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$";
+            var rgx = new Regex(emailPattern);
+
+            if (emails.Length > 20)
+            {
+                throw new InvalidOperationException(
+                    string.Format(Resources.EmailsCountExceeded));
+            }
+
+            foreach (var email in emails)
+            {
+                if (email.Length > 254)
+                {
+                    throw new InvalidOperationException(
+                        string.Format(Resources.EmailLengthExceeded));
+                }
+
+                if (!rgx.IsMatch(email))
+                {
+                    throw new InvalidOperationException(
+                        string.Format(Resources.EmailFormatInvalid));
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Validate the ipaddress or host name.
+        /// </summary>
+        /// <param name="server">ip or hostname.</param>
+        public static void ValidateIpOrHostName(string server)
+        {
+            var ipRegEx = "^([0-9]+).(([0-9]+)|.)*$";
+            var ipReg = new Regex(ipRegEx);
+
+            // Checking for ipv4
+            if (ipReg.IsMatch(server))
+            {
+                var ipAddressRegEX = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}" +
+                    "([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$";
+
+                var ipAddressReg = new Regex(ipAddressRegEX);
+
+                if (!ipAddressReg.IsMatch(server))
+                {
+                    throw new InvalidOperationException(
+                        string.Format(Resources.InvalidIpAddress));
+                }
             }
         }
 

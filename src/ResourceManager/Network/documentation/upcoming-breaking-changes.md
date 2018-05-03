@@ -27,16 +27,19 @@
 
 # Upcoming Breaking Changes
 
-The following cmdlets were affected this release:
+### Release 6.0.0 - May 2018
 
-**(Get/Set/New)-AzureRmApplicationGatewaySslCertificate**
-- Parameter "Password" being replaced in favor of a SecureString
+The following cmdlets were affected by this release:
+
+**New-AzureRmVirtualNetwork**
+
+- Parameter `DdosProtectionPlanId` is now needed to set the switch parameter `EnableDdosProtection`. This was not needed in previous releases.
 
 ```powershell
+# Old:
+New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -EnableDdosProtection 
 
-# Old
-# (Get/Set/New)-AzureRmApplicationGatewaySslCertificate [other required parameters] -Password "plain-text string"
+# New:
 
-# New
-# (Get/Set/New)-AzureRmApplicationGatewaySslCertificate [other required parameters] -Password $SecureStringVariable
+New-AzureRmVirtualNetwork -Name MyVirtualNetwork -ResourceGroupName TestResourceGroup -Location centralus -AddressPrefix "10.0.0.0/16" -DdosProtectionPlanId $ddosPlanId -EnableDdosProtection 
 ```

@@ -83,6 +83,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                         EncryptionEnabled = recPoint.IsSourceVMEncrypted.HasValue ?
                             recPoint.IsSourceVMEncrypted.Value : false,
                         IlrSessionActive = isInstantILRSessionActive,
+                        OriginalSAEnabled = recPoint.OriginalStorageAccountOption.HasValue ?
+                            recPoint.OriginalStorageAccountOption.Value : false,
                     };
                     result.Add(rpBase);
                 }
@@ -180,6 +182,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                     IlrSessionActive = isInstantILRSessionActive,
                     SourceResourceId = item.SourceResourceId,
                     SourceVMStorageType = recPoint.SourceVMStorageType,
+                    OriginalSAEnabled = recPoint.OriginalStorageAccountOption.HasValue ?
+                        recPoint.OriginalStorageAccountOption.Value : false,
                 };
 
                 if (vmResult.EncryptionEnabled && recPoint.KeyAndSecret != null)

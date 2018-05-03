@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 8300B143-E322-419E-BC98-DBA56DD90A59
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermroledefinition
 schema: 2.0.0
 ---
 
@@ -18,12 +19,13 @@ Finally, use this command to create a custom role using role definition.
 
 ### InputFileParameterSet
 ```
-New-AzureRmRoleDefinition [-InputFile] <String> [<CommonParameters>]
+New-AzureRmRoleDefinition [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
-New-AzureRmRoleDefinition [-Role] <PSRoleDefinition> [<CommonParameters>]
+New-AzureRmRoleDefinition [-Role] <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +39,7 @@ The input role definition MUST contain the following properties:
 2) Description: a short description of the role that summarizes the access that the role grants.
 
 3) Actions: the set of operations to which the custom role grants access.
-Use Get-AzureRmProviderOperations to get the operation for Azure resource providers that can be secured using Azure RBAC.
+Use Get-AzureRmProviderOperation to get the operation for Azure resource providers that can be secured using Azure RBAC.
 Following are some valid operation strings:
  - "*/read" grants access to read operations of all Azure resource providers.
  - "Microsoft.Network/*/read" grants access to read operations for all resource types in the Microsoft.Network resource provider of Azure.
@@ -54,33 +56,41 @@ The input role definition MAY contain the following properties:
 
 1) NotActions: the set of operations that must be excluded from the Actions to determine the effective actions for the custom role.
 If there is a specific operation that you do not wish to grant access to in a custom role, it is convenient to use NotActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
+2) DataActions: the set of data operations to which the custom role grants access.
+3) NotDataActions: the set of operations that must be excluded from the DataActions to determine the effective dataactions for the custom role.
+If there is a specific data operation that you do not wish to grant access to in a custom role, it is convenient to use NotDataActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
 
 NOTE: If a user is assigned a role that specifies an operation in NotActions and also assigned another role grants access to the same operation - the user will be able to perform that operation.
 NotActions is not a deny rule - it is simply a convenient way to create a set of allowed operations when specific operations need to be excluded.
 
 Following is a sample json role definition that can be provided as input
-        {
-        "Name": "Contoso On-call",
-        "Description": "Can monitor compute, network and storage, and restart virtual machines",
-        "Actions": \[
-        "Microsoft.Compute/*/read",
-        "Microsoft.Compute/virtualMachines/start/action",
-        "Microsoft.Compute/virtualMachines/restart/action",
-        "Microsoft.Compute/virtualMachines/downloadRemoteDesktopConnectionFile/action",
-        "Microsoft.Network/*/read",
-        "Microsoft.Storage/*/read",
-        "Microsoft.Authorization/*/read",
-        "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
-        "Microsoft.Insights/alertRules/*",
-        "Microsoft.Support/*"
+{
+        "Name": "Updated Role",
+        "Description": "Can monitor all resources and start and restart virtual machines",
+        "Actions":
+        \[
+            "*/read",
+            "Microsoft.ClassicCompute/virtualmachines/restart/action",
+            "Microsoft.ClassicCompute/virtualmachines/start/action"
         \],
-        "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx","/subscriptions/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"\]
-        }
+        "NotActions":
+        \[
+            "*/write"
+        \],
+        "DataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        \],
+        "NotDataActions":
+        \[
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        \],
+        "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\]
+}
 
 ## EXAMPLES
 
-### --------------------------  Create using PSRoleDefinitionObject  --------------------------
+### Create using PSRoleDefinitionObject
 ```
 PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.Id = $null
@@ -99,17 +109,32 @@ PS C:\> $role = Get-AzureRmRoleDefinition -Name "Virtual Machine Contributor"
           PS C:\> $role.Actions.Add("Microsoft.Insights/alertRules/*")
           PS C:\> $role.Actions.Add("Microsoft.Support/*")
           PS C:\> $role.AssignableScopes.Clear()
-          PS C:\> $role.AssignableScopes.Add("/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e")
+          PS C:\> $role.AssignableScopes.Add("/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 
           PS C:\> New-AzureRmRoleDefinition -Role $role
 ```
 
-### --------------------------  Create using JSON file  --------------------------
+### Create using JSON file
 ```
 PS C:\> New-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputFile
 File name containing a single json role definition.
@@ -117,7 +142,7 @@ File name containing a single json role definition.
 ```yaml
 Type: String
 Parameter Sets: InputFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -132,7 +157,7 @@ Role definition object.
 ```yaml
 Type: PSRoleDefinition
 Parameter Sets: RoleDefinitionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -145,6 +170,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

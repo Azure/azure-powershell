@@ -39,7 +39,9 @@ function Test-NetworkSecurityGroupCRUD
         $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create NetworkSecurityGroup
-        $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location
+        $job = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgname -Location $location -AsJob
+		$job | Wait-Job
+		$nsg = $job | Receive-Job
 
         # Get NetworkSecurityGroup
         $getNsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName
@@ -99,7 +101,9 @@ function Test-NetworkSecurityGroupCRUD
         Assert-AreEqual true $delete
 
         # Delete NetworkSecurityGroup
-        $delete = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force
+        $job = Remove-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname -name $nsgName -PassThru -Force -AsJob
+		$job | Wait-Job
+		$delete = $job | Receive-Job
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmNetworkSecurityGroup -ResourceGroupName $rgname
@@ -186,7 +190,9 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
         Assert-AreEqual $list[0].SecurityRules[0].Etag $getNsg.SecurityRules[0].Etag
 
         # Add a network security rule
-        $nsg = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName | Add-AzureRmNetworkSecurityRuleConfig  -Name $securityRule2Name -Description "desciption2" -Protocol Tcp -SourcePortRange "26-43" -DestinationPortRange "45-53" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound | Set-AzureRmNetworkSecurityGroup
+        $job = Get-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $rgName | Add-AzureRmNetworkSecurityRuleConfig  -Name $securityRule2Name -Description "desciption2" -Protocol Tcp -SourcePortRange "26-43" -DestinationPortRange "45-53" -SourceAddressPrefix * -DestinationAddressPrefix * -Access Deny -Priority 122 -Direction Outbound | Set-AzureRmNetworkSecurityGroup -AsJob
+		$job | Wait-Job
+		$nsg = $job | Receive-Job
 		Assert-AreEqual 2 @($nsg.SecurityRules).Count
 		Assert-NotNull $nsg.SecurityRules[1].Etag
 		Assert-AreEqual $securityRule1Name $nsg.SecurityRules[0].Name

@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
-online version: 
+Module Name: AzureRM.RecoveryServices.SiteRecovery
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrrecoverypoint
 schema: 2.0.0
 ---
 
@@ -14,13 +15,14 @@ Gets the available recovery points for a replication protected item.
 ### ByObject (Default)
 ```
 Get-AzureRmRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem <ASRReplicationProtectedItem>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByObjectWithName
 ```
 Get-AzureRmRecoveryServicesAsrRecoveryPoint -Name <String>
- -ReplicationProtectedItem <ASRReplicationProtectedItem> [<CommonParameters>]
+ -ReplicationProtectedItem <ASRReplicationProtectedItem> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +39,27 @@ Gets recovery points for the specified ASR replication protected item.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the recovery point to get.
 
 ```yaml
 Type: String
 Parameter Sets: ByObjectWithName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -58,7 +74,7 @@ Specifies the Azure Site Recovery Replication Protected Item object for which to
 ```yaml
 Type: ASRReplicationProtectedItem
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

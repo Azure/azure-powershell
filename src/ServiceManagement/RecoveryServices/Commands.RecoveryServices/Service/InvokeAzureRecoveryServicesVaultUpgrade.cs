@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     [Cmdlet(VerbsLifecycle.Invoke, "AzureRecoveryServicesVaultUpgrade", SupportsShouldProcess = true)]
     [OutputType(typeof(ASRVaultUpgradeResponse))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class InvokeAzureRecoveryServicesVaultUpgrade : RecoveryServicesCmdletBase
     {
         #region Parameters

@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using Microsoft.Azure.Commands.TrafficManager.Utilities;
     using Microsoft.Rest.Azure;
 
-    using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;   
+    using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public uint? Priority { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The location of the endpoint.")]
+        [LocationCompleter("Microsoft.Network/trafficmanagerprofiles")]
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 

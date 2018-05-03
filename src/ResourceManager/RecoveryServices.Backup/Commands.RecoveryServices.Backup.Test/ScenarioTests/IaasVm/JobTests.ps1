@@ -12,209 +12,185 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$resourceGroupName = "RecoveryServicesBackupTestRg";
-$resourceName = "PsTestRsVault";
-
-#Have to hard-code this because time keeps changing with every run and we cannot use recorded sessions
-$fixedStartDate = Get-Date -Date "2016-10-26 11:30:00Z"
-$fixedStartDate = $fixedStartDate.ToUniversalTime()
-$fixedEndDate = Get-Date -Date "2016-10-27 11:30:00Z"
-$fixedEndDate = $fixedEndDate.ToUniversalTime()
-$waitEndDate = Get-Date -Date "2016-10-28 11:30:00Z"
-$waitEndDate = $waitEndDate.ToUniversalTime()
-
-function SetVaultContext
+function Test-AzureVMGetJobs
 {
-	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $resourceName;
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-}
-
-function Test-GetJobsScenario
-{
-	SetVaultContext;
-	$jobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $fixedEndDate
-	foreach ($job in $jobs)
-	{
-		Assert-NotNull $job.JobId
-		Assert-NotNull $job.Operation
-		Assert-NotNull $job.Status
-		Assert-NotNull $job.WorkloadName
-	}
-}
-
-function Test-GetJobsTimeFilter
-{
-	$endTime = $fixedEndDate;
-	$startTime = $fixedStartDate;
-
-	SetVaultContext;
-
-	$filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $startTime -To $endTime
-
-	# Adding a second here and there to make sure comparison works fine
-	$startTime.AddSeconds(-1);
-	$endTime.AddSeconds(1);
-
-	echo 'EndTime ' + $endTime;
-	echo 'StartTime ' + $startTime;
-
-	foreach ($job in $filteredJobs)
-	{
-		echo $job.StartTime;
-
-		Assert-AreEqual $job.StartTime.ToUniversalTime().CompareTo($startTime) 1
-		Assert-AreEqual $endTime.CompareTo($job.StartTime.ToUniversalTime()) 1
-	}
-
-    #Negative test case
-    # rangeEnd <= rangeStart
-    $failed = 0
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup $location
+	
 	try
-    {
-        $filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $endTime -To $startTime
-        $failed = 1
-    }
-    catch
-    {
-        $failed = 0
-    }
-    Assert-AreEqual $failed 0
+	{
+		# Setup
+		$vm1 = Create-VM $resourceGroupName $location 1
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Enable-Protection $vault $vm1
 
-    # rangeStart.Kind != DateTimeKind.Utc
-    $startTime = (Get-Date).AddDays(-20)
+		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+
+		# Test 1: Triggering a new job increases job count
+
+		$startDate1 = Get-QueryDateInUtc $((Get-Date).AddDays(-1)) "StartDate1"
+		$endDate1 = Get-QueryDateInUtc $(Get-Date) "EndDate1"
+
+		$jobs = Get-AzureRmRecoveryServicesBackupJob -From $startDate1 -To $endDate1
+		$jobCount1 = $jobs.Count
+
+		$vm2 = Create-VM $resourceGroupName $location 2
+		Enable-Protection $vault $vm2
+
+		$endDate2 = Get-QueryDateInUtc $(Get-Date) "EndDate2"
+
+		$jobs = Get-AzureRmRecoveryServicesBackupJob -From $startDate1 -To $endDate2
+		$jobCount2 = $jobs.Count
+
+		Assert-True { $jobCount1 -lt $jobCount2 }
+
+		# Test 2: Job details
+		foreach ($job in $jobs)
+		{
+			$jobDetails = Get-AzureRmRecoveryServicesBackupJobDetails -Job $job;
+			$jobDetails2 = Get-AzureRmRecoveryServicesBackupJobDetails -JobId $job.JobId
+
+			Assert-AreEqual $jobDetails.JobId $job.JobId
+			Assert-AreEqual $jobDetails2.JobId $job.JobId
+		}
+
+		# Test 3: Job Status filter
+		$jobs = Get-AzureRmRecoveryServicesBackupJob -From $startDate1 -To $endDate2 -Status Completed
+		Assert-True { $jobs.Count -gt 0}
+
+		# Test 4: Job Operation filter
+		$jobs = Get-AzureRmRecoveryServicesBackupJob -From $startDate1 -To $endDate2 -Operation ConfigureBackup
+		Assert-True { $jobs.Count -gt 0}
+
+		# Test 5: Job BackupManagementType filter
+		$jobs = Get-AzureRmRecoveryServicesBackupJob -From $startDate1 -To $endDate2 -BackupManagementType AzureVM
+		Assert-True { $jobs.Count -gt 0}
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureVMGetJobsTimeFilter
+{
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup -Location $location
+	
 	try
-    {
-        $filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $startTime -To $endTime
-        $failed = 1
-    }
-    catch
-    {
-        $failed = 0
-    }
-	Assert-AreEqual $failed 0
+	{
+		# Setup
+		$vm1 = Create-VM $resourceGroupName $location 1
+		$vm2 = Create-VM $resourceGroupName $location 2
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Enable-Protection $vault $vm1
+		Enable-Protection $vault $vm2
 
-    #rangeEnd.Subtract(rangeStart) > TimeSpan.FromDays(30)
-    $startTime = (Get-Date).ToUniversalTime().AddDays(-40)
-    $endTime = (Get-Date).ToUniversalTime()
+		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+
+		# Generic time filter test
+
+		$startTime1 = Get-QueryDateInUtc $((Get-Date).AddDays(-1)) "StartTime1"
+		$endTime1 = Get-QueryDateInUtc $(Get-Date) "EndTime1"
+
+		$filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $startTime1 -To $endTime1
+
+		# Adding a second here and there to make sure comparison works fine
+		$startTime1.AddSeconds(-1);
+		$endTime1.AddSeconds(1);
+
+		foreach ($job in $filteredJobs)
+		{
+			Assert-AreEqual $job.StartTime.ToUniversalTime().CompareTo($startTime1) 1
+			Assert-AreEqual $endTime1.CompareTo($job.StartTime.ToUniversalTime()) 1
+		}
+
+		# Negative test cases
+
+		# 1. rangeEnd <= rangeStart
+		Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupJob -From $endTime1 -To $startTime1; } `
+			"To filter should not be less than From filter";
+		
+		# 2. rangeStart.Kind != DateTimeKind.Utc
+		$startTime2 = Get-QueryDateLocal $((Get-Date).AddDays(-20)) "StartTime2"
+		$endTime2 = $endTime1
+		Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupJob -From $startTime2 -To $endTime2 } `
+			"Please specify From and To filter values in UTC. Other timezones are not supported";
+
+		# 3. rangeEnd.Subtract(rangeStart) > TimeSpan.FromDays(30)
+		$startTime3 = Get-QueryDateInUtc $((Get-Date).AddDays(-40)) "StartTime3"
+		$endTime3 = Get-QueryDateInUtc $(Get-Date) "EndTime3"
+		Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupJob -From $startTime3 -To $endTime3 } `
+			"To filter should not be more than 30 days away from From filter";
+
+		# 4. rangeStart > DateTime.UtcNow
+		$startTime4 = Get-QueryDateInUtc $((Get-Date).AddYears(100).AddDays(-1)) "StartTime4"
+		$endTime4 = Get-QueryDateInUtc $((Get-Date).AddYears(100)) "EndTime4"
+		Assert-ThrowsContains { Get-AzureRmRecoveryServicesBackupJob -From $startTime4 -To $endTime4 } `
+			"From date should be less than current UTC time";
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureVMWaitJob
+{
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup -Location $location
+
 	try
-    {
-        $filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $startTime -To $endTime
-        $failed = 1
-    }
-    catch
-    {
-        $failed = 0
-    }
-    Assert-AreEqual $failed 0
+	{
+		# Setup
+		$vm = Create-VM $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$item = Enable-Protection $vault $vm
+		
+		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-    #rangeStart > DateTime.UtcNow
-    $startTime = (Get-Date).ToUniversalTime().AddDays(2)
-    $endTime = (Get-Date).ToUniversalTime().AddDays(5)
+		$backupJob = Backup-AzureRmRecoveryServicesBackupItem -Item $item
+
+		Assert-True { $backupJob.Status -eq "InProgress" }
+
+		$backupJob = Wait-AzureRmRecoveryServicesBackupJob -Job $backupJob
+
+		Assert-True { $backupJob.Status -eq "Completed" }
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
+
+function Test-AzureVMCancelJob
+{
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup -Location $location
+
 	try
-    {
-        $filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $startTime -To $endTime
-        $failed = 1
-    }
-    catch
-    {
-        $failed = 0
-    }
-    Assert-AreEqual $failed 0
-}
-
-function Test-GetJobsStatusFilter
-{
-	$status = "Failed";
-
-	SetVaultContext;
-
-	$filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $fixedEndDate -Status $status;
-
-	foreach ($job in $filteredJobs)
 	{
-		Assert-AreEqual $job.Status $status
+		# Setup
+		$vm = Create-VM $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		$item = Enable-Protection $vault $vm
+		
+		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+
+		$backupJob = Backup-AzureRmRecoveryServicesBackupItem -Item $item
+
+		Assert-True { $backupJob.Status -eq "InProgress" }
+
+		$cancelledJob = Stop-AzureRmRecoveryServicesBackupJob -Job $backupJob
+
+		Assert-True { $cancelledJob.Status -ne "InProgress" }
 	}
-}
-
-function Test-GetJobsOperationFilter
-{
-	$operation = "Backup";
-
-	SetVaultContext;
-
-	$filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $fixedEndDate -Operation $operation;
-
-	foreach ($job in $filteredJobs)
+	finally
 	{
-		Assert-AreEqual $job.Operation $operation
-	}
-}
-
-function Test-GetJobsBackupManagementTypeFilter
-{
-	$type = "AzureVM";
-
-	SetVaultContext;
-
-	$filteredJobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $fixedEndDate -BackupManagementType $type;
-
-	foreach ($job in $filteredJobs)
-	{
-		Assert-AreEqual $job.BackupManagementType $type
-	}
-}
-
-function Test-GetJobDetails
-{
-	SetVaultContext;
-	$jobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $fixedEndDate
-	foreach ($job in $jobs)
-	{
-		$jobDetails = Get-AzureRmRecoveryServicesBackupJobDetails -Job $job;
-		$jobDetails2 = Get-AzureRmRecoveryServicesBackupJobDetails -JobId $job.JobId
-
-		Assert-AreEqual $jobDetails.JobId $job.JobId
-		Assert-AreEqual $jobDetails2.JobId $job.JobId
-
-		break;
-	}
-}
-
-function Test-WaitJobScenario
-{
-	SetVaultContext;
-	$jobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $waitEndDate
-	foreach ($job in $jobs)
-	{
-		$waitedJob = Wait-AzureRmRecoveryServicesBackupJob -Job $job
-		Assert-AreNotEqual $waitedJob.Status "InProgress"
-		Assert-AreNotEqual $waitedJob.Status "Cancelling"
-	}
-	$waitedJobs = Wait-AzureRmRecoveryServicesBackupJob -Job $jobs
-}
-
-function Test-WaitJobPipeScenario
-{
-	SetVaultContext;
-	$waitedJobs = Get-AzureRmRecoveryServicesBackupJob -From $fixedStartDate -To $waitEndDate | Wait-AzureRmRecoveryServicesBackupJob
-	foreach ($waitedJob in $waitedJobs)
-	{
-		Assert-AreNotEqual $waitedJob.Status "InProgress"
-		Assert-AreNotEqual $waitedJob.Status "Cancelling"
-	}
-}
-
-function Test-CancelJobScenario
-{
-	$1fixedStartDate = Get-Date -Date "2016-04-19 17:00:00"
-	$1fixedStartDate = $1fixedStartDate.ToUniversalTime()
-	$1fixedEndDate = Get-Date -Date "2016-04-20 17:00:00"
-	$1fixedEndDate = $1fixedEndDate.ToUniversalTime()
-	SetVaultContext;
-	$runningJobs = Get-AzureRmRecoveryServicesBackupJob -From $1fixedStartDate -To $1fixedEndDate -Status "InProgress" -Operation "Backup"
-	foreach ($runningJob in $runningJobs)
-	{
-		$cancelledJob = Stop-AzureRmRecoveryServicesBackupJob -Job $runningJob
-		Assert-AreNotEqual $cancelledJob.Status "InProgress"
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
 	}
 }

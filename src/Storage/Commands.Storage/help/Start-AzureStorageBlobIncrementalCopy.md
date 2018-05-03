@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/start-azurestorageblobincrementalcopy
 schema: 2.0.0
 ---
 

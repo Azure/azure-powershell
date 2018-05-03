@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -96,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             MNM.TroubleshootingResult troubleshoot = this.NetworkWatcherClient.GetTroubleshooting(resourceGroupName, name, parameters);
 
-            PSTroubleshootResult psTroubleshoot = Mapper.Map<PSTroubleshootResult>(troubleshoot);
+            PSTroubleshootResult psTroubleshoot = NetworkResourceManagerProfile.Mapper.Map<PSTroubleshootResult>(troubleshoot);
             return psTroubleshoot;
         }
     }

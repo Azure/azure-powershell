@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 80AAA327-77C6-4372-9461-FFED5A15E678
-online version: http://go.microsoft.com/fwlink/?LinkId=690296
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 schema: 2.0.0
 ---
 
@@ -14,14 +15,14 @@ Backs up a secret in a key vault.
 
 ### BySecretName (Default)
 ```
-Backup-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-OutputFile] <String>] [-Force] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Backup-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-OutputFile] <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BySecret
 ```
-Backup-AzureKeyVaultSecret [-Secret] <Secret> [[-OutputFile] <String>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Backup-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-OutputFile] <String>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,18 +62,48 @@ This command uses the $secret object's vault name and name to retrieves the secr
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Prompts you for confirmation before overwriting the output file, if that exists.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: False
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Secret to be backed up, pipelined in from the output of a retrieval call.
+
+```yaml
+Type: PSKeyVaultSecretIdentityItem
+Parameter Sets: BySecret
+Aliases: Secret
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -87,7 +118,7 @@ Aliases: SecretName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -99,27 +130,12 @@ If you specify the name of an existing output file, the operation will not compl
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Secret
-Specifies the object whose name and vault should be used for the backup operation.
-
-```yaml
-Type: Secret
-Parameter Sets: BySecret
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -129,12 +145,12 @@ Specifies the name of the key vault that contains the secret to back up.
 ```yaml
 Type: String
 Parameter Sets: BySecretName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -173,6 +189,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

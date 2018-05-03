@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -50,8 +50,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     Region = RecoveryPoint.Location,
                 };
 
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                string azureIaaSVMRecoveryInputsCSMObjectString = serializer.Serialize(azureIaaSVMRecoveryInputsCSMObject);
+                string azureIaaSVMRecoveryInputsCSMObjectString = JsonConvert.SerializeObject(azureIaaSVMRecoveryInputsCSMObject);
 
                 CSMRestoreRequest csmRestoreRequest = new CSMRestoreRequest()
                 {

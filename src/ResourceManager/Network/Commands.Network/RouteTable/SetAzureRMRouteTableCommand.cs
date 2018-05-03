@@ -32,7 +32,7 @@ using System.Management.Automation;
 using AutoMapper;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.Automation
+namespace Microsoft.Azure.Commands.Network
 {
 
     [Cmdlet(VerbsCommon.Set, "AzureRmRouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
@@ -43,6 +43,9 @@ namespace Microsoft.Azure.Commands.Network.Automation
             ValueFromPipeline = true,
             HelpMessage = "The route table")]
         public PSRouteTable RouteTable { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
@@ -65,19 +68,19 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 }
             }
 
-            if(!present)
+            if (!present)
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
             // Map to the sdk object
-            var vRouteTableModel = Mapper.Map<MNM.RouteTable>(this.RouteTable);
+            var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(this.RouteTable);
             vRouteTableModel.Tags = TagsConversionHelper.CreateTagDictionary(this.RouteTable.Tag, validate: true);
             // Execute the PUT RouteTable call
             this.NetworkClient.NetworkManagementClient.RouteTables.CreateOrUpdate(this.RouteTable.ResourceGroupName, this.RouteTable.Name, vRouteTableModel);
 
             var getRouteTable = this.NetworkClient.NetworkManagementClient.RouteTables.Get(this.RouteTable.ResourceGroupName, this.RouteTable.Name);
-            var psRouteTable = Mapper.Map<PSRouteTable>(getRouteTable);
+            var psRouteTable = NetworkResourceManagerProfile.Mapper.Map<PSRouteTable>(getRouteTable);
             psRouteTable.ResourceGroupName = this.RouteTable.ResourceGroupName;
             psRouteTable.Tag = TagsConversionHelper.CreateTagHashtable(getRouteTable.Tags);
             WriteObject(psRouteTable, true);

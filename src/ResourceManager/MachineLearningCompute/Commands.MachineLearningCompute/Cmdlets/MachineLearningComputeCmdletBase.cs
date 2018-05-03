@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         public const string ETagParameterHelpMessage = "The configuration ETag for updates.";
         public const string GlobalServiceConfigurationAdditionalPropertiesHelpMessage = "Additional properties for the global service configuration.";
         public const string SslStatusParameterHelpMessage = "SSL status. Possible values are 'Enabled' and 'Disabled'.";
-        public const string SslCertificateParameterHelpMessage = "The SSL certificate data in PEM format encoded as base64 string.";
-        public const string SslKeyParameterHelpMessage = "The SSL key data in PEM format encoded as base64 string.";
+        public const string SslCertificateParameterHelpMessage = "The SSL certificate data in PEM format.";
+        public const string SslKeyParameterHelpMessage = "The SSL key data in PEM format.";
         public const string SslCNameParameterHelpMessage = "The CName for the SSL certificate.";
-
+        public const string IncludeAllResourcesParameterHelpMessage = "Remove all resources associated with the cluster.";
         public const string ClusterInputObjectAlias = "Cluster";
 
         private IMachineLearningComputeManagementClient machineLearningComputeManagementClient;

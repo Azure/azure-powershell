@@ -281,14 +281,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             ProxyModels.ExitOptions none = new ProxyModels.ExitOptions { JobAction = ProxyModels.JobAction.None };
             ProxyModels.ExitOptions terminate = new ProxyModels.ExitOptions { JobAction = ProxyModels.JobAction.Terminate };
 
-            ProxyModels.CloudTask cloudTask = new ProxyModels.CloudTask {
+            ProxyModels.CloudTask cloudTask = new ProxyModels.CloudTask
+            {
                 Id = "task-1",
-                ExitConditions = new ProxyModels.ExitConditions {
-                ExitCodeRanges = new []{ new ProxyModels.ExitCodeRangeMapping(2, 5, none) },
-                ExitCodes = new[] { new ProxyModels.ExitCodeMapping(4, terminate) },
-                SchedulingError = terminate,
-                DefaultProperty = none,
-            }};
+                ExitConditions = new ProxyModels.ExitConditions
+                {
+                    ExitCodeRanges = new[] { new ProxyModels.ExitCodeRangeMapping(2, 5, none) },
+                    ExitCodes = new[] { new ProxyModels.ExitCodeMapping(4, terminate) },
+                    PreProcessingError = terminate,
+                    FileUploadError = none,
+                    DefaultProperty = none,
+                }
+            };
 
             AzureOperationResponse<ProxyModels.CloudTask, ProxyModels.TaskGetHeaders> response = BatchTestHelpers.CreateCloudTaskGetResponse(cloudTask);
 
@@ -311,7 +315,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             Assert.Equal(psExitConditions.Default.JobAction, JobAction.None);
             Assert.Equal(psExitConditions.ExitCodeRanges.First().ExitOptions.JobAction, JobAction.None);
-            Assert.Equal(psExitConditions.SchedulingError.JobAction, JobAction.Terminate);
+            Assert.Equal(psExitConditions.PreProcessingError.JobAction, JobAction.Terminate);
+            Assert.Equal(psExitConditions.FileUploadError.JobAction, JobAction.None);
 
             Assert.Equal(4, psExitConditions.ExitCodes.First().Code);
             Assert.Equal(JobAction.Terminate, psExitConditions.ExitCodes.First().ExitOptions.JobAction);

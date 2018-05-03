@@ -17,6 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Storage.File;
 
@@ -37,7 +38,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.SpecificParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
-        public override AzureStorageContext Context { get; set; }
+        public override IStorageContext Context { get; set; }
 
         protected FileRequestOptions RequestOptions
         {

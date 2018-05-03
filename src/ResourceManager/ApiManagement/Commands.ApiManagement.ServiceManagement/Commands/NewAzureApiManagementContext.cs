@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.New, "AzureRmApiManagementContext"), OutputType(typeof(PsApiManagementContext))]
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Name of resource group under which an API Management service is deployed.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

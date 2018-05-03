@@ -21,6 +21,7 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.PoolId = "testPool";
             cmdlet.ComputeNodeId = "computeNode1";
             cmdlet.Name = "testUser";
-            cmdlet.Password = "Password1234";
+            cmdlet.Password = "Password1234".ConvertToSecureString();
             cmdlet.ExpiryTime = DateTime.Now.AddDays(1);
 
             string requestPassword = null;
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.ExecuteCmdlet();
 
             // Verify the request parameters match expectations
-            Assert.Equal(cmdlet.Password, requestPassword);
+            Assert.Equal(cmdlet.Password.ConvertToString(), requestPassword);
             Assert.Equal(cmdlet.ExpiryTime, requestExpiryTime);
         }
     }

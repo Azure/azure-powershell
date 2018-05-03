@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The NetworkInterface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -51,7 +54,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var networkInterfaceModel = Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
+            var networkInterfaceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkInterface>(this.NetworkInterface);
 
 			this.NullifyApplicationSecurityGroupIfAbsent(networkInterfaceModel);
 

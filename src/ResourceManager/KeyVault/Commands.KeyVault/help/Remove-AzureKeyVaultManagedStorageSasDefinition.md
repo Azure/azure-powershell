@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+Module Name: AzureRM.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurekeyvaultmanagedstoragesasdefinition
 schema: 2.0.0
 ---
 
@@ -11,9 +12,17 @@ Removes a Key Vault managed Azure Storage SAS definitions.
 
 ## SYNTAX
 
+### ByDefinitionName (Default)
 ```
 Remove-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
- [-Force] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Remove-AzureKeyVaultManagedStorageSasDefinition
+ [-InputObject] <PSKeyVaultManagedStorageSasDefinitionIdentityItem> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,13 +52,28 @@ Cmdlet constructs the FQDN of a managed storage account name from vault name, cu
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByDefinitionName
 Aliases: StorageAccountName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -59,12 +83,27 @@ Do not ask for confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+ManagedStorageSasDefinition object.
+
+```yaml
+Type: PSKeyVaultManagedStorageSasDefinitionIdentityItem
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -74,13 +113,13 @@ Cmdlet constructs the FQDN of a storage sas definition from vault name, currentl
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByDefinitionName
 Aliases: SasDefinitionName
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -91,7 +130,7 @@ If this switch is specified, cmdlet returns the managed storage account that was
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,13 +145,13 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByDefinitionName
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

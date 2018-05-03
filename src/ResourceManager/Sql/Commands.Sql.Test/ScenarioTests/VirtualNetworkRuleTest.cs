@@ -35,21 +35,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip = "Need to re-record tests with latest version of Network management library.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkRuleCreateAndUpdate()
         {
             RunPowerShellTest("Test-CreateAndUpdateVirtualNetworkRule");
         }
 
-        [Fact(Skip = "Need to re-record tests with latest version of Network management library.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkRuleGet()
         {
             RunPowerShellTest("Test-GetVirtualNetworkRule");
         }
 
-        [Fact(Skip = "Need to re-record tests with latest version of Network management library.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkRuleRemove()
         {

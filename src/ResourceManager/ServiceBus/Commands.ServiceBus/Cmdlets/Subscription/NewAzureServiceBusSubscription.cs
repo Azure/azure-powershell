@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
@@ -20,146 +21,108 @@ using System.Xml;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
     /// <summary>
-    /// 'New-AzureRmServiceBusSubscription' Cmdlet creates a new EventHub
+    /// 'New-AzureRmServiceBusSubscription' Cmdlet creates a new Subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.New, ServicebusSubscriptionVerb, SupportsShouldProcess = true), OutputType(typeof(SubscriptionAttributes))]
+    [Cmdlet(VerbsCommon.New, ServicebusSubscriptionVerb, SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionAttributes))]
     public class NewAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "Subscription Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Subscription Name")]
         [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
                 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.")]
         [ValidateNotNullOrEmpty]
         public string AutoDeleteOnIdle { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 dyas")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 dyas")]
         [ValidateNotNullOrEmpty]
         public string DefaultMessageTimeToLive { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "DeadLetteringOnFilterEvaluationExceptions - Value that indicates if a subscription has dead letter support when a message expires.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Dead Lettering On Message Expiration")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public bool? DeadLetteringOnFilterEvaluationExceptions { get; set; }
+        public bool? DeadLetteringOnMessageExpiration { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Dead Lettering On Message Expiration")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+        [Parameter(Mandatory = false, HelpMessage = "Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.")]
+        public SwitchParameter DeadLetteringOnFilterEvaluationExceptions { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public bool? DeadLetteringOnMessageExpiration { get; set; }        
+        public bool? EnableBatchedOperations { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? EnableBatchedOperations { get; set; }        
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IsReadOnly - Value that indicates whether the entity description is read-only.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
-        public bool? IsReadOnly { get; set; }
-
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Lock Duration")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Lock Duration")]
         public string LockDuration { get; set; }
         
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "MaxDeliveryCount - the maximum delivery count. A message is automatically deadlettered after this number of deliveries.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "MaxDeliveryCount - the maximum delivery count. A message is automatically deadlettered after this number of deliveries.")]
         [ValidateNotNullOrEmpty]
         public int? MaxDeliveryCount { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "RequiresSession - the value indicating if this queue requires duplicate detection.")]
-        [ValidateSet("TRUE", "FALSE",
-            IgnoreCase = true)]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "RequiresSession - the value indicating if this queue requires duplicate detection.")]
+        [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public bool? RequiresSession { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Queue/Topic name to forward the messages")]
+        [ValidateNotNullOrEmpty]
+        public string ForwardTo { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Queue/Topic name to forward the Dead Letter message")]
+        [ValidateNotNullOrEmpty]
+        public string ForwardDeadLetteredMessagesTo { get; set; }
 
         public override void ExecuteCmdlet()
         {
             
-            SubscriptionAttributes subAttributes = new SubscriptionAttributes();
-
-            NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
-            
+            PSSubscriptionAttributes subAttributes = new PSSubscriptionAttributes();
+                        
             subAttributes.Name = Name;
             
             if (AutoDeleteOnIdle != null)
-                subAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle;
+            { subAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle; }
 
             if (DefaultMessageTimeToLive != null)
-                subAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive;
+            { subAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive; }
 
             if (LockDuration != null)
-                subAttributes.LockDuration = LockDuration;
+            { subAttributes.LockDuration = LockDuration; }
 
             if (DeadLetteringOnMessageExpiration != null)
-                subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
+            { subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration; }
+
+            subAttributes.DeadLetteringOnFilterEvaluationExceptions = DeadLetteringOnFilterEvaluationExceptions.IsPresent;
 
             if (EnableBatchedOperations != null)
-                subAttributes.EnableBatchedOperations = EnableBatchedOperations;
-
-            if (DeadLetteringOnMessageExpiration != null)
-                subAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;
+            { subAttributes.EnableBatchedOperations = EnableBatchedOperations; }
 
             if (MaxDeliveryCount != null)
-                subAttributes.MaxDeliveryCount = MaxDeliveryCount;
+            { subAttributes.MaxDeliveryCount = MaxDeliveryCount; }
 
             if (RequiresSession != null)
-                subAttributes.RequiresSession = RequiresSession;
+            { subAttributes.RequiresSession = RequiresSession; }
 
-#pragma warning disable 612, 618
-            if (IsReadOnly != null)
-                subAttributes.IsReadOnly = IsReadOnly;
-            if (DeadLetteringOnFilterEvaluationExceptions != null)
-                subAttributes.DeadLetteringOnFilterEvaluationExceptions = DeadLetteringOnFilterEvaluationExceptions;
-            subAttributes.Location = getNamespaceLoc.Location;
-#pragma warning restore 612, 618
+            if (ForwardTo != null)
+            { subAttributes.ForwardTo = ForwardTo; }
+
+            if (ForwardDeadLetteredMessagesTo != null)
+            { subAttributes.ForwardDeadLetteredMessagesTo = ForwardDeadLetteredMessagesTo; }
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateSubscription, Name, Topic,Namespace)))
             {

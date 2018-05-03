@@ -80,12 +80,13 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Adapter
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of ther server</param>
         /// <param name="model">The virtual network rule to create</param>
-        /// <returns>The updated server model</returns>
+        /// <returns>The updated virtual network rule model</returns>
         public AzureSqlServerVirtualNetworkRuleModel UpsertVirtualNetworkRule(AzureSqlServerVirtualNetworkRuleModel model)
         {
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.VirtualNetworkRuleName, new Management.Sql.Models.VirtualNetworkRule()
             {
-                VirtualNetworkSubnetId = model.VirtualNetworkSubnetId
+                VirtualNetworkSubnetId = model.VirtualNetworkSubnetId,
+                IgnoreMissingVnetServiceEndpoint = model.IgnoreMissingVnetServiceEndpoint
             });
             return CreateVirtualNetworkRuleModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
         }
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Adapter
         /// <param name="resourceGroup">The resource group the server is in</param>
         /// <param name="serverName">The name of the server</param>
         /// <param name="resp">The management client server response to convert</param>
-        /// <returns>The converted server model</returns>
+        /// <returns>The converted virtual network rule model</returns>
         private static AzureSqlServerVirtualNetworkRuleModel CreateVirtualNetworkRuleModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.VirtualNetworkRule resp)
         {
             AzureSqlServerVirtualNetworkRuleModel vnetFirewallRuleName = new AzureSqlServerVirtualNetworkRuleModel();
@@ -116,6 +117,8 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Adapter
             vnetFirewallRuleName.ServerName = serverName;
             vnetFirewallRuleName.VirtualNetworkRuleName = resp.Name;
             vnetFirewallRuleName.VirtualNetworkSubnetId = resp.VirtualNetworkSubnetId;
+            vnetFirewallRuleName.IgnoreMissingVnetServiceEndpoint = resp.IgnoreMissingVnetServiceEndpoint;
+            vnetFirewallRuleName.State = resp.State;
 
             return vnetFirewallRuleName;
         }

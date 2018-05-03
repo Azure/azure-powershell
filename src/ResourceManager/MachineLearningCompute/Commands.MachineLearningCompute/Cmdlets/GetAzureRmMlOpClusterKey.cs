@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.MachineLearningCompute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.MachineLearningCompute;
 using Microsoft.Rest.Azure;
@@ -25,18 +26,16 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
     [OutputType(typeof(PSOperationalizationClusterCredentials))]
     public class GetAzureRmMlOpClusterKey : MachineLearningComputeCmdletBase
     {
-        protected const string CmdletParametersParameterSet =
-            "Get operationalization cluster's keys from cmdlet input parameters.";
+        protected const string CmdletParametersParameterSet = "GetByNameAndResourceGroup";
 
-        protected const string ObjectParameterSet =
-            "Get operationalization cluster's keys from an OperationalizationCluster instance definition.";
+        protected const string ObjectParameterSet = "GetByInputObject";
 
-        protected const string ResourceIdParameterSet =
-            "Get operationalization cluster's keys from an Azure resource id.";
+        protected const string ResourceIdParameterSet = "GetByResourceId";
 
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = true,
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

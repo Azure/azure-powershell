@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet;
     using Microsoft.WindowsAzure.Storage.Table;
+    using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Xunit;
     using System;
     using System.Collections.Generic;
 
-    [TestClass]
     public class GetAzureStorageTableStoredAccessPolicyTest : StorageTableStorageTestBase
     {
         public GetAzureStorageTableStoredAccessPolicyCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public GetAzureStorageTableStoredAccessPolicyTest()
         {
             command = new GetAzureStorageTableStoredAccessPolicyCommand(tableMock)
             {
@@ -36,13 +36,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             CurrentTableCmd = command;
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
         public void GetStoredAccessPolicyNotExistsTest()
         {
             AddTestStoredAccessPolicy();
@@ -54,13 +47,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             command.Policy = policyName;
             RunAsyncCommand(() => command.ExecuteCmdlet());
 
-            Assert.AreEqual(0, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(0, MockCmdRunTime.OutputPipeline.Count);
            
             MockCmdRunTime.ResetPipelines();
             clearTest();
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetStoredAccessPolicySuccessTest()
         {
             AddTestStoredAccessPolicy();
@@ -72,13 +66,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             command.Policy = policyName;
             RunAsyncCommand(() => command.ExecuteCmdlet());
 
-            Assert.AreEqual(1, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(1, MockCmdRunTime.OutputPipeline.Count);
 
             MockCmdRunTime.ResetPipelines();
             clearTest();
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllStoredAccessPolicySuccessTest()
         {
             AddTestStoredAccessPolicy();
@@ -88,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             command.Table = tableName;
             RunAsyncCommand(() => command.ExecuteCmdlet());
 
-            Assert.AreEqual(2, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(2, MockCmdRunTime.OutputPipeline.Count);
 
             MockCmdRunTime.ResetPipelines();
             clearTest();

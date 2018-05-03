@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClientAdapterNS;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
@@ -26,7 +26,6 @@ using AzureRestNS = Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using ResourcesNS = Microsoft.Azure.Management.Internal.Resources;
 using SystemNet = System.Net;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -52,12 +51,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             ServiceClientAdapter = new ServiceClientAdapter(DefaultContext);
 
-            WriteDebug("InsideRestore. going to create ResourceManager Client");
+            WriteDebug("Inside Restore. Going to create ResourceClient.");
             RmClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourcesNS.ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             WriteDebug("Client Created successfully");
 
-            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, ThrowTerminatingError);
+            Logger.Instance = new Logger(WriteWarning, WriteDebug, WriteVerbose, WriteError, ThrowTerminatingError);
         }
 
         /// <summary>
@@ -79,11 +78,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// Catches and logs any exception occuring during the execution.
         /// </summary>
         /// <param name="action">Delegate representing the cmdlet processing block</param>
-        protected void ExecutionBlock(Action action)
+        protected void ExecutionBlock(Action action, bool shouldProcess = true)
         {
             try
             {
-                action.Invoke();
+                if (shouldProcess)
+                {
+                    action.Invoke();
+                }
             }
             catch (Exception exception)
             {

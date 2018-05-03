@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: AE7B103B-23ED-4A66-A0DC-14FB0DF38FA8
-online version: http://go.microsoft.com/fwlink/?LinkId=690164
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurermkeyvaultaccesspolicy
 schema: 2.0.0
 ---
 
@@ -12,35 +13,100 @@ Removes all permissions for a user or application from a key vault.
 
 ## SYNTAX
 
-### ByServicePrincipalName
+### ByUserPrincipalName (Default)
 ```
 Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
- -ServicePrincipalName <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByUserPrincipalName
-```
-Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
- -UserPrincipalName <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -UserPrincipalName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectId
 ```
 Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>] -ObjectId <String>
- [-ApplicationId <Guid>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ApplicationId <Guid>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByServicePrincipalName
+```
+Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
+ -ServicePrincipalName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByEmail
 ```
 Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>] -EmailAddress <String>
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ForVault
 ```
 Remove-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <String>]
- [-EnabledForDeployment] [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnabledForDeployment] [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByObjectId
+```
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ObjectId <String> [-ApplicationId <Guid>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByServicePrincipalName
+```
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ServicePrincipalName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByUserPrincipalName
+```
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -UserPrincipalName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByEmail
+```
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -EmailAddress <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectForVault
+```
+Remove-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> [-EnabledForDeployment]
+ [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByObjectId
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> -ObjectId <String> [-ApplicationId <Guid>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByServicePrincipalName
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> -ServicePrincipalName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByUserPrincipalName
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> -UserPrincipalName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByEmail
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> -EmailAddress <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdForVault
+```
+Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> [-EnabledForDeployment]
+ [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,17 +150,32 @@ This command removes permission for the Microsoft.Compute resource provider to g
 ## PARAMETERS
 
 ### -ApplicationId
-For future use.
+Specifies the ID of application whose permissions should be removed
 
 ```yaml
 Type: Guid
-Parameter Sets: ByObjectId
-Aliases: 
+Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -103,58 +184,73 @@ Specifies the user email address of the user whose access you want to remove.
 
 ```yaml
 Type: String
-Parameter Sets: ByEmail
-Aliases: 
+Parameter Sets: ByEmail, InputObjectByEmail, ResourceIdByEmail
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -EnabledForDeployment
-Enables the Microsoft.Compute resource provider to retrieve secrets from this key vault when this key vault is referenced in resource creation, for example when creating a virtual machine.
+If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ForVault
-Aliases: 
+Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -EnabledForDiskEncryption
-Enables the Azure disk encryption service to get secrets and unwrap keys from this key vault.
+If specified, disables the retrieval of secrets from this key vault by Azure Disk Encryption.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ForVault
-Aliases: 
+Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -EnabledForTemplateDeployment
-Enables Azure Resource Manager to get secrets from this key vault when this key vault is referenced in a template deployment.
+If specified, disables the retrieval of secrets from this key vault by Azure Resource Manager when referenced in templates.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ForVault
-Aliases: 
+Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Key Vault object.
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmail, InputObjectForVault
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -163,13 +259,13 @@ Specifies the object ID of the user or service principal in Azure Active Directo
 
 ```yaml
 Type: String
-Parameter Sets: ByObjectId
-Aliases: 
+Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -180,7 +276,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -195,11 +291,26 @@ If not specified, this cmdlet searches for the key vault in the current subscrip
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmail, ForVault
+Aliases:
 
 Required: False
-Position: 2
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmail, ResourceIdForVault
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -211,13 +322,13 @@ Specify the application ID, also known as client ID, registered for the applicat
 
 ```yaml
 Type: String
-Parameter Sets: ByServicePrincipalName
+Parameter Sets: ByServicePrincipalName, InputObjectByServicePrincipalName, ResourceIdByServicePrincipalName
 Aliases: SPN
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -226,13 +337,13 @@ Specifies the user principal name of the user whose access you want to remove.
 
 ```yaml
 Type: String
-Parameter Sets: ByUserPrincipalName
+Parameter Sets: ByUserPrincipalName, InputObjectByUserPrincipalName, ResourceIdByUserPrincipalName
 Aliases: UPN
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -242,13 +353,13 @@ This cmdlet removes permissions for the key vault that this parameter specifies.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmail, ForVault
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -288,9 +399,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## NOTES
 

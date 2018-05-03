@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: A7C287C4-E9FD-407A-91BD-EFA17C33FC8B
-online version: http://go.microsoft.com/fwlink/?LinkID=690161
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/get-azurermkeyvault
 schema: 2.0.0
 ---
 
@@ -12,29 +13,26 @@ Gets key vaults.
 
 ## SYNTAX
 
+### ListAllVaultsInSubscription (Default)
+```
+Get-AzureRmKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### GetVaultByName
 ```
-Get-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [<CommonParameters>]
+Get-AzureRmKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
-Get-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [<CommonParameters>]
-```
-
-### ListVaultsByResourceGroup
-```
-Get-AzureRmKeyVault [-ResourceGroupName] <String> [<CommonParameters>]
+Get-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
 ```
-Get-AzureRmKeyVault [-InRemovedState] [<CommonParameters>]
-```
-
-### ListAllVaultsInSubscription
-```
-Get-AzureRmKeyVault [-Tag <Hashtable>] [<CommonParameters>]
+Get-AzureRmKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,13 +85,28 @@ subscription and in eastus2 region.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InRemovedState
 Specifies whether to show the previously deleted vaults in the output.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedVault, ListAllDeletedVaultsInSubscription
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -108,10 +121,10 @@ The location of the deleted vault.
 ```yaml
 Type: String
 Parameter Sets: ByDeletedVault
-Aliases: 
+Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -123,22 +136,10 @@ Specifies the name of the resource group associated with the key vault or key va
 ```yaml
 Type: String
 Parameter Sets: GetVaultByName
-Aliases: 
+Aliases:
 
 Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ListVaultsByResourceGroup
-Aliases: 
-
-Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -152,7 +153,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: ListAllVaultsInSubscription
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -166,11 +167,23 @@ Specifies the name of the key vault.
 
 ```yaml
 Type: String
-Parameter Sets: GetVaultByName, ByDeletedVault
+Parameter Sets: GetVaultByName
+Aliases: Name
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByDeletedVault
 Aliases: Name
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -181,15 +194,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem]
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem]
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault]
+### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault]
 
 ## NOTES
 

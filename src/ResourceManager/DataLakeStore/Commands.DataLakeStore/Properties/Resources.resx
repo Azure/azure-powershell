@@ -226,7 +226,7 @@
     <value>Failed to move source: '{0}' to destination: '{1}'. Please ensure the file or folder exists at the source and that the destination does not or force was used.</value>
   </data>
   <data name="NoSubscriptionInContext" xml:space="preserve">
-    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login.</value>
   </data>
   <data name="ObsoleteWarningForAclObjects" xml:space="preserve">
     <value>The existing DataLakeStoreItemAcl object will be deprecated in a future release. At that time, this cmdlet will instead accept the output of, and objects in the same format as, Get-AzureRMDataLakeStoreItemAclEntry</value>

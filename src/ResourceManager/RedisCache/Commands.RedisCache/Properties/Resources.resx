@@ -165,4 +165,52 @@
   <data name="PatchScheduleNotFound" xml:space="preserve">
     <value>There are no patch schedules found for redis cache '{0}'.</value>
   </data>
+  <data name="FirewallRuleCreationFailed" xml:space="preserve">
+    <value>Operation to create firewall rule failed.</value>
+  </data>
+  <data name="FirewallRuleNotFound" xml:space="preserve">
+    <value>Cache '{0}' does not have a firewall rule with name '{1}'.</value>
+  </data>
+  <data name="LinkedServerCreationFailed" xml:space="preserve">
+    <value>Operation to link cache '{0}' to cache '{1}' failed.</value>
+  </data>
+  <data name="LinkedServerNotFound" xml:space="preserve">
+    <value>Primary Cache '{0}' does not have link with secondary cache '{1}'.</value>
+  </data>
+  <data name="InvalidRedisCacheId" xml:space="preserve">
+    <value>Redis Cache Id '{0}'is not valid. Redis Cache Id should be of the form "/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group name&gt;/providers/Microsoft.Cache/Redis/&lt;cache name&gt;". </value>
+  </data>
+  <data name="CreatingFirewallRule" xml:space="preserve">
+    <value>Creating firewall rule on Redis Cache '{0}'...</value>
+  </data>
+  <data name="LinkingRedisCache" xml:space="preserve">
+    <value>Linking Redis Cache '{0}' to '{1}'...</value>
+  </data>
+  <data name="RemoveFirewallRule" xml:space="preserve">
+    <value>Removing firewall rule '{0}' from Redis Cache '{1}'...</value>
+  </data>
+  <data name="RemoveLinkedServer" xml:space="preserve">
+    <value>Unlinking Redis Cache '{0}' from '{1}'...</value>
+  </data>
+  <data name="CacheNotFound" xml:space="preserve">
+    <value>Redis Cache with name '{0}' does not exists.</value>
+  </data>
+  <data name="CreatePatchSchedule" xml:space="preserve">
+    <value>Creating patching schedule on redis cache '{0}'...</value>
+  </data>
+  <data name="CreateRedisCache" xml:space="preserve">
+    <value>Creating redis cache '{0}' ...</value>
+  </data>
+  <data name="ExportRedisCache" xml:space="preserve">
+    <value>Exporting data from redis cache '{0}' ...</value>
+  </data>
+  <data name="RemovePatchSchedule" xml:space="preserve">
+    <value>Removing patching schedule from redis cache '{0}'...</value>
+  </data>
+  <data name="SetRedisCacheDiagnostics" xml:space="preserve">
+    <value>Enabling diagnostics on redis cache '{0}' ...</value>
+  </data>
+  <data name="UpdateRedisCache" xml:space="preserve">
+    <value>Updating redis cache '{0}' ...</value>
+  </data>
 </root>

@@ -56,6 +56,9 @@ namespace Microsoft.Azure.Commands.Network
            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -87,7 +90,7 @@ namespace Microsoft.Azure.Commands.Network
                         this.VirtualNetworkGatewayConnection.IpsecPolicies = this.IpsecPolicies;
                     }
 
-                    var vnetGatewayConnectionModel = Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
+                    var vnetGatewayConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGatewayConnection>(this.VirtualNetworkGatewayConnection);
                     vnetGatewayConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.VirtualNetworkGatewayConnection.Tag, validate: true);
                     this.VirtualNetworkGatewayConnectionClient.CreateOrUpdate(
                         this.VirtualNetworkGatewayConnection.ResourceGroupName,

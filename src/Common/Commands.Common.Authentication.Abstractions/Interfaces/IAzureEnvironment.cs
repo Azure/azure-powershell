@@ -108,6 +108,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         string DataLakeEndpointResourceId { get; set; }
 
         /// <summary>
+        /// The token audience required to authenticate with the Azure Batch service
+        /// </summary>
+        string BatchEndpointResourceId { get; set; }
+
+        /// <summary>
         ///  The domain name suffix for Azure DataLake Catalog and Job services
         /// </summary>
         string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }

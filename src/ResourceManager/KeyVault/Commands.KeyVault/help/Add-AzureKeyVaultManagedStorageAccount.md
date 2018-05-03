@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+Module Name: AzureRM.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/add-azurekeyvaultmanagedstorageaccount
 schema: 2.0.0
 ---
 
@@ -14,7 +15,8 @@ Adds an existing Azure Storage Account to the specified key vault for its keys t
 ```
 Add-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String>
  [-AccountResourceId] <String> [-ActiveKeyName] <String> [-DisableAutoRegenerateKey]
- [-RegenerationPeriod <TimeSpan>] [-Disable] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RegenerationPeriod <TimeSpan>] [-Disable] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,13 +97,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -191,6 +193,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -211,6 +228,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

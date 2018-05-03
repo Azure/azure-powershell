@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,29 @@
 -->
 ## Current Release
 
+## Version 4.1.3
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.1.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.1.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.1.0
+* Fixed issue with importing aliases
+
+## Version 4.0.2
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+## Version 4.0.1
+* Fixed assembly loading issue that caused some cmdlets to fail when executing
+
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 3.4.1
 * Added support for Data Disks property in cluster creation
     - Added parameter 'WorkerNodeDataDisksGroups' to the New-AzureHDInsightCluster cmdlet

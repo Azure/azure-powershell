@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
 {
@@ -32,6 +33,12 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
             HelpMessage = "Azure Sql Server Virtual Network Rule name")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkRuleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         /// <summary>
         /// Gets the entity to delete
@@ -55,13 +62,14 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         }
 
         /// <summary>
-        /// Deletes the server.
+        /// Deletes the virtual network rule.
         /// </summary>
-        /// <param name="entity">The server being deleted</param>
-        /// <returns>The server that was deleted</returns>
+        /// <param name="entity">The virtual network rule being deleted</param>
+        /// <returns>The input model</returns>
         protected override IEnumerable<Model.AzureSqlServerVirtualNetworkRuleModel> PersistChanges(IEnumerable<Model.AzureSqlServerVirtualNetworkRuleModel> entity)
         {
             ModelAdapter.RemoveVirtualNetworkRule(this.ResourceGroupName, this.ServerName, this.VirtualNetworkRuleName);
+            entity.First().State = "Deleted";
             return entity;
         }
     }

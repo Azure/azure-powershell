@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 351145AC-7C1E-4EB7-A17D-B8B7D8ED8DAB
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragequeuestoredaccesspolicy
 schema: 2.0.0
 ---
 

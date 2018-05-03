@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: DE2441FC-9504-4F3F-AEAF-37EDCD9B7275
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway
 schema: 2.0.0
 ---
 

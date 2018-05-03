@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: 0671D833-8B3A-4480-A576-92F1A9E8CE92
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry
 schema: 2.0.0
 ---
 
@@ -12,17 +13,18 @@ Modifies an entry in the ACL of a file or folder in Data Lake Store.
 
 ## SYNTAX
 
-### Set ACL Entries using ACL object (Default)
+### SetByACLObject (Default)
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Recurse] [-Concurrency <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Set specific ACE
+### SetSpecificACE
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-AceType] <AceType> [[-Id] <Guid>] [-Permissions] <Permission> [-Default] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AceType] <AceType> [[-Id] <Guid>] [-Permissions] <Permission> [-Default] [-PassThru] [-Recurse]
+ [-Concurrency <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,6 +38,13 @@ PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -A
 ```
 
 This command modifies the ACE for Patti Fuller to have all permissions.
+
+### Example 2: Modify permissions for an ACE recursively
+```
+PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").ObjectId -Permissions All -Recursive -Concurrency 128
+```
+
+This command recursively modifies the ACE for Patti Fuller to have all permissions to root and all its subdirectories and files.
 
 ## PARAMETERS
 
@@ -65,8 +74,8 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: AceType
-Parameter Sets: Set specific ACE
-Aliases: 
+Parameter Sets: SetSpecificACE
+Aliases:
 Accepted values: User, Group, Mask, Other
 
 Required: True
@@ -81,8 +90,8 @@ Specifies the ACL object that contains the entries to modify.
 
 ```yaml
 Type: DataLakeStoreItemAce[]
-Parameter Sets: Set ACL Entries using ACL object
-Aliases: 
+Parameter Sets: SetByACLObject
+Aliases:
 
 Required: True
 Position: 2
@@ -91,13 +100,28 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -Concurrency
+Number of files/directories processed in parallel. Optional: a reasonable default will be selected
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Default
 Indicates that this operation modifies the default ACE from the specified ACL.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Set specific ACE
-Aliases: 
+Parameter Sets: SetSpecificACE
+Aliases:
 
 Required: False
 Position: 4
@@ -106,13 +130,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 Specifies the object ID of the AzureActive Directory user, group, or service principal for which to modify an ACE.
 
 ```yaml
 Type: Guid
-Parameter Sets: Set specific ACE
-Aliases: 
+Parameter Sets: SetSpecificACE
+Aliases:
 
 Required: False
 Position: 3
@@ -127,7 +166,7 @@ Indicates the resulting ACL should be returned.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -142,7 +181,7 @@ Specifies the Data Lake Store path of the item for which to modify an ACE, start
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -166,11 +205,26 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: Permission
-Parameter Sets: Set specific ACE
-Aliases: 
+Parameter Sets: SetSpecificACE
+Aliases:
 
 Required: True
 Position: 4
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Recurse
+Indicates the ACL to be modified recursively to the child subdirectories and files
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -213,7 +267,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### DataLakeStoreItemAce[]
-
 Parameter 'Acl' accepts value of type 'DataLakeStoreItemAce[]' from the pipeline
 
 ## OUTPUTS

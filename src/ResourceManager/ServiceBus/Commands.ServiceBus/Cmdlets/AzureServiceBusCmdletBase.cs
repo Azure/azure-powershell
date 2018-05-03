@@ -16,10 +16,12 @@ using Microsoft.Azure.Commands.ServiceBus;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 using System;
 using System.Xml;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -32,15 +34,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
     public abstract class AzureServiceBusCmdletBase : AzureRMCmdlet
     {
-        public const string InputFileParameterSetName = "InputFileParameterSet";
-        public const string SASRuleParameterSetName = "SASRuleParameterSet";
-        public const string QueueParameterSetName = "QueueParameterSet";
-        public const string TopicParameterSetName = "TopicParameterSet";
-        public const string SubscriptionParameterSetName = "SubscriptionParameterSet";
-        public const string RegenerateKeysSetName = "RegenerateKeysSet";
-
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
-        private Microsoft.Azure.Commands.Servicebus.ServiceBusClient  _client;
+        private Microsoft.Azure.Commands.ServiceBus.ServiceBusClient  _client;
 
         protected const string ServiceBusNamespaceVerb = "AzureRmServiceBusNamespace";
 
@@ -67,6 +62,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string QueueAuthoRuleParameterSet = "QueueAuthorizationRuleSet";
         protected const string TopicAuthoRuleParameterSet = "TopicAuthorizationRuleSet";
         protected const string SubscriptionAuthoRuleParameterSet = "SubscriptionAuthorizationRuleSet";
+        protected const string AliasAuthoRuleParameterSet = "AliasAuthoRuleSet";
+        protected const string AliasCheckNameAvailabilityParameterSet = "AliasCheckNameAvailabilitySet";
+        protected const string NamespaceCheckNameAvailabilityParameterSet = "NamespaceCheckNameAvailabilitySet";
 
         //Parameter sets for InputObjects
         protected const string NamespaceInputObjectParameterSet = "NamespaceInputObjectSet";
@@ -74,13 +72,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicInputObjectParameterSet = "TopicInputObjectSet";
         protected const string SubscriptionInputObjectParameterSet = "SubscriptionInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
+        protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
+
+        //Parameter sets for ResourceID
+        protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
+        protected const string NamespaceResourceIdParameterSet = "NamespaceResourceIdParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
         protected const string QueuePropertiesParameterSet = "QueuePropertiesSet";
         protected const string TopicPropertiesParameterSet = "TopicPropertiesSet";
         protected const string SubscriptionPropertiesParameterSet = "SubscriptionPropertiesSet";
-        protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
+        protected const string GeoDRParameterSet = "GeoDRPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -95,10 +99,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AliasSubscriptionName = "SubscriptionName";
         protected const string AliasSubscriptionObj = "SubscriptionObj";
 
-
         protected const string ServicebusSubscriptionVerb = "AzureRmServiceBusSubscription";
 
         protected const string ServicebusRuleVerb = "AzureRmServiceBusRule";
+
+        protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusGeoDRConfiguration";
+        protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusGeoDRConfigurationFailOver";
+        protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusGeoDRConfigurationBreakPair";
 
         protected struct SKU
         {
@@ -157,13 +164,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             return tspan;
         }
 
-        public Microsoft.Azure.Commands.Servicebus.ServiceBusClient Client
+        public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
         {
             get
             {
                 if (_client == null)
                 {
-                    _client = new Microsoft.Azure.Commands.Servicebus.ServiceBusClient(DefaultContext);
+                    _client = new Microsoft.Azure.Commands.ServiceBus.ServiceBusClient(DefaultContext);
                 }
                 return _client;
             }
@@ -173,7 +180,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
         }
 
-        protected void ExecuteLongRunningCmdletWrap(Func<NamespaceLongRunningOperation> func)
+        protected void ExecuteLongRunningCmdletWrap(Func<PSNamespaceLongRunningOperation> func)
         {
             try
             {
@@ -196,12 +203,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
         }
 
-        protected void WriteProgress(NamespaceLongRunningOperation operation)
+        protected void WriteProgress(PSNamespaceLongRunningOperation operation)
         {
             WriteProgress(new ProgressRecord(0, operation.OperationName, operation.Status.ToString()));
         }
 
-        protected NamespaceLongRunningOperation WaitForOperationToComplete(NamespaceLongRunningOperation longRunningOperation)
+        protected PSNamespaceLongRunningOperation WaitForOperationToComplete(PSNamespaceLongRunningOperation longRunningOperation)
         {
             WriteProgress(longRunningOperation);
 
@@ -242,6 +249,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
 
             return default(T);
+        }
+
+        public ResourceIdentifier GetResourceDetailsFromId(string strResourceId)
+        {
+            ResourceIdentifier returnResourceIdentifier = new ResourceIdentifier(strResourceId);
+            returnResourceIdentifier.ParentResource = Regex.Split(strResourceId, @"/")[8];
+            return returnResourceIdentifier;
         }
 
         #region TagsHelper

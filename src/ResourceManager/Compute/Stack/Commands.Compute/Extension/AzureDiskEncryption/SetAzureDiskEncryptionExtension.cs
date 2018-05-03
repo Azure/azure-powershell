@@ -24,6 +24,7 @@ using System.Globalization;
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
@@ -54,6 +55,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
            Position = 0,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name to which the VM belongs to")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

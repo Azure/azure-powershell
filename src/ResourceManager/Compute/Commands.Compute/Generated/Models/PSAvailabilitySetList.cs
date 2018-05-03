@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
     {
         public PSAvailabilitySet ToPSAvailabilitySet ()
         {
-            return AutoMapper.Mapper.Map<PSAvailabilitySet>(this);
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSAvailabilitySet>(this);
         }
     }
 }

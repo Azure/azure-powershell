@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: AD97BCAF-69BA-4C16-8B57-AB243D796B71
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/new-azurermdnsrecordconfig
 schema: 2.0.0
 ---
 
@@ -14,43 +15,52 @@ Creates a new DNS record local object.
 
 ### A
 ```
-New-AzureRmDnsRecordConfig -Ipv4Address <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Ipv4Address <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Aaaa
 ```
-New-AzureRmDnsRecordConfig -Ipv6Address <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Ipv6Address <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Ns
 ```
-New-AzureRmDnsRecordConfig -Nsdname <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Nsdname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Mx
 ```
-New-AzureRmDnsRecordConfig -Exchange <String> -Preference <UInt16> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Exchange <String> -Preference <UInt16> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Ptr
 ```
-New-AzureRmDnsRecordConfig -Ptrdname <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Ptrdname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Txt
 ```
-New-AzureRmDnsRecordConfig -Value <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Value <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Srv
 ```
 New-AzureRmDnsRecordConfig -Priority <UInt16> -Target <String> -Port <UInt16> -Weight <UInt16>
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### CName
 ```
-New-AzureRmDnsRecordConfig -Cname <String> [<CommonParameters>]
+New-AzureRmDnsRecordConfig -Cname <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### Caa
+```
+New-AzureRmDnsRecordConfig -CaaFlags <Byte> -CaaTag <String> -CaaValue <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -177,6 +187,51 @@ To create a **RecordSet** using only one line of pn_PowerShell_short, or to crea
 
 ## PARAMETERS
 
+### -CaaFlags
+The flags for the CAA record to add. Must be a number between 0 and 255.
+
+```yaml
+Type: Byte
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaaTag
+The tag field of the CAA record to add.
+
+```yaml
+Type: String
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -CaaValue
+The value field for the CAA record to add.
+
+```yaml
+Type: String
+Parameter Sets: Caa
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Cname
 Specifies the domain name for a canonical name (CNAME) record.
 
@@ -189,6 +244,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

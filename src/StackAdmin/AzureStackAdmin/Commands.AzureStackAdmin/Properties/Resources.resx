@@ -235,7 +235,7 @@
     <value>Updating location "{0}".</value>
   </data>
   <data name="InvalidProfile" xml:space="preserve">
-    <value>The Azure profile is invalid. Make sure that you are in the Azure context with the Login-AzureRMAccount cmdlets.</value>
+    <value>The Azure profile is invalid. Make sure that you are in the Azure context with the Connect-AzureRMAccount cmdlet.</value>
   </data>
   <data name="TokenAndAdminUriRequired" xml:space="preserve">
     <value>Both the parameters Token and AdminUri are required.</value>

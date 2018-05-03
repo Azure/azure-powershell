@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
+Module Name: AzureRM.Cdn
 ms.assetid: 7060D3D7-B397-447E-88E3-B6F0D094770D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/new-azurermcdncustomdomain
 schema: 2.0.0
 ---
 
@@ -12,16 +13,17 @@ Creates a custom domain for a CDN endpoint.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 New-AzureRmCdnCustomDomain -HostName <String> -CustomDomainName <String> -EndpointName <String>
- -ProfileName <String> -ResourceGroupName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ProfileName <String> -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
-New-AzureRmCdnCustomDomain -HostName <String> -CustomDomainName <String> -CdnEndpoint <PSEndpoint> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmCdnCustomDomain -HostName <String> -CustomDomainName <String> -CdnEndpoint <PSEndpoint>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,8 +43,8 @@ Specifies the CDN endpoint object to which the custom domain is added.
 
 ```yaml
 Type: PSEndpoint
-Parameter Sets: Parameter Set for object parameters
-Aliases: 
+Parameter Sets: ByObjectParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -57,9 +59,24 @@ Specifies the resource name of the custom domain.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,8 +88,8 @@ Specifies the name of the endpoint.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -87,7 +104,7 @@ Specifies the host name of the custom domain.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -101,8 +118,8 @@ Specifies the name of the profile.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -116,8 +133,8 @@ Specifies the name of the resource group to which the custom domain belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -163,7 +180,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSEndpoint
-
 Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
 
 ## OUTPUTS

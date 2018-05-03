@@ -43,7 +43,7 @@ Param(
   
 
     Write-Host 'Please log into Azure now' -foregroundcolor Green;
-    Login-AzureRmAccount -ErrorAction "Stop" 1> $null;
+    Connect-AzureRmAccount -ErrorAction "Stop" 1> $null;
 
     if($subscriptionId)
     {
@@ -74,7 +74,7 @@ Param(
         if(-not $SvcPrincipals)
         {
             # AAD app wasn't created 
-            Write-Error "Failed to create AAD app $aadAppName. Please log-in to Azure using Login-AzureRmAccount  and try again";
+            Write-Error "Failed to create AAD app $aadAppName. Please log-in to Azure using Connect-AzureRmAccount  and try again";
             return;
         }
         $aadClientID = $servicePrincipal.ApplicationId;

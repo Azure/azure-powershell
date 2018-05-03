@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryUnplannedFailoverJob", DefaultParameterSetName = ASRParameterSets.ByRPId)]
     [OutputType(typeof(ASRJob))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
+        false)]
     public class StartAzureSiteRecoveryUnplannedFailoverJob : RecoveryServicesCmdletBase
     {
         /// <summary>

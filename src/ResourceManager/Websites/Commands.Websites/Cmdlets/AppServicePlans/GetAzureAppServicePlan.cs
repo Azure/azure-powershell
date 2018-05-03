@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 #if NETSTANDARD
 using ServerFarmWithRichSku = Microsoft.Azure.Management.WebSites.Models.AppServicePlan;
@@ -33,13 +34,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// <summary>
     /// this commandlet will let you Get an Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku), typeof(ServerFarmCollection))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAppServicePlan"), OutputType(typeof(AppServicePlan))]
     public class GetAppServicePlanCmdlet : WebAppBaseClientCmdLet
     {
         private const string ParameterSet1 = "S1";
         private const string ParameterSet2 = "S2";
 
         [Parameter(ParameterSetName = ParameterSet1, Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -49,6 +51,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 
 
         [Parameter(ParameterSetName = ParameterSet2, Position = 0, Mandatory = true, HelpMessage = "The location of the app service plan.")]
+        [LocationCompleter("Microsoft.Web/serverfarms")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -97,7 +100,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Where(sf => string.Equals(sf.Name, Name, StringComparison.OrdinalIgnoreCase)).ToArray();
 
-            var list = new List<ServerFarmWithRichSku>();
+            var list = new List<AppServicePlan>();
             for (var i = 0; i < serverFarmResources.Length; i++)
             {
                 var sf = serverFarmResources[i];
@@ -143,8 +146,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Select(sf => sf.ResourceGroupName).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
 
-            var list = new List<ServerFarmWithRichSku>();
-
+            var list = new List<AppServicePlan>();
 
             for (var i = 0; i < resourceGroups.Length; i++)
             {
@@ -183,7 +185,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
                 ResourceType = "Microsoft.Web/ServerFarms"
             }).Where(sf => string.Equals(sf.Location, Location.Replace(" ", string.Empty), StringComparison.OrdinalIgnoreCase)).ToArray();
 
-            var list = new List<ServerFarmWithRichSku>();
+            var list = new List<AppServicePlan>();
             for (var i = 0; i < serverFarmResources.Length; i++)
             {
                 var sf = serverFarmResources[i];

@@ -139,7 +139,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                     }
                 },
                 (op, response) => response.Where(typePred).Where(nameSpacePred).Where(versionPred).Select(
-                     extension => ContextFactory<ExtensionImage, ExtensionImageContext>(extension, op)));
+                     extension => ContextFactory(extension, op,
+                                    ServiceManagementProfile.Mapper.Map<ExtensionImage, ExtensionImageContext>,
+                                    ServiceManagementProfile.Mapper.Map)));
         }
 
         protected override void OnProcessRecord()

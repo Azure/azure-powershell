@@ -43,6 +43,20 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         public string VirtualNetworkSubnetId { get; set; }
 
         /// <summary>
+        /// Create firewall rule before the virtual network vnet service endpoint enabled.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Create firewall rule before the virtual network has vnet service endpoint enabled.")]
+        [ValidateNotNull]
+        public SwitchParameter IgnoreMissingVnetServiceEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Check to see if the Virtual Network Rule already exists for this server
         /// </summary>
         /// <returns>Null if the Virtual Network Rule doesn't exist.  Otherwise throws exception</returns>
@@ -73,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         /// <summary>
         /// Generates the model from user input.
         /// </summary>
-        /// <param name="model">This is null since the server doesn't exist yet</param>
+        /// <param name="model">This is null since the virtual network rule doesn't exist yet</param>
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<Model.AzureSqlServerVirtualNetworkRuleModel> ApplyUserInputToModel(IEnumerable<Model.AzureSqlServerVirtualNetworkRuleModel> model)
         {
@@ -83,13 +97,14 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
                 ResourceGroupName = this.ResourceGroupName.Trim(),
                 ServerName = this.ServerName.Trim(),
                 VirtualNetworkRuleName = this.VirtualNetworkRuleName.Trim(),
-                VirtualNetworkSubnetId = this.VirtualNetworkSubnetId.Trim()
+                VirtualNetworkSubnetId = this.VirtualNetworkSubnetId.Trim(),
+                IgnoreMissingVnetServiceEndpoint = this.IgnoreMissingVnetServiceEndpoint
             });
             return newEntity;
         }
 
         /// <summary>
-        /// Sends the changes to the service -> Creates the server
+        /// Sends the changes to the service -> Creates the virtual network rule
         /// </summary>
         /// <param name="entity">The server to create</param>
         /// <returns>The created server</returns>

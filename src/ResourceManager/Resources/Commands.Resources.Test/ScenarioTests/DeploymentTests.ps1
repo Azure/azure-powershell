@@ -36,6 +36,8 @@ function Test-ValidateDeployment
 <#
 .SYNOPSIS
 Tests deployment via template file and parameter object.
+.DESCRIPTION
+Smoke[Broken]Test
 #>
 function Test-NewDeploymentFromTemplateFile
 {
@@ -70,6 +72,8 @@ function Test-NewDeploymentFromTemplateFile
 <#
 .SYNOPSIS
 Tests cross resource group deployment via template file.
+.DESCRIPTION
+Smoke[Broken]Test
 #>
 function Test-CrossResourceGroupDeploymentFromTemplateFile
 {
@@ -141,6 +145,8 @@ function Test-NestedErrorsDisplayed
 <#
 .SYNOPSIS
 Tests nested deployment.
+.DESCRIPTION
+Smoke[Broken]Test
 #>
 function Test-NestedDeploymentFromTemplateFile
 {
@@ -175,6 +181,8 @@ function Test-NestedDeploymentFromTemplateFile
 <#
 .SYNOPSIS
 Tests save deployment template file.
+.DESCRIPTION
+Smoke[Broken]Test
 #>
 function Test-SaveDeploymentTemplateFile
 {

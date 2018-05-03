@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using Commands.Common.Authentication.Abstractions;
+    using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using System;
     using System.Management.Automation;
@@ -27,17 +28,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The subscription level parameter set.
         /// </summary>
-        internal const string SubscriptionLevelResoruceParameterSet = "Resource that resides at the subscription level.";
+        internal const string SubscriptionLevelResoruceParameterSet = "BySubscriptionLevel";
 
         /// <summary>
         /// The tenant level parameter set.
         /// </summary>
-        internal const string TenantLevelResoruceParameterSet = "Resource that resides at the tenant level.";
+        internal const string TenantLevelResoruceParameterSet = "ByTenantLevel";
 
         /// <summary>
         /// The tenant level parameter set.
         /// </summary>
-        internal const string ResourceIdParameterSet = "The resource Id.";
+        internal const string ResourceIdParameterSet = "ByResourceId";
 
         /// <summary>
         /// Gets or sets the resource Id parameter.
@@ -91,6 +92,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the resource group name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

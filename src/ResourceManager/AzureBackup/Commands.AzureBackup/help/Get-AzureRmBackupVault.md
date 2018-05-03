@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
+Module Name: AzureRM.Backup
 ms.assetid: 95FF3F7A-5CC6-4AA6-A393-5EBB5579D9A2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.backup/get-azurermbackupvault
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Gets Backup vaults.
 ## SYNTAX
 
 ```
-Get-AzureRmBackupVault [[-ResourceGroupName] <String>] [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmBackupVault [[-ResourceGroupName] <String>] [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +72,21 @@ For more information, type `Get-Help Measure-Object`.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the Backup vault that this cmdlet gets.
 If more than one Backup vault has the same name, this cmdlet returns them all.
@@ -106,6 +123,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

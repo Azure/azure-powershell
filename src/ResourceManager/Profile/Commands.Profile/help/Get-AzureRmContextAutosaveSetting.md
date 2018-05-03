@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermcontextautosavesetting
 schema: 2.0.0
 ---
 

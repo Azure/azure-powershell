@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -136,9 +135,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
     public partial class GetAzureRmVmssVM : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
@@ -151,14 +149,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         var result = VirtualMachineScaleSetVMsClient.GetInstanceView(resourceGroupName, vmScaleSetName, instanceId);
                         var psObject = new PSVirtualMachineScaleSetVMInstanceView();
-                        Mapper.Map<VirtualMachineScaleSetVMInstanceView, PSVirtualMachineScaleSetVMInstanceView>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVMInstanceView, PSVirtualMachineScaleSetVMInstanceView>(result, psObject);
                         WriteObject(psObject);
                     }
                     else
                     {
                         var result = VirtualMachineScaleSetVMsClient.Get(resourceGroupName, vmScaleSetName, instanceId);
                         var psObject = new PSVirtualMachineScaleSetVM();
-                        Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
+                        ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVM>(result, psObject);
                         WriteObject(psObject);
                     }
                 }
@@ -179,7 +177,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var psObject = new List<PSVirtualMachineScaleSetVMList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetVM, PSVirtualMachineScaleSetVMList>(r));
                     }
                     WriteObject(psObject, true);
                 }
@@ -189,53 +187,38 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "FriendMethod",
             Position = 1,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "FriendMethod",
             Position = 2,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
-        [AllowNull]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Parameter(
             ParameterSetName = "FriendMethod",
             Position = 3,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         public string InstanceId { get; set; }
 
         [Parameter(
             ParameterSetName = "FriendMethod",
             Mandatory = true)]
-        [AllowNull]
         public SwitchParameter InstanceView { get; set; }
     }
 }

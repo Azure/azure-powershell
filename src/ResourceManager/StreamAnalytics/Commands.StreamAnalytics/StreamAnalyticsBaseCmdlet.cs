@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
     {
         private StreamAnalyticsClient streamAnalyticsClient;
 
-        protected const string StreamAnalyticsObjectsInSubscription = "For stream analytics objects in the given subscription";
-        protected const string StreamAnalyticsObjectsInResourceGroup = "For stream analytics objects in the given resource group";
+        protected const string StreamAnalyticsObjectsInSubscription = "BySubscription";
+        protected const string StreamAnalyticsObjectsInResourceGroup = "ByResourceGroup";
 
         internal StreamAnalyticsClient StreamAnalyticsClient
         {

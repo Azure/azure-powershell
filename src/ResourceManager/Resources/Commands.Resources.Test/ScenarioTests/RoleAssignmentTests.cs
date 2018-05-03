@@ -15,7 +15,7 @@
 
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
@@ -46,6 +46,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletedPrincipals()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletedPrincipals");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
+        public void RaPropertiesValidation() {
+            ResourcesController.NewInstance.RunPsTest("Test-RaPropertiesValidation");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
@@ -57,7 +70,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeleteByPSRoleAssignment()
@@ -95,7 +108,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
-        
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaById()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaById");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScope()
@@ -103,11 +123,39 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
         }
 
+        [Fact(Skip = "Need AD team to re-record")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletionByScopeAtRootScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
+        }
+
+        [Fact(Skip = "Need AD team to re-record")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDelegation()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDelegation");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByUpn");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaGetByScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaGetByScope");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaGetByUPNWithExpandPrincipalGroups()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaGetByUPNWithExpandPrincipalGroups");
         }
 
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
@@ -171,7 +219,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     },
                     // initialize
                     null,
-                    // cleanup 
+                    // cleanup
                     null,
                     TestUtilities.GetCallingClass(),
                     TestUtilities.GetCurrentMethodName() + "_Setup");
@@ -202,7 +250,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                             testFactory.CustomEnvValues[TestEnvironment.AADPasswordKey] = userPass;
                         }
                     },
-                    // cleanup 
+                    // cleanup
                     null,
                     TestUtilities.GetCallingClass(),
                     TestUtilities.GetCurrentMethodName() + "_Test");
@@ -216,7 +264,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     null,
                     // initialize
                     null,
-                    // cleanup 
+                    // cleanup
                     () =>
                     {
                         if (newUser != null)
@@ -227,11 +275,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         if (resourceGroup != null)
                         {
                             controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, roleAssignmentId).ToString();
-                        }                        
+                        }
                     },
                     TestUtilities.GetCallingClass(),
                     TestUtilities.GetCurrentMethodName() + "_Cleanup");
-            }                       
+            }
         }
     }
 }

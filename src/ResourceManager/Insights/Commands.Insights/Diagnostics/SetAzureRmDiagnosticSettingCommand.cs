@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting", SupportsShouldProcess = true), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
         public const string StorageAccountIdParamName = "StorageAccountId";
@@ -171,8 +171,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
             var putParameters = CopySettings(properties);
 
-            ServiceDiagnosticSettingsResource result = this.MonitorManagementClient.ServiceDiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
-            WriteObject(new PSServiceDiagnosticSettings(result));
+            if (ShouldProcess(
+                target: string.Format("Create/update a diagnostic setting for resource Id: {0}", this.ResourceId),
+                action: "Create/update a diagnostic setting"))
+            {
+                ServiceDiagnosticSettingsResource result = this.MonitorManagementClient.ServiceDiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+                WriteObject(new PSServiceDiagnosticSettings(result));
+            }
         }
 
         private static ServiceDiagnosticSettingsResource CopySettings(ServiceDiagnosticSettingsResource properties)

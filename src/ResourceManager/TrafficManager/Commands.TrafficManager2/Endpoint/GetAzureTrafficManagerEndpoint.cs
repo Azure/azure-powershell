@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.TrafficManager.Models;
 using Microsoft.Azure.Commands.TrafficManager.Utilities;
 using System.Management.Automation;
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.", ParameterSetName = "Fields")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

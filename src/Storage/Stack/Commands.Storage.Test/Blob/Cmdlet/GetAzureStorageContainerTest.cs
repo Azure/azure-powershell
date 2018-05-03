@@ -15,17 +15,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
 {
     /// <summary>
     /// Unit test for get azure storage container cmdlet
     /// </summary>
-    [TestClass]
     public class GetAzureStorageContainerTest : StorageBlobTestBase
     {
         /// <summary>
@@ -33,8 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
         /// </summary>
         private GetAzureStorageContainerCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public GetAzureStorageContainerTest()
         {
             command = new GetAzureStorageContainerCommand(BlobMock)
             {
@@ -43,13 +42,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
             CurrentBlobCmd = command;
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListContainersByNameWithInvalidNameTest()
         {
             string invalidName = "a";
@@ -60,16 +54,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.InvalidContainerName, invalidName));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListContainersByNameWithContainerNameTest()
         {
             AddTestContainers();
             IEnumerable<Tuple<CloudBlobContainer, BlobContinuationToken>> containerList = command.ListContainersByName("text");
-            Assert.AreEqual(1, containerList.Count());
-            Assert.AreEqual("text", containerList.First().Item1.Name);
+            Assert.Equal(1, containerList.Count());
+            Assert.Equal("text", containerList.First().Item1.Name);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListContainersByNameWithNotExistingContainerTest()
         {
             string notExistingName = "abcdefg";
@@ -77,7 +73,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
                 String.Format(Resources.ContainerNotFound, notExistingName));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListContainerByPrefixWithInvalidPrefixTest()
         {
             MockCmdRunTime.ResetPipelines();
@@ -85,27 +82,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob.Cmdlet
             AssertThrows<ArgumentException>(() => RunAsyncCommand(() => command.ListContainersByPrefix(prefix).ToList()), String.Format(Resources.InvalidContainerName, prefix));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PackCloudBlobContainerWithAclTest()
         {
             RunAsyncCommand(() => command.PackCloudBlobContainerWithAcl(null));
-            Assert.IsFalse(MockCmdRunTime.OutputPipeline.Any());
+            Assert.False(MockCmdRunTime.OutputPipeline.Any());
 
             RunAsyncCommand(() => command.PackCloudBlobContainerWithAcl(BlobMock.ContainerAndTokenList));
-            Assert.IsFalse(MockCmdRunTime.OutputPipeline.Any());
+            Assert.False(MockCmdRunTime.OutputPipeline.Any());
 
             AddTestContainers();
             RunAsyncCommand(() => command.PackCloudBlobContainerWithAcl(BlobMock.ContainerAndTokenList));
-            Assert.AreEqual(5, MockCmdRunTime.OutputPipeline.Count());
+            Assert.Equal(5, MockCmdRunTime.OutputPipeline.Count());
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExecuteCommandGetContainerTest()
         {
             AddTestContainers();
             command.Name = "test";
             RunAsyncCommand(() => command.ExecuteCmdlet());
-            Assert.AreEqual(1, MockCmdRunTime.OutputPipeline.Count);
+            Assert.Equal(1, MockCmdRunTime.OutputPipeline.Count);
         }
     }
 }

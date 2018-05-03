@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.RecoveryServices.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets Resource Group name.
         /// </summary>
         [Parameter]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         /// <summary>

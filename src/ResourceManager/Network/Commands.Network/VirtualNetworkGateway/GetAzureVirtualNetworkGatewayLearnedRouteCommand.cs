@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -35,8 +36,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual network gateway resource group's name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
@@ -45,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
             List<PSGatewayRoute> advertisedRoutes = new List<PSGatewayRoute>();
             foreach (var route in this.VirtualNetworkGatewayClient.GetLearnedRoutes(this.ResourceGroupName, this.VirtualNetworkGatewayName).Value)
             {
-                advertisedRoutes.Add(Mapper.Map<PSGatewayRoute>(route));
+                advertisedRoutes.Add(NetworkResourceManagerProfile.Mapper.Map<PSGatewayRoute>(route));
             }
 
             WriteObject(advertisedRoutes, true);

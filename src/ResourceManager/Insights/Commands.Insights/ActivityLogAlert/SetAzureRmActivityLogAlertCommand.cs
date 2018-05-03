@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Collections.Generic;
@@ -26,9 +27,9 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     [Cmdlet(VerbsCommon.Set, "AzureRmActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
     public class SetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
-        internal const string SetActivityLogAlertDefaultParamGroup = "Default parameters for set activity log alert";
-        internal const string SetActivityLogAlertFromPipeParamGroup = "Parameters to set an activity log alerts taking value from the pipe";
-        internal const string SetActivityLogAlertFromResourceIdParamGroup = "Parameters to set an activity log alerts taking the value of ResourceId from the pipe";
+        internal const string SetActivityLogAlertDefaultParamGroup = "SetByNameAndResourceGroup";
+        internal const string SetActivityLogAlertFromPipeParamGroup = "SetByInputObject";
+        internal const string SetActivityLogAlertFromResourceIdParamGroup = "SetByResourceId";
 
         #region Cmdlet parameters
 
@@ -37,6 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// </summary>
         [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the activity log rule resource")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the activity log rule resource")]
+        [LocationCompleter("Microsoft.Insights/activityLogAlerts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -51,6 +53,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// Gets or set the resource group name
         /// </summary>
         [Parameter(ParameterSetName = SetActivityLogAlertDefaultParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name of the activity log rule resource")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

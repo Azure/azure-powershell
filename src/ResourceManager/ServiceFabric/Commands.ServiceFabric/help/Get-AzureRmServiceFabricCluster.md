@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-online version: 
+Module Name: AzureRM.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/get-azurermservicefabriccluster
 schema: 2.0.0
 ---
 
@@ -11,12 +12,25 @@ Get the cluster resource details.
 
 ## SYNTAX
 
+### BySubscription (Default)
 ```
-Get-AzureRmServiceFabricCluster [[-ResourceGroupName] <String>] [[-Name] <String>] [<CommonParameters>]
+Get-AzureRmServiceFabricCluster [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceGroup
+```
+Get-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByName
+```
+Get-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmServiceFabricCluster** will get the cluster resource details.
+The **Get-AzureRmServiceFabricCluster** will get the cluster resource details.
 
 ## EXAMPLES
 
@@ -29,15 +43,30 @@ This command will get the cluster resource details for cluster 'myCluster'.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specify the name of the cluster.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByName
 Aliases: ClusterName
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -49,10 +78,10 @@ Specifies the name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByResourceGroup, ByName
 Aliases: 
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)

@@ -28,7 +28,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <summary>
         /// The number of target dedicated compute nodes.
         /// </summary>
-        public int TargetDedicated { get; set; }
+        public int? TargetDedicatedComputeNodes { get; set; }
+
+        /// <summary>
+        /// The number of target dedicated compute nodes.
+        /// </summary>
+        public int? TargetLowPriorityComputeNodes { get; set; }
 
         /// <summary>
         /// The resize timeout.  If the pool has not reached the targets after this time the resize is automatically stopped.

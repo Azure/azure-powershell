@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <summary>
         /// Gets or sets the state of the auditing policy
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The state of the auditing policy")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.StateHelpMessage)]
         [ValidateSet(SecurityConstants.Enabled, SecurityConstants.Disabled, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <summary>
         ///  Defines the set of audit action groups that would be used by the auditing settings
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The set of the audit action groups")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditActionGroupsHelpMessage)]
         public AuditActionGroups[] AuditActionGroup { get; set; }
 
         /// <summary>
@@ -50,14 +50,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <summary>
         /// Gets or sets the name of the storage account to use.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the storage account")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the storage account to use.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the storage key")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.StorageKeyTypeHelpMessage)]
         [ValidateSet(SecurityConstants.Primary, SecurityConstants.Secondary, IgnoreCase = false)]
         [ValidateNotNullOrEmpty]
         public string StorageKeyType { get; set; }
@@ -65,8 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <summary>
         /// Gets or sets the number of retention days for the audit logs.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The number of retention days for the audit logs")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.RetentionInDaysHelpMessage)]
         [ValidateNotNullOrEmpty]
         public uint? RetentionInDays { get; internal set; }
 

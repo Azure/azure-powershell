@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 23DB0AD2-7EB7-4373-BB8D-BB6CB651DD54
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/new-azurermtag
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Creates a predefined Azure tag or adds values to an existing tag.
 ## SYNTAX
 
 ```
-New-AzureRmTag [-Name] <String> [[-Value] <String>] [<CommonParameters>]
+New-AzureRmTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +46,7 @@ When you apply the Department tag to a resource, you apply only one predefined v
 ### Example 1: Create a predefined tag
 ```
 PS C:\>New-AzureRmTag -Name "FY2015"
-Name:   Department
+Name:   FY2015
 Count:  0
 Values: 
 
@@ -81,7 +83,8 @@ Count:  0
 Values: 
         Name        Count
         =========   =====
-        Finance     0 PS C:\>New-AzureRmTag -Name "Department" -Value "IT"
+        Finance     0 
+PS C:\>New-AzureRmTag -Name "Department" -Value "IT"
 Name:   Department
 Count:  0
 Values: 
@@ -102,7 +105,8 @@ Count:  0
 Values: 
         Name        Count
         =========   =====
-        0001        0 PS C:\>Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
+        0001        0 
+PS C:\>Set-AzureRmResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -115,13 +119,15 @@ Resources:
 Tags: 
     Name         Value
     ==========   =====
-    CostCenter   0001 PS C:\>Get-AzureRmTag -Name "CostCenter"
+    CostCenter   0001 
+PS C:\>Get-AzureRmTag -Name "CostCenter"
 Name:   CostCenter
 Count:  1
 Values: 
         Name        Count
         =========   =====
-        0001        1 PS C:\>Get-AzureRmResourceGroup -Tag @{Name="CostCenter"}
+        0001        1 
+PS C:\>Get-AzureRmResourceGroup -Tag @{Name="CostCenter"}
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -140,6 +146,21 @@ Tags:
 The commands in this example create and use a predefined tag.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the tag name.

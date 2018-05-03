@@ -16,108 +16,61 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands
 {
     /// <summary>
     /// 'Set-AzureRmServiceBusAuthorizationRule' Cmdlet updates the specified AuthorizationRule
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Set, ServiceBusAuthorizationRuleVerb, DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class SetAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1, ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "Namespace Name.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = QueueAuthoRuleParameterSet)]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, ParameterSetName = TopicAuthoRuleParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = QueueAuthoRuleParameterSet,
-            HelpMessage = "Queue Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Queue Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasQueueName)]
         public string Queue { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2, ParameterSetName = TopicAuthoRuleParameterSet,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicName)]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "AuthorizationRule Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "AuthorizationRule Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipeline = true,
-            Position = 4,
-            ParameterSetName = AuthoRuleInputObjectParameterSet,
-            HelpMessage = "ServiceBus AuthorizationRule Object.")]
-        [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 4,
-            ParameterSetName = NamespaceAuthoRuleParameterSet,
-            HelpMessage = "ServiceBus AuthorizationRule Object.")]
-        [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 4,
-            ParameterSetName = QueueAuthoRuleParameterSet,
-            HelpMessage = "ServiceBus AuthorizationRule Object.")]
-        [Parameter(Mandatory = false,
-            ValueFromPipeline = true,
-            Position = 4,
-            ParameterSetName = TopicAuthoRuleParameterSet,
-            HelpMessage = "ServiceBus AuthorizationRule Object.")]
+        [Parameter(Mandatory = true, ParameterSetName = AuthoRuleInputObjectParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "ServiceBus AuthorizationRule Object")]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "ServiceBus AuthorizationRule Object")]
+        [Parameter(Mandatory = false, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "ServiceBus AuthorizationRule Object")]
+        [Parameter(Mandatory = false, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipeline = true, Position = 4, HelpMessage = "ServiceBus AuthorizationRule Object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
-        public SharedAccessAuthorizationRuleAttributes InputObject { get; set; }
-
-        [Parameter(Mandatory = true,
-            Position = 4,
-            ParameterSetName = AuthoRulePropertiesParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
-        [Parameter(Mandatory = false,
-            Position = 4,
-            ParameterSetName = NamespaceAuthoRuleParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
-        [Parameter(Mandatory = false,
-            Position = 4,
-            ParameterSetName = QueueAuthoRuleParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
-        [Parameter(Mandatory = false,
-            Position = 4,
-            ParameterSetName = TopicAuthoRuleParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        public PSSharedAccessAuthorizationRuleAttributes InputObject { get; set; }
+        
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [Parameter(Mandatory = false, ParameterSetName = QueueAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
+        [Parameter(Mandatory = false, ParameterSetName = TopicAuthoRuleParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rights, e.g.  @(\"Listen\",\"Send\",\"Manage\")")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Listen", "Send", "Manage",
-            IgnoreCase = true)]
+        [ValidateSet("Listen", "Send", "Manage", IgnoreCase = true)]
         public string[] Rights { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SharedAccessAuthorizationRuleAttributes sasRule = new SharedAccessAuthorizationRuleAttributes();
+            PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
 
             if (InputObject != null)
             {
@@ -133,8 +86,33 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                     }
             }
 
+            if (ParameterSetName.Equals(AuthoRuleInputObjectParameterSet))
+            {
+                if (Topic != null)
+                {
+                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateTopicAuthorizationrule, Name, Topic)))
+                    {
+                        WriteObject(Client.CreateOrUpdateServiceBusTopicAuthorizationRules(ResourceGroupName, Namespace, Topic, Name, sasRule));
+                    }
+                }
+                else if (Queue != null)
+                {
+                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateQueueAuthorizationrule, Name, Queue)))
+                    {
+                        WriteObject(Client.CreateOrUpdateServiceBusQueueAuthorizationRules(ResourceGroupName, Namespace, Queue, Name, sasRule));
+                    }
+                }
+                else if (Namespace != null)
+                {
+                    if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateNamespaceAuthorizationrule, Name, Namespace)))
+                    {
+                        WriteObject(Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name, sasRule));
+                    }
+                }
+            }
+
             // update Namespace Authorization Rule
-            if (ParameterSetName == NamespaceAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateNamespaceAuthorizationrule, Name, Namespace)))
                 {
@@ -144,7 +122,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
 
             // Update Topic authorizationRule
-            if (ParameterSetName == QueueAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(QueueAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateQueueAuthorizationrule, Name, Queue)))
                 {
@@ -153,7 +131,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
 
             // Update Topic authorizationRule
-            if (ParameterSetName == TopicAuthoRuleParameterSet)
+            if (ParameterSetName.Equals(TopicAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: sasRule.Name, action: string.Format(Resources.UpdateTopicAuthorizationrule, Name, Topic)))
                 {

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: 7A929BA8-02D9-4BBE-AFF3-B8781F8DDAD9
-online version: http://go.microsoft.com/fwlink/?LinkId=690162
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/remove-azurermkeyvault
 schema: 2.0.0
 ---
 
@@ -12,16 +13,40 @@ Deletes a key vault.
 
 ## SYNTAX
 
-### ByAvailableVault
+### ByAvailableVault (Default)
 ```
 Remove-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>] [[-Location] <String>] [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
-Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-Force] [-InRemovedState] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByAvailableVault
+```
+Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectByDeletedVault
+```
+Remove-AzureRmKeyVault [-InputObject] <PSKeyVault> [-InRemovedState] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByAvailableVault
+```
+Remove-AzureRmKeyVault [-ResourceId] <String> [[-Location] <String>] [-Force] [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdByDeletedVault
+```
+Remove-AzureRmKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedState] [-Force] [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,14 +74,13 @@ If you do not specify the resource group name, the cmdlet searches for the named
 
 ## PARAMETERS
 
-### -Force
-Indicates that the cmdlet does not prompt you for confirmation.
-By default, this cmdlet prompts you to confirm that you want to delete the key vault.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -65,15 +89,61 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Indicates that the cmdlet does not prompt you for confirmation.
+By default, this cmdlet prompts you to confirm that you want to delete the key vault.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Key Vault object to be deleted.
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: InputObjectByAvailableVault, InputObjectByDeletedVault
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InRemovedState
 Remove the previously deleted vault permanently.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByDeletedVault
-Aliases: 
+Parameter Sets: ByDeletedVault, InputObjectByDeletedVault, ResourceIdByDeletedVault
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -85,25 +155,40 @@ The location of the deleted vault.
 
 ```yaml
 Type: String
-Parameter Sets: ByAvailableVault
-Aliases: 
+Parameter Sets: ByAvailableVault, ResourceIdByAvailableVault
+Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ```yaml
 Type: String
-Parameter Sets: ByDeletedVault
-Aliases: 
+Parameter Sets: ByDeletedVault, ResourceIdByDeletedVault
+Aliases:
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -113,10 +198,25 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: ByAvailableVault
-Aliases: 
+Aliases:
 
 Required: False
-Position: 2
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Resource Id.
+
+```yaml
+Type: String
+Parameter Sets: ResourceIdByAvailableVault, ResourceIdByDeletedVault
+Aliases:
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -127,13 +227,13 @@ Specifies the name of the key vault to remove.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByAvailableVault, ByDeletedVault
+Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -174,7 +274,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

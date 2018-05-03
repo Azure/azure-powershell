@@ -990,9 +990,9 @@ function Test-LoadBalancer-NicAssociation
         Assert-AreEqual "Succeeded" $lb.ProvisioningState
         Assert-AreEqual 1 @($lb.FrontendIPConfigurations).Count
 
-        Assert-Null $lb.InboundNatRules[0].BackendIPConfiguration
-        Assert-Null $lb.InboundNatRules[1].BackendIPConfiguration
-        Assert-AreEqual 0 @($lb.BackendAddressPools[0].BackendIpConfigurations).Count
+        Assert-NotNull $lb.InboundNatRules[0].BackendIPConfiguration
+        Assert-NotNull $lb.InboundNatRules[1].BackendIPConfiguration
+        Assert-AreEqual 2 @($lb.BackendAddressPools[0].BackendIpConfigurations).Count
 
         # Create 3 network interfaces and accociate to loadbalancer
         $nic1 = New-AzureRmNetworkInterface -Name $nicname1 -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0]
@@ -1084,10 +1084,6 @@ function Test-LoadBalancer-NicAssociationDuringCreate
         Assert-AreEqual "Succeeded" $lb.ProvisioningState
         Assert-AreEqual 1 @($lb.FrontendIPConfigurations).Count
 
-        Assert-Null $lb.InboundNatRules[0].BackendIPConfiguration
-        Assert-Null $lb.InboundNatRules[1].BackendIPConfiguration
-        Assert-AreEqual 0 @($lb.BackendAddressPools[0].BackendIpConfigurations).Count
-
         # Create 3 network interfaces and accociate to loadbalancer
         $nic1 = New-AzureRmNetworkInterface -Name $nicname1 -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -LoadBalancerBackendAddressPool $lb.BackendAddressPools[0] -LoadBalancerInboundNatRule $lb.InboundNatRules[0]
         $nic2 = New-AzureRmNetworkInterface -Name $nicname2 -ResourceGroupName $rgname -Location $location -SubnetId $vnet.Subnets[0].Id -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].Id
@@ -1156,7 +1152,7 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB
 
         # Test InboundNatPool cmdlets
         $inboundNatPoolName = Get-ResourceName
-        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname 
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
         $lb = $lb | Add-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370 | Set-AzureRmLoadBalancer
 
         Assert-AreEqual 1 @($lb.InboundNatPools).Count

@@ -12,18 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
 {
     /// <summary>
     /// unit test for ResourceAlreadyExistException
     /// </summary>
-    [TestClass]
     public class ResourceAlreadyExistExceptionTest : StorageTestBase
     {
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceAlreadyExistExceptionInitTest()
         {
             string message = string.Empty;

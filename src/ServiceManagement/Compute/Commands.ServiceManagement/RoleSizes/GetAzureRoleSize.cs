@@ -46,7 +46,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 () => this.ManagementClient.RoleSizes.List(),
                 (op, response) => response.RoleSizes.Where(roleSize => string.IsNullOrEmpty(this.InstanceSize) ||
                                                                        string.Equals(this.InstanceSize, roleSize.Name, StringComparison.OrdinalIgnoreCase))
-                                                    .Select(roleSize => ContextFactory<RoleSizeListResponse.RoleSize, RoleSizeContext>(roleSize, op)));
+                                                    .Select(roleSize => ContextFactory(roleSize, op,
+                                                                            ServiceManagementProfile.Mapper.Map<RoleSizeListResponse.RoleSize, RoleSizeContext>,
+                                                                            ServiceManagementProfile.Mapper.Map)));
         }
     }
 }

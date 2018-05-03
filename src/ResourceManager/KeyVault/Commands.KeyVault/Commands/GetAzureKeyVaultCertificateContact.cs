@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -23,14 +24,15 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Get-AzureKeyVaultCertificateContact gets the list of contacts for certificate objects in key vault.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateContact,        
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<KeyVaultCertificateContact>))]
+        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
     public class GetAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string ByVaultNameParameterSet = "VaultName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -42,16 +44,47 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    ParameterSetName = ByVaultNameParameterSet,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
+        /// <summary>
+        /// InputObject
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByInputObjectParameterSet,
+                   Position = 0,
+                   ValueFromPipeline = true,
+                   HelpMessage = "KeyVault object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVault InputObject { get; set; }
+
+        /// <summary>
+        /// ResourceId
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ByResourceIdParameterSet,
+                   Position = 0,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            Contacts contacts;
+            IEnumerable<PSKeyVaultCertificateContact> contacts;
+
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName.ToString();
+            }
+            else if (!string.IsNullOrEmpty(ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                VaultName = parsedResourceId.ResourceName;
+            }
 
             try
             {
@@ -67,20 +100,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 contacts = null;
             }
 
-            if (contacts == null ||
-                contacts.ContactList == null)
-            {
-                return;
-            }
-
-            var contactsModel = new List<KeyVaultCertificateContact>();
-
-            foreach (var contact in contacts.ContactList)
-            {
-                contactsModel.Add(KeyVaultCertificateContact.FromKVCertificateContact(contact));
-            }
-
-            this.WriteObject(contactsModel);
+            this.WriteObject(contacts, true);
         }
     }
 }

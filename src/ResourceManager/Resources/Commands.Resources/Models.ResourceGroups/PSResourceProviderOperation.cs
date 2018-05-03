@@ -43,5 +43,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Gets or sets the name of the operation description.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the isdataaction.
+        /// </summary>
+        public bool IsDataAction { get; set; }
     }
 }

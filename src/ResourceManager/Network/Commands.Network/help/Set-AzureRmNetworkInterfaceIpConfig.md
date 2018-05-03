@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 13EF1028-43DE-424D-8185-EC45B5CEF2C1
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -62,7 +62,7 @@ The first two commands get a virtual network called myvnet and a subnet called m
     have been made successfully.
     
 
-### 2: Associating an IP configuration with an applicaiton security groupp
+### 2: Associating an IP configuration with an application security group
 ```
 $vnet = Get-AzureRmVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet

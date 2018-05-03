@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 7EC4C642-1D23-4699-AE00-6E180C38271E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/add-azurermapplicationgatewaysslcertificate
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Adds an SSL certificate to an application gateway.
 
 ```
 Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway <PSApplicationGateway> -Name <String>
- -CertificateFile <String> -Password <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -CertificateFile <String> -Password <SecureString> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,8 +26,9 @@ The **Add-AzureRmApplicationGatewaySslCertificate** cmdlet adds an SSL certifica
 
 ### Example 1: Add an SSL certificate to an application gateway.
 ```
-PS C:\>$AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password "Password01"
+PS C:\> $AppGW = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+PS C:\> $password = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+PS C:\> $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert01" -CertificateFile "D:\cert01.pfx" -Password $password
 ```
 
 This command gets an application gateway named ApplicationGateway01 and then adds an SSL certificate named Cert01 to it.
@@ -97,7 +99,7 @@ Accept wildcard characters: False
 Specifies the password of the SSL certificate that this cmdlet adds.
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases: 
 

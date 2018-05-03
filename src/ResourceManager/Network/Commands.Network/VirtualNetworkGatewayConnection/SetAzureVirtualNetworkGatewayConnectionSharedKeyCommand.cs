@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
@@ -71,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGatewayConnectionSharedKey.Value = Value;
 
             // Map to the sdk object
-            var vnetGatewayConnectionSharedKeyModel = Mapper.Map<MNM.ConnectionSharedKey>(vnetGatewayConnectionSharedKey);
+            var vnetGatewayConnectionSharedKeyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ConnectionSharedKey>(vnetGatewayConnectionSharedKey);
 
             // Execute the Set VirtualNetworkConnectionSharedKey call
             this.VirtualNetworkGatewayConnectionClient.SetSharedKey(this.ResourceGroupName, this.Name, vnetGatewayConnectionSharedKeyModel);

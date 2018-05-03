@@ -3,6 +3,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Storage;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
            Position = 2,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The name of the resource group that contains the virtual machine.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -171,6 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the resource.")]
+        [LocationCompleter("Microsoft.Storage/storageAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -399,7 +402,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 }
             }
 
-            var result = Mapper.Map<PSAzureOperationResponse>(op);
+            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
             WriteObject(result);
         }
 

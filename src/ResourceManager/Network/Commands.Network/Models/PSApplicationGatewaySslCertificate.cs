@@ -15,10 +15,12 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
+    using System.Security;
+
     public class PSApplicationGatewaySslCertificate : PSChildResource
     {
         public string Data { get; set; }
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
         public string PublicCertData { get; set; }
         public string ProvisioningState { get; set; }
         public string Type { get; set; }

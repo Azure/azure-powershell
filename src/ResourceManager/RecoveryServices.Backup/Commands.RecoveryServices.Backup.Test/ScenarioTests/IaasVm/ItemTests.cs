@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -31,55 +35,60 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetItemScenario()
+        public void TestAzureVMGetItems()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetItemScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetItems");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestEnableAzureVMProtectionScenario()
+        public void TestAzureVMProtection()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-EnableAzureVMProtectionScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMProtection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestDisableAzureVMProtectionScenario()
+        public void TestAzureVMBackup()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-DisableAzureVMProtectionScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMBackup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestBackupItemScenario()
+        public void TestAzureVMGetRPs()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-BackupItemScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetRPs");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestGetAzureVMRecoveryPointsScenario()
+        public void TestAzureVMFullRestore()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-GetAzureVMRecoveryPointsScenario");
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMFullRestore");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
-        public void TestRestoreAzureVMItemScenario()
+        public void TestAzureVMRPMountScript()
         {
-            TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-RestoreAzureVMRItemScenario");
+            Collection<PSObject> psObjects = TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMRPMountScript");
+
+            AzureVmRPMountScriptDetails mountScriptDetails = (AzureVmRPMountScriptDetails)psObjects.First(
+                psObject => psObject.BaseObject.GetType() == typeof(AzureVmRPMountScriptDetails)).BaseObject;
+
+            Assert.True(AzureSession.Instance.DataStore.FileExists(mountScriptDetails.FilePath));
         }
     }
 }

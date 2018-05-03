@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Globalization;
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -66,7 +68,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
                 RunCmdLet(() =>
                 {
-                    var keys = this.CognitiveServicesClient.CognitiveServicesAccounts.RegenerateKey(
+                    var keys = this.CognitiveServicesClient.Accounts.RegenerateKey(
                         this.ResourceGroupName,
                         this.Name,
                         this.KeyName);

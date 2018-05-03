@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/remove-azurermcontext
 schema: 2.0.0
 ---
 
@@ -11,13 +12,13 @@ Remove a context from the set of available contexts
 
 ## SYNTAX
 
-### Input Object (Default)
+### RemoveByInputObject (Default)
 ```
 Remove-AzureRmContext -InputObject <PSAzureContext> [-Force] [-PassThru] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Named Context
+### RemoveByName
 ```
 Remove-AzureRmContext [-Force] [-PassThru] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-Name] <String> [<CommonParameters>]
@@ -72,7 +73,7 @@ A context object, normally passed through the pipeline.
 
 ```yaml
 Type: PSAzureContext
-Parameter Sets: Input Object
+Parameter Sets: RemoveByInputObject
 Aliases: 
 
 Required: True
@@ -87,7 +88,7 @@ The name of the context
 
 ```yaml
 Type: String
-Parameter Sets: Named Context
+Parameter Sets: RemoveByName
 Aliases: 
 
 Required: True
@@ -113,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user
+Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user
 
 ```yaml
 Type: ContextModificationScope

@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Management.Automation.Runspaces;
 using AutoMapper;
 using Hyak.Common;
 using Microsoft.Azure;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
@@ -24,18 +27,43 @@ using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Management.Automation.Runspaces;
-using System.ServiceModel;
-using System.ServiceModel.Dispatcher;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class ServiceManagementBaseCmdlet : CloudBaseCmdlet<IServiceManagement>
     {
         private Lazy<Runspace> runspace;
+
+        private static IMapper _mapper = null;
+
+        private static readonly object _lock = new object();
+
+        private static IMapper Mapper
+        {
+            get
+            {
+                lock(_lock)
+                {
+                    if (_mapper == null)
+                    {
+                        var config = new MapperConfiguration(cfg =>
+                        {
+                            cfg.CreateMap<AzureOperationResponse, ManagementOperationContext>()
+                                  .ForMember(c => c.OperationId, o => o.MapFrom(r => r.RequestId))
+                                  .ForMember(c => c.OperationStatus, o => o.MapFrom(r => r.StatusCode.ToString()));
+
+                            cfg.CreateMap<OperationStatusResponse, ManagementOperationContext>()
+                                  .ForMember(c => c.OperationId, o => o.MapFrom(r => r.Id))
+                                  .ForMember(c => c.OperationStatus, o => o.MapFrom(r => r.Status.ToString()));
+                        });
+
+                        _mapper = config.CreateMapper();
+                    }
+
+                    return _mapper;
+                }
+            }
+        }
 
         protected ServiceManagementBaseCmdlet()
         {
@@ -185,6 +213,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             return result;
         }
 
+        protected TDestination ContextFactory<TSource, TDestination>(
+            TSource s1, 
+            OperationStatusResponse s2, 
+            Func<TSource, TDestination> firstMap,
+            Func<OperationStatusResponse, TDestination, TDestination> secondMap) where TDestination : ManagementOperationContext
+        {
+            TDestination result = firstMap(s1);
+            result = secondMap(s2, result);
+            result.OperationDescription = CommandRuntime.ToString();
+
+            return result;
+        }
+
         protected void ExecuteClientAction(Action action)
         {
             try
@@ -202,6 +243,29 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 WriteExceptionError(ex);
             }
+        }
+
+        protected Dictionary<string, string> ConvertToDictionary(Hashtable extendedProperty)
+        {
+            Dictionary<string, string> resultDictionary = null;
+            if (extendedProperty != null)
+            {
+                resultDictionary = new Dictionary<string, string>();
+
+                foreach (DictionaryEntry entry in extendedProperty)
+                {
+                    if (entry.Value != null)
+                    {
+                        resultDictionary[entry.Key.ToString()] = entry.Value.ToString();
+                    }
+                    else
+                    {
+                        resultDictionary[entry.Key.ToString()] = string.Empty;
+                    }
+                }
+            }
+
+            return resultDictionary;
         }
     }
 }

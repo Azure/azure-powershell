@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 0.3.2
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 0.3.1
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.3.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 0.2.7
 
 ## Version 0.2.6

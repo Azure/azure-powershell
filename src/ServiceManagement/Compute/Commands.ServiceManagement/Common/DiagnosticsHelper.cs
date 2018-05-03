@@ -551,7 +551,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Common
             return storageAccount != null;
         }
 
-        private static AzureStorageContext CreateStorageContext(Uri blobEndpoint, Uri queueEndpoint, Uri tableEndpoint, Uri fileEndpoint,
+        private static IStorageContext CreateStorageContext(Uri blobEndpoint, Uri queueEndpoint, Uri tableEndpoint, Uri fileEndpoint,
             string storageAccountName, string storageAccountKey)
         {
             var credentials = new StorageCredentials(storageAccountName, storageAccountKey);

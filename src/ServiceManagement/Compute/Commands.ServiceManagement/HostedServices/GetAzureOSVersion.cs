@@ -36,7 +36,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 null,
                 CommandRuntime.ToString(),
                 () => this.ComputeClient.OperatingSystems.List(),
-                (op, oSes) => oSes.OperatingSystems.Select(os => ContextFactory<OperatingSystemListResponse.OperatingSystem, OSVersionsContext>(os, op)));
+                (op, oSes) => oSes.OperatingSystems.Select(os => ContextFactory(os, op,
+                                                                    ServiceManagementProfile.Mapper.Map<OperatingSystemListResponse.OperatingSystem, OSVersionsContext>,
+                                                                    ServiceManagementProfile.Mapper.Map)));
         }
     }
 }

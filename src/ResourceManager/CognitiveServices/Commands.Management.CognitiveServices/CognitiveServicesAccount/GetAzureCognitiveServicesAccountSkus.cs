@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using System.Management.Automation;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             base.ExecuteCmdlet();
             RunCmdLet(() =>
             {
-                var cognitiveServicesKeys = this.CognitiveServicesClient.CognitiveServicesAccounts.ListSkus(
+                var cognitiveServicesKeys = this.CognitiveServicesClient.Accounts.ListSkus(
                      this.ResourceGroupName,
                      this.Name);
 

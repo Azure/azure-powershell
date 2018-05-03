@@ -277,7 +277,28 @@ function Assert-AreEqual
   
   return $true
 }
-
+###################
+#
+# Verify that if actual falls in an acceptable range of expected
+#
+#    param [long] $expected : The expected number
+#    param [long] $actual   : The actual number
+#	 param [long] $interval : The acceptable offset either side of the expected
+#    param [string] $message  : The message to return if the given objects are not equal
+####################
+function Assert-NumAreInRange
+{
+	param([long] $expected, [long] $actual, [long] $interval, [string] $message)
+	if (!$message)
+	{
+		$message = "Assertion failed because expected '$expected' does not fall in accepted range of 'interval' of actual '$actual'"
+	}
+	if(!($actual -ge ($expected-$interval) -and $actual -le ($expected+$interval)))
+	{
+        throw $message
+    }
+	return $true
+}
 ###################
 #
 # Verify that two given arrays are equal
@@ -375,6 +396,33 @@ function Assert-AreNotEqual
   }
   
   if ($expected -eq $actual) 
+  {
+      throw $message
+  }
+  
+  return $true
+}
+
+###################
+#
+# Verify that the actual string starts with the expected prefix
+#
+#    param [object] $expectedPrefix : The expected prefix
+#    param [object] $actual         : The actual string
+#    param [string] $message        : The message to return if the actual string does not begin with the prefix
+####################
+function Assert-StartsWith
+{
+    param([string] $expectedPrefix, [string] $actual, [string] $message)
+
+  Assert-NotNull $actual
+
+  if (!$message)
+  {
+      $message = "Assertion failed because actual '$actual' does start with '$expectedPrefix'"
+  }
+  
+  if (-not $actual.StartsWith($expectedPrefix))
   {
       throw $message
   }

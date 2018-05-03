@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
@@ -21,44 +22,33 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <summary>
     /// 'Set-AzureRmServiceBusSubscription' Cmdlet updates the specified ServiceBus Subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusSubscriptionVerb, SupportsShouldProcess = true), OutputType(typeof(SubscriptionAttributes))]
+    [Cmdlet(VerbsCommon.Set, ServicebusSubscriptionVerb, SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionAttributes))]
     public class SetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
         
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "ServiceBus Subscription definition.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 3, HelpMessage = "ServiceBus Subscription definition")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasSubscriptionObj)]
-        public SubscriptionAttributes InputObject { get; set; }
+        public PSSubscriptionAttributes InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            SubscriptionAttributes subscriptionAttributes =  new SubscriptionAttributes();
+            PSSubscriptionAttributes subscriptionAttributes =  new PSSubscriptionAttributes();
             if (InputObject != null)
             {
                 subscriptionAttributes = InputObject;

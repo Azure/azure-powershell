@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         public void GetAutoscaleSettingCommandParametersProcessing()
         {
             // Calling ListSettingsAsync
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);

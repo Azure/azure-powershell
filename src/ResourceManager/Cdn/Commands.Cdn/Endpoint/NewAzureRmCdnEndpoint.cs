@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using Microsoft.Azure.Management.Cdn.Models;
 using Microsoft.Azure.Commands.Cdn.Models.Profile;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
@@ -40,14 +41,16 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN Profile.", ParameterSetName = FieldsParameterSet)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "Azure CDN profile object.", ParameterSetName = ObjectParameterSet)]
         [ValidateNotNull]
         public PSProfile CdnProfile { get; set; }
-        
+
         [Parameter(Mandatory = true, HelpMessage = "The location of the CDN endpoint.", ParameterSetName = FieldsParameterSet)]
+        [LocationCompleter("Microsoft.Cdn/profiles/endpoints")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -87,12 +90,18 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         [Parameter(Mandatory = false, HelpMessage = "Specifies any optimization this endpoint has.")]
         public string OptimizationType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the probe path for Dynamic Site Acceleration")]
+        public string ProbePath { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The list of geo filters that applies to this endpoint.")]
         public PSGeoFilter[] GeoFilters { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The delivery policy for this endpoint.")]
+        public PSDeliveryPolicy DeliveryPolicy { get; set; }
+
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure CDN endpoint.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -115,7 +124,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
             ConfirmAction(MyInvocation.InvocationName,
                 EndpointName,
                 () => NewEndpoint());
-          
+
         }
 
         private void NewEndpoint()
@@ -137,8 +146,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
                             QueryStringCachingBehavior.Value.CastEnum<PSQueryStringCachingBehavior, QueryStringCachingBehavior>() :
                             (QueryStringCachingBehavior?)null,
                 OptimizationType = OptimizationType,
-                GeoFilters = GeoFilters == null ? null : GeoFilters.Select(g => g.ToSdkGeoFilter()).ToList(),
-                Tags = Tags.ToDictionaryTags()
+                ProbePath = ProbePath,
+                GeoFilters = GeoFilters?.Select(g => g.ToSdkGeoFilter()).ToList(),
+                DeliveryPolicy = DeliveryPolicy?.ToSdkDeliveryPolicy(),
+                Tags = Tag.ToDictionaryTags()
             });
 
             WriteVerbose(Resources.Success);

@@ -39,5 +39,15 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Model
         /// </summary>
         public string VirtualNetworkSubnetId { get; set; }
 
+        /// <summary>
+        /// Gets or sets create firewall rule before the virtual network has vnet service endpoint enabled.
+        /// </summary>
+        public bool? IgnoreMissingVnetServiceEndpoint { get; set; }
+
+        /// <summary>
+        /// Gets virtual network rule state. Possible values include:
+        /// 'Initializing', 'InProgress', 'Ready', 'Deleting', 'Unknown'
+        /// </summary>
+        public string State { get; set; }
     }
 }

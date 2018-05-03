@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
             ParameterSetName = "SetByName")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -104,6 +106,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string TargetNetworkInterfaceId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -129,7 +134,7 @@ namespace Microsoft.Azure.Commands.Network
                 ipFlowVerify = this.NetworkWatcherClient.VerifyIPFlow(this.ResourceGroupName, this.NetworkWatcherName, flowParameters);
             }
 
-            PSIPFlowVerifyResult psIPFlowVerify = Mapper.Map<PSIPFlowVerifyResult>(ipFlowVerify);
+            PSIPFlowVerifyResult psIPFlowVerify = NetworkResourceManagerProfile.Mapper.Map<PSIPFlowVerifyResult>(ipFlowVerify);
 
             WriteObject(psIPFlowVerify);
         }

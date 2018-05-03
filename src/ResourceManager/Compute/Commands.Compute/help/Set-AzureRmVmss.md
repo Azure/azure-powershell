@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 6442E5BB-D59D-483B-8AC5-2586C6C1E925
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmss
 schema: 2.0.0
 ---
 
@@ -15,13 +16,26 @@ Sets specific actions on a specified VMSS.
 ### DefaultParameter (Default)
 ```
 Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Reimage]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
 Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
- [-ReimageAll] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ReimageAll] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RedeployMethodParameter
+```
+Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>] [-Redeploy]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PerformMaintenanceMethodParameter
+```
+Set-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String> [[-InstanceId] <String[]>]
+ [-PerformMaintenance] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +52,21 @@ PS C:\> Set-AzureRmVmss -Reimage -ResourceGroupName "ContosoGroup" -VMScaleSetNa
 This command reimages the VMSS named ContosoVMSS that belongs to the resource group named ContosoGroup.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background and return a Job to track progress.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -60,12 +89,42 @@ The instance ID of the virtual machine.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PerformMaintenance
+Indicates that this cmdlet performs maintenance one or more virtual machines in the VMSS.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: PerformMaintenanceMethodParameter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Redeploy
+Indicates that the cmdlet redeploys one or more virtual machines in the VMSS.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: RedeployMethodParameter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -75,7 +134,7 @@ Indicates that the cmdlet reimages the VMSS.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DefaultParameter
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -90,7 +149,7 @@ Indicates that the cmdlet reimages all the disks in the VMSS.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: FriendMethod
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -105,7 +164,7 @@ Specifies the name of the resource group of the VMSS.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -163,6 +222,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

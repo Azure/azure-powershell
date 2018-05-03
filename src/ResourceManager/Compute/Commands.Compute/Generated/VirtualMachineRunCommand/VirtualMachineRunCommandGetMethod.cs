@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -122,19 +121,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSRunCommandDocument))]
     public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
-                string location = this.Location;
+                string location = this.Location.Canonicalize();
                 string commandId = this.CommandId;
 
                 if (!string.IsNullOrEmpty(location) && !string.IsNullOrEmpty(commandId))
                 {
                     var result = VirtualMachineRunCommandsClient.Get(location, commandId);
                     var psObject = new PSRunCommandDocument();
-                    Mapper.Map<RunCommandDocument, PSRunCommandDocument>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandDocument, PSRunCommandDocument>(result, psObject);
                     WriteObject(psObject);
                 }
                 else if (!string.IsNullOrEmpty(location))
@@ -154,7 +152,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var psObject = new List<PSRunCommandDocumentBase>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(Mapper.Map<RunCommandDocumentBase, PSRunCommandDocumentBase>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandDocumentBase, PSRunCommandDocumentBase>(r));
                     }
                     WriteObject(psObject, true);
                 }
@@ -165,18 +163,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.Compute/locations/runCommands")]
         public string Location { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         public string CommandId { get; set; }
     }
 }

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 8F36244D-A4D7-40BB-AC4C-E9AD445549F8
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermappserviceplan
 schema: 2.0.0
 ---
 
@@ -16,14 +17,15 @@ Creates an Azure App Service plan in a given Geo location.
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-ResourceGroupName] <String> [-Name] <String> [<CommonParameters>]
+ [-ResourceGroupName] <String> [-Name] <String> [-AsJob][-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
 New-AzureRmAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [-PerSiteScaling <Boolean>]
- [-AppServicePlan] <ServerFarmWithRichSku> [<CommonParameters>]
+ [-AppServicePlan] <ServerFarmWithRichSku> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +83,21 @@ Aliases:
 
 Required: False
 Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -168,7 +185,7 @@ Tier
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: Free, Shared, Basic, Standard, Premium
+Accepted values: Free, Shared, Basic, Standard, Premium, PremiumV2
 
 Required: False
 Position: 3
@@ -192,6 +209,20 @@ Default value: Small
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -199,7 +230,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### ServerFarmWithRichSku
-
 Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from the pipeline
 
 ## OUTPUTS

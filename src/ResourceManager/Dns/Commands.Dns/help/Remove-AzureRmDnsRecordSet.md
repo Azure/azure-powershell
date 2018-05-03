@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
+Module Name: AzureRM.Dns
 ms.assetid: 505562A4-30BC-44E7-94EF-579763B8D794
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns/remove-azurermdnsrecordset
 schema: 2.0.0
 ---
 
@@ -15,19 +16,20 @@ Deletes a record set.
 ### Fields
 ```
 Remove-AzureRmDnsRecordSet -Name <String> -RecordType <RecordType> -ZoneName <String>
- -ResourceGroupName <String> [-Force] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Mixed
 ```
-Remove-AzureRmDnsRecordSet -Name <String> -RecordType <RecordType> -Zone <DnsZone> [-Force] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmDnsRecordSet -Name <String> -RecordType <RecordType> -Zone <DnsZone> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Object
 ```
-Remove-AzureRmDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-Force] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,16 +74,13 @@ Confirmation prompts are suppressed.
 
 ## PARAMETERS
 
-### -Force
-This parameter is deprecated for this cmdlet.
-It will be removed in a future release.
-
-To control whether this cmdlet prompts you for confirmation, use the *Confirm* parameter.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -178,7 +177,7 @@ You cannot manually delete SOA records.
 Type: RecordType
 Parameter Sets: Fields, Mixed
 Aliases: 
-Accepted values: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: True
 Position: Named

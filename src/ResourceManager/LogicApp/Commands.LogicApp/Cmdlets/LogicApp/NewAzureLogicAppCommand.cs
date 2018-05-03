@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.Azure.Management.Logic.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The targeted resource group for the workflow.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The location of the workflow.", ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Logic/workflows")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

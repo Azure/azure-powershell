@@ -1,19 +1,28 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/providers/Microsoft.Compute/virtualMachines?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
+      "RequestUri": "/subscriptions/8230df33-414c-4889-a8ba-06c4cdf1f3ef/providers/Microsoft.Compute/virtualMachines?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODIzMGRmMzMtNDE0Yy00ODg5LWE4YmEtMDZjNGNkZjFmM2VmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c9b4f6cc-50ef-4d21-878d-713e90e5764e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.3.2"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "12"
+          "19"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -24,44 +33,65 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31999"
-        ],
-        "x-ms-request-id": [
-          "7baa679b-3868-44c6-8583-06708b769935"
-        ],
-        "x-ms-correlation-request-id": [
-          "7baa679b-3868-44c6-8583-06708b769935"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150428T191224Z:7baa679b-3868-44c6-8583-06708b769935"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "00000000-0000-0000-0000-000000000000_0"
+        ],
+        "x-ms-correlation-request-id": [
+          "a08c6606-16fb-499f-88d2-acd34efdd3ae"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14940"
+        ],
+        "x-ms-request-id": [
+          "a08c6606-16fb-499f-88d2-acd34efdd3ae"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180102T232120Z:a08c6606-16fb-499f-88d2-acd34efdd3ae"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 28 Apr 2015 19:12:23 GMT"
+          "Tue, 02 Jan 2018 23:21:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvezpEH3+ieOculim1/te1T/ldFIifZuwVcDb+qsb6aHKxrce5NgsesbhIbPjRQUD5UqFmV7MGc0jgOPmgTyzobZ2a28wGD5j143fajXIr+RpQrCk4CCM90FvRboy1Y42sdkP4ybLFCoPXKJTk/lYC"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/4d368445-cbb1-42a7-97a6-6850ab99f48e/providers/Microsoft.Compute/virtualMachines?api-version=2016-03-30",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNGQzNjg0NDUtY2JiMS00MmE3LTk3YTYtNjg1MGFiOTlmNDhlL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNi0wMy0zMA==",
+      "RequestUri": "/subscriptions/8230df33-414c-4889-a8ba-06c4cdf1f3ef/providers/Microsoft.Compute/virtualMachines?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODIzMGRmMzMtNDE0Yy00ODg5LWE4YmEtMDZjNGNkZjFmM2VmL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3af22a88-9e8f-49d5-9d38-e3e80e4f1dcb"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.3.2"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "12"
+          "19"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -72,59 +102,86 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "31998"
-        ],
-        "x-ms-request-id": [
-          "d0a75a45-78b7-4df5-9e09-2adc46e3302a"
-        ],
-        "x-ms-correlation-request-id": [
-          "d0a75a45-78b7-4df5-9e09-2adc46e3302a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150428T191224Z:d0a75a45-78b7-4df5-9e09-2adc46e3302a"
-        ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-served-by": [
+          "00000000-0000-0000-0000-000000000000_0"
+        ],
+        "x-ms-correlation-request-id": [
+          "846f1efc-dc1d-4bd6-af18-15edaa680d3a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14939"
+        ],
+        "x-ms-request-id": [
+          "846f1efc-dc1d-4bd6-af18-15edaa680d3a"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180102T232120Z:846f1efc-dc1d-4bd6-af18-15edaa680d3a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 28 Apr 2015 19:12:24 GMT"
+          "Tue, 02 Jan 2018 23:21:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvnb4Bp3EP02B6GUuv4VwHRBmuNyz17cNwCo99q06hogEMTjxlGPvLV4AKfA+1B7+818dwsZeIfQHTZzWBSPjAYAD+anpMICl6dlYighf/ayKE8CdtyiDoR2rr8jOiVbZ/mAFVsHMwEArqLeSPEW6I"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/test",
-      "EncodedRequestUri": "L3Rlc3Q=",
+      "RequestUri": "/",
+      "EncodedRequestUri": "Lw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1209cf78-d2f1-4bfd-b728-304d516f73dd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Compute.ComputeManagementClient/5.0.0.0"
+          "FxVersion/4.7.2600.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Compute.ComputeManagementClient/3.3.2"
         ]
       },
-      "ResponseBody": "<html>\r\n  <body onload=\"challenge();\">\r\n    <script>eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\\\b'+e(c)+'\\\\b','g'),k[c]);return p}('h e(){m.9=\\'l=3; a-o=7; 6=/\\';c.8.2()};p 5(){b.1=\\'d=j; 0-4=g; n=/\\';k.i.f()}',26,26,'max|cookie|reload|82c4071ee0c4a58b2c8135316e73bf36c53f2848|age|challenge|path|600 |location|cookie|max|document|window|SENGINX-ROBOT-MITIGATION        |challenge_f|reload|600 |function|location|1c68433700c6a882ca22d39d4bfdb75d08edf38f|window|SENGINX-ROBOT-MITIGATION        |document|path|age|function'.split('|'),0,{}))</script>\r\n  </body>\r\n</html>",
+      "ResponseBody": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"[]>\r\n<html>\r\n  <head>\r\n    <title>Client Validation</title>\r\n    <script type=\"text/javascript\">\r\nfunction setCookie(c_name, value, expiredays) {\r\n            document.cookie = c_name + \"=\" + escape(value) + ((expiredays==null) ? \"\" : \";expires=\" + expiredays) + \";path=/\";\r\n}\r\nfunction getHostUri() {\r\n            var loc = document.location;\r\n                    return loc.toString();\r\n}\r\nvar exdate=new Date();\r\nexdate.setDate(exdate.getDate()+1);\r\nsetCookie('DOAAuthReferrer', document.referrer, exdate.toUTCString());\r\nsetCookie('DOADFgsjnrSFgsg329gaFGa3ggs9434sgSGS43tsgSHSG35', '#c9d71e4069555e64817b37cb622b41756d9820a6#SZQI#1515799280#87583311#', 'Fri, 12 Jan 2018 23:21:20 GMT');\r\ntry {  \r\n    location.reload(true);  \r\n} catch (err1) {  \r\n    try {  \r\n        location.reload();  \r\n    } catch (err2) {  \r\n    \tlocation.href = getHostUri();  \r\n    }  \r\n}\r\n</script>\r\n  </head>\r\n  <body>\r\n    <noscript>This site requires JavaScript and Cookies to be enabled. Please change your browser settings or upgrade your browser.</noscript>\r\n  </body>\r\n</html>",
       "ResponseHeaders": {
-        "Content-Length": [
-          "732"
-        ],
         "Content-Type": [
           "text/html"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
         ],
         "Connection": [
           "keep-alive"
         ],
+        "Keep-Alive": [
+          "timeout=20"
+        ],
+        "X-DIS-Request-ID": [
+          "e126d9d161922063f6e1de2fb404a487"
+        ],
         "Cache-Control": [
-          "no-store, no-cache"
+          "no-cache"
         ],
         "Date": [
-          "Tue, 28 Apr 2015 19:17:37 GMT"
+          "Tue, 02 Jan 2018 23:21:20 GMT"
         ],
         "Server": [
-          "BlockDos.net"
+          "nginx/1.13.4"
         ]
       },
       "StatusCode": 200
@@ -132,8 +189,8 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "4d368445-cbb1-42a7-97a6-6850ab99f48e",
-    "TenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "Domain": "microsoft.com"
+    "SubscriptionId": "8230df33-414c-4889-a8ba-06c4cdf1f3ef",
+    "TenantId": "76440dfb-c97c-4fee-8f6c-dff8ddbe816f",
+    "Domain": "msazurestack.onmicrosoft.com"
   }
 }

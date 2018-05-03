@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version:
+Module Name: AzureRM.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/set-azurermservicebusnamespace
 schema: 2.0.0
 ---
 
@@ -12,8 +13,9 @@ Updates the description of an existing Service Bus namespace.
 ## SYNTAX
 
 ```
-Set-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String> [-NamespaceName] <String>
- [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
+ [-SkuName <String>] [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,20 +28,33 @@ The **Set-AzureRmServiceBusNamespace** cmdlet updates the description of the spe
 PS C:\> Set-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 10 -Tag @{Tag2="Tag2Value"}
 
 Name               : SB-Example1
-Id                 : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 Location           : West US
 Sku                : Name : Standard , Capacity : 10 , Tier : Standard
 ProvisioningState  : Succeeded
-Status             :
 CreatedAt          :
 UpdatedAt          :
 ServiceBusEndpoint :
-Enabled            : False
 ```
 
 Updates the Service Bus namespace with a new description.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Location
 The Service Bus namespace location.
@@ -47,7 +62,7 @@ The Service Bus namespace location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: 1
@@ -56,13 +71,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Service Bus namespace name.
+### -Name
+ServiceBus Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: NamespaceName
 
 Required: True
 Position: 2
@@ -77,7 +92,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -92,7 +107,7 @@ Namespace Sku Capacity.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -107,7 +122,7 @@ The namespace SKU name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 Accepted values: Basic, Standard, Premium
 
 Required: False
@@ -125,7 +140,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -187,8 +202,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 ## NOTES
 
+
 ## RELATED LINKS
+

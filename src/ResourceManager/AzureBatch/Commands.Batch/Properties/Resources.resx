@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccountAndKeyInUse" xml:space="preserve">
-    <value>Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext.</value>
-  </data>
   <data name="AddingCertificate" xml:space="preserve">
     <value>Adding a new certificate with thumbprint {0}. </value>
   </data>
@@ -294,9 +291,6 @@
   <data name="InvalidTagFormatNotUniqueName" xml:space="preserve">
     <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
   </data>
-  <data name="KeyNotPresent" xml:space="preserve">
-    <value>The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated.</value>
-  </data>
   <data name="LookupAccount" xml:space="preserve">
     <value>Checking if account already exists</value>
   </data>
@@ -403,7 +397,7 @@
     <value>Looking up resource group for account {0}</value>
   </data>
   <data name="ResizingPool" xml:space="preserve">
-    <value>Resizing pool {0}, new target dedicated: {1}.</value>
+    <value>Resizing pool {0}, new target dedicated: {1}, new target low-priority: {2}.</value>
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
     <value>ResourceNotFound: Resource not found.</value>
@@ -486,5 +480,14 @@
   </data>
   <data name="DownloadingNodeFileByteRange" xml:space="preserve">
     <value>Downloading byte range {0} to {1}</value>
+  </data>
+  <data name="UsingAadAuth" xml:space="preserve">
+    <value>Using Azure Active Directory authentication to interact with the Batch service. To use shared key authentication, supply a BatchAccountContext that was returned from the Get-AzureRmBatchAccountKeys cmdlet.</value>
+  </data>
+  <data name="UsingSharedKeyAuth" xml:space="preserve">
+    <value>Using shared key authentication to interact with the Batch service. Current key in use: {0}. To change keys, set the BatchAccountContext.KeyInUse property. To use Azure Active Directory authentication, supply a BatchAccountContext that was returned from the Get-AzureRmBatchAccount cmdlet.</value>
+  </data>
+  <data name="GetTaskCounts" xml:space="preserve">
+    <value>Getting task counts for job {0}.</value>
   </data>
 </root>

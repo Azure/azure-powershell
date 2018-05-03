@@ -255,10 +255,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 }
             }
 
-            IAzureClient azureClient = client as IAzureClient;
-            if (azureClient != null)
+            if (TestMockSupport.RunningMocked && HttpMockServer.GetCurrentMode() != HttpRecorderMode.Record)
             {
-                azureClient.LongRunningOperationRetryTimeout = 0;
+                IAzureClient azureClient = client as IAzureClient;
+                if (azureClient != null)
+                {
+                    azureClient.LongRunningOperationRetryTimeout = 0;
+                }
             }
 
             return client;

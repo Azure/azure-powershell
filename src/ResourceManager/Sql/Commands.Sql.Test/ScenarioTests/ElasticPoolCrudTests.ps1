@@ -26,8 +26,11 @@ function Test-CreateElasticPool
     {
         # Create a pool with all values
         $poolName = Get-ElasticPoolName
-        $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-            -ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100 -StorageMB 204800
+        $job = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Standard -Dtu 200 -DatabaseDtuMin 10 -DatabaseDtuMax 100 -StorageMB 204800 -AsJob
+		$job | Wait-Job
+		$ep1 = $job.Output
+
         Assert-NotNull $ep1
         Assert-AreEqual 200 $ep1.Dtu 
         Assert-AreEqual 204800 $ep1.StorageMB
@@ -40,6 +43,44 @@ function Test-CreateElasticPool
         $ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName
         Assert-NotNull $ep2
     }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
+    Tests creating an elastic pool with zone redundancy parameters
+#>
+function Test-CreateElasticPoolWithZoneRedundancy
+{
+    # Setup 
+	$location = "eastus2"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+    {
+        # Create a pool with zone redundancy set to true
+        $poolName = Get-ElasticPoolName
+        $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -ZoneRedundant
+        Assert-NotNull $ep1
+        Assert-AreEqual Premium $ep1.Edition
+		Assert-NotNull $ep1.ZoneRedundant
+		Assert-AreEqual "true" $ep1.ZoneRedundant
+
+		# Create a pool with no zone redundancy set
+        $poolName = Get-ElasticPoolName
+        $ep2 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -Dtu 125
+        Assert-NotNull $ep2
+        Assert-AreEqual 125 $ep2.Dtu 
+        Assert-AreEqual Premium $ep2.Edition
+        Assert-NotNull $ep2.ZoneRedundant
+        Assert-AreEqual "false" $ep2.ZoneRedundant
+	}
     finally
     {
         Remove-ResourceGroupForTest $rg
@@ -70,8 +111,11 @@ function Test-UpdateElasticPool
     try
     {
         # Create a pool with all values
-        $sep1 = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
-            -ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600
+        $job = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep1.ElasticPoolName -Dtu 400 -DatabaseDtuMin 0 -DatabaseDtuMax 50 -Edition Standard -StorageMB 409600 -AsJob
+		$job | Wait-Job
+		$sep1 = $job.Output
+
         Assert-NotNull $sep1
         Assert-AreEqual 400 $sep1.Dtu 
         Assert-AreEqual 409600 $sep1.StorageMB
@@ -95,6 +139,37 @@ function Test-UpdateElasticPool
     }
 }
 
+<# 
+    .SYNOPSIS
+    Tests updating an elastic pool with zone redundancy parameter
+#>
+function Test-UpdateElasticPoolWithZoneRedundancy
+{
+    # Setup
+	$location = "eastus2" 
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+    try
+    {
+        # Create a pool with all values
+        $poolName = Get-ElasticPoolName
+        $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -Dtu 125
+        Assert-NotNull $ep1
+
+		# Update a pool with zone redundant set as true
+        $sep1 = Set-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep1.ElasticPoolName -ZoneRedundant
+        Assert-NotNull $sep1
+        Assert-NotNull $sep1.ZoneRedundant
+		Assert-AreEqual "true" $sep1.ZoneRedundant
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
 
 <# 
     .SYNOPSIS
@@ -148,6 +223,47 @@ function Test-GetElasticPool
 
 <# 
     .SYNOPSIS
+    Tests getting an elastic pool with zone redundancy
+#>
+function Test-GetElasticPoolWithZoneRedundancy
+{
+    # Setup 
+	$location = "eastus2"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+    try
+    {
+        # Create a pool with zone redundancy set to true
+        $poolName = Get-ElasticPoolName
+        $ep1 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -ZoneRedundant
+
+		# Get created pool with zone redundancy true
+        $gep1 = Get-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep1.ElasticPoolName 
+        Assert-NotNull $gep1.ZoneRedundant
+		Assert-AreEqual "true" $gep1.ZoneRedundant
+
+		# Create a pool with no zone redundancy set
+        $poolName = Get-ElasticPoolName
+        $ep2 = New-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $poolName -Edition Premium -Dtu 125
+
+		# Get created pool with zone redundancy false
+        $gep2 = Get-AzureRmSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+            -ElasticPoolName $ep2.ElasticPoolName 
+        Assert-NotNull $gep2.ZoneRedundant
+		Assert-AreEqual "false" $gep2.ZoneRedundant
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
     Tests removing an elastic pool
 #>
 function Test-RemoveElasticPool
@@ -181,4 +297,91 @@ function Test-RemoveElasticPool
     {
         Remove-ResourceGroupForTest $rg
     }
+}
+
+<#
+	.SYNOPSIS
+	Test listing and cancelling a elastic pool operation
+#>
+function Test-ListAndCancelElasticPoolOperation
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	$poolName = Get-ElasticPoolName
+	$ep1 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		-ElasticPoolName $poolName -Edition Premium -Dtu 125 -DatabaseDtuMin 0 -DatabaseDtuMax 50
+	Assert-NotNull $ep1
+
+	$poolName = Get-ElasticPoolName
+	$ep2 = $server | New-AzureRmSqlElasticPool -ElasticPoolName $poolName -Edition Premium -Dtu 250 -DatabaseDtuMin 0 `
+         -DatabaseDtuMax 50
+	Assert-NotNull $ep2
+
+	# Elastic pool will be Premium with DTU 125
+
+	try
+	{
+		# Update the elastic pool ep1 to premium with 250 Dtu
+		$ep1update = Set-AzureRmSqlElasticPool -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName `
+			-Edition Premium -Dtu 250 -DatabaseDtuMin 25 -DatabaseDtuMax 125
+		Assert-AreEqual $ep1.ElasticPoolName $ep1update.ElasticPoolName
+		Assert-AreEqual Premium $ep1update.Edition
+		Assert-AreEqual 250 $ep1update.Dtu
+
+		# List and Cancel the elastic pool update operation
+		$epactivity = Get-AzureRmSqlElasticPoolActivity -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $ep1update.ElasticPoolName
+		$epactivityId
+
+		For($i=0; $i -lt $epactivity.Length; $i++) {
+			if($epactivity[$i].Operation -eq "UPDATE"){
+				$epactivityId = $epactivity[$i].OperationId
+			}
+		}
+
+		try
+		{
+			# cancel a pool update operation with all values
+			$activityCancel = Stop-AzureRmSqlElasticPoolActivity -ResourceGroupName $ep1.ResourceGroupName -ServerName $ep1.ServerName -ElasticPoolName $ep1.ElasticPoolName -OperationId $epactivityId
+		}
+		Catch
+		{
+			$ErrorMessage = $_.Exception.Message
+			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel management operation '" + $epactivityId + "' in the current state") $ErrorMessage
+		}
+
+		# piping test on related pool operations
+		# Update ep2 tp Premium with 500 Dtu
+		$ep2update = Set-AzureRmSqlElasticPool -ResourceGroupName $ep2.ResourceGroupName -ServerName $ep2.ServerName -ElasticPoolName $ep2.ElasticPoolName `
+			-Edition Premium -Dtu 500 -DatabaseDtuMin 25 -DatabaseDtuMax 250
+		Assert-AreEqual $ep2.ElasticPoolName $ep2update.ElasticPoolName
+		Assert-AreEqual Premium $ep2update.Edition
+		Assert-AreEqual 500 $ep2update.Dtu
+
+		$epactivity = $ep2update | Get-AzureRmSqlElasticPoolActivity
+		For($i=0; $i -lt $epactivity.Length; $i++) {
+			if($epactivity[$i].Operation -eq "UPDATE"){
+				$epactivityId = $epactivity[$i].OperationId
+			}
+		}
+
+		$epactivity = $ep2update | Get-AzureRmSqlElasticPoolActivity -OperationId $epactivityId
+		
+		try
+		{
+			# cancel a pool update operation using piping
+			$activityCancel = $epactivity | Stop-AzureRmSqlElasticPoolActivity
+		}
+		Catch
+		{
+			$ErrorMessage = $_.Exception.Message
+			Assert-AreEqual True $ErrorMessage.Contains("Cannot cancel management operation '" + $epactivityId + "' in the current state") $ErrorMessage
+		}
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }

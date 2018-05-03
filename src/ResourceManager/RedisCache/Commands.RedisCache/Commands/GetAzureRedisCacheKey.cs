@@ -15,12 +15,14 @@
 namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Management.Redis.Models;
+    using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmRedisCacheKey"), OutputType(typeof(RedisAccessKeys))]
     public class GetAzureRedisCacheKey : RedisCacheCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -31,6 +33,8 @@ namespace Microsoft.Azure.Commands.RedisCache
         public override void ExecuteCmdlet()
         {
             Utility.ValidateResourceGroupAndResourceName(ResourceGroupName, Name);
+            ResourceGroupName = CacheClient.GetResourceGroupNameIfNotProvided(ResourceGroupName, Name);
+
             RedisAccessKeys keysResponse = CacheClient.GetAccessKeys(ResourceGroupName, Name);
             WriteObject(keysResponse);
         }

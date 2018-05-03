@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
 Module Name: AzureRM.MachineLearningCompute
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/test-azurermmlopclustersystemservicesupdateavailability
 schema: 2.0.0
 ---
 
@@ -12,19 +12,22 @@ Checks if there are updates available for the system services associated with an
 
 ## SYNTAX
 
-### Test for update availability from cmdlet input parameters.
+### TestByNameAndResourceGroup
 ```
 Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceGroupName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Test for update availability from an OperationalizationCluster instance definition.
+### TestByInputObject
 ```
 Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -InputObject <PSOperationalizationCluster>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Test for update availability from an Azure resouce id.
+### TestByResourceId
 ```
 Test-AzureRmMlOpClusterSystemServicesUpdateAvailability -ResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,12 +52,27 @@ PS C:\> Find-AzureRmResource -ResourceType Microsoft.MachineLearningCompute/oper
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The operationalization cluster object.
 
 ```yaml
 Type: PSOperationalizationCluster
-Parameter Sets: Test for update availability from an OperationalizationCluster instance definition.
+Parameter Sets: TestByInputObject
 Aliases: Cluster
 
 Required: True
@@ -69,7 +87,7 @@ The name of the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Test for update availability from cmdlet input parameters.
+Parameter Sets: TestByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -84,7 +102,7 @@ The name of the resource group for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Test for update availability from cmdlet input parameters.
+Parameter Sets: TestByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -99,7 +117,7 @@ The Azure resource id for the operationalization cluster.
 
 ```yaml
 Type: String
-Parameter Sets: Test for update availability from an Azure resouce id.
+Parameter Sets: TestByResourceId
 Aliases: 
 
 Required: True
@@ -109,16 +127,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
-### System.String
 
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSCheckSystemServicesUpdatesAvailableResponse
-
 
 ## NOTES
 

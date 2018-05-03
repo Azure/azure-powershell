@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.AnalysisServices.Models;
 using Microsoft.Azure.Management.Analysis;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Analysis.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
             HelpMessage = "Name of resource group under which want to test the server.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

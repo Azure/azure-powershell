@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/export-azureanalysisservicesinstancelog
 schema: 2.0.0
 ---
 
@@ -76,6 +76,9 @@ Accept wildcard characters: False
 ```
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

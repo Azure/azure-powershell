@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("Get-AdlJob")]
     public class GetAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
     {
-        internal const string BaseParameterSetName = "All In Resource Group and Account";
-        internal const string JobInfoParameterSetName = "Specific JobInformation";
+        internal const string BaseParameterSetName = "GetAllInResourceGroupAndAccount";
+        internal const string JobInfoParameterSetName = "GetBySpecificJobInformation";
 
         [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true, Position = 0,
             Mandatory = true,

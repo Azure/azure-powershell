@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,36 @@
 -->
 ## Current Release
 
+## Version 5.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Remove deprecated `Tags` alias from cmdlets
+    - `Set-AzureRmAutomationRunbook`
+
+## Version 4.3.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.3.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.3.0
+* Fixed issue with importing aliases
+
+## Version 4.2.1
+* Added alias from New-AzureRmAutomationModule to Import-AzureRmAutomationModule
+
+## Version 4.2.0
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for Set-AzureRmAutomationRunbook
+
+## Version 4.1.1
+* Update to Import-AzureRMAutomationRunbook
+    - Support is now being provided for Python2 runbooks
+
+## Version 4.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 3.4.1
 
 ## Version 3.4.0

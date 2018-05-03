@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var circuit = this.ExpressRouteCircuitClient.Get(resourceGroupName, name);
 
-            var psExpressRouteCircuit = Mapper.Map<PSExpressRouteCircuit>(circuit);
+            var psExpressRouteCircuit = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuit>(circuit);
             psExpressRouteCircuit.ResourceGroupName = resourceGroupName;
 
             psExpressRouteCircuit.Tag =
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSExpressRouteCircuit ToPsExpressRouteCircuit(Management.Network.Models.ExpressRouteCircuit circuit)
         {
-            var psCircuit = Mapper.Map<PSExpressRouteCircuit>(circuit);
+            var psCircuit = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCircuit>(circuit);
 
             psCircuit.Tag = TagsConversionHelper.CreateTagHashtable(circuit.Tags);
 

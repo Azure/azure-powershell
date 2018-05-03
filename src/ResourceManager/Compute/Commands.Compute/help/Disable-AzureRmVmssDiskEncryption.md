@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+Module Name: AzureRM.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmssdiskencryption
 schema: 2.0.0
 ---
 
@@ -13,7 +14,7 @@ Disables disk encryption on a VM scale set.
 
 ```
 Disable-AzureRmVmssDiskEncryption [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [[-ExtensionName] <String>] [-VolumeType <String>] [-ForceUpdate] [-Force]
+ [[-ExtensionName] <String>] [-VolumeType <String>] [-ForceUpdate] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,6 +31,21 @@ PS C:\> Disable-AzureRmVmssDiskEncryption -ResourceGroupName "Group001" -VMScale
 Disables disk encryption on the VM scale set named VMSS001 that belongs to the resource group named Group001.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -53,7 +69,7 @@ If this parameter is not specified, default values used are AzureDiskEncryption 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -68,7 +84,7 @@ To force the removal of the extension from the virtual machine.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,10 +94,12 @@ Accept wildcard characters: False
 ```
 
 ### -ForceUpdate
-Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.```yaml
+Generate a tag for force update.  This should be given to perform repeated encryption operations on the same VM.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,7 +114,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -126,7 +144,7 @@ Type of the volume (OS or Data) to perform encryption operation
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: OS, Data, All
 
 Required: False
@@ -181,4 +199,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

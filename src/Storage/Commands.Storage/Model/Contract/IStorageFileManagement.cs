@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// </summary>
         /// <param name="shareName">A string containing the name of the share.</param>
         /// <returns>A reference to a share.</returns>
-        CloudFileShare GetShareReference(string shareName);
+        CloudFileShare GetShareReference(string shareName, DateTimeOffset? snapshotTime = null);
 
         /// <summary>
         /// Get share permissions.
@@ -329,7 +329,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>
         ///  A System.Threading.Tasks.Task object that represents the current operation.
         /// </returns>
-        Task DeleteShareAsync(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
+        Task DeleteShareAsync(CloudFileShare share, DeleteShareSnapshotsOption deleteShareSnapshotsOption, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken);
 
         /// <summary>
         /// Returns a task that performs an asynchronous operation to delete a file.

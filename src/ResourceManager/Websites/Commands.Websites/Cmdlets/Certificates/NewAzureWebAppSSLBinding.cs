@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [Parameter(ParameterSetName = ParameterSet2Name, Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -119,11 +121,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     var certificateName = GenerateCertName(certificateDetails.Thumbprint, webapp.HostingEnvironmentProfile != null ? webapp.HostingEnvironmentProfile.Name : null, webapp.Location, resourceGroupName);
                     var certificate = new Certificate(
                         webapp.Location,
-#if !NETSTANDARD
-                        pfxBlob: Convert.ToBase64String(certificateBytes),
-#else
                         pfxBlob: certificateBytes,
-#endif
                         password: CertificatePassword,
                         hostingEnvironmentProfile: (webapp.HostingEnvironmentProfile != null) ?
                                                         webapp.HostingEnvironmentProfile :

@@ -15,6 +15,8 @@
 <#
 .SYNOPSIS
 Test Virtual Machines
+.Description
+AzureAutomationTest
 #>
 function Test-VirtualMachineBootDiagnostics
 {
@@ -293,6 +295,8 @@ function Test-VirtualMachineBootDiagnosticsPremium
 <#
 .SYNOPSIS
 Test Virtual Machine Boot Diagnostics with Linux VM
+.Description
+AzureAutomationTest
 #>
 function Test-LinuxVirtualMachineBootDiagnostics
 {

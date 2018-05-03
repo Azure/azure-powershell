@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
+Module Name: AzureRM.Cdn
 ms.assetid: 5727E2CA-0A0B-4050-9F4A-7E06758D9B53
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/remove-azurermcdncustomdomain
 schema: 2.0.0
 ---
 
@@ -12,16 +13,17 @@ Removes a custom domain.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Remove-AzureRmCdnCustomDomain -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
- -ResourceGroupName <String> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
-Remove-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmCdnCustomDomain -CdnCustomDomain <PSCustomDomain> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,8 +43,8 @@ Specifies the custom domain that this cmdlet removes.
 
 ```yaml
 Type: PSCustomDomain
-Parameter Sets: Parameter Set for object parameters
-Aliases: 
+Parameter Sets: ByObjectParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -56,10 +58,25 @@ Specifies the resource name of the custom domain that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -71,8 +88,8 @@ Specifies the name of the endpoint from which this cmdlet removes a custom domai
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -88,7 +105,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,8 +119,8 @@ Specifies the name of the profile from which this cmdlet removes a custom domain
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -117,8 +134,8 @@ Specifies the name of the resource group from which this cmdlet removes a custom
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -164,7 +181,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSCustomDomain
-
 Parameter 'CdnCustomDomain' accepts value of type 'PSCustomDomain' from the pipeline
 
 ## OUTPUTS

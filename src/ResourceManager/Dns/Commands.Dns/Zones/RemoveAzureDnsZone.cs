@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Dns
 {
     using System;
     using Rest.Azure;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Deletes an existing zone.
@@ -27,12 +28,13 @@ namespace Microsoft.Azure.Commands.Dns
     [Cmdlet(VerbsCommon.Remove, "AzureRmDnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),
         OutputType(typeof(bool))]
     public class RemoveAzureDnsZone : DnsBaseCmdlet
-    {   
+    {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group in which the zone exists.", ParameterSetName = "Fields")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -42,11 +44,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, HelpMessage = "Do not use the ETag field of the Zone parameter for optimistic concurrency checks.", ParameterSetName = "Object")]
         public SwitchParameter Overwrite { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        [Obsolete("This parameter is obsolete; use Confirm instead")]
-        public SwitchParameter Force { get; set; }
-
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -85,18 +82,10 @@ namespace Microsoft.Azure.Commands.Dns
                     zoneToDelete.Name,
                 () =>
                 {
-                    deleted = DnsClient.DeleteDnsZone(zoneToDelete, overwrite);
+                    DnsClient.DeleteDnsZone(zoneToDelete, overwrite);
 
-                    if (deleted)
-                    {
-                        WriteVerbose(ProjectResources.Success);
-                        WriteVerbose(string.Format(ProjectResources.Success_RemoveZone, zoneToDelete.Name, zoneToDelete.ResourceGroupName));
-                    }
-                    else
-                    {
-                        WriteVerbose(ProjectResources.Success);
-                        WriteWarning(string.Format(ProjectResources.Success_NonExistentZone, zoneToDelete.Name, this.ResourceGroupName));
-                    }
+                    WriteVerbose(ProjectResources.Success);
+                    WriteVerbose(string.Format(ProjectResources.Success_RemoveZone, zoneToDelete.Name, zoneToDelete.ResourceGroupName));
 
                     if (this.PassThru)
                     {

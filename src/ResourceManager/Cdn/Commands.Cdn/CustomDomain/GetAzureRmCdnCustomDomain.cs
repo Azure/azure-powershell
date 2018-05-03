@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Cdn.Properties;
 using Microsoft.Azure.Management.Cdn;
 using System.Linq;
 using Microsoft.Azure.Commands.Cdn.Models.Endpoint;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         public string ProfileName { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The resource group of the Azure CDN profile.", ParameterSetName = FieldsParameterSet)]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

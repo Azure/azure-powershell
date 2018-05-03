@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,26 @@
 -->
 ## Current Release
 
+## Version 0.18.0
+* Set minimum dependency of module to PowerShell 5.0
+* Remove deprecated `Tags` alias from cmdlets
+    - Update-AzureRmMlCommitmentPlan
+
+## Version 0.17.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.17.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 0.17.0
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for Update-AzureRmMlCommitmentPlan
+
+## Version 0.16.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 0.15.7
 
 ## Version 0.15.6

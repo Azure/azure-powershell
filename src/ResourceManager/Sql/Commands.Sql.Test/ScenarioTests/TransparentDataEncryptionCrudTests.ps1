@@ -34,8 +34,9 @@ function Test-UpdateTransparentDataEncryption
 	try
 	{
 		# Alter all properties
-		$tde1 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-State Enabled 
+		$tde1 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName `
+			-DatabaseName $db.DatabaseName -State Enabled
+
 		Assert-AreEqual $tde1.State Enabled
 	}
 	finally
@@ -62,21 +63,24 @@ function Test-GetTransparentDataEncryption
 
 	try
 	{
-		$tde1 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+		$tde1 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName `
+			-DatabaseName $db.DatabaseName
 		Assert-AreEqual $tde1.State Enabled
 
 		$tde2 = $tde1 | Get-AzureRmSqlDatabaseTransparentDataEncryption
 		Assert-AreEqual $tde2.State Enabled
 
 		# Alter all properties
-		$tde3 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-State Disabled
+		$tde3 = Set-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName `
+			-DatabaseName $db.DatabaseName -State Disabled
 		Assert-AreEqual $tde3.State Disabled
 
-		$tdeActivity = Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+		$tdeActivity = Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName $server.ResourceGroupname `
+			-ServerName $server.ServerName -DatabaseName $db.DatabaseName
 		Assert-AreEqual $tdeActivity.Status Decrypting
 
-		$tde4 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db.DatabaseName
+		$tde4 = Get-AzureRmSqlDatabaseTransparentDataEncryption -ResourceGroupName $server.ResourceGroupname `
+			-ServerName $server.ServerName -DatabaseName $db.DatabaseName
 		Assert-AreEqual $tde4.State Disabled
 	}
 	finally
@@ -130,7 +134,11 @@ function Test-SetTransparentDataEncryptionProtector
 		Assert-AreEqual $params.keyId $keyResult.Uri
 
 		# Rotate to AKV
-		$encProtector2 = Set-AzureRmSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName -Type AzureKeyVault -KeyId $params.keyId -Force
+		$job = Set-AzureRmSqlServerTransparentDataEncryptionProtector -ResourceGroupName $params.rgName -ServerName $params.serverName `
+			-Type AzureKeyVault -KeyId $params.keyId -Force -AsJob
+		$job | Wait-Job
+		$encProtector2 = $job.Output
+
 		Assert-AreEqual AzureKeyVault $encProtector2.Type 
 		Assert-AreEqual $params.serverKeyName $encProtector2.ServerKeyVaultKeyName 
 

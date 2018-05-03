@@ -18,14 +18,14 @@ Tests downloading node file contents by task
 #>
 function Test-GetNodeFileContentByTask
 {
-    param([string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
+    param([string]$jobId, [string]$taskId, [string]$nodeFilePath, [string]$fileContent)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
 
     try
     {
-        $nodeFile = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
+        $nodeFile = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Path $nodeFilePath -BatchContext $context
         $nodeFile | Get-AzureBatchNodeFileContent -BatchContext $context -DestinationStream $stream
         
         $stream.Position = 0
@@ -51,14 +51,14 @@ Tests downloading node file contents by compute node
 #>
 function Test-GetNodeFileContentByComputeNode
 {
-    param([string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
+    param([string]$poolId, [string]$computeNodeId, [string]$nodeFilePath, [string]$fileContent)
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
     $stream = New-Object System.IO.MemoryStream 
 
     try
     {
-        $nodeFile = Get-AzureBatchNodeFile -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
+        $nodeFile = Get-AzureBatchNodeFile -PoolId $poolId -ComputeNodeId $computeNodeId -Path $nodeFilePath -BatchContext $context
         $nodeFile | Get-AzureBatchNodeFileContent -BatchContext $context -DestinationStream $stream
         
         $stream.Position = 0
@@ -121,7 +121,7 @@ function Test-DeleteNodeFileByTask
     param([string]$jobId, [string]$taskId, [string]$filePath)
     
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
-    Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Name $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
+    Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Path $filePath -BatchContext $context | Remove-AzureBatchNodeFile -Force -BatchContext $context
     
     # Use filter to avoid 404 from GET
     $file = Get-AzureBatchNodeFile -JobId $jobId -TaskId $taskId -Filter "startswith(name,'$filePath')" -BatchContext $context

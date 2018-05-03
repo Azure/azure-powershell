@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
+Module Name: AzureRM.Sql
 ms.assetid: FAAF458C-1662-4130-9A16-0514B714D11D
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/set-azurermsqlserver
 schema: 2.0.0
 ---
 
@@ -14,8 +15,8 @@ Modifies properties of a SQL Database server.
 
 ```
 Set-AzureRmSqlServer [-ServerName] <String> [-SqlAdministratorPassword <SecureString>] [-Tags <Hashtable>]
- [-ServerVersion <String>] [-AssignIdentity] [-Force] [-ResourceGroupName] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ServerVersion <String>] [-AssignIdentity] [-Force] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,8 @@ SqlAdministratorLogin    : adminLogin
 SqlAdministratorPassword :
 ServerVersion            : 12.0
 Tags                     :
+Identity                 :
+FullyQualifiedDomainName : server01.database.windows.net
 ```
 
 This command resets the administrator password on the AzureSQL Server named server01.
@@ -48,6 +51,21 @@ Generate and assign an Azure Active Directory Identity for this server for use w
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -187,6 +205,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

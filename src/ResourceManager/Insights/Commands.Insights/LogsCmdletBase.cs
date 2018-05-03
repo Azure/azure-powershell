@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.Insights
         private const int MaxNumberOfReturnedRecords = 1000;
         private int MaxRecords = 0;
 
-        internal const string SubscriptionLevelName = "Query at subscription level";
-        internal const string ResourceProviderName = "Query on ResourceProvider";
-        internal const string ResourceGroupName = "Query on ResourceGroupProvider";
-        internal const string ResourceIdName = "Query on ResourceIdName";
-        internal const string CorrelationIdName = "Query on CorrelationId";
+        internal const string SubscriptionLevelParameterSetName = "GetBySubscription";
+        internal const string ResourceProviderParameterSetName = "GetByResourceProvider";
+        internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
+        internal const string ResourceIdParameterSetName = "GetByResourceId";
+        internal const string CorrelationIdParameterSetName = "GetByCorrelationId";
 
         #region Parameters declarations
 
@@ -165,7 +165,10 @@ namespace Microsoft.Azure.Commands.Insights
         {
             string queryFilter = this.ProcessGeneralParameters();
             var result = this.ProcessParticularParameters(queryFilter);
-            WriteWarning("Output change: The field EventChannels from the EventData object is being deprecated in the release 5.0.0 - November 2017 - since it now returns a constant value (Admin,Operation)");
+            this.WriteIdentifiedWarning(
+                cmdletName: this.GetCmdletName(),
+                topic: "Output change",
+                message: "The field EventChannels from the EventData object is being deprecated in the release 5.0.0 - November 2017 - since it now returns a constant value (Admin,Operation)");
             return result;
         }
 
@@ -181,7 +184,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// A predicate to filter in/out the records from original list of records obtained from the SDK.
         /// <para>This method is intended to allow descendants of this class to further filter the results.</para>
-        /// <para>An example of this is when the filtering is needed based on Category and ResourceUri at the same time. 
+        /// <para>An example of this is when the filtering is needed based on Category and ResourceUri at the same time.
         /// The SDK does not allow these two fields to be in the query filter togheter. So the call should filter by one and then use this function to filter by the second one.</para>
         /// </summary>
         /// <param name="record">A record from the original list of records obtained from the sdk</param>
@@ -197,6 +200,10 @@ namespace Microsoft.Azure.Commands.Insights
         /// </summary>
         protected override void ProcessRecordInternal()
         {
+            this.WriteIdentifiedWarning(
+                cmdletName: this.GetCmdletName(),
+                topic: "Parameter deprecation",
+                message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             WriteDebug("Processing parameters");
             string queryFilter = this.ProcessParameters();
 
@@ -210,8 +217,8 @@ namespace Microsoft.Azure.Commands.Insights
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
             WriteDebug("First call");
             var query = new ODataQuery<EventData>(queryFilter);
-            IPage<EventData> response = this.MonitorClient.ActivityLogs.ListAsync(odataQuery: query, select: fullDetails ? null : PSEventDataNoDetails.SelectedFieldsForQuery, cancellationToken: CancellationToken.None).Result;
-            var records = new List<IPSEventData>();
+            IPage<EventData> response = this.MonitorClient.ActivityLogs.ListAsync(odataQuery: query, cancellationToken: CancellationToken.None).Result;
+            var records = new List<PSEventData>();
             var enumerator = response.GetEnumerator();
             enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
             string nextLink = response.NextPageLink;
@@ -229,7 +236,7 @@ namespace Microsoft.Azure.Commands.Insights
             }
 
             WriteDebug("Done following continuation token");
-            var recordsReturned = new List<IPSEventData>();
+            var recordsReturned = new List<PSEventData>();
             if (records.Count > maxNumberOfRecords)
             {
                 WriteDebug("Complying with maxNumberOfRecords");

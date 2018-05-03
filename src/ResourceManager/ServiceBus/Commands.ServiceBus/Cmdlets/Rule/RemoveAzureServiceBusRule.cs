@@ -12,51 +12,38 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 {
     /// <summary>
     /// 'Remove-AzureRmServiceBusRule' Cmdlet removes the specified Rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusRuleVerb, SupportsShouldProcess = true) OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, ServicebusRuleVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "Subscription Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Subscription Name")]
         [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
         public string Subscription { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 4,
-            HelpMessage = "Rule Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "Rule Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -76,7 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
                 Name,
                 () =>
                 {
-                    Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
+                    Client.DeleteRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
 
                     if (PassThru)
                     {

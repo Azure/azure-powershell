@@ -45,7 +45,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                     return op;
                 },
                 (op, response) => response.Select(
-                    extension => ContextFactory<ExtensionImage, ExtensionImageContext>(extension, op)));
+                    extension => ContextFactory(extension, op,
+                        ServiceManagementProfile.Mapper.Map<ExtensionImage, ExtensionImageContext>,
+                        ServiceManagementProfile.Mapper.Map)));
         }
 
         protected override void OnProcessRecord()

@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/get-azurermpolicysetdefinition
 schema: 2.0.0
 ---
 
@@ -12,19 +12,22 @@ Gets policy set definitions.
 
 ## SYNTAX
 
-### The list all policy set definitions parameter set. (Default)
+### GetBySubscription (Default)
 ```
-Get-AzureRmPolicySetDefinition [-ApiVersion <String>] [-Pre] [<CommonParameters>]
-```
-
-### The policy set definition name parameter set.
-```
-Get-AzureRmPolicySetDefinition -Name <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+Get-AzureRmPolicySetDefinition [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
-### The policy set definition Id parameter set.
+### GetByNameAndResourceGroup
 ```
-Get-AzureRmPolicySetDefinition -Id <String> [-ApiVersion <String>] [-Pre] [<CommonParameters>]
+Get-AzureRmPolicySetDefinition -Name <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetById
+```
+Get-AzureRmPolicySetDefinition -Id <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +58,22 @@ If not specified, the API version is automatically determined as the latest avai
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -71,7 +89,7 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition Id parameter set.
+Parameter Sets: GetById
 Aliases: ResourceId
 
 Required: True
@@ -86,8 +104,8 @@ The policy set definition name.
 
 ```yaml
 Type: String
-Parameter Sets: The policy set definition name parameter set.
-Aliases: 
+Parameter Sets: GetByNameAndResourceGroup
+Aliases:
 
 Required: True
 Position: Named
@@ -102,7 +120,7 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,4 +143,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

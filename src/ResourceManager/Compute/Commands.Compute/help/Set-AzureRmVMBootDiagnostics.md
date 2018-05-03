@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 9A6F140C-9F1C-4701-9603-FC6107FCAF92
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmbootdiagnostics
 schema: 2.0.0
 ---
 
@@ -64,7 +65,7 @@ Indicates that this cmdlet disables the boot diagnostics for the virtual machine
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DisableBootDiagnostics
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -79,7 +80,7 @@ Indicates that this cmdlet enables the boot diagnostics for the virtual machine.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: EnableBootDiagnostics
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -94,7 +95,7 @@ Specifies the name of the resource group of the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: EnableBootDiagnostics
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -109,7 +110,7 @@ Specifies the name of the storage account in which to save boot diagnostics data
 ```yaml
 Type: String
 Parameter Sets: EnableBootDiagnostics
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3

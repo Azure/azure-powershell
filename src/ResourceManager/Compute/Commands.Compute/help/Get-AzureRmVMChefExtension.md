@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: F41953F1-9515-4081-8624-6A1494DA4BB2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmchefextension
 schema: 2.0.0
 ---
 
@@ -29,7 +30,7 @@ The **Get-AzureVMChefExtension** cmdlet gets information about a Chef extension 
 
 ## EXAMPLES
 
-### Example 1: Get the details of Chef extension for a Windows virtual machine-
+### Example 1: Get the details of Chef extension for a Windows virtual machine
 ```
 PS C:\> Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows
 ```
@@ -66,7 +67,7 @@ Indicates that this cmdlet works on a Linux virtual machine.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Linux
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -96,7 +97,7 @@ Specifies the name of the resource group that contains the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -111,7 +112,7 @@ Indicates that this cmdlet gets only the instance view of the Chef extension.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -141,7 +142,7 @@ Indicates that this cmdlet is for a Windows virtual machine.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Windows
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -154,6 +155,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

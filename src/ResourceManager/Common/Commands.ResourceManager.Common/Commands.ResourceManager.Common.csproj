@@ -51,17 +51,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Channels" />
     <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
+    <Compile Include="ArgumentCompleters\PSArgumentCompleter.cs" />
+    <Compile Include="ArgumentCompleters\ResourceTypeCompleter.cs" />
+    <Compile Include="ArgumentCompleters\ScopeCompleter.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
+    <Compile Include="AzureRmLongRunningCmdlet.cs" />
     <Compile Include="Generated\DeploymentOperations.cs" />
     <Compile Include="Generated\DeploymentOperationsExtensions.cs" />
     <Compile Include="Generated\DeploymentsOperations.cs" />
@@ -123,6 +121,8 @@
     <Compile Include="Generated\Models\Page1.cs" />
     <Compile Include="Generated\Models\PageEnumerable.cs" />
     <Compile Include="Generated\Models\PageEnumerator.cs" />
+    <Compile Include="Paging\GenericPageEnumerable.cs" />
+    <Compile Include="Paging\GenericPageEnumerator.cs" />
     <Compile Include="Generated\Models\ParametersLink.cs" />
     <Compile Include="Generated\Models\Plan.cs" />
     <Compile Include="Generated\Models\PolicyAssignment.cs" />
@@ -177,7 +177,7 @@
     <Compile Include="Generated\TenantsOperations.cs" />
     <Compile Include="Generated\TenantsOperationsExtensions.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Location\LocationCompleter.cs" />
+    <Compile Include="ArgumentCompleters\LocationCompleter.cs" />
     <Compile Include="PaginatedResponseHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -185,6 +185,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ArgumentCompleters\ResourceGroupCompleter.cs" />
     <Compile Include="ResponseWithContinuation.cs" />
     <Compile Include="RPRegistrationDelegatingHandler.cs" />
     <Compile Include="ServiceClientTracingInterceptor.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Utilities\Models\DeploymentVariable.cs" />
     <Compile Include="Utilities\Models\FilterResourcesOptions.cs" />
     <Compile Include="Utilities\Models\GenericResource.cs" />
+    <Compile Include="Utilities\Models\Location.cs" />
     <Compile Include="Utilities\Models\ResourceGroupDeployment.cs" />
     <Compile Include="Utilities\Models\ResourceIdentifier.cs" />
     <Compile Include="Utilities\ResourceManagementClientExtensions.cs" />

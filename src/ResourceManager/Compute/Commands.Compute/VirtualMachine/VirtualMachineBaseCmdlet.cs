@@ -21,6 +21,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -64,6 +65,14 @@ namespace Microsoft.Azure.Commands.Compute
                 result += preTab + t.Item1 + postTab + ": " + t.Item2 + "\n";
             }
             return result;
+        }
+
+        protected string GetResourceGroupNameFromId(string idString)
+        {
+            var match = Regex.Match(idString, @"resourceGroups/([A-Za-z0-9\-]+)/");
+            return (match.Success)
+                ? match.Groups[1].Value
+                : null;
         }
 
         private static int GetTabLength(Object obj, int max, int depth, List<Tuple<string, string, int>> tupleList, bool expand = true)

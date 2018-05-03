@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     using Microsoft.Azure.Commands.LogicApp.Utilities;
     using Microsoft.Azure.Management.Logic.Models;
     using Newtonsoft.Json.Linq;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Creates a new integration account 
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account resource group name.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -43,6 +45,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = "The integration account location.",
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Logic/integrationAccounts")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

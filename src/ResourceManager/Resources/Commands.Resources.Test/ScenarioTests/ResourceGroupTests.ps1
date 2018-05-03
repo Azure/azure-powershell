@@ -20,16 +20,16 @@ function Test-CreatesNewSimpleResourceGroup
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
-    try 
+    try
     {
         # Test
-        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval"} 
+        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval"}
         $expected = Get-AzureRmResourceGroup -Name $rgname
 
         # Assert
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.Tags["testtag"] $actual.Tags["testtag"]
     }
     finally
@@ -47,22 +47,22 @@ function Test-UpdatesExistingResourceGroup
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
-    try 
+    try
     {
         # Test update without tag
         Set-AzureRmResourceGroup -Name $rgname -Tags @{testtag = "testval"} -ErrorAction SilentlyContinue
         Assert-True { $Error[0] -like "*Provided resource group does not exist." }
         $Error.Clear()
-        
+
         $new = New-AzureRmResourceGroup -Name $rgname -Location $location
-            
-        $actual = Set-AzureRmResourceGroup -Name $rgname -Tags @{ testtag = "testval" } 
+
+        $actual = Set-AzureRmResourceGroup -Name $rgname -Tags @{ testtag = "testval" }
         $expected = Get-AzureRmResourceGroup -Name $rgname
 
         # Assert
-        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual 0 $new.Tags.Count
         Assert-AreEqual $expected.Tags["testtag"] $actual.Tags["testtag"]
     }
@@ -82,19 +82,20 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     # Setup
     $rgname1 = Get-ResourceGroupName
     $rgname2 = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
     # Test
     New-AzureRmResourceGroup -Name $rgname1 -Location $location
     New-AzureRmResourceGroup -Name $rgname2 -Location $location
 
-    Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force
+    $job = Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force -AsJob
+	Wait-Job $job
 
     # Assert
     Get-AzureRmResourceGroup -Name $rgname1 -ErrorAction SilentlyContinue
     Assert-True { $Error[0] -like "*Provided resource group does not exist." }
     $Error.Clear()
- 
+
     Get-AzureRmResourceGroup -Name $rgname2 -ErrorAction SilentlyContinue
     Assert-True { $Error[0] -like "*Provided resource group does not exist." }
     $Error.Clear()
@@ -200,21 +201,21 @@ function Test-NewDeploymentAndProviderRegistration
     # Setup
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
-    $location = Get-ProviderLocation ResourceManagement
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $template = "Microsoft.Cache.0.4.0-preview"
     $provider = "microsoft.cache"
 
-    try 
+    try
     {
         # Unregistering microsoft.cache to have clean state
         $subscription = [Microsoft.WindowsAzure.Commands.Utilities.Common.AzureProfile]::Instance.CurrentSubscription
         $client = New-Object Microsoft.Azure.Commands.Resources.Models.ResourcesClient $subscription
-         
+
         # Verify provider is registered
         $providers = [Microsoft.WindowsAzure.Commands.Utilities.Common.AzureProfile]::Instance.CurrentSubscription.RegisteredResourceProvidersList
         if( $providers -Contains $provider )
         {
-            $client.UnregisterProvider($provider) 
+            $client.UnregisterProvider($provider)
         }
 
         # Test
@@ -223,7 +224,7 @@ function Test-NewDeploymentAndProviderRegistration
         # Assert
         $client = New-Object Microsoft.Azure.Commands.Resources.Models.ResourcesClient $subscription
         $providers = [Microsoft.WindowsAzure.Commands.Utilities.Common.AzureProfile]::Instance.CurrentSubscription.RegisteredResourceProvidersList
-        
+
         Assert-True { $providers -Contains $provider }
 
     }
@@ -249,8 +250,10 @@ function Test-RemoveDeployment
     {
         # Test
         New-AzureRmResourceGroup -Name $rgName -Location "East US"
-        $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
-        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
+        $job = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri -AsJob
+		Wait-Job $job
+		$deployment = Receive-Job $job
+		Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName }
     }
     finally
     {
@@ -268,9 +271,9 @@ function Test-FindResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 	$rgname2 = Get-ResourceGroupName
-    $location = Get-ProviderLocation ResourceManagement
-	$originalResorcrGroups = Find-AzureRmResourceGroup
-	$originalCount = @($originalResorcrGroups).Count 
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$originalResorcrGroups = Get-AzureRmResourceGroup
+	$originalCount = @($originalResorcrGroups).Count
 
     try
     {
@@ -288,20 +291,20 @@ function Test-FindResourceGroup
         Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
         Assert-AreEqual $expected2.Tags["testtag"] $actual2.Tags["testtag"]
 
-		$expected3 = Find-AzureRmResourceGroup
+		$expected3 = Get-AzureRmResourceGroup
 		$expectedCount = $originalCount + 2
 		# Assert
 		Assert-AreEqual @($expected3).Count $expectedCount
 
-		$expected4 = Find-AzureRmResourceGroup -Tag @{ testtag = $null}
+		$expected4 = Get-AzureRmResourceGroup -Tag @{ testtag = $null}
         # Assert
         Assert-AreEqual @($expected4).Count 2
 
-		$expected5 = Find-AzureRmResourceGroup -Tag @{ testtag = "testval" }
+		$expected5 = Get-AzureRmResourceGroup -Tag @{ testtag = "testval" }
         # Assert
         Assert-AreEqual @($expected5).Count 1
 
-		$expected6 = Find-AzureRmResourceGroup -Tag @{ testtag2 = $null }
+		$expected6 = Get-AzureRmResourceGroup -Tag @{ testtag2 = $null }
         # Assert
         Assert-AreEqual @($expected6).Count 0
     }
@@ -334,11 +337,11 @@ function Test-ExportResourceGroup
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 	$resourceType = "Providers.Test/statefulResources"
 
-	
+
 	try
 	{
 		# Test
@@ -351,7 +354,7 @@ function Test-ExportResourceGroup
 		Assert-NotNull $exportOutput
 		Assert-True { $exportOutput.Path.Contains($rgname + ".json") }
 	}
-	
+
 	finally
     {
         # Cleanup
@@ -367,7 +370,7 @@ function Test-ResourceGroupWithPositionalParams
 {
     # Setup
     $rgname = Get-ResourceGroupName
-    $location = "West US"
+    $location = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
     try
     {

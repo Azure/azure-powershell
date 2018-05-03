@@ -1,7 +1,7 @@
 ---
 Module Name: AzureRM.Compute
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: 
+Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute
 Help Version: 3.5.0.0
 Locale: en-US
 ---
@@ -68,6 +68,12 @@ Disables encryption on an IaaS virtual machine.
 ### [Disable-AzureRmVmssDiskEncryption](Disable-AzureRmVmssDiskEncryption.md)
 Disables disk encryption on a VM scale set.
 
+### [Export-AzureRmLogAnalyticRequestRateByInterval](Export-AzureRmLogAnalyticRequestRateByInterval.md)
+Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
+
+### [Export-AzureRmLogAnalyticThrottledRequests](Export-AzureRmLogAnalyticThrottledRequests.md)
+Export logs that show total throttled Api requests for this subscription in the given time window.
+
 ### [Get-AzureRmAvailabilitySet](Get-AzureRmAvailabilitySet.md)
 Gets Azure availability sets in a resource group.
 
@@ -78,7 +84,7 @@ List all compute resource Skus
 Gets a container service.
 
 ### [Get-AzureRmDisk](Get-AzureRmDisk.md)
-Gets the properties of a disk.
+Gets the properties of a Managed disk.
 
 ### [Get-AzureRmImage](Get-AzureRmImage.md)
 Gets the properties of an image.
@@ -323,6 +329,9 @@ Removes an extension from the VMSS.
 ### [Remove-AzureRmVmssNetworkInterfaceConfiguration](Remove-AzureRmVmssNetworkInterfaceConfiguration.md)
 Removes a network interface configuration from a VMSS.
 
+### [Repair-AzureRmVmssServiceFabricUpdateDomain](Repair-AzureRmVmssServiceFabricUpdateDomain.md)
+Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
+
 ### [Restart-AzureRmVM](Restart-AzureRmVM.md)
 Restarts an Azure virtual machine.
 
@@ -353,9 +362,6 @@ Sets the key encryption key properties on a disk object.
 ### [Set-AzureRmDiskUpdateDiskEncryptionKey](Set-AzureRmDiskUpdateDiskEncryptionKey.md)
 Sets the disk encryption key properties on on a disk update object.
 
-### [Set-AzureRmDiskUpdateImageReference](Set-AzureRmDiskUpdateImageReference.md)
-Sets the image reference properties on a disk update object.
-
 ### [Set-AzureRmDiskUpdateKeyEncryptionKey](Set-AzureRmDiskUpdateKeyEncryptionKey.md)
 Sets the key encryption key properties on a disk update object.
 
@@ -373,9 +379,6 @@ Sets the key encryption key properties on a snapshot object.
 
 ### [Set-AzureRmSnapshotUpdateDiskEncryptionKey](Set-AzureRmSnapshotUpdateDiskEncryptionKey.md)
 Sets the disk encryption key properties on a snapshot update object.
-
-### [Set-AzureRmSnapshotUpdateImageReference](Set-AzureRmSnapshotUpdateImageReference.md)
-Sets the image reference properties on a snapshot update object.
 
 ### [Set-AzureRmSnapshotUpdateKeyEncryptionKey](Set-AzureRmSnapshotUpdateKeyEncryptionKey.md)
 Sets the key encryption key properties on a snapshot update object.

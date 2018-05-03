@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.MachineLearningCompute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.MachineLearningCompute;
 using Microsoft.Rest.Azure;
@@ -21,23 +22,20 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-
     [Cmdlet(VerbsData.Update, CmdletSuffix + "SystemService", SupportsShouldProcess = true)]
     [OutputType(typeof(PSUpdateSystemServicesResponse))]
     public class UpdateAzureRmMlOpClusterSystemService : MachineLearningComputeCmdletBase
     {
-        protected const string CmdletParametersParameterSet =
-            "Start a system services update from cmdlet input parameters.";
+        protected const string CmdletParametersParameterSet = "StartUpdateWithNameAndResourceGroup";
 
-        protected const string ObjectParameterSet =
-            "Start a system services update from an PSOperationalizationCluster instance definition.";
+        protected const string ObjectParameterSet = "StartUpdateWithInputObject";
 
-        protected const string ResourceIdParameterSet =
-            "Start a system services update from an Azure resouce id.";
+        protected const string ResourceIdParameterSet = "StartUpdateWithResourceId";
 
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = true, 
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
+Module Name: AzureRM
 ms.assetid: 66B25541-0FA5-46CF-90D8-FE9527BE11C6
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/remove-azurermtag
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Deletes predefined Azure tags or values.
 ## SYNTAX
 
 ```
-Remove-AzureRmTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +60,21 @@ It does not delete the tag.
 If the value has been applied to any resources or resource groups, the command fails.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the tag to be deleted.

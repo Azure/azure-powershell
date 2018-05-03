@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Insights;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
+using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+
 
         public string UserDomain { get; private set; }
 
@@ -123,7 +124,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01");
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.Matcher = new ResourcesRecordMatcher(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
@@ -207,7 +208,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 tenantId = environment.Tenant;
-                UserDomain = environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
+                UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
                 HttpMockServer.Variables[DomainKey] = UserDomain;

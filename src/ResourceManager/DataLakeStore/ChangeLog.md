@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,11 +18,44 @@
         - Additional information about change #1
 -->
 ## Current Release
-* [BREAKING CHANGE] Removed the Obsolete Properties fields in PSDataLakeStoreAccount.cs and its assoicated files
+
+## Version 6.0.0
+* Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
+* Add new cmdlet for retrieving the content summary under a directory
+* Add new cmdlet for retrieving the disk usage and Acl dump
+* Set minimum dependency of module to PowerShell 5.0
+* Correct return type of Set-AzureRmDataLakeStoreItemAcl bool to IEnumerable<DataLakeStoreItemAce>
+* Correct return type of Set-AzureRmDataLakeStoreItemAclEntry bool to IEnumerable<DataLakeStoreItemAce>
+* Breaking changes in Export-AzureRmDataLakeStoreItem, Import-AzureRmDataLakeStoreItem, Remove-AzureRmDataLakeStoreItem
+
+## Version 5.2.0
+* Updated to the latest version of the Azure ClientRuntime
+* Add debug functionality
+* Update the version of the ADLS dataplane SDK to 1.1.2
+* Export-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Import-AzureRMDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) -Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
+* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
+* Remove-AzureRmDataLakeStoreItem (https://github.com/Azure/azure-powershell/blob/adls-data-plane/src/ResourceManager/DataLakeStore/documentation/upcoming-breaking-changes.md) - Deprecated parameter Clean.
+
+## Version 5.1.1
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+* Corrected the error message of 'Test-AzureRmDataLakeStoreAccount' when running this cmdlet without having logged in with 'Login-AzureRmAccount'
+
+## Version 5.1.0
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataLakeStoreAccount and Set-AzureRmDataLakeStoreAccount
+
+## Version 5.0.0
+* NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
+* Removed the Obsolete Properties fields in PSDataLakeStoreAccount.cs and its assoicated files
 * Changed one of the two OutputTypes of Get-AzureRmDataLakeStoreAccount
-    - List<PSDataLakeStoreAccount> to List<PSDataLakeStoreAccountBasic>
+    - List\<PSDataLakeStoreAccount> to List\<PSDataLakeStoreAccountBasic>
     - The properties of PSDataLakeStoreAccountBasic is a strict subset of the properties of PSDataLakeStoreAccount
     - The additional properties that are in PSDataLakeStoreAccount are not returned by the service.  Therefore, this change is to reflect this accurately. These additional properties are still in PSDataLakeStoreAccountBasic, but they are tagged as Obsolete.
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 4.4.1
 

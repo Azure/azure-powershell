@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
 using System.Management.Automation;
@@ -21,48 +22,37 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <summary>
     /// 'Set-AzureRmServiceBusQueue' Cmdlet updates the specified Queue
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServicebusQueueVerb, SupportsShouldProcess = true), OutputType(typeof(QueueAttributes))]
+    [Cmdlet(VerbsCommon.Set, ServicebusQueueVerb, SupportsShouldProcess = true), OutputType(typeof(PSQueueAttributes))]
     public class SetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Queue Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Queue Name")]
         [Alias(AliasQueueName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 3,
-            HelpMessage = "ServiceBus definition.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "ServiceBus definition")]
         [Alias(AliasQueueObj)]
         [ValidateNotNullOrEmpty]
-        public QueueAttributes InputObject { get; set; }
+        public PSQueueAttributes InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            QueueAttributes queueAttributes = new QueueAttributes();
+            PSQueueAttributes queueAttributes = new PSQueueAttributes();
 
             if (InputObject != null)
                {
-                NamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
+                PSNamespaceAttributes getNamespaceLoc = Client.GetNamespace(ResourceGroupName, Namespace);
                 queueAttributes = InputObject;
                }
 

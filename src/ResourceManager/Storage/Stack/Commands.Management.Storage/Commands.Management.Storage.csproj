@@ -82,6 +82,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageProvider.cs">
+      <Link>Common\ARMStorageProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\ARM.Storage.3\ARMStorageService.cs">
+      <Link>Common\ARMStorageService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureContextAdapterExtensions.cs">
+      <Link>Common\AzureContextAdapterExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\AzureStorageContext.cs">
+      <Link>Common\AzureStorageContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\Common\Commands.Common.Storage\Adapters\WindowsAzure.Storage.6\LazyAzureStorageContext.cs">
+      <Link>Common\LazyAzureStorageContext.cs</Link>
+    </Compile>
     <Compile Include="Generated\IStorageAccountOperations.cs" />
     <Compile Include="Generated\IStorageManagementClient.cs" />
     <Compile Include="Generated\IUsageOperations.cs" />
@@ -143,13 +158,16 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Storage.csproj">
+    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>

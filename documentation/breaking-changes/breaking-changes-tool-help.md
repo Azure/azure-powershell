@@ -42,13 +42,13 @@ Below are descriptions and remediations for each of the errors that can be seen 
 | 3040 | [Changed Generic Type Argument](#3040---changed-generic-type-argument) |
 | 3050 | [Different Generic Type Argument Size](#3050---different-generic-type-argument-size) |
 
-## 1000 - Removed Cmdlet
+## 1000 - Removed or Renamed Cmdlet
 
 ### Description
 
 _The cmdlet '`<cmdlet>`' has been removed and no alias was found for the original cmdlet name._
 
-When a user can no longer use a cmdlet that was previously available in a module, that is a breaking change. This can occur when the cmdlet is deleted, or the name of the cmdlet was changed with no alias to the original cmdlet name.
+When a user can no longer use a cmdlet that was previously available in a module, that is a breaking change. This can occur when the cmdlet is deleted, or when the name of the cmdlet was changed with no alias to the original cmdlet name.
 
 ### Remediation
 
@@ -56,10 +56,12 @@ _Add the cmdlet '`<cmdlet>`' back to the module, or add an alias to the original
 
 To add an alias to the original cmdlet name, use the `Alias` attribute for the cmdlet.
 
+If you need to, you can add multiple aliases for cmdlets that need to be renamed twice.
+
 ```cs
-[Alias("Login-AzureRmAccount")]
-[Cmdlet(VerbsCommon.Add, "AzureRmAccount")]
-public class AddAzureRmAccount : Cmdlet
+[Cmdlet(VerbsCommunications.Connect, "AzureRmAccount")]
+[Alias("Login-AzureRmAccount", "Login-AzAccount", "Add-AzureRmAccount")]
+public class ConnectAzureRmAccount : Cmdlet
 {
     protected override void BeginProcessing()
     {
@@ -383,8 +385,8 @@ _Add the parameter '`<parameter>`' back to the cmdlet '`<cmdlet>`', or add an al
 To add an alias to the original parameter name, use the `Alias` attribute for the parameter.
 
 ```cs
-[Cmdlet(VerbsCommon.Add, "AzureRmAccount")]
-public class AddAzureRmAccount : Cmdlet
+[Cmdlet(VerbsCommunications.Connect, "AzureRmAccount")]
+public class ConnectAzureRmAccount : Cmdlet
 {
     [Alias("Domain")]
     [Parameter(ParameterSetName = "...", Mandatory = false)

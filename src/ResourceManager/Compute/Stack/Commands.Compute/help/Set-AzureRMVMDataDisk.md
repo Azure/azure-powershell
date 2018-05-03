@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: C453485D-67A7-480E-83F6-527D4F5EBC93
 online version: 
@@ -40,7 +40,7 @@ The command stores it in the $VM variable.
 
 The second command modifies the caching mode for the data disk named DataDisk01 on the virtual machine in $VM.
 The command passes the result to the Update-AzureRmVM cmdlet, which implements your changes.
-A change to the cashing mode causes the virtual machine to restart.
+A change to the caching mode causes the virtual machine to restart.
 
 ## PARAMETERS
 
@@ -134,6 +134,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

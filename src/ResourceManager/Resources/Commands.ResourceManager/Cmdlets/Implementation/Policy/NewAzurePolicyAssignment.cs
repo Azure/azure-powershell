@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using System.Linq;
     using System.Collections;
     using WindowsAzure.Commands.Common;
+    using Commands.Common.Authentication.Abstractions;
 
     /// <summary>
     /// Creates a policy assignment.
@@ -34,11 +35,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     {
         protected RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
 
-        protected const string PolicyParameterObjectParameterSetName = "Policy assignment with parameters via policy parameter object";
-        protected const string PolicyParameterStringParameterSetName = "Policy assignment with parameters via policy parameter string";
-        protected const string PolicySetParameterObjectParameterSetName = "Policy assignment with parameters via policy set parameter object";
-        protected const string PolicySetParameterStringParameterSetName = "Policy assignment with parameters via policy set parameter string";
-        protected const string ParameterlessPolicyParameterSetName = "Policy assignment without parameters";
+        protected const string PolicyParameterObjectParameterSetName = "CreateWithPolicyParameterObject";
+        protected const string PolicyParameterStringParameterSetName = "CreateWithPolicyParameterString";
+        protected const string PolicySetParameterObjectParameterSetName = "CreateWithPolicySetParameterObject";
+        protected const string PolicySetParameterStringParameterSetName = "CreateWithPolicySetParameterString";
+        protected const string ParameterlessPolicyParameterSetName = "CreateWithoutParameters";
 
         /// <summary>
         /// Gets or sets the policy assignment name parameter.
@@ -247,6 +248,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 }
             }
 
+            RegisterDynamicParameters(dynamicParameters);
+
             return this.dynamicParameters;
         }
 
@@ -268,7 +271,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             }
 
             // Load dynamic parameters
-            var parameters = PowerShellUtilities.GetUsedDynamicParameters(dynamicParameters, MyInvocation);
+            var parameters = PowerShellUtilities.GetUsedDynamicParameters(AsJobDynamicParameters, MyInvocation);
             if (parameters.Count() > 0)
             {
                 return MyInvocation.BoundParameters.ToJObjectWithValue(parameters.Select(p => p.Name));

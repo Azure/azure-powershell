@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.Cdn;
 using SdkSku = Microsoft.Azure.Management.Cdn.Models.Sku;
 using SdkSkuName = Microsoft.Azure.Management.Cdn.Models.SkuName;
 using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// The location in which to create the profile.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The location in which to create the CDN profile.")]
+        [LocationCompleter("Microsoft.Cdn/profiles")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// The resource group name of the profile.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the Azure CDN profile will be created in.")]
+        [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         /// <summary>
@@ -64,7 +67,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure CDN profile.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
 
         public override void ExecuteCmdlet()
@@ -97,7 +100,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
                     id: null,
                     name: null,
                     type: null,
-                    tags: Tags.ToDictionaryTags())
+                    tags: Tag.ToDictionaryTags())
                 );
 
             WriteObject(cdnProfile.ToPsProfile());

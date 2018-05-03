@@ -112,5 +112,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             TestController.NewInstance.RunPsTest("Test-NetworkRule");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAzureStorageAccountStorageV2()
+        {
+            TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccountStorageV2");
+        }
     }
 }

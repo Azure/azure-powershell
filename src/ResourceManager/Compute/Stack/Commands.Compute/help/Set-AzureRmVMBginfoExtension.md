@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: B2B4E132-4A71-4DB8-A7B9-9ED3FE7EB292
 online version: 
@@ -23,9 +23,15 @@ The **Set-AzureRmVMBGInfoExtension** cmdlet adds the BGInfo extension to a virtu
 
 ## EXAMPLES
 
-### Example 1: Add the BGInfo extension for a virtual machine
+### Example 1: Add the BGInfo extension to a virtual machine
 ```
-PS C:\> Set-AzureVMBGInfoExtension -ResrouceGroupName "ContosoRG" -VMName "ContosoVM" -Name "ExtensionName" -TypeHandlerVersion "2.1" -Location "West Europe"
+PS C:\> Set-AzureRmVMBgInfoExtension -ResourceGroupName "ContosoRG" -VMName "ContosoVM"
+```
+This command adds the BGInfo extension to a virtual machine named ContosoVM in the resource group ContosoRG.
+
+### Example 2: Add a specific version of BGInfo extension to a virtual machine
+```
+PS C:\> Set-AzureRmVMBgInfoExtension -ResourceGroupName "ContosoRG" -VMName "ContosoVM" -Name "ExtensionName" -TypeHandlerVersion "2.1" -Location "West Europe"
 ```
 
 This command adds the BGInfo extension to virtual machine named ContosoVM.
@@ -179,6 +185,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -24,28 +25,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmEventHub"), OutputType(typeof(List<EventHubAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmEventHub"), OutputType(typeof(List<PSEventHubAttributes>))]
     public class GetAzureRmEventHub : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "EventHub Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
@@ -57,13 +50,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             if (!string.IsNullOrEmpty(Name))
             {
                 // Get a EventHub
-                EventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, Namespace, Name);
+                PSEventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, Namespace, Name);
                 WriteObject(eventHub);
             }
             else
             {
                 // Get all EventHubs
-                IEnumerable<EventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
+                IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
                 WriteObject(eventHubsList.ToList(), true);
             }
         }

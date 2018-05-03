@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopictype
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Gets the details about the topic types supported by Azure Event Grid.
 ## SYNTAX
 
 ```
-Get-AzureRmEventGridTopicType [[-Name] <String>] [-IncludeEventTypeData] [<CommonParameters>]
+Get-AzureRmEventGridTopicType [[-Name] <String>] [-IncludeEventTypeData]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,21 @@ PS C:\> Get-AzureRmEventGridTopicType -Name "Microsoft.Storage.StorageAccounts" 
 Gets information about the StorageAccounts topic type, including the event types supported by StorageAccounts.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -IncludeEventTypeData
 If specified, the response will include the event types supported by a topic type.

@@ -14,6 +14,7 @@
 
 using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -43,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
             var getEffectiveNsgs = this.NetworkInterfaceClient.ListEffectiveNetworkSecurityGroups(this.ResourceGroupName, this.NetworkInterfaceName);
 
-            var psEffectiveNsgs = Mapper.Map<List<PSEffectiveNetworkSecurityGroup>>(getEffectiveNsgs.Value);
+            var psEffectiveNsgs = NetworkResourceManagerProfile.Mapper.Map<List<PSEffectiveNetworkSecurityGroup>>(getEffectiveNsgs.Value);
 
             WriteObject(psEffectiveNsgs, true);
 

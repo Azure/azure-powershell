@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.Location_Capabilities.Model;
 using Microsoft.Azure.Commands.Sql.Location_Capabilities.Services;
 using System.Linq;
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the Location for which to get the capabilities")]
+        [LocationCompleter("Microsoft.Sql/locations/capabilities")]
         [ValidateNotNullOrEmpty]
         public string LocationName { get; set; }
 

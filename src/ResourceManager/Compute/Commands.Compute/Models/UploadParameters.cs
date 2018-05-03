@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public int NumberOfUploaderThreads { get; private set; }
 
-        public AddAzureVhdCommand Cmdlet { get; set; }
+        public ComputeClientBaseCmdlet Cmdlet { get; set; }
 
         public CloudPageBlobObjectFactory BlobObjectFactory { get; set; }
     }

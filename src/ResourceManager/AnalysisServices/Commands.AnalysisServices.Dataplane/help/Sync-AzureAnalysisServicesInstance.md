@@ -1,22 +1,22 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance
 schema: 2.0.0
 ---
 
 # Sync-AzureAnalysisServicesInstance
 
-## SYNOPSIS 
+## SYNOPSIS
 
 Synchronizes a specified database on the specified instance of Analysis Services server to all the query scaleout instances in the currently logged in Environment as specified in Add-AzureAnalysisServicesAccount command
 
-## SYNTAX 
+## SYNTAX
 
 ```
 Sync-AzureAnalysisServicesInstance [-Instance] <String> [-Database] <String> [-Passthru]
 ```
 
-## DESCRIPTION 
+## DESCRIPTION
 
 The Sync-AzureAnalysisServicesInstance cmdlet synchronizes a specified database on the specified instance of Analysis Services server to all the query scaleout instances in the currently logged in Environment as specified in Add-AzureAnalysisServicesAccount command
 
@@ -78,6 +78,9 @@ Accept wildcard characters: False
 ```
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

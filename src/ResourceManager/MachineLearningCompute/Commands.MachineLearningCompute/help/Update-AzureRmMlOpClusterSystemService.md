@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearningCompute.dll-Help.xml
 Module Name: AzureRM.MachineLearningCompute
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearningcompute/update-azurermmlopclustersystemservice
 schema: 2.0.0
 ---
 
@@ -12,19 +12,22 @@ Starts an update on the operationalization cluster's system services.
 
 ## SYNTAX
 
-### Start a system services update from cmdlet input parameters.
+### StartUpdateWithNameAndResourceGroup
 ```
-Update-AzureRmMlOpClusterSystemService -ResourceGroupName <String> -Name <String> [-WhatIf] [-Confirm]
-```
-
-### Start a system services update from an PSOperationalizationCluster instance definition.
-```
-Update-AzureRmMlOpClusterSystemService -InputObject <PSOperationalizationCluster> [-WhatIf] [-Confirm]
+Update-AzureRmMlOpClusterSystemService -ResourceGroupName <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Start a system services update from an Azure resouce id.
+### StartUpdateWithInputObject
 ```
-Update-AzureRmMlOpClusterSystemService -ResourceId <String> [-WhatIf] [-Confirm]
+Update-AzureRmMlOpClusterSystemService -InputObject <PSOperationalizationCluster>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StartUpdateWithResourceId
+```
+Update-AzureRmMlOpClusterSystemService -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,18 +44,78 @@ Starts a system services update on the specified cluster.
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The operationalization cluster object.
 
 ```yaml
 Type: PSOperationalizationCluster
-Parameter Sets: Start a system services update from an PSOperationalizationCluster instance definition.
+Parameter Sets: StartUpdateWithInputObject
 Aliases: Cluster
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the operationalization cluster.
+
+```yaml
+Type: String
+Parameter Sets: StartUpdateWithNameAndResourceGroup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group for the operationalization cluster.
+
+```yaml
+Type: String
+Parameter Sets: StartUpdateWithNameAndResourceGroup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The Azure resource id for the operationalization cluster.
+
+```yaml
+Type: String
+Parameter Sets: StartUpdateWithResourceId
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -68,51 +131,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the operationalization cluster.
-
-```yaml
-Type: String
-Parameter Sets: Start a system services update from cmdlet input parameters.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group for the operationalization cluster.
-
-```yaml
-Type: String
-Parameter Sets: Start a system services update from cmdlet input parameters.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The Azure resource id for the operationalization cluster.
-
-```yaml
-Type: String
-Parameter Sets: Start a system services update from an Azure resouce id.
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -132,16 +150,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
-### System.String
 
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSUpdateSystemServicesResponse
-
 
 ## NOTES
 

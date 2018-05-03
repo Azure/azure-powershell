@@ -24,6 +24,7 @@ using System.Management.Automation;
 using Xunit;
 using Xunit.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatesPSResourceGroupDeploymentWithUserTemplate()
         {
             PSValidateResourceGroupDeploymentParameters expectedParameters = new PSValidateResourceGroupDeploymentParameters()

@@ -40,7 +40,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private IList<PSExitCodeMapping> exitCodes;
         
-        private PSExitOptions schedulingError;
+        private PSExitOptions fileUploadError;
+        
+        private PSExitOptions preProcessingError;
         
         public PSExitConditions()
         {
@@ -151,28 +153,53 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
-        public PSExitOptions SchedulingError
+        public PSExitOptions FileUploadError
         {
             get
             {
-                if (((this.schedulingError == null) 
-                            && (this.omObject.SchedulingError != null)))
+                if (((this.fileUploadError == null) 
+                            && (this.omObject.FileUploadError != null)))
                 {
-                    this.schedulingError = new PSExitOptions(this.omObject.SchedulingError);
+                    this.fileUploadError = new PSExitOptions(this.omObject.FileUploadError);
                 }
-                return this.schedulingError;
+                return this.fileUploadError;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.SchedulingError = null;
+                    this.omObject.FileUploadError = null;
                 }
                 else
                 {
-                    this.omObject.SchedulingError = value.omObject;
+                    this.omObject.FileUploadError = value.omObject;
                 }
-                this.schedulingError = value;
+                this.fileUploadError = value;
+            }
+        }
+        
+        public PSExitOptions PreProcessingError
+        {
+            get
+            {
+                if (((this.preProcessingError == null) 
+                            && (this.omObject.PreProcessingError != null)))
+                {
+                    this.preProcessingError = new PSExitOptions(this.omObject.PreProcessingError);
+                }
+                return this.preProcessingError;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.PreProcessingError = null;
+                }
+                else
+                {
+                    this.omObject.PreProcessingError = value.omObject;
+                }
+                this.preProcessingError = value;
             }
         }
     }

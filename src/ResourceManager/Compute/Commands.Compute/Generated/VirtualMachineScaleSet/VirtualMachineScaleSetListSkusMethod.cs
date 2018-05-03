@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -113,9 +112,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSVirtualMachineScaleSetSku))]
     public partial class GetAzureRmVmssSku : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
@@ -136,7 +134,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var psObject = new List<PSVirtualMachineScaleSetSku>();
                 foreach (var r in resultList)
                 {
-                    psObject.Add(Mapper.Map<VirtualMachineScaleSetSku, PSVirtualMachineScaleSetSku>(r));
+                    psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSetSku, PSVirtualMachineScaleSetSku>(r));
                 }
                 WriteObject(psObject, true);
             });
@@ -146,19 +144,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
-        [AllowNull]
         public string VMScaleSetName { get; set; }
     }
 }

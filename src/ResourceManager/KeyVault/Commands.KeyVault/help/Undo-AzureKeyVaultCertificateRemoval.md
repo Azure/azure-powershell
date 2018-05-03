@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
-online version: https://msdn.microsoft.com/en-us/library/dn868052.aspx
+Module Name: AzureRM.KeyVault
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/undo-azurekeyvaultcertificateremoval
 schema: 2.0.0
 ---
 
@@ -11,9 +12,16 @@ Recovers a deleted certificate in a key vault into an active state.
 
 ## SYNTAX
 
+### Default (Default)
 ```
-Undo-AzureKeyVaultCertificateRemoval [-VaultName] <String> [-Name] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Undo-AzureKeyVaultCertificateRemoval [-VaultName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObject
+```
+Undo-AzureKeyVaultCertificateRemoval [-InputObject] <PSDeletedKeyVaultCertificateIdentityItem>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,19 +40,49 @@ This command will recover the certificate 'MyCertificate' that was previously de
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Deleted Certificate object
+
+```yaml
+Type: PSDeletedKeyVaultCertificateIdentityItem
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Certificate name.
 Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment and certificate name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Default
 Aliases: CertificateName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -54,13 +92,13 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Default
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -104,7 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.Certificate
+### Microsoft.Azure.Commands.KeyVault.Models.CertificateBundle
 
 ## NOTES
 

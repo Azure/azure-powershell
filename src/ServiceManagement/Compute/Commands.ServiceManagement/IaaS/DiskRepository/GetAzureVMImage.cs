@@ -52,14 +52,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                     this.CommandRuntime.ToString(),
                     () => this.ComputeClient.VirtualMachineOSImages.List(),
                     (s, response) => response.Images.Select(
-                        t => this.ContextFactory<VirtualMachineOSImageListResponse.VirtualMachineOSImage, OSImageContext>(t, s)));
+                        t => this.ContextFactory(t, s,
+                                    ServiceManagementProfile.Mapper.Map<VirtualMachineOSImageListResponse.VirtualMachineOSImage, OSImageContext>,
+                                    ServiceManagementProfile.Mapper.Map)));
 
                 this.ExecuteClientActionNewSM(
                     null,
                     this.CommandRuntime.ToString(),
                     () => this.ComputeClient.VirtualMachineVMImages.List(),
                     (s, response) => response.VMImages.Select(
-                        t => this.ContextFactory<VirtualMachineVMImageListResponse.VirtualMachineVMImage, VMImageContext>(t, s)));
+                        t => this.ContextFactory(t, s,
+                                    ServiceManagementProfile.Mapper.Map<VirtualMachineVMImageListResponse.VirtualMachineVMImage, VMImageContext>,
+                                    ServiceManagementProfile.Mapper.Map)));
             }
             else
             {
@@ -73,7 +77,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                         null,
                         this.CommandRuntime.ToString(),
                         () => this.ComputeClient.VirtualMachineOSImages.Get(this.ImageName),
-                        (s, t) => this.ContextFactory<VirtualMachineOSImageGetResponse, OSImageContext>(t, s));
+                        (s, t) => this.ContextFactory(t, s,
+                                        ServiceManagementProfile.Mapper.Map<VirtualMachineOSImageGetResponse, OSImageContext>,
+                                        ServiceManagementProfile.Mapper.Map));
                 }
 
                 if (isVMImage)
@@ -84,7 +90,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.DiskRepository
                         () => this.ComputeClient.VirtualMachineVMImages.List(),
                         (s, imgs) => imgs
                             .Where(t => string.Equals(t.Name, this.ImageName, StringComparison.OrdinalIgnoreCase))
-                            .Select(t => this.ContextFactory<VirtualMachineVMImageListResponse.VirtualMachineVMImage, VMImageContext>(t, s)));
+                            .Select(t => this.ContextFactory(t, s,
+                                                ServiceManagementProfile.Mapper.Map<VirtualMachineVMImageListResponse.VirtualMachineVMImage, VMImageContext>,
+                                                ServiceManagementProfile.Mapper.Map)));
                 }
             }
         }

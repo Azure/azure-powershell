@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
 
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Monitor.Management;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Gets an Azure Action Group.
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// Gets or sets the resource group parameter.
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateNamesapce" xml:space="preserve">
-    <value>Create New NameSpace:{0} for ResourceGroup:{1}</value>
+    <value>Create New Namespace:{0} for ResourceGroup:{1}</value>
   </data>
   <data name="CreateNamespaceAuthorizationrule" xml:space="preserve">
     <value>Creating new AuthorizationRule named:{0} for Namespace: {1}</value>
@@ -141,6 +141,18 @@
   <data name="CreateTopicAuthorizationrule" xml:space="preserve">
     <value>Creating new AuthorizationRule named:{0} for Topic: {1}</value>
   </data>
+  <data name="DRBreakPairing" xml:space="preserve">
+    <value>Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}</value>
+  </data>
+  <data name="DRCreateAlias" xml:space="preserve">
+    <value>Creating new Alias :{0} under Namespace:{1}</value>
+  </data>
+  <data name="DRFailOver" xml:space="preserve">
+    <value>Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}</value>
+  </data>
+  <data name="DRRemoveAlias" xml:space="preserve">
+    <value>Deleting Alias: {0} of Nnamespace{1}</value>
+  </data>
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist</value>
   </data>
@@ -160,19 +172,19 @@
     <value>Are you sure you want to delete  AtuhorizationRule:{0} of Namespace: {1}</value>
   </data>
   <data name="RemoveQueue" xml:space="preserve">
-    <value>Deleting Queue:{0} of NameSpace:{1}</value>
+    <value>Deleting Queue:{0} of Namespace:{1}</value>
   </data>
   <data name="RemoveQueueAuthorizationRule" xml:space="preserve">
     <value>Removeing AtuhorizationRule:{0} from Queue::{1} of Namespace: {2}</value>
   </data>
   <data name="RemoveRule" xml:space="preserve">
-    <value>Deleting Rule:{0} for Subscription:{1} of NameSpace:{2}</value>
+    <value>Deleting Rule:{0} for Subscription:{1} of Namespace:{2}</value>
   </data>
   <data name="RemoveSubscription" xml:space="preserve">
-    <value>Deleting Subscription:{0} for Topic:{1} of NameSpace:{2}</value>
+    <value>Deleting Subscription:{0} for Topic:{1} of Namespace:{2}</value>
   </data>
   <data name="RemoveTopic" xml:space="preserve">
-    <value>Deleting Topic:{0} of NameSpace:{1}</value>
+    <value>Deleting Topic:{0} of Namespace:{1}</value>
   </data>
   <data name="RemoveTopicAuthorizationRule" xml:space="preserve">
     <value>Removeing AtuhorizationRule:{0} from Topic: {1} of Namespace: {2}</value>
@@ -193,7 +205,7 @@
     <value>Updating  AuthorizationRule named:{0} for Namespace: {1}</value>
   </data>
   <data name="UpdateQueue" xml:space="preserve">
-    <value>Updating Queue:{0} of the NameSpace:{1}</value>
+    <value>Updating Queue:{0} of the Namespace:{1}</value>
   </data>
   <data name="UpdateQueueAuthorizationrule" xml:space="preserve">
     <value>Updating AuthorizationRule named:{0} for Queue: {1}</value>
@@ -205,7 +217,7 @@
     <value>Update Subscription:{0} of Topic:{1}</value>
   </data>
   <data name="UpdateTopic" xml:space="preserve">
-    <value>Update Topic:{0} of NameSpace:{1}</value>
+    <value>Update Topic:{0} of Namespace:{1}</value>
   </data>
   <data name="UpdateTopicAuthorizationrule" xml:space="preserve">
     <value>Updating AuthorizationRule named:{0} for Topic: {1}</value>

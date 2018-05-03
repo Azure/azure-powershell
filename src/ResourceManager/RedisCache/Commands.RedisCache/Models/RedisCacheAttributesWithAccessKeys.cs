@@ -19,29 +19,10 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
     public class RedisCacheAttributesWithAccessKeys : RedisCacheAttributes
     {
         public RedisCacheAttributesWithAccessKeys(RedisResource cache, RedisAccessKeys accessKeys, string resourceGroupName)
+            : base(cache, resourceGroupName)
         {
-            Id = cache.Id;
-            Location = cache.Location;
-            Name = cache.Name;
-            Type = cache.Type;
-            HostName = cache.HostName;
-            Port = cache.Port.HasValue ? cache.Port.Value : 0;
-            ProvisioningState = cache.ProvisioningState;
-            SslPort = cache.SslPort.HasValue ? cache.SslPort.Value : 0;
-            RedisConfiguration = cache.RedisConfiguration;
-            EnableNonSslPort = cache.EnableNonSslPort.Value;
-            RedisVersion = cache.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Sku.Family, cache.Sku.Capacity);
-            Sku = cache.Sku.Name;
-
             PrimaryKey = accessKeys.PrimaryKey;
             SecondaryKey = accessKeys.SecondaryKey;
-            ResourceGroupName = resourceGroupName;
-
-            SubnetId = cache.SubnetId;
-            StaticIP = cache.StaticIP;
-            TenantSettings = cache.TenantSettings;
-            ShardCount = cache.ShardCount;
         }
 
         public string PrimaryKey { get; private set; }

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: D93666EC-C252-4E3B-B311-50B6EEA6D4BF
 online version: 
@@ -19,8 +19,7 @@ Set-AzureRmVMAccessExtension [-UserName <String>] [-Password <String>] [-Resourc
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine Extension to a virtual machine.
-VMAccess can reset the virtual machine user name and password.
+The **Set-AzureRmVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine VMAccess Extension to a virtual machine. VMAccess Extension can be used to set a temporary password and this should be immediately changed it after logging into the machine.
 
 ## EXAMPLES
 
@@ -208,6 +207,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

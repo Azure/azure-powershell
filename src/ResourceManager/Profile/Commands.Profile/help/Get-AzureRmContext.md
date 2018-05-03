@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermcontext
 schema: 2.0.0
 ---
 
@@ -31,7 +32,7 @@ Azure Resource Manager cmdlets use these settings by default when making Azure R
 
 ### Example 1: Getting the current context
 ```
-PS C:\> Add-AzureRmAccount
+PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmContext
 
 Environment           : AzureCloud
@@ -42,8 +43,7 @@ SubscriptionName      : Test Subscription
 CurrentStorageAccount :
 ```
 
-In this example we are logging into our account with an Azure subscription using Add-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
-
+In this example we are logging into our account with an Azure subscription using Connect-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
 
 ### Example 2: Listing all available contexts
 ```
@@ -107,6 +107,7 @@ The name of the context
 Type: String
 Parameter Sets: GetSingleContext
 Aliases: 
+Accepted values: Default
 
 Required: False
 Position: 0
@@ -119,6 +120,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

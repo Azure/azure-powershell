@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: 70AA9747-232E-40F2-845C-35A779F51CD2
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssvm
 schema: 2.0.0
 ---
 
@@ -15,13 +16,26 @@ Modifies the state of a VMSS instance.
 ### DefaultParameter (Default)
 ```
 Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-Reimage]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FriendMethod
 ```
 Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-ReimageAll]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RedeployMethodParameter
+```
+Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String> [-Redeploy]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PerformMaintenanceMethodParameter
+```
+Set-AzureRmVmssVM [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-InstanceId] <String>
+ [-PerformMaintenance] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +44,21 @@ The **Set-AzureRmVmssVM** cmdlet modifies the state of a Virtual Machine Scale S
 ## EXAMPLES
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -52,12 +81,42 @@ Specifies the ID of the VMSS instance for which this cmdlet modifies state.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PerformMaintenance
+Indicates that this cmdlet performs maintenance on a virtual machine in the VMSS.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: PerformMaintenanceMethodParameter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Redeploy
+Indicates that this cmdlet redeploys a virtual machine in the VMSS.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: RedeployMethodParameter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -67,7 +126,7 @@ Indicates that this cmdlet reimages the VMSS instance.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DefaultParameter
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -82,7 +141,7 @@ Indicates that the cmdlet reimages all the disks in the VMSS instance.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: FriendMethod
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +156,7 @@ Specifies the name of the resource group that contains the VMSS instance.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -155,6 +214,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

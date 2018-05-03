@@ -171,13 +171,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 InstanceUpgradeDomain       = roleInstance == null ? string.Empty : roleInstance.InstanceUpgradeDomain.HasValue
                                                                                   ? roleInstance.InstanceUpgradeDomain.Value.ToString(CultureInfo.InvariantCulture) : null,
                 Status                      = roleInstance == null ? string.Empty : roleInstance.InstanceStatus,
-                GuestAgentStatus            = roleInstance == null ? null : Mapper.Map<PVM.GuestAgentStatus>(roleInstance.GuestAgentStatus),
-                MaintenanceStatus           = roleInstance == null ? null : Mapper.Map<PVM.MaintenanceStatus>(roleInstance.MaintenanceStatus),
-                ResourceExtensionStatusList = roleInstance == null ? null : Mapper.Map<List<PVM.ResourceExtensionStatus>>(roleInstance.ResourceExtensionStatusList),
+                GuestAgentStatus            = roleInstance == null ? null : ServiceManagementProfile.Mapper.Map<PVM.GuestAgentStatus>(roleInstance.GuestAgentStatus),
+                MaintenanceStatus           = roleInstance == null ? null : ServiceManagementProfile.Mapper.Map<PVM.MaintenanceStatus>(roleInstance.MaintenanceStatus),
+                ResourceExtensionStatusList = roleInstance == null ? null : ServiceManagementProfile.Mapper.Map<List<PVM.ResourceExtensionStatus>>(roleInstance.ResourceExtensionStatusList),
                 OperationId                 = deployment == null ? string.Empty : deployment.RequestId,
                 OperationStatus             = deployment == null ? string.Empty : deployment.StatusCode.ToString(),
                 OperationDescription        = CommandRuntime.ToString(),
-                NetworkInterfaces           = roleInstance == null ? null : Mapper.Map<PVM.NetworkInterfaceList>(roleInstance.NetworkInterfaces),
+                NetworkInterfaces           = roleInstance == null ? null : ServiceManagementProfile.Mapper.Map<PVM.NetworkInterfaceList>(roleInstance.NetworkInterfaces),
                 VirtualNetworkName          = deployment == null ? null : deployment.VirtualNetworkName,
                 RemoteAccessCertificateThumbprint =  roleInstance == null ? string.Empty : roleInstance.RemoteAccessCertificateThumbprint,
                 VM = new PVM.PersistentVM
@@ -189,11 +189,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     RoleType                          = vmRole == null ? string.Empty : vmRole.RoleType,
                     DefaultWinRmCertificateThumbprint = vmRole == null ? string.Empty : vmRole.DefaultWinRmCertificateThumbprint,
                     ProvisionGuestAgent               = vmRole == null ? null : vmRole.ProvisionGuestAgent,
-                    ResourceExtensionReferences       = vmRole == null ? null : Mapper.Map<PVM.ResourceExtensionReferenceList>(vmRole.ResourceExtensionReferences),
-                    DataVirtualHardDisks              = vmRole == null ? null : Mapper.Map<Collection<PVM.DataVirtualHardDisk>>(vmRole.DataVirtualHardDisks),
-                    OSVirtualHardDisk                 = vmRole == null ? null : Mapper.Map<PVM.OSVirtualHardDisk>(vmRole.OSVirtualHardDisk),
+                    ResourceExtensionReferences       = vmRole == null ? null : ServiceManagementProfile.Mapper.Map<PVM.ResourceExtensionReferenceList>(vmRole.ResourceExtensionReferences),
+                    DataVirtualHardDisks              = vmRole == null ? null : ServiceManagementProfile.Mapper.Map<Collection<PVM.DataVirtualHardDisk>>(vmRole.DataVirtualHardDisks),
+                    OSVirtualHardDisk                 = vmRole == null ? null : ServiceManagementProfile.Mapper.Map<PVM.OSVirtualHardDisk>(vmRole.OSVirtualHardDisk),
                     ConfigurationSets                 = vmRole == null ? null : PersistentVMHelper.MapConfigurationSets(vmRole.ConfigurationSets),
-                    DebugSettings                     = (vmRole == null || vmRole.DebugSettings == null) ? null : Mapper.Map<PVM.DebugSettings>(vmRole.DebugSettings),
+                    DebugSettings                     = (vmRole == null || vmRole.DebugSettings == null) ? null : ServiceManagementProfile.Mapper.Map<PVM.DebugSettings>(vmRole.DebugSettings),
                     MigrationState                    = vmRole == null ? string.Empty : vmRole.MigrationState,
                     LicenseType                       = vmRole == null ? string.Empty : vmRole.LicenseType
                 }

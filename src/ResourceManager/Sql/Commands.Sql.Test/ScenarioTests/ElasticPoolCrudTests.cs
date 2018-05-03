@@ -34,10 +34,23 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
+        public void TestElasticPoolCreateWithZoneRedundancy()
+        {
+            RunPowerShellTest("Test-CreateElasticPoolWithZoneRedundancy");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolUpdate()
         {
             RunPowerShellTest("Test-UpdateElasticPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestElasticPoolUpdateWithZoneRedundancy()
+        {
+            RunPowerShellTest("Test-UpdateElasticPoolWithZoneRedundancy");
         }
 
         [Fact]
@@ -49,9 +62,23 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestElasticPoolGetWithZoneRedundancy()
+        {
+            RunPowerShellTest("Test-GetElasticPoolWithZoneRedundancy");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolRemove()
         {
             RunPowerShellTest("Test-RemoveElasticPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestElasticPoolCancelOperation()
+        {
+            RunPowerShellTest("Test-ListAndCancelElasticPoolOperation");
         }
     }
 }

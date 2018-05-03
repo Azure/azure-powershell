@@ -40,6 +40,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string LastBackupStatus { get; set; }
 
         /// <summary>
+        /// Last Backup Time for the item
+        /// </summary>
+        public DateTime? LastBackupTime { get; set; }
+
+        /// <summary>
         /// Protection Policy Name for the Item
         /// </summary>
         public string ProtectionPolicyName { get; set; }
@@ -63,6 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         {
             AzureIaaSVMProtectedItem protectedItem = (AzureIaaSVMProtectedItem)protectedItemResource.Properties;
             LastBackupStatus = protectedItem.LastBackupStatus;
+            LastBackupTime = protectedItem.LastBackupTime;
             ProtectionPolicyName = policyName;
             ProtectionState =
                 EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());

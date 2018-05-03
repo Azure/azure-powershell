@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -128,9 +127,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RemoveAzureRmVmss : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Remove)
@@ -159,34 +157,30 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
-        [AllowNull]
         public string VMScaleSetName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         public string [] InstanceId { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Mandatory = false)]
-        [AllowNull]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

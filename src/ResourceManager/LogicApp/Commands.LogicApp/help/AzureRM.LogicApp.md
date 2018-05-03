@@ -1,8 +1,8 @@
----
+﻿---
 Module Name: AzureRM.LogicApp
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Module Guid: 8a7d44bb-e747-4265-8f22-b3937961d709
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp
+Help Version: 4.0.3.0
 Locale: en-US
 ---
 
@@ -24,7 +24,7 @@ Gets an integration account callback URL.
 Gets integration account certificates from a resource group.
 
 ### [Get-AzureRmIntegrationAccountGeneratedIcn](Get-AzureRmIntegrationAccountGeneratedIcn.md)
-Gets integration account generated X12 interchange control number per agreement.
+This cmdlet retrieves the current value of the generated interchange control number per agreement.
 
 ### [Get-AzureRmIntegrationAccountMap](Get-AzureRmIntegrationAccountMap.md)
 Gets an integration account map.
@@ -33,7 +33,7 @@ Gets an integration account map.
 Gets integration account partners.
 
 ### [Get-AzureRmIntegrationAccountReceivedIcn](Get-AzureRmIntegrationAccountReceivedIcn.md)
-Gets integration account received X12 interchange control number per agreement.
+This cmdlet retrieves a specific received interchange control number per agreement and control number value.
 
 ### [Get-AzureRmIntegrationAccountSchema](Get-AzureRmIntegrationAccountSchema.md)
 Gets integration account schemas.
@@ -96,7 +96,7 @@ Removes an integration account map.
 Removes an integration account partner.
 
 ### [Remove-AzureRmIntegrationAccountReceivedIcn](Remove-AzureRmIntegrationAccountReceivedIcn.md)
-Removes an integration account received X12 interchange control number.
+This cmdlet removes a specific received interchange control number per agreement and control number value.
 
 ### [Remove-AzureRmIntegrationAccountSchema](Remove-AzureRmIntegrationAccountSchema.md)
 Removes an integration account schema.
@@ -114,7 +114,7 @@ Modifies an integration account agreement.
 Modifies an integration account certificate.
 
 ### [Set-AzureRmIntegrationAccountGeneratedIcn](Set-AzureRmIntegrationAccountGeneratedIcn.md)
-Modifies an integration account generated X12 interchange control number.
+Updates the integration account generated interchange control number (ICN) in the Azure resource group.
 
 ### [Set-AzureRmIntegrationAccountMap](Set-AzureRmIntegrationAccountMap.md)
 Modifies an integration account map.
@@ -123,7 +123,7 @@ Modifies an integration account map.
 Modifies an integration account partner.
 
 ### [Set-AzureRmIntegrationAccountReceivedIcn](Set-AzureRmIntegrationAccountReceivedIcn.md)
-Modifies an integration account received X12 interchange control number.
+Updates the integration account received interchange control number (ICN) in the Azure resource group.
 
 ### [Set-AzureRmIntegrationAccountSchema](Set-AzureRmIntegrationAccountSchema.md)
 Modifies an integration account schema.

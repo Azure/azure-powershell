@@ -12,7 +12,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
 using Microsoft.WindowsAzure.Storage.Queue;
@@ -23,17 +22,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
     {
         public MockStorageQueueManagement queueMock = null;
 
-        [TestInitialize]
-        public void InitMock()
+        public StorageQueueTestBase()
         {
             queueMock = new MockStorageQueueManagement();
             MockCmdRunTime = new MockCommandRuntime();
-        }
-
-        [TestCleanup]
-        public void CleanMock()
-        {
-            queueMock = null;
         }
 
         public void AddTestQueues()

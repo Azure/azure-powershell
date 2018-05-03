@@ -39,3 +39,53 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 6.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**New-AzureRmApiManagement**
+- The parameter alias `Tags` is being removed
+
+**New-AzureRmApiManagementProperty**
+- The parameter alias `Tags` is being removed
+
+**Set-AzureRmApiManagementProperty**
+- The parameter alias `Tags` is being removed
+
+### Release 5.0.0 - November 2017
+
+The following cmdlets were affected this release:
+
+**New-AzureRmApiManagementBackendProxy**
+- Parameters "UserName" and "Password" are being replaced in favor of a PSCredential
+
+```powershell
+# Old
+New-AzureRmApiManagementBackendProxy [other required parameters] -UserName "plain-text string" -Password "plain-text string"
+
+# New
+New-AzureRmApiManagementBackendProxy [other required parameters] -Credential $PSCredentialVariable
+```
+
+**New-AzureRmApiManagementUser**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+New-AzureRmApiManagementUser [other required parameters] -Password "plain-text string"
+
+# New
+New-AzureRmApiManagementUser [other required parameters] -Password $SecureStringVariable
+```
+
+**Set-AzureRmApiManagementUser**
+- Parameter "Password" being replaced in favor of a SecureString
+
+```powershell
+# Old
+Set-AzureRmApiManagementUser [other required parameters] -Password "plain-text string"
+
+# New
+Set-AzureRmApiManagementUser [other required parameters] -Password $SecureStringVariable
+```

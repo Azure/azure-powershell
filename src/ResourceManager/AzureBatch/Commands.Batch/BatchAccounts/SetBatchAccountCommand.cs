@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
         public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true)]

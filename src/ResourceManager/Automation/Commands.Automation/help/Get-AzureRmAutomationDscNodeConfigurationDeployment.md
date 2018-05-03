@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/get-azurermautomationdscnodeconfigurationdeployment
 schema: 2.0.0
 ---
 
@@ -14,12 +15,15 @@ Gets DSC Node configuration deployments in Automation.
 
 ### ByAll (Default)
 ```
-Get-AzureRmAutomationDscNodeConfigurationDeployment [-Status <string>] [-StartTime <DateTimeOffset>] [-EndTime <DateTimeOffset>] [<CommonParameters>]
+Get-AzureRmAutomationDscNodeConfigurationDeployment [-Status <String>] [-StartTime <DateTimeOffset>]
+ [-EndTime <DateTimeOffset>] [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByJobId
 ```
-Get-AzureRmAutomationDscNodeConfigurationDeployment -JobId <Guid [-ResourceGroupName] <String> [-AutomationAccountName] <String> [<CommonParameters>]
+Get-AzureRmAutomationDscNodeConfigurationDeployment -JobId <Guid> [-ResourceGroupName] <String>
+ [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,22 +55,67 @@ Key        Value
 WebServer  Pending
 WebServer2 Pending
 WebServer3 Compliant
-
 ```
 
 The above command deploys the DSC node configuration named "Config01.Node1" to the given two-dimensional array of Node Names. The deployment happens in a staged manner.
 
 ## PARAMETERS
 
+### -AutomationAccountName
+Specifies the name of the Automation account that contains the DSC configuration that this cmdlet compiles.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EndTime
+End time filter.
+
+```yaml
+Type: DateTimeOffset
+Parameter Sets: ByAll
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -JobId
 Specifies the Job id of an existing deployment job.
 
 ```yaml
 Type: Guid
-Parameter Sets: (JobId)
+Parameter Sets: ByJobId
 Aliases: 
 
 Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -87,18 +136,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AutomationAccountName
-Specifies the name of the Automation account that contains the DSC configuration that this cmdlet compiles.
+### -StartTime
+Start time filter.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: DateTimeOffset
+Parameter Sets: ByAll
 Aliases: 
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -107,43 +156,14 @@ Status of the Job filter.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByAll
 Aliases: 
+Accepted values: Completed, Failed, Queued, Starting, Resuming, Running, Stopped, Stopping, Suspended, Suspending, Activating
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -StartTime
-Start time filter.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EndTime
-End time filter.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,6 +171,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

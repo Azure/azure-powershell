@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
@@ -33,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.WindowsAzure.Storage.File;
     using Microsoft.Azure.Commands.Common.Authentication;
     using System.Reflection;
+    using Azure.Commands.Common.Authentication.Abstractions;
 
     [Cmdlet(VerbsLifecycle.Start, StorageNouns.CopyBlob, ConfirmImpact = ConfirmImpact.High, DefaultParameterSetName = ContainerNameParameterSet),
        OutputType(typeof(AzureStorageBlob))]
@@ -180,10 +183,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, ParameterSetName = FileToBlobParameterSet)]
         [Parameter(HelpMessage = "Source Azure Storage Context Object", ParameterSetName = UriParameterSet)]
-        public override AzureStorageContext Context { get; set; }
+        public override IStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "Destination Storage context object", Mandatory = false)]
-        public AzureStorageContext DestContext { get; set; }
+        public IStorageContext DestContext { get; set; }
 
         private bool skipSourceChannelInit;
 
@@ -248,7 +251,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
                 else
                 {
-                    destChannel = CreateChannel(DestContext);
+                    destChannel = CreateChannel(this.GetCmdletStorageContext(DestContext));
                 }
             }
 
@@ -271,7 +274,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     break;
 
                 case UriParameterSet:
-                    StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, Context);
+                    StartCopyBlob(destChannel, AbsoluteUri, DestContainer, DestBlob, (Context != null ? GetCmdletStorageContext(Context) : null));
                     break;
 
                 case BlobParameterSet:

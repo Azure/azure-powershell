@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.NetworkConfiguration omObject;
         
+        private PSPoolEndpointConfiguration endpointConfiguration;
+        
         public PSNetworkConfiguration()
         {
             this.omObject = new Microsoft.Azure.Batch.NetworkConfiguration();
@@ -46,6 +48,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new System.ArgumentNullException("omObject");
             }
             this.omObject = omObject;
+        }
+        
+        public PSPoolEndpointConfiguration EndpointConfiguration
+        {
+            get
+            {
+                if (((this.endpointConfiguration == null) 
+                            && (this.omObject.EndpointConfiguration != null)))
+                {
+                    this.endpointConfiguration = new PSPoolEndpointConfiguration(this.omObject.EndpointConfiguration);
+                }
+                return this.endpointConfiguration;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.EndpointConfiguration = null;
+                }
+                else
+                {
+                    this.omObject.EndpointConfiguration = value.omObject;
+                }
+                this.endpointConfiguration = value;
+            }
         }
         
         public string SubnetId

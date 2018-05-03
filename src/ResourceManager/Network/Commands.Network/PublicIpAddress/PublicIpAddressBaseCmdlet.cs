@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSPublicIpAddress ToPsPublicIpAddress(PublicIPAddress publicIp)
         {
-            var psPublicIpAddress = Mapper.Map<PSPublicIpAddress>(publicIp);
+            var psPublicIpAddress = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp);
 
             psPublicIpAddress.Tag = TagsConversionHelper.CreateTagHashtable(publicIp.Tags);
 

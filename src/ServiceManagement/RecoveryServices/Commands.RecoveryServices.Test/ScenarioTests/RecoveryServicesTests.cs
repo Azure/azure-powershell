@@ -20,12 +20,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
     public class RecoveryServicesTests : RecoveryServicesTestsBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnumerationTests()
         {
             this.RunPowerShellTest("Test-RecoveryServicesEnumerationTests -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void E2E_DeleteAndDissociateTest()
         {
             this.RunPowerShellTest("Test-E2E_DeleteAndDissociate -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
@@ -38,12 +40,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StorageMappingTest()
         {
             this.RunPowerShellTest("Test-StorageMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StorageUnMappingTest()
         {
             this.RunPowerShellTest("Test-StorageUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");

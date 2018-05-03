@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+Module Name: AzureRM.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/new-azurermservicebusrule
 schema: 2.0.0
 ---
 
@@ -13,7 +14,8 @@ Creates a new rule for a given Subscription of Topic.
 
 ```
 New-AzureRmServiceBusRule [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Subscription] <String> [-Name] <String> [-SqlExpression] <String> [-WhatIf] [-Confirm]
+ [-Subscription] <String> [-Name] <String> [-SqlExpression] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,17 +28,17 @@ The **New-AzureRmServiceBusRule** cmdlet Creates a new rule for given subscripti
 PS C:\> New-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule -SqlExpression "mysqlexpression='test'"
 ```
 
-The **New-AzureRmServiceBusRule** cmdlet creates a new rule for the specified Subscription.
+The New-AzureRmServiceBusRule cmdlet creates a new rule for the specified Subscription.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -135,6 +137,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -151,15 +168,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.RulesAttributes
-
+### Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes
 
 ## NOTES
 

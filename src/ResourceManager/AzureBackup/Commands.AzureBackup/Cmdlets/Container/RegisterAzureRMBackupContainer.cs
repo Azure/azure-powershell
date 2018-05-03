@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string ServiceName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = V2VMParameterSet, HelpMessage = AzureBackupCmdletHelpMessage.RGName)]
+        [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
 

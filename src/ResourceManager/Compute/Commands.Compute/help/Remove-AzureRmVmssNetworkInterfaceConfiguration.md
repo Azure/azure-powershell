@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: EC4E8CC1-C21F-4D41-818F-D0BC15AEEE1D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmssnetworkinterfaceconfiguration
 schema: 2.0.0
 ---
 
@@ -62,7 +63,7 @@ Specifies the ID of the network interface configuration that this cmdlet removes
 ```yaml
 Type: String
 Parameter Sets: IdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -77,7 +78,7 @@ Specifies the name of the network interface configuration that this cmdlet remov
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -92,7 +93,7 @@ Specifies the VMSS object.
 ```yaml
 Type: PSVirtualMachineScaleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

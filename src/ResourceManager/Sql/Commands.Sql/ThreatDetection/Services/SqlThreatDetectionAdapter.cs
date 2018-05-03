@@ -122,6 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             model.EmailAdmins = ModelizeThreatDetectionEmailAdmins(threatDetectionProperties.EmailAccountAdmins);
             ModelizeStorageAccount(model, threatDetectionProperties.StorageEndpoint);
             ModelizeDisabledAlerts(model, threatDetectionProperties.DisabledAlerts);
+            model.RetentionInDays = (uint)threatDetectionProperties.RetentionDays;
             return model;
         }
 

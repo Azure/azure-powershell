@@ -17,10 +17,9 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearningCompute;
 using Microsoft.Azure.Management.MachineLearningCompute.Models;
 using Microsoft.Azure.Commands.MachineLearningCompute.Models;
-using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
-using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
@@ -28,14 +27,13 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
     [OutputType(typeof(PSOperationalizationCluster))]
     public class NewAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
-        protected const string CreateFromObjectParameterSet =
-            "Create a new operationalization cluster from an OperationalizationCluster instance definition.";
+        protected const string CreateFromObjectParameterSet = "CreateWithInputObject";
 
-        protected const string CreateFromCmdletParametersParameterSet =
-            "Create a new operationalization cluster from cmdlet input parameters.";
+        protected const string CreateFromCmdletParametersParameterSet = "CreateWithParameters";
 
         [Parameter(Mandatory = true, 
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,6 +54,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [Parameter(ParameterSetName = CreateFromCmdletParametersParameterSet,
             Mandatory = true, 
             HelpMessage = LocationParameterHelpMessage)]
+        [LocationCompleter("Microsoft.MachineLearningCompute/operationalizationClusters")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -65,7 +64,6 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         [ValidateNotNullOrEmpty]
         public string ClusterType { get; set; }
 
-        // Required for non-local cluster
         [Parameter(ParameterSetName = CreateFromCmdletParametersParameterSet,
             Mandatory = false,
             HelpMessage = OrchestratorTypeParameterHelpMessage)]
@@ -210,21 +208,35 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
                     switch (ClusterType)
                     {
                         case Management.MachineLearningCompute.Models.ClusterType.ACS:
+
                             cluster.ContainerService = new AcsClusterProperties
                             {
                                 OrchestratorType = OrchestratorType,
-                                OrchestratorProperties = new KubernetesClusterProperties
-                                {
-                                    ServicePrincipal = new ServicePrincipalProperties
-                                    {
-                                        ClientId = ClientId,
-                                        Secret = Secret
-                                    }      
-                                },
                                 MasterCount = MasterCount,
                                 AgentCount = AgentCount,
                                 AgentVmSize = AgentVmSize
                             };
+
+                            switch (OrchestratorType)
+                            {
+                                case Management.MachineLearningCompute.Models.OrchestratorType.Kubernetes:
+                                    if (ClientId != null || Secret != null)
+                                    {
+                                        cluster.ContainerService.OrchestratorProperties = new KubernetesClusterProperties()
+                                        {
+                                            ServicePrincipal = new ServicePrincipalProperties
+                                            {
+                                                ClientId = ClientId,
+                                                Secret = Secret
+                                            }
+                                        };
+                                    }
+                                    break;
+                                case Management.MachineLearningCompute.Models.OrchestratorType.None:
+                                    break;
+                                default:
+                                    break;
+                            }
 
                             break;
 

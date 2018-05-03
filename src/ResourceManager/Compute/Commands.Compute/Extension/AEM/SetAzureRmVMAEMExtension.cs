@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Extension.AEM;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Position = 0,
                 ValueFromPipelineByPropertyName = true,
                 HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -57,12 +59,6 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
-
-        [Parameter(
-                Mandatory = false,
-                ValueFromPipelineByPropertyName = false,
-                HelpMessage = "Deprecated - Windows Azure Diagnostics is now disabled by default")]
-        public SwitchParameter DisableWAD { get; set; }
 
         [Parameter(
                 Mandatory = false,
@@ -104,11 +100,6 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (this.DisableWAD)
-                {
-                    this._Helper.WriteWarning("The parameter DisableWAD is deprecated. Windows Azure Diagnostics is disabled by default.");
-                }
-
                 this._Helper.WriteVerbose("Retrieving VM...");
 
                 var selectedVM = ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName);
@@ -210,7 +201,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id), 
+                    var osDiskMD = ComputeClient.ComputeManagementClient.Disks.Get(this._Helper.GetResourceGroupFromId(osdisk.ManagedDisk.Id),
                         this._Helper.GetResourceNameFromId(osdisk.ManagedDisk.Id));
                     if (osDiskMD.Sku.Name == StorageAccountTypes.PremiumLRS)
                     {
@@ -408,7 +399,7 @@ namespace Microsoft.Azure.Commands.Compute
                 this._Helper.WriteHost("[INFO] Azure Enhanced Monitoring Extension for SAP configuration updated. It can take up to 15 Minutes for the monitoring data to appear in the SAP system.");
                 this._Helper.WriteHost("[INFO] You can check the configuration of a virtual machine by calling the Test-AzureRmVMAEMExtension commandlet.");
 
-                var result = Mapper.Map<PSAzureOperationResponse>(op);
+                var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                 WriteObject(result);
             });
         }

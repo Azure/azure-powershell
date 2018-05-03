@@ -18,25 +18,24 @@ using Microsoft.Azure.Commands.MachineLearningCompute.Models;
 using System;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Remove, CmdletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, CmdletSuffix, SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
     [OutputType(typeof(void))]
     public class RemoveAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
-        protected const string CmdletParametersParameterSet =
-            "Remove an operationalization cluster from cmdlet input parameters.";
+        protected const string CmdletParametersParameterSet = "RemoveByNameAndResourceGroup";
 
-        protected const string ObjectParameterSet =
-            "Remove an operationalization cluster from an OperationalizationCluster instance definition.";
+        protected const string ObjectParameterSet = "RemoveByInputObject";
 
-        protected const string ResourceIdParameterSet =
-            "Remove an operationalization cluster from an Azure resouce id.";
+        protected const string ResourceIdParameterSet = "RemoveByResourceId";
 
         [Parameter(ParameterSetName = CmdletParametersParameterSet,
             Mandatory = true, 
             HelpMessage = ResourceGroupParameterHelpMessage)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -59,26 +58,40 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
             HelpMessage = ResourceIdParameterHelpMessage)]
         public string ResourceId { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = IncludeAllResourcesParameterHelpMessage)]
+        public SwitchParameter IncludeAllResources { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.Name, @"Deleting operationalization cluster..."))
+            if (string.Equals(this.ParameterSetName, ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                if (string.Equals(this.ParameterSetName, ObjectParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    var resourceInfo = new ResourceIdentifier(InputObject.Id);
-                    ResourceGroupName = resourceInfo.ResourceGroupName;
-                    Name = resourceInfo.ResourceName;
-                }
-                else if (string.Equals(this.ParameterSetName, ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
-                {
-                    var resourceInfo = new ResourceIdentifier(ResourceId);
-                    ResourceGroupName = resourceInfo.ResourceGroupName;
-                    Name = resourceInfo.ResourceName;
-                }
+                var resourceInfo = new ResourceIdentifier(InputObject.Id);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                Name = resourceInfo.ResourceName;
+            }
+            else if (string.Equals(this.ParameterSetName, ResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                Name = resourceInfo.ResourceName;
+            }
 
+            var shouldProcessMessage = @"Deleting operationalization cluster";
+
+            if (IncludeAllResources.IsPresent)
+            {
+                var clusterToDelete = MachineLearningComputeManagementClient.OperationalizationClusters.Get(ResourceGroupName, Name);
+                var managedByResourceGroup = new ResourceIdentifier(clusterToDelete.ContainerRegistry.ResourceId).ResourceGroupName;
+
+                shouldProcessMessage += $" and supporting resource group {managedByResourceGroup}. All resources in resource group {managedByResourceGroup} will be deleted.";
+            }
+
+            if (ShouldProcess(this.Name, shouldProcessMessage))
+            {
                 try
                 {
-                    MachineLearningComputeManagementClient.OperationalizationClusters.Delete(ResourceGroupName, Name);
+                    MachineLearningComputeManagementClient.OperationalizationClusters.Delete(ResourceGroupName, Name, IncludeAllResources.IsPresent);
                 }
                 catch (CloudException e)
                 {

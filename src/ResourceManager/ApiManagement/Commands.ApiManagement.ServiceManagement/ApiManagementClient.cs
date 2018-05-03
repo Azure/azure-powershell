@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Management.Automation;
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
@@ -52,6 +53,26 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         private readonly JsonSerializerSettings _jsonSerializerSetting = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
+        private static IMapper _mapper;
+
+        private static readonly object _lock = new object();
+
+        public static IMapper Mapper
+        {
+            get
+            {
+                lock(_lock)
+                {
+                    if (_mapper == null)
+                    {
+                        ConfigureMappings();
+                    }
+
+                    return _mapper;
+                }
+            }
+        }
+
         static ApiManagementClient()
         {
             ConfigureMappings();
@@ -59,22 +80,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         private static void ConfigureMappings()
         {
-            ConfigureSmapiToPowershellMappings();
-            ConfigurePowershellToSmapiMappings();
-        }
-
-        private static void ConfigurePowershellToSmapiMappings()
-        {
-            Mapper.CreateMap<PsApiManagementParameter, ParameterContract>();
-            Mapper.CreateMap<PsApiManagementRequest, RequestContract>();
-            Mapper.CreateMap<PsApiManagementResponse, ResponseContract>();
-            Mapper.CreateMap<PsApiManagementRepresentation, RepresentationContract>();
-            Mapper.CreateMap<PsApiManagementAuthorizationHeaderCredential, AuthorizationHeaderCredentialsContract>();
-        }
-
-        private static void ConfigureSmapiToPowershellMappings()
-        {
-            Mapper
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<PsApiManagementParameter, ParameterContract>();
+                cfg.CreateMap<PsApiManagementRequest, RequestContract>();
+                cfg.CreateMap<PsApiManagementResponse, ResponseContract>();
+                cfg.CreateMap<PsApiManagementRepresentation, RepresentationContract>();
+                cfg.CreateMap<PsApiManagementAuthorizationHeaderCredential, AuthorizationHeaderCredentialsContract>();
+                cfg
                 .CreateMap<ApiContract, PsApiManagementApi>()
                 .ForMember(dest => dest.ApiId, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Protocols, opt => opt.MapFrom(src => src.Protocols.ToArray()))
@@ -103,126 +116,136 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                             ? src.SubscriptionKeyParameterNames.Query
                             : null));
 
-            Mapper.CreateMap<RequestContract, PsApiManagementRequest>();
-            Mapper.CreateMap<ResponseContract, PsApiManagementResponse>();
-            Mapper.CreateMap<RepresentationContract, PsApiManagementRepresentation>();
-            Mapper.CreateMap<ParameterContract, PsApiManagementParameter>();
-            Mapper.CreateMap<OperationContract, PsApiManagementOperation>();
+                cfg.CreateMap<RequestContract, PsApiManagementRequest>();
+                cfg.CreateMap<ResponseContract, PsApiManagementResponse>();
+                cfg.CreateMap<RepresentationContract, PsApiManagementRepresentation>();
+                cfg.CreateMap<ParameterContract, PsApiManagementParameter>();
+                cfg.CreateMap<OperationContract, PsApiManagementOperation>();
 
-            Mapper
-                .CreateMap<ProductContract, PsApiManagementProduct>()
-                .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.LegalTerms, opt => opt.MapFrom(src => src.Terms));
+                cfg
+                    .CreateMap<ProductContract, PsApiManagementProduct>()
+                    .ForMember(dest => dest.ProductId, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.LegalTerms, opt => opt.MapFrom(src => src.Terms));
 
-            Mapper
-                .CreateMap<SubscriptionContract, PsApiManagementSubscription>()
-                .ForMember(dest => dest.SubscriptionId, opt => opt.MapFrom(src => src.Id));
+                cfg
+                    .CreateMap<SubscriptionContract, PsApiManagementSubscription>()
+                    .ForMember(dest => dest.SubscriptionId, opt => opt.MapFrom(src => src.Id));
 
-            Mapper
-                .CreateMap<UserContract, PsApiManagementUser>()
-                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Identities, opt => opt.MapFrom(src => src.Identities.ToDictionary(key => key.Id, value => value.Provider)));
+                cfg
+                    .CreateMap<UserContract, PsApiManagementUser>()
+                    .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Identities, opt => opt.MapFrom(src => src.Identities.ToDictionary(key => key.Id, value => value.Provider)));
 
-            Mapper
-                .CreateMap<GroupContract, PsApiManagementGroup>()
-                .ForMember(dest => dest.GroupId, opt => opt.MapFrom(src => src.Id));
+                cfg
+                    .CreateMap<GroupContract, PsApiManagementGroup>()
+                    .ForMember(dest => dest.GroupId, opt => opt.MapFrom(src => src.Id));
 
-            Mapper
-                .CreateMap<CertificateContract, PsApiManagementCertificate>()
-                .ForMember(dest => dest.CertificateId, opt => opt.MapFrom(src => src.Id));
+                cfg
+                    .CreateMap<CertificateContract, PsApiManagementCertificate>()
+                    .ForMember(dest => dest.CertificateId, opt => opt.MapFrom(src => src.Id));
 
-            Mapper
-                .CreateMap<OAuth2AuthorizationServerContract, PsApiManagementOAuth2AuthrozationServer>()
-                .ForMember(dest => dest.ServerId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.AccessTokenSendingMethods, opt => opt.MapFrom(src => src.BearerTokenSendingMethods))
-                .ForMember(dest => dest.TokenEndpointUrl, opt => opt.MapFrom(src => src.TokenEndpoint))
-                .ForMember(dest => dest.AuthorizationEndpointUrl, opt => opt.MapFrom(src => src.AuthorizationEndpoint))
-                .ForMember(dest => dest.ClientRegistrationPageUrl, opt => opt.MapFrom(src => src.ClientRegistrationEndpoint))
-                .ForMember(dest => dest.ClientAuthenticationMethods, opt => opt.MapFrom(src => src.ClientAuthenticationMethod))
-                .ForMember(dest => dest.AuthorizationRequestMethods, opt => opt.MapFrom(src => src.AuthorizationMethods))
-                .ForMember(dest => dest.TokenBodyParameters, opt => opt.Ignore())
-                .AfterMap((src, dest) =>
-                    dest.TokenBodyParameters = src.TokenBodyParameters == null
-                        ? (Hashtable)null
-                        : new Hashtable(src.TokenBodyParameters.ToDictionary(key => key.Name, value => value.Value)));
+                cfg
+                    .CreateMap<OAuth2AuthorizationServerContract, PsApiManagementOAuth2AuthrozationServer>()
+                    .ForMember(dest => dest.ServerId, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.AccessTokenSendingMethods, opt => opt.MapFrom(src => src.BearerTokenSendingMethods))
+                    .ForMember(dest => dest.TokenEndpointUrl, opt => opt.MapFrom(src => src.TokenEndpoint))
+                    .ForMember(dest => dest.AuthorizationEndpointUrl, opt => opt.MapFrom(src => src.AuthorizationEndpoint))
+                    .ForMember(dest => dest.ClientRegistrationPageUrl, opt => opt.MapFrom(src => src.ClientRegistrationEndpoint))
+                    .ForMember(dest => dest.ClientAuthenticationMethods, opt => opt.MapFrom(src => src.ClientAuthenticationMethod))
+                    .ForMember(dest => dest.AuthorizationRequestMethods, opt => opt.MapFrom(src => src.AuthorizationMethods))
+                    .ForMember(dest => dest.TokenBodyParameters, opt => opt.Ignore())
+                    .AfterMap((src, dest) =>
+                        dest.TokenBodyParameters = src.TokenBodyParameters == null
+                            ? (Hashtable)null
+                            : new Hashtable(src.TokenBodyParameters.ToDictionary(key => key.Name, value => value.Value)));
 
-            Mapper
-                .CreateMap<LoggerGetContract, PsApiManagementLogger>()
-                .ForMember(dest => dest.LoggerId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
-                .ForMember(dest => dest.IsBuffered, opt => opt.MapFrom(src => src.IsBuffered))
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type));
+                cfg
+                    .CreateMap<LoggerGetContract, PsApiManagementLogger>()
+                    .ForMember(dest => dest.LoggerId, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.IsBuffered, opt => opt.MapFrom(src => src.IsBuffered))
+                    .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type));
 
-            Mapper
-                .CreateMap<PropertyContract, PsApiManagementProperty>()
-                .ForMember(dest => dest.PropertyId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value))
-                .ForMember(dest => dest.Secret, opt => opt.MapFrom(src => src.Secret))
-                .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags == null ? new string[0] : src.Tags.ToArray()));
+                cfg
+                    .CreateMap<PropertyContract, PsApiManagementProperty>()
+                    .ForMember(dest => dest.PropertyId, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value))
+                    .ForMember(dest => dest.Secret, opt => opt.MapFrom(src => src.Secret))
+                    .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags == null ? new string[0] : src.Tags.ToArray()));
 
-            Mapper
-                .CreateMap<OpenidConnectProviderContract, PsApiManagementOpenIdConnectProvider>()
-                .ForMember(dest => dest.OpenIdConnectProviderId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
-                .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId))
-                .ForMember(dest => dest.ClientSecret, opt => opt.MapFrom(src => src.ClientSecret))
-                .ForMember(dest => dest.MetadataEndpoint, opt => opt.MapFrom(src => src.MetadataEndpoint));
+                cfg
+                    .CreateMap<OpenidConnectProviderContract, PsApiManagementOpenIdConnectProvider>()
+                    .ForMember(dest => dest.OpenIdConnectProviderId, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId))
+                    .ForMember(dest => dest.ClientSecret, opt => opt.MapFrom(src => src.ClientSecret))
+                    .ForMember(dest => dest.MetadataEndpoint, opt => opt.MapFrom(src => src.MetadataEndpoint));
 
-            Mapper
-                .CreateMap<AccessInformationContract, PsApiManagementAccessInformation>()
-                .ForMember(dest => dest.Enabled, opt => opt.MapFrom(src => src.Enabled))
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.PrimaryKey, opt => opt.MapFrom(src => src.PrimaryKey))
-                .ForMember(dest => dest.SecondaryKey, opt => opt.MapFrom(src => src.SecondaryKey));
+                cfg
+                    .CreateMap<AccessInformationContract, PsApiManagementAccessInformation>()
+                    .ForMember(dest => dest.Enabled, opt => opt.MapFrom(src => src.Enabled))
+                    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.PrimaryKey, opt => opt.MapFrom(src => src.PrimaryKey))
+                    .ForMember(dest => dest.SecondaryKey, opt => opt.MapFrom(src => src.SecondaryKey));
 
-            Mapper.CreateMap<TenantConfigurationSyncStateContract, PsApiManagementTenantConfigurationSyncState>();
+                cfg.CreateMap<TenantConfigurationSyncStateContract, PsApiManagementTenantConfigurationSyncState>();
 
-            Mapper
-                .CreateMap<IdentityProviderContract, PsApiManagementIdentityProvider>()
-                .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId))
-                .ForMember(dest => dest.ClientSecret, opt => opt.MapFrom(src => src.ClientSecret))
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
-                .ForMember(dest => dest.AllowedTenants, opt => opt.MapFrom(src => src.AllowedTenants == null ? new string[0] : src.AllowedTenants.ToArray()));
+                cfg
+                    .CreateMap<IdentityProviderContract, PsApiManagementIdentityProvider>()
+                    .ForMember(dest => dest.ClientId, opt => opt.MapFrom(src => src.ClientId))
+                    .ForMember(dest => dest.ClientSecret, opt => opt.MapFrom(src => src.ClientSecret))
+                    .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.Type))
+                    .ForMember(dest => dest.AllowedTenants, opt => opt.MapFrom(src => src.AllowedTenants == null ? new string[0] : src.AllowedTenants.ToArray()));
 
-            Mapper
-                .CreateMap<BackendProxyContract, PsApiManagementBackendProxy>()
-                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
-                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Username));
+                cfg
+                    .CreateMap<BackendProxyContract, PsApiManagementBackendProxy>()
+                    .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                    .ForMember(dest => dest.ProxyCredentials, opt => opt.MapFrom(src =>
+                        string.IsNullOrEmpty(src.Password) ? PSCredential.Empty :
+                        new PSCredential(src.Username, src.Password.ConvertToSecureString())));
 
-            Mapper
-                .CreateMap<BackendCredentialsContract, PsApiManagementBackendCredential>()
-                .ForMember(dest => dest.Certificate, opt => opt.MapFrom(src => src.Certificate))
-                .ForMember(dest => dest.Query, opt => opt.Ignore())
-                .ForMember(dest => dest.Header, opt => opt.Ignore())
-                .AfterMap((src, dest) =>
-                    dest.Query = src.Query == null
-                        ? (Hashtable)null
-                        : DictionaryToHashTable(src.Query))
-                .AfterMap((src, dest) =>
-                    dest.Header = src.Header == null
-                        ? (Hashtable)null
-                        : DictionaryToHashTable(src.Header));
-            Mapper
-                .CreateMap<AuthorizationHeaderCredentialsContract, PsApiManagementAuthorizationHeaderCredential>()
-                .ForMember(dest => dest.Scheme, opt => opt.MapFrom(src => src.Scheme))
-                .ForMember(dest => dest.Parameter, opt => opt.MapFrom(src => src.Parameter));
+                cfg
+                    .CreateMap<PsApiManagementBackendProxy, BackendProxyContract>()
+                    .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                    .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.ProxyCredentials == PSCredential.Empty ? null : src.ProxyCredentials.UserName))
+                    .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.ProxyCredentials == PSCredential.Empty ? null : src.ProxyCredentials.Password.ConvertToString()));
 
-            Mapper
-                .CreateMap<BackendGetContract, PsApiManagementBackend>()
-                .ForMember(dest => dest.BackendId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
-                .ForMember(dest => dest.Protocol, opt => opt.MapFrom(src => src.Protocol))
-                .ForMember(dest => dest.ResourceId, opt => opt.MapFrom(src => src.ResourceId))
-                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
-                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
-                .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src.Properties))
-                .ForMember(dest => dest.Proxy, opt => opt.MapFrom(src => src.Proxy));
+                cfg
+                    .CreateMap<BackendCredentialsContract, PsApiManagementBackendCredential>()
+                    .ForMember(dest => dest.Certificate, opt => opt.MapFrom(src => src.Certificate))
+                    .ForMember(dest => dest.Query, opt => opt.Ignore())
+                    .ForMember(dest => dest.Header, opt => opt.Ignore())
+                    .AfterMap((src, dest) =>
+                        dest.Query = src.Query == null
+                            ? (Hashtable)null
+                            : DictionaryToHashTable(src.Query))
+                    .AfterMap((src, dest) =>
+                        dest.Header = src.Header == null
+                            ? (Hashtable)null
+                            : DictionaryToHashTable(src.Header));
+                cfg
+                    .CreateMap<AuthorizationHeaderCredentialsContract, PsApiManagementAuthorizationHeaderCredential>()
+                    .ForMember(dest => dest.Scheme, opt => opt.MapFrom(src => src.Scheme))
+                    .ForMember(dest => dest.Parameter, opt => opt.MapFrom(src => src.Parameter));
 
-            Mapper.CreateMap<Hashtable, Hashtable>();
+                cfg
+                    .CreateMap<BackendGetContract, PsApiManagementBackend>()
+                    .ForMember(dest => dest.BackendId, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                    .ForMember(dest => dest.Protocol, opt => opt.MapFrom(src => src.Protocol))
+                    .ForMember(dest => dest.ResourceId, opt => opt.MapFrom(src => src.ResourceId))
+                    .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                    .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
+                    .ForMember(dest => dest.Properties, opt => opt.MapFrom(src => src.Properties))
+                    .ForMember(dest => dest.Proxy, opt => opt.MapFrom(src => src.Proxy));
+
+                cfg.CreateMap<Hashtable, Hashtable>();
+            });
+
+            _mapper = config.CreateMapper();
         }
 
         public ApiManagementClient(IAzureContext context)
@@ -448,7 +471,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             string apiId,
             PsApiManagementApiFormat specificationFormat,
             string specificationPath,
-            string urlSuffix,
+            string apiPath,
             string wsdlServiceName,
             string wsdlEndpointName,
             PsApiManagementApiType? apiType)
@@ -459,7 +482,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             using (var fileStream = File.OpenRead(specificationPath))
             {
-                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, urlSuffix, wsdlServiceName, wsdlEndpointName, apiTypeValue);
+                Client.Apis.Import(context.ResourceGroupName, context.ServiceName, apiId, contentType, fileStream, apiPath, wsdlServiceName, wsdlEndpointName, apiTypeValue);
             }
         }
 
@@ -1043,7 +1066,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 {
                     query.Filter += "&";
                 }
-                query.Filter = string.Format("lastName eq '{0}'", email);
+                query.Filter = string.Format("email eq '{0}'", email);
                 isFirstCondition = false;
             }
 
@@ -2079,9 +2102,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return results;
         }
 
-        public PsApiManagementBackend BackendById(PsApiManagementContext context, string loggerId)
+        public PsApiManagementBackend BackendById(PsApiManagementContext context, string backendId)
         {
-            var response = Client.Backends.Get(context.ResourceGroupName, context.ServiceName, loggerId);
+            var response = Client.Backends.Get(context.ResourceGroupName, context.ServiceName, backendId);
             var backend = Mapper.Map<PsApiManagementBackend>(response.Value);
 
             return backend;
@@ -2172,7 +2195,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             if (proxy != null)
             {
-                backendUpdateParams.Proxy = Mapper.Map<PsApiManagementBackendProxy, BackendProxyContract>(proxy);
+                backendUpdateParams.Proxy = Mapper.Map<BackendProxyContract>(proxy);
             }
 
             Client.Backends.Update(

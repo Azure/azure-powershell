@@ -79,7 +79,8 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(xunitLogger, "Test-CloneNewWebAppAndDeploymentSlots");
         }
 
-        [Fact]
+        // This test is failing with an HTTP 500 due to a bug in the clone service.
+        [Fact(Skip = "Test is being skipped until issue with cloning is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppWithNewTrafficManager()
         {
@@ -98,6 +99,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         public void TestSetWebApp()
         {
             WebsitesController.NewInstance.RunPsTest("Test-SetWebApp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveWebApp()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-RemoveWebApp");
         }
     }
 }

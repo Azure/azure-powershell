@@ -34,9 +34,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         internal Microsoft.Azure.Batch.JobReleaseTask omObject;
         
+        private PSTaskContainerSettings containerSettings;
+        
         private IList<PSEnvironmentSetting> environmentSettings;
         
         private IList<PSResourceFile> resourceFiles;
+        
+        private PSUserIdentity userIdentity;
         
         public PSJobReleaseTask()
         {
@@ -66,6 +70,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.CommandLine = value;
+            }
+        }
+        
+        public PSTaskContainerSettings ContainerSettings
+        {
+            get
+            {
+                if (((this.containerSettings == null) 
+                            && (this.omObject.ContainerSettings != null)))
+                {
+                    this.containerSettings = new PSTaskContainerSettings(this.omObject.ContainerSettings);
+                }
+                return this.containerSettings;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ContainerSettings = null;
+                }
+                else
+                {
+                    this.omObject.ContainerSettings = value.omObject;
+                }
+                this.containerSettings = value;
             }
         }
         
@@ -174,17 +203,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.omObject.RetentionTime = value;
             }
         }
-
-        [Obsolete("RunElevated will be removed in a future version and replaced with UserIdentity")]
-        public System.Boolean? RunElevated
+        
+        public PSUserIdentity UserIdentity
         {
             get
             {
-                return this.omObject.RunElevated;
+                if (((this.userIdentity == null) 
+                            && (this.omObject.UserIdentity != null)))
+                {
+                    this.userIdentity = new PSUserIdentity(this.omObject.UserIdentity);
+                }
+                return this.userIdentity;
             }
             set
             {
-                this.omObject.RunElevated = value;
+                if ((value == null))
+                {
+                    this.omObject.UserIdentity = null;
+                }
+                else
+                {
+                    this.omObject.UserIdentity = value.omObject;
+                }
+                this.userIdentity = value;
             }
         }
     }

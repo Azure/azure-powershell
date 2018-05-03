@@ -15,8 +15,10 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+#if NETSTANDARD
 using Microsoft.Rest.Azure.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
+#endif
 using System;
 using System.Collections.Generic;
 using System.Security;
@@ -80,10 +82,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return context.AcquireToken(config.ResourceClientUri, credential);
 #else
             var credential = new ClientCredential(appId, ConversionUtilities.SecureStringToString(appKey));
-            return context.AcquireTokenAsync(context.Authority, credential)
-						  .ConfigureAwait(false).GetAwaiter().GetResult();
-#endif        
-		}
+            return context.AcquireTokenAsync(config.ResourceClientUri, credential).ConfigureAwait(false).GetAwaiter().GetResult();
+#endif
+        }
 
         private AuthenticationResult AcquireTokenWithCertificate(
             AdalConfiguration config,
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
             return context.AcquireToken(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate));
 #else
-            return context.AcquireTokenAsync(config.ResourceClientUri, new ClientAssertionCertificate(appId, certificate))
+            return context.AcquireTokenAsync(config.ResourceClientUri, new Microsoft.IdentityModel.Clients.ActiveDirectory.ClientAssertionCertificate(appId, certificate))
                           .ConfigureAwait(false).GetAwaiter().GetResult();
 #endif
         }
@@ -109,14 +110,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
             TracingAdapter.Information(Resources.SPNRenewTokenTrace, appId, config.AdDomain, config.AdEndpoint,
                 config.ClientId, config.ClientRedirectUri);
+#if !NETSTANDARD
             using (SecureString appKey = LoadAppKey(appId, config.AdDomain))
             {
+#else
+                var appKey = LoadAppKey(appId, config.AdDomain);
+#endif
                 if (appKey == null)
                 {
                     throw new KeyNotFoundException(string.Format(Resources.ServiceKeyNotFound, appId));
                 }
                 return AcquireTokenWithSecret(config, appId, appKey);
+#if !NETSTANDARD
             }
+#endif
         }
 
         private AuthenticationResult RenewWithCertificate(

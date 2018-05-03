@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,124 +23,57 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// <summary>
     /// 'Set-AzureRmEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventHubNamespaceVerb, SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet(VerbsCommon.Set, EventHubNamespaceVerb, SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
     public class SetAzureEventHubNamespace : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.",
-          ParameterSetName = NamespaceParameterSet)]
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.",
-          ParameterSetName = AutoInflateParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "EventHub Namespace Name.",
-          ParameterSetName = NamespaceParameterSet)]
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "EventHub Namespace Name.",
-          ParameterSetName = AutoInflateParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name.")]
+        [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "EventHub Namespace Name.")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "EventHub Namespace Location.",
-          ParameterSetName = NamespaceParameterSet)]
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "EventHub Namespace Location.",
-          ParameterSetName = AutoInflateParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
+        [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Namespace Location.")]
+        [LocationCompleter("Microsoft.EventHub/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [Parameter(
-          Mandatory = false,
-          Position = 3,          
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Namespace Sku Name.",
-          ParameterSetName = NamespaceParameterSet)]
-        [Parameter(
-          Mandatory = false,
-          Position = 3,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Namespace Sku Name.",
-          ParameterSetName = AutoInflateParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Namespace Sku Name.")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Namespace Sku Name.")]
         [ValidateSet(SKU.Basic,
           SKU.Standard,
           SKU.Premium,
           IgnoreCase = true)]
         public string SkuName { get; set; }
 
-        [Parameter(          
-          Mandatory = false,
-            Position = 4,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The eventhub throughput units.",
-          ParameterSetName = NamespaceParameterSet)]
-        [Parameter(
-          Mandatory = false,
-            Position = 4,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "The eventhub throughput units.",
-          ParameterSetName = AutoInflateParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 4,HelpMessage = "The eventhub throughput units.")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "The eventhub throughput units.")]
         public int? SkuCapacity { get; set; }
 
-        [Parameter(Mandatory = false,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,            
-            HelpMessage = "Disable/Enable Namespace.",
-          ParameterSetName = NamespaceParameterSet)]
-        [Parameter(Mandatory = false,
-            Position = 5,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Disable/Enable Namespace.",
-          ParameterSetName = AutoInflateParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Disable/Enable Namespace.")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "Disable/Enable Namespace.")]
         public Models.NamespaceState? State { get; set; }
 
-        [Parameter(Mandatory = false,
-            Position = 6,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtables which represents resource Tag.",
-          ParameterSetName = NamespaceParameterSet)]
-        [Parameter(Mandatory = false,
-            Position = 6,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtables which represents resource Tag.",
-          ParameterSetName = AutoInflateParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Hashtables which represents resource Tag.")]
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Hashtables which represents resource Tag.")]
         public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Indicates whether AutoInflate is enabled.
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "Indicates whether AutoInflate is enabled",
-            ParameterSetName = AutoInflateParameterSet
-            )]
+        [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
         public SwitchParameter EnableAutoInflate { get; set; }
 
         /// <summary>
         /// Upper limit of throughput units when AutoInflate is enabled.
         /// </summary>
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.",
-            ParameterSetName = AutoInflateParameterSet
-            )]        
+        [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]        
         [ValidateRange(0,20)]        
         public int? MaximumThroughputUnits { get; set; }
 

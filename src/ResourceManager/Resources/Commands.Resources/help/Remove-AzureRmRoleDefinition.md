@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 ms.assetid: 2D882B33-2B62-4785-AF8F-5F4644E9504D
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermroledefinition
 schema: 2.0.0
 ---
 
@@ -16,14 +17,20 @@ Delete will fail if there are existing role assignments made to the custom role.
 
 ### RoleDefinitionIdParameterSet (Default)
 ```
-Remove-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-Force] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RoleDefinitionNameParameterSet
 ```
-Remove-AzureRmRoleDefinition [-Name] <String> [-Scope <String>] [-Force] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmRoleDefinition [-Name] <String> [-Scope <String>] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzureRmRoleDefinition -InputObject <PSRoleDefinition> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,17 +42,32 @@ If there are existing role assignments made to the custom role to be deleted, th
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 Get-AzureRmRoleDefinition -Name "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
 ```
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 Remove-AzureRmRoleDefinition -Id "52a6cc13-ff92-47a8-a39b-2a8205c3087e"
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 If set, does not prompt for a confirmation before deleting the custom role
@@ -53,7 +75,7 @@ If set, does not prompt for a confirmation before deleting the custom role
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -68,12 +90,27 @@ Id of the Role definition to be deleted
 ```yaml
 Type: Guid
 Parameter Sets: RoleDefinitionIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The object representing the role definition to be removed.
+
+```yaml
+Type: PSRoleDefinition
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -83,7 +120,7 @@ Name of the Role definition to be deleted.
 ```yaml
 Type: String
 Parameter Sets: RoleDefinitionNameParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -96,7 +133,7 @@ Accept wildcard characters: False
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,8 +147,8 @@ Role definition scope.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: RoleDefinitionIdParameterSet, RoleDefinitionNameParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -152,6 +189,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

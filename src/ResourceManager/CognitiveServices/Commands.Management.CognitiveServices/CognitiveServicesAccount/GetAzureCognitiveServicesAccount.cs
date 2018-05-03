@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.CognitiveServices.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CognitiveServices;
 using Microsoft.Azure.Management.CognitiveServices.Models;
 using Microsoft.Rest.Azure;
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             ParameterSetName = AccountNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -78,7 +80,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 }
                 else
                 {
-                    var cognitiveServicesAccount = this.CognitiveServicesClient.CognitiveServicesAccounts.GetProperties(
+                    var cognitiveServicesAccount = this.CognitiveServicesClient.Accounts.GetProperties(
                         this.ResourceGroupName,
                         this.Name);
 

@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
+Module Name: AzureRM.Cdn
 ms.assetid: AFDBE48E-63B0-4A9E-9825-5246081AA129
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cdn/publish-azurermcdnendpointcontent
 schema: 2.0.0
 ---
 
@@ -12,16 +13,16 @@ Loads content to an endpoint.
 
 ## SYNTAX
 
-### Parameter Set for fields parameters (Default)
+### ByFieldsParameterSet (Default)
 ```
 Publish-AzureRmCdnEndpointContent -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- -LoadContent <String[]> [-PassThru] [<CommonParameters>]
+ -LoadContent <String[]> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### Parameter Set for object parameters
+### ByObjectParameterSet
 ```
 Publish-AzureRmCdnEndpointContent -CdnEndpoint <PSEndpoint> -LoadContent <String[]> [-PassThru]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,8 +42,8 @@ Sepcifies the CDN endpoint.
 
 ```yaml
 Type: PSEndpoint
-Parameter Sets: Parameter Set for object parameters
-Aliases: 
+Parameter Sets: ByObjectParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -51,13 +52,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EndpointName
 Specifies the name of the endpoint.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -72,7 +88,7 @@ Specifies an array of relative paths for the content on the origin server that t
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -88,7 +104,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,8 +118,8 @@ Specifies the name of the profile to which the origin server belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -117,8 +133,8 @@ Specifies the name of the resource group to which the origin server belongs.
 
 ```yaml
 Type: String
-Parameter Sets: Parameter Set for fields parameters
-Aliases: 
+Parameter Sets: ByFieldsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -133,7 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSEndpoint
-
 Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
 
 ## OUTPUTS

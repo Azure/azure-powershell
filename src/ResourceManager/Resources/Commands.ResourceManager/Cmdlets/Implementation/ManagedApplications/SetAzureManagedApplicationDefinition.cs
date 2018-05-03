@@ -15,6 +15,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using Common.ArgumentCompleters;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
@@ -37,12 +38,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// The managed application Id parameter set.
         /// </summary>
-        internal const string ManagedApplicationDefinitionIdParameterSet = "The managed application definition Id parameter set.";
+        internal const string ManagedApplicationDefinitionIdParameterSet = "SetById";
 
         /// <summary>
         /// The managed application name parameter set.
         /// </summary>
-        internal const string ManagedApplicationDefinitionNameParameterSet = "The managed application definition name parameter set.";
+        internal const string ManagedApplicationDefinitionNameParameterSet = "SetByNameAndResourceGroup";
 
         /// <summary>
         /// Gets or sets the managed application definition name parameter.
@@ -55,6 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the managed application definition resource group parameter
         /// </summary>
         [Parameter(ParameterSetName = SetAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -15,6 +15,8 @@
 <#
 .SYNOPSIS
 Test Virtual Machine Run Command Get
+.Description
+AzureAutomationTest
 #>
 function Test-VirtualMachineGetRunCommand
 {
@@ -105,13 +107,15 @@ function Test-VirtualMachineSetRunCommand
 
         $path = 'ScenarioTests\test.ps1';
         
-        $result = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param;
-        $result_output = $result | Out-String;
+        $job = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param -AsJob;
+		$result = $job | Wait-Job
+
+        Assert-AreEqual "Succeeded" $result.Status
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;
         $vms = Get-AzureRmVM -ResourceGroupName $rgname;
-        Assert-AreEqual $vms $null;
+        Assert-AreEqual $vms $null; 
     }
     finally
     {
