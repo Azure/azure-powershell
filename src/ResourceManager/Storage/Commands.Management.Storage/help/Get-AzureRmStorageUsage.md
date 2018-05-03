@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM.Storage
 ms.assetid: 11AAA319-DDBB-4156-9BE7-4DE8B80A904C
@@ -14,7 +14,7 @@ Gets the Storage resource usage of the current subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmStorageUsage [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmStorageUsage [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,12 +22,19 @@ The **Get-AzureRmStorageUsage** cmdlet gets the resource usage for Azure Storage
 
 ## EXAMPLES
 
-### Example 1: Get the storage resources usage
+### Example 1: Get the storage resources usage 
 ```
 PS C:\>Get-AzureRmStorageUsage
 ```
 
 This command gets the Storage resources usage of the current subscription.
+
+### Example 2: Get the storage resources usage of specified location
+```
+PS C:\>Get-AzureRmStorageUsage -Location "US West"
+```
+
+This command gets the Storage resources usage of of specified location under the current subscription.
 
 ## PARAMETERS
 
@@ -43,6 +50,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Indicate to get Storage resources usage on the specified location.
+If not specified, will get Storage resources usage on all locations under the subscription.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
