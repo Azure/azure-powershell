@@ -19,7 +19,7 @@
 function Test-CreateAndUpdateVirtualNetworkRule
 {
 	# Setup
-	$location = "East US 2 EUAP"
+	$location = "East US 2"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 
@@ -72,7 +72,7 @@ function Test-CreateAndUpdateVirtualNetworkRule
 function Test-GetVirtualNetworkRule
 {
 	# Setup
-	$location = "East US 2 EUAP"
+	$location = "East US 2"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 

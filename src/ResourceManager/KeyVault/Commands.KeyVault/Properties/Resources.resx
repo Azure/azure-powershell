@@ -391,7 +391,7 @@ You can find the object ID using Azure Active Directory Module for Windows Power
     <value>Purge secret</value>
   </data>
   <data name="AllPermissionExpansionWarning" xml:space="preserve">
-    <value>The 'all' permission is being deprecated and does not include the 'purge' permission. 'Purge' permission must be explicitly set.</value>
+    <value>The 'all' permission will be removed in May 2018 and does not include the 'purge' permission. 'Purge' permission must be explicitly set.</value>
   </data>
   <data name="RecoverVault" xml:space="preserve">
     <value>Recover vault</value>

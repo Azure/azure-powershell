@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 1.0.1
+* Updated to the latest version of the Azure ClientRuntime
+* Set minimum dependency of module to PowerShell 5.0
+
 ## Version 1.0.0
 * First release of Location Based Services management cmdlets
 

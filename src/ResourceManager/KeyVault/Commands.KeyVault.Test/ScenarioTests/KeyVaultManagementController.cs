@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             {
                 AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
             }
-            return client;            
+            return client;
         }
 
     }

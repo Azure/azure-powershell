@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-#Requires -Modules AzureRM.KeyVault
+#Requires -Modules AzureRM.KeyVault, @{ModuleName='PowerShellGet';ModuleVersion='1.6.0'}
 [CmdletBinding(
     DefaultParameterSetName='Scope', 
     SupportsShouldProcess=$true
@@ -50,14 +50,14 @@ function Get-TargetModules
     if ($listOfModules.Count -ge 1) 
     {
         $moduleList | ForEach-Object {
-            $targets += Find-Module -Name $_ -Repository $repoName
+            $targets += Find-Module -Name $_ -Repository $repoName -AllowPrerelease
         }
     }
 
     elseif ($moduleVersionTable.Count -ge 1)
     {
         $moduleVersionTable | ForEach-Object {
-            $targets += Find-Module -Name $_.Module -RequiredVersion $_.Version -Repository $repoName
+            $targets += Find-Module -Name $_.Module -RequiredVersion $_.Version -Repository $repoName -AllowPrerelease
         }
     }
 
