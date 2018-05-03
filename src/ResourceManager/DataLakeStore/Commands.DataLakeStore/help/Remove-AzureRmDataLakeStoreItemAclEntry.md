@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
+Module Name: AzureRM.DataLakeStore
 ms.assetid: 33E7607E-C2BC-4F46-9038-91AC92041F00
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakestore/remove-azurermdatalakestoreitemaclentry
 schema: 2.0.0
 ---
 
@@ -12,16 +13,18 @@ Removes an entry from the ACL of a file or folder in Data Lake Store.
 
 ## SYNTAX
 
-### Remove ACL Entries using ACL object (Default)
+### RemoveByACLObject (Default)
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Recurse] [-Concurrency <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove specific ACE
+### RemoveSpecificACE
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-PassThru] [-Recurse] [-Concurrency <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +38,13 @@ PS C:\>Remove-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path /
 ```
 
 This command removes the user ACE for Patti Fuller from the ContosoADL account.
+
+### Example 2: Remove a user entry recursively
+```
+PS C:\>Remove-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").ObjectId -Recursive -Concurrency 128
+```
+
+This command removes the user ACE for Patti Fuller from the root and recursively from all it's subdirectories and files for account ContosoADL.
 
 ## PARAMETERS
 
@@ -64,8 +74,8 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: AceType
-Parameter Sets: Remove specific ACE
-Aliases: 
+Parameter Sets: RemoveSpecificACE
+Aliases:
 Accepted values: User, Group, Mask, Other
 
 Required: True
@@ -80,8 +90,8 @@ Specifies the ACL object that contains the entries to be removed.
 
 ```yaml
 Type: DataLakeStoreItemAce[]
-Parameter Sets: Remove ACL Entries using ACL object
-Aliases: 
+Parameter Sets: RemoveByACLObject
+Aliases:
 
 Required: True
 Position: 2
@@ -90,13 +100,28 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -Concurrency
+Number of files/directories processed in parallel. Optional: a reasonable default will be selected
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Default
 Indicates that this operation removes the default ACE from the specified ACL.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Remove specific ACE
-Aliases: 
+Parameter Sets: RemoveSpecificACE
+Aliases:
 
 Required: False
 Position: 4
@@ -105,13 +130,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 Specifies the object ID of the AzureActive Directory user, group, or service principal for which to remove an ACE.
 
 ```yaml
 Type: Guid
-Parameter Sets: Remove specific ACE
-Aliases: 
+Parameter Sets: RemoveSpecificACE
+Aliases:
 
 Required: False
 Position: 3
@@ -126,7 +166,7 @@ Indicates a boolean response should be returned indicating the result of the del
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,10 +181,25 @@ Specifies the Data Lake Store path of the item from which to remove an ACE, star
 ```yaml
 Type: DataLakeStorePathInstance
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Recurse
+Indicates the ACL to be removed recursively to the child subdirectories and files
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -187,7 +242,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### DataLakeStoreItemAce[]
-
 Parameter 'Acl' accepts value of type 'DataLakeStoreItemAce[]' from the pipeline
 
 ## OUTPUTS

@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
@@ -62,16 +64,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             var cluster = GetCurrentCluster();
-            var oldReliabilityLevelStr = cluster.ReliabilityLevel;
-            var oldReliabilityLevel = ReliabilityLevel.Bronze;
-            if (!Enum.TryParse(oldReliabilityLevelStr, out oldReliabilityLevel))
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                        ServiceFabricProperties.Resources.CannotParseReliabilityLevel,
-                        oldReliabilityLevelStr));
-            }
-
+            var oldReliabilityLevel = GetReliabilityLevel(cluster);
             if (this.ReliabilityLevel == oldReliabilityLevel)
             {
                 WriteObject(new PSCluster(cluster), true);

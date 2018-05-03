@@ -17,78 +17,51 @@
 Test Recovery Services Backup Vault
 #>
 
-$resourceGroupName = "RecoveryServicesBackupTestRg";
-$resourceName = "PsTestRsVault";
-$defaultPolicyName = "DefaultPolicy";
-# Create VM instead of taking these as parameters
-$vmResourceGroupName = "pstestrg";
-$vmName = "pstestv2vm1";
-$vmStorageAccountName = "pstestrg4762";
-$vmStorageAccountResourceGroup = "pstestrg";
-$vmUniqueName = "iaasvmcontainerv2;" + $vmResourceGroupName + ";" + $vmName;
-
-function Test-GetContainerScenario
+function Test-AzureVMGetContainers
 {
-	# 1. Create / update and get vault
-	$vaultLocation = get_available_location;
-	$vault = New-AzureRmRecoveryServicesVault `
-		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
-	
-	# 2. Set vault context
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup $location
 
-	# 3. Get container
-	$global:container = Get-AzureRmRecoveryServicesBackupContainer `
-		-ContainerType AzureVM `
-		-Name $vmName `
-		-ResourceGroupName $vmResourceGroupName `
-		-Status Registered;
-
-	# 4. If not already protected, enable protection
-	if ($global:container -eq $null)
+	try
 	{
-		# 4.1 Get default policy
-		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $defaultPolicyName;	
-	
-		Enable-AzureRmRecoveryServicesBackupProtection `
-			-Policy $policy -Name $vmName -ResourceGroupName $vmResourceGroupName;
+		# Setup
+		$vm = Create-VM $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+		Enable-Protection $vault $vm
+		
+		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-		$global:container = Get-AzureRmRecoveryServicesBackupContainer `
+		# VARIATION-1: Get All Containers with only mandatory parameters
+		$containers = Get-AzureRmRecoveryServicesBackupContainer `
 			-ContainerType AzureVM `
-			-Name $vmName `
-			-ResourceGroupName $vmResourceGroupName `
 			-Status Registered;
-	}
+		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
-	# VAR-1: Get All Containers with only mandatory parameters
-	$containers = Get-AzureRmRecoveryServicesBackupContainer `
-		-ContainerType "AzureVM" -Status "Registered";
-	
-	$global:containerExists = $false;
-	foreach ($container in $containers)
+		# VARIATION-2: Get Containers with friendly name filter
+		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Status Registered `
+			-Name $vm.Name;
+		Assert-True { $containers.FriendlyName -contains $vm.Name }
+
+		# VARIATION-3: Get Containers with friendly name and resource group filters
+		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Status Registered `
+			-Name $vm.Name `
+			-ResourceGroupName $vm.ResourceGroupName;
+		Assert-True { $containers.FriendlyName -contains $vm.Name }
+
+		# VARIATION-4: Get Containers with resource group filter
+		$containers = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Status Registered `
+			-ResourceGroupName $vm.ResourceGroupName;
+		Assert-True { $containers.FriendlyName -contains $vm.Name }
+	}
+	finally
 	{
-		if ($container.Name -match $vmUniqueName)
-		{
-			$global:containerExists = $true;
-		}
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
 	}
-	Assert-AreEqual $global:containerExists $true;
-
-	# VAR-2: Get Containers with friendly name filter
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
-		-ContainerType "AzureVM" -Status "Registered" -Name $vmName;
-	Assert-AreEqual $namedContainer.Name $vmUniqueName;
-
-	# VAR-3: Get Containers with friendly name and resource group filters
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer `
-		-ContainerType "AzureVM" `
-		-Status "Registered" `
-		-Name $vmName `
-		-ResourceGroupName $vmResourceGroupName;
-	Assert-AreEqual $namedContainer.Name $vmUniqueName;
-
-	# VAR-4: Get Containers with resource group filter
-	$rgFilteredContainer = Get-AzureRmRecoveryServicesBackupContainer `
-		-ContainerType "AzureVM" -Status "Registered" -ResourceGroupName $vmResourceGroupName;
-	Assert-AreEqual $namedContainer.Name $vmUniqueName;
 }

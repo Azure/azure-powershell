@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,47 @@
 -->
 ## Current Release
 
+## Version 4.3.0
+* Set minimum dependency of module to PowerShell 5.0
+* Support $web as Storage blob container name
+	- New-AzureStorageBlobContainer
+	- Remove-AzureStorageBlobContainer
+	- Set-AzureStorageBlobContent
+	- Get-AzureStorageBlobContent
+* Fix the issue that some Storage cmdlets failure output not contain detail failure information
+
+## Version 4.2.1
+* Fix the issue that upload Blob and upload File cmdlets fail on FIPS policy enabled machines
+	- Set-AzureStorageBlobContent
+	- Set-AzureStorageFileContent
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.2.0
+* Support Soft-Delete feature
+	- Enable-AzureStorageDeleteRetentionPolicy
+	- Disable-AzureStorageDeleteRetentionPolicy
+	- Get-AzureStorageBlob
+
+## Version 4.1.1
+* Fix Get Blob Container cmdlet execute fail with Accout SAS credential issue
+	- Get-AzureStorageContainer
+	
+## Version 4.1.0
+* Add cmdlets to get and set Storage service properties
+	- Get-AzureStorageServiceProperty
+	- Update-AzureStorageServiceProperty
+
+## Version 4.0.2
+* Upgrade to Azure Storage Client Library 8.6.0 and Azure Storage DataMovement Library 0.6.5
+
+## Version 4.0.0
+* Upgrade to Azure Storage Client Library 8.5.0 and Azure Storage DataMovement Library 0.6.3
+* Add File Share Snapshot Support Feature
+    - Add 'SnapshotTime' parameter to Get-AzureStorageShare
+    - Add 'IncludeAllSnapshot' parameter to Remove-AzureStorageShare
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+	
 ## Version 3.4.1
 
 ## Version 3.4.0

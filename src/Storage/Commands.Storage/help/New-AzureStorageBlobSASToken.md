@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 ms.assetid: 585371E3-D4CE-452E-B0B0-92B3ABD127E7
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestorageblobsastoken
 schema: 2.0.0
 ---
 

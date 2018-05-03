@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmWebtestAlertRule"), OutputType(typeof(PSAddAlertRuleOperationResponse))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmWebtestAlertRule", SupportsShouldProcess = true), OutputType(typeof(PSAddAlertRuleOperationResponse))]
     public class AddAzureRmWebtestAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("webtest alert rule"),
                 Condition = condition,
-                Actions = this.Actions,
+                Actions = this.Action,
                 Location = this.Location,
                 IsEnabled = !this.DisableRule,
                 AlertRuleResourceName = this.Name,

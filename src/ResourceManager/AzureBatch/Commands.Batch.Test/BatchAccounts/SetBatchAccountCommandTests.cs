@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
                     {"Value", "tagValue"}
                 };
 
-            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, tags);
-            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource);
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, tags: tags);
+            BatchAccountContext expected = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
             batchClientMock.Setup(b => b.UpdateAccount(resourceGroup, accountName, tags, storageId)).Returns(expected);
 
             cmdlet.AccountName = accountName;

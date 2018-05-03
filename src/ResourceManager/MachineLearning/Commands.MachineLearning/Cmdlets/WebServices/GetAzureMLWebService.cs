@@ -18,6 +18,7 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.MachineLearning.WebServices.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
         [Parameter(
             Mandatory = false, 
             HelpMessage = "The name of the resource group for the Azure ML web service.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -40,6 +42,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of region")]
+        [LocationCompleter("Microsoft.MachineLearning/webServices")]
         [ValidateNotNullOrEmpty]
         public string Region { get; set; }
 

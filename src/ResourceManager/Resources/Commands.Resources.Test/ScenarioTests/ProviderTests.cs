@@ -45,5 +45,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-AzureProviderOperation");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureProviderOperationDataActions()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-AzureProviderOperationDataActions");
+        }
     }
 }

@@ -21,14 +21,16 @@ using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Web.Script.Serialization;
 using System.Xml;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Newtonsoft.Json;
+using Formatting = System.Xml.Formatting;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
@@ -130,13 +132,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Generating that authentication token here and sending it via http headers.
         /// </summary>
         /// <param name="clientRequestId">Unique identifier for the client's request</param>
+        /// <param name="dateTime">Optional , datetime used for header genertion</param>
         /// <returns>The authentication token for the provider</returns>
-        public string GenerateAgentAuthenticationHeader(
-            string clientRequestId)
+        public static string GenerateAgentAuthenticationHeader(
+            string clientRequestId,
+            DateTime? dateTime = null)
         {
             var cikTokenDetails = new CikTokenDetails();
 
-            var currentDateTime = DateTime.Now;
+            var currentDateTime = dateTime == null ?  DateTime.Now:dateTime.Value;
             currentDateTime = currentDateTime.AddHours(-1);
             cikTokenDetails.NotBeforeTimestamp = TimeZoneInfo.ConvertTimeToUtc(currentDateTime);
             cikTokenDetails.NotAfterTimestamp = cikTokenDetails.NotBeforeTimestamp.AddDays(7);
@@ -146,7 +150,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 2);
             cikTokenDetails.PropertyBag = new Dictionary<string, object>();
 
-            var shaInput = new JavaScriptSerializer().Serialize(cikTokenDetails);
+            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            };
+
+            var shaInput = JsonConvert.SerializeObject(cikTokenDetails, microsoftDateFormatSettings);
 
             if (null == asrVaultCreds.ChannelIntegrityKey)
             {
@@ -158,7 +167,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(shaInput)));
             cikTokenDetails.HashFunction = CikSupportedHashFunctions.HMACSHA256.ToString();
 
-            return new JavaScriptSerializer().Serialize(cikTokenDetails);
+            return JsonConvert.SerializeObject(cikTokenDetails, microsoftDateFormatSettings);
+        }
+
+        /// <summary>
+        ///     Get extendVault Info.
+        /// </summary>
+        /// <param name="vaultResourceGroupName">Vault ResourceGroup Name</param>
+        /// <param name="vaultName">Vault Name</param>
+        /// <returns>VaultExtendedInfo Resource Object</returns>
+        public VaultExtendedInfoResource GetVaultExtendedInfo(String vaultResourceGroupName, String vaultName)
+        {
+            return this.recoveryServicesVaultClient
+                .VaultExtendedInfo
+                .GetWithHttpMessagesAsync(vaultResourceGroupName, vaultName, this.GetRequestHeaders(false))
+                .GetAwaiter()
+                .GetResult()
+                .Body;
         }
 
         public static string GetJobIdFromReponseLocation(
@@ -195,7 +220,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                    "-" +
                                    DateTime.Now.ToUniversalTime()
                                        .ToString("yyyy-MM-dd HH:mm:ssZ") +
-                                   "-P";
+                                   "-Ps";
 
             customHeaders.Add(
                 "x-ms-client-request-id",
@@ -207,7 +232,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     "Agent-Authentication",
                     new List<string>
                     {
-                        this.GenerateAgentAuthenticationHeader(this.ClientRequestId)
+                        GenerateAgentAuthenticationHeader(this.ClientRequestId)
                     });
             }
             else
@@ -276,7 +301,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 throw new InvalidOperationException(Resources.MissingVaultSettings);
             }
 
-            var validResourceGroup = false;
             var validResource = false;
 
             //foreach (Management.RecoveryServices.Models.ResourceGroup resourceGroup in this.GetRecoveryServicesVaultClient.ResourceGroup.List())

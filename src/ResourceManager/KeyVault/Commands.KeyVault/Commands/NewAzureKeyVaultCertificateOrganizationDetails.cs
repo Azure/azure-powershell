@@ -22,9 +22,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// New-AzureKeyVaultOrganizationDetails creates an in-memory organization details object
     /// </summary>
     [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificateOrganizationDetails,
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificateOrganizationDetails))]
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(PSKeyVaultCertificateOrganizationDetails))]
     public class NewAzureKeyVaultCertificateOrganizationDetails : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -39,17 +38,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         /// <summary>
         /// AdministratorDetails
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, 
+                   ValueFromPipeline = true,
+                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the details of the administrators for the organization.")]
-        public List<KeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
+        public List<PSKeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(string.Empty, Properties.Resources.CreateCertificateAdministrator))
             {
-                var organizationDetails = new KeyVaultCertificateOrganizationDetails
+                var organizationDetails = new PSKeyVaultCertificateOrganizationDetails
                 {
                     Id = Id,
                     AdministratorDetails = AdministratorDetails,

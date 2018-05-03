@@ -351,7 +351,7 @@ Gets valid resource group name
 #>
 function Get-ResourceGroupName
 {
-  return "some-unique-rg-name"
+  return "rg$(Get-RandomLetters)"
 }
 
 <#
@@ -360,7 +360,7 @@ Gets valid resource name
 #>
 function Get-ResourceName
 {
-  return "some-unique-rg-name"
+  return "some-unique-res-name"
 }
 
 <#

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: B6487D26-2B6A-4938-B1CD-48EADD8D0C3C
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/import-azurermautomationrunbook
 schema: 2.0.0
 ---
 
@@ -15,15 +16,15 @@ Imports an Automation runbook.
 ```
 Import-AzureRmAutomationRunbook [-Path] <String> [-Description <String>] [-Name <String>] [-Tags <IDictionary>]
  -Type <String> [-LogProgress <Boolean>] [-LogVerbose <Boolean>] [-Published] [-Force]
- [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Import-AzureRmAutomationRunbook** cmdlet imports an Azure Automation runbook. Specify the
-path to a wps_2 script (.ps1 ) file to import for wps_2 and wps_2 Workflow runbooks, or to a
-graphical runbook (.graphrunbook) file for graphical runbooks. The name of the file becomes the
-name of the runbook. For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow
-definition that matches the name of the file.
+The **Import-AzureRmAutomationRunbook** cmdlet imports an Azure Automation runbook. Specify the 
+path to a wps_2 script (.ps1) file to import for wps_2 and wps_2 Workflow runbooks,
+(.graphrunbook) file for graphical runbooks, or (.py) file for python 2 runbooks. 
+For wps_2 Workflow runbooks, the script must contain a single wps_2 Workflow definition that matches the name of the file.
 
 ## EXAMPLES
 
@@ -52,6 +53,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -201,6 +217,7 @@ Valid values are:
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
 - Graph
+- Python2
 
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
@@ -209,7 +226,7 @@ It is equivalent to GraphicalPowerShellWorkflow.
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph
+Accepted values: PowerShell, GraphicalPowerShell, PowerShellWorkflow, GraphicalPowerShellWorkflow, Graph, Python
 
 Required: True
 Position: Named
@@ -253,6 +270,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

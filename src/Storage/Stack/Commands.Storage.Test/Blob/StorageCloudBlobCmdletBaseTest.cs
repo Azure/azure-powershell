@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
 {
-    [TestClass]
     public class StorageCloudBlobCmdletBaseTest : StorageBlobTestBase
     {
         /// <summary>
@@ -28,8 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         /// </summary>
         public StorageCloudBlobCmdletBase command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public StorageCloudBlobCmdletBaseTest()
         {
             command = new StorageCloudBlobCmdletBase(BlobMock)
             {
@@ -38,26 +37,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
+            public void InitCommand()
         {
-            command = null;
+            command = new StorageCloudBlobCmdletBase(BlobMock)
+            {
+                Context = new AzureStorageContext(CloudStorageAccount.DevelopmentStorageAccount),
+                CommandRuntime = MockCmdRunTime
+            };
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatePipelineCloudBlobWithNullTest()
         {
             AssertThrows<ArgumentException>(() => command.ValidatePipelineCloudBlob(null), String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatePipelineCloudBlobWithInvalidBlobNameTest()
         {
             CloudBlockBlob blob = new CloudBlockBlob(new Uri("http://127.0.0.1/account/container/"));
             AssertThrows<ArgumentException>(() => command.ValidatePipelineCloudBlob(blob), String.Format(Resources.InvalidBlobName, blob.Name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatePipelineCloudBlobSuccessfullyTest()
         {
             AddTestBlobs();
@@ -66,13 +71,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             command.ValidatePipelineCloudBlob(blob);
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatePipelineCloudBlobContainerWithNullObjectTest()
         {
             AssertThrows<ArgumentException>(() => command.ValidatePipelineCloudBlobContainer(null), String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlobContainer).Name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatePipelineCloudBlobContainerWithInvalidNameTest()
         {
             string uri = "http://127.0.0.1/account/t";
@@ -80,7 +87,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             AssertThrows<ArgumentException>(() => command.ValidatePipelineCloudBlobContainer(container), String.Format(Resources.InvalidContainerName, container.Name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatePipelineCloudBlobContainerSuccessfullyTest()
         {
             AddTestContainers();

@@ -109,5 +109,26 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
 
             return opStatusResponse;
         }
+
+        /// <summary>
+        /// Retries request to URL for specified no. of tries in case of failure
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="retryCount"></param>
+        /// <returns></returns>
+        public static SystemNet.HttpWebResponse RetryHttpWebRequest(string url, int retryCount)
+        {
+            SystemNet.HttpWebRequest webRequest = (SystemNet.HttpWebRequest)SystemNet.WebRequest.Create(url);
+            SystemNet.HttpWebResponse webResponse = (SystemNet.HttpWebResponse)webRequest.GetResponse();
+
+            if ((SystemNet.HttpStatusCode.OK != webResponse.StatusCode) && (retryCount > 0))
+            {
+                return RetryHttpWebRequest(url, retryCount - 1);
+            }
+            else
+            {
+                return webResponse;
+            }
+        }
     }
 }

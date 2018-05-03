@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,18 @@
 -->
 ## Current Release
 
+## Version 0.14.2
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 0.14.1
+* New Cmdlet Get-AzureRmEnrollmentAccount
+  - cmdlet to retrieve enrollment accounts
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.14.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 0.13.7
 
 ## Version 0.13.6
@@ -39,8 +51,8 @@
 * New Cmdlet Get-AzureRmBillingPeriod
     - cmdlet to retrieve azure billing periods of the subscription.
 * Update Cmdlet Get-AzureRmBillingInvoice
-	- new property BillingPeriodNames
-	- output in list view
+    - new property BillingPeriodNames
+    - output in list view
 
 ## Version 0.11.0
 

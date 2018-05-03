@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -82,9 +81,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSResourceSku))]
     public partial class GetAzureRmComputeResourceSku : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
 
@@ -103,11 +101,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 var psObject = new List<PSResourceSku>();
                 foreach (var r in resultList)
                 {
-                    psObject.Add(Mapper.Map<ResourceSku, PSResourceSku>(r));
+                    psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<ResourceSku, PSResourceSku>(r));
                 }
                 WriteObject(psObject, true);
             });
         }
-
     }
 }

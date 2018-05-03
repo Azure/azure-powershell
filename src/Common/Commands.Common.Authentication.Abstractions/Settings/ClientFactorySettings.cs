@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     public class ClientFactorySettings : IExtensibleSettings
     {
         /// <summary>
-        /// The user agents in the cusrrent client factory
+        /// The user agents in the current client factory
         /// </summary>
         public IEnumerable<UserAgentSettings> UserAgents { get; }
 

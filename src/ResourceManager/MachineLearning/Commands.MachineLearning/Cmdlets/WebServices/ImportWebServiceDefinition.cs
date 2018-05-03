@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [OutputType(typeof(WebService))]
     public class ImportWebServiceDefinition : WebServicesCmdletBase
     {
-        private const string ImportFromFileParamSet = "Import from JSON file.";
-        private const string ImportFromStringParamSet = "Import from JSON string.";
+        private const string ImportFromFileParamSet = "ImportFromJSONFile";
+        private const string ImportFromStringParamSet = "ImportFromJSONString.";
 
         [Parameter(
             ParameterSetName = ImportWebServiceDefinition.ImportFromFileParamSet, 

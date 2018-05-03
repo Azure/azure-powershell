@@ -16,6 +16,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Security.Cryptography;
 using Security.Cryptography.X509Certificates;
 
@@ -199,7 +200,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <returns>friendly name</returns>
         private static string GenerateCertFriendlyName(string subscriptionId, string prefix = "")
         {
-            return string.Format("{0}{1}-{2}-vaultcredentials", prefix, subscriptionId, DateTime.Now.ToString("M-d-yyyy"));
+            string dateString = DateTime.Now.ToString("M-d-yyyy");
+            if (TestMockSupport.RunningMocked)
+            {
+                dateString = string.Empty;
+            }
+            return string.Format("{0}{1}-{2}-vaultcredentials", prefix, subscriptionId, dateString);
         }
 
         /// <summary>

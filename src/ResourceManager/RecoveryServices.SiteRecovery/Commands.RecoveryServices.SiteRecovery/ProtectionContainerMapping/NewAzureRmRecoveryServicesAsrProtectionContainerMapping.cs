@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Adds Azure Site Recovery Policy settings to a Protection Container.
+    ///    Creates an Azure Site Recovery Protection Container mapping by associating the specified replication policy to the specified ASR protection container.
     /// </summary>
     [Cmdlet(
         VerbsCommon.New,
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class NewAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Policy object.
+        ///     Gets or sets the name of the Protection Container mapping.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Policy object.
+        ///     Gets or sets the ASR replication policy object for the replication policy to be used in the mapping.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
@@ -58,7 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRPolicy Policy { get; set; }
 
         /// <summary>
-        ///     Gets or sets Protection Container to be applied the Policy settings on.
+        ///     Gets or sets the ASR protection container object for the  primary protection container 
+        ///     to be used in the mapping.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
@@ -70,7 +71,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRProtectionContainer PrimaryProtectionContainer { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Protection Container to be applied the Policy settings on.
+        ///     Gets or sets the ASR protection container object for the  recovery protection container 
+        ///     to be used in the mapping (used if replicating to a recovery location that is not Azure.)
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.EnterpriseToEnterprise,
@@ -92,10 +94,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 switch (this.ParameterSetName)
                 {
                     case ASRParameterSets.EnterpriseToAzure:
-                        this.EnterpriseToAzureAssociation();
+                        this.EnterpriseToAzureAndVMwareToAzureAssociation();
                         break;
                     case ASRParameterSets.EnterpriseToEnterprise:
-                        this.EnterpriseToEnterpriseAssociation();
+                        this.A2AE2EAndVMwareToVMwareAssociation();
                         break;
                 }
             }
@@ -133,11 +135,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Associates Azure Policy with enterprise based protection containers
         /// </summary>
-        private void EnterpriseToAzureAssociation()
+        private void EnterpriseToAzureAndVMwareToAzureAssociation()
         {
             if (string.Compare(
                     this.Policy.ReplicationProvider,
                     Constants.HyperVReplicaAzure,
+                    StringComparison.OrdinalIgnoreCase) !=
+                0 &&
+                string.Compare(
+                    this.Policy.ReplicationProvider,
+                    Constants.InMageAzureV2,
                     StringComparison.OrdinalIgnoreCase) !=
                 0)
             {
@@ -151,9 +158,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
 
         /// <summary>
-        ///     Associates Policy with enterprise based protection containers
+        ///     Associates Policy with enterprise/vMware/azure based protection containers
         /// </summary>
-        private void EnterpriseToEnterpriseAssociation()
+        private void A2AE2EAndVMwareToVMwareAssociation()
         {
             if ((string.Compare(
                      this.Policy.ReplicationProvider,
@@ -164,6 +171,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                      this.Policy.ReplicationProvider,
                      Constants.HyperVReplica2012R2,
                      StringComparison.OrdinalIgnoreCase) !=
+                 0) &&
+                 (string.Compare(
+                      this.Policy.ReplicationProvider,
+                      Constants.InMage,
+                      StringComparison.OrdinalIgnoreCase) !=
+                 0) &&
+                 (string.Compare(
+                      this.Policy.ReplicationProvider,
+                      Constants.A2A,
+                      StringComparison.OrdinalIgnoreCase) !=
                  0))
             {
                 throw new InvalidOperationException(

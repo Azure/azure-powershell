@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.HDInsight.Models;
-using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models.Management
 {

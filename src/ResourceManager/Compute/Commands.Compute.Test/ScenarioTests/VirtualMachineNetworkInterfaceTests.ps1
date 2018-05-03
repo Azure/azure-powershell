@@ -491,9 +491,9 @@ function Test-EffectiveRoutesAndNsg
         $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
 
-		# Attach NSG to NIC
-		$nsg = New-AzureRmNetworkSecurityGroup -Force -Name ('nsg' + $rgname) -ResourceGroupName $rgname -Location $loc
-		$nsgId = $nsg.Id
+        # Attach NSG to NIC
+        $nsg = New-AzureRmNetworkSecurityGroup -Force -Name ('nsg' + $rgname) -ResourceGroupName $rgname -Location $loc
+        $nsgId = $nsg.Id
 
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id -NetworkSecurityGroupId $nsgId;
         $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
@@ -579,11 +579,14 @@ function Test-EffectiveRoutesAndNsg
         Assert-NotNull $getnic.MacAddress;
 
         # Get Effective route by name
-        $effectiveRoute = Get-AzureRmEffectiveRouteTable -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name
-		Assert-NotNull $effectiveRoute[0].Source
+        $job = Get-AzureRmEffectiveRouteTable -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $effectiveRoute = $job | Receive-Job
+        Assert-NotNull $effectiveRoute[0].Source
 
         # Get Effective NSG by name
-        $effectiveNsgs = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name       
+        $effectiveNsgs = Get-AzureRmEffectiveNetworkSecurityGroup -ResourceGroupName $rgname -NetworkInterfaceName $getnic.Name 
     }
     finally
     {
@@ -624,7 +627,7 @@ function Test-SingleNetworkInterfaceWithAcceleratedNetworking
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -EnableAcceleratedNetworking -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
         $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
-		Assert-AreEqual $nic.EnableAcceleratedNetworking $true
+        Assert-AreEqual $nic.EnableAcceleratedNetworking $true
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
@@ -698,11 +701,11 @@ function Test-SingleNetworkInterfaceWithAcceleratedNetworking
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
-		
+
         # Get NetworkInterface
         $getnic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $getnic.Id;
-		Assert-AreEqual $getnic.EnableAcceleratedNetworking $true
+        Assert-AreEqual $getnic.EnableAcceleratedNetworking $true
 
         # Remove
         Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
@@ -746,7 +749,7 @@ function Test-VMNicWithAcceleratedNetworkingValidations
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -EnableAcceleratedNetworking -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
         $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
-		Assert-AreEqual $nic.EnableAcceleratedNetworking $true
+        Assert-AreEqual $nic.EnableAcceleratedNetworking $true
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
@@ -820,11 +823,11 @@ function Test-VMNicWithAcceleratedNetworkingValidations
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $nicId;
-		
+
         # Get NetworkInterface
         $getnic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].Id $getnic.Id;
-		Assert-AreEqual $getnic.EnableAcceleratedNetworking $true
+        Assert-AreEqual $getnic.EnableAcceleratedNetworking $true
 
         # Remove
         Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;

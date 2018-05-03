@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var vnet = this.VirtualNetworkClient.Get(resourceGroupName, name, expandResource);
 
-            var psVirtualNetwork = Mapper.Map<PSVirtualNetwork>(vnet);
+            var psVirtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
             psVirtualNetwork.ResourceGroupName = resourceGroupName;
 
             psVirtualNetwork.Tag =
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSVirtualNetwork ToPsVirtualNetwork(VirtualNetwork vnet)
         {
-            var psVnet = Mapper.Map<PSVirtualNetwork>(vnet);
+            var psVnet = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
 
             psVnet.Tag = TagsConversionHelper.CreateTagHashtable(vnet.Tags);
 

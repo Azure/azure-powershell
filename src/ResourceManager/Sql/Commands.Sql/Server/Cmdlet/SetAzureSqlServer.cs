@@ -74,15 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// </summary>
         [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
         public SwitchParameter Force { get; set; }
-
-        /// <summary>
-        /// Overriding to add warning message
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-        }
-
+        
         /// <summary>
         /// Get the server to update
         /// </summary>

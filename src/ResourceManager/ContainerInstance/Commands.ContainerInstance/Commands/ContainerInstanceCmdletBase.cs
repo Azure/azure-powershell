@@ -17,7 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ContainerInstance.Models;
@@ -42,6 +41,11 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         /// Noun for container group logs.
         /// </summary>
         protected const string ContainerInstanceLogNoun = "AzureRmContainerInstanceLog";
+
+        /// <summary>
+        /// Azure File volume name.
+        /// </summary>
+        private const string AzureFileVolumeName = "azurefile";
 
         /// <summary>
         /// Container instance management client.
@@ -118,18 +122,34 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                 EnvironmentVariables = parameters.EnvironmentVariables?.Select(e => new EnvironmentVariable(e.Key, e.Value)).ToList()
             };
 
+            if (!string.IsNullOrEmpty(parameters.AzureFileVolumeMountPath))
+            {
+                container.VolumeMounts = new List<VolumeMount>
+                {
+                    new VolumeMount
+                    {
+                        Name = ContainerInstanceCmdletBase.AzureFileVolumeName,
+                        MountPath = parameters.AzureFileVolumeMountPath
+                    }
+                };
+            }
+
             var containerGroup = new ContainerGroup()
             {
                 Location = parameters.Location,
                 Tags = parameters.Tags,
                 Containers = new List<Container>() { container },
-                OsType = parameters.OsType
+                OsType = parameters.OsType,
+                RestartPolicy = parameters.RestartPolicy
             };
 
-            if (string.Equals(IpAddress.Type, parameters.IpAddressType, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(IpAddress.Type, parameters.IpAddressType, StringComparison.OrdinalIgnoreCase) || 
+                !string.IsNullOrEmpty(parameters.DnsNameLabel))
             {
-                container.Ports = new List<ContainerPort>() { new ContainerPort(parameters.Port) };
-                containerGroup.IpAddress = new IpAddress(new List<Port>() { new Port(parameters.Port) });
+                container.Ports = parameters.Ports.Select(p => new ContainerPort(p)).ToList();
+                containerGroup.IpAddress = new IpAddress(
+                    ports: parameters.Ports.Select(p => new Port(p)).ToList(),
+                    dnsNameLabel: parameters.DnsNameLabel);
             }
 
             if (!string.IsNullOrEmpty(parameters.RegistryServer))
@@ -141,6 +161,25 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                         Server = parameters.RegistryServer,
                         Username = parameters.RegistryUsername,
                         Password = parameters.RegistryPassword
+                    }
+                };
+            }
+
+            if (!string.IsNullOrEmpty(parameters.AzureFileVolumeMountPath))
+            {
+                var azureFileVolume = new AzureFileVolume
+                {
+                    ShareName = parameters.AzureFileVolumeShareName,
+                    StorageAccountName = parameters.AzureFileVolumeAccountName,
+                    StorageAccountKey = parameters.AzureFileVolumeAccountKey
+                };
+
+                containerGroup.Volumes = new List<Volume>
+                {
+                    new Volume
+                    {
+                        Name = ContainerInstanceCmdletBase.AzureFileVolumeName,
+                        AzureFile = azureFileVolume
                     }
                 };
             }
@@ -197,33 +236,5 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             }
             return dictionary;
         }
-
-        /// <summary>
-        /// Initialize AutoMapper.
-        /// </summary>
-        public static void InitializeAutoMapper()
-        {
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<PSContainerGroup, PSContainerGroupList>();
-                cfg.CreateMap<Port, PSPort>();
-                cfg.CreateMap<ContainerEvent, PSContainerEvent>();
-                cfg.CreateMap<ContainerState, PSContainerState>();
-            });
-        }
-
-        /// <summary>
-        /// Implement ExecuteCmdlet.
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            ContainerInstanceCmdletBase.InitializeAutoMapper();
-            this.ExecuteCmdletInternal();
-
-        }
-
-        /// <summary>
-        /// The internal cmdlet execution for subclasses to implement.
-        /// </summary>
-        protected abstract void ExecuteCmdletInternal();
     }
 }

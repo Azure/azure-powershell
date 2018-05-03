@@ -31,7 +31,9 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Threading;
+using System.Text;
 
 #if !NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Utilities;
@@ -51,8 +53,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private AzureAccount testAccount;
 
-        private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
-        public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+        private static string PackageDirectoryFromCommon { get; } = GetConfigDirectory();
+
+        public static string PackageDirectory { get; }  = GetConfigDirectory();
+        public static string StackDirectory { get; }  = GetConfigDirectory("Stack");
+
+        public static string RmDirectory { get; }  = GetRMModuleDirectory();
+        public static string StackRmDirectory { get; }  = GetRMModuleDirectory("Stack");
+
+        public static string StorageDirectory { get; } = GetStorageDirectory();
+        public static string StackStorageDirectory { get; } = GetStorageDirectory("Stack");
 
         protected List<string> modules;
 
@@ -62,8 +72,50 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
         public EnvironmentSetupHelper()
         {
+            var module = GetModuleManifest(RmDirectory, "AzureRM.Profile");
+            if (string.IsNullOrWhiteSpace(module))
+            {
+                throw new InvalidOperationException("Could not find profile module");
+            }
+
+            LogIfNotNull($"Profile Module path: {module}");
+            RMProfileModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Resources");
+            LogIfNotNull($"Resources Module path: {module}");
+            RMResourceModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Insights");
+            LogIfNotNull($"Insights Module path: {module}");
+            RMInsightsModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Storage");
+            LogIfNotNull($"Storage Management Module path: {module}");
+            RMStorageModule = module;
+            module = GetModuleManifest(StorageDirectory, "Azure.Storage");
+            LogIfNotNull($"Storage Data Plane Module path: {module}");
+            RMStorageDataPlaneModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.Network");
+            LogIfNotNull($"Network Module path: {module}");
+            RMNetworkModule = module;
+
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Profile");
+            LogIfNotNull($"Stack Profile Module path: {module}");
+            StackRMProfileModule = module;
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Resources");
+            LogIfNotNull($"Stack Resources Module path: {module}");
+            StackRMResourceModule = module;
+            module = GetModuleManifest(StackRmDirectory, "AzureRM.Storage");
+            LogIfNotNull($"Stack Storage Management Plane Module path: {module}");
+            StackRMStorageModule = module;
+            module = GetModuleManifest(StackStorageDirectory, "Azure.Storage");
+            LogIfNotNull($"Stack Storage Data Plane Module path: {module}");
+            StackRMStorageDataPlaneModule = module;
+
             TestExecutionHelpers.SetUpSessionAndProfile();
-            var datastore = new MemoryDataStore();
+            IDataStore datastore = new MemoryDataStore();
+            if (AzureSession.Instance.DataStore != null && (AzureSession.Instance.DataStore is MemoryDataStore))
+            {
+                datastore = AzureSession.Instance.DataStore;
+            }
+
             AzureSession.Instance.DataStore = datastore;
             var rmprofile = new AzureRmProfile(Path.Combine(AzureSession.Instance.ProfileDirectory, AzureSession.Instance.ProfileFile));
             rmprofile.EnvironmentTable.Add("foo", new AzureEnvironment(AzureEnvironment.PublicEnvironments.Values.FirstOrDefault()));
@@ -87,69 +139,146 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
-        }
 
-        public string RMProfileModule
-        {
-            get
+            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json")))
             {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                SetEnvironmentVariableFromCredentialFile();
             }
         }
 
-        public string RMResourceModule
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
-            }
-        }
+        public string RMProfileModule { get; private set; }
 
-        public string RMInsightsModule
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Insights\AzureRM.Insights.psd1");
-            }
-        }
+        public string RMResourceModule { get; private set; }
 
-        public string RMStorageModule
-        {
-            get
-            {
-                return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
-            }
-        }
+        public string RMInsightsModule { get; private set; } 
+
+        public string RMStorageModule { get; private set; } 
 
         //TODO: clarify (data plane should not be under ARM folder)
-        public string RMStorageDataPlaneModule
+        public string RMStorageDataPlaneModule { get; private set; }
+
+        public string RMNetworkModule { get; private set; }
+
+
+        public string StackRMProfileModule { get; private set; }
+
+        public string StackRMResourceModule { get; private set; }
+
+        public string StackRMStorageModule { get; private set; }
+
+        public string StackRMStorageDataPlaneModule { get; private set; }
+
+        private void LogIfNotNull(string message)
         {
-            get
+            if (this.TracingInterceptor != null)
             {
-                return Path.Combine(this.PackageDirectory,
-                                     @"Storage\Azure.Storage\Azure.Storage.psd1");
+                TracingInterceptor.Information($"[EnvironmentSetupHelper]: {message}");
             }
         }
 
-        public string RMNetworkModule
+        private static string ProbeForSrcDirectory()
         {
-            get
+            string directoryPath = "..";
+            while(Directory.Exists(directoryPath) && !Directory.Exists(Path.Combine(directoryPath, "src")))
             {
-                return Path.Combine(this.PackageDirectory,
-                                     @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1");
+                directoryPath = Path.Combine(directoryPath, "..");
             }
+
+            string result = Directory.Exists(directoryPath) ? Path.GetFullPath(Path.Combine(directoryPath, "src")) : null;
+            return result;
         }
 
-        public string GetRMModulePath(string psd1FileName)
+        private static string GetConfigDirectory(string targetDirectory = "Package")
         {
-            string basename = Path.GetFileNameWithoutExtension(psd1FileName);
-            return Path.Combine(this.PackageDirectory,
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName);
+            string result = null;
+            var srcDirectory = ProbeForSrcDirectory();
+            if (srcDirectory != null)
+            {
+                var baseDirectory = Path.Combine(srcDirectory, targetDirectory);
+                if (Directory.Exists(baseDirectory))
+                {
+                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault();
+                    if (result != null)
+                    {
+                        result = Path.GetFullPath(result);
+                    }
+                }
+            }
+
+            return result;
         }
+
+        private static string GetRMModuleDirectory(string targetDirectory = "Package")
+        {
+            string configDirectory = GetConfigDirectory(targetDirectory);
+            return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "ResourceManager", "AzureResourceManager");
+        }
+
+        private static string GetStorageDirectory(string targetDirectory = "Package")
+        {
+            string configDirectory = GetConfigDirectory(targetDirectory);
+            return (string.IsNullOrEmpty(configDirectory)) ? null : Path.Combine(configDirectory, "Storage");
+        }
+        
+        private static string GetModuleManifest(string baseDirectory, string desktopModuleName)
+        {
+            if (string.IsNullOrWhiteSpace(baseDirectory) || string.IsNullOrWhiteSpace(desktopModuleName))
+            {
+                return null;
+            }
+
+#if NETSTANDARD
+            string module = Path.Combine(baseDirectory, $"{desktopModuleName}.Netcore", $"{desktopModuleName}.Netcore.psd1");
+#else
+            string module = Path.Combine(baseDirectory, desktopModuleName, $"{desktopModuleName}.psd1");
+#endif
+            return module;
+
+        }
+
+        /// <summary>
+        /// For backwards compatibility - return the path to an RM module manifest
+        /// </summary>
+        /// <param name="moduleName">The name of the module</param>
+        /// <returns>The path to the module directory</returns>
+        public string GetRMModulePath(string moduleName)
+        {
+            if (string.IsNullOrWhiteSpace(RmDirectory))
+            {
+                throw new InvalidOperationException("No ResourceManager Modules Directory found in build. Please build the modules before running tests.");
+            }
+
+            if (string.IsNullOrWhiteSpace(moduleName))
+            {
+                throw new ArgumentNullException(nameof(moduleName));
+            }
+
+            var moduleDirectory = moduleName.Replace(".psd1", "");
+            return GetModuleManifest(RmDirectory, moduleDirectory);
+        }
+
+        /// <summary>
+        /// For backwards compatibility - return the path to an RM module manifest for AzureStack
+        /// </summary>
+        /// <param name="moduleName">The name of the module</param>
+        /// <returns>The path to the module directory</returns>
+        public string GetStackRMModulePath(string moduleName)
+        {
+            if (string.IsNullOrWhiteSpace(StackRmDirectory))
+            {
+                throw new InvalidOperationException("No ResourceManager Modules Directory for Azure Stack found in build. Please build the modules before running tests.");
+            }
+
+            if (string.IsNullOrWhiteSpace(moduleName))
+            {
+                throw new ArgumentNullException(nameof(moduleName));
+            }
+
+            var moduleDirectory = moduleName.Replace(".psd1", "");
+            return GetModuleManifest(StackRmDirectory, moduleDirectory);
+        }
+
+
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
         /// </summary>
@@ -176,7 +305,102 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 #endif
         }
 
-        private void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
+        public void SetEnvironmentVariableFromCredentialFile()
+        {
+            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json");
+            Dictionary<string, object> credentials;
+            using (StreamReader r = new StreamReader(filePath))
+            {
+                string json = r.ReadToEnd();
+                credentials = JsonUtilities.DeserializeJson(json);
+            }
+
+            if (Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION") == null)
+            {
+                StringBuilder formattedConnectionString = new StringBuilder();
+                formattedConnectionString.AppendFormat("SubscriptionId={0};HttpRecorderMode={1};Environment={2}", credentials["SubscriptionId"], credentials["HttpRecorderMode"], credentials["Environment"]);
+
+                if (credentials.ContainsKey("UserId"))
+                {
+                    formattedConnectionString.AppendFormat(";UserId={0}", credentials["UserId"]);
+                }
+
+                if (credentials.ContainsKey("ServicePrincipal"))
+                {
+                    formattedConnectionString.AppendFormat(";ServicePrincipal={0}", credentials["ServicePrincipal"]);
+                    formattedConnectionString.AppendFormat(";ServicePrincipalSecret={0}", credentials["ServicePrincipalSecret"]);
+                }
+
+                if (credentials.ContainsKey("TenantId"))
+                {
+                    formattedConnectionString.AppendFormat(";AADTenant={0}", credentials["TenantId"]);
+                }
+
+                if (credentials.ContainsKey("ResourceManagementUri"))
+                {
+                    formattedConnectionString.AppendFormat(";ResourceManagementUri={0}", credentials["ResourceManagementUri"]);
+                }
+
+                if (credentials.ContainsKey("GraphUri"))
+                {
+                    formattedConnectionString.AppendFormat(";GraphUri={0}", credentials["GraphUri"]);
+                }
+
+                if (credentials.ContainsKey("AADAuthUri"))
+                {
+                    formattedConnectionString.AppendFormat(";AADAuthUri={0}", credentials["AADAuthUri"]);
+                }
+
+                if (credentials.ContainsKey("AADTokenAudienceUri"))
+                {
+                    formattedConnectionString.AppendFormat(";AADTokenAudienceUri={0}", credentials["AADTokenAudienceUri"]);
+                }
+
+                if (credentials.ContainsKey("GraphTokenAudienceUri"))
+                {
+                    formattedConnectionString.AppendFormat(";GraphTokenAudienceUri={0}", credentials["GraphTokenAudienceUri"]);
+                }
+
+                if (credentials.ContainsKey("IbizaPortalUri"))
+                {
+                    formattedConnectionString.AppendFormat(";IbizaPortalUri={0}", credentials["IbizaPortalUri"]);
+                }
+
+                if (credentials.ContainsKey("ServiceManagementUri"))
+                {
+                    formattedConnectionString.AppendFormat(";ServiceManagementUri={0}", credentials["ServiceManagementUri"]);
+                }
+
+                if (credentials.ContainsKey("RdfePortalUri"))
+                {
+                    formattedConnectionString.AppendFormat(";RdfePortalUri={0}", credentials["RdfePortalUri"]);
+                }
+
+                if (credentials.ContainsKey("GalleryUri"))
+                {
+                    formattedConnectionString.AppendFormat(";GalleryUri={0}", credentials["GalleryUri"]);
+                }
+
+                if (credentials.ContainsKey("DataLakeStoreServiceUri"))
+                {
+                    formattedConnectionString.AppendFormat(";DataLakeStoreServiceUri={0}", credentials["DataLakeStoreServiceUri"]);
+                }
+
+                if (credentials.ContainsKey("DataLakeAnalyticsJobAndCatalogServiceUri"))
+                {
+                    formattedConnectionString.AppendFormat(";DataLakeAnalyticsJobAndCatalogServiceUri={0}", credentials["DataLakeAnalyticsJobAndCatalogServiceUri"]);
+                }
+
+                Environment.SetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION", formattedConnectionString.ToString());
+            }
+
+            if (Environment.GetEnvironmentVariable("AZURE_TEST_MODE") == null)
+            {
+                Environment.SetEnvironmentVariable("AZURE_TEST_MODE", credentials["HttpRecorderMode"].ToString());
+            }
+        }
+
+        public void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
         {
             TestEnvironment currentEnvironment = null;
             if (mode == AzureModule.AzureResourceManager)
@@ -368,6 +592,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 d.Add("Microsoft.Features", null);
                 d.Add("Microsoft.Authorization", null);
                 d.Add("Microsoft.Compute", null);
+                d.Add("Microsoft.Azure.Management.KeyVault", null);
                 var providersToIgnore = new Dictionary<string, string>();
                 providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
                 HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
@@ -388,7 +613,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 try
                 {
-                    powershell.Runspace.Events.Subscribers.Clear();
                     output = powershell.Invoke();
                     if (powershell.Streams.Error.Count > 0)
                     {
@@ -418,6 +642,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
+#if NETSTANDARD
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                powershell.AddScript("Set-ExecutionPolicy Unrestricted -Scope Process -ErrorAction Ignore");
+            }
+#endif
             powershell.AddScript("$error.clear()");
             powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", System.AppDomain.CurrentDomain.BaseDirectory));
             powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));

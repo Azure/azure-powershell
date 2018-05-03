@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
+Module Name: AzureRM.CognitiveServices
 ms.assetid: A2B4ACC1-6F53-47DE-A2D4-831E8AC89A5C
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -14,8 +15,8 @@ Creates a Cognitive Services account.
 
 ```
 New-AzureRmCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-Type] <String>
- [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SkuName] <String> [-Location] <String> [-Tag <Hashtable[]>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,6 +31,21 @@ New-AzureRmCognitiveServicesAccount -ResourceGroupName 'resourcegroup1' -name 'M
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Forces the command to run without asking for user confirmation.
@@ -133,15 +149,26 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Specifies the type of account to create.The acceptable values for this parameter are:
+Specifies the type of account to create. Current acceptable values for this parameter are:
 
+- Bing.Autosuggest.v7
+- Bing.CustomSearch
+- Bing.Search.v7
+- Bing.Speech
+- Bing.SpellCheck.v7
 - ComputerVision
+- ContentModerator
+- CustomSpeech
+- CustomVision.Prediction
+- CustomVision.Training
 - Emotion
 - Face
 - LUIS
-- Recommendations
-- Speech
+- QnAMaker
+- SpeakerRecognition
+- SpeechTranslation
 - TextAnalytics
+- TextTranslation
 - WebLM
 
 ```yaml
@@ -191,6 +218,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

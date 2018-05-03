@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
+Module Name: AzureRM.Compute
 ms.assetid: B7A675D3-EF79-4EE2-9330-D4C690739006
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmsize
 schema: 2.0.0
 ---
 
@@ -64,7 +65,7 @@ Specifies the name of the Availability Set for which this cmdlet gets the availa
 ```yaml
 Type: String
 Parameter Sets: ListAvailableSizesForAvailabilitySet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -94,7 +95,7 @@ Specifies the location for which this cmdlet gets the available virtual machine 
 ```yaml
 Type: String
 Parameter Sets: ListVirtualMachineSizeParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -109,7 +110,7 @@ Specifies the name of the resource group of the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: ListAvailableSizesForAvailabilitySet, ListAvailableSizesForVirtualMachine
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -124,7 +125,7 @@ Specifies the name of the virtual machine that this cmdlet gets the available vi
 ```yaml
 Type: String
 Parameter Sets: ListAvailableSizesForVirtualMachine
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -137,6 +138,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

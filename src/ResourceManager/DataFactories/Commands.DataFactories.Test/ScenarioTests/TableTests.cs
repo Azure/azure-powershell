@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
@@ -24,18 +25,21 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTable()
         {
             RunPowerShellTest("Test-Table");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableWithDataFactoryParameter()
         {
             RunPowerShellTest("Test-TableWithDataFactoryParameter");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTablePiping()
         {
             RunPowerShellTest("Test-TablePiping");

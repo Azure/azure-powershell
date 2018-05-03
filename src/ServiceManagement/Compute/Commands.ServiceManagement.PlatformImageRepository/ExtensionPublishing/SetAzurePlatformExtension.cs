@@ -159,7 +159,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                         this.IsInternalExtension = this.ExtensionMode.Equals(InternalModeStr);
                     }
 
-                    var parameters = Mapper.Map<ExtensionImageUpdateParameters>(this);
+                    var parameters = ServiceManagementPlatformImageRepositoryProfile.Mapper.Map<ExtensionImageUpdateParameters>(this);
 
                     return this.ComputeClient.ExtensionImages.Update(parameters);
                 });

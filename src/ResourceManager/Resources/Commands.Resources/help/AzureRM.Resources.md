@@ -1,8 +1,8 @@
----
+﻿---
 Module Name: AzureRM.Resources
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources
+Help Version: 5.5.2.0
 Locale: en-US
 ---
 
@@ -11,14 +11,11 @@ Locale: en-US
 This topic displays help topics for the Azure Resource Manager Cmdlets.
 
 ## AzureRM.Resources Cmdlets
+### [Add-AzureRmADGroupMember](Add-AzureRmADGroupMember.md)
+Adds a user to an existing AD group.
+
 ### [Export-AzureRmResourceGroup](Export-AzureRmResourceGroup.md)
 Captures a resource group as a template and saves it to a file.
-
-### [Find-AzureRmResource](Find-AzureRmResource.md)
-Searches for resources based on specified parameters.
-
-### [Find-AzureRmResourceGroup](Find-AzureRmResourceGroup.md)
-Searches for resource groups.
 
 ### [Get-AzureRmADAppCredential](Get-AzureRmADAppCredential.md)
 Retrieves a list of credentials associated with an application.
@@ -30,7 +27,7 @@ Lists existing azure active directory applications.
 Filters active directory groups.
 
 ### [Get-AzureRmADGroupMember](Get-AzureRmADGroupMember.md)
-Get a group members.
+Lists members of an AD group in the current tenant.
 
 ### [Get-AzureRmADServicePrincipal](Get-AzureRmADServicePrincipal.md)
 Filters active directory service principals.
@@ -44,11 +41,11 @@ Filters active directory users.
 ### [Get-AzureRmLocation](Get-AzureRmLocation.md)
 Gets all locations and the supported resource providers for each location.
 
-### [Get-AzureRmManagedApplicationDefinition](Get-AzureRmManagedApplicationDefinition.md)
-Gets managed application definitions.
-
 ### [Get-AzureRmManagedApplication](Get-AzureRmManagedApplication.md)
-Gets managed applications.
+Gets managed applications
+
+### [Get-AzureRmManagedApplicationDefinition](Get-AzureRmManagedApplicationDefinition.md)
+Gets managed application definitions
 
 ### [Get-AzureRmPolicyAssignment](Get-AzureRmPolicyAssignment.md)
 Gets policy assignments.
@@ -103,6 +100,9 @@ Adds a credential to an existing application.
 ### [New-AzureRmADApplication](New-AzureRmADApplication.md)
 Creates a new azure active directory application.
 
+### [New-AzureRmADGroup](New-AzureRmADGroup.md)
+Creates a new active directory group.
+
 ### [New-AzureRmADServicePrincipal](New-AzureRmADServicePrincipal.md)
 Creates a new azure active directory service principal.
 
@@ -112,11 +112,11 @@ Adds a credential to an existing service principal.
 ### [New-AzureRmADUser](New-AzureRmADUser.md)
 Creates a new active directory user.
 
-### [New-AzureRmManagedApplicationDefinition](New-AzureRmManagedApplicationDefinition.md)
-Creates managed application definitions.
-
 ### [New-AzureRmManagedApplication](New-AzureRmManagedApplication.md)
-Creates managed applications.
+Creates an Azure managed application.
+
+### [New-AzureRmManagedApplicationDefinition](New-AzureRmManagedApplicationDefinition.md)
+Creates a managed application definition.
 
 ### [New-AzureRmPolicyAssignment](New-AzureRmPolicyAssignment.md)
 Creates a policy assignment.
@@ -161,6 +161,12 @@ Removes a credential from an application.
 ### [Remove-AzureRmADApplication](Remove-AzureRmADApplication.md)
 Deletes the azure active directory application.
 
+### [Remove-AzureRmADGroup](Remove-AzureRmADGroup.md)
+Deletes an active directory group.
+
+### [Remove-AzureRmADGroupMember](Remove-AzureRmADGroupMember.md)
+Removes a user from an AD group.
+
 ### [Remove-AzureRmADServicePrincipal](Remove-AzureRmADServicePrincipal.md)
 Deletes the azure active directory service principal.
 
@@ -170,11 +176,11 @@ Removes a credential from a service principal.
 ### [Remove-AzureRmADUser](Remove-AzureRmADUser.md)
 Deletes an active directory user.
 
-### [Remove-AzureRmManagedApplicationDefinition](Remove-AzureRmManagedApplicationDefinition.md)
-Removes managed application definitions.
-
 ### [Remove-AzureRmManagedApplication](Remove-AzureRmManagedApplication.md)
-Removes managed applications.
+Removes a managed application
+
+### [Remove-AzureRmManagedApplicationDefinition](Remove-AzureRmManagedApplicationDefinition.md)
+Removes a managed application definition
 
 ### [Remove-AzureRmPolicyAssignment](Remove-AzureRmPolicyAssignment.md)
 Removes a policy assignment.
@@ -208,20 +214,11 @@ Delete will fail if there are existing role assignments made to the custom role.
 ### [Save-AzureRmResourceGroupDeploymentTemplate](Save-AzureRmResourceGroupDeploymentTemplate.md)
 Saves a resource group deployment template to a file.
 
-### [Set-AzureRmADApplication](Set-AzureRmADApplication.md)
-Updates an existing azure active directory application.
-
-### [Set-AzureRmADServicePrincipal](Set-AzureRmADServicePrincipal.md)
-Updates an existing azure active directory service principal.
-
-### [Set-AzureRmADUser](Set-AzureRmADUser.md)
-Updates an existing active directory user.
+### [Set-AzureRmManagedApplication](Set-AzureRmManagedApplication.md)
+Updates managed application
 
 ### [Set-AzureRmManagedApplicationDefinition](Set-AzureRmManagedApplicationDefinition.md)
-Updates an existing managed application definition.
-
-### [Set-AzureRmManagedApplication](Set-AzureRmManagedApplication.md)
-Updates an existing managed application.
+Updates managed application definition
 
 ### [Set-AzureRmPolicyAssignment](Set-AzureRmPolicyAssignment.md)
 Modifies a policy assignment.
@@ -230,7 +227,7 @@ Modifies a policy assignment.
 Modifies a policy definition.
 
 ### [Set-AzureRmPolicySetDefinition](Set-AzureRmPolicySetDefinition.md)
-Modifies a policy set definition.
+Modifies a policy set definition
 
 ### [Set-AzureRmResource](Set-AzureRmResource.md)
 Modifies a resource.
@@ -256,4 +253,13 @@ Validates a resource group deployment.
 
 ### [Unregister-AzureRmResourceProvider](Unregister-AzureRmResourceProvider.md)
 Unregisters a resource provider.
+
+### [Update-AzureRmADApplication](Update-AzureRmADApplication.md)
+Updates an existing azure active directory application.
+
+### [Update-AzureRmADServicePrincipal](Update-AzureRmADServicePrincipal.md)
+Updates an existing azure active directory service principal.
+
+### [Update-AzureRmADUser](Update-AzureRmADUser.md)
+Updates an existing active directory user.
 

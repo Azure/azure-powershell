@@ -3,26 +3,25 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
 using Microsoft.WindowsAzure.Management.Storage.Test.Common;
 using Microsoft.WindowsAzure.Storage.DataMovement;
 using Microsoft.WindowsAzure.Storage.File;
+using Xunit;
 using PSHFile = Microsoft.WindowsAzure.Commands.Storage.File;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
 {
-    [TestClass]
     public class GetAzureStorageFileContentTest : StorageFileTestBase<GetAzureStorageFileContent>
     {
         private string destinationFilePath;
 
         private string destinationPath;
 
-        [TestInitialize]
-        public void DownloadInitialize()
+        public GetAzureStorageFileContentTest()
         {
             this.destinationFilePath = Path.GetTempFileName();
             this.destinationPath = Path.GetTempPath();
@@ -33,16 +32,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             }
         }
 
-        [TestCleanup]
-        public void DownloadCleanup()
-        {
-            if (System.IO.File.Exists(this.destinationFilePath))
-            {
-                System.IO.File.Delete(this.destinationFilePath);
-            }
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DownloadFileUsingShareNameAndPathToLocalFileTest()
         {
             DownloadFileInternal(
@@ -56,7 +47,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Destination", this.destinationFilePath)));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DownloadFileUsingShareObjectAndPathToLocalFileTest()
         {
             DownloadFileInternal(
@@ -70,7 +62,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Destination", this.destinationFilePath)));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DownloadFileUsingDirectoryAndPathToLocalFileTest()
         {
             DownloadFileInternal(
@@ -84,7 +77,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Destination", this.destinationFilePath)));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DownloadFileUsingFileObjectToLocalFileTest()
         {
             DownloadFileInternal(
@@ -97,7 +91,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                     new KeyValuePair<string, object>("Destination", this.destinationFilePath)));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DownloadFileUsingFileObjectToLocalDirectoryTest()
         {
             this.destinationFilePath = Path.Combine(this.destinationPath, "remoteFile");
@@ -116,9 +111,9 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             var mockupTransferManager = new DownloadTransferManager(
             (sourceFile, destPath) =>
                 {
-                    Assert.AreEqual(destination, destPath, "Destination validation failed.");
-                    Assert.AreEqual(shareName, sourceFile.Share.Name, "Share validation failed.");
-                    Assert.AreEqual(fileName, sourceFile.Name, "SourceFile validation failed.");
+                    Assert.Equal(destination, destPath);
+                    Assert.Equal(shareName, sourceFile.Share.Name);
+                    Assert.Equal(fileName, sourceFile.Name);
                 });
 
             TransferManagerFactory.SetCachedTransferManager(mockupTransferManager);
@@ -138,7 +133,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
                 validateAction = validate;
             }
 
-            public override Task DownloadAsync(CloudFile sourceFile, string destFilePath, DownloadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
+            public override Task DownloadAsync(CloudFile sourceFile, string destFilePath, DownloadOptions options, TransferContext context, CancellationToken cancellationToken)
             {
                 validateAction(sourceFile, destFilePath);
                 return TaskEx.FromResult(true);

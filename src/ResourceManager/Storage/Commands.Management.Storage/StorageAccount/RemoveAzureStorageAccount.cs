@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Storage;
 using System.Management.Automation;
 
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -41,12 +43,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public string Name { get; set; }
 
         [Parameter(HelpMessage = "Force to Delete the Storage Account")]
-        public SwitchParameter Force
-        {
-            get { return force; }
-            set { force = value; }
-        }
-        private bool force = false;
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
             if (ShouldProcess(this.Name, "Remove Storage Account"))
             {
-                if (this.force || ShouldContinue(string.Format("Remove Storage Account '{0}' and all content in it", this.Name), ""))
+                if (this.Force || ShouldContinue(string.Format("Remove Storage Account '{0}' and all content in it", this.Name), ""))
                 {
                     this.StorageClient.StorageAccounts.Delete(
                     this.ResourceGroupName,

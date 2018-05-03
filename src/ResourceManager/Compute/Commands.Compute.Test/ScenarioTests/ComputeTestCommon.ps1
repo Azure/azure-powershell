@@ -30,16 +30,13 @@ function Get-ComputeTestResourceName
         }
     }
     
-    $oldErrorActionPreferenceValue = $ErrorActionPreference;
-    $ErrorActionPreference = "SilentlyContinue";
-    
     try
     {
         $assetName = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetAssetName($testName, "crptestps");
     }
     catch
     {
-        if (($Error.Count -gt 0) -and ($Error[0].Exception.Message -like '*Unable to find type*'))
+        if ($PSItem.Exception.Message -like '*Unable to find type*')
         {
             $assetName = Get-RandomItemName;
         }
@@ -47,10 +44,6 @@ function Get-ComputeTestResourceName
         {
             throw;
         }
-    }
-    finally
-    {
-        $ErrorActionPreference = $oldErrorActionPreferenceValue;
     }
 
     return $assetName
@@ -63,9 +56,6 @@ Gets test mode - 'Record' or 'Playback'
 #>
 function Get-ComputeTestMode
 {
-    $oldErrorActionPreferenceValue = $ErrorActionPreference;
-    $ErrorActionPreference = "SilentlyContinue";
-    
     try
     {
         $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
@@ -73,7 +63,7 @@ function Get-ComputeTestMode
     }
     catch
     {
-        if (($Error.Count -gt 0) -and ($Error[0].Exception.Message -like '*Unable to find type*'))
+        if ($PSItem.Exception.Message -like '*Unable to find type*')
         {
             $testMode = 'Record';
         }
@@ -81,10 +71,6 @@ function Get-ComputeTestMode
         {
             throw;
         }
-    }
-    finally
-    {
-        $ErrorActionPreference = $oldErrorActionPreferenceValue;
     }
 
     return $testMode;
@@ -108,14 +94,65 @@ function Get-ComputeDefaultLocation
     return $test_location;
 }
 
-# Create a new virtual machine with other necessary resources configured
-function Create-VirtualMachine($rgname, $vmname, $loc)
+# Create key vault resources
+function Create-KeyVault
 {
-    # Initialize parameters
-    $rgname = if ([string]::IsNullOrEmpty($rgname)) { Get-ComputeTestResourceName } else { $rgname }
-    $vmname = if ([string]::IsNullOrEmpty($vmname)) { 'vm' + $rgname } else { $vmname }
-    $loc = if ([string]::IsNullOrEmpty($loc)) { Get-ComputeVMLocation } else { $loc }
-    Write-Host $vmname
+    Param
+    (
+         [Parameter(Mandatory=$true, Position=0)]
+         [string] $resourceGroupName,
+         [Parameter(Mandatory=$true, Position=1)]
+         [string] $location,
+         [Parameter(Mandatory=$false, Position=2)]
+         [string] $vaultName
+    )
+
+	# initialize parameters if needed
+	if ([string]::IsNullOrEmpty($resourceGroupName)) { $resourceGroupName = Get-ComputeTestResourceName }
+    if ([string]::IsNullOrEmpty($location)) { $location = Get-ComputeVMLocation }
+    if ([string]::IsNullOrEmpty($vaultName)) { $vaultName = 'kv' + $resourceGroupName }
+
+	# create vault
+	$vault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location -Sku standard
+	$vault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
+
+	# create access policy
+	$servicePrincipalName = (Get-AzureRmContext).Account.Id
+	Assert-NotNull $servicePrincipalName
+	#Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $servicePrincipalName -PermissionsToKeys Create
+	Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDiskEncryption -EnabledForDeployment -EnabledForTemplateDeployment
+
+	# create key encryption key 
+	#$kekName = 'kek' + $resourceGroupName
+	#$kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
+
+	# return the newly created key vault properties
+	$properties = New-Object PSObject -Property @{
+		DiskEncryptionKeyVaultId = $vault.ResourceId
+		DiskEncryptionKeyVaultUrl = $vault.VaultUri
+		#KeyEncryptionKeyVaultId = $vault.ResourceId
+		#KeyEncryptionKeyUrl = $kek.Key.kid
+	}
+	return $properties
+}
+
+# Create a new virtual machine with other necessary resources configured
+function Create-VirtualMachine
+{	
+    Param
+    (
+         [Parameter(Mandatory=$false, Position=0)]
+         [string] $rgname,
+         [Parameter(Mandatory=$false, Position=1)]
+         [string] $vmname,
+         [Parameter(Mandatory=$false, Position=2)]
+         [string] $loc		 
+    )
+
+    # initialize parameters if needed
+	if ([string]::IsNullOrEmpty($rgname)) { $rgname = Get-ComputeTestResourceName }
+	if ([string]::IsNullOrEmpty($vmname)) { $vmname = 'vm' + $rgname }
+	if ([string]::IsNullOrEmpty($loc)) { $loc = Get-ComputeVMLocation } 
 
     # Common
     $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
@@ -414,7 +451,7 @@ function Get-DefaultCRPWindowsImageOffline
 # Get Default CRP Linux Image Object Offline
 function Get-DefaultCRPLinuxImageOffline
 {
-    return Create-ComputeVMImageObject 'SUSE' 'openSUSE' '13.2' 'latest';
+    return Create-ComputeVMImageObject 'SUSE' 'openSUSE-Leap' '42.3' 'latest';
 }
 
 <#
@@ -519,47 +556,47 @@ function Get-ResourceProviderLocation
 
 function Get-ComputeVMLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines";
+     Get-Location "Microsoft.Compute" "virtualMachines" "East US";
 }
 
 function Get-ComputeAvailabilitySetLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/availabilitySets";
+     Get-Location "Microsoft.Compute" "availabilitySets" "West US";
 }
 
 function Get-ComputeVMExtensionLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/extensions";
+     Get-Location "Microsoft.Compute" "virtualMachines/extensions" "West US";
 }
 
 function Get-ComputeVMDiagnosticSettingLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/diagnosticSettings";
+     Get-Location "Microsoft.Compute" "virtualMachines/diagnosticSettings" "West US";
 }
 
 function Get-ComputeVMMetricDefinitionLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/metricDefinitions";
+     Get-Location "Microsoft.Compute" "virtualMachines/metricDefinitions" "West US";
 }
 
 function Get-ComputeOperationLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/operations";
+     Get-Location "Microsoft.Compute" "locations/operations" "West US";
 }
 
 function Get-ComputeVMSizeLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/vmSizes";
+     Get-Location "Microsoft.Compute" "locations/vmSizes" "West US";
 }
 
 function Get-ComputeUsageLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/usages";
+     Get-Location "Microsoft.Compute" "locations/usages" "West US";
 }
 
 function Get-ComputePublisherLocation
 {
-     Get-ResourceProviderLocation "Microsoft.Compute/locations/publishers";
+     Get-Location "Microsoft.Compute" "locations/publishers" "West US";
 }
 
 function Get-SubscriptionIdFromResourceGroup

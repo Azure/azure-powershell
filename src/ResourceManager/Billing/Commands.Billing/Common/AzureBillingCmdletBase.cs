@@ -29,8 +29,6 @@ namespace Microsoft.Azure.Commands.Billing.Common
     {
         private IBillingManagementClient _billingManagementClient;
 
-        private Dictionary<string, List<string>> _defaultRequestHeaders;
-
         /// <summary>
         /// Gets or sets the Billing management client.
         /// </summary>

@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -22,24 +23,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     public class RemoveAzureRmServiceFabricNode : UpdateAzureRmServiceFabricNodeBase
     {
         private int toRemoveNode;
-
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify the name of the resource group.")]
-        [ValidateNotNullOrEmpty()]
-        public override string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specify the name of the cluster")]
-        [ValidateNotNullOrEmpty()]
-        [Alias("ClusterName")]
-        public override string Name { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
-           HelpMessage = "Node type name")]
-        public override string NodeType { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
          HelpMessage = "The number of nodes to add")]
@@ -64,7 +47,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(target: this.NodeType, action: string.Format("Remove {0} nodes", -toRemoveNode)))
+            if (ShouldProcess(target: this.Name, action: string.Format("Remove {0} nodes from {1}", -toRemoveNode, this.NodeType)))
             {
                 base.ExecuteCmdlet();
             }

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     {
         private const string DefaultFormat = "WebDeploy";
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The file the publishing profile will we saved as")]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The file the publishing profile will we saved as")]
         public string OutputFile { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The format of the profile. Allowed values are [WebDeploy|FileZilla3|Ftp]. Default value is WebDeploy")]

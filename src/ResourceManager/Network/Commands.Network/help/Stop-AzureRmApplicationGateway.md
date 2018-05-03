@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 2C9609E8-0D8B-471B-9F0E-672BF55C3A0E
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/stop-azurermapplicationgateway
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Stops an application gateway
 ## SYNTAX
 
 ```
-Stop-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway>
+Stop-AzureRmApplicationGateway -ApplicationGateway <PSApplicationGateway> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -44,6 +44,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

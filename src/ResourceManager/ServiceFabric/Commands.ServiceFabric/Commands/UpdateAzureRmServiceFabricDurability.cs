@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Newtonsoft.Json.Linq;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         /// </summary>
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specify the name of the resource group.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
@@ -68,24 +70,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var vmss = GetVmss(this.NodeType);
             var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
             var cluster = GetCurrentCluster();
-            var nodeType = cluster.NodeTypes.SingleOrDefault(
-                n => n.Name.Equals(this.NodeType, StringComparison.OrdinalIgnoreCase));
+            var nodeType = GetNodeType(cluster, this.NodeType);
+            var oldDurabilityLevel = GetDurabilityLevel(nodeType.DurabilityLevel);
+            var newDurabilityLevel = this.DurabilityLevel;
+            var isMismatched = oldDurabilityLevel != GetDurabilityLevel(vmss);
 
-            if (nodeType == null)
-            {
-                throw new PSArgumentException(
-                    string.Format(
-                        ServiceFabricProperties.Resources.CannotFindTheNodeType,
-                        this.NodeType));
-            }
-
-            DurabilityLevel oldDurabilityLevel;
-            var isMismatched = false;
-            GetDurabilityLevel(this.NodeType, out oldDurabilityLevel, out isMismatched);
-
-            var currentDurabilityLevel = this.DurabilityLevel;
-
-            if (currentDurabilityLevel == oldDurabilityLevel && !isMismatched)
+            if (newDurabilityLevel == oldDurabilityLevel && !isMismatched)
             {
                 WriteObject(new PSCluster(cluster), true);
                 return;
@@ -96,16 +86,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 WriteWarning(ServiceFabricProperties.Resources.DurabilityLevelMismatches);
             }
 
-            if (!CheckState(oldDurabilityLevel, currentDurabilityLevel, vmss.Sku.Name))
+            if (!ChangeAllowed(oldDurabilityLevel, newDurabilityLevel, vmss.Sku.Name))
             {
                 throw new PSInvalidOperationException(
                     string.Format(
                         ServiceFabricProperties.Resources.CannotChangeDurabilityFrom,
                         oldDurabilityLevel,
-                        currentDurabilityLevel));
+                        newDurabilityLevel));
             }
 
-            if (currentDurabilityLevel == DurabilityLevel.Bronze &&
+            if (newDurabilityLevel == DurabilityLevel.Bronze &&
                 !string.IsNullOrEmpty(this.Sku) &&
                 !this.Sku.Equals(vmss.Sku.Name))
             {
@@ -137,14 +127,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                 var patchTask = PatchAsync(patchArg);
 
-                WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { vmssTask, patchTask }, true);
+                WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { vmssTask, patchTask }, true, this.NodeType);
 
                 var psCluster = new PSCluster(patchTask.Result);
                 WriteObject(psCluster, true);
             }
         }
 
-        private bool CheckState(DurabilityLevel now, DurabilityLevel next, string currentSkuName)
+        private bool ChangeAllowed(DurabilityLevel now, DurabilityLevel next, string currentSkuName)
         {
             if (now == DurabilityLevel.Gold)
             {

@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System;
+
 namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
-    using Azure.Commands.Common.Authentication.Abstractions;
-    using Microsoft.WindowsAzure.Commands.Common.Storage;
-    using System;
-
     /// <summary>
     /// Base class for all azure storage object
     /// </summary>

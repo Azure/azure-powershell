@@ -32,7 +32,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             ExecuteClientActionNewSM(null,
                 CommandRuntime.ToString(),
                 () => this.ManagementClient.Locations.List(),
-                (op, locations) => locations.Locations.Select(location => ContextFactory<LocationsListResponse.Location, LocationsContext>(location, op)));
+                (op, locations) => locations.Locations.Select(location => ContextFactory(location, op,
+                                                                            ServiceManagementProfile.Mapper.Map <LocationsListResponse.Location, LocationsContext>,
+                                                                            ServiceManagementProfile.Mapper.Map)));
         }
 
         protected override void OnProcessRecord()

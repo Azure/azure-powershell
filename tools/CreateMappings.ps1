@@ -3,9 +3,9 @@
 # Define parameters.
 param(
     [string] $RootPath = "$PSScriptRoot\..\src", 
-    [string] $OutputFile = "groupMapping.json", 
-    [string] $WarningFile = "groupMappingWarnings.json", 
-    [string] $RulesFile = "CreateMappings_rules.json" 
+    [string] $OutputFile = "$PSScriptRoot\groupMapping.json", 
+    [string] $WarningFile = "$PSScriptRoot\groupMappingWarnings.json", 
+    [string] $RulesFile = "$PSScriptRoot\CreateMappings_rules.json" 
 );
 
 # Load rules file from JSON.
@@ -29,8 +29,13 @@ $cmdlets | ForEach-Object {
     # Try to match this cmdlet with at least one rule.
     $possibleBetterMatch = @($rules | Where-Object { $cmdlet -cmatch ".*$($_.Regex).*" })[0];
 
-    # Look for a better match, but ensure that the groups match.
-    if(($matchedRule.Group -ne $null) -and ($matchedRule.Group -eq $possibleBetterMatch.Group)) {
+    # Look for the best match.
+    if(
+        # Did not find a match on the folder, but found a match on the cmdlet.
+        (($matchedRule -eq $null) -and ($possibleBetterMatch -ne $null)) -or 
+        # Found a match on the module path, but found a better match for the cmdlet (`group` field agrees).
+        (($matchedRule.Group -ne $null) -and ($matchedRule.Group -eq $possibleBetterMatch.Group)))
+    {
         $matchedRule = $possibleBetterMatch;
     }
 
@@ -41,21 +46,18 @@ $cmdlets | ForEach-Object {
     } else {
         $results[$cmdlet] = $matchedRule.Alias;
     }
-
-    # Progress stuff.
-    if($k % 100 -eq 0) {
-        $percent = [math]::Floor($k / $cmdlets.Count * 100);
-        Write-Progress -Activity "Processing cmdlets..." -Status "$($percent)%" -PercentComplete $percent;
-    }
-    $k++;
 };
 
 # Write to files.
-$warnings | ConvertTo-Json | Out-File $WarningFile;
-$results | ConvertTo-Json | Out-File $OutputFile;
+$warnings | ConvertTo-Json | Out-File $WarningFile -Encoding utf8;
+$results | ConvertTo-Json | Out-File $OutputFile -Encoding utf8;
 
 # Print conclusion.
 Write-Host ""
 Write-Host "$($results.Count) cmdlets successfully mapped: $($OutputFile)." -ForegroundColor Green;
-Write-Host "$($warnings.Count) cmdlets could not be mapped and were placed in 'Other': $($WarningFile)." -ForegroundColor Yellow;
 Write-Host ""
+
+if($warnings.Count -gt 0) {
+    Write-Host "$($warnings.Count) cmdlets could not be mapped and were placed in 'Other': $($WarningFile)." -ForegroundColor Yellow;
+    throw "Some cmdlets could not be properly mapped to a documentation grouping: $($warnings -join ", ").  Please add a mapping rule to $(Resolve-Path -Path $RulesFile).";
+}

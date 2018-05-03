@@ -21,7 +21,7 @@ function Test-ResourceLockCRUD
 	# Setup
 	$rgname = Get-ResourceGroupName
 	$rname = Get-ResourceName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$apiversion = "2014-04-01"
 
 	$rg = New-AzureRMResourceGroup -Name $rgname -Location $rglocation
@@ -64,7 +64,7 @@ function Test-ResourceLockNonExisting
 {
 	# Setup
 	$rgname = Get-ResourceGroupName
-	$rglocation = Get-ProviderLocation ResourceManagement
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 
 	$rg = New-AzureRMResourceGroup -Name $rgname -Location $rglocation
 	Assert-AreEqual $rgname $rg.ResourceGroupName

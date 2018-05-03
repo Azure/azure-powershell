@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     {
         public const string RestartEndpointPathFormat = "/webapi/servers/{0}/restart?api-version=2016-10-01";
         public const string LogfileEndpointPathFormat = "/webapi/servers/{0}/logfileHere";
-        public const string SynchronizeEndpointPathFormat = "/webapi/servers/{0}/databases/{1}/sync";
+        public const string SynchronizeEndpointPathFormat = "/servers/{0}/models/{1}/sync";
         public const string AsAzureClientId = "cf710c6e-dfcc-4fa8-a093-d47294e44c66";
         public static readonly Uri RedirectUri = new Uri("urn:ietf:wg:oauth:2.0:oob");
         public static string DefaultRolloutEnvironmentKey = "asazure.windows.net";
@@ -90,13 +90,19 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
             }
         }
 
+#if NETSTANDARD
+        public AsAzureProfile Login(AsAzureContext asAzureContext, SecureString password, Action<string> promptAction)
+#else
         public AsAzureProfile Login(AsAzureContext asAzureContext, SecureString password)
+#endif
         {
-            PromptBehavior promptBehavior = password == null ? PromptBehavior.Always : PromptBehavior.Auto;
-
             var resourceUri = new UriBuilder(Uri.UriSchemeHttps, GetResourceUriSuffix(asAzureContext.Environment.Name)).ToString();
             resourceUri = resourceUri.TrimEnd('/');
-            _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, promptBehavior, AsAzureClientId, resourceUri, RedirectUri);
+#if NETSTANDARD
+            _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, promptAction, AsAzureClientId, resourceUri, RedirectUri);
+#else
+            _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, password, password == null ? PromptBehavior.Always : PromptBehavior.Auto, AsAzureClientId, resourceUri, RedirectUri);
+#endif
 
             _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
 
@@ -112,7 +118,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         {
             var resourceUri = new UriBuilder(Uri.UriSchemeHttps, GetResourceUriSuffix(asAzureContext.Environment.Name)).ToString();
             resourceUri = resourceUri.TrimEnd('/');
+#if NETSTANDARD
+            _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, null, null, AsAzureClientId, resourceUri, RedirectUri);
+#else
             _asAzureAuthenticationProvider.GetAadAuthenticatedToken(asAzureContext, null, PromptBehavior.RefreshSession, AsAzureClientId, resourceUri, RedirectUri);
+#endif
 
             _profile.Context.TokenCache = AsAzureClientSession.TokenCache.Serialize();
 

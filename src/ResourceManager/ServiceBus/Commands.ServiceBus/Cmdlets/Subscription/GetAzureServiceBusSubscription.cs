@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections;
 using System.Management.Automation;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
@@ -24,37 +25,26 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <para> If Subscription name provided, a single Subscription detials will be returned</para>
     /// <para> If Subscription name not provided, list of Subscription will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusSubscriptionVerb), OutputType(typeof(SubscriptionAttributes))]
+    [Cmdlet(VerbsCommon.Get, ServicebusSubscriptionVerb), OutputType(typeof(PSSubscriptionAttributes))]
     public class GetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           Position = 2,
-           HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
 
-        [Parameter(Mandatory = false,
-         ValueFromPipelineByPropertyName = false,
-         Position = 3,
-         HelpMessage = "Subscription Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, Position = 3, HelpMessage = "Subscription Name")]
         [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -63,12 +53,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         {
             if (!string.IsNullOrEmpty(Name))
             {
-                SubscriptionAttributes subscriptionAttributes = Client.GetSubscription(ResourceGroupName, Namespace, Topic, Name);
+                PSSubscriptionAttributes subscriptionAttributes = Client.GetSubscription(ResourceGroupName, Namespace, Topic, Name);
                 WriteObject(subscriptionAttributes);
             }
             else
             {
-                IEnumerable<SubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
+                IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
                 WriteObject(subscriptionAttributes,true);
             }
             

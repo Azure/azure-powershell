@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning
 {
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     public class GetAzureMLCommitmentAssociation : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment association.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

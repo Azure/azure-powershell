@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
@@ -57,8 +58,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
     internal class StorageAccount
     {
-        public string Name { get; set; }
-        public string AccessKey { get; set; }
+        public string Id { get; set; }
     }
 
     internal class StorageResource : AzureResource
@@ -82,22 +82,22 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
     internal static class DeploymentTemplateHelper
     {
-        private const string RegistryApiVersion = "2017-03-01";
+        private const string RegistryApiVersion = "2017-10-01";
         private const string StorageApiVersion = "2016-12-01";
         private const string StorageAccountSku = "Standard_LRS";
 
-        internal static string ToJsonString(this DeploymentTemplate template)
+        internal static JObject ToJson(this DeploymentTemplate template)
         {
-            var settings = new JsonSerializerSettings
+            var settings = new JsonSerializer
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
 
-            return JsonConvert.SerializeObject(template, settings);
+            return JObject.FromObject(template, settings);
         }
 
-        internal static string DeploymentTemplateNewStorage(
+        internal static JObject DeploymentTemplateNewStorage(
             string registryName,
             string registryLocation,
             string registrySku,
@@ -144,56 +144,14 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
                             AdminUserEnabled = adminUserEnabled != null ? adminUserEnabled.Value : false,
                             StorageAccount = new StorageAccount
                             {
-                                Name = storageAccountName,
-                                AccessKey = $"[listKeys(resourceId('Microsoft.Storage/storageAccounts', '{storageAccountName}'), '{StorageApiVersion}').keys[0].value]"
+                                Id = $"[resourceId('Microsoft.Storage/storageAccounts', '{storageAccountName}')]"
                             }
                         }
                     }
                 }
             };
 
-            return template.ToJsonString();
-        }
-
-        internal static string DeploymentTemplateExistingStorage(
-            string registryName,
-            string registryLocation,
-            string registrySku,
-            string storageAccountName,
-            string storageAccountResourceGroup,
-            bool? adminUserEnabled,
-            IDictionary<string, string> tags = null)
-        {
-            var template = new DeploymentTemplate
-            {
-                Schema = "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                ContentVersion = "1.0.0.0",
-                Resources = new AzureResource[]
-                {
-                    new RegistryResource
-                    {
-                        Name = registryName,
-                        Location = registryLocation,
-                        ApiVersion = RegistryApiVersion,
-                        Tags = tags,
-                        Sku = new Sku
-                        {
-                            Name = registrySku
-                        },
-                        Properties = new RegistryProperties
-                        {
-                            AdminUserEnabled = adminUserEnabled != null ? adminUserEnabled.Value : false,
-                            StorageAccount = new StorageAccount
-                            {
-                                Name = storageAccountName,
-                                AccessKey = $"[listKeys(resourceId('{storageAccountResourceGroup}', 'Microsoft.Storage/storageAccounts', '{storageAccountName}'), '{StorageApiVersion}').keys[0].value]"
-                            }
-                        }
-                    }
-                }
-            };
-
-            return template.ToJsonString();
+            return template.ToJson();
         }
     }
 }

@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.ContainerInstance;
 using Microsoft.Azure.Management.ContainerInstance.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ContainerInstance
 {
@@ -46,6 +47,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
             ParameterSetName = ListContainerGroupParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -66,10 +68,8 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        protected override void ExecuteCmdletInternal()
+        public override void ExecuteCmdlet()
         {
-            ContainerInstanceCmdletBase.InitializeAutoMapper();
-
             if (!string.IsNullOrEmpty(this.ResourceGroupName) && !string.IsNullOrEmpty(this.Name))
             {
                 var psContainerGroup = PSContainerGroup.FromContainerGroup(
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                 var containerGroups = this.ListContainerGroups();
                 foreach (var containerGroup in containerGroups)
                 {
-                    psContainerGroups.Add(Mapper.Map<PSContainerGroupList>(PSContainerGroup.FromContainerGroup(containerGroup)));
+                    psContainerGroups.Add(ContainerInstanceAutoMapperProfile.Mapper.Map<PSContainerGroupList>(PSContainerGroup.FromContainerGroup(containerGroup)));
                 }
 
                 while (!string.IsNullOrEmpty(containerGroups.NextPageLink))
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
                     containerGroups = this.ListContainerGroupsNext(containerGroups.NextPageLink);
                     foreach (var containerGroup in containerGroups)
                     {
-                        psContainerGroups.Add(Mapper.Map<PSContainerGroupList>(PSContainerGroup.FromContainerGroup(containerGroup)));
+                        psContainerGroups.Add(ContainerInstanceAutoMapperProfile.Mapper.Map<PSContainerGroupList>(PSContainerGroup.FromContainerGroup(containerGroup)));
                     }
                 }
 

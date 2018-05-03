@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         ///2. The VM name or the Service name needs to be case sensitive
         ///3. VM is already Protected with same or other Vault. Please Unprotect VM first and then try to protect it again.
         ///
-        ///Please contact Microsoft for further assistant..
+        ///Please contact Microsoft for further assistance..
         /// </summary>
         public static string AzureVMNotFound {
             get {
@@ -426,6 +426,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File recovery from encrypted VM backups is not supported.
+        /// </summary>
+        public static string ILREncryptedVmError {
+            get {
+                return ResourceManager.GetString("ILREncryptedVmError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service didn&apos;t return any client scripts for this file / folder restore operation.
         /// </summary>
         public static string ILRNoClientScriptsReturned {
@@ -701,6 +710,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         public static string MonthlyYearlyRetentionWeeklySchedulePolicyNULLException {
             get {
                 return ResourceManager.GetString("MonthlyYearlyRetentionWeeklySchedulePolicyNULLException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run this script on the machine where you want to copy the files
+        ///
+        ///Path of the file along with filename: {0}
+        ///
+        ///Password to run the file: {1}.
+        /// </summary>
+        public static string MountRecoveryPointInfoMessage {
+            get {
+                return ResourceManager.GetString("MountRecoveryPointInfoMessage", resourceCulture);
             }
         }
         

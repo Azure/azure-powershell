@@ -15,8 +15,8 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test
 {
@@ -61,11 +61,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test
             try
             {
                 action();
-                Assert.Fail("No exception was thrown!");
+                Assert.True(false, "No exception was thrown!");
             }
             catch (Exception ex)
             {
-                Assert.IsInstanceOfType(ex, typeof(T));
+                Assert.IsAssignableFrom(typeof(T), ex);
             }
         }
 
@@ -87,12 +87,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test
             try
             {
                 action();
-                Assert.Fail("No exception was thrown!");
+                Assert.True(false, "No exception was thrown!");
             }
             catch (Exception ex)
             {
-                Assert.IsInstanceOfType(ex, typeof(T));
-                Assert.AreEqual<string>(expectedMessage, ex.Message);
+                Assert.IsAssignableFrom(typeof(T), ex);
+                Assert.Equal<string>(expectedMessage, ex.Message);
             }
         }
 
@@ -114,13 +114,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test
             try
             {
                 action().Wait();
-                Assert.Fail("No exception was thrown!");
+                Assert.True(false, "No exception was thrown!");
             }
             catch (AggregateException ex)
             {
                 Exception innerException = ex.InnerException;
-                Assert.IsInstanceOfType(innerException, typeof(T));
-                Assert.AreEqual<string>(expectedMessage, innerException.Message);
+                Assert.IsAssignableFrom(typeof(T), innerException);
+                Assert.Equal<string>(expectedMessage, innerException.Message);
             }
         }
     }

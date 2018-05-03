@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.MachineLearning.dll-Help.xml
-online version: 
+Module Name: AzureRM.MachineLearning
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.machinelearning/remove-azurermmlcommitmentplan
 schema: 2.0.0
 ---
 
@@ -11,16 +12,16 @@ Deletes a commitment plan.
 
 ## SYNTAX
 
-### Remove an Azure ML commitment plan specified by name and resource group.
+### RemoveByNameAndResourceGroup
 ```
-Remove-AzureRmMlCommitmentPlan -ResourceGroupName <String> -Name <String> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmMlCommitmentPlan -ResourceGroupName <String> -Name <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Remove an Azure ML commitment plan specified as an object.
+### RemoveByObject
 ```
-Remove-AzureRmMlCommitmentPlan -MlCommitmentPlan <CommitmentPlan> [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmMlCommitmentPlan -MlCommitmentPlan <CommitmentPlan> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,15 +30,26 @@ Deletes an Azure Machine Learning commitment plan. Note that commitment plans wh
 ## EXAMPLES
 
 ### --------------------------  Example 1: Delete a commitment plan  --------------------------
-@{paragraph=PS C:\\\>}
-
-
-
 ```
 Remove-AzureRmMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName"
 ```
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Force
 Do not ask for confirmation.
@@ -59,7 +71,7 @@ The machine learning web service object.
 
 ```yaml
 Type: CommitmentPlan
-Parameter Sets: Remove an Azure ML commitment plan specified as an object.
+Parameter Sets: RemoveByObject
 Aliases: 
 
 Required: True
@@ -74,7 +86,7 @@ The name of the Azure ML commitment plan.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an Azure ML commitment plan specified by name and resource group.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True
@@ -89,7 +101,7 @@ The name of the resource group for the Azure ML commitment plan.
 
 ```yaml
 Type: String
-Parameter Sets: Remove an Azure ML commitment plan specified by name and resource group.
+Parameter Sets: RemoveByNameAndResourceGroup
 Aliases: 
 
 Required: True

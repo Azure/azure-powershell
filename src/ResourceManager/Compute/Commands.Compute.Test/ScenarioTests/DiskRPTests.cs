@@ -23,15 +23,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
-        
+
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisk()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-Disk");
         }
-        
+
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSnapshot()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-Snapshot");

@@ -169,6 +169,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -AnalyticsUnits. Please adjust your scripts to pass in a value greater than zero.
+        /// </summary>
+        internal static string InvalidAnalyticsUnits {
+            get {
+                return ResourceManager.GetString("InvalidAnalyticsUnits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid catalog path: &apos;{0}&apos;. A catalog path must be in the following format with no empty internal elements: &lt;FirstPart&gt;.&lt;OptionalSecondPart&gt;.&lt;OptionalThirdPart&gt;.&lt;OptionalFourthPart&gt;. For example: Master.dbo.tableName.tableStatisticsName.
         /// </summary>
         internal static string InvalidCatalogPath {
@@ -196,20 +205,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zero and negative values will no longer be defaulted to one, nor will they be accepted, in a future release for -DegreeOfParallelism. Please adjust your scripts to pass in a value greater than zero.
-        /// </summary>
-        internal static string InvalidDegreeOfParallelism {
-            get {
-                return ResourceManager.GetString("InvalidDegreeOfParallelism", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid JobType selected. Please select -USql when submitting a job.
         /// </summary>
         internal static string InvalidJobType {
             get {
                 return ResourceManager.GetString("InvalidJobType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type &apos;{0}&apos; is an unsupported script parameter type.  Please check the list of supported types by using Get-Help on the cmdlet with the -detailed flag..
+        /// </summary>
+        internal static string InvalidScriptParameterType {
+            get {
+                return ResourceManager.GetString("InvalidScriptParameterType", resourceCulture);
             }
         }
         
@@ -241,7 +250,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -MaxDegreeOfParallelismPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy..
+        ///   Looks up a localized string similar to -MaxAnalyticsUnitsPerJob or -MinPriorityPerJob or both must be specified when creating or updating a compute policy..
         /// </summary>
         internal static string MissingComputePolicyField {
             get {
@@ -453,6 +462,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         internal static string ScriptFilePathDoesNotExist {
             get {
                 return ResourceManager.GetString("ScriptFilePathDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The script parameter value for &apos;{0}&apos; is null..
+        /// </summary>
+        internal static string ScriptParameterValueIsNull {
+            get {
+                return ResourceManager.GetString("ScriptParameterValueIsNull", resourceCulture);
             }
         }
         

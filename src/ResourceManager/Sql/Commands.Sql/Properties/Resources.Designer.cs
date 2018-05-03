@@ -88,6 +88,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The action group &apos;AUDIT_CHANGE_GROUP&apos; is not supported. It will be removed in a future release..
+        /// </summary>
+        internal static string auditChangeGroupDeprecationMessage {
+            get {
+                return ResourceManager.GetString("auditChangeGroupDeprecationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In order to enable Threat Detection, please enable database auditing..
         /// </summary>
         internal static string AuditingIsTurnedOff {
@@ -439,6 +448,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permanently removing the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseLongTermRetentionBackupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseLongTermRetentionBackupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Long Term Retention backup &apos;{0}&apos; on database &apos;{1}&apos; on server &apos;{2}&apos; in location &apos;{3}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseLongTermRetentionBackupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseLongTermRetentionBackupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
         internal static string RemoveAzureSqlDatabaseWarning {
@@ -507,6 +534,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlServerDisasterRecoveryConfigurationWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerDisasterRecoveryConfigurationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Server Dns Alias &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemoveAzureSqlServerDnsAliasDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerDnsAliasDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Dns Alias &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerDnsAliasWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerDnsAliasWarning", resourceCulture);
             }
         }
         
@@ -646,6 +691,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Server Dns Alias with name: &apos;{0}&apos; already exists..
+        /// </summary>
+        internal static string ServerDnsAliasNameExists {
+            get {
+                return ResourceManager.GetString("ServerDnsAliasNameExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Firewall Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;..
         /// </summary>
         internal static string ServerFirewallRuleNameExists {
@@ -718,7 +772,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Warning: Cutting off access to the key &apos;{0}&apos; may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
+        ///   Looks up a localized string similar to Warning: This command sets the key &apos;{0}&apos; as the protector, removing access to this key in the future may result in data loss on this server. Learn about best practices at aka.ms/sqltdewithbyok. Do you want to proceed?.
         /// </summary>
         internal static string SetAzureSqlServerTransparentDataEncryptionProtectorWarning {
             get {

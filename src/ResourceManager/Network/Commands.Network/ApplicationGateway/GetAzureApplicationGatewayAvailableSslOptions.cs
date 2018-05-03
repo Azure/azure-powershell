@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
             base.ExecuteCmdlet();
 
             var availableSslOptions = this.ApplicationGatewayClient.ListAvailableSslOptions();
-            var psAvailableSslOptions = Mapper.Map<PSApplicationGatewayAvailableSslOptions>(availableSslOptions);
+            var psAvailableSslOptions = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewayAvailableSslOptions>(availableSslOptions);
             WriteObject(psAvailableSslOptions);
         }
     }

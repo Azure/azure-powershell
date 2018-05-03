@@ -1,7 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/Microsoft.Storage.Admin?api-version=2014-04-01-preview",
+      "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/Microsoft.Storage.Admin?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS5BZG1pbj9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -52,7 +53,7 @@
       "StatusCode": 200
     },
     {
-        "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/System.redmond/providers/Microsoft.Storage.Admin/farms?api-version=2015-12-01-preview",
+      "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/System.redmond/providers/Microsoft.Storage.Admin/farms?api-version=2015-12-01-preview",
         "RequestMethod": "GET",
         "RequestBody": "",
         "RequestHeaders": {

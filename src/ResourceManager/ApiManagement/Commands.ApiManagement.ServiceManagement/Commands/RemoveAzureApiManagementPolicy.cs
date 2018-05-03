@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
-        private const string TenantLevel = "Tenant level";
-        private const string ProductLevel = "Product level";
-        private const string ApiLevel = "API level";
-        private const string OperationLevel = "Operation level";
+        private const string TenantLevel = "RemoveTenantLevel";
+        private const string ProductLevel = "RemoveProductLevel";
+        private const string ApiLevel = "RemoveApiLevel";
+        private const string OperationLevel = "RemoveOperationLevel";
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

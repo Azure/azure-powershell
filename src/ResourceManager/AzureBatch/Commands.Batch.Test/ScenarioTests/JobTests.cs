@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestJobCRUD()
         {
             BatchController.NewInstance.RunPsTest("Test-JobCRUD");
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDisableEnableTerminateJob()
         {
             BatchController controller = BatchController.NewInstance;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails()
         {
             BatchController controller = BatchController.NewInstance;

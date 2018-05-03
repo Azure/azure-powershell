@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using System;
 using System.Management.Automation;
@@ -23,8 +24,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("Add-AdlAnalyticsDataSource")]
     public class AddAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
-        internal const string DataLakeParameterSetName = "Add a Data Lake storage account";
-        internal const string BlobParameterSetName = "Add a Blob storage account";
+        internal const string DataLakeParameterSetName = "AddDataLakeStorageAccount";
+        internal const string BlobParameterSetName = "AddBlobStorageAccount";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             ParameterSetName = BlobParameterSetName,
             HelpMessage =
                 "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

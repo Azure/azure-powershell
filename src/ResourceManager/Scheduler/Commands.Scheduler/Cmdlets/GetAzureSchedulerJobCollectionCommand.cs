@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     using Microsoft.Azure.Commands.Scheduler.Utilities;
     using Microsoft.Azure.Management.Scheduler.Models;
     using Microsoft.Azure.Commands.Scheduler.Models;
+    using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>
     /// Gets job collection info.
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     public class GetAzureSchedulerJobCollectionCommand : SchedulerBaseCmdlet
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job collection.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

@@ -1,7 +1,8 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
+Module Name: AzureRM.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/stop-azurermautomationdscnodeconfigurationdeployment
 schema: 2.0.0
 ---
 
@@ -12,8 +13,18 @@ Stops a DSC Node configuration deployment in Automation. It only stops the curre
 
 ## SYNTAX
 
+### ByJobId (Default)
 ```
-Stop-AzureRmAutomationDscNodeConfigurationDeployment [-ResourceGroupName] <String> [-AutomationAccountName] <String> [<CommonParameters>]
+Stop-AzureRmAutomationDscNodeConfigurationDeployment -JobId <Guid> [-Force] [-PassThru]
+ [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Stop-AzureRmAutomationDscNodeConfigurationDeployment [-PassThru] -InputObject <NodeConfigurationDeployment>
+ [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,24 +42,7 @@ The above command stops the DSC node configuration deployment job with the jobId
 ## PARAMETERS
 
 ### -AutomationAccountName
-Specifies the name of the Automation account that contains the DSC configuration that this cmdlet compiles.
-
-
-### -ResourceGroupName
-Specifies the name of a resource group in which this cmdlet compiles a configuration.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
+Specifies the name of the Automation account that contains the DSC configuration that this cmdlet compiles
 
 ```yaml
 Type: String
@@ -62,15 +56,61 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+ps_force
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByJobId
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Input object for Piping
+
+```yaml
+Type: NodeConfigurationDeployment
+Parameter Sets: ByInputObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -JobId
 Specifies the Job id of an existing deployment job.
 
 ```yaml
 Type: Guid
-Parameter Sets: (JobId)
+Parameter Sets: ByJobId
 Aliases: 
 
 Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,18 +132,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-ps_force
+### -ResourceGroupName
+Specifies the name of a resource group in which this cmdlet compiles a configuration.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
-Required: False
-Position: 3
+Required: True
+Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -142,6 +182,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

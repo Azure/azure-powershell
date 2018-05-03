@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Resource Group StorageAccountName.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

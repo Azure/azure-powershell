@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DevTestLabs;
 using System.Management.Automation;
 
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.DevTestLabs
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of an existing resource group that contains the lab.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty()]
         public string ResourceGroupName { get; set; }
 

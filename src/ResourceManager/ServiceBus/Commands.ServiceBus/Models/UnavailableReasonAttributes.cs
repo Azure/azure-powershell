@@ -14,9 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
-    using Azure;
-    using Management;
-    using Servicebus;
+
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using System.Runtime;

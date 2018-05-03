@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             DateTime[] startTimes = new[] { new DateTime(year, month, day, 0, 0, 0), new DateTime(year, month, day, 0, 30, 0) };
             DateTime[] endTimes = new[] { new DateTime(year, month, day, 0, 30, 0), new DateTime(year, month, day, 1, 0, 0) };
 
-            AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> response =
+            AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListUsageMetricsHeaders> response =
                 BatchTestHelpers.CreatePoolListUsageMetricsResponse(poolIds, startTimes, endTimes);
 
             RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.PoolListPoolUsageMetricsOptions,
-                AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>>(responseToUse: response);
+                ProxyModels.PoolListUsageMetricsOptions,
+                AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListUsageMetricsHeaders>>(responseToUse: response);
 
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -110,17 +110,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             DateTime[] startTimes = new[] { new DateTime(year, month, day, 0, 0, 0) };
             DateTime[] endTimes = new[] { new DateTime(year, month, day, 0, 30, 0) };
 
-            AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders> response =
+            AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListUsageMetricsHeaders> response =
                 BatchTestHelpers.CreatePoolListUsageMetricsResponse(poolIds, startTimes, endTimes);
 
             // Don't go to the service on an Get PoolUsageMetrics call
             RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<
-                ProxyModels.PoolListPoolUsageMetricsOptions,
-                AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListPoolUsageMetricsHeaders>>(responseToUse: response);
+                ProxyModels.PoolListUsageMetricsOptions,
+                AzureOperationResponse<IPage<ProxyModels.PoolUsageMetrics>, ProxyModels.PoolListUsageMetricsHeaders>>(responseToUse: response);
 
             ResponseInterceptor responseInterceptor = new ResponseInterceptor((responseToUse, request) =>
             {
-                ProxyModels.PoolListPoolUsageMetricsOptions options = (ProxyModels.PoolListPoolUsageMetricsOptions)request.Options;
+                ProxyModels.PoolListUsageMetricsOptions options = (ProxyModels.PoolListUsageMetricsOptions)request.Options;
                 requestFilter = options.Filter;
 
                 return Task.FromResult(responseToUse);

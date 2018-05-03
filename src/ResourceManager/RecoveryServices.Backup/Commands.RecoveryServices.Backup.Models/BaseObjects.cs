@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 
         public ItemContext(ServiceClientModel.ProtectedItem protectedItem,
             string containerName, ContainerType containerType)
-            : base(containerType, protectedItem.BackupManagementType.Value.ToString())
+            : base(containerType, protectedItem.BackupManagementType)
         {
             WorkloadType = ConversionUtils.GetPsWorkloadType(
                 protectedItem.WorkloadType.ToString());
@@ -225,6 +225,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         public string Id { get; set; }
 
         public RecoveryPointBase()
+            : base()
+        {
+        }
+    }
+
+    /// <summary>
+    /// Details of script to mount recovery point.
+    /// </summary>
+    public class RPMountScriptDetails : ObjectBase
+    {
+        public RPMountScriptDetails()
             : base()
         {
         }

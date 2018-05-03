@@ -64,6 +64,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// </summary>
         public KeyAndSecretDetails KeyAndSecretDetails { get; set; }
 
+        /// <summary>
+        /// Identifies whether this recovery point supports restoring
+        /// disks to their original storage accounts.
+        /// </summary>
+        public bool OriginalSAEnabled { get; set; }
+
         public AzureVmRecoveryPoint()
         {
 

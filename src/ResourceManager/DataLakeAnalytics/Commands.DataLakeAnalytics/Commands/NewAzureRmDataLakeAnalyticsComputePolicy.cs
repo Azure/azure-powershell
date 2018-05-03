@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
 using Microsoft.Rest.Azure;
 using System;
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which you the account exists. Optional and will attempt to discover if not provided.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -55,20 +57,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         public string ObjectType { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "The maximum supported degree of parallelism per job for this policy. Either this, MinPriorityPerJob, or both parameters must be specified.")]
+            HelpMessage = "The maximum supported analytics units per job for this policy. Either this, MinPriorityPerJob, or both parameters must be specified.")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
-        public int? MaxDegreeOfParallelismPerJob { get; set; }
+        [Alias("MaxDegreeOfParallelismPerJob")]
+        public int? MaxAnalyticsUnitsPerJob { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "The minimum supported priority per job for this policy. Either this, MaxDegreeOfParallelismPerJob, or both parameters must be specified.")]
+            HelpMessage = "The minimum supported priority per job for this policy. Either this, MaxAnalyticsUnitsPerJob, or both parameters must be specified.")]
         [ValidateNotNull]
         [ValidateRange(0, int.MaxValue)]
         public int? MinPriorityPerJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!MinPriorityPerJob.HasValue && !MaxDegreeOfParallelismPerJob.HasValue)
+            if (!MinPriorityPerJob.HasValue && !MaxAnalyticsUnitsPerJob.HasValue)
             {
                 throw new ArgumentException(Resources.MissingComputePolicyField);
             }
@@ -78,7 +81,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     Resources.NewDataLakeComputePolicy,
                     Name,
                     MinPriorityPerJob.HasValue ? "\r\nMinPriorityPerJob: " + MinPriorityPerJob.Value : string.Empty,
-                    MaxDegreeOfParallelismPerJob.HasValue ? "\r\nMaxDegreeOfParallelismPerJob: " + MaxDegreeOfParallelismPerJob.Value : string.Empty),
+                    MaxAnalyticsUnitsPerJob.HasValue ? "\r\nMaxAnalyticsUnitsPerJob: " + MaxAnalyticsUnitsPerJob.Value : string.Empty),
                 Name, () =>
                 {
                     WriteObject(
@@ -88,7 +91,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                             Name,
                             ObjectId,
                             ObjectType,
-                            MaxDegreeOfParallelismPerJob,
+                            MaxAnalyticsUnitsPerJob,
                             MinPriorityPerJob));
                 });
         }

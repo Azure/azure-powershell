@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: EF155949-5766-4BC4-9C8A-2B97E8EA032D
 online version: 
@@ -49,7 +49,9 @@ This command restarts the virtual machine named VirtualMachine07 in ResourceGrou
 ## PARAMETERS
 
 ### -Id
-The resource group name.```yaml
+The resource group name.
+
+```yaml
 Type: String
 Parameter Sets: RestartIdParameterSetName, PerformMaintenanceIdParameterSetName
 Aliases: 
@@ -62,7 +64,9 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The virtual machine name.```yaml
+The virtual machine name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -75,7 +79,9 @@ Accept wildcard characters: False
 ```
 
 ### -PerformMaintenance
-To perform the maintenance of virtual machine.```yaml
+To perform the maintenance of virtual machine.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: PerformMaintenanceResourceGroupNameParameterSetName, PerformMaintenanceIdParameterSetName
 Aliases: 
@@ -136,6 +142,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

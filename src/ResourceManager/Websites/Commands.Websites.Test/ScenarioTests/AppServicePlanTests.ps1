@@ -31,8 +31,10 @@ function Test-CreateNewAppServicePlan
 		New-AzureRmResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity
-		
+		$job = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AsJob
+		$job | Wait-Job
+		$createResult = $job | Receive-Job
+
 		# Assert
 		Assert-AreEqual $whpName $createResult.Name
 		Assert-AreEqual "Standard" $createResult.Sku.Tier
@@ -92,7 +94,9 @@ function Test-SetAppServicePlan
 		Assert-AreEqual $perSiteScaling $result.PerSiteScaling
 
 		# Set the created service plan
-		$newresult = Set-AzureRmAppServicePlan  -ResourceGroupName $rgname -Name  $whpName -Tier $newTier -NumberofWorkers $newCapacity -WorkerSize $newWorkerSize -PerSiteScaling $newPerSiteScaling
+		$job = Set-AzureRmAppServicePlan  -ResourceGroupName $rgname -Name  $whpName -Tier $newTier -NumberofWorkers $newCapacity -WorkerSize $newWorkerSize -PerSiteScaling $newPerSiteScaling -AsJob
+		$job | Wait-Job
+		$newresult = $job | Receive-Job
 
 		# Assert
 		Assert-AreEqual $whpName $newresult.Name
@@ -252,7 +256,7 @@ function Test-RemoveAppServicePlan
 		Assert-AreEqual $capacity $serverFarm.Sku.Capacity
 
 		# Remove App service plan
-		$serverFarm | Remove-AzureRmAppServicePlan -Force
+		$serverFarm |Remove-AzureRmAppServicePlan -Force -AsJob | Wait-Job
 		
 		$result = Get-AzureRmAppServicePlan -ResourceGroupName $rgname
 
@@ -329,9 +333,10 @@ function Test-CreateNewAppServicePlanInAse
 	$whpName = Get-WebHostPlanName
 	$location = "West US"
 	$capacity = 1
-	$skuName = "S2"
-	$aseName = "asedemo"
-	$aseResourceGroupName = "appdemorg"
+	$skuName = "I1"
+	$skuTier = "Isolated"
+	$aseName = "asedemops"
+	$aseResourceGroupName = "asedemorg"
 
 	try
 	{
@@ -339,21 +344,18 @@ function Test-CreateNewAppServicePlanInAse
 		New-AzureRmResourceGroup -Name $rgname -Location $location
 
 		# Test
-		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier "Standard" -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
+		$createResult = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location -Tier $skuTier -WorkerSize Medium -NumberOfWorkers $capacity -AseName $aseName -AseResourceGroupName $aseResourceGroupName
 		
 		# Assert
 		Assert-AreEqual $whpName $createResult.Name
-		Assert-AreEqual "Standard" $createResult.Sku.Tier
+		Assert-AreEqual "Isolated" $createResult.Sku.Tier
 		Assert-AreEqual $skuName $createResult.Sku.Name
-		Assert-AreEqual $capacity $createResult.Sku.Capacity
 
 		# Assert
-
 		$getResult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name $whpName
 		Assert-AreEqual $whpName $getResult.Name
-		Assert-AreEqual "Standard" $getResult.Sku.Tier
+		Assert-AreEqual "Isolated" $getResult.Sku.Tier
 		Assert-AreEqual $skuName $getResult.Sku.Name
-		Assert-AreEqual $capacity $getResult.Sku.Capacity
 	}
 	finally
 	{

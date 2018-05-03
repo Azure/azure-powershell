@@ -16,44 +16,55 @@ $resourceGroupName = "RecoveryServicesBackupTestRg";
 $resourceName = "PsTestRsVault";
 $policyName = "PsTestPolicy";
 
-function Test-PolicyScenario
+function Test-AzureVMPolicy
 {
-	# 1. Create / update and get vault
-    $vaultLocation = get_available_location;
-	$vault = New-AzureRmRecoveryServicesVault `
-		-Name $resourceName -ResourceGroupName $resourceGroupName -Location $vaultLocation;
-	
-	# 2. Set vault context
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup $location
 
-	# get default objects
-	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
-	Assert-NotNull $schedulePolicy
-	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
-	Assert-NotNull $retPolicy
-
-	# now create new policy
-	$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
-		-Name $policyName `
-		-WorkloadType "AzureVM" `
-		-RetentionPolicy $retPolicy `
-		-SchedulePolicy $schedulePolicy
-	Assert-NotNull $policy
-	Assert-AreEqual $policy.Name $policyName
+	try
+	{
+		# Setup
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 		
-	# now get policy and update it with new schedule/retention
-	$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
-	Assert-NotNull $schedulePolicy
-	$retPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
-	Assert-NotNull $retPolicy
+		Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 
-    $temp = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $policyName	
-	Assert-NotNull $temp
-	Assert-AreEqual $temp.Name $policyName
+		# Get default policy objects
+		$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
+		Assert-NotNull $schedulePolicy
+		$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM
+		Assert-NotNull $retentionPolicy
 
-	Set-AzureRmRecoveryServicesBackupProtectionPolicy `
-		-RetentionPolicy $retPolicy -SchedulePolicy $schedulePolicy -Policy $temp	
+		# Create policy
+		$policyName = "newPolicy"
+		$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-Name $policyName `
+			-WorkloadType AzureVM `
+			-RetentionPolicy $retentionPolicy `
+			-SchedulePolicy $schedulePolicy
+		Assert-NotNull $policy
+		Assert-AreEqual $policy.Name $policyName
 
-	#cleanup 
-	Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $temp -Force
+		# Get policy
+	    $policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name $policyName	
+		Assert-NotNull $policy
+		Assert-AreEqual $policy.Name $policyName
+
+		# Get default policy objects (this data is generated partially at random. So, running this again gives different values)
+		$schedulePolicy = Get-AzureRmRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM
+		Assert-NotNull $schedulePolicy
+		$retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureVM
+		Assert-NotNull $retentionPolicy
+
+		# Update policy
+		Set-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-RetentionPolicy $retentionPolicy -SchedulePolicy $schedulePolicy -Policy $policy
+
+		# Delete policy
+		Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $policy -Force
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
 }

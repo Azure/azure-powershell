@@ -51,6 +51,9 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Managed Availability Set")]
         public SwitchParameter Managed { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(AvailabilitySet.Name, VerbsData.Update))
@@ -86,10 +89,10 @@ namespace Microsoft.Azure.Commands.Compute
                         this.AvailabilitySet.Name,
                         avSetParams).GetAwaiter().GetResult();
 
-                    var psResult = Mapper.Map<PSAvailabilitySet>(result);
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAvailabilitySet>(result);
                     if (result.Body != null)
                     {
-                        psResult = Mapper.Map(result.Body, psResult);
+                        psResult = ComputeAutoMapperProfile.Mapper.Map(result.Body, psResult);
                     }
                     WriteObject(psResult);
                 });

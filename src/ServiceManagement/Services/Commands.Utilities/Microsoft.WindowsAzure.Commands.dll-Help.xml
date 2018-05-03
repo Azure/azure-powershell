@@ -10492,7 +10492,7 @@
           <maml:para>C:\PS&gt;</maml:para>
           C:\PS&gt;
         </maml:introduction>
-        <dev:code>Get-AzureWebsiteLocations</dev:code>
+        <dev:code>Get-AzureWebsiteLocation</dev:code>
         <dev:remarks>
           <maml:para>List all available locations for the current subscription</maml:para>
           <maml:para>

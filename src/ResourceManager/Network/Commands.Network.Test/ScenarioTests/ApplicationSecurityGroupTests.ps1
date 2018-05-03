@@ -30,7 +30,10 @@ function Test-ApplicationSecurityGroupCRUD
         $resourceGroup = New-AzureRmResourceGroup -Name $rgName -Location $location -Tags @{ testtag = "ASG tag" }
 
         # Create the application security group
-        $asgNew = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation
+        $job = New-AzureRmApplicationSecurityGroup -ResourceGroupName $rgName -Name $asgName -Location $rgLocation -AsJob
+		$job | Wait-Job
+		$asgNew = $job | Receive-Job
+
         Assert-AreEqual $rgName $asgNew.ResourceGroupName
         Assert-AreEqual $asgName $asgNew.Name
         Assert-NotNull $asgNew.Location

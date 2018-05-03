@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 {
     public class IotHubBaseCmdlet : AzureRMCmdlet
     {
-        protected const string ArmApiVersion = "2017-01-19";
+        protected const string ArmApiVersion = "2017-07-01";
 
         private IIotHubClient iothubClient;
 

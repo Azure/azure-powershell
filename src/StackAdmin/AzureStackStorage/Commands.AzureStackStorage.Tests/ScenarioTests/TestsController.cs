@@ -21,7 +21,10 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.AzureStack.AzureConsistentStorage;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using TestBase = Microsoft.Azure.Test.TestBase;
+using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
 
 namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
@@ -68,10 +71,8 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
-            using (UndoContext context = UndoContext.Current)
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
                 this.csmTestFactory = new CSMTestEnvironmentFactory();
 
                 if(initialize != null)
@@ -79,7 +80,7 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
                     initialize(this.csmTestFactory);
                 }
                 
-                SetupManagementClients();
+                SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 
@@ -90,8 +91,8 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
                     AzureModule.AzureResourceManager, 
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath("AzureRM.AzureStackStorage.psd1"));
+                    helper.StackRMProfileModule,
+                    helper.GetStackRMModulePath("AzureRM.AzureStackStorage.psd1"));
 
                 try
                 {
@@ -115,23 +116,30 @@ namespace Microsoft.AzureStack.Commands.StorageAdmin.Test.ScenarioTests
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
             IStorageAdminManagementClient storageAdminClient = GetStorageManagementClient();
-            ResourceManagementClient resourceManagementClient = GetResourceManagementClient();
+            Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient internalResourceManagementClient = GetInternalResourceManagementClient(context);
+            Microsoft.Azure.Management.ResourceManager.ResourceManagementClient legacyResourceManagementClient = GetLegacyResourceManagementClient(context);
             GalleryClient galleryClient = GetGalleryClient();
             AuthorizationManagementClient authorizationManagementClient = this.GetAuthorizationManagementClient();
-            helper.SetupManagementClients(storageAdminClient, resourceManagementClient, galleryClient, authorizationManagementClient);
+            helper.SetupManagementClients(storageAdminClient, internalResourceManagementClient, legacyResourceManagementClient, galleryClient, authorizationManagementClient);
         }
 
         private IStorageAdminManagementClient GetStorageManagementClient()
         {
             return TestBase.GetServiceClient<StorageAdminManagementClient>(this.csmTestFactory);
         }
-        private ResourceManagementClient GetResourceManagementClient()
+        private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetLegacyResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>(Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
+
+        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetInternalResourceManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);

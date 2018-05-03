@@ -83,14 +83,14 @@ function Test-ResizeAndStopResizePool
 
     # Get the initial TargetDedicated count
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
-    $initialTargetDedicated = $pool.TargetDedicated
+    $initialTargetDedicated = $pool.TargetDedicatedComputeNodes
 
     $newTargetDedicated = $initialTargetDedicated + 1
-    Start-AzureBatchPoolResize -Id $poolId -TargetDedicated $newTargetDedicated -BatchContext $context
+    Start-AzureBatchPoolResize -Id $poolId -TargetDedicatedComputeNodes $newTargetDedicated -BatchContext $context
 
-    # Verify the TargetDedicated property was updated
+    # Verify the TargetDedicatedComputeNodes property was updated
     $pool = Get-AzureBatchPool -Id $poolId -BatchContext $context
-    Assert-AreEqual $newTargetDedicated $pool.TargetDedicated
+    Assert-AreEqual $newTargetDedicated $pool.TargetDedicatedComputeNodes
 
     # Stop the resize
     $pool | Stop-AzureBatchPoolResize -BatchContext $context
@@ -110,7 +110,7 @@ function Test-AutoScaleActions
 
     $context = New-Object Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext
 
-    $formula = '$TargetDedicated=0'
+    $formula = '$TargetDedicatedNodes=0'
     $interval = ([TimeSpan]::FromMinutes(8))
 
     # Verify pool starts with autoscale disabled
@@ -126,7 +126,7 @@ function Test-AutoScaleActions
     Assert-AreEqual $interval $pool.AutoScaleEvaluationInterval
 
     # Try to evaluate a test formula
-    $testFormula = '$TargetDedicated=1'
+    $testFormula = '$TargetDedicatedNodes=1'
     $evalResult = Test-AzureBatchAutoScale $poolId $testFormula -BatchContext $context
 
     # Verify that the evaluation result matches expectation

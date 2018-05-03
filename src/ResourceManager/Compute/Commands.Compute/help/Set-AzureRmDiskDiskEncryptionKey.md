@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
-online version: 
+Module Name: AzureRM.Compute
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermdiskdiskencryptionkey
 schema: 2.0.0
 ---
 
@@ -60,7 +61,7 @@ Specifies a local disk object.
 ```yaml
 Type: PSDisk
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -75,7 +76,7 @@ Specifies the secret Url.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -90,7 +91,7 @@ Specifies the source vault ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -144,4 +145,3 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
-

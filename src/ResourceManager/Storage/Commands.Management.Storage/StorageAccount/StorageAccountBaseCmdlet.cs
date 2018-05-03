@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected struct AccountKind
         {
             internal const string Storage = "Storage";
+            internal const string StorageV2 = "StorageV2";
             internal const string BlobStorage = "BlobStorage";
         }
         protected struct AccountAccessTier
@@ -80,13 +81,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if (storageClientWrapper == null)
                 {
-                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp
-                    };
+                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.DefaultContext);
                 }
 
+                this.storageClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                this.storageClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
                 return storageClientWrapper.StorageManagementClient;
             }
 
@@ -130,45 +129,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             return returnAccessTier;
         }
 
-        protected static Encryption ParseEncryption(EncryptionSupportServiceEnum? EnableService, EncryptionSupportServiceEnum? DisableService = null, bool storageEncryption = false, bool keyVaultEncryption = false, string keyName = null, string keyVersion = null, string keyVaultUri = null)
+        protected static Encryption ParseEncryption(bool storageEncryption = false, bool keyVaultEncryption = false, string keyName = null, string keyVersion = null, string keyVaultUri = null)
         {
-            //When EnableService and DisableService both don't have value, return null
-            if ((EnableService == EncryptionSupportServiceEnum.None || EnableService == null) &&
-                (DisableService == EncryptionSupportServiceEnum.None || DisableService == null) &&
-                (!keyVaultEncryption) && (!storageEncryption))
-            {
-                return null;
-            }
-
-            //DisableService and EnableService should not have overlap
-            if (DisableService != null && EnableService != null)
-            {
-                if ((DisableService & EnableService) != 0 || (DisableService & EnableService) != EncryptionSupportServiceEnum.None)
-                    throw new ArgumentOutOfRangeException("EnableEncryptionService, DisableEncryptionService", String.Format("EnableEncryptionService and DisableEncryptionService should not have overlap Service: {0}", DisableService & EnableService));
-            }
-
             Encryption accountEncryption = new Encryption();
-            accountEncryption.Services = new EncryptionServices();
-            if (EnableService != null && (EnableService & EncryptionSupportServiceEnum.Blob) == EncryptionSupportServiceEnum.Blob)
-            {
-                accountEncryption.Services.Blob = new EncryptionService();
-                accountEncryption.Services.Blob.Enabled = true;
-            }
-            if (EnableService != null && (EnableService & EncryptionSupportServiceEnum.File) == EncryptionSupportServiceEnum.File)
-            {
-                accountEncryption.Services.File = new EncryptionService();
-                accountEncryption.Services.File.Enabled = true;
-            }
-            if (DisableService != null && (DisableService & EncryptionSupportServiceEnum.Blob) == EncryptionSupportServiceEnum.Blob)
-            {
-                accountEncryption.Services.Blob = new EncryptionService();
-                accountEncryption.Services.Blob.Enabled = false;
-            }
-            if (DisableService != null && (DisableService & EncryptionSupportServiceEnum.File) == EncryptionSupportServiceEnum.File)
-            {
-                accountEncryption.Services.File = new EncryptionService();
-                accountEncryption.Services.File.Enabled = false;
-            }
+
             if (storageEncryption)
             {
                 accountEncryption.KeySource = "Microsoft.Storage";

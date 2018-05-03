@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Flag to allow the forwarded traffic from the VMs in the remote virtual network")]
         public SwitchParameter AllowForwardedTraffic { get; set; }
 
-        [Alias("AlloowGatewayTransit")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Flag to allow gatewayLinks be used in remote virtual network's link to this virtual network")]
@@ -62,6 +61,9 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Flag to allow remote gateways be used on this virtual network")]
         public SwitchParameter UseRemoteGateways { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
@@ -97,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetPeering.UseRemoteGateways = this.UseRemoteGateways;
 
             // Map to the sdk object
-            var vnetPeeringModel = Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
+            var vnetPeeringModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkPeering>(vnetPeering);
 
             // Execute the Create VirtualNetwork call
             this.VirtualNetworkPeeringClient.CreateOrUpdate(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.Name, vnetPeeringModel);

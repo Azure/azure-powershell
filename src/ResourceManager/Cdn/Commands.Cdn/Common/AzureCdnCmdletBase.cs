@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.Cdn.Common
 
         private Dictionary<string, List<string>> _defaultRequestHeaders;
 
-        public const string ObjectParameterSet = "Parameter Set for object parameters";
-        public const string FieldsParameterSet = "Parameter Set for fields parameters";
+        public const string ObjectParameterSet = "ByObjectParameterSet";
+        public const string FieldsParameterSet = "ByFieldsParameterSet";
 
         /// <summary>
         /// Gets or sets the Cdn management client.

@@ -15,42 +15,85 @@
 using AutoMapper;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Commands.Compute.Properties;
+using Microsoft.Azure.Commands.Compute.StorageServices;
+using Microsoft.Azure.Commands.Compute.Strategies;
+using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
+using Microsoft.Azure.Commands.Compute.Strategies.Network;
+using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Sync.Download;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd;
+using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Net;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using CM = Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine, SupportsShouldProcess = true)]
-    [OutputType(typeof(PSAzureOperationResponse))]
+    [Cmdlet(
+        VerbsCommon.New,
+        ProfileNouns.VirtualMachine,
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = "SimpleParameterSet")]
+    [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
+        public const string DefaultParameterSet = "DefaultParameterSet";
+        public const string SimpleParameterSet = "SimpleParameterSet";
+        public const string DiskFileParameterSet = "DiskFileParameterSet";
+
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter()]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = false)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = false)]
+        [LocationCompleter("Microsoft.Compute/virtualMachines")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Alias("VMProfile")]
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = true,
             Position = 2,
             ValueFromPipeline = true,
@@ -59,28 +102,348 @@ namespace Microsoft.Azure.Commands.Compute
         public PSVirtualMachine VM { get; set; }
 
         [Parameter(
-           Mandatory = false,
-           Position = 3,
-           ValueFromPipelineByPropertyName = true)]
+            ParameterSetName = DefaultParameterSet,
+            Mandatory = false,
+            Position = 3,
+            ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] Zone { get; set; }
 
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
 
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
+            ParameterSetName = DefaultParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string LicenseType { get; set; }
 
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
+        public PSCredential Credential { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string VirtualNetworkName { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string AddressPrefix { get; set; } = "192.168.0.0/16";
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string SubnetName { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string SubnetAddressPrefix { get; set; } = "192.168.1.0/24";
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string PublicIpAddressName { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string DomainNameLabel { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        [ValidateSet("Static", "Dynamic")]
+        public string AllocationMethod { get; set; } = "Static";
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string SecurityGroupName { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public int[] OpenPorts { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [PSArgumentCompleter(
+            "CentOS",
+            "CoreOS",
+            "Debian",
+            "openSUSE-Leap",
+            "RHEL",
+            "SLES",
+            "UbuntuLTS",
+            "Win2016Datacenter",
+            "Win2012R2Datacenter",
+            "Win2012Datacenter",
+            "Win2008R2SP1",
+            "Win10")]
+        [Alias("ImageName")]
+        public string Image { get; set; } = "Win2016Datacenter";
+
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public string DiskFile { get; set; }
+
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public SwitchParameter Linux { get; set; } = false;
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string Size { get; set; } = "Standard_DS1_v2";
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public string AvailabilitySetName { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentity { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
+        public int[] DataDiskSizeInGb { get; set; }
+
         public override void ExecuteCmdlet()
+        {
+            switch (ParameterSetName)
+            {
+                case SimpleParameterSet:
+                    this.StartAndWait(StrategyExecuteCmdletAsync);
+                    break;
+                case DiskFileParameterSet:
+                    this.StartAndWait(StrategyExecuteCmdletAsync);
+                    break;
+                default:
+                    DefaultExecuteCmdlet();
+                    break;
+            }
+        }
+
+        class Parameters : IParameters<VirtualMachine>
+        {
+            NewAzureVMCommand _cmdlet { get; }
+
+            Client _client { get; }
+
+            public Parameters(NewAzureVMCommand cmdlet, Client client)
+            {
+                _cmdlet = cmdlet;
+                _client = client;
+            }
+
+            public ImageAndOsType ImageAndOsType { get; set; }
+
+            public string Location
+            {
+                get { return _cmdlet.Location; }
+                set { _cmdlet.Location = value; }
+            }
+
+            public string DefaultLocation => "eastus";
+
+            public BlobUri DestinationUri;
+
+            public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
+            {
+                if (_cmdlet.DiskFile == null)
+                {
+                    ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
+                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.Image, Location);
+                }
+
+                _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    name: _cmdlet.Name,
+                    location: Location,
+                    client: _client);
+
+                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
+                var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
+                    name: _cmdlet.VirtualNetworkName, addressPrefix: _cmdlet.AddressPrefix);
+                var subnet = virtualNetwork.CreateSubnet(_cmdlet.SubnetName, _cmdlet.SubnetAddressPrefix);
+                var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
+                    name: _cmdlet.PublicIpAddressName,
+                    domainNameLabel: _cmdlet.DomainNameLabel,
+                    allocationMethod: _cmdlet.AllocationMethod,
+                    sku: PublicIPAddressStrategy.Sku.Basic,
+                    zones: _cmdlet.Zone);
+
+                _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
+
+                var networkSecurityGroup = resourceGroup.CreateNetworkSecurityGroupConfig(
+                    name: _cmdlet.SecurityGroupName,
+                    openPorts: _cmdlet.OpenPorts);
+
+                var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
+                    _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup);
+
+                var availabilitySet = _cmdlet.AvailabilitySetName == null
+                    ? null
+                    : resourceGroup.CreateAvailabilitySetConfig(name: _cmdlet.AvailabilitySetName);
+
+                if (_cmdlet.DiskFile == null)
+                {
+                    return resourceGroup.CreateVirtualMachineConfig(
+                        name: _cmdlet.Name,
+                        networkInterface: networkInterface,
+                        imageAndOsType: ImageAndOsType,
+                        adminUsername: _cmdlet.Credential.UserName,
+                        adminPassword:
+                            new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                        size: _cmdlet.Size,
+                        availabilitySet: availabilitySet,
+                        dataDisks: _cmdlet.DataDiskSizeInGb,
+                        zones: _cmdlet.Zone,
+                        identity: _cmdlet.GetVMIdentityFromArgs());
+                }
+                else
+                {
+                    var disk = resourceGroup.CreateManagedDiskConfig(
+                        name: _cmdlet.Name,
+                        sourceUri: DestinationUri.Uri.ToString());
+
+                    return resourceGroup.CreateVirtualMachineConfig(
+                        name: _cmdlet.Name,
+                        networkInterface: networkInterface,
+                        osType: ImageAndOsType.OsType,
+                        disk: disk,
+                        size: _cmdlet.Size,
+                        availabilitySet: availabilitySet,
+                        dataDisks: _cmdlet.DataDiskSizeInGb,
+                        zones: _cmdlet.Zone,
+                        identity: _cmdlet.GetVMIdentityFromArgs());
+                }
+            }
+        }
+
+        async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
+        {
+            var client = new Client(DefaultProfile.DefaultContext);
+
+            ResourceGroupName = ResourceGroupName ?? Name;
+            VirtualNetworkName = VirtualNetworkName ?? Name;
+            SubnetName = SubnetName ?? Name;
+            PublicIpAddressName = PublicIpAddressName ?? Name;
+            SecurityGroupName = SecurityGroupName ?? Name;
+
+            var parameters = new Parameters(this, client);
+
+            if (DiskFile != null)
+            {
+                var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
+                    DefaultProfile.DefaultContext,
+                    AzureEnvironment.Endpoint.ResourceManager);
+                if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
+                {
+                    var st0 = resourceClient.ResourceGroups.CreateOrUpdate(
+                        ResourceGroupName,
+                        new ResourceGroup
+                        {
+                            Location = Location,
+                            Name = ResourceGroupName
+                        });
+                }
+                parameters.ImageAndOsType = new ImageAndOsType(
+                    Linux ? OperatingSystemTypes.Linux : OperatingSystemTypes.Windows,
+                    null,
+                    null);
+                var storageClient = AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(
+                    DefaultProfile.DefaultContext,
+                    AzureEnvironment.Endpoint.ResourceManager);
+                var st1 = storageClient.StorageAccounts.Create(
+                    ResourceGroupName,
+                    Name,
+                    new StorageAccountCreateParameters
+                {
+#if !NETSTANDARD
+                    AccountType = AccountType.PremiumLRS,
+#else
+                    Sku = new Microsoft.Azure.Management.Storage.Models.Sku
+                    {
+                        Name = SkuName.PremiumLRS
+                    },
+#endif
+                    Location = Location
+                });
+                var filePath = new FileInfo(SessionState.Path.GetUnresolvedProviderPathFromPSPath(DiskFile));
+                using (var vds = new VirtualDiskStream(filePath.FullName))
+                {
+                    // 2 ^ 9 == 512
+                    if (vds.DiskType == DiskType.Fixed && filePath.Length % 512 != 0)
+                    {
+                        throw new ArgumentOutOfRangeException(
+                            "filePath",
+                            string.Format("Given vhd file '{0}' is a corrupted fixed vhd", filePath));
+                    }
+                }
+                var storageAccount = storageClient.StorageAccounts.GetProperties(ResourceGroupName, Name);
+                // BlobUri destinationUri = null;
+                BlobUri.TryParseUri(
+                    new Uri(string.Format(
+                        "{0}{1}/{2}{3}",
+                        storageAccount.PrimaryEndpoints.Blob,
+                        ResourceGroupName.ToLower(),
+                        Name.ToLower(),
+                        ".vhd")),
+                    out parameters.DestinationUri);
+                if (parameters.DestinationUri?.Uri == null)
+                {
+                    throw new ArgumentNullException("destinationUri");
+                }
+                var storageCredentialsFactory = new StorageCredentialsFactory(
+                    ResourceGroupName, storageClient, DefaultContext.Subscription);
+                var uploadParameters = new UploadParameters(parameters.DestinationUri, null, filePath, true, 2)
+                {
+                    Cmdlet = this,
+                    BlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1))
+                };
+                if (!string.Equals(
+                    Environment.GetEnvironmentVariable("AZURE_TEST_MODE"), "Playback", StringComparison.OrdinalIgnoreCase))
+                {
+                    var st2 = VhdUploaderModel.Upload(uploadParameters);
+                }
+            }
+
+            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+
+            if (result != null)
+            {
+                var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
+                var psResult = ComputeAutoMapperProfile.Mapper.Map<PSVirtualMachine>(result);
+                psResult.FullyQualifiedDomainName = fqdn;
+                var connectionString = parameters.ImageAndOsType.GetConnectionString(
+                    fqdn,
+                    Credential?.UserName);
+                asyncCmdlet.WriteVerbose(
+                    Resources.VirtualMachineUseConnectionString,
+                    connectionString);
+                asyncCmdlet.WriteObject(psResult);
+            }
+        }
+
+        public void DefaultExecuteCmdlet()
         {
             base.ExecuteCmdlet();
 
@@ -117,7 +480,7 @@ namespace Microsoft.Azure.Commands.Compute
                         LicenseType = this.LicenseType ?? this.VM.LicenseType,
                         AvailabilitySet = this.VM.AvailabilitySetReference,
                         Location = this.Location ?? this.VM.Location,
-                        Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags,
+                        Tags = this.Tag != null ? this.Tag.ToDictionary() : this.VM.Tags,
                         Identity = this.VM.Identity,
                         Zones = this.Zone ?? this.VM.Zones,
                     };
@@ -126,11 +489,10 @@ namespace Microsoft.Azure.Commands.Compute
                         this.ResourceGroupName,
                         this.VM.Name,
                         parameters).GetAwaiter().GetResult();
-                    var psResult = Mapper.Map<PSAzureOperationResponse>(result);
+                    var psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(result);
 
                     if (!(this.DisableBginfoExtension.IsPresent || IsLinuxOs()))
                     {
-
                         var currentBginfoVersion = GetBginfoExtension();
 
                         if (!string.IsNullOrEmpty(currentBginfoVersion))
@@ -144,7 +506,8 @@ namespace Microsoft.Azure.Commands.Compute
                                 AutoUpgradeMinorVersion = true,
                             };
 
-                            typeof(CM.Resource).GetRuntimeProperty("Name").SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
+                            typeof(CM.Resource).GetRuntimeProperty("Name")
+                                .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
                             typeof(CM.Resource).GetRuntimeProperty("Type")
                                 .SetValue(extensionParameters, VirtualMachineExtensionType);
 
@@ -153,12 +516,35 @@ namespace Microsoft.Azure.Commands.Compute
                                 this.VM.Name,
                                 VirtualMachineBGInfoExtensionContext.ExtensionDefaultName,
                                 extensionParameters).GetAwaiter().GetResult();
-                            psResult = Mapper.Map<PSAzureOperationResponse>(op2);
+                            psResult = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op2);
                         }
                     }
                     WriteObject(psResult);
                 });
             }
+        }
+
+        /// <summary>
+        /// Heres whats happening here :
+        /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
+        /// defined identity in the VM identity object.
+        /// If only "SystemAssignedIdentity" is present, we just set the type of the Identity to "SystemAssigned" and no identity ids are set as its created by Azure
+        /// If only "UserAssignedIdentity" is present, we set the type of the Identity to be "UserAssigned" and set the Identity in the VM identity object.
+        /// If neither is present, we return a null.
+        /// </summary>
+        /// <returns>Returning the Identity generated form the cmdlet parameters "SystemAssignedIdentity" and "UserAssignedIdentity"</returns>
+        private VirtualMachineIdentity GetVMIdentityFromArgs()
+        {
+            var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
+            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
+                ? new VirtualMachineIdentity
+                {
+                    Type = !isUserAssignedEnabled ? 
+                           CM.ResourceIdentityType.SystemAssigned :
+                           (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
+                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
+                }
+                : null;
         }
 
         private string GetBginfoExtension()
@@ -307,8 +693,9 @@ namespace Microsoft.Azure.Commands.Compute
             try
             {
                 return storageAccountList.First(
-                e => e.Sku() != null
-                    && !e.SkuName().ToLowerInvariant().Contains("premium"));
+                    e => e.Location.Canonicalize().Equals(this.Location.Canonicalize())
+                      && e.Sku() != null
+                      && !e.SkuName().ToLowerInvariant().Contains("premium"));
             }
             catch (InvalidOperationException e)
             {

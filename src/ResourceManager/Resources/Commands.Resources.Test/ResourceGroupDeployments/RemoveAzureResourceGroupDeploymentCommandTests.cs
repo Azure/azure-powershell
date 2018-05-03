@@ -19,6 +19,7 @@ using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Moq;
 using Xunit;
 using Xunit.Abstractions;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveDeployment()
         {
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);

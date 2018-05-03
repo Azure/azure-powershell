@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
+        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzureRmAccount..
         /// </summary>
         internal static string ContextCannotBeNull {
             get {
@@ -286,6 +286,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create Resource Group?.
+        /// </summary>
+        internal static string CreateResourceGroupCaption {
+            get {
+                return ResourceManager.GetString("CreateResourceGroupCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new resource group &apos;{0}&apos; and set as default?.
+        /// </summary>
+        internal static string CreateResourceGroupMessage {
+            get {
+                return ResourceManager.GetString("CreateResourceGroupMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current tenant with Id &apos;{0}&apos; will be used..
         /// </summary>
         internal static string CurrentTenantInUse {
@@ -309,6 +327,42 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string DataCollectionEnabledWarning {
             get {
                 return ResourceManager.GetString("DataCollectionEnabledWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changing default resource group to &apos;{0}&apos;.
+        /// </summary>
+        internal static string DefaultResourceGroupChangeWarning {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupChangeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Resource Group.
+        /// </summary>
+        internal static string DefaultResourceGroupKey {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing default resource group.
+        /// </summary>
+        internal static string DefaultResourceGroupRemovalWarning {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupRemovalWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current context.
+        /// </summary>
+        internal static string DefaultResourceGroupTarget {
+            get {
+                return ResourceManager.GetString("DefaultResourceGroupTarget", resourceCulture);
             }
         }
         
@@ -412,7 +466,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount..
+        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Connect-AzureRmAccount..
         /// </summary>
         internal static string NoValidTenant {
             get {
@@ -529,6 +583,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove defaults?.
+        /// </summary>
+        internal static string RemoveDefaultsCaption {
+            get {
+                return ResourceManager.GetString("RemoveDefaultsCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove all existing defaults in the current context?.
+        /// </summary>
+        internal static string RemoveDefaultsMessage {
+            get {
+                return ResourceManager.GetString("RemoveDefaultsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rename context &apos;{0}&apos; to &apos;{1}&apos;.
         /// </summary>
         internal static string RenameContextMessage {
@@ -561,6 +633,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string RmProfileNull {
             get {
                 return ResourceManager.GetString("RmProfileNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run Connect-AzureRmAccount to login..
+        /// </summary>
+        internal static string RunLoginCmdlet {
+            get {
+                return ResourceManager.GetString("RunLoginCmdlet", resourceCulture);
             }
         }
         
@@ -682,6 +763,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Must supply Subscription Id and Tenant Id when using -SkipValidation.
+        /// </summary>
+        internal static string SubscriptionOrTenantMissing {
+            get {
+                return ResourceManager.GetString("SubscriptionOrTenantMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide a valid tenant or a valid subscription..
         /// </summary>
         internal static string SubscriptionOrTenantRequired {
@@ -691,7 +781,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount.
+        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzureRmAccount.
         /// </summary>
         internal static string TenantAuthFailed {
             get {
@@ -736,7 +826,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount to view the subscriptions in this tenant..
+        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Connect-AzureRmAccount to view the subscriptions in this tenant..
         /// </summary>
         internal static string UnableToLogin {
             get {

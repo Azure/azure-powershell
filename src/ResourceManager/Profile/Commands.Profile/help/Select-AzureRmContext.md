@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/select-azurermcontext
 schema: 2.0.0
 ---
 
@@ -11,13 +12,13 @@ Select a subscription and account to target in Azure PowerShell cmdlets
 
 ## SYNTAX
 
-### Input Object (Default)
+### SelectByInputObject (Default)
 ```
 Select-AzureRmContext -InputObject <PSAzureContext> [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Context Name
+### SelectByName
 ```
 Select-AzureRmContext [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [-Name] <String> [<CommonParameters>]
@@ -58,7 +59,7 @@ A context object, normally passed through the pipeline.
 
 ```yaml
 Type: PSAzureContext
-Parameter Sets: Input Object
+Parameter Sets: SelectByInputObject
 Aliases: 
 
 Required: True
@@ -73,7 +74,7 @@ The name of the context
 
 ```yaml
 Type: String
-Parameter Sets: Context Name
+Parameter Sets: SelectByName
 Aliases: 
 
 Required: True
@@ -84,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-Determines the scope of context changes, for example, wheher changes apply only to the cusrrent process, or to all sessions started by this user
+Determines the scope of context changes, for example, whether changes apply only to the current process, or to all sessions started by this user
 
 ```yaml
 Type: ContextModificationScope

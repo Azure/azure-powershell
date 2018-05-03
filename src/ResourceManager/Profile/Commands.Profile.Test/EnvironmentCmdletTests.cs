@@ -102,7 +102,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             Mock<EnvironmentHelper> envHelperMock = new Mock<EnvironmentHelper>();
 
+#if NETSTANDARD
+            envHelperMock.Setup(f => f.RetrieveMetaDataEndpoints(It.IsAny<string>())).ReturnsAsync(() => null);
+#else
             envHelperMock.Setup(f => f.RetrieveMetaDataEndpoints(It.IsAny<string>())).ReturnsAsync(null);
+#endif
             envHelperMock.Setup(f => f.RetrieveDomain(It.IsAny<string>())).Returns("domain");
             cmdlet.EnvHelper = envHelperMock.Object;
             cmdlet.SetParameterSet("ARMEndpoint");
@@ -370,7 +374,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 StorageEndpoint = "https://StorageEndpoint",
                 SqlDatabaseDnsSuffix = "SqlDatabaseDnsSuffix",
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
-                GraphAudience = "GaraphAudience"
+                GraphAudience = "GaraphAudience",
+                BatchEndpointResourceId = "BatchResourceId",
+                DataLakeAudience = "DataLakeAudience",
+                AzureOperationalInsightsEndpointResourceId = "AzureOperationalInsightsEndpointResourceId",
+                AzureOperationalInsightsEndpoint = "https://AzureOperationalInsights",
             };
 
             var dict = new Dictionary<string, object>();
@@ -390,6 +398,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             dict["SqlDatabaseDnsSuffix"] = "SqlDatabaseDnsSuffix";
             dict["TrafficManagerDnsSuffix"] = "TrafficManagerDnsSuffix";
             dict["GraphAudience"] = "GaraphAudience";
+            dict["BatchEndpointResourceId"] = "BatchResourceId";
+            dict["DataLakeAudience"] = "DataLakeAudience";
+            dict["AzureOperationalInsightsEndpointResourceId"] = "AzureOperationalInsightsEndpointResourceId";
+            dict["AzureOperationalInsightsEndpoint"] = "https://AzureOperationalInsights";
             cmdlet.SetBoundParameters(dict);
 
             cmdlet.InvokeBeginProcessing();
@@ -413,6 +425,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.SqlDatabaseDnsSuffix, actual.SqlDatabaseDnsSuffix);
             Assert.Equal(cmdlet.TrafficManagerDnsSuffix, actual.TrafficManagerDnsSuffix);
             Assert.Equal(cmdlet.GraphAudience, actual.GraphEndpointResourceId);
+            Assert.Equal(cmdlet.BatchEndpointResourceId, actual.BatchEndpointResourceId);
+            Assert.Equal(cmdlet.DataLakeAudience, actual.DataLakeEndpointResourceId);
+            Assert.Equal(cmdlet.AzureOperationalInsightsEndpointResourceId, actual.AzureOperationalInsightsEndpointResourceId);
+            Assert.Equal(cmdlet.AzureOperationalInsightsEndpoint, actual.AzureOperationalInsightsEndpoint);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);

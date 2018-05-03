@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSLocalNetworkGateway ToPsLocalNetworkGateway(LocalNetworkGateway localnetGateway)
         {
-            var psLocalNetworkGateway = Mapper.Map<PSLocalNetworkGateway>(localnetGateway);
+            var psLocalNetworkGateway = NetworkResourceManagerProfile.Mapper.Map<PSLocalNetworkGateway>(localnetGateway);
 
             psLocalNetworkGateway.Tag = TagsConversionHelper.CreateTagHashtable(localnetGateway.Tags);
 

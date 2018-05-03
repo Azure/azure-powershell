@@ -46,7 +46,30 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        /// Create protection container.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Container name.</param>
+        /// <param name="input">Creation input.</param>
+        /// <returns>A long running operation response.</returns>
+        public PSSiteRecoveryLongRunningOperation CreateProtectionContainer(
+            string fabricName,
+            string protectionContainerName,
+            CreateProtectionContainerInput input)
+        {
+            var op = this.GetSiteRecoveryClient().ReplicationProtectionContainers.BeginCreateWithHttpMessagesAsync(
+                fabricName,
+                protectionContainerName,
+                input,
+                this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
 
@@ -195,7 +218,27 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            return result;
+        }
+
+        /// <summary>
+        /// Remove protection container.
+        /// </summary>
+        /// <param name="fabricName">Fabric Name.</param>
+        /// <param name="protectionContainerName">Protection Container name.</param>
+        /// <returns>A long running operation response.</returns>
+        public PSSiteRecoveryLongRunningOperation RemoveProtectionContainer(
+            string fabricName,
+            string protectionContainerName)
+        {
+            var op = this.GetSiteRecoveryClient().ReplicationProtectionContainers.BeginDeleteWithHttpMessagesAsync(
+                fabricName,
+                protectionContainerName,
+                this.GetRequestHeaders(true))
+                .GetAwaiter()
+                .GetResult();
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
 
@@ -222,7 +265,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
-            var result = Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
+            var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
     }

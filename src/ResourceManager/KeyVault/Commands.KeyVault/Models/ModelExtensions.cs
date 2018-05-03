@@ -12,7 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+#if NETSTANDARD
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+#else
 using Microsoft.Azure.ActiveDirectory.GraphClient;
+#endif
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -25,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     static class ModelExtensions
     {
 
-        public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
+        public static string ConstructAccessPoliciesTableAsTable(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -55,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             return sb.ToString();
         }
 
-        public static string ConstructAccessPoliciesList(IEnumerable<PSModels.PSVaultAccessPolicy> policies)
+        public static string ConstructAccessPoliciesList(IEnumerable<PSModels.PSKeyVaultAccessPolicy> policies)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -77,6 +81,25 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             return sb.ToString();
         }
+
+        public static string ConstructNetworkRuleSet(PSModels.PSKeyVaultNetworkRuleSet ruleSet)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (ruleSet != null)
+            {
+                sb.AppendLine();
+
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Default Action", ruleSet.DefaultAction);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Bypass", ruleSet.Bypass);
+
+                sb.AppendFormat("{0, -43}: {1}\r\n", "IP Rules", ruleSet.IpAddressRangesText);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Virtual Network Rules", ruleSet.VirtualNetworkResourceIdsText);
+            }
+
+            return sb.ToString();
+        }
+
         private static string TrimWithEllipsis(string str, int maxLen)
         {
             if (str != null && str.Length > maxLen)
@@ -97,6 +120,30 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             try
             {
+#if NETSTANDARD
+                var obj = adClient.GetObjectsByObjectId(new List<string> { objectId }).FirstOrDefault();
+                if (obj != null)
+                {
+                    if (obj.Type.Equals("user", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var user = adClient.FilterUsers(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        displayName = user.DisplayName;
+                        upnOrSpn = user.UserPrincipalName;
+                    }
+                    else if (obj.Type.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ObjectId == objectId);
+                        var servicePrincipal = adClient.FilterServicePrincipals(odataQuery).FirstOrDefault();
+                        displayName = servicePrincipal.DisplayName;
+                        upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
+                    }
+                    else if (obj.Type.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var group = adClient.FilterGroups(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        displayName = group.DisplayName;
+                    }
+                }
+#else
                 var obj = adClient.GetObjectsByObjectIdsAsync(new[] { objectId }, new string[] { }).GetAwaiter().GetResult().FirstOrDefault();
                 if (obj != null)
                 {
@@ -112,7 +159,15 @@ namespace Microsoft.Azure.Commands.KeyVault
                         displayName = servicePrincipal.AppDisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                     }
+                    else if (obj.ObjectType.Equals("group", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var group = adClient.Groups.GetByObjectId(objectId).ExecuteAsync().GetAwaiter().GetResult();
+                        displayName = group.DisplayName;
+                        upnOrSpn = group.MailNickname;
+                    }
                 }
+
+#endif
             }
             catch
             {

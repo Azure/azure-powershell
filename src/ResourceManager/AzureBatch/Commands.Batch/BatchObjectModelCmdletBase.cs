@@ -29,14 +29,21 @@ namespace Microsoft.Azure.Commands.Batch
         /// </summary>
         internal IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The BatchAccountContext instance to use when interacting with the Batch service. " +
+            "If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting " +
+            "with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with " +
+            "its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the " +
+            "BatchAccountContext.KeyInUse property.")]
         [ValidateNotNullOrEmpty]
         public BatchAccountContext BatchContext { get; set; }
 
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-            WriteVerboseWithTimestamp(Resources.AccountAndKeyInUse, BatchContext.AccountName, BatchContext.KeyInUse);
+            string verboseMessage = this.BatchContext.HasKeys ?
+                string.Format(Resources.UsingSharedKeyAuth, this.BatchContext.KeyInUse) :
+                Resources.UsingAadAuth;
+            WriteVerboseWithTimestamp(verboseMessage);
         }
     }
 }

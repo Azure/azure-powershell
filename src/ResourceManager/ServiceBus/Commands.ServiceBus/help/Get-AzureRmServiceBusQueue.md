@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-online version: 
+Module Name: AzureRM.ServiceBus
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusqueue
 schema: 2.0.0
 ---
 
@@ -12,8 +13,8 @@ Returns a description for the specified Service Bus queue.
 ## SYNTAX
 
 ```
-Get-AzureRmServiceBusQueue [-ResourceGroup] <String> [-NamespaceName] <String> [[-QueueName] <String>]
- [<CommonParameters>]
+Get-AzureRmServiceBusQueue [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,34 +25,58 @@ The **Get-AzureRmServiceBusQueue** cmdlet returns a description of the specified
 ### Example 1
 ```
 PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
+
+LockDuration                        : 
+AccessedAt                          : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
+CreatedAt                           : 1/20/2017 2:51:35 AM
+DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
+DuplicateDetectionHistoryTimeWindow : 
+DeadLetteringOnMessageExpiration    : False
+EnableExpress                       : False
+EnablePartitioning                  : True
+MaxDeliveryCount                    : 
+MaxSizeInMegabytes                  : 16384
+MessageCount                        : 
+CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+RequiresDuplicateDetection          : False
+RequiresSession                     : False
+SizeInBytes                         : 
+Status                              : Active
+UpdatedAt                           : 1/20/2017 2:51:37 AM
+Id                                  : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
+                                      B-Queue_example1
+Name                                : SB-Queue_example1
+Type                                : Microsoft.ServiceBus/Queues
+
 ```
 
-Returns the description of the queue. 
+Returns the description of the queue.
 
 ## PARAMETERS
 
-### -NamespaceName
-The Service Bus namespace name.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: String
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases: AzureRmContext, AzureCredential
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QueueName
-The queue name.
+### -Name
+Queue Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: QueueName
 
 Required: False
 Position: 1
@@ -60,13 +85,28 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroup
-The name of the resource group.
+### -Namespace
+Namespace Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases: NamespaceName
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -93,34 +133,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.QueueAttributes
-LockDuration                        : 
-AccessedAt                          : 1/1/0001 12:00:00 AM
-AutoDeleteOnIdle                    : 10675199.02:48:05.4775807
-EntityAvailabilityStatus            : 
-CreatedAt                           : 1/20/2017 2:51:35 AM
-DefaultMessageTimeToLive            : 10675199.02:48:05.4775807
-DuplicateDetectionHistoryTimeWindow : 
-EnableBatchedOperations             : True
-DeadLetteringOnMessageExpiration    : False
-EnableExpress                       : False
-EnablePartitioning                  : True
-IsAnonymousAccessible               : False
-MaxDeliveryCount                    : 
-MaxSizeInMegabytes                  : 16384
-MessageCount                        : 
-CountDetails                        : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-RequiresDuplicateDetection          : False
-RequiresSession                     : False
-SizeInBytes                         : 
-Status                              : Active
-SupportOrdering                     : False
-UpdatedAt                           : 1/20/2017 2:51:37 AM
-Id                                  : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/S
-                                      B-Queue_example1
-Name                                : SB-Queue_example1
-Type                                : Microsoft.ServiceBus/Queues
-Location                            : West US
+### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
 
 ## NOTES
 

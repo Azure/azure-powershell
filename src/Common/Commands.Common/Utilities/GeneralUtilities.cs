@@ -28,6 +28,7 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -254,17 +255,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public static string GetHttpResponseLog(string statusCode, IDictionary<string, IEnumerable<string>> headers, string body)
         {
             StringBuilder httpResponseLog = new StringBuilder();
-            httpResponseLog.AppendLine(string.Format("============================ HTTP RESPONSE ============================{0}", Environment.NewLine));
-            httpResponseLog.AppendLine(string.Format("Status Code:{0}{1}{0}", Environment.NewLine, statusCode));
-            httpResponseLog.AppendLine(string.Format("Headers:{0}{1}", Environment.NewLine, MessageHeadersToString(headers)));
-            httpResponseLog.AppendLine(string.Format("Body:{0}{1}{0}", Environment.NewLine, body));
-
+            httpResponseLog.AppendLine($"============================ HTTP RESPONSE ============================{Environment.NewLine}");
+            httpResponseLog.AppendLine($"Status Code:{Environment.NewLine}{statusCode}{Environment.NewLine}");
+            httpResponseLog.AppendLine($"Headers:{ Environment.NewLine}{ MessageHeadersToString(headers)}");
+            httpResponseLog.AppendLine($"Body:{Environment.NewLine}{TransformBody(body)}{Environment.NewLine}");
             return httpResponseLog.ToString();
         }
 
         public static string GetHttpResponseLog(string statusCode, HttpHeaders headers, string body)
         {
             return GetHttpResponseLog(statusCode, ConvertHttpHeadersToWebHeaderCollection(headers), body);
+        }
+
+        public static string TransformBody(string inBody)
+        {
+            Regex matcher = new Regex("(\\s*\"access_token\"\\s*:\\s*)\"[^\"]+\"");
+            return matcher.Replace(inBody, "$1\"<redacted>\"");
         }
 
         public static string GetHttpRequestLog(
@@ -278,7 +284,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             httpRequestLog.AppendLine(string.Format("HTTP Method:{0}{1}{0}", Environment.NewLine, method));
             httpRequestLog.AppendLine(string.Format("Absolute Uri:{0}{1}{0}", Environment.NewLine, requestUri));
             httpRequestLog.AppendLine(string.Format("Headers:{0}{1}", Environment.NewLine, MessageHeadersToString(headers)));
-            httpRequestLog.AppendLine(string.Format("Body:{0}{1}{0}", Environment.NewLine, body));
+            httpRequestLog.AppendLine(string.Format("Body:{0}{1}{0}", Environment.NewLine, TransformBody(body)));
 
             return httpRequestLog.ToString();
         }
@@ -479,6 +485,74 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 }
             }
 #endif
+        }
+
+        /// <summary>
+        /// Execute a process and check for a clean exit to determine if the process exists.
+        /// </summary>
+        /// <param name="programName">Name of the program to start.</param>
+        /// <param name="args">Command line argumentes provided to the program.</param>
+        /// <param name="waitTime">Time to wait for the process to close.</param>
+        /// <param name="criterion">Function to evaluate the process response to determine success. The default implementation returns true if the exit code equals 0.</param>
+        /// <returns></returns>
+        public static bool Probe(string programName, string args = "", int waitTime = 3000, Func<ProcessExitInfo, bool> criterion = null)
+        {
+            try
+            {
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = programName,
+                        Arguments = args,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false
+                    }
+                };
+                var stdout = new List<string>();
+                var stderr = new List<string>();
+                process.OutputDataReceived += (s, e) => stdout.Add(e.Data);
+                process.ErrorDataReceived += (s, e) => stderr.Add(e.Data);
+                process.Start();
+                process.BeginErrorReadLine();
+                process.BeginOutputReadLine();
+                process.WaitForExit(waitTime);
+                var exitInfo = new ProcessExitInfo { ExitCode = process.ExitCode, StdOut = stdout, StdErr = stderr };
+                var exitCode = process.ExitCode;
+                return criterion == null ? exitInfo.ExitCode == 0 : criterion(exitInfo);
+            }
+            catch (InvalidOperationException)
+            {
+                // The excutable failed to execute prior wait time expiring.
+                return false;
+            }
+            catch (SystemException)
+            {
+                // The excutable doesn't exist on path. Rather than handling Win32 exception, chose to handle a less platform specific sys exception.
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Process exit information
+        /// </summary>
+        public class ProcessExitInfo
+        {
+            /// <summary>
+            /// Exit code of a process
+            /// </summary>
+            public int ExitCode { get; set; }
+
+            /// <summary>
+            /// List of all lines from STDOUT
+            /// </summary>
+            public IList<string> StdOut { get; set; }
+
+            /// <summary>
+            /// List of all lines from STDERR
+            /// </summary>
+            public IList<string> StdErr { get; set; }
         }
 		
         public static string DownloadFile(string uri)

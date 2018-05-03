@@ -82,10 +82,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var vAgentPoolProfiles = new Microsoft.Azure.Management.Compute.Models.ContainerServiceAgentPoolProfile();
 
-            vAgentPoolProfiles.Name = this.Name;
+            vAgentPoolProfiles.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vAgentPoolProfiles.Count = this.Count;
-            vAgentPoolProfiles.VmSize = this.VmSize;
-            vAgentPoolProfiles.DnsPrefix = this.DnsPrefix;
+            vAgentPoolProfiles.VmSize = this.MyInvocation.BoundParameters.ContainsKey("VmSize") ? this.VmSize : null;
+            vAgentPoolProfiles.DnsPrefix = this.MyInvocation.BoundParameters.ContainsKey("DnsPrefix") ? this.DnsPrefix : null;
             this.ContainerService.AgentPoolProfiles.Add(vAgentPoolProfiles);
             WriteObject(this.ContainerService);
         }

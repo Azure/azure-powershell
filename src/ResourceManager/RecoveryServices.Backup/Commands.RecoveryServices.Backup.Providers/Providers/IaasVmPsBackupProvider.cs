@@ -27,6 +27,10 @@ using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Mod
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using SystemNet = System.Net;
+using System.Globalization;
+using System.Text;
+using System.Text.RegularExpressions;
+using Microsoft.Azure.Commands.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -235,8 +239,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData[RestoreBackupItemParams.StorageAccountLocation].ToString();
             string storageAccountType =
                 ProviderData[RestoreBackupItemParams.StorageAccountType].ToString();
+            bool osaOption = (bool)ProviderData[RestoreBackupItemParams.OsaOption];
 
-            var response = ServiceClientAdapter.RestoreDisk(rp, storageAccountId, storageAccountLocation, storageAccountType);
+            var response = ServiceClientAdapter.RestoreDisk(rp, storageAccountId, storageAccountLocation, storageAccountType, osaOption);
             return response;
         }
 
@@ -277,6 +282,121 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             }
             return rp;
+        }
+
+        /// <summary>
+        /// Provisioning Item Level Recovery Access for the given recovery point
+        /// </summary>
+        /// <returns>Azure VM client script details as returned by the service</returns>
+        public RPMountScriptDetails ProvisionItemLevelRecoveryAccess()
+        {
+            string content = string.Empty;
+            AzureVmRecoveryPoint rp = ProviderData[RestoreBackupItemParams.RecoveryPoint]
+                as AzureVmRecoveryPoint;
+            if (rp.EncryptionEnabled == true)
+            {
+                throw new ArgumentException(Resources.ILREncryptedVmError);
+            }
+            content = string.Empty;
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
+
+            IaasVMILRRegistrationRequest registrationRequest =
+                new IaasVMILRRegistrationRequest();
+            registrationRequest.RecoveryPointId = rp.RecoveryPointId;
+            registrationRequest.VirtualMachineId = rp.SourceResourceId;
+            registrationRequest.RenewExistingRegistration = (rp.IlrSessionActive == false) ? false : true;
+
+            var ilRResponse = ServiceClientAdapter.ProvisioninItemLevelRecoveryAccess(
+                containerUri, protectedItemName, rp.RecoveryPointId, registrationRequest);
+
+            IEnumerable<string> ie =
+                    ilRResponse.Response.Headers.GetValues("Azure-AsyncOperation");
+            string asyncHeader = string.Empty;
+            foreach (string s in ie)
+            {
+                asyncHeader = s;
+            }
+
+            AzureVmRPMountScriptDetails result = null;
+            var response = TrackingHelpers.GetOperationStatus(
+                ilRResponse,
+                operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(operationId));
+
+            if (response != null && response.Status != null &&
+                   response.Properties != null && ((OperationStatusProvisionILRExtendedInfo)
+                   response.Properties).RecoveryTarget != null)
+            {
+                InstantItemRecoveryTarget recoveryTarget =
+                    ((OperationStatusProvisionILRExtendedInfo)
+                    response.Properties).RecoveryTarget;
+
+                if (recoveryTarget.ClientScripts.Count != 0)
+                {
+                    if (recoveryTarget.ClientScripts.Count == 2)
+                    {
+                        // clientScriptForConnection.OsType == "Windows"
+                        result = this.GenerateILRResponseForWindowsVMs(
+                                recoveryTarget.ClientScripts[1], out content);
+                    }
+                    else
+                    {
+                        // clientScriptForConnection.OsType == "Linux"
+                        result = this.GenerateILRResponseForLinuxVMs(
+                                recoveryTarget.ClientScripts[0],
+                                protectedItemName, rp.RecoveryPointTime.ToString(), out content);
+                    }
+                }
+            }
+
+            string scriptDownloadLocation =
+                    (string)ProviderData[RecoveryPointParams.FileDownloadLocation];
+            if (string.IsNullOrEmpty(scriptDownloadLocation))
+            {
+                scriptDownloadLocation = Directory.GetCurrentDirectory();
+            }
+            result.FilePath = Path.Combine(scriptDownloadLocation, result.Filename);
+            AzureSession.Instance.DataStore.WriteFile(result.FilePath, Convert.FromBase64String(content));
+
+            Logger.Instance.WriteVerbose(string.Format(
+                Resources.MountRecoveryPointInfoMessage, result.FilePath, result.Password));
+            return result;
+        }
+
+        /// <summary>
+        /// Revoke Item Level Recovery Access for the given recovery point
+        /// </summary>
+        /// <returns></returns>
+        public void RevokeItemLevelRecoveryAccess()
+        {
+            AzureVmRecoveryPoint rp = ProviderData[RestoreBackupItemParams.RecoveryPoint]
+                as AzureVmRecoveryPoint;
+
+            Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
+            string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
+            string protectedItemName = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
+
+            var ilRResponse = ServiceClientAdapter.RevokeItemLevelRecoveryAccess(
+                containerUri, protectedItemName, rp.RecoveryPointId);
+
+            IEnumerable<string> ie =
+                    ilRResponse.Response.Headers.GetValues("Azure-AsyncOperation");
+            string asyncHeader = string.Empty;
+            foreach (string s in ie)
+            {
+                asyncHeader = s;
+            }
+
+            var response = TrackingHelpers.GetOperationStatus(
+                ilRResponse,
+                operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(operationId));
+
+            if (response != null && response.Status != null)
+            {
+                Logger.Instance.WriteDebug("Completed the call with status code" + response.Status.ToString());
+            }
         }
 
         /// <summary>
@@ -362,8 +482,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
                                                 (CmdletModel.LongTermRetentionPolicy)retentionPolicy),
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
-                                                (CmdletModel.SimpleSchedulePolicy)schedulePolicy)
+                                                (CmdletModel.SimpleSchedulePolicy)schedulePolicy),
+                    TimeZone = DateTimeKind.Utc.ToString()
                 }
+
             };
 
             return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(
@@ -435,7 +557,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
                                   (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy),
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(
-                                  (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy)
+                                  (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy),
+                    TimeZone = DateTimeKind.Utc.ToString()
                 }
             };
 
@@ -449,8 +572,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of protection containers</returns>
         public List<ContainerBase> ListProtectionContainers()
         {
-            ContainerType containerType =
-                (ContainerType)ProviderData[ContainerParams.ContainerType];
+            CmdletModel.ContainerType containerType =
+                (CmdletModel.ContainerType)ProviderData[ContainerParams.ContainerType];
             CmdletModel.BackupManagementType? backupManagementTypeNullable =
                 (CmdletModel.BackupManagementType?)
                     ProviderData[ContainerParams.BackupManagementType];
@@ -552,7 +675,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     Dictionary<UriEnums, string> dictionary = HelperUtils.ParseUri(protectedItem.Id);
                     string containerUri = HelperUtils.GetContainerUri(dictionary, protectedItem.Id);
-                    return containerUri.Contains(container.Name);
+
+                    var delimIndex = containerUri.IndexOf(';');
+                    string containerName = containerUri.Substring(delimIndex + 1);
+                    return containerName.ToLower().Equals(container.Name.ToLower());
                 }).ToList();
             }
 
@@ -775,12 +901,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        private void ValidateAzureVMContainerType(ContainerType type)
+        private void ValidateAzureVMContainerType(CmdletModel.ContainerType type)
         {
-            if (type != ContainerType.AzureVM)
+            if (type != CmdletModel.ContainerType.AzureVM)
             {
                 throw new ArgumentException(string.Format(Resources.UnExpectedContainerTypeException,
-                                            ContainerType.AzureVM.ToString(),
+                                            CmdletModel.ContainerType.AzureVM.ToString(),
                                             type.ToString()));
             }
         }
@@ -930,7 +1056,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         azureVMRGName,
                         vmversion);
                     Logger.Instance.WriteDebug(errMsg);
-                    Logger.Instance.ThrowTerminatingError(
+                    Logger.Instance.WriteError(
                         new ErrorRecord(new Exception(Resources.AzureVMNotFound),
                             string.Empty,
                             ErrorCategory.InvalidArgument,
@@ -948,7 +1074,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     azureVMRGName,
                     vmversion);
                 Logger.Instance.WriteDebug(errMsg);
-                Logger.Instance.ThrowTerminatingError(
+                Logger.Instance.WriteError(
                     new ErrorRecord(new Exception(Resources.AzureVMNotFound),
                         string.Empty, ErrorCategory.InvalidArgument, null));
             }
@@ -1057,5 +1183,161 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         }
 
         #endregion
+
+        /// <summary>
+        /// Generates ILR Response object for Windows VMs
+        /// </summary>
+        /// <param name="clientScriptForConnection"></param>
+        /// <returns></returns>
+        private AzureVmRPMountScriptDetails GenerateILRResponseForWindowsVMs(
+            ClientScriptForConnect clientScriptForConnection, out string content)
+        {
+            try
+            {
+                SystemNet.HttpWebResponse webResponse =
+                    TrackingHelpers.RetryHttpWebRequest(
+                        clientScriptForConnection.Url,
+                        3);
+
+                if (SystemNet.HttpStatusCode.OK == webResponse.StatusCode)
+                {
+                    using (Stream myResponseStream = webResponse.GetResponseStream())
+                    {
+                        byte[] myBuffer = new byte[4096];
+                        int bytesRead;
+                        MemoryStream memoryStream = new MemoryStream();
+                        while ((bytesRead =
+                            myResponseStream.Read(myBuffer, 0, myBuffer.Length)) > 0)
+                        {
+                            memoryStream.Write(myBuffer, 0, bytesRead);
+                        }
+                        content = Convert.ToBase64String(
+                            memoryStream.ToArray());
+                        string suffix = clientScriptForConnection.ScriptNameSuffix;
+                        string password = this.RemovePasswordFromSuffixAndReturn(ref suffix);
+                        string fileName = this.ConstructFileName(
+                            suffix, clientScriptForConnection.ScriptExtension);
+
+                        return new AzureVmRPMountScriptDetails(
+                            clientScriptForConnection.OsType, fileName, password);
+                    }
+                }
+                throw new Exception(
+                    "Error in Web Request to download center for ILR script" +
+                    webResponse.StatusCode);
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.WriteWarning(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Generates ILR Response object for Linux VMs.
+        /// </summary>
+        /// <param name="clientScriptForConnection"></param>
+        /// <param name="protectedItemName"></param>
+        /// <param name="recoveryPointTime"></param>
+        /// <returns></returns>
+        private AzureVmRPMountScriptDetails GenerateILRResponseForLinuxVMs(
+            ClientScriptForConnect clientScriptForConnection,
+            string protectedItemName, string recoveryPointTime, out string content)
+        {
+            try
+            {
+                content = clientScriptForConnection.ScriptContent;
+                string suffix = clientScriptForConnection.ScriptNameSuffix;
+                string fileName, password;
+                if (suffix != null)
+                {
+                    this.RemovePasswordFromSuffixAndReturn(ref suffix);
+                    fileName = this.ConstructFileName(
+                        suffix, clientScriptForConnection.ScriptExtension);
+                }
+                else
+                {
+                    string operatingSystemName = clientScriptForConnection.OsType;
+                    string vmName = protectedItemName.Split(';')[3];
+                    fileName = string.Format(
+                            CultureInfo.InvariantCulture,
+                            "{0}_{1}_{2}" + clientScriptForConnection.ScriptExtension,
+                            operatingSystemName,
+                            vmName,
+                            recoveryPointTime);
+                }
+                password = this.ReplacePasswordInScriptContentAndReturn(ref content);
+
+                return new AzureVmRPMountScriptDetails(
+                    clientScriptForConnection.OsType, fileName, password);
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.WriteWarning(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Removes password from ScriptNameSuffix and returns it.
+        /// </summary>
+        /// <param name="suffix"></param>
+        /// <returns></returns>
+        private string RemovePasswordFromSuffixAndReturn(ref string suffix)
+        {
+            int lastIndexOfUnderScore = suffix.LastIndexOf('_');
+            int passwordOffset = lastIndexOfUnderScore +
+                33;
+            string password = suffix.Substring(
+                passwordOffset, 15);
+            suffix = suffix.Remove(
+                passwordOffset, 15);
+            return password;
+        }
+
+        /// <summary>
+        /// Constructs ILR script file name
+        /// </summary>
+        /// <param name="suffix"></param>
+        /// <param name="extension"></param>
+        /// <returns></returns>
+        private string ConstructFileName(string suffix, string extension)
+        {
+            string format = "{0}" + extension;
+            return string.Format(
+                    CultureInfo.InvariantCulture,
+                    format,
+                    suffix);
+        }
+
+        /// <summary>
+        /// Replaces password in ILR script with dummy password and returns it
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        private string ReplacePasswordInScriptContentAndReturn(ref string content)
+        {
+            // decode to text format from Base 64 encoded format
+            var contentBytes = Convert.FromBase64String(content);
+            content = Encoding.UTF8.GetString(contentBytes);
+
+            string targetPasswordString =
+                "TargetPassword=\"";
+            string password = content.Substring(
+                content.IndexOf(
+                    targetPasswordString) + targetPasswordString.Length, 15);
+
+            string pattern = targetPasswordString + ".*\"";
+            string replacement =
+                targetPasswordString + "UserInput012345\"";
+            Regex rgx = new Regex(pattern);
+            content = rgx.Replace(content, replacement);
+
+            // ecode back to Base 64 format
+            contentBytes = Encoding.UTF8.GetBytes(content);
+            content = Convert.ToBase64String(contentBytes);
+
+            return password;
+        }
     }
 }

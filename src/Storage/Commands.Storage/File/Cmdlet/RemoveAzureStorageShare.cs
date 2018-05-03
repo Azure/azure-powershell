@@ -14,6 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.File;
     using System.Globalization;
     using System.Management.Automation;
@@ -44,7 +46,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNull]
         public CloudFileShare Share { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the share and all content in it")]
+        [Parameter(HelpMessage = "Remove File Share with all of its snapshots")]
+        public SwitchParameter IncludeAllSnapshot { get; set; }
+
+        [Parameter(HelpMessage = "Force to remove the share with all its snapshots, and all content in them.")]
         public SwitchParameter Force
         {
             get { return force; }
@@ -55,6 +60,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public SwitchParameter PassThru { get; set; }
 
         private bool force;
+
+        /// <summary>
+        /// Cmdlet begin processing
+        /// </summary>
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            OutputStream.ConfirmWriter = (s1, s2, s3) => ShouldContinue(s2, s3);
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -77,9 +91,54 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 this.RunTask(async taskId =>
                 {
+                    if (share.IsSnapshot && IncludeAllSnapshot.IsPresent)
+                    {
+                        throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "'IncludeAllSnapshot' should only be specified to delete a base share, and should not be specified to delete a Share snapshot: {0}", share.SnapshotQualifiedUri));
+                    }
+
                     if (force || ShareIsEmpty(share) || ShouldContinue(string.Format("Remove share and all content in it: {0}", share.Name), ""))
                     {
-                        await this.Channel.DeleteShareAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                        DeleteShareSnapshotsOption deleteShareSnapshotsOption = DeleteShareSnapshotsOption.None;
+                        bool retryDeleteSnapshot = false;
+
+                        //Force means will delete the share anyway, so use 'IncludeSnapshots' to delete the share even has snapshot, or delete will fail when share has snapshot
+                        // To delete a Share shapshot, must use 'None' 
+                        if (IncludeAllSnapshot.IsPresent)
+                        {
+                            deleteShareSnapshotsOption = DeleteShareSnapshotsOption.IncludeSnapshots;
+                        }
+                        else
+                        {
+                            retryDeleteSnapshot = true;
+                        }
+
+                        try
+                        {
+                            await this.Channel.DeleteShareAsync(share, deleteShareSnapshotsOption, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                            retryDeleteSnapshot = false;
+                        }
+                        catch (StorageException e)
+                        {
+                            //If x-ms-delete-snapshots is not specified on the request and the share has associated snapshots, the File service returns status code 409 (Conflict).
+                            if (!(e.IsConflictException() && retryDeleteSnapshot))
+                            {
+                                throw;
+                            }
+                        }
+
+                        if (retryDeleteSnapshot)
+                        {
+                            if (force || await OutputStream.ConfirmAsync(string.Format("This share might have snapshots, remove the share and all snapshots?: {0}", share.Name)).ConfigureAwait(false))
+                            {
+                                deleteShareSnapshotsOption = DeleteShareSnapshotsOption.IncludeSnapshots;
+                                await this.Channel.DeleteShareAsync(share, deleteShareSnapshotsOption, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                            }
+                            else
+                            {
+                                string result = string.Format("The remove operation of share '{0}' has been cancelled.", share.Name);
+                                OutputStream.WriteVerbose(taskId, result);
+                            }
+                        }
                     }
 
                     if (this.PassThru)

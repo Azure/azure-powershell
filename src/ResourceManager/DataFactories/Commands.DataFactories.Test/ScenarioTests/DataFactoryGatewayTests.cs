@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryGateway()
         {
             RunPowerShellTest("Test-DataFactoryGateway");

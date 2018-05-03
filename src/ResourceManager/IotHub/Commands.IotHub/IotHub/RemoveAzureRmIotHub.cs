@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using System.Management.Automation;
     using Microsoft.Azure.Management.IotHub;
     using PSIotHubProperties = Microsoft.Azure.Commands.Management.IotHub.Properties;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmIotHub", SupportsShouldProcess = true)]
     public class RemoveAzureRmIotHub : IotHubBaseCmdlet
@@ -29,6 +30,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the Resource Group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

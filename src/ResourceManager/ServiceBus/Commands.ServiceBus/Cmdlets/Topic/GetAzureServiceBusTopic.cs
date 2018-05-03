@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -23,29 +24,21 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// <para> If ServiceBus Topic name provided, a single ServiceBus Topic detials will be returned</para>
     /// <para> If ServiceBus Topic name not provided, list of ServiceBus Topic will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusTopicVerb), OutputType(typeof(TopicAttributes))]
+    [Cmdlet(VerbsCommon.Get, ServicebusTopicVerb), OutputType(typeof(PSTopicAttributes))]
     public class GetAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The name of the resource group")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "Namespace Name.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = false,
-           ValueFromPipelineByPropertyName = true,
-           Position = 1,
-           HelpMessage = "Topic Name.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Topic Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicName)]
         public string Name { get; set; }
@@ -54,12 +47,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         {
             if (!string.IsNullOrEmpty(Name))
             {
-                TopicAttributes topicAttributes = Client.GetTopic(ResourceGroupName, Namespace, Name);
+                PSTopicAttributes topicAttributes = Client.GetTopic(ResourceGroupName, Namespace, Name);
                 WriteObject(topicAttributes);
             }
             else
             {
-               IEnumerable<TopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
+               IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
                WriteObject(topicAttributes,true);
             }
 

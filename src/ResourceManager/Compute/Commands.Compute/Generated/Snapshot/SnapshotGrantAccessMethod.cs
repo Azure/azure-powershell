@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var pAccess = new RuntimeDefinedParameter();
             pAccess.Name = "Access";
-            pAccess.ParameterType = typeof(AccessLevel);
+            pAccess.ParameterType = typeof(string);
             pAccess.Attributes.Add(new ParameterAttribute
             {
                 ParameterSetName = "InvokeByDynamicParameters",
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
             var grantAccessData = new GrantAccessData();
-            var pAccess = (AccessLevel) ParseParameter(invokeMethodInputParameters[2]);
+            var pAccess = (string) ParseParameter(invokeMethodInputParameters[2]);
             grantAccessData.Access = pAccess;
             var pDurationInSeconds = (int) ParseParameter(invokeMethodInputParameters[3]);
             grantAccessData.DurationInSeconds = pDurationInSeconds;
@@ -132,9 +131,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSAccessUri))]
     public partial class GrantAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.SnapshotName, VerbsSecurity.Grant))
@@ -147,7 +145,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = SnapshotsClient.GrantAccess(resourceGroupName, snapshotName, grantAccessData);
                     var psObject = new PSAccessUri();
-                    Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<AccessUri, PSAccessUri>(result, psObject);
                     WriteObject(psObject);
                 }
             });
@@ -157,34 +155,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             ParameterSetName = "DefaultParameter",
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
+            ValueFromPipelineByPropertyName = true)]
         [Alias("Name")]
-        [AllowNull]
         public string SnapshotName { get; set; }
-
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 3,
-            Mandatory = false)]
-        [AllowNull]
-        public AccessLevel Access { get; set; }
+            Mandatory = true)]
+        public string Access { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 4,
             Mandatory = false)]
-        [AllowNull]
         public int DurationInSecond { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
     }
 }

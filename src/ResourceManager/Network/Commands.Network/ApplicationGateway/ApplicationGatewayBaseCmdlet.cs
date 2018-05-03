@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var appGateway = this.ApplicationGatewayClient.Get(resourceGroupName, name);
 
-            var psApplicationGateway = Mapper.Map<PSApplicationGateway>(appGateway);
+            var psApplicationGateway = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGateway>(appGateway);
             psApplicationGateway.ResourceGroupName = resourceGroupName;
             psApplicationGateway.Tag =
                 TagsConversionHelper.CreateTagHashtable(appGateway.Tags);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSApplicationGateway ToPsApplicationGateway(ApplicationGateway appGw)
         {
-            var psAppGw = Mapper.Map<PSApplicationGateway>(appGw);
+            var psAppGw = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGateway>(appGw);
 
             psAppGw.Tag = TagsConversionHelper.CreateTagHashtable(appGw.Tags);
 

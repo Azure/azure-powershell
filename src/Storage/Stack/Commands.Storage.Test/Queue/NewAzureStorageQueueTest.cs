@@ -14,20 +14,19 @@
 
 using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Storage.Queue;
+using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
 {
-    [TestClass]
     public class NewAzureStorageQueueTest : StorageQueueTestBase
     {
         public NewAzureStorageQueueCommand command = null;
 
-        [TestInitialize]
-        public void InitCommand()
+        public NewAzureStorageQueueTest()
         {
             command = new NewAzureStorageQueueCommand(queueMock)
                 {
@@ -35,13 +34,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 };
         }
 
-        [TestCleanup]
-        public void CleanCommand()
-        {
-            command = null;
-        }
-
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAzureQueueWithInvalidNameTest()
         {
             string name = String.Empty;
@@ -57,7 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 String.Format(Resources.InvalidQueueName, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAzureQueueWithExistsQueueTest()
         {
             AddTestQueues();
@@ -66,27 +61,29 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Queue
                 String.Format(Resources.QueueAlreadyExists, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAzureQueueSuccessfullyTest()
         {
             MockCmdRunTime.ResetPipelines();
             string name = "test";
             AzureStorageQueue queue = command.CreateAzureQueue(name);
-            Assert.AreEqual("test", queue.Name);
+            Assert.Equal("test", queue.Name);
 
             MockCmdRunTime.ResetPipelines();
             AssertThrows<ResourceAlreadyExistException>(() => command.CreateAzureQueue(name),
                 String.Format(Resources.QueueAlreadyExists, name));
         }
 
-        [TestMethod]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ExcuteCommandNewQueueTest()
         {
             string name = "queuename";
             command.Name = name;
             command.ExecuteCmdlet();
             AzureStorageQueue queue = (AzureStorageQueue)MockCmdRunTime.OutputPipeline.FirstOrDefault();
-            Assert.AreEqual(name, queue.Name);
+            Assert.Equal(name, queue.Name);
         }
     }
 }

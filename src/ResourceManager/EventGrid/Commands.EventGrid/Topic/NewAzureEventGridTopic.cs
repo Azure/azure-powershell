@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EventGrid.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 0,
             HelpMessage = "The resource group in which the topic should be created.",
             ParameterSetName = TopicNameParameterSet)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
@@ -55,6 +57,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 2,
             HelpMessage = "The location of the topic",
             ParameterSetName = TopicNameParameterSet)]
+        [LocationCompleter("Microsoft.EventGrid/topics")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

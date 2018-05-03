@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             StaticIP = cache.StaticIP;
             TenantSettings = cache.TenantSettings;
             ShardCount = cache.ShardCount;
+            Tag = cache.Tags;
+            Zone = cache.Zones;
         }
 
         public RedisCacheAttributes() { }
@@ -60,7 +62,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 else
                 {
                     // if resource group name is null (when try to get all cache in given subscription it will be null) we have to fetch it from Id.
-                    _resourceGroupName = Id.Split('/')[4];
+                    _resourceGroupName = Utility.GetResourceGroupNameFromRedisCacheId(Id);
                 }
             }
         }
@@ -98,5 +100,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public string SubnetId { get; protected set; }
 
         public string StaticIP { get; protected set; }
+
+        public IDictionary<string, string> Tag { get; protected set; }
+
+        public IList<string> Zone { get; protected set; }
     }
 }

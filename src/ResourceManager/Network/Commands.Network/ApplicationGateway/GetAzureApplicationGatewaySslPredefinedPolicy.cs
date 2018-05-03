@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Name != null)
             {
                 var policy = this.ApplicationGatewayClient.GetSslPredefinedPolicy(this.Name);
-                var psPolicy = Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy);
+                var psPolicy = NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy);
                 WriteObject(psPolicy, true);
             }
             else
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Network
                 var psPolicies = new List<PSApplicationGatewaySslPredefinedPolicy>();
                 foreach (var policy in policies)
                 {
-                    psPolicies.Add(Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy));
+                    psPolicies.Add(NetworkResourceManagerProfile.Mapper.Map<PSApplicationGatewaySslPredefinedPolicy>(policy));
                 }
 
                 WriteObject(psPolicies, true);

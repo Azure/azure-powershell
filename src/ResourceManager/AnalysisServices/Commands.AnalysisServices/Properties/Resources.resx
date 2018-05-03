@@ -139,7 +139,7 @@
     <value>AnalysisServices server operation failed with the following error code: {0} and message: {1}</value>
   </data>
   <data name="NoSubscriptionInContext" xml:space="preserve">
-    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Login-AzureRMAccount to login.</value>
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRMAccount to login.</value>
   </data>
   <data name="RemoveAnalysisServicesServer" xml:space="preserve">
     <value>Are you sure you want to remove Analysis Services server: '{0}'?</value>

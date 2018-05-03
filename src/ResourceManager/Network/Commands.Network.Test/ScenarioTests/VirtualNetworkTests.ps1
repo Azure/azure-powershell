@@ -15,6 +15,8 @@
 <#
 .SYNOPSIS
 Tests creating new simple virtualNetwork.
+.DESCRIPTION
+SmokeTest
 #>
 function Test-VirtualNetworkCRUD
 {
@@ -33,7 +35,9 @@ function Test-VirtualNetworkCRUD
         
         # Create the Virtual Network
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $actual = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet
+        $job = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -AsJob
+        $job | Wait-Job
+        $actual = $job | Receive-Job
         $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         
         Assert-AreEqual $expected.ResourceGroupName $rgname    
@@ -80,7 +84,9 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual 5 @($testResponse2.AvailableIpAddresses).Count
         
         # Delete VirtualNetwork
-        $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        $job = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force -AsJob
+        $job | Wait-Job
+        $delete = $job | Receive-Job
         Assert-AreEqual true $delete
                 
         $list = Get-AzureRmvirtualNetwork -ResourceGroupName $rgname
@@ -96,6 +102,8 @@ function Test-VirtualNetworkCRUD
 <#
 .SYNOPSIS
 Tests creating new simple virtualNetwork and subnets.
+.DESCRIPTION
+SmokeTest
 #>
 function Test-subnetCRUD
 {
@@ -134,8 +142,9 @@ function Test-subnetCRUD
         Assert-AreEqual "10.0.2.0/24" $vnetExpected.Subnets[1].AddressPrefix
         
         # Edit a subnet
-        Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.3.0/24 | Set-AzureRmVirtualNetwork
-        
+        $job = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname | Set-AzureRmVirtualNetworkSubnetConfig -Name $subnet2Name -AddressPrefix 10.0.3.0/24 | Set-AzureRmVirtualNetwork -AsJob
+        $job | Wait-Job
+
         $vnetExpected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual 2 @($vnetExpected.Subnets).Count
         Assert-AreEqual $subnetName $vnetExpected.Subnets[0].Name
@@ -167,7 +176,7 @@ function Test-subnetCRUD
 
 <#
 .SYNOPSIS
-Tests creating new simple virtualNetwork with DDoSProtecion parameters.
+Tests the creation of a new virtual network with DDoS protection parameters.
 #>
 function Test-VirtualNetworkCRUDWithDDoSProtection
 {
@@ -175,22 +184,29 @@ function Test-VirtualNetworkCRUDWithDDoSProtection
     $rgname = Get-ResourceGroupName
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
+    $ddosProtectionPlanName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworks"
     $location = Get-ProviderLocation $resourceTypeParent
-    
+
     try 
     {
         # Create the resource group
+
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
-        
+
+        # Create a DDoS Protection plan
+
+        $ddosProtectionPlan = New-AzureRmDdosProtectionPlan -Name $ddosProtectionPlanName -ResourceGroupName $rgname -Location $location
+
         # Create the Virtual Network
+
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $actual = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDDoSProtection
+        $actual = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -DnsServer 8.8.8.8 -Subnet $subnet -EnableDdoSProtection -DdosProtectionPlanId $ddosProtectionPlan.Id
         $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        
-        Assert-AreEqual $expected.ResourceGroupName $rgname    
-        Assert-AreEqual $expected.Name $actual.Name    
+
+        Assert-AreEqual $expected.ResourceGroupName $rgname
+        Assert-AreEqual $expected.Name $actual.Name
         Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual "Succeeded" $expected.ProvisioningState
         Assert-NotNull $expected.ResourceGuid
@@ -200,24 +216,36 @@ function Test-VirtualNetworkCRUDWithDDoSProtection
         Assert-AreEqual 1 @($expected.Subnets).Count
         Assert-AreEqual $subnetName $expected.Subnets[0].Name
         Assert-AreEqual "10.0.1.0/24" $expected.Subnets[0].AddressPrefix
-		Assert-AreEqual true $expected.EnableDDoSProtection
-		Assert-AreEqual false $expected.EnableVmProtection
-        
-		$expected.EnableDDoSProtection=$false
-		Set-AzureRmVirtualNetwork -VirtualNetwork $expected
-		$expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual false $expected.EnableDDoSProtection
-		Assert-AreEqual false $expected.EnableVmProtection
+        Assert-AreEqual true $expected.EnableDDoSProtection
+        Assert-AreEqual $ddosProtectionPlan.Id $expected.DdosProtectionPlan.Id
+        Assert-AreEqual false $expected.EnableVmProtection
 
-		$expected.EnableVmProtection=$true
-		Set-AzureRmVirtualNetwork -VirtualNetwork $expected
-		$expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        $expected.EnableDDoSProtection = $false
+        $expected.DdosProtectionPlan = $null
+        Set-AzureRmVirtualNetwork -VirtualNetwork $expected
+        $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
         Assert-AreEqual false $expected.EnableDDoSProtection
-		Assert-AreEqual true $expected.EnableVmProtection
-        
-        # Delete VirtualNetwork
-        $delete = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
-        Assert-AreEqual true $delete
+        Assert-AreEqual false $expected.EnableVmProtection
+        Assert-AreEqual $null $expected.DdosProtectionPlan
+
+        $expected.EnableVmProtection = $true
+        $expected.DdosProtectionPlan = New-Object Microsoft.Azure.Commands.Network.Models.PSResourceId
+        $expected.DdosProtectionPlan.Id = $ddosProtectionPlan.Id
+        Set-AzureRmVirtualNetwork -VirtualNetwork $expected
+        $expected = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual false $expected.EnableDDoSProtection
+        Assert-AreEqual true $expected.EnableVmProtection
+        Assert-AreEqual $ddosProtectionPlan.Id $expected.DdosProtectionPlan.Id
+
+        # Delete the virtual network
+
+        $deleteVnet = Remove-AzureRmvirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
+        Assert-AreEqual true $deleteVnet
+
+        # Delete the DDoS protection plan
+
+        $deleteDdosProtectionPlan = Remove-AzureRmDdosProtectionPlan -ResourceGroupName $rgname -name $ddosProtectionPlanName -PassThru
+        Assert-AreEqual true $deleteDdosProtectionPlan
     }
     finally
     {
@@ -268,7 +296,9 @@ function Test-VirtualNetworkPeeringCRUD
         Assert-AreEqual "Succeeded" $vnet2.ProvisioningState 
 
         # Add Peering to vnet1
-        $peer = $vnet1 | Add-AzureRmVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id -AllowForwardedTraffic
+        $job = $vnet1 | Add-AzureRmVirtualNetworkPeering -name $peerName -RemoteVirtualNetworkId $vnet2.Id -AllowForwardedTraffic -AsJob
+        $job | Wait-Job
+        $peer = $job | Receive-Job
         
         Assert-AreEqual $peer.ResourceGroupName $rgname    
         Assert-AreEqual $peer.Name $peerName    
@@ -314,7 +344,9 @@ function Test-VirtualNetworkPeeringCRUD
         # Set Peer
         $getPeer.AllowForwardedTraffic = $false
         
-        $setPeer = $getPeer | Set-AzureRmVirtualNetworkPeering
+        $job = $getPeer | Set-AzureRmVirtualNetworkPeering -AsJob
+        $job | Wait-Job
+        $setPeer = $job | Receive-Job
         
         Assert-AreEqual $setPeer.ResourceGroupName $rgname    
         Assert-AreEqual $setPeer.Name $peerName    
@@ -329,7 +361,9 @@ function Test-VirtualNetworkPeeringCRUD
         Assert-Null $setPeer.$peer.RemoteVirtualNetworkAddressSpace
         
         # Delete Peer
-        $delete = Remove-AzureRmVirtualNetworkPeering -name $peerName -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname -Force -PassThru
+        $job = Remove-AzureRmVirtualNetworkPeering -name $peerName -VirtualNetworkName $vnet1Name -ResourceGroupName $rgname -Force -PassThru -AsJob
+        $job | Wait-Job
+        $delete = $job | Receive-Job
         Assert-AreEqual true $delete
 
         # Delete VirtualNetwork
@@ -414,6 +448,8 @@ function Test-ResourceNavigationLinksCRUD
 <#
 .SYNOPSIS
 Tests checking Virtual Network Usage feature.
+.DESCRIPTION
+SmokeTest
 #>
 function Test-VirtualNetworkUsage
 {

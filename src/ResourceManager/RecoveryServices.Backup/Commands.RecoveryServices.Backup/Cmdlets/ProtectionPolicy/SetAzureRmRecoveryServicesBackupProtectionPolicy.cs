@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy in the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy"),
-    OutputType(typeof(List<JobBase>))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy",
+        SupportsShouldProcess = true), OutputType(typeof(List<JobBase>))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     WriteDebug("No datasources are associated with Policy, http response code: " +
                                 policyResponse.Response.StatusCode.ToString());
                 }
-            });
+            }, ShouldProcess(Policy.Name, VerbsCommon.Set));
         }
     }
 }

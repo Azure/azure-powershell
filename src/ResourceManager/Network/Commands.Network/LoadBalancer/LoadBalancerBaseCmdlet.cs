@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var lb = this.LoadBalancerClient.Get(resourceGroupName, name, expandResource);
 
-            var psLoadBalancer = Mapper.Map<PSLoadBalancer>(lb);
+            var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(lb);
             psLoadBalancer.ResourceGroupName = resourceGroupName;
             psLoadBalancer.Tag =
                 TagsConversionHelper.CreateTagHashtable(lb.Tags);
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSLoadBalancer ToPsLoadBalancer(LoadBalancer lb)
         {
-            var psLb = Mapper.Map<PSLoadBalancer>(lb);
+            var psLb = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(lb);
 
             psLb.Tag = TagsConversionHelper.CreateTagHashtable(lb.Tags);
 

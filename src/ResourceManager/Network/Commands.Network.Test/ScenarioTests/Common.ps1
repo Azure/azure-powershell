@@ -32,11 +32,30 @@ function Get-ResourceName
 
 <#
 .SYNOPSIS
+Gets test mode - 'Record' or 'Playback'
+#>
+function Get-NetworkTestMode {
+    try {
+        $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
+        $testMode = $testMode.ToString();
+    } catch {
+        if ($PSItem.Exception.Message -like '*Unable to find type*') {
+            $testMode = 'Record';
+        } else {
+            throw;
+        }
+    }
+
+    return $testMode
+}
+
+<#
+.SYNOPSIS
 Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	if ((Get-NetworkTestMode) -ne 'Playback')
 	{
 		$namespace = $provider.Split("/")[0]  
 		if($provider.Contains("/"))  
@@ -47,7 +66,8 @@ function Get-ProviderLocation($provider)
 			if ($location -eq $null) 
 			{  
 				return "West US"  
-			} else 
+			} 
+            else 
 			{  
 			if($location.Locations[0] -eq "West US")
 			{ 
@@ -72,7 +92,7 @@ Cleans the created resource groups
 #>
 function Clean-ResourceGroup($rgname)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
+    if ((Get-NetworkTestMode) -ne 'Playback') {
         Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
@@ -83,7 +103,7 @@ Sleeps but only during recording.
 #>
 function Start-TestSleep($milliseconds)
 {
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    if ((Get-NetworkTestMode) -ne 'Playback')
     {
         Start-Sleep -Milliseconds $milliseconds
     }

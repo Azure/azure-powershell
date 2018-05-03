@@ -13,13 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataFactories.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    [Cmdlet(VerbsCommon.New, Constants.DataFactory, SupportsShouldProcess = true), 
+    [Cmdlet(VerbsCommon.New, Constants.DataFactory, SupportsShouldProcess = true),
         OutputType(typeof(PSDataFactory))]
     public class NewAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
@@ -30,12 +32,13 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The geographic region to create the data factory.")]
+        [LocationCompleter("Microsoft.DataFactory/datafactories")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags of the data factory.")]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -48,7 +51,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = Name,
                 Location = Location,
-                Tags = Tags,
+                Tags = Tag,
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction
             };

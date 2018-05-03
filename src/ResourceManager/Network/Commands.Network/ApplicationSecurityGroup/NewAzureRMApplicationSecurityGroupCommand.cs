@@ -31,6 +31,7 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -41,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The resource group name of the application security group.",
             ValueFromPipelineByPropertyName = true)]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -56,6 +58,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The location.",
             ValueFromPipelineByPropertyName = true)]
+        [LocationCompleter("Microsoft.Network/applicationSecurityGroups")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -70,6 +73,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -80,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network
                 Location = this.Location,
             };
 
-            var vApplicationSecurityGroupModel = Mapper.Map<MNM.ApplicationSecurityGroup>(vApplicationSecurityGroup);
+            var vApplicationSecurityGroupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ApplicationSecurityGroup>(vApplicationSecurityGroup);
             vApplicationSecurityGroupModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
             var present = true;
             try
@@ -109,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.CreateOrUpdate(this.ResourceGroupName, this.Name, vApplicationSecurityGroupModel);
                 var getApplicationSecurityGroup = this.NetworkClient.NetworkManagementClient.ApplicationSecurityGroups.Get(this.ResourceGroupName, this.Name);
-                var psApplicationSecurityGroup = Mapper.Map<PSApplicationSecurityGroup>(getApplicationSecurityGroup);
+                var psApplicationSecurityGroup = NetworkResourceManagerProfile.Mapper.Map<PSApplicationSecurityGroup>(getApplicationSecurityGroup);
                 psApplicationSecurityGroup.ResourceGroupName = this.ResourceGroupName;
                 psApplicationSecurityGroup.Tag = TagsConversionHelper.CreateTagHashtable(getApplicationSecurityGroup.Tags);
                 WriteObject(psApplicationSecurityGroup, true);

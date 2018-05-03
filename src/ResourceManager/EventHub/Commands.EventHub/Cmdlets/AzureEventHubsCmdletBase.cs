@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -26,19 +27,14 @@ using System.Globalization;
 using System.IO;
 using System.Management.Automation;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
 
     public abstract class AzureEventHubsCmdletBase : AzureRMCmdlet
-    {
-        public const string InputFileParameterSetName = "InputFileParameterSet";
-        public const string SASRuleParameterSetName = "SASRuleParameterSet";
-        public const string EventHubParameterSetName = "EventHubParameterSet";
-        public const string ConsumerGroupParameterSetName = "ConsumerGroupParameterSet";
-        public const string RegenerateKeySetName = "RegenerateKeySet";
-                                                        
+    {                                                        
         protected const string EventHubNamespaceVerb = "AzureRmEventHubNamespace";
         protected const string EventHubNamespaceAuthorizationRuleVerb = "AzureRmEventHubNamespaceAuthorizationRule";
         protected const string EventHubNamespaceKeyVerb = "AzureRmEventHubNamespaceKey";
@@ -53,27 +49,35 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected const string ConsumerGroupVerb = "AzureRmEventHubConsumerGroup";
 
-
-        //AuthorizationRules
-        //protected const string EventHubAuthorizationRuleVerb = "AzureRmEventHubAuthorizationRule";
-        //protected const string EventHubKeyVerb = "AzureRmEventHubKey";
-
+        protected const string EventHubDRConfigurationVerb = "AzureRmEventHubGeoDRConfiguration";
+        protected const string EventhubDRConfigurationFailoverVerb = "AzureRmEventHubGeoDRConfigurationFailOver";
+        protected const string EventhubDRConfigurationBreakPairingVerb = "AzureRmEventHubGeoDRConfigurationBreakPair";
+        
         //Parametersets for Authorizationrules
         protected const string NamespaceAuthoRuleParameterSet = "NamespaceAuthorizationRuleSet";
         protected const string EventhubAuthoRuleParameterSet = "EventhubAuthorizationRuleSet";
         protected const string ConsumergroupAuthoRuleParameterSet = "ConsumergroupAuthorizationRuleSet";
+        protected const string AliasAuthoRuleParameterSet = "AliasAuthoRuleSet";
+        protected const string AliasCheckNameAvailabilityParameterSet = "AliasCheckNameAvailabilitySet";
+        protected const string NamespaceCheckNameAvailabilityParameterSet = "NamespaceCheckNameAvailabilitySet";
 
         //Parameter sets for InputObjects
         protected const string NamespaceInputObjectParameterSet = "NamespaceInputObjectSet";
         protected const string EventhubInputObjectParameterSet = "EventhubInputObjectSet";
         protected const string ConsumergroupInputObjectParameterSet = "ConsumergroupInputObjectSet";
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
+        protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
+
+        //Parameter sets for ResourceID
+        protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
+        protected const string NamespaceResourceIdParameterSet = "NamespaceResourceIdParameterSet";
+        protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
         protected const string EventhubPropertiesParameterSet = "EventhubPropertiesSet";
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
-        protected const string AuthoRulePropertiesParameterSet = "AuthoRulePropertiesSet";
+        protected const string GeoDRParameterSet = "GeoDRParameterSet";
 
         //Parametersets for Authorizationrules
         protected const string NamespaceParameterSet = "NamespaceParameterSet";
@@ -87,7 +91,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string AliasEventHubObj = "EventHubObj";
         protected const string AliasAuthorizationRuleName = "AuthorizationRuleName";
         protected const string AliasAuthRuleObj = "AuthRuleObj";
-        
+
         protected struct SKU
         {
             internal const string Basic = "Basic";
@@ -118,7 +122,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             {
                 _client = value;
             }
-        }        
+        }
+
+        public ResourceIdentifier GetResourceDetailsFromId(string strResourceId)
+        {
+            ResourceIdentifier returnResourceIdentifier = new ResourceIdentifier(strResourceId);
+            returnResourceIdentifier.ParentResource = Regex.Split(strResourceId, @"/")[8];
+            return returnResourceIdentifier;
+        }
 
         #region TagsHelper
 

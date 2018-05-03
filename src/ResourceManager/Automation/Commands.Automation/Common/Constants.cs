@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -85,6 +85,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             public const string GraphicalPowerShell = "GraphicalPowerShell";
 
             public const string GraphicalPowerShellWorkflow = "GraphicalPowerShellWorkflow";
+
+            public const string Python2 = "Python2";
         }
 
         public static class SupportedFileExtensions
@@ -92,6 +94,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             public const string PowerShellScript = ".ps1";
 
             public const string Graph = ".graphrunbook";
+
+            public const string Python = ".py";
         }
     }
 }

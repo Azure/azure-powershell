@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             var routeFilterRule = this.RouteFilterRuleClient.Get(resourceGroupName, filterName, name);
 
-            var psRouteFilterRule = Mapper.Map<PSRouteFilterRule>(routeFilterRule);
+            var psRouteFilterRule = NetworkResourceManagerProfile.Mapper.Map<PSRouteFilterRule>(routeFilterRule);
             
             return psRouteFilterRule;
         }

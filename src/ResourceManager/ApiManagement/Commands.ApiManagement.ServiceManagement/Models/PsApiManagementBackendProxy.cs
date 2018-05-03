@@ -14,12 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
+    using System.Management.Automation;
+
     public class PsApiManagementBackendProxy
     {
         public string Url { get; set; }
 
-        public string UserName { get; set; }
-
-        public string Password { get; set; }
+        public PSCredential ProxyCredentials { get; set; }
     }
 }

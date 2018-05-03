@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
-online version: 
+Module Name: AzureRM.RecoveryServices.SiteRecovery
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrjob
 schema: 2.0.0
 ---
 
@@ -14,17 +15,18 @@ Gets the details of the specified ASR job or the list of recent ASR jobs in the 
 ### ByParam (Default)
 ```
 Get-AzureRmRecoveryServicesAsrJob [-StartTime <DateTime>] [-EndTime <DateTime>] [-TargetObjectId <String>]
- [-State <String>] [<CommonParameters>]
+ [-State <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmRecoveryServicesAsrJob -Name <String> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrJob -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByObject
 ```
-Get-AzureRmRecoveryServicesAsrJob -Job <ASRJob> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrJob -Job <ASRJob> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,6 +44,20 @@ Returns all the jobs on a particular ASR object(reference the ASR object such as
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EndTime
 Specifies the end time for the jobs.
 This cmdlet gets all jobs that started before the specified time.
@@ -51,7 +67,7 @@ For more information, type `Get-Help Get-Date`.
 ```yaml
 Type: DateTime
 Parameter Sets: ByParam
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -66,7 +82,7 @@ Specifies the ASR job object to get updated details for.
 ```yaml
 Type: ASRJob
 Parameter Sets: ByObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,7 +97,7 @@ Specify the ASR job by name.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +113,7 @@ This cmdlet gets all jobs that started after the specified time.
 ```yaml
 Type: DateTime
 Parameter Sets: ByParam
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,7 +138,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: ByParam
-Aliases: 
+Aliases:
 Accepted values: NotStarted, InProgress, Succeeded, Other, Failed, Cancelled, Suspended
 
 Required: False
@@ -138,7 +154,7 @@ Specifies the ID of the object. Used to search for jobs on the specified object.
 ```yaml
 Type: String
 Parameter Sets: ByParam
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

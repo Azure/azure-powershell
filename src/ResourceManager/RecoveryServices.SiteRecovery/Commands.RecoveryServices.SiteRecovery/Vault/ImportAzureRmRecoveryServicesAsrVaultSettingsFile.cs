@@ -19,17 +19,21 @@ using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Imports Azure Site Recovery Vault Settings.
+    ///     Imports the specified ASR vault settings file to set the vault context(PowerShell session context)
+    ///     for subsequent ASR operations in the PowerShell session. 
     /// </summary>
     [Cmdlet(
         VerbsData.Import,
         "AzureRmRecoveryServicesAsrVaultSettingsFile",
         SupportsShouldProcess = true)]
     [OutputType(typeof(ASRVaultSettings))]
+    [Alias(
+        "Import-ASRVaultSettingsFile")]
     public class ImportAzureRmRecoveryServicesAsrVaultSettingsFile : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -63,14 +67,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 {
                     try
                     {
-                        var serializer = new DataContractSerializer(typeof(ASRVaultCreds));
-                        using (var s = new FileStream(
-                            this.Path,
-                            FileMode.Open,
-                            FileAccess.Read,
-                            FileShare.Read))
+                        if (FileUtilities.DataStore.ReadFileAsText(this.Path).ToLower().Contains("<asrvaultcreds"))
                         {
-                            asrVaultCreds = (ASRVaultCreds)serializer.ReadObject(s);
+                            asrVaultCreds = ReadAcsASRVaultCreds();
+                        }
+                        else
+                        {
+                            asrVaultCreds = ReadAadASRVaultCreds();
                         }
                     }
                     catch (XmlException xmlException)
@@ -118,6 +121,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
                 this.WriteObject(new ASRVaultSettings(asrVaultCreds));
             }
+        }
+
+        private ASRVaultCreds ReadAcsASRVaultCreds()
+        {
+            ASRVaultCreds asrVaultCreds;
+            var serializer = new DataContractSerializer(typeof(ASRVaultCreds));
+                using (var s = new FileStream(
+                    this.Path,
+                    FileMode.Open,
+                    FileAccess.Read,
+                    FileShare.Read))
+                {
+                    asrVaultCreds = (ASRVaultCreds)serializer.ReadObject(s);
+                }
+            return asrVaultCreds;
+        }
+
+        private ASRVaultCreds ReadAadASRVaultCreds()
+        {
+            ASRVaultCreds asrVaultCreds;
+            var serializer = new DataContractSerializer(typeof(RSVaultAsrCreds));
+            using (var s = new FileStream(
+                this.Path,
+                FileMode.Open,
+                FileAccess.Read,
+                FileShare.Read))
+            {
+                RSVaultAsrCreds aadCreds = (RSVaultAsrCreds)serializer.ReadObject(s);
+                asrVaultCreds = new ASRVaultCreds();
+                asrVaultCreds.ChannelIntegrityKey = aadCreds.ChannelIntegrityKey;
+                asrVaultCreds.ResourceGroupName = aadCreds.VaultDetails.ResourceGroup;
+                asrVaultCreds.Version = aadCreds.Version;
+                asrVaultCreds.SiteId = aadCreds.SiteId;
+                asrVaultCreds.SiteName = aadCreds.SiteName;
+                asrVaultCreds.ResourceNamespace = aadCreds.VaultDetails.ProviderNamespace;
+                asrVaultCreds.ARMResourceType = aadCreds.VaultDetails.ResourceType;
+                asrVaultCreds.ResourceName = aadCreds.VaultDetails.ResourceName;
+            }
+            return asrVaultCreds;
         }
     }
 }

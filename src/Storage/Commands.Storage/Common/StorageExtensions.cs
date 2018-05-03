@@ -34,11 +34,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             if (string.IsNullOrEmpty(sasToken))
             {
-                return file.Uri;
+                return file.SnapshotQualifiedUri;
             }
             else
             {
-                return new Uri(string.Format(CultureInfo.InvariantCulture, "{0}{1}", file.Uri.AbsoluteUri, sasToken));
+                return new Uri(string.Format(CultureInfo.InvariantCulture, "{0}{1}", file.SnapshotQualifiedUri.AbsoluteUri, sasToken));
             }
         }
 
@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 return file;
             }
 
-            return new CloudFile(file.Uri, new StorageCredentials(sasToken));
+            return new CloudFile(file.SnapshotQualifiedUri, new StorageCredentials(sasToken));
         }
 
         private static string GetFileSASToken(CloudFile file)

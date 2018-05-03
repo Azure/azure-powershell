@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestRemoveComputeNodes()
         {
             BatchController controller = BatchController.NewInstance;
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(controller, context, removeNodePoolId, 2);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, removeNodePoolId, targetDedicated: 2, targetLowPriority: 0);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(controller, context, removeNodePoolId);
                 },
                 () =>
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestRebootAndReimageComputeNode()
         {
             BatchController controller = BatchController.NewInstance;
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDisableAndEnableComputeNodeScheduling()
         {
             BatchController controller = BatchController.NewInstance;
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetComputeNodeRemoteLoginSettings()
         {
             BatchController controller = BatchController.NewInstance;

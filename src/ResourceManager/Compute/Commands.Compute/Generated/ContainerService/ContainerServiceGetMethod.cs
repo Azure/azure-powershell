@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
@@ -138,9 +137,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [OutputType(typeof(PSContainerService))]
     public partial class GetAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            AutoMapper.Mapper.AddProfile<ComputeAutomationAutoMapperProfile>();
             ExecuteClientAction(() =>
             {
                 string resourceGroupName = this.ResourceGroupName;
@@ -150,7 +148,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     var result = ContainerServicesClient.Get(resourceGroupName, containerServiceName);
                     var psObject = new PSContainerService();
-                    Mapper.Map<ContainerService, PSContainerService>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerService>(result, psObject);
                     WriteObject(psObject);
                 }
                 else if (!string.IsNullOrEmpty(resourceGroupName))
@@ -170,7 +168,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var psObject = new List<PSContainerServiceList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerServiceList>(r));
                     }
                     WriteObject(psObject, true);
                 }
@@ -191,7 +189,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var psObject = new List<PSContainerServiceList>();
                     foreach (var r in resultList)
                     {
-                        psObject.Add(Mapper.Map<ContainerService, PSContainerServiceList>(r));
+                        psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<ContainerService, PSContainerServiceList>(r));
                     }
                     WriteObject(psObject, true);
                 }
@@ -201,19 +199,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 1,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
             Position = 2,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = false)]
-        [AllowNull]
+            ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
     }
 }

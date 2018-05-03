@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceFabric.dll-Help.xml
-online version: 
+Module Name: AzureRM.ServiceFabric
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric/new-azurermservicefabriccluster
 schema: 2.0.0
 ---
 
@@ -17,21 +18,22 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-CertificateOutpu
  [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
  -Location <String> [-Name <String>] [-VmUserName <String>] [-ClusterSize <Int32>]
  [-CertificateSubjectName <String>] -VmPassword <SecureString> [-OS <OperatingSystem>] [-VmSku <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExistingKeyVault
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
--SecretIdentifier <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VmPassword <SecureString>] -SecretIdentifier <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByNewPfxAndVaultName
 ```
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  [-CertificateOutputFolder <String>] [-CertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>]
- [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyVaultName <String>] [-CertificateSubjectName <String>] [-VmPassword <SecureString>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExistingPfxAndVaultName
@@ -39,7 +41,8 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <Str
 New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <String> -ParameterFile <String>
  -CertificateFile <String> [-CertificatePassword <SecureString>] [-SecondaryCertificateFile <String>]
  [-SecondaryCertificatePassword <SecureString>] [-KeyVaultResouceGroupName <String>] [-KeyVaultName <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VmPassword <SecureString>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,9 +62,9 @@ $clusterloc="SouthCentralUS"
 $subname="{0}.{1}.cloudapp.azure.com" -f $RGname, $clusterloc
 $pfxfolder="~\Documents"
 
-Write-Output "create cluster in " $clusterloc "subject name for cert " $subname "and output the cert into " $pfxfolder
+Write-Output "Create cluster in '$clusterloc' with cert subject name '$subname' and cert output path '$pfxfolder'"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 3 -VmPassword $pwd -CertificateSubjectName $subname -CertificateOutputFolder $pfxfolder -CertificatePassword $pwd -OS WindowsServer2016Datacenter
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 3 -VmPassword $pass -CertificateSubjectName $subname -CertificateOutputFolder $pfxfolder -CertificatePassword $pass -OS WindowsServer2016Datacenter
 ```
 
 This command specifies only the cluster size, the cert subject name, and the OS to deploy a cluster.
@@ -71,16 +74,16 @@ This command specifies only the cluster size, the cert subject name, and the OS 
 $RGname="test20"
 $templateParmfile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
 $templateFile="C:\azure-quickstart-templates\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
-$secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/56ec774dc61a462bbc645ffc9b4b225f"
+$secretId="https://test1.vault.azure.net:443/secrets/testcertificate4/56ec774dc61a462bbc645ffc9b4b225f"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -SecretIdentifier $secertId
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -SecretIdentifier $secretId
 ```
 
 This command specifies an existing Certificate resource in a key vault and a custom template to deploy a cluster.
 
-### Example 3: Create a new cluster using a custom template. Specify the different RG name for the key vault and have the system upload the certificate to it
+### Example 3: Create a new cluster using a custom template. Specify a different resource group name for the key vault and have the system upload a new certificate to it
 ```
-$pwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$pass="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="test20"
 $keyVaultRG="test20kvrg"
 $keyVault="test20kv"
@@ -89,26 +92,23 @@ $subname="{0}.{1}.$clusterloc.cloudapp.azure.com" -f $RGName, $clusterloc
 $pfxfolder="~\Documents"
 $templateParmfile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
 $templateFile="C:\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
-$secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
-$thumprint="C2D7E11DD35153A702A51D10A424A3014B9B6E8B"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateOutputFolder $pfxfolder -CertificatePassword $pwd -KeyVaultResouceGroupName $keyVaultRG  -KeyVaultName $keyVault -CertificateSubjectName $subname
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateOutputFolder $pfxfolder -CertificatePassword $pass -KeyVaultResouceGroupName $keyVaultRG  -KeyVaultName $keyVault -CertificateSubjectName $subname
 ```
 
-This command creates a new cluster using a custom template. Specify the different RG name for the key vault and have the system upload the certificate to it.
+This command creates a new cluster using a custom template. Specify a different resource group name for the key vault and have the system upload a new certificate to it
 
 ### Example 4: Bring your own Certificate and custom template and create a new cluster
 ```
-$certPwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
+$pass="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="test20"
 $keyVaultRG="test20kvrg"
 $keyVault="test20kv"
-$clusterloc="SouthCentralUS"
 $pfxsourcefile="c:\Mycertificates\my2017Prodcert.pfx"
 $templateParmfile="~\Documents\GitHub\azure-quickstart-templates-parms\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploytest.parameters.json"
 $templateFile="~\GitHub\azure-quickstart-templates\service-fabric-secure-nsg-cluster-65-node-3-nodetype\azuredeploy.json"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateSourceFile $pfxsourcefile -CertificatePassword $certpwd -KeyVaultResouceGroupName $keyVaultRG -KeyVaultName $keyVault
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -TemplateFile $templateFile -ParameterFile $templateParmfile -CertificateFile $pfxsourcefile -CertificatePassword $pass -KeyVaultResouceGroupName $keyVaultRG -KeyVaultName $keyVault
 ```
 
 This command will let you bring your own Certificate and custom template and create a new cluster.
@@ -187,6 +187,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -371,6 +386,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: SecureString
+Parameter Sets: ByExistingKeyVault, ByNewPfxAndVaultName, ByExistingPfxAndVaultName
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VmSku
 The Vm Sku.
 
@@ -448,3 +475,4 @@ Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
 ## NOTES
 
 ## RELATED LINKS
+

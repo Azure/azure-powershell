@@ -13,7 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataLake.Analytics.Models;
+using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -33,19 +35,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage = "The maximum supported degree of parallelism for this account.")]
+            HelpMessage = "The maximum supported analytics units for this account.")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
-        public int? MaxDegreeOfParallelism { get; set; }
-
+        [Alias("MaxDegreeOfParallelism")]
+        public int? MaxAnalyticsUnits { get; set; }
+        
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "The maximum supported jobs running under the account at the same time.")]
         [ValidateNotNull]
@@ -100,8 +104,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                         null,
                         null,
                         null,
-                        Tags,
-                        MaxDegreeOfParallelism,
+                        Tag,
+                        MaxAnalyticsUnits,
                         MaxJobCount,
                         QueryStoreRetention,
                         Tier,

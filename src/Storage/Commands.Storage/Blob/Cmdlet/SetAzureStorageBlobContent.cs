@@ -224,7 +224,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
             if (this.BlobProperties != null || this.BlobMetadata != null || this.pageBlobTier != null)
             {
-                await TaskEx.WhenAll(
+                await Task.WhenAll(
                     this.SetBlobProperties(localChannel, blob, this.BlobProperties),
                     this.SetBlobMeta(localChannel, blob, this.BlobMetadata),
                     this.SetBlobTier(localChannel, blob, pageBlobTier)).ConfigureAwait(false);
@@ -498,6 +498,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             if (BlobProperties != null)
             {
                 ValidateBlobProperties(BlobProperties);
+            }
+
+            // if FIPS policy is enabled, must use native MD5
+            if (fipsEnabled)
+            {
+                CloudStorageAccount.UseV1MD5 = false;
             }
 
             string containerName = string.Empty;

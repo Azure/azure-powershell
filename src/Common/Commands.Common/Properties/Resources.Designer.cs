@@ -363,6 +363,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execution failed because a background thread could not prompt the user..
+        /// </summary>
+        public static string BaseShouldMethodFailureReason {
+            get {
+                return ResourceManager.GetString("BaseShouldMethodFailureReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Base Uri was empty..
         /// </summary>
         public static string BaseUriEmpty {
@@ -413,6 +422,208 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string BlobEndpointUriEnv {
             get {
                 return ResourceManager.GetString("BlobEndpointUriEnv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter : &apos;{0}&apos; is changing..
+        /// </summary>
+        public static string BreakingChangeAttributeParameterChanging {
+            get {
+                return ResourceManager.GetString("BreakingChangeAttributeParameterChanging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter : &apos;{0}&apos; is becoming mandatory..
+        /// </summary>
+        public static string BreakingChangeAttributeParameterMandatoryNow {
+            get {
+                return ResourceManager.GetString("BreakingChangeAttributeParameterMandatoryNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter : &apos;{0}&apos; is being replaced by parameter : &apos;{1}&apos;..
+        /// </summary>
+        public static string BreakingChangeAttributeParameterReplaced {
+            get {
+                return ResourceManager.GetString("BreakingChangeAttributeParameterReplaced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter : &apos;{0}&apos; is being replaced by mandatory parameter : &apos;{1}&apos;..
+        /// </summary>
+        public static string BreakingChangeAttributeParameterReplacedMandatory {
+            get {
+                return ResourceManager.GetString("BreakingChangeAttributeParameterReplacedMandatory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 	The type of the parameter is changing from &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string BreakingChangeAttributeParameterTypeChange {
+            get {
+                return ResourceManager.GetString("BreakingChangeAttributeParameterTypeChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 	Change description : {0}
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesChangeDescriptionMessage {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesChangeDescriptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The cmdlet is being deprecated. There will be no replacement for it..
+        /// </summary>
+        public static string BreakingChangesAttributesCmdLetDeprecationMessageNoReplacement {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesCmdLetDeprecationMessageNoReplacement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The cmdlet &apos;{0}&apos; is replacing this cmdlet..
+        /// </summary>
+        public static string BreakingChangesAttributesCmdLetDeprecationMessageWithReplacement {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesCmdLetDeprecationMessageWithReplacement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The output type is changing from the existing type :&apos;{0}&apos; to the new type :&apos;{1}&apos;.
+        /// </summary>
+        public static string BreakingChangesAttributesCmdLetOutputChange1 {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesCmdLetOutputChange1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;The output type &apos;{0}&apos; is changing&quot;.
+        /// </summary>
+        public static string BreakingChangesAttributesCmdLetOutputChange2 {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesCmdLetOutputChange2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        ///- The following properties are being added to the output type :
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesCmdLetOutputPropertiesAdded {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesCmdLetOutputPropertiesAdded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 
+        /// - The following properties in the output type are being deprecated :
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesCmdLetOutputPropertiesRemoved {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesCmdLetOutputPropertiesRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The output type &apos;{0}&apos; is being deprecated without a replacement..
+        /// </summary>
+        public static string BreakingChangesAttributesCmdLetOutputTypeDeprecated {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesCmdLetOutputTypeDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  - {0}
+        ///
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesDeclarationMessage {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesDeclarationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  - Cmdlet : &apos;{0}&apos;
+        /// - {1}
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesDeclarationMessageWithCmdletName {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesDeclarationMessageWithCmdletName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Breaking changes in the cmdlet &apos;{0}&apos; :.
+        /// </summary>
+        public static string BreakingChangesAttributesHeaderMessage {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesHeaderMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 	Note : This change will take effect on &apos;{0}&apos;
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesInEffectByDateMessage {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesInEffectByDateMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Note :The change is expected to take effect from the version :  &apos;{0}&apos;
+        ///
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesInEffectByVersion {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesInEffectByVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ```powershell
+        ///# Old
+        ///{0}
+        ///
+        ///# New
+        ///{1}
+        ///```
+        ///
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesUsageChangeMessage {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesUsageChangeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cmdlet invocation changes :
+        ///	Old Way : {0}
+        ///	New Way : {1}.
+        /// </summary>
+        public static string BreakingChangesAttributesUsageChangeMessageConsole {
+            get {
+                return ResourceManager.GetString("BreakingChangesAttributesUsageChangeMessageConsole", resourceCulture);
             }
         }
         
@@ -1718,6 +1929,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Long-Running Job.
+        /// </summary>
+        public static string LROJobName {
+            get {
+                return ResourceManager.GetString("LROJobName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The cmdlet failed in background execution.  The returned error was &apos;{0}&apos;.  Please execute the cmdlet again.  You may need to execute this cmdlet synchronously, by omitting the &apos;-AsJob&apos; parameter..
+        /// </summary>
+        public static string LROTaskExceptionMessage {
+            get {
+                return ResourceManager.GetString("LROTaskExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to managementCertificate.pem.
         /// </summary>
         public static string ManagementCertificateFileName {
@@ -1931,7 +2160,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management.&quot;.
+        ///   Looks up a localized string similar to &quot;There is no current context, please log in using Connect-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management.&quot;.
         /// </summary>
         public static string NoCurrentContextForDataCmdlet {
             get {
@@ -2075,7 +2304,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Login-AzureRmAccount?.
+        ///   Looks up a localized string similar to No subscriptions are associated with the logged in account in Azure Service Management (RDFE). This means that the logged in user is not an administrator or co-administrator for any account.\r\nDid you mean to execute Connect-AzureRmAccount?.
         /// </summary>
         public static string NoSubscriptionFoundForTenant {
             get {
@@ -3701,11 +3930,47 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please execute the cmdlet again and include the &apos;Force&apos; parameter, if available, to avoid unnecessary prompts..
+        /// </summary>
+        public static string ShouldContinueFail {
+            get {
+                return ResourceManager.GetString("ShouldContinueFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string ShouldProcessCaption {
             get {
                 return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please execute the cmdlet again and omit the &apos;Confirm&apos; parameter when using the &apos;AsJob&apos; parameter..
+        /// </summary>
+        public static string ShouldProcessFailConfirm {
+            get {
+                return ResourceManager.GetString("ShouldProcessFailConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please increase the user $ConfirmPreference setting, or include turn off confirmation using &apos;-Confirm:$false&apos; when using the &apos;AsJob&apos; parameter and execute the cmdet again..
+        /// </summary>
+        public static string ShouldProcessFailImpact {
+            get {
+                return ResourceManager.GetString("ShouldProcessFailImpact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please execute the cmdlet again and omit the &apos;WhatIf&apos; parameter when using the &apos;AsJob&apos; parameter..
+        /// </summary>
+        public static string ShouldProcessFailWhatIf {
+            get {
+                return ResourceManager.GetString("ShouldProcessFailWhatIf", resourceCulture);
             }
         }
         
@@ -3985,6 +4250,87 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string SwitchAzureModeDeprecated {
             get {
                 return ResourceManager.GetString("SwitchAzureModeDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Starting cmdlet execution, setting for cmdlet confirmation required: &apos;{0}&apos;.
+        /// </summary>
+        public static string TraceBeginLROJob {
+            get {
+                return ResourceManager.GetString("TraceBeginLROJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Blocking job for ShouldMethod &apos;{0}&apos;.
+        /// </summary>
+        public static string TraceBlockLROThread {
+            get {
+                return ResourceManager.GetString("TraceBlockLROThread", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Completing cmdlet execution in RunJob.
+        /// </summary>
+        public static string TraceEndLROJob {
+            get {
+                return ResourceManager.GetString("TraceEndLROJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: State change from &apos;{0}&apos; to &apos;{1}&apos; because &apos;{2}&apos;.
+        /// </summary>
+        public static string TraceHandleLROStateChange {
+            get {
+                return ResourceManager.GetString("TraceHandleLROStateChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Unblocking job due to stoppage or failure.
+        /// </summary>
+        public static string TraceHandlerCancelJob {
+            get {
+                return ResourceManager.GetString("TraceHandlerCancelJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Unblocking job that was previously blocked..
+        /// </summary>
+        public static string TraceHandlerUnblockJob {
+            get {
+                return ResourceManager.GetString("TraceHandlerUnblockJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Error in cmdlet execution.
+        /// </summary>
+        public static string TraceLROJobException {
+            get {
+                return ResourceManager.GetString("TraceLROJobException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: Removing state changed event handler, exception &apos;{0}&apos;.
+        /// </summary>
+        public static string TraceRemoveLROEventHandler {
+            get {
+                return ResourceManager.GetString("TraceRemoveLROEventHandler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [AzureLongRunningJob]: ShouldMethod &apos;{0}&apos; unblocked..
+        /// </summary>
+        public static string TraceUnblockLROThread {
+            get {
+                return ResourceManager.GetString("TraceUnblockLROThread", resourceCulture);
             }
         }
         

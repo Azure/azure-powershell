@@ -1,7 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/new-azurermeventgridtopickey
 schema: 2.0.0
 ---
 
@@ -14,20 +14,20 @@ Regenerates the shared access key for an Azure Event Grid Topic.
 
 ### TopicNameParameterSet (Default)
 ```
-New-AzureRmEventGridTopicKey [-ResourceGroupName] <String> [-TopicName] <String> [-KeyName] <String> [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmEventGridTopicKey [-ResourceGroupName] <String> [-TopicName] <String> [-KeyName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TopicInputObjectParameterSet
 ```
-New-AzureRmEventGridTopicKey [-KeyName] <String> [-InputObject] <PSTopic> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmEventGridTopicKey [-KeyName] <String> [-InputObject] <PSTopic>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
-New-AzureRmEventGridTopicKey [-KeyName] <String> [-ResourceId] <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmEventGridTopicKey [-KeyName] <String> [-ResourceId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,21 @@ PS C:\> Get-AzureRmEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic
 Regenerate the key corresponding to key \'key1'\ of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -InputObject
 EventGrid Topic object.

@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.ContainerInstance</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.ContainerInstance\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -26,16 +26,19 @@
     <DebugType>pdbonly</DebugType>
     <DelaySign>true</DelaySign>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.ContainerInstance</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.ContainerInstance\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <SignAssembly>true</SignAssembly>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,8 +53,9 @@
     <Compile Include="Commands\RemoveAzureContainerGroupCommand.cs" />
     <Compile Include="Models\ContainerGroupCreationParameters.cs" />
     <Compile Include="Commands\ContainerInstanceCmdletBase.cs" />
+    <Compile Include="Models\ContainerInstanceAutoMapperProfile.cs" />
     <Compile Include="Models\PSContainer.cs" />
-    <Compile Include="Models\PSContainerEvent.cs" />
+    <Compile Include="Models\PSEvent.cs" />
     <Compile Include="Models\PSContainerGroup.cs" />
     <Compile Include="Models\PSContainerGroupList.cs" />
     <Compile Include="Models\PSContainerState.cs" />
@@ -59,12 +63,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Management.ContainerInstance, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.0-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ContainerInstance.1.0.2-preview\lib\net452\Microsoft.Azure.Management.ContainerInstance.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +84,9 @@
   <ItemGroup>
     <None Include="packages.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="StartupScripts\*.ps1">
+      <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
     <None Include="..\AzureRM.ContainerInstance.psd1">
       <Link>AzureRM.ContainerInstance.psd1</Link>

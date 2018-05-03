@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Newtonsoft.Json.Linq;
@@ -38,6 +39,77 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public virtual string Name { get; set; }
 
         #region SFRP
+
+        #region Temporary code until next SDK version is released
+        protected PSCluster SendPutRequest(Cluster clusterResource, bool runOnSameThread = true)
+        {
+            if (runOnSameThread)
+            {
+                WriteVerboseWithTimestamp("Begin to update the cluster");
+            }
+
+            Cluster cluster = null;
+            var tokenSource = new CancellationTokenSource();
+            try
+            {
+                var putRequest = Task.Factory.StartNew(() =>
+                {
+                    try
+                    {
+                        cluster = this.SFRPClient.Clusters.Create(this.ResourceGroupName, this.Name, clusterResource);
+                    }
+                    finally
+                    {
+                        tokenSource.Cancel();
+                    }
+                });
+
+                while (!tokenSource.IsCancellationRequested)
+                {
+                    if (runOnSameThread)
+                    {
+                        if (!RunningTest)
+                        {
+                            var c = SafeGetResource(this.GetCurrentCluster, true);
+                            if (c != null)
+                            {
+                                WriteVerboseWithTimestamp(
+                                    string.Format(
+                                        ServiceFabricProperties.Resources.ClusterStateVerbose,
+                                        c.ClusterState));
+                            }
+                        }
+                    }
+
+                    Thread.Sleep(TimeSpan.FromSeconds(WriteVerboseIntervalInSec));
+                }
+
+                if (putRequest.IsFaulted)
+                {
+                    throw putRequest.Exception;
+                }
+
+            }
+            catch (Exception e)
+            {
+                PrintSdkExceptionDetail(e);
+
+                if (e.InnerException != null)
+                {
+                    while (e.InnerException != null)
+                    {
+                        e = e.InnerException;
+                    }
+
+                    throw;
+                }
+
+                throw;
+            }
+
+            return new PSCluster(cluster);
+        }
+        #endregion
 
         protected PSCluster SendPatchRequest(ClusterUpdateParameters request, bool runOnSameThread = true)
         {
@@ -68,7 +140,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     {
                         if (!RunningTest)
                         {
-                            var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name), true);
+                            var c = SafeGetResource(() => this.GetCurrentCluster(), true);
                             if (c != null)
                             {
                                 WriteVerboseWithTimestamp(
@@ -117,7 +189,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             try
             {
-                return SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
+                return this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
             }
             catch (Exception e)
             {
@@ -135,18 +207,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
         }
 
-        protected void GetDurabilityLevel(string nodeTypeName, out DurabilityLevel durabilityLevel, out bool isMismatched)
+        protected NodeTypeDescription GetNodeType(Cluster cluster, string nodeTypeName, bool ignoreErrors = false)
         {
-            var cluster = GetCurrentCluster();
-            var nodeType = cluster.NodeTypes.SingleOrDefault(n => n.Name.Equals(nodeTypeName, StringComparison.OrdinalIgnoreCase));
-            if (nodeType == null)
+            NodeTypeDescription nodeType =
+                cluster.NodeTypes.SingleOrDefault(
+                    n =>
+                        string.Equals(
+                            nodeTypeName,
+                            n.Name,
+                            StringComparison.OrdinalIgnoreCase));
+
+            if (nodeType == null && !ignoreErrors)
             {
-                throw new PSInvalidOperationException(string.Format(ServiceFabricProperties.Resources.CannotFindTheNodeType, nodeTypeName));
+                throw new PSInvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.CannotFindTheNodeType,
+                        nodeTypeName));
             }
 
-            var durabilityLevelFromNodeType = (DurabilityLevel)Enum.Parse(typeof(DurabilityLevel), nodeType.DurabilityLevel);
+            return nodeType;
+        }
 
-            var vmss = GetVmss(nodeTypeName);
+        protected DurabilityLevel GetDurabilityLevel(VirtualMachineScaleSet vmss)
+        {
             var ext = FindFabricVmExt(vmss.VirtualMachineProfile.ExtensionProfile.Extensions);
 
             var durabilityLevelStr = (string)((JObject)ext.Settings)["durabilityLevel"];
@@ -155,18 +238,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.CannotFindDurabilityLevelSetting);
             }
 
-            var durabilityLevelFromVmss = (DurabilityLevel)Enum.Parse(typeof(DurabilityLevel), durabilityLevelStr);
+            return GetDurabilityLevel(durabilityLevelStr);
+        }
 
-            if (durabilityLevelFromVmss != durabilityLevelFromNodeType)
+        protected DurabilityLevel GetDurabilityLevel(string durabilityLevel)
+        {
+            return (DurabilityLevel)Enum.Parse(typeof(DurabilityLevel), durabilityLevel);
+        }
+
+        protected ReliabilityLevel GetReliabilityLevel(Cluster cluster)
+        {
+            var level = cluster.ReliabilityLevel;
+            ReliabilityLevel reliabilitylevel;
+            if (Enum.TryParse(level, out reliabilitylevel))
             {
-                WriteWarning(ServiceFabricProperties.Resources.DurabilityLevelMismatches);
-                durabilityLevel = durabilityLevelFromNodeType;
-                isMismatched = true;
-                return;
+                return reliabilitylevel;
             }
-
-            durabilityLevel = durabilityLevelFromNodeType;
-            isMismatched = false;
+            else
+            {
+                throw new PSInvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.CannotParseReliabilityLevel,
+                        level));
+            }
         }
 
         internal ClusterType GetClusterType(Cluster clusterResource)
@@ -193,7 +287,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             };
         }
 
-        protected void WriteClusterAndVmssVerboseWhenUpdate(List<Task> allTasks, bool printClusterStatus)
+        protected void WriteClusterAndVmssVerboseWhenUpdate(List<Task> allTasks, bool printClusterStatus, string vmssName = null)
         {
             var token = new CancellationTokenSource();
             var exceptions = new List<Exception>();
@@ -217,7 +311,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     if (printClusterStatus)
                     {
-                        var c = SafeGetResource(() => this.SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name),true);
+                        var c = SafeGetResource(GetCurrentCluster, true);
                         if (c != null)
                         {
                             WriteVerboseWithTimestamp(
@@ -233,6 +327,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
                             foreach (var vmss in vmsss)
                             {
+                                if (!string.IsNullOrEmpty(vmssName) &&
+                                    !vmss.Name.Equals(vmssName, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    continue;
+                                }
+
                                 WriteVerboseWithTimestamp(
                                     string.Format(ServiceFabricProperties.Resources.VmssVerbose, vmss.Name,
                                         vmss.ProvisioningState));

@@ -20,6 +20,8 @@ using Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models;
 namespace Microsoft.Azure.Commands.MachineLearning
 {
     using Common.Authentication.Abstractions;
+    using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -28,6 +30,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     public class UpdateAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]
+        [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -50,14 +53,14 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
         [Parameter(Mandatory = false, HelpMessage = "Tags for the commitment plan resource.")]
         [ValidateNotNullOrEmpty]
-        public Hashtable Tags { get; set; }
+        public Hashtable Tag { get; set; }
 
             /// <summary>
         /// Gets or sets a value that indicates if the user should be prompted for confirmation.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-        
+
         protected override void RunCmdlet()
         {
             if (!ShouldProcess(this.Name, @"Updating Azure ML commitment plan."))
@@ -72,8 +75,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
             int skuCapacity = this.SkuCapacity == 0 ? 1 : this.SkuCapacity;
             var sku = new ResourceSku(skuCapacity, this.SkuName, this.SkuTier);
-
-            var tags = this.Tags.Cast<DictionaryEntry>()
+            var tags = this.Tag.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => (string) kvp.Key, kvp => (string) kvp.Value);
 
             CommitmentPlanPatchPayload patchPayload = new CommitmentPlanPatchPayload

@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
-online version: 
+Module Name: AzureRM.Profile
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/save-azurermcontext
 schema: 2.0.0
 ---
 
@@ -23,7 +24,7 @@ The Save-AzureRmContext cmdlet saves the current authentication information for 
 
 ### Example 1: Saving the current session's context
 ```
-PS C:\> Add-AzureRmAccount
+PS C:\> Connect-AzureRmAccount
 PS C:\> Save-AzureRmContext -Path C:\test.json
 ```
 
@@ -31,7 +32,7 @@ This example saves the current session's Azure context to the JSON file provided
 
 ### Example 2: Saving a given context
 ```
-PS C:\> Save-AzureRmContext -Profile (Add-AzureRmAccount) -Path C:\test.json
+PS C:\> Save-AzureRmContext -Profile (Connect-AzureRmAccount) -Path C:\test.json
 ```
 
 This example saves the Azure context that is passed through to the cmdlet to the JSON file provided.

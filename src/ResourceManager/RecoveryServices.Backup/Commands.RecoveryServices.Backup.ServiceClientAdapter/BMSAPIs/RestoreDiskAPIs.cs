@@ -36,8 +36,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             AzureVmRecoveryPoint rp,
             string storageAccountId,
             string storageAccountLocation,
-            string storageAccountType)
+            string storageAccountType,
+            bool osaOption)
         {
+            var useOsa = ShouldUseOsa(rp, osaOption);
+
             string resourceGroupName = BmsAdapter.GetResourceGroupName();
             string resourceName = BmsAdapter.GetResourceName();
             string vaultLocation = BmsAdapter.GetResourceLocation();
@@ -68,6 +71,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 Region = vaultLocation,
                 StorageAccountId = storageAccountId,
                 SourceResourceId = rp.SourceResourceId,
+                OriginalStorageAccountOption = useOsa,
             };
 
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
@@ -84,6 +88,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
+        }
+
+        private bool ShouldUseOsa(AzureVmRecoveryPoint rp, bool osaOption)
+        {
+            bool useOsa = false;
+            if (osaOption)
+            {
+                if (rp.OriginalSAEnabled)
+                {
+                    useOsa = true;
+                }
+                else
+                {
+                    throw new Exception("This recovery point doesn’t have the capability to restore disks to their original storage account. Re-run the restore command without the UseOriginalStorageAccountForDisks parameter.");
+                }
+            }
+
+            return useOsa;
         }
     }
 }

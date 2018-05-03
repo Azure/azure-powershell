@@ -1,6 +1,7 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Relay.dll-Help.xml
-online version: 
+Module Name: AzureRM
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.relay/set-azurermwcfrelay
 schema: 2.0.0
 ---
 
@@ -13,13 +14,15 @@ Updates the description of a WcfRelay in the specified Relay namespace.
 
 ### WcfRelayInputObjectSet
 ```
-Set-AzureRmWcfRelay -ResourceGroupName <String> -Namespace <String> -Name <String> [-InputObject <WcfRelayAttributes>] [-WhatIf] [-Confirm]
+Set-AzureRmWcfRelay [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-InputObject <WcfRelayAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### WcfRelayPropertiesSet
 ```
-Set-AzureRmWcfRelay -ResourceGroupName <String> -Namespace <String> -Name <String> [-UserMetadata <String>]
- [-WhatIf] [-Confirm]
+Set-AzureRmWcfRelay [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-UserMetadata <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,16 +49,76 @@ This example updates the UserMetadata property with new value.
 
 ## PARAMETERS
 
-### -RequiresClientAuthorization
-true if client authorization is needed for this relay; otherwise, false
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Boolean
-Parameter Sets: WcfRelayPropertiesSet
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+WcfRelay object.
+
+```yaml
+Type: WcfRelayAttributes
+Parameter Sets: WcfRelayInputObjectSet
 Aliases: 
 
 Required: False
 Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+WcfRelay Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Namespace
+Namespace Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Resource Group Name.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -108,65 +171,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-WcfRelay object.
-
-```yaml
-Type: WcfRelayAttributes
-Parameter Sets: WcfRelayInputObjectSet
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-WcfRelay Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Namespace
-Namespace Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -193,7 +197,9 @@ System.String
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
+
 ### Example 1 - InputObject
+
 ### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
 RelayType                   : Http
 CreatedAt                   : 4/26/2017 5:14:46 PM
@@ -210,6 +216,7 @@ Name                        : TestWCFRelay2
 Type                        : Microsoft.Relay/WcfRelays
 
 ### Example 2 - Properties
+
 ### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
 RelayType                   : NetTcp
 CreatedAt                   : 4/26/2017 5:20:08 PM

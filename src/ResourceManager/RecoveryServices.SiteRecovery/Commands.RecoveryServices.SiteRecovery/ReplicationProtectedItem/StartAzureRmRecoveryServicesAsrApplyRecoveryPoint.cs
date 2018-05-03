@@ -15,12 +15,13 @@
 using System;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Properties;
 using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Used to initiate a apply recovery point operation.
+    ///    Changes a recovery point for a failed over protected item before commiting the failover operation.
     /// </summary>
     [Cmdlet(
         VerbsLifecycle.Start,
@@ -32,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrApplyRecoveryPoint : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Recovery Plan object.
+        ///     Gets or sets the recovery point object corresponding to the recovery point to be applied.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByPEObject,
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPoint RecoveryPoint { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets replication protected item object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByPEObject,
@@ -51,14 +52,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRReplicationProtectedItem ReplicationProtectedItem { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets data encryption primary certificate file path for failover of protected Item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
         public string DataEncryptionPrimaryCertFile { get; set; }
 
         /// <summary>
-        ///     Gets or sets Data encryption certificate file path for failover of Protected Item.
+        ///     Gets or sets Data encryption secondary certificate file path for failover of protected Item.
         /// </summary>
         [Parameter]
         [ValidateNotNullOrEmpty]
@@ -133,6 +134,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 input.Properties.ProviderSpecificDetails =
                     hyperVReplicaAzureApplyRecoveryPointInput;
             }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMageAzureV2,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                // Create the InMageAzureV2 specific Apply Recovery Point Input.
+                var inMageAzureV2ApplyRecoveryPointInput =
+                    new InMageAzureV2ApplyRecoveryPointInput();
+                input.Properties.ProviderSpecificDetails = inMageAzureV2ApplyRecoveryPointInput;
+            }
+            else if (string.Compare(
+                    this.ReplicationProtectedItem.ReplicationProvider,
+                    Constants.InMage,
+                    StringComparison.OrdinalIgnoreCase) ==
+                0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        Resources.UnsupportedReplicationProviderForApplyRecoveryPoint,
+                        this.ReplicationProtectedItem.ReplicationProvider));
+            }
+            else if (Constants.A2A.Equals(this.ReplicationProtectedItem.ReplicationProvider,StringComparison.OrdinalIgnoreCase))
+            {
+                input.Properties.ProviderSpecificDetails = new A2AApplyRecoveryPointInput();
+            }
 
             var response = this.RecoveryServicesClient.StartAzureSiteRecoveryApplyRecoveryPoint(
                 this.fabricName,
@@ -151,12 +178,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Name of the Protection Container.
         /// </summary>
-        public string protectionContainerName;
+        private string protectionContainerName;
 
         /// <summary>
         ///     Gets or sets Name of the Fabric.
         /// </summary>
-        public string fabricName;
+        private string fabricName;
 
         /// <summary>
         ///     Primary Kek Cert pfx file.

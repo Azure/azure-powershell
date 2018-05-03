@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
+Module Name: AzureRM.KeyVault
 ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -14,27 +15,23 @@ Imports a certificate to a key vault.
 
 ### ImportCertificateFromFile (Default)
 ```
-Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String> [-Tag <Hashtable>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ImportWithPrivateKeyFromFile
-```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String>
- [-Password <SecureString>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromString
 ```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -CertificateString <String>
- [-Password <SecureString>] [-Tag <Hashtable>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromCollection
 ```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
- -CertificateCollection <X509Certificate2Collection> [-Tag <Hashtable>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CertificateCollection] <X509Certificate2Collection> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,9 +90,9 @@ Parameter Sets: ImportWithPrivateKeyFromCollection
 Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -114,13 +111,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases: cf
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -134,7 +131,7 @@ Specifies the path of the certificate file that this cmdlet imports.
 
 ```yaml
 Type: String
-Parameter Sets: ImportCertificateFromFile, ImportWithPrivateKeyFromFile
+Parameter Sets: ImportCertificateFromFile
 Aliases:
 
 Required: True
@@ -154,7 +151,7 @@ Parameter Sets: (All)
 Aliases: CertificateName
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -165,7 +162,7 @@ Specifies the password for a certificate file.
 
 ```yaml
 Type: SecureString
-Parameter Sets: ImportWithPrivateKeyFromFile, ImportWithPrivateKeyFromString
+Parameter Sets: ImportCertificateFromFile, ImportWithPrivateKeyFromString
 Aliases:
 
 Required: False
@@ -202,9 +199,24 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -229,9 +241,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.CertificateBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
 
 ## NOTES
 

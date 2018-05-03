@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public PSComputeNode ComputeNode { get; private set; }
 
         /// <summary>
-        /// If specified, the single node file with this name will be returned.
+        /// If specified, the single node file with this path will be returned.
         /// </summary>
-        public string NodeFileName { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
         /// The OData filter to use when querying for node files.

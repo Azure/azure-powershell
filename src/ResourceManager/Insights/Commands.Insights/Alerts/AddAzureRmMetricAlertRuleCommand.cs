@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Add an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureRmMetricAlertRule"), OutputType(typeof(PSAddAlertRuleOperationResponse))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmMetricAlertRule", SupportsShouldProcess = true), OutputType(typeof(PSAddAlertRuleOperationResponse))]
     public class AddAzureRmMetricAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("metric alert rule"),
                 Condition = condition,
-                Actions = this.Actions,
+                Actions = this.Action,
                 Location = this.Location,
                 IsEnabled = !this.DisableRule,
                 AlertRuleResourceName = this.Name,

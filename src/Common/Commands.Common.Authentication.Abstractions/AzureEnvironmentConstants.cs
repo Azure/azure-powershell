@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// </summary>
         public const string AzureActiveDirectoryEndpoint = "https://login.microsoftonline.com/";
         public const string ChinaActiveDirectoryEndpoint = "https://login.chinacloudapi.cn/";
-        public const string USGovernmentActiveDirectoryEndpoint = "https://login-us.microsoftonline.com/";
+        public const string USGovernmentActiveDirectoryEndpoint = "https://login.microsoftonline.us/";
         public const string GermanActiveDirectoryEndpoint = "https://login.microsoftonline.de/";
 
         /// <summary>
@@ -116,6 +116,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string GermanAzureKeyVaultServiceEndpointResourceId = "https://vault.microsoftazure.de";
 
         /// <summary>
+        /// The token audience for Log Analytics Queries
+        /// </summary>
+        public const string AzureOperationalInsightsEndpointResourceId = "https://api.loganalytics.io";
+        public const string USGovernmentOperationalInsightsEndpointResourceId = "https://api.loganalytics.us";
+
+        /// <summary>
+        /// The endpoint URI for Log Analytics Queries
+        /// </summary>
+        public const string AzureOperationalInsightsEndpoint = "https://api.loganalytics.io/v1";
+        public const string USGovernmentOperationalInsightsEndpoint = "https://api.loganalytics.us/v1";
+
+        /// <summary>
         /// The domain name suffix for Azure DataLake services
         /// </summary>
         public const string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = "azuredatalakeanalytics.net";
@@ -125,5 +137,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// The token audience for authorizing DataLake requests
         /// </summary>
         public const string AzureDataLakeServiceEndpointResourceId = "https://datalake.azure.net";
+
+        public const string BatchEndpointResourceId = "https://batch.core.windows.net/";
+        public const string ChinaBatchEndpointResourceId = "https://batch.chinacloudapi.cn/";
+        public const string USGovernmentBatchEndpointResourceId = "https://batch.core.usgovcloudapi.net/";
+        public const string GermanBatchEndpointResourceId = "https://batch.cloudapi.de/";
     }
 }

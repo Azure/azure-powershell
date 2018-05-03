@@ -16,7 +16,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.AddVerbWithoutSupportsShouldP
     public class AddVerbWithoutSupportsShouldProcessParameter : Cmdlet
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The virtual machine name.")]
@@ -24,12 +24,12 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.AddVerbWithoutSupportsShouldP
         public string Name { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void BeginProcessing()
         {
             WriteObject("TestCmdLet BeginProcessing()");
-            WriteInformation("Info", null);            
+            WriteInformation("Info", null);
         }
     }
 }
@@ -45,15 +45,15 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.AddVerbWithSupportsShouldProc
     public class AddVerbWithSupportsShouldProcessParameter : Cmdlet
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void BeginProcessing()
         {
@@ -76,7 +76,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ForceParameterWithoutSupports
     public class ForceParameterWithoutSupportsShouldProcess : Cmdlet
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
                     HelpMessage = "The virtual machine name.")]
@@ -84,13 +84,13 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ForceParameterWithoutSupports
         public string Name { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm deletion of vault")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void BeginProcessing()
         {
@@ -111,13 +111,13 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ForceParameterWithSupportsSho
     public class ForceParameterWithSupportsShouldProcess : Cmdlet
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Parameter(Position = 1, HelpMessage = "Confirm deletion of vault")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void BeginProcessing()
         {
@@ -140,7 +140,7 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ConfirmImpactWithoutSupportsS
     public class ConfirmImpactWithoutSupportsShouldProcess : Cmdlet
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void BeginProcessing()
         {
@@ -161,13 +161,13 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ConfirmImpactWithSupportsShou
     public class ConfirmImpactWithSupportsShouldProcess : Cmdlet
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Parameter(Position = 1, HelpMessage = "Confirm deletion of vault")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void BeginProcessing()
         {
@@ -190,34 +190,13 @@ namespace StaticAnalysis.Test.CmdletTest.Signature.ShouldContinueVerbWithForceSw
     public class ShouldContinueVerbWithForceSwitch : Cmdlet
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm deletion of vault")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        protected override void BeginProcessing()
-        {
-            WriteObject("TestCmdLet BeginProcessing()");
-            WriteInformation("Info", null);
-        }
-    }
-}
-
-namespace StaticAnalysis.Test.CmdletTest.Signature.ShouldContinueVerbWithoutForceSwitch
-{
-    using System.Management.Automation;
-
-    /// <summary>
-    /// Verify if cmdlet that has Force parameter should also define SupportsShouldProcess parameter
-    /// </summary>
-    [Cmdlet(VerbsData.Export, "ShouldContinueVerbWithoutForceSwitch")]
-    public class ShouldContinueVerbWithoutForceSwitch : Cmdlet
-    {
-        /// <summary>
-        /// 
+        ///
         /// </summary>
         protected override void BeginProcessing()
         {

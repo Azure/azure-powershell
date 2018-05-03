@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ContainerInstance.dll-Help.xml
 Module Name: AzureRM.ContainerInstance
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance/get-azurermcontainergroup
 schema: 2.0.0
 ---
 
@@ -14,17 +14,19 @@ Gets container groups.
 
 ### ListContainerGroupParamSet (Default)
 ```
-Get-AzureRmContainerGroup [[-ResourceGroupName] <String>]
+Get-AzureRmContainerGroup [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetContainerGroupInResourceGroupParamSet
 ```
 Get-AzureRmContainerGroup [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetContainerGroupByResourceIdParamSet
 ```
-Get-AzureRmContainerGroup -ResourceId <String>
+Get-AzureRmContainerGroup -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +52,8 @@ IpAddress                : 13.88.10.240
 Ports                    : {8000}
 OsType                   : Linux
 Volumes                  :
+State                    : Running
+Events                   : {}
 ```
 
 The command gets the specified container group.
@@ -96,11 +100,28 @@ IpAddress                : 13.88.10.240
 Ports                    : {8000}
 OsType                   : Linux
 Volumes                  :
+State                    : Running
+Events                   : {}
 ```
 
 The command gets the container group with the resource Id.
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 The container group Name.
@@ -108,7 +129,7 @@ The container group Name.
 ```yaml
 Type: String
 Parameter Sets: GetContainerGroupInResourceGroupParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -123,7 +144,7 @@ The resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: ListContainerGroupParamSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -135,7 +156,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetContainerGroupInResourceGroupParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -150,7 +171,7 @@ The resource id.
 ```yaml
 Type: String
 Parameter Sets: GetContainerGroupByResourceIdParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -159,17 +180,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
-
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
 
-
 ## NOTES
 
 ## RELATED LINKS
-

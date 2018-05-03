@@ -14,14 +14,15 @@
 
 function Test-UpdateAzureRmServiceFabricDurability
 {
-	$nodeTypeName = Get-NodeTypeName
+	$nodeTypeName = Get-NewNodeTypeName
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
 	$durabilityLevel = Get-DurabilityLevel
+    $newNodeTypeName = Get-NewNodeTypeName
 
-	$cluster = Update-AzureRmServiceFabricDurability -Level $durabilityLevel -NodeType $nodeTypeName -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+	$cluster = Update-AzureRmServiceFabricDurability -Level $durabilityLevel -NodeType $nodeTypeName -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual $clusters[0].NodeTypes[0].DurabilityLevel $durabilityLevel
+	Assert-AreEqual $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName}).DurabilityLevel $durabilityLevel
 }
 
 function Test-UpdateAzureRmServiceFabricReliability
@@ -30,7 +31,7 @@ function Test-UpdateAzureRmServiceFabricReliability
 	$resourceGroupName = Get-ResourceGroupName
 	$reliabilityLevel = Get-ReliabilityLevel
 
-	$cluster = Update-AzureRmServiceFabricReliability -ReliabilityLevel $reliabilityLevel  -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+	$cluster = Update-AzureRmServiceFabricReliability -ReliabilityLevel $reliabilityLevel  -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-AreEqual $clusters[0].ReliabilityLevel $reliabilityLevel
 }
@@ -39,11 +40,9 @@ function Test-AddAzureRmServiceFabricClusterCertificate
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
-	$keyvaultName = Get-KeyVaultName
-	$thumbprint = Get-ThumbprintByFile
-	$keyvaulturi = Get-SecretUrl    
-	$cluster = 	Add-AzureRmServiceFabricClusterCertificate -ResourceGroupName $resourceGroupName  -ClusterName $clusterName `
-	-SecretIdentifier $keyvaulturi
+    $keyvaulturi = Get-SecretUrl
+
+    $cluster = 	Add-AzureRmServiceFabricClusterCertificate -ResourceGroupName $resourceGroupName  -ClusterName $clusterName -SecretIdentifier $keyvaulturi -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-NotNull $clusters[0].Certificate.ThumbprintSecondary 
 }
@@ -52,9 +51,9 @@ function Test-RemoveAzureRmServiceFabricClusterCertificate
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
-	$thumbprint  = Get-ThumbprintByFile
+    $thumbprint  = Get-Thumbprint
 
-	$cluster = Remove-AzureRmServiceFabricClusterCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Thumbprint $thumbprint
+	$cluster = Remove-AzureRmServiceFabricClusterCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Thumbprint $thumbprint -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-Null $clusters[0].Certificate.ThumbprintSecondary 
 }
@@ -64,36 +63,39 @@ function Test-AddAzureRmServiceFabricClientCertificate
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
-	$thumbprint  = Get-ThumbprintByFile
+    $certName  = Get-NewCertName
+    $commonName = "cn=$certName"
+    $thumbprint  = Get-Thumbprint
 
-	$cluster = Add-AzureRmServiceFabricClientCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Thumbprint $thumbprint 
+	$cluster = Add-AzureRmServiceFabricClientCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -CommonName $commonName -IssuerThumbprint $thumbprint -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual $clusters[0].ClientCertificateThumbprints[0].CertificateThumbprint $thumbprint
+    Assert-AreEqual $clusters[0].ClientCertificateCommonNames[0].CertificateCommonName $commonName
 }
 
 function Test-RemoveAzureRmServiceFabricClientCertificate
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName
-	$thumbprint  = Get-ThumbprintByFile
+    $certName  = Get-NewCertName
+    $commonName = "cn=$certName"
+    $thumbprint  = Get-Thumbprint
 
-	$cluster = Remove-AzureRmServiceFabricClientCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Thumbprint $thumbprint 
-	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual $clusters[0].ClientCertificateThumbprints.Count 0
+	$cluster = Remove-AzureRmServiceFabricClientCertificate -ClusterName $clusterName -ResourceGroupName $resourceGroupName -CommonName $commonName -IssuerThumbprint $thumbprint -Verbose
+	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+	Assert-Null $clusters[0].ClientCertificateThumbprints[0]
 }
 
 function Test-NewAzureRmServiceFabricCluster
 {
-	$clusterName = Get-NewClusterName
-	$thumbprint  = Get-ThumbprintByFile
-	$resourceGroupName = Get-NewResourceGroupName
-	$vaultName = Get-KeyVaultName
-	$keyvaulturi = Get-SecretUrl
+    $clusterName = "azurermsfcluster2"
+    $resourceGroupName = "azurermsfrg2"
+    $keyvaulturi = Get-SecretUrl
+    $vmPassword = Get-VmPwd | ConvertTo-SecureString -Force -AsPlainText
 
-	$cluster = New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile .\Resources\template.json `
-	          -ParameterFile .\Resources\parameters.json  -SecretIdentifier $keyvaulturi -CertificateThumprint $thumbprint
-	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-NotNull $clusters[0]
+    $cluster = New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -VmPassword $vmPassword `
+        -TemplateFile $pwd\resources\template.json -ParameterFile $pwd\resources\parameters.json -SecretIdentifier $keyvaulturi -Verbose
+    $clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+    Assert-NotNull $clusters.Where({$_.Name -eq $clusterName})
 }
 
 function Test-AddAzureRmServiceFabricNodeType
@@ -103,12 +105,10 @@ function Test-AddAzureRmServiceFabricNodeType
 	$newNodeTypeName = Get-NewNodeTypeName
 
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
-	$count = $clusters[0].NodeTypes.Count
-    $vmPassword = ConvertTo-SecureString -Force -AsPlainText -String Get-VmPwd
-	$cluster = Add-AzureRmServiceFabricNodeType -Capacity 1 -VmUserName username -VmPassword $vmPassword -NodeType $newNodeTypeName `
-	           -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+    $vmPassword = Get-VmPwd | ConvertTo-SecureString -Force -AsPlainText
+	$cluster = Add-AzureRmServiceFabricNodeType -Capacity 1 -VmUserName username -VmPassword $vmPassword -NodeType $newNodeTypeName -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual ($clusters[0].NodeTypes.Count - $count)  1
+	Assert-NotNull $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName})
 }
 
 function Test-RemoveAzureRmServiceFabricNodeType
@@ -118,25 +118,50 @@ function Test-RemoveAzureRmServiceFabricNodeType
 	$newNodeTypeName = Get-NewNodeTypeName
 
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
-	$count = $clusters[0].NodeTypes.Count
-	$cluster = Remove-AzureRmServiceFabricNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -NodeType $newNodeTypeName
+	$cluster = Remove-AzureRmServiceFabricNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -NodeType $newNodeTypeName -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual ($count - $clusters[0].NodeTypes.Count)  1
+	Assert-Null $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName})
+}
+
+function Test-AddAzureRmServiceFabricNode
+{
+    $clusterName = Get-ClusterName
+    $resourceGroupName = Get-ResourceGroupName	
+    $newNodeTypeName = Get-NewNodeTypeName
+    $nodes = 5
+
+    $clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+    $count = $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName}).VmInstanceCount
+    $cluster = Add-AzureRmServiceFabricNode -NodeType $newNodeTypeName -NumberOfNodesToAdd $nodes -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
+    $clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
+    Assert-AreEqual ($count + $nodes)  $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName}).VmInstanceCount
+}
+
+function Test-RemoveAzureRmServiceFabricNode
+{
+    $clusterName = Get-ClusterName
+    $resourceGroupName = Get-ResourceGroupName	
+    $newNodeTypeName = Get-NewNodeTypeName
+    $nodes = 1
+
+    $clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
+    $count = $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName}).VmInstanceCount
+    $cluster = Remove-AzureRmServiceFabricNode -NodeType $newNodeTypeName -NumberOfNodesToRemove $nodes -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
+    $clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
+    Assert-AreEqual ($count - $nodes)  $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName}).VmInstanceCount
 }
 
 function Test-SetAzureRmServiceFabricSettings
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName	
-	$newNodeTypeName = Get-NewNodeTypeName
 	$sectionName =  Get-SectionName
 	$parameterName = Get-ParameterName
 	$valueName = Get-ValueName
 
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 	$count = $clusters[0].FabricSettings.Count
-	$cluster = Set-AzureRmServiceFabricSetting -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName `
-	-Parameter $parameterName -Value $valueName
+	$cluster = Set-AzureRmServiceFabricSetting -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName -Parameter $parameterName -Value $valueName -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-Null  ($clusters[0].FabricSettings[$sectionName])  
 }
@@ -145,17 +170,13 @@ function Test-RemoveAzureRmServiceFabricSettings
 {
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName	
-	$newNodeTypeName = Get-NewNodeTypeName
 	$sectionName =  Get-SectionName
 	$parameterName = Get-ParameterName
-	$valueName = Get-ValueName
 
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 	$preSettings = $clusters[0].FabricSettings
-	$cluster = Remove-AzureRmServiceFabricSetting -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName `
-	-Parameter $parameterName
+	$cluster = Remove-AzureRmServiceFabricSetting -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Section $sectionName -Parameter $parameterName -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	
 	Assert-AreNotEqual $preSettings  $clusters[0].FabricSettings
 }
 
@@ -164,7 +185,7 @@ function Test-SetAzureRmServiceFabricUpgradeType
 	$clusterName = Get-ClusterName
 	$resourceGroupName = Get-ResourceGroupName	
 	
-	$cluster =Set-AzureRmServiceFabricUpgradeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Automatic
+	$cluster = Set-AzureRmServiceFabricUpgradeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -UpgradeMode Manual -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
-	Assert-AreEqual $clusters[0].UpgradeMode 'Automatic'
+	Assert-AreEqual $clusters[0].UpgradeMode 'Manual'
 }

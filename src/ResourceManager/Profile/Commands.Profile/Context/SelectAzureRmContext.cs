@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Profile.Context
     [OutputType(typeof(PSAzureContext))]
     public class SelectAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
-        public const string InputObjectParameterSet = "Input Object";
-        public const string ContextNameParameterSet = "Context Name";
+        public const string InputObjectParameterSet = "SelectByInputObject";
+        public const string ContextNameParameterSet = "SelectByName";
         [Parameter(Mandatory =true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline =true, HelpMessage ="A context object, normally passed through the pipeline.")]
         [ValidateNotNullOrEmpty]
         public PSAzureContext InputObject { get; set; }

@@ -1,7 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/Microsoft.Storage.Admin?api-version=2014-04-01-preview",
+      "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/providers/Microsoft.Storage.Admin?api-version=2017-05-10",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS5BZG1pbj9hcGktdmVyc2lvbj0yMDE3LTA1LTEw",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -52,58 +53,60 @@
       "StatusCode": 200
     },
     {
-        "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/System.redmond/providers/Microsoft.Storage.Admin/farms?api-version=2015-12-01-preview",
-        "RequestMethod": "GET",
-        "RequestBody": "",
-        "RequestHeaders": {
-            "Accept": [ "application/json" ],
-            "User-Agent": [
-                "Microsoft.AzureStack.Management.StorageAdmin/0.9.0.0 AzurePowershell/v0.8.14"
-            ]
-        },
-        "ResponseBody": "{\"value\":[{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/rg1/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49\",\"type\":\"Microsoft.Storage.Admin/farms\",\"location\":\"west us\",\"name\":\"farm_01\",\"properties\":{\"settings\":{\"settingsPollingIntervalInSecond\":60,\"hostStyleHttpPort\":80,\"hostStyleHttpsPort\":443,\"corsAllowedOriginsList\":\"http://manage.wossportal.com;http://www.example.com\",\"dataCenterUriHostSuffixes\":\"contoso.com\"},\"settingsStore\":\"anypath\",\"healthStatus\":\"Warning\"}}]}",
-        "ResponseHeaders": {
-            "Cache-Control": [
-                "no-cache"
-            ],
-            "Date": [
-                "Mon, 03 Mar 2015 00:07:07 GMT"
-            ],
-            "Expires": [
-                "-1"
-            ],
-            "Pragma": [
-                "no-cache"
-            ],
-            "Vary": [
-                "Accept-Encoding"
-            ],
-            "Content-Length": [
-                "8232"
-            ],
-            "Content-Type": [
-                "application/json; charset=utf-8"
-            ],
-            "x-ms-ratelimit-remaining-subscription-reads": [
-                "31998"
-            ],
-            "x-ms-request-id": [
-                "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
-            ],
-            "x-ms-correlation-request-id": [
-                "45888041-1ede-478b-949f-13aa6e47e0ba"
-            ],
-            "x-ms-routing-request-id": [
-                "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
-            ],
-            "Strict-Transport-Security": [
-                "max-age=31536000; includeSubDomains"
-            ]
-        },
-        "StatusCode": 200
+      "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/System.redmond/providers/Microsoft.Storage.Admin/farms?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5yZWRtb25kL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS5BZG1pbi9mYXJtcz9hcGktdmVyc2lvbj0yMDE1LTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "Accept": [ "application/json" ],
+        "User-Agent": [
+          "Microsoft.AzureStack.Management.StorageAdmin/0.9.0.0 AzurePowershell/v0.8.14"
+        ]
+      },
+      "ResponseBody": "{\"value\":[{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/rg1/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49\",\"type\":\"Microsoft.Storage.Admin/farms\",\"location\":\"west us\",\"name\":\"farm_01\",\"properties\":{\"settings\":{\"settingsPollingIntervalInSecond\":60,\"hostStyleHttpPort\":80,\"hostStyleHttpsPort\":443,\"corsAllowedOriginsList\":\"http://manage.wossportal.com;http://www.example.com\",\"dataCenterUriHostSuffixes\":\"contoso.com\"},\"settingsStore\":\"anypath\",\"healthStatus\":\"Warning\"}}]}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 03 Mar 2015 00:07:07 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "Content-Length": [
+          "8232"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "31998"
+        ],
+        "x-ms-request-id": [
+          "WestUS_d9e73d2735f24797a08dda5d8228e509_635609224343322694"
+        ],
+        "x-ms-correlation-request-id": [
+          "45888041-1ede-478b-949f-13aa6e47e0ba"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150302T194714Z:45888041-1ede-478b-949f-13aa6e47e0ba"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ]
+      },
+      "StatusCode": 200
     },
     {
       "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/System.redmond/providers/Microsoft.Storage.Admin/farms/03768357-B4F2-4C3C-AA75-574209B03D49/shares?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYTkzZmIwN2MtNmM5My00MGJlLWJmM2ItNGYwZGViYTEwZjRiL3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5yZWRtb25kL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS5BZG1pbi9mYXJtcy8wMzc2ODM1Ny1CNEYyLTRDM0MtQUE3NS01NzQyMDlCMDNENDkvc2hhcmVzP2FwaS12ZXJzaW9uPTIwMTUtMTItMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

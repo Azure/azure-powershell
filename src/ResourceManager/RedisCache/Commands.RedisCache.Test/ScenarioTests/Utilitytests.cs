@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
@@ -10,6 +7,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
     public class UtilityTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidateResourceGroupAndResourceName_InvalidResourceGroup()
         {
             string resourceGroup = "subscriptions/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa/resourceGroups/Default-Storage-NorthEurope";
@@ -20,6 +18,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidateResourceGroupAndResourceName_InvalidRedisCacheName_FullName()
         {
             string resourceGroup = "Default-Storage-NorthEurope";
@@ -30,6 +29,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidateResourceGroupAndResourceName_InvalidRedisCacheName_ID()
         {
             string resourceGroup = "Default-Storage-NorthEurope";
@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidateResourceGroupAndResourceName_Success()
         {
             string resourceGroup = "Default-Storage-NorthEurope";

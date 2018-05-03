@@ -13,7 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags; 
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -107,6 +108,19 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string SampleName { get; set; }
 
         /// <summary>
+        /// Gets or sets the zone redundant option to assign to the Azure SQL Database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The zone redundancy to associate with the Azure Sql Database")]
+        public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether or not to run this cmdlet in the background as a job
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -125,18 +139,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName);
             }
-            catch (Hyak.Common.CloudException ex) // when using Hyak SDK
-            {
-                if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    // This is what we want.  We looked and there is no database with this name.
-                    return null;
-                }
-
-                // Unexpected exception encountered
-                throw;
-            }
-            catch (Microsoft.Rest.Azure.CloudException ex) // when using AutoRest SDK
+            catch (CloudException ex)
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
@@ -177,7 +180,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     RequestedServiceObjectiveName = RequestedServiceObjectiveName,
                     Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                     ElasticPoolName = ElasticPoolName,
-                    ReadScale = ReadScale
+                    ReadScale = ReadScale,
+                    ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 },
                 SampleName = SampleName
             };
@@ -190,9 +194,24 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The input entity</returns>
         protected override AzureSqlDatabaseCreateOrUpdateModel PersistChanges(AzureSqlDatabaseCreateOrUpdateModel entity)
         {
+            // Use AutoRest or Hyak SDK depending on model parameters.
+            // This is done because we want to add support for -SampleName, which is only supported by AutoRest SDK.
+            // Why not always use AutoRest SDK? Because it uses Azure-AsyncOperation polling, while Hyak uses
+            // Location polling. This means that switching to AutoRest requires re-recording almost all scenario tests,
+            // which currently is quite difficult.
+            AzureSqlDatabaseModel upsertedDatabase;
+            if (!string.IsNullOrEmpty(entity.SampleName) || entity.Database.ZoneRedundant.HasValue)
+            {
+                upsertedDatabase = ModelAdapter.UpsertDatabaseWithNewSdk(this.ResourceGroupName, this.ServerName, entity);
+            }
+            else
+            {
+                upsertedDatabase = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity);
+            }
+
             return new AzureSqlDatabaseCreateOrUpdateModel
             {
-                Database = ModelAdapter.UpsertDatabase(this.ResourceGroupName, this.ServerName, entity)
+                Database = upsertedDatabase
             };
         }
 

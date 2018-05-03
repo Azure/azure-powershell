@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '3.4.1'})
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.2.0'})
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -112,6 +112,25 @@ ModuleList = @()
 FileList =  @()  
   
 # Private data to pass to the module specified in ModuleToProcess  
-PrivateData = ''  
+PrivateData = @{
 
-} 
+    PSData = @{
+
+        # Tags applied to this module. These help with module discovery in online galleries.
+        # Tags = @()
+
+        # A URL to the license for this module.
+        LicenseUri = 'https://aka.ms/azps-license'
+
+        # A URL to the main website for this project.
+        ProjectUri = 'https://github.com/Azure/azure-powershell'
+
+        # A URL to an icon representing this module.
+        # IconUri = ''
+
+        # ReleaseNotes of this module
+        ReleaseNotes = ''
+
+    } # End of PSData hashtable
+  } # End of PrivateData hashtable
+}

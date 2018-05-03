@@ -1,8 +1,8 @@
----
+﻿---
 Module Name: AzureRM.Profile
 Module Guid: 342714fc-4009-4863-8afb-a9067e3db04b
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile
+Help Version: 4.6.0.0
 Locale: en-US
 ---
 
@@ -11,8 +11,8 @@ Locale: en-US
 Manages credentials and common configuration for all Azure modules.
 
 ## AzureRM.Profile Cmdlets
-### [Add-AzureRmAccount](Add-AzureRmAccount.md)
-Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
+### [Connect-AzureRmAccount](Connect-AzureRmAccount.md)
+Connects to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
 
 ### [Add-AzureRmEnvironment](Add-AzureRmEnvironment.md)
 Adds endpoints and metadata for an instance of Azure Resource Manager.
@@ -40,7 +40,7 @@ Gets the metadata used to authenticate Azure Resource Manager requests.
 
 ### [Get-AzureRmContextAutosaveSetting](Get-AzureRmContextAutosaveSetting.md)
 Display metadata about the context autosave feature, including whterh the context is 
-automatically saved, and where saved context and credential information can be found.
+automaticallys aved, and where saved context and credential information cna be found.
 
 ### [Get-AzureRmEnvironment](Get-AzureRmEnvironment.md)
 Get endpoints and metadata for an instance of Azure services.
@@ -54,8 +54,8 @@ Gets tenants that are authorized for the current user.
 ### [Import-AzureRmContext](Import-AzureRmContext.md)
 Loads Azure authentication information from a file.
 
-### [Remove-AzureRmAccount](Remove-AzureRmAccount.md)
-Remove all credentials and contexts associated with this account.
+### [Disconnect-AzureRmAccount](Disconnect-AzureRmAccount.md)
+Disconnects from a connected Azure account and removes all credentials and contexts associated with that account.
 
 ### [Remove-AzureRmContext](Remove-AzureRmContext.md)
 Remove a context from the set of available contexts
@@ -73,7 +73,7 @@ Display detailed information about PowerShell errors, with extended details for 
 Saves the current authentication information for use in other PowerShell sessions.
 
 ### [Select-AzureRmContext](Select-AzureRmContext.md)
-Select a subscription to target (or account, tenant) in Azure PowerShell cmdlets
+Select a subscription and account to target in Azure PowerShell cmdlets
 
 ### [Send-Feedback](Send-Feedback.md)
 Sends feedback to the Azure PowerShell team via a set of guided prompts.

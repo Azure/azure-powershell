@@ -1,6 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
-online version: 
+Module Name: AzureRM.RecoveryServices.SiteRecovery
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/get-azurermrecoveryservicesasrfabric
 schema: 2.0.0
 ---
 
@@ -13,17 +14,19 @@ Get the details of an Azure Site Recovery Fabric.
 
 ### Default (Default)
 ```
-Get-AzureRmRecoveryServicesAsrFabric [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrFabric [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzureRmRecoveryServicesAsrFabric -Name <String> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrFabric -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByFriendlyName
 ```
-Get-AzureRmRecoveryServicesAsrFabric -FriendlyName <String> [<CommonParameters>]
+Get-AzureRmRecoveryServicesAsrFabric -FriendlyName <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +41,49 @@ PS C:\> $fabrics = Get-AzureRmRecoveryServicesAsrFabric
 
 Returns all the Azure Site Recovery fabrics in the vault.
 
+### Example 2
+```
+PS C:\> $fabric = Get-AzureRmRecoveryServicesAsrFabric -Name xxxx
+
+Name                  : xxxx
+FriendlyName          : XXXXXXXXXX
+ID                    : /Subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/XXXXXXXXXXXXX/replicationFabrics/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FabricType            : VMware
+SiteIdentifier        : XXXXXXXXxxxxxxxxxxx
+FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
+```
+
+Return azure site recovery fabric with name xxxx.
+
+### Example 3
+```
+PS C:\> $fabric = Get-AzureRmRecoveryServicesAsrFabric -FriendlyName XXXXXXXXXX
+
+Name                  : xxxx
+FriendlyName          : XXXXXXXXXX
+ID                    : /Subscriptions/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/resourceGroups/canaryexproute/providers/Microsoft.RecoveryServices/vaults/XXXXXXXXXXXXX/replicationFabrics/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FabricType            : VMware
+SiteIdentifier        : XXXXXXXXxxxxxxxxxxx
+FabricSpecificDetails : Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMWareSpecificDetails
+```
+
+Return azure site recovery fabric with friendly name xxxx.
+
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -FriendlyName
 Search for the ASR fabric by the friendly name of the fabric.
@@ -46,7 +91,7 @@ Search for the ASR fabric by the friendly name of the fabric.
 ```yaml
 Type: String
 Parameter Sets: ByFriendlyName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -61,7 +106,7 @@ Search for the ASR fabric by the name of the fabric.
 ```yaml
 Type: String
 Parameter Sets: ByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

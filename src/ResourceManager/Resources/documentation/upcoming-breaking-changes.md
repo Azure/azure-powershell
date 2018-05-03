@@ -29,74 +29,42 @@
 
 The following cmdlets were affected this release:
 
-**New-AzureRmADAppCredential**
-- Parameter "Password" being replaced in favor of a SecureString
+**Find-AzureRmResource**
+- This cmdlet is being removed and the functionality will be moved into `Get-AzureRmResource`
 
 ```powershell
-
 # Old
-# New-AzureRmADAppCredential [other required parameters] -Password "plain-text string"
+Find-AzureRmResource -ResourceType "Microsoft.Web/sites" -ResourceGroupNameContains "ResourceGroup"
+Find-AzureRmResource -ResourceType "Microsoft.Web/sites" -ResourceNameContains "test"
 
 # New
-# New-AzureRmADAppCredential [other required parameters] -Password $SecureStringVariable
+Get-AzureRmResource -ResourceType "Microsoft.Web/sites" -ResourceGroupName "*ResourceGroup*"
+Get-AzureRmResource -ResourceType "Microsoft.Web/sites" -Name "*test*"
 ```
 
-**New-AzureRmADApplication**
-- Parameter "Password" being replaced in favor of a SecureString
+**Find-AzureRmResourceGroup**
+- This cmdlet is being removed and the functionality will be moved into `Get-AzureRmResourceGroup`
 
 ```powershell
-
 # Old
-# New-AzureRmADApplication [other required parameters] -Password "plain-text string"
+Find-AzureRmResourceGroup
+Find-AzureRmResourceGroup -Tag @{ "testtag" = $null }
+Find-AzureRmResourceGroup -Tag @{ "testtag" = "testval" }
 
 # New
-# New-AzureRmADApplication [other required parameters] -Password $SecureStringVariable
+Get-AzureRmResourceGroup
+Get-AzureRmResourceGroup -Tag @{ "testtag" = $null }
+Get-AzureRmResourceGroup -Tag @{ "testtag" = "testval" }
 ```
 
-**New-AzureRmADServicePrincipal**
-- Parameter "Password" being replaced in favor of a SecureString
+**Get-AzureRmRoleDefinition**
+- Parameter "AtScopeAndBelow" is being removed.
 
 ```powershell
 
 # Old
-# New-AzureRmADServicePrincipal [other required parameters] -Password "plain-text string"
+# Get-AzureRmRoleDefinition [other required parameters] -AtScopeAndBelow
 
 # New
-# New-AzureRmADServicePrincipal [other required parameters] -Password $SecureStringVariable
-```
-
-**New-AzureRmADSpCredential**
-- Parameter "Password" being replaced in favor of a SecureString
-
-```powershell
-
-# Old
-# New-AzureRmADSpCredential [other required parameters] -Password "plain-text string"
-
-# New
-# New-AzureRmADSpCredential [other required parameters] -Password $SecureStringVariable
-```
-
-**New-AzureRmADUser**
-- Parameter "Password" being replaced in favor of a SecureString
-
-```powershell
-
-# Old
-# New-AzureRmADUser [other required parameters] -Password "plain-text string"
-
-# New
-# New-AzureRmADUser [other required parameters] -Password $SecureStringVariable
-```
-
-**Set-AzureRmADUser**
-- Parameter "Password" being replaced in favor of a SecureString
-
-```powershell
-
-# Old
-# Set-AzureRmADUser [other required parameters] -Password "plain-text string"
-
-# New
-# Set-AzureRmADUser [other required parameters] -Password $SecureStringVariable
+# Get-AzureRmRoleDefinition [other required parameters]
 ```

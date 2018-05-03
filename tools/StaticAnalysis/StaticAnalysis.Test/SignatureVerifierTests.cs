@@ -10,14 +10,16 @@ namespace StaticAnalysis.Test
     using System.Linq;
     using StaticAnalysis.ProblemIds;
     using System.Reflection;
+    using Tools.Common.Loggers;
+    using Tools.Common.Issues;
 
     /// <summary>
     /// Add a way to send filterDirectory, FiltercmdLets delegates to the analyze method.
     /// Add a switch to skip analyze
     /// Split the test between, testing Main vs testing Analyze
-    /// 
+    ///
     /// Add Rule Engine that deals with Parameter Rules (mutually exclusive parameters, mandatory parameter rules, force parameter rule)
-    /// 
+    ///
     /// </summary>
     public class SignatureVerifierTests
     {
@@ -37,8 +39,8 @@ namespace StaticAnalysis.Test
 
         #region Verb Cmdlets and SupportsShouldProcess
         /// <summary>
-        /// 
-        /// </summary>        
+        ///
+        /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddVerbWithoutSupportsShouldProcessParameter()
@@ -57,7 +59,7 @@ namespace StaticAnalysis.Test
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddVerbWithSupportsShouldProcessParameter()
-        {   
+        {
             cmdletSignatureVerifier.Analyze(
                 new List<string> { _testCmdletDirPath},
                 ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
@@ -70,7 +72,7 @@ namespace StaticAnalysis.Test
         #endregion
 
         #region ForceSwitch and SupportsShouldProcess
-                
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ForceParameterWithoutSupportsShouldProcess()
@@ -116,7 +118,7 @@ namespace StaticAnalysis.Test
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
             Assert.Equal(0, testReport.ProblemIdList.Count);
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ConfirmImpactWithoutSupportsShouldProcess()
@@ -133,7 +135,7 @@ namespace StaticAnalysis.Test
         }
         #endregion
 
-        #region IsShouldContinueVerb and ForceSwitch
+        #region IsShouldContinueVerb
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ShouldContinueVerbWithForceSwitch()
@@ -145,21 +147,6 @@ namespace StaticAnalysis.Test
 
             AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
             Assert.Equal(0, testReport.ProblemIdList.Count);
-        }
-                
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ShouldContinueVerbWithoutForceSwitch()
-        {
-            cmdletSignatureVerifier.Analyze(
-                new List<string> { _testCmdletDirPath },
-                ((dirList) => { return new List<string> { _testCmdletDirPath}; }),
-                (cmdletName) => cmdletName.Equals("Export-ShouldContinueVerbWithoutForceSwitch", StringComparison.OrdinalIgnoreCase));
-
-            AnalysisReport testReport = cmdletSignatureVerifier.GetAnalysisReport();
-            Assert.Equal(2, testReport.ProblemIdList.Count);
-            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.CmdletWithDestructiveVerbNoForce)).SingleOrDefault<int>().Equals(SignatureProblemId.CmdletWithDestructiveVerbNoForce));
-            Assert.True(testReport.ProblemIdList.Where<int>((problemId) => problemId.Equals(SignatureProblemId.ActionIndicatesShouldProcess)).SingleOrDefault<int>().Equals(SignatureProblemId.ActionIndicatesShouldProcess));
         }
         #endregion
 

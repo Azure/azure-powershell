@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,25 @@
 -->
 ## Current Release
 
+## Version 3.1.3
+* Set minimum dependency of module to PowerShell 5.0
+* Enable tags and Basic Sku to the IotHub
+
+## Version 3.1.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 3.1.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 3.1.0
+* Add Certificate support for IoTHub cmdlets
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+## Version 3.0.0
+* Add support for online help
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
+    
 ## Version 2.4.1
 
 ## Version 2.4.0

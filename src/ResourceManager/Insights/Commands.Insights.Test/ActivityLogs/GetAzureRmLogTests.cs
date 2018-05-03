@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: null,
                 requiredFieldValue: null,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             // Setting required parameter
             cmdlet.CorrelationId = Utilities.Correlation;
             cmdlet.ResourceId = null;
-            cmdlet.ResourceGroup = null;
+            cmdlet.ResourceGroupName = null;
             cmdlet.ResourceProvider = null;
 
             Utilities.ExecuteVerifications(
@@ -108,7 +107,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: "correlationId",
                 requiredFieldValue: Utilities.Correlation,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }
@@ -120,7 +118,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             var startDate = DateTime.Now.AddSeconds(-1);
 
             // Setting required parameter
-            cmdlet.ResourceGroup = Utilities.ResourceGroup;
+            cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.CorrelationId = null;
             cmdlet.ResourceId = null;
             cmdlet.ResourceProvider = null;
@@ -131,7 +129,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: "resourceGroupName",
                 requiredFieldValue: Utilities.ResourceGroup,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }
@@ -144,7 +141,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
 
             // Setting required parameter
             cmdlet.ResourceId = Utilities.ResourceUri;
-            cmdlet.ResourceGroup = null;
+            cmdlet.ResourceGroupName = null;
             cmdlet.CorrelationId = null;
             cmdlet.ResourceProvider = null;
 
@@ -154,7 +151,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: "resourceUri",
                 requiredFieldValue: Utilities.ResourceUri,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }
@@ -168,7 +164,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
             // Setting required parameter
             cmdlet.ResourceProvider = Utilities.ResourceProvider;
             cmdlet.ResourceId = null;
-            cmdlet.ResourceGroup = null;
+            cmdlet.ResourceGroupName = null;
             cmdlet.CorrelationId = null;
 
             Utilities.ExecuteVerifications(
@@ -177,7 +173,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
                 requiredFieldName: "resourceProvider",
                 requiredFieldValue: Utilities.ResourceProvider,
                 filter: ref this.filter,
-                selected: ref this.selected,
                 startDate: startDate,
                 nextLink: ref this.nextLink);
         }

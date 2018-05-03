@@ -29,6 +29,7 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using CNM = Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location.")]
+        [LocationCompleter("Microsoft.Network/locations/usages")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             var vUsageList = this.NetworkClient.NetworkManagementClient.Usages.List(Location);
             foreach (var vUsage in vUsageList)
             {
-                var vUsageModel = Mapper.Map<CNM.PSUsage>(vUsage);
+                var vUsageModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSUsage>(vUsage);
                 WriteObject(vUsageModel);
             }
         }

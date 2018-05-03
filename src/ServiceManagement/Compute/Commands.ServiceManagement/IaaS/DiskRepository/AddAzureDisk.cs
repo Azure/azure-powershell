@@ -54,7 +54,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                 null,
                 this.CommandRuntime.ToString(),
                 () => this.ComputeClient.VirtualMachineDisks.CreateDisk(parameters),
-                (s, response) => this.ContextFactory<VirtualMachineDiskCreateResponse, DiskContext>(response, s));
+                (s, response) => this.ContextFactory(response, s,
+                                        ServiceManagementProfile.Mapper.Map<VirtualMachineDiskCreateResponse, DiskContext>,
+                                        ServiceManagementProfile.Mapper.Map));
         }
 
         protected override void OnProcessRecord()

@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 0,
             ValueFromPipelineByPropertyName = true)]
+        [ResourceManager.Common.ArgumentCompleters.LocationCompleter("Microsoft.ContainerService/containerServices")]
         public string Location { get; set; }
 
         [Parameter(
@@ -55,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true)]
-        public int? MasterCount { get; set; }
+        public int MasterCount { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -145,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             // DiagnosticsProfile
             Microsoft.Azure.Management.Compute.Models.ContainerServiceDiagnosticsProfile vDiagnosticsProfile = null;
 
-            if (this.OrchestratorType.HasValue)
+            if (this.MyInvocation.BoundParameters.ContainsKey("OrchestratorType"))
             {
                 if (vOrchestratorProfile == null)
                 {
@@ -154,7 +155,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vOrchestratorProfile.OrchestratorType = this.OrchestratorType.Value;
             }
 
-            if (this.CustomProfileOrchestrator != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("CustomProfileOrchestrator"))
             {
                 if (vCustomProfile == null)
                 {
@@ -163,7 +164,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vCustomProfile.Orchestrator = this.CustomProfileOrchestrator;
             }
 
-            if (this.ServicePrincipalProfileClientId != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ServicePrincipalProfileClientId"))
             {
                 if (vServicePrincipalProfile == null)
                 {
@@ -172,7 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vServicePrincipalProfile.ClientId = this.ServicePrincipalProfileClientId;
             }
 
-            if (this.ServicePrincipalProfileSecret != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("ServicePrincipalProfileSecret"))
             {
                 if (vServicePrincipalProfile == null)
                 {
@@ -181,7 +182,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vServicePrincipalProfile.Secret = this.ServicePrincipalProfileSecret;
             }
 
-            if (this.MasterCount != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("MasterCount"))
             {
                 if (vMasterProfile == null)
                 {
@@ -190,7 +191,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vMasterProfile.Count = this.MasterCount;
             }
 
-            if (this.MasterDnsPrefix != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("MasterDnsPrefix"))
             {
                 if (vMasterProfile == null)
                 {
@@ -199,7 +200,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vMasterProfile.DnsPrefix = this.MasterDnsPrefix;
             }
 
-            if (this.WindowsProfileAdminUsername != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("WindowsProfileAdminUsername"))
             {
                 if (vWindowsProfile == null)
                 {
@@ -208,7 +209,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vWindowsProfile.AdminUsername = this.WindowsProfileAdminUsername;
             }
 
-            if (this.WindowsProfileAdminPassword != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("WindowsProfileAdminPassword"))
             {
                 if (vWindowsProfile == null)
                 {
@@ -217,7 +218,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vWindowsProfile.AdminPassword = this.WindowsProfileAdminPassword;
             }
 
-            if (this.AdminUsername != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("AdminUsername"))
             {
                 if (vLinuxProfile == null)
                 {
@@ -227,7 +228,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
 
-            if (this.SshPublicKey != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("SshPublicKey"))
             {
                 if (vLinuxProfile == null)
                 {
@@ -260,12 +261,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vDiagnosticsProfile.VmDiagnostics.Enabled = this.VmDiagnosticsEnabled;
 
-
             var vContainerService = new PSContainerService
             {
-                Location = this.Location,
-                Tags = (this.Tag == null) ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value),
-                AgentPoolProfiles = this.AgentPoolProfile,
+                Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,
+                Tags = this.MyInvocation.BoundParameters.ContainsKey("Tag") ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null,
+                AgentPoolProfiles = this.MyInvocation.BoundParameters.ContainsKey("AgentPoolProfile") ? this.AgentPoolProfile : null,
                 OrchestratorProfile = vOrchestratorProfile,
                 CustomProfile = vCustomProfile,
                 ServicePrincipalProfile = vServicePrincipalProfile,

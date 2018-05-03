@@ -1,24 +1,25 @@
 ﻿<#
 .SYNOPSIS
 End to end DSC test that tests Get-AzureRmVMDscExtension cmdlet. It does the following:
-	1) Publishes a configuration to the default storage account using Publish-AzureRmVMDscConfiguration cmdlet
-	2) Installs the extension by calling Set-AzureRmVMDscExtension cmdlet on a VM.
-	3) Calls Get-AzureRmVMDscExtensionStatus cmdlet to check the status of the extension installation.
-	4) Calls Get-AzureRmVMDscExtension cmdlet to get extension details post installation.
+    1) Publishes a configuration to the default storage account using Publish-AzureRmVMDscConfiguration cmdlet
+    2) Installs the extension by calling Set-AzureRmVMDscExtension cmdlet on a VM.
+    3) Calls Get-AzureRmVMDscExtensionStatus cmdlet to check the status of the extension installation.
+    4) Calls Get-AzureRmVMDscExtension cmdlet to get extension details post installation.
 #>
 function Test-GetAzureRmVMDscExtension
 {
-	Set-StrictMode -Version latest; $ErrorActionPreference = 'Stop'
+    Set-StrictMode -Version latest; $ErrorActionPreference = 'Stop'
 
-	# Setup
+    # Setup
     $rgname = Get-ComputeTestResourceName
-	$loc = Get-ComputeVMLocation
+    $loc = Get-ComputeVMLocation
 
     try
     {
         # Common
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+        $storageEndpointSuffix = Get-DefaultStorageEndpointSuffix;
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
@@ -43,90 +44,92 @@ function Test-GetAzureRmVMDscExtension
 
         # Storage Account 
         $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
+        $stotype = 'Standard_LRS';
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         Retry-IfException { $global:stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname; }
         
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
-        $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
-        $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
+        $osDiskVhdUri = "https://$stoname.blob.$storageEndpointSuffix/test/os.vhd";
+        $dataDiskVhdUri1 = "https://$stoname.blob.$storageEndpointSuffix/test/data1.vhd";
         
         $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
-		$p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
         
-		# OS & Image
-        $user = "localadmin";
-        $password = $PLACEHOLDER;
+        # OS & Image
+        $user = "Foo12";
+        $password = 'BaR@123' + $rgname;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $vhdContainer = "https://$stoname.blob.core.windows.net/test";
+        $vhdContainer = "https://$stoname.blob.$storageEndpointSuffix/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
-        
+
+        $imgRef = Get-DefaultCRPWindowsImageOffline;
+        $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
+
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Test DSC Extension
-        $version = '2.19';
+        $version = '2.8';
 
-		# Publish DSC Configuration
-		#TODO: Find a way to mock calls with storage
-		#$configPath = '.\ScenarioTests\DummyConfig.ps1'
-		#Publish-AzureRmVMDscConfiguration -ConfigurationPath $configPath -ResourceGroupName $rgname -StorageAccountName $stoname -Force -Verbose
+        # Publish DSC Configuration
+        #TODO: Find a way to mock calls with storage
+        #$configPath = '.\ScenarioTests\DummyConfig.ps1'
+        #Publish-AzureRmVMDscConfiguration -ConfigurationPath $configPath -ResourceGroupName $rgname -StorageAccountName $stoname -Force -Verbose
 
-		#Install DSC Extension handler
-		Set-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Force -Location $loc
+        #Install DSC Extension handler
+        Set-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname -ArchiveBlobName $null -ArchiveStorageAccountName $stoname -Version $version -Force -Location $loc -AutoUpdate
 
         $extension = Get-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname 
-		Assert-NotNull $extension
-		Assert-AreEqual $extension.ResourceGroupName $rgname
-		Assert-AreEqual $extension.Name "Microsoft.Powershell.DSC"
-		Assert-AreEqual $extension.Publisher "Microsoft.Powershell"
-		Assert-AreEqual $extension.ExtensionType "DSC"
-		Assert-AreEqual $extension.TypeHandlerVersion $version
-		Assert-NotNull $extension.ProvisioningState
+        Assert-NotNull $extension
+        Assert-AreEqual $extension.ResourceGroupName $rgname
+        Assert-AreEqual $extension.Name "Microsoft.Powershell.DSC"
+        Assert-AreEqual $extension.Publisher "Microsoft.Powershell"
+        Assert-AreEqual $extension.ExtensionType "DSC"
+        Assert-AreEqual $extension.TypeHandlerVersion $version
+        Assert-NotNull $extension.ProvisioningState
 
-		$status = Get-AzureRmVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname 
-		Assert-NotNull $status
-		Assert-AreEqual $status.ResourceGroupName $rgname
-		Assert-AreEqual $status.VmName $vmname 
-		Assert-AreEqual $status.Version $version
-		Assert-NotNull $status.Status 
-		Assert-NotNull $status.Timestamp 
-		
+        $status = Get-AzureRmVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname
+        Assert-NotNull $status
+        Assert-AreEqual $status.ResourceGroupName $rgname
+        Assert-AreEqual $status.VmName $vmname
+        Assert-AreEqual $status.Version $version
+        Assert-NotNull $status.Status
+        Assert-NotNull $status.Timestamp
+
         # Remove Extension
         Remove-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname
     }
     finally
     {
-		# Cleanup
-		if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
-		{
-			#Remove-AzureRmResourceGroup -Name $rgname -Force;
-		}
+        # Cleanup
+        if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+        {
+            #Remove-AzureRmResourceGroup -Name $rgname -Force;
+        }
     }
 }
 
 #helper methods for ARM 
 function Get-DefaultResourceGroupLocation
 {
-	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-	{
-		$namespace = "Microsoft.Resources" 
-		$type = "resourceGroups" 
-		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+    {
+        $namespace = "Microsoft.Resources"
+        $type = "resourceGroups"
+        $location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
   
-		if ($location -eq $null) 
-		{  
-			return "West US"  
-		} else 
-		{  
-			return $location.Locations[0]  
-		}  
-	}
+        if ($location -eq $null)
+        {
+            return "West US"
+        } else
+        {
+            return $location.Locations[0]
+        }
+    }
 
-	return "West US"
+    return "West US"
 }
