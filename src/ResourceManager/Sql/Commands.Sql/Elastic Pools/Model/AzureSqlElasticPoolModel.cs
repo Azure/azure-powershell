@@ -107,6 +107,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public long? MaxSizeBytes { get; set; }
 
         /// <summary>
+        /// Gets or sets the amount of storage the elastic pool has
+        /// </summary>
+        public int? StorageMB { get; set; }
+
+        /// <summary>
         /// Gets or sets the tags associated with the Elastic Pool.
         /// </summary>
         public Dictionary<string, string> Tags { get; set; }

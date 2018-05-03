@@ -120,16 +120,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
         internal AzureSqlElasticPoolModel UpsertElasticPool(AzureSqlElasticPoolModel model)
         {
-            //var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPool
-            //{
-            //    Location = model.Location,
-            //    Tags = model.Tags,
-            //    Sku = model.Sku,
-            //    MaxSizeBytes = model.MaxSizeBytes,
-            //    ZoneRedundant = model.ZoneRedundant,
-            //    PerDatabaseSettings = model.PerDatabaseSettings
-            //});
-
             var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPoolUpdate
             {
                 Location = model.Location,
@@ -379,6 +369,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 ElasticPoolName = pool.Name,
                 CreationDate = pool.CreationDate ?? DateTime.MinValue,
                 State = pool.State,
+                StorageMB = pool.StorageMB,
                 MaxSizeBytes = pool.MaxSizeBytes,
                 Tags =
                     TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(pool.Tags), false),

@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             HelpMessage = "The storage limit for the Sql Azure Elastic Pool in MB.")]
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false, HelpMessage = "The storage limit for the Sql Azure Elastic Pool in MB.")]
         [ValidateNotNullOrEmpty]
-        public long StorageMB { get; set; }
+        public int StorageMB { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum DTU all Sql Azure Databases are guaranteed.

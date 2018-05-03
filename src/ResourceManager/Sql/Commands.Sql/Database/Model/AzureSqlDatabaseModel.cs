@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the max size of the database in bytes
         /// </summary>
-        public long? MaxSizeBytes { get; set; }
+        public long MaxSizeBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the status of the databse
@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public DateTime CreationDate { get; set; }
 
         /// <summary>
+        /// Gets or sets the current service objective ID
+        /// </summary>
+        public Guid CurrentServiceObjectiveId { get; set; }
+
+        /// <summary>
         /// Gets or sets the current service objective name
         /// </summary>
         public string CurrentServiceObjectiveName { get; set; }
@@ -98,6 +103,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Gets or sets the requested service objective name
         /// </summary>
         public string RequestedServiceObjectiveName { get; set; }
+
+        /// <summary>
+        /// gets or sets the requested service objective ID
+        /// </summary>
+        public Guid? RequestedServiceObjectiveId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the Elastic Pool the database is in
@@ -178,10 +188,16 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             CreateMode = database.Properties.CreateMode;
             EarliestRestoreDate = database.Properties.EarliestRestoreDate;
 
+            Guid.TryParse(database.Properties.CurrentServiceObjectiveId, out id);
+            CurrentServiceObjectiveId = id;
+
             Guid.TryParse(database.Properties.DatabaseId, out id);
             DatabaseId = id;
 
             Edition = database.Properties.Edition;
+
+            Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
+            RequestedServiceObjectiveId = id;
 
             Enum.TryParse<DatabaseReadScale>(database.Properties.ReadScale, true, out readScale);
             ReadScale = readScale;
@@ -203,7 +219,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             ServerName = serverName;
             CollationName = database.Collation;
             CreationDate = database.CreationDate.Value;
-            MaxSizeBytes = database.MaxSizeBytes;
+            MaxSizeBytes = (long)database.MaxSizeBytes;
             DatabaseName = database.Name;
             Status = database.Status;
             Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
