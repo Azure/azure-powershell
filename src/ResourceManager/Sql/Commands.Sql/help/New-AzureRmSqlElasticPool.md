@@ -23,7 +23,7 @@ New-AzureRmSqlElasticPool -ElasticPoolName <String> [-Edition <String>] [-Dtu <I
 
 ### VcoreBasedPool
 ```
-New-AzureRmSqlElasticPool -ElasticPoolName <String> -Edition <String> [-StorageMB <Int64>] -VCores <Int32>
+New-AzureRmSqlElasticPool -ElasticPoolName <String> -Edition <String> [-StorageMB <Int64>] -Vcore <Int32>
  -ComputeGeneration <String> [-DatabaseVCoreMin <Double>] [-DatabaseVCoreMax <Double>] [-Tags <Hashtable>]
  [-ZoneRedundant] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -75,7 +75,9 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation for the Sql Azure Elastic Pool. e.g. 'Gen4', 'Gen5'.```yaml
+The compute generation for the Sql Azure Elastic Pool. e.g. 'Gen4', 'Gen5'.
+
+```yaml
 Type: String
 Parameter Sets: VcoreBasedPool
 Aliases:
@@ -129,7 +131,9 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseVCoreMax
-The maxmium VCore number any SqlAzure Database can consume in the pool.```yaml
+The maxmium VCore number any SqlAzure Database can consume in the pool.
+
+```yaml
 Type: Double
 Parameter Sets: VcoreBasedPool
 Aliases:
@@ -142,7 +146,9 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseVCoreMin
-The minimum VCore number any SqlAzure Database can consume in the pool.```yaml
+The minimum VCore number any SqlAzure Database can consume in the pool.
+
+```yaml
 Type: Double
 Parameter Sets: VcoreBasedPool
 Aliases:
@@ -311,8 +317,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VCores
-The total shared number of Vcores for the Sql Azure Elastic Pool.```yaml
+### -Vcore
+The total shared number of Vcores for the Sql Azure Elastic Pool.
+
+```yaml
 Type: Int32
 Parameter Sets: VcoreBasedPool
 Aliases:

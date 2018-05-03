@@ -25,7 +25,7 @@ Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -Res
 ```
 Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String>
- -VCores <Int32> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Vcore <Int32> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackup
@@ -40,7 +40,7 @@ Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>
 ```
 Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob]
- -ComputeGeneration <String> -VCores <Int32> [-ResourceGroupName] <String>
+ -ComputeGeneration <String> -Vcore <Int32> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <St
 ### FromGeoBackupWithVcore
 ```
 Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
- -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCores <Int32>
+ -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -Vcore <Int32>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -68,7 +68,7 @@ Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -
 ### FromLongTermRetentionBackupWithVcore
 ```
 Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
- -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCores <Int32>
+ -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -Vcore <Int32>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -145,7 +145,9 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation of the restored Azure Sql Database.```yaml
+The compute generation of the restored Azure Sql Database.
+
+```yaml
 Type: String
 Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
 Aliases: Family
@@ -407,8 +409,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VCores
-The Vcore numbers of the restored Azure Sql Database.```yaml
+### -Vcore
+The Vcore numbers of the restored Azure Sql Database.
+
+```yaml
 Type: Int32
 Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
 Aliases: Capacity

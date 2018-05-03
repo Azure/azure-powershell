@@ -26,7 +26,7 @@ New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjec
 ```
 New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -PartnerResourceGroupName <String>
  -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob]
- -SecondaryComputeGeneration <String> -SecondaryVCores <Int32> [-ServerName] <String>
+ -SecondaryComputeGeneration <String> -SecondaryVcore <Int32> [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -156,7 +156,9 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryComputeGeneration
-The compute generation of teh Azure Sql Database secondary.```yaml
+The compute generation of teh Azure Sql Database secondary.
+
+```yaml
 Type: String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
@@ -198,8 +200,10 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecondaryVCores
-The Vcore numbers of the Azure Sql Database secondary.```yaml
+### -SecondaryVcore
+The Vcore numbers of the Azure Sql Database secondary.
+
+```yaml
 Type: Int32
 Parameter Sets: VcoreBasedDatabase
 Aliases: Capacity
