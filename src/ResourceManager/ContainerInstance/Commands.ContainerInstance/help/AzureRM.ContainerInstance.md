@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.ContainerInstance
 Module Guid: 99d2fc1f-ff3c-4bf3-ac22-8f81f0e5c279
-Download Help Link: 
-Help Version: 
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.containerinstance
+Help Version: 0.2.5.0
 Locale: en-US
 ---
 

@@ -120,6 +120,9 @@
   <data name="ApplicationWithAppIdDoesntExist" xml:space="preserve">
     <value>Application with AppId '{0}' does not exist.</value>
   </data>
+  <data name="ApplicationWithDisplayNameDoesntExist" xml:space="preserve">
+    <value>Application with display name '{0}' does not exist.</value>
+  </data>
   <data name="CreateApplicationNotAllowedGuestUser" xml:space="preserve">
     <value>You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory.</value>
   </data>
@@ -132,8 +135,23 @@
   <data name="GraphException" xml:space="preserve">
     <value>Received exception from graph. ErrorCode: {0}, Message: {1}</value>
   </data>
+  <data name="GroupWithDisplayNameDoesntExist" xml:space="preserve">
+    <value>Group with display name '{0}' does not exist.</value>
+  </data>
   <data name="KeyCredentialNotValid" xml:space="preserve">
     <value>KeyCredential object is not valid.</value>
+  </data>
+  <data name="MultipleApplicationsWithDisplayNameFound" xml:space="preserve">
+    <value>More than one application found with display name '{0}'. Please use the Get-AzureRmADApplication cmdlet to get the object id of the desired application.</value>
+  </data>
+  <data name="MultipleGroupsWithDisplayNameFound" xml:space="preserve">
+    <value>More than one group found with the display name '{0}'. Please use the Get-AzureRmADGroup cmdlet to get the object id of the desired group.</value>
+  </data>
+  <data name="MultipleServicePrincipalsWithDisplayNameFound" xml:space="preserve">
+    <value>More than one service principal found with display name '{0}'. Please use the Get-AzureRmADServicePrincipal cmdlet to get the object id of the desired service principal.</value>
+  </data>
+  <data name="MultipleUsersWithDisplayNameFound" xml:space="preserve">
+    <value>More than one user found with display name '{0}'. Please use the Get-AzureRmADUser cmdlet to get the object id of the desired user.</value>
   </data>
   <data name="PasswordCredentialNotValid" xml:space="preserve">
     <value>PasswordCredential object is not valid.</value>
@@ -141,8 +159,17 @@
   <data name="ServicePrincipalDoesntExist" xml:space="preserve">
     <value>Service principal with object id '{0}' does not exist.</value>
   </data>
+  <data name="ServicePrincipalWithAppIdDoesntExist" xml:space="preserve">
+    <value>Service principal with AppId '{0}' does not exist.</value>
+  </data>
+  <data name="ServicePrincipalWithDisplayNameDoesntExist" xml:space="preserve">
+    <value>Service principal with display name '{0}' does not exist.</value>
+  </data>
   <data name="ServicePrincipalWithSPNDoesntExist" xml:space="preserve">
     <value>Service principal with SPN '{0}' does not exist.</value>
+  </data>
+  <data name="UserWithDisplayNameDoesntExist" xml:space="preserve">
+    <value>User with display name '{0}' does not exist.</value>
   </data>
   <data name="UserWithUPNDoesntExist" xml:space="preserve">
     <value>User with UPN '{0}' does not exist.</value>

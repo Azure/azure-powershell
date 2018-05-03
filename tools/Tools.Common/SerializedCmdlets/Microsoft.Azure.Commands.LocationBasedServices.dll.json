@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
             "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -461,7 +461,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
             "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountKeys",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountKeys, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountKeys, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PrimaryKey": "System.String",
               "SecondaryKey": "System.String"
@@ -559,7 +559,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
             "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -782,7 +782,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
                   "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1021,7 +1021,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
             "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1540,7 +1540,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
             "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1860,7 +1860,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
                   "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2152,7 +2152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
             "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2375,7 +2375,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
                   "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2745,7 +2745,7 @@
     "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku": {
       "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
       "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "Tier": "System.String"
@@ -2818,7 +2818,7 @@
     "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount": {
       "Namespace": "Microsoft.Azure.Commands.LocationBasedServices.Models",
       "Name": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount, Microsoft.Azure.Commands.LocationBasedServices, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Sku": "Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountSku",
         "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",

@@ -12,9 +12,17 @@ Removes a Key Vault managed Azure Storage SAS definitions.
 
 ## SYNTAX
 
+### ByDefinitionName (Default)
 ```
 Remove-AzureKeyVaultManagedStorageSasDefinition [-VaultName] <String> [-AccountName] <String> [-Name] <String>
  [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Remove-AzureKeyVaultManagedStorageSasDefinition
+ [-InputObject] <PSKeyVaultManagedStorageSasDefinitionIdentityItem> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,13 +52,13 @@ Cmdlet constructs the FQDN of a managed storage account name from vault name, cu
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByDefinitionName
 Aliases: StorageAccountName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -84,19 +92,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+ManagedStorageSasDefinition object.
+
+```yaml
+Type: PSKeyVaultManagedStorageSasDefinitionIdentityItem
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Storage sas definition name.
 Cmdlet constructs the FQDN of a storage sas definition from vault name, currently selected environment, storage account name and sas definition name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByDefinitionName
 Aliases: SasDefinitionName
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -122,13 +145,13 @@ Cmdlet constructs the FQDN of a vault based on the name and currently selected e
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByDefinitionName
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
