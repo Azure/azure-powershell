@@ -34,7 +34,9 @@ namespace NetCorePsd1Sync.Utility
             return version;
         }
 
-        public static object[] GetValueAsArray(this Hashtable hashtable, string key) => hashtable[key] as object[] ?? new object[]{};
+        public static object[] GetValueAsArray(this Hashtable hashtable, string key) => GetValueAsArrayOrDefault(hashtable, key) ?? new object[]{};
+
+        public static object[] GetValueAsArrayOrDefault(this Hashtable hashtable, string key) => hashtable[key] as object[];
 
         public static Hashtable GetValueAsHashtable(this Hashtable hashtable, string key) => hashtable[key] as Hashtable ?? new Hashtable();
 
@@ -46,8 +48,7 @@ namespace NetCorePsd1Sync.Utility
             {
                 return new List<string> { stringValue };
             }
-            var stringList = hashtable.GetValueAsArray(key).OfType<string>().ToList();
-            return stringList.Any() ? stringList : null;
+            return hashtable.GetValueAsArrayOrDefault(key)?.OfType<string>().ToList();
         }
 
         public static bool Any(this Hashtable hashtable) => hashtable.Count > 0;

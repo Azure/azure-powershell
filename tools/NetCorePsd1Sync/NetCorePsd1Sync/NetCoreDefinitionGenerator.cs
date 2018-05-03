@@ -151,6 +151,8 @@ namespace NetCorePsd1Sync
             };
         }
 
+        private static List<ModuleReference> CreateModuleReferenceList(Hashtable data, string key) => 
+            data.GetValueAsArrayOrDefault(key)?.OfType<Hashtable>().Select(CreateModuleReferenceFromHashtable).ToList();
 
         public static PsDefinition CreateDefinitionFromExisting(Hashtable existingDefinition, PsDefinitionHeader existingHeader)
         {
@@ -162,7 +164,6 @@ namespace NetCorePsd1Sync
                 var projectUri = existingPsData.GetValueAsStringOrDefault("ProjectUri");
                 var iconUri = existingPsData.GetValueAsStringOrDefault("IconUri");
                 var requireLicenseAcceptance = existingPsData.GetValueAsStringOrDefault("RequireLicenseAcceptance");
-                var externalModuleDependencies = existingDefinition.GetValueAsArray("ExternalModuleDependencies");
                 psData = new PsData
                 {
                     Tags = existingPsData.GetValueAsStringListOrDefault("Tags"),
@@ -172,13 +173,11 @@ namespace NetCorePsd1Sync
                     ReleaseNotes = existingPsData.GetValueAsStringOrDefault("ReleaseNotes"),
                     Prerelease = existingPsData.GetValueAsStringOrDefault("Prerelease"),
                     RequireLicenseAcceptance = String.IsNullOrEmpty(requireLicenseAcceptance) ? (bool?)null : Boolean.Parse(requireLicenseAcceptance),
-                    ExternalModuleDependencies = externalModuleDependencies.Any() ? externalModuleDependencies.Cast<Hashtable>().Select(CreateModuleReferenceFromHashtable).ToList() : null
+                    ExternalModuleDependencies = CreateModuleReferenceList(existingPsData, "ExternalModuleDependencies")
                 };
             }
 
             var processorArchitecture = existingDefinition.GetValueAsStringOrDefault("ProcessorArchitecture");
-            var requiredModules = existingDefinition.GetValueAsArray("RequiredModules");
-            var moduleList = existingDefinition.GetValueAsArray("ModuleList");
             return new PsDefinition
             {
                 ManifestHeader = existingHeader,
@@ -196,7 +195,7 @@ namespace NetCorePsd1Sync
                 DotNetFrameworkVersion = existingDefinition.GetValueAsVersionOrDefault("DotNetFrameworkVersion"),
                 ClrVersion = existingDefinition.GetValueAsVersionOrDefault("CLRVersion"),
                 ProcessorArchitecture = processorArchitecture != null ? Enum.Parse<ProcessorArchitecture>(processorArchitecture) : (ProcessorArchitecture?)null,
-                RequiredModules = requiredModules.Any() ? requiredModules.Cast<Hashtable>().Select(CreateModuleReferenceFromHashtable).ToList() : null,
+                RequiredModules = CreateModuleReferenceList(existingDefinition, "RequiredModules"),
                 RequiredAssemblies = existingDefinition.GetValueAsStringListOrDefault("RequiredAssemblies"),
                 ScriptsToProcess = existingDefinition.GetValueAsStringListOrDefault("ScriptsToProcess"),
                 TypesToProcess = existingDefinition.GetValueAsStringListOrDefault("TypesToProcess"),
@@ -207,7 +206,7 @@ namespace NetCorePsd1Sync
                 VariablesToExport = existingDefinition.GetValueAsStringListOrDefault("VariablesToExport"),
                 AliasesToExport = existingDefinition.GetValueAsStringListOrDefault("AliasesToExport"),
                 DscResourcesToExport = existingDefinition.GetValueAsStringListOrDefault("DscResourcesToExport"),
-                ModuleList = moduleList.Any() ? moduleList.Cast<Hashtable>().Select(CreateModuleReferenceFromHashtable).ToList() : null,
+                ModuleList = CreateModuleReferenceList(existingDefinition, "ModuleList"),
                 FileList = existingDefinition.GetValueAsStringListOrDefault("FileList"),
                 PrivateData = new PrivateData { PsData = psData },
                 HelpInfoUri = existingDefinition.GetValueAsStringOrDefault("HelpInfoURI"),

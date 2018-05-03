@@ -51,7 +51,11 @@ namespace NetCorePsd1Sync
             if(mode == UpdateVersion)
             {
                 var newVersion = args.FirstOrDefault(a => Version.TryParse(a, out var _));
-                _newVersion = Version.Parse(newVersion ?? "0.12.0");
+                if (newVersion == null)
+                {
+                    throw new ArgumentException($"Module update version must be provided");
+                }
+                _newVersion = Version.Parse(newVersion);
             }
             ModeMap[mode](rmPath);
         }
@@ -77,7 +81,7 @@ namespace NetCorePsd1Sync
                 Console.WriteLine($"Updating {netCoreFilePath} to version {newVersion}");
                 var netCoreDefinition = CreateDefinitionFromExisting(netCoreHashtable, new PsDefinitionHeader { ModuleName = headerModuleName, Author = headerAuthor, Date = headerDate });
                 netCoreDefinition.ModuleVersion = newVersion;
-                if (netCoreDefinition.RequiredModules.Any(rm => rm.ModuleName == "AzureRM.Profile.Netcore"))
+                if (netCoreDefinition.RequiredModules?.Any(rm => rm.ModuleName == "AzureRM.Profile.Netcore") ?? false)
                 {
                     netCoreDefinition.RequiredModules.First(rm => rm.ModuleName == "AzureRM.Profile.Netcore").ModuleVersion = newVersion;
                 }
