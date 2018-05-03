@@ -58,7 +58,7 @@ The acceptable values for this parameter are: Windows and Linux.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -73,7 +73,7 @@ Specifies the name of the resource group of the virtual machine that this cmdlet
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -88,7 +88,7 @@ Indicates that this cmdlet skips the check of storage configuration.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -119,7 +119,7 @@ Specifies a time-out period, in minutes, for the storage configuration check.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3

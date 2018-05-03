@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     /// <summary>
     /// This attribute will allow the user to autocomplete the -ResourceGroup parameter of a cmdlet with valid resource groups
     /// </summary>
-    public class ResourceGroupCompleterAttribute : PSCompleterBaseAttribute
+    public class ResourceGroupCompleterAttribute : ArgumentCompleterAttribute
     {
         private static IDictionary<int, IList<String>> _resourceGroupNamesDictionary = new ConcurrentDictionary<int, IList<string>>();
         private static readonly object _lock = new object();
@@ -48,12 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                         var tempResourceGroupList = new List<string>();
                         try
                         {
-                            var instance = AzureSession.Instance;
-                            var client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
-                                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
-                                instance.ClientFactory.GetCustomHandlers());
-                            client.SubscriptionId = context.Subscription.Id;
+                            var client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                             // Retrieve only the first page of ResourceGroups to display to the user
                             var resourceGroups = client.ResourceGroups.ListAsync();
                             if (resourceGroups.Wait(TimeSpan.FromSeconds(_timeout)))
@@ -96,13 +91,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         /// Example: [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false), ResourceGroupCompleter()]
         /// </summary>
         /// <param name="resourceTypes"></param>
-        public ResourceGroupCompleterAttribute()
+        public ResourceGroupCompleterAttribute() : base(CreateScriptBlock())
         {
-        }
-
-        public override string[] GetCompleterValues()
-        {
-            return GetResourceGroups();
         }
 
         public static string[] GetResourceGroups(int timeout)

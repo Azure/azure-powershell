@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 4.0.7
+* Set minimum dependency of module to PowerShell 5.0
+* Updated New-AzureBatchPool documentation to remove deprecated example
+
+## Version 4.0.6
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 4.0.5
 * Fix issue with Default Resource Group in CloudShell
 

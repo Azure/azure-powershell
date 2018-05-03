@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -28,7 +26,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
     {
         /// <summary>
         /// Compares the metadata of parameter sets with the same name for any breaking changes.
-        /// 
+        ///
         /// Breaking changes for parameter sets include
         ///   - Removing a parameter set
         ///   - Making an optional parameter mandatory
@@ -42,7 +40,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         /// <param name="newParameterSets">The list of parameter sets from the new metadata</param>
         /// <param name="issueLogger">ReportLogger that will keep track of the issues found.</param>
         public void CompareParameterSetMetadata(
-            CmdletBreakingChangeMetadata cmdlet,
+            CmdletMetadata cmdlet,
             List<ParameterSetMetadata> oldParameterSets,
             List<ParameterSetMetadata> newParameterSets,
             ReportLogger<BreakingChangeIssue> issueLogger)
@@ -60,112 +58,83 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             // added to the dictionary (exists in the new metadata)
             foreach (var oldParameterSet in oldParameterSets)
             {
-                if (parameterSetDictionary.ContainsKey(oldParameterSet.Name))
+                bool foundMatch = false;
+
+                // Find matching parameter set
+                foreach (var newParameterSet in newParameterSets)
                 {
-                    var newParameterSet = parameterSetDictionary[oldParameterSet.Name];
-
-                    // This dictionary will map a parameter to the corresponding Parameter object
                     Dictionary<string, Parameter> parameterDictionary = new Dictionary<string, Parameter>();
-
-                    // For each parameter in the parameter set, add its name and alias to the dictionary
-                    foreach (var newParameter in newParameterSet.Parameters)
+                    foreach (var parameter in newParameterSet.Parameters)
                     {
-                        if (!parameterDictionary.ContainsKey(newParameter.ParameterMetadata.Name))
+                        parameterDictionary.Add(parameter.ParameterMetadata.Name, parameter);
+                        foreach (var alias in parameter.ParameterMetadata.AliasList)
                         {
-                            parameterDictionary.Add(newParameter.ParameterMetadata.Name, newParameter);
-                        }
-
-                        foreach (var alias in newParameter.ParameterMetadata.AliasList)
-                        {
-                            if (!parameterDictionary.ContainsKey(alias))
-                            {
-                                parameterDictionary.Add(alias, newParameter);
-                            }
+                            parameterDictionary.Add(alias, parameter);
                         }
                     }
 
-                    // For each parameter in the old metadata, see if it has been
-                    // added to the dictionary (exists in the new metadata)
-                    foreach (var oldParameter in oldParameterSet.Parameters)
+                    // Check if set has minimum parameters required to match
+                    bool minimumRequired = true;
+                    foreach (var parameter in oldParameterSet.Parameters)
                     {
-                        if (parameterDictionary.ContainsKey(oldParameter.ParameterMetadata.Name))
+                        if (!parameterDictionary.ContainsKey(parameter.ParameterMetadata.Name))
                         {
-                            var newParameter = parameterDictionary[oldParameter.ParameterMetadata.Name];
-
-                            // If the parameter was optional in the old assembly and
-                            // mandatory in the new assembly, log an issue
-                            if (!oldParameter.Mandatory && newParameter.Mandatory)
-                            {
-                                issueLogger.LogBreakingChangeIssue(
-                                    cmdlet: cmdlet,
-                                    severity: 0,
-                                    problemId: ProblemIds.BreakingChangeProblemId.MandatoryParameter,
-                                    description: string.Format(Properties.Resources.MandatoryParameterDescription,
-                                        oldParameter.ParameterMetadata.Name, oldParameterSet.Name, cmdlet.Name),
-                                    remediation: string.Format(Properties.Resources.MandatoryParameterRemediation,
-                                        oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
-                            }
-
-                            // If the parameter had a position and it has changed in the
-                            // new assembly, log an issue
-                            if (oldParameter.Position >= 0 && oldParameter.Position != newParameter.Position)
-                            {
-                                issueLogger.LogBreakingChangeIssue(
-                                    cmdlet: cmdlet,
-                                    severity: 0,
-                                    problemId: ProblemIds.BreakingChangeProblemId.PositionChange,
-                                    description: string.Format(Properties.Resources.PositionChangeDescription,
-                                        oldParameter.ParameterMetadata.Name, oldParameterSet.Name, cmdlet.Name),
-                                    remediation: string.Format(Properties.Resources.PositionChangeRemediation,
-                                        oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
-                            }
-
-                            // If the parameter can no longer get its value from
-                            // the pipeline, log an issue
-                            if (oldParameter.ValueFromPipeline && !newParameter.ValueFromPipeline)
-                            {
-                                issueLogger.LogBreakingChangeIssue(
-                                    cmdlet: cmdlet,
-                                    severity: 0,
-                                    problemId: ProblemIds.BreakingChangeProblemId.ValueFromPipeline,
-                                    description: string.Format(Properties.Resources.RemovedValueFromPipelineDescription,
-                                        oldParameter.ParameterMetadata.Name, oldParameterSet.Name, cmdlet.Name),
-                                    remediation: string.Format(Properties.Resources.RemovedValueFromPipelineRemediation,
-                                        oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
-                            }
-
-                            // If the parameter can no longer get its value from
-                            // the pipeline by property name, log an issue
-                            if (oldParameter.ValueFromPipelineByPropertyName && !newParameter.ValueFromPipelineByPropertyName)
-                            {
-                                issueLogger.LogBreakingChangeIssue(
-                                    cmdlet: cmdlet,
-                                    severity: 0,
-                                    problemId: ProblemIds.BreakingChangeProblemId.ValueFromPipelineByPropertyName,
-                                    description: string.Format(Properties.Resources.RemovedValueFromPipelineByPropertyNameDescription,
-                                        oldParameter.ParameterMetadata.Name, oldParameterSet.Name, cmdlet.Name),
-                                    remediation: string.Format(Properties.Resources.RemovedValueFromPipelineByPropertyNameRemediation,
-                                        oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
-                            }
+                            minimumRequired = false;
+                            break;
                         }
-                        // If the parameter cannot be found, log an issue
                         else
                         {
-                            issueLogger.LogBreakingChangeIssue(
-                                cmdlet: cmdlet,
-                                severity: 0,
-                                problemId: ProblemIds.BreakingChangeProblemId.RemovedParameterFromParameterSet,
-                                description: string.Format(Properties.Resources.RemovedParameterFromParameterSetDescription,
-                                    oldParameter.ParameterMetadata.Name, cmdlet.Name, oldParameterSet.Name),
-                                remediation: string.Format(Properties.Resources.RemovedParameterFromParameterSetRemediation,
-                                    oldParameter.ParameterMetadata.Name, oldParameterSet.Name));
+                            var newParameter = parameterDictionary[parameter.ParameterMetadata.Name];
+                            if (!parameter.Mandatory && newParameter.Mandatory ||
+                                parameter.Position >= 0 && parameter.Position != newParameter.Position ||
+                                parameter.ValueFromPipeline && !newParameter.ValueFromPipeline ||
+                                parameter.ValueFromPipelineByPropertyName && !newParameter.ValueFromPipelineByPropertyName)
+                            {
+                                minimumRequired = false;
+                                break;
+                            }
                         }
                     }
+
+                    if (!minimumRequired)
+                    {
+                        continue;
+                    }
+
+                    parameterDictionary = new Dictionary<string, Parameter>();
+                    foreach (var parameter in oldParameterSet.Parameters)
+                    {
+                        parameterDictionary.Add(parameter.ParameterMetadata.Name, parameter);
+                        foreach (var alias in parameter.ParameterMetadata.AliasList)
+                        {
+                            parameterDictionary.Add(alias, parameter);
+                        }
+                    }
+
+                    // Check if set has any additional mandatory parameters
+                    bool foundAdditional = false;
+                    foreach (var parameter in newParameterSet.Parameters)
+                    {
+                        if (parameterDictionary.ContainsKey(parameter.ParameterMetadata.Name))
+                        {
+                            continue;
+                        }
+
+                        if (parameter.Mandatory)
+                        {
+                            foundAdditional = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundAdditional)
+                    {
+                        foundMatch = true;
+                        break;
+                    }
                 }
-                // If the parameter set cannot be found, and the parameter set
-                // was not the default (no parameter set) name, log an issue
-                else if (!parameterSetDictionary.ContainsKey(oldParameterSet.Name) &&
-                            !oldParameterSet.Name.Equals("__AllParameterSets"))
+
+                if (!foundMatch)
                 {
                     issueLogger.LogBreakingChangeIssue(
                         cmdlet: cmdlet,

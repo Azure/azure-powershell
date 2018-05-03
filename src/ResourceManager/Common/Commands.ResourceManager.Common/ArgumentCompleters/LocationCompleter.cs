@@ -30,11 +30,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
     /// <summary>
     /// This attribute will allow the user to autocomplete the -Location parameter of a cmdlet with valid locations (as determined by the list of ResourceTypes given)
     /// </summary>
-    public class LocationCompleterAttribute : PSCompleterBaseAttribute
+    public class LocationCompleterAttribute : ArgumentCompleterAttribute
     {
         private static IDictionary<int, IDictionary<string, ICollection<string>>> _resourceTypeLocationDictionary = new ConcurrentDictionary<int, IDictionary<string, ICollection<string>>>();
         private static readonly object _lock = new object();
-        private static string[] _resourceTypes;
         private static int _timeout = 3;
 
         protected static IDictionary<string, ICollection<string>> ResourceTypeLocationDictionary
@@ -50,12 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                     {
                         try
                         {
-                            var instance = AzureSession.Instance;
-                            IResourceManagementClient client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
-                                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
-                                instance.ClientFactory.GetCustomHandlers());
-                            client.SubscriptionId = context.Subscription.Id;
+                            IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                             var allProviders = client.Providers.ListAsync();
                             if (allProviders.Wait(TimeSpan.FromSeconds(_timeout)))
                             {
@@ -105,14 +99,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         /// Example: [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false), LocationCompleter(new string[] { "Microsoft.Batch/operationss" })]
         /// </summary>
         /// <param name="resourceTypes"></param>
-        public LocationCompleterAttribute(params string[] resourceTypes)
+        public LocationCompleterAttribute(params string[] resourceTypes) : base(CreateScriptBlock(resourceTypes))
         {
-            _resourceTypes = resourceTypes;
-        }
-
-        public override string[] GetCompleterValues()
-        {
-            return FindLocations(_resourceTypes);
         }
 
         public static string[] FindLocations(string[] resourceTypes, int timeout)
@@ -205,10 +193,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
         /// <returns></returns>
         public static ScriptBlock CreateScriptBlock(string[] resourceTypes)
         {
-            string scriptResourceTypeList = "{" + String.Join(",", resourceTypes) + "}";
+            string scriptResourceTypeList = "'" + String.Join("' , '", resourceTypes) + "'";
             string script = "param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)\n" +
-                String.Format("$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations({0})\n", scriptResourceTypeList) +
-                "$locations | Where-Object { $_ -Like \"`\"$wordToComplete*\" } | Sort-Object | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
+                String.Format("$resourceTypes = {0}\n", scriptResourceTypeList) +
+                "$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($resourceTypes)\n" +
+                "$locations | Where-Object { $_ -Like \"'$wordToComplete*\" } | Sort-Object | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }";
             ScriptBlock scriptBlock = ScriptBlock.Create(script);
             return scriptBlock;
         }

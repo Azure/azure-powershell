@@ -128,9 +128,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// Backup login Uri for MSI
         /// </summary>
-        MSILoginUriBackup = "MSILoginBackup";
+        MSILoginUriBackup = "MSILoginBackup",
 
 
+        /// <summary>
+        /// Secret that may be used with MSI login
+        /// </summary>
+        MSILoginSecret = "MSILoginSecret";
         }
     }
 }
