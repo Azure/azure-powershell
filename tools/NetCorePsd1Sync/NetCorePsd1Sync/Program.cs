@@ -27,29 +27,59 @@ namespace NetCorePsd1Sync
     {
         private const string Validate = "-v";
         private const string Create = "-c";
+        private const string UpdateVersion = "-u";
 
         private static readonly Dictionary<string, Action<string>> ModeMap = new Dictionary<string, Action<string>>
         {
             { Validate, ValidateDefinitionFiles },
-            { Create, CreateDefinitionFiles }
+            { Create, CreateDefinitionFiles },
+            { UpdateVersion, p => UpdateModuleVersions(p, _newVersion) }
         };
+
+        private static Version _newVersion;
+
         public static void Main(string[] args)
         {
-            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a)) ?? @"..\..\..\src\ResourceManager";
+            var rmPath = args.FirstOrDefault(a => !ModeMap.ContainsKey(a.ToLower())) ?? @"..\..\..\src\ResourceManager";
             if (!Directory.Exists(rmPath))
             {
                 throw new ArgumentException($"Directory [{rmPath}] does not exist");
             }
             //https://stackoverflow.com/a/17563994/294804
-            var mode = args.Any(a => a.IndexOf(Create, StringComparison.InvariantCultureIgnoreCase) >= 0) ? Create : Validate;
+            var mode = ModeMap.Keys.FirstOrDefault(k => args.Any(a => a.IndexOf(k, StringComparison.InvariantCultureIgnoreCase) >= 0)) ?? Validate;
+            if(mode == UpdateVersion)
+            {
+                var newVersion = args.FirstOrDefault(a => Version.TryParse(a, out var _));
+                _newVersion = Version.Parse(newVersion ?? "0.12.0");
+            }
             ModeMap[mode](rmPath);
+        }
+
+        private static void UpdateModuleVersions(string rmPath, Version newVersion)
+        {
+            var modulePaths = GetModulePaths(rmPath, true);
+            var desktopFilePaths = GetDesktopFilePaths(modulePaths);
+            var netCoreFilePaths = desktopFilePaths.Select(ConvertDesktopToNetCorePath).Where(File.Exists).ToList();
+            netCoreFilePaths.Add(Path.Combine(rmPath, @"..\Storage\Azure.Storage.Netcore.psd1"));
+            var netCoreHashTables = GetHashtables(netCoreFilePaths);
+
+            foreach (var netCoreHashtable in netCoreHashTables)
+            {
+                var netCoreDefinition = CreateNetCoreDefinition(netCoreHashtable);
+                netCoreDefinition.ModuleVersion = newVersion;
+                if (netCoreDefinition.RequiredModules.Any(rm => rm.ModuleName == "AzureRM.Profile.Netcore"))
+                {
+                    netCoreDefinition.RequiredModules.First(rm => rm.ModuleName == "AzureRM.Profile.Netcore").ModuleVersion = newVersion;
+                }
+                File.WriteAllLines(netCoreHashtable.GetValueAsString("FilePath"), netCoreDefinition.ToDefinitionEntry());
+            }
         }
 
         private static void ValidateDefinitionFiles(string rmPath)
         {
             var modulePaths = GetModulePaths(rmPath, true);
             var desktopFilePaths = GetDesktopFilePaths(modulePaths);
-            var desktopHashtables = GetDesktopHashtables(desktopFilePaths);
+            var desktopHashtables = GetHashtables(desktopFilePaths);
             foreach (var desktopHashtable in desktopHashtables)
             {
                 var netCorePath = ConvertDesktopToNetCorePath(desktopHashtable.GetValueAsString("FilePath"));
@@ -109,7 +139,7 @@ namespace NetCorePsd1Sync
         {
             var modulePaths = GetModulePaths(rmPath);
             var desktopFilePaths = GetDesktopFilePaths(modulePaths);
-            var desktopHashtables = GetDesktopHashtables(desktopFilePaths);
+            var desktopHashtables = GetHashtables(desktopFilePaths);
             foreach (var desktopHashtable in desktopHashtables)
             {
                 var netCoreFilePath = ConvertDesktopToNetCorePath(desktopHashtable.GetValueAsString("FilePath"));
