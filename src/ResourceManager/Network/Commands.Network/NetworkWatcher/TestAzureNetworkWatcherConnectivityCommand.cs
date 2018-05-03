@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -95,6 +96,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateRange(1, int.MaxValue)]
         public int DestinationPort { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Protocal configuration on which check connectivity will be performed.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkWatcherProtocolConfiguration ProtocolConfiguration { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -112,6 +119,21 @@ namespace Microsoft.Azure.Commands.Network
             parameters.Destination.ResourceId = this.DestinationId;
             parameters.Destination.Address = this.DestinationAddress;
             parameters.Destination.Port = this.DestinationPort;
+
+            if (string.Equals(this.ProtocolConfiguration.Protocol, "Http", StringComparison.OrdinalIgnoreCase))
+            {
+                IList<MNM.HTTPHeader> headers = new List<MNM.HTTPHeader>();
+                if (this.ProtocolConfiguration.Header != null)
+                {
+                    foreach (KeyValuePair<string, string> entry in this.ProtocolConfiguration.Header)
+                    {
+                        headers.Add(new MNM.HTTPHeader(entry.Value, entry.Key));
+                    }
+                }
+
+                MNM.HTTPConfiguration httpConfiguration = new MNM.HTTPConfiguration(this.ProtocolConfiguration.Method, headers, this.ProtocolConfiguration.ValidStatusCode.OfType<int?>().ToList());
+                parameters.ProtocolConfiguration = new MNM.ProtocolConfiguration(httpConfiguration);
+            }
 
             MNM.ConnectivityInformation result = new MNM.ConnectivityInformation();
             if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
