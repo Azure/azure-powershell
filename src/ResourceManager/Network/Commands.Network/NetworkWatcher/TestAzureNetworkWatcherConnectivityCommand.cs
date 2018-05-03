@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -125,9 +126,9 @@ namespace Microsoft.Azure.Commands.Network
                 IList<MNM.HTTPHeader> headers = new List<MNM.HTTPHeader>();
                 if (this.ProtocolConfiguration.Header != null)
                 {
-                    foreach (KeyValuePair<string, string> entry in this.ProtocolConfiguration.Header)
+                    foreach (DictionaryEntry entry in this.ProtocolConfiguration.Header)
                     {
-                        headers.Add(new MNM.HTTPHeader(entry.Value, entry.Key));
+                        headers.Add(new MNM.HTTPHeader((string)entry.Key, (string)entry.Value));
                     }
                 }
 

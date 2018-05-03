@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System.Collections.Generic;
 using System.Net;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             return psPacketCapture;
         }
 
-        public PSNetworkWatcher ToPsNetworkWatcher(NetworkWatcher networkWatcher)
+        public PSNetworkWatcher ToPsNetworkWatcher(MNM.NetworkWatcher networkWatcher)
         {
             var psNetworkWatcher = NetworkResourceManagerProfile.Mapper.Map<PSNetworkWatcher>(networkWatcher);
             psNetworkWatcher.Tag =
