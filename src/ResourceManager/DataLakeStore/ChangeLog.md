@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.0.0
 * Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
 * Add new cmdlet for retrieving the content summary under a directory
 * Add new cmdlet for retrieving the disk usage and Acl dump
