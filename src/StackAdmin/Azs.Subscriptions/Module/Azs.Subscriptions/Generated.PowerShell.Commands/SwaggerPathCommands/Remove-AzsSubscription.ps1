@@ -52,19 +52,19 @@ function Remove-AzsSubscription {
         $ErrorActionPreference = 'Stop'
 
         $NewServiceClient_params = @{
-            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
+            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
         }
 
         $GlobalParameterHashtable = @{}
         $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
 
-        $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
+        $SubscriptionClient = New-ServiceClient @NewServiceClient_params
 
         if ($PSCmdlet.ShouldProcess("$SubscriptionId" , "Delete the subscription")) {
             if (($Force.IsPresent -or $PSCmdlet.ShouldContinue("Delete the subscription?", "Performing operation delete on $SubscriptionId."))) {
 
-                Write-Verbose -Message 'Performing operation DeleteWithHttpMessagesAsync on $SubscriptionsManagementClient.'
-                $TaskResult = $SubscriptionsManagementClient.Subscriptions.DeleteWithHttpMessagesAsync($SubscriptionId)
+                Write-Verbose -Message 'Performing operation DeleteWithHttpMessagesAsync on $SubscriptionClient.'
+                $TaskResult = $SubscriptionClient.Subscriptions.DeleteWithHttpMessagesAsync($SubscriptionId)
                 if ($TaskResult) {
                     $GetTaskResult_params = @{
                         TaskResult = $TaskResult

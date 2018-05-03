@@ -21,7 +21,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function Get-AzsSubscription
 {
-    [OutputType([Microsoft.AzureStack.Management.Subscriptions.Models.Subscription])]
+    [OutputType([Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel])]
     [CmdletBinding(DefaultParameterSetName='List')]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get', Position = 0)]
@@ -47,21 +47,21 @@ function Get-AzsSubscription
     $ErrorActionPreference = 'Stop'
 
     $NewServiceClient_params = @{
-        FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
+        FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
     }
 
     $GlobalParameterHashtable = @{}
     $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
 
-    $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
+    $SubscriptionClient = New-ServiceClient @NewServiceClient_params
 
 
     if ('List' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionsManagementClient.'
-        $TaskResult = $SubscriptionsManagementClient.Subscriptions.ListWithHttpMessagesAsync()
+        Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionClient.'
+        $TaskResult = $SubscriptionClient.Subscriptions.ListWithHttpMessagesAsync()
     } elseif ('Get' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $SubscriptionsManagementClient.'
-        $TaskResult = $SubscriptionsManagementClient.Subscriptions.GetWithHttpMessagesAsync($SubscriptionId)
+        Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $SubscriptionClient.'
+        $TaskResult = $SubscriptionClient.Subscriptions.GetWithHttpMessagesAsync($SubscriptionId)
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'
