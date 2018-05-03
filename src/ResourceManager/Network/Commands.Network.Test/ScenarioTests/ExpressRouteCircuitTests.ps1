@@ -540,3 +540,65 @@ function Test-ExpressRouteCircuitAuthorizationCRUD
     }
 }
 
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitConnectionCRUD.
+#>
+function Test-ExpressRouteCircuitConnectionCRUD
+{
+	$circuitName = "dedhar-cktinit"
+	$groupName = "dedharpsinit"
+	$peerCircuitId = "/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/dedharpspeer/providers/Microsoft.Network/expressRouteCircuits/dedharcktpeer/peerings/AzurePrivatePeering"
+	$addressPrefix = "50.0.0.0/29"
+	$authorizationKey = "2d6fad47-e3f7-4fb9-b1ab-3586f807cbd6"
+	$connectionName = "transit"
+
+	try
+	{
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Create the circuit connection Resource
+		$job = Add-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $ckt -PeerExpressRouteCircuitPeering $peerCircuitId -AddressPrefix $addressPrefix -AuthorizationKey $authorizationKey
+		$job | Wait-Job
+
+		#Set on Express Route Circuit
+		$job = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+		$job | Wait-Job
+		$getCircuit = $job | Receive-Job
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Verify Circuit Connection fields
+		Assert-AreEqual "transit" $ckt.Peerings[0].Connections[0].Name
+		Assert-AreEqual "Succeeded" $ckt.Peerings[0].Connections[0].ProvisioningState
+		Assert-AreEqual "Connected" $ckt.Peerings[0].Connections[0].CircuitConnectionStatus
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+
+		#Delete the circuit connection Resource
+		Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $ckt
+		$job | Wait-Job
+
+		#Set on Express Route Circuit
+		$job = Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+		$job | Wait-Job
+		$getCircuit = $job | Receive-Job
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Verify Circuit Connection does not exist
+		Assert-AreEqual 0 $ckt.Peerings[0].Connections
+	}
+	finally
+	{
+		#Cleanup
+	}
+}
+

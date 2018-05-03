@@ -74,5 +74,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteRouteFilters");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExpressRouteCircuitConnectionCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitConnectionCRUD");
+        }
     }
 }
