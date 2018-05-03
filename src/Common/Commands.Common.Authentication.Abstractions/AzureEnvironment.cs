@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             };
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.AzureOperationalInsightsEndpoint);
             azureCloud.SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.AzureOperationalInsightsEndpointResourceId);
+            azureCloud.SetProperty(ExtendedEndpoint.StorageOAuthEndpointResourceId, AzureEnvironmentConstants.StorageOAuthEndpointResourceId);
             var azureChina = new AzureEnvironment
             {
                 Name = EnvironmentName.AzureChinaCloud,
@@ -76,6 +77,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 BatchEndpointResourceId = AzureEnvironmentConstants.ChinaBatchEndpointResourceId,
                 AdTenant = "Common"
             };
+            azureChina.SetProperty(ExtendedEndpoint.StorageOAuthEndpointResourceId, AzureEnvironmentConstants.StorageOAuthEndpointResourceId);
             var azureUSGovernment = new AzureEnvironment
             {
                 Name = EnvironmentName.AzureUSGovernment,
@@ -101,6 +103,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
             };
             azureUSGovernment.SetProperty(ExtendedEndpoint.OperationalInsightsEndpoint, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpoint);
             azureUSGovernment.SetProperty(ExtendedEndpoint.OperationalInsightsEndpointResourceId, AzureEnvironmentConstants.USGovernmentOperationalInsightsEndpointResourceId);
+            azureUSGovernment.SetProperty(ExtendedEndpoint.StorageOAuthEndpointResourceId, AzureEnvironmentConstants.StorageOAuthEndpointResourceId);
             var azureGermany = new AzureEnvironment
             {
                 Name = EnvironmentName.AzureGermanCloud,
@@ -124,6 +127,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 BatchEndpointResourceId = AzureEnvironmentConstants.GermanBatchEndpointResourceId,
                 AdTenant = "Common"
             };
+            azureGermany.SetProperty(ExtendedEndpoint.StorageOAuthEndpointResourceId, AzureEnvironmentConstants.StorageOAuthEndpointResourceId);
             var result = new ConcurrentDictionary<string, AzureEnvironment>(StringComparer.InvariantCultureIgnoreCase);
 
             result[EnvironmentName.AzureCloud] = azureCloud;
@@ -240,7 +244,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         /// <summary>
         /// The token audience required for communicating with the Batch service in this enviornment
         /// </summary>
-        public string BatchEndpointResourceId { get; set; }
+        public string BatchEndpointResourceId { get; set; }      
 
         /// <summary>
         /// The domain name suffix for Azure DataLake Catalog and Job services created in this environment
@@ -296,7 +300,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public static class ExtendedEndpoint
         {
             public const string OperationalInsightsEndpointResourceId = "OperationalInsightsEndpointResourceId",
-                OperationalInsightsEndpoint = "OperationalInsightsEndpoint";
+                OperationalInsightsEndpoint = "OperationalInsightsEndpoint",
+                StorageOAuthEndpointResourceId = "StorageOAuthEndpointResourceId";
         }
     }
 }
