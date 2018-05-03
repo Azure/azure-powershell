@@ -32,7 +32,7 @@ using Newtonsoft.Json;
 using OperatingSystem = Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 

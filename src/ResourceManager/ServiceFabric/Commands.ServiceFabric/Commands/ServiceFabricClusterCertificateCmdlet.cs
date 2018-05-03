@@ -30,8 +30,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault;
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
                     new VaultSecretGroup()
                     {
-                        SourceVault = new Azure.Commands.Common.Compute.Version2016_04_preview.Models.SubResource()
+                        SourceVault = new Azure.Commands.Common.Compute.Version_2018_04.Models.SubResource()
                         {
                             Id = certInformation.KeyVault.Id
                         },

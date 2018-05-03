@@ -28,8 +28,8 @@ using Newtonsoft.Json.Linq;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using System.Text;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Storage.Version2017_10_01;
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                  {
                      Location = GetLocation(),
                      Sku = new Sku(this.VmSku, this.Tier, this.Capacity),
-                     OverProvision = false,
+                     Overprovision = false,
                      Tags = GetServiceFabricTags(),
                      UpgradePolicy = new UpgradePolicy()
                      {
@@ -586,14 +586,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                             {
                                 Name = ipconfigName,
                                 LoadBalancerBackendAddressPools = newLoadBalancer.BackendAddressPools.Select(
-                                    b => new Azure.Commands.Common.Compute.Version2016_04_preview.Models.SubResource()
+                                    b => new Azure.Commands.Common.Compute.Version_2018_04.Models.SubResource()
                                     {
                                         Id = b.Id
                                     }
                                     ).ToList(),
 
                                 LoadBalancerInboundNatPools = newLoadBalancer.InboundNatPools.Select(
-                                    p => new Azure.Commands.Common.Compute.Version2016_04_preview.Models.SubResource()
+                                    p => new Azure.Commands.Common.Compute.Version_2018_04.Models.SubResource()
                                     {
                                         Id = p.Id
                                     }
