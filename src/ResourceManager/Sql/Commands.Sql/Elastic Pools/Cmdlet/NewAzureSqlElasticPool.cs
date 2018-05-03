@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         protected override IEnumerable<AzureSqlElasticPoolModel> PersistChanges(IEnumerable<AzureSqlElasticPoolModel> entity)
         {
             return new List<AzureSqlElasticPoolModel>() {
-                ModelAdapter.UpsertElasticPool(entity.First())
+                ModelAdapter.CreateElasticPool(entity.First())
             };
         }
     }

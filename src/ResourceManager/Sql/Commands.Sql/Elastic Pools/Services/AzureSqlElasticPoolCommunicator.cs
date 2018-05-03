@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Creates or updates an Elastic Pool
+        /// Creates an Elastic Pool
         /// </summary>
-        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.Models.ElasticPool parameters)
+        public Management.Sql.Models.ElasticPool Create(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.Models.ElasticPool parameters)
         {
             // Occasionally after PUT elastic pool, if we poll for operation results immediately then
             // the polling may fail with 404. This is mitigated in the client by adding a brief wait.
@@ -119,6 +119,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
 
             return client.GetPutOrPatchOperationResultAsync(
                 createOrUpdateResponse, null, CancellationToken.None).Result.Body;
+        }
+
+        /// <summary>
+        /// Updates an Elastic Pool using Patch
+        /// </summary>
+        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.Models.ElasticPoolUpdate parameters)
+        {
+            return  GetCurrentSqlClient().ElasticPools.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters).Result.Body;
         }
 
         /// <summary>

@@ -193,32 +193,41 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
             if (ParameterSetName == DtuPoolParameterSet)
             {
-                string edition = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : poolCurrentSku.Tier;
+                if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("Dtu"))
+                {
+                    string edition = string.IsNullOrWhiteSpace(Edition) ? poolCurrentSku.Tier : Edition;
 
-                newModel.Sku = new Management.Sql.Models.Sku()
+                    newModel.Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition),
+                        Tier = edition,
+                        Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
+                    };
+                }
+                              
+                if(MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") || MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax"))
                 {
-                    Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition),
-                    Tier = edition,
-                    Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null
-                };
-                
-                newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
-                {
-                    MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null,
-                    MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null
-                };     
+                    newModel.PerDatabaseSettings = new Management.Sql.Models.ElasticPoolPerDatabaseSettings()
+                    {
+                        MinCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null,
+                        MaxCapacity = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null
+                    };
+                }      
             }
             else
             {
-                string skuTier = MyInvocation.BoundParameters.ContainsKey("Edition") ? Edition : poolCurrentSku.Tier;
-
-                newModel.Sku = new Management.Sql.Models.Sku()
+                if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("Vcore") || !string.IsNullOrWhiteSpace(ComputeGeneration))
                 {
-                    Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(skuTier),
-                    Tier = skuTier,
-                    Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : poolCurrentSku.Capacity,
-                    Family = MyInvocation.BoundParameters.ContainsKey("ComputeGeneration") ? ComputeGeneration : poolCurrentSku.Family
-                };
+                    string skuTier = string.IsNullOrWhiteSpace(Edition) ? poolCurrentSku.Tier : Edition;
+
+                    newModel.Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(skuTier),
+                        Tier = skuTier,
+                        Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : poolCurrentSku.Capacity,
+                        Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? poolCurrentSku.Family : ComputeGeneration
+                    };
+                }              
 
                 if (MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") || MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax"))
                 {
