@@ -12,6 +12,12 @@ Creates a new Event Hub.
 
 ## SYNTAX
 
+### EventhubDefaultSet (Default)
+```
+New-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### EventhubInputObjectSet
 ```
 New-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
@@ -34,14 +40,14 @@ To create Eventhub with Capture description properties, please follow the below 
 
 ### Example 1  - Create new EventHub
 ```
-PS C:\> New-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location WestUS -EventHubName MyEventHubName -MessageRetentionInDays 3 -PartitionCount 2
+PS C:\> New-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Name MyEventHubName
 ```
 
 Creates an Event Hub named \`MyEventHubName\` with a 3-day message retention period and two partitions, in the \`WestUS\` location, with resource group \`MyResourceGroupName\`.
 
 ### Example 2 Update Eventhub with 'CaptureDescription' 
 ```
-PS C:\> New-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location WestUS -EventHubName MyEventHubName -MessageRetentionInDays 3 -PartitionCount 2
+PS C:\> New-AzureRmEventHub -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Name MyEventHubName -MessageRetentionInDays 3 -PartitionCount 2
 
 PS C:\> $CreatedEventHub = Get-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
 

@@ -46,12 +46,9 @@ function EventHubsTests
 	Assert-AreEqual $createdNamespace.Name $namespaceName "Get Namespace: Namespace created earlier is not found."
 	
 	# Create a EventHub
-	Write-Debug " Create new eventHub "    
-	$msgRetentionInDays = 3
-	$partionCount = 2
-	$result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName -MessageRetentionInDays $msgRetentionInDays -PartitionCount $partionCount
-	
-		
+	Write-Debug " Create new eventHub "	
+	$result = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $eventHubName
+			
 	Write-Debug " Get the created Eventhub "
 	$createdEventHub = Get-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $result.Name
 
