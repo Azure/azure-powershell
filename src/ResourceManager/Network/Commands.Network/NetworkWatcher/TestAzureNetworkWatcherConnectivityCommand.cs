@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Network
             parameters.Destination.Address = this.DestinationAddress;
             parameters.Destination.Port = this.DestinationPort;
 
-            if (string.Equals(this.ProtocolConfiguration.Protocol, "Http", StringComparison.OrdinalIgnoreCase))
+            if (this.ProtocolConfiguration !=null && string.Equals(this.ProtocolConfiguration.Protocol, "Http", StringComparison.OrdinalIgnoreCase))
             {
                 IList<MNM.HTTPHeader> headers = new List<MNM.HTTPHeader>();
                 if (this.ProtocolConfiguration.Header != null)
