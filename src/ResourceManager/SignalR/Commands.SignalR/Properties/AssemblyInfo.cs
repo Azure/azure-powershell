@@ -19,11 +19,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Commands.SignalR")]
+[assembly: AssemblyTitle("Microsoft.Azure.Commands.SignalR")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Commands.SignalR")]
+[assembly: AssemblyProduct("Microsoft.Azure.Commands.SignalR")]
 [assembly: AssemblyCopyright("Copyright (c) 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
