@@ -317,7 +317,10 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
     'New-AzureRmApplicationSecurityGroup', 
     'Remove-AzureRmApplicationSecurityGroup', 
     'Get-AzureRmApplicationSecurityGroup', 
-    'New-AzureRmPublicIpTag'
+    'New-AzureRmPublicIpTag',
+    'New-AzureRmDdosProtectionPlan',
+    'Get-AzureRmDdosProtectionPlan',
+    'Remove-AzureRmDdosProtectionPlan'
 
 # Variables to export from this module
 # VariablesToExport = @()

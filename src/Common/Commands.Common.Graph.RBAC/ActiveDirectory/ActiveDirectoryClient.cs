@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Rest;
@@ -79,10 +80,43 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return string.IsNullOrEmpty(s) ? null : s;
         }
 
-        public List<PSADServicePrincipal> FilterServicePrincipals(ADObjectFilterOptions options)
+        public PSADServicePrincipal GetServicePrincipalByObjectId(string objectId)
+        {
+            PSADServicePrincipal servicePrincipal = null;
+            try
+            {
+                servicePrincipal = GraphClient.ServicePrincipals.Get(objectId).ToPSADServicePrincipal();
+            }
+            catch { /* The service principal does not exist, ignore the exception. */ }
+
+            return servicePrincipal;
+        }
+
+        public PSADServicePrincipal GetServicePrincipalBySPN(string spn)
+        {
+            PSADServicePrincipal servicePrincipal = null;
+            try
+            {
+                var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
+                servicePrincipal = GraphClient.ServicePrincipals.List(odataQuery.ToString()).FirstOrDefault()?.ToPSADServicePrincipal();
+            }
+            catch { /* The service principal does not exist, ignore the exception. */ }
+
+            return servicePrincipal;
+        }
+
+        public IEnumerable<PSADServicePrincipal> FilterServicePrincipals(Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery, ulong first = ulong.MaxValue, ulong skip = 0)
+        {
+            return new GenericPageEnumerable<ServicePrincipal>(
+                delegate ()
+                {
+                    return GraphClient.ServicePrincipals.List(odataQuery);
+                }, GraphClient.ServicePrincipals.ListNext, first, skip).Select(s => s.ToPSADServicePrincipal());
+        }
+
+        public IEnumerable<PSADServicePrincipal> FilterServicePrincipals(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             List<PSADServicePrincipal> servicePrincipals = new List<PSADServicePrincipal>();
-            IPage<ServicePrincipal> result = null;
             ServicePrincipal servicePrincipal = null;
 
             if (!string.IsNullOrEmpty(options.Id))
@@ -114,42 +148,21 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
             else
             {
-
-                if (options.Paging)
+                Rest.Azure.OData.ODataQuery<ServicePrincipal> odataQuery = null;
+                if (!string.IsNullOrEmpty(options.SearchString) && options.SearchString.EndsWith("*"))
                 {
-                    if (string.IsNullOrEmpty(options.NextLink))
-                    {
-                        var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(options.SearchString));
-                        result = GraphClient.ServicePrincipals.List(odataQuery);
-                    }
-                    else
-                    {
-                        result = GraphClient.ServicePrincipals.ListNext(options.NextLink);
-                    }
-
-                    servicePrincipals.AddRange(result.Select(u => u.ToPSADServicePrincipal()));
-                    options.NextLink = result.NextPageLink;
+                    options.SearchString = options.SearchString.TrimEnd('*');
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(options.SearchString));
                 }
                 else
                 {
-                    var odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName.StartsWith(options.SearchString));
-                    result = GraphClient.ServicePrincipals.List(odataQuery.ToString());
-                    servicePrincipals.AddRange(result.Select(u => u.ToPSADServicePrincipal()));
-
-                    while (!string.IsNullOrEmpty(result.NextPageLink))
-                    {
-                        result = GraphClient.ServicePrincipals.ListNext(result.NextPageLink);
-                        servicePrincipals.AddRange(result.Select(u => u.ToPSADServicePrincipal()));
-                    }
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName == options.SearchString);
                 }
+
+                return FilterServicePrincipals(odataQuery, first, skip);
             }
 
             return servicePrincipals;
-        }
-
-        public List<PSADServicePrincipal> FilterServices()
-        {
-            return FilterServicePrincipals(new ADObjectFilterOptions());
         }
 
         public PSADUser CreateUser(UserCreateParameters userCreateParam)
@@ -168,14 +181,11 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             GraphClient.Users.Delete(upnOrObjectId);
         }
 
-        public List<PSADUser> FilterUsers(ADObjectFilterOptions options)
+        public IEnumerable<PSADUser> FilterUsers(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            List<PSADUser> users = new List<PSADUser>();
-            IPage<User> result = null;
-            User user = null;
-
             if (!string.IsNullOrEmpty(options.Id))
             {
+                User user = null;
                 try
                 {
                     user = GraphClient.Users.Get(Normalize(options.Id));
@@ -184,11 +194,12 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
                 if (user != null)
                 {
-                    users.Add(user.ToPSADUser());
+                    return new List<PSADUser> { user.ToPSADUser() };
                 }
             }
             else if (!string.IsNullOrEmpty(options.UPN) || !string.IsNullOrEmpty(options.Mail))
             {
+                IPage<User> result = null;
                 try
                 {
                     string upnOrMail = Normalize(options.UPN) ?? Normalize(options.Mail);
@@ -199,45 +210,33 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
                 if (result != null)
                 {
-                    users.AddRange(result.Select(u => u.ToPSADUser()));
+                    return result.Select(u => u.ToPSADUser());
                 }
             }
             else
             {
-                if (options.Paging)
+                Rest.Azure.OData.ODataQuery<User> odataQuery = null;
+                if (!string.IsNullOrEmpty(options.SearchString) && options.SearchString.EndsWith("*"))
                 {
-                    if (string.IsNullOrEmpty(options.NextLink))
-                    {
-                        var odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName.StartsWith(options.SearchString));
-                        result = GraphClient.Users.List(odataQuery.ToString());
-                    }
-                    else
-                    {
-                        result = GraphClient.Users.ListNext(options.NextLink);
-                    }
-
-                    users.AddRange(result.Select(u => u.ToPSADUser()));
-                    options.NextLink = result.NextPageLink;
+                    options.SearchString = options.SearchString.TrimEnd('*');
+                    odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName.StartsWith(options.SearchString));
                 }
                 else
                 {
-                    var odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName.StartsWith(options.SearchString));
-                    result = GraphClient.Users.List(odataQuery.ToString());
-                    users.AddRange(result.Select(u => u.ToPSADUser()));
-
-                    while (!string.IsNullOrEmpty(result.NextPageLink))
-                    {
-                        result = GraphClient.Users.ListNext(result.NextPageLink);
-                        users.AddRange(result.Select(u => u.ToPSADUser()));
-                    }
+                    odataQuery = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName == options.SearchString);
                 }
 
+                return new GenericPageEnumerable<User>(
+                    delegate ()
+                    {
+                        return GraphClient.Users.List(odataQuery.ToString());
+                    }, GraphClient.Users.ListNext, first, skip).Select(u => u.ToPSADUser());
             }
 
-            return users;
+            return new List<PSADUser>();
         }
 
-        public List<PSADUser> FilterUsers()
+        public IEnumerable<PSADUser> FilterUsers()
         {
             return FilterUsers(new ADObjectFilterOptions());
         }
@@ -277,10 +276,24 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return result;
         }
 
-        public List<PSADGroup> FilterGroups(ADObjectFilterOptions options)
+        public PSADGroup GetGroupByDisplayName(string displayName)
         {
-            List<PSADGroup> groups = new List<PSADGroup>();
+            var group = FilterGroups(new ADObjectFilterOptions() { SearchString = displayName });
+            if (group.Count() > 1)
+            {
+                throw new InvalidOperationException(string.Format(ProjectResources.MultipleGroupsWithDisplayNameFound, displayName));
+            }
 
+            if (group.Count() == 0)
+            {
+                throw new InvalidOperationException(string.Format(ProjectResources.GroupWithDisplayNameDoesntExist, displayName));
+            }
+
+            return group.FirstOrDefault();
+        }
+
+        public IEnumerable<PSADGroup> FilterGroups(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
+        {
             if (!string.IsNullOrEmpty(options.Id))
             {
                 try
@@ -289,102 +302,73 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                     PSADGroup group = this.GetObjectsByObjectId(new List<string> { options.Id }).FirstOrDefault() as PSADGroup;
                     if (group != null)
                     {
-                        groups.Add(group);
+                        return new List<PSADGroup> { group };
                     }
                 }
                 catch {  /* The group does not exist, ignore the exception */ }
             }
             else
             {
-                IPage<ADGroup> result = null;
                 Rest.Azure.OData.ODataQuery<ADGroup> odataQuery = null;
-
-                if (options.Paging)
+                if (options.Mail != null)
                 {
-                    if (string.IsNullOrEmpty(options.NextLink))
-                    {
-                        if (options.Mail != null)
-                        {
-                            odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.Mail == options.Mail);
-                        }
-                        else
-                        {
-                            odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName.StartsWith(options.SearchString));
-                        }
-
-                        result = GraphClient.Groups.List(odataQuery);
-                    }
-                    else
-                    {
-                        result = GraphClient.Groups.ListNext(options.NextLink);
-                    }
-
-                    groups.AddRange(result.Select(g => g.ToPSADGroup()));
-                    options.NextLink = result.NextPageLink;
+                    odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.Mail == options.Mail);
                 }
                 else
                 {
-
-                    if (options.Mail != null)
+                    if (!string.IsNullOrEmpty(options.SearchString) && options.SearchString.EndsWith("*"))
                     {
-                        odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.Mail == options.Mail);
+                        options.SearchString = options.SearchString.TrimEnd('*');
+                        odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName.StartsWith(options.SearchString));
                     }
                     else
                     {
-                        odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName.StartsWith(options.SearchString));
-                    }
-
-                    result = GraphClient.Groups.List(odataQuery.ToString());
-                    groups.AddRange(result.Select(g => g.ToPSADGroup()));
-
-                    while (!string.IsNullOrEmpty(result.NextPageLink))
-                    {
-                        result = GraphClient.Groups.ListNext(result.NextPageLink);
-                        groups.AddRange(result.Select(g => g.ToPSADGroup()));
+                        odataQuery = new Rest.Azure.OData.ODataQuery<ADGroup>(g => g.DisplayName == options.SearchString);
                     }
                 }
+
+                return new GenericPageEnumerable<ADGroup>(
+                    delegate ()
+                    {
+                        return GraphClient.Groups.List(odataQuery);
+                    }, GraphClient.Groups.ListNext, first, skip).Select(g => g.ToPSADGroup());
             }
 
-            return groups;
+            return new List<PSADGroup>();
         }
 
-        public List<PSADGroup> FilterGroups()
+        public IEnumerable<PSADGroup> FilterGroups()
         {
             return FilterGroups(new ADObjectFilterOptions());
         }
 
-        public List<PSADObject> GetGroupMembers(ADObjectFilterOptions options)
+        public PSADGroup CreateGroup(GroupCreateParameters groupCreateParams)
         {
-            List<PSADObject> members = new List<PSADObject>();
-            IPage<AADObject> result = null;
+            return GraphClient.Groups.Create(groupCreateParams).ToPSADGroup();
+        }
 
-            if (options.Paging)
-            {
-                if (string.IsNullOrEmpty(options.NextLink))
+        public void RemoveGroup(string groupObjectId)
+        {
+            GraphClient.Groups.Delete(groupObjectId);
+        }
+
+        public IEnumerable<PSADObject> GetGroupMembers(ADObjectFilterOptions options, ulong first = ulong.MaxValue, ulong skip = 0)
+        {
+            return new GenericPageEnumerable<AADObject>(
+                delegate ()
                 {
-                    result = GraphClient.Groups.GetGroupMembers(options.Id);
-                }
-                else
-                {
-                    result = GraphClient.Groups.GetGroupMembersNext(options.NextLink);
-                }
+                    return GraphClient.Groups.GetGroupMembers(options.Id);
+                }, GraphClient.Groups.GetGroupMembersNext, first, skip).Select(m => m.ToPSADObject());
+        }
 
-                members.AddRange(result.Select(u => u.ToPSADObject()));
-                options.NextLink = result.NextPageLink;
-            }
-            else
-            {
-                result = GraphClient.Groups.GetGroupMembers(options.Id);
-                members.AddRange(result.Select(u => u.ToPSADObject()));
+        public void AddGroupMember(string groupObjectId, GroupAddMemberParameters groupAddMemberParams)
+        {
+            GraphClient.Groups.AddMember(groupObjectId, groupAddMemberParams);
+        }
 
-                while (!string.IsNullOrEmpty(result.NextPageLink))
-                {
-                    result = GraphClient.Groups.GetGroupMembersNext(result.NextPageLink);
-                    members.AddRange(result.Select(u => u.ToPSADObject()));
-                }
-            }
-
-            return members;
+        public void RemoveGroupMember(string groupObjectId, string memberObjectId)
+        {
+            GraphClient.Groups.RemoveMember(groupObjectId, memberObjectId);
         }
 
         public Guid GetObjectId(ADObjectFilterOptions options)
@@ -410,9 +394,9 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return principalId;
         }
 
-        public void UpdateApplication(string appObjectId, ApplicationUpdateParameters parameters)
+        public void UpdateApplication(Guid appObjectId, ApplicationUpdateParameters parameters)
         {
-            GraphClient.Applications.Patch(appObjectId, parameters);
+            GraphClient.Applications.Patch(appObjectId.ToString(), parameters);
         }
 
         public PSADApplication CreateApplication(CreatePSApplicationParameters createParameters)
@@ -473,37 +457,37 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
 
-        private List<KeyCredential> GetAppKeyCredentials(string appObjectId)
+        private List<KeyCredential> GetAppKeyCredentials(Guid appObjectId)
         {
-            return GraphClient.Applications.ListKeyCredentials(appObjectId).ToList();
+            return GraphClient.Applications.ListKeyCredentials(appObjectId.ToString()).ToList();
         }
 
-        private List<PasswordCredential> GetAppPasswordCredentials(string appObjectId)
+        private List<PasswordCredential> GetAppPasswordCredentials(Guid appObjectId)
         {
-            return GraphClient.Applications.ListPasswordCredentials(appObjectId).ToList();
+            return GraphClient.Applications.ListPasswordCredentials(appObjectId.ToString()).ToList();
         }
 
-        private void PatchAppKeyCredentials(string appObjectId, List<KeyCredential> keyCredentails)
+        private void PatchAppKeyCredentials(Guid appObjectId, List<KeyCredential> keyCredentails)
         {
             if (keyCredentails == null)
             {
                 keyCredentails = new List<KeyCredential>();
             }
 
-            GraphClient.Applications.UpdateKeyCredentials(appObjectId, new KeyCredentialsUpdateParameters(keyCredentails));
+            GraphClient.Applications.UpdateKeyCredentials(appObjectId.ToString(), new KeyCredentialsUpdateParameters(keyCredentails));
         }
 
-        private void PatchAppPasswordCredentials(string appObjectId, List<PasswordCredential> passwordCredentials)
+        private void PatchAppPasswordCredentials(Guid appObjectId, List<PasswordCredential> passwordCredentials)
         {
             if (passwordCredentials == null)
             {
                 passwordCredentials = new List<PasswordCredential>();
             }
 
-            GraphClient.Applications.UpdatePasswordCredentials(appObjectId, new PasswordCredentialsUpdateParameters(passwordCredentials));
+            GraphClient.Applications.UpdatePasswordCredentials(appObjectId.ToString(), new PasswordCredentialsUpdateParameters(passwordCredentials));
         }
 
-        public PSADCredential CreateAppKeyCredential(string appObjectId, KeyCredential credential)
+        public PSADCredential CreateAppKeyCredential(Guid appObjectId, KeyCredential credential)
         {
             ValidateKeyCredential(credential);
 
@@ -517,7 +501,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return credential.ToPSADCredential();
         }
 
-        public PSADCredential CreateAppPasswordCredential(string appObjectId, PasswordCredential credential)
+        public PSADCredential CreateAppPasswordCredential(Guid appObjectId, PasswordCredential credential)
         {
             ValidatePasswordCredential(credential);
 
@@ -531,7 +515,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return credential.ToPSADCredential();
         }
 
-        public List<PSADCredential> GetAppCredentials(string appObjectId)
+        public List<PSADCredential> GetAppCredentials(Guid appObjectId)
         {
             List<PSADCredential> CredentialList = new List<PSADCredential>();
 
@@ -545,7 +529,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         }
 
 
-        public void RemoveAppCredentialByKeyId(string appObjectId, Guid keyId)
+        public void RemoveAppCredentialByKeyId(Guid appObjectId, Guid keyId)
         {
             var keyCredsList = GetAppKeyCredentials(appObjectId);
 
@@ -569,56 +553,90 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
 
-        public void RemoveAllAppCredentials(string appObjectId)
+        public void RemoveAllAppCredentials(Guid appObjectId)
         {
             PatchAppKeyCredentials(appObjectId, keyCredentails: null);
             PatchAppPasswordCredentials(appObjectId, passwordCredentials: null);
         }
 
-        public string GetObjectIdFromApplicationId(string applicationId)
+        public Guid GetAppObjectIdFromApplicationId(Guid applicationId)
         {
-            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == applicationId);
+            var applicationIdString = applicationId.ToString();
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == applicationIdString);
             var app = GetApplicationWithFilters(odataQueryFilter).SingleOrDefault();
             if (app == null)
             {
-                throw new InvalidOperationException(String.Format(ProjectResources.ApplicationWithAppIdDoesntExist, applicationId));
+                throw new InvalidOperationException(string.Format(ProjectResources.ApplicationWithAppIdDoesntExist, applicationId));
             }
-            return app.ObjectId.ToString();
+            return app.ObjectId;
         }
 
-
-        private List<KeyCredential> GetSpKeyCredentials(string spObjectId)
+        public Guid GetAppObjectIdFromDisplayName(string displayName)
         {
-            return GraphClient.ServicePrincipals.ListKeyCredentials(spObjectId).ToList();
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.DisplayName == displayName);
+            var app = GetApplicationWithFilters(odataQueryFilter);
+            if (app == null || app.FirstOrDefault() == null)
+            {
+                throw new InvalidOperationException(string.Format(ProjectResources.ApplicationWithDisplayNameDoesntExist, displayName));
+            }
+
+            if (app.Count() > 1)
+            {
+                throw new InvalidOperationException(string.Format(ProjectResources.MultipleApplicationsWithDisplayNameFound, displayName));
+            }
+
+            return app.FirstOrDefault().ObjectId;
         }
 
-        private List<PasswordCredential> GetSpPasswordCredentials(string spObjectId)
+        public Guid GetUserObjectIdFromDisplayName(string displayName)
         {
-            return GraphClient.ServicePrincipals.ListPasswordCredentials(spObjectId).ToList();
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<User>(u => u.DisplayName == displayName);
+            var user = GraphClient.Users.List(odataQueryFilter.ToString());
+            if (user == null || user.FirstOrDefault() == null)
+            {
+                throw new InvalidOperationException(string.Format(ProjectResources.UserWithDisplayNameDoesntExist, displayName));
+            }
+
+            if (user.Count() > 1)
+            {
+                throw new InvalidOperationException(string.Format(ProjectResources.MultipleUsersWithDisplayNameFound, displayName));
+            }
+
+            return new Guid(user.FirstOrDefault().ObjectId);
         }
 
-        private void PatchSpKeyCredentials(string spObjectId, List<KeyCredential> keyCredentails)
+        private List<KeyCredential> GetSpKeyCredentials(Guid spObjectId)
+        {
+            return GraphClient.ServicePrincipals.ListKeyCredentials(spObjectId.ToString()).ToList();
+        }
+
+        private List<PasswordCredential> GetSpPasswordCredentials(Guid spObjectId)
+        {
+            return GraphClient.ServicePrincipals.ListPasswordCredentials(spObjectId.ToString()).ToList();
+        }
+
+        private void PatchSpKeyCredentials(Guid spObjectId, List<KeyCredential> keyCredentails)
         {
             if (keyCredentails == null)
             {
                 keyCredentails = new List<KeyCredential>();
             }
 
-            GraphClient.ServicePrincipals.UpdateKeyCredentials(spObjectId, new KeyCredentialsUpdateParameters(keyCredentails));
+            GraphClient.ServicePrincipals.UpdateKeyCredentials(spObjectId.ToString(), new KeyCredentialsUpdateParameters(keyCredentails));
         }
 
-        private void PatchSpPasswordCredentials(string spObjectId, List<PasswordCredential> passwordCredentials)
+        private void PatchSpPasswordCredentials(Guid spObjectId, List<PasswordCredential> passwordCredentials)
         {
             if (passwordCredentials == null)
             {
                 passwordCredentials = new List<PasswordCredential>();
             }
 
-            GraphClient.ServicePrincipals.UpdatePasswordCredentials(spObjectId, new PasswordCredentialsUpdateParameters(passwordCredentials));
+            GraphClient.ServicePrincipals.UpdatePasswordCredentials(spObjectId.ToString(), new PasswordCredentialsUpdateParameters(passwordCredentials));
         }
 
 
-        public PSADCredential CreateSpKeyCredential(string spObjectId, KeyCredential credential)
+        public PSADCredential CreateSpKeyCredential(Guid spObjectId, KeyCredential credential)
         {
             ValidateKeyCredential(credential);
 
@@ -632,7 +650,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return credential.ToPSADCredential();
         }
 
-        public PSADCredential CreateSpPasswordCredential(string spObjectId, PasswordCredential credential)
+        public PSADCredential CreateSpPasswordCredential(Guid spObjectId, PasswordCredential credential)
         {
             ValidatePasswordCredential(credential);
 
@@ -646,7 +664,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return credential.ToPSADCredential();
         }
 
-        public List<PSADCredential> GetSpCredentials(string spObjectId)
+        public List<PSADCredential> GetSpCredentials(Guid spObjectId)
         {
             List<PSADCredential> CredentialList = new List<PSADCredential>();
 
@@ -659,7 +677,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return CredentialList;
         }
 
-        public void RemoveSpCredentialByKeyId(string spObjectId, Guid keyId)
+        public void RemoveSpCredentialByKeyId(Guid spObjectId, Guid keyId)
         {
             var keyCredsList = GetSpKeyCredentials(spObjectId);
 
@@ -683,13 +701,13 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
 
-        public void RemoveAllSpCredentials(string spObjectId)
+        public void RemoveAllSpCredentials(Guid spObjectId)
         {
             PatchSpKeyCredentials(spObjectId, keyCredentails: null);
             PatchSpPasswordCredentials(spObjectId, passwordCredentials: null);
         }
 
-        public string GetObjectIdFromUPN(string upn)
+        public Guid GetObjectIdFromUPN(string upn)
         {
             var odataQueryFilter = new Rest.Azure.OData.ODataQuery<User>(s => s.UserPrincipalName == upn);
             var user = GraphClient.Users.List(odataQueryFilter.ToString()).SingleOrDefault();
@@ -698,10 +716,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 throw new InvalidOperationException(String.Format(ProjectResources.UserWithUPNDoesntExist, upn));
             }
 
-            return user.ObjectId;
+            return new Guid(user.ObjectId);
         }
 
-        public string GetObjectIdFromSPN(string spn)
+        public Guid GetObjectIdFromSPN(string spn)
         {
             var odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
             var sp = GraphClient.ServicePrincipals.List(odataQueryFilter.ToString()).SingleOrDefault();
@@ -710,22 +728,43 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 throw new InvalidOperationException(String.Format(ProjectResources.ServicePrincipalWithSPNDoesntExist, spn));
             }
 
-            return sp.ObjectId;
+            return new Guid(sp.ObjectId);
         }
 
-        public void RemoveApplication(string applicationObjectId)
+        public Guid GetObjectIdFromServicePrincipalDisplayName(string displayName)
+        {
+            var odataQueryFilter = new Rest.Azure.OData.ODataQuery<ServicePrincipal>(s => s.DisplayName == displayName);
+            var sp = GraphClient.ServicePrincipals.List(odataQueryFilter.ToString());
+            if (sp == null || sp.FirstOrDefault() == null)
+            {
+                throw new InvalidOperationException(string.Format(ProjectResources.ServicePrincipalWithDisplayNameDoesntExist, displayName));
+            }
+
+            if (sp.Count() > 1)
+            {
+                throw new InvalidOperationException(string.Format(ProjectResources.MultipleServicePrincipalsWithDisplayNameFound, displayName));
+            }
+
+            return new Guid(sp.FirstOrDefault().ObjectId);
+        }
+
+        public void RemoveApplication(Guid applicationObjectId)
         {
             GraphClient.Applications.Delete(applicationObjectId.ToString());
         }
 
-        public PSADApplication GetApplication(string applicationObjectId)
+        public PSADApplication GetApplication(Guid applicationObjectId)
         {
             return GraphClient.Applications.Get(applicationObjectId.ToString()).ToPSADApplication();
         }
 
-        public IEnumerable<PSADApplication> GetApplicationWithFilters(Rest.Azure.OData.ODataQuery<Application> odataQueryFilter)
+        public IEnumerable<PSADApplication> GetApplicationWithFilters(Rest.Azure.OData.ODataQuery<Application> odataQueryFilter, ulong first = ulong.MaxValue, ulong skip = 0)
         {
-            return GraphClient.Applications.List(odataQueryFilter.ToString()).Select(a => a.ToPSADApplication());
+            return new GenericPageEnumerable<Application>(
+                delegate ()
+                {
+                    return GraphClient.Applications.List(odataQueryFilter);
+                }, GraphClient.Applications.ListNext, first, skip).Select(a => a.ToPSADApplication());
         }
 
         public PSADServicePrincipal CreateServicePrincipal(CreatePSServicePrincipalParameters createParameters)
@@ -765,17 +804,13 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             }
         }
 
-        public PSADServicePrincipal RemoveServicePrincipal(string objectId)
+        public PSADServicePrincipal RemoveServicePrincipal(Guid objectId)
         {
-            ADObjectFilterOptions options = new ADObjectFilterOptions
-            {
-                Id = objectId.ToString()
-            };
-
-            PSADServicePrincipal servicePrincipal = FilterServicePrincipals(options).FirstOrDefault();
+            var objectIdString = objectId.ToString();
+            PSADServicePrincipal servicePrincipal = FilterServicePrincipals(new ADObjectFilterOptions() { Id = objectId.ToString() }).FirstOrDefault();
             if (servicePrincipal != null)
             {
-                GraphClient.ServicePrincipals.Delete(objectId);
+                GraphClient.ServicePrincipals.Delete(objectIdString);
             }
             else
             {

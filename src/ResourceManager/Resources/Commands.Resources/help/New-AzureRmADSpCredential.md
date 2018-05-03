@@ -15,13 +15,13 @@ Adds a credential to an existing service principal.
 
 ### SpObjectIdWithPasswordParameterSet (Default)
 ```
-New-AzureRmADSpCredential -ObjectId <String> -Password <SecureString> [-StartDate <DateTime>]
+New-AzureRmADSpCredential -ObjectId <Guid> -Password <SecureString> [-StartDate <DateTime>]
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SpObjectIdWithCertValueParameterSet
 ```
-New-AzureRmADSpCredential -ObjectId <String> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
+New-AzureRmADSpCredential -ObjectId <Guid> -CertValue <String> [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,42 +37,55 @@ New-AzureRmADSpCredential -ServicePrincipalName <String> -Password <SecureString
  [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ServicePrincipalObjectWithCertValueParameterSet
+```
+New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -CertValue <String>
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ServicePrincipalObjectWithPasswordParameterSet
+```
+New-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> -Password <SecureString>
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The New-AzureRmADSpCredential cmdlet can be used to add a new credential or to roll credentials for a service principal.
 The service principal is identified by supplying either the object id or service principal name.
 
 ## EXAMPLES
 
-### Example 1
-```
-PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS E:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password $SecureStringPassword
-```
-
-A new password credential is added to an existing service principal.
-In this example, the supplied password value is added to the service principal using the objectId.
-
-### Example 2
-```
-$cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate 
-
-$cer.Import("C:\myapp.cer") 
-
-$binCert = $cer.GetRawCertData() 
-
-$credValue = [System.Convert]::ToBase64String($binCert)
-
-PS E:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue -StartDate $cer.GetEffectiveDateString() -EndDate $cer.GetExpirationDateString()
-```
-
-A new key credential is added to an existing service principal.
-In this example, the supplied base64 encoded public X509 certificate ("myapp.cer") is added to the service principal using its SPN.
-
-### Example 3
+### Example 1 - Create a new service principal credential using a password
 
 ```
-PS E:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue
+PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS C:\> New-AzureRmADSpCredential -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 -Password $SecureStringPassword
 ```
+
+A new password credential is added to the existing service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476'.
+
+### Example 2 - Create a new service principal credential using a certificate
+
+```
+PS C:\> $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate 
+PS C:\> $cer.Import("C:\myapp.cer") 
+PS C:\> $binCert = $cer.GetRawCertData() 
+PS C:\> $credValue = [System.Convert]::ToBase64String($binCert)
+PS C:\> New-AzureRmADSpCredential -ServicePrincipalName "http://test123" -CertValue $credValue -StartDate $cer.GetEffectiveDateString() -EndDate $cer.GetExpirationDateString()
+```
+
+The supplied base64 encoded public X509 certificate ("myapp.cer") is added to the existing service principal using its SPN.
+
+### Example 3 - Create a new service principal credential using piping
+
+```
+PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS C:\> Get-AzureRmADServicePrincipal -ObjectId 1f99cf81-0146-4f4e-beae-2007d0668476 | New-AzureRmADSpCredential -Password $SecureStringPassword
+```
+
+Gets the service principal with object id '1f99cf81-0146-4f4e-beae-2007d0668476' and pipes that to the New-AzureRmADSpCredential to create a new service principal credential for that service principal with the given password.
 
 ## PARAMETERS
 
@@ -83,6 +96,18 @@ It represents the base 64 encoded certificate.
 ```yaml
 Type: String
 Parameter Sets: SpObjectIdWithCertValueParameterSet, SPNWithCertValueParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ServicePrincipalObjectWithCertValueParameterSet
 Aliases:
 
 Required: True
@@ -128,7 +153,7 @@ Accept wildcard characters: False
 The object id of the service principal to add the credentials to.
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: SpObjectIdWithPasswordParameterSet, SpObjectIdWithCertValueParameterSet
 Aliases: ServicePrincipalObjectId
 
@@ -154,6 +179,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: SecureString
+Parameter Sets: ServicePrincipalObjectWithPasswordParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ServicePrincipalName
 The name (SPN) of the service principal to add the credentials to.
 
@@ -166,6 +203,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalObject
+The service principal object to add the credentials to.
+
+```yaml
+Type: PSADServicePrincipal
+Parameter Sets: ServicePrincipalObjectWithCertValueParameterSet, ServicePrincipalObjectWithPasswordParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -202,6 +254,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -219,8 +274,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+
+This cmdlet accepts a PSADServicePrincipal object from the pipeline. You can pipe the output of Get-AzureRmADServicePrincipal to this cmdlet to create credentials for the provided service principal.
 
 ## OUTPUTS
 
