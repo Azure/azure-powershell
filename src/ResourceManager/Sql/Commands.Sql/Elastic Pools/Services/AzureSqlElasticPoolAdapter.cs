@@ -90,7 +90,29 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Creates or updates an Azure Sql Database ElasticPool.
+        /// Creates an Azure Sql Database ElasticPool.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="model">The input parameters for the create/update operation</param>
+        /// <returns>The upserted Azure Sql Database ElasticPool</returns>
+        internal AzureSqlElasticPoolModel CreateElasticPool(AzureSqlElasticPoolModel model)
+        {
+            var resp = Communicator.Create(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPool
+            {
+                Location = model.Location,
+                Tags = model.Tags,
+                Sku = model.Sku,
+                MaxSizeBytes = model.MaxSizeBytes,
+                ZoneRedundant = model.ZoneRedundant,
+                PerDatabaseSettings = model.PerDatabaseSettings
+            });
+
+            return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+        }
+
+        /// <summary>
+        /// Updates an Azure Sql Database ElasticPool using Patch.
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
@@ -98,7 +120,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
         internal AzureSqlElasticPoolModel UpsertElasticPool(AzureSqlElasticPoolModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPool
+            //var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPool
+            //{
+            //    Location = model.Location,
+            //    Tags = model.Tags,
+            //    Sku = model.Sku,
+            //    MaxSizeBytes = model.MaxSizeBytes,
+            //    ZoneRedundant = model.ZoneRedundant,
+            //    PerDatabaseSettings = model.PerDatabaseSettings
+            //});
+
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPoolUpdate
             {
                 Location = model.Location,
                 Tags = model.Tags,
