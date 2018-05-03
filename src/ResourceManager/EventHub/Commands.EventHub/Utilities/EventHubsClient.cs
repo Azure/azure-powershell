@@ -202,10 +202,33 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSEventHubAttributes(response);
         }
 
-        public IEnumerable<PSEventHubAttributes> ListAllEventHubs(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSEventHubAttributes> ListAllEventHubs(string resourceGroupName, string namespaceName, int? maxCount = null)
         {
-            var response = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName);
-            var resourceList = response.Select(resource => new PSEventHubAttributes(resource));
+
+            IEnumerable<PSEventHubAttributes> resourceList = Enumerable.Empty<PSEventHubAttributes>();
+            int? skip = 0;
+            switch (ReturnmaxCountvalueForSwtich(maxCount))
+            {
+
+                case 0:
+                    var response = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName, skip: 0, top: maxCount);
+                    resourceList = response.Select(resource => new PSEventHubAttributes(resource));
+                    break;
+                case 1:
+                    while (maxCount > 0)
+                    {
+                        var response1 = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName, skip: skip, top: maxCount);
+                        resourceList = resourceList.Concat<PSEventHubAttributes>(response1.Select(resource => new PSEventHubAttributes(resource)));
+                        skip += maxCount > 100 ? 100 : maxCount;
+                        maxCount = maxCount - 100;
+                    }
+                    break;
+                default:
+                    var response2 = Client.EventHubs.ListByNamespace(resourceGroupName, namespaceName);
+                    resourceList = response2.Select(resource => new PSEventHubAttributes(resource));
+                    break;
+
+            }
             return resourceList;
         }
 
@@ -385,10 +408,33 @@ namespace Microsoft.Azure.Commands.Eventhub
             return new PSConsumerGroupAttributes(response);
         }
 
-        public IEnumerable<PSConsumerGroupAttributes> ListAllConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName)
+        public IEnumerable<PSConsumerGroupAttributes> ListAllConsumerGroup(string resourceGroupName, string namespaceName, string eventHubName, int? maxCount = null)
         {
-            var response = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName);
-            var resourceList = response.Select(resource => new PSConsumerGroupAttributes(resource));
+
+            IEnumerable<PSConsumerGroupAttributes> resourceList = Enumerable.Empty<PSConsumerGroupAttributes>();
+            int? skip = 0;
+            switch (ReturnmaxCountvalueForSwtich(maxCount))
+            {
+
+                case 0:
+                    var response = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName, skip: 0, top: maxCount);
+                    resourceList = response.Select(resource => new PSConsumerGroupAttributes(resource));
+                    break;
+                case 1:
+                    while (maxCount > 0)
+                    {
+                        var response1 = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName, skip: skip, top: maxCount);
+                        resourceList = resourceList.Concat<PSConsumerGroupAttributes>(response1.Select(resource => new PSConsumerGroupAttributes(resource)));
+                        skip += maxCount > 100 ? 100 : maxCount;
+                        maxCount = maxCount - 100;
+                    }
+                    break;
+                default:
+                    var response2 = Client.ConsumerGroups.ListByEventHub(resourceGroupName, namespaceName, eventHubName);
+                    resourceList = response2.Select(resource => new PSConsumerGroupAttributes(resource));
+                    break;
+
+            }
             return resourceList;
         }
 
@@ -422,5 +468,17 @@ namespace Microsoft.Azure.Commands.Eventhub
         }
 
         #endregion
+
+        public static int ReturnmaxCountvalueForSwtich(int? maxcount)
+        {
+            int returnvalue = -1;
+
+            if (maxcount != null && maxcount <= 100)
+                returnvalue = 0;
+            if (maxcount != null && maxcount > 100)
+                returnvalue = 1;
+
+            return returnvalue;
+        }
     }
 }

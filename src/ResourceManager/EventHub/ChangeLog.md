@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added Optional MaxCount parameter to List Operations cmdlet Get-AzureRmEventHub and Get-AzureRmEventHubConsumerGroup
+* Fixed issue in New-AzureRmEventHub cmdlet where at least one parameter needed while creating New EventHub. Provided Default Parameter set.
 
 ## Version 0.6.4
 * Set minimum dependency of module to PowerShell 5.0
