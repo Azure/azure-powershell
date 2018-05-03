@@ -87,11 +87,11 @@ namespace NetCorePsd1Sync
             return hashtable;
         }
 
-        public static IEnumerable<Hashtable> GetDesktopHashtables(IEnumerable<string> desktopFilePaths)
+        public static IEnumerable<Hashtable> GetHashtables(IEnumerable<string> filePaths)
         {
             using (var powershell = PowerShell.Create())
             {
-                foreach (var path in desktopFilePaths)
+                foreach (var path in filePaths)
                 {
                     yield return GetHashtable(powershell, path);
                 }
