@@ -44,7 +44,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Create a subscription.
 #>
 function New-AzsSubscription {
-    [OutputType([Microsoft.AzureStack.Management.Subscriptions.Models.Subscription])]
+    [OutputType([Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel])]
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $true)]
@@ -119,11 +119,11 @@ function New-AzsSubscription {
             }
         
             $NewServiceClient_params = @{
-                FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
+                FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
             }
             $GlobalParameterHashtable = @{}
             $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-            $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
+            $SubscriptionClient = New-ServiceClient @NewServiceClient_params
 
             $flattenedParameters = @('OfferId', 'Id', 'SubscriptionId', 'State', 'TenantId', 'DisplayName')
             $utilityCmdParams = @{}
@@ -134,8 +134,8 @@ function New-AzsSubscription {
             }
             $NewSubscription = New-SubscriptionObject @utilityCmdParams
 
-            Write-Verbose -Message 'Performing operation create on $SubscriptionsManagementClient.'
-            $TaskResult = $SubscriptionsManagementClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $NewSubscription)
+            Write-Verbose -Message 'Performing operation create on $SubscriptionClient.'
+            $TaskResult = $SubscriptionClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $NewSubscription)
 
             if ($TaskResult) {
                 $GetTaskResult_params = @{

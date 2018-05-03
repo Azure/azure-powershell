@@ -70,7 +70,7 @@ function New-SubscriptionObject
         $DisplayName
     )
     
-    $Object = New-Object -TypeName Microsoft.AzureStack.Management.Subscriptions.Models.Subscription -ArgumentList @($displayName,$id,$offerId,$state,$subscriptionId,$tenantId)
+    $Object = New-Object -TypeName Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel -ArgumentList @($displayName,$id,$offerId,$state,$subscriptionId,$tenantId)
 
     if(Get-Member -InputObject $Object -Name Validate -MemberType Method)
     {

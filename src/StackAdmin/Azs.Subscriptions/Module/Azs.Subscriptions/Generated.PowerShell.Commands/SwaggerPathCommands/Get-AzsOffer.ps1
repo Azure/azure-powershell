@@ -24,7 +24,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 #>
 function Get-AzsOffer {
-    [OutputType([Microsoft.AzureStack.Management.Subscriptions.Models.Offer])]
+    [OutputType([Microsoft.AzureStack.Management.Subscription.Models.Offer])]
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $false)]
@@ -60,16 +60,16 @@ function Get-AzsOffer {
         }
 
         $NewServiceClient_params = @{
-            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
+            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
         }
 
         $GlobalParameterHashtable = @{}
         $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
 
-        $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
+        $SubscriptionClient = New-ServiceClient @NewServiceClient_params
 
-        Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionsManagementClient.'
-        $TaskResult = $SubscriptionsManagementClient.Offers.ListWithHttpMessagesAsync()
+        Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionClient.'
+        $TaskResult = $SubscriptionClient.Offers.ListWithHttpMessagesAsync()
 
         if ($TaskResult) {
             $GetTaskResult_params = @{
@@ -90,14 +90,14 @@ function Get-AzsOffer {
                 'Result' = $null
             }
             $GetTaskResult_params['PageResult'] = $PageResult
-            $GetTaskResult_params['PageType'] = 'Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Subscriptions.Models.Offer]' -as [Type]
+            $GetTaskResult_params['PageType'] = 'Microsoft.Rest.Azure.IPage[Microsoft.AzureStack.Management.Subscription.Models.Offer]' -as [Type]
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
             while ($PageResult -and $PageResult.Result -and (Get-Member -InputObject $PageResult.Result -Name 'nextLink') -and $PageResult.Result.'nextLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
                 $PageResult.Result = $null
                 Write-Debug -Message "Retrieving next page: $($PageResult.Result.'nextLink')"
-                $TaskResult = $SubscriptionsManagementClient.Offers.ListNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
+                $TaskResult = $SubscriptionClient.Offers.ListNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
                 $GetTaskResult_params['TaskResult'] = $TaskResult
                 $GetTaskResult_params['PageResult'] = $PageResult
                 Get-TaskResult @GetTaskResult_params
