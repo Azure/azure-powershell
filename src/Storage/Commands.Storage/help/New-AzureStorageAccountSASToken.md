@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ### -Permission
 Specifies the permissions for Storage account.
 Permissions are valid only if they match the specified resource type.
-For more information about acceptable permission values, see Constructing an Account SAShttp://go.microsoft.com/fwlink/?LinkId=799514
+For more information about acceptable permission values, see Constructing an Account SAS http://go.microsoft.com/fwlink/?LinkId=799514
 
 ```yaml
 Type: String
