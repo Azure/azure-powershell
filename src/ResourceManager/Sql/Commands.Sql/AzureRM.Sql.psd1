@@ -208,7 +208,16 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline', 
                'Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan', 
                'Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord', 
-               'Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan'
+               'Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan', 
+               'Get-AzureRmSqlManagedInstance', 
+               'New-AzureRmSqlManagedInstance', 
+               'Remove-AzureRmSqlManagedInstance', 
+               'Set-AzureRmSqlManagedInstance', 
+               'Update-AzureRmSqlManagedInstance', 
+               'Get-AzureRmSqlManagedDatabase', 
+               'New-AzureRmSqlManagedDatabase', 
+               'Remove-AzureRmSqlManagedDatabase', 
+               'Restore-AzureRmSqlManagedDatabase' 
 
 # Variables to export from this module
 # VariablesToExport = @()
