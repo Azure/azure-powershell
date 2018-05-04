@@ -186,6 +186,20 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ParameterSetName = ResourceIdByVaultNameParameterSet,
                    HelpMessage = "Specifies whether to show the previously deleted certificates in the output.")]
         public SwitchParameter InRemovedState { get; set; }
+
+        /// <summary>
+        /// Switch specifying whether to include the pending certificates in the enumeration.
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to include the pending certificates in the output.")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = InputObjectByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to include the pending certificates in the output.")]
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ResourceIdByVaultNameParameterSet,
+                   HelpMessage = "Specifies whether to include the pending certificates in the output.")]
+        public SwitchParameter IncludePending { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -241,10 +255,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void GetAndWriteCertificates(string vaultName)
         {
-            KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
+            var options = new KeyVaultCertificateFilterOptions
             {
                 VaultName = VaultName,
-                NextLink = null
+                NextLink = null,
+                IncludePending = IncludePending
             };
 
             do
@@ -272,10 +287,11 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         private void GetAndWriteDeletedCertificates( string vaultName )
         {
-            KeyVaultObjectFilterOptions options = new KeyVaultObjectFilterOptions
+            var options = new KeyVaultCertificateFilterOptions
             {
                 VaultName = VaultName,
-                NextLink = null
+                NextLink = null,
+                IncludePending = IncludePending
             };
 
             do
