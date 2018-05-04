@@ -11,7 +11,7 @@ using AFSEvaluationTool.Validations.SystemValidations;
 namespace AFSEvaluationTool.Cmdlets
 {
 
-    [Cmdlet(VerbsLifecycle.Invoke, "AzureRMStorageSyncCompatibilityCheck")]
+    [Cmdlet(VerbsLifecycle.Invoke, "AzureRmStorageSyncCompatibilityCheck")]
     [OutputType(typeof(object))]
     public class InvokeAzureRMStorageSyncCompatibilityCheckCmdlet : Cmdlet
     {
