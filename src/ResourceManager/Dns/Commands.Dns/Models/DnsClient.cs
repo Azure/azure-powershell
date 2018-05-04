@@ -172,9 +172,10 @@ namespace Microsoft.Azure.Commands.Dns.Models
             RecordType recordType,
             Hashtable tags,
             bool overwrite,
-            DnsRecordBase[] resourceRecords)
+            DnsRecordBase[] resourceRecords,
+            string aliasTargetResourceId)
         {
-            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords);
+            var recordSet = ConstructRecordSetPropeties(relativeRecordSetName, recordType, ttl, tags, resourceRecords, aliasTargetResourceId);
 
             var response = this.DnsManagementClient.RecordSets.CreateOrUpdate(
                 resourceGroupName,
@@ -188,13 +189,19 @@ namespace Microsoft.Azure.Commands.Dns.Models
             return GetPowerShellRecordSet(zoneName, resourceGroupName, response);
         }
 
-        private RecordSet ConstructRecordSetPropeties(string recordSetName, RecordType recordType, uint ttl, Hashtable tags, DnsRecordBase[] resourceRecords)
+        private RecordSet ConstructRecordSetPropeties(
+            string recordSetName,
+            RecordType recordType,
+            uint ttl,
+            Hashtable tags,
+            DnsRecordBase[] resourceRecords,
+            string aliasTargetResourceId)
         {
 
             var properties = new RecordSet
             {
                 Metadata = TagsConversionHelper.CreateTagDictionary(tags, validate: true),
-                TTL = ttl,
+                TTL = ttl
             };
 
             if (resourceRecords != null && resourceRecords.Length != 0)
@@ -211,6 +218,11 @@ namespace Microsoft.Azure.Commands.Dns.Models
             else
             {
                 FillEmptyRecordsForType( properties, recordType);
+
+                if (string.IsNullOrEmpty(aliasTargetResourceId))
+                {
+                    properties.TargetResource = new SubResource(aliasTargetResourceId);
+                }
             }
             return properties;
         }
@@ -431,6 +443,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 ResourceGroupName = resourceGroupName,
                 Ttl = (uint) mamlRecordSet.TTL.GetValueOrDefault(),
                 ZoneName = zoneName,
+                AliasTargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty
             };
         }
 
