@@ -88,7 +88,7 @@ CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey',
                'Remove-AzureRmStorageAccountNetworkRule', 
                'Set-AzureRmStorageAccountManagementPolicy', 
                'Get-AzureRmStorageAccountManagementPolicy', 
-               'Remove-AzureRmStorageAccountManagementPolicy'
+               'Remove-AzureRmStorageAccountManagementPolicy',
                'Get-AzureRmStorageContainer',
                'Update-AzureRmStorageContainer',
                'New-AzureRmStorageContainer',

@@ -26,44 +26,43 @@ The management policy rules must be in JSON format
 ### Example 1: Create or update the management policy of a Storage account.
 ```
 PS C:\> $policy = '{
-  "version": 0.5,
-  "rules": [ 
-    {
-      "name": "ruleFoo", 
-      "type": "lifecycle", 
-      "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "nameMatch": [ "foo" ]
-        },
-        "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterLastModifiedGreaterThan": 30 },
-            "tierToArchive": { "daysAfterLastModifiedGreaterThan": 90 },
-            "delete": { "daysAfterLastModifiedGreaterThan": 2555 }
-          },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 }
-          }
-        }
-      }
-    },
-	{
-      "name": "expirationRule", 
-      "type": "Lifecycle", 
-      "definition": 
-        {
-          "filters": {
-            "blobTypes": [ "blockBlob" ]
-          },
-          "actions": {
-            "baseBlob": {
-              "delete": { "daysAfterLastModifiedGreaterThan": 365 }
+    "version":"0.5",
+    "rules":
+    [{
+        "type": "Lifecycle",
+        "name": "olcmtest",
+        "definition": {
+            "filters":
+            {
+                "blobTypes":["blockBlob"],
+                "prefixMatch":["olcmtestcontainer"]
+            },
+            "actions":
+            {
+                "baseBlob":
+                {
+                    "delete":
+                    {
+                        "daysAfterModificationGreaterThan":1000
+                    },
+					"tierToArchive" : {
+						"daysAfterModificationGreaterThan" : 90
+					},
+                    "tierToCool":
+                    {
+                        "daysAfterModificationGreaterThan":1000
+                    }
+                },
+				"snapshot":
+                {
+                    "delete":
+                    {
+                        "daysAfterCreationGreaterThan":5000
+                    }
+                }
             }
-          }
-        }      
-    }
-  ]
+        }
+    }]
 }'
 PS C:\>Set-AzureRmStorageAccountManagementPolicy -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Policy $policy
 ```
@@ -89,6 +88,7 @@ Accept wildcard characters: False
 
 ### -Policy
 The lifecycle management policy, it's a collection of rules in a JSON document.
+See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
 
 ```yaml
 Type: String
