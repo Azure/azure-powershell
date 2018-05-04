@@ -91,6 +91,7 @@
     <Compile Include="Commands\UndoAzureKeyVaultKeyRemoval.cs" />
     <Compile Include="Commands\UndoAzureKeyVaultSecretRemoval.cs" />
     <Compile Include="Commands\UpdateAzureKeyVaultSecret.cs" />
+    <Compile Include="Models\KeyVaultCertificateFilterOptions.cs" />
     <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageAccount.cs" />
     <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageAccountIdentityItem.cs" />
     <Compile Include="Models\ManagedStorageAccounts\PSDeletedKeyVaultManagedStorageSasDefinition.cs" />
