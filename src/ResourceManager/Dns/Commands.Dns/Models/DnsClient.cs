@@ -219,11 +219,12 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 FillEmptyRecordsForType( properties, recordType);
 
-                if (string.IsNullOrEmpty(aliasTargetResourceId))
+                if (!string.IsNullOrEmpty(aliasTargetResourceId))
                 {
                     properties.TargetResource = new SubResource(aliasTargetResourceId);
                 }
             }
+
             return properties;
         }
 
@@ -443,7 +444,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
                 ResourceGroupName = resourceGroupName,
                 Ttl = (uint) mamlRecordSet.TTL.GetValueOrDefault(),
                 ZoneName = zoneName,
-                AliasTargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty
+                AliasTargetResourceId = mamlRecordSet.TargetResource != null ? mamlRecordSet.TargetResource.Id : string.Empty,
+                ProvisioningState = mamlRecordSet.ProvisioningState,
             };
         }
 

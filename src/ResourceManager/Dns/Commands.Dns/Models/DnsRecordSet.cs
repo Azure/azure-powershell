@@ -72,6 +72,11 @@ namespace Microsoft.Azure.Commands.Dns
         public Hashtable Metadata { get; set; }
 
         /// <summary>
+        /// Gets or sets the provisioning state of the record set
+        /// </summary>
+        public string ProvisioningState { get; set; }
+
+        /// <summary>
         /// Returns a deep copy of this record set
         /// </summary>
         /// <returns></returns>
