@@ -14,7 +14,7 @@ Remove a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-Remove-AzureRmSignalR [[-ResourceGroupName] <String>] [-Name] <String> [-AsJob] [-PassThru]
+Remove-AzureRmSignalR [-ResourceGroupName <String>] [-Name] <String> [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -103,7 +103,7 @@ Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -133,7 +133,7 @@ Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -14,13 +14,13 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 
 ### ListSignalRServiceParameterSet (Default)
 ```
-Get-AzureRmSignalR [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmSignalR [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceGroupParameterSet
 ```
-Get-AzureRmSignalR [[-ResourceGroupName] <String>] [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmSignalR [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -104,7 +104,7 @@ Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -119,7 +119,7 @@ Parameter Sets: ListSignalRServiceParameterSet, ResourceGroupParameterSet
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

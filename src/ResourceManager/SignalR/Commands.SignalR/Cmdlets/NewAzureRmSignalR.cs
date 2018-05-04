@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     {
         private const string DefaultSku = "Basic_DS2";
 
-        [Parameter(Position = 0,
+        [Parameter(
             Mandatory = false,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
         [ValidateNotNullOrEmpty()]
@@ -39,14 +39,13 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty()]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 2,
             HelpMessage = "The SignalR service location. The resource group location will be used if not specified.")]
         [LocationCompleter("Microsoft.SignalR/SignalR")]
         [ValidateNotNullOrEmpty()]
