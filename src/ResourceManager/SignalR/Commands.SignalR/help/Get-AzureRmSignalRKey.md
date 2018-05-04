@@ -14,8 +14,8 @@ Get the access keys of a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-Get-AzureRmSignalRKey [[-ResourceGroupName] <String>] [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -94,7 +94,7 @@ Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -109,7 +109,7 @@ Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
