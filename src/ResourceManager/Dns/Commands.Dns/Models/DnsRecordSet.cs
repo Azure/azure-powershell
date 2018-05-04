@@ -57,6 +57,11 @@ namespace Microsoft.Azure.Commands.Dns
         public RecordType RecordType { get; set; }
 
         /// <summary>
+        /// Gets or sets the alias target resource Id of the record set
+        /// </summary>
+        public string AliasTargetResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the list of records in this record set.
         /// </summary>
         public List<DnsRecordBase> Records { get; set; }

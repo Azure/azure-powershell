@@ -64,6 +64,9 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Alias Target Resource Id.")]
+        public string AliasTargetResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             string zoneName = null;
@@ -106,7 +109,16 @@ namespace Microsoft.Azure.Commands.Dns
                 this.Name,
                 () =>
                 {
-                    result = this.DnsClient.CreateDnsRecordSet(zoneName, resourceGroupname, this.Name, this.Ttl, this.RecordType, this.Metadata, this.Overwrite, this.DnsRecords);
+                    result = this.DnsClient.CreateDnsRecordSet(
+                        zoneName,
+                        resourceGroupname,
+                        this.Name, 
+                        this.Ttl,
+                        this.RecordType,
+                        this.Metadata,
+                        this.Overwrite,
+                        this.DnsRecords,
+                        this.AliasTargetResourceId);
 
                     if (result != null)
                     {
