@@ -43,22 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model
         /// Gets or sets the name of the Instance Failover Group.
         /// </summary>
         public string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the read-write endpoint
-        /// </summary>
-        public InstanceFailoverGroupReadWriteEndpoint ReadWriteEndpoint { get; set; }
-
-        /// <summary>
-        /// Gets or sets the read-only endpoint
-        /// </summary>
-        public InstanceFailoverGroupReadOnlyEndpoint ReadOnlyEndpoint { get; set; }
-
-        /// <summary>
-        /// Gets or sets the partner servers
-        /// </summary>
-        public IList<PartnerRegionInfo> PartnerRegions { get; set; }
-
+        
         /// <summary>
         /// Gets or sets the name of the partner resource group name
         /// </summary>
@@ -67,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model
         /// <summary>
         /// Gets or sets the name of the partner server name
         /// </summary>
-        public PartnerRegionInfo PartnerRegion { get; set; }
+        public string PartnerRegion { get; set; }
 
         /// <summary>
         /// Gets or sets the managed instance on the primary region
@@ -78,12 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model
         /// Gets or sets the managed instance on the partner region
         /// </summary>
         public string PartnerManagedInstanceName { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the managed instance ids in pairs
-        /// </summary>
-        public IList<ManagedInstancePairInfo> ManagedInstancePairs { get; internal set; }
-        
+                
         /// <summary>
         /// Gets or sets the read-write endpoint
         /// </summary>
@@ -113,38 +93,5 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model
         /// Gets or sets the Id of the Instance Failover Group
         /// </summary>
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the location of the Instance Failover Group
-        /// </summary>
-        public string Kind { get; set; }
-
-        /// <summary>
-        /// Default Constructor
-        /// </summary>
-        public AzureSqlInstanceFailoverGroupModel()
-        {
-        }
-
-        /// <summary>
-        /// Construct AzureSqlServerfailoverGroupModel from Management.Sql.LegacySdk.Models.FailoverGroup object
-        /// </summary>
-        /// <param name="resourceGroupName">Resource group</param>
-        /// <param name="location">Server name</param>
-        /// <param name="failoverGroup">Recommended Action object</param>
-        public AzureSqlInstanceFailoverGroupModel(string resourceGroupName, string location, string failoverGroupName, Management.Sql.Models.InstanceFailoverGroup failoverGroup)
-        {
-            ResourceGroupName = resourceGroupName;
-            Location = location;
-            Name = failoverGroupName;
-            Id = failoverGroup.Id;
-            ReadWriteFailoverPolicy = failoverGroup.ReadWriteEndpoint.FailoverPolicy;
-            ReadOnlyFailoverPolicy = failoverGroup.ReadOnlyEndpoint.FailoverPolicy;
-            FailoverWithDataLossGracePeriodHours = failoverGroup.ReadWriteEndpoint.FailoverWithDataLossGracePeriodMinutes / 60;
-            PartnerRegions = failoverGroup.PartnerRegions;
-            ManagedInstancePairs = failoverGroup.ManagedInstancePairs;
-            ReplicationRole = failoverGroup.ReplicationRole;
-            ReplicationState = failoverGroup.ReplicationState;
-        }
     }
 }

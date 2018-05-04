@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
         internal AzureSqlInstanceFailoverGroupModel UpsertInstanceFailoverGroup(AzureSqlInstanceFailoverGroupModel model)
         {
             List<PartnerRegionInfo>  partnerRegions = new List<PartnerRegionInfo>();
-            PartnerRegionInfo partnerRegion = model.PartnerRegion;
+            PartnerRegionInfo partnerRegion = new PartnerRegionInfo(model.PartnerRegion, "Secondary");
             partnerRegions.Add(partnerRegion);
 
             List<ManagedInstancePairInfo> pairs = new List<ManagedInstancePairInfo>();
@@ -177,7 +177,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
             AzureSqlInstanceFailoverGroupModel model = new AzureSqlInstanceFailoverGroupModel();
 
             model.Name = failoverGroup.Name;
-            model.PartnerRegions = failoverGroup.PartnerRegions;
             model.ReadOnlyFailoverPolicy = failoverGroup.ReadOnlyEndpoint.FailoverPolicy;
             model.ReadWriteFailoverPolicy = failoverGroup.ReadWriteEndpoint.FailoverPolicy;
             model.ReplicationRole = failoverGroup.ReplicationRole;
@@ -187,13 +186,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
 
             model.Id = failoverGroup.Id;
 
-            model.ManagedInstancePairs = failoverGroup.ManagedInstancePairs;
-
             model.ResourceGroupName = GetUriSegment(failoverGroup.Id, 4);
             model.Location = GetUriSegment(failoverGroup.Id, 8);
 
             model.PartnerResourceGroupName = GetUriSegment(failoverGroup.ManagedInstancePairs.First().PartnerManagedInstanceId, 4);
-            model.PartnerRegion = failoverGroup.PartnerRegions.First();
+            model.PartnerRegion = failoverGroup.PartnerRegions.First().Location;
 
             model.PrimaryManagedInstanceName = GetUriSegment(failoverGroup.ManagedInstancePairs.First().PrimaryManagedInstanceId, 8);
             model.PartnerManagedInstanceName = GetUriSegment(failoverGroup.ManagedInstancePairs.First().PartnerManagedInstanceId, 8);

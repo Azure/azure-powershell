@@ -39,16 +39,16 @@ function Handle-InstanceFailoverGroupTestWithInstanceFailoverGroup($scriptBlock,
 	}.GetNewClosure()
 }
 
-function Validate-InstanceFailoverGroup($rg, $name, $role, $partnerRole, $failoverPolicy, $gracePeriod, $readOnlyFailoverPolicy, $fg, $message="no context provided")
+function Validate-InstanceFailoverGroup($rg, $name, $miName1, $miName2, $role, $partnerRole, $failoverPolicy, $gracePeriod, $readOnlyFailoverPolicy, $fg, $message="no context provided")
 {	
 	Assert-NotNull $fg.Id "`$fg.Id ($message)"
 	Assert-NotNull $fg.PartnerRegion "`$fg.PartnerRegion ($message)"
-	Assert-NotNull $fg.ManagedInstancePairs "`$fg.ManagedInstancePairs ($message)"
+	Assert-AreEqual $miName1 $fg.PrimaryManagedInstanceName "`$fg.PrimaryManagedInstanceName ($message)"
+	Assert-AreEqual $miName2 $fg.PartnerManagedInstanceName "`$fg.PartnerManagedInstanceName ($message)"
 	Assert-AreEqual $name $fg.Name "`$fg.Name ($message)"
 	Assert-AreEqual $rg $fg.ResourceGroupName "`$fg.ResourceGroupName ($message)"
 	Assert-AreEqual $rg $fg.PartnerResourceGroupName "`$fg.PartnerResourceGroupName ($message)"
 	Assert-AreEqual $role $fg.ReplicationRole "`$fg.ReplicationRole ($message)"
-	Assert-AreEqual $partnerRole $fg.PartnerRegion.ReplicationRole "`$fg.PartnerRegion.ReplicationRole ($message)"
 	Assert-AreEqual $failoverPolicy $fg.ReadWriteFailoverPolicy "`$fg.ReadWriteFailoverPolicy ($message)"
 	Assert-AreEqual $gracePeriod $fg.FailoverWithDataLossGracePeriodHours "`$fg.FailoverWithGracePeriodHours ($message)"
 	Assert-AreEqual $readOnlyFailoverPolicy $fg.ReadOnlyFailoverPolicy "`$fg.ReadOnlyFailoverPolicy ($message)"
@@ -67,6 +67,8 @@ function Assert-InstanceFailoverGroupsEqual($expected, $actual, $role = $null, $
 	Validate-InstanceFailoverGroup `
 		$expected.ResourceGroupName `
 		$expected.Name `
+		$expected.PrimaryManagedInstanceName `
+		$expected.PartnerManagedInstanceName `
 		$role `
 		$partnerRole `
 		$failoverPolicy `
@@ -94,7 +96,7 @@ function Test-CreateInstanceFailoverGroup-Named()
 
         $fgName = Get-FailoverGroupName
 		$fg = New-AzureRmSqlDatabaseInstanceFailoverGroup -Name $fgName -Location $location -ResourceGroupName $rg -PrimaryManagedInstanceName $managedInstanceName -PartnerRegion $partnerRegion -PartnerResourceGroupName $rg -PartnerManagedInstanceName $partnerManagedInstanceName
-		Validate-InstanceFailoverGroup $rg $fgName Primary Secondary Automatic 1 Disabled $fg
+		Validate-InstanceFailoverGroup $rg $fgName $managedInstanceName $partnerManagedInstanceName Primary Secondary Automatic 1 Disabled $fg
 		Validate-InstanceFailoverGroupWithGet $fg
 
 		Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Name $fgName -Location $location -ResourceGroupName $rg -Force
@@ -108,7 +110,7 @@ function Test-CreateInstanceFailoverGroup-Positional()
 
 		$fgName = Get-FailoverGroupName
 		$fg = New-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName $rg -PrimaryManagedInstanceName $managedInstanceName -Name $fgName -Location $location -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstanceName 
-		Validate-InstanceFailoverGroup $rg $fgName Primary Secondary Automatic 1 Disabled $fg
+		Validate-InstanceFailoverGroup $rg $fgName $managedInstanceName $partnerManagedInstanceName Primary Secondary Automatic 1 Disabled $fg
 		Validate-InstanceFailoverGroupWithGet $fg
 
 		$fg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
@@ -122,7 +124,7 @@ function Test-CreateInstanceFailoverGroup-AutomaticPolicy()
 		
         $fgName = Get-FailoverGroupName
 		$fg = New-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName $rg -Location $location -PrimaryManagedInstanceName $managedInstanceName -Name $fgName -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstanceName -FailoverPolicy Automatic
-		Validate-InstanceFailoverGroup $rg $fgName Primary Secondary Automatic 1 Disabled $fg
+		Validate-InstanceFailoverGroup $rg $fgName $managedInstanceName $partnerManagedInstanceName Primary Secondary Automatic 1 Disabled $fg
         Validate-InstanceFailoverGroupWithGet $fg
 
 		$fg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
@@ -136,7 +138,7 @@ function Test-CreateInstanceFailoverGroup-AutomaticPolicyGracePeriodReadOnlyFail
 
         $fgName = Get-FailoverGroupName
 		$fg = New-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName $rg -Location $location  -PrimaryManagedInstanceName $managedInstanceName -Name $fgName -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstanceName -FailoverPolicy Automatic -GracePeriodWithDataLossHours 123 -AllowReadOnlyFailoverToPrimary Enabled
-		Validate-InstanceFailoverGroup $rg $fgName Primary Secondary Automatic 123 Enabled $fg
+		Validate-InstanceFailoverGroup $rg $fgName $managedInstanceName $partnerManagedInstanceName Primary Secondary Automatic 123 Enabled $fg
 		Validate-InstanceFailoverGroupWithGet $fg
 
 		$fg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force
@@ -150,7 +152,7 @@ function Test-CreateInstanceFailoverGroup-ManualPolicy()
 
         $fgName = Get-FailoverGroupName
 		$fg = New-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName $rg -Location $location  -PrimaryManagedInstanceName $managedInstanceName -Name $fgName -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstanceName -FailoverPolicy Manual 
-        Validate-InstanceFailoverGroup $rg $fgName Primary Secondary Manual $null Disabled $fg
+        Validate-InstanceFailoverGroup $rg $fgName $managedInstanceName $partnerManagedInstanceName Primary Secondary Manual $null Disabled $fg
 		Validate-InstanceFailoverGroupWithGet $fg
 
 		$fg | Remove-AzureRmSqlDatabaseInstanceFailoverGroup -Force

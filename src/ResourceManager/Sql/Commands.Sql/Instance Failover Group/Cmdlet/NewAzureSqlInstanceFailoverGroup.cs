@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 Location = Location,
                 Name = Name,
                 PartnerResourceGroupName = MyInvocation.BoundParameters.ContainsKey("PartnerResourceGroupName") ? PartnerResourceGroupName : ResourceGroupName,
-                PartnerRegion = new PartnerRegionInfo(location = PartnerRegion),
+                PartnerRegion = PartnerRegion,
                 PrimaryManagedInstanceName = PrimaryManagedInstanceName,
                 PartnerManagedInstanceName = PartnerManagedInstanceName,
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
