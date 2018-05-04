@@ -22,6 +22,7 @@ using System.Management.Automation;
 using System.Security;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
@@ -29,8 +30,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// Defines the Set-AzureRmSqlManagedInstance cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlManagedInstance",
-        SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Medium)]
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class SetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string SetByNameAndResourceGroupParameterSet =
@@ -49,9 +50,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             Mandatory = true,
             Position = 0,
             HelpMessage = "SQL Database Managed instance name.")]
-        [Alias("Name")]
+        [Alias("ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -99,8 +100,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Managed instance.")]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to assign identity for Managed instance
@@ -114,6 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = SetByInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The AzureSqlManagedInstanceModel object to remove")]
         [ValidateNotNullOrEmpty]
@@ -125,6 +127,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = SetByResourceIdParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of Managed instance to remove")]
         [ValidateNotNullOrEmpty]
@@ -142,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <returns>The Managed instance being updated</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> GetEntity()
         {
-            return new List<Model.AzureSqlManagedInstanceModel>() { ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.ManagedInstanceName) };
+            return new List<Model.AzureSqlManagedInstanceModel>() { ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name) };
         }
 
         /// <summary>
@@ -157,14 +160,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             updateData.Add(new Model.AzureSqlManagedInstanceModel()
             {
                 ResourceGroupName = this.ResourceGroupName,
-                ManagedInstanceName = this.ManagedInstanceName,
-                FullyQualifiedDomainName = this.ManagedInstanceName,
+                ManagedInstanceName = this.Name,
+                FullyQualifiedDomainName = this.Name,
                 Location = model.FirstOrDefault().Location,
                 AdministratorPassword = this.AdministratorPassword,
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB,
                 VCores = this.VCore,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = model.FirstOrDefault().Identity ?? ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
             });
             return updateData;
@@ -186,8 +189,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.ManagedInstanceName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.ManagedInstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.Name),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.Name),
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;
@@ -196,14 +199,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             if (string.Equals(this.ParameterSetName, SetByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                ManagedInstanceName = InputObject.ManagedInstanceName;
+                Name = InputObject.ManagedInstanceName;
             }
             else if (string.Equals(this.ParameterSetName, SetByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                ManagedInstanceName = resourceInfo.ResourceName;
+                Name = resourceInfo.ResourceName;
             }
 
             base.ExecuteCmdlet();

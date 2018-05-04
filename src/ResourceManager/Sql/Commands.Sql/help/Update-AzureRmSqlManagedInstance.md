@@ -14,29 +14,29 @@ Modifies properties of a SQL Database Managed instance. Only properties that are
 
 ### UpdateManagedInstanceFromInputParameters
 ```
-Update-AzureRmSqlManagedInstance [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
- [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-Vcore <Int32>]
- [-Tags <Hashtable>] [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Update-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
+ [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-Tag <Hashtable>] [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
 ```
 Update-AzureRmSqlManagedInstance [-AdministratorPassword <SecureString>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-Vcore <Int32>] [-Tags <Hashtable>] [-AssignIdentity]
- -InputObject <AzureSqlManagedInstanceModel> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
+ [-InputObject] <AzureSqlManagedInstanceModel> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateManagedInstanceFromAzureResourceId
 ```
 Update-AzureRmSqlManagedInstance [-AdministratorPassword <SecureString>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-Vcore <Int32>] [-Tags <Hashtable>] [-AssignIdentity] -ResourceId <String>
+ [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity] [-ResourceId] <String>
  [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlManagedInstance** cmdlet modifies properties of an Azure SQL Database Managed instance. Only properties that are explicitly set will be updated.
+The **Update-AzureRmSqlManagedInstance** cmdlet modifies properties of an Azure SQL Database Managed instance. Only properties that are explicitly set will be updated.
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ The **Set-AzureRmSqlManagedInstance** cmdlet modifies properties of an Azure SQL
 ```
 PS C:\>$ManagedInstancePassword = "Newpassword1234"
 PS C:\> $SecureString = ConvertTo-SecureString $ManagedInstancePassword -AsPlainText -Force
-PS C:\> Set-AzureRmSqlManagedInstance -ResourceGroupName "ResourceGroup01" -ManagedInstanceName "managedinstance1" -AdministratorPassword $SecureString
+PS C:\> Update-AzureRmSqlManagedInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -AdministratorPassword $SecureString
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -134,7 +134,7 @@ Parameter Sets: UpdateManagedInstanceFromAzureSqlManagedInstanceModelInstanceDef
 Aliases: ManagedInstance
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -155,13 +155,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-SQL Database Managed instance name.
-
-```yaml
+### -Name
+SQL Database Managed instance name.```yaml
 Type: String
 Parameter Sets: UpdateManagedInstanceFromInputParameters
-Aliases: Name
+Aliases: ManagedInstanceName
 
 Required: True
 Position: 0
@@ -194,7 +192,7 @@ Parameter Sets: UpdateManagedInstanceFromAzureResourceId
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -215,13 +213,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-The tags to associate with the Managed instance.
-
-```yaml
+### -Tag
+The tags to associate with the Managed instance.```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tag
+Aliases: Tags
 
 Required: False
 Position: Named
@@ -230,7 +226,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vcore
+### -VCore
 Determines how much VCore to associate with Managed instance
 
 ```yaml
@@ -277,18 +273,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 System.String
 
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 
 ## NOTES
 

@@ -22,6 +22,7 @@ using System.Security;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
 {
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
                 Location = model.Location,
                 Tags = model.Tags,
                 AdministratorLogin = model.AdministratorLogin,
-                AdministratorLoginPassword = model.AdministratorPassword != null ? Decrypt(model.AdministratorPassword) : null,
+                AdministratorLoginPassword = model.AdministratorPassword != null ? ConversionUtilities.SecureStringToString(model.AdministratorPassword) : null,
                 Sku = model.Sku != null ? new Management.Sql.Models.Sku(model.Sku.Name) : null,
                 LicenseType = model.LicenseType,
                 StorageSizeInGB = model.StorageSizeInGB,
@@ -123,7 +124,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             {
                 Tags = model.Tags,
                 AdministratorLogin = model.AdministratorLogin,
-                AdministratorLoginPassword = model.AdministratorPassword != null ? Decrypt(model.AdministratorPassword) : null,
+                AdministratorLoginPassword = model.AdministratorPassword != null ? ConversionUtilities.SecureStringToString(model.AdministratorPassword) : null,
                 Sku = model.Sku != null ? new Management.Sql.Models.Sku(model.Sku.Name, model.Sku.Tier) : null,
                 LicenseType = model.LicenseType,
                 StorageSizeInGB = model.StorageSizeInGB,
@@ -180,28 +181,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter
             managedInstance.Sku = sku;
 
             return managedInstance;
-        }
-
-        /// <summary>
-        /// Convert a <see cref="System.Security.SecureString"/> to a plain-text string representation.
-        /// This should only be used in a proetected context, and must be done in the same logon and process context
-        /// in which the <see cref="System.Security.SecureString"/> was constructed.
-        /// </summary>
-        /// <param name="secureString">The encrypted <see cref="System.Security.SecureString"/>.</param>
-        /// <returns>The plain-text string representation.</returns>
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        internal static string Decrypt(SecureString secureString)
-        {
-            IntPtr unmanagedString = IntPtr.Zero;
-            try
-            {
-                unmanagedString = Marshal.SecureStringToGlobalAllocUnicode(secureString);
-                return Marshal.PtrToStringUni(unmanagedString);
-            }
-            finally
-            {
-                Marshal.ZeroFreeGlobalAllocUnicode(unmanagedString);
-            }
         }
     }
 }

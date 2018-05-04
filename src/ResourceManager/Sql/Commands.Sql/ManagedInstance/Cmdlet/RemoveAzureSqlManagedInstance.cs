@@ -17,13 +17,16 @@ using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 {
     /// <summary>
     /// Defines the Get-AzureRmSqlManagedInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlManagedInstance", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlManagedInstance",
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class RemoveAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string RemoveByNameAndResourceGroupParameterSet =
@@ -43,9 +46,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             Mandatory = true,
             Position = 0,
             HelpMessage = "SQL Managed instance name.")]
-        [Alias("Name")]
+        [Alias("ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -92,7 +95,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> GetEntity()
         {
             return new List<Model.AzureSqlManagedInstanceModel>() {
-                ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.ManagedInstanceName)
+                ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name)
             };
         }
 
@@ -113,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <returns>The Managed instance that was deleted</returns>
         protected override IEnumerable<Model.AzureSqlManagedInstanceModel> PersistChanges(IEnumerable<Model.AzureSqlManagedInstanceModel> entity)
         {
-            ModelAdapter.RemoveManagedInstance(this.ResourceGroupName, this.ManagedInstanceName);
+            ModelAdapter.RemoveManagedInstance(this.ResourceGroupName, this.Name);
             return entity;
         }
 
@@ -123,8 +126,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.ManagedInstanceName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.ManagedInstanceName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.Name),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.Name),
                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;
@@ -133,14 +136,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             if (string.Equals(this.ParameterSetName, RemoveByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
-                ManagedInstanceName = InputObject.ManagedInstanceName;
+                Name = InputObject.ManagedInstanceName;
             }
             else if (string.Equals(this.ParameterSetName, RemoveByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
-                ManagedInstanceName = resourceInfo.ResourceName;
+                Name = resourceInfo.ResourceName;
             }
 
             base.ExecuteCmdlet();

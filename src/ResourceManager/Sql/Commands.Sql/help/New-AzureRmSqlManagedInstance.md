@@ -14,17 +14,17 @@ Creates a SQL Database Managed instance.
 
 ### NewBySkuNameParameterSetParameter
 ```
-New-AzureRmSqlManagedInstance [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
+New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
  [-AdministratorCredential <PSCredential>] -Location <String> -SubnetId <String> -LicenseType <String>
- -StorageSizeInGB <Int32> -Vcore <Int32> -SkuName <String> [-Tags <Hashtable>] [-AssignIdentity] [-AsJob]
+ -StorageSizeInGB <Int32> -VCore <Int32> -SkuName <String> [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewByEditionAndComputeGenerationParameterSet
 ```
-New-AzureRmSqlManagedInstance [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
+New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
  [-AdministratorCredential <PSCredential>] -Location <String> -SubnetId <String> -LicenseType <String>
- -StorageSizeInGB <Int32> -Vcore <Int32> -Edition <String> -ComputeGeneration <String> [-Tags <Hashtable>]
+ -StorageSizeInGB <Int32> -VCore <Int32> -Edition <String> -ComputeGeneration <String> [-Tag <Hashtable>]
  [-AssignIdentity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -36,7 +36,7 @@ The **New-AzureRmSqlManagedInstance** cmdlet creates an Azure SQL Database Manag
 
 ### Example 1: Create a new Azure SQL Database Managed instance
 ```
-PS C:\>New-AzureRmSqlManagedInstance -ResourceGroupName ResourceGroup01 -ManagedInstanceName managedInstance1 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -Vcore 16 -SkuName GP_Gen4
+PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -Vcore 16 -SkuName GP_Gen4
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -57,7 +57,7 @@ This command creates a new Azure SQL Database Managed instance by using Edition 
 
 ### Example 2: Create a new Azure SQL Database Managed instance
 ```
-PS C:\>New-AzureRmSqlManagedInstance -ResourceGroupName ResourceGroup01 -ManagedInstanceName managedInstance2 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -Vcore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
+PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -Vcore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -130,7 +130,6 @@ The compute generation for the Sql Azure Managed Instance.
 Type: String
 Parameter Sets: NewByEditionAndComputeGenerationParameterSet
 Aliases:
-Accepted values: Gen4, Gen5
 
 Required: True
 Position: Named
@@ -161,7 +160,6 @@ The edition for the Sql Azure Managed Instance.
 Type: String
 Parameter Sets: NewByEditionAndComputeGenerationParameterSet
 Aliases:
-Accepted values: GeneralPurpose, BusinessCritical
 
 Required: True
 Position: Named
@@ -200,13 +198,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-SQL Database Managed Instance name.
-
-```yaml
+### -Name
+SQL Database Managed Instance name.```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: Name
+Aliases: ManagedInstanceName
 
 Required: True
 Position: 0
@@ -276,13 +272,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-The tags to associate with the Azure Sql Managed Instance
-
-```yaml
+### -Tag
+The tags to associate with the Azure Sql Managed Instance```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tag
+Aliases: Tags
 
 Required: False
 Position: Named
@@ -291,7 +285,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vcore
+### -VCore
 Determines how much VCores to associate with Managed instance
 
 ```yaml
@@ -338,17 +332,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 
 ## NOTES
 

@@ -23,48 +23,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the Get-ManagedInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedInstance", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlManagedInstance"),
+        OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class GetAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
-        protected const string GetByNameAndResourceGroupParameterSet =
-            "GetManagedInstanceFromInputParameters";
-
-        protected const string GetByResourceIdParameterSet =
-            "GetManagedInstanceFromAzureResourceId";
-
         /// <summary>
         /// Gets or sets the name of the managed instance.
         /// </summary>
-        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             Position = 0,
             HelpMessage = "SQL managed instance name.")]
-        [Alias("Name")]
+        [Alias("ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group.
         /// </summary>
-        [Parameter(ParameterSetName = GetByNameAndResourceGroupParameterSet,
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
             Position = 1,
             HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource id of the Managed instance
-        /// </summary>
-        [Parameter(ParameterSetName = GetByResourceIdParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of Managed instance object to get")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets a managed instance from the service.
@@ -74,26 +55,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             ICollection<AzureSqlManagedInstanceModel> results = null;
 
-            if (string.Equals(this.ParameterSetName, GetByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
-            {
-                var resourceInfo = new ResourceIdentifier(ResourceId);
-
-                ResourceGroupName = resourceInfo.ResourceGroupName;
-                ManagedInstanceName = resourceInfo.ResourceName;
-
-                results = new List<AzureSqlManagedInstanceModel>();
-                results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.ManagedInstanceName));
-            }
-            else if (MyInvocation.BoundParameters.ContainsKey("ManagedInstanceName") && MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+            if (MyInvocation.BoundParameters.ContainsKey("Name") && MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
             {
                 results = new List<AzureSqlManagedInstanceModel>();
-                results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.ManagedInstanceName));
+                results.Add(ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name));
             }
-            else if (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName"))
+            else if (MyInvocation.BoundParameters.ContainsKey("ResourceGroupName") && !MyInvocation.BoundParameters.ContainsKey("Name"))
             {
                 results = ModelAdapter.ListManagedInstancesByResourceGroup(this.ResourceGroupName);
             }
-            else if (!MyInvocation.BoundParameters.ContainsKey("ManagedInstanceName"))
+            else if (!MyInvocation.BoundParameters.ContainsKey("ResourceGroupName") && !MyInvocation.BoundParameters.ContainsKey("Name"))
             {
                 results = ModelAdapter.ListManagedInstances();
             }

@@ -14,9 +14,8 @@ Removes an Azure SQL Managed database.
 
 ### RemoveManagedDatabaseFromInputParameters
 ```
-Remove-AzureRmSqlManagedDatabase [-ManagedDatabaseName] <String> [-ManagedInstanceName] <String>
- [-ResourceGroupName] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzureRmSqlManagedDatabase [-Name] <String> [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
@@ -38,7 +37,7 @@ The **Remove-AzureRmSqlManagedDatabase** cmdlet removes an Azure SQL Managed dat
 
 ### Example 1: Remove a database from an Azure SQL Managed instance
 ```
-PS C:\>Remove-AzureRmSqlManagedDatabase -ResourceGroupName "ResourceGroup01" -ManagedInstanceName "managedInstance1" -ManagedDatabaseName "Database01"
+PS C:\>Remove-AzureRmSqlManagedDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the managed database named Database01 from managed instance managedInstance1.
@@ -90,21 +89,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedDatabaseName
-The name of the Azure SQL Managed Database to remove.
-
-```yaml
-Type: String
-Parameter Sets: RemoveManagedDatabaseFromInputParameters
-Aliases: Name
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ManagedInstanceName
 The Azure Sql Managed Instance name.
 
@@ -115,6 +99,19 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Azure SQL Managed Database to remove.```yaml
+Type: String
+Parameter Sets: RemoveManagedDatabaseFromInputParameters
+Aliases: ManagedDatabaseName
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -182,18 +179,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 System.String
 
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 
 ## NOTES
 

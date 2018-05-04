@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 using System.Collections;
@@ -25,7 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Managed Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedDatabase", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedDatabase",
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class NewAzureSqlManagedDatabase : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
         protected const string CreateNewByNameAndResourceGroupParameterSet =
@@ -34,15 +37,18 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         protected const string CreateNewByInputObjectParameterSet =
             "CreateNewManagedDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition";
 
+        protected const string CreateNewByResourceIdParameterSet =
+            "CreateNewManagedDatabaseFromAzureSqlManagedInstanceResourceId";
+
         /// <summary>
         /// Gets or sets the name of the managed database to create.
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             HelpMessage = "The name of the Azure SQL Managed Database to create.")]
-        [Alias("Name")]
+        [Alias("ManagedDatabaseName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedDatabaseName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the Azure Sql Managed instance to use
@@ -79,19 +85,30 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Managed Database")]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Sql Managed Instance object
         /// </summary>
         [Parameter(ParameterSetName = CreateNewByInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The Azure Sql Managed Instance object")]
         [ValidateNotNullOrEmpty]
         [Alias("InputObject")]
-        public AzureSqlManagedInstanceModel ManagedInstance { get; set; }
+        public AzureSqlManagedInstanceModel ManagedInstanceObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the Managed instance to get
+        /// </summary>
+        [Parameter(ParameterSetName = CreateNewByResourceIdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Managed Instance resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ManagedInstanceResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -115,14 +132,21 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         {
             if (string.Equals(this.ParameterSetName, CreateNewByInputObjectParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
-                ResourceGroupName = ManagedInstance.ResourceGroupName;
-                ManagedInstanceName = ManagedInstance.ManagedInstanceName;
+                ResourceGroupName = ManagedInstanceObject.ResourceGroupName;
+                ManagedInstanceName = ManagedInstanceObject.ManagedInstanceName;
+            }
+            else if (string.Equals(this.ParameterSetName, CreateNewByResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ManagedInstanceResourceId);
+
+                ResourceGroupName = resourceInfo.ResourceGroupName;
+                ManagedInstanceName = resourceInfo.ResourceName;
             }
 
             // We try to get the managed database. Since this is a create, we don't want the database to exist
             try
             {
-                ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.ManagedDatabaseName);
+                ModelAdapter.GetManagedDatabase(this.ResourceGroupName, this.ManagedInstanceName, this.Name);
             }
             catch (CloudException ex)
             {
@@ -138,7 +162,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
             // The managed database already exists
             throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNameExists, this.ManagedDatabaseName, this.ManagedInstanceName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNameExists, this.Name, this.ManagedInstanceName),
                 "ManagedDatabaseName");
         }
 
@@ -156,9 +180,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 ResourceGroupName = ResourceGroupName,
                 ManagedInstanceName = ManagedInstanceName,
                 Collation = Collation,
-                Name = ManagedDatabaseName,
+                Name = Name,
                 CreateMode = "Default",
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
             };
         }
 

@@ -14,7 +14,7 @@ Removes an Azure SQL Database Managed instance.
 
 ### RemoveMManagedInstanceFromInputParameters
 ```
-Remove-AzureRmSqlManagedInstance [-ManagedInstanceName] <String> [-ResourceGroupName] <String> [-Force]
+Remove-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ The **Remove-AzureRmSqlManagedInstance** cmdlet removes an Azure SQL Database Ma
 
 ### Example 1: Remove a managed instance
 ```
-PS C:\>Remove-AzureRmSqlManagedInstance -ResourceGroupName "ResourceGroup01" -ManagedInstanceName "managedInstance1"
+PS C:\>Remove-AzureRmSqlManagedInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes the Azure SQL Database Managed instance named managedInstance1.
@@ -89,13 +89,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedInstanceName
-SQL Managed instance name.
-
-```yaml
+### -Name
+SQL Managed instance name.```yaml
 Type: String
 Parameter Sets: RemoveMManagedInstanceFromInputParameters
-Aliases: Name
+Aliases: ManagedInstanceName
 
 Required: True
 Position: 0
@@ -166,18 +164,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 System.String
 
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 
 ## NOTES
 

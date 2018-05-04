@@ -14,14 +14,20 @@ Gets one or more managed databases.
 
 ### GetManagedDatabaseFromInputParameters
 ```
-Get-AzureRmSqlManagedDatabase [[-ManagedDatabaseName] <String>] [-ManagedInstanceName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmSqlManagedDatabase [[-Name] <String>] [-ManagedInstanceName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetManagedDatabaseFromAzureResourceId
 ```
-Get-AzureRmSqlManagedDatabase -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmSqlManagedDatabase [[-Name] <String>] -ManagedInstanceResourceId <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetManagedDatabaseFromManagedInstanceObject
+```
+Get-AzureRmSqlManagedDatabase [[-Name] <String>] -ManagedInstanceObject <AzureSqlManagedInstanceModel>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +37,7 @@ The **Get-AzureRmSqlManagedDatabase** cmdlet gets one or more Azure SQL Managed 
 
 ### Example 1: Get all databases on a Managed instance
 ```
-PS C:\>Get-AzureRmSqlManagedDatabase -ResourceGroupName "resourcegroup01" -ManagedInstanceName "managedInstance1"
+PS C:\>Get-AzureRmSqlManagedDatabase -ManagedInstanceName "managedInstance1" -ResourceGroupName "resourcegroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -75,7 +81,7 @@ This command gets all databases on the managed instance named managedInstance1.
 
 ### Example 2: Get a database by name on a Managed instance
 ```
-PS C:\>Get-AzureRmSqlManagedDatabase -ResourceGroupName "ResourceGroup01" -ManagedInstanceName "managedInstance1" -ManagedDatabaseName "managedDatabase1"
+PS C:\>Get-AzureRmSqlManagedDatabase -Name "managedDatabase1" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01"
 ResourceGroupName        : resourcegroup01
 ManagedInstanceName      : managedInstance1
 Location                 : westcentralus
@@ -115,21 +121,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ManagedDatabaseName
-The name of the Azure SQL Managed Database to retrieve.
-
-```yaml
-Type: String
-Parameter Sets: GetManagedDatabaseFromInputParameters
-Aliases: Name
-
-Required: False
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ManagedInstanceName
 The Azure Sql Managed Instance name.
 
@@ -141,7 +132,46 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedInstanceObject
+The AzureSqlManagedInstanceModel object to use for getting Managed database```yaml
+Type: AzureSqlManagedInstanceModel
+Parameter Sets: GetManagedDatabaseFromManagedInstanceObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagedInstanceResourceId
+The resource id of Managed Instance object to get```yaml
+Type: String
+Parameter Sets: GetManagedDatabaseFromAzureResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Azure SQL Managed Database to retrieve.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ManagedDatabaseName
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -156,37 +186,20 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id of Managed Database object to get
-
-```yaml
-Type: String
-Parameter Sets: GetManagedDatabaseFromAzureResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 
 ## NOTES
 

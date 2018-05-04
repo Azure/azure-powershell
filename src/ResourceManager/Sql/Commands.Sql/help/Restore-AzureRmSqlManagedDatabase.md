@@ -12,23 +12,23 @@ Restores a SQL Managed database.
 
 ## SYNTAX
 
-### RestoreManagedDatabaseFromInputParameters
+### PointInTimeRestoreManagedDatabaseFromInputParameters
 ```
-Restore-AzureRmSqlManagedDatabase [-ManagedDatabaseName] <String> [-ManagedInstanceName] <String>
+Restore-AzureRmSqlManagedDatabase [-FromPointInTimeBackup] [-Name] <String> [-ManagedInstanceName] <String>
  [-ResourceGroupName] <String> -PointInTime <DateTime> -TargetManagedDatabaseName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestoreManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
+### PointInTimeRestoreManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
-Restore-AzureRmSqlManagedDatabase -InputObject <AzureSqlManagedDatabaseModel> -PointInTime <DateTime>
- -TargetManagedDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Restore-AzureRmSqlManagedDatabase [-FromPointInTimeBackup] -InputObject <AzureSqlManagedDatabaseModel>
+ -PointInTime <DateTime> -TargetManagedDatabaseName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RestoreManagedDatabaseFromAzureResourceId
+### PointInTimeRestoreManagedDatabaseFromAzureResourceId
 ```
-Restore-AzureRmSqlManagedDatabase -ResourceId <String> -PointInTime <DateTime>
+Restore-AzureRmSqlManagedDatabase [-FromPointInTimeBackup] -ResourceId <String> -PointInTime <DateTime>
  -TargetManagedDatabaseName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ The restored database is created as a new managed database.
 
 ### Example 1: Restore a managed database from a point in time
 ```
-PS C:\> Restore-AzureRmSqlManagedDatabase -ResourceGroupName "ResourceGroup01" -ManagedInstanceName "managedInstance1" -ManagedDatabaseName "Database01" -PointInTime UTCDateTime -TargetManagedDatabaseName "Database01_restored"
+PS C:\> Restore-AzureRmSqlManagedDatabase -Name "Database01" -ManagedInstanceName "managedInstance1" -ResourceGroupName "ResourceGroup01" -PointInTime UTCDateTime -TargetManagedDatabaseName "Database01_restored"
 ```
 
 The command restores the managed database Database01 from the specified point-in-time backup to the managed database named Database01_restored.
@@ -78,12 +78,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FromPointInTimeBackup
+Restore from a point-in-time backup.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The Managed Database object to restore
 
 ```yaml
 Type: AzureSqlManagedDatabaseModel
-Parameter Sets: RestoreManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
+Parameter Sets: PointInTimeRestoreManagedDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 Aliases: ManagedDatabase
 
 Required: True
@@ -93,31 +106,29 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ManagedDatabaseName
-The managed database name to restore.
-
-```yaml
-Type: String
-Parameter Sets: RestoreManagedDatabaseFromInputParameters
-Aliases: Name
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ManagedInstanceName
 The Managed instance name.
 
 ```yaml
 Type: String
-Parameter Sets: RestoreManagedDatabaseFromInputParameters
+Parameter Sets: PointInTimeRestoreManagedDatabaseFromInputParameters
 Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The managed database name to restore.```yaml
+Type: String
+Parameter Sets: PointInTimeRestoreManagedDatabaseFromInputParameters
+Aliases: ManagedDatabaseName
+
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -143,7 +154,7 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: RestoreManagedDatabaseFromInputParameters
+Parameter Sets: PointInTimeRestoreManagedDatabaseFromInputParameters
 Aliases:
 
 Required: True
@@ -158,7 +169,7 @@ The resource id of Managed Database object to restore
 
 ```yaml
 Type: String
-Parameter Sets: RestoreManagedDatabaseFromAzureResourceId
+Parameter Sets: PointInTimeRestoreManagedDatabaseFromAzureResourceId
 Aliases:
 
 Required: True
@@ -215,18 +226,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 System.String
 
-
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
 
 ## NOTES
 

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
@@ -27,7 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
     /// <summary>
     /// Defines the New-AzureSqlManagedInstance cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedInstance", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlManagedInstance",
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlManagedInstanceModel))]
     public class NewAzureSqlManagedInstance : ManagedInstanceCmdletBase
     {
         protected const string NewBySkuNameParameterSet =
@@ -42,9 +45,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = true,
             Position = 0,
             HelpMessage = "SQL Database Managed Instance name.")]
-        [Alias("Name")]
+        [Alias("ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
-        public string ManagedInstanceName { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -139,8 +142,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Managed Instance")]
-        [Alias("Tag")]
-        public Hashtable Tags { get; set; }
+        [Alias("Tags")]
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to assign identity for Managed instance
@@ -171,7 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         {
             try
             {
-                ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.ManagedInstanceName);
+                ModelAdapter.GetManagedInstance(this.ResourceGroupName, this.Name);
             }
             catch (CloudException ex)
             {
@@ -187,8 +190,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
 
             // The managed instance already exists
             throw new PSArgumentException(
-                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNameExists, this.ManagedInstanceName),
-                "ManagedInstanceName");
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNameExists, this.Name),
+                "Name");
         }
 
         /// <summary>
@@ -215,10 +218,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             {
                 Location = this.Location,
                 ResourceGroupName = this.ResourceGroupName,
-                FullyQualifiedDomainName = this.ManagedInstanceName,
+                FullyQualifiedDomainName = this.Name,
                 AdministratorLogin = this.AdministratorCredential.UserName,
                 AdministratorPassword = this.AdministratorCredential.Password,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true),
                 Identity = ResourceIdentityHelper.GetIdentityObjectFromType(this.AssignIdentity.IsPresent),
                 LicenseType = this.LicenseType,
                 StorageSizeInGB = this.StorageSizeInGB,

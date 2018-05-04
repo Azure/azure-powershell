@@ -20,7 +20,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 {
-    [Cmdlet(VerbsData.Restore, "AzureRmSqlManagedDatabase", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Restore, "AzureRmSqlManagedDatabase",
+        SupportsShouldProcess = true),
+        OutputType(typeof(AzureSqlManagedDatabaseModel))]
     public class RestoreAzureRmSqlManagedDatabase
         : AzureSqlManagedDatabaseCmdletBase<AzureSqlManagedDatabaseModel>
     {
@@ -57,8 +59,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             Mandatory = true,
             Position = 0,
             HelpMessage = "The managed database name to restore.")]
-        [Alias("Name")]
-        public string ManagedDatabaseName { get; set; }
+        [Alias("ManagedDatabaseName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the Managed instance to use
@@ -143,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 ManagedInstanceName = InputObject.ManagedInstanceName;
-                ManagedDatabaseName = InputObject.Name;
+                Name = InputObject.Name;
             }
             else if (string.Equals(this.ParameterSetName, PointInTimeRestoreFromResourceIdParameterSet, System.StringComparison.OrdinalIgnoreCase))
             {
@@ -151,7 +153,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
 
                 ResourceGroupName = resourceInfo.ResourceGroupName;
                 ManagedInstanceName = resourceInfo.ParentResource.Split(new[] { '/' })[1];
-                ManagedDatabaseName = resourceInfo.ResourceName;
+                Name = resourceInfo.ResourceName;
             }
 
             model = new AzureSqlManagedDatabaseModel()
@@ -164,7 +166,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 RestorePointInTime = PointInTime
             };
 
-            string sourceManagedDatabaseId = ModelAdapter.GetManagedDatabaseResourceId(ResourceGroupName, ManagedInstanceName, ManagedDatabaseName);
+            string sourceManagedDatabaseId = ModelAdapter.GetManagedDatabaseResourceId(ResourceGroupName, ManagedInstanceName, Name);
 
             return ModelAdapter.RestoreManagedDatabase(this.ResourceGroupName, sourceManagedDatabaseId, model);
         }
