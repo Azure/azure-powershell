@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedInstanceObject
-The AzureSqlManagedInstanceModel object to use for getting Managed database```yaml
+The AzureSqlManagedInstanceModel object to use for getting Managed database
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: GetManagedDatabaseFromManagedInstanceObject
 Aliases:
@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedInstanceResourceId
-The resource id of Managed Instance object to get```yaml
+The resource id of Managed Instance object to get
 Type: String
 Parameter Sets: GetManagedDatabaseFromAzureResourceId
 Aliases:
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure SQL Managed Database to retrieve.```yaml
+The name of the Azure SQL Managed Database to retrieve.
 Type: String
 Parameter Sets: (All)
 Aliases: ManagedDatabaseName

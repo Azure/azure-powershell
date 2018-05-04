@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL Database Managed instance name.```yaml
+SQL Database Managed instance name.
 Type: String
 Parameter Sets: UpdateManagedInstanceFromInputParameters
 Aliases: ManagedInstanceName
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags to associate with the Managed instance.```yaml
+The tags to associate with the Managed instance.
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags

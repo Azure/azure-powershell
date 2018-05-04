@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL managed instance name.```yaml
+SQL managed instance name.
 Type: String
 Parameter Sets: (All)
 Aliases: ManagedInstanceName

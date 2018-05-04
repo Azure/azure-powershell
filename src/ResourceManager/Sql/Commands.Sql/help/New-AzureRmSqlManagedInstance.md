@@ -36,7 +36,7 @@ The **New-AzureRmSqlManagedInstance** cmdlet creates an Azure SQL Database Manag
 
 ### Example 1: Create a new Azure SQL Database Managed instance
 ```
-PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -Vcore 16 -SkuName GP_Gen4
+PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance1 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -SkuName GP_Gen4
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -57,7 +57,7 @@ This command creates a new Azure SQL Database Managed instance by using Edition 
 
 ### Example 2: Create a new Azure SQL Database Managed instance
 ```
-PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -Vcore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
+PS C:\>New-AzureRmSqlManagedInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -Location westcentralus -AdministratorCredential (Get-Credential) -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
 Location                 : westcentralus
 Id                       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
 ResourceGroupName        : resourcegroup01
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL Database Managed Instance name.```yaml
+SQL Database Managed Instance name.
 Type: String
 Parameter Sets: (All)
 Aliases: ManagedInstanceName
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags to associate with the Azure Sql Managed Instance```yaml
+The tags to associate with the Azure Sql Managed Instance
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags

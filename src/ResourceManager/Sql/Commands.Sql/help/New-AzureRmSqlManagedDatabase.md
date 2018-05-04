@@ -126,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedInstanceObject
-The Azure Sql Managed Instance object```yaml
+The Azure Sql Managed Instance object
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: CreateNewManagedDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
 Aliases: InputObject
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagedInstanceResourceId
-The Managed Instance resource id```yaml
+The Managed Instance resource id
 Type: String
 Parameter Sets: CreateNewManagedDatabaseFromAzureSqlManagedInstanceResourceId
 Aliases:
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure SQL Managed Database to create.```yaml
+The name of the Azure SQL Managed Database to create.
 Type: String
 Parameter Sets: (All)
 Aliases: ManagedDatabaseName
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-The tags to associate with the Azure Sql Managed Database```yaml
+The tags to associate with the Azure Sql Managed Database
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags

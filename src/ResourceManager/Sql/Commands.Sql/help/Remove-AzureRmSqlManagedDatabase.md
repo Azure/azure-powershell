@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the Azure SQL Managed Database to remove.```yaml
+The name of the Azure SQL Managed Database to remove.
 Type: String
 Parameter Sets: RemoveManagedDatabaseFromInputParameters
 Aliases: ManagedDatabaseName

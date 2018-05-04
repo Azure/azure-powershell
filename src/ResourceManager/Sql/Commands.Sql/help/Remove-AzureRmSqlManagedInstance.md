@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-SQL Managed instance name.```yaml
+SQL Managed instance name.
 Type: String
 Parameter Sets: RemoveMManagedInstanceFromInputParameters
 Aliases: ManagedInstanceName

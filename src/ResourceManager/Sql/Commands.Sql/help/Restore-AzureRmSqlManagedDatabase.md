@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -FromPointInTimeBackup
-Restore from a point-in-time backup.```yaml
+Restore from a point-in-time backup.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The managed database name to restore.```yaml
+The managed database name to restore.
 Type: String
 Parameter Sets: PointInTimeRestoreManagedDatabaseFromInputParameters
 Aliases: ManagedDatabaseName
