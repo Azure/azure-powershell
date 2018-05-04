@@ -39,14 +39,13 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
         [Parameter(
             Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The SignalR service name.")]
         [ValidateNotNullOrEmpty()]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 2,
             HelpMessage = "The SignalR service location. The resource group location will be used if not specified.")]
         [LocationCompleter("Microsoft.SignalR/SignalR")]
         [ValidateNotNullOrEmpty()]
@@ -55,8 +54,15 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [Parameter(
             Mandatory = false,
             HelpMessage = "The SignalR service SKU.")]
-        [PSArgumentCompleter("Basic_DS2")]
+        [PSArgumentCompleter("Free_DS2", "Basic_DS2")]
         public string Sku { get; set; } = DefaultSku;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The SignalR service unit count, from 1 to 10. Default to 1.")]
+        [PSArgumentCompleter("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")]
+        [ValidateRange(1, 10)]
+        public int UnitCount { get; set; } = 1;
 
         [Parameter(
             Mandatory = false,
@@ -97,22 +103,18 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
             public Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
             {
+                _cmdlet.ResolveResourceGroupName(required: false);
                 _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
-                _cmdlet.ResolveResourceGroupName();
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
                     _cmdlet.ResourceGroupName);
 
                 var result = SignalRStrategy.Strategy.CreateResourceConfig(
                     resourceGroup: resourceGroup,
-                    // The SignalR service accepts only lower case characters. It's a known bug.
-                    // TODO: remove ".ToLower()" as soon as the problem is fixed in SignalR server.
-                    // See also 
-                    // https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#put-resource
-                    name: _cmdlet.Name.ToLower(),
+                    name: _cmdlet.Name,
                     createModel: engine => new SignalRResource(
                         tags: _cmdlet.Tag,
-                        sku: new ResourceSku(_cmdlet.Sku, capacity: 1), // we only allow capacity 1 in public preview, this may be a parameter in future.
+                        sku: new ResourceSku(_cmdlet.Sku, capacity: _cmdlet.UnitCount),
                         hostNamePrefix: null /* _cmdlet.Name*/)); // hostNamePrefix is just a placeholder and ignored in the resource provider.
 
                 return Task.FromResult(result);

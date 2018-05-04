@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1,
+        [Parameter(Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The SignalR service name.")]

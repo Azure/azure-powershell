@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
             Mandatory = false,
             ParameterSetName = ListSignalRServiceParameterSet,
             HelpMessage = "The resource group name.")]
-        [Parameter(Position = 0,
+        [Parameter(
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1,
+        [Parameter(Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The SignalR service name.")]
