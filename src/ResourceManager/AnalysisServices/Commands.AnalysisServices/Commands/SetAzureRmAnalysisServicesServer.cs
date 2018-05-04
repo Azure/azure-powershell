@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     {
         private const string ParamSetDefault = "Default";
         private const string ParamSetDisableBackup = "DisableBackup";
+        private const string ParamSetDisassociatGateway = "DisassociateGateway";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of the server.")]
@@ -89,10 +90,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            ParameterSetName = ParamSetDefault,
             HelpMessage = "Gateway resource ID")]
         public string GatewayResourceId { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            ParameterSetName = ParamSetDisassociatGateway,
             HelpMessage = "Disassociate current gateway")]
         public SwitchParameter DisassociateGateway { get; set; }
 
