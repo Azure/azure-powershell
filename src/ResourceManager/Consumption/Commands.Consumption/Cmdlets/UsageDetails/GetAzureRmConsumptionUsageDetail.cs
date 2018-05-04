@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
     {
         const int MaxNumberToFetch = 1000;
 
-        [Parameter(Mandatory = false, HelpMessage = "Name of a specific billing period to get the usage details that associate with.", ParameterSetName = Constants.ParameterSetNames.BillingPeriodItemParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of a specific billing period to get the usage details that associate with.")]
         [ValidateNotNullOrEmpty]
         public string BillingPeriodName { get; set; }
 
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         [ValidateNotNull]
         public int? Top { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Name of a specific invoice to get the usage details that associate with.", ParameterSetName = Constants.ParameterSetNames.InvoiceItemParameterSet)]
+        [Parameter(Mandatory = false, HelpMessage = "Name of a specific invoice to get the usage details that associate with.")]
         [ValidateNotNullOrEmpty]
         public string InvoiceName { get; set; }
 
