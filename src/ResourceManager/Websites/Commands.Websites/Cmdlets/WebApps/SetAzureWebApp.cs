@@ -103,6 +103,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable redirecting all traffic to HTTPS on an existing azure webapp")]
         public bool HttpsOnly { get; set; }
 
+        [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable affinitizing clients to particular instances of a webapp")]
+        public bool ARRAffinity { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -151,7 +154,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             Location = location,
                             ServerFarmId = WebApp.ServerFarmId,
                             Identity = parameters.Contains("AssignIdentity") && AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
-                            HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
+                            HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly,
+                            ClientAffinityEnabled = parameters.Contains("ARRAffinity") ? ARRAffinity : WebApp.ClientAffinityEnabled
                         };
 
                         Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);
