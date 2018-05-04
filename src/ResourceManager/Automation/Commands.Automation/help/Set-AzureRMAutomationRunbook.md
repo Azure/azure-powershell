@@ -144,7 +144,7 @@ The runbook tags.
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named

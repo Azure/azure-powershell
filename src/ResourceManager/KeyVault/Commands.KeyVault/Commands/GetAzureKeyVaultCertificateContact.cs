@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Get-AzureKeyVaultCertificateContact gets the list of contacts for certificate objects in key vault.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateContact,        
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
     public class GetAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    ParameterSetName = ByVaultNameParameterSet,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -76,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            Contacts contacts;
+            IEnumerable<PSKeyVaultCertificateContact> contacts;
 
             if (InputObject != null)
             {
@@ -102,20 +100,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 contacts = null;
             }
 
-            if (contacts == null ||
-                contacts.ContactList == null)
-            {
-                return;
-            }
-
-            var contactsModel = new List<PSKeyVaultCertificateContact>();
-
-            foreach (var contact in contacts.ContactList)
-            {
-                contactsModel.Add(PSKeyVaultCertificateContact.FromKVCertificateContact(contact, VaultName));
-            }
-
-            this.WriteObject(contactsModel, true);
+            this.WriteObject(contacts, true);
         }
     }
 }

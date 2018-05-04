@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.4.1
 * Set minimum dependency of module to PowerShell 5.0
 * Add commandlets for new feature - Instance Failover Groups
 	- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity

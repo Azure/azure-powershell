@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             // PublicIPAddressConfigurationIdleTimeoutInMinutes
-            if (this.PublicIPAddressConfigurationIdleTimeoutInMinutes != null)
+            if (this.MyInvocation.BoundParameters.ContainsKey("PublicIPAddressConfigurationIdleTimeoutInMinutes"))
             {
                 if (vIpConfigurations.PublicIPAddressConfiguration == null)
                 {

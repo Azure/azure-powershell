@@ -45,20 +45,22 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Cdn">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.3.0.0-preview\lib\net45\Microsoft.Azure.Management.Cdn.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.Cdn, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Cdn.4.0.1-preview\lib\net452\Microsoft.Azure.Management.Cdn.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AzureCdnCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="CustomDomain\DisableAzureRmCdnCustomDomain.cs" />
+    <Compile Include="CustomDomain\EnableAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\GetAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\NewAzureRmCdnCustomDomain.cs" />
     <Compile Include="CustomDomain\RemoveAzureRmCdnCustomDomain.cs" />
     <Compile Include="EdgeNodes\PSCIDRIpAddress.cs" />
     <Compile Include="EdgeNodes\PSEdgeNode.cs" />
     <Compile Include="EdgeNodes\PSIpAddressGroup.cs" />
+    <Compile Include="Endpoint\ConfirmAzureRmCdnEndpointProbeUrl.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpointNameAvailability.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpoint.cs" />
     <Compile Include="Endpoint\GetAzureRmCdnEndpointResourceUsage.cs" />
@@ -73,6 +75,17 @@
     <Compile Include="Helpers\ModelExtensions.cs" />
     <Compile Include="Models\CustomDomain\PSCustomDomain.cs" />
     <Compile Include="Models\CustomDomain\PSCustomDomainResourceState.cs" />
+    <Compile Include="Models\Endpoint\PSCacheExpirationActionParameters.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleCacheExpirationAction.cs" />
+    <Compile Include="Models\Endpoint\PSUrlFileExtensionConditionParameters.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleUrlFileExtensionCondition.cs" />
+    <Compile Include="Models\Endpoint\PSUrlPathConditionParameters.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleUrlPathCondition.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleCondition.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRuleAction.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryRule.cs" />
+    <Compile Include="Models\Endpoint\PSDeliveryPolicy.cs" />
+    <Compile Include="Models\Endpoint\PSValidateProbeOutput.cs" />
     <Compile Include="Models\Endpoint\PSCheckNameAvailabilityOutput.cs" />
     <Compile Include="Models\Endpoint\PSCustomDomainInvalidReason.cs" />
     <Compile Include="Models\Endpoint\PSDeepCreatedOrigin.cs" />
@@ -87,6 +100,7 @@
     <Compile Include="Models\Endpoint\PSValidateCustomDomainOutput.cs" />
     <Compile Include="Models\Origin\PSOrigin.cs" />
     <Compile Include="Models\Origin\PSOriginResourceState.cs" />
+    <Compile Include="Models\Profile\PSOptimizationType.cs" />
     <Compile Include="Models\Profile\PSProfile.cs" />
     <Compile Include="Models\Profile\PSProfileResourceState.cs" />
     <Compile Include="Models\PSProvisioningState.cs" />
@@ -99,6 +113,7 @@
     <Compile Include="Origin\GetAzureRmCdnOrigin.cs" />
     <Compile Include="Origin\SetAzureRmCdnOrigin.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfile.cs" />
+    <Compile Include="Profile\GetAzureRmCdnProfileSupportedOptimizationType.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfileSsoUrl.cs" />
     <Compile Include="Profile\GetAzureRmCdnProfileResourceUsage.cs" />
     <Compile Include="Profile\NewAzureRmCdnProfile.cs" />
@@ -134,9 +149,7 @@
     </None>
     <None Include="Microsoft.Azure.Commands.Cdn.dll-help.psd1" />
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">
       <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
