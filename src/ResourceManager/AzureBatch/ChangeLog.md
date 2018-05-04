@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.7
 * Set minimum dependency of module to PowerShell 5.0
 * Updated New-AzureBatchPool documentation to remove deprecated example
 

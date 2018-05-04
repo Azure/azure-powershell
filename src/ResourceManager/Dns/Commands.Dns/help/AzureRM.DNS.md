@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Dns
 Module Guid: 5e5ed8bc-27bf-4380-9de1-4b22ba0920b2
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.dns
+Help Version: 4.1.2.0
 Locale: en-US
 ---
 
