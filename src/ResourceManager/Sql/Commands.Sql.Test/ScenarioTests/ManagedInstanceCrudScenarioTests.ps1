@@ -25,8 +25,8 @@ function Test-CreateManagedInstance
 	 	
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
- 	$managedInstanceLogin = "login" + getAssetName
- 	$managedInstancePassword = "Un53cuRE!" + getAssetName
+ 	$managedInstanceLogin = "dummylogin"
+ 	$managedInstancePassword = "Un53cuRE!"
  	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
@@ -97,7 +97,7 @@ function Test-SetManagedInstance
 	try
 	{
 		# Test using parameters
-		$managedInstancePassword = "n3wc00lP@55w0rd" + getAssetName
+		$managedInstancePassword = "n3wc00lP@55w0rd"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
 		$vCore = 8
@@ -115,7 +115,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 		
 		# Test using piping
-		$managedInstancePassword = "n3wc00lP@55w0rd!!!" + getAssetName
+		$managedInstancePassword = "n3wc00lP@55w0rd!!!"
 		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
 
 		$licenseType = "LicenseIncluded"
@@ -133,7 +133,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
 
 		# Test Set using InputObject
-		$managedInstancePassword = "n3wc00lP@55w0rd4321" + getAssetName
+		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
 		$vCore = 8
@@ -151,7 +151,7 @@ function Test-SetManagedInstance
 		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
 
 		# Test Set using ResourceId
-		$managedInstancePassword = "n3wc00lP@55w0rd4321" + getAssetName
+		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
 		$vCore = 16
@@ -189,7 +189,7 @@ function Test-UpdateManagedInstance
 	try
 	{
 		# Test update using all parameters
-		$managedInstancePassword = "n3wc00lP@55w0rd" + getAssetName
+		$managedInstancePassword = "n3wc00lP@55w0rd"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
 		$vCore = 8
@@ -207,7 +207,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $managedInstance1.FullyQualifiedDomainName
 
 		# Test update using piping
-		$managedInstancePassword = "n3wc00lP@55w0rd1234!!!" + getAssetName
+		$managedInstancePassword = "n3wc00lP@55w0rd1234!!!"
 		$secureString = ConvertTo-SecureString $managedInstancePassword -AsPlainText -Force
 
 		$licenseType = "LicenseIncluded"
@@ -225,7 +225,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $managedInstance2.FullyQualifiedDomainName
 
 		# Test update using InputObject
-		$managedInstancePassword = "n3wc00lP@55w0rd4321" + getAssetName
+		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 64
 		$vCore = 8
@@ -243,7 +243,7 @@ function Test-UpdateManagedInstance
 		Assert-StartsWith ($managedInstance3.ManagedInstanceName + ".") $managedInstance3.FullyQualifiedDomainName
 
 		# Test update using ResourceId
-		$managedInstancePassword = "n3wc00lP@55w0rd4321" + getAssetName
+		$managedInstancePassword = "n3wc00lP@55w0rd4321"
 		$licenseType = "BasePrice"
 		$storageSizeInGB = 32
 		$vCore = 16
@@ -293,26 +293,6 @@ function Test-GetManagedInstance
 		Assert-AreEqual $managedInstance1.VCores $resp1.VCores
 		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp1.StorageSizeInGB
 		
-		# Test piping
-		$resp2 = $managedInstance2 | Get-AzureRmSqlManagedInstance
-		Assert-AreEqual $managedInstance2.ManagedInstanceName $resp2.ManagedInstanceName
-		Assert-AreEqual $managedInstance2.SqlAdministratorLogin $resp2.SqlAdministratorLogin
-		Assert-StartsWith ($managedInstance2.ManagedInstanceName + ".") $resp2.FullyQualifiedDomainName
-		Assert-AreEqual $managedInstance2.AdministratorLogin $resp2.AdministratorLogin
-		Assert-AreEqual $managedInstance2.LicenseType $resp2.LicenseType
-		Assert-AreEqual $managedInstance2.VCores $resp2.VCores
-		Assert-AreEqual $managedInstance2.StorageSizeInGB $resp2.StorageSizeInGB
-		
-		# Test using resourceId
-		$resp3 = Get-AzureRmSqlManagedInstance -ResourceId $managedInstance1.Id
-		Assert-AreEqual $managedInstance1.ManagedInstanceName $resp3.ManagedInstanceName
-		Assert-AreEqual $managedInstance1.SqlAdministratorLogin $resp3.SqlAdministratorLogin
-		Assert-StartsWith ($managedInstance1.ManagedInstanceName + ".") $resp3.FullyQualifiedDomainName
-		Assert-AreEqual $managedInstance1.AdministratorLogin $resp3.AdministratorLogin
-		Assert-AreEqual $managedInstance1.LicenseType $resp3.LicenseType
-		Assert-AreEqual $managedInstance1.VCores $resp3.VCores
-		Assert-AreEqual $managedInstance1.StorageSizeInGB $resp3.StorageSizeInGB
-
 		$all = Get-AzureRmSqlManagedInstance -ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual 1 $all.Count
 
@@ -379,8 +359,8 @@ function Test-CreateManagedInstanceWithIdentity
 	 	
  	$managedInstanceName = Get-ManagedInstanceName
  	$version = "12.0"
- 	$managedInstanceLogin = "login" + getAssetName
- 	$managedInstancePassword = "Un5!" + getAssetName
+ 	$managedInstanceLogin = "login"
+ 	$managedInstancePassword = "Un5!"
  	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
  	$licenseType = "BasePrice"
   	$storageSizeInGB = 32
