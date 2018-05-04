@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Batch.Test.Netcore
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Resources.Test.Netcore", "ResourceManager\Resources\Commands.Resources.Test\Commands.Resources.Test.Netcore.csproj", "{4730676B-E63C-441A-9BB9-1FB0FD0BBC24}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Automation.Test.Netcore", "ResourceManager\Automation\Commands.Automation.Test\Commands.Automation.Test.Netcore.csproj", "{084954A2-0990-4457-BA31-6DA16B86B2A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -293,6 +295,18 @@ Global
 		{4730676B-E63C-441A-9BB9-1FB0FD0BBC24}.Release|x64.Build.0 = Release|Any CPU
 		{4730676B-E63C-441A-9BB9-1FB0FD0BBC24}.Release|x86.ActiveCfg = Release|Any CPU
 		{4730676B-E63C-441A-9BB9-1FB0FD0BBC24}.Release|x86.Build.0 = Release|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Debug|x64.Build.0 = Debug|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Debug|x86.Build.0 = Debug|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Release|x64.ActiveCfg = Release|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Release|x64.Build.0 = Release|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Release|x86.ActiveCfg = Release|Any CPU
+		{084954A2-0990-4457-BA31-6DA16B86B2A5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
