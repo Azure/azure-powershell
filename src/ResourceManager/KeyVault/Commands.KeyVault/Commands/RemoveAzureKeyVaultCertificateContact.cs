@@ -14,9 +14,11 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -25,27 +27,55 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Removes a given certificate contact from Key Vault for certificate management
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateContact,
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        SupportsShouldProcess = true, DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
     public class RemoveAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByNameParameterSet = "ByName";
+        private const string ByObjectParameterSet = "ByObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
+
+        #endregion
+
         /// <summary>
         /// VaultName
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
+                   ParameterSetName = ByNameParameterSet,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
+
+        /// <summary>
+        /// Vault object
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = ByObjectParameterSet,
+                   ValueFromPipeline = true,
+                   HelpMessage = "KeyVault object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVault InputObject { get; set; }
+
+        /// <summary>
+        /// Vault ResourceId
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   Position = 0,
+                   ParameterSetName = ByResourceIdParameterSet,
+                   ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "KeyVault Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// EmailAddress
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the email address of the contact.")]
         [ValidateNotNullOrEmpty]
         public string[] EmailAddress { get; set; }
@@ -59,13 +89,23 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+            }
+            else if (ResourceId != null)
+            {
+                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+                VaultName = resourceIdentifier.ResourceName;
+            }
+
             if (ShouldProcess(VaultName, Properties.Resources.RemoveCertificateContact))
             {
-                Contacts existingContacts;
+                List<PSKeyVaultCertificateContact> existingContacts;
 
                 try
                 {
-                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName);
+                    existingContacts = this.DataServiceClient.GetCertificateContacts(VaultName)?.ToList();
                 }
                 catch (KeyVaultErrorException exception)
                 {
@@ -77,33 +117,21 @@ namespace Microsoft.Azure.Commands.KeyVault
                     existingContacts = null;
                 }
 
-                List<Contact> existingContactList;
-
-                if (existingContacts == null ||
-                    existingContacts.ContactList == null)
-                {
-                    existingContactList = new List<Contact>();
-                }
-                else
-                {
-                    existingContactList = new List<Contact>(existingContacts.ContactList);
-                }
-
                 foreach (var email in EmailAddress)
                 {
-                    existingContactList.RemoveAll(contact => string.Compare(contact.EmailAddress, email, StringComparison.OrdinalIgnoreCase) == 0);
+                    existingContacts.RemoveAll(contact => string.Compare(contact.Email, email, StringComparison.OrdinalIgnoreCase) == 0);
                 }
 
-                if (existingContactList.Count == 0)
+                if (existingContacts.Count == 0)
                 {
-                    existingContactList = null;
+                    existingContacts = null;
                 }
 
-                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, new Contacts { ContactList = existingContactList });
+                var resultantContacts = this.DataServiceClient.SetCertificateContacts(VaultName, existingContacts);
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(PSKeyVaultCertificateContact.FromKVCertificateContacts(resultantContacts, VaultName));
+                    this.WriteObject(resultantContacts);
                 }
             }
         }
