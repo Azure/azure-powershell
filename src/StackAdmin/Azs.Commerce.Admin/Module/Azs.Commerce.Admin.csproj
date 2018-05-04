@@ -40,8 +40,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AzureStack.Management.Admin.Commerce, Version=0.1.1-preview">
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.Commerce.Admin.0.1.1-preview\lib\net452\Microsoft.AzureStack.Management.Commerce.Admin.dll</HintPath>
+    <Reference Include="Microsoft.AzureStack.Management.Admin.Commerce, Version=0.2.0-preview">
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.Commerce.Admin.0.2.0-preview\lib\net452\Microsoft.AzureStack.Management.Commerce.Admin.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
