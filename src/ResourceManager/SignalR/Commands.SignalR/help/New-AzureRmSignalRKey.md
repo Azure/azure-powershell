@@ -14,19 +14,19 @@ Regenerate an access key for a SignalR service.
 
 ### ResourceGroupParameterSet (Default)
 ```
-New-AzureRmSignalRKey [[-ResourceGroupName] <String>] [-Name] <String> -KeyType <String> [-PassThru]
+New-AzureRmSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-KeyType] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmSignalRKey -ResourceId <String> -KeyType <String> [-PassThru]
+New-AzureRmSignalRKey -ResourceId <String> [-KeyType] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-New-AzureRmSignalRKey -InputObject <PSSignalRResource> -KeyType <String> [-PassThru]
+New-AzureRmSignalRKey -InputObject <PSSignalRResource> [-KeyType] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Aliases:
 Accepted values: Primary, Secondary
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -99,7 +99,7 @@ Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -129,7 +129,7 @@ Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

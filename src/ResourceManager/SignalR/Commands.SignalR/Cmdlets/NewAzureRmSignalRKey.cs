@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1,
+        [Parameter(Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The SignalR service name.")]
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         [ValidateNotNull]
         public PSSignalRResource InputObject { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The key type, either Primary or Secondary.")]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = "The key type, either Primary or Secondary.")]
         [PSArgumentCompleter("Primary", "Secondary")]
         [ValidateSet("Primary", "Secondary", IgnoreCase = true)]
         public string KeyType { get; set; }
