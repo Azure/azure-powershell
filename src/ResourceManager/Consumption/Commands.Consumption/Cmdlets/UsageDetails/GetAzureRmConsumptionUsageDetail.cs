@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
 {
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
 
         [Parameter(Mandatory = false, HelpMessage = "The tag of the usages to filter.")]
         [ValidateNotNull]
-        public string Tags { get; set; }
+        public string Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
         [ValidateNotNull]
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         [ValidateNotNull]
         public int? Top { get; set; }
 
+        [CmdletParameterBreakingChange("InvoiceName", ChangeDescription = "InvoiceName is being deprecated without being replaced.")]
         [Parameter(Mandatory = false, HelpMessage = "Name of a specific invoice to get the usage details that associate with.")]
         [ValidateNotNullOrEmpty]
         public string InvoiceName { get; set; }
@@ -165,9 +167,9 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(this.Tags))
+            if (!string.IsNullOrWhiteSpace(this.Tag))
             {
-                string tagsFilter = "properties/tags eq " + "'" + this.Tags + "'";
+                string tagsFilter = "properties/tags eq " + "'" + this.Tag + "'";
                 if (string.IsNullOrWhiteSpace(filter))
                 {
                     filter = tagsFilter;
