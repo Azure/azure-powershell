@@ -14,7 +14,7 @@ Create a SignalR service.
 
 ```
 New-AzureRmSignalR [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>] [-Sku <String>]
- [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-AsJob]
+ [-UnitCount <Int32>] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -141,6 +141,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UnitCount
+The SignalR service unit count, from 1 to 10. Default to 1.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: 1
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
