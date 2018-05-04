@@ -189,8 +189,8 @@ function Test-RestoreManagedDatabase
 		$targetManagedDatabaseName = Get-ManagedDatabaseName
 		$pointInTime = (Get-date).AddMinutes(8)
 
-		# Sleep for 15 minutes to wait for restore to be ready
-		Start-Sleep -s 900
+		# Sleep for 5 seconds to wait for restore to be ready
+		Start-Sleep -s 5
 
 		$restoredDb = Restore-AzureRmSqlManagedDatabase -FromPointInTimeBackup -ResourceGroupName $rg.ResourceGroupName -ManagedInstanceName $managedInstance.ManagedInstanceName -ManagedDatabaseName $managedDatabaseName -PointInTime $pointInTime -TargetManagedDatabaseName $targetManagedDatabaseName
 		Assert-NotNull $restoredDb
