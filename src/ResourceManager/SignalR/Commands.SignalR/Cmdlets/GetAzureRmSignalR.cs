@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     [OutputType(typeof(PSSignalRResource))]
     public class GetAzureRmSignalR : SignalRCmdletBase, IWithResourceId
     {
-        [Parameter(
+        [Parameter(Position = 0,
             Mandatory = false,
             ParameterSetName = ListSignalRServiceParameterSet,
             HelpMessage = "The resource group name.")]

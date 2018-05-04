@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
     [OutputType(typeof(bool))]
     public class NewAzureRmSignalRKey : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
-        [Parameter(
+        [Parameter(Position = 0,
             Mandatory = false,
             ParameterSetName = ResourceGroupParameterSet,
             HelpMessage = "The resource group name. The default one will be used if not specified.")]
