@@ -21,6 +21,7 @@
 
 ## Version 4.4.1
 * Set minimum dependency of module to PowerShell 5.0
+* Added new cmdlets for CRUD operations on Managed Instance and Managed Database 
 
 ## Version 4.4.0
 * Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
