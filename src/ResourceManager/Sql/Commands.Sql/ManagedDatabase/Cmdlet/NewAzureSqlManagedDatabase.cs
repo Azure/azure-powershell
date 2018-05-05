@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = CreateNewByResourceIdParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Managed Instance resource id")]
         [ValidateNotNullOrEmpty]

@@ -79,6 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = GetByResourceIdParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of Managed Instance object to get")]
         [ValidateNotNullOrEmpty]
@@ -89,6 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = GetByInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The AzureSqlManagedInstanceModel object to use for getting Managed database")]
         [ValidateNotNullOrEmpty]

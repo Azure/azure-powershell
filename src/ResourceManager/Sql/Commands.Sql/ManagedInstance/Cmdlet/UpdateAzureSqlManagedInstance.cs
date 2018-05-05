@@ -44,6 +44,29 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
             "UpdateManagedInstanceFromAzureResourceId";
 
         /// <summary>
+        /// AzureSqlManagedInstanceModel object to remove
+        /// </summary>
+        [Parameter(ParameterSetName = UpdateByInputObjectParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "The AzureSqlManagedInstanceModel object to remove")]
+        [ValidateNotNullOrEmpty]
+        [Alias("ManagedInstance")]
+        public Model.AzureSqlManagedInstanceModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource id of the Managed instance
+        /// </summary>
+        [Parameter(ParameterSetName = UpdateByResourceIdParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource id of the Managed instance to remove")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the Managed instance to use.
         /// </summary>
         [Parameter(ParameterSetName = UpdateByNameAndResourceGroupParameterSet,
@@ -109,29 +132,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.")]
         public SwitchParameter AssignIdentity { get; set; }
-
-        /// <summary>
-        /// AzureSqlManagedInstanceModel object to remove
-        /// </summary>
-        [Parameter(ParameterSetName = UpdateByInputObjectParameterSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "The AzureSqlManagedInstanceModel object to remove")]
-        [ValidateNotNullOrEmpty]
-        [Alias("ManagedInstance")]
-        public Model.AzureSqlManagedInstanceModel InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource id of the Managed instance
-        /// </summary>
-        [Parameter(ParameterSetName = UpdateByResourceIdParameterSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of the Managed instance to remove")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation

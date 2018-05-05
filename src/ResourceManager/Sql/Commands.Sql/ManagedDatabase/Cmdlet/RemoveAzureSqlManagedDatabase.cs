@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = RemoveByInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The Managed Database object to remove")]
         [ValidateNotNullOrEmpty]
@@ -83,6 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = RemoveByResourceIdParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of Managed Database object to remove")]
         [ValidateNotNullOrEmpty]

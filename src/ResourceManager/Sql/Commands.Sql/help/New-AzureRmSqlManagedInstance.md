@@ -79,7 +79,7 @@ This command creates a new Azure SQL Database Managed instance by using by using
 ## PARAMETERS
 
 ### -AdministratorCredential
-The SQL authentication credential of the Maanged Instance.
+The SQL authentication credential of the Managed Instance.
 
 ```yaml
 Type: PSCredential
@@ -200,6 +200,8 @@ Accept wildcard characters: False
 
 ### -Name
 SQL Database Managed Instance name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ManagedInstanceName
@@ -274,6 +276,8 @@ Accept wildcard characters: False
 
 ### -Tag
 The tags to associate with the Azure Sql Managed Instance
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
@@ -286,7 +290,7 @@ Accept wildcard characters: False
 ```
 
 ### -VCore
-Determines how much VCores to associate with Managed instance
+Determines how much VCore to associate with Managed instance
 
 ```yaml
 Type: Int32
@@ -332,15 +336,18 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+
 
 ## NOTES
 

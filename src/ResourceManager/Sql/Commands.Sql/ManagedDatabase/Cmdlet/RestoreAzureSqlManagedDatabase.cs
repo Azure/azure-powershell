@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeRestoreFropmInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The Managed Database object to restore")]
         [ValidateNotNullOrEmpty]
@@ -99,6 +100,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = PointInTimeRestoreFromResourceIdParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of Managed Database object to restore")]
         [ValidateNotNullOrEmpty]

@@ -127,6 +127,8 @@ Accept wildcard characters: False
 
 ### -ManagedInstanceObject
 The Azure Sql Managed Instance object
+
+```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: CreateNewManagedDatabaseFromAzureSqlManagedInstanceModelInstanceDefinition
 Aliases: InputObject
@@ -140,6 +142,8 @@ Accept wildcard characters: False
 
 ### -ManagedInstanceResourceId
 The Managed Instance resource id
+
+```yaml
 Type: String
 Parameter Sets: CreateNewManagedDatabaseFromAzureSqlManagedInstanceResourceId
 Aliases:
@@ -153,6 +157,8 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the Azure SQL Managed Database to create.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ManagedDatabaseName
@@ -181,6 +187,8 @@ Accept wildcard characters: False
 
 ### -Tag
 The tags to associate with the Azure Sql Managed Database
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
@@ -224,15 +232,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+System.String
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+
 
 ## NOTES
 

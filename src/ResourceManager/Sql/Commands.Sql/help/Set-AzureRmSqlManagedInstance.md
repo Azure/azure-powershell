@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign an Azure Active Directory Identity for this managed instance for use with key management services like Azure KeyVault.
+Generate and assign an Azure Active Directory Identity for this Managed instance for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: SwitchParameter
@@ -157,6 +157,8 @@ Accept wildcard characters: False
 
 ### -Name
 SQL Database Managed instance name.
+
+```yaml
 Type: String
 Parameter Sets: SetManagedInstanceFromInputParameters
 Aliases: ManagedInstanceName
@@ -215,6 +217,8 @@ Accept wildcard characters: False
 
 ### -Tag
 The tags to associate with the Managed instance.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tags
@@ -227,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -VCore
-Determines how much Vcore to associate with Managed instance
+Determines how much VCore to associate with Managed instance
 
 ```yaml
 Type: Int32
@@ -273,16 +277,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 System.String
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+
 
 ## NOTES
 

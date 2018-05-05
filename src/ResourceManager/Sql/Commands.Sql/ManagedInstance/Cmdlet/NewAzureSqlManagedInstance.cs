@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// <summary>
         /// Gets or sets the admin credential of the Managed instance
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The SQL authentication credential of the Managed Instance.")]
+        [Parameter(Mandatory = true, HelpMessage = "The SQL authentication credential of the Managed Instance.")]
         [ValidateNotNull]
         public PSCredential AdministratorCredential { get; set; }
 

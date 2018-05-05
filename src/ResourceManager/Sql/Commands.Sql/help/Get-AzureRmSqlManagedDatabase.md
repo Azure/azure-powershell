@@ -138,6 +138,8 @@ Accept wildcard characters: False
 
 ### -ManagedInstanceObject
 The AzureSqlManagedInstanceModel object to use for getting Managed database
+
+```yaml
 Type: AzureSqlManagedInstanceModel
 Parameter Sets: GetManagedDatabaseFromManagedInstanceObject
 Aliases:
@@ -151,6 +153,8 @@ Accept wildcard characters: False
 
 ### -ManagedInstanceResourceId
 The resource id of Managed Instance object to get
+
+```yaml
 Type: String
 Parameter Sets: GetManagedDatabaseFromAzureResourceId
 Aliases:
@@ -164,6 +168,8 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the Azure SQL Managed Database to retrieve.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: ManagedDatabaseName
@@ -191,15 +197,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedDatabase.Model.AzureSqlManagedDatabaseModel
+
 
 ## NOTES
 

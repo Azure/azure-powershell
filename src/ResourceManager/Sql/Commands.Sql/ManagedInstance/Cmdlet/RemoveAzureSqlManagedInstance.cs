@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = RemoveByInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The AzureSqlManagedInstanceModel object to remove")]
         [ValidateNotNullOrEmpty]
@@ -77,6 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = RemoveByResourceIdParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource id of Managed instance object to remove")]
         [ValidateNotNullOrEmpty]
