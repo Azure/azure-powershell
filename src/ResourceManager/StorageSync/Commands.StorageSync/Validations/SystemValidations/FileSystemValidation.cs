@@ -12,9 +12,6 @@ namespace AFSEvaluationTool.Validations.SystemValidations
 
         private readonly bool _haveDriveLetter;
 
-        private static readonly string Name = "FileSystemValidation";
-        private static readonly string FriendlyName = "File System Validation";
-
         public FileSystemValidation(IConfiguration configuration, string path)
         {
             if (IsDriveSpecified(path))

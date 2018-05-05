@@ -10,7 +10,7 @@ namespace AFSEvaluationTool
     public class Configuration : IConfiguration
     {
         [DataContract]
-        internal class ValidationsConfiguration
+        public class ValidationsConfiguration
         {
             [DataMember] public List<string> ValidFilesystems;
             [DataMember] public List<string> ValidOSVersions;
