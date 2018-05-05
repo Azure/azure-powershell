@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AFSEvaluationTool.Validations
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 {
     public interface IValidationResult
     {

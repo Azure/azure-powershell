@@ -3,12 +3,12 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
-using AFSEvaluationTool.OutputWriters;
-using AFSEvaluationTool.Validations.AggregateValidations;
-using AFSEvaluationTool.Validations.NamespaceValidations;
-using AFSEvaluationTool.Validations.SystemValidations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.AggregateValidations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
 
-namespace AFSEvaluationTool.Cmdlets
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
 
     [Cmdlet(VerbsLifecycle.Invoke, "AzureRmStorageSyncCompatibilityCheck")]

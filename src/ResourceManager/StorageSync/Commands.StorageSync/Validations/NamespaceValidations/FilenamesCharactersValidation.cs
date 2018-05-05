@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AFSEvaluationTool.Validations.NamespaceValidations
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
     public class FilenamesCharactersValidation : INamespaceValidation
     {

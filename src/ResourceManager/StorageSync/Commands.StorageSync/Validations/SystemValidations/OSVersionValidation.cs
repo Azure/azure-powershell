@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace AFSEvaluationTool.Validations.SystemValidations
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations
 {
     public class OSVersionValidation : ISystemValidation
     {

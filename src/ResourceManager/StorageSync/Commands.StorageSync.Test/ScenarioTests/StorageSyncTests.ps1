@@ -20,21 +20,5 @@ SmokeTest
 #>
 function Test-StorageSync
 {
-    # Setup
-    $rgname = Get-StorageManagementTestResourceName;
-
-    try
-    {
-        # Test
-        $loc = Get-ProviderLocation ResourceManagement;
-
-        Write-Verbose "RGName: $rgname | Loc: $loc"
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
+	Get-Command Invoke-AzureRmStorageSyncCompatibilityCheck
 }

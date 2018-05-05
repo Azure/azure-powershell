@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace AFSEvaluationTool.Validations.NamespaceValidations
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
     public class MaximumPathLengthValidation : INamespaceValidation
     {

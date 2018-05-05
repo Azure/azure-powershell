@@ -1,4 +1,4 @@
-﻿namespace AFSEvaluationTool
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public interface INamespaceEnumeratorListener
     {

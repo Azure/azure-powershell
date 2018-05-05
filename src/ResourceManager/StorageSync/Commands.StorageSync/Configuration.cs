@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public class Configuration : IConfiguration
     {

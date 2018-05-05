@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using AFSEvaluationTool.Cmdlets;
-using AFSEvaluationTool.OutputWriters;
-using AFSEvaluationTool.Validations;
-using AFSEvaluationTool.Validations.SystemValidations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public class SystemValidationsProcessor
     {

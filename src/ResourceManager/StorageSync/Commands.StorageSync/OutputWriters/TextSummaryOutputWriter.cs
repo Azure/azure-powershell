@@ -4,9 +4,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using AFSEvaluationTool.Validations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 
-namespace AFSEvaluationTool.OutputWriters
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 {
     class TextSummaryOutputWriter : IOutputWriter, INamespaceEnumeratorListener
     {

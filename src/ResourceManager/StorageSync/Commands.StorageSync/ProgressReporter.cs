@@ -1,7 +1,7 @@
 ﻿using System.Management.Automation;
-using AFSEvaluationTool.OutputWriters;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
 
-namespace AFSEvaluationTool.Cmdlets
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
     internal class ProgressReporter : IProgressReporter
     {

@@ -1,4 +1,4 @@
-﻿namespace AFSEvaluationTool.Validations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 {
     public enum Result
     {

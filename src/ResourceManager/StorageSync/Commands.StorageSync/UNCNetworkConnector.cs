@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using NET_API_STATUS = System.UInt32;
 
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public static class WinErrors
     {

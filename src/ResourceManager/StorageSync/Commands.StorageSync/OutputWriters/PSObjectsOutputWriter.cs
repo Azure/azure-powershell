@@ -1,7 +1,7 @@
 ﻿using System.Management.Automation;
-using AFSEvaluationTool.Validations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 
-namespace AFSEvaluationTool.OutputWriters
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 {
     public class PsObjectsOutputWriter : IOutputWriter
     {

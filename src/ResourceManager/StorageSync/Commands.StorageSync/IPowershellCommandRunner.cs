@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Management.Automation;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public interface IPowershellCommandRunner
     {

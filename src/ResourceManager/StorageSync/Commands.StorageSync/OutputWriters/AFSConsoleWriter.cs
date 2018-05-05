@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AFSEvaluationTool.OutputWriters
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 {
     class AFSConsoleWriter : IConsoleWriter
     {

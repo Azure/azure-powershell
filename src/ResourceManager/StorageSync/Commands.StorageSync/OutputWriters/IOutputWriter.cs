@@ -1,6 +1,6 @@
-﻿using AFSEvaluationTool.Validations;
+﻿using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 
-namespace AFSEvaluationTool.OutputWriters
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 {
     public interface IOutputWriter
     {

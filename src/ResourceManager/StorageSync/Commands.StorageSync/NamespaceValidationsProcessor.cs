@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using AFSEvaluationTool.Cmdlets;
-using AFSEvaluationTool.OutputWriters;
-using AFSEvaluationTool.Validations;
-using AFSEvaluationTool.Validations.NamespaceValidations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public class NamespaceValidationsProcessor : INamespaceEnumeratorListener
     {

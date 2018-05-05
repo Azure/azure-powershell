@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     class AFSFileSystemInfo : IFileSystemInfo
     {

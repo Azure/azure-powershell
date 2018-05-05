@@ -1,7 +1,7 @@
 ﻿using Microsoft.Diagnostics.Telemetry;
 using Microsoft.Diagnostics.Tracing;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     [EventSource(Name = "AFSTelemetryEventSourceContractProvider")]
     sealed class TelemetryEventSourceContract : TelemetryEventSource
