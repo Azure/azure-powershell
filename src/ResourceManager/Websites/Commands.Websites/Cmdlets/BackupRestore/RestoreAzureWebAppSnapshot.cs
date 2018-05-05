@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
@@ -29,21 +30,14 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     [Cmdlet(VerbsData.Restore, "AzureRmWebAppSnapshot", SupportsShouldProcess = true)]
     public class RestoreAzureWebAppSnapshot : WebAppOptionalSlotBaseCmdlet
     {
-        protected const string SnapshotParameterSetName = "FromWebAppSnapshot";
-
-        [Parameter(ParameterSetName = SnapshotParameterSetName, Position = 0, Mandatory = true,
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = true,
             HelpMessage = "The Azure Web App snapshot.", ValueFromPipeline = true)]
-        public AzureWebAppSnapshot WebAppSnapshot;
-
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The timestamp of the snapshot.", ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public DateTime SnapshotTime;
+        [Parameter(ParameterSetName = ParameterSet2Name, Position = 1, Mandatory = true,
+            HelpMessage = "The Azure Web App snapshot.", ValueFromPipeline = true)]
+        public AzureWebAppSnapshot InputObject;
 
         [Parameter(Mandatory = false, HelpMessage = "Recover the web app's configuration in addition to files.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter RecoverConfiguration { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "The app that the snapshot contents will be restored to. Must be a slot of the original app. If unspecified, the original app is overwritten.", ValueFromPipelineByPropertyName = true)]
-        public Site TargetApp { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Allows the original web app to be overwritten without displaying a warning.", ValueFromPipelineByPropertyName = true)]
         public SwitchParameter Force { get; set; }
@@ -54,42 +48,23 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            switch (ParameterSetName)
+            Site targetApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+            SnapshotRecoveryTarget target = new SnapshotRecoveryTarget()
             {
-                case SnapshotParameterSetName:
-                    ResourceGroupName = WebAppSnapshot.ResourceGroupName;
-                    Name = WebAppSnapshot.Name;
-                    Slot = WebAppSnapshot.Slot;
-                    SnapshotTime = WebAppSnapshot.SnapshotTime;
-                    break;
-            }
-            SnapshotRecoveryTarget target = null;
-            if (this.TargetApp != null)
-            {
-                string webAppName, slotName;
-                CmdletHelpers.TryParseAppAndSlotNames(Name, out webAppName, out slotName);
-                if (!string.Equals(this.TargetApp.ResourceGroup, this.ResourceGroupName, StringComparison.InvariantCultureIgnoreCase) ||
-                    !string.Equals(webAppName, this.Name, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    throw new PSArgumentException("Target app must be a slot of the source web app");
-                }
-                target = new SnapshotRecoveryTarget()
-                {
-                    Location = TargetApp.Location,
-                    Id = TargetApp.Id
-                };
-            }
+                Location = targetApp.Location,
+                Id = targetApp.Id
+            };
             SnapshotRecoveryRequest recoveryReq = new SnapshotRecoveryRequest()
             {
                 Overwrite = true,
-                SnapshotTime = this.SnapshotTime.ToString("o"),
+                SnapshotTime = this.InputObject.SnapshotTime.ToString("o"),
                 RecoverConfiguration = this.RecoverConfiguration,
                 IgnoreConflictingHostNames = true,
                 RecoveryTarget = target
             };
-            Action recoverAction = () => WebsitesClient.RecoverSite(ResourceGroupName, Name, Slot, recoveryReq);
-            ConfirmAction(TargetApp != null || this.Force.IsPresent, "Original web app contents will be overwritten with the contents of the snapshot.",
-                "The snapshot has been restored.", Name, recoverAction);
+            Action recoverAction = () => WebsitesClient.RecoverSite(InputObject.ResourceGroupName, InputObject.Name, InputObject.Slot, recoveryReq);
+            ConfirmAction(this.Force.IsPresent, "Web app contents will be overwritten with the contents of the snapshot.",
+                "The snapshot has been restored.", InputObject.Name, recoverAction);
         }
     }
 }

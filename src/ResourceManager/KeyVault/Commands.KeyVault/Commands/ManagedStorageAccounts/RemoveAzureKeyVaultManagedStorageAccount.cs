@@ -16,32 +16,57 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Globalization;
 using System.Management.Automation;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        SupportsShouldProcess = true,
-         ConfirmImpact = ConfirmImpact.Medium,
-        HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( ManagedStorageAccount ) )]
+    [Cmdlet( VerbsCommon.Remove, CmdletNoun.AzureKeyVaultManagedStorageAccount, DefaultParameterSetName = ByDefinitionNameParameterSet,
+        SupportsShouldProcess = true)]
+    [OutputType( typeof( PSDeletedKeyVaultManagedStorageAccount ) )]
     public class RemoveAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByDefinitionNameParameterSet = "ByDefinitionName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
         [Parameter( Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         [Parameter( Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
                           "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName, Constants.Name )]
         public string AccountName { get; set; }
+
+        /// <summary>
+        /// PSKeyVaultManagedStorageAccountIdentityItem object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "ManagedStorageAccount object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultManagedStorageAccountIdentityItem InputObject { get; set; }
+
+        /// <summary>
+        /// If present, operate on the deleted entity.
+        /// </summary>
+        [Parameter(Mandatory = false,
+                    HelpMessage = "Permanently remove the previously deleted managed storage account.")]
+        public SwitchParameter InRemovedState { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -58,7 +83,31 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            ManagedStorageAccount managedManagedStorageAccount = null;
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                AccountName = InputObject.AccountName;
+            }
+
+            if (InRemovedState.IsPresent)
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveDeletedManagedStorageAccountWarning,
+                        AccountName),
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.RemoveDeletedManagedStorageAccountWhatIfMessage,
+                        AccountName),
+                    AccountName,
+                    () => { DataServiceClient.PurgeManagedStorageAccount(VaultName, AccountName); });
+
+                return;
+            }
+
+            PSDeletedKeyVaultManagedStorageAccount managedManagedStorageAccount = null;
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(

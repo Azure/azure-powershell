@@ -81,6 +81,25 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             return sb.ToString();
         }
+
+        public static string ConstructNetworkRuleSet(PSModels.PSKeyVaultNetworkRuleSet ruleSet)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if (ruleSet != null)
+            {
+                sb.AppendLine();
+
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Default Action", ruleSet.DefaultAction);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Bypass", ruleSet.Bypass);
+
+                sb.AppendFormat("{0, -43}: {1}\r\n", "IP Rules", ruleSet.IpAddressRangesText);
+                sb.AppendFormat("{0, -43}: {1}\r\n", "Virtual Network Rules", ruleSet.VirtualNetworkResourceIdsText);
+            }
+
+            return sb.ToString();
+        }
+
         private static string TrimWithEllipsis(string str, int maxLen)
         {
             if (str != null && str.Length > maxLen)
@@ -113,7 +132,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                     }
                     else if (obj.Type.Equals("serviceprincipal", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        var servicePrincipal = adClient.FilterServicePrincipals(new ADObjectFilterOptions { Id = objectId }).FirstOrDefault();
+                        var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ObjectId == objectId);
+                        var servicePrincipal = adClient.FilterServicePrincipals(odataQuery).FirstOrDefault();
                         displayName = servicePrincipal.DisplayName;
                         upnOrSpn = servicePrincipal.ServicePrincipalNames.FirstOrDefault();
                     }

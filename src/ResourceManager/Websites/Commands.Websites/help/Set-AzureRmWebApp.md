@@ -21,8 +21,8 @@ Set-AzureRmWebApp [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
  [[-ConnectionStrings] <Hashtable>]
  [[-HandlerMappings] <System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HandlerMapping]>]
  [[-ManagedPipelineMode] <String>] [[-WebSocketsEnabled] <Boolean>] [[-Use32BitWorkerProcess] <Boolean>]
- [[-AutoSwapSlotName] <String>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob] [-AssignIdentity]
- [-HttpsOnly] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [[-AutoSwapSlotName] <String>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob] [[-AssignIdentity] <Boolean>]
+ [[-HttpsOnly] <Boolean>] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -93,10 +93,10 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Enable MSI on an existing azure webapp or functionapp
+Enable/disable MSI on an existing azure webapp or functionapp [PREVIEW]
 
 ```yaml
-Type: SwitchParameter
+Type: Boolean
 Parameter Sets: S1
 Aliases: 
 
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 Enable/disable redirecting all traffic to HTTPS on an existing azure webapp or functionapp
 
 ```yaml
-Type: SwitchParameter
+Type: Boolean
 Parameter Sets: S1
 Aliases: 
 

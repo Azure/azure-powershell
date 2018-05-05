@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Fact(Skip = "Unknown issue for .NET Core: Investigation needed")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact]
+        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RoleDefinitionDataActionsCreateTests()
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact]
+        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDUpdate()
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Fact(Skip = "Unknown issue for .NET Core: Investigation needed")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact]
+        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDGetCustomRoles()
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Fact(Skip = "Storage version difference: Needs rerecorded for .NET Core")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
-        [Fact]
+        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDDataActionsNegativeTestCases()
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void RdValidateInputParameters() 
+        public void RdValidateInputParameters()
         {
             var instance = ResourcesController.NewInstance;
             instance.RunPsTest("Test-RdValidateInputParameters Get-AzureRmRoleDefinition");

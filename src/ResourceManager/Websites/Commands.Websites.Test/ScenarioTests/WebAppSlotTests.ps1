@@ -525,15 +525,18 @@ function Test-SetWebAppSlot
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm1.Id $slot.ServerFarmId
+        Assert-Null $webApp.Identity
 		
-		# Change service plan
-		$job = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -AsJob
+		# Change service plan & set properties
+		$job = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -HttpsOnly $true -AssignIdentity $true -AsJob
 		$job | Wait-Job
 		$slot = $job | Receive-Job
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
+        Assert-AreEqual $true $slot.HttpsOnly
+		Assert-NotNull  $slot.Identity
 
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
@@ -886,13 +889,17 @@ function Test-SlotSwapWithPreview($swapWithPreviewAction)
 		Switch-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction 'ApplySlotConfig'
 		Wait-Seconds 30
 		$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
-		Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalDestinationAppSettingValue
+		Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
 
 		# Let's finish the current slot swap operation (complete or reset)
 		Switch-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -SourceSlotName $sourceSlotName -DestinationSlotName $destinationSlotName -SwapWithPreviewAction $swapWithPreviewAction
 		Wait-Seconds 30
 		$sourceWebApp = Get-AzureRmWebAppSlot -ResourceGroupName $rgname -Name  $appname -Slot $sourceSlotName
-		#Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
+		If ($swapWithPreviewAction -eq 'ResetSlotSwap') {
+			Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalSourceAppSettingValue
+		} Else {
+			Validate-SlotSwapAppSetting $sourceWebApp $appSettingName $originalDestinationAppSettingValue
+		}
 	}
 	finally
 	{

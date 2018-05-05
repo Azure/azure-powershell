@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeleteByPSRoleAssignment()
@@ -128,14 +128,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
         }
 
-        [Fact]
+        [Fact(Skip = "Need AD team to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScopeAtRootScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
         }
-        
-        [Fact]
+
+        [Fact(Skip = "Need AD team to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDelegation()
         {
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                 resourceGroup.Name)
                         };
                     },
-                    // cleanup 
+                    // cleanup
                     null,
                     MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                     MethodBase.GetCurrentMethod().Name + "_Setup");
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                             userPermission)
                         };
                     },
-                    // cleanup 
+                    // cleanup
                     null,
                     MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
                     MethodBase.GetCurrentMethod().Name + "_Test");
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     null,
                     // initialize
                     null,
-                    // cleanup 
+                    // cleanup
                     () =>
                     {
                         if (newUser != null)
