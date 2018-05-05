@@ -35,9 +35,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             {
                 dirs = root.EnumerateDirectories();
             }
-            catch (UnauthorizedAccessException unauthorizedAccessException)
+            catch (UnauthorizedAccessException)
             {
-                Console.WriteLine(unauthorizedAccessException);
+                NotifyUnauthorizedDir(root);
+                // Console.WriteLine(unauthorizedAccessException);
                 return;
             }
             
@@ -52,6 +53,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             foreach (IFileInfo file in files)
             {
                 NotifyNextFile(file);
+            }
+        }
+
+        private void NotifyUnauthorizedDir(IDirectoryInfo dir)
+        {
+            foreach (INamespaceEnumeratorListener listener in _listeners)
+            {
+                listener.UnauthorizedDir(dir);
             }
         }
 

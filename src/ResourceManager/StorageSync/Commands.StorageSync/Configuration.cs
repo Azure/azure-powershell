@@ -47,13 +47,25 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
         public Configuration()
         {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = $"{assembly.GetName().Name}.{ConfigFilename}";
+
+            using (Stream configStream = assembly.GetManifestResourceStream(resourceName))
+            {
+                DataContractJsonSerializer validationsConfigurationJsonSerializer = new DataContractJsonSerializer(typeof(ValidationsConfiguration));
+                _validationsConfiguration =
+                    (ValidationsConfiguration)validationsConfigurationJsonSerializer.ReadObject(configStream);
+            }
+
+            /*
             string pathToExecutingAssembly = ExecutingAssemblyPath();
             string pathToConfigFile = Path.Combine(pathToExecutingAssembly, Configuration.ConfigFilename);
             Stream configStream = new FileStream(pathToConfigFile, FileMode.Open, FileAccess.Read);
             DataContractJsonSerializer validationsConfigurationJsonSerializer = new DataContractJsonSerializer(typeof(ValidationsConfiguration));
             _validationsConfiguration =
                 (ValidationsConfiguration) validationsConfigurationJsonSerializer.ReadObject(configStream);
-        }
+            */        
+		}
 
         private string ExecutingAssemblyPath()
         {

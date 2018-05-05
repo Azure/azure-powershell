@@ -6,5 +6,6 @@
         void BeginDir(IDirectoryInfo node);
         void EndDir(IDirectoryInfo node);
         void EndOfEnumeration();
+        void UnauthorizedDir(IDirectoryInfo dir);
     }
 }

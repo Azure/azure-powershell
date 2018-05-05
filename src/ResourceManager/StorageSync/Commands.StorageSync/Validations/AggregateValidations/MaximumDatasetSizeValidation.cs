@@ -15,7 +15,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.AggregateV
 
         public override void BeginDir(IDirectoryInfo node)
         {
-            _directorySizeInBytes.Add(node.FullName, 0);
+            _directorySizeInBytes.Add(RemoveTrailingSlashes(node.FullName), 0);
+        }
+
+        private string RemoveTrailingSlashes(string path)
+        {
+            return path.TrimEnd(new[] { '\\' });
         }
 
         public override void EndDir(IDirectoryInfo node)
@@ -34,7 +39,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.AggregateV
         private IValidationResult ValidateDirectorySize(IDirectoryInfo node)
         {
             long maxDatasetSize = _configuration.MaximumDatasetSizeInBytes();
-            bool directoryIsTooBig = _directorySizeInBytes[node.FullName] > maxDatasetSize;
+            bool directoryIsTooBig = _directorySizeInBytes[RemoveTrailingSlashes(node.FullName)] > maxDatasetSize;
             if (directoryIsTooBig)
             {
                 return new ValidationResult

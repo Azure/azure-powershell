@@ -32,5 +32,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
                 Description = description
             };
         }
+
+        public static IValidationResult UnauthorizedAccessDir(IDirectoryInfo dir)
+        {
+            return new ValidationResult
+            {
+                Level = ResultLevel.Warning,
+                Result = Result.Unavailable,
+                Description = "The directory could not be validated because the user is not authorized to access it.",
+                Path = dir.FullName
+            };
+        }
     }
 }

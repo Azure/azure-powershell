@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
             _consoleWriter = consoleWriter;
             _validationErrorsHistogram = new Dictionary<ValidationType, long>();
             _systemValidationResults = new List<IValidationResult>();
+            _filesScanned = 0;
+            _directoriesScanned = 0;
         }
 
         public void BeginDir(IDirectoryInfo node)
@@ -98,10 +100,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
         {
             _consoleWriter.WriteLine(" ");
             WritePathScanned();
+
+            _consoleWriter.WriteLine(" ");
+            _consoleWriter.WriteLine("Environment Validation Results");
             WriteSystemValidationResults();
+
+            _consoleWriter.WriteLine(" ");
+            _consoleWriter.WriteLine("Namespace Validation Results");
             WriteCountOfScannedNodes();
             WriteCountOfErrorsFound();
 
+            _consoleWriter.WriteLine(" ");
             if (!_validationErrorsHistogram.Any())
             {
                 _consoleWriter.WriteLine("There were no compatibility issues found with your files.");
@@ -145,6 +154,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
         private void WritePathScanned()
         {
             _consoleWriter.WriteLine($"Evaluated: {_rootPath}");
+        }
+
+        public void UnauthorizedDir(IDirectoryInfo dir)
+        {
+            return;
         }
     }
 }

@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.AggregateV
 
         public abstract void NextFile(IFileInfo node);
 
+        public void UnauthorizedDir(IDirectoryInfo dir)
+        {
+            return;
+        }
+
         protected void Broadcast(IValidationResult validationResult)
         {
             foreach (IOutputWriter outputWriter in _outputWriters)

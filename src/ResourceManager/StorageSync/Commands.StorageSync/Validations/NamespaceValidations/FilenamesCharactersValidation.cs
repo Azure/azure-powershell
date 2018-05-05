@@ -25,13 +25,26 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         private IValidationResult Validate (IFileSystemInfo node)
         {
-            if (node.Name.Any(c => IsBlacklisted(c)))
+            string name = node.Name;
+            List<int> positions = new List<int>();
+            for (int i = 0; i < name.Length; ++i)
             {
-                int position = 0;
-                while (!IsBlacklisted(node.Name[position]))
+                if (IsBlacklisted(name[i]))
                 {
-                    ++position;
+                    positions.Add(i);
                 }
+            }
+
+            if (positions.Count() > 0)
+            {
+                string description = $"File {node.Name} has an unsupported character in position";
+                if (positions.Count() > 1)
+                {
+                    description += "s";
+                }
+                description += " ";
+                description += String.Join(", ", positions);
+                description += ".";
 
                 return new ValidationResult
                 {
@@ -39,9 +52,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Level = ResultLevel.Error,
                     Path = node.FullName,
                     Type = ValidationType.FilenameCharacters,
-                    Description = $"File {node.Name} has an unsupported character in position {position}."
-            };
-
+                    Description = description,
+                    Positions = positions
+                };
             }
 
             return ValidationResult.SuccessfullValidationResult(ValidationType.FilenameCharacters);
