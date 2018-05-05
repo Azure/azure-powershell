@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     class AFSFileInfo : IFileInfo
     {

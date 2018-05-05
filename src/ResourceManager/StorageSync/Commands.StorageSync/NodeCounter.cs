@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AFSEvaluationTool.Cmdlets
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
     internal class NodeCounter
     {

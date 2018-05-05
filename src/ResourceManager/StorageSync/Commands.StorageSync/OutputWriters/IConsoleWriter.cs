@@ -1,4 +1,4 @@
-﻿namespace AFSEvaluationTool.OutputWriters
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 {
     internal interface IConsoleWriter
     {

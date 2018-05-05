@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AFSEvaluationTool.Validations
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 {
     public class ValidationResult : IValidationResult
     {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
-using AFSEvaluationTool.OutputWriters;
-using AFSEvaluationTool.Validations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     class AFSCmdlet : ICmdlet
     {

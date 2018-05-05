@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace AFSEvaluationTool.Validations.NamespaceValidations
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
     public class InvalidFilenameValidation : INamespaceValidation
     {

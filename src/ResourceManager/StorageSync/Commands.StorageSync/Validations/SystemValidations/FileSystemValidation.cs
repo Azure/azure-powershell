@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Management.Automation;
 
-namespace AFSEvaluationTool.Validations.SystemValidations
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations
 {
     public class FileSystemValidation : ISystemValidation
     {

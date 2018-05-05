@@ -29,7 +29,7 @@ using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
-namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
 {
     public class TestController
     {
@@ -85,6 +85,9 @@ namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
+            d.Add("Microsoft.Storage", null);
+            d.Add("Microsoft.StorageSync", null);
+
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
@@ -108,10 +111,7 @@ namespace Microsoft.Azure.Commands.Management.StorageSync.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager,
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.RMStorageDataPlaneModule,
-                    helper.RMStorageModule,
+                    helper.GetRMModulePath("AzureRm.StorageSync.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");

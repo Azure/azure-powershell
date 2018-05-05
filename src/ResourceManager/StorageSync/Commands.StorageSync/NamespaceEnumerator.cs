@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public class NamespaceEnumerator
     {

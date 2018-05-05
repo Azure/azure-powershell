@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace AFSEvaluationTool
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     class AFSDirectoryInfo : IDirectoryInfo
     {

@@ -1,9 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
-
-namespace AFSEvaluationTool
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using System.Collections.ObjectModel;
+    using System.Management.Automation;
+    using System.Management.Automation.Runspaces;
+
     public class PowerShellCommandRunner : IPowershellCommandRunner
     {
         private readonly Runspace _runspace;

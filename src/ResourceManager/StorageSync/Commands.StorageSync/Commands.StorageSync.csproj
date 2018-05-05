@@ -107,6 +107,12 @@
     <Compile Include="Validations\ValidationType.cs" />
   </ItemGroup>
   <ItemGroup>
+    <!-- 
+    These dependencies are needed for cmdlets talking to RP.
+    Commented out since currently we are not talking to RP.
+    -->
+
+    <!--
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
@@ -127,6 +133,7 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
+    -->
   </ItemGroup>
   <ItemGroup>
     <None Include="debug.ps1">

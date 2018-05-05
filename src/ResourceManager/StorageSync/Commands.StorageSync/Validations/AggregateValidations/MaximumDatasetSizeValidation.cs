@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using AFSEvaluationTool.OutputWriters;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
 
-namespace AFSEvaluationTool.Validations.AggregateValidations
+namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.AggregateValidations
 {
     internal class MaximumDatasetSizeValidation : AggregateValidation
     {

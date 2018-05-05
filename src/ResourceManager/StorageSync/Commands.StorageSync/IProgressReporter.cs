@@ -1,4 +1,4 @@
-﻿namespace AFSEvaluationTool.Cmdlets
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
     public interface IProgressReporter
     {

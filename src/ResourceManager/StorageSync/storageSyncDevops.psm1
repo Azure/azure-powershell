@@ -1,11 +1,70 @@
+function Get-RepositoryRootDirectory
+{
+    return $env:AzurePSRoot
+}
+
 function Get-BuildOutputDirectory
 {
-    return (Join-Path $env:AzurePSRoot "src\Package")
+    return (Join-Path (Get-RepositoryRootDirectory) "src\Package")
 }
 
 function Build-StorageSync
 {
+<#  
+.SYNOPSIS 
+Performs Repo-Tasks' based build scoped to StorageSync.
+.EXAMPLE
+Build-StorageSync
+Performs build.
+#>    
     Start-Build -BuildScope StorageSync
+}
+
+function MsBuild-StorageSync
+{
+<#  
+.SYNOPSIS 
+Performs msbuild scoped to StorageSync.
+.PARAMETER BuildConfig
+Build Configuration
+.PARAMETER Target
+Build Target
+.PARAMETER SkipHelp
+Switch to skip Help processing.
+.EXAMPLE
+MsBuild-StorageSync -BuildConfig DEBUG -Target Clean -Verbose
+Performs build output directory cleanup.
+.EXAMPLE
+MsBuild-StorageSync -BuildConfig DEBUG -Target Build -SkipHelp -Verbose
+Performs DEBUG build skipping Help processing.
+#>    
+    param(
+        [Parameter(Mandatory = $true)]
+        [ValidateSet("DEBUG", "RELEASE")]
+        [string]$BuildConfig = "DEBUG",
+
+        [Parameter(Mandatory = $true)]
+        [ValidateSet("Clean","Build","Test","Publish")]
+        [string]$Target = "Build",
+
+        [Parameter(Mandatory = $false)]
+        [string]$Scope,
+
+        [switch]$SkipHelp)
+
+    Write-Verbose "BuildConfig is $BuildConfig"
+    Write-Verbose "Target is $Target"
+    Write-Verbose "SkipHelp is $SkipHelp"
+
+    if ([string]::IsNullOrEmpty($Scope))
+    {
+        $Scope = "StorageSync"
+    }
+
+    Write-Verbose "Scope is $Scope"
+
+    $buildProj = Join-Path (Get-RepositoryRootDirectory) build.proj
+    & msbuild.exe $buildProj /p:SkipHelp=$SkipHelp /t:$Target /p:Scope=$Scope /p:Configuration=$BuildConfig
 }
 
 function Build-Installer
@@ -16,7 +75,7 @@ function Build-Installer
         [string]$BuildConfig)
 
 
-    & powershell.exe (Join-Path $env:AzurePSRoot "tools\Installer\generate.ps1") $BuildConfig
+    & powershell.exe (Join-Path (Get-RepositoryRootDirectory) "tools\Installer\generate.ps1") $BuildConfig
 }
 
 function Update-StorageSyncHelp
@@ -40,7 +99,7 @@ function Update-StorageSyncHelp
         }
         Import-Module platyPS
 
-        $PathToHelpFolder = Join-Path $env:AzurePSRoot "src\ResourceManager\StorageSync\Commands.StorageSync\help"
+        $PathToHelpFolder = Join-Path (Get-RepositoryRootDirectory) "src\ResourceManager\StorageSync\Commands.StorageSync\help"
         Write-Verbose "Updating help: $PathToHelpFolder"
         $status = Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder
     }
@@ -68,7 +127,7 @@ function Generate-StorageSyncMaml
     {
         $ProgressPreference = 'SilentlyContinue'
 
-        $script = Join-Path $env:AzurePSRoot "tools\GenerateHelp.ps1"
+        $script = Join-Path (Get-RepositoryRootDirectory) "tools\GenerateHelp.ps1"
         
         Write-Verbose "Executing command: ValidateMarkdownHelp"
         $result = . $script -ValidateMarkdownHelp -BuildConfig $BuildConfig
