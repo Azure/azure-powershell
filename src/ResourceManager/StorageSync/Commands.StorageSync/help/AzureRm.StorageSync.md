@@ -12,5 +12,5 @@ Locale: en-US
 
 ## AzureRm.StorageSync Cmdlets
 ### [Invoke-AzureRmStorageSyncCompatibilityCheck](Invoke-AzureRmStorageSyncCompatibilityCheck.md)
-{{Manually Enter Invoke-AzureRmStorageSyncCompatibilityCheck Description Here}}
+{{Fill in the Synopsis}}
 
