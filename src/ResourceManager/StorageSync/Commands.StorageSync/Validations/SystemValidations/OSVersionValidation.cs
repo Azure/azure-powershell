@@ -32,9 +32,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
                 return ValidationResult.SuccessfullValidationResult(ValidationType.OsVersion);
             }
 
+            string supportedVersions = String.Join(", ", _configuration.ValidOsVersions());
             return new ValidationResult()
             {
-                Description = $"The {osVersion} OS version is not supported.",
+                Description = $"The {osVersion} OS version is not supported. The supported versions are {supportedVersions}",
                 Level = ResultLevel.Error,
                 Type = ValidationType.OsVersion,
                 Result = Result.Fail

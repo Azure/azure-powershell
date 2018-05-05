@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             _progressReporter.CompleteStep();
         }
 
+        public void UnauthorizedDir(IDirectoryInfo dir)
+        {
+            Broadcast(ValidationResult.UnauthorizedAccessDir(dir));
+        }
+
         private void Broadcast(IValidationResult validationResult)
         {
             foreach (IOutputWriter outputWriter in _outputWriters)

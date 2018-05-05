@@ -38,25 +38,36 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 Logger.AppRan("dsfiuiwersdvscnmcbviowuerfbw");
             }
             
-            /*
             Configuration configuration = new Configuration();
+
             ICmdlet cmdlet = new AFSCmdlet(this);
             ProgressReporter progressReporter = new ProgressReporter(cmdlet);
+            NodeCounter nodeCounter = new NodeCounter();
+
+            if (!string.IsNullOrEmpty(this.Path))
+            {
+                DirectoryInfo rootDirectoryInfo = new DirectoryInfo(Path);
+                IDirectoryInfo root = new AFSDirectoryInfo(rootDirectoryInfo);
+                long nodeCount = nodeCounter.Count(root);
+                progressReporter.AddSteps(nodeCount);
+            }
+
+            TextSummaryOutputWriter summaryWriter = new TextSummaryOutputWriter(Path, new AFSConsoleWriter());
+            PsObjectsOutputWriter psObjectsWriter = new PsObjectsOutputWriter(cmdlet);
 
             if (!SkipSystemChecks.ToBool())
             {
-                PerformSystemChecks(configuration, progressReporter, cmdlet);
+                PerformSystemChecks(configuration, progressReporter, cmdlet, summaryWriter, psObjectsWriter);
             }
 
             if (!SkipNamespaceChecks.ToBool())
             {
-                PerformNamespaceChecks(configuration, progressReporter, cmdlet);
+                PerformNamespaceChecks(configuration, progressReporter, cmdlet, summaryWriter, psObjectsWriter);
             }
-            */
             
         }
 
-        private void PerformSystemChecks(IConfiguration configuration, IProgressReporter progressReporter, ICmdlet cmdlet)
+        private void PerformSystemChecks(IConfiguration configuration, IProgressReporter progressReporter, ICmdlet cmdlet, TextSummaryOutputWriter summaryWriter, PsObjectsOutputWriter psObjectsWriter)
         {
             PowerShellCommandRunner commandRunner = new PowerShellCommandRunner(ComputerName, Credential);
             IEnumerable<ISystemValidation> validations = new List<ISystemValidation>()
@@ -67,14 +78,16 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             progressReporter.AddSteps(validations.Count());
             IEnumerable<IOutputWriter> outputWriters = new List<IOutputWriter>()
             {
-                new PsObjectsOutputWriter(cmdlet)
+                summaryWriter,
+                psObjectsWriter
+
             };
             SystemValidationsProcessor systemChecksProcessor = new SystemValidationsProcessor(commandRunner, validations, outputWriters, progressReporter);
 
             systemChecksProcessor.Run();
         }
 
-        private void PerformNamespaceChecks(IConfiguration configuration, IProgressReporter progressReporter, ICmdlet cmdlet)
+        private void PerformNamespaceChecks(IConfiguration configuration, IProgressReporter progressReporter, ICmdlet cmdlet, TextSummaryOutputWriter summaryWriter, PsObjectsOutputWriter psObjectsWriter)
         {
             if (Credential != null)
             {
@@ -83,7 +96,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                     NetworkCredential networkCredential = Credential.GetNetworkCredential();
                     if (connector.NetUseWithCredentials(Path, networkCredential.UserName, networkCredential.Domain, networkCredential.Password))
                     {
-                        StorageEval(configuration, progressReporter, cmdlet);
+                        StorageEval(configuration, progressReporter, cmdlet, summaryWriter, psObjectsWriter);
                     }
                     else
                     {
@@ -93,18 +106,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             }
             else
             {
-                StorageEval(configuration, progressReporter, cmdlet);
+                StorageEval(configuration, progressReporter, cmdlet, summaryWriter, psObjectsWriter);
             }
         }
 
-        private void StorageEval(IConfiguration configuration, IProgressReporter progressReporter, ICmdlet cmdlet)
+        private void StorageEval(IConfiguration configuration, IProgressReporter progressReporter, ICmdlet cmdlet, TextSummaryOutputWriter summaryWriter, PsObjectsOutputWriter psObjectsWriter)
         {
             DirectoryInfo rootDirectoryInfo = new DirectoryInfo(Path);
             IDirectoryInfo root = new AFSDirectoryInfo(rootDirectoryInfo);
-            NodeCounter nodeCounter = new NodeCounter();
-            long nodeCount = nodeCounter.Count(root);
-            progressReporter.AddSteps(nodeCount);
-
+           
             IEnumerable<INamespaceValidation> validations = new List<INamespaceValidation>()
             {
                 new InvalidFilenameValidation(configuration),
@@ -115,10 +125,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 new MaximumTreeDepthValidation(configuration)
                 
             };
-            TextSummaryOutputWriter summaryWriter = new TextSummaryOutputWriter(Path, new AFSConsoleWriter());
+            
             IEnumerable<IOutputWriter> outputWriters = new List<IOutputWriter>()
             {
-                new PsObjectsOutputWriter(cmdlet),
+                psObjectsWriter,
                 summaryWriter
             };
             NamespaceValidationsProcessor validationsProcessor= new NamespaceValidationsProcessor(validations, outputWriters, progressReporter);

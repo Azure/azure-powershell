@@ -23,9 +23,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             {
                 dirs = root.EnumerateDirectories();
             }
-            catch (UnauthorizedAccessException unauthorizedAccessException)
+            catch (UnauthorizedAccessException)
             {
-                Console.WriteLine(unauthorizedAccessException);
                 return;
             }
 

@@ -1,0 +1,21 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "title": "JSON Schema for my JSON file format",
+
+  "type": "object",
+
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "This shows up in tooltips for the 'name' property."
+    },
+    "versions": {
+      "type": "array",
+      "description": "An array of version numbers.",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
+    }
+  }
+}
