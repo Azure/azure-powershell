@@ -117,7 +117,7 @@ For the Storage data plane project, this change log is located at `src\Storage\C
 
 #### Breaking Changes
 
-Breaking changes should **not** be introduced into the repository without giving customers at least six months notice. For a description of breaking changes in Azure PowerShell, see [here](documentation/breaking-changes/breaking-changes-definition.md).
+Breaking changes should **not** be introduced into the repository without giving customers at least six months notice. For a description of breaking changes in Azure PowerShell and how to declare them in the code using the [various breaking change attributes](documentation/breaking-changes/breaking-changes-attribute-help.md), see [here](documentation/breaking-changes/breaking-changes-definition.md).
 
 Whenever a service team announces a breaking change, they must add it to the `upcoming-breaking-changes.md` file in their respective service folder. When the service team is ready to release the module with the breaking change, they must move the corresponding information from `upcoming-breaking-changes.md` into the `current-breaking-changes.md` file located in their service folder.
 

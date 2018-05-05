@@ -15,6 +15,7 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
@@ -24,6 +25,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -309,6 +311,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             SetupDebuggingTraces();
             SetupHttpClientPipeline();
             base.BeginProcessing();
+
+            //Now see if the cmdlet has any Breaking change attributes on it and process them if it does
+            //This will print any breaking change attribute messages that are applied to the cmdlet
+            BreakingChangeAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), this.MyInvocation, WriteWarning);
         }
 
         /// <summary>

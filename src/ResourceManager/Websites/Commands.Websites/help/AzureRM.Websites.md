@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Websites
 Module Guid: cc69c625-e961-43f4-8b50-0061eba6e4b6
-Download Help Link: 
-Help Version: 1.0
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 

@@ -80,15 +80,17 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
     'Get-AzureRmRoleDefinition', 'New-AzureRmRoleDefinition', 
     'Set-AzureRmRoleDefinition', 'Remove-AzureRmRoleDefinition', 
     'Get-AzureRmADAppCredential', 'Get-AzureRmADApplication', 
-    'Get-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
+    'Add-AzureRmADGroupMember', 'Get-AzureRmADGroupMember', 
+    'Remove-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
+    'New-AzureRmADGroup', 'Remove-AzureRmADGroup', 
     'Get-AzureRmADServicePrincipal', 'Get-AzureRmADSpCredential', 
     'Get-AzureRmADUser', 'New-AzureRmADAppCredential', 
     'New-AzureRmADSpCredential', 'New-AzureRmADUser', 
     'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication', 
     'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
     'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
-    'Remove-AzureRmADUser', 'Set-AzureRmADApplication', 
-    'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser', 
+    'Remove-AzureRmADUser', 'Update-AzureRmADApplication', 
+    'Update-AzureRmADServicePrincipal', 'Update-AzureRmADUser', 
     'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
     'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
     'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup', 
@@ -125,7 +127,12 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Get-AzureRmResourceProviderAction'
+AliasesToExport = 'Get-AzureRmResourceProviderAction', 
+    'Get-AzureRmADServicePrincipalCredential', 
+    'New-AzureRmADServicePrincipalCredential', 
+    'Remove-AzureRmADServicePrincipalCredential', 
+    'Set-AzureRmADApplication', 'Set-AzureRmADServicePrincipal', 
+    'Set-AzureRmADUser'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

@@ -658,6 +658,14 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationSecurityGroup, CNM.PSApplicationSecurityGroup>();
+
+                //// DDoS protection plan
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSDdosProtectionPlan, MNM.DdosProtectionPlan>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.DdosProtectionPlan, CNM.PSDdosProtectionPlan>();
             });
 
             _mapper = config.CreateMapper();
