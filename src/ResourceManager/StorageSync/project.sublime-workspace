@@ -1,0 +1,591 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"end",
+				"EndsWith"
+			],
+			[
+				"Resour",
+				"ResourceProviderNamespace"
+			],
+			[
+				"Reso",
+				"ResourceProviderNamespace"
+			],
+			[
+				"Res",
+				"ResourceProviderNamespace"
+			],
+			[
+				"File",
+				"FileName"
+			],
+			[
+				"Key",
+				"Keys"
+			],
+			[
+				"Trace",
+				"Trace-Info"
+			],
+			[
+				"for",
+				"foreach"
+			],
+			[
+				"Settin",
+				"SettingsToAdd"
+			],
+			[
+				"outputf",
+				"outputfilename"
+			],
+			[
+				"output",
+				"outputcscfgpath"
+			],
+			[
+				"pair",
+				"pairedcscfgpath"
+			],
+			[
+				"stor",
+				"storageAccountKey"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/anfedyas/workfolders/Desktop/evaltool.cmd",
+			"settings":
+			{
+				"buffer_size": 263,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 137.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 444.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/T/github/az-ps-eval/src/ResourceManager/StorageSync"
+	],
+	"file_history":
+	[
+		"/T/github/az-ps-eval/src/ResourceManager/StorageSync/project.sublime-project",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Common/Region/GeographicRegions.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/KailaniNonCloudInternal.sln",
+		"/o/os/src/base/EnterpriseClientSync/Kailani/StorageSync.Management.Internal.Cmdlets/StorageSync.Management.Internal.Cmdlets.Tests/StorageSync.Management.Internal.Cmdlets.Tests.csproj",
+		"/o/os/src/base/EnterpriseClientSync/Kailani/StorageSync.Management.Internal.Cmdlets/StorageSync.Management.Internal.Cmdlets.csproj.user",
+		"/o/os/src/base/EnterpriseClientSync/Kailani/StorageSync.Management.Internal.Cmdlets/StorageSync.Management.Internal.Cmdlets.csproj",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/StorageSync.Management.PowerShell.Cmdlets/StorageSync.Management.PowerShell.Cmdlets.Tests/ResourceToPSObjectConversionsTest.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Actions/CloudActions/ActionFactory.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Afs.Versioning/Kailani.Afs.Versioning.Tests/Kailani.Afs.Versioning.Tests.csproj",
+		"/C/Users/anfedyas/workfolders/bin.common/devshell.cmd",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Actions/TaskScheduler/Framework/ScheduledTaskMessageHandler.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Utilities.DAL/Helpers/CloudEndpointHelper.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Actions/CloudActions/CloudEndpoint/GetCloudEndpointAction.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Afs.StorageSyncProtocol.V1/Contracts/RegisteredServer.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Actions/CloudActions/HfsServer/GetRegisteredServersAction.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Afs.Versioning/Kailani.Afs.Versioning.Tests/Data/2017-06-05-preview/RegisteredServer-Put.json",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.DAL/Entities/ManagementEntities/CloudEndpoint.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Data.Contracts/ResourceEntity/CloudEndpointResource.cs",
+		"/O/os/src/base/EnterpriseClientSync/ServerPlatform/inc/HfsGlobalStateManager.h",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Client.AD/ADClientErrorDetectionStrategy.cs",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Client.AD/Kailani.Hfs.Client.AD.csproj",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Afs.Versioning/Kailani.Afs.Versioning.Tests/TestCompatibilityV1.cs",
+		"/O/os/src/base/EnterpriseClientSync/ServerPlatform/HFSSyncServer/HfsGlobalStateManager.cpp",
+		"/O/os/src/base/EnterpriseClientSync/SyncClient/Protocol/inc/EcsProtocolClientInterfaces.h",
+		"/O/os/src/base/EnterpriseClientSync/Kailani/Kailani.Hfs.Client.ManagementAgent/ManagementAgentTasks.cs"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/anfedyas/workfolders/Desktop/evaltool.cmd",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 263,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								36,
+								36
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Batch File/Batch File.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "project.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"syncintman",
+				"Tools\\ArmTools\\ArmToolsPSTools\\v1Manifests\\Microsoft.StorageSyncInt.manifest"
+			],
+			[
+				"class1",
+				"src\\ResourceManager\\FileSync\\FileSync\\Commands.FileSync\\Class1.cs"
+			],
+			[
+				"commands.scenariotests.resourcemanager.common.csproj",
+				"src\\ResourceManager\\Common\\Commands.ScenarioTests.ResourceManager.Common\\Commands.ScenarioTests.ResourceManager.Common.csproj"
+			],
+			[
+				"createupdatecloudendpointstep",
+				"Kailani\\Kailani.Hfs.Actions\\Workflows\\CloudEndpoint\\CreateCloudEndpoint\\Steps\\CreateUpdateCloudEndpointStep.cs"
+			],
+			[
+				"workflowre",
+				"Kailani\\Kailani.Hfs.Data.Contracts\\ResourceEntity\\WorkflowResource.cs"
+			],
+			[
+				"serverhealthpr",
+				"Kailani\\Kailani.Hfs.Actions\\Services\\ServerHealth\\ServerHealthProvider.cs"
+			],
+			[
+				"updateserverheal",
+				"Kailani\\Kailani.Hfs.Actions\\UpdateServerHealthHandler\\UpdateServerHealthMessageHandler.cs"
+			],
+			[
+				"fanout",
+				"Kailani\\Kailani.Hfs.Constants\\TaskScheduler\\ScheduledTaskFanoutLevel.cs"
+			],
+			[
+				"serverhealthprovider",
+				"Kailani\\Kailani.Hfs.Actions\\Services\\ServerHealth\\ServerHealthProvider.cs"
+			],
+			[
+				"getregistereda",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\HfsServer\\GetRegisteredServerAction.cs"
+			],
+			[
+				"registeredserverres",
+				"Kailani\\Kailani.Hfs.Data.Contracts\\ResourceEntity\\RegisteredServerResource.cs"
+			],
+			[
+				"serverjson",
+				"Kailani\\Kailani.Afs.Versioning\\Kailani.Afs.Versioning.Tests\\Data\\2017-06-05-preview\\RegisteredServer-Get.json"
+			],
+			[
+				"ecsinstall",
+				"Tools\\Scripts\\EcsInstall.cmd"
+			],
+			[
+				"hfv2",
+				"Tools\\Scripts\\KailaniHFv2TestSetup.ps1"
+			],
+			[
+				"recallserer",
+				"Kailani\\Kailani.Hfs.Client.HfsManagement\\Requests\\RecallServerFilesRequest.cs"
+			],
+			[
+				"newazurerm",
+				"Kailani\\StorageSync.Management.PowerShell.Cmdlets\\CloudEndpoint\\NewAzureRmStorageSyncCloudEndpoint.cs"
+			],
+			[
+				"errortargets",
+				"Kailani\\Kailani.Hfs.ErrorCodes\\Constants\\ErrorTargets.cs"
+			],
+			[
+				"errors.cs",
+				"Kailani\\Kailani.ErrorModel\\ErrorTargets.cs"
+			],
+			[
+				"idformattercs",
+				"Kailani\\Kailani.Hfs.Data.Contracts\\Formatters\\ResourceIdFormatter.cs"
+			],
+			[
+				"storagesyncserviceresource",
+				"Kailani\\Kailani.Hfs.Data.Contracts\\ResourceEntity\\StorageSyncServiceResource.cs"
+			],
+			[
+				"recallaction",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\ServerEndpoint\\RecallServerFilesAction.cs"
+			],
+			[
+				"unityresolver",
+				"Kailani\\Kailani.Hfs.Actions\\Services\\UnityResolver.cs"
+			],
+			[
+				"recallserver",
+				"Kailani\\Kailani.Hfs.Data.Contracts\\ApiEntity\\RecallServerFilesParam.cs"
+			],
+			[
+				"recallpa",
+				"Kailani\\Kailani.Afs.StorageSyncProtocol.V1\\Contracts\\RecallServerFilesParam.cs"
+			],
+			[
+				"basesubscriptionaction",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\BaseSubscriptionAction.cs"
+			],
+			[
+				"armcontroller",
+				"Kailani\\Kailani.Core.AdminFrontdoor\\Controllers\\ArmController.cs"
+			],
+			[
+				"admincotrnoller.cs",
+				"Kailani\\Kailani.Core.AdminFrontdoor\\Controllers\\ArmController.cs"
+			],
+			[
+				"admincontroller",
+				"Kailani\\Kailani.Core.Sync\\Controllers\\EsrAdminController.cs"
+			],
+			[
+				"collectgar",
+				"Kailani\\Kailani.Hfs.Actions\\TaskScheduler\\Tasks\\GarbageCollection\\Steps\\CollectGarbageWorkflowStep.cs"
+			],
+			[
+				"discosyncen",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\Discovery\\DiscoverSyncEndpointsAction.cs"
+			],
+			[
+				"discoversyncendpointsaction",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\Discovery\\DiscoverSyncEndpointsAction.cs"
+			],
+			[
+				"unityresol",
+				"Kailani\\Kailani.Hfs.Actions\\Services\\UnityResolver.cs"
+			],
+			[
+				"orchestr",
+				"Kailani\\Kailani.Hfs.Actions\\Workflows\\Framework\\OrchestratorRunner.cs"
+			],
+			[
+				"inventoryworstep",
+				"Kailani\\Kailani.Hfs.Actions\\TaskScheduler\\Tasks\\CollectInventory\\Steps\\ReportInventoryWorkflowStep.cs"
+			],
+			[
+				"updateserverhea",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\ServerHealth\\UpdateServerHealthAction.cs"
+			],
+			[
+				"reconciliationwoste",
+				"Kailani\\Kailani.Hfs.Actions\\TaskScheduler\\Tasks\\Reconciliation\\Steps\\ReconciliationWorkflowStep.cs"
+			],
+			[
+				"-bcdr",
+				"Tools\\ArmTools\\ArmToolsPSTools\\Manifests\\kailanitest109.one.microsoft.com-bcdr.manifest"
+			],
+			[
+				"geographicregions.cs",
+				"Kailani\\Kailani.Hfs.Common\\Region\\GeographicRegions.cs"
+			],
+			[
+				"kailconfpsm1",
+				"Kailani\\Scripts\\DevTools\\KailaniConfig.psm1"
+			],
+			[
+				"reconciliworsp",
+				"Kailani\\Kailani.Hfs.Actions\\TaskScheduler\\Tasks\\Reconciliation\\Steps\\ReconciliationWorkflowStep.cs"
+			],
+			[
+				"cloudendpointproxycs",
+				"Kailani\\Kailani.DAL\\Entities\\ManagementEntities\\CloudEndpointProxy.cs"
+			],
+			[
+				"migrationhelp",
+				"Kailani\\Kailani.DAL\\Helpers\\MigrationHelper.cs"
+			],
+			[
+				"unityres",
+				"Kailani\\Kailani.Hfs.Actions\\Services\\UnityResolver.cs"
+			],
+			[
+				"ireconcil",
+				"Kailani\\Kailani.Hfs.Actions\\TaskScheduler\\Tasks\\Reconciliation\\Interfaces\\IReconciliationWorkflow.cs"
+			],
+			[
+				"hfsmanagemntcl",
+				"Kailani\\Kailani.Hfs.Client.HfsManagement\\HfsManagementServiceClient.cs"
+			],
+			[
+				"errorcodetohttpstatus",
+				"Kailani\\Kailani.Hfs.ErrorCodes\\ErrorCode\\ErrorCodeToHttpStatus.cs"
+			],
+			[
+				"hfv2test",
+				"Tools\\Scripts\\KailaniHFv2TestSetup.ps1"
+			],
+			[
+				"managementcontroller.cs",
+				"Kailani\\Kailani.Core.Sync\\Controllers\\ManagementController.cs"
+			],
+			[
+				"oauth",
+				"Kailani\\Kailani.WebCommon\\Authentication\\OAuth2Authentication.cs"
+			],
+			[
+				"testoverr",
+				"Kailani\\Kailani.Common\\KailaniTestOverridesHelper.cs"
+			],
+			[
+				"hfsmaconfig",
+				"Kailani\\startup\\hfs_ma_config_int.xml"
+			],
+			[
+				"serverendpoint",
+				"Kailani\\Kailani.Afs.StorageSyncProtocol.V1\\Contracts\\ServerEndpoint.cs"
+			],
+			[
+				"afspso",
+				"Kailani\\StorageSync.Management.PowerShell.Cmdlets\\PSObjects\\AfsPSObjectBase.cs"
+			],
+			[
+				"psobje",
+				"Kailani\\StorageSync.Management.PowerShell.Cmdlets\\PSObjects\\AfsPSObjectBase.cs"
+			],
+			[
+				"ecsinsta",
+				"Tools\\Scripts\\EcsInstall.cmd"
+			],
+			[
+				"armuti",
+				"Kailani\\Scripts\\DevTools\\ArmUtilities.psm1"
+			],
+			[
+				"v1.manifest",
+				"Tools\\ArmTools\\ArmToolsPSTools\\v1Manifests\\Microsoft.StorageSync.v1.manifest"
+			],
+			[
+				"rplayoutjson",
+				"Tools\\Scripts\\RpLayout.json"
+			],
+			[
+				"rplay",
+				"Tools\\Scripts\\RpLayout.json"
+			],
+			[
+				"actionfact",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\ActionFactory.cs"
+			],
+			[
+				"hfswxs",
+				"msi\\msi\\HFS.wxs"
+			],
+			[
+				"monitoringda",
+				"Kailani\\Kailani.Afs.XSyncMonitoringExtension\\Authentication\\MonitoringDataAccessHandle.cs"
+			],
+			[
+				"afshybridmonitoringv2config.xml",
+				"Tools\\Tracing\\MonitoringAgent\\AFSHybridMonitoringV2Config.xml"
+			],
+			[
+				"afversiote",
+				"Kailani\\Kailani.Afs.Versioning\\Kailani.Afs.Versioning.Tests\\Kailani.Afs.Versioning.Tests.csproj"
+			],
+			[
+				"adclientcs",
+				"Kailani\\Kailani.Hfs.Client.AD\\ADClientErrorDetectionStrategy.cs"
+			],
+			[
+				"kailani.hfs.client.ad.csproj",
+				"Kailani\\Kailani.Hfs.Client.AD\\Kailani.Hfs.Client.AD.csproj"
+			],
+			[
+				"testcompti",
+				"Kailani\\Kailani.Afs.Versioning\\Kailani.Afs.Versioning.Tests\\TestCompatibilityV1.cs"
+			],
+			[
+				"dalcloudhelper",
+				"Kailani\\Kailani.Hfs.Utilities.DAL\\Helpers\\CloudEndpointHelper.cs"
+			],
+			[
+				"dalcloudendp",
+				"Kailani\\Kailani.DAL\\Entities\\ManagementEntities\\CloudEndpoint.cs"
+			],
+			[
+				"dalcloudhelp",
+				"Kailani\\Kailani.Hfs.Utilities.DAL\\Helpers\\CloudEndpointHelper.cs"
+			],
+			[
+				"getcloudendpointaction",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\CloudEndpoint\\GetCloudEndpointAction.cs"
+			],
+			[
+				"registeredserver",
+				"Kailani\\Kailani.Afs.StorageSyncProtocol.V1\\Contracts\\RegisteredServer.cs"
+			],
+			[
+				"getregisteraction",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\HfsServer\\GetRegisteredServersAction.cs"
+			],
+			[
+				"regiputjs",
+				"Kailani\\Kailani.Afs.Versioning\\Kailani.Afs.Versioning.Tests\\Data\\2017-06-05-preview\\RegisteredServer-Put.json"
+			],
+			[
+				"versiontestscsproj",
+				"Kailani\\Kailani.Afs.Versioning\\Kailani.Afs.Versioning.Tests\\Kailani.Afs.Versioning.Tests.csproj"
+			],
+			[
+				"actionfactory",
+				"Kailani\\Kailani.Hfs.Actions\\CloudActions\\ActionFactory.cs"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 382.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
