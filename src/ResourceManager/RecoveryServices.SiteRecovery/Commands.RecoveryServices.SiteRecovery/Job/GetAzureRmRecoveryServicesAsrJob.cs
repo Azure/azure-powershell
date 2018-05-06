@@ -151,8 +151,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 
             if (this.State != null)
             {
-                jqp.JobStatus = new List<string>();
-                jqp.JobStatus.Add(this.State);
+                jqp.JobStatus = this.State;
             }
 
             var completeJobsList = this.RecoveryServicesClient.GetAzureSiteRecoveryJob(jqp);

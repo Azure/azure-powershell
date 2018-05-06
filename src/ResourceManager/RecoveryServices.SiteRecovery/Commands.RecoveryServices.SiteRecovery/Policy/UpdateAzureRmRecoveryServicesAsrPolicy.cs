@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNullOrEmpty]
         public string RecoveryAzureStorageAccountId { get; set; }
 
-	// todo :: vipin breaking change release
+        // todo :: vipin breaking change release
         public string Encryption { get; set; }
 
         /// <summary>
@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     Utilities.GetMemberName(() => this.RecoveryAzureStorageAccountId))
                     ? this.RecoveryAzureStorageAccountId
                     : replicationProviderSettings.ActiveStorageAccountId;
-            
+
             var hyperVReplicaAzurePolicyInput = new HyperVReplicaAzurePolicyInput
             {
                 ApplicationConsistentSnapshotFrequencyInHours =
@@ -578,9 +578,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.applicationConsistentSnapshotFrequencyInMinutes,
                 RecoveryPointHistory = this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
                 RecoveryPointThresholdInMinutes = this.rpoWarningThresholdInMinutes,
-                MultiVmSyncStatus = (SetMultiVmSyncStatus)Enum.Parse(
-                    typeof(SetMultiVmSyncStatus),
-                    this.multiVmSyncStatus),
+                MultiVmSyncStatus = this.multiVmSyncStatus,
                 CrashConsistentFrequencyInMinutes = this.crashConsistentFrequencyInMinutes
             };
 
@@ -665,9 +663,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.applicationConsistentSnapshotFrequencyInMinutes,
                 RecoveryPointHistory = this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
                 RecoveryPointThresholdInMinutes = this.rpoWarningThresholdInMinutes,
-                MultiVmSyncStatus = (SetMultiVmSyncStatus)Enum.Parse(
-                    typeof(SetMultiVmSyncStatus),
-                    this.multiVmSyncStatus)
+                MultiVmSyncStatus = this.multiVmSyncStatus
             };
 
             var updatePolicyProperties = new UpdatePolicyInputProperties
@@ -721,7 +717,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     ? this.ApplicationConsistentSnapshotFrequencyInHours * 60
                     : replicationProviderSettings.AppConsistentFrequencyInMinutes;
 
-            this.crashConsistentFrequencyInMinutes = 
+            this.crashConsistentFrequencyInMinutes =
                 replicationProviderSettings.CrashConsistentFrequencyInMinutes;
 
             this.RecoveryPointRetentionInHours =
@@ -754,9 +750,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 AppConsistentFrequencyInMinutes =
                     this.applicationConsistentSnapshotFrequencyInMinutes,
                 RecoveryPointHistory = this.RecoveryPointRetentionInHours * 60, // Convert from hours to minutes.
-                MultiVmSyncStatus = (SetMultiVmSyncStatus)Enum.Parse(
-                    typeof(SetMultiVmSyncStatus),
-                    this.multiVmSyncStatus),
+                MultiVmSyncStatus = this.multiVmSyncStatus,
                 CrashConsistentFrequencyInMinutes = this.crashConsistentFrequencyInMinutes
             };
 
