@@ -592,6 +592,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 d.Add("Microsoft.Features", null);
                 d.Add("Microsoft.Authorization", null);
                 d.Add("Microsoft.Compute", null);
+                d.Add("Microsoft.Azure.Management.KeyVault", null);
                 var providersToIgnore = new Dictionary<string, string>();
                 providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
                 HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
