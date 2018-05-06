@@ -128,7 +128,7 @@ function Test-CreateVcoreDatabase
 
 		# Create with VCore parameter set
 		$databaseName = Get-DatabaseName
-		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Vcore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -AsJob
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -AsJob
 		$job1 | Wait-Job
 		$db = $job1.Output
 
@@ -185,7 +185,7 @@ function Test-CreateDatabaseWithSampleName
 function Test-CreateDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = "eastus2"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -318,7 +318,7 @@ function Test-UpdateVcoreDatabase ()
 
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
-		-Vcore 2 -Edition GeneralPurpose -ComputeGeneration Gen4 -MaxSizeBytes 250GB
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4 -MaxSizeBytes 250GB
 	Assert-AreEqual $db.DatabaseName $databaseName
 
 	try
@@ -336,7 +336,7 @@ function Test-UpdateVcoreDatabase ()
 
 		# Alter with all properties
 		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-MaxSizeBytes 5GB -Vcore 1 -Edition GeneralPurpose -ComputeGeneration Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
+			-MaxSizeBytes 5GB -VCore 1 -Edition GeneralPurpose -ComputeGeneration Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 
@@ -360,7 +360,7 @@ function Test-UpdateVcoreDatabase ()
 
 		# Alter Vcore only
 		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-			-Vcore 2 -AsJob
+			-VCore 2 -AsJob
 		$job | Wait-Job
 		$db1 = $job.Output
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
@@ -392,7 +392,7 @@ function Test-UpdateVcoreDatabase ()
 function Test-UpdateDatabaseWithZoneRedundant ()
 {
 	# Setup
-	$location = "eastus2" 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	
@@ -439,7 +439,7 @@ function Test-UpdateDatabaseWithZoneRedundant ()
 function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 {
 	# Setup
-	$location = "eastus2" 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	
@@ -585,7 +585,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 function Test-GetDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = "eastus2"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{

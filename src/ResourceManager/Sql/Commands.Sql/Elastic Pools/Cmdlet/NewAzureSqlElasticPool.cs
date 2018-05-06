@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
             HelpMessage = "The total shared number of Vcore for the Sql Azure Elastic Pool.")]
         [ValidateNotNullOrEmpty]
-        public int Vcore { get; set; }
+        public int VCore { get; set; }
 
         /// <summary>
         /// Gets or sets the compute generation for the Sql Azure Elastic Pool
@@ -107,6 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
             HelpMessage = "The compute generation for the Sql Azure Elastic Pool. e.g. 'Gen4', 'Gen5'.")]
         [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Gen4", "Gen5")]
         public string ComputeGeneration { get; set; }
 
         /// <summary>
@@ -230,7 +231,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 {
                     Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(Edition),
                     Tier = Edition,
-                    Capacity = Vcore,
+                    Capacity = VCore,
                     Family = ComputeGeneration
                 };
 

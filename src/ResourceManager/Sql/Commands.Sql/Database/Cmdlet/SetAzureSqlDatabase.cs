@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The Vcore number for the Azure Sql database")]
         [Alias("Capacity")]
-        public int Vcore { get; set; }
+        public int VCore { get; set; }
 
         /// <summary>
         /// Gets or sets the ComputeGeneration for the Azure Sql database.
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Location = model.FirstOrDefault().Location,
                 ReadScale = ReadScale,
                 ZoneRedundant =
-                       MyInvocation.BoundParameters.ContainsKey("ZoneRedundant")
+                       ZoneRedundant != null
                            ? (bool?)ZoneRedundant.ToBool()
                            : null
             };
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             {
                 if(!string.IsNullOrWhiteSpace(Edition) ||
                     !string.IsNullOrWhiteSpace(ComputeGeneration) ||
-                    MyInvocation.BoundParameters.ContainsKey("Vcore"))
+                    MyInvocation.BoundParameters.ContainsKey("VCore"))
                 {
                     string skuTier = string.IsNullOrWhiteSpace(Edition) ? databaseCurrentSku.Tier : Edition;
                     string skuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(skuTier);
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                         Name = skuName,
                         Tier = skuTier,
                         Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? databaseCurrentSku.Family : ComputeGeneration,
-                        Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : (int)databaseCurrentSku.Capacity
+                        Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : (int)databaseCurrentSku.Capacity
                     };
                 }
 
