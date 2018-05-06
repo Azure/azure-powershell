@@ -48,11 +48,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         private IAzureSubscription _subscription { get; set; }
 
         /// <summary>
-        /// Gets or sets the AzureSqlElasticPoolCommunicator which has all the needed management clients
-        /// </summary>
-        private AzureSqlElasticPoolCommunicator ElasticPoolCommunicator { get; set; }
-
-        /// <summary>
         /// Constructs a database backup adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
@@ -62,7 +57,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             Context = context;
             _subscription = context.Subscription;
             Communicator = new AzureSqlDatabaseBackupCommunicator(Context);
-            ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Context);
         }
 
         /// <summary>
@@ -555,7 +549,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
             {
                 Location = model.Location,
                 CreateMode = model.CreateMode,
-                //RecoveryServicesRecoveryPointId = resourceId,
                 RestorePointInTime = restorePointInTime,
                 ElasticPoolId = elasticPoolId,
                 Sku = model.Sku

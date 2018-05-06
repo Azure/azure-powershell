@@ -19,7 +19,7 @@
 function Test-ListDatabaseRestorePoints
 {
 	# Setup
-	$location = "Japan East"
+	$location = "Southeast Asia"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 
@@ -73,7 +73,7 @@ function Test-RestoreGeoBackup
 
 	# restore to a vcore db using geobackup
 	Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $geobackup.ResourceGroupName `
-		-ServerName $geobackup.ServerName -ResourceId $geobackup.ResourceId -Edition "GeneralPurpose" -Vcore 2 -ComputeGeneration "Gen4"
+		-ServerName $geobackup.ServerName -ResourceId $geobackup.ResourceId -Edition "GeneralPurpose" -VCore 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestoreDeletedDatabaseBackup
@@ -98,7 +98,7 @@ function Test-RestoreDeletedDatabaseBackup
 	# restore to a vcore db
 	Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredVcoreDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
 		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId -Edition "GeneralPurpose" `
-		-Vcore 2 -ComputeGeneration "Gen4"
+		-VCore 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestorePointInTimeBackup
@@ -118,7 +118,7 @@ function Test-RestorePointInTimeBackup
 
 	# Restore to a Vcore db
 	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $db.ResourceGroupName `
-		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -Vcore 2 -ComputeGeneration 'Gen4'
+		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen4'
 }
 
 function Test-ServerBackupLongTermRetentionVault
@@ -172,7 +172,7 @@ function Test-RestoreLongTermRetentionBackup
 function Test-LongTermRetentionV2Policy($location = "westcentralus")
 {
 	# Setup
-	$location = Get-Location Microsoft.Sql "servers" $location
+	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 	$weeklyRetention1 = "P1W"
@@ -208,7 +208,7 @@ function Test-LongTermRetentionV2Policy($location = "westcentralus")
 function Test-LongTermRetentionV2Backup($location = "westcentralus")
 {
 	# Setup
-	$location = Get-Location Microsoft.Sql "servers" $location
+	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -290,8 +290,8 @@ function Test-LongTermRetentionV2
 
 function Test-DatabaseGeoBackupPolicy
 {
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName alazad-rg
-	$server = Get-AzureRmSqlServer -ServerName testsvr-alazad -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName testdwdb -ResourceGroupName $rg.ResourceGroupName
 
 	# Enable and verify
@@ -372,6 +372,7 @@ function Test-RemoveDatabaseRestorePoint
 
 		Remove-AzureRmSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointCreationDate $restorePoint.RestorePointCreationDate
 
+		Start-Sleep -s 60
 	    # Get restore points from data warehouse database.
 		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 

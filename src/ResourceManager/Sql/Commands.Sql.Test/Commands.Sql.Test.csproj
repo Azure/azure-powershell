@@ -77,7 +77,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.18.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+	  <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.15.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+	  <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>

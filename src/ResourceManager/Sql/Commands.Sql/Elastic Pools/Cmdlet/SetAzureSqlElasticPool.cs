@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
             HelpMessage = "The total shared number of Vcore for the Sql Azure Elastic Pool.")]
         [ValidateNotNullOrEmpty]
-        public int Vcore { get; set; }
+        public int VCore { get; set; }
 
         /// <summary>
         /// Gets or sets the compute generation for the Sql Azure Elastic Pool
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             }
             else
             {
-                if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("Vcore") || !string.IsNullOrWhiteSpace(ComputeGeneration))
+                if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("VCore") || !string.IsNullOrWhiteSpace(ComputeGeneration))
                 {
                     string skuTier = string.IsNullOrWhiteSpace(Edition) ? poolCurrentSku.Tier : Edition;
 
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                     {
                         Name = AzureSqlElasticPoolAdapter.GetPoolSkuName(skuTier),
                         Tier = skuTier,
-                        Capacity = MyInvocation.BoundParameters.ContainsKey("Vcore") ? Vcore : poolCurrentSku.Capacity,
+                        Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : poolCurrentSku.Capacity,
                         Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? poolCurrentSku.Family : ComputeGeneration
                     };
                 }              

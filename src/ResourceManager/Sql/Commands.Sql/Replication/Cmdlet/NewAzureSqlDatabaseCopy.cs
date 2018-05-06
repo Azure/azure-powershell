@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             HelpMessage = "The Vcore numbers of the Azure Sql Database copy.")]
         [Alias("Capacity")]
         [ValidateNotNullOrEmpty]
-        public int Vcore { get; set; }
+        public int VCore { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -197,9 +197,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                         Name = ServiceObjectiveName
                     };
                 }
-                else
+                else if(string.IsNullOrWhiteSpace(ElasticPoolName))
                 {
-                    copyModel.Sku = sourceDb.Sku;
+                    copyModel.Sku = new Management.Sql.Models.Sku()
+                    {
+                        Name = sourceDb.CurrentServiceObjectiveName,
+                        Tier = sourceDb.Edition,
+                        Capacity = sourceDb.Capacity
+                    };
                 }
             }
             else
@@ -208,7 +213,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 {
                     Name = AzureSqlDatabaseAdapter.GetDatabaseSkuName(sourceDb.Sku.Tier),
                     Tier = sourceDb.Sku.Tier,
-                    Capacity = Vcore,
+                    Capacity = VCore,
                     Family = ComputeGeneration
                 };
             }           

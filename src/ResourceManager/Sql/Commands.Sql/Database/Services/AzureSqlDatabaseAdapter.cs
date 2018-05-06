@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             if (string.IsNullOrWhiteSpace(tier))
                 return null;
 
-            switch(tier.ToLower())
+            switch(tier.ToLowerInvariant())
             {
                 case "generalpurpose":
                     return "GP";

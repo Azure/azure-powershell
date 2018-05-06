@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             HelpMessage = "The Vcore numbers of the Azure Sql Database secondary.")]
         [Alias("Capacity")]
         [ValidateNotNullOrEmpty]
-        public int SecondaryVcore { get; set; }
+        public int SecondaryVCore { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -187,9 +187,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                         Name = SecondaryServiceObjectiveName
                     };
                 }
-                else
+                else if(string.IsNullOrWhiteSpace(SecondaryElasticPoolName))
                 {
-                    linkModel.SecondarySku = primaryDb.Sku;
+                    linkModel.SecondarySku = new Management.Sql.Models.Sku()
+                    {
+                        Name = primaryDb.CurrentServiceObjectiveName,
+                        Tier = primaryDb.Edition,
+                        Capacity = primaryDb.Capacity
+                    };
                 }
             }
             else
@@ -198,7 +203,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 {
                     Name = AzureSqlDatabaseAdapter.GetDatabaseSkuName(primaryDb.Sku.Tier),
                     Tier = primaryDb.Sku.Tier,
-                    Capacity = SecondaryVcore,
+                    Capacity = SecondaryVCore,
                     Family = SecondaryComputeGeneration
                 };
             }

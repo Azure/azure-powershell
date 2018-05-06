@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "The Vcore numbers of the restored Azure Sql Database.")]
         [Alias("Capacity")]
         [ValidateNotNullOrEmpty]
-        public int Vcore { get; set; }
+        public int VCore { get; set; }
 
         /// <summary>
         /// The start of the cmdlet.
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 {
                     Name = skuName,
                     Tier = Edition,
-                    Capacity = Vcore,
+                    Capacity = VCore,
                     Family = ComputeGeneration
                 };
             }
