@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
         [ValidateNotNullOrEmpty]
+        [ScopeCompleter]
         public string Scope { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId,
