@@ -121,10 +121,10 @@
     <value>Regenerating Key {0} for account {1}.</value>
   </data>
   <data name="NewAccount_Notice" xml:space="preserve">
-    <value>By creating a Location Based Account, you are consenting to the terms of use (see https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).</value>
+    <value>By creating a Maps Account, you are consenting to the License (see https://azure.microsoft.com/en-us/support/legal/) and Privacy Statement (see https://go.microsoft.com/fwlink/?LinkId=521839&clcid=0x409/).</value>
   </data>
   <data name="NewAccount_ProcessMessage" xml:space="preserve">
-    <value>Creating new Location Based Services account {0}, Sku {1}.</value>
+    <value>Creating new Maps account {0}, Sku {1}.</value>
   </data>
   <data name="RemoveAccount_ProcessMessage" xml:space="preserve">
     <value>Deleting account {0}.</value>

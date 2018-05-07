@@ -12,23 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using TestBase = Microsoft.Azure.Test.TestBase;
+using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Maps.Test
 {
     public class TestController
     {
@@ -41,7 +43,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Test.ScenarioTests
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public Client LocationBasedServicesClient { get; private set; }
+        public Client MapsClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
@@ -121,7 +123,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Test.ScenarioTests
                     helper.RMProfileModule,
                     helper.RMResourceModule,
                     "AzureRM.Resources.ps1",
-                    helper.GetRMModulePath("AzureRM.LocationBasedServices.psd1")
+                    helper.GetRMModulePath("AzureRM.Maps.psd1")
                 );
 
                 try
@@ -150,14 +152,14 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Test.ScenarioTests
         {
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
-            LocationBasedServicesClient = GetLocationBasedServicesManagementClient(context);
+            MapsClient = GetMapsManagementClient(context);
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
 
             helper.SetupManagementClients(
                 ResourceManagementClient,
                 SubscriptionClient,
-                LocationBasedServicesClient,
+                MapsClient,
                 GalleryClient,
                 AuthorizationManagementClient);
         }
@@ -182,7 +184,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Test.ScenarioTests
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private Client GetLocationBasedServicesManagementClient(RestTestFramework.MockContext context)
+        private Client GetMapsManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<Client>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }

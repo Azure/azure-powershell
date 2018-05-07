@@ -12,22 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.LocationBasedServices.Properties;
-using Microsoft.Azure.Commands.LocationBasedServices.Models;
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
 using System.Globalization;
 using System.Management.Automation;
-using LocationBasedServicesModels = Microsoft.Azure.Management.LocationBasedServices.Models;
+using Microsoft.Azure.Commands.Maps.Models;
+using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Management.LocationBasedServices.Models;
+using MapsModels = Microsoft.Azure.Management.LocationBasedServices.Models;
+using Microsoft.Azure.Commands.Maps.Properties;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices
+namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
     /// <summary>
-    /// Regnerate Location Based Services Account Key (Primary or Secondary)
+    /// Regnerate Maps Account Key (Primary or Secondary)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, LocationBasedServicesAccountKeyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet), 
-     OutputType(typeof(LocationBasedServicesModels.LocationBasedServicesAccountKeys))]
-    public class NewAzureLocationBasedServicesAccountKeyCommand : LocationBasedServicesAccountBaseCmdlet
+    [Cmdlet(VerbsCommon.New, MapsAccountKeyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet), 
+     OutputType(typeof(LocationBasedServicesAccountKeys))]
+    public class NewAzureMapsAccountKey : MapsAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameParameterSet,
-            HelpMessage = "Location Based Services Account Name.")]
-        [Alias(LocationBasedServicesAccountNameAlias, AccountNameAlias)]
+            HelpMessage = "Maps Account Name.")]
+        [Alias(MapsAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -56,22 +56,22 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Location Based Services Account Key.")]
+            HelpMessage = "Maps Account Key.")]
         [ValidateSet("Primary", "Secondary")]
         public string KeyName { get; set; }
 
         [Parameter(
             ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "Location Based Services Account piped from Get-AzureRmLocationBasedServicesAccount.",
+            HelpMessage = "Maps Account piped from Get-AzureRmMapsAccount.",
             ValueFromPipeline = true)]
-        public PSLocationBasedServicesAccount InputObject { get; set; }
+        public PSMapsAccount InputObject { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "Location Based Services Account ResourceId.")]
+            HelpMessage = "Maps Account ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
                     && !string.IsNullOrEmpty(name)
                     && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccountKey_ProcessMessage, this.KeyName, name)))
                 {
-                    var keys = this.LocationBasedServicesClient.Accounts.RegenerateKeys(
+                    var keys = this.MapsClient.Accounts.RegenerateKeys(
                         rgName,
                         name,
                         new LocationBasedServicesKeySpecification()

@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.LocationBasedServices.Models;
-using Microsoft.Azure.Management.LocationBasedServices;
 using System.Management.Automation;
+using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Commands.Maps.Models;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices
+namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
     /// <summary>
-    /// Get Location Based Services Account by name, all accounts under resource group or all accounts under the subscription
+    /// Get Maps Account by name, all accounts under resource group or all accounts under the subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, LocationBasedServicesAccountNounStr, DefaultParameterSetName = ResourceGroupParameterSet), 
-     OutputType(typeof(PSLocationBasedServicesAccount))]
-    public class GetAzureLocationBasedServiceAccountCommand : LocationBasedServicesAccountBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, MapsAccountNounStr, DefaultParameterSetName = ResourceGroupParameterSet), 
+     OutputType(typeof(PSMapsAccount))]
+    public class GetAzureMapsAccount : MapsAccountBaseCmdlet
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         protected const string AccountNameParameterSet = "AccountNameParameterSet";
@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AccountNameParameterSet,
-            HelpMessage = "Location Based Services Account Name.")]
-        [Alias(LocationBasedServicesAccountNameAlias, AccountNameAlias)]
+            HelpMessage = "Maps Account Name.")]
+        [Alias(MapsAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "Location Based Services Account ResourceId.")]
+            HelpMessage = "Maps Account ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -73,21 +73,21 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
                 {
                     case AccountNameParameterSet:
                     {
-                        var locationBasedServicesAccount = this.LocationBasedServicesClient.Accounts.Get(this.ResourceGroupName, this.Name);
-                        WriteLocationBasedServicesAccount(locationBasedServicesAccount);
+                        var mapsAccount = this.MapsClient.Accounts.Get(this.ResourceGroupName, this.Name);
+                        WriteMapsAccount(mapsAccount);
                         break;
                     }
                     case ResourceGroupParameterSet:
                     {
                         if (string.IsNullOrEmpty(this.ResourceGroupName))
                         {
-                            var locationBasedServicesAccounts = this.LocationBasedServicesClient.Accounts.ListBySubscription();
-                            WriteLocationBasedServicesAccountList(locationBasedServicesAccounts);
+                            var mapsAccounts = this.MapsClient.Accounts.ListBySubscription();
+                            WriteMapsAccountList(mapsAccounts);
                         }
                         else
                         {
-                            var locationBasedServicesAccounts = this.LocationBasedServicesClient.Accounts.ListByResourceGroup(this.ResourceGroupName);
-                            WriteLocationBasedServicesAccountList(locationBasedServicesAccounts);
+                            var mapsAccounts = this.MapsClient.Accounts.ListByResourceGroup(this.ResourceGroupName);
+                            WriteMapsAccountList(mapsAccounts);
                         }
                         break;
                     }
@@ -98,8 +98,8 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
 
                         if (ValidateAndExtractName(this.ResourceId, out resourceGroupName, out resourceName))
                         {
-                            var locationBasedServicesAccount = this.LocationBasedServicesClient.Accounts.Get(resourceGroupName, resourceName);
-                            WriteLocationBasedServicesAccount(locationBasedServicesAccount);
+                            var mapsAccount = this.MapsClient.Accounts.Get(resourceGroupName, resourceName);
+                            WriteMapsAccount(mapsAccount);
                         }
                         break;
                     }

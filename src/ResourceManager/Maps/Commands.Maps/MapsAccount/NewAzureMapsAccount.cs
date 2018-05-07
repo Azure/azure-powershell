@@ -12,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
-using Microsoft.Azure.Commands.LocationBasedServices.Properties;
 using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
-using LocationBasedServicesModels = Microsoft.Azure.Commands.LocationBasedServices.Models;
+using Microsoft.Azure.Commands.Maps.Properties;
+using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Management.LocationBasedServices.Models;
+using Microsoft.Azure.Commands.Maps.Models;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices
+namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
     /// <summary>
-    /// Create a new Location Based Services Account, specify it's type (resource kind)
+    /// Create a new Maps Account, specify it's type (resource kind)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, LocationBasedServicesAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(LocationBasedServicesModels.PSLocationBasedServicesAccount))]
-    public class NewAzureLocationBasedServicesAccountCommand : LocationBasedServicesAccountBaseCmdlet
+    [Cmdlet(VerbsCommon.New, MapsAccountNounStr, SupportsShouldProcess = true), OutputType(typeof(PSMapsAccount))]
+    public class NewAzureMapsAccount : MapsAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Location Based Services Account Name.")]
-        [Alias(LocationBasedServicesAccountNameAlias, AccountNameAlias)]
+            HelpMessage = "Maps Account Name.")]
+        [Alias(MapsAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         [ValidatePattern("^[a-zA-Z0-9][a-zA-Z0-9_.-]*$")]
         [ValidateLength(2, 64)]
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Location Based Services Account Sku Name.")]
+            HelpMessage = "Maps Account Sku Name.")]
         [ValidateSet("S0")]
         public string SkuName { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Location Based Services Account Tags.")]
+            HelpMessage = "Maps Account Tags.")]
         [Alias(TagsAlias)]
         [ValidateNotNull]
         [AllowEmptyCollection]
@@ -95,14 +95,14 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
                         }
                     }
 
-                    var createAccountResponse = this.LocationBasedServicesClient.Accounts.CreateOrUpdate(
+                    var createAccountResponse = this.MapsClient.Accounts.CreateOrUpdate(
                                     this.ResourceGroupName,
                                     this.Name,
                                     createParameters);
 
-                    var locationBasedServicesAccount = this.LocationBasedServicesClient.Accounts.Get(this.ResourceGroupName, this.Name);
+                    var mapsAccount = this.MapsClient.Accounts.Get(this.ResourceGroupName, this.Name);
 
-                    this.WriteLocationBasedServicesAccount(locationBasedServicesAccount);
+                    this.WriteMapsAccount(mapsAccount);
                 }
             });
         }

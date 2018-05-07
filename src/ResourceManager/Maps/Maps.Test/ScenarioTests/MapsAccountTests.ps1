@@ -14,26 +14,26 @@
 
 <#
 .SYNOPSIS
-Test New-AzureRmLocationBasedServicesAccount
+Test New-AzureRmMapsAccount
 #>
-function Test-NewAzureRmLocationBasedServicesAccount
+function Test-NewAzureRmMapsAccount
 {
     # Setup
-    $rgname = Get-LocationBasedServicesManagementTestResourceName;
+    $rgname = Get-MapsManagementTestResourceName;
 
     try
     {
         # Test
         $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
+        $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzureRmResourceGroup -Name $rgname -Location $location;
 
-        $createdAccount = New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        $createdAccount = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         Assert-NotNull $createdAccount;
         # Call create again, expect to get the same account
-        $createdAccountAgain = New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        $createdAccountAgain = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         Assert-NotNull $createdAccountAgain
         Assert-AreEqual $createdAccount.Id $createdAccountAgain.Id;
         Assert-AreEqual $createdAccount.ResourceGroupName $createdAccountAgain.ResourceGroupName;
@@ -41,7 +41,7 @@ function Test-NewAzureRmLocationBasedServicesAccount
         Assert-AreEqual $createdAccount.Location $createdAccountAgain.Location;
         Assert-AreEqual $createdAccount.Sku.Name $createdAccountAgain.Sku.Name;
         
-        Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -52,38 +52,38 @@ function Test-NewAzureRmLocationBasedServicesAccount
 
 <#
 .SYNOPSIS
-Test Remove-AzureRmLocationBasedServicesAccount
+Test Remove-AzureRmMapsAccount
 #>
-function Test-RemoveAzureRmLocationBasedServicesAccount
+function Test-RemoveAzureRmMapsAccount
 {
     # Setup
-    $rgname = Get-LocationBasedServicesManagementTestResourceName;
+    $rgname = Get-MapsManagementTestResourceName;
 
     try
     {
         # Test
         $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
+		$location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzureRmResourceGroup -Name $rgname -Location $location;
 
-        $createdAccount = New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
-        Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false;
-        $accountGotten = Get-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname;
+        $createdAccount = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false;
+        $accountGotten = Get-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname;
         Assert-Null $accountGotten
 
         # create it again and test removal by id
-        $createdAccount2 = New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        $createdAccount2 = New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
 
         $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        Remove-AzureRmLocationBasedServicesAccount -ResourceId $resourceid -Confirm:$false;
-        $accountGotten2 = Get-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname;
+        Remove-AzureRmMapsAccount -ResourceId $resourceid -Confirm:$false;
+        $accountGotten2 = Get-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname;
         Assert-Null $accountGotten2
 
-        Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -94,25 +94,25 @@ function Test-RemoveAzureRmLocationBasedServicesAccount
 
 <#
 .SYNOPSIS
-Test Get-AzureRmLocationBasedServicesAccount
+Test Get-AzureRmMapsAccount
 #>
-function Test-GetAzureLocationBasedServicesAccount
+function Test-GetAzureMapsAccount
 {
     # Setup
-    $rgname = Get-LocationBasedServicesManagementTestResourceName;
+    $rgname = Get-MapsManagementTestResourceName;
 
     try
     {
         # Test
         $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
+        $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        New-AzureRmResourceGroup -Name $rgname -Location $location;
 
-        New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
 
-        $account = Get-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname;
+        $account = Get-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname;
         
         Assert-AreEqual $accountname $account.AccountName;
         Assert-AreEqual $skuname $account.Sku.Name;
@@ -121,23 +121,23 @@ function Test-GetAzureLocationBasedServicesAccount
         $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        $account2 = Get-AzureRmLocationBasedServicesAccount -ResourceId $resourceid;
+        $account2 = Get-AzureRmMapsAccount -ResourceId $resourceid;
         Assert-AreEqual $accountname $account2.AccountName;
         Assert-AreEqual $skuname $account2.Sku.Name;
 
         # get all accounts in the RG 
-        $accounts = Get-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname;
+        $accounts = Get-AzureRmMapsAccount -ResourceGroupName $rgname;
         $numberOfAccountsInRG = ($accounts | measure).Count;
         Assert-AreEqual $accountname $accounts[0].AccountName;
         Assert-AreEqual $skuname $accounts[0].Sku.Name;
 
         # get all accounts in the subscription
-        $allAccountsInSubscription = Get-AzureRmLocationBasedServicesAccount;
+        $allAccountsInSubscription = Get-AzureRmMapsAccount;
         $numberOfAccountsInSubscription = ($allAccountsInSubscription | measure).Count;
 
         Assert-True { $numberOfAccountsInSubscription -ge $numberOfAccountsInRG }
         
-        Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -148,24 +148,24 @@ function Test-GetAzureLocationBasedServicesAccount
 
 <#
 .SYNOPSIS
-Test Get-AzureRmLocationBasedServicesAccountKey
+Test Get-AzureRmMapsAccountKey
 #>
-function Test-GetAzureRmLocationBasedServicesAccountKey
+function Test-GetAzureRmMapsAccountKey
 {
     # Setup
-    $rgname = Get-LocationBasedServicesManagementTestResourceName;
+    $rgname = Get-MapsManagementTestResourceName;
 
     try
     {
         # Test
         $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
+        $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $location;
+        New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         
-        $keys = Get-AzureRmLocationBasedServicesAccountKey -ResourceGroupName $rgname -Name $accountname;
+        $keys = Get-AzureRmMapsAccountKey -ResourceGroupName $rgname -Name $accountname;
         
         Assert-NotNull $keys.PrimaryKey;
         Assert-NotNull $keys.SecondaryKey;
@@ -175,11 +175,11 @@ function Test-GetAzureRmLocationBasedServicesAccountKey
         $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        $keys2 = Get-AzureRmLocationBasedServicesAccountKey -ResourceId $resourceid;
+        $keys2 = Get-AzureRmMapsAccountKey -ResourceId $resourceid;
         Assert-AreEqual $keys.PrimaryKey $keys2.PrimaryKey;
         Assert-AreEqual $keys.SecondaryKey $keys2.SecondaryKey;
 
-        Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -190,33 +190,33 @@ function Test-GetAzureRmLocationBasedServicesAccountKey
 
 <#
 .SYNOPSIS
-Test New-AzureRmLocationBasedServicesAccountKey
+Test New-AzureRmMapsAccountKey
 #>
-function Test-NewAzureRmLocationBasedServicesAccountKey
+function Test-NewAzureRmMapsAccountKey
 {
     # Setup
-    $rgname = Get-LocationBasedServicesManagementTestResourceName;
+    $rgname = Get-MapsManagementTestResourceName;
     
     try
     {
         # Test
         $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
+        $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $location;
+        New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
         
-        $originalKeys = Get-AzureRmLocationBasedServicesAccountKey -ResourceGroupName $rgname -Name $accountname;
+        $originalKeys = Get-AzureRmMapsAccountKey -ResourceGroupName $rgname -Name $accountname;
 
         # Update primary
-        $updatedKeys = New-AzureRmLocationBasedServicesAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Primary -Confirm:$false;
+        $updatedKeys = New-AzureRmMapsAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Primary -Confirm:$false;
             
         Assert-AreNotEqual $originalKeys.PrimaryKey $updatedKeys.PrimaryKey;
         Assert-AreEqual $originalKeys.SecondaryKey $updatedKeys.SecondaryKey;
 
         # Update secondary
-        $updatedKeys2 = New-AzureRmLocationBasedServicesAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Secondary -Confirm:$false;
+        $updatedKeys2 = New-AzureRmMapsAccountKey -ResourceGroupName $rgname -Name $accountname -KeyName Secondary -Confirm:$false;
 
         Assert-AreEqual $updatedKeys.PrimaryKey $updatedKeys2.PrimaryKey;
         Assert-AreNotEqual $updatedKeys.SecondaryKey $updatedKeys2.SecondaryKey;
@@ -225,13 +225,13 @@ function Test-NewAzureRmLocationBasedServicesAccountKey
         $resource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $accountname;
         $resourceid = $resource.ResourceId;
 
-        $updatedKeys3 = New-AzureRmLocationBasedServicesAccountKey -ResourceId $resourceid -KeyName Primary -Confirm:$false;
+        $updatedKeys3 = New-AzureRmMapsAccountKey -ResourceId $resourceid -KeyName Primary -Confirm:$false;
             
         Assert-AreNotEqual $updatedKeys2.PrimaryKey $updatedKeys3.PrimaryKey;
         Assert-AreEqual $updatedKeys2.SecondaryKey $updatedKeys3.SecondaryKey;
 
 
-        Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {
@@ -243,30 +243,30 @@ function Test-NewAzureRmLocationBasedServicesAccountKey
 
 <#
 .SYNOPSIS
-Test Get-AzureRmLocationBasedServicesAccount | Get-AzureRmLocationBasedServicesAccountKey
+Test Get-AzureRmMapsAccount | Get-AzureRmMapsAccountKey
 #>
 function Test-PipingGetAccountToGetKey
 {
     # Setup
-    $rgname = Get-LocationBasedServicesManagementTestResourceName;
+    $rgname = Get-MapsManagementTestResourceName;
 
     try
     {
         # Test
         $accountname = 'lbsa' + $rgname;
         $skuname = 'S0';
-        $loc = Get-Location 'Microsoft.LocationBasedServices' 'accounts' 'West US';
+        $location = 'West US';
 
-        New-AzureRmResourceGroup -Name $rgname -Location $loc;
-        New-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $location;
+        New-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -SkuName $skuname -Force;
 
-        $keys = Get-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname | Get-AzureRmLocationBasedServicesAccountKey;
+        $keys = Get-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname | Get-AzureRmMapsAccountKey;
         Assert-NotNull $keys
         Assert-NotNull $keys.PrimaryKey
         Assert-NotNull $keys.SecondaryKey
         Assert-AreNotEqual $keys.PrimaryKey $keys.SecondaryKey;
 
-        Retry-IfException { Remove-AzureRmLocationBasedServicesAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
+        Retry-IfException { Remove-AzureRmMapsAccount -ResourceGroupName $rgname -Name $accountname -Confirm:$false; }
     }
     finally
     {

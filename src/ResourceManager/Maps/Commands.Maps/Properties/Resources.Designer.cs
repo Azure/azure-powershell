@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.LocationBasedServices.Properties {
+namespace Microsoft.Azure.Commands.Maps.Properties {
     using System;
     
     
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.LocationBasedServices.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Maps.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By creating a Location Based Account, you are consenting to the terms of use (see https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/)..
+        ///   Looks up a localized string similar to By creating a Maps Account, you are consenting to the License (see https://azure.microsoft.com/en-us/support/legal/) and Privacy Statement (see https://go.microsoft.com/fwlink/?LinkId=521839&clcid=0x409/)..
         /// </summary>
         internal static string NewAccount_Notice {
             get {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating new Location Based Services account {0}, Sku {1}..
+        ///   Looks up a localized string similar to Creating new Maps account {0}, Sku {1}..
         /// </summary>
         internal static string NewAccount_ProcessMessage {
             get {

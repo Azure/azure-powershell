@@ -1,11 +1,11 @@
-﻿---
-external help file: Microsoft.Azure.Commands.LocationBasedServices.dll-Help.xml
-Module Name: AzureRM.LocationBasedServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.locationbasedservices/new-azurermlocationbasedservicesaccountkey
+---
+external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
+Module Name: AzureRM.Maps
+online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmLocationBasedServicesAccountKey
+# New-AzureRmMapsAccountKey
 
 ## SYNOPSIS
 Regenerates an account key.
@@ -14,30 +14,30 @@ Regenerates an account key.
 
 ### NameParameterSet (Default)
 ```
-New-AzureRmLocationBasedServicesAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
+New-AzureRmMapsAccountKey [-ResourceGroupName] <String> [-Name] <String> [-KeyName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-New-AzureRmLocationBasedServicesAccountKey [-KeyName] <String> [-InputObject <PSLocationBasedServicesAccount>]
+New-AzureRmMapsAccountKey [-KeyName] <String> [-InputObject <PSMapsAccount>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-New-AzureRmLocationBasedServicesAccountKey [-KeyName] <String> [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmMapsAccountKey [-KeyName] <String> [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmLocationBasedServicesAccountKey** cmdlet regenerates an API key for a Location Based Services account.
+The New-AzureRmMapsAccountKey cmdlet regenerates an API key for a Azure Maps account.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzureRmLocationBasedServicesAccountKey -ResourceGroupName MyResourceGroup -Name MyAccount -KeyName Primary
+```powershell
+PS C:\> New-AzureRmMapsAccountKey -ResourceGroupName MyResourceGroup -Name MyAccount -KeyName Primary
 
 Confirm
 Are you sure you want to perform this action?
@@ -46,14 +46,14 @@ Performing the operation "Regenerating Key Primary for account MyAccount." on ta
 
 Id                                                                                                                                              PrimaryKey                                  SecondaryKey
 --                                                                                                                                              ----------                                  ------------
-/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount ******************************************* *******************************************
+/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount ******************************************* *******************************************
 ```
 
 Regenerates the Primary API Key for the account MyAccount in the resource group MyResourceGroup.
 
 ### Example 2
-```
-PS C:\> New-AzureRmLocationBasedServicesAccountKey -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount -KeyName Secondary
+```powershell
+PS C:\> New-AzureRmMapsAccountKey -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount -KeyName Secondary
 
 Confirm
 Are you sure you want to perform this action?
@@ -62,15 +62,15 @@ Performing the operation "Regenerating Key Secondary for account MyAccount." on 
 
 Id                                                                                                                                              PrimaryKey                                  SecondaryKey
 --                                                                                                                                              ----------                                  ------------
-/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount ******************************************* *******************************************
+/subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount ******************************************* *******************************************
 ```
 
-Regenerates the Secondary API Key for the specified Location Based Services Account.
+Regenerates the Secondary API Key for the specified Azure Maps Account.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -85,10 +85,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Location Based Services Account piped from [Get-AzureRmLocationBasedServicesAccount](Get-AzureRmLocationBasedServicesAccount.md).
+Maps Account piped from Get-AzureRmMapsAccount.
 
 ```yaml
-Type: PSLocationBasedServicesAccount
+Type: PSMapsAccount
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyName
-Location Based Services Account Key.
+Maps Account Key.
 
 ```yaml
 Type: String
@@ -116,12 +116,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Location Based Services Account Name.
+Maps Account Name.
 
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
-Aliases: LocationBasedServicesAccountName, AccountName
+Aliases: MapsAccountName, AccountName
 
 Required: True
 Position: 1
@@ -146,7 +146,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Location Based Services Account ResourceId.
+Maps Account ResourceId.
+
 ```yaml
 Type: String
 Parameter Sets: ResourceIdParameterSet
@@ -196,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.LocationBasedServices.NewAzureLocationBasedServicesAccountKeyCommand+KeyNameType
+Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
 
 ## OUTPUTS
 

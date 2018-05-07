@@ -12,20 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
-using System;
-using System.Collections.Generic;
-using LocationBasedServicesModels = Microsoft.Azure.Management.LocationBasedServices.Models;
+using MapsModels = Microsoft.Azure.Management.LocationBasedServices.Models;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices.Models
+namespace Microsoft.Azure.Commands.Maps.Models
 {
-    public class PSLocationBasedServicesAccountKeys
+    public class PSMapsAccountKeys
     {
-        public PSLocationBasedServicesAccountKeys(LocationBasedServicesModels.LocationBasedServicesAccountKeys locationBasedServicesAccountKeys)
+        public PSMapsAccountKeys(MapsModels.LocationBasedServicesAccountKeys mapsAccountKeys)
         {
-            this.PrimaryKey = locationBasedServicesAccountKeys.PrimaryKey;
-            this.SecondaryKey = locationBasedServicesAccountKeys.SecondaryKey;
+            this.PrimaryKey = mapsAccountKeys.PrimaryKey;
+            this.SecondaryKey = mapsAccountKeys.SecondaryKey;
         }
 
         public string PrimaryKey { get; private set; }

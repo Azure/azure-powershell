@@ -1,48 +1,42 @@
-﻿---
-external help file: Microsoft.Azure.Commands.LocationBasedServices.dll-Help.xml
-Module Name: AzureRM.LocationBasedServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.locationbasedservices/new-azurermlocationbasedservicesaccount
+---
+external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
+Module Name: AzureRM.Maps
+online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmLocationBasedServicesAccount
+# New-AzureRmMapsAccount
 
 ## SYNOPSIS
-Creates a Location Based Services account.
+Creates an Azure Maps account.
 
 ## SYNTAX
 
 ```
-New-AzureRmLocationBasedServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
- [-Tag <Hashtable[]>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmMapsAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String> [-Tag <Hashtable[]>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmLocationBasedServicesAccount** cmdlet creates a Location Based Services account with the
-specified SKU.
+The New-AzureRmMapsAccount cmdlet creates an Azure Maps account with the specified SKU.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> New-AzureRmLocationBasedServicesAccount -ResourceGroupName MyResourceGroup -Name MyAccount -SkuName S0 -Tags @{Name="test";Value="true"}
-
-Notice
-By creating a Location Based Account, you are consenting to the terms of use (see https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): y
+```powershell
+PS C:\> New-AzureRmMapsAccount -ResourceGroupName MyResourceGroup -Name MyAccount -SkuName S0 -Tags @{Name="test";Value="true"}
 
 ResourceGroupName AccountName Id
 ----------------- ----------- --
-MyResourceGroup   MyAccount   /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount
+MyResourceGroup   MyAccount   /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
 ```
 
-Creates a new Location Based Services account named MyAccount in the resource group MyResourceGroup with the SKU S0 and a tag.
+Creates a new Azure Maps account named MyAccount in the resource group MyResourceGroup with the SKU S0 and a tag.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -72,12 +66,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Location Based Services Account Name.
+Maps Account Name.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: LocationBasedServicesAccountName, AccountName
+Aliases: MapsAccountName, AccountName
 
 Required: True
 Position: 1
@@ -102,11 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Location Based Services Account Sku Name.
-
-The acceptable values for this parameter are:
-
-- S0
+Maps Account Sku Name.
 
 ```yaml
 Type: String
@@ -122,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Location Based Services Account Tags.
+Maps Account Tags.
 
 ```yaml
 Type: Hashtable[]
@@ -176,10 +166,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount
+### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
 
 ## NOTES
-
-Creating a Location Based Services account requires answering a prompt to accept terms (see https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).  The -Force parameter can be used to indicate acceptance of the terms.
 
 ## RELATED LINKS

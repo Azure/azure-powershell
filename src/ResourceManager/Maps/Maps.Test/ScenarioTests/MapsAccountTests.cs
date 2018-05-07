@@ -13,22 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.Commands.LocationBasedServices.Test.ScenarioTests;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace LocationBasedServices.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Maps.Test.ScenarioTests
 {
-    public class LocationBasedServicesAccountTests : RMTestBase
+    public class MapsAccountTests : RMTestBase
     {
         XunitTracingInterceptor traceInterceptor;
 
-        public LocationBasedServicesAccountTests(ITestOutputHelper output)
+        public MapsAccountTests(ITestOutputHelper output)
         {
             this.traceInterceptor = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(this.traceInterceptor);
@@ -39,35 +37,35 @@ namespace LocationBasedServices.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccounts()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureLocationBasedServicesAccount");
+            TestController.NewInstance.RunPsTest("Test-GetAzureMapsAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureRmLocationBasedServicesAccount");
+            TestController.NewInstance.RunPsTest("Test-NewAzureRmMapsAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-RemoveAzureRmLocationBasedServicesAccount");
+            TestController.NewInstance.RunPsTest("Test-RemoveAzureRmMapsAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAccountKeys()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureRmLocationBasedServicesAccountKey");
+            TestController.NewInstance.RunPsTest("Test-GetAzureRmMapsAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAccountKey()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureRmLocationBasedServicesAccountKey");
+            TestController.NewInstance.RunPsTest("Test-NewAzureRmMapsAccountKey");
         }
 
         [Fact]

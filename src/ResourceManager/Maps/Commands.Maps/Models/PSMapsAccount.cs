@@ -12,24 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Management.LocationBasedServices.Models;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices.Models
+namespace Microsoft.Azure.Commands.Maps.Models
 {
-    public class PSLocationBasedServicesAccount
+    public class PSMapsAccount
     {
-        public PSLocationBasedServicesAccount(LocationBasedServicesAccount locationBasedServicesAccount)
+        public PSMapsAccount(LocationBasedServicesAccount mapsAccount)
         {
-            this.ResourceGroupName = ParseResourceGroupFromId(locationBasedServicesAccount.Id);
-            this.AccountName = locationBasedServicesAccount.Name;
-            this.Id = locationBasedServicesAccount.Id;
-            this.Location = locationBasedServicesAccount.Location;
-            this.Sku = new PSLocationBasedServicesAccountSku(locationBasedServicesAccount.Sku);
-            this.ResourceType = locationBasedServicesAccount.Type;
-            this.Tags = locationBasedServicesAccount.Tags;
+            this.ResourceGroupName = ParseResourceGroupFromId(mapsAccount.Id);
+            this.AccountName = mapsAccount.Name;
+            this.Id = mapsAccount.Id;
+            this.Location = mapsAccount.Location;
+            this.Sku = new PSMapsAccountSku(mapsAccount.Sku);
+            this.ResourceType = mapsAccount.Type;
+            this.Tags = mapsAccount.Tags;
         }
 
         public string ResourceGroupName { get; private set; }
@@ -40,15 +40,15 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Models
 
         public string Location { get; private set; }
 
-        public PSLocationBasedServicesAccountSku Sku { get; private set; }
+        public PSMapsAccountSku Sku { get; private set; }
 
         public string ResourceType { get; private set; }
 
         public IDictionary<string, string> Tags { get; private set; }
 
-        public static PSLocationBasedServicesAccount Create(LocationBasedServicesAccount locationBasedServicesAccount)
+        public static PSMapsAccount Create(LocationBasedServicesAccount mapsAccount)
         {
-            var result = new PSLocationBasedServicesAccount(locationBasedServicesAccount);
+            var result = new PSMapsAccount(mapsAccount);
             return result;
         }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices.Models
         }
 
         /// <summary>
-        /// Return a string representation of this location based services account
+        /// Return a string representation of this Maps account
         /// </summary>
         /// <returns>null</returns>
         public override string ToString()
