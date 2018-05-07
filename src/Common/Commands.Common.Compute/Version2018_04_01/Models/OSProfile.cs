@@ -63,8 +63,11 @@ namespace Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models
         /// requirements:** 3 out of 4 conditions below need to be fulfilled
         /// &lt;br&gt; Has lower characters &lt;br&gt;Has upper characters
         /// &lt;br&gt; Has a digit &lt;br&gt; Has a special character (Regex
+        // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="comment about disallowed passwords")]
         /// match [\W_]) &lt;br&gt;&lt;br&gt; **Disallowed values:** "abc@123",
+        // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="comment about disallowed passwords")]
         /// "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1",
+        // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="comment about disallowed passwords")]
         /// "Password!", "Password1", "Password22", "iloveyou!"
         /// &lt;br&gt;&lt;br&gt; For resetting the password, see [How to reset
         /// the Remote Desktop service or its login password in a Windows
@@ -157,7 +160,9 @@ namespace Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models
         /// characters &amp;lt;br&amp;gt; Has a digit &amp;lt;br&amp;gt; Has a
         /// special character (Regex match [\W_])
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; **Disallowed values:**
+        // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="comment about disallowed passwords")]
         /// "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word",
+        // [SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="comment about disallowed passwords")]
         /// "pass@word1", "Password!", "Password1", "Password22", "iloveyou!"
         /// &amp;lt;br&amp;gt;&amp;lt;br&amp;gt; For resetting the password,
         /// see [How to reset the Remote Desktop service or its login password
