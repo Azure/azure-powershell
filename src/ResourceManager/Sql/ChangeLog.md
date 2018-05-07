@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
+* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with "Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy".
 
 ## Version 4.4.1
 * Set minimum dependency of module to PowerShell 5.0
@@ -31,7 +32,6 @@
 ## Version 4.3.1
 * Fix issue with Default Resource Group in CloudShell
 * Fixed issue with cleaning up scripts in build
-* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with "Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy".
 
 ## Version 4.3.0
 * Fixed issue with importing aliases
