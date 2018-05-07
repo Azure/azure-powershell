@@ -57,14 +57,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                     (ValidationsConfiguration)validationsConfigurationJsonSerializer.ReadObject(configStream);
             }
 
-            /*
-            string pathToExecutingAssembly = ExecutingAssemblyPath();
-            string pathToConfigFile = Path.Combine(pathToExecutingAssembly, Configuration.ConfigFilename);
-            Stream configStream = new FileStream(pathToConfigFile, FileMode.Open, FileAccess.Read);
-            DataContractJsonSerializer validationsConfigurationJsonSerializer = new DataContractJsonSerializer(typeof(ValidationsConfiguration));
-            _validationsConfiguration =
-                (ValidationsConfiguration) validationsConfigurationJsonSerializer.ReadObject(configStream);
-            */        
+            // this code loads configuration from file
+            // commented out due to a decision of using embedded resource instead
+            //
+            //string pathToExecutingAssembly = ExecutingAssemblyPath();
+            //string pathToConfigFile = Path.Combine(pathToExecutingAssembly, Configuration.ConfigFilename);
+            //Stream configStream = new FileStream(pathToConfigFile, FileMode.Open, FileAccess.Read);
+            //DataContractJsonSerializer validationsConfigurationJsonSerializer = new DataContractJsonSerializer(typeof(ValidationsConfiguration));
+            //_validationsConfiguration =
+            //    (ValidationsConfiguration) validationsConfigurationJsonSerializer.ReadObject(configStream);
 		}
 
         private string ExecutingAssemblyPath()

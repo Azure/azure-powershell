@@ -16,12 +16,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             _computerName = "windows-2012-r2.redmond.corp.microsoft.com";
         }
 
-        [Fact]
+        [Fact(Skip = "Depends on external artefacts")]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenComputerNameDoestNotExistsItThrows()
         {
             // Prepare
-            InvokeAzureRMStorageSyncCompatibilityCheckCmdlet cmdlet = new InvokeAzureRMStorageSyncCompatibilityCheckCmdlet()
+            InvokeAzureRmStorageSyncCompatibilityCheckCmdlet cmdlet = new InvokeAzureRmStorageSyncCompatibilityCheckCmdlet()
             {
                 ComputerName = "non_existent_computer_name"
             };
@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 
         }
 
-        [Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]  
+        [Fact(Skip = "Depends on external artefacts")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]  
         public void WhenCredentialsAreIncorrectItThrows()
         {
             SecureString secureInvalidPassword = CreateSecureStringFrom("invalid_password");
-            InvokeAzureRMStorageSyncCompatibilityCheckCmdlet cmdlet = new InvokeAzureRMStorageSyncCompatibilityCheckCmdlet
+            InvokeAzureRmStorageSyncCompatibilityCheckCmdlet cmdlet = new InvokeAzureRmStorageSyncCompatibilityCheckCmdlet
             {
                 ComputerName = _computerName,
                 Credential = new PSCredential("invalid_username", secureInvalidPassword)
