@@ -102,6 +102,8 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 3: Policy assignment at resource group level with policy parameter file
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
+
+
 ```
 {
     "listOfAllowedLocations":  {
@@ -128,7 +130,6 @@ The command stores that object in the $Policy variable.
 
 The final command assigns the policy in $Policy at the level of a resource group using the policy parameter file AllowedLocations.json from the local working directory.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
-
 
 ## PARAMETERS
 

@@ -62,6 +62,9 @@
     <Compile Include="BreakingChangeAnalyzer\ParameterMetadataHelper.cs" />
     <Compile Include="BreakingChangeAnalyzer\ParameterSetMetadataHelper.cs" />
     <Compile Include="BreakingChangeAnalyzer\TypeMetadataHelper.cs" />
+    <Compile Include="BreakingChangeAttributesAnalyzer\BreakingChangeAttributesAnalyzer.cs" />
+    <Compile Include="BreakingChangeAttributesAnalyzer\TextFileLogger.cs" />
+    <Compile Include="BreakingChangeAttributesAnalyzer\CmdletBreakingChangeAttributeLoader.cs" />
     <Compile Include="DependencyAnalyzer\DependencyMap.cs" />
     <Compile Include="CmdlineArgParsing\StaticAnalysisArgs.cs" />
     <Compile Include="DependencyAnalyzer\AssemblyNameComparer.cs" />
@@ -117,6 +120,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tools.Common\Tools.Common.csproj">
