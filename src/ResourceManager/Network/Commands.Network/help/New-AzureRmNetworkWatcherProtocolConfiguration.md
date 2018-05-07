@@ -1,64 +1,69 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkwatchersecuritygroupview
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmNetworkWatcherSecurityGroupView
+# New-AzureRmNetworkWatcherProtocolConfiguration
 
 ## SYNOPSIS
-View the configured and effective network security group rules applied on a VM.
+Creates a new protocol configuration object.
 
 ## SYNTAX
 
-### SetByResource (Default)
 ```
-Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher <PSNetworkWatcher> -TargetVirtualMachineId <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### SetByName
-```
-Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcherName <String> -ResourceGroupName <String>
- -TargetVirtualMachineId <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmNetworkWatcherProtocolConfiguration [-Protocol <String>] [-Method <String>] [-Header <IDictionary>]
+ [-ValidStatusCode <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzureRmNetworkWatcherSecurityGroupView enables you to view the configured and effective network security group rules applied on a VM.
+The New-AzureRmNetworkWatcherProtocolConfiguration cmdlet creates a new protocol configuration object. 
+This object is used to restrict the protocol confiuration during a connecitivity check session using the specified criteria. 
 
 ## EXAMPLES
 
-### --- Example 1: Make a Security Group View call on a VM ---
+### ---------------  Example 1: Test Network Watcher Connectivity from a VM to a website with protocol configuration ---------------
 ```
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
-$VM = Get-AzurermVM -ResourceGroupName ContosoResourceGroup -Name VM0 
-Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
+$config = New-AzureRmNetworkWatcherProtocolConfiguration -Protocol Http -Method Get -Headers @{"accept"="application/json"} -ValidStatusCodes @(200,202,204)
+
+Test-AzureRmNetworkWatcherConnectivity -NetworkWatcherName NetworkWatcher -ResourceGroupName NetworkWatcherRG -SourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0" -DestinationAddress "bing.com" -DestinationPort 80 -ProtocolConfiguration $config
+
+
+ConnectionStatus : Reachable
+AvgLatencyInMs   : 4
+MinLatencyInMs   : 2
+MaxLatencyInMs   : 15
+ProbesSent       : 15
+ProbesFailed     : 0
+Hops             : [
+                     {
+                       "Type": "Source",
+                       "Id": "f8cff464-e13f-457f-a09e-4dcd53d38a85",
+                       "Address": "10.1.1.4",
+                       "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/provi                   iders/Microsoft.Network/networkInterfaces/appNic0/ipConfigurations/ipconfig1",
+                       "NextHopIds": [
+                         "1034b1bf-0b1b-4f0a-93b2-900477f45485"
+                       ],
+                       "Issues": []
+                     },
+                     {
+                       "Type": "Internet",
+                       "Id": "1034b1bf-0b1b-4f0a-93b2-900477f45485",
+                       "Address": "13.107.21.200",
+                       "ResourceId": "Internet",
+                       "NextHopIds": [],
+                       "Issues": []
+                     }
+                   ]
 ```
 
-In the above example, we first get the regional Network Watcher, then a VM in the region. 
-Then we make a Security Group View call on the specified VM.
+In this example we test connectivity from a VM in Azure to www.bing.com.
 
 ## PARAMETERS
 
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -72,80 +77,83 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcher
-The network watcher resource.
+### -Header
+Header
 
 ```yaml
-Type: PSNetworkWatcher
-Parameter Sets: SetByResource
-Aliases: 
+Type: IDictionary
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NetworkWatcherName
-The name of network watcher.
-
-```yaml
-Type: String
-Parameter Sets: SetByName
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the network watcher resource group.
-
-```yaml
-Type: String
-Parameter Sets: SetByName
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -TargetVirtualMachineId
-The target VM Id
+### -Method
+Method
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Protocol
+Procotol
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ValidStatusCode
+ValidStatusCode
+
+```yaml
+Type: Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-System.String
+### System.String
+System.Collections.IDictionary
+System.Int32[]
+
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSViewNsgRules
+### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherProtocolConfiguration
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, flow, ip 
+Keywords: azure, azurerm, arm, resource, management, manager, network, networking, watcher, packet, capture, traffic, filter
 
 ## RELATED LINKS
 
