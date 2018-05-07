@@ -48,6 +48,20 @@ During preview of the Instance Failover Groups feature, only values greater than
 ### Example 1
 ```
 PS C:\> $failoverGroup = Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Set-AzureRmSqlDatabaseFailoverGroup -FailoverPolicy Manual
+Output:
+ResourceGroupName                     : rg
+Location                              : East US
+Name                                  : fg
+PartnerResourceGroupName              : rg
+PartnerRegion                         : West US
+PrimaryManagedInstanceName            : managedInstance1
+PartnerManagedInstanceName            : managedInstance2
+ReplicationRole                       : Primary
+ReplicationState                      : CATCH_UP
+ReadWriteFailoverPolicy               : Manual
+FailoverWithDataLossGracePeriodHours  : 
+ReadOnlyFailoverPolicy                : Disabled
+Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/locations/eastus/instanceFailoverGroups/fg
 ```
 
 Sets a Instance Failover Group's failover policy to 'Manual' by piping in the Failover Group.

@@ -42,6 +42,20 @@ The Instance Failover Group's secondary region must be used to execute this comm
 ### Example 1
 ```
 C:\> Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup -AllowDataLoss
+Output:
+ResourceGroupName                     : rg
+Location                              : East US
+Name                                  : fg
+PartnerResourceGroupName              : rg
+PartnerRegion                         : West US
+PrimaryManagedInstanceName            : managedInstance1
+PartnerManagedInstanceName            : managedInstance2
+ReplicationRole                       : Primary
+ReplicationState                      : CATCH_UP
+ReadWriteFailoverPolicy               : Automatic
+FailoverWithDataLossGracePeriodHours  : 1
+ReadOnlyFailoverPolicy                : Disabled
+Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/locations/eastus/instanceFailoverGroups/fg
 ```
 
 Issue a failover operation allowing data loss by piping in the Instance Failover Group.
@@ -49,6 +63,20 @@ Issue a failover operation allowing data loss by piping in the Instance Failover
 ### Example 2
 ```
 C:\> Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup
+Output:
+ResourceGroupName                     : rg
+Location                              : East US
+Name                                  : fg
+PartnerResourceGroupName              : rg
+PartnerRegion                         : West US
+PrimaryManagedInstanceName            : managedInstance1
+PartnerManagedInstanceName            : managedInstance2
+ReplicationRole                       : Primary
+ReplicationState                      : CATCH_UP
+ReadWriteFailoverPolicy               : Automatic
+FailoverWithDataLossGracePeriodHours  : 1
+ReadOnlyFailoverPolicy                : Disabled
+Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/locations/eastus/instanceFailoverGroups/fg
 ```
 
 Issue a best effort failover operation that will either succeed without losing data or fail and roll back.

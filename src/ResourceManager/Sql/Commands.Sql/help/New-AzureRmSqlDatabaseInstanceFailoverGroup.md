@@ -32,6 +32,20 @@ During preview of the Instance Failover Groups feature, only values greater than
 ### Example 1
 ```
 C:\> $failoverGroup = New-AzureRmSqlDatabaseInstanceFailoverGroup -Name fgName -Location location -ResourceGroupName rg -PrimaryManagedInstanceName $managedInstance.Name -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstance.Name -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
+Output:
+ResourceGroupName                     : rg
+Location                              : East US
+Name                                  : fg
+PartnerResourceGroupName              : rg
+PartnerRegion                         : West US
+PrimaryManagedInstanceName            : managedInstance1
+PartnerManagedInstanceName            : managedInstance2
+ReplicationRole                       : Primary
+ReplicationState                      : CATCH_UP
+ReadWriteFailoverPolicy               : Automatic
+FailoverWithDataLossGracePeriodHours  : 1
+ReadOnlyFailoverPolicy                : Disabled
+Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/locations/eastus/instanceFailoverGroups/fg
 ```
 
 This command creates a new Instance Failover Group with failover policy 'Automatic' for the Managed Instance pair.
@@ -39,6 +53,20 @@ This command creates a new Instance Failover Group with failover policy 'Automat
 ### Example 2
 ```
 C:\> $failoverGroup = New-AzureRmSqlDatabaseInstanceFailoverGroup -Name fgName -Location location -ResourceGroupName rg -PrimaryManagedInstanceName $managedInstance.Name -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstance.Name -FailoverPolicy Manual
+Output:
+ResourceGroupName                     : rg
+Location                              : East US
+Name                                  : fg
+PartnerResourceGroupName              : rg
+PartnerRegion                         : West US
+PrimaryManagedInstanceName            : managedInstance1
+PartnerManagedInstanceName            : managedInstance2
+ReplicationRole                       : Primary
+ReplicationState                      : CATCH_UP
+ReadWriteFailoverPolicy               : Manual
+FailoverWithDataLossGracePeriodHours  : 
+ReadOnlyFailoverPolicy                : Disabled
+Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/locations/eastus/instanceFailoverGroups/fg
 ```
 
 This command creates a new Instance Failover Group with failover policy 'Manual' for the Managed Instance pair.

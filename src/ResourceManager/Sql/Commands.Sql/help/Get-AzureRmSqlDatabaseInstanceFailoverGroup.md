@@ -27,6 +27,22 @@ Either region in the Instance Failover Group may be used to execute the command.
 ### Example 1
 ```
 PS C:\> $failoverGroups = Get-AzureRMSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location
+Output:
+{
+	ResourceGroupName                     : rg
+	Location                              : East US
+	Name                                  : fg
+	PartnerResourceGroupName              : rg
+	PartnerRegion                         : West US
+	PrimaryManagedInstanceName            : managedInstance1
+	PartnerManagedInstanceName            : managedInstance2
+	ReplicationRole                       : Primary
+	ReplicationState                      : CATCH_UP
+	ReadWriteFailoverPolicy               : Automatic
+	FailoverWithDataLossGracePeriodHours  : 1
+	ReadOnlyFailoverPolicy                : Disabled
+	Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/locations/eastus/instanceFailoverGroups/fg
+}
 ```
 
 Lists all Failover Groups in the region
@@ -34,6 +50,20 @@ Lists all Failover Groups in the region
 ### Example 2
 ```
 PS C:\> $failoverGroup = Get-AzureRMSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg
+Output:
+ResourceGroupName                     : rg
+Location                              : East US
+Name                                  : fg
+PartnerResourceGroupName              : rg
+PartnerRegion                         : West US
+PrimaryManagedInstanceName            : managedInstance1
+PartnerManagedInstanceName            : managedInstance2
+ReplicationRole                       : Primary
+ReplicationState                      : CATCH_UP
+ReadWriteFailoverPolicy               : Automatic
+FailoverWithDataLossGracePeriodHours  : 1
+ReadOnlyFailoverPolicy                : Disabled
+Id                                    : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg/providers/Microsoft.Sql/locations/eastus/instanceFailoverGroups/fg
 ```
 
 Get a specific Instance Failover Group.
