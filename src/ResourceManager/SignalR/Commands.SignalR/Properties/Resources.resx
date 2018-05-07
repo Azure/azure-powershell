@@ -120,6 +120,9 @@
   <data name="DefaultResourceGroupKey" xml:space="preserve">
     <value>Default Resource Group</value>
   </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRmAccount to login.</value>
+  </data>
   <data name="ParameterSetError" xml:space="preserve">
     <value>The parameter set could not be determined from the provided parameters. Please check the documentation for appropriate parameters, and report this issue at https://github.com/azure/azure-powershell/issues</value>
   </data>
