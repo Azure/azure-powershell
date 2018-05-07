@@ -85,6 +85,10 @@ namespace NetCorePsd1Sync
                 {
                     netCoreDefinition.RequiredModules.First(rm => rm.ModuleName == "AzureRM.Profile.Netcore").ModuleVersion = newVersion;
                 }
+                if (netCoreDefinition.RequiredModules?.Any(rm => rm.ModuleName == "Azure.Storage.Netcore") ?? false)
+                {
+                    netCoreDefinition.RequiredModules.First(rm => rm.ModuleName == "Azure.Storage.Netcore").ModuleVersion = newVersion;
+                }
                 File.WriteAllLines(netCoreFilePath, netCoreDefinition.ToDefinitionEntry());
             }
         }
