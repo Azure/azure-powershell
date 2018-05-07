@@ -226,6 +226,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
+            var shouldPopulateContextList = _profile.DefaultContext?.Account == null;
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -260,6 +261,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             _profile.DefaultContext.TokenCache = _cache;
+            if (shouldPopulateContextList)
+            {
+                var defaultContext = _profile.DefaultContext;
+                var subscriptions = ListSubscriptions(tenantId);
+                foreach (var subscription in subscriptions)
+                {
+                    IAzureTenant tempTenant = new AzureTenant()
+                    {
+                        Id = subscription.GetProperty(AzureSubscription.Property.Tenants)
+                    };
+
+                    var tempContext = new AzureContext(subscription, account, environment, tempTenant);
+                    tempContext.TokenCache = _cache;
+                    string tempName = null;
+                    if (!_profile.TryGetContextName(tempContext, out tempName))
+                    {
+                        WriteWarningMessage(string.Format("Unable to get context name for subscription with id '{0}'.", subscription.Id));
+                        continue;
+                    }
+
+                    if (!_profile.TrySetContext(tempName, tempContext))
+                    {
+                        WriteWarningMessage(string.Format("Cannot create a context for subscription with id '{0}'.", subscription.Id));
+                    }
+                }
+
+                _profile.TrySetDefaultContext(defaultContext);
+                _profile.TryRemoveContext("Default");
+            }
 
             return _profile.ToProfile();
         }

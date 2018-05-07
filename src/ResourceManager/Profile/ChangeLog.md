@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
 
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
