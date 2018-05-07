@@ -49,7 +49,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                     {
                         try
                         {
-                            IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+                            var instance = AzureSession.Instance;
+                            IResourceManagementClient client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
+                                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
+                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
+                                instance.ClientFactory.GetCustomHandlers());
+                            client.SubscriptionId = context.Subscription.Id;
                             var allProviders = client.Providers.ListAsync();
                             if (allProviders.Wait(TimeSpan.FromSeconds(_timeout)))
                             {

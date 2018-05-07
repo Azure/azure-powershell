@@ -18,8 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+<<<<<<< HEAD
 * Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
 * Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with "Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy".
+=======
+>>>>>>> parent of 73f3e07a85... Merge branch 'preview' of github.com:trgrie/azure-powershell into preview
 
 ## Version 4.4.1
 * Set minimum dependency of module to PowerShell 5.0

@@ -30,7 +30,7 @@ Get-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmServiceFabricCluster** will get the cluster resource details.
+The **Add-AzureRmServiceFabricCluster** will get the cluster resource details.
 
 ## EXAMPLES
 
