@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmSqlDatabaseInstanceFailoverGroup
 
 ## SYNOPSIS
-Gets or lists Instance Failover Groups.
+This command creates a new Azure SQL Database Instance Failover Group.
 
 ## SYNTAX
 
@@ -21,25 +21,27 @@ New-AzureRmSqlDatabaseInstanceFailoverGroup -Name <String> [-PartnerResourceGrou
 ```
 
 ## DESCRIPTION
-Gets a specific Azure SQL Database Instance Failover Group or lists the Instance Failover Groups in a region under the user's subscription.
+Creates a new Azure SQL Database Instance Failover Group between the specified regions with the noted Managed Instance pair.
 
-Either region in the Instance Failover Group may be used to execute the command. The returned values will reflect the state of the Managed Instances in that region with respect to the Instance Failover Group.
+Two Azure SQL Database TDS endpoints are created at Name.SqlDatabaseDnsSuffix (for example, Name.database.windows.net) and Name.secondary.SqlDatabaseDnsSuffix. These endpoints may be used to connect to the primary and secondary regions of the Failover Group, respectively. If the primary region is affected by an outage, automatic failover of the endpoints and databases will be triggered as dictated by the Instance Failover Group's failover policy and grace period.
+
+During preview of the Instance Failover Groups feature, only values greater than or equal to 1 hour are supported for the '-GracePeriodWithDataLossHours' parameter.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> $failoverGroups = Get-AzureRMSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location
+C:\> $failoverGroup = New-AzureRmSqlDatabaseInstanceFailoverGroup -Name fgName -Location location -ResourceGroupName rg -PrimaryManagedInstanceName $managedInstance.Name -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstance.Name -FailoverPolicy Automatic -GracePeriodWithDataLossHours 1
 ```
 
-Lists all Failover Groups in the region
+This command creates a new Instance Failover Group with failover policy 'Automatic' for the Managed Instance pair.
 
 ### Example 2
 ```
-PS C:\> $failoverGroup = Get-AzureRMSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg
+C:\> $failoverGroup = New-AzureRmSqlDatabaseInstanceFailoverGroup -Name fgName -Location location -ResourceGroupName rg -PrimaryManagedInstanceName $managedInstance.Name -PartnerRegion $partnerRegion -PartnerManagedInstanceName $partnerManagedInstance.Name -FailoverPolicy Manual
 ```
 
-Get a specific Instance Failover Group.
+This command creates a new Instance Failover Group with failover policy 'Manual' for the Managed Instance pair.
 
 ## PARAMETERS
 

@@ -41,7 +41,33 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Parameter set name for remove with a resource ID.
         /// </summary>
         private const string RemoveIFGByResourceIdSet = "Remove a Instance Failover Group from Resource Id";
-        
+
+        /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(ParameterSetName = RemoveIFGDefaultSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the local region to use.
+        /// </summary>
+        [Parameter(ParameterSetName = RemoveIFGByResourceIdSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
+        [Parameter(ParameterSetName = RemoveIFGDefaultSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
+        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
+        [ValidateNotNullOrEmpty]
+        public override string Location { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the InstanceFailoverGroup to remove.
         /// </summary>
@@ -68,7 +94,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(ParameterSetName = RemoveIFGByResourceIdSet,
             Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The Resource ID of the Instance Failover Group to remove.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -125,10 +151,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
-                Location = identifier.ResourceName;
                 identifier = new ResourceIdentifier(identifier.ParentResource);
                 Name = identifier.ResourceName;
-                ResourceGroupName = identifier.ResourceName;
+                ResourceGroupName = identifier.ResourceGroupName;
             }
             if (!Force.IsPresent && !ShouldProcess(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseInstanceFailoverGroupDescription, this.Name, this.Location),

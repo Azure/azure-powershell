@@ -19,7 +19,7 @@ function Handle-InstanceFailoverGroupTest($scriptBlock, $rg = "testclrg", $prima
 		$rg = if ($rg -eq $null) { "testclrg" } else { $rg }
 		$miName1 = if ($mi1 -eq $null) { "tdstage-haimb-dont-delete-3" } else { "" }
 		$miName2 = if ($mi1 -eq $null) { "threat-detection-test-1" } else { "" }
-		
+
 		Invoke-Command -ScriptBlock $scriptBlock -ArgumentList $primaryLocation, $secondaryLocation, $rg, $miName1, $miName2
 	}
 	finally

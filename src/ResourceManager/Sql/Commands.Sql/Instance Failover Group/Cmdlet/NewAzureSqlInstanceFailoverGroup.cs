@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the name of the Instance Failover Group to create.
         /// </summary>
         [Parameter(Mandatory = true,
+            Position = 2,
             HelpMessage = "The name of the Azure SQL Database Failover Group to create.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

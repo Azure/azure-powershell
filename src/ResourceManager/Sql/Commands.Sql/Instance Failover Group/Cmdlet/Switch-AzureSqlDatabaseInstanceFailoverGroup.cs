@@ -44,6 +44,32 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         private const string SwitchIFGByResourceIdSet = "Switch a Instance Failover Group from Resource Id";
         
         /// <summary>
+        /// Gets or sets the name of the resource group to use.
+        /// </summary>
+        [Parameter(ParameterSetName = SwitchIFGDefaultSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The name of the resource group.")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the local region to use.
+        /// </summary>
+        [Parameter(ParameterSetName = SwitchIFGByResourceIdSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
+        [Parameter(ParameterSetName = SwitchIFGDefaultSet,
+            Mandatory = true,
+            Position = 1,
+            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
+        [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
+        [ValidateNotNullOrEmpty]
+        public override string Location { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the InstanceFailoverGroup to use.
         /// </summary>
         [Parameter(ParameterSetName = SwitchIFGDefaultSet, 
@@ -54,9 +80,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         public string Name { get; set; }
 
         /// <summary>
-		/// Instance Failover Group object to switch
-		/// </summary>
-		[Parameter(ParameterSetName = SwitchIFGByInputObjectParameterSet,
+        /// Instance Failover Group object to switch
+        /// </summary>
+        [Parameter(ParameterSetName = SwitchIFGByInputObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Instance Failover Group object to switch")]
@@ -70,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Resource ID of the Instance Failover Group to switch.")]
+            HelpMessage = "The Resource ID of the Instance Failover Group that will become the new Primary.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -97,10 +123,9 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             else if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                 ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
-                Location = identifier.ResourceName;
                 identifier = new ResourceIdentifier(identifier.ParentResource);
                 Name = identifier.ResourceName;
-                ResourceGroupName = identifier.ResourceName;
+                ResourceGroupName = identifier.ResourceGroupName;
             }
 
             return new List<AzureSqlInstanceFailoverGroupModel>() {
