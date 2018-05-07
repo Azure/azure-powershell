@@ -174,6 +174,8 @@
     <Compile Include="ScenarioTests\BlobAuditingTests.cs" />
     <Compile Include="ScenarioTests\BlobAuditingClassicStorageTests.cs" />
     <Compile Include="ScenarioTests\AuditingClassicStorageTests.cs" />
+    <Compile Include="ScenarioTests\ManagedDatabaseCrudScenarioTests.cs" />
+    <Compile Include="ScenarioTests\ManagedInstanceCrudScenarioTests.cs" />
     <Compile Include="ScenarioTests\ReadScaleCrudTests.cs" />
     <Compile Include="ScenarioTests\DataSyncTests.cs" />
     <Compile Include="ScenarioTests\RecommendedActionTests.cs" />
@@ -195,6 +197,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\AuditingClassicStorageTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ManagedDatabaseCrudScenarioTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ManagedInstanceCrudScenarioTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\FailoverGroupTests.ps1">
@@ -842,6 +850,36 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.IndexRecommendationTests\TestGetIndexRecommendation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseCrudScenarioTests\TestCreateManagedDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseCrudScenarioTests\TestGetManagedDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseCrudScenarioTests\TestRemoveManagedDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedDatabaseCrudScenarioTests\TestRestoreManagedDatabase.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestCreateManagedInstance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestCreateManagedInstanceWithIdentity.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestGetManagedInstance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestRemoveManagedInstance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestSetManagedInstance.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ManagedInstanceCrudScenarioTests\TestUpdateManagedInstance.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ReadScaleCrudTests\TestDatabaseReadScaleCreateUpdate.json">
