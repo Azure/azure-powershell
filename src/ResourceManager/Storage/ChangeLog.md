@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support get the Storage resource usage of a specific location
+    - Get-AzureRmStorageUsage
 
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0

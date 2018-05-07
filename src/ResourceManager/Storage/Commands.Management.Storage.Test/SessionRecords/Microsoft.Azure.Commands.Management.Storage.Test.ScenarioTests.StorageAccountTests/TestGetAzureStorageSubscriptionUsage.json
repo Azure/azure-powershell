@@ -1,0 +1,72 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/providers/Microsoft.Storage/usages?api-version=2018-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDViNjBkODUtZmQ3Mi00MjdhLWE3MDgtZjk5NGQyNmU1OTNlL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3RvcmFnZS91c2FnZXM/YXBpLXZlcnNpb249MjAxOC0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3eafc765-8dad-4231-88a1-bb0406e48795"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2633.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Storage.StorageManagementClient/7.2.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"unit\": \"Count\",\r\n      \"currentValue\": 79,\r\n      \"limit\": 250,\r\n      \"name\": {\r\n        \"value\": \"StorageAccounts\",\r\n        \"localizedValue\": \"Storage Accounts\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "218"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "4ef4d9dd-63de-44d6-96fa-a571b8fd9388"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-Azure-Storage-Resource-Provider/1.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "4ef4d9dd-63de-44d6-96fa-a571b8fd9388"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20180503T022546Z:4ef4d9dd-63de-44d6-96fa-a571b8fd9388"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 03 May 2018 02:25:46 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "45b60d85-fd72-427a-a708-f994d26e593e"
+  }
+}
