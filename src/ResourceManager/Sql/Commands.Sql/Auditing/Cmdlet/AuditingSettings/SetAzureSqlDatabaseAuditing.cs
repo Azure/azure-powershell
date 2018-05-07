@@ -108,12 +108,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                     : StorageKeyKind.Secondary;
             }
 
-            if (AuditActionGroup != null)
+            if (AuditActionGroup != null && AuditActionGroup.Length != 0)
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
 
-            if (AuditAction != null)
+            if (AuditAction != null && AuditAction.Length != 0)
             {
                 model.AuditAction = AuditAction;
             }

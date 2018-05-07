@@ -18,7 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Update the parameters for `Get-AzureRmTrafficManagerProfile` so that -ResourceGroupName parameter is required when using -Name parameter.
 
 ## Version 4.0.4
 * Set minimum dependency of module to PowerShell 5.0

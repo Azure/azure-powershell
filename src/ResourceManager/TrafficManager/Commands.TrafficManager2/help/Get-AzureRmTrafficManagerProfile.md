@@ -1,6 +1,6 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM.TrafficManager
+Module Name: AzureRM
 ms.assetid: 5032D487-3849-4C80-BD14-5B735FC39285
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/get-azurermtrafficmanagerprofile
 schema: 2.0.0
@@ -13,15 +13,8 @@ Gets a Traffic Manager profile.
 
 ## SYNTAX
 
-### ResourceGroupParameterSet
 ```
-Get-AzureRmTrafficManagerProfile [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### AccountNameParameterSet
-```
-Get-AzureRmTrafficManagerProfile [-ResourceGroupName] <String> [-Name] <String>
+Get-AzureRmTrafficManagerProfile [-Name <String>] [-ResourceGroupName <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -62,13 +55,13 @@ Specifies the name of the Traffic Manager profile that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: AccountNameParameterSet
-Aliases:
+Parameter Sets: (All)
+Aliases: 
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -77,25 +70,13 @@ Specifies the name of a resource group that contains the Traffic Manager profile
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupParameterSet
-Aliases:
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: AccountNameParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
