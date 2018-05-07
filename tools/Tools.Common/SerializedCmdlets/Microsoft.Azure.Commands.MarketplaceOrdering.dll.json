@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -179,7 +179,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -253,7 +253,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -461,7 +461,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Accepted": "System.Nullable`1[System.Boolean]",
                     "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -680,7 +680,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Accepted": "System.Nullable`1[System.Boolean]",
                     "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -827,7 +827,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Accepted": "System.Nullable`1[System.Boolean]",
                     "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -974,7 +974,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
                   "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Accepted": "System.Nullable`1[System.Boolean]",
                     "RetrieveDatetime": "System.Nullable`1[System.DateTime]",
@@ -1147,7 +1147,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.MarketplaceOrdering.Models",
             "Name": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms, Microsoft.Azure.Commands.MarketplaceOrdering, Version=0.2.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Accepted": "System.Nullable`1[System.Boolean]",
               "RetrieveDatetime": "System.Nullable`1[System.DateTime]",

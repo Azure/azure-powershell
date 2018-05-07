@@ -97,10 +97,22 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
                 }
+                else
+                {
+                    string directoryPath = Path.GetDirectoryName(profileDirectory);
+                    if (!store.DirectoryExists(directoryPath))
+                    {
+                        store.CreateDirectory(directoryPath);
+                    }
+                    string autoSavePath = Path.Combine(profileDirectory, settingsFile);
+                    result.Mode = ContextSaveMode.CurrentUser;
+                    store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                }
             }
             catch
             {
                 // ignore exceptions in reading settings from disk
+                result.Mode = ContextSaveMode.Process;
             }
 
             return result;
@@ -191,7 +203,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 }
                 set
                 {
-                    
+
                 }
             }
 

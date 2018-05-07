@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
+
+## Version 4.4.1
 * Set minimum dependency of module to PowerShell 5.0
 
 ## Version 4.4.0
