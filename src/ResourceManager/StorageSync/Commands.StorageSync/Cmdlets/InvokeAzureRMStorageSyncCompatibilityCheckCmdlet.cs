@@ -13,7 +13,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
     [Cmdlet(VerbsLifecycle.Invoke, "AzureRmStorageSyncCompatibilityCheck")]
     [OutputType(typeof(object))]
-    public class InvokeAzureRMStorageSyncCompatibilityCheckCmdlet : Cmdlet
+    public class InvokeAzureRmStorageSyncCompatibilityCheckCmdlet : Cmdlet
     {
         [Parameter(Mandatory = true, Position = 0)]
         public string Path { get; set; }
@@ -31,8 +31,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
         public SwitchParameter SkipNamespaceChecks { get; set; }
       
         protected override void ProcessRecord()
-        {
-            
+        {            
             using (TelemetryEventSourceContract Logger = new TelemetryEventSourceContract())
             {
                 Logger.AppRan("dsfiuiwersdvscnmcbviowuerfbw");
