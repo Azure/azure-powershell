@@ -179,6 +179,7 @@
     <Compile Include="ScenarioTests\KeyVaultEnvSetupHelper.cs" />
     <Compile Include="ScenarioTests\KeyVaultManagementController.cs" />
     <Compile Include="ScenarioTests\KeyVaultManagementTests.cs" />
+    <Compile Include="ScenarioTests\KeyVaultProviderTests.cs" />
     <Compile Include="ScenarioTests\KeyVaultTestFixture.cs" />
     <Compile Include="UnitTests\KeyVaultUnitTestBase.cs" />
     <Compile Include="UnitTests\RemoveKeyVaultKeyTests.cs" />
@@ -193,6 +194,9 @@
     </None>
     <None Include="Resources\pshtest.pfx" />
     <None Include="ScenarioTests\Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\ControlPlane\KeyVaultProviderTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Scripts\bvtdata\byoktest.byok" />

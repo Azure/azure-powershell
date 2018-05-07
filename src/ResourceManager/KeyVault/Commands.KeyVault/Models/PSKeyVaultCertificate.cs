@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         public string RecoveryLevel { get; private set; }
 
+        public PSKeyVaultCertificatePolicy Policy { get; private set; }
+
         internal PSKeyVaultCertificate(CertificateBundle certificateBundle, VaultUriHelper vaultUriHelper)
         {
             if ( certificateBundle == null )
@@ -75,6 +77,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if ( certificateBundle.Tags != null )
             {
                 Tags = (certificateBundle.Tags == null) ? null : certificateBundle.Tags.ConvertToHashtable();
+            }
+
+            if ( certificateBundle.Policy != null )
+            {
+                Policy = PSKeyVaultCertificatePolicy.FromCertificatePolicy(certificateBundle.Policy);
             }
         }
 
@@ -128,6 +135,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             if (certificateBundle.Tags != null)
             {
                 Tags = (certificateBundle.Tags == null) ? null : certificateBundle.Tags.ConvertToHashtable();
+            }
+
+            if (certificateBundle.Policy != null)
+            {
+                Policy = PSKeyVaultCertificatePolicy.FromCertificatePolicy(certificateBundle.Policy);
             }
         }
 

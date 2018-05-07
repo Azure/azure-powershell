@@ -31,7 +31,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    internal class KeyVaultDataServiceClient : IKeyVaultDataServiceClient
+    public class KeyVaultDataServiceClient : IKeyVaultDataServiceClient
     {
         public KeyVaultDataServiceClient(IAuthenticationFactory authFactory, IAzureContext context)
         {

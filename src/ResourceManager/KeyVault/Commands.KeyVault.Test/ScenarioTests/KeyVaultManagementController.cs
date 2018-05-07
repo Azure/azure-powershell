@@ -17,28 +17,23 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.Resources;
+using LegacyRMClient = Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using LegacyTest = Microsoft.Azure.Test;
-using LegacyRMClient = Microsoft.Azure.Management.Resources;
 using RM = Microsoft.Azure.Management.ResourceManager;
+using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
     using Common.Authentication.Abstractions;
     using Management.Network;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-
-    using TestBase = Microsoft.Azure.Test.TestBase;
     using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
     public class KeyVaultManagementController

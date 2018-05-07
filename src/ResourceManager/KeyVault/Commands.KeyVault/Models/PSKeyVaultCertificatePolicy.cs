@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             KeySize = 2048;
         }
 
-        internal CertificatePolicy ToCertificatePolicy()
+        public CertificatePolicy ToCertificatePolicy()
         {
             var certificatePolicy = new CertificatePolicy();
 
