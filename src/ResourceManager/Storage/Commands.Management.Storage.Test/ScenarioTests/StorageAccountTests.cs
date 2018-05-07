@@ -118,5 +118,19 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccountStorageV2");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureStorageSubscriptionUsage()
+        {
+            TestController.NewInstance.RunPsTest("Test-GetAzureStorageSubscriptionUsage");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAzureStorageLocationUsage()
+        {
+            TestController.NewInstance.RunPsTest("Test-GetAzureStorageLocationUsage");
+        }
     }
 }
