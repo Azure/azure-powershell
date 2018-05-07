@@ -22,10 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.KeyVault.Core" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.DataFactories" Version="4.13.0" />
     <PackageReference Include="Microsoft.DataTransfer.Gateway.Encryption" Version="3.4.6604.1" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,6 +31,12 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Azure.Commands.DataFactories">
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.DataFactories.Netcore\Microsoft.Azure.Commands.DataFactories.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
