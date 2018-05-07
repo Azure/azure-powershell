@@ -946,7 +946,7 @@
                     else if (namesFromPath[1] == "Certificates")
                     {
                         var certificates = kvDriveInfo.KeyVaultDataServiceClient.GetCertificates(
-                            new KeyVaultObjectFilterOptions { VaultName = namesFromPath[0], NextLink = null });
+                            new KeyVaultCertificateFilterOptions { VaultName = namesFromPath[0], NextLink = null });
                         foreach (var certificate in certificates)
                         {
                             WriteItemObject(certificate, path + pathSeparator + certificate.Name, false);
@@ -1034,7 +1034,7 @@
                     else if (namesFromPath[1] == "Certificates")
                     {
                         var certificates = kvDriveInfo.KeyVaultDataServiceClient.GetCertificates(
-                            new KeyVaultObjectFilterOptions { VaultName = namesFromPath[0], NextLink = null });
+                            new KeyVaultCertificateFilterOptions { VaultName = namesFromPath[0], NextLink = null });
                         foreach (var certificate in certificates)
                         {
                             WriteItemObject(certificate.Name, path + pathSeparator + certificate.Name, false);
@@ -1109,7 +1109,7 @@
                     else if (namesFromPath[1] == "Certificates")
                     {
                         var certificates = kvDriveInfo.KeyVaultDataServiceClient.GetCertificates(
-                            new KeyVaultObjectFilterOptions { VaultName = namesFromPath[0], NextLink = null });
+                            new KeyVaultCertificateFilterOptions { VaultName = namesFromPath[0], NextLink = null });
                         if (certificates.Count() == 0)
                         {
                             return false;
@@ -1227,7 +1227,7 @@
                         var filter = namesFromPath[2].TrimEnd('*');
                         var filteredPaths = new List<string>();
                         var allStrings = kvDriveInfo.KeyVaultDataServiceClient.GetCertificates(
-                            new KeyVaultObjectFilterOptions { VaultName = namesFromPath[0], NextLink = null });
+                            new KeyVaultCertificateFilterOptions { VaultName = namesFromPath[0], NextLink = null });
 
                         foreach (var stringItem in allStrings)
                         {
@@ -2026,7 +2026,7 @@
                     else if (namesFromPath[1] == "Certificates")
                     {
                         var certificates = kvDriveInfo.KeyVaultDataServiceClient.GetCertificates(
-                            new KeyVaultObjectFilterOptions { VaultName = namesFromPath[0], NextLink = null });
+                            new KeyVaultCertificateFilterOptions { VaultName = namesFromPath[0], NextLink = null });
                         foreach (var certificate in certificates)
                         {
                             if (Force || ShouldContinue(string.Format("Remove certificate '{0}' from vault '{1}'?", certificate.Name, certificate.VaultName), "Remove item?"))
