@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.LocationBasedServices.Models;
-using Microsoft.Azure.Management.LocationBasedServices;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Maps.Models;
+using Microsoft.Azure.Management.LocationBasedServices;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices
+namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
     /// <summary>
-    /// Get Account Keys for Location Based Services Account
+    /// Get Account Keys for Maps Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, LocationBasedServicesAccountKeyNounStr, DefaultParameterSetName = NameParameterSet), 
-     OutputType(typeof(PSLocationBasedServicesAccountKeys))]
-    public class GetAzureLocationBasedServicesAccountKeyCommand : LocationBasedServicesAccountBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, MapsAccountKeyNounStr, DefaultParameterSetName = NameParameterSet), 
+     OutputType(typeof(PSMapsAccountKeys))]
+    public class GetAzureMapsAccountKey : MapsAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -43,23 +43,23 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameParameterSet,
-            HelpMessage = "Location Based Services Account Name.")]
-        [Alias(LocationBasedServicesAccountNameAlias, AccountNameAlias)]
+            HelpMessage = "Maps Account Name.")]
+        [Alias(MapsAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "Location Based Services Account piped from Get-AzureRmLocationBasedServicesAccount.",
+            HelpMessage = "Maps Account piped from Get-AzureRmMapsAccount.",
             ValueFromPipeline = true)]
-        public PSLocationBasedServicesAccount InputObject { get; set; }
+        public PSMapsAccount InputObject { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "Location Based Services Account ResourceId.")]
+            HelpMessage = "Maps Account ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -95,8 +95,8 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
 
                 if (!string.IsNullOrEmpty(rgName) && !string.IsNullOrEmpty(name))
                 {
-                    var locationBasedServicesKeys = this.LocationBasedServicesClient.Accounts.ListKeys(rgName, name);
-                    WriteObject(new PSLocationBasedServicesAccountKeys(locationBasedServicesKeys));
+                    var mapsKeys = this.MapsClient.Accounts.ListKeys(rgName, name);
+                    WriteObject(new PSMapsAccountKeys(mapsKeys));
                 }
             });
         }

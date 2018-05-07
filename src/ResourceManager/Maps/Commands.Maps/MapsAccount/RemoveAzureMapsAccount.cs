@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.LocationBasedServices.Properties;
-using Microsoft.Azure.Commands.LocationBasedServices.Models;
-using Microsoft.Azure.Management.LocationBasedServices;
 using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Maps.Properties;
+using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Commands.Maps.Models;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices
+namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
     /// <summary>
-    /// Delete a Location Based Services Account
+    /// Delete a Maps Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, LocationBasedServicesAccountNounStr, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true)]
-    public class RemoveAzureLocationBasedServicesAccountCommand : LocationBasedServicesAccountBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, MapsAccountNounStr, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true)]
+    public class RemoveAzureMapsAccount : MapsAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -44,23 +44,23 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameParameterSet,
-            HelpMessage = "Location Based Services Account Name.")]
-        [Alias(LocationBasedServicesAccountNameAlias, AccountNameAlias)]
+            HelpMessage = "Maps Account Name.")]
+        [Alias(MapsAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
             ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "Location Based Services Account piped from Get-AzureRmLocationBasedServicesAccount.",
+            HelpMessage = "Maps Account piped from Get-AzureRmMapsAccount.",
             ValueFromPipeline = true)]
-        public PSLocationBasedServicesAccount InputObject { get; set; }
+        public PSMapsAccount InputObject { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "Location Based Services Account ResourceId.")]
+            HelpMessage = "Maps Account ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
                     && !string.IsNullOrEmpty(name)
                     && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, name)))
                 {
-                    this.LocationBasedServicesClient.Accounts.Delete(
+                    this.MapsClient.Accounts.Delete(
                         rgName,
                         name);
                 }

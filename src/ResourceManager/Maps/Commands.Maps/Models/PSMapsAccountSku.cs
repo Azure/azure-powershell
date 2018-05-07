@@ -12,17 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
-using System;
-using System.Collections.Generic;
-using LocationBasedServicesModels = Microsoft.Azure.Management.LocationBasedServices.Models;
+using MapsModels = Microsoft.Azure.Management.LocationBasedServices.Models;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices.Models
+namespace Microsoft.Azure.Commands.Maps.Models
 {
-    public class PSLocationBasedServicesAccountSku
+    public class PSMapsAccountSku
     {
-        public PSLocationBasedServicesAccountSku(LocationBasedServicesModels.Sku sku)
+        public PSMapsAccountSku(MapsModels.Sku sku)
         {
             this.Name = sku.Name;
             this.Tier = sku.Tier;

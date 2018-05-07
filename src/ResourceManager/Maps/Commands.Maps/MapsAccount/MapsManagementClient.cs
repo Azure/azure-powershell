@@ -12,30 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Management.LocationBasedServices;
-using System;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices
+namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
-    public partial class ClientWrapper
+    public partial class MapsManagementClientWrapper
     {
-        public IClient LocationBasedServicesManagementClient { get; set; }
+        public IClient MapsManagementClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
 
-        public ClientWrapper(IAzureContext context)
+        public MapsManagementClientWrapper(IAzureContext context)
             : this(AzureSession.Instance.ClientFactory.CreateArmClient<Client>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
-        public ClientWrapper(IClient resourceManagementClient)
+        public MapsManagementClientWrapper(IClient resourceManagementClient)
         {
-            LocationBasedServicesManagementClient = resourceManagementClient;
+            MapsManagementClient = resourceManagementClient;
         }
     }
 }

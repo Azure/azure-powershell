@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount</Name>
+      <Name>Microsoft.Azure.Commands.Maps.Models.PSMapsAccount</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccount</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Maps.Models.PSMapsAccount</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -30,9 +30,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountKeys</Name>
+      <Name>Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountKeys</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

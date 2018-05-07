@@ -12,28 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Management.LocationBasedServices.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Maps.Models;
 
-namespace Microsoft.Azure.Commands.LocationBasedServices
+namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
-    public abstract class LocationBasedServicesAccountBaseCmdlet : AzureRMCmdlet
+    public abstract class MapsAccountBaseCmdlet : AzureRMCmdlet
     {
-        private ClientWrapper locationBasedServicesClientWrapper;
+        private MapsManagementClientWrapper _mapsMapsManagementClientWrapper;
 
-        protected const string LocationBasedServicesAccountNounStr = "AzureRmLocationBasedServicesAccount";
-        protected const string LocationBasedServicesAccountKeyNounStr = LocationBasedServicesAccountNounStr + "Key";
-        protected const string LocationBasedServicesAccountSkusNounStr = LocationBasedServicesAccountNounStr + "Skus";
+        protected const string MapsAccountNounStr = "AzureRmMapsAccount";
+        protected const string MapsAccountKeyNounStr = MapsAccountNounStr + "Key";
+        protected const string MapsAccountSkusNounStr = MapsAccountNounStr + "Skus";
 
-        protected const string LocationBasedServicesAccountNameAlias = "LocationBasedServicesAccountName";
+        protected const string MapsAccountNameAlias = "MapsAccountName";
         protected const string AccountNameAlias = "AccountName";
 
         protected const string TagsAlias = "Tags";
@@ -41,27 +41,27 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
         protected const string ResourceProviderName = "Microsoft.LocationBasedServices";
         protected const string ResourceTypeName = "accounts";
 
-        protected struct AccountSkuString 
+        protected struct AccountSkuString
         {
             internal const string S0 = "S0";
         }
-        
-        public IClient LocationBasedServicesClient
+
+        public IClient MapsClient
         {
             get
             {
-                if (locationBasedServicesClientWrapper == null)
+                if (_mapsMapsManagementClientWrapper == null)
                 {
-                    locationBasedServicesClientWrapper = new ClientWrapper(DefaultProfile.DefaultContext);
+                    _mapsMapsManagementClientWrapper = new MapsManagementClientWrapper(DefaultProfile.DefaultContext);
                 }
 
-                locationBasedServicesClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
-                locationBasedServicesClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
+                _mapsMapsManagementClientWrapper.VerboseLogger = WriteVerboseWithTimestamp;
+                _mapsMapsManagementClientWrapper.ErrorLogger = WriteErrorWithTimestamp;
 
-                return locationBasedServicesClientWrapper.LocationBasedServicesManagementClient;
+                return _mapsMapsManagementClientWrapper.MapsManagementClient;
             }
 
-            set { locationBasedServicesClientWrapper = new ClientWrapper(value); }
+            set { _mapsMapsManagementClientWrapper = new MapsManagementClientWrapper(value); }
         }
 
         public string SubscriptionId
@@ -89,22 +89,22 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
         }
 
 
-        protected void WriteLocationBasedServicesAccount(LocationBasedServicesAccount locationBasedServicesAccount)
+        protected void WriteMapsAccount(LocationBasedServicesAccount mapsAccount)
         {
-            if (locationBasedServicesAccount != null)
+            if (mapsAccount != null)
             {
-                WriteObject(Models.PSLocationBasedServicesAccount.Create(locationBasedServicesAccount));
+                WriteObject(Models.PSMapsAccount.Create(mapsAccount));
             }
         }
 
-        protected void WriteLocationBasedServicesAccountList(
-            IEnumerable<LocationBasedServicesAccount> locationBasedServicesAccounts)
+        protected void WriteMapsAccountList(
+            IEnumerable<LocationBasedServicesAccount> mapsAccounts)
         {
-            List<Models.PSLocationBasedServicesAccount> output = new List<Models.PSLocationBasedServicesAccount>();
-            if (locationBasedServicesAccounts != null)
+            List<Models.PSMapsAccount> output = new List<Models.PSMapsAccount>();
+            if (mapsAccounts != null)
             {
-                locationBasedServicesAccounts.ForEach(
-                    locationBasedServicesAccount => output.Add(Models.PSLocationBasedServicesAccount.Create(locationBasedServicesAccount)));
+                mapsAccounts.ForEach(
+                    mapsAccount => output.Add(Models.PSMapsAccount.Create(mapsAccount)));
             }
 
             WriteObject(output, true);
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.LocationBasedServices
 
 
                 return new KeyValuePair<string, string>(
-                    hashtable["Name"].ToString(), 
+                    hashtable["Name"].ToString(),
                     hashtable.ContainsKey("Value") ? hashtable["Value"].ToString() : string.Empty);
             }
 

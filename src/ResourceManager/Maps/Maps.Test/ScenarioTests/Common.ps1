@@ -100,9 +100,9 @@ function Get-RandomItemName
 
 <#
 .SYNOPSIS
-Gets valid resource name for location based services test
+Gets valid resource name for Maps test
 #>
-function Get-LocationBasedServicesManagementTestResourceName
+function Get-MapsManagementTestResourceName
 {
     $stack = Get-PSCallStack
     $testName = $null;

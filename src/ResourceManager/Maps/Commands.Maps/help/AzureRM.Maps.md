@@ -1,28 +1,29 @@
-﻿---
-Module Name: AzureRM.LocationBasedServices
+---
+Module Name: AzureRM.Maps
 Module Guid: bf60f35d-6c0b-42f2-be30-eb333a31279d
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.locationbasedservices
+Download Help Link: None
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# AzureRM.LocationBasedServices Module
+# AzureRM.Maps Module
 ## Description
-This topic displays help for the Azure Location Based Services Cmdlets.
+This topic displays help for the Azure Maps Cmdlets.
 
-## AzureRM.LocationBasedServices Cmdlets
-### [Get-AzureRmLocationBasedServicesAccount](Get-AzureRmLocationBasedServicesAccount.md)
+## AzureRM.Maps Cmdlets
+### [Get-AzureRmMapsAccount](Get-AzureRmMapsAccount.md)
 Gets the account.
 
-### [Get-AzureRmLocationBasedServicesAccountKey](Get-AzureRmLocationBasedServicesAccountKey.md)
-Gets the API keys for an account. These keys are the authentication mechanism used in subsequent calls to Azure Location Based Services.
+### [Get-AzureRmMapsAccountKey](Get-AzureRmMapsAccountKey.md)
+Gets the API keys for an account.
+These keys are the authentication mechanism used in subsequent calls to Azure Maps.
 
-### [New-AzureRmLocationBasedServicesAccount](New-AzureRmLocationBasedServicesAccount.md)
-Creates a Location Based Services account.
+### [New-AzureRmMapsAccount](New-AzureRmMapsAccount.md)
+Creates an Azure Maps account.
 
-### [New-AzureRmLocationBasedServicesAccountKey](New-AzureRmLocationBasedServicesAccountKey.md)
+### [New-AzureRmMapsAccountKey](New-AzureRmMapsAccountKey.md)
 Regenerates an account key.
 
-### [Remove-AzureRmLocationBasedServicesAccount](Remove-AzureRmLocationBasedServicesAccount.md)
-Deletes a Location Based Services account.
+### [Remove-AzureRmMapsAccount](Remove-AzureRmMapsAccount.md)
+Deletes an Azure Maps account.
 

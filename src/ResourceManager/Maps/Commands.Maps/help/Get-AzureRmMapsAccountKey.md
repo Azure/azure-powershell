@@ -1,48 +1,49 @@
-﻿---
-external help file: Microsoft.Azure.Commands.LocationBasedServices.dll-Help.xml
-Module Name: AzureRM.LocationBasedServices
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.locationbasedservices/get-azurermlocationbasedservicesaccountkey
+---
+external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
+Module Name: AzureRM.Maps
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzureRmLocationBasedServicesAccountKey
+# Get-AzureRmMapsAccountKey
 
 ## SYNOPSIS
-Gets the API keys for an account. These keys are the authentication mechanism used in subsequent calls to Azure Location Based Services.
+Gets the API keys for an account.
+These keys are the authentication mechanism used in subsequent calls to Azure Maps.
 
 ## SYNTAX
 
 ### NameParameterSet (Default)
 ```
-Get-AzureRmLocationBasedServicesAccountKey [-ResourceGroupName] <String> [-Name] <String>
+Get-AzureRmMapsAccountKey [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Get-AzureRmLocationBasedServicesAccountKey [-InputObject <PSLocationBasedServicesAccount>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMapsAccountKey [-InputObject <PSMapsAccount>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmLocationBasedServicesAccountKey [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmMapsAccountKey [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmLocationBasedServicesAccountKey** cmdlet gets the API keys for a provisioned Location Based Services account.
+The Get-AzureRmMapsAccountKey cmdlet gets the API keys for a provisioned Azure Maps account.
 
-A Location Based Services account has two API keys: Primary and Secondary.
-The keys enable interaction with the Location Based Services account endpoint.
+An Azure Maps account has two API keys: Primary and Secondary.
+The keys enable interaction with the Azure Maps account endpoint.
 
-Use [New-AzureRmLocationBasedServicesAccountKey](New-AzureRmLocationBasedServicesAccountKey.md) to regenerate a key.
+Use New-AzureRmMapsAccountKey (New-AzureRmMapsAccountKey.md)to regenerate a key.
 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzureRmLocationBasedServicesAccountKey -ResourceGroupName MyResourceGroup -Name MyAccount
+```powershell
+PS C:\> Get-AzureRmMapsAccountKey -ResourceGroupName MyResourceGroup -Name MyAccount
 
 PrimaryKey                                  SecondaryKey
 ----------                                  ------------
@@ -52,20 +53,20 @@ PrimaryKey                                  SecondaryKey
 Returns the keys for the account named MyAccount in the resource group MyResourceGroup.
 
 ### Example 2
-```
-PS C:\> Get-AzureRmLocationBasedServicesAccountKey -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.LocationBasedServices/accounts/MyAccount
+```powershell
+PS C:\> Get-AzureRmMapsAccountKey -ResourceId /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
 
 PrimaryKey                                  SecondaryKey
 ----------                                  ------------
 ******************************************* *******************************************
 ```
 
-Returns the keys for the specified Location Based Services Account.
+Returns the keys for the specified Azure Maps Account.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -80,10 +81,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Location Based Services Account piped from [Get-AzureRmLocationBasedServicesAccount](Get-AzureRmLocationBasedServicesAccount.md).
+Maps Account piped from Get-AzureRmMapsAccount.
 
 ```yaml
-Type: PSLocationBasedServicesAccount
+Type: PSMapsAccount
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -95,12 +96,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Location Based Services Account Name.
+Maps Account Name.
 
 ```yaml
 Type: String
 Parameter Sets: NameParameterSet
-Aliases: LocationBasedServicesAccountName, AccountName
+Aliases: MapsAccountName, AccountName
 
 Required: True
 Position: 1
@@ -125,7 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Location Based Services Account ResourceId.
+Maps Account ResourceId.
+
 ```yaml
 Type: String
 Parameter Sets: ResourceIdParameterSet
@@ -144,13 +146,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.LocationBasedServices.Models.PSLocationBasedServicesAccountKeys
-
-### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+### Microsoft.Azure.Commands.Maps.Models.PSMapsAccountKeys
 
 ## NOTES
 
