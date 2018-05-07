@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.4.1'
+ModuleVersion = '4.5.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -240,10 +240,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0'
+        ReleaseNotes = '* Added new cmdlets for CRUD operations on Managed Instance and Managed Database'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
