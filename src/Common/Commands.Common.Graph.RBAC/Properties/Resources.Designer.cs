@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Common.Graph.RBAC.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application with display name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ApplicationWithDisplayNameDoesntExist {
+            get {
+                return ResourceManager.GetString("ApplicationWithDisplayNameDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are a guest user in the directory and are not allowed to create an application. Please contact the administrator of the directory..
         /// </summary>
         internal static string CreateApplicationNotAllowedGuestUser {
@@ -106,11 +115,56 @@ namespace Microsoft.Azure.Commands.Common.Graph.RBAC.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group with display name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string GroupWithDisplayNameDoesntExist {
+            get {
+                return ResourceManager.GetString("GroupWithDisplayNameDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to KeyCredential object is not valid..
         /// </summary>
         internal static string KeyCredentialNotValid {
             get {
                 return ResourceManager.GetString("KeyCredentialNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one application found with display name &apos;{0}&apos;. Please use the Get-AzureRmADApplication cmdlet to get the object id of the desired application..
+        /// </summary>
+        internal static string MultipleApplicationsWithDisplayNameFound {
+            get {
+                return ResourceManager.GetString("MultipleApplicationsWithDisplayNameFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one group found with the display name &apos;{0}&apos;. Please use the Get-AzureRmADGroup cmdlet to get the object id of the desired group..
+        /// </summary>
+        internal static string MultipleGroupsWithDisplayNameFound {
+            get {
+                return ResourceManager.GetString("MultipleGroupsWithDisplayNameFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one service principal found with display name &apos;{0}&apos;. Please use the Get-AzureRmADServicePrincipal cmdlet to get the object id of the desired service principal..
+        /// </summary>
+        internal static string MultipleServicePrincipalsWithDisplayNameFound {
+            get {
+                return ResourceManager.GetString("MultipleServicePrincipalsWithDisplayNameFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one user found with display name &apos;{0}&apos;. Please use the Get-AzureRmADUser cmdlet to get the object id of the desired user..
+        /// </summary>
+        internal static string MultipleUsersWithDisplayNameFound {
+            get {
+                return ResourceManager.GetString("MultipleUsersWithDisplayNameFound", resourceCulture);
             }
         }
         
@@ -133,11 +187,38 @@ namespace Microsoft.Azure.Commands.Common.Graph.RBAC.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service principal with AppId &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ServicePrincipalWithAppIdDoesntExist {
+            get {
+                return ResourceManager.GetString("ServicePrincipalWithAppIdDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service principal with display name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ServicePrincipalWithDisplayNameDoesntExist {
+            get {
+                return ResourceManager.GetString("ServicePrincipalWithDisplayNameDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Service principal with SPN &apos;{0}&apos; does not exist..
         /// </summary>
         internal static string ServicePrincipalWithSPNDoesntExist {
             get {
                 return ResourceManager.GetString("ServicePrincipalWithSPNDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User with display name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string UserWithDisplayNameDoesntExist {
+            get {
+                return ResourceManager.GetString("UserWithDisplayNameDoesntExist", resourceCulture);
             }
         }
         
