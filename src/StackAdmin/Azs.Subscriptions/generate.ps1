@@ -1,6 +1,6 @@
 
-$rpName = "subscriptions"
-$name = "Subscriptions"
+$rpName = "subscription"
+$name = "Subscription"
 $location = Get-Location
 $psswagger = "D:\github\PSswagger"
 $module = "Module"

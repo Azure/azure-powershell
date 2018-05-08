@@ -16,7 +16,7 @@
       "noAuthChallenge": ""
     },
     "x-ps-module-info": {
-      "name": "SubscriptionsManagementClient",
+      "name": "SubscriptionClient",
       "moduleVersion": "0.0.1",
       "guid": "76615c69-dd7c-406d-b2f7-6f02723d757e",
       "description": "Subscriptions Management Client",

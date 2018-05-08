@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "2015-11-01",
-    "title": "SubscriptionsManagementClient",
+    "title": "SubscriptionClient",
     "description": "Subscriptions Management Client"
   },
   "host": "management.local.azurestack.external",

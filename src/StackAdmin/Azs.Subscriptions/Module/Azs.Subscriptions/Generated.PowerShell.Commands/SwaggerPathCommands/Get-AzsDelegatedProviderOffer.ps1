@@ -30,7 +30,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function Get-AzsDelegatedProviderOffer
 {
-    [OutputType([Microsoft.AzureStack.Management.Subscriptions.Models.Offer])]
+    [OutputType([Microsoft.AzureStack.Management.Subscription.Models.Offer])]
     [CmdletBinding(DefaultParameterSetName='List')]
     param(
         [Parameter(Mandatory = $true, ParameterSetName = 'Get')]
@@ -72,21 +72,21 @@ function Get-AzsDelegatedProviderOffer
     $ErrorActionPreference = 'Stop'
 
     $NewServiceClient_params = @{
-        FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
+        FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
     }
 
     $GlobalParameterHashtable = @{}
     $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
 
-    $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
+    $SubscriptionClient = New-ServiceClient @NewServiceClient_params
 
 
     if ('List' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionsManagementClient.'
-        $TaskResult = $SubscriptionsManagementClient.DelegatedProviderOffers.ListWithHttpMessagesAsync($DelegatedProviderId)
+        Write-Verbose -Message 'Performing operation ListWithHttpMessagesAsync on $SubscriptionClient.'
+        $TaskResult = $SubscriptionClient.DelegatedProviderOffers.ListWithHttpMessagesAsync($DelegatedProviderId)
     } elseif ('Get' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $SubscriptionsManagementClient.'
-        $TaskResult = $SubscriptionsManagementClient.DelegatedProviderOffers.GetWithHttpMessagesAsync($DelegatedProviderId, $OfferName)
+        Write-Verbose -Message 'Performing operation GetWithHttpMessagesAsync on $SubscriptionClient.'
+        $TaskResult = $SubscriptionClient.DelegatedProviderOffers.GetWithHttpMessagesAsync($DelegatedProviderId, $OfferName)
     } else {
         Write-Verbose -Message 'Failed to map parameter set to operation method.'
         throw 'Module failed to find operation to execute.'
@@ -118,7 +118,7 @@ function Get-AzsDelegatedProviderOffer
         while ($PageResult -and $PageResult.Result -and (Get-Member -InputObject $PageResult.Result -Name 'nextLink') -and $PageResult.Result.'nextLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
             $PageResult.Result = $null
             Write-Debug -Message "Retrieving next page: $($PageResult.Result.'nextLink')"
-            $TaskResult = $SubscriptionsManagementClient.DelegatedProviderOffers.ListNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
+            $TaskResult = $SubscriptionClient.DelegatedProviderOffers.ListNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
             $GetTaskResult_params['TaskResult'] = $TaskResult
             $GetTaskResult_params['PageResult'] = $PageResult
             Get-TaskResult @GetTaskResult_params

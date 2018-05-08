@@ -39,9 +39,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AzureStack.Management.Subscriptions">
+    <Reference Include="Microsoft.AzureStack.Management.Subscription">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.Subscriptions.0.1.0-preview\lib\net452\Microsoft.AzureStack.Management.Subscriptions.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.AzureStack.Management.Subscription.0.1.0-preview\lib\net452\Microsoft.AzureStack.Management.Subscription.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
