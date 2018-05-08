@@ -24,4 +24,4 @@ on_success:
   - cd %TEMP%\Azure
   - ps: ls C:\docs -dir | % { copy $_.FullName . -Recurse -Force }
   - git add -A
-  - git diff --quiet --exit-code --cached || git commit -m "Sync docs from source code repo to content repo." && git push origin %target_branch% -f && appveyor AddMessage "Content Updated"
+  - git diff --quiet --exit-code --cached || git commit -m "Sync docs from source code repo to content repo." && git push origin %source_branch%:%target_branch% -f && appveyor AddMessage "Content Updated"
