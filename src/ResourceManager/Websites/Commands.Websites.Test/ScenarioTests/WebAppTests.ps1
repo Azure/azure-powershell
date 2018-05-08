@@ -599,7 +599,7 @@ function Test-SetWebApp
 		Assert-Null $webApp.Identity
 		
 		# Change service plan & set site properties
-		$job = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -ARRAFFinity !$webAppClientAffinity -AssignIdentity $true -AsJob
+		$job = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -ClientAffinityEnabled !$webAppClientAffinity -AssignIdentity $true -AsJob
 		$job | Wait-Job
 		$webApp = $job | Receive-Job
 

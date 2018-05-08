@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public bool HttpsOnly { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1Name, Mandatory = false, HelpMessage = "Enable/disable affinitizing clients to particular instances of a webapp")]
-        public bool ARRAffinity { get; set; }
+        public bool ClientAffinityEnabled { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             ServerFarmId = WebApp.ServerFarmId,
                             Identity = parameters.Contains("AssignIdentity") && AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly,
-                            ClientAffinityEnabled = parameters.Contains("ARRAffinity") ? ARRAffinity : WebApp.ClientAffinityEnabled
+                            ClientAffinityEnabled = parameters.Contains("ClientAffinityEnabled") ? ClientAffinityEnabled : WebApp.ClientAffinityEnabled
                         };
 
                         Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             {
                 "HttpsOnly",
                 "AssignIdentity",
-                "ARRAffinity"
+                "ClientAffinityEnabled"
             };
 
         private static readonly Regex AppWithSlotNameRegex = new Regex(@"^(?<siteName>[^\(]+)/(?<slotName>[^\)]+)$");

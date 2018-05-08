@@ -22,7 +22,7 @@ Set-AzureRmWebApp [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
  [[-HandlerMappings] <System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HandlerMapping]>]
  [[-ManagedPipelineMode] <String>] [[-WebSocketsEnabled] <Boolean>] [[-Use32BitWorkerProcess] <Boolean>]
  [[-AutoSwapSlotName] <String>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob] [[-AssignIdentity] <Boolean>]
- [[-HttpsOnly] <Boolean>] [[ARRAffinity] <Boolean>] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [[-HttpsOnly] <Boolean>] [[ClientAffinityEnabled] <Boolean>] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -242,7 +242,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ARRAffinity
+### -ClientAffinityEnabled
 Enable/disable affinitizing clients to particular instances of a webapp
 
 ```yaml
