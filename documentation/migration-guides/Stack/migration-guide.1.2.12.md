@@ -4,7 +4,7 @@
 3. [Breaking changes in storage admin module](#Breaking-changes-in-storage-admin-module)
 
 ## Summary
-The module version 1.2.12 of AzureStack brings in many breaking changes. Most of these breaking changes were noted with warnings in the previous releases. Please note that there are no changes in the AzureRM version of the module specific to azure stack.  
+The module version 1.2.12 of AzureStack brings in many breaking changes. Most of these breaking changes were noted with warnings in the previous releases. Please note that there are no changes in the AzureRM version of the module specific to Azure Stack.  
 
 AzureRm.AzureStackAdmin module is replaced with Azs.Subscriptions.Admin and Azs.Subscriptions module
 AzureRm.AzureStackStorage module is replaced with Azs.Storage.Admin module
@@ -36,7 +36,7 @@ The previous release was printing  warnings about the deprecation of the followi
 - Parameter ```Managed``` in Get-AzsOffer has been deprecated. Please use Get-AzsManagedOffer instead
 
 **Flattening of Properties** <br>
-The Plan/Offer/Subscription objects wont be having .Properties instead the child properties are flattened out to be at the Top level. If you are having any references to the .Properties, this breaking change could be fixed by accessing the prperty directly at the top level
+Properties field of the objects Plan, Offer, Subscription have been removed and the child properties are moved to the top level. If you are having any references to the Properties, this breaking change could be fixed by removing the intermediate Properties reference
 
 **Force Parameter** <br>
 
@@ -78,8 +78,7 @@ Affected cmdlets
 - Get-AzsTableServiceMetricDefinition
 - Start-AzsReclaimStorageCapacity
 
-
--  ```ResourceId``` parameter can be used for cmdlets that require ```Name``` 
+ ```ResourceId``` parameter can be used for cmdlets that require ```Name``` . The ReourceId is same as the Id of the resource object that is returned from the Get-* cmdlets. The parameter also has an alias ```Id```. 
 
 Affected cmdlets<br>
 - Get-AzsStorageQuota
