@@ -23,20 +23,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <summary>
     /// 'New-AzureRmEventHub' Cmdlet creates a new EventHub
     /// </summary>
-    [Cmdlet(VerbsCommon.New, EventHubVerb, DefaultParameterSetName = EventhubDefaultParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
+    [Cmdlet(VerbsCommon.New, EventHubVerb, DefaultParameterSetName = EventhubPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
     public class NewAzureRmEventHub : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }        
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Eventhub Name")]
+        [Parameter(Mandatory = true, ParameterSetName = EventhubPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Eventhub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         {
             PSEventHubAttributes eventHub = new PSEventHubAttributes();
 
-            if (InputObject != null)
+            if (ParameterSetName == EventhubInputObjectParameterSet)
             {
                 eventHub = InputObject;
             }

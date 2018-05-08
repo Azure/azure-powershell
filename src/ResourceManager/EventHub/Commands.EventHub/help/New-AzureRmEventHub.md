@@ -12,24 +12,17 @@ Creates a new Event Hub.
 
 ## SYNTAX
 
-### EventhubDefaultSet (Default)
-```
-New-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### EventhubInputObjectSet
-```
-New-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
- [-InputObject <PSEventHubAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### EventhubPropertiesSet
+### EventhubPropertiesSet (Default)
 ```
 New-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
  [-MessageRetentionInDays <Int64>] [-PartitionCount <Int64>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EventhubInputObjectSet
+```
+New-AzureRmEventHub [-InputObject <PSEventHubAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
