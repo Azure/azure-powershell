@@ -14,7 +14,7 @@
         ],
         "User-Agent": [
           "FxVersion/4.6.26011.01",
-          "Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient/0.1.0.0"
+          "Microsoft.AzureStack.Management.Subscription.SubscriptionClient/0.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/delegatedProviders/default/offers/balaoffer\",\r\n      \"name\": \"balaoffer\",\r\n      \"displayName\": \"balaoffer\",\r\n      \"description\": \"\"\r\n    },\r\n    {\r\n      \"id\": \"/delegatedProviders/default/offers/cnur8007tenantoffer352\",\r\n      \"name\": \"cnur8007tenantoffer352\",\r\n      \"displayName\": \"cnur8007tenantoffer352\"\r\n    },\r\n    {\r\n      \"id\": \"/delegatedProviders/default/offers/cnur8007tenantsubsvcoffer352\",\r\n      \"name\": \"cnur8007tenantsubsvcoffer352\",\r\n      \"displayName\": \"cnur8007tenantsubsvcoffer352\"\r\n    },\r\n    {\r\n      \"id\": \"/delegatedProviders/default/offers/TestOffer-e9a634c1-8846-49f0-ab49-65d24262dc41\",\r\n      \"name\": \"TestOffer-e9a634c1-8846-49f0-ab49-65d24262dc41\",\r\n      \"displayName\": \"TestOffer-e9a634c1-8846-49f0-ab49-65d24262dc41\"\r\n    }\r\n  ]\r\n}",

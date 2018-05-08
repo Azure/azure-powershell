@@ -14,11 +14,11 @@
 
 using System.Management.Automation;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.AzureStack.Management.Subscriptions;
+using Microsoft.AzureStack.Management.Subscription;
 
 namespace Test
 {
-    [Cmdlet(VerbsCommon.Get, "MockClient"), OutputType(typeof(SubscriptionsManagementClient))]
+    [Cmdlet(VerbsCommon.Get, "MockClient"), OutputType(typeof(SubscriptionClient))]
     public class Helper : PSCmdlet
     {
 
@@ -36,7 +36,7 @@ namespace Test
             handler.IsPassThrough = true;
 
             var context = MockContext.Start(ClassName, TestName);
-            WriteObject(context.GetServiceClient<SubscriptionsManagementClient>(handlers: handler));
+            WriteObject(context.GetServiceClient<SubscriptionClient>(handlers: handler));
         }
     }
 }

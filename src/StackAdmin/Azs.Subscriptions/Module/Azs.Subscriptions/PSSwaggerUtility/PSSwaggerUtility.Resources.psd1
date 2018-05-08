@@ -25,6 +25,6 @@ ConvertFrom-StringData @'
     FailedToAddType=Unable to add '{0}' type.
     NuGetMissing=NuGet.exe missing. This usually means the user did not consent to download NuGet.exe when prompted.
     NuGetFailedToInstall=NuGet.exe failed to install to path '{0}'.
-    CSharpNamespace=Microsoft.AzureStack.Management.Subscriptions
+    CSharpNamespace=Microsoft.AzureStack.Management.Subscription
 ###PSLOC
 '@

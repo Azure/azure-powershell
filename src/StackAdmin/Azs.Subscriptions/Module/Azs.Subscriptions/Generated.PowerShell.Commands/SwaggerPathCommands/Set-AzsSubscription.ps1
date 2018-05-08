@@ -50,7 +50,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Create or updates a subscription.
 #>
 function Set-AzsSubscription {
-    [OutputType([Microsoft.AzureStack.Management.Subscriptions.Models.Subscription])]
+    [OutputType([Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel])]
     [CmdletBinding(DefaultParameterSetName = 'Set', SupportsShouldProcess = $true)]
     param(
         [Parameter(Mandatory = $false, ParameterSetName = 'Set')]
@@ -96,7 +96,7 @@ function Set-AzsSubscription {
         $ResourceId,
 
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ParameterSetName = 'InputObject')]
-        [Microsoft.AzureStack.Management.Subscriptions.Models.Subscription]
+        [Microsoft.AzureStack.Management.Subscription.Models.SubscriptionModel]
         $InputObject
     )
 
@@ -122,13 +122,13 @@ function Set-AzsSubscription {
         }
 
         $NewServiceClient_params = @{
-            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.SubscriptionsManagementClient'
+            FullClientTypeName = 'Microsoft.AzureStack.Management.Subscription.SubscriptionClient'
         }
 
         $GlobalParameterHashtable = @{}
         $NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
 
-        $SubscriptionsManagementClient = New-ServiceClient @NewServiceClient_params
+        $SubscriptionClient = New-ServiceClient @NewServiceClient_params
 
         $updatedSubscription = $null
 
@@ -163,8 +163,8 @@ function Set-AzsSubscription {
                     }
                 }
 
-                Write-Verbose -Message 'Performing operation update on $SubscriptionsManagementClient.'
-                $TaskResult = $SubscriptionsManagementClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $updatedSubscription)
+                Write-Verbose -Message 'Performing operation update on $SubscriptionClient.'
+                $TaskResult = $SubscriptionClient.Subscriptions.CreateOrUpdateWithHttpMessagesAsync($SubscriptionId, $updatedSubscription)
 
             } else {
                 Write-Verbose -Message 'Failed to map parameter set to operation method.'

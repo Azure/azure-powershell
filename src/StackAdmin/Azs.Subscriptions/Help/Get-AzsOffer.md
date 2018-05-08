@@ -83,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.AzureStack.Management.Subscriptions.Models.Offer
+### Microsoft.AzureStack.Management.Subscription.Models.Offer
 
 ## NOTES
 
