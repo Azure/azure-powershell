@@ -15,7 +15,7 @@ Get usage details of the subscription.
 ```
 Get-AzureRmConsumptionUsageDetail [-BillingPeriodName <String>] [-Expand <String>] [-IncludeMeterDetails]
  [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>] [-ResourceGroup <String>]
- [-InstanceName <String>] [-InstanceId <String>] [-Tags <String>] [-MaxCount <Int32>] [-Top <Int32>]
+ [-InstanceName <String>] [-InstanceId <String>] [-Tag <String>] [-MaxCount <Int32>] [-Top <Int32>]
  [-InvoiceName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -227,7 +227,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 The tag of the usages to filter.
 
 ```yaml

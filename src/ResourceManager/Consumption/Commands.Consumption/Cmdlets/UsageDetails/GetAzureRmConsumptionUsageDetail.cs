@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         [ValidateNotNullOrEmpty]
         public string BillingPeriodName { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Expand the usages based on MeterDetails, or AdditionalProperties.")]
+        [Parameter(Mandatory = false, HelpMessage = "Expand the usages based on MeterDetails, or AdditionalInfo.")]
         [ValidateNotNull]
         public string Expand { get; set; }
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
                 expand = "properties/meterDetails";
             }
             if (!string.IsNullOrWhiteSpace(this.Expand) &&
-                this.Expand.Equals(Constants.Expands.AdditionalProperties, StringComparison.InvariantCultureIgnoreCase) ||
+                this.Expand.Equals(Constants.Expands.AdditionalInfo, StringComparison.InvariantCultureIgnoreCase) ||
                 this.IncludeAdditionalProperties.IsPresent)
             {
                 if (expand == default(string))

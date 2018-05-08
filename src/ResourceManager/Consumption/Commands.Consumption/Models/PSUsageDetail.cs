@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.Consumption.Models
     public class PSUsageDetail
     {
         public string AccountName { get; set; }
-        public string AdditionalProperties { get; set; }
+        public string AdditionalInfo { get; set; }
+        public IDictionary<string, string> AdditionalProperties { get; set; }
         public decimal? BillableQuantity { get; set; }
         public string BillingPeriodId { get; set; }
         public string BillingPeriodName { get; set; }
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.Consumption.Models
         public string Product { get; set; }
         public string SubscriptionGuid { get; set; }
         public string SubscriptionName { get; set; }
-        public IDictionary<string, string> Tag { get; private set; }
+        public IDictionary<string, string> Tags { get; private set; }
         public string Type { get; private set; }
         public DateTime? UsageEnd { get; private set; }
         public decimal? UsageQuantity { get; set; }
@@ -60,7 +61,7 @@ namespace Microsoft.Azure.Commands.Consumption.Models
             if (usageDetail != null)
             {
                 this.AccountName = usageDetail.AccountName;
-                this.AdditionalProperties = usageDetail.AdditionalProperties;
+                this.AdditionalInfo = usageDetail.AdditionalProperties;
                 this.BillableQuantity = usageDetail.BillableQuantity;
                 this.BillingPeriodId = usageDetail.BillingPeriodId;
                 this.BillingPeriodName = Utilities.GetResourceNameFromId(usageDetail.BillingPeriodId);
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Consumption.Models
                 this.Product = usageDetail.Product;
                 this.SubscriptionGuid = usageDetail.SubscriptionGuid;
                 this.SubscriptionName = usageDetail.SubscriptionName;
-                this.Tag = usageDetail.Tags;
+                this.Tags = usageDetail.Tags;
                 this.Type = usageDetail.Type;
                 this.UsageEnd = usageDetail.UsageEnd;
                 this.UsageQuantity = usageDetail.UsageQuantity;
