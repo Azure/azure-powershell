@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Commands.Batch
     {
         private const int defaultMaxCount = 10;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.PoolIdParameterSet, Mandatory = false,
+        [Parameter(ParameterSetName = Constants.PoolIdParameterSet, Mandatory = false,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool for which to get node counts.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, 
+        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, 
             ValueFromPipeline = true, Mandatory = false, HelpMessage = "The pool object for which to get node counts.")]
         [ValidateNotNullOrEmpty]
         public PSCloudPool Pool { get; set; }

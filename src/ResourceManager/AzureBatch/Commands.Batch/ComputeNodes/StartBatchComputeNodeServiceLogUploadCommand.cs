@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
+        [Parameter(Position = 1, ParameterSetName = Constants.ParentObjectParameterSet, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public DateTime StartTime { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage = "The end of the time range from which to upload Batch Service log file(s).")]
         public DateTime? EndTime { get; set; }
 
