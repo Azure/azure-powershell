@@ -246,7 +246,15 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new cmdlets for CRUD operations on Managed Instance and Managed Database'
+        ReleaseNotes = '* Added new cmdlets for CRUD operations on Managed Instance and Managed Database
+* Add commandlets for new feature - Instance Failover Groups
+	- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity
+	- New-AzureRmSqlDatabaseInstanceFailoverGroup creates a new Instance Failover Group
+	- Remove-AzureRmSqlDatabaseInstanceFailoverGroup Instance Failover Group deletes the Failover Group
+	- Set-AzureRmSqlDatabaseInstanceFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Instance Failover Group
+	- Switch-AzureRmSqlDatabaseInstanceFailoverGroup issues the failover operation with data loss or without data loss
+* Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
+* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with "Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy".'
 
         # Prerelease string of this module
         Prerelease = 'preview'
