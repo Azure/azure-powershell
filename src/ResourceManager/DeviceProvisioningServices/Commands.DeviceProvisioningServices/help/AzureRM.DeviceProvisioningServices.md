@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.DeviceProvisioningServices
 Module Guid: a9f5b86f-63be-4e7a-8e16-c8c7c36cae40
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.deviceprovisioningservices
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 

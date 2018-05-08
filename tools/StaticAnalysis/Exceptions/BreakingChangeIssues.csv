@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Microsoft.Azure.Commands.Compute.dll","Microsoft.Azure.Commands.Compute.SetAzureRmVMDiagnosticsExtensionCommand","Set-AzureRmVMDiagnosticsExtension","0","2020","The cmdlet 'Set-AzureRmVMDiagnosticsExtension' no longer supports the type 'Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext' for parameter 'StorageContext'.","Change the type for parameter 'StorageContext' back to 'Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext'."
 "Microsoft.Azure.Commands.Compute.dll","Microsoft.Azure.Commands.Compute.NewAzureVMSqlServerAutoBackupConfigCommand","New-AzureRmVMSqlServerAutoBackupConfig","0","2020","The cmdlet 'New-AzureRmVMSqlServerAutoBackupConfig' no longer supports the type 'Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext' for parameter 'StorageContext'.","Change the type for parameter 'StorageContext' back to 'Microsoft.WindowsAzure.Commands.Common.Storage.AzureStorageContext'."
@@ -1367,3 +1368,6 @@
 "Microsoft.Azure.Commands.KeyVault.dll","Microsoft.Azure.Commands.KeyVault.SetAzureKeyVaultSecretAttribute","Set-AzureKeyVaultSecretAttribute","0","1050","The parameter set 'InputObject' for cmdlet 'Set-AzureKeyVaultSecretAttribute' has been removed.","Add parameter set 'InputObject' back to cmdlet 'Set-AzureKeyVaultSecretAttribute'."
 "Microsoft.Azure.Commands.KeyVault.dll","Microsoft.Azure.Commands.KeyVault.SetAzureKeyVaultSecretAttribute","Set-AzureKeyVaultSecretAttribute","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Set-AzureKeyVaultSecretAttribute' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Set-AzureKeyVaultSecretAttribute'."
 "Microsoft.Azure.Commands.KeyVault.dll","Microsoft.Azure.Commands.KeyVault.Commands.GetAzureKeyVaultCertificatePolicy","Get-AzureKeyVaultCertificatePolicy","0","1050","The parameter set 'VaultAndCertName' for cmdlet 'Get-AzureKeyVaultCertificatePolicy' has been removed.","Add parameter set 'VaultAndCertName' back to cmdlet 'Get-AzureKeyVaultCertificatePolicy'."
+=======
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+>>>>>>> 21d143373cc11dec89ce153f5c497801ddd620d2

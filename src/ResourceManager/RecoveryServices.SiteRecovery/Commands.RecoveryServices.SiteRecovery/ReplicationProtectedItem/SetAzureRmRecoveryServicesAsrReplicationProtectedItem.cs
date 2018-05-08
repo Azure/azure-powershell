@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     if (!this.MyInvocation.BoundParameters.ContainsKey(
                             Utilities.GetMemberName(() => this.RecoveryBootDiagStorageAccountId)))
                     {
-                        this.RecoveryBootDiagStorageAccountId = providerSpecificDetails.SelectedRecoveryAzureNetworkId;
+                        this.RecoveryBootDiagStorageAccountId = providerSpecificDetails.RecoveryBootDiagStorageAccountId;
                     }
 
                     List<A2AVmManagedDiskUpdateDetails> managedDiskUpdateDetails = null;

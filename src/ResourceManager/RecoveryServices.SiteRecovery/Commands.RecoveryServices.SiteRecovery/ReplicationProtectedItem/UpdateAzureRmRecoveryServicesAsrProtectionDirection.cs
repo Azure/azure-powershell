@@ -589,7 +589,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                         this.AzureToAzureDiskReplicationConfiguration.Length == 0)
             {
                 var a2aReplicationDetails = ((A2AReplicationDetails)replicationProtectedItemResponse.Properties.ProviderSpecificDetails);
-                if (a2aReplicationDetails.FabricObjectId.ToLower().Contains(ARMResourceTypeConstants.Compute.ToLower()))
+                if (!a2aReplicationDetails.FabricObjectId.ToLower().Contains(ARMResourceTypeConstants.Compute.ToLower()))
                 {
                     throw new Exception("Pass AzureToAzureDiskReplicationConfiguration for classic VMs");
                 }
