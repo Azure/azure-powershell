@@ -4699,7 +4699,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
             "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties",
             "GenericTypeArguments": [],
@@ -4717,7 +4717,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
             "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties",
             "GenericTypeArguments": [],
@@ -4859,7 +4859,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
                   "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties",
                   "GenericTypeArguments": [],
@@ -4883,7 +4883,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
                   "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties[], Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties",
                   "GenericTypeArguments": [],
@@ -60400,7 +60400,7 @@
     "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties": {
       "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties, Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties, Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Name": "System.String",
         "TargetEdition": "System.String",
@@ -60446,7 +60446,7 @@
     "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties": {
       "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties, Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.UpgradeRecommendedElasticPoolProperties, Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DatabaseCollection": "System.Collections.Generic.IList`1[System.String]",
         "DatabaseDtuMax": "System.Int32",
@@ -61340,7 +61340,7 @@
     "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn": {
       "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn, Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn, Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "DataSize": "System.String",
         "DataType": "System.String",
@@ -61386,7 +61386,7 @@
     "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable": {
       "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable, Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable, Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Columns": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn]",
         "QuotedName": "System.String"
@@ -61431,7 +61431,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn, Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaColumn, Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -61443,7 +61443,7 @@
     "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchema": {
       "Namespace": "Microsoft.Azure.Management.Sql.LegacySdk.Models",
       "Name": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchema",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchema, Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchema, Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Tables": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable]",
         "MasterSyncMemberName": "System.String"
@@ -61488,7 +61488,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable, Microsoft.Azure.Management.Sql.Legacy, Version=4.3.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.Sql.LegacySdk.Models.SyncGroupSchemaTable, Microsoft.Azure.Management.Sql.Legacy, Version=4.4.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
