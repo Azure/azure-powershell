@@ -14,9 +14,10 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartnerId": "System.String",
+              "PartnerName": "System.String",
               "TenantId": "System.String",
               "ObjectId": "System.String",
               "State": "System.String"
@@ -205,9 +206,10 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartnerId": "System.String",
+              "PartnerName": "System.String",
               "TenantId": "System.String",
               "ObjectId": "System.String",
               "State": "System.String"
@@ -571,9 +573,10 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ManagementPartner",
             "Name": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner, Microsoft.Azure.Commands.ManagementPartner, Version=0.1.2.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "PartnerId": "System.String",
+              "PartnerName": "System.String",
               "TenantId": "System.String",
               "ObjectId": "System.String",
               "State": "System.String"
