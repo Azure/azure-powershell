@@ -140,7 +140,7 @@ Parameter Sets: Set a Instance Failover Group from AzureSqlInstanceFailoverGroup
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

@@ -85,7 +85,7 @@ Parameter Sets: Remove a Instance Failover Group from AzureSqlInstanceFailoverGr
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
