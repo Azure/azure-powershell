@@ -20,6 +20,8 @@
 
 ## Current Release
 
+* Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
+
 ## Version 6.0.0
 * Added cmdlet to add a new circuit connection to an existing express route circuit.
     - Add-AzureRmExpressRouteCircuitConnectionConfig
