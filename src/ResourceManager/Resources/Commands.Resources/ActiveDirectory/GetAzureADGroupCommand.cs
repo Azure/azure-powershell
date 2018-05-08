@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -22,13 +23,17 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD groups.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmADGroup", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADGroup>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADGroup", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(List<PSADGroup>))]
     public class GetAzureADGroupCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
-            HelpMessage = "The user or group name.")]
+            HelpMessage = "Used to find groups that begin with the provided string.")]
+        [Alias("SearchString")]
         [ValidateNotNullOrEmpty]
-        public string SearchString { get; set; }
+        public string DisplayNameStartsWith { get; set; }
+
+        [Parameter(Mandatory = true, ParameterSetName = ParameterSet.DisplayName, HelpMessage = "The display name of the group.")]
+        public string DisplayName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "The group id.")]
@@ -43,16 +48,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 ADObjectFilterOptions options = new ADObjectFilterOptions
                 {
-                    SearchString = SearchString,
+                    SearchString = this.IsParameterBound(c => c.DisplayNameStartsWith) ? DisplayNameStartsWith + "*" : DisplayName,
                     Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
                     Paging = true
                 };
 
-                do
-                {
-                    WriteObject(ActiveDirectoryClient.FilterGroups(options), true);
-                } while (!string.IsNullOrEmpty(options.NextLink));
-
+                ulong first = MyInvocation.BoundParameters.ContainsKey("First") ? this.PagingParameters.First : ulong.MaxValue;
+                ulong skip = MyInvocation.BoundParameters.ContainsKey("Skip") ? this.PagingParameters.Skip : 0;
+                WriteObject(ActiveDirectoryClient.FilterGroups(options, first, skip), true);
             });
         }
     }

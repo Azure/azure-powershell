@@ -12,6 +12,12 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Snapshots require a Premium app to exist for several hours.
+# Deploy a Premium app and update these global variables to re-record the snapshots tests.
+$snapshotRgName = 'onesdksnapshots'
+$snapshotAppName = 'onesdkpremapp'
+$snapshotAppSlot = 'staging'
+
 function Test-CreateNewWebAppBackup
 {
     $rgName = Get-ResourceGroupName
@@ -322,6 +328,52 @@ function Test-EditAndGetWebAppBackupConfigurationPiping
     }
 }
 
+function Test-GetWebAppSnapshot
+{
+	# Test named parameters
+	$snapshots = Get-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName
+	Assert-True { $snapshots.Length -gt 0 }
+	Assert-NotNull $snapshots[0]
+	Assert-NotNull $snapshots[0].SnapshotTime
+	Assert-AreEqual 'Production' $snapshots[0].Slot
+
+	# Test positional parameters
+	$snapshots = Get-AzureRmWebAppSnapshot $snapshotRgName  $snapshotAppName
+	Assert-True { $snapshots.Length -gt 0 }
+	Assert-NotNull $snapshots[0]
+	Assert-NotNull $snapshots[0].SnapshotTime
+	Assert-AreEqual 'Production' $snapshots[0].Slot
+
+	# Test snapshots for slots
+	$snapshots = Get-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -Slot $snapshotAppSlot
+	Assert-True { $snapshots.Length -gt 0 }
+	Assert-NotNull $snapshots[0]
+	Assert-NotNull $snapshots[0].SnapshotTime
+	Assert-AreEqual $snapshotAppSlot $snapshots[0].Slot
+
+	# Test piping
+	$app = Get-AzureRmWebApp -ResourceGroupName $snapshotRgName -Name $snapshotAppName
+	$snapshots = $app | Get-AzureRmWebAppSnapshot
+	Assert-True { $snapshots.Length -gt 0 }
+	Assert-NotNull $snapshots[0]
+	Assert-NotNull $snapshots[0].SnapshotTime
+	Assert-AreEqual 'Production' $snapshots[0].Slot
+}
+
+function Test-RestoreWebAppSnapshot
+{
+	# Test overwrite
+	$snapshot = (Get-AzureRmWebAppSnapshot $snapshotRgName $snapshotAppName)[0]
+	Restore-AzureRmWebAppSnapshot -ResourceGroupName $snapshotRgName -Name $snapshotAppName -InputObject $snapshot -Force -RecoverConfiguration
+
+	# Test restore to target slot
+	Restore-AzureRmWebAppSnapshot $snapshotRgName $snapshotAppName $snapshotAppSlot $snapshot -RecoverConfiguration -Force
+
+	# Test piping and background job
+	$job = $snapshot | Restore-AzureRmWebAppSnapshot -Force -AsJob
+	$job | Wait-Job
+}
+
 # Utility functions
 
 # Creates a new web app
@@ -354,7 +406,10 @@ function Create-TestStorageAccount
     $stoKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup -Name $storageName).Key1;
     # 2 hour access duration
     $accessDuration = New-Object -TypeName TimeSpan(2,0,0)
-    $permissions = [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions]::Write
+    $permissions = [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions]::Write -bor
+		[Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions]::Read -bor
+		[Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions]::List -bor
+		[Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions]::Delete
     $sasUri = Get-SasUri $storageName $stoKey $stoContainerName $accessDuration $permissions
     return $sasUri
 }
