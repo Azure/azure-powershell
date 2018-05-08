@@ -26,4 +26,4 @@
 -->
 
 # Upcoming Breaking Changes
-* Remove parameter InvoiceName on Cmdlet Get-AzureRmConsumptionUsageDetail
+* Remove input parameter InvoiceName and output parameter AdditionalProperties on Cmdlet Get-AzureRmConsumptionUsageDetail

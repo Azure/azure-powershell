@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Consumption.Common
         public class Expands
         {
             public const string MeterDetails = "meterDetails";
+            public const string AdditionalInfo = "additionalInfo";
             public const string AdditionalProperties = "additionalProperties";
         }
 
