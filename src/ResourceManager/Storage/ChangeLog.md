@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.1-preview
 * Support get the Storage resource usage of a specific location
     - Get-AzureRmStorageUsage
 
