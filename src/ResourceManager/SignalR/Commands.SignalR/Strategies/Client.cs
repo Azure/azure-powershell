@@ -15,7 +15,9 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.SignalR.Properties;
 using Microsoft.Rest;
+using System;
 
 namespace Microsoft.Azure.Commands.SignalR.Strategies
 {
@@ -27,6 +29,11 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies
 
         public Client(IAzureContext context)
         {
+            if (context == null)
+            {
+                throw new ApplicationException(Resources.NoSubscriptionInContext);
+            }
+
             Context = context;
             SubscriptionId = Context.Subscription.Id;
         }
