@@ -15,7 +15,7 @@ Creates a SQL Database Managed instance.
 ### NewBySkuNameParameterSetParameter
 ```
 New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
- [-AdministratorCredential <PSCredential>] -Location <String> -SubnetId <String> -LicenseType <String>
+ -AdministratorCredential <PSCredential> -Location <String> -SubnetId <String> -LicenseType <String>
  -StorageSizeInGB <Int32> -VCore <Int32> -SkuName <String> [-Tag <Hashtable>] [-AssignIdentity] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -23,7 +23,7 @@ New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
 ### NewByEditionAndComputeGenerationParameterSet
 ```
 New-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
- [-AdministratorCredential <PSCredential>] -Location <String> -SubnetId <String> -LicenseType <String>
+ -AdministratorCredential <PSCredential> -Location <String> -SubnetId <String> -LicenseType <String>
  -StorageSizeInGB <Int32> -VCore <Int32> -Edition <String> -ComputeGeneration <String> [-Tag <Hashtable>]
  [-AssignIdentity] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -86,7 +86,7 @@ Type: PSCredential
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -336,18 +336,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-
 
 ## NOTES
 

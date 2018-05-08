@@ -14,26 +14,26 @@ Modifies the configuration of an Instance Failover Group.
 
 ### SetIFGDefault (Default)
 ```
-Set-AzureRmSqlDatabaseInstanceFailoverGroup [-Name] <String> [-FailoverPolicy <FailoverPolicy>]
- [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
- [-ResourceGroupName] <String> [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmSqlDatabaseInstanceFailoverGroup [-ResourceGroupName] <String> [-Location] <String> [-Name] <String>
+ [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Set a Instance Failover Group from Resource Id
+```
+Set-AzureRmSqlDatabaseInstanceFailoverGroup [-Location] <String> [-ResourceId] <String>
+ [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Set a Instance Failover Group from AzureSqlInstanceFailoverGroupModel instance definition
 ```
 Set-AzureRmSqlDatabaseInstanceFailoverGroup -InputObject <AzureSqlInstanceFailoverGroupModel>
  [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
- [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-ResourceGroupName] <String>
- [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Set a Instance Failover Group from Resource Id
-```
-Set-AzureRmSqlDatabaseInstanceFailoverGroup [-ResourceId] <String> [-FailoverPolicy <FailoverPolicy>]
- [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
- [-ResourceGroupName] <String> [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,13 +151,13 @@ The name of the Local Region from which to retrieve the Instance Failover Group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetIFGDefault, Set a Instance Failover Group from Resource Id
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -181,13 +181,13 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetIFGDefault
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -202,7 +202,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -238,19 +238,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model.AzureSqlInstanceFailoverGroupModel
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Model.AzureSqlInstanceFailoverGroupModel
-
 
 ## NOTES
 

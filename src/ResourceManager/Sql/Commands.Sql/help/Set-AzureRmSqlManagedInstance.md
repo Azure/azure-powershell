@@ -12,27 +12,27 @@ Modifies properties of a SQL Database Managed instance. Properties that are not 
 
 ## SYNTAX
 
+### SetManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
+```
+Set-AzureRmSqlManagedInstance [-InputObject] <AzureSqlManagedInstanceModel>
+ [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
+ [-Tag <Hashtable>] [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SetManagedInstanceFromAzureResourceId
+```
+Set-AzureRmSqlManagedInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>]
+ [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### SetManagedInstanceFromInputParameters
 ```
 Set-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
  [-AdministratorPassword <SecureString>] [-LicenseType <String>] [-StorageSizeInGB <Int32>] [-VCore <Int32>]
  [-Tag <Hashtable>] [-AssignIdentity] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### SetManagedInstanceFromAzureSqlManagedInstanceModelInstanceDefinition
-```
-Set-AzureRmSqlManagedInstance [-AdministratorPassword <SecureString>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity]
- [-InputObject] <AzureSqlManagedInstanceModel> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### SetManagedInstanceFromAzureResourceId
-```
-Set-AzureRmSqlManagedInstance [-AdministratorPassword <SecureString>] [-LicenseType <String>]
- [-StorageSizeInGB <Int32>] [-VCore <Int32>] [-Tag <Hashtable>] [-AssignIdentity] [-ResourceId] <String>
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -277,19 +277,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-
 
 ## NOTES
 

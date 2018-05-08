@@ -12,9 +12,16 @@ Returns information about SQL Database Managed instances.
 
 ## SYNTAX
 
+### GetManagedInstanceByNameAndResourceGroup
 ```
-Get-AzureRmSqlManagedInstance [[-Name] <String>] [[-ResourceGroupName] <String>]
+Get-AzureRmSqlManagedInstance [-Name] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetManagedInstanceByResourceGroup
+```
+Get-AzureRmSqlManagedInstance [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,10 +109,10 @@ SQL managed instance name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetManagedInstanceByNameAndResourceGroup
 Aliases: ManagedInstanceName
 
-Required: False
+Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
@@ -117,7 +124,19 @@ The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetManagedInstanceByNameAndResourceGroup
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: GetManagedInstanceByResourceGroup
 Aliases:
 
 Required: False
@@ -128,18 +147,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-
 
 ## NOTES
 
