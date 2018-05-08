@@ -21,16 +21,12 @@
 ## Current Release
 
 ## Version 6.0.0
-* Added cmdlet to create a new circuit connection
-    - New-AzureRmExpressRouteCircuitConnectionConfig
 * Added cmdlet to add a new circuit connection to an existing express route circuit.
     - Add-AzureRmExpressRouteCircuitConnectionConfig
 * Added cmdlet to remove a circuit connection from an existing express route circuit.
     - Remove-AzureRmExpressRouteCircuitConnectionConfig
 * Added cmdlet to retrieve a circuit connection
     - Get-AzureRmExpressRouteCircuitConnectionConfig
-* Added cmdlet to update a circuit connection
-    - Set-AzureRmExpressRouteCircuitConnectionConfig
 * Bump up network sdk version from 17.0.0.preview to 18.0.0.preview
 * Rerecord all network tests with latest sdk version* Set minimum dependency of module to PowerShell 5.0
 * Add support for DDoS protection plan resource

@@ -62,28 +62,26 @@ function Get-ProviderLocation($provider)
 		{  
 			$type = $provider.Substring($namespace.Length + 1)  
 			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
-  
+
 			if ($location -eq $null) 
 			{  
-				return "West US"  
+				return "centraluseuap"  
 			} 
             else 
-			{  
-			if($location.Locations[0] -eq "West US")
-			{ 
-				return $location.Locations[1]
-			}
-			else
 			{
-				return $location.Locations[0]
+				if($location.Locations[0] -eq "West US")
+				{ 
+					return "centraluseuap"
 				}
-			}  
-		}
-		
-		return "West US"
+				else
+				{
+					return "centraluseuap"
+				} 
+			}
+		}	
+		return "centraluseuap"
 	}
-
-	return "WestUS"
+	return "centraluseuap"
 }
 
 <#

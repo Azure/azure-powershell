@@ -322,9 +322,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'Remove-AzureRmDdosProtectionPlan',
                'Add-AzureRmExpressRouteCircuitConnectionConfig',
                'Get-AzureRmExpressRouteCircuitConnectionConfig',
-               'New-AzureRmExpressRouteCircuitConnectionConfig',
-               'Remove-AzureRmExpressRouteCircuitConnectionConfig',
-               'Set-AzureRmExpressRouteCircuitConnectionConfig'
+               'Remove-AzureRmExpressRouteCircuitConnectionConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()
