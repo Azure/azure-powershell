@@ -84,6 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = SwitchIFGByInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The Instance Failover Group object to switch")]
         [ValidateNotNullOrEmpty]
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(ParameterSetName = SwitchIFGByResourceIdSet,
             Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The Resource ID of the Instance Failover Group that will become the new Primary.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

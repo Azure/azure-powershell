@@ -80,7 +80,7 @@ function Assert-InstanceFailoverGroupsEqual($expected, $actual, $role = $null, $
 
 function Validate-InstanceFailoverGroupWithGet($fg, $message = "no context provided")
 {
-	$actual = $fg | Get-AzureRmSqlDatabaseInstanceFailoverGroup
+	$actual = Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName $fg.ResourceGroupName -Location $fg.Location -Name $fg.Name
 	Assert-InstanceFailoverGroupsEqual $fg $actual -message $message
 }
 
@@ -234,7 +234,7 @@ function Test-SwitchInstanceFailoverGroup()
 
 		$fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup 
 
-		$newPrimaryFg = $fg | Get-AzureRmSqlDatabaseInstanceFailoverGroup
+		$newPrimaryFg = Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName $fg.ResourceGroupName -Location $fg.Location -Name $fg.Name
 
 		Validate-InstanceFailoverGroupWithGet $newPrimaryFg		
 
@@ -248,7 +248,7 @@ function Test-SwitchInstanceFailoverGroupAllowDataLoss()
 		Param($fg)
 
 		$fg | Switch-AzureRmSqlDatabaseInstanceFailoverGroup -AllowDataLoss
-		$newPrimaryFg = $fg | Get-AzureRmSqlDatabaseInstanceFailoverGroup
+		$newPrimaryFg = Get-AzureRmSqlDatabaseInstanceFailoverGroup -ResourceGroupName $fg.ResourceGroupName -Location $fg.Location -Name $fg.Name
 
 		Validate-InstanceFailoverGroupWithGet $newPrimaryFg
 

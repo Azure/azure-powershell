@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         /// Gets or sets the name of the InstanceFailoverGroup to use.
         /// </summary>
         [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Instance Failover Group to retrieve.")]
         [ValidateNotNullOrEmpty]

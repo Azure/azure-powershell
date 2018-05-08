@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 	    /// </summary>
 	    [Parameter(ParameterSetName = RemoveIFGByInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The Instance Failover Group object to remove")]
         [ValidateNotNullOrEmpty]

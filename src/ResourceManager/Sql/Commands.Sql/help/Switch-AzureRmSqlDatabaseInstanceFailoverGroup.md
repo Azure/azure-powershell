@@ -33,9 +33,7 @@ Switch-AzureRmSqlDatabaseInstanceFailoverGroup [-ResourceId] <String> [-AllowDat
 ```
 
 ## DESCRIPTION
-This command swaps the roles of the managed instances in a Instance Failover Group. All new TDS sessions are automatically re-routed to the secondary region after the DNS client cache is refreshed. When the original primary managed instance is back online, all formerly primary databases in it will switch to the secondary role.
-
-The Instance Failover Group's secondary region must be used to execute this command.
+This command swaps the roles of the managed instances in a Instance Failover Group by failing over to the specified secondary region, making it the new primary region. All new TDS sessions connecting to the primary endpoint are automatically re-routed to the new primary region. 
 
 ## EXAMPLES
 

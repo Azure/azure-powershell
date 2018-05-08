@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 		/// </summary>
 		[Parameter(ParameterSetName = SetIFGByInputObjectParameterSet,
             Mandatory = true,
+            Position = 0,
             ValueFromPipeline = true,
             HelpMessage = "The Instance Failover Group object to set")]
         [ValidateNotNullOrEmpty]
@@ -100,7 +101,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(ParameterSetName = SetIFGByResourceIdSet,
             Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The Resource ID of the Instance Failover Group to set.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
