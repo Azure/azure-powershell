@@ -28,9 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.WindowsAzure.Storage">
-      <HintPath>..\..\..\tools\LocalFeed\WindowsAzure.Storage.9.2.0\netstandard1.3\Microsoft.WindowsAzure.Storage.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Microsoft.WindowsAzure.Storage" Version="9.2.0" />
     <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.2" />
   </ItemGroup>
 
