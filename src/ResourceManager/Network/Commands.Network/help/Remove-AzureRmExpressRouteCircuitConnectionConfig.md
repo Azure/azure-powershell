@@ -21,6 +21,10 @@ $circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -Res
 Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
+### Example 2: Remove a circuit connection configuration using Piping from an ExpressRoute Circuit
+```
+Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName|Set-AzureRmExpressRouteCircuit
+```
 
 ## PARAMETERS
 

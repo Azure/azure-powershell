@@ -26,6 +26,12 @@ $addressSpace = '60.0.0.0/29'
 Add-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
+### Example 2: Add a circuit connection configuration using Piping to an existing ExpressRoute Circuit
+```
+$circuit_peer = Get-AzureRmExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
+$addressSpace = '60.0.0.0/29'
+Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Add-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey |Set-AzureRmExpressRouteCircuit
+```
 
 ## PARAMETERS
 

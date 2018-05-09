@@ -16,6 +16,14 @@ associated with Private Peering for an ExpressRoute circuit.
 
 ## EXAMPLES
 ### Example 1: Display the circuit connection configuration for an ExpressRoute circuit
+```
+$circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
+Get-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
+```
+### Example 2: Get circuit connection resource associated with an ExpressRoute Circuit using piping
+```
+Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Get-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName
+```
 
 ## PARAMETERS
 

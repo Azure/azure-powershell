@@ -25,12 +25,14 @@ namespace Microsoft.Azure.Commands.Network
     public class AzureExpressRouteCircuitConnectionConfigBase : NetworkBaseCmdlet
     {
         [Parameter(
+            Position = 0,
             Mandatory = true,
             HelpMessage = "The name of the Circuit Connection Resource")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
 
         [Parameter(
+            Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = "SetByResourceId",
@@ -38,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
         public string PeerExpressRouteCircuitPeering { get; set; }
 
         [Parameter(
+            Position = 3,
             Mandatory = true,
             HelpMessage = "Private IP Addresses to create VxLAN Tunnels")]
         [ValidateNotNullOrEmpty]

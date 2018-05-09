@@ -26,12 +26,14 @@ namespace Microsoft.Azure.Commands.Network
     public class RemoveAzureExpressRouteCircuitConnectionConfigCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Position = 0,
+            Mandatory = true,
             HelpMessage = "The name of the Circuit Connection")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(
+            Position = 1,
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
