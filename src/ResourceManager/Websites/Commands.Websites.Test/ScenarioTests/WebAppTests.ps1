@@ -591,6 +591,7 @@ function Test-SetWebApp
 		
 		# Create new web app
 		$webApp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -Location $location -AppServicePlan $appServicePlanName1 
+		$webAppClientAffinity = $webApp.ClientAffinityEnabled
 		
 		# Assert
 		Assert-AreEqual $webAppName $webApp.Name
@@ -598,7 +599,7 @@ function Test-SetWebApp
 		Assert-Null $webApp.Identity
 		
 		# Change service plan & set site properties
-		$job = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AssignIdentity $true -AsJob
+		$job = Set-AzureRmWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -ClientAffinityEnabled !$webAppClientAffinity -AssignIdentity $true -AsJob
 		$job | Wait-Job
 		$webApp = $job | Receive-Job
 
@@ -606,6 +607,7 @@ function Test-SetWebApp
 		Assert-AreEqual $webAppName $webApp.Name
 		Assert-AreEqual $serverFarm2.Id $webApp.ServerFarmId
 		Assert-AreEqual $true $webApp.HttpsOnly
+		Assert-AreEqual $webAppClientAffinity !$webApp.ClientAffinityEnabled
 		Assert-NotNull  $webApp.Identity
 
 		# Set config properties

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
         public static HashSet<string> SiteParameters = new HashSet<string>
             {
                 "HttpsOnly",
-                "AssignIdentity"
+                "AssignIdentity",
+                "ClientAffinityEnabled"
             };
 
         private static readonly Regex AppWithSlotNameRegex = new Regex(@"^(?<siteName>[^\(]+)/(?<slotName>[^\)]+)$");
