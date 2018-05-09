@@ -23,11 +23,13 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureExpressRouteCircuitConnectionConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the Peering")]
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = "The name of the Circuit Connection")]
         public string Name { get; set; }
 
         [Parameter(
+            Position = 1,
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,

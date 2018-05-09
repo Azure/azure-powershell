@@ -23,12 +23,14 @@ namespace Microsoft.Azure.Commands.Network
     public class AddAzureExpressRouteCircuitConnectionConfigCommand : AzureExpressRouteCircuitConnectionConfigBase
     {
         [Parameter(
+            Position = 0, 
             Mandatory = true,
             HelpMessage = "The name of the Circuit Connection")]
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        [Parameter(
+        [Parameter(           
+            Position = 1,
             Mandatory = true,
             ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
