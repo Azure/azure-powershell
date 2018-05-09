@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.ApplicationInsights
 Module Guid: da67eaa7-4cb1-4bfa-a194-8bf3faae8ac6
-Download Help Link: None
-Help Version: 0.1.2
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.applicationinsights
+Help Version: 0.1.2.0
 Locale: en-US
 ---
 

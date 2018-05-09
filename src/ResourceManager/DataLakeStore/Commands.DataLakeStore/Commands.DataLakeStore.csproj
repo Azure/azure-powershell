@@ -56,6 +56,8 @@
     <Compile Include="Commands\GetAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreFirewallRule.cs" />
+    <Compile Include="DataPlaneCommands\ExportAzureRmDataLakeStoreChildItemProperties.cs" />
+    <Compile Include="DataPlaneCommands\GetAzureRmDataLakeStoreChildItemSummary.cs" />
     <Compile Include="DataPlaneCommands\SetAzureRmDataLakeStoreItemExpiry.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreTrustedIdProvider.cs" />
     <Compile Include="Commands\AddAzureRmDataLakeStoreTrustedIdProvider.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="DataPlaneCommands\TestAzureRmDataLakeStoreItem.cs" />
     <Compile Include="DataPlaneModels\AdlsClientFactory.cs" />
     <Compile Include="DataPlaneModels\AdlsLoggerTarget.cs" />
+    <Compile Include="DataPlaneModels\DataLakeStoreChildItemSummary.cs" />
     <Compile Include="Models\DataLakeStoreClient.cs" />
     <Compile Include="Models\DataLakeStoreCmdletBase.cs" />
     <Compile Include="DataPlaneModels\DataLakeStoreEnums.cs" />
@@ -123,9 +126,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Microsoft.Azure.Commands.DataLakeStore.dll-help.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">

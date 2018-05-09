@@ -24,6 +24,6 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public string KeyId { get; set; }
 
-        public string Type { get; set; }        
+        public string Type { get; set; }
     }
 }
