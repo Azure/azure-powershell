@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Subscriptions to return.")]
+        [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
@@ -58,10 +62,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
             }
             else
             {
-                IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
-                WriteObject(subscriptionAttributes,true);
+                if (MaxCount.HasValue)
+                {
+                    IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic, MaxCount);
+                    WriteObject(subscriptionAttributes, true);
+                }
+                else
+                {
+                    IEnumerable<PSSubscriptionAttributes> subscriptionAttributes = Client.ListSubscriptions(ResourceGroupName, Namespace, Topic);
+                    WriteObject(subscriptionAttributes, true);
+                }
+
             }
-            
+
         }
     }
 }

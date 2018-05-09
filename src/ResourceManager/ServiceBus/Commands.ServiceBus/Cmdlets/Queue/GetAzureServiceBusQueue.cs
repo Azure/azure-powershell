@@ -44,6 +44,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Queues to return.")]
+        [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
@@ -53,11 +57,20 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             }
             else
             {
-                IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
-                WriteObject(queueAttributes,true);
+                if (MaxCount.HasValue)
+                {
+                    IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace, MaxCount);
+                    WriteObject(queueAttributes, true);
+                }
+                else
+                {
+                    IEnumerable<PSQueueAttributes> queueAttributes = Client.ListQueues(ResourceGroupName, Namespace);
+                    WriteObject(queueAttributes, true);
+                }
+
             }
 
-            
+
         }
     }
 }

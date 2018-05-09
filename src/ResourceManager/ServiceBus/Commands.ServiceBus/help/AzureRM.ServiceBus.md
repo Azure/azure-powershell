@@ -17,6 +17,9 @@ Gets a description of the specified authorization rule for a given Namespace or 
 ### [Get-AzureRmServiceBusKey](Get-AzureRmServiceBusKey.md)
 Gets the primary and secondary connection strings for the given Namespace or Queue or Topic.
 
+### [Get-AzureRmServiceBusMigration](Get-AzureRmServiceBusMigration.md)
+Gets the MigrationConfiguration details for the namespace
+
 ### [Get-AzureRmServiceBusNamespace](Get-AzureRmServiceBusNamespace.md)
 Gets a description for the specified Service Bus namespace within the resource group.
 
@@ -54,7 +57,10 @@ Creates an new Alias(Disaster Recovery configuration)
 Creates a Service Bus queue in the specified Service Bus namespace.
 
 ### [New-AzureRmServiceBusRule](New-AzureRmServiceBusRule.md)
-Creates a new rule for a given Subscription of Topic. 
+Creates a new rule for a given Subscription of Topic.
+
+### [New-AzureRmServiceBusStartMigration](New-AzureRmServiceBusStartMigration.md)
+Creates an new Migration configuration and starts migrating entites from Standard to Premium namespaces
 
 ### [New-AzureRmServiceBusSubscription](New-AzureRmServiceBusSubscription.md)
 Creates a subscription to the specified Service Bus topic.
@@ -71,6 +77,9 @@ Removes the namespace from the specified resource group.
 ### [Remove-AzureRmServiceBusGeoDRConfiguration](Remove-AzureRmServiceBusGeoDRConfiguration.md)
 Removes an Alias(Disaster Recovery configuration)
 
+### [Remove-AzureRmServiceBusMigration](Remove-AzureRmServiceBusMigration.md)
+Removes the Migration configuration for Standard to Premium namespaces
+
 ### [Remove-AzureRmServiceBusQueue](Remove-AzureRmServiceBusQueue.md)
 Removes the queue from the specified Service Bus namespace.
 
@@ -85,6 +94,12 @@ Removes the topic from the specified Service Bus namespace.
 
 ### [Set-AzureRmServiceBusAuthorizationRule](Set-AzureRmServiceBusAuthorizationRule.md)
 Updates the specified authorization rule description for the given Service Bus namespace or queue or topic.
+
+### [Set-AzureRmServiceBusCompleteMigration](Set-AzureRmServiceBusCompleteMigration.md)
+Set the Migration from Standard to premium namespace as Complete
+
+### [Set-AzureRmServiceBusRevertMigration](Set-AzureRmServiceBusRevertMigration.md)
+Tremitates the Migration between Standard to premium namespace
 
 ### [Set-AzureRmServiceBusNamespace](Set-AzureRmServiceBusNamespace.md)
 Updates the description of an existing Service Bus namespace.

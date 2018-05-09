@@ -146,7 +146,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.ServiceBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.2.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ServiceBus.1.3.0\lib\net452\Microsoft.Azure.Management.ServiceBus.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">

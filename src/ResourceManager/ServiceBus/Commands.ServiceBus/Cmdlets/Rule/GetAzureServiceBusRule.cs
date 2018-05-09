@@ -53,6 +53,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Rules to return.")]
+        [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
@@ -62,10 +66,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
             }
             else
             {
-                IEnumerable<PSRulesAttributes> ruleAttributes = Client.ListRules(ResourceGroupName, Namespace, Topic, Subscription);
-                WriteObject(ruleAttributes,true);
+                if (MaxCount.HasValue)
+                {
+                    IEnumerable<PSRulesAttributes> ruleAttributes = Client.ListRules(ResourceGroupName, Namespace, Topic, Subscription, MaxCount);
+                    WriteObject(ruleAttributes, true);
+                }
+                else
+                {
+                    IEnumerable<PSRulesAttributes> ruleAttributes = Client.ListRules(ResourceGroupName, Namespace, Topic, Subscription);
+                    WriteObject(ruleAttributes, true);
+                }
+
             }
-            
+
         }
     }
 }
