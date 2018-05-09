@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
@@ -700,11 +701,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     string name = "Long Running Azure Operation";
                     string commandName = MyInvocation?.MyCommand?.Name;
                     string objectName = null;
-                    if (MyInvocation?.BoundParameters?.ContainsKey("Name") == true)
+                    if (this.IsBound("Name"))
                     {
                         objectName = MyInvocation.BoundParameters["Name"].ToString();
                     }
-                    else if (MyInvocation?.BoundParameters?.ContainsKey("InputObject") == true)
+                    else if (this.IsBound("InputObject") == true)
                     {
                         var type = MyInvocation.BoundParameters["InputObject"].GetType();
                         var inputObject = Convert.ChangeType(MyInvocation.BoundParameters["InputObject"], type);
@@ -721,7 +722,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                             }
                         }
                     }
-                    else if (MyInvocation?.BoundParameters?.ContainsKey("ResourceId") == true)
+                    else if (this.IsBound("ResourceId") == true)
                     {
                         string[] tokens = MyInvocation.BoundParameters["ResourceId"].ToString().Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
                         if (tokens.Length >= 8)
@@ -734,7 +735,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                     {
                         if (!string.IsNullOrWhiteSpace(objectName))
                         {
-                            name = string.Format("Long Running Operation for '{0}' : '{1}'", commandName, objectName);
+                            name = string.Format("Long Running Operation for '{0}' on resource '{1}'", commandName, objectName);
                         }
                         else
                         {
