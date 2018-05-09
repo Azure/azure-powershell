@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Profile
             HelpMessage = "The endpoint to use when communicating with the Azure Log Analytics API.")]
         public string AzureOperationalInsightsEndpoint { get; set; }
 
-        [Parameter(Position = 23, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The audience for tokens authenticating with Azure Storage.")]
         public string StorageOAuthEndpointResourceId { get; set; }
 

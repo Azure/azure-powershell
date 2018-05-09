@@ -24,7 +24,7 @@ Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpoint] <String>] [[-StorageOAuthEndpointResourceId] <String>]
+ [[-AzureOperationalInsightsEndpoint] <String>] [-StorageOAuthEndpointResourceId <String>]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -35,7 +35,7 @@ Set-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpo
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
  [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
  [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
- [[-StorageOAuthEndpointResourceId] <String>] [-Scope <ContextModificationScope>]
+ [-StorageOAuthEndpointResourceId <String>] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -494,7 +494,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 23
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
