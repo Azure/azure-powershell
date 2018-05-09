@@ -1,8 +1,8 @@
 ﻿---
 Module Name: Azure.AnalysisServices
 Module Guid: c717b5a4-1f1b-4a2f-8aa1-bfd09934626e
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azure.analysisservices
+Help Version: 0.5.0.0
 Locale: en-US
 ---
 

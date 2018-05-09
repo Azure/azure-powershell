@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         ResourceConfig<TResourceGroup> CreateResourceGroup();
 
         /// <summary>
+        /// Default location. It's used if Location is null and it can't be infered.
+        /// </summary>
+        string DefaultLocation { get; }
+
+        /// <summary>
         /// Create an Azure resource configuration according to the parameters.
         /// </summary>
         /// <returns></returns>

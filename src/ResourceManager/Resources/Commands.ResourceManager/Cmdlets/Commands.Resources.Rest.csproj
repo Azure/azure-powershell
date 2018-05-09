@@ -133,7 +133,6 @@
     <Compile Include="Implementation\Policy\PolicyCmdletBase.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicySetDefinition.cs" />
-    <Compile Include="Implementation\ResourceGroups\FindAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\ResourceGroups\ExportAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\Providers\GetAzureProviderCmdlet.cs" />
     <Compile Include="Implementation\Providers\RegisterAzureProviderCmdlet.cs" />
@@ -152,7 +151,6 @@
     <Compile Include="Implementation\ResourceGroupDeployments\GetAzureResourceGroupDeploymentOperationCmdlet.cs" />
     <Compile Include="Implementation\Lock\GetAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\Resource\InvokeAzureResourceActionCmdlet.cs" />
-    <Compile Include="Implementation\Resource\FindAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\Resource\MoveAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\Lock\NewAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicyAssignment.cs" />
@@ -211,6 +209,7 @@
     <Compile Include="SdkModels\ResourceProvider\PSResourceProvider.cs" />
     <Compile Include="SdkModels\ResourceProvider\PSResourceProviderResourceType.cs" />
     <Compile Include="Components\ResourceIdentifier.cs" />
+    <Compile Include="SdkModels\Resources\PSResource.cs" />
     <Compile Include="Utilities\FileUtility.cs" />
     <Compile Include="Utilities\HttpUtility.cs" />
     <Compile Include="Utilities\TemplateUtility.cs" />

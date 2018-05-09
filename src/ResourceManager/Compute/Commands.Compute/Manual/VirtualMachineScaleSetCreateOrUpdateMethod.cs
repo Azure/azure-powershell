@@ -150,6 +150,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public ImageAndOsType ImageAndOsType { get; set; }
 
+            public string DefaultLocation => "eastus";
+
             public string OutputTemplateFile
                 => _cmdlet.OutputTemplateFile;
 

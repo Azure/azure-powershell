@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
         class Parameters : IParameters<RG, RG>
         {
+            public string DefaultLocation => "eastus";
+
             public string Location
             {
                 get

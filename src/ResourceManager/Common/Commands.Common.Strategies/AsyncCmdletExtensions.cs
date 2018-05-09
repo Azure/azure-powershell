@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             // read current Azure state.
             var current = await config.GetStateAsync(client, asyncCmdlet.CancellationToken);
             // update location.
-            parameters.Location = current.UpdateLocation(parameters.Location, config);
+            parameters.Location =
+                parameters.Location ?? current.GetLocation(config) ?? parameters.DefaultLocation;
             // update a DAG of configs.
             config = await parameters.CreateConfigAsync(resourceGroup);
 
