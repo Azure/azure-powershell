@@ -179,6 +179,7 @@
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="Common\ParameterSetNames.cs" />	
     <Compile Include="DdosProtectionPlan\GetAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="DdosProtectionPlan\NewAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="DdosProtectionPlan\RemoveAzureRMDdosProtectionPlanCommand.cs" />

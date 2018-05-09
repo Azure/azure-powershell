@@ -133,7 +133,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResource",
             HelpMessage = "GatewayDefaultSite")]
         public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
