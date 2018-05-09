@@ -133,11 +133,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return newState.Get(config) ?? current.Get(config);
         }
 
-        public static string UpdateLocation(
-            this IState current, string location, IResourceConfig config)
-            => location ?? current.GetLocation(config) ?? "eastus";
-
-
         static string ToPowerShellString(object value)
         {
             if (value == null)
@@ -259,8 +254,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public void ReportTaskProgress(ITaskProgress taskProgress)
                 => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
-
-
         }
     }
 }
