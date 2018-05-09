@@ -31,7 +31,7 @@ If you do this you will need to use Set-AzureRmVirtualNetworkGatewayDefaultSite 
 ### Example 1: Remove the default site assigned to a virtual network gateway
 ```
 PS C:\>$Gateway = Get-AzureRmVirtualNetworkGateway -Name "ContosoVirtualGateway"
-PS C:\> Remove-AzureRmVirtualNetworkGatewayDefaultSite -VirtualNetworknGateway $Gateway
+PS C:\> Remove-AzureRmVirtualNetworkGatewayDefaultSite -VirtualNetworkGateway $Gateway
 ```
 
 This example removes the default site currently assigned to a virtual network gateway named ContosoVirtualGateway.

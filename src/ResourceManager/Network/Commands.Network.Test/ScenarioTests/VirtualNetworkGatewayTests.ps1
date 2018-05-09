@@ -233,7 +233,7 @@ function Test-SetVirtualNetworkGatewayCRUD
     $vnetGatewayConfigName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
-    $location = Get-ProviderLocation $resourceTypeParent
+    $location = "eastus"
     
     try 
     {
