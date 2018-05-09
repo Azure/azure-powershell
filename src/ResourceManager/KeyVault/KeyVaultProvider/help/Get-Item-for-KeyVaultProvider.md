@@ -26,7 +26,7 @@ Get-Item -LiteralPath <String[]> [<CommonParameters>]
 ## DESCRIPTION
 For the KeyVault Provider, the **Get-Item** cmdlet returns the KeyVault type specified by the path.  These types are: Vaults, Secrets, Certificates, Keys, and AccessPolicies.
 
-Note: This custom cmdlet help file explains how the Get-Item cmdlet works in a file system drive. For information about the Get-Item cmdlet in all drives, type "Get-Help Get-Item -Path $null" or see Get-Item at http://go.microsoft.com/fwlink/?LinkID=113319.
+Note: This custom cmdlet help file explains how the Get-Item cmdlet works in a KeyVault drive. For information about the Get-Item cmdlet in all drives, type "Get-Help Get-Item -Path $null" or see Get-Item at http://go.microsoft.com/fwlink/?LinkID=113319.
 
 ## EXAMPLES
 

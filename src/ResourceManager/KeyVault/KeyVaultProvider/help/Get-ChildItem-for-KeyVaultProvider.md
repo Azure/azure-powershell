@@ -28,7 +28,7 @@ Get-ChildItem -LiteralPath <String[]> [-Recurse] [-Force] [-Name] [<CommonParame
 ## DESCRIPTION
 For the KeyVault Provider, the **Get-ChildItem** cmdlet returns the KeyVault types contained in the directory specified by the path.  These types are: Vaults, Secrets, Certificates, Keys, and AccessPolicies.
 
-Note: This custom cmdlet help file explains how the Get-ChildItem cmdlet works in a file system drive. For information about the Get-ChildItem cmdlet in all drives, type "Get-Help Get-ChildItem -Path $null" or see Get-ChildItem at http://go.microsoft.com/fwlink/?LinkID=113308.
+Note: This custom cmdlet help file explains how the Get-ChildItem cmdlet works in a KeyVault drive. For information about the Get-ChildItem cmdlet in all drives, type "Get-Help Get-ChildItem -Path $null" or see Get-ChildItem at http://go.microsoft.com/fwlink/?LinkID=113308.
 
 ## EXAMPLES
 

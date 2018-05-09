@@ -26,7 +26,7 @@ Set-Item -LiteralPath <String[]> [[-Value] <Object>] [-PassThru] [-WhatIf] [-Con
 ## DESCRIPTION
 For the KeyVault Provider, the **Set-Item** cmdlet allows the user to set properties of KeyVault types.  These types are: Vaults, Secrets, Certificates, Keys, and AccessPolicies.  Parameters can be passed in using either dynamic parameters, passing a HashTable of the parameter values to -Value, or passing an object of the correct type to -Value.
 
-Note: This custom cmdlet help file explains how the Set-Item cmdlet works in a file system drive. For information about the Set-Item cmdlet in all drives, type "Get-Help Set-Item -Path $null" or see Set-Item at http://go.microsoft.com/fwlink/?LinkId=821630.
+Note: This custom cmdlet help file explains how the Set-Item cmdlet works in a KeyVault drive. For information about the Set-Item cmdlet in all drives, type "Get-Help Set-Item -Path $null" or see Set-Item at http://go.microsoft.com/fwlink/?LinkId=821630.
 
 ## EXAMPLES
 
@@ -225,6 +225,111 @@ Permissions to (Key Vault Managed) Storage : {get}
 
 ## PARAMETERS
 
+### -ContentType
+Dynamic Parameter available when setting KeyVault Secrets. Secret's content type. If not specified, the existing value of the secret's content type remains unchanged. Remove the existing content type value by specifying an empty string.
+
+```yaml
+Type: string
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Enable
+Dynamic Parameter available when setting KeyVault Secrets, Certificates, or Keys. Value of true enables the KeyVault object and a value of false disables the KeyVault object. If not specified, the existing enabled/disabled state remains unchanged.
+
+```yaml
+Type: bool?
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledForDeployment
+Dynamic Parameter available when setting KeyVault Vaults. Enables the Microsoft.Compute resource provider to retrieve secrets from this key vault when this key vault is referenced in resource creation, for example when creating a virtual machine.
+
+```yaml
+Type: bool?
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledForDiskEncryption
+Dynamic Parameter available when setting KeyVault Vaults. Enables the Azure disk encryption service to get secrets and unwrap keys from this key vault.
+
+```yaml
+Type: bool?
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnabledForTemplateDeployment
+Dynamic Parameter available when setting KeyVault Vaults. Enables Azure Resource Manager to get secrets from this key vault when this key vault is referenced in a template deployment.
+
+```yaml
+Type: bool?
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expires
+Dynamic Parameter available when setting KeyVault Secrets or Keys. The expiration time of a secret or key in UTC time. If not specified, the existing expiration time of the secret or key remains unchanged.
+
+```yaml
+Type: DateTime?
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyOps
+Dynamic Parameter available when setting KeyVault Keys. The operations that can be performed with the key. If not specified, the existing key operations of the key remain unchanged.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LiteralPath
 Specifies a path to the item.
 Unlike the *Path* parameter, the value of *LiteralPath* is used exactly as it is typed.
@@ -241,6 +346,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NotBefore
+Dynamic Parameter available when setting KeyVault Secrets or Keys. The UTC time before which key or secret can't be used. If not specified, the existing NotBefore attribute of the key or secret remains unchanged.
+
+```yaml
+Type: DateTime?
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -265,8 +385,149 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: True
 ```
 
+### -PermissionsToCertificates
+Dynamic Parameter available when setting KeyVault Access Policies. Specifies an array of certificate permissions to grant to a user or service principal.
+
+The acceptable values for this parameter:
+
+Get
+List
+Delete
+Create
+Import
+Update
+Managecontacts
+Getissuers
+Listissuers
+Setissuers
+Deleteissuers
+Manageissuers
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, recover, purge, backup, restore
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermissionsToKeys
+Dynamic Parameter available when setting KeyVault Access Policies. Specifies an array of key operation permissions to grant to a user or service principal.
+
+The acceptable values for this parameter:
+
+Decrypt
+Encrypt
+UnwrapKey
+WrapKey
+Verify
+Sign
+Get
+List
+Update
+Create
+Import
+Delete
+Backup
+Restore
+Recover
+Purge
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore, recover, purge
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermissionsToSecrets
+Dynamic Parameter available when setting KeyVault Access Policies. Specifies an array of secret operation permissions to grant to a user or service principal.
+
+The acceptable values for this parameter:
+
+Get
+List
+Set
+Delete
+Backup
+Restore
+Recover
+Purge
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: get, list, set, delete, backup, restore, recover, purge
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PermissionsToStorage
+Dynamic Parameter available when setting KeyVault Access Policies. Specifies managed storage account and SaS-definition operation permissions to grant to a user or service principal.
+
+The acceptable values for this parameter:
+
+Get
+List
+Set
+Delete
+Update
+RegenerateKey
+GetSAS
+ListSAS
+DeleteSAS
+SetSAS
+Backup
+Restore
+Recover
+Purge
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Dynamic Parameter available when setting KeyVault Secrets, Certificates, or Keys. A hashtable representing tags. If not specified, the existing tags of the secret remain unchanged. Remove a tag by specifying an empty Hashtable.
+
+```yaml
+Type: Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Value
-Specifies a new value for the item. Value accepts either a HashTable or a PSObject with the correct type required by the path. Ex: For "Set-Item kv:/vault1/Secrets/secret1", Value accepts a PSKeyVaultSecret.
+Specifies a new value for the item. Value accepts either a HashTable or a PSObject with the correct type required by the path. Example: For "Set-Item kv:/vault1/Secrets/secret1", Value accepts a PSKeyVaultSecret.
 
 ```yaml
 Type: Object
@@ -280,12 +541,32 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -Version
+Dynamic Parameter available when setting a KeyVault Secret, Certificate, or Key. Cmdlet constructs the FQDN from vault name, currently selected environment, name and version.
+
+```yaml
+Type: string
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
+### System.Collections.Hashtable
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecret
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultAccessPolicy
 
 ## OUTPUTS
 
