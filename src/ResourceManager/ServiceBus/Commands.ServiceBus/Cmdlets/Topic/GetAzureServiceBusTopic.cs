@@ -43,6 +43,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         [Alias(AliasTopicName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Topics to return.")]
+        [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
@@ -52,11 +56,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             }
             else
             {
-               IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
-               WriteObject(topicAttributes,true);
+                if (MaxCount.HasValue)
+                {
+                    IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace, MaxCount);
+                    WriteObject(topicAttributes, true);
+                }
+                else
+                {
+                    IEnumerable<PSTopicAttributes> topicAttributes = Client.ListTopics(ResourceGroupName, Namespace);
+                    WriteObject(topicAttributes, true);
+                }
             }
 
-            
+
         }
     }
 }

@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.ServiceBus
 {
     public class ServiceBusClient
     {
-        // Azure SDK requires a request parameter to be specified for a few Backup API calls, but
+         // Azure SDK requires a request parameter to be specified for a few Backup API calls, but
         // the request is actually optional unless an update is needed
-      //  private static readonly BackupRequest EmptyRequest = new BackupRequest(location: "");
+       // private static readonly BackupRequest EmptyRequest = new BackupRequest(location: "");
 
         public Action<string> VerboseLogger { get; set; }
 
@@ -44,8 +44,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
         public ServiceBusClient(IAzureContext context)
         {
             this.Client = AzureSession.Instance.ClientFactory.CreateArmClient<ServiceBusManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
-
         }
+
         public ServiceBusManagementClient Client
         {
             get;
@@ -201,8 +201,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
         #endregion 
-
-
+        
         #region Queues 
 
         public PSQueueAttributes CreateUpdateQueue(string resourceGroupName, string namespaceName, string queueName, PSQueueAttributes queue)
@@ -262,10 +261,37 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSQueueAttributes(response);
         }
 
-        public IEnumerable<PSQueueAttributes> ListQueues(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSQueueAttributes> ListQueues(string resourceGroupName, string namespaceName, int? maxCount = null)
         {
-            Rest.Azure.IPage<SBQueue> response = Client.Queues.ListByNamespace(resourceGroupName, namespaceName);
-            IEnumerable<PSQueueAttributes> resourceList = response.Select(resource => new PSQueueAttributes(resource));
+            //Rest.Azure.IPage<SBQueue> response = Client.Queues.ListByNamespace(resourceGroupName, namespaceName);
+            //IEnumerable<PSQueueAttributes> resourceList = response.Select(resource => new PSQueueAttributes(resource));
+            //return resourceList;
+
+
+            IEnumerable<PSQueueAttributes> resourceList = Enumerable.Empty<PSQueueAttributes>();
+            int? skip = 0;
+            switch (ReturnmaxCountvalueForSwtich(maxCount))
+            {
+
+                case 0:
+                    Rest.Azure.IPage<SBQueue> response = Client.Queues.ListByNamespace(resourceGroupName, namespaceName, skip: 0, top: maxCount);
+                    resourceList = response.Select(resource => new PSQueueAttributes(resource));
+                    break;
+                case 1:
+                    while (maxCount > 0)
+                    {
+                        Rest.Azure.IPage<SBQueue> response1 = Client.Queues.ListByNamespace(resourceGroupName, namespaceName, skip: skip, top: maxCount);
+                        resourceList = resourceList.Concat<PSQueueAttributes>(response1.Select(resource => new PSQueueAttributes(resource)));
+                        skip += maxCount > 100 ? 100 : maxCount;
+                        maxCount = maxCount - 100;
+                    }
+                    break;
+                default:
+                    Rest.Azure.IPage<SBQueue> response2 = Client.Queues.ListByNamespace(resourceGroupName, namespaceName);
+                    resourceList = response2.Select(resource => new PSQueueAttributes(resource));
+                    break;
+
+            }
             return resourceList;
         }
 
@@ -329,8 +355,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
         #endregion Queues
-
-
+        
         #region Topics 
 
 
@@ -380,10 +405,32 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSTopicAttributes(response);
         }
 
-        public IEnumerable<PSTopicAttributes> ListTopics(string resourceGroupName, string namespaceName)
+        public IEnumerable<PSTopicAttributes> ListTopics(string resourceGroupName, string namespaceName, int? maxCount = null)
         {
-            Rest.Azure.IPage<SBTopic> response = Client.Topics.ListByNamespace(resourceGroupName, namespaceName);
-            IEnumerable<PSTopicAttributes> resourceList = response.Select(resource => new PSTopicAttributes(resource));
+            IEnumerable<PSTopicAttributes> resourceList = Enumerable.Empty<PSTopicAttributes>();
+            int? skip = 0;
+            switch (ReturnmaxCountvalueForSwtich(maxCount))
+            {
+
+                case 0:
+                    Rest.Azure.IPage<SBTopic> response = Client.Topics.ListByNamespace(resourceGroupName, namespaceName, skip: 0, top: maxCount);
+                    resourceList = response.Select(resource => new PSTopicAttributes(resource));
+                    break;
+                case 1:
+                    while (maxCount > 0)
+                    {
+                        Rest.Azure.IPage<SBTopic> response1 = Client.Topics.ListByNamespace(resourceGroupName, namespaceName, skip: skip, top: maxCount);
+                        resourceList = resourceList.Concat<PSTopicAttributes>(response1.Select(resource => new PSTopicAttributes(resource)));
+                        skip += maxCount > 100 ? 100 : maxCount;
+                        maxCount = maxCount - 100;
+                    }
+                    break;
+                default:
+                    Rest.Azure.IPage<SBTopic> response2 = Client.Topics.ListByNamespace(resourceGroupName, namespaceName);
+                    resourceList = response2.Select(resource => new PSTopicAttributes(resource));
+                    break;
+
+            }
             return resourceList;
         }
 
@@ -486,11 +533,33 @@ namespace Microsoft.Azure.Commands.ServiceBus
             SBSubscription response = Client.Subscriptions.Get(resourceGroupName, namespaceName, topicName, subscriptionName);
             return new PSSubscriptionAttributes(response);
         }
-        
-        public IEnumerable<PSSubscriptionAttributes> ListSubscriptions(string resourceGroupName, string namespaceName, string topicName)
+
+        public IEnumerable<PSSubscriptionAttributes> ListSubscriptions(string resourceGroupName, string namespaceName, string topicName, int? maxCount = null)
         {
-            Rest.Azure.IPage<SBSubscription> response = Client.Subscriptions.ListByTopic(resourceGroupName, namespaceName,topicName);
-            IEnumerable<PSSubscriptionAttributes> resourceList = response.Select(resource => new PSSubscriptionAttributes(resource));
+            IEnumerable<PSSubscriptionAttributes> resourceList = Enumerable.Empty<PSSubscriptionAttributes>();
+            int? skip = 0;
+            switch (ReturnmaxCountvalueForSwtich(maxCount))
+            {
+
+                case 0:
+                    Rest.Azure.IPage<SBSubscription> response = Client.Subscriptions.ListByTopic(resourceGroupName, namespaceName, topicName, skip: 0, top: maxCount);
+                    resourceList = response.Select(resource => new PSSubscriptionAttributes(resource));
+                    break;
+                case 1:
+                    while (maxCount > 0)
+                    {
+                        Rest.Azure.IPage<SBSubscription> response1 = Client.Subscriptions.ListByTopic(resourceGroupName, namespaceName, topicName, skip: skip, top: maxCount);
+                        resourceList = resourceList.Concat<PSSubscriptionAttributes>(response1.Select(resource => new PSSubscriptionAttributes(resource)));
+                        skip += maxCount > 100 ? 100 : maxCount;
+                        maxCount = maxCount - 100;
+                    }
+                    break;
+                default:
+                    Rest.Azure.IPage<SBSubscription> response2 = Client.Subscriptions.ListByTopic(resourceGroupName, namespaceName, topicName);
+                    resourceList = response2.Select(resource => new PSSubscriptionAttributes(resource));
+                    break;
+
+            }
             return resourceList;
         }
 
@@ -543,10 +612,30 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSRulesAttributes(response);
         }
 
-        public IEnumerable<PSRulesAttributes> ListRules(string resourceGroupName, string namespaceName, string topicName, string subscriptionName)
+        public IEnumerable<PSRulesAttributes> ListRules(string resourceGroupName, string namespaceName, string topicName, string subscriptionName, int? maxCount = null)
         {
-            Rest.Azure.IPage<Rule> response = Client.Rules.ListBySubscriptions(resourceGroupName, namespaceName, topicName, subscriptionName);
-            IEnumerable<PSRulesAttributes> resourceList = response.Select(resource => new PSRulesAttributes(resource));
+            IEnumerable<PSRulesAttributes> resourceList = Enumerable.Empty<PSRulesAttributes>();
+            int? skip = 0;
+            switch (ReturnmaxCountvalueForSwtich(maxCount))
+            {
+                case 0:
+                    Rest.Azure.IPage<Rule> response = Client.Rules.ListBySubscriptions(resourceGroupName, namespaceName, topicName, subscriptionName, skip: 0, top: maxCount);
+                    resourceList = response.Select(resource => new PSRulesAttributes(resource));
+                    break;
+                case 1:
+                    while (maxCount > 0)
+                    {
+                        Rest.Azure.IPage<Rule> response1 = Client.Rules.ListBySubscriptions(resourceGroupName, namespaceName, topicName, subscriptionName, skip: skip, top: maxCount);
+                        resourceList = resourceList.Concat<PSRulesAttributes>(response1.Select(resource => new PSRulesAttributes(resource)));
+                        skip += maxCount > 100 ? 100 : maxCount;
+                        maxCount = maxCount - 100;
+                    }
+                    break;
+                default:
+                    Rest.Azure.IPage<Rule> response2 = Client.Rules.ListBySubscriptions(resourceGroupName, namespaceName, topicName, subscriptionName);
+                    resourceList = response2.Select(resource => new PSRulesAttributes(resource));
+                    break;
+            }
             return resourceList;
         }
 
@@ -626,15 +715,12 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
 
         #endregion
-
-
-
-
+        
 
         #region MigrationConfiguration
         public PSServiceBusMigrationConfigurationAttributes GetServiceBusMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
-            var response = Client.MigrationConfigurations.Get(resourceGroupName, namespaceName);
+            var response = Client.MigrationConfigs.Get(resourceGroupName, namespaceName);
             return new PSServiceBusMigrationConfigurationAttributes(response);
         }
 
@@ -648,32 +734,32 @@ namespace Microsoft.Azure.Commands.ServiceBus
             if (!string.IsNullOrEmpty(parameter.TargetNamespace))
                 Parameter1.TargetNamespace = parameter.TargetNamespace;
 
-            var response = Client.MigrationConfigurations.StartMigration(resourceGroupName, namespaceName, Parameter1);
+            var response = Client.MigrationConfigs.BeginCreateAndStartMigration(resourceGroupName, namespaceName, Parameter1);
             return new PSServiceBusMigrationConfigurationAttributes(response);
         }
 
         public bool DeleteServiceBusMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
-            Client.MigrationConfigurations.Delete(resourceGroupName, namespaceName);
+            Client.MigrationConfigs.Revert(resourceGroupName, namespaceName);
             Thread.Sleep(TimeSpan.FromSeconds(5));
             return true;
         }
 
         public void SetServiceBusCompleteMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
-            Client.MigrationConfigurations.CompleteMigration(resourceGroupName, namespaceName);
+            Client.MigrationConfigs.CompleteMigration(resourceGroupName, namespaceName);
             Thread.Sleep(TimeSpan.FromSeconds(5));
         }
 
         public void SetServiceBusStartMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
-            Client.MigrationConfigurations.CompleteMigration(resourceGroupName, namespaceName);
+            Client.MigrationConfigs.CompleteMigration(resourceGroupName, namespaceName);
             Thread.Sleep(TimeSpan.FromSeconds(5));
         }
 
         public void SetServiceBusRevertMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
-            Client.MigrationConfigurations.Revert(resourceGroupName, namespaceName);
+            Client.MigrationConfigs.Revert(resourceGroupName, namespaceName);
             Thread.Sleep(TimeSpan.FromSeconds(5));
         }
         #endregion
@@ -687,6 +773,18 @@ namespace Microsoft.Azure.Commands.ServiceBus
             }
 
             return Convert.ToBase64String(key256);
+        }
+
+        public static int ReturnmaxCountvalueForSwtich(int? maxcount)
+        {
+            int returnvalue = -1;
+
+            if (maxcount != null && maxcount <= 100)
+                returnvalue = 0;
+            if (maxcount != null && maxcount > 100)
+                returnvalue = 1;
+
+            return returnvalue;
         }
 
 
