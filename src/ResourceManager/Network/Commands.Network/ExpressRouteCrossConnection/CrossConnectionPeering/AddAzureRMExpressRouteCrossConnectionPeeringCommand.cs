@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmExpressRouteCrossConnectionPeering", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCrossConnection))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmExpressRouteCrossConnectionPeering", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
     public class AddAzureRMExpressRouteCrossConnectionPeeringCommand : AzureRMExpressRouteCrossConnectionPeeringBase
     {
         [Parameter(
@@ -34,46 +34,58 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The ExpressRouteCrossConnection")]
         public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-            // Verify if the subnet exists in the VirtualNetwork
-            var peering = this.ExpressRouteCrossConnection.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (peering != null)
-            {
-                throw new ArgumentException("Peering with the specified name already exists");
-            }
+            ConfirmAction(
+               Force.IsPresent,
+               string.Format(Properties.Resources.OverwritingResource, Name),
+               Properties.Resources.CreatingResourceMessage,
+               Name,
+               () =>
+               {
+                   var peering = this.ExpressRouteCrossConnection.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+
+                   if (peering != null)
+                   {
+                       throw new ArgumentException("Peering with the specified name already exists");
+                   }
+
+                   peering = new PSExpressRouteCrossConnectionPeering();
+
+                   peering.Name = this.Name;
+                   peering.PeeringType = this.PeeringType;
+                   peering.PeerASN = this.PeerASN;
+                   peering.VlanId = this.VlanId;
 
 
-            peering = new PSExpressRouteCrossConnectionPeering();
+                   if (!string.IsNullOrEmpty(this.SharedKey))
+                   {
+                       peering.SharedKey = this.SharedKey;
+                   }
 
-            peering.Name = this.Name;
-            peering.PeeringType = this.PeeringType;
-            peering.PeerASN = this.PeerASN;
-            peering.VlanId = this.VlanId;
+                   if (this.PeerAddressType == IPv6)
+                   {
+                       this.SetIpv6PeeringParameters(peering);
+                   }
+                   else
+                   {
+                       // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
+                       this.SetIpv4PeeringParameters(peering);
+                   }
 
+                   this.ConstructMicrosoftConfig(peering);
 
-            if (!string.IsNullOrEmpty(this.SharedKey))
-            {
-                peering.SharedKey = this.SharedKey;
-            }
+                   this.ExpressRouteCrossConnection.Peerings.Add(peering);
 
-            if (this.PeerAddressType == IPv6)
-            {
-                this.SetIpv6PeeringParameters(peering);
-            }
-            else
-            {
-                // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                this.SetIpv4PeeringParameters(peering);
-            }
-
-            this.ConstructMicrosoftConfig(peering);
-
-            this.ExpressRouteCrossConnection.Peerings.Add(peering);
-
-            WriteObject(this.ExpressRouteCrossConnection);
+                   WriteObject(this.ExpressRouteCrossConnection);
+               });
         }
     }
 }

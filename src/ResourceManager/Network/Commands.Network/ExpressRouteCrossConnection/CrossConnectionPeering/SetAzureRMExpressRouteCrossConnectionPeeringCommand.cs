@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRMExpressRouteCrossConnectionPeering", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCrossConnection))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMExpressRouteCrossConnectionPeering", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
     public class SetAzureRMExpressRouteCrossConnectionPeeringCommand : AzureRMExpressRouteCrossConnectionPeeringBase
     {
         [Parameter(
@@ -34,40 +34,53 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The ExpressRouteCrossConnection")]
         public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-            // Verify if the subnet exists in the VirtualNetwork
-            var peering = this.ExpressRouteCrossConnection.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
 
-            if (peering == null)
-            {
-                throw new ArgumentException("Peering with the specified name does not exist");
-            }
+            ConfirmAction(
+               Force.IsPresent,
+               string.Format(Properties.Resources.OverwritingResource, Name),
+               Properties.Resources.CreatingResourceMessage,
+               Name,
+               () =>
+               {
+                   var peering = this.ExpressRouteCrossConnection.Peerings.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, StringComparison.CurrentCultureIgnoreCase));
 
-            peering.Name = this.Name;
-            peering.PeeringType = this.PeeringType;
-            peering.PeerASN = this.PeerASN;
-            peering.VlanId = this.VlanId;
+                   if (peering == null)
+                   {
+                       throw new ArgumentException("Peering with the specified name does not exist");
+                   }
 
-            if (!string.IsNullOrEmpty(this.SharedKey))
-            {
-                peering.SharedKey = this.SharedKey;
-            }
+                   peering.Name = this.Name;
+                   peering.PeeringType = this.PeeringType;
+                   peering.PeerASN = this.PeerASN;
+                   peering.VlanId = this.VlanId;
 
-            if(PeerAddressType == IPv6)
-            {
-                this.SetIpv6PeeringParameters(peering);
-            }
-            else
-            {
-                // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                this.SetIpv4PeeringParameters(peering);
-            }
+                   if (!string.IsNullOrEmpty(this.SharedKey))
+                   {
+                       peering.SharedKey = this.SharedKey;
+                   }
 
-            this.ConstructMicrosoftConfig(peering);
+                   if (PeerAddressType == IPv6)
+                   {
+                       this.SetIpv6PeeringParameters(peering);
+                   }
+                   else
+                   {
+                       // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
+                       this.SetIpv4PeeringParameters(peering);
+                   }
 
-            WriteObject(this.ExpressRouteCrossConnection);
+                   this.ConstructMicrosoftConfig(peering);
+
+                   WriteObject(this.ExpressRouteCrossConnection);
+               });
         }
     }
 }
