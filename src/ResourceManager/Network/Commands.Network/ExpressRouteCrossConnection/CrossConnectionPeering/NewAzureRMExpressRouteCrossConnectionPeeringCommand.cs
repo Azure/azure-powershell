@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Network
     using System;
     using System.Linq;
 
-    [Cmdlet(VerbsCommon.New, "AzureRMExpressRouteCrossConnectionPeering", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSExpressRouteCrossConnectionPeering))]
+    [Cmdlet(VerbsCommon.New, "AzureRMExpressRouteCrossConnectionPeering", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnectionPeering))]
     public class NewAzureRMExpressRouteCrossConnectionPeeringCommand : AzureRMExpressRouteCrossConnectionPeeringBase
     {
         [Parameter(
@@ -29,35 +29,48 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
-           var peering = new PSExpressRouteCrossConnectionPeering();
+            ConfirmAction(
+               Force.IsPresent,
+               string.Format(Properties.Resources.OverwritingResource, Name),
+               Properties.Resources.CreatingResourceMessage,
+               Name,
+               () =>
+               {
+                   var peering = new PSExpressRouteCrossConnectionPeering();
 
-            peering.Name = this.Name;
-            peering.PeeringType = this.PeeringType;
-            peering.PeerASN = this.PeerASN;
-            peering.VlanId = this.VlanId;
+                   peering.Name = this.Name;
+                   peering.PeeringType = this.PeeringType;
+                   peering.PeerASN = this.PeerASN;
+                   peering.VlanId = this.VlanId;
 
-            if (!string.IsNullOrEmpty(this.SharedKey))
-            {
-                peering.SharedKey = this.SharedKey;
-            }
+                   if (!string.IsNullOrEmpty(this.SharedKey))
+                   {
+                       peering.SharedKey = this.SharedKey;
+                   }
 
-            if (this.PeerAddressType == IPv6)
-            {
-                this.SetIpv6PeeringParameters(peering);
-            }
-            else
-            {
-                // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                this.SetIpv4PeeringParameters(peering);
-            }
+                   if (this.PeerAddressType == IPv6)
+                   {
+                       this.SetIpv6PeeringParameters(peering);
+                   }
+                   else
+                   {
+                       // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
+                       this.SetIpv4PeeringParameters(peering);
+                   }
 
-            this.ConstructMicrosoftConfig(peering);
+                   this.ConstructMicrosoftConfig(peering);
 
-            WriteObject(peering);
+                   WriteObject(peering);
+               });
         }
     }
 }

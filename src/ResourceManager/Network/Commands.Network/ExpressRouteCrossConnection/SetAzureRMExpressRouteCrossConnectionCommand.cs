@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmExpressRouteCrossConnection"), OutputType(typeof(PSExpressRouteCrossConnection))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmExpressRouteCrossConnection", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
     public class SetAzureRMExpressRouteCrossConnectionCommand : ExpressRouteCrossConnectionBaseCmdlet
     {
         [Parameter(
@@ -33,23 +33,37 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
+        public SwitchParameter Force { get; set; }
+
         public override void Execute()
         {
             base.Execute();
-            if (!this.IsExpressRouteCrossConnectionPresent(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name))
-            {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-            }
 
-            // Map to the sdk object
-            var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCrossConnection>(this.ExpressRouteCrossConnection);
-            crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCrossConnection.Tag, validate: true);
+            ConfirmAction(
+               Force.IsPresent,
+               string.Format(Properties.Resources.OverwritingResource, this.ExpressRouteCrossConnection.Name),
+               Properties.Resources.CreatingResourceMessage,
+               this.ExpressRouteCrossConnection.Name,
+               () =>
+               {
+                   if (!this.IsExpressRouteCrossConnectionPresent(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name))
+                   {
+                       throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                   }
 
-            // Execute the Update ExpressRouteCrossConnection call
-            this.ExpressRouteCrossConnectionClient.CreateOrUpdate(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name, crossConnectionModel);
+                   // Map to the sdk object
+                   var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCrossConnection>(this.ExpressRouteCrossConnection);
+                   crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCrossConnection.Tag, validate: true);
 
-            var getExpressRouteCircuit = this.GetExpressRouteCrossConnection(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name);
-            WriteObject(getExpressRouteCircuit);
+                   // Execute the Update ExpressRouteCrossConnection call
+                   this.ExpressRouteCrossConnectionClient.CreateOrUpdate(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name, crossConnectionModel);
+
+                   var getExpressRouteCircuit = this.GetExpressRouteCrossConnection(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name);
+                   WriteObject(getExpressRouteCircuit);
+               });
         }
     }
 }
