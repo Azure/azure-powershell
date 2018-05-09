@@ -29406,6 +29406,11 @@
             Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Storage.OperationContext"/> class.
             </summary>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.OperationContext.Proxy">
+            <summary>
+            Gets or sets proxy information for the request.
+            </summary>
+        </member>
         <member name="P:Microsoft.WindowsAzure.Storage.OperationContext.UserHeaders">
             <summary>
             Gets or sets additional headers on the request, for example, for proxy or logging information.
@@ -32183,6 +32188,18 @@
             </summary>
             <value>A string containing the container's quoted ETag value.</value>
         </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobContainerProperties.HasImmutabilityPolicy">
+            <summary>
+            Gets the HasImmutabilityPolicy value for the container.
+            </summary>
+            <value>True if the container has an immutability policy, or False if not.  The value may be null.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobContainerProperties.HasLegalHold">
+            <summary>
+            Gets the HasLegalHold value for the container.
+            </summary>
+            <value>True if the container has legal hold, or False if not.  The value may be null.</value>
+        </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobContainerProperties.LastModified">
             <summary>
             Gets the container's last-modified time.
@@ -32431,6 +32448,12 @@
             Gets the blob's ETag value.
             </summary>
             <value>A string containing the blob's ETag value.</value>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.Created">
+            <summary>
+            Gets the the creation time for the blob, expressed as a UTC value.
+            </summary>
+            <value>A <see cref="T:System.DateTimeOffset"/> containing the blob's creation time, in UTC format.</value>
         </member>
         <member name="P:Microsoft.WindowsAzure.Storage.Blob.BlobProperties.LastModified">
             <summary>
@@ -38204,6 +38227,11 @@
             XML element for the ETag.
             </summary>
         </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.CreationTimeElement">
+            <summary>
+            XML element for the creation date.
+            </summary>
+        </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.LastModifiedElement">
             <summary>
             XML element for the last modified date.
@@ -38427,6 +38455,16 @@
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.BlobTypeElement">
             <summary>
             XML element for blob types.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HasImmutabilityPolicyElement">
+            <summary>
+            XML element for immutability policy.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HasLegalHoldElement">
+            <summary>
+            XML element for legal hold.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.LeaseStatusElement">
@@ -38779,9 +38817,24 @@
             Header that specifies content language.
             </summary>
         </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.CreationTimeHeader">
+            <summary>
+            Header that specifies the creation time value for the resource.
+            </summary>
+        </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.EtagHeader">
             <summary>
             Header that specifies the ETag value for the resource.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.HasImmutabilityPolicyHeader">
+            <summary>
+            Header that specifies the immutability policy value for the resource.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.HasLegalHoldHeader">
+            <summary>
+            Header that specifies the legal hold value for the resource.
             </summary>
         </member>
         <member name="F:Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.ServerEncrypted">
