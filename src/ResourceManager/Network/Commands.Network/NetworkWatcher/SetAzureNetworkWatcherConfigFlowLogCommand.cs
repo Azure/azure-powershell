@@ -25,24 +25,31 @@ using ResourceGroups.Tests;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResourceWithTAByResource"), OutputType(typeof(PSFlowLog))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = SetByResourceWithTAByResource), OutputType(typeof(PSFlowLog))]
     public class SetAzureNetworkWatcherConfigFlowLogCommand : NetworkWatcherBaseCmdlet
     {
+        private const string SetByResourceWithTAByResource = "SetByResourceWithTAByResource";
+        private const string SetByResourceWithTAByDetails = "SetByResourceWithTAByDetails";
+        private const string SetByResourceWithoutTA = "SetByResourceWithoutTA";
+        private const string SetByNameWithTAByResource = "SetByNameWithTAByResource";
+        private const string SetByNameWithTAByDetails = "SetByNameWithTAByDetails";
+        private const string SetByNameWithoutTA = "SetByNameWithoutTA";
+
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = "SetByResourceWithTAByResource")]
+             ParameterSetName = SetByResourceWithTAByResource)]
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = "SetByResourceWithTAByDetails")]
+             ParameterSetName = SetByResourceWithTAByDetails)]
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = "SetByResourceWithoutTA")]
+             ParameterSetName = SetByResourceWithoutTA)]
         [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
@@ -51,17 +58,17 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByNameWithTAByResource")]
+            ParameterSetName = SetByNameWithTAByResource)]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByNameWithTAByDetails")]
+            ParameterSetName = SetByNameWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByNameWithoutTA")]
+            ParameterSetName = SetByNameWithoutTA)]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -69,17 +76,17 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByNameWithTAByResource")]
+            ParameterSetName = SetByNameWithTAByResource)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByNameWithTAByDetails")]
+            ParameterSetName = SetByNameWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByNameWithoutTA")]
+            ParameterSetName = SetByNameWithoutTA)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -128,22 +135,22 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByResourceWithTAByResource")]
+            ParameterSetName = SetByResourceWithTAByResource)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByResourceWithTAByDetails")]
+            ParameterSetName = SetByResourceWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByNameWithTAByResource")]
+            ParameterSetName = SetByNameWithTAByResource)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = "SetByNameWithTAByDetails")]
+            ParameterSetName = SetByNameWithTAByDetails)]
         [ValidateNotNull]
         public SwitchParameter EnableTrafficAnalytics { get; set; }
 
@@ -151,12 +158,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = "SetByResourceWithTAByDetails")]
+            ParameterSetName = SetByResourceWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = "SetByNameWithTAByDetails")]
+            ParameterSetName = SetByNameWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceResourceId { get; set; }
 
@@ -165,12 +172,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = "SetByResourceWithTAByDetails")]
+            ParameterSetName = SetByResourceWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = "SetByNameWithTAByDetails")]
+            ParameterSetName = SetByNameWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceGUId { get; set; }
 
@@ -178,12 +185,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = "SetByResourceWithTAByDetails")]
+            ParameterSetName = SetByResourceWithTAByDetails)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = "SetByNameWithTAByDetails")]
+            ParameterSetName = SetByNameWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceLocation { get; set; }
 
@@ -191,12 +198,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
-            ParameterSetName = "SetByResourceWithTAByResource")]
+            ParameterSetName = SetByResourceWithTAByResource)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
-            ParameterSetName = "SetByNameWithTAByResource")]
+            ParameterSetName = SetByNameWithTAByResource)]
         [ValidateNotNull]
         public Microsoft.Azure.Management.OperationalInsights.Models.Workspace Workspace { get; set; }
 

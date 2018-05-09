@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string TargetResourceId { get; set; }
 
         [JsonProperty(Order = 1)]
-        public PSTrafficAnalyticsProperties flowAnalyticsConfiguration { get; set; }
+        public PSTrafficAnalyticsProperties FlowAnalyticsConfiguration { get; set; }
 
         [JsonIgnore]
         public string RetentionPolicyText
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string FlowAnalyticsConfigurationText
         {
-            get { return JsonConvert.SerializeObject(flowAnalyticsConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(FlowAnalyticsConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
