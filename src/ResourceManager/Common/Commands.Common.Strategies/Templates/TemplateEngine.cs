@@ -4,7 +4,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
-    public class TemplateEngine : IEngine
+    class TemplateEngine : IEngine
     {
         IClient _client { get; }
 

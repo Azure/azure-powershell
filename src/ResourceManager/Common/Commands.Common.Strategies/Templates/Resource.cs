@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
     /// Template resource (JSON object).
     /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-resources
     /// </summary>
-    public class Resource
+    class Resource
     {
         /// <summary>
         /// API version for creating the resource
