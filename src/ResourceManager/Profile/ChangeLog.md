@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.1
+* Fix issue where default environments weren''t being retrieved without a default context set
+
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Enable context autosave by default
