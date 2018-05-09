@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -16,21 +16,17 @@ Updates the specified plan
 ```
 Set-AzsPlan -Name <String> -ResourceGroupName <String> [-DisplayName <String>] [-QuotaIds <String[]>]
  [-SkuIds <String[]>] [-ExternalReferenceId <String>] [-Description <String>] [-Location <String>]
- [-SubscriptionCount <Int64>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionCount <Int64>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzsPlan [-ResourceGroupName <String>] [-DisplayName <String>] [-QuotaIds <String[]>] -InputObject <Plan>
- [-SkuIds <String[]>] [-ExternalReferenceId <String>] [-Description <String>] [-Location <String>]
- [-SubscriptionCount <Int64>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzsPlan [-ResourceGroupName <String>] -InputObject <Plan> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzsPlan [-DisplayName <String>] [-QuotaIds <String[]>] [-SkuIds <String[]>] [-ExternalReferenceId <String>]
- [-Description <String>] [-Location <String>] [-SubscriptionCount <Int64>] -ResourceId <String> [-Force]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzsPlan -ResourceId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +34,7 @@ Updates the specified plan
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Set-AzsPlan -Name "plan1" -ResourceGroupName "rg1" -Description "This plan is meant to be used by accounting only."
 ```
@@ -47,13 +43,40 @@ Updates the specified plan
 
 ## PARAMETERS
 
-### -Description
-Description of the plan.
+### -Name
+Name of the plan.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group the resource is located under.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: InputObject
+Aliases:
 
 Required: False
 Position: Named
@@ -67,8 +90,53 @@ Display name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QuotaIds
+Quota identifiers under the plan.
+
+```yaml
+Type: String[]
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Plan.
+
+```yaml
+Type: Plan
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SkuIds
+SKU identifiers.
+
+```yaml
+Type: String[]
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
@@ -82,8 +150,8 @@ External reference identifier.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
@@ -92,33 +160,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Don't ask for confirmation.
+### -Description
+Description of the plan.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
+Type: String
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Plan.
-
-```yaml
-Type: Plan
-Parameter Sets: InputObject
-Aliases: 
-
-Required: True
-Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -127,95 +180,8 @@ Location of the resource.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Update
 Aliases: ArmLocation
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the plan.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QuotaIds
-Quota identifiers under the plan.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group the resource is located under.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: InputObject
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id.
-
-```yaml
-Type: String
-Parameter Sets: ResourceId
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SkuIds
-SKU identifiers.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
 
 Required: False
 Position: Named
@@ -229,8 +195,8 @@ Subscription count.
 
 ```yaml
 Type: Int64
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Update
+Aliases:
 
 Required: False
 Position: Named
@@ -239,18 +205,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -ResourceId
+The resource id.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: String
+Parameter Sets: ResourceId
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -262,6 +228,21 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -282,4 +263,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

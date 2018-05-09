@@ -1,6 +1,6 @@
 ---
 external help file: Azs.InfrastructureInsights.Admin-help.xml
-Module Name: Azs.InfrastructureInsights.Admin
+Module Name: Azs.Infrastructureinsights.Admin
 online version:
 schema: 2.0.0
 ---
@@ -33,14 +33,14 @@ Returns the list of all alerts in a given location.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsAlert -Name 7f58eb8b-e39f-45d0-8ae7-9920b8f22f5f
 ```
 
 Get an alert by Name.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 Get-AzsAlert | Where State -EQ 'active' | select FaultTypeId, Title
 ```
@@ -64,21 +64,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-OData filter parameter.
-
-```yaml
-Type: String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 Name of the location.
 
@@ -95,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-{{Fill ResourceGroupName Description}}
+Resource group name of the alert.
 
 ```yaml
 Type: String
@@ -124,8 +109,24 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Skip
-Skip the first N items as specified by the parameter value.
+### -Filter
+OData filter parameter.
+
+```yaml
+Type: String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+Return the top N items as specified by the parameter value.
+Applies after the -Skip parameter.
 
 ```yaml
 Type: Int32
@@ -139,9 +140,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Top
-Return the top N items as specified by the parameter value.
-Applies after the -Skip parameter.
+### -Skip
+Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
@@ -167,4 +167,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

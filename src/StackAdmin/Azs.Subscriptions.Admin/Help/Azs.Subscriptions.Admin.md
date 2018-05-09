@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Subscriptions.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the AzureStack Subscription administrator module.  This module provides functionality for administrators to manage plans, offers and subscriptions
 
 ## Azs.Subscriptions.Admin Cmdlets
 ### [Add-AzsPlanToOffer](Add-AzsPlanToOffer.md)
@@ -30,22 +30,16 @@ Get a list of all AzureStack location.
 Get the list of offers as the administrator.
 
 ### [Get-AzsOfferDelegation](Get-AzsOfferDelegation.md)
-{{Manually Enter Get-AzsOfferDelegation Description Here}}
+
 
 ### [Get-AzsOfferMetric](Get-AzsOfferMetric.md)
 Get the offer metrics.
-
-### [Get-AzsOfferMetricDefinition](Get-AzsOfferMetricDefinition.md)
-Get the offer metric definitions.
 
 ### [Get-AzsPlan](Get-AzsPlan.md)
 List all plans across all subscriptions.
 
 ### [Get-AzsPlanMetric](Get-AzsPlanMetric.md)
 Get the plan metrics.
-
-### [Get-AzsPlanMetricDefinition](Get-AzsPlanMetricDefinition.md)
-Get the list of plan metric definitions.
 
 ### [Get-AzsSubscriptionPlan](Get-AzsSubscriptionPlan.md)
 Get a collection of all acquired plans that subscription has access to.
@@ -113,9 +107,6 @@ Deletes a subscription plan.
 
 ### [Remove-AzsUserSubscription](Remove-AzsUserSubscription.md)
 Removes the specified tenant subscription.
-
-### [Set-AzsDirectoryTenant](Set-AzsDirectoryTenant.md)
-Updates a directory tenant.
 
 ### [Set-AzsOffer](Set-AzsOffer.md)
 Update the offer.

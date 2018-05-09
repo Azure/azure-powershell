@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Backup.Admin-help.xml
 Module Name: Azs.Backup.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -38,14 +38,14 @@ Returns a backup from a location based on name.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsBackup
 ```
 
 Get information sbout all Azure Stack backups.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 Get-AzsBackup -Name 'backupName'
 ```
@@ -54,28 +54,13 @@ Get information for the the specified Azure Stack backup.
 
 ## PARAMETERS
 
-### -Location
-Location backed up.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the backup.
 
 ```yaml
 Type: String
 Parameter Sets: Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,28 +69,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParentResource
-Passing a backup location will return the list of all backups at that backup location.
-
-```yaml
-Type: BackupLocation
-Parameter Sets: ParentResource
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of the resource group.
+### -Location
+Location backed up.
 
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,13 +99,45 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Skip
-{{Fill Skip Description}}
+### -ResourceGroupName
+Name of the resource group.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentResource
+Passing a backup location will return the list of all backups at that backup location.
+
+```yaml
+Type: BackupLocation
+Parameter Sets: ParentResource
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Top
+Return the top N items as specified by the parameter value.
+Applies after the -Skip parameter.
+
 
 ```yaml
 Type: Int32
 Parameter Sets: List, ParentResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -144,13 +146,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Top
-{{Fill Top Description}}
+### -Skip
+Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
 Parameter Sets: List, ParentResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -171,4 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
