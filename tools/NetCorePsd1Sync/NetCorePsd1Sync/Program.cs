@@ -66,6 +66,7 @@ namespace NetCorePsd1Sync
             var desktopFilePaths = GetDesktopFilePaths(modulePaths);
             var netCoreFilePaths = desktopFilePaths.Select(ConvertDesktopToNetCorePath).Where(File.Exists).ToList();
             netCoreFilePaths.Add(Path.Combine(rmPath, @"..\Storage\Azure.Storage.Netcore.psd1"));
+            netCoreFilePaths.Add(Path.Combine(rmPath, @"..\..\tools\AzureRM.Netcore\AzureRM.Netcore.psd1"));
             var netCoreHashTables = GetHashtables(netCoreFilePaths);
 
             foreach (var netCoreHashtable in netCoreHashTables)
@@ -81,14 +82,11 @@ namespace NetCorePsd1Sync
                 Console.WriteLine($"Updating {netCoreFilePath} to version {newVersion}");
                 var netCoreDefinition = CreateDefinitionFromExisting(netCoreHashtable, new PsDefinitionHeader { ModuleName = headerModuleName, Author = headerAuthor, Date = headerDate });
                 netCoreDefinition.ModuleVersion = newVersion;
-                if (netCoreDefinition.RequiredModules?.Any(rm => rm.ModuleName == "AzureRM.Profile.Netcore") ?? false)
+                foreach (var requiredModule in netCoreDefinition.RequiredModules ?? Enumerable.Empty<ModuleReference>())
                 {
-                    netCoreDefinition.RequiredModules.First(rm => rm.ModuleName == "AzureRM.Profile.Netcore").ModuleVersion = newVersion;
+                    requiredModule.ModuleVersion = newVersion;
                 }
-                if (netCoreDefinition.RequiredModules?.Any(rm => rm.ModuleName == "Azure.Storage.Netcore") ?? false)
-                {
-                    netCoreDefinition.RequiredModules.First(rm => rm.ModuleName == "Azure.Storage.Netcore").ModuleVersion = newVersion;
-                }
+                
                 File.WriteAllLines(netCoreFilePath, netCoreDefinition.ToDefinitionEntry());
             }
         }
