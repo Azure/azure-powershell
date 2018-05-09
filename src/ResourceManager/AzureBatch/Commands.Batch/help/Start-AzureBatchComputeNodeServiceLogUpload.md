@@ -28,7 +28,7 @@ Start-AzureBatchComputeNodeServiceLogUpload [-PoolId] <String> [-ComputeNodeId] 
 
 ### ParentObject
 ```
-Start-AzureBatchComputeNodeServiceLogUpload [[-ComputeNode] <PSComputeNode>] [-ContainerUrl] <String>
+Start-AzureBatchComputeNodeServiceLogUpload [-ComputeNode] <PSComputeNode> [-ContainerUrl] <String>
  [-StartTime] <DateTime> [[-EndTime] <DateTime>] -BatchContext <BatchAccountContext>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -82,7 +82,6 @@ PS C:\> Get-AzureBatchComputeNode -BatchContext $batchContext -Id "tvm-161203012
 NumberOfFilesUploaded VirtualDirectoryName
 --------------------- --------------------
                     2 contosobatch-22F48D278AD60CC2/contosopool/tvm-1612030122_1-20180405t234700z/bc3dd583-19a5-4665-aa83-87e4e1237d35
-
 ```
 
 Upload compute node service logs written on or after January 1, 2018 midnight and before January 10, 2018 midnight, which were obtained from the compute node object.
@@ -116,7 +115,7 @@ Type: PSComputeNode
 Parameter Sets: ParentObject
 Aliases:
 
-Required: False
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
