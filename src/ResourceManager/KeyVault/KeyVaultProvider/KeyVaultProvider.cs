@@ -25,6 +25,7 @@
     using System.Linq.Expressions;
     using System.Security.Cryptography.X509Certificates;
     using Management.Internal.Resources.Utilities.Models;
+    using System.Text;
 
     #region KeyVaultProvider
 
@@ -97,11 +98,7 @@
         #endregion Private Properties
 
         #region Drive Manipulation
-
-        /// The Windows PowerShell engine calls this method when the 
-        /// New-PSDrive cmdlet is run and the path to this provider is 
-        /// specified. This method creates a connection to the database 
-        /// file and sets the Connection property of the PSDriveInfo object.
+        
         protected override PSDriveInfo NewDrive(PSDriveInfo drive)
         {
             if (drive == null)
@@ -130,10 +127,7 @@
 
             return kvDriveInfo;
         }
-
-        /// The Windows PowerShell engine calls this method when the 
-        /// Remove-PSDrive cmdlet is run and the path to this provider is 
-        /// specified. This method closes the ODBC connection of the drive.
+        
         protected override PSDriveInfo RemoveDrive(PSDriveInfo drive)
         {
             if (drive == null)
@@ -201,17 +195,18 @@
 
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            PSKeyVault vault = null;
-            if (resourceGroupName != null)
-            {
-                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
-            }
+            var vault = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
             if (vault != null)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
-                    WriteItemObject(vault, path, true);
+                    var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                    PSKeyVault vaultObject = null;
+                    if (resourceGroupName != null)
+                    {
+                        vaultObject = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                    }
+                    WriteItemObject(vaultObject, path, true);
                 }
                 else if (namesFromPath.Length == 2 || (namesFromPath.Length == 3 && namesFromPath[2].Equals("")))
                 {
@@ -313,7 +308,13 @@
                     }
                     else if (namesFromPath[1] == "AccessPolicies")
                     {
-                        foreach (var accessPolicy in vault.AccessPolicies)
+                        var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                        PSKeyVault vaultObject = null;
+                        if (resourceGroupName != null)
+                        {
+                            vaultObject = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                        }
+                        foreach (var accessPolicy in vaultObject.AccessPolicies)
                         {
                             if (accessPolicy.ObjectId.Equals(namesFromPath[2]))
                             {
@@ -347,16 +348,18 @@
 
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            PSKeyVault vault = null;
-            if (resourceGroupName != null)
-            {
-                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
-            }
-            if (vault != null)
+            var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
+            if (vaultObject != null)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
+                    var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                    PSKeyVault vault = null;
+                    if (resourceGroupName != null)
+                    {
+                        vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                    }
+
                     var dynamicParameters = DynamicParameters as SetItemVaultDynamicParameters;
                     bool? enabledForDeployment = dynamicParameters.EnabledForDeployment;
                     bool? enabledForTemplateDeployment = dynamicParameters.EnabledForTemplateDeployment;
@@ -441,7 +444,7 @@
                             WriteWarning("-Value must be of type PSKeyVaultSecret or HashTable, values from -Value will not be used");
                         }
 
-                        var newSecret = kvDriveInfo.KeyVaultDataServiceClient.UpdateSecret(vault.VaultName, namesFromPath[2], version, 
+                        var newSecret = kvDriveInfo.KeyVaultDataServiceClient.UpdateSecret(namesFromPath[0], namesFromPath[2], version, 
                             new PSKeyVaultSecretAttributes(enable, expires, notBefore, contentType, tag));
 
                         WriteItemObject(newSecret, path, false);
@@ -477,7 +480,7 @@
                             WriteWarning("-Value must be of type PSKeyVaultCertificate or HashTable, values from -Value will not be used");
                         }
 
-                        var newCertificate = kvDriveInfo.KeyVaultDataServiceClient.UpdateCertificate(vault.VaultName, namesFromPath[2], version, 
+                        var newCertificate = kvDriveInfo.KeyVaultDataServiceClient.UpdateCertificate(namesFromPath[0], namesFromPath[2], version, 
                             new CertificateAttributes { Enabled = enable }, tag == null ? null : tag.ConvertToDictionary());
 
                         WriteItemObject(newCertificate, path, false);
@@ -530,13 +533,20 @@
                             WriteWarning("-Value must be of type PSKeyVaultKey or HashTable, values from -Value will not be used");
                         }
 
-                        var newKey = kvDriveInfo.KeyVaultDataServiceClient.UpdateKey(vault.VaultName, namesFromPath[2], version,
+                        var newKey = kvDriveInfo.KeyVaultDataServiceClient.UpdateKey(namesFromPath[0], namesFromPath[2], version,
                             new PSKeyVaultKeyAttributes(enable, expires, notBefore, null, keyOps, tag));
 
                         WriteItemObject(newKey, path, false);
                     }
                     else if (namesFromPath[1] == "AccessPolicies")
                     {
+                        var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                        PSKeyVault vault = null;
+                        if (resourceGroupName != null)
+                        {
+                            vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                        }
+
                         var dynamicParameters = DynamicParameters as SetItemAccessPolicyDynamicParameters;
                         var permissionsToKeys = dynamicParameters.PermissionsToKeys;
                         var permissionsToSecrets = dynamicParameters.PermissionsToSecrets;
@@ -664,12 +674,7 @@
 
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            if (resourceGroupName == null)
-            {
-                return false;
-            }
-            var vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName);
+            var vault = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
             if (vault != null)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
@@ -717,7 +722,13 @@
                     }
                     else if (namesFromPath[1].Equals("AccessPolicies"))
                     {
-                        foreach (var accesspolicy in vault.AccessPolicies)
+                        var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                        PSKeyVault vaultObject = null;
+                        if (resourceGroupName != null)
+                        {
+                            vaultObject = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                        }
+                        foreach (var accesspolicy in vaultObject.AccessPolicies)
                         {
                             if (accesspolicy.ObjectId.Equals(namesFromPath[2]))
                             {
@@ -901,13 +912,8 @@
 
             var namesFromPath = ChunkPath(path);
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            PSKeyVault vault = null;
-            if (resourceGroupName != null)
-            {
-                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
-            }
-            if (vault != null)
+            var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
+            if (vaultObject != null)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -963,6 +969,13 @@
                     }
                     else if (namesFromPath[1] == "AccessPolicies")
                     {
+                        var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                        PSKeyVault vault = null;
+                        if (resourceGroupName != null)
+                        {
+                            vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                        }
+
                         var accessPolicies = vault.AccessPolicies;
                         foreach (var accessPolicy in accessPolicies)
                         {
@@ -1005,13 +1018,8 @@
 
             var namesFromPath = ChunkPath(path);
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            PSKeyVault vault = null;
-            if (resourceGroupName != null)
-            {
-                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
-            }
-            if (vault != null)
+            var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
+            if (vaultObject != null)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -1051,6 +1059,13 @@
                     }
                     else if (namesFromPath[1] == "AccessPolicies")
                     {
+                        var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                        PSKeyVault vault = null;
+                        if (resourceGroupName != null)
+                        {
+                            vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                        }
+
                         var accessPolicies = vault.AccessPolicies;
                         foreach (var accessPolicy in accessPolicies)
                         {
@@ -1082,13 +1097,8 @@
 
             var namesFromPath = ChunkPath(path);
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            PSKeyVault vault = null;
-            if (resourceGroupName != null)
-            {
-                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
-            }
-            if (vault != null)
+            var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
+            if (vaultObject != null)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -1128,6 +1138,13 @@
                     }
                     else if (namesFromPath[1] == "AccessPolicies")
                     {
+                        var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                        PSKeyVault vault = null;
+                        if (resourceGroupName != null)
+                        {
+                            vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                        }
+
                         if (vault.AccessPolicies.Count() == 0)
                         {
                             return false;
@@ -1177,13 +1194,8 @@
                 return filteredVaults.ToArray();
             }
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            if (resourceGroupName == null)
-            {
-                return new string[] { path };
-            }
-            var vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName);
-            if (vault != null)
+            var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
+            if (vaultObject != null)
             {
                 if (namesFromPath.Length == 2)
                 {
@@ -1260,6 +1272,13 @@
                     }
                     else if (namesFromPath[1] == "AccessPolicies")
                     {
+                        var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                        PSKeyVault vault = null;
+                        if (resourceGroupName != null)
+                        {
+                            vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                        }
+
                         var filter = namesFromPath[2].TrimEnd('*');
                         var filteredPaths = new List<string>();
                         var allStrings = vault.AccessPolicies;
@@ -1983,16 +2002,18 @@
 
             var namesFromPath = ChunkPath(path);
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            PSKeyVault vault = null;
-            if (resourceGroupName != null)
-            {
-                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
-            }
-            if (vault != null)
+            var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
+            if (vaultObject != null)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
+                    var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                    PSKeyVault vault = null;
+                    if (resourceGroupName != null)
+                    {
+                        vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                    }
+
                     if (Force || ShouldContinue(string.Format("Remove vault '{0}'?", vault.VaultName), "Remove item?"))
                     {
                         kvDriveInfo.KeyVaultClient.DeleteVault(vault.VaultName, vault.ResourceGroupName);
@@ -2071,6 +2092,13 @@
                     }
                     else if (namesFromPath[1] == "AccessPolicies")
                     {
+                        var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                        PSKeyVault vault = null;
+                        if (resourceGroupName != null)
+                        {
+                            vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                        }
+
                         var policies = vault.AccessPolicies;
                         foreach (var policy in policies)
                         {
@@ -2122,6 +2150,13 @@
                     {
                         if (Force || ShouldContinue(string.Format("Remove access policy '{0}' from vault '{1}'?", namesFromPath[2], namesFromPath[0]), "Remove item?"))
                         {
+                            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
+                            PSKeyVault vault = null;
+                            if (resourceGroupName != null)
+                            {
+                                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
+                            }
+
                             var updatedPolicies = vault.AccessPolicies.Where(ap => !ShallBeRemoved(ap, namesFromPath[2], null)).ToArray();
                             var updatedVault = kvDriveInfo.KeyVaultClient.UpdateVault(
                                 vault, updatedPolicies, vault.EnabledForDeployment, vault.EnabledForTemplateDeployment, vault.EnabledForDiskEncryption,
@@ -2453,13 +2488,7 @@
 
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            if (resourceGroupName == null)
-            {
-                return false;
-            }
-
-            var vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName);
+            var vault = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
             if (vault != null)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
@@ -2479,93 +2508,149 @@
         
         protected override string GetChildName(string path)
         {
-            if (this.PathIsDrive(path))
+            if (String.IsNullOrEmpty(path))
             {
-                return path;
+                throw new ArgumentException("Path null");
             }
+            
+            path = NormalizePath(path);
+            path = path.TrimEnd('\\');
+            string result = null;
 
             int separatorIndex = path.LastIndexOf(pathSeparator);
+            
             if (separatorIndex == -1)
             {
-                return path;
+                result = path;
             }
 
-            return path.Substring(separatorIndex + 1);
+            result = path.Substring(separatorIndex + 1);
+
+            return result;
         }
 
         protected override string GetParentPath(string path, string root)
         {
+            string parentPath = null;
+
+            if (String.IsNullOrEmpty(path))
+            {
+                throw new ArgumentException("Path null");
+            }
+
+            if (root == null)
+            {
+                if (PSDriveInfo != null)
+                {
+                    root = PSDriveInfo.Root;
+                }
+            }
+
             path = NormalizePath(path);
-            var rootPath = NormalizePath(root);
+            path = path.TrimEnd('\\');
+            string rootPath = String.Empty;
 
-            if (!string.IsNullOrEmpty(rootPath))
+            if (root != null)
             {
-                if (!path.Contains(rootPath))
-                {
-                    return string.Empty;
-                }
-                else if (path.Equals(rootPath))
-                {
-                    return path;
-                }
+                rootPath = NormalizePath(root);
             }
 
-            int separatorIndex = path.LastIndexOf(pathSeparator);
-            if (separatorIndex == -1)
+            if (String.Compare(
+                path,
+                rootPath,
+                StringComparison.OrdinalIgnoreCase) == 0)
             {
-                return string.Empty;
+                parentPath = String.Empty;
             }
-            return path.Substring(0, separatorIndex);
+            else
+            {
+                int lastIndex = path.LastIndexOf(pathSeparator);
+
+                if (lastIndex != -1)
+                {
+                    if (lastIndex == 0)
+                    {
+                        ++lastIndex;
+                    }
+
+                    parentPath = path.Substring(0, lastIndex);
+                }
+                else
+                {
+                    parentPath = String.Empty;
+                }
+            }
+            return parentPath;
         }
 
         protected override string MakePath(string parent, string child)
         {
-            string result;
+            string result = null;
 
-            string normalParent = NormalizePath(parent);
-            normalParent = RemoveDriveFromPath(normalParent);
-            string normalChild = NormalizePath(child);
-            normalChild = RemoveDriveFromPath(normalChild);
-
-            if (String.IsNullOrEmpty(normalParent) && String.IsNullOrEmpty(normalChild))
+            if (String.IsNullOrEmpty(parent) && String.IsNullOrEmpty(child))
             {
                 result = String.Empty;
             }
-            else if (String.IsNullOrEmpty(normalParent) && !String.IsNullOrEmpty(normalChild))
+            else if (String.IsNullOrEmpty(parent) &&
+                     !String.IsNullOrEmpty(child))
             {
-                result = normalChild;
+                result = NormalizePath(child);
             }
-            else if (!String.IsNullOrEmpty(normalParent) && String.IsNullOrEmpty(normalChild))
+
+            else if (!String.IsNullOrEmpty(parent) && String.IsNullOrEmpty(child))
             {
-                if (normalParent.EndsWith(pathSeparator, StringComparison.OrdinalIgnoreCase))
+                var normalParent = NormalizePath(parent);
+                if (normalParent.EndsWith(pathSeparator))
                 {
-                    result = normalParent;
+                    result = parent;
                 }
                 else
                 {
-                    result = normalParent + pathSeparator;
+                    result = parent + pathSeparator;
                 }
             }
             else
             {
-                if (!normalParent.Equals(String.Empty) &&
-                    !normalParent.EndsWith(pathSeparator, StringComparison.OrdinalIgnoreCase))
+                parent = NormalizePath(parent);
+                child = NormalizePath(child);
+
+                StringBuilder builder = new StringBuilder(parent, parent.Length + child.Length + 1);
+
+                if (parent.EndsWith(pathSeparator))
                 {
-                    result = normalParent + pathSeparator;
+                    if (child.StartsWith(pathSeparator))
+                    {
+                        builder.Append(child, 1, child.Length - 1);
+                    }
+                    else
+                    {
+                        builder.Append(child);
+                    }
                 }
                 else
                 {
-                    result = normalParent;
+                    if (child.StartsWith(pathSeparator))
+                    {
+                        if (parent.Length == 0)
+                        {
+                            builder.Append(child, 1, child.Length - 1);
+                        }
+                        else
+                        {
+                            builder.Append(child);
+                        }
+                    }
+                    else
+                    {
+                        if (parent.Length > 0 && child.Length > 0)
+                        {
+                            builder.Append(pathSeparator);
+                        }
+                        builder.Append(child);
+                    }
                 }
 
-                if (normalChild.StartsWith(pathSeparator, StringComparison.OrdinalIgnoreCase))
-                {
-                    result += normalChild.Substring(1);
-                }
-                else
-                {
-                    result += normalChild;
-                }
+                result = builder.ToString();
             }
 
             return result;
@@ -2574,25 +2659,7 @@
         protected override string NormalizeRelativePath(string path,
                                                             string basepath)
         {
-            // Normalize the paths first
-            string normalPath = NormalizePath(path);
-            normalPath = RemoveDriveFromPath(normalPath);
-            string normalBasePath = NormalizePath(basepath);
-            normalBasePath = RemoveDriveFromPath(normalBasePath);
-
-            if (String.IsNullOrEmpty(normalBasePath))
-            {
-                return normalPath;
-            }
-            else
-            {
-                if (!normalPath.Contains(normalBasePath))
-                {
-                    return null;
-                }
-
-                return normalPath.Substring(normalBasePath.Length + pathSeparator.Length);
-            }
+            return base.NormalizeRelativePath(path, basepath);
         }
 
         protected override void MoveItem(string path, string destination)
@@ -2601,37 +2668,6 @@
         }
 
         #endregion Navigation Methods
-
-        #region Navigation Helper Methods
-
-        private string RemoveDriveFromPath(string path)
-        {
-            string result = path;
-            string name;
-
-            if (this.PSDriveInfo == null)
-            {
-                name = String.Empty;
-            }
-            else
-            {
-                name = NormalizePath(this.PSDriveInfo.Name + ":");
-            }
-
-            if (result == null)
-            {
-                result = String.Empty;
-            }
-
-            if (result.Contains(name))
-            {
-                result = result.Substring(result.IndexOf(name, StringComparison.OrdinalIgnoreCase) + name.Length);
-            }
-
-            return result;
-        }
-
-        #endregion Navigation Helper Methods
 
         #region DynamicParameters
 
