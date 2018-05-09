@@ -26,12 +26,18 @@ Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcherName <String> 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SetByLocation
+```
+Start-AzureRmNetworkWatcherResourceTroubleshooting -Location <String> -TargetResourceId <String>
+ -StorageId <String> -StoragePath <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Start-AzureRmNetworkWatcherResourceTroubleshooting cmdlet starts troubleshooting for a Networking resource in Azure and returns information about potential issues and mitigations. Currently Virtual Network Gateways and Connections are supported.
 
 ## EXAMPLES
 
-### --- Example 1: Start Troubleshooting on a Virtual Network Gateway ---
+### Example 1: Start Troubleshooting on a Virtual Network Gateway
 ```
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
@@ -62,13 +68,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Location of the network watcher.
+
+```yaml
+Type: String
+Parameter Sets: SetByLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcher
 The network watcher resource.
 
 ```yaml
 Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,7 +119,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: String
 Parameter Sets: SetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,7 +134,7 @@ The storage ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -128,7 +149,7 @@ The storage path.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -143,7 +164,7 @@ Specifies the resource id of the resource to troubleshoot. Example format: "/sub
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

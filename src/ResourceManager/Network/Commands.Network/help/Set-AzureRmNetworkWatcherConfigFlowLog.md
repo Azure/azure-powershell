@@ -27,6 +27,13 @@ Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcherName <String> -ResourceGro
  [<CommonParameters>]
 ```
 
+### SetByLocation
+```
+Set-AzureRmNetworkWatcherConfigFlowLog -Location <String> -TargetResourceId <String> -EnableFlowLog <Boolean>
+ -StorageAccountId <String> [-EnableRetention <Boolean>] [-RetentionInDays <Int32>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Set-AzureRmNetworkWatcherConfigFlowLog configures flow logging for a target resource. 
 Properties to configure include: whether or not flow logging is enabled for the resource provided, the configured storage account to send logs, and the retention policy for the logs. 
@@ -34,7 +41,7 @@ Currently Network Security Groups are supported for flow logging.
 
 ## EXAMPLES
 
-### --- Example 1: Configure Flow Logging for a Specified NSG ---
+### Example 1: Configure Flow Logging for a Specified NSG
 ```
 PS C:\> $NW = Get-AzurermNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
 PS C:\> $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
@@ -62,7 +69,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,7 +99,7 @@ Flag to enable/disable flow logging.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -107,12 +114,27 @@ Flag to enable/disable retention.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the network watcher.
+
+```yaml
+Type: String
+Parameter Sets: SetByLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -122,7 +144,7 @@ The network watcher resource.
 ```yaml
 Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -152,7 +174,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: String
 Parameter Sets: SetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -167,7 +189,7 @@ Number of days to retain flow log records.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -182,7 +204,7 @@ ID of the storage account which is used to store the flow log.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -197,7 +219,7 @@ The target resource ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

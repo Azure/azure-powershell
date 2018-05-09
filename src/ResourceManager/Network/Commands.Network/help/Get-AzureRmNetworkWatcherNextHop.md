@@ -26,13 +26,20 @@ Get-AzureRmNetworkWatcherNextHop -NetworkWatcherName <String> -ResourceGroupName
  [-TargetNetworkInterfaceId <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SetByLocation
+```
+Get-AzureRmNetworkWatcherNextHop -Location <String> -TargetVirtualMachineId <String>
+ -DestinationIPAddress <String> -SourceIPAddress <String> [-TargetNetworkInterfaceId <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Get-AzureRmNetworkWatcherNextHop cmdlet gets the next hop from a VM. 
 Next hop allows you to view the type of Azure resource, the associated IP address of that resource, and the routing table rule that is responsible for the route.
 
 ## EXAMPLES
 
-### -- Example 1: Get the Next Hop when communicating with an Internet IP --
+### Example 1: Get the Next Hop when communicating with an Internet IP
 ```
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
@@ -56,7 +63,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,7 +93,22 @@ Destination IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the network watcher.
+
+```yaml
+Type: String
+Parameter Sets: SetByLocation
+Aliases:
 
 Required: True
 Position: Named
@@ -101,7 +123,7 @@ The network watcher resource.
 ```yaml
 Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -131,7 +153,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: String
 Parameter Sets: SetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -146,7 +168,7 @@ Source IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -161,7 +183,7 @@ Target network interface Id.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -176,7 +198,7 @@ The target virtual machine ID.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

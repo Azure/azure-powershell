@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
+        [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,

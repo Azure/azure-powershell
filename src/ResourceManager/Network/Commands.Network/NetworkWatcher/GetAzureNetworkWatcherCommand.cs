@@ -69,7 +69,6 @@ namespace Microsoft.Azure.Commands.Network
 
                 WriteObject(psNetworkWatcher);
             }
-
             else if (!string.IsNullOrEmpty(this.Name))
             {
                 PSNetworkWatcher psNetworkWatcher;
