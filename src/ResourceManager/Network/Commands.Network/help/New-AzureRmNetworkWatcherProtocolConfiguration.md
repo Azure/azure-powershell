@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -Header
-Header
+list of HTTP headers
 
 ```yaml
 Type: IDictionary
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Method
-Method
+HTTP method
 
 ```yaml
 Type: String
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Procotol
+Procotol type
 
 ```yaml
 Type: String
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -ValidStatusCode
-ValidStatusCode
+valid status codes
 
 ```yaml
 Type: Int32[]

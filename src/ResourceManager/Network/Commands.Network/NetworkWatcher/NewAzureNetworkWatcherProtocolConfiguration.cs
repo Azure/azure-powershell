@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
     {
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "Procotol")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Tcp", "Http", "Https", "Icmp")]
@@ -38,21 +37,18 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "Method")]
         [ValidateNotNullOrEmpty]
         public string Method { get; set; }
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "Header")]
         [ValidateNotNullOrEmpty]
         public IDictionary Header { get; set; }
 
         [Parameter(
              Mandatory = false,
-             ValueFromPipeline = true,
              HelpMessage = "ValidStatusCode")]
         [ValidateNotNullOrEmpty]
         public int[] ValidStatusCode { get; set; }
