@@ -18,10 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Enable Gateway assocaite/disassociate operations on AS.
 
 ## Version 0.6.7
 * Set minimum dependency of module to PowerShell 5.0
-* Enable Gateway assocaite/disassociate operations on AS.
 
 ## Version 0.6.6
 * Updated to the latest version of the Azure ClientRuntime

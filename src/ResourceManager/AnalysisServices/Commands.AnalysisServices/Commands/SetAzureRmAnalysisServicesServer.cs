@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
                 if (DisassociateGateway.IsPresent)
                 {
-                    GatewayResourceId = "-";
+                    GatewayResourceId = AnalysisServicesClient.DissasociateGateway;
                 }
 
                 AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, GatewayResourceId);
