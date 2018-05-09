@@ -93,7 +93,7 @@ Context
 ```yaml
 Type: PSAzureContext
 Parameter Sets: ContextObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -108,7 +108,7 @@ Name of the context to log out of
 ```yaml
 Type: String
 Parameter Sets: ContextName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -138,7 +138,7 @@ The account object to remove
 ```yaml
 Type: PSAzureRmAccount
 Parameter Sets: AccountObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -153,7 +153,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -169,7 +169,7 @@ Tenant id (globally unique id)
 ```yaml
 Type: String
 Parameter Sets: ServicePrincipal
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

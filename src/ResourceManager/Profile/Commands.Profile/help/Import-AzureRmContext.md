@@ -96,7 +96,7 @@ Specifies the path to context information saved by using Save-AzureRMContext.
 ```yaml
 Type: String
 Parameter Sets: ProfileFromDisk
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -111,7 +111,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -167,4 +167,3 @@ Contains the set of credentials, accounts, and subscriptions that can be used to
 ## NOTES
 
 ## RELATED LINKS
-

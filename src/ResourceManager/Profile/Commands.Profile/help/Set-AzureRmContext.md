@@ -78,7 +78,7 @@ Specifies the context for the current session.
 ```yaml
 Type: PSAzureContext
 Parameter Sets: Context
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -108,7 +108,7 @@ Additional context properties
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,7 +123,7 @@ Overwrite the existing context with the same name, if any.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -138,7 +138,7 @@ Name of the context
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -153,7 +153,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -184,7 +184,7 @@ A subscription object
 ```yaml
 Type: PSAzureSubscription
 Parameter Sets: SubscriptionObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -226,7 +226,7 @@ A Tenant Object
 ```yaml
 Type: PSAzureTenant
 Parameter Sets: TenantObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

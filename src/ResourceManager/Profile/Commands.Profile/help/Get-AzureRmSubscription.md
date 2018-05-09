@@ -104,7 +104,7 @@ Run cmdlet in the background and return a Job to track progress.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -134,7 +134,7 @@ Specifies the ID of the subscription to get.
 ```yaml
 Type: String
 Parameter Sets: ListByIdInTenant
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,7 +149,7 @@ Specifies the name of the subscription to get.
 ```yaml
 Type: String
 Parameter Sets: ListByNameInTenant
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -164,7 +164,7 @@ Specifies the ID of the tenant that contains subscriptions to get.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -188,4 +188,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

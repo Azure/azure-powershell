@@ -59,7 +59,7 @@ Remove context even if it is the defualt
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -74,7 +74,7 @@ A context object, normally passed through the pipeline.
 ```yaml
 Type: PSAzureContext
 Parameter Sets: RemoveByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,7 +89,7 @@ The name of the context
 ```yaml
 Type: String
 Parameter Sets: RemoveByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -104,7 +104,7 @@ Return the removed context
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -119,7 +119,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -174,4 +174,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

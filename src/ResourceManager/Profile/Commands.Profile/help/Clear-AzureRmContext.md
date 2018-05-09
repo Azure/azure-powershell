@@ -52,7 +52,7 @@ Delete all users and groups from the global scope without prompting
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -67,7 +67,7 @@ Return a value indicating success or failure
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,7 +82,7 @@ Clear the context only for the current PowerShell session, or for all sessions.
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: True
@@ -138,4 +138,3 @@ True if the context was successfully cleared, false otherwise.
 ## NOTES
 
 ## RELATED LINKS
-
