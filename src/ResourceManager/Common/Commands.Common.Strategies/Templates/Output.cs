@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
     /// Azure template output (JSON object).
     /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-templates-outputs
     /// </summary>
-    public class Output
+    class Output
     {
         public string type { get; set; }
 

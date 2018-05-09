@@ -20,7 +20,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
-    public static class TemplateExtensions
+    static class TemplateExtensions
     {
         /// <summary>
         /// Create a template from the given resource dependency DAG.

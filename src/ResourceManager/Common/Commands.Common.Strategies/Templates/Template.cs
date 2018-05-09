@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
     /// Azure Resource Management Template (JSON object).
     /// https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates
     /// </summary>
-    public class Template
+    class Template
     {
         [JsonProperty("$schema")]
         public string Schema { get; set; }

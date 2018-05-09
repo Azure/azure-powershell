@@ -17,7 +17,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
-    public static class OutputExtension
+    static class OutputExtension
     {
         public static T GetModel<T>(this Output output)
             where T : class
