@@ -15,10 +15,7 @@
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Strategies;
@@ -27,7 +24,6 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 {
     public class PSCmdletAdapter : ICmdletAdapter
     {
-
         public PSCmdletAdapter(AzurePSCmdlet cmdlet, SessionState state)
         {
             this.CommandRuntime = cmdlet.CommandRuntime;
@@ -108,7 +104,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             //_hasMessages = 1;
         }
 
-        public void WriteVerboseAsync(string verboseMessage)
+        public void WriteVerbose(string verboseMessage)
         {
             _verbose.Enqueue(verboseMessage);
             //_hasMessages = 1;

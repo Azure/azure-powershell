@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         /// </summary>
         /// <param name="verboseMessage">The additional information to log</param>
         /// <returns>nothing</returns>
-        void WriteVerboseAsync(string verboseMessage);
+        void WriteVerbose(string verboseMessage);
 
         /// <summary>
         /// Log debugging information

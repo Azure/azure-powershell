@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 if (ShouldProcess(string.Format(Microsoft.Azure.Commands.WebApps.Properties.Resources.SimpleWebAppCreateTarget, Name), Microsoft.Azure.Commands.WebApps.Properties.Resources.SimpleWebAppCreateAction))
                 {
                     var adapter = new PSCmdletAdapter(this, state);
-                    adapter.WaitForCompletion(CreateWithSimpleParameters);
+                    adapter.WaitForCompletion(CreateWithSimpleParameters);                    
                 }
             }
             else
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         else if (!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password))
                         {
                             await git.AddRemoteRepository("azure", $"https://{userName}:{password}@{scmHostName}");
-                            adapter.WriteVerboseAsync(Microsoft.Azure.Commands.WebApps.Properties.Resources.GitRemoteMessage);
+                            adapter.WriteVerbose(Microsoft.Azure.Commands.WebApps.Properties.Resources.GitRemoteMessage);
                             newOutput.GitRemoteName = "azure";
                         }
                     }
