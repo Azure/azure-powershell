@@ -8,9 +8,9 @@ Locale: en-US
 
 # Azs.Commerce.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the AzureStack Commerce administrator module which provides a way to view aggregate data usage across your AzureStack stamp. 
 
 ## Azs.Commerce.Admin Cmdlets
 ### [Get-AzsSubscriberUsage](Get-AzsSubscriberUsage.md)
-Gets a collection of SubscriberUsageAggregates, which are UsageAggregates from users.
+Get usage data from during the specified timespan.
 
