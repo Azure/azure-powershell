@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Alias("EnableTA")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -144,7 +145,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Flag to enable/disable retention.",
             ParameterSetName = "SetByNameWithTAByDetails")]
         [ValidateNotNull]
-        public SwitchParameter EnableTA { get; set; }
+        public SwitchParameter EnableTrafficAnalytics { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -233,9 +234,12 @@ namespace Microsoft.Azure.Commands.Network
                         parameters.RetentionPolicy.Days = this.RetentionInDays;
                     }
 
-                    if (this.EnableTA == true || this.EnableTA == false)
+                    if (this.EnableTrafficAnalytics == true || this.EnableTrafficAnalytics == false)
                     {
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled = this.EnableTA;
+                        parameters.FlowAnalyticsConfiguration = new MNM.TrafficAnalyticsProperties();
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration = new MNM.TrafficAnalyticsConfigurationProperties();
+
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled = this.EnableTrafficAnalytics;
 
                         string[] workspaceDetailsComponents = this.WorkspaceResourceId.Split('/');
                         string worksapceResourceGroup = "", workspaceName = "";
