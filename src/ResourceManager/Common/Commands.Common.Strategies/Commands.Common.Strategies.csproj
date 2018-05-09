@@ -87,7 +87,6 @@
     <Compile Include="Json\IConverter.cs" />
     <Compile Include="Json\Converters.cs" />
     <Compile Include="Progress\ProgressMap.cs" />
-    <Compile Include="Templates\DeploymentParameter.cs" />
     <Compile Include="Templates\Output.cs" />
     <Compile Include="Templates\OutputExtension.cs" />
     <Compile Include="Templates\Parameter.cs" />
