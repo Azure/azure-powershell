@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.0'
+ModuleVersion = '5.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -146,9 +146,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
-* Enable context autosave by default
-* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.'
+        ReleaseNotes = '* Fix issue where default environments weren''t being retrieved without a default context set'
 
         # Prerelease string of this module
         # Prerelease = ''
