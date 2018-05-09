@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public string TargetResourceId { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public PSTrafficAnalyticsProperties flowAnalyticsConfiguration { get; set; }
+
         [JsonIgnore]
         public string RetentionPolicyText
         {

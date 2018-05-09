@@ -17,20 +17,32 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using System;
+using System.Net;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Management.OperationalInsights;
+using ResourceGroups.Tests;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSFlowLog))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResourceWithTAByResource"), OutputType(typeof(PSFlowLog))]
     public class SetAzureNetworkWatcherConfigFlowLogCommand : NetworkWatcherBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = "SetByResource")]
+             ParameterSetName = "SetByResourceWithTAByResource")]
+        [Parameter(
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The network watcher resource.",
+             ParameterSetName = "SetByResourceWithTAByDetails")]
+        [Parameter(
+             Mandatory = true,
+             ValueFromPipeline = true,
+             HelpMessage = "The network watcher resource.",
+             ParameterSetName = "SetByResourceWithoutTA")]
         [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
@@ -39,7 +51,17 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = "SetByNameWithTAByResource")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The name of network watcher.",
+            ParameterSetName = "SetByNameWithTAByDetails")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The name of network watcher.",
+            ParameterSetName = "SetByNameWithoutTA")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -47,7 +69,17 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = "SetByName")]
+            ParameterSetName = "SetByNameWithTAByResource")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the network watcher resource group.",
+            ParameterSetName = "SetByNameWithTAByDetails")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The name of the network watcher resource group.",
+            ParameterSetName = "SetByNameWithoutTA")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -91,6 +123,82 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Flag to enable/disable retention.",
+            ParameterSetName = "SetByResourceWithTAByResource")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Flag to enable/disable retention.",
+            ParameterSetName = "SetByResourceWithTAByDetails")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Flag to enable/disable retention.",
+            ParameterSetName = "SetByNameWithTAByResource")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Flag to enable/disable retention.",
+            ParameterSetName = "SetByNameWithTAByDetails")]
+        [ValidateNotNull]
+        public SwitchParameter EnableTA { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = "SetByResourceWithTAByDetails")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = "SetByNameWithTAByDetails")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceResourceId { get; set; }
+
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = "SetByResourceWithTAByDetails")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = "SetByNameWithTAByDetails")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceGUId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = "SetByResourceWithTAByDetails")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = "SetByNameWithTAByDetails")]
+        [ValidateNotNullOrEmpty]
+        public string WorkspaceLocation { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The WS object which is used to store the traffic analytics data.",
+            ParameterSetName = "SetByResourceWithTAByResource")]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The WS object which is used to store the traffic analytics data.",
+            ParameterSetName = "SetByNameWithTAByResource")]
+        [ValidateNotNull]
+        public Microsoft.Azure.Management.OperationalInsights.Models.Workspace Workspace { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -125,6 +233,67 @@ namespace Microsoft.Azure.Commands.Network
                         parameters.RetentionPolicy.Days = this.RetentionInDays;
                     }
 
+                    if (this.EnableTA == true || this.EnableTA == false)
+                    {
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled = this.EnableTA;
+
+                        string[] workspaceDetailsComponents = this.WorkspaceResourceId.Split('/');
+                        string worksapceResourceGroup = "", workspaceName = "";
+
+                        //Expected format : /subscriptions/-WorkspaceSubscriptionId-/resourcegroups/-WorkspaceResourceGroup-/providers/microsoft.operationalinsights/workspaces/-this.WorkspaceName-
+                        if (workspaceDetailsComponents.Length == 9)
+                        {
+                            worksapceResourceGroup = workspaceDetailsComponents[4];
+                            workspaceName = workspaceDetailsComponents[8];
+
+                        }
+                        else
+                        {
+                            throw new System.ArgumentException("The given workspace resource id is not in format of: /subscriptions/-WorkspaceSubscriptionId-/resourcegroups/-WorkspaceResourceGroup-/providers/microsoft.operationalinsights/workspaces/-this.WorkspaceName-.");
+                        }
+
+                        if (Workspace == null)
+                        {
+                            if (this.WorkspaceResourceId == null || this.WorkspaceGUId == null || this.WorkspaceLocation == null)
+                            {
+                                throw new System.ArgumentException("Either the Workspace parameter or all of WorkspaceResourceId,WorkspaceGUId,WorkspaceLocation must be provided");
+                            }
+                        }
+                        else
+                        {
+                            if (this.WorkspaceResourceId == null)
+                            {
+                                this.WorkspaceResourceId = this.Workspace.Id;
+                            }
+                            else if (this.WorkspaceResourceId != this.Workspace.Id)
+                            {
+                                throw new System.ArgumentException("The Workspace parameter and the WorkspaceResourceId poarameters are conflicting");
+                            }
+
+                            if (this.WorkspaceGUId == null)
+                            {
+                                this.WorkspaceGUId = this.Workspace.CustomerId;
+                            }
+                            else if (this.WorkspaceGUId != this.Workspace.CustomerId)
+                            {
+                                throw new System.ArgumentException("The Workspace parameter and the WorkspaceGUId poarameters are conflicting");
+                            }
+
+                            if (this.WorkspaceLocation == null)
+                            {
+                                this.WorkspaceLocation = this.Workspace.Location;
+                            }
+                            else if (this.WorkspaceLocation != this.Workspace.Location)
+                            {
+                                throw new System.ArgumentException("The Workspace parameter and the WorkspaceLocation poarameters are conflicting");
+                            }
+                        }
+
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId = this.WorkspaceGUId;
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion = this.WorkspaceLocation;
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId = this.WorkspaceResourceId;
+                    }
+
                     PSFlowLog flowLog = new PSFlowLog();
                     flowLog = SetFlowLogConfig(resourceGroupName, name, parameters);
 
@@ -138,5 +307,11 @@ namespace Microsoft.Azure.Commands.Network
 
             return psFlowLog;
         }
+
+        //public static OperationalInsightsManagementClient GetOperationalInsightsManagementClientWithHandler(MockContext context, RecordedDelegatingHandler handler)
+        //{
+        //    var client = context.GetServiceClient<OperationalInsightsManagementClient>(handlers: handler);
+        //    return client;
+        //}
     }
 }
