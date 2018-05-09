@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Commands.Network
                 peering.Connections.Remove(connection);
             }
 
-            WriteObject(peering);
             WriteObject(this.ExpressRouteCircuit);
         }
     }
