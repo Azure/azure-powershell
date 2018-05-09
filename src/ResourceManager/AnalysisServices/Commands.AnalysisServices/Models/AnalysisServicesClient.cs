@@ -33,6 +33,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
         private readonly AnalysisServicesManagementClient _client;
         private readonly Guid _subscriptionId;
         private readonly string _currentUser;
+        public const string DissasociateGateway = "-";
 
         public AnalysisServicesClient(IAzureContext context)
         {
@@ -89,7 +90,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
             }
 
             GatewayDetails gatewayDetails = null;
-            if (gatewayResourceId == "-")
+            if (gatewayResourceId == DissasociateGateway)
             {
                 gatewayDetails = new GatewayDetails();
             }
