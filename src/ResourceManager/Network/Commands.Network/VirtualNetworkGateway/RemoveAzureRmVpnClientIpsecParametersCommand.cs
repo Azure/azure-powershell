@@ -16,17 +16,20 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVpnClientIpsecParameters")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmVpnClientIpsecParameters", DefaultParameterSetName = "ByFactoryName", SupportsShouldProcess = true)]
     public class RemoveAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway name.")]
@@ -34,6 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string VirtualNetworkGatewayName { get; set; }
 
         [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -41,37 +45,77 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The virtual network gateaway object")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualNetworkGateway InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
         public override void Execute()
         {
-
-            base.Execute();
-            if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
+            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                VirtualNetworkGatewayName = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
+            }
+            else if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                VirtualNetworkGatewayName = parsedResourceId.ResourceName;
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
-            var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, VirtualNetworkGatewayName),
+                Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage,
+                VirtualNetworkGatewayName,
+                () =>
+                {
+                    base.Execute();
+                    if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
+                    {
+                        throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                    }
 
-            if (vnetGateway.VpnClientConfiguration == null || vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies == null)
-            {
-                throw new ArgumentException("There are no any vpn client ipsec parameters specified on Gateway!");
-            }
+                    var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
 
-            // Make sure the vpn client ipsec parameters are present on Gateway before calling to Remove it.
-            if (vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies.Count == 0)
-            {
-                throw new ArgumentException("There are no any vpn client ipsec parameters specified on Gateway! So, can not proceed with removing it!");
-            }
+                    if (vnetGateway.VpnClientConfiguration == null || vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies == null)
+                    {
+                        throw new ArgumentException("There are no any vpn client ipsec parameters specified on Gateway!");
+                    }
 
-            vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies.Clear();
+                    // Make sure the vpn client ipsec parameters are present on Gateway before calling to Remove it.
+                    if (vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies.Count == 0)
+                    {
+                        throw new ArgumentException("There are no any vpn client ipsec parameters specified on Gateway! So, can not proceed with removing it!");
+                    }
 
-            // Map to the sdk object
-            var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
-            virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(vnetGateway.Tag, validate: true);
+                    vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies.Clear();
 
-            this.VirtualNetworkGatewayClient.CreateOrUpdate(ResourceGroupName, VirtualNetworkGatewayName, virtualnetGatewayModel);
+                    // Map to the sdk object
+                    var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
+                    virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(vnetGateway.Tag, validate: true);
 
-            WriteObject(true);
+                    this.VirtualNetworkGatewayClient.CreateOrUpdate(ResourceGroupName, VirtualNetworkGatewayName, virtualnetGatewayModel);
+
+                    WriteObject(true);
+                });
         }
     }
 }

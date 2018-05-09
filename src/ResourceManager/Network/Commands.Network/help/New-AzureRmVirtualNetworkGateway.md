@@ -383,7 +383,8 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientIpsecPolicy
-A list of IPSec policies for P2S VPN client tunneling protocols.```yaml
+A list of IPSec policies for P2S VPN client tunneling protocols.
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
 Parameter Sets: (All)
 Aliases:

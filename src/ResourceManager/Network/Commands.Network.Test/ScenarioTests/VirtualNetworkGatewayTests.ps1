@@ -300,7 +300,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
       
       # Create & Get LocalNetworkGateway      
       $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.4.5
@@ -309,7 +309,6 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       Assert-AreEqual $localnetGateway.Name $actual.Name	
       Assert-AreEqual "192.168.4.5" $localnetGateway.GatewayIpAddress
       Assert-AreEqual "192.168.0.0/16" $localnetGateway.LocalNetworkAddressSpace.AddressPrefixes[0]
-      $localnetGateway.Location = $location
 
       # Create the Virtual Network
       $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
@@ -331,17 +330,17 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $rootCert = New-AzureRmVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
       $clientCert = New-AzureRmVpnClientRevokedCertificate -Name $sampleClientCertName -Thumbprint $sampleClinentCertThumbprint
       
-      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Basic -GatewayDefaultSite $localnetGateway -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
+      $actual = New-AzureRmVirtualNetworkGateway -GatewayDefaultSite $localnetGateway -ResourceGroupName $rgname -Name $rname -Location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool "201.169.0.0/16" -VpnClientProtocol SSTP -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "Vpn" $expected.GatewayType
       Assert-AreEqual "RouteBased" $expected.VpnType
-      Assert-AreEqual "Basic" $expected.Sku.Tier
+      Assert-AreEqual "VpnGw1" $expected.Sku.Tier
       Assert-AreEqual $localnetGateway.Id $expected.GatewayDefaultSite.Id
-      Assert-AreEqual $localnetGateway.LocalNetworkAddressSpace $expected.VpnClientConfiguration.VpnClientAddressPool
-      Assert-AreEqual $clientRootCertName $expected.VpnClientConfiguration.VpnClientRevokedCertificates[0].name
-      Assert-AreEqual $sampleClientCertName $expected.VpnClientConfiguration.VpnClientRootCertificates[0].name
+      Assert-AreEqual "201.169.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes[0]
+      Assert-AreEqual $sampleClientCertName $expected.VpnClientConfiguration.VpnClientRevokedCertificates[0].name
+      Assert-AreEqual $clientRootCertName $expected.VpnClientConfiguration.VpnClientRootCertificates[0].name
 
       # Remove default site set for force tunneling
       $actual = Remove-AzureRmVirtualNetworkGatewayDefaultSite -VirtualNetworkGateway $expected
@@ -353,17 +352,17 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $localnetGateway.Id $expected.GatewayDefaultSite.Id
 
-	  # Resize the virtual network gateway from 'Basic' to 'Standard' SKU
-	  $actual = Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -GatewaySku "Standard"
+	  # Resize the virtual network gateway from 'VpnGw1' to 'VpnGw2' SKU
+	  $actual = Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -GatewaySku VpnGw2
       Assert-AreEqual "Succeeded" $actual.ProvisioningState
 	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname	  
-      Assert-AreEqual "Standard" $expected.Sku.Tier
+      Assert-AreEqual "VpnGw2" $expected.Sku.Tier
 
       # Update P2S VPNClient Address Pool
       Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $expected -VpnClientAddressPool 200.168.0.0/16
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
-         
+	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes[0]
+
      # Get, list client Root certificates
      $rootCert = Get-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $clientRootCertName -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName
      Assert-AreEqual $clientRootCertName $rootCert.Name
@@ -383,7 +382,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
      
      # Add client Root certificate
      $rootCerts = Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $clientRootCertName -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName -PublicCertData $samplePublicCertData
-	 Assert-AreEqual 1 @(rootCerts).Count
+	 Assert-AreEqual 1 @($rootCerts).Count
 
      # Get, list Vpn client revoked certificates
      $revokedCerts = Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName
@@ -722,7 +721,7 @@ param
 	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup $vpnIpsecParams.PfsGroup
 
 	  # Remove custom Ipsec policy set from P2S VPNClient Configuration using new API:- Remove-AzureRmVpnClientIpsecParameters
-	  $delete = Remove-AzureRmVpnClientIpsecParameters -ResourceGroupName $rgname -VirtualNetworkGatewayName $rname
+	  $delete = Remove-AzureRmVpnClientIpsecParameters -ResourceGroupName $rgname -VirtualNetworkGatewayName $rname -Force
 	  Assert-AreEqual $True $delete
 	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 	  Assert-AreEqual 0 @($expected.VpnClientConfiguration.VpnClientIpsecPolicies).Count
