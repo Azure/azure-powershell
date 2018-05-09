@@ -57,9 +57,9 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=18.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.18.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
-    </Reference>    
+    <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationGateway\ApplicationGatewayBaseCmdlet.cs" />
@@ -593,9 +593,6 @@
     <None Include="..\AzureRM.Network.psd1">
       <Link>AzureRM.Network.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

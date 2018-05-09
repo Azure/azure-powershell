@@ -292,9 +292,6 @@
     <None Include="AzurePreview.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll-Help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.format.ps1xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
