@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.5.0-preview
+* Added new cmdlets for CRUD operations on Managed Instance and Managed Database
 * Add commandlets for new feature - Instance Failover Groups
 	- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity
 	- New-AzureRmSqlDatabaseInstanceFailoverGroup creates a new Instance Failover Group
@@ -28,8 +31,7 @@
 * Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with "Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy".
 
 ## Version 4.4.1
-* Set minimum dependency of module to PowerShell 5.0
-* Added new cmdlets for CRUD operations on Managed Instance and Managed Database 
+* Set minimum dependency of module to PowerShell 5.0 
 
 ## Version 4.4.0
 * Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
