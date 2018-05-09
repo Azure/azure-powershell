@@ -70,7 +70,6 @@ namespace Microsoft.Azure.Commands.Network
 
             peering.Connections.Add(circuitconnection);
 
-            // WriteObject(peering);
             WriteObject(this.ExpressRouteCircuit);
         }
     }
