@@ -26,3 +26,11 @@
 -->
 
 # Upcoming Breaking Changes
+
+The following cmdlets were affected this release:
+
+**New-AzureRmDataLakeAnalyticsAccount**
+- The parameter alias `Tags` is being removed
+
+**Set-AzureRmDataLakeAnalyticsAccount**
+- The parameter alias `Tags` is being removed

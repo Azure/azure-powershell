@@ -214,7 +214,6 @@
       <Link>AzureRM.Batch.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.Batch.dll-Help.psd1" />
     <None Include="Microsoft.Azure.Commands.Batch.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

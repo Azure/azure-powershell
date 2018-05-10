@@ -19,5 +19,8 @@
 -->
 ## Current Release
 
+## Version 0.9.1-preview
+* Set minimum dependency of module to PowerShell 5.0
+
 ## Version 0.9.0-preview
 * Public preview release of Policy Insights cmdlets

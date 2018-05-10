@@ -408,4 +408,13 @@
   <data name="InSufficientGraphPermission" xml:space="preserve">
     <value>The User/Application doesn't have sufficient AAD graph permissions to perform the operation.</value>
   </data>
+  <data name="RemoveGroupConfirmation" xml:space="preserve">
+    <value>Are you sure you want to remove group with object id '{0}'?</value>
+  </data>
+  <data name="RemovingGroup" xml:space="preserve">
+    <value>Removing group ...</value>
+  </data>
+  <data name="ApplicationWithDisplayNameDoesntExist" xml:space="preserve">
+    <value>Application with display name '{0}' does not exist.</value>
+  </data>
 </root>

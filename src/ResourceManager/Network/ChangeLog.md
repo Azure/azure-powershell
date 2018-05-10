@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -18,7 +18,9 @@
         - Additional information about change #1
 --->
 
-## Current
+## Current Release
+
+* Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
 * Added cmdlet to update an Express Route Cross Connection
     - Set-AzureRmExpressRouteCrossConnection
 * Added cmdlet to get an Express Route Cross Connection
@@ -39,9 +41,17 @@
     - Get-AzureRMExpressRouteCrossConnectionRouteTable	
 * Added cmdlet to get Express Route Cross Connection Peering Route Table Summary
     - Get-AzureRMExpressRouteCrossConnectionRouteTableSummary	
-	
-## Version 5.4.3
-* Set minimum dependency of module to PowerShell 5.0
+
+## Version 6.0.0
+* Added cmdlet to add a new circuit connection to an existing express route circuit.
+    - Add-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to remove a circuit connection from an existing express route circuit.
+    - Remove-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to retrieve a circuit connection
+    - Get-AzureRmExpressRouteCircuitConnectionConfig
+* Bump up network sdk version from 17.0.0.preview to 18.0.0.preview
+* Rerecord all network tests with latest sdk version* Set minimum dependency of module to PowerShell 5.0
+* Add support for DDoS protection plan resource
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information
 

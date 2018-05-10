@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Network
 Module Guid: eb75c732-e274-4a20-b502-e9958e63484a
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.network
+Help Version: 5.4.2.0
 Locale: en-US
 ---
 
@@ -52,6 +52,9 @@ Adds an ExpressRoute circuit authorization.
 
 ### [Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
+
+### [Add-AzureRmExpressRouteCircuitConnectionConfig](Add-AzureRmExpressRouteCircuitConnectionConfig.md) 
+Adds a circuit connection configuration to Private Peering of an ExpressRoute circuit.
 
 ### [Add-AzureRmLoadBalancerBackendAddressPoolConfig](Add-AzureRmLoadBalancerBackendAddressPoolConfig.md)
 Adds a backend address pool configuration to a load balancer.
@@ -165,7 +168,10 @@ Gets the WAF configuration of an application gateway.
 Gets an application security group.
 
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
-{{Manually Enter Get-AzureRmBgpServiceCommunity Description Here}}
+Gets a BGP service community resource.
+
+### [Get-AzureRmDdosProtectionPlan](Get-AzureRmDdosProtectionPlan.md)
+Gets a DDoS protection plan.
 
 ### [Get-AzureRmEffectiveNetworkSecurityGroup](Get-AzureRmEffectiveNetworkSecurityGroup.md)
 Gets the effective network security group of a network interface.
@@ -184,6 +190,9 @@ Gets information about ExpressRoute circuit authorizations.
 
 ### [Get-AzureRmExpressRouteCircuitPeeringConfig](Get-AzureRmExpressRouteCircuitPeeringConfig.md)
 Gets an ExpressRoute circuit peering configuration.
+
+### [Get-AzureRmExpressRouteCircuitConnectionConfig](Get-AzureRmExpressRouteCircuitConnectionConfig.md) 
+Gets an ExpressRoute circuit connection configuration. 
 
 ### [Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
 Gets a route table from an ExpressRoute circuit.
@@ -401,6 +410,9 @@ Creates a WAF configuration for an application gateway.
 ### [New-AzureRmApplicationSecurityGroup](New-AzureRmApplicationSecurityGroup.md)
 Creates an application security group.
 
+### [New-AzureRmDdosProtectionPlan](New-AzureRmDdosProtectionPlan.md)
+Creates a DDoS protection plan.
+
 ### [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
 Creates an Azure express route circuit.
 
@@ -548,6 +560,9 @@ Removes URL path mappings to a backend server pool.
 ### [Remove-AzureRmApplicationSecurityGroup](Remove-AzureRmApplicationSecurityGroup.md)
 Removes an application security group.
 
+### [Remove-AzureRmDdosProtectionPlan](Remove-AzureRmDdosProtectionPlan.md)
+Removes a DDoS protection plan.
+
 ### [Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
 Removes an ExpressRoute circuit.
 
@@ -556,6 +571,9 @@ Removes an existing ExpressRoute configuration authorization.
 
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
+
+### [Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md) 
+Removes an ExpressRoute circuit connection configuration. 
 
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.

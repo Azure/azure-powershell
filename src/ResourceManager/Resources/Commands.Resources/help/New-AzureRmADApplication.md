@@ -53,16 +53,18 @@ Creates a new azure active directory application.
 
 ## EXAMPLES
 
-### Create new AAD application.
+### Example 1 - Create new AAD application.
+
 ```
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http://NewApplication"
 ```
 
 Creates a new azure active directory application without any credentials.
 
-### Create new AAD application with password.
+### Example 2 - Create new AAD application with password.
+
 ```
-PS E:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
+PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
 PS C:\> New-AzureRmADApplication -DisplayName "NewApplication" -HomePage "http://www.microsoft.com" -IdentifierUris "http:
 //NewApplication" -Password $SecureStringPassword
 ```
@@ -272,6 +274,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -290,6 +295,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+
 This cmdlet does not accept any input.
 
 ## OUTPUTS
