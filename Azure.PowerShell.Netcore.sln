@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Authentication.Netcore", "src\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj", "{D12674F6-CB92-438F-A68D-21CE12F8611B}"
 EndProject
@@ -110,8 +110,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Subscription.Netcore", "src\ResourceManager\Subscription\Commands.Subscription\Commands.Subscription.Netcore.csproj", "{DFDE6E88-1DF9-48BB-B3D5-10AFCBCDE402}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.TrafficManager.Netcore", "src\ResourceManager\TrafficManager\Commands.TrafficManager2\Commands.TrafficManager.Netcore.csproj", "{CAC237F6-05CE-46DB-B4B8-952C4A26EB08}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.UsageAggregates.Netcore", "src\ResourceManager\UsageAggregates\Commands.UsageAggregates\Commands.UsageAggregates.Netcore.csproj", "{DEF360AD-A0BC-4776-9DB0-A03082FCF771}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Dns.Netcore", "src\ResourceManager\Dns\Commands.Dns\Commands.Dns.Netcore.csproj", "{535C5346-4E12-4032-9C60-7B1B9764B251}"
 EndProject
@@ -803,18 +801,6 @@ Global
 		{CAC237F6-05CE-46DB-B4B8-952C4A26EB08}.Release|x64.Build.0 = Release|Any CPU
 		{CAC237F6-05CE-46DB-B4B8-952C4A26EB08}.Release|x86.ActiveCfg = Release|Any CPU
 		{CAC237F6-05CE-46DB-B4B8-952C4A26EB08}.Release|x86.Build.0 = Release|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Debug|x64.Build.0 = Debug|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Debug|x86.Build.0 = Debug|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Release|x64.ActiveCfg = Release|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Release|x64.Build.0 = Release|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Release|x86.ActiveCfg = Release|Any CPU
-		{DEF360AD-A0BC-4776-9DB0-A03082FCF771}.Release|x86.Build.0 = Release|Any CPU
 		{535C5346-4E12-4032-9C60-7B1B9764B251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{535C5346-4E12-4032-9C60-7B1B9764B251}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{535C5346-4E12-4032-9C60-7B1B9764B251}.Debug|x64.ActiveCfg = Debug|Any CPU
