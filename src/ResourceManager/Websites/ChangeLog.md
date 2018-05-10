@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added -AssignIdentity & -Httpsonly properties for Set-AzureRmWebApp
 
 ## Version 5.0.1
 * Set minimum dependency of module to PowerShell 5.0
