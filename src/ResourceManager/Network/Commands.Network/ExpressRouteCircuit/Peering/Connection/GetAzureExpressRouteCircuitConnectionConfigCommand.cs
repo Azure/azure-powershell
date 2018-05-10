@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.Network
             Position = 1,
             Mandatory = true,
             ValueFromPipeline = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Express Route Circuit Peering intiating connection")]
         [ValidateNotNullOrEmpty]
         public PSExpressRouteCircuit ExpressRouteCircuit { get; set; }
