@@ -74,5 +74,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteRouteFilters");
         }
+
+        [Fact(Skip = "Express Route Circuits need to be manually provisioned by Service Providers and the whole setup can't be automated.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExpressRouteCircuitConnectionCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitConnectionCRUD");
+        }
     }
 }
