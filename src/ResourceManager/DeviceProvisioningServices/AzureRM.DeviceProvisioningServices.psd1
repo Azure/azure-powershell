@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.6.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DeviceProvisioningServices.dll'
@@ -118,7 +118,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','DPS','IoTHub Device Provisioning Service'
+        Tags = 'Azure','ResourceManager','ARM','DPS','IoTHub','DeviceProvisioningService'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'

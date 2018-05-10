@@ -175,7 +175,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 );
         }
 
-
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
