@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Maps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By creating a Maps Account, you are consenting to the License (see https://azure.microsoft.com/en-us/support/legal/) and Privacy Statement (see https://go.microsoft.com/fwlink/?LinkId=521839&clcid=0x409/)..
+        ///   Looks up a localized string similar to By creating a Maps Account, you are consenting to the License (see https://azure.microsoft.com/en-us/support/legal/) and Privacy Statement (see https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409/)..
         /// </summary>
         internal static string NewAccount_Notice {
             get {

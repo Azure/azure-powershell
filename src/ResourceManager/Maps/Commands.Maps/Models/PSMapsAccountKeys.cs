@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using MapsModels = Microsoft.Azure.Management.LocationBasedServices.Models;
+using MapsModels = Microsoft.Azure.Management.Maps.Models;
 
 namespace Microsoft.Azure.Commands.Maps.Models
 {
     public class PSMapsAccountKeys
     {
-        public PSMapsAccountKeys(MapsModels.LocationBasedServicesAccountKeys mapsAccountKeys)
+        public PSMapsAccountKeys(MapsModels.MapsAccountKeys mapsAccountKeys)
         {
             this.PrimaryKey = mapsAccountKeys.PrimaryKey;
             this.SecondaryKey = mapsAccountKeys.SecondaryKey;

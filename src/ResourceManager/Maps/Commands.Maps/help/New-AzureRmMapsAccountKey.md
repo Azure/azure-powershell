@@ -201,7 +201,7 @@ Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.LocationBasedServices.Models.LocationBasedServicesAccountKeys
+### Microsoft.Azure.Management.Maps.Models.MapsAccountKeys
 
 ## NOTES
 

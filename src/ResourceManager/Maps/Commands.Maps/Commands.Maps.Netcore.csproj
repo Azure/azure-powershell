@@ -4,8 +4,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.LocationBasedServices</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.LocationBasedServices</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Maps</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Maps</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -13,13 +13,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.LocationBasedServices.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Maps.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.LocationBasedServices.Netcore\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Maps.Netcore\</OutputPath>
     <DocumentationFile />
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
@@ -28,11 +28,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.LocationBasedServices" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Maps" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.LocationBasedServices.Netcore.psd1" Link="AzureRM.LocationBasedServices.Netcore.psd1">
+    <None Include="..\AzureRM.Maps.Netcore.psd1" Link="AzureRM.Maps.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -59,7 +59,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Microsoft.Azure.Commands.LocationBasedServices.format.ps1xml">
+    <None Update="Microsoft.Azure.Commands.Maps.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

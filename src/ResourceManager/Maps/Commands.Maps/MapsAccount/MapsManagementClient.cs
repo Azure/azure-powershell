@@ -15,24 +15,24 @@
 using System;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Management.Maps;
 
 namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
     public partial class MapsManagementClientWrapper
     {
-        public IClient MapsManagementClient { get; set; }
+        public IMapsManagementClient MapsManagementClient { get; set; }
 
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
 
         public MapsManagementClientWrapper(IAzureContext context)
-            : this(AzureSession.Instance.ClientFactory.CreateArmClient<Client>(context, AzureEnvironment.Endpoint.ResourceManager))
+            : this(AzureSession.Instance.ClientFactory.CreateArmClient<MapsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 
-        public MapsManagementClientWrapper(IClient resourceManagementClient)
+        public MapsManagementClientWrapper(IMapsManagementClient resourceManagementClient)
         {
             MapsManagementClient = resourceManagementClient;
         }
