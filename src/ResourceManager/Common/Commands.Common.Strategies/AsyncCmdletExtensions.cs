@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return value.ToString();
         }
 
-        public sealed class ShouldProcess : IShouldProcess
+        sealed class ShouldProcess : IShouldProcess
         {
             readonly IAsyncCmdlet _Cmdlet;
 
