@@ -18,10 +18,9 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
+using Microsoft.Azure.Management.Maps;
+using Microsoft.Azure.Management.Maps.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Maps.Models;
 
 namespace Microsoft.Azure.Commands.Maps.MapsAccount
 {
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
 
         protected const string TagsAlias = "Tags";
 
-        protected const string ResourceProviderName = "Microsoft.LocationBasedServices";
+        protected const string ResourceProviderName = "Microsoft.Maps";
         protected const string ResourceTypeName = "accounts";
 
         protected struct AccountSkuString
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
             internal const string S0 = "S0";
         }
 
-        public IClient MapsClient
+        public IMapsManagementClient MapsClient
         {
             get
             {
@@ -89,7 +88,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         }
 
 
-        protected void WriteMapsAccount(LocationBasedServicesAccount mapsAccount)
+        protected void WriteMapsAccount(Management.Maps.Models.MapsAccount mapsAccount)
         {
             if (mapsAccount != null)
             {
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         }
 
         protected void WriteMapsAccountList(
-            IEnumerable<LocationBasedServicesAccount> mapsAccounts)
+            IEnumerable<Management.Maps.Models.MapsAccount> mapsAccounts)
         {
             List<Models.PSMapsAccount> output = new List<Models.PSMapsAccount>();
             if (mapsAccounts != null)

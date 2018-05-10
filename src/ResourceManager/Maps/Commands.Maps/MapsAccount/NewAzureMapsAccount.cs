@@ -16,8 +16,8 @@ using System.Collections;
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Maps.Properties;
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
+using Microsoft.Azure.Management.Maps;
+using Microsoft.Azure.Management.Maps.Models;
 using Microsoft.Azure.Commands.Maps.Models;
 
 namespace Microsoft.Azure.Commands.Maps.MapsAccount
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
 
             RunCmdLet(() =>
             {
-                LocationBasedServicesAccountCreateParameters createParameters = new LocationBasedServicesAccountCreateParameters()
+                MapsAccountCreateParameters createParameters = new MapsAccountCreateParameters()
                 {
                     Sku = new Sku(this.SkuName),
                     Tags = TagsConversionHelper.CreateTagDictionary(Tag),

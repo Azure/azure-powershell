@@ -15,9 +15,8 @@
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Maps.Models;
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
-using MapsModels = Microsoft.Azure.Management.LocationBasedServices.Models;
+using Microsoft.Azure.Management.Maps;
+using Microsoft.Azure.Management.Maps.Models;
 using Microsoft.Azure.Commands.Maps.Properties;
 
 namespace Microsoft.Azure.Commands.Maps.MapsAccount
@@ -26,7 +25,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// Regnerate Maps Account Key (Primary or Secondary)
     /// </summary>
     [Cmdlet(VerbsCommon.New, MapsAccountKeyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet), 
-     OutputType(typeof(LocationBasedServicesAccountKeys))]
+     OutputType(typeof(MapsAccountKeys))]
     public class NewAzureMapsAccountKey : MapsAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
@@ -112,7 +111,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
                     var keys = this.MapsClient.Accounts.RegenerateKeys(
                         rgName,
                         name,
-                        new LocationBasedServicesKeySpecification()
+                        new MapsKeySpecification()
                             { KeyType = this.KeyName }
                     );
 

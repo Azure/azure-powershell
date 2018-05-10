@@ -19,7 +19,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Management.Maps;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Maps.Test
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-        public Client MapsClient { get; private set; }
+        public MapsManagementClient MapsClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
@@ -184,9 +184,9 @@ namespace Microsoft.Azure.Commands.Maps.Test
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
         }
 
-        private Client GetMapsManagementClient(RestTestFramework.MockContext context)
+        private MapsManagementClient GetMapsManagementClient(RestTestFramework.MockContext context)
         {
-            return context.GetServiceClient<Client>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<MapsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

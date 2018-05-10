@@ -14,14 +14,12 @@
 
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Management.LocationBasedServices;
-using Microsoft.Azure.Management.LocationBasedServices.Models;
 
 namespace Microsoft.Azure.Commands.Maps.Models
 {
     public class PSMapsAccount
     {
-        public PSMapsAccount(LocationBasedServicesAccount mapsAccount)
+        public PSMapsAccount(Management.Maps.Models.MapsAccount mapsAccount)
         {
             this.ResourceGroupName = ParseResourceGroupFromId(mapsAccount.Id);
             this.AccountName = mapsAccount.Name;
@@ -46,7 +44,7 @@ namespace Microsoft.Azure.Commands.Maps.Models
 
         public IDictionary<string, string> Tags { get; private set; }
 
-        public static PSMapsAccount Create(LocationBasedServicesAccount mapsAccount)
+        public static PSMapsAccount Create(Management.Maps.Models.MapsAccount mapsAccount)
         {
             var result = new PSMapsAccount(mapsAccount);
             return result;

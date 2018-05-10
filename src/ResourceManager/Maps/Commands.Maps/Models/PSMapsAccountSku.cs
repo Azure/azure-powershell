@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using MapsModels = Microsoft.Azure.Management.LocationBasedServices.Models;
+using MapsModels = Microsoft.Azure.Management.Maps.Models;
 
 namespace Microsoft.Azure.Commands.Maps.Models
 {

@@ -15,7 +15,7 @@
 using System.Globalization;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Maps.Properties;
-using Microsoft.Azure.Management.LocationBasedServices;
+using Microsoft.Azure.Management.Maps;
 using Microsoft.Azure.Commands.Maps.Models;
 
 namespace Microsoft.Azure.Commands.Maps.MapsAccount
