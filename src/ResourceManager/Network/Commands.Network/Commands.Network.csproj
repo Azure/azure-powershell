@@ -60,12 +60,6 @@
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.0.1-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.18.0-preview\lib\net45\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationGateway\ApplicationGatewayBaseCmdlet.cs" />
@@ -585,6 +579,10 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OperationalInsights\Commands.OperationalInsights\Commands.OperationalInsights.csproj">
+      <Project>{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}</Project>
+      <Name>Commands.ResourceManager.OperationalInsights</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

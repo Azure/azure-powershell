@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Network;
 using System.Net;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Management.OperationalInsights;
+using MOM = Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
             ParameterSetName = SetByNameWithTAByResource)]
         [ValidateNotNull]
-        public Microsoft.Azure.Management.OperationalInsights.Models.Workspace Workspace { get; set; }
+        public MOM.PSWorkspace Workspace { get; set; }
 
         public override void Execute()
         {
@@ -281,8 +281,8 @@ namespace Microsoft.Azure.Commands.Network
                                 throw new System.ArgumentException("Either the Workspace parameter or all of WorkspaceResourceId,WorkspaceGUId,WorkspaceLocation must be provided");
                             }
 
-                            WorkspaceResourceId = this.Workspace.Id;
-                            WorkspaceGUId = this.Workspace.CustomerId;
+                            WorkspaceResourceId = this.Workspace.ResourceId;
+                            WorkspaceGUId = this.Workspace.CustomerId.ToString();
                             WorkspaceLocation = this.Workspace.Location;
 
                         }
