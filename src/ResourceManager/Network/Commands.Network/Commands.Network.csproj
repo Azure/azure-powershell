@@ -189,6 +189,10 @@
     <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\MoveAzureExpressRouteCircuitCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\AddAzureExpressRouteCircuitConnectionConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\AzureExpressRouteCircuitConnectionConfigBase.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\GetAzureExpressRouteCircuitConnectionConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\RemoveAzureExpressRouteCircuitConnectionConfigCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitARPTableCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableSummaryCommand.cs" />
@@ -275,6 +279,7 @@
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitConnection.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
     <Compile Include="Models\PSIpsecPolicy.cs" />
     <Compile Include="Models\PSIpFlowVerify.cs" />
