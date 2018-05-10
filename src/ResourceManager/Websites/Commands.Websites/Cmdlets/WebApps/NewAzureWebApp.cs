@@ -134,8 +134,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 ValidateWebAppName(Name);
                 if (ShouldProcess(string.Format(Microsoft.Azure.Commands.WebApps.Properties.Resources.SimpleWebAppCreateTarget, Name), Microsoft.Azure.Commands.WebApps.Properties.Resources.SimpleWebAppCreateAction))
                 {
-                    var adapter = new PSCmdletAdapter(this, state);
-                    adapter.WaitForCompletion(CreateWithSimpleParameters);                    
+                    //var adapter = new PSCmdletAdapter(this, state);
+                    //adapter.WaitForCompletion(CreateWithSimpleParameters);                    
+                    this.StartAndWait(CreateWithSimpleParameters);
                 }
             }
             else
@@ -249,7 +250,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             return result;
         }
 
-        public async Task CreateWithSimpleParameters(ICmdletAdapter adapter)
+        public async Task CreateWithSimpleParameters(IAsyncCmdlet adapter)
         {
             ResourceGroupName = ResourceGroupName ?? Name;
             AppServicePlan = AppServicePlan ?? Name;
@@ -290,8 +291,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             }
 
             var engine = new SdkEngine(DefaultContext.Subscription.Id);
+            var shouldProcess = new AsyncCmdletExtensions.ShouldProcess(adapter);
             var target = siteStrategy.GetTargetState(current, engine, Location);
-            var endState = await siteStrategy.UpdateStateAsync(client, target, default(CancellationToken), adapter, adapter.ReportTaskProgress);
+            var endState = await siteStrategy.UpdateStateAsync(
+                client, target, default(CancellationToken), shouldProcess, adapter.ReportTaskProgress);
             var output = endState.Get(siteStrategy) ?? current.Get(siteStrategy);
             output.SiteConfig = WebsitesClient.WrappedWebsitesClient.WebApps().GetConfiguration(output.ResourceGroup, output.Name).ConvertToSiteConfig();
 
@@ -332,18 +335,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         GitRemotePassword = SecureStringExtensions.ConvertToSecureString(password)
                     };
                     output = newOutput;
-                    var git = new GitCommand(adapter.SessionState.Path, GitRepositoryPath);
+                    var git = new GitCommand(SessionState.Path, GitRepositoryPath);
                     var repository = await git.VerifyGitRepository();
                     if (repository != null)
                     {
                         if (!await git.CheckExistence())
                         {
-                            adapter.WriteWarningAsync(git.InstallationInstructions);
+                            adapter.WriteWarning(git.InstallationInstructions);
                         }
                         else if (!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password))
                         {
                             await git.AddRemoteRepository("azure", $"https://{userName}:{password}@{scmHostName}");
-                            adapter.WriteVerbose(Microsoft.Azure.Commands.WebApps.Properties.Resources.GitRemoteMessage);
+                            adapter.WriteVerbose(Resources.GitRemoteMessage);
                             newOutput.GitRemoteName = "azure";
                         }
                     }
@@ -352,10 +355,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             catch (Exception exception)
             {
                 // do not write errors for problems with adding git repository
-                var repoPath = GitRepositoryPath ?? adapter?.SessionState?.Path?.CurrentFileSystemLocation?.Path;
-                adapter.WriteWarningAsync(String.Format(Microsoft.Azure.Commands.WebApps.Properties.Resources.GitRemoteAddFailure, repoPath, exception.Message));
+                var repoPath = GitRepositoryPath ?? SessionState?.Path?.CurrentFileSystemLocation?.Path;
+                adapter.WriteWarning(string.Format(Resources.GitRemoteAddFailure, repoPath, exception.Message));
             }
-            adapter.WriteObjectAsync(output);
+            adapter.WriteObject(output);
         }
 
 

@@ -47,6 +47,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         void WriteObject(object value);
 
         /// <summary>
+        /// Thread-safe `WriteWarning` function.
+        /// </summary>
+        /// <param name="message"></param>
+        void WriteWarning(string message);
+
+        /// <summary>
         /// Report task progress. The function is used to report current task and cmdlet progress.
         /// </summary>
         /// <param name="taskProgress"></param>

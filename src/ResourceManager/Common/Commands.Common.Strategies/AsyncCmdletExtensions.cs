@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return value.ToString();
         }
 
-        sealed class ShouldProcess : IShouldProcess
+        public sealed class ShouldProcess : IShouldProcess
         {
             readonly IAsyncCmdlet _Cmdlet;
 
@@ -190,6 +190,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public void WriteVerbose(string message)
                 => Scheduler.BeginInvoke(() => Cmdlet.WriteVerbose(message));
+
+            public void WriteWarning(string message)
+                => Scheduler.BeginInvoke(() => Cmdlet.WriteWarning(message));
 
             public Task<bool> ShouldProcessAsync(string target, string action)
                 => Scheduler.Invoke(() => Cmdlet.ShouldProcess(target, action));
