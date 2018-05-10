@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network
         public const string All = "All";
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of the Peering")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
