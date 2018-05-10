@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed server authentication usage with generated certificates (Issue #5998)
 
 ## Version 0.3.5
 * Update default Linux image version sku

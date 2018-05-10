@@ -12,24 +12,11 @@ Get usage details of the subscription.
 
 ## SYNTAX
 
-### Subscription (Default)
 ```
-Get-AzureRmConsumptionUsageDetail [-MaxCount <Int32>] [-IncludeMeterDetails] [-IncludeAdditionalProperties]
- [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### Invoice
-```
-Get-AzureRmConsumptionUsageDetail -InvoiceName <String> [-MaxCount <Int32>] [-IncludeMeterDetails]
- [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### BillingPeriod
-```
-Get-AzureRmConsumptionUsageDetail -BillingPeriodName <String> [-MaxCount <Int32>] [-IncludeMeterDetails]
- [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmConsumptionUsageDetail [-BillingPeriodName <String>] [-Expand <String>] [-IncludeMeterDetails]
+ [-IncludeAdditionalProperties] [-StartDate <DateTime>] [-EndDate <DateTime>] [-ResourceGroup <String>]
+ [-InstanceName <String>] [-InstanceId <String>] [-Tag <String>] [-MaxCount <Int32>] [-Top <Int32>]
+ [-InvoiceName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,25 +25,25 @@ The **Get-AzureRmConsumptionUsageDetail** cmdlet gets usage details of the subsc
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzureRmConsumptionUsageDetail -IncludeMeterDetails -InvoiceName 201704-117283130069214
+```powershell
+PS C:\> Get-AzureRmConsumptionUsageDetail -Expand MeterDetails -Top 10
 ```
 
-Get usage details of the invoice with specified name, and include MeterDetails property in the result.
+Get top 10 records of usage details with expand of MeterDetails  in the result.
 
 ### Example 2
-```
-PS C:\> Get-AzureRmConsumptionUsageDetail -IncludeAdditionalProperties -BillingPeriodName 201704-1
+```powershell
+PS C:\> Get-AzureRmConsumptionUsageDetail -StartDate 2017-10-02 -EndDate 2017-10-05 -Top 10
 ```
 
-Get usage details of the billing period with specified name, and include AdditionalProperties property in the result.
+Get top 10 records of usage details with date range in the result.
 
 ### Example 3
-```
-PS C:\> Get-AzureRmConsumptionUsageDetail -StartDate 2017-01-17 -EndDate 2017-01-19
+```powershell
+PS C:\> Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201710 -InstanceName 1c2052westus -Top 10
 ```
 
-Get usage details of the subscription that is between 2017-01-17 to 2017-01-19.
+Get top 10 records of usage details of BillingPeriodName with InstanceName filter in the result.
 
 ## PARAMETERS
 
@@ -65,10 +52,10 @@ Name of a specific billing period to get the usage details that associate with.
 
 ```yaml
 Type: String
-Parameter Sets: BillingPeriod
-Aliases: 
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -91,12 +78,27 @@ Accept wildcard characters: False
 ```
 
 ### -EndDate
-The end date (in UTC) of the usages.
+The end date (in UTC) of the usages to filter.
 
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+Expand the usages based on MeterDetails, or AdditionalProperties.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -111,7 +113,7 @@ Include additional properties in the usages.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +128,37 @@ Include meter details in the usages.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceId
+The instance id of the usages to filter.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceName
+The instance name of the usages to filter.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -140,10 +172,10 @@ Name of a specific invoice to get the usage details that associate with.
 
 ```yaml
 Type: String
-Parameter Sets: Invoice
-Aliases: 
+Parameter Sets: (All)
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +188,22 @@ Determine the maximum number of records to return.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroup
+The resource group of the usages to filter.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -166,12 +213,42 @@ Accept wildcard characters: False
 ```
 
 ### -StartDate
-The start date (in UTC) of the usages.
+The start date (in UTC) of the usages to filter.
 
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+The tag of the usages to filter.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Top
+Determine the maximum number of records to return.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -181,17 +258,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
+
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.3.2.0, Culture=neutral, PublicKeyToken=null]]
+
 
 ## NOTES
 
 ## RELATED LINKS
-
