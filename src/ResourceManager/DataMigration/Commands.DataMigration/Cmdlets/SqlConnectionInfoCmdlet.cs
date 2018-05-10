@@ -1,11 +1,19 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SqlConnectionInfoCmdlet.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataMigration.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
@@ -24,7 +32,8 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         public override void CustomInit()
         {
             this.SimpleParam(dataSource, typeof(string), "Gets or sets data source in the format Protocol:MachineName\\SQLServerInstanceName,PortNumber", true);
-            this.SimpleParam(authType, typeof(AuthenticationType), "Authentication type to be used for Sql Connection", true);
+            this.SimpleParam(authType, typeof(string), "Authentication type to be used for Sql Connection", true,
+                "None", "WindowsAuthentication", "SqlAuthentication", "ActiveDirectoryIntegrated", "ActiveDirectoryPassword");
             this.SimpleParam(encryptConnection, typeof(SwitchParameter), "Gets or sets whether to encrypt the connection, Default Value True");
             this.SimpleParam(trustServerCertificate, typeof(SwitchParameter), "Gets or sets whether to trust the server certificate");
             this.SimpleParam(additionalSettings, typeof(string), "Gets or sets additional connection settings");
@@ -32,9 +41,11 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 
         public override ConnectionInfo ProcessConnectionInfoCmdlet()
         {
-            SqlConnectionInfo connectionInfo = new SqlConnectionInfo();
-            connectionInfo.DataSource = MyInvocation.BoundParameters[dataSource] as string;
-            connectionInfo.Authentication = (AuthenticationType)MyInvocation.BoundParameters[authType];
+            SqlConnectionInfo connectionInfo = new SqlConnectionInfo
+            {
+                DataSource = MyInvocation.BoundParameters[dataSource] as string,
+                Authentication = MyInvocation.BoundParameters[authType] as string
+            };
 
             if (MyInvocation.BoundParameters.ContainsKey(additionalSettings))
             {
