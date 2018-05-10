@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
 {
     public class WebClient : IClient
     {
+        public string SubscriptionId => Context.Subscription.Id;
+
         public WebClient(IAzureContext context)
         {
             Context = context;

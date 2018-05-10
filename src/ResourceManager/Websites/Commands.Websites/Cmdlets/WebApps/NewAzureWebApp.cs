@@ -250,52 +250,64 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             return result;
         }
 
-        public async Task CreateWithSimpleParameters(IAsyncCmdlet adapter)
+        sealed class Parameters : IParameters<Site>
         {
-            ResourceGroupName = ResourceGroupName ?? Name;
-            AppServicePlan = AppServicePlan ?? Name;
-            string planResourceGroup = ResourceGroupName;
-            string planName = AppServicePlan;
-            var rgStrategy = ResourceGroupStrategy.CreateResourceGroupConfig(ResourceGroupName);
-            ResourceConfig<ResourceGroup> planRG = rgStrategy;
-            if (MyInvocation.BoundParameters.ContainsKey(nameof(AppServicePlan)))
-            {
-                if (!TryGetServerFarmFromResourceId(AppServicePlan, out planResourceGroup, out planName))
-                {
-                    planResourceGroup = ResourceGroupName;
-                    planName = AppServicePlan;
-                }
+            readonly NewAzureWebAppCmdlet _cmdlet; 
 
-                planRG = ResourceGroupStrategy.CreateResourceGroupConfig(planResourceGroup);
-            }
-            else
+            public Parameters(NewAzureWebAppCmdlet cmdlet)
             {
-                var farm = await GetDefaultServerFarm(Location);
-                if (farm != null)
+                _cmdlet = cmdlet;
+            }
+
+            public string DefaultLocation => "eastus";
+
+            public string Location
+            {
+                get { return _cmdlet.Location; }
+                set { _cmdlet.Location = value; }
+            }
+
+            public async Task<ResourceConfig<Site>> CreateConfigAsync()
+            {
+                _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
+                _cmdlet.AppServicePlan = _cmdlet.AppServicePlan ?? _cmdlet.Name;
+
+                var planResourceGroup = _cmdlet.ResourceGroupName;
+                var planName = _cmdlet.AppServicePlan;
+
+                var rgStrategy = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
+                var planRG = rgStrategy;
+                if (_cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(AppServicePlan)))
                 {
-                    planResourceGroup = farm.ResourceGroup;
-                    planName = farm.Name;
+                    if (!_cmdlet.TryGetServerFarmFromResourceId(_cmdlet.AppServicePlan, out planResourceGroup, out planName))
+                    {
+                        planResourceGroup = _cmdlet.ResourceGroupName;
+                        planName = _cmdlet.AppServicePlan;
+                    }
+
                     planRG = ResourceGroupStrategy.CreateResourceGroupConfig(planResourceGroup);
                 }
+                else
+                {
+                    var farm = await _cmdlet.GetDefaultServerFarm(Location);
+                    if (farm != null)
+                    {
+                        planResourceGroup = farm.ResourceGroup;
+                        planName = farm.Name;
+                        planRG = ResourceGroupStrategy.CreateResourceGroupConfig(planResourceGroup);
+                    }
+                }
+                var farmStrategy = planRG.CreateServerFarmConfig(planResourceGroup, planName);
+                return rgStrategy.CreateSiteConfig(farmStrategy, _cmdlet.Name);
             }
+        }
 
-
-            var farmStrategy = planRG.CreateServerFarmConfig(planResourceGroup, planName);
-            var siteStrategy = rgStrategy.CreateSiteConfig(farmStrategy, Name);
+        public async Task CreateWithSimpleParameters(IAsyncCmdlet adapter)
+        {
+            var parameters = new Parameters(this);
             var client = new WebClient(DefaultContext);
+            var output = await client.RunAsync(client.SubscriptionId, parameters, adapter);
 
-            var current = await siteStrategy.GetStateAsync(client, default(CancellationToken));
-            if (!MyInvocation.BoundParameters.ContainsKey(nameof(Location)))
-            {
-                Location = current.GetLocation(siteStrategy) ?? "East US";
-            }
-
-            var engine = new SdkEngine(DefaultContext.Subscription.Id);
-            var shouldProcess = new AsyncCmdletExtensions.ShouldProcess(adapter);
-            var target = siteStrategy.GetTargetState(current, engine, Location);
-            var endState = await siteStrategy.UpdateStateAsync(
-                client, target, default(CancellationToken), shouldProcess, adapter.ReportTaskProgress);
-            var output = endState.Get(siteStrategy) ?? current.Get(siteStrategy);
             output.SiteConfig = WebsitesClient
                 .WrappedWebsitesClient
                 .WebApps()
@@ -304,8 +316,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             try
             {
-                var appSettings = WebsitesClient.WrappedWebsitesClient.WebApps().ListApplicationSettings(
-                    output.ResourceGroup, output.Name);
+                var appSettings = WebsitesClient
+                    .WrappedWebsitesClient
+                    .WebApps()
+                    .ListApplicationSettings(output.ResourceGroup, output.Name);
                 output.SiteConfig.AppSettings = appSettings
                     .Properties
                     .Select(s => new NameValuePair { Name = s.Key, Value = s.Value })
