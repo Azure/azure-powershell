@@ -18,274 +18,229 @@ List usage details
 #>
 function Test-ListUsageDetails
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -MaxCount 10
-
+    $usageDetails = Get-AzureRmConsumptionUsageDetail -Top 10
+	Assert-NotNull $usageDetails
     Assert-AreEqual 10 $usageDetails.Count
 	Foreach($usage in $usageDetails)
 	{
-		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.AccountName
+		Assert-Null $usage.AdditionalProperties
+		Assert-Null $usage.BillableQuantity
+		Assert-NotNull $usage.BillingPeriodId
+		Assert-NotNull $usage.ConsumedService
+		Assert-NotNull $usage.CostCenter
 		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
-		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.DepartmentName
+		Assert-NotNull $usage.Id
+		Assert-NotNull $usage.InstanceId
+		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.InstanceName
+		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
-		Assert-NotNull $usage.MeterId
 		Assert-Null $usage.MeterDetails
-		Assert-Null $usage.AdditionalProperties
+		Assert-NotNull $usage.MeterId
+		Assert-NotNull $usage.Name
+		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.Product
+		Assert-NotNull $usage.SubscriptionGuid
+		Assert-NotNull $usage.SubscriptionName	
+		Assert-NotNull $usage.Type
+		Assert-NotNull $usage.UsageEnd
+		Assert-NotNull $usage.UsageQuantity
+		Assert-NotNull $usage.UsageStart
 	}
 }
 
 <#
 .SYNOPSIS
-List usage details with MeterDetails
+List usage details with Expand on Meter Details
 #>
-function Test-ListUsageDetailsWithExpand
+function Test-ListUsageDetailsWithMeterDetailsExpand
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -IncludeMeterDetails -MaxCount 10
+    $usageDetails = Get-AzureRmConsumptionUsageDetail -Expand MeterDetails -Top 10
 
 	Foreach($usage in $usageDetails)
 	{
-		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
-		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
-		Assert-NotNull $usage.PretaxCost
-		Assert-NotNull $usage.IsEstimated
-		Assert-NotNull $usage.MeterId
-		Assert-NotNull $usage.MeterDetails
-		Assert-NotNull $usage.MeterDetails.MeterName
+		Assert-NotNull $usage.AccountName
 		Assert-Null $usage.AdditionalProperties
+		Assert-Null $usage.BillableQuantity
+		Assert-NotNull $usage.BillingPeriodId
+		Assert-NotNull $usage.ConsumedService
+		Assert-NotNull $usage.CostCenter
+		Assert-NotNull $usage.Currency
+		Assert-NotNull $usage.DepartmentName
+		Assert-NotNull $usage.Id
+		Assert-NotNull $usage.InstanceId
+		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.InstanceName
+		Assert-Null $usage.InvoiceId
+		Assert-NotNull $usage.IsEstimated
+		Assert-NotNull $usage.MeterDetails
+		Assert-NotNull $usage.MeterId
+		Assert-NotNull $usage.Name
+		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.Product
+		Assert-NotNull $usage.SubscriptionGuid
+		Assert-NotNull $usage.SubscriptionName	
+		Assert-NotNull $usage.Type
+		Assert-NotNull $usage.UsageEnd
+		Assert-NotNull $usage.UsageQuantity
+		Assert-NotNull $usage.UsageStart
 	}
 }
 
 <#
 .SYNOPSIS
-List usage details with Filter
+List usage details with Filter on Dates
 #>
-function Test-ListUsageDetailsWithFilter
+function Test-ListUsageDetailsWithDateFilter
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -StartDate 2017-01-17 -EndDate 2017-01-19 -MaxCount 10
+    $usageDetails = Get-AzureRmConsumptionUsageDetail -StartDate 2017-10-02 -EndDate 2017-10-05 -Top 10
 
     Assert-AreEqual 10 $usageDetails.Count
 	Foreach($usage in $usageDetails)
 	{
-		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.AccountName
+		Assert-Null $usage.AdditionalProperties
+		Assert-Null $usage.BillableQuantity
+		Assert-NotNull $usage.BillingPeriodId
+		Assert-NotNull $usage.ConsumedService
+		Assert-NotNull $usage.CostCenter
 		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
-		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.DepartmentName
+		Assert-NotNull $usage.Id
+		Assert-NotNull $usage.InstanceId
+		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.InstanceName
+		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
-		Assert-NotNull $usage.MeterId
 		Assert-Null $usage.MeterDetails
-		Assert-Null $usage.AdditionalProperties
-	}
-}
-
-<#
-.SYNOPSIS
-List usage details of Invoice
-#>
-function Test-ListInvoiceUsageDetails
-{
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -InvoiceName 201704-117283130069214 -MaxCount 10
-
-    Assert-AreEqual 10 $usageDetails.Count
-	Foreach($usage in $usageDetails)
-	{
+		Assert-NotNull $usage.MeterId
 		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InvoiceName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
-		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
 		Assert-NotNull $usage.PretaxCost
-		Assert-NotNull $usage.IsEstimated
-		Assert-NotNull $usage.MeterId
-		Assert-Null $usage.MeterDetails
-		Assert-Null $usage.AdditionalProperties
+		Assert-NotNull $usage.Product
+		Assert-NotNull $usage.SubscriptionGuid
+		Assert-NotNull $usage.SubscriptionName	
+		Assert-NotNull $usage.Type
+		Assert-NotNull $usage.UsageEnd
+		Assert-NotNull $usage.UsageQuantity
+		Assert-NotNull $usage.UsageStart
 	}
 }
 
 <#
 .SYNOPSIS
-List usage details with MeterDetails of Invoice
-#>
-function Test-ListInvoiceUsageDetailsWithExpand
-{
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -InvoiceName 201704-117283130069214 -IncludeMeterDetails -IncludeAdditionalProperties -MaxCount 10
-
-	Foreach($usage in $usageDetails)
-	{
-		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InvoiceName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
-		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
-		Assert-NotNull $usage.PretaxCost
-		Assert-NotNull $usage.IsEstimated
-		Assert-NotNull $usage.MeterId
-		Assert-NotNull $usage.MeterDetails
-		Assert-NotNull $usage.MeterDetails.MeterName
-	}
-}
-
-<#
-.SYNOPSIS
-List usage details with Filter of Invoice
-#>
-function Test-ListInvoiceUsageDetailsWithFilter
-{
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -InvoiceName 201704-117283130069214 -IncludeMeterDetails -EndDate 2017-01-19 -MaxCount 10
-
-    Assert-AreEqual 10 $usageDetails.Count
-	Foreach($usage in $usageDetails)
-	{
-		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InvoiceName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
-		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
-		Assert-NotNull $usage.PretaxCost
-		Assert-NotNull $usage.IsEstimated
-		Assert-NotNull $usage.MeterId
-		Assert-NotNull $usage.MeterId
-		Assert-NotNull $usage.MeterDetails
-		Assert-Null $usage.AdditionalProperties
-	}
-}
-
-
-<#
-.SYNOPSIS
-List usage details of Billing Period
+List usage details in Billing Period
 #>
 function Test-ListBillingPeriodUsageDetails
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201704-1 -MaxCount 10
+    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201710 -Top 10
 
     Assert-AreEqual 10 $usageDetails.Count
 	Foreach($usage in $usageDetails)
 	{
-		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InvoiceName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.AccountName
+		Assert-Null $usage.AdditionalProperties
+		Assert-Null $usage.BillableQuantity
+		Assert-NotNull $usage.BillingPeriodId
+		Assert-NotNull $usage.ConsumedService
+		Assert-NotNull $usage.CostCenter
 		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
-		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.DepartmentName
+		Assert-NotNull $usage.Id
+		Assert-NotNull $usage.InstanceId
+		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.InstanceName
+		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
-		Assert-NotNull $usage.MeterId
 		Assert-Null $usage.MeterDetails
-		Assert-Null $usage.AdditionalProperties
+		Assert-NotNull $usage.MeterId
+		Assert-NotNull $usage.Name
+		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.Product
+		Assert-NotNull $usage.SubscriptionGuid
+		Assert-NotNull $usage.SubscriptionName	
+		Assert-NotNull $usage.Type
+		Assert-NotNull $usage.UsageEnd
+		Assert-NotNull $usage.UsageQuantity
+		Assert-NotNull $usage.UsageStart
 	}
 }
 
 <#
 .SYNOPSIS
-List usage details with MeterDetails of Billing Period
+List usage details in Billing Period with Filter on Instance Name 
 #>
-function Test-ListBillingPeriodUsageDetailsWithExpand
+function Test-ListBillingPeriodUsageDetailsWithFilterOnInstanceName
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201704-1 -IncludeMeterDetails -MaxCount 10
+    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201710 -InstanceName 1c2052westus -Top 10
 
 	Foreach($usage in $usageDetails)
 	{
-		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InvoiceName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
-		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
-		Assert-NotNull $usage.PretaxCost
-		Assert-NotNull $usage.IsEstimated
-		Assert-NotNull $usage.MeterId
-		Assert-NotNull $usage.MeterDetails
-		Assert-NotNull $usage.MeterDetails.MeterName
+		Assert-NotNull $usage.AccountName
 		Assert-Null $usage.AdditionalProperties
+		Assert-Null $usage.BillableQuantity
+		Assert-NotNull $usage.BillingPeriodId
+		Assert-NotNull $usage.ConsumedService
+		Assert-NotNull $usage.CostCenter
+		Assert-NotNull $usage.Currency
+		Assert-NotNull $usage.DepartmentName
+		Assert-NotNull $usage.Id
+		Assert-NotNull $usage.InstanceId
+		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.InstanceName
+		Assert-AreEqual "1c2052westus" $usage.InstanceName
+		Assert-Null $usage.InvoiceId
+		Assert-NotNull $usage.IsEstimated
+		Assert-Null $usage.MeterDetails
+		Assert-NotNull $usage.MeterId
+		Assert-NotNull $usage.Name
+		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.Product
+		Assert-NotNull $usage.SubscriptionGuid
+		Assert-NotNull $usage.SubscriptionName	
+		Assert-NotNull $usage.Type
+		Assert-NotNull $usage.UsageEnd
+		Assert-NotNull $usage.UsageQuantity
+		Assert-NotNull $usage.UsageStart
 	}
 }
 
 <#
 .SYNOPSIS
-List usage details with Filter of Billing Period
+List usage details in Billing Period with Date Filter
 #>
-function Test-ListBillingPeriodUsageDetailsWithFilter
+function Test-ListBillingPeriodUsageDetailsWithDateFilter
 {
-    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201704-1 -IncludeMeterDetails -IncludeAdditionalProperties -StartDate 2017-01-19 -MaxCount 10
+    $usageDetails = Get-AzureRmConsumptionUsageDetail -BillingPeriodName 201710 -StartDate 2017-10-19 -Top 10
 
     Assert-AreEqual 10 $usageDetails.Count
 	Foreach($usage in $usageDetails)
 	{
-		Assert-NotNull $usage.Name
-		Assert-NotNull $usage.Id
-		Assert-NotNull $usage.Type
-		Assert-NotNull $usage.UsageStart
-		Assert-NotNull $usage.UsageEnd
-		Assert-NotNull $usage.BillingPeriodName
-		Assert-NotNull $usage.InvoiceName
-		Assert-NotNull $usage.InstanceName
-		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.AccountName
+		Assert-Null $usage.AdditionalProperties
+		Assert-Null $usage.BillableQuantity
+		Assert-NotNull $usage.BillingPeriodId
+		Assert-NotNull $usage.ConsumedService
+		Assert-NotNull $usage.CostCenter
 		Assert-NotNull $usage.Currency
-		Assert-NotNull $usage.UsageQuantity
-		Assert-NotNull $usage.BillableQuantity
-		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.DepartmentName
+		Assert-NotNull $usage.Id
+		Assert-NotNull $usage.InstanceId
+		Assert-NotNull $usage.InstanceLocation
+		Assert-NotNull $usage.InstanceName
+		Assert-Null $usage.InvoiceId
 		Assert-NotNull $usage.IsEstimated
+		Assert-Null $usage.MeterDetails
 		Assert-NotNull $usage.MeterId
-		Assert-NotNull $usage.MeterId
-		Assert-NotNull $usage.MeterDetails
-		Assert-NotNull $usage.MeterDetails.MeterName
+		Assert-NotNull $usage.Name
+		Assert-NotNull $usage.PretaxCost
+		Assert-NotNull $usage.Product
+		Assert-NotNull $usage.SubscriptionGuid
+		Assert-NotNull $usage.SubscriptionName	
+		Assert-NotNull $usage.Type
+		Assert-NotNull $usage.UsageEnd
+		Assert-NotNull $usage.UsageQuantity
+		Assert-NotNull $usage.UsageStart
 	}
 }
