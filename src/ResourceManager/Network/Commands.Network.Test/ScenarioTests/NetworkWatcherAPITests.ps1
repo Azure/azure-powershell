@@ -511,6 +511,7 @@ function Test-FlowLog
     $vnetName = Get-ResourceName
     $subnetName = Get-ResourceName
     $nsgName = Get-ResourceName
+	$workspaceName = Get-ResourceName
     
     try 
     {
@@ -541,7 +542,14 @@ function Test-FlowLog
         New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
 
-        $job = Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -AsJob
+		# create workspace
+		$workspaceLocation = "East US" 
+		$workspaceSku = "Standard"
+
+		New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -Location $workspaceLocation -Sku $workspaceSku
+		$workspace = Get-AzureRmOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName
+
+        $job = Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -EnableTrafficAnalytics $true -WorkspaceResourceId $workspace.Id -WorkspaceLocation $workspace.Location -WorkspaceGUId $workspace.CustomerId -AsJob
         $job | Wait-Job
         $config = $job | Receive-Job
         $job = Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $nw -TargetResourceId $getNsg.Id -AsJob
@@ -554,11 +562,19 @@ function Test-FlowLog
         Assert-AreEqual $config.Enabled $true
         Assert-AreEqual $config.RetentionPolicy.Days 0
         Assert-AreEqual $config.RetentionPolicy.Enabled $false
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled $true
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId $workspace.Id
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId $workspace.CustomerId
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion $workspace.Location
         Assert-AreEqual $status.TargetResourceId $getNsg.Id
         Assert-AreEqual $status.StorageId $sto.Id
         Assert-AreEqual $status.Enabled $true
         Assert-AreEqual $status.RetentionPolicy.Days 0
         Assert-AreEqual $status.RetentionPolicy.Enabled $false
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled $true
+		# Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId $workspace.Id
+		# Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId $workspace.CustomerId
+		# Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion $workspace.Location
     }
     finally
     {

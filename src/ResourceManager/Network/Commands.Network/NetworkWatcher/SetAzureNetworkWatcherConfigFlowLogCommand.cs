@@ -21,7 +21,6 @@ using System.Net;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.OperationalInsights;
-using ResourceGroups.Tests;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -34,6 +33,9 @@ namespace Microsoft.Azure.Commands.Network
         private const string SetByNameWithTAByResource = "SetByNameWithTAByResource";
         private const string SetByNameWithTAByDetails = "SetByNameWithTAByDetails";
         private const string SetByNameWithoutTA = "SetByNameWithoutTA";
+        private const string SetByResource = "SetByResource";
+        private const string WithTA = "WithTA";
+        private const string TAByDetails = "TAByDetails";
 
         [Parameter(
              Mandatory = true,
@@ -201,7 +203,7 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = SetByResourceWithTAByResource)]
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+            ValueFromPipeline = true,
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
             ParameterSetName = SetByNameWithTAByResource)]
         [ValidateNotNull]
@@ -212,8 +214,11 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             string resourceGroupName;
             string name;
+            string WorkspaceResourceId;
+            string WorkspaceGUId;
+            string WorkspaceLocation;
 
-            if (ParameterSetName.Contains("SetByResource"))
+            if (ParameterSetName.Contains(SetByResource))
             {
                 resourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 name = this.NetworkWatcher.Name;
@@ -241,68 +246,50 @@ namespace Microsoft.Azure.Commands.Network
                         parameters.RetentionPolicy.Days = this.RetentionInDays;
                     }
 
-                    if (this.EnableTrafficAnalytics == true || this.EnableTrafficAnalytics == false)
+                    if (ParameterSetName.Contains(WithTA))
                     {
                         parameters.FlowAnalyticsConfiguration = new MNM.TrafficAnalyticsProperties();
                         parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration = new MNM.TrafficAnalyticsConfigurationProperties();
 
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled = this.EnableTrafficAnalytics;
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled = this.EnableTrafficAnalytics.IsPresent;
 
-                        string[] workspaceDetailsComponents = this.WorkspaceResourceId.Split('/');
-                        string worksapceResourceGroup = "", workspaceName = "";
+                        
 
-                        //Expected format : /subscriptions/-WorkspaceSubscriptionId-/resourcegroups/-WorkspaceResourceGroup-/providers/microsoft.operationalinsights/workspaces/-this.WorkspaceName-
-                        if (workspaceDetailsComponents.Length == 9)
-                        {
-                            worksapceResourceGroup = workspaceDetailsComponents[4];
-                            workspaceName = workspaceDetailsComponents[8];
-
-                        }
-                        else
-                        {
-                            throw new System.ArgumentException("The given workspace resource id is not in format of: /subscriptions/-WorkspaceSubscriptionId-/resourcegroups/-WorkspaceResourceGroup-/providers/microsoft.operationalinsights/workspaces/-this.WorkspaceName-.");
-                        }
-
-                        if (Workspace == null)
+                        if (ParameterSetName.Contains(TAByDetails))
                         {
                             if (this.WorkspaceResourceId == null || this.WorkspaceGUId == null || this.WorkspaceLocation == null)
                             {
                                 throw new System.ArgumentException("Either the Workspace parameter or all of WorkspaceResourceId,WorkspaceGUId,WorkspaceLocation must be provided");
                             }
+
+                            string[] workspaceDetailsComponents = this.WorkspaceResourceId.Split('/');
+
+                            //Expected format : /subscriptions/-WorkspaceSubscriptionId-/resourcegroups/-WorkspaceResourceGroup-/providers/microsoft.operationalinsights/workspaces/-this.WorkspaceName-
+                            if (workspaceDetailsComponents.Length != 9)
+                            {
+                                throw new System.ArgumentException("The given workspace resource id is not in format of: /subscriptions/-WorkspaceSubscriptionId-/resourcegroups/-WorkspaceResourceGroup-/providers/microsoft.operationalinsights/workspaces/-this.WorkspaceName-.");
+                            }
+
+                            WorkspaceResourceId = this.WorkspaceResourceId;
+                            WorkspaceGUId = this.WorkspaceGUId;
+                            WorkspaceLocation = this.WorkspaceLocation;
                         }
                         else
                         {
-                            if (this.WorkspaceResourceId == null)
+                            if (this.Workspace == null)
                             {
-                                this.WorkspaceResourceId = this.Workspace.Id;
-                            }
-                            else if (this.WorkspaceResourceId != this.Workspace.Id)
-                            {
-                                throw new System.ArgumentException("The Workspace parameter and the WorkspaceResourceId poarameters are conflicting");
+                                throw new System.ArgumentException("Either the Workspace parameter or all of WorkspaceResourceId,WorkspaceGUId,WorkspaceLocation must be provided");
                             }
 
-                            if (this.WorkspaceGUId == null)
-                            {
-                                this.WorkspaceGUId = this.Workspace.CustomerId;
-                            }
-                            else if (this.WorkspaceGUId != this.Workspace.CustomerId)
-                            {
-                                throw new System.ArgumentException("The Workspace parameter and the WorkspaceGUId poarameters are conflicting");
-                            }
+                            WorkspaceResourceId = this.Workspace.Id;
+                            WorkspaceGUId = this.Workspace.CustomerId;
+                            WorkspaceLocation = this.Workspace.Location;
 
-                            if (this.WorkspaceLocation == null)
-                            {
-                                this.WorkspaceLocation = this.Workspace.Location;
-                            }
-                            else if (this.WorkspaceLocation != this.Workspace.Location)
-                            {
-                                throw new System.ArgumentException("The Workspace parameter and the WorkspaceLocation poarameters are conflicting");
-                            }
                         }
 
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId = this.WorkspaceGUId;
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion = this.WorkspaceLocation;
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId = this.WorkspaceResourceId;
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId = WorkspaceResourceId;
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId = WorkspaceGUId;
+                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion = WorkspaceLocation;                        
                     }
 
                     PSFlowLog flowLog = new PSFlowLog();
@@ -319,10 +306,5 @@ namespace Microsoft.Azure.Commands.Network
             return psFlowLog;
         }
 
-        //public static OperationalInsightsManagementClient GetOperationalInsightsManagementClientWithHandler(MockContext context, RecordedDelegatingHandler handler)
-        //{
-        //    var client = context.GetServiceClient<OperationalInsightsManagementClient>(handlers: handler);
-        //    return client;
-        //}
     }
 }
