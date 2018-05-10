@@ -26,11 +26,14 @@
     using System.Security.Cryptography.X509Certificates;
     using Management.Internal.Resources.Utilities.Models;
     using System.Text;
+    using System.Xml;
+    using System.Reflection;
+    using System.Globalization;
 
     #region KeyVaultProvider
 
     [CmdletProvider("KeyVault", ProviderCapabilities.ExpandWildcards)]
-    public class KeyVaultProvider : NavigationCmdletProvider, IContentCmdletProvider
+    public class KeyVaultProvider : NavigationCmdletProvider, IContentCmdletProvider, ICmdletProviderSupportsHelp
     {
         #region Private Properties
 
@@ -196,7 +199,7 @@
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
             var vault = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vault != null)
+            if (vault.Count() != 0)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -349,7 +352,7 @@
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
             var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vaultObject != null)
+            if (vaultObject.Count() != 0)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -675,7 +678,7 @@
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
             var vault = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vault != null)
+            if (vault.Count() != 0)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -913,7 +916,7 @@
             var namesFromPath = ChunkPath(path);
 
             var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vaultObject != null)
+            if (vaultObject.Count() != 0)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -1019,7 +1022,7 @@
             var namesFromPath = ChunkPath(path);
 
             var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vaultObject != null)
+            if (vaultObject.Count() != 0)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -1098,7 +1101,7 @@
             var namesFromPath = ChunkPath(path);
 
             var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vaultObject != null)
+            if (vaultObject.Count() != 0)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -1195,7 +1198,7 @@
             }
 
             var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vaultObject != null)
+            if (vaultObject.Count() != 0)
             {
                 if (namesFromPath.Length == 2)
                 {
@@ -2003,7 +2006,7 @@
             var namesFromPath = ChunkPath(path);
 
             var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vaultObject != null)
+            if (vaultObject.Count() != 0)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -2489,7 +2492,7 @@
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
             var vault = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
-            if (vault != null)
+            if (vault.Count() != 0)
             {
                 if (namesFromPath.Length == 1 || (namesFromPath.Length == 2 && namesFromPath[1].Equals("")))
                 {
@@ -3050,14 +3053,8 @@
 
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            PSKeyVault vault = null;
-            if (resourceGroupName != null)
-            {
-                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
-            }
-            if (vault != null)
-                if (vault != null)
+            var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
+            if (vaultObject.Count() != 0)
             {
                 if (namesFromPath.Length == 3)
                 {
@@ -3102,14 +3099,8 @@
 
             KVDriveInfo kvDriveInfo = this.PSDriveInfo as KVDriveInfo;
 
-            var resourceGroupName = this.GetResourceGroupName(namesFromPath[0]);
-            PSKeyVault vault = null;
-            if (resourceGroupName != null)
-            {
-                vault = kvDriveInfo.KeyVaultClient.GetVault(namesFromPath[0], resourceGroupName, kvDriveInfo.ActiveDirectoryClient);
-            }
-            if (vault != null)
-                if (vault != null)
+            var vaultObject = ListVaults(null, null).Where(v => v.VaultName.Equals(namesFromPath[0]));
+            if (vaultObject.Count() != 0)
             {
                 if (namesFromPath.Length == 3)
                 {
@@ -3239,6 +3230,72 @@
         }
 
         #endregion
+
+        #region MamlHelp
+
+        string ICmdletProviderSupportsHelp.GetHelpMaml(string helpItemName, string path)
+        {
+            var ProviderHelpCommandXPath =
+            "/msh:helpItems/command:command[command:details/command:verb='{0}' and command:details/command:noun='{1}']";
+            var noun = string.Empty;
+            var verb = string.Empty;
+
+            if (!String.IsNullOrEmpty(helpItemName))
+            {
+                int index = 0;
+                for (int i = 0; i < helpItemName.Length; i++)
+                {
+                    if (helpItemName[i].Equals('-'))
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                if (index > 0)
+                {
+                    verb = helpItemName.Substring(0, index);
+                    noun = helpItemName.Substring(index + 1);
+                }
+            }
+            else
+            {
+                return String.Empty;
+            }
+
+            if (String.IsNullOrEmpty(verb) || String.IsNullOrEmpty(noun))
+            {
+                return String.Empty;
+            }
+
+            XmlReader reader = null;
+            var xmlPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Microsoft.Azure.Commands.KeyVault.Provider.dll-Help.xml");
+            XmlDocument document = new XmlDocument();
+
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.XmlResolver = null;
+            reader = XmlReader.Create(xmlPath, settings);
+            document.Load(reader);
+
+            XmlNamespaceManager nsMgr = new XmlNamespaceManager(document.NameTable);
+            nsMgr.AddNamespace("msh", "http://msh");
+            nsMgr.AddNamespace("command", "http://schemas.microsoft.com/maml/dev/command/2004/10");
+
+            string xpathQuery = String.Format(
+                    CultureInfo.InvariantCulture,
+                    ProviderHelpCommandXPath,
+                    verb,
+                    noun);
+
+            XmlNode result = document.SelectSingleNode(xpathQuery, nsMgr);
+            if (result != null)
+            {
+                return result.OuterXml;
+            }
+
+            return String.Empty;
+        }
+
+        #endregion MamlHelp
     }
 
     #endregion KeyVaultProvider
