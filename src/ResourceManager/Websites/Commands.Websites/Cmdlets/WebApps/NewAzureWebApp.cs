@@ -133,8 +133,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 ValidateWebAppName(Name);
                 if (ShouldProcess(
-                    string.Format(Resources.SimpleWebAppCreateTarget, Name),
-                    Resources.SimpleWebAppCreateAction))
+                    string.Format(Properties.Resources.SimpleWebAppCreateTarget, Name),
+                    Properties.Resources.SimpleWebAppCreateAction))
                 {
                     this.StartAndWait(CreateWithSimpleParameters);
                 }
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         else if (!string.IsNullOrWhiteSpace(userName) && !string.IsNullOrWhiteSpace(password))
                         {
                             await git.AddRemoteRepository("azure", $"https://{userName}:{password}@{scmHostName}");
-                            adapter.WriteVerbose(Resources.GitRemoteMessage);
+                            adapter.WriteVerbose(Properties.Resources.GitRemoteMessage);
                             newOutput.GitRemoteName = "azure";
                         }
                     }
@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 // do not write errors for problems with adding git repository
                 var repoPath = GitRepositoryPath ?? SessionState?.Path?.CurrentFileSystemLocation?.Path;
-                adapter.WriteWarning(string.Format(Resources.GitRemoteAddFailure, repoPath, exception.Message));
+                adapter.WriteWarning(string.Format(Properties.Resources.GitRemoteAddFailure, repoPath, exception.Message));
             }
             adapter.WriteObject(output);
         }
