@@ -111,6 +111,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomAttributes\GenericBreakingChangeAttribute.cs" />
+    <Compile Include="CustomAttributes\BreakingChangeAttributeHelper.cs" />
+    <Compile Include="CustomAttributes\Utilities.cs" />
+    <Compile Include="CustomAttributes\CmdletDeprecationAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletOutputBreakingChangeAttribute.cs" />
+    <Compile Include="CustomAttributes\CmdletParameterBreakingChangeAttribute.cs" />
     <Compile Include="Attributes\Ps1XmlAttribute.cs" />
     <Compile Include="LongRunningJobCancelledException.cs" />
     <Compile Include="ShouldMethodInvoker.cs" />

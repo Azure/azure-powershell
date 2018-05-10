@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.ServiceFabric
 Module Guid: 60f3ba88-443f-46ff-88a3-318cfd11c1da
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicefabric
+Help Version: 0.3.4.0
 Locale: en-US
 ---
 

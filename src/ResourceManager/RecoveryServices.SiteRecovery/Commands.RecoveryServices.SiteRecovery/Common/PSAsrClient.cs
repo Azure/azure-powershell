@@ -132,13 +132,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Generating that authentication token here and sending it via http headers.
         /// </summary>
         /// <param name="clientRequestId">Unique identifier for the client's request</param>
+        /// <param name="dateTime">Optional , datetime used for header genertion</param>
         /// <returns>The authentication token for the provider</returns>
-        public string GenerateAgentAuthenticationHeader(
-            string clientRequestId)
+        public static string GenerateAgentAuthenticationHeader(
+            string clientRequestId,
+            DateTime? dateTime = null)
         {
             var cikTokenDetails = new CikTokenDetails();
 
-            var currentDateTime = DateTime.Now;
+            var currentDateTime = dateTime == null ?  DateTime.Now:dateTime.Value;
             currentDateTime = currentDateTime.AddHours(-1);
             cikTokenDetails.NotBeforeTimestamp = TimeZoneInfo.ConvertTimeToUtc(currentDateTime);
             cikTokenDetails.NotAfterTimestamp = cikTokenDetails.NotBeforeTimestamp.AddDays(7);
@@ -148,7 +150,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 2);
             cikTokenDetails.PropertyBag = new Dictionary<string, object>();
 
-            var shaInput = JsonConvert.SerializeObject(cikTokenDetails);
+            JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
+            {
+                DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
+            };
+
+            var shaInput = JsonConvert.SerializeObject(cikTokenDetails, microsoftDateFormatSettings);
 
             if (null == asrVaultCreds.ChannelIntegrityKey)
             {
@@ -160,7 +167,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(shaInput)));
             cikTokenDetails.HashFunction = CikSupportedHashFunctions.HMACSHA256.ToString();
 
-            return JsonConvert.SerializeObject(cikTokenDetails);
+            return JsonConvert.SerializeObject(cikTokenDetails, microsoftDateFormatSettings);
         }
 
         /// <summary>
@@ -225,7 +232,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     "Agent-Authentication",
                     new List<string>
                     {
-                        this.GenerateAgentAuthenticationHeader(this.ClientRequestId)
+                        GenerateAgentAuthenticationHeader(this.ClientRequestId)
                     });
             }
             else
