@@ -105,11 +105,6 @@ namespace Microsoft.Azure.Management.Internal.Network.Version2017_10_01
         IExpressRouteServiceProvidersOperations ExpressRouteServiceProviders { get; }
 
         /// <summary>
-        /// Gets the IExpressRouteCrossConnectionsOperations.
-        /// </summary>
-        //IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnections { get; }
-
-        /// <summary>
         /// Gets the ILoadBalancersOperations.
         /// </summary>
         ILoadBalancersOperations LoadBalancers { get; }

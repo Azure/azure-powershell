@@ -22,10 +22,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.Remove, "AzureRMExpressRouteCrossConnectionPeering", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
     public class RemoveAzureRMExpressRouteCrossConnectionPeeringCommand : NetworkBaseCmdlet
     {
-        public const string IPv4 = "IPv4";
-        public const string IPv6 = "IPv6";
-        public const string All = "All";
-
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the Peering")]
