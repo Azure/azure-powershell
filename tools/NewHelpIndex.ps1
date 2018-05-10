@@ -127,6 +127,25 @@ $RMpsd1s | ForEach-Object {
         $outputCmdlets.Add("$_", @{"service" = $cmdletLabel; "sourceUrl" = $helpSourceUrl; "editUrl" = $helpEditUrl})
     }
 
+    # Add provider help files
+    if ($_.Name -eq "AzureRM.KeyVault.psd1")
+    {
+        $providerHelpFiles = $HelpFileMapping.Keys -like "*KeyVaultProvider*"
+        $providerHelpFiles | ForEach-Object {
+            $cmdletHelpFile = $HelpFileMapping["$_"]
+            $cmdletName = $_.TrimEnd(".md")
+            $cmdletLabel = $labelMapping.$cmdletName
+            if ($cmdletLabel -eq $null -and $Target -eq "Latest")
+            {
+                throw "No label found for cmdlet $_"
+            }
+
+            $helpSourceUrl = "$SourceBaseUri\src\$(($cmdletHelpFile -split "\\src\\*")[1])".Replace("\", "/")
+            $helpEditUrl = "$EditBaseUri\src\$(($cmdletHelpFile -split "\\src\\*")[1])".Replace("\", "/")
+            $outputCmdlets.Add("$_", @{"service" = $cmdletLabel; "sourceUrl" = $helpSourceUrl; "editUrl" = $helpEditUrl})
+        }
+    }
+
     $moduleHelpFile = $HelpFileMapping["$($_.BaseName).md"]
     if ($moduleHelpFile -eq $null -and $Target -eq "Latest")
     {

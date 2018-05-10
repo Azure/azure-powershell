@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if (deletedCertificateBundle.Tags != null)
             {
-                Tags = (Hashtable) deletedCertificateBundle.Tags;
+                Tags = (deletedCertificateBundle.Tags == null) ? null : deletedCertificateBundle.Tags.ConvertToHashtable();
             }
 
             ScheduledPurgeDate = deletedCertificateBundle.ScheduledPurgeDate;
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             if (deletedCertificateBundle.Tags != null)
             {
-                Tags = (Hashtable) deletedCertificateBundle.Tags;
+                Tags = (deletedCertificateBundle.Tags == null) ? null : deletedCertificateBundle.Tags.ConvertToHashtable();
             }
 
             ScheduledPurgeDate = deletedCertificateBundle.ScheduledPurgeDate;

@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public PSKeyVaultKeyAttributes()
         { }
 
-        internal PSKeyVaultKeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, string[] keyOps, Hashtable tags)
+        public PSKeyVaultKeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType,
+            string[] keyOps, Hashtable tags)
         {
             this.Enabled = enabled;
             this.Expires = expires;

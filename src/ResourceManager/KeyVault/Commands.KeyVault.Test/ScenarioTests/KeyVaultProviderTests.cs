@@ -1,0 +1,53 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.IO;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
+{
+    public class KeyVaultProviderTests : IClassFixture<KeyVaultTestFixture>
+    {
+        private KeyVaultTestFixture _data;
+
+        public KeyVaultProviderTests(KeyVaultTestFixture fixture)
+        {
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            this._data = fixture;
+            this._data.Initialize(TestUtilities.GetCallingClass());
+        }
+
+        private void Initialize()
+        {
+
+        }
+
+        [Fact(Skip = "Will record later")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewVault()
+        {
+            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
+                () => { return new[] { "Test-GetItem" }; },
+                (env) => Initialize(),
+                null,
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName()
+                );
+        }
+    }
+}
