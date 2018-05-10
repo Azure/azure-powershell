@@ -132,16 +132,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             if (ParameterSetName == SimpleParameterSet)
             {
                 ValidateWebAppName(Name);
-                if (ShouldProcess(string.Format(Microsoft.Azure.Commands.WebApps.Properties.Resources.SimpleWebAppCreateTarget, Name), Microsoft.Azure.Commands.WebApps.Properties.Resources.SimpleWebAppCreateAction))
+                if (ShouldProcess(
+                    string.Format(Resources.SimpleWebAppCreateTarget, Name),
+                    Resources.SimpleWebAppCreateAction))
                 {
-                    //var adapter = new PSCmdletAdapter(this, state);
-                    //adapter.WaitForCompletion(CreateWithSimpleParameters);                    
                     this.StartAndWait(CreateWithSimpleParameters);
                 }
             }
             else
             {
-                if (ShouldProcess(string.Format("WebApp '{0}' from WebApp '{1}'", Name, SourceWebApp?.Name), "Copy"))
+                if (ShouldProcess(
+                    string.Format("WebApp '{0}' from WebApp '{1}'", Name, SourceWebApp?.Name),
+                    "Copy"))
                 {
                     CreateWithClonedWebApp();
                 }
@@ -154,7 +156,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             var available = WebsitesClient.WrappedWebsitesClient.CheckNameAvailability(name,"Site");
             if (available.NameAvailable.HasValue && !available.NameAvailable.Value)
             {
-                throw new InvalidOperationException(string.Format("Website name '{0}' is not available.  Please try a different name.", name));
+                throw new InvalidOperationException(string.Format(
+                    "Website name '{0}' is not available.  Please try a different name.", name));
             }
         }
 
