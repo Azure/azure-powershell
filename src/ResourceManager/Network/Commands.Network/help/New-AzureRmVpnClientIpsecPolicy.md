@@ -23,22 +23,22 @@ This command allows the users to create the Vpn ipsec policy object specifying o
 
 ## EXAMPLES
 
-### Example 1
+### Define vpn ipsec policy object:
 ```
 PS C:\>$vpnclientipsecpolicy = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86472 -SADataSizeKilobytes 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
-
 ```
 
 This cmdlet is used to create the vpn ipsec policy object using the passed one or all parameters' values which user can pass to param:VpnClientIpsecPolicies of PS command let: New-AzureRmVirtualNetworkGateway (New VPN Gateway creation) / Set-AzureRmVirtualNetworkGateway (existing VPN Gateway update) in ResourceGroup :
 
+### Create new virtual network gateway with setting vpn custom ipsec policy:
 ```
 PS C:\> New-AzureRmVirtualNetworkGateway -ResourceGroupName vnet-gateway -name myNGW -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -VpnClientIpsecPolicies $vpnclientipsecpolicy
-
 ```
+
+### Get virtual network gateway to see if vpn custom policy is set correctly:
 ```
 $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName vnet-gateway -name myNGW
 PS C:\>Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientIpsecPolicies $vpnclientipsecpolicy
-
 ```
 
 ## PARAMETERS
