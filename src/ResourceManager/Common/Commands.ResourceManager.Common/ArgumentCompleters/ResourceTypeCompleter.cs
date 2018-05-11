@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 
                                     if (_timeout == -1)
                                     {
+                                        task.Wait();
                                         page = task.Result;
                                         resourceTypes.AddRange(page);
                                     }
