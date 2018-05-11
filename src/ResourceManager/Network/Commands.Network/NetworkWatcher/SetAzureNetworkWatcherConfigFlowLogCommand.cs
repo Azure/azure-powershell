@@ -24,7 +24,7 @@ using COM = Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = SetByResourceWithTAByResource), OutputType(typeof(PSFlowLog))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = SetByResourceWithoutTA), OutputType(typeof(PSFlowLog))]
     public class SetAzureNetworkWatcherConfigFlowLogCommand : NetworkWatcherBaseCmdlet
     {
         private const string SetByResourceWithTAByResource = "SetByResourceWithTAByResource";
@@ -134,22 +134,22 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("EnableTA")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable/disable retention.",
             ParameterSetName = SetByResourceWithTAByResource)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable/disable retention.",
             ParameterSetName = SetByResourceWithTAByDetails)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable/disable retention.",
             ParameterSetName = SetByNameWithTAByResource)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Flag to enable/disable retention.",
             ParameterSetName = SetByNameWithTAByDetails)]
