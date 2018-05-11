@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             {
                 Current = current;
                 Engine = engine;
-                Location = location;
+                Location = engine.GetParameterValue(Parameter.Create("location", location));
             }
 
             public bool CurrentMatch(IEntityConfig config)
