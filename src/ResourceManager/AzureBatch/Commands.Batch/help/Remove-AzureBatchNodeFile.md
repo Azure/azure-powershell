@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: DBA02017-8372-4A91-A4F1-985777DEDAB9
@@ -75,7 +75,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -90,7 +90,7 @@ Specifies the ID of the compute node that contains the Batch node file that this
 ```yaml
 Type: String
 Parameter Sets: ComputeNode
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -120,7 +120,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,7 +136,7 @@ To obtain a **PSNodeFile**, use the Get-AzureBatchNodeFile cmdlet.
 ```yaml
 Type: PSNodeFile
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -151,7 +151,7 @@ Specifies the ID of the job that contains the task.
 ```yaml
 Type: String
 Parameter Sets: Task
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -181,7 +181,7 @@ Specifies the ID of the pool that contains the compute nodes for which this cmdl
 ```yaml
 Type: String
 Parameter Sets: ComputeNode
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -197,7 +197,7 @@ This cmdlet is relevant only if the path is a folder.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -212,7 +212,7 @@ Specifies the ID of the task.
 ```yaml
 Type: String
 Parameter Sets: Task
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

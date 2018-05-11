@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 23893EAE-47F3-45AA-AEB2-354FB8316C25
@@ -49,7 +49,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -79,7 +79,7 @@ Specifies the **PSCloudPool** to which this cmdlet updates the Batch service.
 ```yaml
 Type: PSCloudPool
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
