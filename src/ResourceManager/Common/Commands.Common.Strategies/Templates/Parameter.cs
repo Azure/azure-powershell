@@ -21,5 +21,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
     class Parameter
     {
         public string type { get; set; }
+
+        public object defaultValue { get; set; }
     }
 }

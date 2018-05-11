@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 {
@@ -17,11 +18,18 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Templates
 
         public string GetParameterValue<T>(Parameter<T> parameter)
         {
-            Parameters.TryAdd(parameter.Name, parameter.Value);
+            var isSecureString = typeof(T) == typeof(SecureString);
+            Parameters.TryAdd(
+                parameter.Name,
+                new Parameter
+                {
+                    type = isSecureString ? "secureString" : "string",
+                    defaultValue = isSecureString ? null : parameter.Value as object
+                });
             return "[parameters('" + parameter.Name + "')]";
         }
 
-        public ConcurrentDictionary<string, object> Parameters { get; }
-            = new ConcurrentDictionary<string, object>();
+        public ConcurrentDictionary<string, Parameter> Parameters { get; }
+            = new ConcurrentDictionary<string, Parameter>();
     }
 }
