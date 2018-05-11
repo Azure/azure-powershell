@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 
                             if (_timeout == -1)
                             {
+                                resourceGroups.Wait();
                                 tempResourceGroupList = CreateResourceGroupList(resourceGroups.Result);
                                 if (resourceGroups.Result != null)
                                 {
