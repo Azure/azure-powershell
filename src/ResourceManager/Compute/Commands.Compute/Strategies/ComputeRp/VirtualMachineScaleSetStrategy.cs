@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -44,7 +45,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup,
             ImageAndOsType imageAndOsType,
-            PSCredential admin,
+            string adminUserName,
+            Parameter<SecureString> adminPassword,
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
@@ -74,8 +76,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
                             WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
                             LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
-                            AdminUsername = admin.UserName,
-                            AdminPassword = engine.GetSecureString("adminPassword", admin.Password),
+                            AdminUsername = adminUserName,
+                            AdminPassword = engine.GetParameterValue(adminPassword),
                         },
                         StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {

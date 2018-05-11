@@ -65,6 +65,7 @@
     <Compile Include="INestedResourceStrategy.cs" />
     <Compile Include="IParameters.cs" />
     <Compile Include="IResourceId.cs" />
+    <Compile Include="Parameter.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="ResourceId.cs" />
     <Compile Include="ResourceType.cs" />

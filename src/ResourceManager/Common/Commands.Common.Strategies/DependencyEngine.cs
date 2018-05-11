@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Concurrent;
-using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
@@ -30,7 +28,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             return id;
         }
 
-        public string GetSecureString(string name, SecureString secret)
+        public string GetParameterValue<T>(Parameter<T> parameter)
             => null;
     }
 }

@@ -82,11 +82,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
                 var template = config.CreateTemplate(client, fullTarget, templateEngine);
                 template.parameters = templateEngine
-                    .SecureStrings
+                    .Parameters
                     .Keys
                     .ToDictionary(
                         k => k,
-                        _ => new Parameter { type = "secureString" });
+                        _ => new Templates.Parameter { type = "secureString" });
                 template.outputs = new Dictionary<string, Output>
                 {
                     {

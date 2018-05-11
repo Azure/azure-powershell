@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Net;
 using System.Security;
@@ -35,7 +37,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies
                 .Concat(config.GetIdFromSubscription()) 
                 .IdToString();
 
-        public string GetSecureString(string name, SecureString secret)
-            => new NetworkCredential(string.Empty, secret).Password;
+        public string GetParameterValue<T>(Parameter<T> parameter)
+        {
+            var value = parameter.Value;
+            if (value == null)
+            {
+                return null;
+            }
+            var secureValue = value as SecureString;
+            return secureValue != null
+                ? new NetworkCredential(string.Empty, secureValue).Password
+                : value.ToString();
+        }
     }
 }

@@ -247,7 +247,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     inboundNatPools: inboundNatPools,
                     networkSecurityGroup: networkSecurityGroup,
                     imageAndOsType: ImageAndOsType,
-                    admin: _cmdlet.Credential,
+                    adminUserName: _cmdlet.Credential.UserName,
+                    adminPassword: Parameter.Create("adminPassword", _cmdlet.Credential.Password),
                     vmSize: _cmdlet.VmSize,
                     instanceCount: _cmdlet.InstanceCount,
                     upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))

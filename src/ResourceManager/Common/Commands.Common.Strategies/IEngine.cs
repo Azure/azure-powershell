@@ -12,14 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Security;
-
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     public interface IEngine
     {
         string GetId(IEntityConfig config);
 
-        string GetSecureString(string name, SecureString secret);
+        string GetParameterValue<T>(Parameter<T> parameter);
     }
 }
