@@ -74,6 +74,27 @@ namespace Commands.Aks.Test.ScenarioTests
                     string jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""foo"",""client_secret"":""bar""}}";
                     AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
                 }
+                else if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Record)
+                {
+                    AzureSession.Instance.DataStore = new MemoryDataStore();
+                    var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                    var dir = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+                    var subscription = HttpMockServer.Variables["SubscriptionId"];
+                    var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                    string spn = null;
+                    string spnSecret = null;
+                    if (currentEnvironment.ConnectionString.KeyValuePairs.ContainsKey("ServicePrincipal"))
+                    {
+                        spn = currentEnvironment.ConnectionString.KeyValuePairs["ServicePrincipal"];
+                    }
+                    if (currentEnvironment.ConnectionString.KeyValuePairs.ContainsKey("ServicePrincipalSecret"))
+                    {
+                        spnSecret = currentEnvironment.ConnectionString.KeyValuePairs["ServicePrincipalSecret"];
+                    }
+                    AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".ssh", "id_rsa.pub"), File.ReadAllText(dir + "/Fixtures/id_rsa.pub"));
+                    string jsonOutput = @"{""" + subscription + @""":{ ""service_principal"":""" + spn + @""",""client_secret"":"""+ spnSecret + @"""}}";
+                    AzureSession.Instance.DataStore.WriteFile(Path.Combine(home, ".azure", "acsServicePrincipal.json"), jsonOutput);
+                }
 
                 helper.RunPowerShellTest(scripts);
             }

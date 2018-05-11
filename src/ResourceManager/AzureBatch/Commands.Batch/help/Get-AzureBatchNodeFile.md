@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 38ED2854-23D0-400E-A5C8-239346B2AF99
@@ -148,7 +148,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -164,7 +164,7 @@ To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.
 ```yaml
 Type: PSComputeNode
 Parameter Sets: ParentComputeNode
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -179,7 +179,7 @@ Specifies the ID of the compute node that contains the Batch node files.
 ```yaml
 Type: String
 Parameter Sets: ComputeNode_Id, ComputeNode_ODataFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -210,7 +210,7 @@ This cmdlet returns properties for node files that match the filter that this pa
 ```yaml
 Type: String
 Parameter Sets: Task_ODataFilter, ParentTask, ComputeNode_ODataFilter, ParentComputeNode
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -225,7 +225,7 @@ Specifies the ID of the job that contains the target task.
 ```yaml
 Type: String
 Parameter Sets: Task_Id, Task_ODataFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -242,7 +242,7 @@ The default value is 1000.
 ```yaml
 Type: Int32
 Parameter Sets: Task_ODataFilter, ParentTask, ComputeNode_ODataFilter, ParentComputeNode
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -273,7 +273,7 @@ Specifies the ID of the pool that contains the compute node from which to get pr
 ```yaml
 Type: String
 Parameter Sets: ComputeNode_Id, ComputeNode_ODataFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -289,7 +289,7 @@ Otherwise, it returns only the files in the root folder.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Task_ODataFilter, ParentTask, ComputeNode_ODataFilter, ParentComputeNode
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -305,7 +305,7 @@ To obtain a task object, use the Get-AzureBatchTask cmdlet.
 ```yaml
 Type: PSCloudTask
 Parameter Sets: ParentTask
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -320,7 +320,7 @@ Specifies the ID of the task for which this cmdlet gets properties of node files
 ```yaml
 Type: String
 Parameter Sets: Task_Id, Task_ODataFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
