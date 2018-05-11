@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Network;
 using System.Net;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using MOM = Microsoft.Azure.Commands.OperationalInsights.Models;
+using COM = Microsoft.Azure.Commands.OperationalInsights.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -207,7 +207,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
             ParameterSetName = SetByNameWithTAByResource)]
         [ValidateNotNull]
-        public MOM.PSWorkspace Workspace { get; set; }
+        public COM.PSWorkspace Workspace { get; set; }
 
         public override void Execute()
         {
