@@ -403,6 +403,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteServiceProviderTests\TestExpressRouteServiceProviderList.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCrossConnectionTests\TestExpressRouteCrossConnectionApis.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestCreateEmptyLoadBalancer.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
