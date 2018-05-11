@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     HardwareProfile = new HardwareProfile
                     {
-                        VmSize = size
+                        VmSize = engine.GetParameterValue(Parameter.Create("vmSize", size))
                     },
                     StorageProfile = new StorageProfile
                     {

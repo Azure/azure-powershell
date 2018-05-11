@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Sku = new Azure.Management.Compute.Models.Sku()
                     {
                         Capacity = instanceCount,
-                        Name = vmSize,
+                        Name = engine.GetParameterValue(Parameter.Create("vmSize", vmSize)),
                     },
                     Identity = identity,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
