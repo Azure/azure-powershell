@@ -45,8 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup,
             ImageAndOsType imageAndOsType,
-            string adminUserName,
-            Parameter<SecureString> adminPassword,
+            Credential credential,
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
@@ -76,8 +75,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
                             WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
                             LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
-                            AdminUsername = adminUserName,
-                            AdminPassword = engine.GetParameterValue(adminPassword),
+                            AdminUsername = engine.GetParameterValue(credential.AdminUserName),
+                            AdminPassword = engine.GetParameterValue(credential.AdminPassword),
                         },
                         StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {

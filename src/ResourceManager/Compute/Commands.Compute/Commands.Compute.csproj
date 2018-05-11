@@ -269,6 +269,7 @@
     <Compile Include="Strategies\Client.cs" />
     <Compile Include="Strategies\ComputeRp\AvailabilitySetStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ComputeStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\Credential.cs" />
     <Compile Include="Strategies\ComputeRp\DataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageAndOsType.cs" />
     <Compile Include="Strategies\ComputeRp\ImageDataDiskStrategy.cs" />
