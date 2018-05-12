@@ -211,8 +211,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 copyModel.Sku = new Management.Sql.Models.Sku()
                 {
-                    Name = AzureSqlDatabaseAdapter.GetDatabaseSkuName(sourceDb.Sku.Tier),
-                    Tier = sourceDb.Sku.Tier,
+                    Name = AzureSqlDatabaseAdapter.GetDatabaseSkuName(sourceDb.Edition),
+                    Tier = sourceDb.Edition,
                     Capacity = VCore,
                     Family = ComputeGeneration
                 };

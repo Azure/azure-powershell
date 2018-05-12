@@ -145,7 +145,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 Location = model.Database.Location,
                 Tags = model.Database.Tags,
                 Collation = model.Database.CollationName,
-                Sku = model.Database.Sku,
+                Sku = string.IsNullOrWhiteSpace(model.Database.SkuName) ? null : new Sku()
+                {
+                    Name = model.Database.SkuName,
+                    Tier = model.Database.Edition,
+                    Family = model.Database.Family,
+                    Capacity = model.Database.Capacity
+                },
                 MaxSizeBytes = model.Database.MaxSizeBytes,
                 ReadScale =  model.Database.ReadScale.ToString(),
                 SampleName = model.SampleName,

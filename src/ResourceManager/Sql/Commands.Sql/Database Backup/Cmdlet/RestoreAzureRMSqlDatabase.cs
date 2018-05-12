@@ -332,17 +332,15 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ParameterSetName == FromGeoBackupWithVcoreSetName || ParameterSetName == FromLongTermRetentionBackupWithVcoreSetName)
             {
                 string skuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition);
-                model.Sku = new Management.Sql.Models.Sku()
-                {
-                    Name = skuName,
-                    Tier = Edition,
-                    Capacity = VCore,
-                    Family = ComputeGeneration
-                };
+                model.SkuName = skuName;
+                model.Edition = Edition;
+                model.Capacity = VCore;
+                model.Family = ComputeGeneration;
             }
             else
             {
-                model.Sku = AzureSqlDatabaseAdapter.GetDtuDatabaseSku(ServiceObjectiveName, Edition);
+                model.SkuName = string.IsNullOrWhiteSpace(ServiceObjectiveName) ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition) : ServiceObjectiveName;
+                model.Edition = Edition;
             }
 
             return ModelAdapter.RestoreDatabase(this.ResourceGroupName, restorePointInTime, ResourceId, model);

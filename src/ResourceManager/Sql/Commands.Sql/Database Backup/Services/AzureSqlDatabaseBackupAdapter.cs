@@ -551,7 +551,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 CreateMode = model.CreateMode,
                 RestorePointInTime = restorePointInTime,
                 ElasticPoolId = elasticPoolId,
-                Sku = model.Sku
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Management.Sql.Models.Sku()
+                {
+                    Name = model.SkuName,
+                    Tier = model.Edition,
+                    Family = model.Family,
+                    Capacity = model.Capacity
+                }
             };
 
             if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Recovery))

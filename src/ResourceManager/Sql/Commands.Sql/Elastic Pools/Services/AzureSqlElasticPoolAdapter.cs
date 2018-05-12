@@ -102,10 +102,20 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Sku = model.Sku,
+                Sku = new Sku()
+                {
+                    Name = model.SkuName,
+                    Tier = model.Edition,
+                    Family = model.Family,
+                    Capacity = model.Capacity
+                },
                 MaxSizeBytes = model.MaxSizeBytes,
                 ZoneRedundant = model.ZoneRedundant,
-                PerDatabaseSettings = model.PerDatabaseSettings
+                PerDatabaseSettings = new ElasticPoolPerDatabaseSettings()
+                {
+                    MinCapacity = model.DatabaseCapacityMin,
+                    MaxCapacity = model.DatabaseCapacityMax
+                }
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -124,10 +134,20 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Sku = model.Sku,
+                Sku = new Sku()
+                {
+                    Name = model.SkuName,
+                    Tier = model.Edition,
+                    Family = model.Family,
+                    Capacity = model.Capacity
+                },
                 MaxSizeBytes = model.MaxSizeBytes,
                 ZoneRedundant = model.ZoneRedundant,
-                PerDatabaseSettings = model.PerDatabaseSettings
+                PerDatabaseSettings = new ElasticPoolPerDatabaseSettings()
+                {
+                    MinCapacity = model.DatabaseCapacityMin,
+                    MaxCapacity = model.DatabaseCapacityMax
+                }
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -376,15 +396,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Location = pool.Location,
                 Edition = pool.Edition,
                 ZoneRedundant = pool.ZoneRedundant,
-                Sku = pool.Sku,
-                PerDatabaseSettings = pool.PerDatabaseSettings,
                 Capacity = pool.Sku.Capacity,
                 CurrentServiceLevelObjectiveName = pool.Sku.Name,
-                MinCapacity = pool.PerDatabaseSettings.MinCapacity,
-                MaxCapacity = pool.PerDatabaseSettings.MaxCapacity,
+                DatabaseCapacityMin = pool.PerDatabaseSettings.MinCapacity,
+                DatabaseCapacityMax = pool.PerDatabaseSettings.MaxCapacity,
                 Dtu = pool.Dtu,
                 DatabaseDtuMin = pool.DatabaseDtuMin,
-                DatabaseDtuMax = pool.DatabaseDtuMax
+                DatabaseDtuMax = pool.DatabaseDtuMax,
+                Family = pool.Sku.Family,
+                SkuName = pool.Sku.Name
             };
 
             return model;

@@ -201,8 +201,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 linkModel.SecondarySku = new Management.Sql.Models.Sku()
                 {
-                    Name = AzureSqlDatabaseAdapter.GetDatabaseSkuName(primaryDb.Sku.Tier),
-                    Tier = primaryDb.Sku.Tier,
+                    Name = primaryDb.SkuName,
+                    Tier = primaryDb.Edition,
                     Capacity = SecondaryVCore,
                     Family = SecondaryComputeGeneration
                 };

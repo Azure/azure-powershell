@@ -212,19 +212,15 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             if(ParameterSetName == DtuDatabaseParameterSet)
             {
-                newDbModel.Sku = AzureSqlDatabaseAdapter.GetDtuDatabaseSku(RequestedServiceObjectiveName, Edition);
+                newDbModel.SkuName = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition) : RequestedServiceObjectiveName;
+                newDbModel.Edition = Edition;
             }
             else
             {
-                string skuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition);
-
-                newDbModel.Sku = new Management.Sql.Models.Sku()
-                {
-                    Name = skuName,
-                    Tier = Edition,
-                    Capacity = VCore,
-                    Family = ComputeGeneration
-                };
+                newDbModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition);
+                newDbModel.Edition = Edition;
+                newDbModel.Capacity = VCore;
+                newDbModel.Family = ComputeGeneration;
             }          
 
             dbCreateUpdateModel.Database = newDbModel;
