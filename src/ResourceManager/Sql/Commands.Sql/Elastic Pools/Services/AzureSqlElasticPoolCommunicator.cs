@@ -25,7 +25,6 @@ using Microsoft.WindowsAzure.Management.Storage;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
@@ -124,9 +123,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Updates an Elastic Pool using Patch
         /// </summary>
-        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, Management.Sql.Models.ElasticPoolUpdate parameters)
+        public Management.Sql.Models.ElasticPool CreateOrUpdate(string resourceGroupName, string serverName, string elasticPoolName, ElasticPoolUpdate parameters)
         {
-            return  GetCurrentSqlClient().ElasticPools.UpdateWithHttpMessagesAsync(resourceGroupName, serverName, elasticPoolName, parameters).Result.Body;
+            return GetCurrentSqlClient().ElasticPools.Update(resourceGroupName, serverName, elasticPoolName, parameters);
         }
 
         /// <summary>
@@ -140,7 +139,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets Elastic Pool Activity
         /// </summary>
-        public IList<Management.Sql.Models.ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName)
+        public IList<ElasticPoolActivity> ListActivity(string resourceGroupName, string serverName, string elasticPoolName)
         {
             return GetCurrentSqlClient().ElasticPoolActivities.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();
         }
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <param name="serverName"></param>
         /// <param name="elasticPoolName"></param>
         /// <returns></returns>
-        public IList<Management.Sql.Models.ElasticPoolOperation> ListOperation(string resourceGroupName, string serverName, string elasticPoolName)
+        public IList<ElasticPoolOperation> ListOperation(string resourceGroupName, string serverName, string elasticPoolName)
         {
             return GetCurrentSqlClient().ElasticPoolOperations.ListByElasticPool(resourceGroupName, serverName, elasticPoolName).ToList();
         }

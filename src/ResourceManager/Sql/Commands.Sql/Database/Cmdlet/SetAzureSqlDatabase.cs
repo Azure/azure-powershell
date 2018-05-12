@@ -205,11 +205,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
-            Management.Sql.Models.Sku databaseCurrentSku = database.Sku;
+            Management.Sql.Models.Sku databaseCurrentSku = new Management.Sql.Models.Sku()
+            {
+                Name = database.SkuName,
+                Tier = database.Edition,
+                Family = database.Family,
+                Capacity = database.Capacity
+            };
 
             if (this.ParameterSetName == UpdateParameterSetName)
             {
-                newDbModel.Sku = AzureSqlDatabaseAdapter.GetDtuDatabaseSku(RequestedServiceObjectiveName, Edition);
+                newDbModel.SkuName = string.IsNullOrWhiteSpace(RequestedServiceObjectiveName) ? AzureSqlDatabaseAdapter.GetDatabaseSkuName(Edition) : RequestedServiceObjectiveName;
+                newDbModel.Edition = Edition;
 
                 newEntity.Add(newDbModel);
             }
@@ -220,15 +227,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                     MyInvocation.BoundParameters.ContainsKey("VCore"))
                 {
                     string skuTier = string.IsNullOrWhiteSpace(Edition) ? databaseCurrentSku.Tier : Edition;
-                    string skuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(skuTier);
-
-                    newDbModel.Sku = new Management.Sql.Models.Sku()
-                    {
-                        Name = skuName,
-                        Tier = skuTier,
-                        Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? databaseCurrentSku.Family : ComputeGeneration,
-                        Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : (int)databaseCurrentSku.Capacity
-                    };
+                    newDbModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(skuTier);
+                    newDbModel.Edition = skuTier;
+                    newDbModel.Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? databaseCurrentSku.Family : ComputeGeneration;
+                    newDbModel.Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : databaseCurrentSku.Capacity;
                 }
 
                 newEntity.Add(newDbModel);
