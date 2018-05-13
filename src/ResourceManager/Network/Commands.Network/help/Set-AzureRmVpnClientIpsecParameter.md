@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvpnclientipsecparameters
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermvpnclientipsecparameter
 schema: 2.0.0
 ---
 
-# Set-AzureRmVpnClientIpsecParameters
+# Set-AzureRmVpnClientIpsecParameter
 
 ## SYNOPSIS
 Sets the vpn ipsec parameters for existing virtual network gateway.
@@ -13,23 +13,24 @@ Sets the vpn ipsec parameters for existing virtual network gateway.
 ## SYNTAX
 
 ```
-Set-AzureRmVpnClientIpsecParameters -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
- -VpnClientIPsecParameters <PSVpnClientIPsecParameters> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName <String> -ResourceGroupName <String>
+ -VpnClientIPsecParameter <PSVpnClientIPsecParameters> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVpnClientIpsecParameters** cmdlet sets the vpn ipsec parameters for existing virtual network gateway.
-When Virtual network gateway is created, it sets the set of default vpn ipsec policies on Gateway. In case, Point to site user wants to use certain custom ipsec policy to connect to VPN Gateway, user has to set that ipsec policy on VPN Gateway first. **Set-AzureRmVpnClientIpsecParameters** provides a way to do that.
+The **Set-AzureRmVpnClientIpsecParameter** cmdlet sets the vpn ipsec parameters for existing virtual network gateway.
+When Virtual network gateway is created, it sets the set of default vpn ipsec policies on Gateway. In case, Point to site user wants to use certain custom ipsec policy to connect to VPN Gateway, user has to set that ipsec policy on VPN Gateway first. **Set-AzureRmVpnClientIpsecParameter** provides a way to do that.
 
 ## EXAMPLES
 
 ### Example 1 : Sets a custom vpn ipsec policy to existing virtual network gateway.
 ```powershell
-PS C:\>$vpnclientipsecparams = New-AzureRmVpnClientIpsecParameters -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86473 -SADataSizeKilobytes 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
-PS C:\> $setvpnIpsecParams = Set-AzureRmVpnClientIpsecParameters -VirtualNetworkGatewayName "ContosoLocalGateway" -ResourceGroupName "ContosoResourceGroup" -VpnClientIPsecParameters $vpnclientipsecparams
+PS C:\>$vpnclientipsecparams = New-AzureRmVpnClientIpsecParameter -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86473 -SADataSize 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
+PS C:\> $setvpnIpsecParams = Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName "ContosoLocalGateway" -ResourceGroupName "ContosoResourceGroup" -VpnClientIPsecParameter $vpnclientipsecparams
 ```
-This example sets custom vpn ipsec policy to existing virtual network gateway named ContosoVirtualGateway from Resource group named ContosoResourceGroup. The parameter:VpnClientIPsecParameters value can be constructed using PS command let:New-AzureRmVpnClientIpsecParameters as shown above.
+
+This example sets custom vpn ipsec policy to existing virtual network gateway named ContosoVirtualGateway from Resource group named ContosoResourceGroup. The parameter:VpnClientIPsecParameter value can be constructed using PS command let:New-AzureRmVpnClientIpsecParameter as shown above.
 
 ## PARAMETERS
 
@@ -78,8 +79,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VpnClientIPsecParameters
-Vpn client ipsec parameters. This parameter value can be constructed using PS command let:New-AzureRmVpnClientIpsecParameters
+### -VpnClientIPsecParameter
+Vpn client ipsec parameters. This parameter value can be constructed using PS command let:New-AzureRmVpnClientIpsecParameter
 
 ```yaml
 Type: PSVpnClientIPsecParameters
@@ -125,8 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -137,7 +137,6 @@ This cmdlet accepts pipelined instances of the **Microsoft.Azure.Commands.Networ
 
 ###  
 This cmdlet modifies existing instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters** object.
-
 
 ## NOTES
 

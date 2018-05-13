@@ -18,7 +18,8 @@ Creates a Virtual Network Gateway
 New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
  [-IpConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration]>]
  [-GatewayType <String>] [-VpnType <String>] [-EnableBgp <Boolean>] [-EnableActiveActiveFeature]
- [-GatewaySku <String>] [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
+ [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
+ [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
  [-VpnClientProtocol <System.Collections.Generic.List`1[System.String]>]
  [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
  [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
@@ -32,7 +33,8 @@ New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Loc
 New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location <String>
  [-IpConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration]>]
  [-GatewayType <String>] [-VpnType <String>] [-EnableBgp <Boolean>] [-EnableActiveActiveFeature]
- [-GatewaySku <String>] [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
+ [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
+ [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
  [-VpnClientProtocol <System.Collections.Generic.List`1[System.String]>]
  [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
  [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
@@ -40,21 +42,6 @@ New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Loc
  [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] -RadiusServerAddress <String>
  -RadiusServerSecret <SecureString> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### SetByResource
-```
-New-AzureRmVirtualNetworkGateway
- [-IpConfigurations <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration]>]
- [-GatewayType <String>] [-VpnType <String>] [-EnableBgp <Boolean>] [-EnableActiveActiveFeature]
- [-GatewaySku <String>] [-GatewayDefaultSite <PSLocalNetworkGateway>]
- [-VpnClientAddressPool <System.Collections.Generic.List`1[System.String]>]
- [-VpnClientProtocol <System.Collections.Generic.List`1[System.String]>]
- [-VpnClientRootCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]>]
- [-VpnClientRevokedCertificates <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]>]
- [-VpnClientIpsecPolicy <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]>]
- [-Asn <UInt32>] [-PeerWeight <Int32>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -221,7 +208,7 @@ Accept wildcard characters: False
 ### -GatewayDefaultSite
 ```yaml
 Type: PSLocalNetworkGateway
-Parameter Sets: SetByResource
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -275,7 +262,7 @@ Accept wildcard characters: False
 ### -Location
 ```yaml
 Type: String
-Parameter Sets: Default, RadiusServerConfiguration
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -288,7 +275,7 @@ Accept wildcard characters: False
 ### -Name
 ```yaml
 Type: String
-Parameter Sets: Default, RadiusServerConfiguration
+Parameter Sets: (All)
 Aliases: ResourceName
 
 Required: True
@@ -342,7 +329,7 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 ```yaml
 Type: String
-Parameter Sets: Default, RadiusServerConfiguration
+Parameter Sets: (All)
 Aliases:
 
 Required: True

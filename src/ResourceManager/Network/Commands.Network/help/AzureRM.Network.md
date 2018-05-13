@@ -50,11 +50,11 @@ Adds an array of URL path mappings to a backend server pool.
 ### [Add-AzureRmExpressRouteCircuitAuthorization](Add-AzureRmExpressRouteCircuitAuthorization.md)
 Adds an ExpressRoute circuit authorization.
 
+### [Add-AzureRmExpressRouteCircuitConnectionConfig](Add-AzureRmExpressRouteCircuitConnectionConfig.md)
+Adds a circuit connection configuration to Private Peering of an Express Route Circuit. 
+
 ### [Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
-
-### [Add-AzureRmExpressRouteCircuitConnectionConfig](Add-AzureRmExpressRouteCircuitConnectionConfig.md) 
-Adds a circuit connection configuration to Private Peering of an ExpressRoute circuit.
 
 ### [Add-AzureRmLoadBalancerBackendAddressPoolConfig](Add-AzureRmLoadBalancerBackendAddressPoolConfig.md)
 Adds a backend address pool configuration to a load balancer.
@@ -168,7 +168,7 @@ Gets the WAF configuration of an application gateway.
 Gets an application security group.
 
 ### [Get-AzureRmBgpServiceCommunity](Get-AzureRmBgpServiceCommunity.md)
-Gets a BGP service community resource.
+
 
 ### [Get-AzureRmDdosProtectionPlan](Get-AzureRmDdosProtectionPlan.md)
 Gets a DDoS protection plan.
@@ -188,11 +188,11 @@ Gets the ARP table from an ExpressRoute circuit.
 ### [Get-AzureRmExpressRouteCircuitAuthorization](Get-AzureRmExpressRouteCircuitAuthorization.md)
 Gets information about ExpressRoute circuit authorizations.
 
+### [Get-AzureRmExpressRouteCircuitConnectionConfig](Get-AzureRmExpressRouteCircuitConnectionConfig.md)
+Gets an ExpressRoute circuit connection configuration associated with Private Peering of ExpressRouteCircuit.
+
 ### [Get-AzureRmExpressRouteCircuitPeeringConfig](Get-AzureRmExpressRouteCircuitPeeringConfig.md)
 Gets an ExpressRoute circuit peering configuration.
-
-### [Get-AzureRmExpressRouteCircuitConnectionConfig](Get-AzureRmExpressRouteCircuitConnectionConfig.md) 
-Gets an ExpressRoute circuit connection configuration. 
 
 ### [Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
 Gets a route table from an ExpressRoute circuit.
@@ -334,6 +334,9 @@ Gets virtual network current usage.
 
 ### [Get-AzureRmVpnClientConfiguration](Get-AzureRmVpnClientConfiguration.md)
 Allows users to easily download the Vpn Profile package that was generated using the New-AzureRmVpnClientConfiguration commandlet.
+
+### [Get-AzureRmVpnClientIpsecParameter](Get-AzureRmVpnClientIpsecParameter.md)
+Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
 
 ### [Get-AzureRmVpnClientPackage](Get-AzureRmVpnClientPackage.md)
 Gets information about a VPN client package.
@@ -509,6 +512,12 @@ Creates a virtual network subnet configuration.
 ### [New-AzureRmVpnClientConfiguration](New-AzureRmVpnClientConfiguration.md)
 This command allows the users to create the Vpn profile package based on pre-configured vpn settings on the VPN gateway, in addition to some additional settings that users may need to configure, for e.g. some root certificates.
 
+### [New-AzureRmVpnClientIpsecParameter](New-AzureRmVpnClientIpsecParameter.md)
+This command allows the users to create the Vpn ipsec parameters object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the existing VPN gateway.
+
+### [New-AzureRmVpnClientIpsecPolicy](New-AzureRmVpnClientIpsecPolicy.md)
+This command allows the users to create the Vpn ipsec policy object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the VPN gateway. This command let output object is used to set vpn ipsec policy for both new / exisitng gateway.
+
 ### [New-AzureRmVpnClientRevokedCertificate](New-AzureRmVpnClientRevokedCertificate.md)
 Creates a new VPN client-revocation certificate.
 
@@ -572,11 +581,11 @@ Removes an ExpressRoute circuit.
 ### [Remove-AzureRmExpressRouteCircuitAuthorization](Remove-AzureRmExpressRouteCircuitAuthorization.md)
 Removes an existing ExpressRoute configuration authorization.
 
+### [Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md)
+Removes an ExpressRoute circuit connection configuration.
+
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
-
-### [Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md) 
-Removes an ExpressRoute circuit connection configuration. 
 
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
@@ -658,6 +667,12 @@ Removes the default site from a virtual network gateway.
 
 ### [Remove-AzureRmVirtualNetworkSubnetConfig](Remove-AzureRmVirtualNetworkSubnetConfig.md)
 Removes a subnet configuration from a virtual network.
+
+### [Remove-AzureRmVpnClientIpsecParameter](Remove-AzureRmVpnClientIpsecParameter.md)
+{{Fill in the Synopsis}}
+
+### [Remove-AzureRmVpnClientIpsecParameter](Remove-AzureRmVpnClientIpsecParameter.md)
+Deletes the set vpn ipsec parameters set on the Virtual Network Gateway
 
 ### [Remove-AzureRmVpnClientRevokedCertificate](Remove-AzureRmVpnClientRevokedCertificate.md)
 Removes a VPN client-revocation certificate.
@@ -808,6 +823,12 @@ Configures a virtual network peering.
 
 ### [Set-AzureRmVirtualNetworkSubnetConfig](Set-AzureRmVirtualNetworkSubnetConfig.md)
 Configures the goal state for a subnet configuration in a virtual network.
+
+### [Set-AzureRmVpnClientIpsecParameter](Set-AzureRmVpnClientIpsecParameter.md)
+{{Fill in the Synopsis}}
+
+### [Set-AzureRmVpnClientIpsecParameter](Set-AzureRmVpnClientIpsecParameter.md)
+Sets the vpn ipsec parameters for existing virtual network gateway.
 
 ### [Start-AzureRmApplicationGateway](Start-AzureRmApplicationGateway.md)
 Starts an application gateway.

@@ -23,7 +23,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set,
-         "AzureRmVpnClientIpsecParameters",
+         "AzureRmVpnClientIpsecParameter",
          DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default,
          SupportsShouldProcess = true),
      OutputType(typeof(PSVpnClientIPsecParameters))]
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "Vpn client ipsec parameters")]
         [ValidateNotNull]
-        public PSVpnClientIPsecParameters VpnClientIPsecParameters { get; set; }
+        public PSVpnClientIPsecParameters VpnClientIPsecParameter { get; set; }
 
         public override void Execute()
         {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // Map to the sdk object
-            var vpnClientIPsecParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnClientIPsecParameters>(this.VpnClientIPsecParameters);
+            var vpnClientIPsecParametersModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VpnClientIPsecParameters>(this.VpnClientIPsecParameter);
 
             string shouldProcessMessage = string.Format("Execute Set-AzureRmVpnClientIpsecParameters for ResourceGroupName {0} VirtualNetworkGateway {1}", this.ResourceGroupName, this.VirtualNetworkGatewayName);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Set))

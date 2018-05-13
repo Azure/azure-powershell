@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvpnclientipsecparameters
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermvpnclientipsecparameter
 schema: 2.0.0
 ---
 
-# New-AzureRmVpnClientIpsecParameters
+# New-AzureRmVpnClientIpsecParameter
 
 ## SYNOPSIS
 This command allows the users to create the Vpn ipsec parameters object specifying one or all values such as IpsecEncryption,IpsecIntegrity,IkeEncryption,IkeIntegrity,DhGroup,PfsGroup to set on the existing VPN gateway.
@@ -13,9 +13,9 @@ This command allows the users to create the Vpn ipsec parameters object specifyi
 ## SYNTAX
 
 ```
-New-AzureRmVpnClientIpsecParameters [-SALifeTimeSeconds <Int32>] [-SADataSizeKilobytes <Int32>]
- [-IpsecEncryption <String>] [-IpsecIntegrity <String>] [-IkeEncryption <String>] [-IkeIntegrity <String>]
- [-DhGroup <String>] [-PfsGroup <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmVpnClientIpsecParameter [-SALifeTime <Int32>] [-SADataSize <Int32>] [-IpsecEncryption <String>]
+ [-IpsecIntegrity <String>] [-IkeEncryption <String>] [-IkeIntegrity <String>] [-DhGroup <String>]
+ [-PfsGroup <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ This command allows the users to create the Vpn ipsec parameters object specifyi
 
 ### Example 1
 ```
-PS C:\> $vpnclientipsecparams1 = New-AzureRmVpnClientIpsecParameters -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86473 -SADataSizeKilobytes 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
+PS C:\> $vpnclientipsecparams1 = New-AzureRmVpnClientIpsecParameter -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86473 -SADataSize 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
 ```
 
 This cmdlet is used to create the vpn ipsec parameters object using the passed one or all parameters' values which user can set for any existing Virtual network gateway in ResourceGroup.
@@ -143,7 +143,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SADataSizeKilobytes
+### -SADataSize
 The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB
 
 ```yaml
@@ -158,7 +158,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SALifeTimeSeconds
+### -SALifeTime
 The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds
 
 ```yaml
@@ -173,19 +173,46 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters
-
 
 ## NOTES
 
