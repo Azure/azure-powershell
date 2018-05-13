@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvpnclientipsecparameters
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermvpnclientipsecparameter
 schema: 2.0.0
 ---
 
-# Get-AzureRmVpnClientIpsecParameters
+# Get-AzureRmVpnClientIpsecParameter
 
 ## SYNOPSIS
 Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
@@ -13,20 +13,20 @@ Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site c
 ## SYNTAX
 
 ```
-Get-AzureRmVpnClientIpsecParameters [-Name <String>] -ResourceGroupName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmVpnClientIpsecParameter [-Name <String>] -ResourceGroupName <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
 
-The **Get-AzureRmVpnClientIpsecParameters** cmdlet returns the object of your vpn ipsec parameters set on gateway in Azure based on Gateway Name and Resource Group Name.
+The **Get-AzureRmVpnClientIpsecParameter** cmdlet returns the object of your vpn ipsec parameters set on gateway in Azure based on Gateway Name and Resource Group Name.
 
 ## EXAMPLES
 
 ### 1: Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
 ```
-Get-AzureRmVpnClientIpsecParameters -Name myGateway -ResourceGroupName myRG
+Get-AzureRmVpnClientIpsecParameter -Name myGateway -ResourceGroupName myRG
 ```
 
 Returns the object of the vpn ipsec parameters set on the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
@@ -79,18 +79,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters
-
 
 ## NOTES
 

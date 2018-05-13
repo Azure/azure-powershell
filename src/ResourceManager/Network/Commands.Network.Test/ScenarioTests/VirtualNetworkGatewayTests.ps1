@@ -664,7 +664,7 @@ param
 	  $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
 
       # Create IkeV2 virtualnetworkgateway with custom Ipsec policy specified
-	  $vpnclientipsecpolicy1 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86471 -SADataSizeKilobytes 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
+	  $vpnclientipsecpolicy1 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
       $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol IkeV2 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientIpsecPolicy $vpnclientipsecpolicy1
 
 	  # Get virtualnetworkgateway
@@ -683,7 +683,7 @@ param
 	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup
             
       # Update P2S VPNClient Configuration :- custom Ipsec policy
-	  $vpnclientipsecpolicy2 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86472 -SADataSizeKilobytes 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
+	  $vpnclientipsecpolicy2 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86472 -SADataSize 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
 	  $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -VpnClientIpsecPolicy $vpnclientipsecpolicy2
 	  Assert-AreEqual $vpnclientipsecpolicy2.SALifeTimeSeconds $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].SALifeTimeSeconds
 	  Assert-AreEqual $vpnclientipsecpolicy2.SADataSizeKilobytes $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].SADataSizeKilobytes
@@ -694,12 +694,12 @@ param
 	  Assert-AreEqual $vpnclientipsecpolicy2.DhGroup $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].DhGroup
 	  Assert-AreEqual $vpnclientipsecpolicy2.PfsGroup $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup
 	  
-	  # Update P2S VPNClient Configuration :- custom Ipsec policy by using new API:- Set-AzureRmVpnClientIpsecParameters
-	  $vpnclientipsecparams1 = New-AzureRmVpnClientIpsecParameters -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTimeSeconds 86473 -SADataSizeKilobytes 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
-	  $setvpnIpsecParams = Set-AzureRmVpnClientIpsecParameters -VirtualNetworkGatewayName $rname -ResourceGroupName $rgname -VpnClientIPsecParameters $vpnclientipsecparams1
+	  # Update P2S VPNClient Configuration :- custom Ipsec policy by using new API:- Set-AzureRmVpnClientIpsecParameter
+	  $vpnclientipsecparams1 = New-AzureRmVpnClientIpsecParameter -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86473 -SADataSize 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
+	  $setvpnIpsecParams = Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName $rname -ResourceGroupName $rgname -VpnClientIPsecParameter $vpnclientipsecparams1
 	  
-	  # Get P2S VPNClient Configuration :- set custom Ipsec policy using new API:- Get-AzureRmVpnClientIpsecParameters
-	  $vpnIpsecParams = Get-AzureRmVpnClientIpsecParameters -Name $rname -ResourceGroupName $rgname
+	  # Get P2S VPNClient Configuration :- set custom Ipsec policy using new API:- Get-AzureRmVpnClientIpsecParameter
+	  $vpnIpsecParams = Get-AzureRmVpnClientIpsecParameter -Name $rname -ResourceGroupName $rgname
 	  Assert-AreEqual $vpnclientipsecparams1.SALifeTimeSeconds $vpnIpsecParams.SALifeTimeSeconds
 	  Assert-AreEqual $vpnclientipsecparams1.SADataSizeKilobytes $vpnIpsecParams.SADataSizeKilobytes
 	  Assert-AreEqual $vpnclientipsecparams1.IpsecEncryption $vpnIpsecParams.IpsecEncryption
@@ -720,8 +720,8 @@ param
 	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].DhGroup $vpnIpsecParams.DhGroup
 	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup $vpnIpsecParams.PfsGroup
 
-	  # Remove custom Ipsec policy set from P2S VPNClient Configuration using new API:- Remove-AzureRmVpnClientIpsecParameters
-	  $delete = Remove-AzureRmVpnClientIpsecParameters -ResourceGroupName $rgname -VirtualNetworkGatewayName $rname -Force
+	  # Remove custom Ipsec policy set from P2S VPNClient Configuration using new API:- Remove-AzureRmVpnClientIpsecParameter
+	  $delete = Remove-AzureRmVpnClientIpsecParameter -ResourceGroupName $rgname -VirtualNetworkGatewayName $rname -Force
 	  Assert-AreEqual $True $delete
 	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 	  Assert-AreEqual 0 @($expected.VpnClientConfiguration.VpnClientIpsecPolicies).Count

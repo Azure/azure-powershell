@@ -5,21 +5,31 @@ ms.assetid: 59692f1f-9f1e-4a3c-8200-312c3806a9b7
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecircuitconnectionconfig
 schema: 2.0.0
 ---
+
 # Get-AzureRmExpressRouteCircuitConnectionConfig
 
 ## SYNOPSIS
 Gets an ExpressRoute circuit connection configuration associated with Private Peering of ExpressRouteCircuit.
+
+## SYNTAX
+
+```
+Get-AzureRmExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
 
 ## DESCRIPTION
 The **Get-AzureRmExpressRouteCircuitConnectionConfig** cmdlet retrieves the configuration of a circuit connection
 associated with Private Peering for an ExpressRoute circuit.
 
 ## EXAMPLES
+
 ### Example 1: Display the circuit connection configuration for an ExpressRoute circuit
 ```
 $circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Get-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 ```
+
 ### Example 2: Get circuit connection resource associated with an ExpressRoute Circuit using piping
 ```
 Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Get-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName
@@ -48,10 +58,10 @@ The ExpressRoute circuit object containing the circuit connection configuration.
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -63,10 +73,10 @@ The name of the circuit connection configuration to be retrieved.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -85,6 +95,7 @@ Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' fr
 ### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitConnection
 
 ## NOTES
+
 ## RELATED LINKS
 
 [Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)

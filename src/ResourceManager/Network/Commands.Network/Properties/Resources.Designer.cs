@@ -482,5 +482,16 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to VirtualNetworkGatewayVpnClientIpsecPolicy.
+        /// </summary>
+        public static string VirtualNetworkGatewayVpnClientIpsecPolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("VirtualNetworkGatewayVpnClientIpsecPolicy", resourceCulture);
+            }
+        }
     }
 }

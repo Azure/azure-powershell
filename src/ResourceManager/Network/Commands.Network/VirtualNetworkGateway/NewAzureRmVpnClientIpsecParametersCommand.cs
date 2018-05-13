@@ -19,20 +19,20 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVpnClientIpsecParameters"), OutputType(typeof(PSVpnClientIPsecParameters))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVpnClientIpsecParameter", SupportsShouldProcess = true), OutputType(typeof(PSVpnClientIPsecParameters))]
     public class NewAzureRmVpnClientIpsecParametersCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
             HelpMessage = "The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds")]
         [ValidateRange(300, 172799)]
-        public int SALifeTimeSeconds { get; set; }
+        public int SALifeTime { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "The Vpnclient IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB")]
         [ValidateRange(1024, int.MaxValue)]
-        public int SADataSizeKilobytes { get; set; }
+        public int SADataSize { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -110,28 +110,32 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            var vpnclientIPsecParameters = new PSVpnClientIPsecParameters();
 
-            // default SA values
-            vpnclientIPsecParameters.SaLifeTimeSeconds = (!this.MyInvocation.BoundParameters.ContainsKey("SaLifeTimeSeconds")) ? 7200 : this.SALifeTimeSeconds;
-            vpnclientIPsecParameters.SaDataSizeKilobytes = (!this.MyInvocation.BoundParameters.ContainsKey("SaDataSizeKilobytes")) ? 104857600 : this.SADataSizeKilobytes;
-
-            vpnclientIPsecParameters.IpsecEncryption = (!this.MyInvocation.BoundParameters.ContainsKey("IpsecEncryption")) ? MNM.IpsecEncryption.GCMAES256 : this.IpsecEncryption;
-            vpnclientIPsecParameters.IpsecIntegrity = (!this.MyInvocation.BoundParameters.ContainsKey("IpsecIntegrity")) ? MNM.IpsecIntegrity.GCMAES256 : this.IpsecIntegrity;
-
-            // GCM matching check
-            if ((vpnclientIPsecParameters.IpsecEncryption.Contains("GCM") || vpnclientIPsecParameters.IpsecIntegrity.Contains("GCM"))
-                && vpnclientIPsecParameters.IpsecEncryption != vpnclientIPsecParameters.IpsecIntegrity)
+            if (ShouldProcess(Properties.Resources.CreatingResourceMessage + Properties.Resources.VirtualNetworkGatewayVpnClientIpsecPolicy))
             {
-                throw new ArgumentException("Vpnclient IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
+                var vpnclientIPsecParameters = new PSVpnClientIPsecParameters();
+
+                // default SA values
+                vpnclientIPsecParameters.SaLifeTimeSeconds = (!this.MyInvocation.BoundParameters.ContainsKey("SaLifeTime")) ? 7200 : this.SALifeTime;
+                vpnclientIPsecParameters.SaDataSizeKilobytes = (!this.MyInvocation.BoundParameters.ContainsKey("SaDataSize")) ? 104857600 : this.SADataSize;
+
+                vpnclientIPsecParameters.IpsecEncryption = (!this.MyInvocation.BoundParameters.ContainsKey("IpsecEncryption")) ? MNM.IpsecEncryption.GCMAES256 : this.IpsecEncryption;
+                vpnclientIPsecParameters.IpsecIntegrity = (!this.MyInvocation.BoundParameters.ContainsKey("IpsecIntegrity")) ? MNM.IpsecIntegrity.GCMAES256 : this.IpsecIntegrity;
+
+                // GCM matching check
+                if ((vpnclientIPsecParameters.IpsecEncryption.Contains("GCM") || vpnclientIPsecParameters.IpsecIntegrity.Contains("GCM"))
+                    && vpnclientIPsecParameters.IpsecEncryption != vpnclientIPsecParameters.IpsecIntegrity)
+                {
+                    throw new ArgumentException("Vpnclient IpsecEncryption and IpsecIntegrity must use matching GCM algorithms");
+                }
+
+                vpnclientIPsecParameters.IkeEncryption = (!this.MyInvocation.BoundParameters.ContainsKey("IkeEncryption")) ? MNM.IkeEncryption.AES256 : this.IkeEncryption;
+                vpnclientIPsecParameters.IkeIntegrity = (!this.MyInvocation.BoundParameters.ContainsKey("IkeIntegrity")) ? MNM.IkeIntegrity.SHA256 : this.IkeIntegrity;
+                vpnclientIPsecParameters.DhGroup = (!this.MyInvocation.BoundParameters.ContainsKey("DhGroup")) ? MNM.DhGroup.DHGroup24 : this.DhGroup;
+                vpnclientIPsecParameters.PfsGroup = (!this.MyInvocation.BoundParameters.ContainsKey("PfsGroup")) ? MNM.PfsGroup.PFS24 : this.PfsGroup;
+
+                WriteObject(vpnclientIPsecParameters);
             }
-
-            vpnclientIPsecParameters.IkeEncryption = (!this.MyInvocation.BoundParameters.ContainsKey("IkeEncryption")) ? MNM.IkeEncryption.AES256 : this.IkeEncryption;
-            vpnclientIPsecParameters.IkeIntegrity = (!this.MyInvocation.BoundParameters.ContainsKey("IkeIntegrity")) ? MNM.IkeIntegrity.SHA256 : this.IkeIntegrity;
-            vpnclientIPsecParameters.DhGroup = (!this.MyInvocation.BoundParameters.ContainsKey("DhGroup")) ? MNM.DhGroup.DHGroup24 : this.DhGroup;
-            vpnclientIPsecParameters.PfsGroup = (!this.MyInvocation.BoundParameters.ContainsKey("PfsGroup")) ? MNM.PfsGroup.PFS24 : this.PfsGroup;
-
-            WriteObject(vpnclientIPsecParameters);
         }
     }
 }
