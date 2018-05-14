@@ -37,17 +37,6 @@ function Test-ExpressRouteCrossConnectionApis
       # Verify that an associated cross connection is created
       $crossConnectionName = $circuit.ServiceKey
       $crossConnectionResourceGroupName = "CrossConnection-SiliconValley"
-      #$crossConnection = Get-AzureRMExpressRouteCrossConnection -Name $crossConnectionName -ResourceGroupName $crossConnectionResourceGroupName
-
-      #Assert-IsNull $crossConnection
-
-      #Verify List all cmdlet
-      #$crossConnectionsAll = Get-AzureRMExpressRouteCrossConnection
-      #Assert-AreEqual 0 @($crossConnectionsAll).Count
-
-      #Verify List by resource group cmdlet
-      #$crossConnectionsByRg = Get-AzureRMExpressRouteCrossConnection -ResourceGroupName $crossConnectionResourceGroupName
-      #Assert-AreEqual 0 @($crossConnectionsByRg).Count
     }
     finally
     {

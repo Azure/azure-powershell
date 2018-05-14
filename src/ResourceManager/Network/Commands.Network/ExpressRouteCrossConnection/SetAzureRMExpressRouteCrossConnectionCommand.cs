@@ -44,24 +44,24 @@ namespace Microsoft.Azure.Commands.Network
 
             ConfirmAction(
                Force.IsPresent,
-               string.Format(Properties.Resources.OverwritingResource, this.ExpressRouteCrossConnection.Name),
+               string.Format(Properties.Resources.OverwritingResource, ExpressRouteCrossConnection.Name),
                Properties.Resources.CreatingResourceMessage,
-               this.ExpressRouteCrossConnection.Name,
+               ExpressRouteCrossConnection.Name,
                () =>
                {
-                   if (!this.IsExpressRouteCrossConnectionPresent(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name))
+                   if (!IsExpressRouteCrossConnectionPresent(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name))
                    {
                        throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
                    }
 
                    // Map to the sdk object
-                   var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCrossConnection>(this.ExpressRouteCrossConnection);
-                   crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCrossConnection.Tag, validate: true);
+                   var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCrossConnection>(ExpressRouteCrossConnection);
+                   crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(ExpressRouteCrossConnection.Tag, validate: true);
 
                    // Execute the Update ExpressRouteCrossConnection call
-                   this.ExpressRouteCrossConnectionClient.CreateOrUpdate(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name, crossConnectionModel);
+                   ExpressRouteCrossConnectionClient.CreateOrUpdate(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name, crossConnectionModel);
 
-                   var getExpressRouteCircuit = this.GetExpressRouteCrossConnection(this.ExpressRouteCrossConnection.ResourceGroupName, this.ExpressRouteCrossConnection.Name);
+                   var getExpressRouteCircuit = GetExpressRouteCrossConnection(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name);
                    WriteObject(getExpressRouteCircuit);
                });
         }
