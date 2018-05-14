@@ -28,7 +28,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Power down a scale unit node.
 
 #>
-function Stop-AzsScaleUnitNode {
+function Submit-AzsScaleUnitNodeForceShutdown {
     param(
         [Parameter(Mandatory = $true)]
         [System.String]
