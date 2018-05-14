@@ -528,7 +528,6 @@ function Test-DataLakeStoreFileSystem
 		Export-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $targetFile
 		$downloadedFileInfo = Get-ChildItem $targetFile
 		Assert-AreEqual $($content.length*2) $downloadedFileInfo.length
-		Remove-Item -path $targetFile -force -confirm:$false
 		
 		# move a file
 		$result = Move-AzureRMDataLakeStoreItem -Account $accountName -Path $concatFile -Destination $moveFile
@@ -562,14 +561,16 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $result.FileCount 1
 
 		# Export DiskUsage
-		Export-AzureRmDataLakeStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile
-		$result = Get-ChildItem $targetFile
-		Assert-NotNull $result "Target file was not created"
-		Remove-Item -path $targetFile -force -confirm:$false
+		$targetFile = "/DuOutputFile"
+		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile -SaveToAdl
+		$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $targetFile
+		Assert-NotNull $result "No file was created on export properties"
 
 		# delete a file
-		Assert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
-		Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFile}
+		Assert-True {Remove-AdlStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $moveFile}
+		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $targetFile -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $targetFile}
 		
 		# delete a folder
 		Assert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} "Remove folder failed"
