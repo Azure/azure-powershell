@@ -382,7 +382,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             {
                 // do not write errors for problems with adding git repository
                 var repoPath = GitRepositoryPath ?? SessionState?.Path?.CurrentFileSystemLocation?.Path;
-                adapter.WriteWarning(string.Format(Properties.Resources.GitRemoteAddFailure, repoPath, exception.Message));
+                adapter.WriteWarning(string.Format(
+                    Properties.Resources.GitRemoteAddFailure,
+                    repoPath,
+                    exception.Message));
             }
             adapter.WriteObject(output);
         }
