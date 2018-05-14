@@ -58,8 +58,23 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string CopyLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the requested Sku for the copy
+        /// Gets or sets the SkuName of the database
         /// </summary>
-        public Sku Sku { get; set; }
+        public string SkuName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition of the database
+        /// </summary>
+        public string Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Family of the database
+        /// </summary>
+        public string Family { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Capacity of the database
+        /// </summary>
+        public int? Capacity { get; set; }
     }
 }

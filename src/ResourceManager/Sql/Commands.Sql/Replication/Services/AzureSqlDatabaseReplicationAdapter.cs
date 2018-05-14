@@ -144,7 +144,13 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 SourceDatabaseId = string.Format(AzureReplicationLinkModel.SourceIdTemplate, _subscription.Id.ToString(),
                         model.ResourceGroupName, model.ServerName, model.DatabaseName),
                 ElasticPoolId = elasticPoolId,
-                Sku = model.Sku
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Management.Sql.Models.Sku()
+                {
+                    Name = model.SkuName,
+                    Tier = model.Edition,
+                    Family = model.Family,
+                    Capacity = model.Capacity
+                }
             });
 
             return CreateDatabaseCopyModelFromResponse(model.CopyResourceGroupName, model.CopyServerName, model.ResourceGroupName,
@@ -259,7 +265,13 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     model.ResourceGroupName, model.ServerName, model.DatabaseName),
                 CreateMode = Management.Sql.Models.CreateMode.Secondary,
                 ElasticPoolId = elasticPoolId,
-                Sku = model.SecondarySku,
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Management.Sql.Models.Sku()
+                {
+                    Name = model.SkuName,
+                    Tier = model.Edition,
+                    Family = model.Family,
+                    Capacity = model.Capacity
+                }
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
