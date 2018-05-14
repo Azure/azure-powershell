@@ -43,11 +43,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         public string SecondaryServiceObjectiveName { get; set; }
 
         /// <summary>
-        /// Gets or sets the requested Sku for the partner
-        /// </summary>
-        public Sku SecondarySku { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the Elastic Pool the partner is in
         /// </summary>
         public string SecondaryElasticPoolName { get; set; }
@@ -86,5 +81,25 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the location of the partner database
         /// </summary>
         public string PartnerLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SkuName of the database
+        /// </summary>
+        public string SkuName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition of the database
+        /// </summary>
+        public string Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Family of the database
+        /// </summary>
+        public string Family { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Capacity of the database
+        /// </summary>
+        public int? Capacity { get; set; }
     }
 }

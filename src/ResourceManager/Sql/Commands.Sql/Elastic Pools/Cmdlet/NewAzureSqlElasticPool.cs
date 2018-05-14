@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the total shared DTU for the Sql Azure Elastic Pool.
         /// </summary>
         [Parameter(ParameterSetName = DtuPoolParameterSet, Mandatory = false,
-            HelpMessage = "The total shared DTU for the Sql Azure Elastic Pool.")]
+            HelpMessage = "The total shared DTU for the Azure SQL Elastic Pool.")]
         [ValidateNotNullOrEmpty]
         public int Dtu { get; set; }
 
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the storage limit for the Sql Azure Elastic Pool in MB.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The storage limit for the Sql Azure Elastic Pool in MB.")]
+            HelpMessage = "The storage limit for the Azure SQL Elastic Pool in MB.")]
         [ValidateNotNullOrEmpty]
         public int StorageMB { get; set; }
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the minimum DTU all Sql Azure Databases are guaranteed.
         /// </summary>
         [Parameter(ParameterSetName = DtuPoolParameterSet, Mandatory = false,
-            HelpMessage = "The minimum DTU all Sql Azure Databases are guaranteed.")]
+            HelpMessage = "The minimum DTU all Azure SQL Databases are guaranteed.")]
         [ValidateNotNullOrEmpty]
         public int DatabaseDtuMin { get; set; }
 
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the maximum DTU any one Sql Azure Database can consume.
         /// </summary>
         [Parameter(ParameterSetName = DtuPoolParameterSet, Mandatory = false,
-            HelpMessage = "The maximum DTU any one Sql Azure Database can consume.")]
+            HelpMessage = "The maximum DTU any one Azure SQL Database can consume.")]
         [ValidateNotNullOrEmpty]
         public int DatabaseDtuMax { get; set; }
 
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the total shared VCore number for the Sql Azure Elastic Pool.
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
-            HelpMessage = "The total shared number of Vcore for the Sql Azure Elastic Pool.")]
+            HelpMessage = "The total shared number of Vcore for the Azure SQL Elastic Pool.")]
         [ValidateNotNullOrEmpty]
         public int VCore { get; set; }
 
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         ///   (Available ComputeGeneration in the format of: Gen4, Gen5).
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
-            HelpMessage = "The compute generation for the Sql Azure Elastic Pool. e.g. 'Gen4', 'Gen5'.")]
+            HelpMessage = "The compute generation for the Azure SQL Elastic Pool. e.g. 'Gen4', 'Gen5'.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Gen4", "Gen5")]
         public string ComputeGeneration { get; set; }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the minimum vcore any database can consume in the pool.
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
-            HelpMessage = "The minimum VCore number any SqlAzure Database can consume in the pool.")]
+            HelpMessage = "The minimum VCore number any Azure SQL Database can consume in the pool.")]
         [ValidateNotNullOrEmpty]
         public double DatabaseVCoreMin { get; set; }
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the maximum vcore any database can consume in the pool.
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
-            HelpMessage = "The maxmium VCore number any SqlAzure Database can consume in the pool.")]
+            HelpMessage = "The maxmium VCore number any Azure SQL Database can consume in the pool.")]
         [ValidateNotNullOrEmpty]
         public double DatabaseVCoreMax { get; set; }
 
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the tags associated with the Azure Sql Elastic Pool
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Elastic Pool")]
+            HelpMessage = "The tags to associate with the Azure SQL Elastic Pool")]
         [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the zone redundant option to assign to the Azure SQL Elastic Pool
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The zone redundancy to associate with the Azure Sql Elastic Pool")]
+            HelpMessage = "The zone redundancy to associate with the Azure SQL Elastic Pool")]
         public SwitchParameter ZoneRedundant { get; set; }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 if (!string.IsNullOrWhiteSpace(edition))
                 {
-                    newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition);
+                    newModel.CurrentServiceLevelObjectiveName = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition);
                     newModel.Edition = edition;
                     newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null;
                 }
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             }
             else
             {
-                newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(Edition);
+                newModel.CurrentServiceLevelObjectiveName = AzureSqlElasticPoolAdapter.GetPoolSkuName(Edition);
                 newModel.Edition = Edition;
                 newModel.Capacity = VCore;
                 newModel.Family = ComputeGeneration;

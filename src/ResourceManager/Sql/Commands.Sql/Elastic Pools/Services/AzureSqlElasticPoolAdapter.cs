@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Sku()
+                Sku = string.IsNullOrWhiteSpace(model.CurrentServiceLevelObjectiveName) ? null : new Sku()
                 {
-                    Name = model.SkuName,
+                    Name = model.CurrentServiceLevelObjectiveName,
                     Tier = model.Edition,
                     Family = model.Family,
                     Capacity = model.Capacity
@@ -134,9 +134,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Sku()
+                Sku = string.IsNullOrWhiteSpace(model.CurrentServiceLevelObjectiveName) ? null : new Sku()
                 {
-                    Name = model.SkuName,
+                    Name = model.CurrentServiceLevelObjectiveName,
                     Tier = model.Edition,
                     Family = model.Family,
                     Capacity = model.Capacity
@@ -403,8 +403,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Dtu = pool.Dtu,
                 DatabaseDtuMin = pool.DatabaseDtuMin,
                 DatabaseDtuMax = pool.DatabaseDtuMax,
-                Family = pool.Sku.Family,
-                SkuName = pool.Sku.Name
+                Family = pool.Sku.Family
             };
 
             return model;
@@ -423,9 +422,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The sku name</returns>
         public static string GetPoolSkuName(string tier)
         {
-            if (string.IsNullOrWhiteSpace(tier))
-                return null;
-
             if (string.IsNullOrWhiteSpace(tier))
                 return null;
 

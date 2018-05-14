@@ -182,30 +182,22 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 if (!string.IsNullOrWhiteSpace(SecondaryServiceObjectiveName))
                 {
-                    linkModel.SecondarySku = new Management.Sql.Models.Sku()
-                    {
-                        Name = SecondaryServiceObjectiveName
-                    };
+                    linkModel.SkuName = SecondaryServiceObjectiveName;
                 }
                 else if(string.IsNullOrWhiteSpace(SecondaryElasticPoolName))
                 {
-                    linkModel.SecondarySku = new Management.Sql.Models.Sku()
-                    {
-                        Name = primaryDb.CurrentServiceObjectiveName,
-                        Tier = primaryDb.Edition,
-                        Capacity = primaryDb.Capacity
-                    };
+                    linkModel.SkuName = primaryDb.CurrentServiceObjectiveName;
+                    linkModel.Edition = primaryDb.Edition;
+                    linkModel.Capacity = primaryDb.Capacity;
+                    linkModel.Family = primaryDb.Family;
                 }
             }
             else
             {
-                linkModel.SecondarySku = new Management.Sql.Models.Sku()
-                {
-                    Name = primaryDb.SkuName,
-                    Tier = primaryDb.Edition,
-                    Capacity = SecondaryVCore,
-                    Family = SecondaryComputeGeneration
-                };
+                linkModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(primaryDb.Edition);
+                linkModel.Edition = primaryDb.Edition;
+                linkModel.Capacity = SecondaryVCore;
+                linkModel.Family = SecondaryComputeGeneration;
             }
 
             newEntity.Add(linkModel);

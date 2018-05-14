@@ -192,30 +192,22 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             {
                 if (!string.IsNullOrWhiteSpace(ServiceObjectiveName))
                 {
-                    copyModel.Sku = new Management.Sql.Models.Sku()
-                    {
-                        Name = ServiceObjectiveName
-                    };
+                    copyModel.SkuName = ServiceObjectiveName;
                 }
                 else if(string.IsNullOrWhiteSpace(ElasticPoolName))
                 {
-                    copyModel.Sku = new Management.Sql.Models.Sku()
-                    {
-                        Name = sourceDb.CurrentServiceObjectiveName,
-                        Tier = sourceDb.Edition,
-                        Capacity = sourceDb.Capacity
-                    };
+                    copyModel.SkuName = sourceDb.CurrentServiceObjectiveName;
+                    copyModel.Edition = sourceDb.Edition;
+                    copyModel.Capacity = sourceDb.Capacity;
+                    copyModel.Family = sourceDb.Family;
                 }
             }
             else
             {
-                copyModel.Sku = new Management.Sql.Models.Sku()
-                {
-                    Name = AzureSqlDatabaseAdapter.GetDatabaseSkuName(sourceDb.Edition),
-                    Tier = sourceDb.Edition,
-                    Capacity = VCore,
-                    Family = ComputeGeneration
-                };
+                copyModel.SkuName = AzureSqlDatabaseAdapter.GetDatabaseSkuName(sourceDb.Edition);
+                copyModel.Edition = sourceDb.Edition;
+                copyModel.Capacity = VCore;
+                copyModel.Family = ComputeGeneration;
             }           
 
             newEntity.Add(copyModel);
