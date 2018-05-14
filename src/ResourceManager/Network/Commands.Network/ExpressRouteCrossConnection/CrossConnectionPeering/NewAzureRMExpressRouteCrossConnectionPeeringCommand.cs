@@ -47,27 +47,27 @@ namespace Microsoft.Azure.Commands.Network
                {
                    var peering = new PSExpressRouteCrossConnectionPeering();
 
-                   peering.Name = this.Name;
-                   peering.PeeringType = this.PeeringType;
-                   peering.PeerASN = this.PeerASN;
-                   peering.VlanId = this.VlanId;
+                   peering.Name = Name;
+                   peering.PeeringType = PeeringType;
+                   peering.PeerASN = PeerASN;
+                   peering.VlanId = VlanId;
 
-                   if (!string.IsNullOrEmpty(this.SharedKey))
+                   if (!string.IsNullOrEmpty(SharedKey))
                    {
-                       peering.SharedKey = this.SharedKey;
+                       peering.SharedKey = SharedKey;
                    }
 
-                   if (this.PeerAddressType == IPv6)
+                   if (PeerAddressType == IPv6)
                    {
-                       this.SetIpv6PeeringParameters(peering);
+                       SetIpv6PeeringParameters(peering);
                    }
                    else
                    {
                        // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
-                       this.SetIpv4PeeringParameters(peering);
+                       SetIpv4PeeringParameters(peering);
                    }
 
-                   this.ConstructMicrosoftConfig(peering);
+                   ConstructMicrosoftConfig(peering);
 
                    WriteObject(peering);
                });

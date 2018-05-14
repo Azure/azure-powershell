@@ -23,26 +23,6 @@ New-AzureRmExpressRouteCrossConnectionPeering -Name <String> -PeeringType <Strin
  [<CommonParameters>]
 ```
 
-### MicrosoftPeeringConfigRoutFilterId
-```
-New-AzureRmExpressRouteCrossConnectionPeering -Name <String> -PeeringType <String> -PeerASN <UInt32>
- -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### MicrosoftPeeringConfigRoutFilter
-```
-New-AzureRmExpressRouteCrossConnectionPeering -Name <String> -PeeringType <String> -PeerASN <UInt32>
- -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-PeerAddressType <String>] [-LegacyMode <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **New-AzureRmExpressRouteCrossConnectionPeering** cmdlet adds a peering configuration to an
 ExpressRoute cross connection.
@@ -61,19 +41,6 @@ $parameters = @{
     VlanId  = 200
 }
 $PeerConfig = New-AzureRmExpressRouteCrossConnectionPeering @parameters
-
-$parameters = @{
-    Name='ExpressRouteCrossConnection'
-    ResourceGroupName='ExpressRouteResourceGroup'
-    Location='West US'
-    SkuTier='Standard'
-    SkuFamily='MeteredData'
-    ServiceProviderName='Equinix'
-    Peering=$PeerConfig
-    PeeringLocation='Silicon Valley'
-    BandwidthInMbps=200
-}
-New-AzureRmExpressRouteCrossConnectionPeering @parameters
 ```
 
 ## PARAMETERS

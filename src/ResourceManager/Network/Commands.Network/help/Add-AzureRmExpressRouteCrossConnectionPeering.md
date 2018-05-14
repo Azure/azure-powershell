@@ -24,28 +24,6 @@ Add-AzureRmExpressRouteCrossConnectionPeering -Name <String> -ExpressRouteCrossC
  [<CommonParameters>]
 ```
 
-### MicrosoftPeeringConfigRoutFilterId
-```
-Add-AzureRmExpressRouteCrossConnectionPeering -Name <String> -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### MicrosoftPeeringConfigRoutFilter
-```
-Add-AzureRmExpressRouteCrossConnectionPeering -Name <String> -ExpressRouteCrossConnection <PSExpressRouteCrossConnection>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
- [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
- [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
- [-PeerAddressType <String>] [-LegacyMode <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Add-AzureRmExpressRouteCrossConnectionPeering** cmdlet adds a peering configuration to an
 ExpressRoute cross connection. Note that, after running

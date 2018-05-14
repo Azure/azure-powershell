@@ -39,15 +39,15 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-            if (!string.IsNullOrEmpty(this.Name))
+            if (!string.IsNullOrEmpty(Name))
             {
-                var peering = this.ExpressRouteCrossConnection.Peerings.First(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+                var peering = ExpressRouteCrossConnection.Peerings.First(resource => string.Equals(resource.Name, Name, System.StringComparison.CurrentCultureIgnoreCase));
 
                 WriteObject(peering);
             }
             else
             {
-                var peerings = this.ExpressRouteCrossConnection.Peerings;
+                var peerings = ExpressRouteCrossConnection.Peerings;
                 WriteObject(peerings, true);
             }
         }
