@@ -37,8 +37,8 @@ function Test-CreateElasticPool
 		Assert-AreEqual	Standard $ep1.Edition
 		Assert-AreEqual StandardPool $ep1.CurrentServiceLevelObjectiveName
 		Assert-AreEqual 200 $ep1.Capacity
-		Assert-AreEqual 10 $ep1.MinCapacity
-		Assert-AreEqual 100 $ep1.MaxCapacity
+		Assert-AreEqual 10 $ep1.DatabaseCapacityMin
+		Assert-AreEqual 100 $ep1.DatabaseCapacityMax
 
         # Create a pool using piping and default values
         $poolName = Get-ElasticPoolName
@@ -75,8 +75,8 @@ function Test-CreateVcoreElasticPool
 		Assert-AreEqual GP_Gen4 $ep1.CurrentServiceLevelObjectiveName
 		Assert-AreEqual GeneralPurpose $ep1.Edition
 		Assert-AreEqual 2 $ep1.Capacity
-		Assert-AreEqual 0.1 $ep1.MinCapacity
-		Assert-AreEqual 2.0 $ep1.MaxCapacity
+		Assert-AreEqual 0.1 $ep1.DatabaseCapacityMin
+		Assert-AreEqual 2.0 $ep1.DatabaseCapacityMax
 
 		# Create BC_Gen4_1 elastic pool which is not supported and check the error Message
 		$poolName = Get-ElasticPoolName
@@ -162,8 +162,8 @@ function Test-UpdateElasticPool
         Assert-AreEqual 429496729600 $sep1.MaxSizeBytes
         Assert-AreEqual Standard $sep1.Edition
 		Assert-AreEqual StandardPool $sep1.CurrentServiceLevelObjectiveName
-        Assert-AreEqual 0 $sep1.MinCapacity
-        Assert-AreEqual 50 $sep1.MaxCapacity
+        Assert-AreEqual 0 $sep1.DatabaseCapacityMin
+        Assert-AreEqual 50 $sep1.DatabaseCapacityMax
 
         # Update a pool using piping
         $sep2 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -Dtu 200 `
@@ -174,8 +174,8 @@ function Test-UpdateElasticPool
         Assert-AreEqual 214748364800 $sep2.MaxSizeBytes
         Assert-AreEqual Standard $sep2.Edition
 		Assert-AreEqual StandardPool $sep2.CurrentServiceLevelObjectiveName
-        Assert-AreEqual 10 $sep2.MinCapacity
-        Assert-AreEqual 50 $sep2.MaxCapacity
+        Assert-AreEqual 10 $sep2.DatabaseCapacityMin
+        Assert-AreEqual 50 $sep2.DatabaseCapacityMax
     }
     finally
     {
@@ -219,8 +219,8 @@ function Test-UpdateVcoreElasticPool
         Assert-AreEqual 429496729600 $sep1.MaxSizeBytes
         Assert-AreEqual Standard $sep1.Edition
 		Assert-AreEqual StandardPool $sep1.CurrentServiceLevelObjectiveName
-        Assert-AreEqual 0 $sep1.MinCapacity
-        Assert-AreEqual 50 $sep1.MaxCapacity
+        Assert-AreEqual 0 $sep1.DatabaseCapacityMin
+        Assert-AreEqual 50 $sep1.DatabaseCapacityMax
 
         # Update a Dtu pool to Vcore pool using piping
         $sep2 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 2 `
@@ -231,19 +231,19 @@ function Test-UpdateVcoreElasticPool
         Assert-AreEqual 214748364800 $sep2.MaxSizeBytes
         Assert-AreEqual GeneralPurpose $sep2.Edition
 		Assert-AreEqual GP_Gen4 $sep2.CurrentServiceLevelObjectiveName
-        Assert-AreEqual 0 $sep2.MinCapacity
-        Assert-AreEqual 2 $sep2.MaxCapacity
+        Assert-AreEqual 0 $sep2.DatabaseCapacityMin
+        Assert-AreEqual 2 $sep2.DatabaseCapacityMax
 
 		# Update VCore pool only on DatabaseVCoreMin
 		$sep3 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -DatabaseVCoreMin 0.1
 		Assert-NotNull $sep3
-		Assert-AreEqual 0.1 $sep3.MinCapacity
+		Assert-AreEqual 0.1 $sep3.DatabaseCapacityMin
 
 		# Update Vcore pool only on VCores
 		$sep4 = $server | Set-AzureRmSqlElasticPool -ElasticPoolName $ep2.ElasticPoolName -VCore 1
 		Assert-NotNull $sep4
 		Assert-AreEqual 1 $sep4.Capacity
-		Assert-AreEqual 0.1 $sep4.MinCapacity
+		Assert-AreEqual 0.1 $sep4.DatabaseCapacityMin
     }
     finally
     {
@@ -313,8 +313,8 @@ function Test-GetElasticPool
         Assert-AreEqual 200 $ep1.Capacity
         Assert-AreEqual 204800 $ep1.StorageMB
         Assert-AreEqual Standard $ep1.Edition
-        Assert-AreEqual 10 $ep1.MinCapacity
-        Assert-AreEqual 100 $ep1.MaxCapacity
+        Assert-AreEqual 10 $ep1.DatabaseCapacityMin
+        Assert-AreEqual 100 $ep1.DatabaseCapacityMax
 
         # Create a pool using piping
         $gep2 = $ep2 | Get-AzureRmSqlElasticPool
@@ -322,8 +322,8 @@ function Test-GetElasticPool
         Assert-AreEqual 400 $ep2.Capacity 
         Assert-AreEqual 409600 $ep2.StorageMB
         Assert-AreEqual Standard $ep2.Edition
-        Assert-AreEqual 0 $ep2.MinCapacity
-        Assert-AreEqual 100 $ep2.MaxCapacity
+        Assert-AreEqual 0 $ep2.DatabaseCapacityMin
+        Assert-AreEqual 100 $ep2.DatabaseCapacityMax
 
         $all = $server | Get-AzureRmSqlElasticPool
         Assert-AreEqual $all.Count 2

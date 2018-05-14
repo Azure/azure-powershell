@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Sku = new Sku()
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Sku()
                 {
                     Name = model.SkuName,
                     Tier = model.Edition,
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Sku = new Sku()
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Sku()
                 {
                     Name = model.SkuName,
                     Tier = model.Edition,
