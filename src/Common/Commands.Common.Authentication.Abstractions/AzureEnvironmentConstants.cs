@@ -142,5 +142,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
         public const string ChinaBatchEndpointResourceId = "https://batch.chinacloudapi.cn/";
         public const string USGovernmentBatchEndpointResourceId = "https://batch.core.usgovcloudapi.net/";
         public const string GermanBatchEndpointResourceId = "https://batch.cloudapi.de/";
+        public const string StorageOAuthEndpointResourceId = "https://storage.azure.com";
     }
 }

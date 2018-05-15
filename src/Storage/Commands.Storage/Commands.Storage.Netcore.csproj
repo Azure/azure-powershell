@@ -28,8 +28,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.2.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.2" />
   </ItemGroup>
 
   <ItemGroup>
