@@ -22,7 +22,7 @@
 * Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with "Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy".
 * Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
 * The updated cmdlets including: 
-	- NewSet-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
 	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
 	- New-AzureRmSqlDatabaseCopy
 	- New-AzureRmSqlDatabaseSecondary
