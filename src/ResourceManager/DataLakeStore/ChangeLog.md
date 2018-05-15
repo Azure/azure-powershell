@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix example for Export-AzureRmDataLakeStoreChildItemProperties
 * Fix null parameter exception for Recurse case in Set-AzureRmDataLakeStoreItemAclEntry 
 * Fix the help files for Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl, Remove-AzureRmDataLakeStoreItemAclEntry 
 
