@@ -35,7 +35,7 @@ function Test-CreateElasticPool
 
         Assert-NotNull $ep1
 		Assert-AreEqual	Standard $ep1.Edition
-		Assert-AreEqual StandardPool $ep1.CurrentServiceLevelObjectiveName
+		Assert-AreEqual StandardPool $ep1.SkuName
 		Assert-AreEqual 200 $ep1.Capacity
 		Assert-AreEqual 10 $ep1.DatabaseCapacityMin
 		Assert-AreEqual 100 $ep1.DatabaseCapacityMax
@@ -72,7 +72,7 @@ function Test-CreateVcoreElasticPool
 		$ep1 = $job.Output
 
 		Assert-NotNull $ep1
-		Assert-AreEqual GP_Gen4 $ep1.CurrentServiceLevelObjectiveName
+		Assert-AreEqual GP_Gen4 $ep1.SkuName
 		Assert-AreEqual GeneralPurpose $ep1.Edition
 		Assert-AreEqual 2 $ep1.Capacity
 		Assert-AreEqual 0.1 $ep1.DatabaseCapacityMin
@@ -161,7 +161,7 @@ function Test-UpdateElasticPool
         Assert-AreEqual 400 $sep1.Capacity 
         Assert-AreEqual 429496729600 $sep1.MaxSizeBytes
         Assert-AreEqual Standard $sep1.Edition
-		Assert-AreEqual StandardPool $sep1.CurrentServiceLevelObjectiveName
+		Assert-AreEqual StandardPool $sep1.SkuName
         Assert-AreEqual 0 $sep1.DatabaseCapacityMin
         Assert-AreEqual 50 $sep1.DatabaseCapacityMax
 
@@ -173,7 +173,7 @@ function Test-UpdateElasticPool
         Assert-AreEqual 200 $sep2.Capacity 
         Assert-AreEqual 214748364800 $sep2.MaxSizeBytes
         Assert-AreEqual Standard $sep2.Edition
-		Assert-AreEqual StandardPool $sep2.CurrentServiceLevelObjectiveName
+		Assert-AreEqual StandardPool $sep2.SkuName
         Assert-AreEqual 10 $sep2.DatabaseCapacityMin
         Assert-AreEqual 50 $sep2.DatabaseCapacityMax
     }
@@ -218,7 +218,7 @@ function Test-UpdateVcoreElasticPool
         Assert-AreEqual 400 $sep1.Capacity 
         Assert-AreEqual 429496729600 $sep1.MaxSizeBytes
         Assert-AreEqual Standard $sep1.Edition
-		Assert-AreEqual StandardPool $sep1.CurrentServiceLevelObjectiveName
+		Assert-AreEqual StandardPool $sep1.SkuName
         Assert-AreEqual 0 $sep1.DatabaseCapacityMin
         Assert-AreEqual 50 $sep1.DatabaseCapacityMax
 
@@ -230,7 +230,7 @@ function Test-UpdateVcoreElasticPool
         Assert-AreEqual 2 $sep2.Capacity 
         Assert-AreEqual 214748364800 $sep2.MaxSizeBytes
         Assert-AreEqual GeneralPurpose $sep2.Edition
-		Assert-AreEqual GP_Gen4 $sep2.CurrentServiceLevelObjectiveName
+		Assert-AreEqual GP_Gen4 $sep2.SkuName
         Assert-AreEqual 0 $sep2.DatabaseCapacityMin
         Assert-AreEqual 2 $sep2.DatabaseCapacityMax
 

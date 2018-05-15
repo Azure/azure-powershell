@@ -189,10 +189,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
             var elasticPool = ModelAdapter.GetElasticPool(ResourceGroupName, ServerName, ElasticPoolName);
             
-            // For ElasticPool, Sku name is same with ServiceObjectiveName
             Management.Sql.Models.Sku poolCurrentSku = new Management.Sql.Models.Sku()
             {
-                Name = elasticPool.CurrentServiceLevelObjectiveName, 
+                Name = elasticPool.SkuName, 
                 Tier = elasticPool.Edition,
                 Family = elasticPool.Family,
                 Capacity = elasticPool.Capacity
@@ -209,7 +208,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 {
                     string edition = string.IsNullOrWhiteSpace(Edition) ? poolCurrentSku.Tier : Edition;
 
-                    newModel.CurrentServiceLevelObjectiveName = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition);
+                    newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition);
                     newModel.Edition = edition;
                     newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null;
                 }
@@ -226,7 +225,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 {
                     string skuTier = string.IsNullOrWhiteSpace(Edition) ? poolCurrentSku.Tier : Edition;
 
-                    newModel.CurrentServiceLevelObjectiveName = AzureSqlElasticPoolAdapter.GetPoolSkuName(skuTier);
+                    newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(skuTier);
                     newModel.Edition = skuTier;
                     newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : poolCurrentSku.Capacity;
                     newModel.Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? poolCurrentSku.Family : ComputeGeneration;
