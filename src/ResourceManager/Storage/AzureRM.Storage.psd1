@@ -120,9 +120,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support get the Storage resource usage of a specific location
-        - Get-AzureRmStorageUsage
-        * Support create Storage Context with OAuth.
+        ReleaseNotes = '* Support create Storage Context with OAuth.
         - The PR pending change：
         - Change to signed package
         - Use AuthenticationFactory in Powershell to replace ADAL reference.'
