@@ -25,7 +25,11 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
             Context = context;
         }
 
-        public IAzureContext Context { get; private set; }
+        public IAzureContext Context { get; }
+
+        public string SubscriptionId
+            => Context.Subscription.Id;
+
         public T GetClient<T>() where T : ServiceClient<T>
         {
             return AzureSession.Instance.ClientFactory.CreateArmClient<T>(Context, AzureEnvironment.Endpoint.ResourceManager);

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRmVm` and `New-AzureRmVmss` simple parameter set has the `OutputTemplateFile` parameter.
 
 ## Version 5.0.0
 * `New-AzureRmVm` and `New-AzureRmVmss` support verbose output of parameters

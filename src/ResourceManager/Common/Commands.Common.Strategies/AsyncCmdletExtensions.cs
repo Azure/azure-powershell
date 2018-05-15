@@ -12,10 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies.Json;
+using Microsoft.Azure.Commands.Common.Strategies.Templates;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -42,32 +46,82 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <param name="asyncCmdlet">Asynchronous cmdlet interface.</param>
         /// <param name="cancellationToken">Cancellation token.</param>
         /// <returns></returns>
-        public static async Task<TModel> RunAsync<TModel>(
+        public static async Task<TModel> RunAsync<TModel, TResourceGroup>(
             this IClient client,
-            string subscriptionId,
-            IParameters<TModel> parameters,
+            IParameters<TModel, TResourceGroup> parameters,
             IAsyncCmdlet asyncCmdlet)
             where TModel : class
+            where TResourceGroup : class
         {
+            var resourceGroup = parameters.CreateResourceGroup();
+
             // create a DAG of configs.
-            var config = await parameters.CreateConfigAsync();
+            var config = await parameters.CreateConfigAsync(resourceGroup);
             // read current Azure state.
             var current = await config.GetStateAsync(client, asyncCmdlet.CancellationToken);
             // update location.
             parameters.Location =
                 parameters.Location ?? current.GetLocation(config) ?? parameters.DefaultLocation;
             // update a DAG of configs.
-            config = await parameters.CreateConfigAsync();
-            // create a target.
-            var target = config.GetTargetState(
-                current, new SdkEngine(subscriptionId), parameters.Location);
-            // print paramaters to a verbose stream.
+            config = await parameters.CreateConfigAsync(resourceGroup);
+
             foreach (var p in asyncCmdlet.Parameters)
             {
                 asyncCmdlet.WriteVerbose(p.Key + " = " + ToPowerShellString(p.Value));
             }
 
-            // apply the target state
+            if (parameters.OutputTemplateFile != null)
+            {
+                // create target state
+                var templateEngine = new TemplateEngine(client);
+
+                var emptyCurrent = new State();
+
+                var fullTarget = config.GetTargetState(
+                    emptyCurrent, templateEngine, parameters.Location);
+
+                var template = config.CreateTemplate(client, fullTarget, templateEngine);
+                template.parameters = templateEngine
+                    .Parameters
+                    .ToDictionary(
+                        kv => kv.Key,
+                        kv => kv.Value);
+                template.outputs = new Dictionary<string, Output>
+                {
+                    {
+                        "result",
+                        new Output
+                        {
+                            type = "object",
+                            value =
+                                "[reference('"
+                                + config.GetIdFromResourceGroup().IdToString() +
+                                "', '" +
+                                config.Strategy.GetApiVersion(client) +
+                                "')]"
+                        }
+                    }
+                };
+                var templateResult = new Converters().Serialize(template).ToString();
+                File.WriteAllText(parameters.OutputTemplateFile, templateResult, Encoding.UTF8);
+
+                /*
+                // deployment
+                return await DeployTemplateAsync(
+                    client,
+                    asyncCmdlet,
+                    resourceGroup,
+                    fullTarget,
+                    templateEngine,
+                    template,
+                    config);
+                    */
+            }
+
+            var engine = new SdkEngine(client.SubscriptionId);
+            var target = config.GetTargetState(current, engine, parameters.Location);
+
+            // apply target state
             var newState = await config.UpdateStateAsync(
                 client,
                 target,
@@ -199,8 +253,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public void ReportTaskProgress(ITaskProgress taskProgress)
                 => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
-
-
         }
     }
 }

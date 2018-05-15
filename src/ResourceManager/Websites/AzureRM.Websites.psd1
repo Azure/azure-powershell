@@ -54,8 +54,8 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll', 
-               '.\Microsoft.Azure.Commands.Common.Strategies.3.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll',
+               '.\Microsoft.Azure.Commands.Common.Strategies.4.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -147,7 +147,7 @@ PrivateData = @{
         # Prerelease = ''
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

@@ -20,6 +20,8 @@ using System.Linq;
 using System.Collections.Generic;
 using System;
 using Microsoft.Azure.Commands.Common.Strategies;
+using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -43,8 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             IEnumerable<NestedResourceConfig<InboundNatPool, LoadBalancer>> inboundNatPools,
             ResourceConfig<NetworkSecurityGroup> networkSecurityGroup,
             ImageAndOsType imageAndOsType,
-            string adminUsername,
-            string adminPassword,
+            Credential credential,
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
@@ -64,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     Sku = new Azure.Management.Compute.Models.Sku()
                     {
                         Capacity = instanceCount,
-                        Name = vmSize,
+                        Name = engine.GetParameterValue(Parameter.Create("vmSize", vmSize)),
                     },
                     Identity = identity,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
@@ -74,8 +75,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             ComputerNamePrefix = name.Substring(0, Math.Min(name.Length, 9)),
                             WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
                             LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
-                            AdminUsername = adminUsername,
-                            AdminPassword = adminPassword,
+                            AdminUsername = engine.GetParameterValue(credential.AdminUserName),
+                            AdminPassword = engine.GetParameterValue(credential.AdminPassword),
                         },
                         StorageProfile = new VirtualMachineScaleSetStorageProfile
                         {

@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             Func<TModel, int> createTime)
             where TModel : Resource
             => ResourceStrategy.Create(
-                new ResourceType("Microsoft.Network", provider),
-                getOperations,
-                getAsync,
-                createOrUpdateAsync,
-                model => model.Location, 
-                (model, location) => model.Location = location,
-                createTime,
-                true);
+                type: new ResourceType("Microsoft.Network", provider),
+                getApiVersion: _ => "2017-10-01",
+                getOperations: getOperations,
+                getAsync: getAsync,
+                createOrUpdateAsync: createOrUpdateAsync,
+                getLocation: model => model.Location, 
+                setLocation: (model, location) => model.Location = location,
+                createTime: createTime);
 
         public static TModel GetReference<TModel, TParentModel>(
             this IEngine engine, NestedResourceConfig<TModel, TParentModel> config)

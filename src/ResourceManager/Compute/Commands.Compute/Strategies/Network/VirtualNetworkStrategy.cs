@@ -38,11 +38,15 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: _ => new VirtualNetwork
+                createModel: engine => new VirtualNetwork
                 {
                     AddressSpace = new AddressSpace
                     {
-                        AddressPrefixes = new[] { addressPrefix }
+                        AddressPrefixes = new[] 
+                        {
+                            engine.GetParameterValue(Parameter.Create(
+                                "vnetAddressPrefix", addressPrefix))
+                        }
                     }
                 });
     }

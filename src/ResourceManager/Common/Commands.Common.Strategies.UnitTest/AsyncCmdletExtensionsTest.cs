@@ -12,13 +12,15 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
     {
         class Client : IClient
         {
+            public string SubscriptionId => "subscription";
+
             public T GetClient<T>() where T : ServiceClient<T>
                 => null;
         }
 
         class RG { }
 
-        class Parameters : IParameters<RG>
+        class Parameters : IParameters<RG, RG>
         {
             public string DefaultLocation => "eastus";
 
@@ -34,19 +36,25 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 }
             }
 
-            public async Task<ResourceConfig<RG>> CreateConfigAsync()
+            public string OutputTemplateFile
+                => null;
+
+            public async Task<ResourceConfig<RG>> CreateConfigAsync(ResourceConfig<RG> resourceGroupConfig)
                 => new ResourceConfig<RG>(
                     new ResourceStrategy<RG>(
-                        null, 
+                        null,
+                        null,
                         async (c, p) => new RG(),
                         null,
                         null,
-                        null,
-                        false),
+                        null),
                     null,
                     null,
                     null,
                     null);
+
+            public ResourceConfig<RG> CreateResourceGroup()
+                => null;
         }
 
         class AsyncCmdlet : IAsyncCmdlet
@@ -99,7 +107,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var parameters = new Parameters();
             var asyncCmdlet = new AsyncCmdlet();
 
-            await client.RunAsync("subscriptionId", parameters, asyncCmdlet);
+            await client.RunAsync(parameters, asyncCmdlet);
         }
     }
 }

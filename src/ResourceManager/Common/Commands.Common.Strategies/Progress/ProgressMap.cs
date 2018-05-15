@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Common.Strategies
+namespace Microsoft.Azure.Commands.Common.Strategies.Progress
 {
     /// <summary>
     /// The map keeps information about relation between a task progress and a progress of all tasks.

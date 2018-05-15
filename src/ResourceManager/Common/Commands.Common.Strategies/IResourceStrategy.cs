@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
     /// <summary>
@@ -20,5 +22,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public interface IResourceStrategy : IEntityStrategy
     {
         ResourceType Type { get; }
+
+        /// <summary>
+        /// Returns an API version.
+        /// </summary>
+        Func<IClient, string> GetApiVersion { get; }
     }
 }

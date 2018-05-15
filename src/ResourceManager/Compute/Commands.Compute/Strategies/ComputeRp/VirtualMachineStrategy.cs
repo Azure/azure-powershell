@@ -18,6 +18,8 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
+using System.Management.Automation;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -41,8 +43,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string name,
             ResourceConfig<NetworkInterface> networkInterface,
             ImageAndOsType imageAndOsType,
-            string adminUsername,
-            string adminPassword,
+            Credential credential,
             string size,
             ResourceConfig<AvailabilitySet> availabilitySet,
             VirtualMachineIdentity identity,
@@ -58,8 +59,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         ComputerName = name,
                         WindowsConfiguration = imageAndOsType.CreateWindowsConfiguration(),
                         LinuxConfiguration = imageAndOsType.CreateLinuxConfiguration(),
-                        AdminUsername = adminUsername,
-                        AdminPassword = adminPassword,
+                        AdminUsername = engine.GetParameterValue(credential.AdminUserName),
+                        AdminPassword = engine.GetParameterValue(credential.AdminPassword),
                     },
                     Identity = identity,
                     NetworkProfile = new NetworkProfile
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     },
                     HardwareProfile = new HardwareProfile
                     {
-                        VmSize = size
+                        VmSize = engine.GetParameterValue(Parameter.Create("vmSize", size))
                     },
                     StorageProfile = new StorageProfile
                     {

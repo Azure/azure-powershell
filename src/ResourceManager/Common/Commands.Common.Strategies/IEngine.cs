@@ -17,5 +17,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     public interface IEngine
     {
         string GetId(IEntityConfig config);
+
+        string GetParameterValue<T>(Parameter<T> parameter);
     }
 }

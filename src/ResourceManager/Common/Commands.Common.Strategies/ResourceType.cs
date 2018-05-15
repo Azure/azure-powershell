@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <summary>
         /// A resource type provider, for example 'virtualNetworks'.
         /// </summary>
-        public string Provider { get; }
+        public string Provider { get; } 
 
         public ResourceType(string namespace_, string provider)
         {

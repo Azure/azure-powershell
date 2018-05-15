@@ -27,5 +27,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             Dependencies.GetOrAdd(id, config);
             return id;
         }
+
+        public string GetParameterValue<T>(Parameter<T> parameter)
+            => null;
     }
 }

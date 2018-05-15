@@ -12,7 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Concurrent;
 using System.Linq;
+using System.Net;
+using System.Security;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
@@ -32,5 +36,18 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             => new[] { ResourceId.Subscriptions, _SubscriptionId } 
                 .Concat(config.GetIdFromSubscription()) 
                 .IdToString();
+
+        public string GetParameterValue<T>(Parameter<T> parameter)
+        {
+            var value = parameter.Value;
+            if (value == null)
+            {
+                return null;
+            }
+            var secureValue = value as SecureString;
+            return secureValue != null
+                ? new NetworkCredential(string.Empty, secureValue).Password
+                : value.ToString();
+        }
     }
 }

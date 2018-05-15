@@ -20,13 +20,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// Describes Azure operation parameter and a target resource.
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public interface IParameters<TModel>
+    public interface IParameters<TModel, TResourceGroup>
         where TModel : class
+        where TResourceGroup : class
     {
         /// <summary>
         /// Azure location. For example, "eastus".
         /// </summary>
         string Location { get; set; }
+
+        ResourceConfig<TResourceGroup> CreateResourceGroup();
 
         /// <summary>
         /// Default location. It's used if Location is null and it can't be infered.
@@ -37,6 +40,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// Create an Azure resource configuration according to the parameters.
         /// </summary>
         /// <returns></returns>
-        Task<ResourceConfig<TModel>> CreateConfigAsync();
+        Task<ResourceConfig<TModel>> CreateConfigAsync(
+            ResourceConfig<TResourceGroup> resourceGroupConfig);
+
+        string OutputTemplateFile { get; }
     }
 }

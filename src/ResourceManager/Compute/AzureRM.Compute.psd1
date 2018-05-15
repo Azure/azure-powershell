@@ -54,15 +54,15 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.0.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.dll', 
-               '.\Microsoft.Azure.Management.KeyVault.dll', 
-               '.\Microsoft.Azure.Management.Storage.dll', 
-               '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
-               '.\Microsoft.Data.Services.Client.dll', 
-               '.\Microsoft.WindowsAzure.Commands.Sync.dll', 
-               '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll', 
-               '.\Microsoft.Azure.Commands.Common.Strategies.3.dll'
+RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.dll',
+               '.\Microsoft.Azure.Management.KeyVault.dll',
+               '.\Microsoft.Azure.Management.Storage.dll',
+               '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll',
+               '.\Microsoft.Data.Services.Client.dll',
+               '.\Microsoft.WindowsAzure.Commands.Sync.dll',
+               '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll',
+               '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll',
+               '.\Microsoft.Azure.Commands.Common.Strategies.4.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -71,8 +71,8 @@ RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.d
 TypesToProcess = '.\Microsoft.Azure.Commands.Compute.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Compute.format.ps1xml', 
-               '.\Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
+FormatsToProcess = '.\Microsoft.Azure.Commands.Compute.format.ps1xml',
+               '.\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',
                '.\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
@@ -236,7 +236,7 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module

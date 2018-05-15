@@ -32,6 +32,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             => virtualNetwork.CreateNested(
                 strategy: Strategy,
                 name: name,
-                createModel: _ => new Subnet { Name = name, AddressPrefix = addressPrefix });
+                createModel: engine => new Subnet
+                {
+                    Name = name,
+                    AddressPrefix = engine.GetParameterValue(Parameter.Create(
+                        "subnetAddressPrefix", addressPrefix))
+                });
     }
 }

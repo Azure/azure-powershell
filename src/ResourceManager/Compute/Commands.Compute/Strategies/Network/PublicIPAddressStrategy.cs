@@ -49,12 +49,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: _ => new PublicIPAddress
+                createModel: engine => new PublicIPAddress
                 {
                     PublicIPAllocationMethod = allocationMethod,
                     DnsSettings = new PublicIPAddressDnsSettings
                     {
-                        DomainNameLabel = domainNameLabel,
+                        DomainNameLabel = engine.GetParameterValue(Parameter.Create(
+                            "domainNameLabel", domainNameLabel)),
                     },
                     Sku = new PublicIPAddressSku
                     {
