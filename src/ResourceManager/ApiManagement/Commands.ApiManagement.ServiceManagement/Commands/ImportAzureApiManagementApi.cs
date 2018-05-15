@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 throw new InvalidOperationException(string.Format("ParameterSetName '{0}' not supported", ParameterSetName));
             }
 
-            var api = Client.ApiById(Context, apiId);
+            var api = Client.ApiById(Context.ResourceGroupName, Context.ServiceName, apiId);
             WriteObject(api);
         }
     }

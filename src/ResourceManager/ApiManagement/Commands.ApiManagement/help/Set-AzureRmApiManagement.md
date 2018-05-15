@@ -13,7 +13,7 @@ Updates an Azure Api Management service
 ## SYNTAX
 
 ```
-Set-AzureRmApiManagement -ApiManagement <PsApiManagement> [-AssignIdentity] [-AsJob] [-PassThru]
+Set-AzureRmApiManagement -InputObject <PsApiManagement> [-AssignIdentity] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -54,25 +54,10 @@ PS C:\>$proxyCustomConfig = @($proxy1,$proxy2)
 PS C:\>$apim = Get-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 PS C:\>$apim.PortalCustomHostnameConfiguration = $portal
 PS C:\>$apim.ProxyCustomHostnameConfiguration = $proxyCustomConfig 
-PS C:\>Set-AzureRmApiManagement -ApiManagement $apim -AssignIdentity
+PS C:\>Set-AzureRmApiManagement -InputObject $apim -AssignIdentity
 ```
 
 ## PARAMETERS
-
-### -ApiManagement
-The ApiManagement instance.
-
-```yaml
-Type: PsApiManagement
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run cmdlet in the background
@@ -116,6 +101,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The ApiManagement instance.
+
+```yaml
+Type: PsApiManagement
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

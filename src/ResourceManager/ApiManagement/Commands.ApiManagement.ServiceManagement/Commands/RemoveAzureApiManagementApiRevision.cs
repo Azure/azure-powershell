@@ -23,11 +23,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet(VerbsCommon.Remove,
         Constants.ApiManagementApiRevision, 
-        SupportsShouldProcess = true)]
-    [OutputType(typeof(bool))]
+        SupportsShouldProcess = true, DefaultParameterSetName = ByApiIdParameterSet)]
+    [OutputType(typeof(bool), ParameterSetName = new [] { ByApiIdParameterSet, ByInputObjectParameterSet })]
     public class RemoveAzureApiManagementApiRevision : AzureApiManagementCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByApiIdParameterSet = "ByApiId";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         [Parameter(
+            ParameterSetName = ByApiIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
@@ -35,6 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
+            ParameterSetName = ByApiIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of the API. This parameter is required.")]
@@ -42,11 +51,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String ApiId { get; set; }
         
         [Parameter(
+            ParameterSetName = ByApiIdParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of the API Revision. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiRevision { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementApiRelease. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementApi InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -55,8 +73,26 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiRevisionRemoveDescription, ApiId, ApiRevision);
-            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiRevisionRemoveWarning, ApiId, ApiRevision);
+            string apiId = ApiId;
+            string apiRevision = ApiRevision;
+            string resourceGroupName;
+            string serviceName;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
+            {
+                apiId = InputObject.ApiId;
+                apiRevision = InputObject.ApiRevision;
+                resourceGroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+            }
+            else
+            {
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+            }
+
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiRevisionRemoveDescription, apiId, apiRevision);
+            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiRevisionRemoveWarning, apiId, apiRevision);
 
             // Do nothing if force is not specified and user cancelled the operation
             if (!ShouldProcess(
@@ -67,8 +103,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            string id = ApiId.ApiRevisionIdentifier(ApiRevision);
-            Client.ApiRemoveRevision(Context, id);
+            string id = apiId.ApiRevisionIdentifier(apiRevision);
+            Client.ApiRemoveRevision(resourceGroupName, serviceName, id);
 
             if (PassThru.IsPresent)
             {

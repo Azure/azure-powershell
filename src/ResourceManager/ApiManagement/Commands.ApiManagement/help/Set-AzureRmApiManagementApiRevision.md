@@ -21,10 +21,10 @@ Set-AzureRmApiManagementApiRevision -ApiRevision <String> -Context <PsApiManagem
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByValue
+### ByInputObject
 ```
-Set-AzureRmApiManagementApiRevision -Context <PsApiManagementContext> -ApiObject <PsApiManagementApi>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmApiManagementApiRevision -InputObject <PsApiManagementApi> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,22 +55,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApiObject
-Instance of PsApiManagementApi.
-This parameter is required.
-
-```yaml
-Type: PsApiManagementApi
-Parameter Sets: ByValue
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -130,7 +114,7 @@ This parameter is required.
 
 ```yaml
 Type: PsApiManagementContext
-Parameter Sets: (All)
+Parameter Sets: ExpandedParameter
 Aliases:
 
 Required: True
@@ -168,6 +152,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Instance of PsApiManagementApi. This parameter is required.
+
+```yaml
+Type: PsApiManagementApi
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

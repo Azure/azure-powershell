@@ -19,11 +19,10 @@ Update-AzureRmApiManagementApiRelease -Context <PsApiManagementContext> -Release
  [<CommonParameters>]
 ```
 
-### ByValue
+### ByInputObject
 ```
-Update-AzureRmApiManagementApiRelease -Context <PsApiManagementContext>
- [-ApiRelease <PsApiManagementApiRelease>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzureRmApiManagementApiRelease -InputObject <PsApiManagementApiRelease> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,28 +56,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApiRelease
-Instance of type Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease.
-
-```yaml
-Type: PsApiManagementApiRelease
-Parameter Sets: ByValue
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Context
 Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
 Type: PsApiManagementContext
-Parameter Sets: (All)
+Parameter Sets: ExpandedParameter
 Aliases:
 
 Required: True
@@ -100,6 +84,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Instance of type Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease.
+
+```yaml
+Type: PsApiManagementApiRelease
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

@@ -117,7 +117,7 @@ Valid values are:
 Type: PsApiManagementSku
 Parameter Sets: (All)
 Aliases:
-Accepted values: Developer, Standard, Premium
+Accepted values: Developer, Standard, Premium, Basic
 
 Required: False
 Position: Named

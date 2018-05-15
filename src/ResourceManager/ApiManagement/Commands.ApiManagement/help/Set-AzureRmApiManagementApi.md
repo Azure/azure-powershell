@@ -13,7 +13,7 @@ Modifies an API.
 
 ## SYNTAX
 
-### ExpandedParameter
+### ExpandedParameter (Default)
 ```
 Set-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> -Name <String>
  [-Description <String>] -ServiceUrl <String> [-Path <String>] -Protocols <PsApiManagementSchema[]>
@@ -22,9 +22,9 @@ Set-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> -N
  [<CommonParameters>]
 ```
 
-### ByValue
+### ByInputObject
 ```
-Set-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiObject <PsApiManagementApi> [-PassThru]
+Set-AzureRmApiManagementApi -InputObject <PsApiManagementApi> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -53,21 +53,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ApiObject
-Instance of PsApiManagementApi. This parameter is required.
-
-```yaml
-Type: PsApiManagementApi
-Parameter Sets: ByValue
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -109,7 +94,7 @@ Specifies a **PsApiManagementContext** object.
 
 ```yaml
 Type: PsApiManagementContext
-Parameter Sets: (All)
+Parameter Sets: ExpandedParameter
 Aliases:
 
 Required: True
@@ -146,6 +131,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Instance of PsApiManagementApi. This parameter is required.
+
+```yaml
+Type: PsApiManagementApi
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

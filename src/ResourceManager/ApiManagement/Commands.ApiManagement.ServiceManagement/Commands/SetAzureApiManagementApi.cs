@@ -19,18 +19,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Linq;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementApi)]
-    [OutputType(typeof(PsApiManagementApi))]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementApi, DefaultParameterSetName = ExpandedParameterSet)]
+    [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class SetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
         #region Parameter Set Names
 
         protected const string ExpandedParameterSet = "ExpandedParameter";
-        protected const string ByValueParameterSet = "ByValue";
+        protected const string ByInputObjectParameterSet = "ByInputObject";
 
         #endregion
 
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
@@ -119,12 +120,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String SubscriptionKeyQueryParamName { get; set; }
         
         [Parameter(
-            ParameterSetName = ByValueParameterSet,
+            ParameterSetName = ByInputObjectParameterSet,
             ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementApi. This parameter is required.")]
         [ValidateNotNullOrEmpty]
-        public PsApiManagementApi ApiObject { get; set; }
+        public PsApiManagementApi InputObject { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -136,9 +137,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
+            string resourcegroupName;
+            string serviceName;
+            string apiId;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
+            {
+                resourcegroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                apiId = InputObject.ApiId;
+            }
+            else
+            {
+                resourcegroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                apiId = ApiId;
+            }
+
             Client.ApiSet(
-                Context,
-                ApiId,
+                resourcegroupName,
+                serviceName,
+                apiId,
                 Name,
                 Description,
                 ServiceUrl,
@@ -148,11 +167,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 AuthorizationScope,
                 SubscriptionKeyHeaderName,
                 SubscriptionKeyQueryParamName,
-                ApiObject);
+                InputObject);
 
             if (PassThru.IsPresent)
             {
-                var api = Client.ApiById(Context, ApiId);
+                var api = Client.ApiById(resourcegroupName, serviceName, ApiId);
                 WriteObject(api);
             }
         }

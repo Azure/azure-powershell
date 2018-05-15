@@ -30,11 +30,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         #region Parameter Set Names
 
         private const string ExpandedParameterSet = "ExpandedParameter";
-        private const string ByValueParameterSet = "ByValue";
+        private const string ByInputObjectParameterSet = "ByInputObject";
 
         #endregion
 
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
@@ -42,12 +43,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ParameterSetName = ByValueParameterSet,
+            ParameterSetName = ByInputObjectParameterSet,
             ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementApiVersionSet. This parameter is required.")]
         [ValidateNotNullOrEmpty]
-        public PsApiManagementApiVersionSet ApiVersionSetObject { get; set; }
+        public PsApiManagementApiVersionSet InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = ExpandedParameterSet,
@@ -64,13 +65,25 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ApiVersionSetObject != null)
+            string resourceGroupName;
+            string serviceName;
+            string apiVersionSetId;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
             {
-                ApiVersionSetId = ApiVersionSetObject.ApiVersionSetId;
+                apiVersionSetId = InputObject.ApiVersionSetId;
+                resourceGroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+            }
+            else
+            {
+                apiVersionSetId = ApiVersionSetId;
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
             }
 
-            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiVersionSetRemoveDescription, ApiVersionSetId);
-            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiVersionSetRemoveWarning, ApiVersionSetId);
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiVersionSetRemoveDescription, apiVersionSetId);
+            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiVersionSetRemoveWarning, apiVersionSetId);
 
             // Do nothing if force is not specified and user cancelled the operation
             if (!ShouldProcess(
@@ -81,7 +94,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            Client.ApiVersionSetRemove(Context, ApiVersionSetId);
+            Client.ApiVersionSetRemove(resourceGroupName, serviceName, ApiVersionSetId);
 
             if (PassThru.IsPresent)
             {

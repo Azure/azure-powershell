@@ -12,15 +12,8 @@ Get the details of the API Version Sets
 
 ## SYNTAX
 
-### GetAllApiVersionSets (Default)
 ```
-Get-AzureRmApiManagementApiVersionSet -Context <PsApiManagementContext>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetVersionSetbyId
-```
-Get-AzureRmApiManagementApiVersionSet -Context <PsApiManagementContext> -ApiVersionSetId <String>
+Get-AzureRmApiManagementApiVersionSet -Context <PsApiManagementContext> [-ApiVersionSetId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -55,10 +48,10 @@ If specified will try to get the API by the Id.
 
 ```yaml
 Type: String
-Parameter Sets: GetVersionSetbyId
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

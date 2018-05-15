@@ -23,17 +23,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         Constants.ApiManagementApiVersionSet,
         DefaultParameterSetName = ExpandedParameterSet,
         SupportsShouldProcess = true)]
-    [OutputType(typeof(PsApiManagementApiVersionSet))]
+    [OutputType(typeof(PsApiManagementApiVersionSet), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class SetAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
     {
         #region Parameter Set Names
 
         private const string ExpandedParameterSet = "ExpandedParameter";
-        private const string ByValueParameterSet = "ByValue";
+        private const string ByInputObjectParameterSet = "ByInputObject";
 
         #endregion
 
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
@@ -41,12 +42,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
-            ParameterSetName = ByValueParameterSet,
+            ParameterSetName = ByInputObjectParameterSet,
             ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementApiVersionSet. This parameter is required.")]
         [ValidateNotNullOrEmpty]
-        public PsApiManagementApiVersionSet ApiVersionSetObject { get; set; }
+        public PsApiManagementApiVersionSet InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = ExpandedParameterSet,
@@ -101,22 +102,34 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ApiVersionSetObject != null)
+            string resourceGroupName;
+            string serviceName;
+            string apiVersionSetId;
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
             {
-                ApiVersionSetId = ApiVersionSetObject.ApiVersionSetId;
+                resourceGroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                apiVersionSetId = InputObject.ApiVersionSetId;
+            }
+            else
+            {
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                apiVersionSetId = ApiVersionSetId;
             }
 
             if (ShouldProcess(ApiVersionSetId, Resources.SetApiVersionSet))
             {
                 var apiVersionSet = Client.SetApiVersionSet(
-                    Context,
-                    ApiVersionSetId,
+                    resourceGroupName,
+                    serviceName,
+                    apiVersionSetId,
                     Name,
                     Scheme,
                     HeaderName,
                     QueryName,
                     Description,
-                    ApiVersionSetObject);
+                    InputObject);
 
                 if (PassThru.IsPresent)
                 {

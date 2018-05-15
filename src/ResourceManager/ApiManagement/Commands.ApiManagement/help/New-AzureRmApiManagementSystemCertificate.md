@@ -86,6 +86,7 @@ Certificate StoreName
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: CertificateAuthority, Root
 
 Required: True
 Position: Named

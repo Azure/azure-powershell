@@ -19,49 +19,39 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiRelease, DefaultParameterSetName = AllApis)]
-    [OutputType(typeof(IList<PsApiManagementApiRelease>), ParameterSetName = new[] { AllApis })]
-    [OutputType(typeof(PsApiManagementApiRelease), ParameterSetName = new[] { FindById })]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiRelease)]
+    [OutputType(typeof(IList<PsApiManagementApiRelease>))]
+    [OutputType(typeof(PsApiManagementApiRelease))]
     public class GetAzureApiManagementApiRelease : AzureApiManagementCmdletBase
-    {
-        private const string FindById = "GetByApiId";
-        private const string AllApis = "GetAllApis";
-        
+    {        
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
-
+        
         [Parameter(
-            ParameterSetName = AllApis,
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
-            HelpMessage = "API identifier to look for. If specified will try to get the API by the Id.")]
-        [Parameter(
-            ParameterSetName = FindById,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "API identifier to look for. If specified will try to get the API by the Id.")]
         public String ApiId { get; set; }
 
-        [Parameter(
-            ParameterSetName = FindById,
+        [Parameter(            
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The identifier of the Release.")]
         public String ReleaseId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ParameterSetName.Equals(AllApis))
+            if (string.IsNullOrEmpty(ReleaseId))
             {
                 WriteObject(Client.GetApiReleases(Context, ApiId), true);
             }
-            else if (ParameterSetName.Equals(FindById))
+            else 
             {
-                WriteObject(Client.GetApiReleaseById(Context, ApiId, ReleaseId));
+                WriteObject(Client.GetApiReleaseById(Context.ResourceGroupName, Context.ServiceName, ApiId, ReleaseId));
             }
         }
     }

@@ -81,7 +81,7 @@ The default value is GET.
 Type: PsApiManagementAuthorizationRequestMethod[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Get, Post
+Accepted values: Get, Post, Head, Options, Trace, Put, Patch, Delete
 
 Required: False
 Position: Named

@@ -12,15 +12,8 @@ Get the API Release.
 
 ## SYNTAX
 
-### GetAllApis (Default)
 ```
-Get-AzureRmApiManagementApiRelease -Context <PsApiManagementContext> -ApiId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetByApiId
-```
-Get-AzureRmApiManagementApiRelease -Context <PsApiManagementContext> -ApiId <String> -ReleaseId <String>
+Get-AzureRmApiManagementApiRelease -Context <PsApiManagementContext> -ApiId <String> [-ReleaseId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -99,10 +92,10 @@ The identifier of the Release.
 
 ```yaml
 Type: String
-Parameter Sets: GetByApiId
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

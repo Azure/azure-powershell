@@ -14,26 +14,27 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Properties;
     using System;
     using System.Management.Automation;
+    using Models;
+    using Properties;
 
     [Cmdlet(VerbsData.Update, 
         Constants.ApiManagementApiRelease, 
         DefaultParameterSetName = ExpandedParameterSet,
         SupportsShouldProcess = true)]
-    [OutputType(typeof(PsApiManagementApiRelease))]
+    [OutputType(typeof(PsApiManagementApiRelease), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class UpdateAzureApiManagementApiRelease : AzureApiManagementCmdletBase
     {
         #region Parameter Set Names
         
         private const string ExpandedParameterSet = "ExpandedParameter";
-        private const string ByValueParameterSet = "ByValue";
+        private const string ByInputObjectParameterSet = "ByInputObject";
 
         #endregion
 
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
@@ -63,11 +64,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String Note { get; set; }
 
         [Parameter(
-            ParameterSetName = ByValueParameterSet,
+            ParameterSetName = ByInputObjectParameterSet,
             ValueFromPipelineByPropertyName = true,
-            Mandatory = false,
+            ValueFromPipeline = true,
+            Mandatory = true,
             HelpMessage = "Instance of type Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiRelease.")]
-        public PsApiManagementApiRelease ApiRelease { get; set; }
+        public PsApiManagementApiRelease InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -78,32 +80,39 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ShouldProcess(ReleaseId, Resources.SetApiRelease))
+            string resourceGroupName;
+            string serviceName;
+            string apiId;
+            string releaseId;
+
+            if (ParameterSetName == ExpandedParameterSet)
             {
-                if (ParameterSetName == ExpandedParameterSet)
-                {
-                    Client.UpdateApiRelease(
-                        Context,
-                        ApiId,
-                        ReleaseId,
-                        Note,
-                        null);
-                }
-                else
-                {
-                    ApiId = ApiRelease.ApiId;
-                    ReleaseId = ApiRelease.ReleaseId;
-                    Client.UpdateApiRelease(
-                        Context,
-                        apiId: ApiId,
-                        releaseId: ReleaseId,
-                        notes : null,
-                        release: ApiRelease);
-                }
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                apiId = ApiId;
+                releaseId = ReleaseId;
+            }
+            else
+            {
+                resourceGroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                apiId = InputObject.ApiId;
+                releaseId = InputObject.ReleaseId;
+            }
+
+            if (ShouldProcess(releaseId, Resources.SetApiRelease))
+            {                          
+                Client.UpdateApiRelease(
+                    resourceGroupName,
+                    serviceName,
+                    apiId,
+                    releaseId,
+                    Note,
+                    InputObject);
 
                 if (PassThru.IsPresent)
                 {
-                    var apiRelease = Client.GetApiReleaseById(Context, ApiId, ReleaseId);
+                    var apiRelease = Client.GetApiReleaseById(resourceGroupName, serviceName, apiId, releaseId);
                     WriteObject(apiRelease);
                 }
             }

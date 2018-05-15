@@ -12,9 +12,16 @@ Removed a particular API Revision
 
 ## SYNTAX
 
+### ByApiId (Default)
 ```
 Remove-AzureRmApiManagementApiRevision -Context <PsApiManagementContext> -ApiId <String> -ApiRevision <String>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Remove-AzureRmApiManagementApiRevision -InputObject <PsApiManagementApi> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +45,7 @@ This parameter is required.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByApiId
 Aliases:
 
 Required: True
@@ -53,7 +60,7 @@ Identifier of the API Revision. This parameter is required.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByApiId
 Aliases:
 
 Required: True
@@ -69,7 +76,7 @@ This parameter is required.
 
 ```yaml
 Type: PsApiManagementContext
-Parameter Sets: (All)
+Parameter Sets: ByApiId
 Aliases:
 
 Required: True
@@ -91,6 +98,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Instance of PsApiManagementApiRelease. This parameter is required.
+
+```yaml
+Type: PsApiManagementApi
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

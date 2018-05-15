@@ -12,12 +12,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Microsoft.Azure.Management.ApiManagement.Models;
-
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
     public class PsApiManagementApi
     {
+        public string ResourceGroupName { get; set; }
+
+        public string ServiceName { get; set; }
+
         public string ApiId { get; set; }
 
         public string Name { get; set; }
@@ -51,13 +53,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public bool IsCurrent { get; set;  }
 
         public bool IsOnline { get; set; }
-
-        public string ApiRevisionId
-        {
-            get
-            {
-                return ApiId.ApiRevisionIdentifier(ApiRevision);
-            }
-        }
     }
 }

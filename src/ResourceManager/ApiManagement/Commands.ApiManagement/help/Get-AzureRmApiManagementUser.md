@@ -186,7 +186,7 @@ This parameter is optional.
 Type: PsApiManagementUserState
 Parameter Sets: GetByUser
 Aliases:
-Accepted values: Active, Blocked
+Accepted values: Active, Blocked, Deleted, Pending
 
 Required: False
 Position: Named

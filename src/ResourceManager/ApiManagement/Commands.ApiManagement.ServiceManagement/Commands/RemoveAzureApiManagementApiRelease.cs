@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         #endregion
 
         [Parameter(
+            ParameterSetName = ByApiReleaseIdParameterSet,
             ValueFromPipeline = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementApiRelease. This parameter is required.")]
         [ValidateNotNullOrEmpty]
-        public PsApiManagementApiRelease ApiReleaseObject { get; set; }
+        public PsApiManagementApiRelease InputObject { get; set; }
 
         [Parameter(
             ParameterSetName = ByApiReleaseIdParameterSet,
@@ -72,14 +73,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ApiReleaseObject != null)
+            string resourceGroupName;
+            string serviceName;
+            string apiId;
+            string releaseId;
+                
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
             {
-                ApiId = ApiReleaseObject.ApiId;
-                ReleaseId = ApiReleaseObject.ReleaseId;
+                apiId = InputObject.ApiId;
+                releaseId = InputObject.ReleaseId;
+                resourceGroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+            }
+            else
+            {
+                apiId = ApiId;
+                releaseId = ReleaseId;
+                resourceGroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
             }
 
-            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiReleaseRemoveDescription, ReleaseId);
-            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiReleaseRemoveWarning, ReleaseId);
+            var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiReleaseRemoveDescription, releaseId);
+            var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiReleaseRemoveWarning, releaseId);
             
             // Do nothing if force is not specified and user cancelled the operation
             if (!ShouldProcess(
@@ -90,7 +105,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            Client.ApiReleaseRemove(Context, ApiId, ReleaseId);
+            Client.ApiReleaseRemove(resourceGroupName, serviceName, apiId, releaseId);
 
             if (PassThru.IsPresent)
             {
