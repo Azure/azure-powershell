@@ -721,7 +721,7 @@ param
 	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup $vpnIpsecParams.PfsGroup
 
 	  # Remove custom Ipsec policy set from P2S VPNClient Configuration using new API:- Remove-AzureRmVpnClientIpsecParameter
-	  $delete = Remove-AzureRmVpnClientIpsecParameter -ResourceGroupName $rgname -VirtualNetworkGatewayName $rname -Force
+	  $delete = Remove-AzureRmVpnClientIpsecParameter -ResourceGroupName $rgname -VirtualNetworkGatewayName $rname
 	  Assert-AreEqual $True $delete
 	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 	  Assert-AreEqual 0 @($expected.VpnClientConfiguration.VpnClientIpsecPolicies).Count

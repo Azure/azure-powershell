@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Network;
 using System;
 using System.Management.Automation;
@@ -24,21 +25,19 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set,
          "AzureRmVpnClientIpsecParameter",
-         DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default,
+         DefaultParameterSetName = "ByFactoryName",
          SupportsShouldProcess = true),
      OutputType(typeof(PSVpnClientIPsecParameters))]
     public class SetAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway name.")]
         [ValidateNotNullOrEmpty]
         public virtual string VirtualNetworkGatewayName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -51,8 +50,36 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSVpnClientIPsecParameters VpnClientIPsecParameter { get; set; }
 
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByFactoryObject,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The virtual network gateaway object")]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualNetworkGateway InputObject { get; set; }
+
+        [Parameter(
+            ParameterSetName = ParameterSetNames.ByResourceId,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure resource ID.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void Execute()
         {
+            if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
+            {
+                VirtualNetworkGatewayName = InputObject.Name;
+                ResourceGroupName = InputObject.ResourceGroupName;
+            }
+            else if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                VirtualNetworkGatewayName = parsedResourceId.ResourceName;
+                ResourceGroupName = parsedResourceId.ResourceGroupName;
+            }
+
             base.Execute();
 
             if (!this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.VirtualNetworkGatewayName))

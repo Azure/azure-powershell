@@ -26,7 +26,7 @@ The **Get-AzureRmVpnClientIpsecParameter** cmdlet returns the object of your vpn
 
 ### 1: Gets the vpn Ipsec parameters set on Virtual Network Gateway for Point to site connections.
 ```
-Get-AzureRmVpnClientIpsecParameter -Name myGateway -ResourceGroupName myRG
+PS C:\> $VpnClientIPsecParameters = Get-AzureRmVpnClientIpsecParameter -Name myGateway -ResourceGroupName myRG
 ```
 
 Returns the object of the vpn ipsec parameters set on the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"

@@ -31,31 +31,31 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-ZoneCrud");
         }
 
-        [Fact(Skip = "Test is failing, service team needs to re-record")]
+        [Fact]
         public void TestPrivateZoneCrud()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrud");
         }
 
-        [Fact(Skip = "Test is failing, service team needs to re-record")]
+        [Fact]
         public void TestPrivateZoneCrudRegistrationVirtualNetwork()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrudRegistrationVnet");
         }
 
-        [Fact(Skip = "Test is failing, service team needs to re-record")]
+        [Fact]
         public void TestPrivateZoneCrudResolutionVirtualNetwork()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrudResolutionVnet");
         }
 
-        [Fact(Skip = "Test is failing, service team needs to re-record")]
+        [Fact]
         public void TestPrivateZoneCrudByVirtualNetworkIds()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrudByVirtualNetworkIds");
         }
 
-        [Fact(Skip = "Test is failing, service team needs to re-record")]
+        [Fact]
         public void TestPrivateZoneCrudByVirtualNetworkObjects()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-PrivateZoneCrudByVirtualNetworkObjects");
