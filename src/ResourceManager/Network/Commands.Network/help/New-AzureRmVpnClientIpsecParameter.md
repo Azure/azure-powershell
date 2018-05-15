@@ -26,9 +26,10 @@ This command allows the users to create the Vpn ipsec parameters object specifyi
 ### Example 1
 ```
 PS C:\> $vpnclientipsecparams1 = New-AzureRmVpnClientIpsecParameter -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86473 -SADataSize 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
+PS C:\> $setvpnIpsecParams = Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName $rname -ResourceGroupName $rgname -VpnClientIPsecParameter $vpnclientipsecparams1
 ```
-
-This cmdlet is used to create the vpn ipsec parameters object using the passed one or all parameters' values which user can set for any existing Virtual network gateway in ResourceGroup.
+New-AzureRmVpnClientIpsecParameter cmdlet is used to create the vpn ipsec parameters object of using the passed one or all parameters' values which user can set for any existing Virtual network gateway in ResourceGroup.
+This created VpnClientIPsecParameters object is passed to Set-AzureRmVpnClientIpsecParameter command to set the specified Vpn ipsec custom policy on Virtual network gateway as shown in above example. This command returns object of VpnClientIPsecParameters which shows set parameters.
 
 ## PARAMETERS
 

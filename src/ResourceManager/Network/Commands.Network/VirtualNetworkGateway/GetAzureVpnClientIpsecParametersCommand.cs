@@ -41,12 +41,9 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         {
             base.Execute();
 
-            if (ShouldProcess("AzureRmVpnClientIpsecParameter", VerbsCommon.Get))
-            {
-                var vpnClientIpsecParameters = this.GetVpnClientIpsecParameters(this.ResourceGroupName, this.Name);
+            var vpnClientIpsecParameters = this.GetVpnClientIpsecParameters(this.ResourceGroupName, this.Name);
 
-                WriteObject(vpnClientIpsecParameters);
-            }
+            WriteObject(vpnClientIpsecParameters);
         }
     }
 }

@@ -30,7 +30,9 @@ PS C:\>$vpnclientipsecparams = New-AzureRmVpnClientIpsecParameter -IpsecEncrypti
 PS C:\> $setvpnIpsecParams = Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName "ContosoLocalGateway" -ResourceGroupName "ContosoResourceGroup" -VpnClientIPsecParameter $vpnclientipsecparams
 ```
 
-This example sets custom vpn ipsec policy to existing virtual network gateway named ContosoVirtualGateway from Resource group named ContosoResourceGroup. The parameter:VpnClientIPsecParameter value can be constructed using PS command let:New-AzureRmVpnClientIpsecParameter as shown above.
+This example sets custom vpn ipsec policy to existing virtual network gateway named ContosoVirtualGateway from Resource group named ContosoResourceGroup.
+New-AzureRmVpnClientIpsecParameter cmdlet is used to create the vpn ipsec parameters object of using the passed one or all parameters' values which user can set for any existing Virtual network gateway in ResourceGroup.
+This created VpnClientIPsecParameters object is passed to Set-AzureRmVpnClientIpsecParameter command to set the specified Vpn ipsec custom policy on Virtual network gateway as shown in above example. This command returns object of VpnClientIPsecParameters which shows set parameters.
 
 ## PARAMETERS
 

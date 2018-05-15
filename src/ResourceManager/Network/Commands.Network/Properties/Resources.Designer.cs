@@ -484,13 +484,13 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to VirtualNetworkGatewayVpnClientIpsecPolicy.
+        ///   Looks up a localized string similar to virtualNetworkGateway name.
         /// </summary>
-        public static string VirtualNetworkGatewayVpnClientIpsecPolicy
+        public static string VirtualNetworkGatewayName
         {
             get
             {
-                return ResourceManager.GetString("VirtualNetworkGatewayVpnClientIpsecPolicy", resourceCulture);
+                return ResourceManager.GetString("VirtualNetworkGatewayName", resourceCulture);
             }
         }
     }

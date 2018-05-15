@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmVpnClientIpsecParameter
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Removes Vpn custom ipsec policy set on Virtual Network Gateway resource.
 
 ## SYNTAX
 
@@ -39,10 +39,10 @@ The **Remove-AzureRmVpnClientIpsecParameter** cmdlet removes the vpn custom ipse
 
 ### 1: Deletes the set vpn ipsec parameters set on the Virtual Network Gateway
 ```
-Remove-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName myGateway -ResourceGroupName myRG
+PS C:\> $delete = Remove-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName myGateway -ResourceGroupName myRG
 ```
 
-Deletes the vpn custom ipsec parameters set on your Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
+Deletes the vpn custom ipsec parameters set on your Virtual Network Gateway with the name "myGateway" within the resource group "myRG". This command returns bool object showing if removal was successful or failed.
 
 Note: This will result in setting default vpn ipsec policy on your Virtual Network Gateway.
 

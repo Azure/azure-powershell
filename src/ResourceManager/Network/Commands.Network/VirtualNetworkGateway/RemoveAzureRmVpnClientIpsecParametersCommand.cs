@@ -25,13 +25,13 @@ using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmVpnClientIpsecParameter", DefaultParameterSetName = "ByFactoryName", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmVpnClientIpsecParameter", DefaultParameterSetName = "ByFactoryName", SupportsShouldProcess = true), 
+        OutputType(typeof(bool))]
     public class RemoveAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway name.")]
         [ValidateNotNullOrEmpty]
         public virtual string VirtualNetworkGatewayName { get; set; }
@@ -39,7 +39,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -61,11 +60,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Don't ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         public override void Execute()
         {
             if (ParameterSetName.Equals(ParameterSetNames.ByFactoryObject, StringComparison.OrdinalIgnoreCase))
@@ -80,42 +74,38 @@ namespace Microsoft.Azure.Commands.Network
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
             }
 
-            ConfirmAction(
-                Force.IsPresent,
-                string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.RemovingResource, VirtualNetworkGatewayName),
-                Microsoft.Azure.Commands.Network.Properties.Resources.RemoveResourceMessage,
-                VirtualNetworkGatewayName,
-                () =>
+            base.Execute();
+
+            if (ShouldProcess(VirtualNetworkGatewayName, Properties.Resources.RemoveResourceMessage + Properties.Resources.VirtualNetworkGatewayName))
+            {
+                if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
                 {
-                    base.Execute();
-                    if (!this.IsVirtualNetworkGatewayPresent(ResourceGroupName, VirtualNetworkGatewayName))
-                    {
-                        throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-                    }
+                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                }
 
-                    var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
+                var vnetGateway = this.GetVirtualNetworkGateway(this.ResourceGroupName, this.VirtualNetworkGatewayName);
 
-                    if (vnetGateway.VpnClientConfiguration == null || vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies == null)
-                    {
-                        throw new ArgumentException("There are no any vpn client ipsec parameters specified on Gateway!");
-                    }
+                if (vnetGateway.VpnClientConfiguration == null || vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies == null)
+                {
+                    throw new ArgumentException("There are no any vpn client ipsec parameters specified on Gateway!");
+                }
 
-                    // Make sure the vpn client ipsec parameters are present on Gateway before calling to Remove it.
-                    if (vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies.Count == 0)
-                    {
-                        throw new ArgumentException("There are no any vpn client ipsec parameters specified on Gateway! So, can not proceed with removing it!");
-                    }
+                // Make sure the vpn client ipsec parameters are present on Gateway before calling to Remove it.
+                if (vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies.Count == 0)
+                {
+                    throw new ArgumentException("There are no any vpn client ipsec parameters specified on Gateway! So, can not proceed with removing it!");
+                }
 
-                    vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies.Clear();
+                vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies.Clear();
 
-                    // Map to the sdk object
-                    var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
-                    virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(vnetGateway.Tag, validate: true);
+                // Map to the sdk object
+                var virtualnetGatewayModel = NetworkResourceManagerProfile.Mapper.Map<MNM.VirtualNetworkGateway>(vnetGateway);
+                virtualnetGatewayModel.Tags = TagsConversionHelper.CreateTagDictionary(vnetGateway.Tag, validate: true);
 
-                    this.VirtualNetworkGatewayClient.CreateOrUpdate(ResourceGroupName, VirtualNetworkGatewayName, virtualnetGatewayModel);
+                this.VirtualNetworkGatewayClient.CreateOrUpdate(ResourceGroupName, VirtualNetworkGatewayName, virtualnetGatewayModel);
 
-                    WriteObject(true);
-                });
+                WriteObject(true);
+            }
         }
     }
 }

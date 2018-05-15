@@ -32,14 +32,23 @@ This cmdlet is used to create the vpn ipsec policy object using the passed one o
 
 ### Create new virtual network gateway with setting vpn custom ipsec policy:
 ```
-PS C:\> New-AzureRmVirtualNetworkGateway -ResourceGroupName vnet-gateway -name myNGW -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -VpnClientIpsecPolicy $vpnclientipsecpolicy
+PS C:\> $vnetGateway = New-AzureRmVirtualNetworkGateway -ResourceGroupName vnet-gateway -name myNGW -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -VpnClientIpsecPolicy $vpnclientipsecpolicy
 ```
+
+This cmdlet returns virtual network gateway object after creation. 
+
+### Set vpn custom ipsec policy on existing virtual network gateway:
+```
+PS C:\> $vnetGateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientIpsecPolicy $vpnclientipsecpolicy
+```
+
+This cmdlet returns virtual network gateway object after setting vpn custom ipsec policy.
 
 ### Get virtual network gateway to see if vpn custom policy is set correctly:
 ```
-$gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName vnet-gateway -name myNGW
-PS C:\>Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientIpsecPolicy $vpnclientipsecpolicy
+PS C:\> $gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName vnet-gateway -name myNGW
 ```
+This cmdlet returns virtual network gateway object.
 
 ## PARAMETERS
 
