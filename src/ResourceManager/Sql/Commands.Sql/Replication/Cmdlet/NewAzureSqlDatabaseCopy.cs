@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// Cmdlet to create a new Azure SQL Database Copy
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabaseCopy",
-        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
+        ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet)]
     public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
     {
         private const string DtuDatabaseParameterSet = "DtuBasedDatabase";
