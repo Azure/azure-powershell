@@ -9,6 +9,7 @@ schema: 2.0.0
 # Test-AzureRmDnsAvailability
 
 ## SYNOPSIS
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ## SYNTAX
 
@@ -18,12 +19,13 @@ Test-AzureRmDnsAvailability -DomainNameLabel <String> -Location <String>
 ```
 
 ## DESCRIPTION
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ## EXAMPLES
 
-### 1:
+### --- Example 1: Check if contoso.cloudapp.azure.com is available for use. ---
 ```
-
+Test-AzureRmDnsAvailability -DomainNameLabel contoso -Location westus
 ```
 
 ## PARAMETERS

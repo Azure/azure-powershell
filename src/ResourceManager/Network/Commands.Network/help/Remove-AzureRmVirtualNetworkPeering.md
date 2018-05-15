@@ -9,6 +9,7 @@ schema: 2.0.0
 # Remove-AzureRmVirtualNetworkPeering
 
 ## SYNOPSIS
+Removes a virtual network peering.
 
 ## SYNTAX
 
@@ -19,6 +20,7 @@ Remove-AzureRmVirtualNetworkPeering -VirtualNetworkName <String> -Name <String> 
 ```
 
 ## DESCRIPTION
+Removes a virtual network peering.
 
 ## EXAMPLES
 
