@@ -8,6 +8,7 @@ schema: 2.0.0
 # Get-AzureRmBgpServiceCommunity
 
 ## SYNOPSIS
+Provides a list of all services / regions, BGP communities, and associated prefixes.
 
 ## SYNTAX
 
@@ -16,15 +17,15 @@ Get-AzureRmBgpServiceCommunity [-DefaultProfile <IAzureContextContainer>] [<Comm
 ```
 
 ## DESCRIPTION
+This cmdlet provides a list of all services / regions, BGP communities, and associated prefixes.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> {{ Add example code here }}
+Get-AzureRmBgpServiceCommunity
 ```
-
-{{ Add example description here }}
+This cmdlet provides a list of all services / regions, BGP communities, and associated prefixes.
 
 ## PARAMETERS
 
@@ -58,4 +59,12 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
+[Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
+
+[New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
+
+[Remove-AzureRmExpressRouteCircuit](Remove-AzureRmExpressRouteCircuit.md)
+
+[Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
+
 
