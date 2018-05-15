@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes")]
         [ValidateNotNullOrEmpty]
-        public List<string> MicrosoftConfigAdvertisedPublicPrefixes { get; set; }
+        public string[] MicrosoftConfigAdvertisedPublicPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -101,12 +101,12 @@ namespace Microsoft.Azure.Commands.Network
 
         public void ConstructMicrosoftConfig(PSExpressRouteCrossConnectionPeering peering)
         {
-            if (MicrosoftConfigAdvertisedPublicPrefixes != null && MicrosoftConfigAdvertisedPublicPrefixes.Any())
+            if (MicrosoftConfigAdvertisedPublicPrefix != null && MicrosoftConfigAdvertisedPublicPrefix.Count() > 0)
             {
                 if (PeerAddressType == IPv6)
                 {
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSPeeringConfig();
-                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = MicrosoftConfigAdvertisedPublicPrefixes;
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = MicrosoftConfigAdvertisedPublicPrefix.ToList();
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.CustomerASN = MicrosoftConfigCustomerAsn;
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.RoutingRegistryName = MicrosoftConfigRoutingRegistryName;
                 }
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
                     peering.MicrosoftPeeringConfig = new PSPeeringConfig();
-                    peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = MicrosoftConfigAdvertisedPublicPrefixes;
+                    peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = MicrosoftConfigAdvertisedPublicPrefix.ToList();
                     peering.MicrosoftPeeringConfig.CustomerASN = MicrosoftConfigCustomerAsn;
                     peering.MicrosoftPeeringConfig.RoutingRegistryName = MicrosoftConfigRoutingRegistryName;
                 }

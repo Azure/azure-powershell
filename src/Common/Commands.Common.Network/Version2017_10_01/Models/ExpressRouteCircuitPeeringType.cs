@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models
     /// <summary>
     /// Defines values for ExpressRoutePeeringType.
     /// </summary>
-    public static class ExpressRoutePeeringType
+    public static class ExpressRouteCircuitPeeringType
     {
         public const string AzurePublicPeering = "AzurePublicPeering";
         public const string AzurePrivatePeering = "AzurePrivatePeering";
