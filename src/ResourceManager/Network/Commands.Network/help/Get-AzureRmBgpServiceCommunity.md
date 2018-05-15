@@ -1,4 +1,5 @@
-﻿---
+
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermbgpservicecommunity
@@ -67,4 +68,18 @@ This cmdlet does not accept any input.
 
 [Set-AzureRmExpressRouteCircuit](Set-AzureRmExpressRouteCircuit.md)
 
+[Get-AzureRmRouteFilter](Get-AzureRmRouteFilter.md)
 
+[Get-AzureRmRouteFilterRuleConfig](Get-AzureRmRouteFilterRuleConfig.md)
+
+[Remove-AzureRmRouteFilter](Remove-AzureRmRouteFilter.md)
+
+[Remove-AzureRmRouteFilterRuleConfig](Remove-AzureRmRouteFilterRuleConfig.md)
+
+[Set-AzureRmRouteFilter](Set-AzureRmRouteFilter.md)
+
+[Set-AzureRmRouteFilterRuleConfig](Set-AzureRmRouteFilterRuleConfig.md)
+
+[New-AzureRmRouteFilter](New-AzureRmRouteFilter.md)
+
+[New-AzureRmRouteFilterRuleConfig](New-AzureRmRouteFilterRuleConfig.md)
