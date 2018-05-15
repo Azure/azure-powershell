@@ -102,9 +102,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Sku = string.IsNullOrWhiteSpace(model.CurrentServiceLevelObjectiveName) ? null : new Sku()
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Sku()
                 {
-                    Name = model.CurrentServiceLevelObjectiveName,
+                    Name = model.SkuName,
                     Tier = model.Edition,
                     Family = model.Family,
                     Capacity = model.Capacity
@@ -134,9 +134,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                Sku = string.IsNullOrWhiteSpace(model.CurrentServiceLevelObjectiveName) ? null : new Sku()
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Sku()
                 {
-                    Name = model.CurrentServiceLevelObjectiveName,
+                    Name = model.SkuName,
                     Tier = model.Edition,
                     Family = model.Family,
                     Capacity = model.Capacity
@@ -397,7 +397,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Edition = pool.Edition,
                 ZoneRedundant = pool.ZoneRedundant,
                 Capacity = pool.Sku.Capacity,
-                CurrentServiceLevelObjectiveName = pool.Sku.Name,
+                SkuName = pool.Sku.Name,
                 DatabaseCapacityMin = pool.PerDatabaseSettings.MinCapacity,
                 DatabaseCapacityMax = pool.PerDatabaseSettings.MaxCapacity,
                 Dtu = pool.Dtu,

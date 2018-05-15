@@ -65,9 +65,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         public string Edition { get; set; }
 
         /// <summary>
-        /// Gets or sets the ServiceLelObjectName name of the elastic pool
+        /// Gets or sets the Sku name of the elastic pool
         /// </summary>
-        public string CurrentServiceLevelObjectiveName { get; set; }
+        public string SkuName { get; set; }
 
         /// <summary>
         /// Gets or sets the Dtu for the elastic pool

@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
                 if (!string.IsNullOrWhiteSpace(edition))
                 {
-                    newModel.CurrentServiceLevelObjectiveName = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition);
+                    newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition);
                     newModel.Edition = edition;
                     newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null;
                 }
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             }
             else
             {
-                newModel.CurrentServiceLevelObjectiveName = AzureSqlElasticPoolAdapter.GetPoolSkuName(Edition);
+                newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(Edition);
                 newModel.Edition = Edition;
                 newModel.Capacity = VCore;
                 newModel.Family = ComputeGeneration;
