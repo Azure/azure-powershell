@@ -20,10 +20,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementLogger)]
-    [OutputType(typeof(PsApiManagementLogger))]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementLogger, DefaultParameterSetName = EventHubLoggerSet)]
+    [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new[] { EventHubLoggerSet, ApplicationInsightsLoggerSet })]
     public class SetAzureApiManagementLogger : AzureApiManagementCmdletBase
-    {        
+    {
+        private const string EventHubLoggerSet = "EventHubLoggerSet";
+        private const string ApplicationInsightsLoggerSet = "ApplicationInsightsLoggerSet";
+
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
@@ -38,19 +41,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [ValidateNotNullOrEmpty]
         public String LoggerId { get; set; }
 
-        [Parameter(     
+        [Parameter(
+            ParameterSetName = EventHubLoggerSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "EventHub Entity name. This parameter is optional.")]
         public String Name { get; set; }
 
-        [Parameter(            
+        [Parameter(
+            ParameterSetName = EventHubLoggerSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "EventHub Connection String with Send Policy Rights. This parameter is optional.")]
         public String ConnectionString { get; set; }
        
-        [Parameter(            
+        [Parameter(
+            ParameterSetName = ApplicationInsightsLoggerSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Instrumentation Key of the application Insights. This parameter is optional.")]
@@ -64,6 +70,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String Description { get; set; }
 
         [Parameter(
+            ParameterSetName = EventHubLoggerSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Determines whether the records in the logger are buffered before publishing." +
@@ -81,11 +88,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public override void ExecuteApiManagementCmdlet()
         {
             var credentials = new Dictionary<string, string>();
-
             string loggerType = string.Empty;
-            if (!string.IsNullOrEmpty(ConnectionString) || !string.IsNullOrEmpty(Name))
+            if (ParameterSetName.Equals(EventHubLoggerSet))
             {
-                loggerType = LoggerType.AzureEventHub;
+                loggerType = LoggerType.AzureEventHub;                
                 if (!string.IsNullOrWhiteSpace(ConnectionString))
                 {
                     credentials.Add("connectionString", ConnectionString);
@@ -96,7 +102,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     credentials.Add("name", Name);                    
                 }                
             }
-            else if (!string.IsNullOrEmpty(InstrumentationKey))
+            else if (ParameterSetName.Equals(ApplicationInsightsLoggerSet))
             {
                 loggerType = LoggerType.ApplicationInsights;
                 credentials.Add("instrumentationKey", InstrumentationKey);

@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         internal const string PeriodPattern = "^(?<" + PeriodGroupName + ">[DdMmYy]{1})(?<" + ValueGroupName + @">\d+)$";
         static readonly Regex PeriodRegex = new Regex(PeriodPattern, RegexOptions.Compiled);
 
+        // resource Group regex
+        static readonly Regex ResourceGroupRegex = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
+
+        // service name regex
+        static readonly Regex ServiceNameRegex = new Regex(@"(.*?)/providers/microsoft.apimanagement/service/(?<serviceName>[^/]+)", RegexOptions.IgnoreCase);
+
         private readonly IAzureContext _context;
         private Management.ApiManagement.ApiManagementClient _client;
 
@@ -114,6 +120,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 
                 cfg
                     .CreateMap<ApiContract, PsApiManagementApi>()
+                    .ForMember(dest => dest.ResourceGroupName, opt => opt.Ignore())
                     .ForMember(dest => dest.ApiId, opt => opt.MapFrom(src => src.Name))
                     .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.DisplayName))
                     .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
@@ -148,7 +155,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                         opt => opt.MapFrom(
                             src => src.SubscriptionKeyParameterNames != null
                                 ? src.SubscriptionKeyParameterNames.Query
-                                : null));
+                                : null))
+                    .AfterMap((src, dest) =>
+                        dest.ResourceGroupName = GetResourceGroupName(src.Id))
+                    .AfterMap((src, dest) =>
+                        dest.ServiceName = GetServiceName(src.Id));
 
                 cfg.CreateMap<ApiContract, ApiCreateOrUpdateParameter>();
                 cfg.CreateMap<RequestContract, PsApiManagementRequest>();
@@ -205,7 +216,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.ReleaseId, opt => opt.MapFrom(src => src.Name))
                     .ForMember(dest => dest.Notes, opt => opt.MapFrom(src => src.Notes))
                     .ForMember(dest => dest.CreatedDateTime, opt => opt.MapFrom(src => src.CreatedDateTime))
-                    .ForMember(dest => dest.UpdatedDateTime, opt => opt.MapFrom(src => src.UpdatedDateTime));
+                    .ForMember(dest => dest.UpdatedDateTime, opt => opt.MapFrom(src => src.UpdatedDateTime))
+                    .AfterMap((src, dest) =>
+                        dest.ResourceGroupName = GetResourceGroupName(src.Id))
+                    .AfterMap((src, dest) =>
+                        dest.ServiceName = GetServiceName(src.Id));
 
                 cfg
                     .CreateMap<PsApiManagementApiRelease, ApiReleaseContract>()
@@ -389,7 +404,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                     .ForMember(dest => dest.DisplayName, opt => opt.MapFrom(src => src.DisplayName))
                     .ForMember(dest => dest.VersionHeaderName, opt => opt.MapFrom(src => src.VersionHeaderName))
                     .ForMember(dest => dest.VersionQueryName, opt => opt.MapFrom(src => src.VersionQueryName))
-                    .ForMember(dest => dest.VersioningScheme, opt => opt.MapFrom(src => src.VersioningScheme));
+                    .ForMember(dest => dest.VersioningScheme, opt => opt.MapFrom(src => src.VersioningScheme))
+                    .AfterMap((src, dest) =>
+                        dest.ResourceGroupName = GetResourceGroupName(src.Id))
+                    .AfterMap((src, dest) =>
+                        dest.ServiceName = GetServiceName(src.Id));
 
                 cfg
                     .CreateMap<PsApiManagementApiVersionSet, ApiVersionSetContract>()
@@ -493,9 +512,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return results;
         }
 
-        public PsApiManagementApi ApiById(PsApiManagementContext context, string id)
+        public PsApiManagementApi ApiById(string resourcegroupName, string serviceName, string id)
         {
-            var response = Client.Api.Get(context.ResourceGroupName, context.ServiceName, id);
+            var response = Client.Api.Get(resourcegroupName, serviceName, id);
 
             return Mapper.Map<PsApiManagementApi>(response);
         }
@@ -554,13 +573,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             Client.Api.Delete(context.ResourceGroupName, context.ServiceName, apiId, "*", deleteRevisions: true);
         }
 
-        public void ApiRemoveRevision(PsApiManagementContext context, string apiId)
+        public void ApiRemoveRevision(string resourceGroupName, string serviceName, string apiId)
         {
-            Client.Api.Delete(context.ResourceGroupName, context.ServiceName, apiId, "*", deleteRevisions: false);
+            Client.Api.Delete(resourceGroupName, serviceName, apiId, "*", deleteRevisions: false);
         }
 
         public void ApiSet(
-            PsApiManagementContext context,
+            string resourceGroupName,
+            string servicename,
             string id,
             string name,
             string description,
@@ -577,8 +597,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (apiObject == null)
             {
                 apiContract = Client.Api.Get(
-                    context.ResourceGroupName,
-                    context.ServiceName,
+                    resourceGroupName,
+                    servicename,
                     id);
             }
             else
@@ -630,8 +650,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
             
             Client.Api.CreateOrUpdate(
-                context.ResourceGroupName, 
-                context.ServiceName,
+                resourceGroupName, 
+                servicename,
                 id, 
                 api,
                 "*");
@@ -845,7 +865,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
         public PsApiManagementApi GetApiRevision(PsApiManagementContext context, string apiId, string revisionId)
         {
-            return this.ApiById(context, apiId.ApiRevisionIdentifier(revisionId));
+            return this.ApiById(context.ResourceGroupName, context.ServiceName, apiId.ApiRevisionIdentifier(revisionId));
         }
         
         public PsApiManagementApi ApiCreateRevision(
@@ -891,15 +911,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public void UpdateApiRelease(
-            PsApiManagementContext context,
+            string resourceGroupName,
+            string serviceName,
             string apiId,
             string releaseId,
             string notes,
             PsApiManagementApiRelease release)
         {
             var apiReleaseContract = Client.ApiRelease.Get(
-                context.ResourceGroupName,
-                context.ServiceName,
+                resourceGroupName,
+                serviceName,
                 apiId,
                 releaseId);
 
@@ -920,17 +941,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
 
             Client.ApiRelease.Update(
-                context.ResourceGroupName,
-                context.ServiceName,
+                resourceGroupName,
+                serviceName,
                 apiId,
                 releaseId,
                 apiReleaseContract,
                 "*");
         }
 
-        public PsApiManagementApiRelease GetApiReleaseById(PsApiManagementContext context, string apiId, string releaseId)
+        public PsApiManagementApiRelease GetApiReleaseById(string resourceGroupName, string serviceName, string apiId, string releaseId)
         {
-            var response = Client.ApiRelease.Get(context.ResourceGroupName, context.ServiceName, apiId, releaseId);
+            var response = Client.ApiRelease.Get(resourceGroupName, serviceName, apiId, releaseId);
             var apiRelease = Mapper.Map<PsApiManagementApiRelease>(response);
 
             return apiRelease;
@@ -945,9 +966,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return results;
         }
 
-        public void ApiReleaseRemove(PsApiManagementContext context, string apiId, string releaseId)
+        public void ApiReleaseRemove(string resourceGroupName, string serviceName, string apiId, string releaseId)
         {
-            Client.ApiRelease.Delete(context.ResourceGroupName, context.ServiceName, apiId, releaseId, "*");
+            Client.ApiRelease.Delete(resourceGroupName, serviceName, apiId, releaseId, "*");
         }
 
         #endregion
@@ -986,7 +1007,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         }
 
         public PsApiManagementApiVersionSet SetApiVersionSet(
-            PsApiManagementContext context,
+            string resourceGroupName,
+            string serviceName,
             string versionSetId,
             string name,
             PsApiManagementVersioningScheme? scheme,
@@ -999,8 +1021,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             if (versionSetObject == null)
             {
                 apiVersionContract = Client.ApiVersionSet.Get(
-                    context.ResourceGroupName,
-                    context.ServiceName,
+                    resourceGroupName,
+                    serviceName,
                     versionSetId);
 
                 if (!string.IsNullOrEmpty(name))
@@ -1034,8 +1056,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             }
 
             var updatedApiVersionSet = Client.ApiVersionSet.CreateOrUpdate(
-                context.ResourceGroupName,
-                context.ServiceName, 
+                resourceGroupName,
+                serviceName, 
                 versionSetId,
                 apiVersionContract, 
                 "*");
@@ -1059,9 +1081,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return results;
         }
 
-        public void ApiVersionSetRemove(PsApiManagementContext context, string apiVersionSetId)
+        public void ApiVersionSetRemove(string resourceGroupName, string serviceName, string apiVersionSetId)
         {
-            Client.ApiVersionSet.Delete(context.ResourceGroupName, context.ServiceName, apiVersionSetId, "*");
+            Client.ApiVersionSet.Delete(resourceGroupName, serviceName, apiVersionSetId, "*");
         }
 
         #endregion
@@ -2939,6 +2961,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
 
             var apiIdArrary = armApiId.Split(new[] { "/" }, StringSplitOptions.RemoveEmptyEntries);
             return apiIdArrary.Last();
+        }
+
+        static string GetResourceGroupName(string armResourceId)
+        {
+            if (string.IsNullOrEmpty(armResourceId))
+            {
+                return null;
+            }
+                        
+            Match m = ResourceGroupRegex.Match(armResourceId);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+
+        static string GetServiceName(string armResourceId)
+        {
+            if (string.IsNullOrEmpty(armResourceId))
+            {
+                return null;
+            }
+
+            Match m = ServiceNameRegex.Match(armResourceId);
+            return m.Success ? m.Groups["serviceName"].Value : null;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = true,
             HelpMessage = "The ApiManagement instance.")]
         [ValidateNotNull]
-        public PsApiManagement ApiManagement { get; set; }
+        public PsApiManagement InputObject { get; set; }
         
         [Parameter(Mandatory = false,
             HelpMessage = "Generate and assign an Azure Active Directory Identity for this server for use with key management services like Azure KeyVault.")]
@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(ApiManagement.Name, Resources.SetApiManagementService))
+            if (ShouldProcess(InputObject.Name, Resources.SetApiManagementService))
             {
                 var apiManagementResource = Client.SetApiManagementService(
-                    ApiManagement, 
+                    InputObject, 
                     AssignIdentity.IsPresent);
 
                 if (PassThru.IsPresent)

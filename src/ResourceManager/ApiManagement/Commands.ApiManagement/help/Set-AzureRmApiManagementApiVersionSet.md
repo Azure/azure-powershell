@@ -20,11 +20,10 @@ Set-AzureRmApiManagementApiVersionSet -Context <PsApiManagementContext> -ApiVers
  [<CommonParameters>]
 ```
 
-### ByValue
+### ByInputObject
 ```
-Set-AzureRmApiManagementApiVersionSet -Context <PsApiManagementContext>
- -ApiVersionSetObject <PsApiManagementApiVersionSet> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmApiManagementApiVersionSet -InputObject <PsApiManagementApiVersionSet> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,28 +57,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ApiVersionSetObject
-Instance of PsApiManagementApiVersionSet. This parameter is required.
-
-```yaml
-Type: PsApiManagementApiVersionSet
-Parameter Sets: ByValue
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Context
 Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
 Type: PsApiManagementContext
-Parameter Sets: (All)
+Parameter Sets: ExpandedParameter
 Aliases:
 
 Required: True
@@ -132,6 +116,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Instance of PsApiManagementApiVersionSet. This parameter is required.
+
+```yaml
+Type: PsApiManagementApiVersionSet
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

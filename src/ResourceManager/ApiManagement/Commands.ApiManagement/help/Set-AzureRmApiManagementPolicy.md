@@ -152,6 +152,7 @@ This parameter is optional.
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: application/vnd.ms-azure-apim.policy.raw+xml, application/vnd.ms-azure-apim.policy+xml
 
 Required: False
 Position: Named

@@ -13,10 +13,18 @@ Modifies an API Management Logger.
 
 ## SYNTAX
 
+### EventHubLoggerSet (Default)
 ```
 Set-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String> [-Name <String>]
- [-ConnectionString <String>] [-InstrumentationKey <String>] [-Description <String>] [-IsBuffered] [-PassThru]
+ [-ConnectionString <String>] [-Description <String>] [-IsBuffered] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ApplicationInsightsLoggerSet
+```
+Set-AzureRmApiManagementLogger -Context <PsApiManagementContext> -LoggerId <String>
+ [-InstrumentationKey <String>] [-Description <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +32,7 @@ The **Set-AzureRmApiManagementLogger** cmdlet modifies settings of an Azure API 
 
 ## EXAMPLES
 
-### Example 1: Modify a logger
+### Example 1: Modify EventHub logger
 ```powershell
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Set-AzureRmApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Name "ContosoSdkEventHub" -ConnectionString "Endpoint=sb://ContosoSdkEventHubs.servicebus.windows.net/;SharedAccessKeyName=SendKey;SharedAccessKey=<key>" -Description "updated SDK event hub logger" -PassThru
@@ -39,7 +47,7 @@ Specifies an Azure Event Hubs connection string that includes Send policy rights
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: EventHubLoggerSet
 Aliases:
 
 Required: False
@@ -99,7 +107,7 @@ Instrumentation Key of the application Insights. This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ApplicationInsightsLoggerSet
 Aliases:
 
 Required: False
@@ -115,7 +123,7 @@ When records are buffered, they are sent to Event Hubs every 15 seconds, or when
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: EventHubLoggerSet
 Aliases:
 
 Required: False
@@ -145,7 +153,7 @@ Specifies the entity name of an event hub from Azure classic portal.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: EventHubLoggerSet
 Aliases:
 
 Required: False

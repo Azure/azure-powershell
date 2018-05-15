@@ -131,6 +131,7 @@ Group Type. Custom Group is User defined Group. System Group includes Administra
 Type: PsApiManagementGroupType
 Parameter Sets: (All)
 Aliases:
+Accepted values: Custom, System, External
 
 Required: False
 Position: Named

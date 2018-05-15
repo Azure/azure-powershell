@@ -200,7 +200,7 @@ function Test-ApiManagementVirtualNetworkCRUD {
 
         $service = Add-AzureRmApiManagementRegion -ApiManagement $service -Location $secondarylocation -VirtualNetwork $additionalRegionVirtualNetwork
         # Update the Deployment into Internal Virtual Network
-        $service = Set-AzureRmApiManagement -ApiManagement $service -PassThru
+        $service = Set-AzureRmApiManagement -InputObject $service -PassThru
 
         Assert-AreEqual $resourceGroupName $service.ResourceGroupName
         Assert-AreEqual $apiManagementName $service.Name
@@ -332,7 +332,7 @@ function Test-ApiManagementHostnamesCRUD {
         $result.SystemCertificates = @($systemCert)
         
         # apply the new configuration
-        $result = Set-AzureRmApiManagement -ApiManagement $result -PassThru 
+        $result = Set-AzureRmApiManagement -InputObject $result -PassThru 
 
         Assert-AreEqual $resourceGroupName $result.ResourceGroupName
         Assert-AreEqual $apiManagementName $result.Name
@@ -550,7 +550,7 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         $apimService = Update-AzureRmApiManagementRegion -ApiManagement $apimService -Location $secondAdditionalRegionLocation -Capacity $newAdditionalRegionCapacity -Sku $sku
 
         # Set the ApiManagement service and Enable Msi idenity on the service
-        $updatedService = Set-AzureRmApiManagement -ApiManagement $apimService -AssignIdentity -PassThru
+        $updatedService = Set-AzureRmApiManagement -InputObject $apimService -AssignIdentity -PassThru
         Assert-AreEqual $resourceGroupName $updatedService.ResourceGroupName
         Assert-AreEqual $apiManagementName $updatedService.Name
         Assert-AreEqual $location $updatedService.Location

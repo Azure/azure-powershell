@@ -19,14 +19,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiVersionSet, DefaultParameterSetName = AllApiVersionSets)]
-    [OutputType(typeof(IList<PsApiManagementApiVersionSet>), ParameterSetName = new[] { AllApiVersionSets })]
-    [OutputType(typeof(PsApiManagementApiVersionSet), ParameterSetName = new[] { FindById })]
+    [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiVersionSet)]
+    [OutputType(typeof(IList<PsApiManagementApiVersionSet>))]
+    [OutputType(typeof(PsApiManagementApiVersionSet))]
     public class GetAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
-    {
-        private const string FindById = "GetVersionSetbyId";
-        private const string AllApiVersionSets = "GetAllApiVersionSets";
-
+    {        
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
@@ -34,20 +31,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [ValidateNotNullOrEmpty]
         public PsApiManagementContext Context { get; set; }
                 
-        [Parameter(
-            ParameterSetName = FindById,
+        [Parameter(     
             ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "API identifier to look for. If specified will try to get the API by the Id.")]
         public String ApiVersionSetId { get; set; }
 
         public override void ExecuteApiManagementCmdlet()
         {
-            if (ParameterSetName.Equals(AllApiVersionSets))
+            if (string.IsNullOrEmpty(ApiVersionSetId))
             {
                 WriteObject(Client.GetApiVersionSets(Context), true);
             }
-            else if (ParameterSetName.Equals(FindById))
+            else
             {
                 WriteObject(Client.GetApiVersionSet(Context, ApiVersionSetId));
             }

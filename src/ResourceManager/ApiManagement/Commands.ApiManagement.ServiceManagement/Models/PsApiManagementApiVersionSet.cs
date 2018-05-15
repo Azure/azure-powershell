@@ -16,6 +16,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
     public class PsApiManagementApiVersionSet
     {
+        public string ResourceGroupName { get; set; }
+
+        public string ServiceName { get; set; }
+
         /// <summary>
         /// Api Version Set Id
         /// </summary>

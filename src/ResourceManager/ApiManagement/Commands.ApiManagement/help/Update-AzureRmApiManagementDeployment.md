@@ -207,7 +207,7 @@ The acceptable values for this parameter are:
 Type: PsApiManagementSku
 Parameter Sets: UpdateSpecificService
 Aliases:
-Accepted values: Developer, Standard, Premium
+Accepted values: Developer, Standard, Premium, Basic
 
 Required: True
 Position: Named

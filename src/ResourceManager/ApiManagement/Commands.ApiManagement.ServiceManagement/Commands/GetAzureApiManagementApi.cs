@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 {
                     id = ApiId.ApiRevisionIdentifier(ApiRevision);
                 }
-                WriteObject(Client.ApiById(Context, id));
+                WriteObject(Client.ApiById(Context.ResourceGroupName, Context.ServiceName, id));
             }
             else if (ParameterSetName.Equals(FindByName))
             {

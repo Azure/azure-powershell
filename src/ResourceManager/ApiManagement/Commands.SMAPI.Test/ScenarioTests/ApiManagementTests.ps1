@@ -2334,7 +2334,7 @@ function ApiRevision-CrudTest {
         # update the api release notes
         $updateReleaseNote = getAssetName
         $apiRelease.Notes = $updateReleaseNote
-        $updateApiRelease = Update-AzureRmApiManagementApiRelease -Context $context -ApiRelease $apiRelease -PassThru
+        $updateApiRelease = Update-AzureRmApiManagementApiRelease -InputObject $apiRelease -PassThru
         Assert-NotNull $updateApiRelease
         Assert-AreEqual $apiReleaseId $updateApiRelease.ReleaseId
         Assert-AreEqual $swaggerApiId1 $updateApiRelease.ApiId

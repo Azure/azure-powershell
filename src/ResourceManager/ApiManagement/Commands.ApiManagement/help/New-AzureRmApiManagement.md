@@ -233,7 +233,7 @@ The default is Developer.
 Type: PsApiManagementSku
 Parameter Sets: (All)
 Aliases:
-Accepted values: Developer, Standard, Premium
+Accepted values: Developer, Basic, Standard, Premium
 
 Required: False
 Position: Named

@@ -38,12 +38,33 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            string id = ApiId.ApiRevisionIdentifier(ApiRevision);
+            string resourcegroupName;
+            string serviceName;
+            string apiId;
+            string apiRevision;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
+            {
+                resourcegroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                apiId = InputObject.ApiId;
+                apiRevision = InputObject.ApiRevision;
+            }
+            else
+            {
+                resourcegroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                apiId = ApiId;
+                apiRevision = ApiRevision;
+            }
+
+            string id = apiId.ApiRevisionIdentifier(apiRevision);
 
             if (ShouldProcess(id, Resources.SetApiRevision))
             {
                 Client.ApiSet(
-                    Context,
+                    resourcegroupName,
+                    serviceName,
                     id,
                     Name,
                     Description,
@@ -54,11 +75,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     AuthorizationScope,
                     SubscriptionKeyHeaderName,
                     SubscriptionKeyQueryParamName,
-                    ApiObject);
+                    InputObject);
 
                 if (PassThru.IsPresent)
                 {
-                    var api = Client.ApiById(Context, id);
+                    var api = Client.ApiById(resourcegroupName, serviceName, id);
                     WriteObject(api);
                 }
             }

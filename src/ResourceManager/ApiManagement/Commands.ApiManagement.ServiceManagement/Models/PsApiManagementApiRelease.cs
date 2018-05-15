@@ -18,6 +18,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 
     public class PsApiManagementApiRelease
     {
+        public string ResourceGroupName { get;  set;}
+
+        public string ServiceName { get; set; }
+
         public string ReleaseId { get; set; }
 
         public string ApiId { get; set; }

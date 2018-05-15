@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Models;
 
     [Cmdlet(VerbsCommon.New, Constants.ApiManagementLogger, DefaultParameterSetName = EventHubLoggerSet)]
-    [OutputType(typeof(PsApiManagementLogger))]
+    [OutputType(typeof(PsApiManagementLogger), ParameterSetName = new[] { EventHubLoggerSet, ApplicationInsightsLoggerSet })]
     public class NewAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
         private const string EventHubLoggerSet = "EventHubLoggerSet";

@@ -26,7 +26,7 @@ The certificate is to be used for custom hostnames configuration.
 ## EXAMPLES
 
 ### Example 1: Import a API Management hostname certificate
-```
+```powershell
 PS C:\>Import-AzureRmApiManagementHostnameCertificate -Name "ContosoApi" -ResourceGroupName Contoso -HostnameType "Proxy" -PfxPath "C:\proxycert.pfx" -PfxPassword "CertSecret"
 ```
 
@@ -61,7 +61,7 @@ Valid values are:
 Type: PsApiManagementHostnameType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Proxy, Portal
+Accepted values: Proxy, Portal, Management, Scm
 
 Required: True
 Position: Named
