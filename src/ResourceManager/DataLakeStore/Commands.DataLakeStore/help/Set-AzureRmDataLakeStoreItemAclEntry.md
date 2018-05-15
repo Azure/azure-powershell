@@ -41,7 +41,7 @@ This command modifies the ACE for Patti Fuller to have all permissions.
 
 ### Example 2: Modify permissions for an ACE recursively
 ```
-PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").ObjectId -Permissions All -Recursive -Concurrency 128
+PS C:\>Set-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").ObjectId -Permissions All -Recurse -Concurrency 128
 ```
 
 This command recursively modifies the ACE for Patti Fuller to have all permissions to root and all its subdirectories and files.
