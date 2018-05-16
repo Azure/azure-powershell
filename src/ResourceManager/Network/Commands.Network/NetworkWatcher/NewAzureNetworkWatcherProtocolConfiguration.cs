@@ -57,11 +57,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         {
             base.Execute();
 
-            if (this.Protocol == null)
-            {
-                throw new ArgumentException("Protocol cannot be empty to create Protocol Configuration.");
-            }
-
             var protocolConfiguration = new PSNetworkWatcherProtocolConfiguration();
             protocolConfiguration.Protocol = this.Protocol;
             protocolConfiguration.Method = this.Method;
