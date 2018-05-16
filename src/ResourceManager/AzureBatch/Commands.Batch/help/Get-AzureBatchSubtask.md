@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 7D0D8B46-4BF0-47D5-9261-3306AEB9E7DD
@@ -52,7 +52,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -82,7 +82,7 @@ Specifies the ID of the job that contains the task whose subtasks this cmdlet ge
 ```yaml
 Type: String
 Parameter Sets: ODataFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -99,7 +99,7 @@ The default value is 1000.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -115,7 +115,7 @@ This object reference is created by using the Get-AzureBatchTask cmdlet and stor
 ```yaml
 Type: PSCloudTask
 Parameter Sets: ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -130,7 +130,7 @@ Specifies the ID of the task whose subtasks this cmdlet returns.
 ```yaml
 Type: String
 Parameter Sets: ODataFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
