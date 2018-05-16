@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add -ExtendedProperty parameter to New-AzureService and Set-AzureService
 
 ## Version 5.2.0
 * Add -ExtendedProperty parameter to New-AzureDeployment and Set-AzureDeployment
