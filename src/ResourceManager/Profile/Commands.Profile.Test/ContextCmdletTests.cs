@@ -212,6 +212,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ClearContextSetsDefaultContextName()
+        {
+            var getCmdlet = new GetAzureRMContextCommand();
+            var profile = CreateMultipleContextProfile();
+            var defaultContextName = profile.DefaultContextKey;
+            getCmdlet.CommandRuntime = commandRuntimeMock;
+            getCmdlet.DefaultProfile = profile;
+            getCmdlet.InvokeBeginProcessing();
+            getCmdlet.ExecuteCmdlet();
+            getCmdlet.InvokeEndProcessing();
+            Assert.True(commandRuntimeMock.OutputPipeline != null);
+            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Equal(defaultContextName, ((PSAzureContext)commandRuntimeMock.OutputPipeline[0]).Name);
+
+            var clearCmdlet = new ClearAzureRmContext();
+            commandRuntimeMock = new MockCommandRuntime();
+            clearCmdlet.CommandRuntime = commandRuntimeMock;
+            clearCmdlet.DefaultProfile = profile;
+            clearCmdlet.Scope = ContextModificationScope.Process;
+            clearCmdlet.PassThru = true;
+            clearCmdlet.InvokeBeginProcessing();
+            clearCmdlet.ExecuteCmdlet();
+            clearCmdlet.InvokeEndProcessing();
+            Assert.NotNull(commandRuntimeMock.OutputPipeline);
+            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            var result = (bool)(commandRuntimeMock.OutputPipeline[0]);
+            Assert.True(result);
+            Assert.True(profile.Contexts != null);
+            Assert.Equal(1, profile.Contexts.Count);
+            Assert.True(profile.Contexts.ContainsKey("Default"));
+            Assert.NotNull(profile.DefaultContext);
+            Assert.Null(profile.DefaultContext.Account);
+            Assert.Null(profile.DefaultContext.Subscription);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveDefaultContext()
         {
             var cmdlet = new RemoveAzureRmContext();
