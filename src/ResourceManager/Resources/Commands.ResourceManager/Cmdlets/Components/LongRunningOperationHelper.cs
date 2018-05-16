@@ -120,9 +120,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                     } else if (resourceProvisioningState == TerminalProvisioningStates.Failed ||
                         resourceProvisioningState == TerminalProvisioningStates.Canceled)
                     {
-                        var error = JObject.Parse(operationResult.Value);
                         JToken errorToken;
-                        if (error.TryGetValue("error", out errorToken))
+                        if (result.TryGetValue("error", out errorToken))
                         {
                             this.FailedResult(
                                 operationResult,
@@ -200,8 +199,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         private TrackingOperationResult HandleCreateOrUpdateResponse(OperationResult operationResult)
         {
             Resource<InsensitiveDictionary<JToken>> resource;
-
-            // Handle async operation result
 
             if (!operationResult.Value.TryConvertTo<Resource<InsensitiveDictionary<JToken>>>(out resource))
             {

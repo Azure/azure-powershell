@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var activity = string.Format("DELETE {0}", managementUri.PathAndQuery);
 
                     this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
-                        .WaitOnOperation(operationResult: operationResult);
+                        .WaitOnOperation(operationResult: operationResult, resourceId: resourceId, apiVersion: apiVersion);
 
                     this.WriteObject(true);
                 });
