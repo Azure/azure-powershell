@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermaccount
@@ -46,8 +46,8 @@ Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken
 ### ManagedServiceLogin
 ```
 Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <String>] [-Identity]
- [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-Subscription <String>]
- [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
+ [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-ManagedServiceSecret <SecureString>]
+ [-Subscription <String>] [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -142,7 +142,7 @@ Specifies an access token.
 ```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -157,7 +157,7 @@ Account Id for access token
 ```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -169,7 +169,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ManagedServiceLogin
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -184,7 +184,7 @@ SPN
 ```yaml
 Type: String
 Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -199,7 +199,7 @@ Certificate Hash (Thumbprint)
 ```yaml
 Type: String
 Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -214,7 +214,7 @@ Name of the default context from this login.  You will be able to select this co
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -232,7 +232,7 @@ The PSCredential object provides the user ID and password for organizational ID 
 ```yaml
 Type: PSCredential
 Parameter Sets: UserWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSCredential
 Parameter Sets: ServicePrincipalWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -289,7 +289,7 @@ Overwrite the existing context with the same name, if any.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -304,7 +304,7 @@ AccessToken for Graph Service
 ```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -334,7 +334,7 @@ AccessToken for KeyVault Service
 ```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -349,7 +349,7 @@ Host name for managed service login
 ```yaml
 Type: String
 Parameter Sets: ManagedServiceLogin
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -364,11 +364,26 @@ Port number for managed service login
 ```yaml
 Type: Int32
 Parameter Sets: ManagedServiceLogin
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: 50342
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedServiceSecret
+Secret, used for some kinds of managed service login.
+
+```yaml
+Type: SecureString
+Parameter Sets: ManagedServiceLogin
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -379,7 +394,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -395,7 +410,7 @@ Indicates that this account authenticates by providing service principal credent
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -410,7 +425,7 @@ Skip validation for access token
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -510,4 +525,3 @@ Credentials, subscription, account, and tenant information for the logged in use
 ## NOTES
 
 ## RELATED LINKS
-

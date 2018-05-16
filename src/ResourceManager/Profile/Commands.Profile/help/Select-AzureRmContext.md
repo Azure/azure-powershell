@@ -33,6 +33,13 @@ selected context.
 ### Example 1 : Target a named context
 ```
 PS C:\> Select-AzureRmContext "Work"
+
+Name             : Work
+Account          : test@outlook.com
+TenantId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId   : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName : Work Subscription
+Environment      : AzureCloud
 ```
 
 Target future Azure PowerShell cmdlets at the account, tenant, and subscription in the 'Work' context.
@@ -60,7 +67,7 @@ A context object, normally passed through the pipeline.
 ```yaml
 Type: PSAzureContext
 Parameter Sets: SelectByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -75,7 +82,7 @@ The name of the context
 ```yaml
 Type: String
 Parameter Sets: SelectByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -90,7 +97,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -145,4 +152,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

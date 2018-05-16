@@ -68,6 +68,14 @@
                 <PropertyName>Account</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>TenantId</Label>
+                <ScriptBlock>$_.Tenant.ToString()</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>SubscriptionId</Label>
+                <ScriptBlock>$_.Subscription.Id</ScriptBlock>
+              </ListItem>
+              <ListItem>
                 <Label>SubscriptionName</Label>
                 <ScriptBlock>$_.Subscription.Name</ScriptBlock>
               </ListItem>
@@ -77,10 +85,6 @@
                 </ItemSelectionCondition>
                 <Label>CurrentStorageAccount</Label>
                 <ScriptBlock>$_.Subscription.CurrentStorageAccountName</ScriptBlock>
-              </ListItem>
-              <ListItem>
-                <Label>TenantId</Label>
-                <ScriptBlock>$_.Tenant.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <PropertyName>Environment</PropertyName>

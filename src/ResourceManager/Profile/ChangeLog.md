@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add `SubscriptionId` as one of the displayed properties of a context
 
 ## Version 5.0.1
 * Fix issue where default environments weren''t being retrieved without a default context set

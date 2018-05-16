@@ -125,7 +125,7 @@ Specifies the name of the Azure instance to get.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0

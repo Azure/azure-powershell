@@ -35,12 +35,12 @@ Azure Resource Manager cmdlets use these settings by default when making Azure R
 PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmContext
 
-Environment           : AzureCloud
-Account               : test@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Test Subscription
-CurrentStorageAccount :
+Name             : Test Subscription - yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Account          : test@outlook.com
+TenantId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId   : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName : Test Subscription
+Environment      : AzureCloud
 ```
 
 In this example we are logging into our account with an Azure subscription using Connect-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
@@ -49,21 +49,19 @@ In this example we are logging into our account with an Azure subscription using
 ```
 PS C:\> Get-AzureRmContext -ListAvailable
 
-Name                  : Test
-Environment           : AzureCloud
-Account               : test@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Test Subscription
-CurrentStorageAccount :
+Name             : Test Subscription - yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Account          : test@outlook.com
+TenantId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId   : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+SubscriptionName : Test Subscription
+Environment      : AzureCloud
 
-Name                  : Production
-Environment           : AzureCloud
-Account               : prod@outlook.com
-TenantId              : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-SubscriptionId        : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
-SubscriptionName      : Production Subscription
-CurrentStorageAccount :
+Name             : Production
+Account          : prod@outlook.com
+TenantId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+SubscriptionId   : zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz
+SubscriptionName : Production Subscription
+Environment      : AzureCloud
 ```
 
 In this example, all currently available contexts are displayed.  The user may select one of these contexts using Select-AzureRmContext.
@@ -91,7 +89,7 @@ List all available contexts in the current session.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ListAllContexts
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +104,7 @@ The name of the context
 ```yaml
 Type: String
 Parameter Sets: GetSingleContext
-Aliases: 
+Aliases:
 Accepted values: Default
 
 Required: False

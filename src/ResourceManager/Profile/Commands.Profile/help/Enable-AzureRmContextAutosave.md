@@ -52,7 +52,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -108,4 +108,3 @@ Information about the current Autosave settings, including whether Autosave is e
 ## NOTES
 
 ## RELATED LINKS
-

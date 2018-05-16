@@ -99,7 +99,7 @@ Specifies the name of the environment to remove.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -114,7 +114,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False

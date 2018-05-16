@@ -189,7 +189,7 @@ One or more error records to resolve.  If no parameters are specified, all error
 ```yaml
 Type: ErrorRecord[]
 Parameter Sets: AnyErrorParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -204,7 +204,7 @@ Resolve only the last error that occurred in the session.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: LastErrorParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -234,4 +234,3 @@ Information about errors in cleint/server communications.  This will often conta
 ## NOTES
 
 ## RELATED LINKS
-
