@@ -42,6 +42,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         void WriteObject(object value);
 
         /// <summary>
+        /// See also PowerShell `WriteWarning`.
+        /// </summary>
+        /// <param name="message"></param>
+        void WriteWarning(string message);
+
+        /// <summary>
         /// See also PowerShell `WriteProgress`.
         /// </summary>
         /// <param name="activity"></param>
