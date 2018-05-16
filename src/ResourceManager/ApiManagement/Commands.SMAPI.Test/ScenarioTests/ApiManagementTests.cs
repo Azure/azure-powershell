@@ -15,6 +15,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -204,10 +205,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
-            //for (int i = 0; i < scripts.Length; i++)
-            //{
-            //    scripts[i] = scripts[i] + string.Format(" {0} {1}", _fixture.ResourceGroupName, _fixture.ApiManagementServiceName);
-            //}
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
@@ -221,6 +218,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
                     _helper.RMProfileModule,
                     _helper.GetRMModulePath(@"AzureRM.ApiManagement.psd1"));
 
+                scripts = scripts.Select(s => s + $" {_fixture.ResourceGroupName} {_fixture.ApiManagementServiceName}").ToArray();
                 _helper.RunPowerShellTest(scripts);
             }
         }

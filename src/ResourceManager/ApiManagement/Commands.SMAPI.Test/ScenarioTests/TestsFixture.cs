@@ -1,19 +1,19 @@
 ﻿namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Azure.Management.ApiManagement;
-    using Microsoft.Azure.Management.ApiManagement.Models;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Management.Resources.Models;
-    using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Management;
+    using Management.ApiManagement;
+    using Management.ApiManagement.Models;
+    using Management.Resources;
+    using Management.Resources.Models;
+    using Azure.Test;
+    using WindowsAzure.Management;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Net;
     using System.Xml.Linq;
-    using Microsoft.Azure.Test.HttpRecorder;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using Azure.Test.HttpRecorder;
+    using WindowsAzure.Commands.Test.Utilities.Common;
 
 
     public class TestsFixture : RMTestBase
@@ -25,7 +25,7 @@
             TestUtilities.StartTest();
             try
             {
-                UndoContext.Current.Start();
+                //UndoContext.Current.Start();
 
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
                 resourceManagementClient.TryRegisterSubscriptionForResource();
@@ -48,7 +48,7 @@
 
         protected void Cleanup()
         {
-            UndoContext.Current.UndoAll();
+            //UndoContext.Current.UndoAll();
         }
     }
 
@@ -62,11 +62,6 @@
         public static ResourceManagementClient GetResourceManagementClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
-        }
-
-        public static ManagementClient GetManagementClient()
-        {
-            return TestBase.GetServiceClient<ManagementClient>();
         }
 
         private static void ThrowIfTrue(bool condition, string message)
@@ -107,42 +102,9 @@
                 : string.Empty;
         }
 
-        public static IEnumerable<ResourceGroupExtended> GetResourceGroups(this ResourceManagementClient resourceManagementClient)
-        {
-            return resourceManagementClient.ResourceGroups.List(new ResourceGroupListParameters()).ResourceGroups;
-        }
-
         public static void TryRegisterResourceGroup(this ResourceManagementClient resourceManagementClient, string location, string resourceGroupName)
         {
             resourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup(location));
-        }
-
-        public static string TryGetLocation(this ManagementClient managementClient, string preferedLocationName = null)
-        {
-            var locations = managementClient.Locations.List().Locations;
-            if (!locations.Any())
-            {
-                return string.Empty;
-            }
-
-            var foundLocation = locations.First();
-            if (preferedLocationName == null)
-            {
-                return foundLocation.Name;
-            }
-
-            var preferedLocation = locations.FirstOrDefault(location => location.Name.Contains(preferedLocationName));
-            if (preferedLocation != null)
-            {
-                return preferedLocation.Name;
-            }
-
-            return foundLocation.Name;
-        }
-
-        public static IEnumerable<string> GetLocations(this ManagementClient managementClient)
-        {
-            return managementClient.Locations.List().Locations.Select(location => location.Name);
         }
 
         public static void TryCreateApiService(
@@ -173,14 +135,6 @@
 
             var response = client.ResourceProvider.Get(resourceGroupName, apiServiceName);
             ThrowIfTrue(!response.Value.Name.Equals(apiServiceName), string.Format("ApiService name is not equal to {0}", apiServiceName));
-        }
-
-        public static Stream ToStream(this XDocument doc)
-        {
-            var stream = new MemoryStream();
-            doc.Save(stream);
-            stream.Position = 0;
-            return stream;
         }
     }
 }
