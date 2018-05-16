@@ -40,14 +40,25 @@ namespace StaticAnalysis.SignatureVerifier
 
         public string Name { get; private set; }
 
-        public void Analyze(IEnumerable<string> cmdletProbingDirs)
+        public void Analyze(IEnumerable<string> scopes)
         {
-            Analyze(cmdletProbingDirs, null, null);
+            Analyze(scopes, null);
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, IEnumerable<string> modulesToAnalyze)
+        {
+            Analyze(cmdletProbingDirs, null, null, modulesToAnalyze);
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter)
+        {
+            Analyze(cmdletProbingDirs, directoryFilter, cmdletFilter, null);
         }
 
         public void Analyze(IEnumerable<string> cmdletProbingDirs,
                             Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
-                            Func<string, bool> cmdletFilter)
+                            Func<string, bool> cmdletFilter,
+                            IEnumerable<string> modulesToAnalyze)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             var processedHelpFiles = new List<string>();
@@ -69,6 +80,13 @@ namespace StaticAnalysis.SignatureVerifier
 
                 foreach(var directory in probingDirectories)
                 {
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Where(m => directory.EndsWith(m)).Any())
+                    {
+                        continue;
+                    }
+
                     var service = Path.GetFileName(directory);
                     var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
                     if (manifestFiles.Count > 1)

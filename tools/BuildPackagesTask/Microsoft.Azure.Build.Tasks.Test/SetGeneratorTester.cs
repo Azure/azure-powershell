@@ -17,11 +17,13 @@ using System;
 using Xunit;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Build.Tasks
 {
-    public class TestSetGeneratorTester
+    public class SetGeneratorTester
     {
         /// <summary>
         /// Trait name.
@@ -31,7 +33,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// <summary>
         /// Trait value.
         /// </summary>
-        public const string AcceptanceType = "AcceptanceType";        
+        public const string AcceptanceType = "AcceptanceType";
 
         /// <summary>
         /// File path of TestMappings.
@@ -71,9 +73,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<String> actual = new HashSet<String>();
 
             //act
-            actual = TestSetGenerator.GetTestSet(paths, map);
+            actual = SetGenerator.Generate(paths, map);
 
-            //assert            
+            //assert
             Assert.True(expected.SetEquals(actual));
 
         }
@@ -106,9 +108,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<String> actual = new HashSet<String>();
 
             //act
-            actual = TestSetGenerator.GetTestSet(paths, map);
+            actual = SetGenerator.Generate(paths, map);
 
-            //assert            
+            //assert
             Assert.True(expected.SetEquals(actual));
 
         }
@@ -143,9 +145,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<String> actual = new HashSet<String>();
 
             //act
-            actual = TestSetGenerator.GetTestSet(paths, map);
+            actual = SetGenerator.Generate(paths, map);
 
-            //assert            
+            //assert
             Assert.True(expected.SetEquals(actual));
 
         }
@@ -180,9 +182,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<String> actual = new HashSet<String>();
 
             //act
-            actual = TestSetGenerator.GetTestSet(paths, map);
+            actual = SetGenerator.Generate(paths, map);
 
-            //assert            
+            //assert
             Assert.True(expected.SetEquals(actual));
 
         }
@@ -217,9 +219,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<String> actual = new HashSet<String>();
 
             //act
-            actual = TestSetGenerator.GetTestSet(paths, map);
+            actual = SetGenerator.Generate(paths, map);
 
-            //assert            
+            //assert
             Assert.True(expected.SetEquals(actual));
 
         }
@@ -242,9 +244,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<string> actual;
 
             //act
-            actual = TestSetGenerator.GetTestSet(paths, map);
+            actual = SetGenerator.Generate(paths, map);
 
-            //assert            
+            //assert
             Assert.True(expectedNumberFiles == actual.Count);
         }
 
@@ -265,12 +267,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             //act
             try
             {
-                TestSetGenerator.GetTestSet(paths, map);
+                SetGenerator.Generate(paths, map);
             }
             catch (ArgumentException e)
             {
-                // assert  
-                Assert.Contains(e.Message, "Map does not contain any element.");
+                // assert
+                Assert.Contains(e.Message, "The mappings dictionary does not contain any elements.");
                 return;
             }
 
@@ -293,12 +295,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             //act
             try
             {
-                TestSetGenerator.GetTestSet(null, map);
+                SetGenerator.Generate(null, map);
             }
             catch (ArgumentNullException e)
             {
-                // assert  
-                Assert.Contains("Paths set should never be null.", e.Message);
+                // assert
+                Assert.Contains("The set of files changed cannot be null.", e.Message);
                 return;
             }
 
@@ -320,12 +322,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             //act
             try
             {
-                TestSetGenerator.GetTestSet(paths, null);
+                SetGenerator.Generate(paths, null);
             }
             catch (ArgumentNullException e)
             {
-                // assert  
-                Assert.Contains("Mapping should never be null.", e.Message);
+                // assert
+                Assert.Contains("The mappings dictionary cannot be null.", e.Message);
                 return;
             }
 
@@ -355,12 +357,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             //act
             try
             {
-                TestSetGenerator.GetTestSet(paths, map);
+                SetGenerator.Generate(paths, map);
             }
             catch (ArgumentNullException e)
             {
-                // assert  
-                Assert.Contains("One or more of the paths provided are null.", e.Message);
+                // assert
+                Assert.Contains("One or more of the elements in the set of changed files is null.", e.Message);
                 return;
             }
 
@@ -392,9 +394,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<string> actual;
 
             //act
-            actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
+            actual = (HashSet<string>)(SetGenerator.Generate(paths, mapFilePath));
 
-            //assert            
+            //assert
             Assert.True(expectedNumberFiles <= actual.Count);
         }
 
@@ -414,9 +416,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             HashSet<string> actual;
 
             //act
-            actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
+            actual = (HashSet<string>)(SetGenerator.Generate(paths, mapFilePath));
 
-            //assert            
+            //assert
             Assert.True(expectedNumberFiles == actual.Count);
         }
 
@@ -424,37 +426,36 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         [Trait(AcceptanceType, CheckIn)]
         public void GetTests_FilesNull_ThrowNullException()
         {
-            //arrange           
+            //arrange
             string mapFilePath =  MapFilePath;
 
             try
             {
-                TestSetGenerator.GetTests(null, mapFilePath);
+                SetGenerator.Generate(null, mapFilePath);
             }
             catch (ArgumentNullException e)
             {
-                // assert  
-                Assert.Contains("The files should never be null.", e.Message);
+                // assert
+                Assert.Contains("The list of files changed cannot be null.", e.Message);
                 return;
             }
 
             throw new Exception("No exception was thrown.");
         }
 
-        [Fact(Skip = "https://github.com/Azure/azure-powershell/issues/4723")]
+        [Fact]
         [Trait(AcceptanceType, CheckIn)]
         public void GetTests_EmptyListOfFiles_ShouldReturnAllTests()
         {
             //arrange
             HashSet<string> paths = new HashSet<string>() { };
-            string mapFilePath = MapFilePath;
-            int expectedNumberFiles = 53;
+            int expectedNumberFiles = GetFullSetFromMappingsFile(MapFilePath).Count;
             HashSet<string> actual;
 
             //act
-            actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
+            actual = (HashSet<string>)(SetGenerator.Generate(paths, MapFilePath));
 
-            //assert            
+            //assert
             Assert.True(expectedNumberFiles <= actual.Count);
         }
 
@@ -474,12 +475,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             try
             {
-                TestSetGenerator.GetTests(paths, mapFilePath);
+                SetGenerator.Generate(paths, mapFilePath);
             }
             catch (System.IO.FileNotFoundException e)
             {
-                // assert  
-                Assert.Contains("The filepath provided for the map could not be found.", e.Message);
+                // assert
+                Assert.Contains("The file path provided for the mappings could not be found.", e.Message);
                 return;
             }
 
@@ -517,13 +518,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             IEnumerable<string> actual;
 
             //act
-            actual = TestSetGenerator.GetTests(paths, mapFilePath);
+            actual = SetGenerator.Generate(paths, mapFilePath);
 
-            //assert            
+            //assert
             Assert.True(expected.SetEquals(actual));
         }
 
-        [Fact(Skip = "https://github.com/Azure/azure-powershell/issues/4723")]
+        [Fact]
         [Trait(AcceptanceType, CheckIn)]
         public void GetTests_WithActualMappings_FilesNotFound_ReturnsAllTests()
         {
@@ -538,15 +539,26 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             };
 
-            string mapFilePath = MapFilePath;
-            int expectedNumberFiles = 53;
+            int expectedNumberFiles = GetFullSetFromMappingsFile(MapFilePath).Count;
             HashSet<string> actual;
 
             //act
-            actual = (HashSet<string>)(TestSetGenerator.GetTests(paths, mapFilePath));
+            actual = (HashSet<string>)(SetGenerator.Generate(paths, MapFilePath));
 
-            //assert            
+            //assert
             Assert.True(expectedNumberFiles <= actual.Count);
+        }
+
+        private HashSet<string> GetFullSetFromMappingsFile(string mappingsFilePath)
+        {
+            var mappingsDictionary = JsonConvert.DeserializeObject<Dictionary<string, string[]>>(File.ReadAllText(mappingsFilePath));
+            var set = new HashSet<string>();
+            foreach (var values in mappingsDictionary.Values)
+            {
+                set.UnionWith(values);
+            }
+
+            return set;
         }
         #endregion
 

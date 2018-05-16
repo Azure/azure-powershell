@@ -54,22 +54,13 @@
 		Command="MSTest.exe /testcontainer:$(_testAssembly) /testsettings:$(_testSettings) /category:$(_testFilter) /resultsfile:$(_testResult)"
 		ContinueOnError="false" />
 	</Target>
-	<Target Name="DeclareXunitTests">
-    <!--Get list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
-    <SmartTestingTask  RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)" MapFilePath=".\TestMappings.json">
-      <Output TaskParameter ="TestAssemblies" ItemName="XUnitTests"/>
-    </SmartTestingTask>
-	<Message Text="Using these test assemblies:"/>
-	<Message Text="%(XUnitTests.Identity)"/>
-	<Message Text="Total: @(XunitTests->Count())"/>			
-	</Target>
 
-	<Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
+	<Target Name="InvokeXUnit">
 		<Message Importance="high" Text="Running XUnit tests" />
 		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 
-		<xunit 
-			Assemblies="@(XUnitTests)" 
+		<xunit
+			Assemblies="@(XUnitTests)"
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
@@ -78,16 +69,16 @@
 			Html="$(TestOutputDirectory)\AzurePowershellTestResults.html"
 			MaxParallelThreads="10"
 			DiagnosticMessages="false"
-			ContinueOnError="false" 
+			ContinueOnError="false"
 			Condition=" @(XUnitTests) != '' "/>
 	</Target>
 
-	<Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
+	<Target Name="InvokeXUnitAll">
 		<Message Importance="high" Text="Running XUnit tests" />
 		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 
-		<xunit 
-			Assemblies="@(XUnitTests)" 
+		<xunit
+			Assemblies="@(XUnitTests)"
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
@@ -96,7 +87,7 @@
 			Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
 			MaxParallelThreads="10"
 			DiagnosticMessages="false"
-			ContinueOnError="false" 
+			ContinueOnError="false"
 			Condition=" @(XUnitTests) != '' "/>
 	</Target>
 
@@ -107,7 +98,7 @@
 	<Target Name="BeforeRunTests">
 		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 	</Target>
-	
+
 	<Target Name="TestManagement">
 		<Xunit.Runner.MSBuild.xunit Assemblies="$(ManagementTestDebug)" Html="$(TestOutputDirectory)\ManagementDebug.xunit.dll.html" Verbose="false"
 		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
@@ -258,7 +249,7 @@
 		<Message Importance="high" Text="Running Sql tests" />
 		<Xunit.Runner.MSBuild.xunit Assemblies="$(SqlTestDebug)" Html="$(TestOutputDirectory)\SqlTests.xunit.dll.html" Verbose="false"
 		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false" />
-	</Target>  
+	</Target>
 
 	<!-- Run the KeyVault tests -->
 	<Target Name="KeyVaultTests">
@@ -266,7 +257,7 @@
 		<Xunit.Runner.MSBuild.xunit Assemblies="$(KeyVaultTestDebug)" Html="$(TestOutputDirectory)\KeyVaultTests.xunit.dll.html" Verbose="true"
 		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
 	</Target>
-    
+
     <!-- Run the ServiceFabric tests -->
 	<Target Name="ServiceFabricTests">
 		<Message Importance="high" Text="Running ServiceFabric tests" />
@@ -300,7 +291,7 @@
 		<Message Importance="high" Text="Running UsageAggregates tests" />
 		<Xunit.Runner.MSBuild.xunit Assemblies="$(UsageAggregationTestDebug)" Html="$(TestOutputDirectory)\UsageAggregationTests.xunit.dll.html" Verbose="true"
 		IncludeTraits="$(XUnitIncludedTrait)" MaxParallelThreads="0" ParallelizeAssemblies="false" ParallelizeTestCollections="false"/>
-	</Target>  
+	</Target>
 
 	<!-- Run the scenario tests with Mocks -->
 	<Target Name="MockedScenarioTests">
@@ -462,10 +453,10 @@
 	</Target>
 
 	<ItemGroup>
-		<LiveTestDlls Include="$(ResourceManagerTestDebug)" />    
+		<LiveTestDlls Include="$(ResourceManagerTestDebug)" />
 	</ItemGroup>
 
-	<Target Name="LiveTests"> 
+	<Target Name="LiveTests">
 		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
 		<Exec Command="packages\xunit.runner.console.2.1.0\tools\xunit.console.x86.exe  @(LiveTestDlls) /trait &quot;AcceptanceType=LiveBVT&quot; /html &quot;$(TestOutputDirectory)\Live.%(Filename).html&quot;" />
 	</Target>
