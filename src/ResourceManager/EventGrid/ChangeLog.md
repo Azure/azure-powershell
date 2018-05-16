@@ -19,6 +19,21 @@
 -->
 ## Current Release
 * Set minimum dependency of module to PowerShell 5.0
+* Update the following cmdlets to support new scenario in 2018-05-01-preview API version
+	- New-AzureRmEventGridTopic: Add new optional parameters for specifying: 
+		- Input schema.
+		- Input mapping fields
+		- Input mapping default values.
+	- New-AzureRmEventGridSubscription: Add new optional parameters for specifying: 
+		- Event Time-To-Live, 
+		- Maximum number of delivery attempts for the events, 
+		- The delivery schema
+		- Dead letter endpoint.
+	- Update-AzureRmEventGridSubscription: Add new optional parameters for specifying: 
+		- Event Time-To-Live, 
+		- Maximum number of delivery attempts for the events, 
+		- Dead letter endpoint.
+* Show warning message if creating or updating the event subscription is expected to entail manual action from user.
 
 ## Version 0.3.2
 * Updated to the latest version of the Azure ClientRuntime
