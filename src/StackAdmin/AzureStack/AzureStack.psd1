@@ -12,7 +12,7 @@
     RootModule             = "AzureStack.psm1"
 
     # Version number of this module.
-    ModuleVersion          = '1.2.12'
+    ModuleVersion          = '1.3.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -57,7 +57,7 @@
         @{ModuleName = 'Azs.Backup.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.Commerce.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.Compute.Admin'; RequiredVersion = '0.1.0'; },
-        @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.1.0'; },
+        @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.1.1'; },
         @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.1.0'; },
@@ -121,8 +121,8 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.05 - Version 1.2.12
-            * Azurestack 1.2.12 version brings in many breaking changes from the existing version of 1.2.11. Please refer https://aka.ms/azspsh1212migration for the details
+            ReleaseNotes = '## 2018.05 - Version 1.3.0
+            * Azurestack 1.3.0 version brings in many breaking changes from the existing version of 1.2.11. Please refer https://aka.ms/azspowershellmigration for the details
             * AzureRM.AzureStackAdmin module is replaced with Azs.Subscriptions.Admin and Azs.Subscriptions module
             * AzureRM.AzureStackStorage module is replaced with Azs.Storage.Admin module
             * The following new modules are added to the AzureStack rollup module
