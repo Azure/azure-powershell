@@ -8,11 +8,11 @@ Locale: en-US
 
 # Azs.Compute.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the AzureStack Compute administrator module which provides functionality to manage compute quotas, platform images, and virtual machine extensions
 
 ## Azs.Compute.Admin Cmdlets
 ### [Add-AzsPlatformImage](Add-AzsPlatformImage.md)
-Creates a new virtual machine platform image from a given image configuration.
+Add a virtual machine platform image from a given image configuration.
 
 ### [Add-AzsVMExtension](Add-AzsVMExtension.md)
 Create a new virtual machine extension image.

@@ -8,7 +8,10 @@ Locale: en-US
 
 # Azs.Backup.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the Backup administrator module that allows administrators to  
+- Configure where backups are stored 
+- Perform backups  
+- List and restore completed backup
 
 ## Azs.Backup.Admin Cmdlets
 ### [Get-AzsBackup](Get-AzsBackup.md)

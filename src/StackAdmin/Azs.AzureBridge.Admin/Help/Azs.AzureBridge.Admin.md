@@ -1,16 +1,16 @@
 ---
-Module Name: Azs.AzureBridge.Admin
+Module Name: Azs.Azurebridge.Admin
 Module Guid: 82d2260a-95ae-44bb-af8b-afd67d38f6db
 Download Help Link: {{Please enter FwLink manually}}
 Help Version: {{Please enter version of help manually (X.X.X.X) format}}
 Locale: en-US
 ---
 
-# Azs.AzureBridge.Admin Module
+# Azs.Azurebridge.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the AzureStack AzureBridge administrator module which allows you to manage your AzureStack marketplace items. 
 
-## Azs.AzureBridge.Admin Cmdlets
+## Azs.Azurebridge.Admin Cmdlets
 ### [Get-AzsAzureBridgeActivation](Get-AzsAzureBridgeActivation.md)
 Returns the Azure Bridge Activation.
 

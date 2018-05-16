@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Gallery.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the AzureStack Gallery administrator module which provides functionality to manage gallery items in the marketplace.
 
 ## Azs.Gallery.Admin Cmdlets
 ### [Add-AzsGalleryItem](Add-AzsGalleryItem.md)

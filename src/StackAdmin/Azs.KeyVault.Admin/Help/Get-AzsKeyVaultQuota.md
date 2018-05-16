@@ -1,7 +1,7 @@
 ---
 external help file: Azs.KeyVault.Admin-help.xml
-Module Name: Azs.KeyVault.Admin
-online version: 
+Module Name: Azs.Keyvault.Admin
+online version:
 schema: 2.0.0
 ---
 
@@ -21,7 +21,7 @@ Get a list of all quota objects for KeyVault at a location.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsKeyVaultQuota
 ```
@@ -36,7 +36,7 @@ The location of the quota.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -57,4 +57,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

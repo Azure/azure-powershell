@@ -8,12 +8,8 @@ Locale: en-US
 
 # Azs.Fabric.Admin Module
 ## Description
-{{Manually Enter Description Here}}
-
+Preview release of the AzureStack Fabric administrator module which allows administrators to view and manage infrastructure components.  
 ## Azs.Fabric.Admin Cmdlets
-### [Add-AzsScaleUnitNode](Add-AzsScaleUnitNode.md)
-Add a new scale unit.
-
 ### [Disable-AzsScaleUnitNode](Disable-AzsScaleUnitNode.md)
 Start maintenance mode for a scale unit node.
 
@@ -71,9 +67,6 @@ Returns a list of all storage subsystems for a location.
 ### [New-AzsIpPool](New-AzsIpPool.md)
 Create an infrastructure IP pool. 
 Once created an IP pool cannot be deleted or modified.
-
-### [New-AzsScaleUnitNodeObject](New-AzsScaleUnitNodeObject.md)
-Input data that allows for adding a scale unit node.
 
 ### [Repair-AzsScaleUnitNode](Repair-AzsScaleUnitNode.md)
 Repairs a node of the cluster.
