@@ -249,46 +249,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public PSUpdateHistoryProperty[] UpdateHistory { get; set; }
     }
 
-    //public enum PSImmutabilityPolicyState
-    //{
-    //    Locked = 0,
-    //    Unlocked = 1
-    //}
-
     public enum PSPublicAccess
     {
         Container = 0,
         Blob = 1,
         None = 2
     }
-
-    //public enum PSLeaseStatus
-    //{
-    //    Locked = 0,
-    //    Unlocked = 1
-    //}
-
-    //public enum PSLeaseState
-    //{
-    //    Available = 0,
-    //    Leased = 1,
-    //    Expired = 2,
-    //    Breaking = 3,
-    //    Broken = 4
-    //}
-
-    //public enum PSLeaseDuration
-    //{
-    //    Infinite = 0,
-    //    Fixed = 1
-    //}
-
-    //public enum PSImmutabilityPolicyUpdateType
-    //{
-    //    Put = 0,
-    //    Lock = 1,
-    //    Extend = 2
-    //}
 
     public class PSUpdateHistoryProperty
     {
