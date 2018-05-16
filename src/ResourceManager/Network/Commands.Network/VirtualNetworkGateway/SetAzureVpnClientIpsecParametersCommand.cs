@@ -93,8 +93,8 @@ namespace Microsoft.Azure.Commands.Network
             string shouldProcessMessage = string.Format("Execute Set-AzureRmVpnClientIpsecParameters for ResourceGroupName {0} VirtualNetworkGateway {1}", this.ResourceGroupName, this.VirtualNetworkGatewayName);
             if (ShouldProcess(shouldProcessMessage, VerbsCommon.Set))
             {
-                this.VirtualNetworkGatewayClient.SetVpnclientIpsecParameters(this.ResourceGroupName, this.VirtualNetworkGatewayName, vpnClientIPsecParametersModel);
-                var vpnClientIpsecParameters = this.GetVpnClientIpsecParameters(this.ResourceGroupName, this.VirtualNetworkGatewayName);
+                var vpnClientIpsecParameters = this.VirtualNetworkGatewayClient.SetVpnclientIpsecParameters(this.ResourceGroupName, this.VirtualNetworkGatewayName, vpnClientIPsecParametersModel);
+                var psVpnClientIPsecParameters = NetworkResourceManagerProfile.Mapper.Map<PSVpnClientIPsecParameters>(vpnClientIpsecParameters);
 
                 WriteObject(vpnClientIpsecParameters);
             }
