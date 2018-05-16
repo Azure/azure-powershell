@@ -1,20 +1,16 @@
-﻿namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
+﻿using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
+
+namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
     using Management.ApiManagement;
     using Management.ApiManagement.Models;
-    using Management.Resources;
-    using Management.Resources.Models;
     using Azure.Test;
-    using WindowsAzure.Management;
     using System;
-    using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
     using System.Net;
-    using System.Xml.Linq;
     using Azure.Test.HttpRecorder;
     using WindowsAzure.Commands.Test.Utilities.Common;
-
 
     public class TestsFixture : RMTestBase
     {
@@ -25,30 +21,13 @@
             TestUtilities.StartTest();
             try
             {
-                //UndoContext.Current.Start();
-
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
                 resourceManagementClient.TryRegisterSubscriptionForResource();
-            }
-            catch (Exception)
-            {
-                Cleanup();
-                throw;
             }
             finally
             {
                 TestUtilities.EndTest();
             }
-        }
-
-        public void Dispose()
-        {
-            Cleanup();
-        }
-
-        protected void Cleanup()
-        {
-            //UndoContext.Current.UndoAll();
         }
     }
 
@@ -76,15 +55,15 @@
         {
             var reg = resourceManagementClient.Providers.Register(providerName);
             ThrowIfTrue(reg == null, "_client.Providers.Register returned null.");
-            ThrowIfTrue(reg.StatusCode != HttpStatusCode.OK, string.Format("_client.Providers.Register returned with status code {0}", reg.StatusCode));
+            ThrowIfTrue(reg.StatusCode != HttpStatusCode.OK, $"_client.Providers.Register returned with status code {reg.StatusCode}");
 
             var resultAfterRegister = resourceManagementClient.Providers.Get(providerName);
             ThrowIfTrue(resultAfterRegister == null, "_client.Providers.Get returned null.");
             ThrowIfTrue(string.IsNullOrEmpty(resultAfterRegister.Provider.Id), "Provider.Id is null or empty.");
-            ThrowIfTrue(!providerName.Equals(resultAfterRegister.Provider.Namespace), string.Format("Provider name is not equal to {0}.", providerName));
+            ThrowIfTrue(!providerName.Equals(resultAfterRegister.Provider.Namespace), $"Provider name is not equal to {providerName}.");
             ThrowIfTrue(ProviderRegistrationState.Registered != resultAfterRegister.Provider.RegistrationState &&
                         ProviderRegistrationState.Registering != resultAfterRegister.Provider.RegistrationState,
-                string.Format("Provider registration state was not 'Registered' or 'Registering', instead it was '{0}'", resultAfterRegister.Provider.RegistrationState));
+                $"Provider registration state was not 'Registered' or 'Registering', instead it was '{resultAfterRegister.Provider.RegistrationState}'");
             ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes == null || resultAfterRegister.Provider.ResourceTypes.Count == 0, "Provider.ResourceTypes is empty.");
             ThrowIfTrue(resultAfterRegister.Provider.ResourceTypes[0].Locations == null || resultAfterRegister.Provider.ResourceTypes[0].Locations.Count == 0, "Provider.ResourceTypes[0].Locations is empty.");
         }
@@ -134,7 +113,7 @@
                 });
 
             var response = client.ResourceProvider.Get(resourceGroupName, apiServiceName);
-            ThrowIfTrue(!response.Value.Name.Equals(apiServiceName), string.Format("ApiService name is not equal to {0}", apiServiceName));
+            ThrowIfTrue(!response.Value.Name.Equals(apiServiceName), $"ApiService name is not equal to {apiServiceName}");
         }
     }
 }
