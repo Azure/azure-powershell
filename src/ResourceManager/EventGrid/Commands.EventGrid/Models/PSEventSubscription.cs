@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 {
     public class PSEventSubscription
     {
+        readonly DeadLetterDestination deadletterDestination;
         public PSEventSubscription(EventSubscription eventSubscription)
         {
             this.Id = eventSubscription.Id;
@@ -29,6 +30,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.Filter = eventSubscription.Filter;
             this.Labels = eventSubscription.Labels;
             this.Topic = eventSubscription.Topic;
+            this.EventTtl = eventSubscription.RetryPolicy?.EventTimeToLiveInMinutes;
+            this.MaxDeliveryAttempts = eventSubscription.RetryPolicy?.MaxDeliveryAttempts;
+            this.EventDeliverySchema = eventSubscription.EventDeliverySchema;
+            this.deadletterDestination = eventSubscription.DeadLetterDestination;
         }
 
         public PSEventSubscription(EventSubscription eventSubscription, string fullEndpointUrl)
@@ -57,6 +62,26 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 
         public IList<string> Labels { get; set; }
 
+        public int? EventTtl { get; set; }
+
+        public int? MaxDeliveryAttempts { get; set; }
+
+        public string EventDeliverySchema { get; set; }
+
+        public string DeadLetterEndpoint
+        {
+            get
+            {
+                var blobStorageDeadletterEndPoint = this.deadletterDestination as StorageBlobDeadLetterDestination;
+                if (blobStorageDeadletterEndPoint != null)
+                {
+                    return $"{blobStorageDeadletterEndPoint.ResourceId}/blobServices/default/containers/{blobStorageDeadletterEndPoint.BlobContainerName}";
+                }
+
+                return null;
+            }
+        }
+
         public string Endpoint
         {
             get
@@ -76,6 +101,18 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
                 if (eventHubDestination != null)
                 {
                     return eventHubDestination.ResourceId;
+                }
+
+                var storageQueueDestination = this.Destination as StorageQueueEventSubscriptionDestination;
+                if (storageQueueDestination != null)
+                {
+                    return $"{storageQueueDestination.ResourceId}/queueServices/default/queues/{storageQueueDestination.QueueName}";
+                }
+
+                var hybridConnDestination = this.Destination as HybridConnectionEventSubscriptionDestination;
+                if (hybridConnDestination != null)
+                {
+                    return hybridConnDestination.ResourceId;
                 }
 
                 return null;

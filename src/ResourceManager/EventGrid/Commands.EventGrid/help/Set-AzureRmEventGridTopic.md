@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/set-azurermeventgridtopic
@@ -65,7 +65,7 @@ EventGrid Topic object.
 ```yaml
 Type: PSTopic
 Parameter Sets: TopicInputObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -110,7 +110,7 @@ EventGrid Topic ResourceID.
 ```yaml
 Type: String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -125,7 +125,7 @@ Hashtables which represents resource Tag.
 ```yaml
 Type: Hashtable
 Parameter Sets: TopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 ```yaml
 Type: Hashtable
 Parameter Sets: TopicInputObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -192,4 +192,3 @@ System.Collections.Hashtable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -119,13 +119,13 @@ function TopicSetTests {
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     Write-Debug "Calling Set-AzureRmEventGridTopic on the created topic $topicName"
-	$tags1 = @{test1 = "testval1"; test2 = "testval2" };
+    $tags1 = @{test1 = "testval1"; test2 = "testval2" };
     $replacedTopic1 = Set-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Tag $tags1
     Assert-True {$replacedTopic1.Count -eq 1}
     Assert-True {$replacedTopic1.TopicName -eq $topicName} "Topic updated earlier is not found."
 
     Write-Debug "Calling Set-AzureRmEventGridTopic on the created topic $topicName"
-	$tags2 = @{test1 = "testval1"; test2 = "testval2" };
+    $tags2 = @{test1 = "testval1"; test2 = "testval2" };
     $replacedTopic2 = Set-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName" -Tag $tags2
     Assert-True {$replacedTopic2.Count -eq 1}
     Assert-True {$replacedTopic2.TopicName -eq $topicName} "Topic updated earlier is not found."
@@ -135,7 +135,7 @@ function TopicSetTests {
     Assert-AreEqual $tags2["test2"] $returned_tags2["test2"];
 
     Write-Debug "Calling Set-AzureRmEventGridTopic on the created topic $topicName"
-	$tags3 = @{test1 = "testval10"; test2 = "testval20" };
+    $tags3 = @{test1 = "testval10"; test2 = "testval20" };
     $replacedTopic3 = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName | Set-AzureRmEventGridTopic -Tag $tags3
     Assert-True {$replacedTopic3.Count -eq 1}
     Assert-True {$replacedTopic3.TopicName -eq $topicName} "Topic updated earlier is not found."
@@ -144,7 +144,7 @@ function TopicSetTests {
     Assert-AreEqual $tags3["test1"] $returned_tags3["test1"];
     Assert-AreEqual $tags3["test2"] $returned_tags3["test2"];
 
-	Write-Debug " Deleting topic: $topicName"
+    Write-Debug " Deleting topic: $topicName"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
 
     Write-Debug " Deleting resourcegroup $resourceGroupName"
@@ -222,6 +222,171 @@ function TopicNewKeyTests {
 
     Write-Debug " Deleting topic: $topicName"
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+
+    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+}
+
+<#
+.SYNOPSIS
+Tests EventGrid Topic Create, Get and List operations with Input mapping
+#>
+function TopicInputMappingTests {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $topicName2 = Get-TopicName
+    $topicName3 = Get-TopicName
+    $topicName4 = Get-TopicName
+    $topicName5 = Get-TopicName
+    $topicName6 = Get-TopicName
+
+    $resourceGroupName = Get-ResourceGroupName
+    $subscriptionId = Get-SubscriptionId
+
+    $expectedInputMappingEventGridSchema = "EventGridSchema"
+    $expectedInputMappingCloudEventSchema = "CloudEventV01Schema"
+    $expectedInputMappingCustomEventSchema = "CustomEventSchema"
+
+    $inputSchemaInvalid = "InvalidSchema"
+    $inputSchemaEventGridSchema1 = "eventgriDSChemA"
+    $inputSchemaEventGridSchema2 = "eventgridschema"
+    $inputSchemaCloudEventSchema1 = "ClOuDEvENtV01ScheMA"
+    $inputSchemaCloudEventSchema2 = "cloudeventV01schema"
+    $inputSchemaCustomEventSchema1 = "cUsTomEVeNTSchEma"
+    $inputSchemaCustomEventSchema2 = "customeventschema"
+
+    Write-Debug "Creating first resource group"
+    Write-Debug "ResourceGroup name : $resourceGroupName"
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
+
+    try
+    {
+        Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName with InputSchema $inputSchemaInvalid"
+        $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location -InputSchema $inputSchemaInvalid
+        Assert-True {$false} "New-AzureRmEventGridTopic succeeded while it is expected to fail"
+    }
+    catch
+    {
+        Assert-True {$true}
+    }
+
+    Write-Debug " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location -InputSchema $inputSchemaEventGridSchema1
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+    Assert-True {$result.InputSchema -eq $expectedInputMappingEventGridSchema} "EventGridSchema is expected."
+
+    Write-Debug "Getting the created topic within the resource group"
+    $createdTopic = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+    Assert-True {$createdTopic.Count -eq 1}
+    Assert-True {$createdTopic.TopicName -eq $topicName} "Topic created earlier is not found."
+    Assert-True {$createdTopic.InputSchema -eq $expectedInputMappingEventGridSchema} "InputSchema is not correct. EventGridSchema is expected."
+
+    Write-Debug "Creating a second EventGrid topic: $topicName2 in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema2"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName2 -Location $location -Tag @{ Dept = "IT"; Environment = "Test" } -InputSchema $inputSchemaEventGridSchema2
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+    Assert-True {$result.InputSchema -eq $expectedInputMappingEventGridSchema} "InputSchema is not correct. EventGridSchema is expected"
+
+    Write-Debug "Creating a third EventGrid topic: $topicName3 in resource group $resourceGroupName with InputSchema $inputSchemaCloudEventSchema1"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName3 -Location $location -InputSchema $inputSchemaCloudEventSchema1
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+    Assert-True {$result.InputSchema -eq $expectedInputMappingCloudEventSchema} "InputSchema is not correct. CloudEventSchema is expected."
+
+    Write-Debug "Creating a fourth EventGrid topic: $topicName4 in resource group $resourceGroupName with InputSchema $inputSchemaCloudEventSchema2"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName4 -Location $location -InputSchema $inputSchemaCloudEventSchema2
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+    Assert-True {$result.InputSchema -eq $expectedInputMappingCloudEventSchema} "InputSchema is not correct. CloudEventSchema is expected."
+
+    Write-Debug "Getting the created topic within the resource group"
+    $createdTopic = Get-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName3"
+    Assert-True {$createdTopic.Count -eq 1}
+    Assert-True {$createdTopic.TopicName -eq $topicName3} "$topicName3 created earlier is not found."
+
+    Write-Debug "Listing all the topics created in the resourceGroup $resourceGroupName"
+    $allCreatedTopics = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName
+
+    Assert-True {$allCreatedTopics.Count -eq 4 } "Topics created earlier is not found in the list."
+
+    Write-Debug "Getting all the topics created in the subscription"
+    $allCreatedTopics = Get-AzureRmEventGridTopic
+
+    Assert-True {$allCreatedtopic.Count -ge 0} "Topics created earlier are not found."
+
+    try
+    {
+        Write-Debug "Creating a fifth EventGrid topic: $topicName5 in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
+        $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaEventGridSchema1 -InputMappingFields @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField" }
+        Assert-True {$false} "New-AzureRmEventGridTopic succeeded while it is expected to fail as inputmapping parameters is not null for input mapping schema EventGridSchema"
+    }
+    catch
+    {
+        Assert-True {$true}
+    }
+
+    try
+    {
+        Write-Debug "Creating a fifth EventGrid topic: $topicName5 in resource group $resourceGroupName with InputSchema $inputSchemaCloudEventSchema1"
+        $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaCloudEventSchema1 -InputMappingFields @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField" }
+        Assert-True {$false} "New-AzureRmEventGridTopic succeeded while it is expected to fail as inputmapping parameters is not null for input mapping schema CloudEventSchema"
+    }
+    catch
+    {
+        Assert-True {$true}
+    }
+
+    try
+    {
+        Write-Debug "Creating a fifth EventGrid topic: $topicName5 in resource group $resourceGroupName with InputSchema $inputSchemaCustomEventSchema1"
+        $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaCustomEventSchema1
+        Assert-True {$false} "New-AzureRmEventGridTopic succeeded while it is expected to fail as inputmapping parameters are null"
+    }
+    catch
+    {
+        Assert-True {$true}
+    }
+
+    Write-Debug "Creating a fifth EventGrid topic: $topicName5 in resource group $resourceGroupName with InputSchema $inputSchemaCustomEventSchema1"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaCustomEventSchema1 -InputMappingFields @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField"; dataversion = "MyDataVersionField" }
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+    Assert-True {$result.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
+
+    Write-Debug "Creating a sixth EventGrid topic: $topicName6 in resource group $resourceGroupName with InputSchema $inputSchemaCustomEventSchema2"
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName6 -Location $location -InputSchema $inputSchemaCustomEventSchema2 -InputMappingFields @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField"; dataversion = "MyDataVersionField" } -InputMappingDefaultValues @{ subject = "MySubjectDefaultValue"; eventtype = "MyEventTypeDefaultValue"; dataversion = "MyDataVersionDefaultValue" }
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+    Assert-True {$result.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
+
+    Write-Debug "Getting the created topic within the resource group"
+    $createdTopic = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5
+    Assert-True {$createdTopic.Count -eq 1}
+    Assert-True {$createdTopic.TopicName -eq $topicName5} "Topic created earlier is not found."
+    Assert-True {$createdTopic.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
+
+    Write-Debug " Deleting topic: $topicName"
+    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
+
+    Write-Debug " Deleting topic: $topicName2 using the ResourceID parameter set"
+    # Offline playback of tests is failing if I use Get-AzureRmResource, hence temporarily commenting this out
+    # Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName3" | Remove-AzureRmEventGridTopic
+    Remove-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName2"
+
+    Write-Debug " Deleting topic: $topicName3"
+    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName3
+
+    Write-Debug " Deleting topic: $topicName4"
+    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName4
+
+    Write-Debug " Deleting topic: $topicName5"
+    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5
+
+    Write-Debug " Deleting topic: $topicName6"
+    Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName6
+
+    # Verify that all topics have been deleted correctly
+    $returnedTopics1 = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName
+    Assert-True {$returnedTopics1.Count -eq 0}
+
+    $returnedTopics2 = Get-AzureRmEventGridTopic -ResourceGroup $resourceGroupName
+    Assert-True {$returnedTopics2.Count -eq 0}
 
     Write-Debug " Deleting resourcegroup $resourceGroupName"
     Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
