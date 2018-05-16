@@ -21,6 +21,8 @@
 ## Current Release
 
 * Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
+* Added cmdlet to create protocol configuration
+    - New-AzureRmNetworkWatcherProtocolConfiguration
 
 ## Version 6.0.0
 * Added cmdlet to add a new circuit connection to an existing express route circuit.
@@ -34,8 +36,6 @@
 * Add support for DDoS protection plan resource
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information
-* Added cmdlet to create protocol configuration
-    - New-AzureRmNetworkWatcherProtocolConfiguration
 
 ## Version 5.4.2
 * Fix error message with Network cmdlets
