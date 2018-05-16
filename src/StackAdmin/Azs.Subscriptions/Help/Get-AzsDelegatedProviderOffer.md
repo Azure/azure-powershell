@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions-help.xml
 Module Name: Azs.Subscriptions
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -28,7 +28,7 @@ Get the list of offers for the specified delegated provider.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsDelegatedProviderOffer -DelegatedProviderId 4b763321-23f5-4a45-a44d-9ccfdd705a3d | fl
 ```
@@ -37,13 +37,13 @@ Get the list of offers for the specified delegated provider.
 
 ## PARAMETERS
 
-### -DelegatedProviderId
-Id of the delegated provider.
+### -OfferName
+Name of the offer.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: Get
+Aliases:
 
 Required: True
 Position: Named
@@ -52,13 +52,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OfferName
-Name of the offer.
+### -DelegatedProviderId
+Id of the delegated provider.
 
 ```yaml
 Type: String
-Parameter Sets: Get
-Aliases: 
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -73,7 +73,7 @@ Skip the first N items as specified by the parameter value.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,7 +89,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,4 +110,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Storage.Admin-help.xml
 Module Name: Azs.Storage.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Returns a list of storage shares.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsStorageShare -FarmName f9b8e2e2-e4b4-44e0-9d92-6a848b1a5376
 ```
@@ -47,7 +47,22 @@ Farm Id.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShareName
+Share name.
+
+```yaml
+Type: String
+Parameter Sets: Get
+Aliases:
 
 Required: True
 Position: Named
@@ -62,7 +77,7 @@ Resource group name.
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,27 +92,12 @@ The resource id.
 ```yaml
 Type: String
 Parameter Sets: ResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ShareName
-Share name.
-
-```yaml
-Type: String
-Parameter Sets: Get
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -113,4 +113,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

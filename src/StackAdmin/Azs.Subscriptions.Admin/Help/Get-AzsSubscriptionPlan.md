@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -32,7 +32,7 @@ Get a collection of all acquired plans that subscription has access to.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsSubscriptionPlan -TargetSubscriptionId "c90173b1-de7a-4b1d-8600-b832b0e65946"
 ```
@@ -47,7 +47,22 @@ The plan acquisition Identifier
 ```yaml
 Type: Guid
 Parameter Sets: Get
-Aliases: 
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TargetSubscriptionId
+The target subscription ID.
+
+```yaml
+Type: Guid
+Parameter Sets: List, Get
+Aliases:
 
 Required: True
 Position: Named
@@ -71,13 +86,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Skip
-Skip the first N items as specified by the parameter value.
+### -Top
+Return the top N items as specified by the parameter value.
+Applies after the -Skip parameter.
 
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -86,29 +102,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TargetSubscriptionId
-The target subscription ID.
-
-```yaml
-Type: Guid
-Parameter Sets: List, Get
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-Return the top N items as specified by the parameter value.
-Applies after the -Skip parameter.
+### -Skip
+Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,4 +129,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

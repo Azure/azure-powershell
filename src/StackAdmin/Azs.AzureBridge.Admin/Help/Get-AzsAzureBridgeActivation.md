@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Azurebridge.Admin-help.xml
-Module Name: Azs.AzureBridge.Admin
-online version: 
+Module Name: Azs.Azurebridge.Admin
+online version:
 schema: 2.0.0
 ---
 
@@ -32,14 +32,14 @@ Once Azure Stack has been registered, the activation object contains information
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsAzureBridgeActivation -ResourceGroupName 'activationRG'
 ```
 
 Get a list of Azure Bridge Activations under the resource group "activationRG"
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 Get-AzsAzureBridgeActivation -Name 'myActivation' -ResourceGroupName 'activationRG'
 ```
@@ -54,7 +54,7 @@ Name of the activation.
 ```yaml
 Type: String
 Parameter Sets: Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,7 +69,7 @@ The Resource Group used during the registration of Azure Stack; you can also vie
 ```yaml
 Type: String
 Parameter Sets: List, Get
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,7 +99,7 @@ Skip the first N items as specified by the parameter value.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -115,7 +115,7 @@ Applies after the -Skip parameter.
 ```yaml
 Type: Int32
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,4 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

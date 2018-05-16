@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -17,17 +17,17 @@ Updates the specified user subscription
 Set-AzsUserSubscription -SubscriptionId <Guid> [-DisplayName <String>]
  [-DelegatedProviderSubscriptionId <String>] [-Owner <String>] [-TenantId <String>]
  [-RoutingResourceManagerType <String>] [-ExternalReferenceId <String>] [-State <String>] [-Location <String>]
- [-OfferId <String>] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-OfferId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
-Set-AzsUserSubscription -ResourceId <String> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzsUserSubscription -ResourceId <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
-Set-AzsUserSubscription -InputObject <Subscription> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzsUserSubscription -InputObject <Subscription> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ Updates the specified user subscription
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Set-AzsUserSubscription -SubscriptionId 8e425478-c7f0-49ca-bb92-b42889ec3642 -DisplayName "NewName"
 ```
@@ -44,15 +44,15 @@ Updates a subscription
 
 ## PARAMETERS
 
-### -DelegatedProviderSubscriptionId
-Parent DelegatedProvider subscription identifier.
+### -SubscriptionId
+Subscription identifier.
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: Set
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -65,7 +65,67 @@ Subscription name.
 ```yaml
 Type: String
 Parameter Sets: Set
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DelegatedProviderSubscriptionId
+Parent DelegatedProvider subscription identifier.
+
+```yaml
+Type: String
+Parameter Sets: Set
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Owner
+Subscription owner.
+
+```yaml
+Type: String
+Parameter Sets: Set
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TenantId
+Directory tenant identifier.
+
+```yaml
+Type: String
+Parameter Sets: Set
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RoutingResourceManagerType
+Routing resource manager type.
+
+```yaml
+Type: String
+Parameter Sets: Set
+Aliases:
 
 Required: False
 Position: Named
@@ -80,7 +140,7 @@ External reference identifier.
 ```yaml
 Type: String
 Parameter Sets: Set
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,33 +149,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Don't ask for confirmation.
+### -State
+Subscription state.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
+Type: String
+Parameter Sets: Set
+Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Network.Admin.Models.Quota.
-
-```yaml
-Type: Subscription
-Parameter Sets: InputObject
-Aliases: Subscription
-
-Required: True
-Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -140,22 +185,7 @@ Identifier of the offer under the scope of a delegated provider.
 ```yaml
 Type: String
 Parameter Sets: Set
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Owner
-Subscription owner.
-
-```yaml
-Type: String
-Parameter Sets: Set
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -179,58 +209,29 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -RoutingResourceManagerType
-Routing resource manager type.
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Network.Admin.Models.Quota.
 
 ```yaml
-Type: String
-Parameter Sets: Set
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -State
-Subscription state.
-
-```yaml
-Type: String
-Parameter Sets: Set
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Subscription identifier.
-
-```yaml
-Type: Guid
-Parameter Sets: Set
-Aliases: 
+Type: Subscription
+Parameter Sets: InputObject
+Aliases: Subscription
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -TenantId
-Directory tenant identifier.
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
 
 ```yaml
-Type: String
-Parameter Sets: Set
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -254,22 +255,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -282,4 +267,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

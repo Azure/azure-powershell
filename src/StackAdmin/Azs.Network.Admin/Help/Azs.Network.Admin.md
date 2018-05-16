@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Network.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the Network administrator module which allows  
 
 ## Azs.Network.Admin Cmdlets
 ### [Get-AzsLoadBalancer](Get-AzsLoadBalancer.md)

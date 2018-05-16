@@ -1,7 +1,7 @@
 ---
 external help file: Azs.Storage.Admin-help.xml
 Module Name: Azs.Storage.Admin
-online version: 
+online version:
 schema: 2.0.0
 ---
 
@@ -27,14 +27,14 @@ Delete an existing quota
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Remove-AzsStorageQuota -Name 'TestDeleteStorageQuota'
 ```
 
 Remove a storage quota by name.
 
-### -------------------------- EXAMPLE 2 --------------------------
+### EXAMPLE 2
 ```
 Get-AzsStorageQuota -Name 'testquota' | Remove-AzsStorageQuota
 ```
@@ -43,17 +43,17 @@ Remove a storage quota by piping.
 
 ## PARAMETERS
 
-### -Force
-Don't ask for confirmation.
+### -Name
+The name of the storage quota.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
+Type: String
+Parameter Sets: Delete
+Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -64,24 +64,9 @@ Resource location.
 ```yaml
 Type: String
 Parameter Sets: Delete
-Aliases: 
+Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the storage quota.
-
-```yaml
-Type: String
-Parameter Sets: Delete
-Aliases: 
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -103,17 +88,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Force
+Don't ask for confirmation.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -134,6 +119,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -144,4 +144,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

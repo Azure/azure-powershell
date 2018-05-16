@@ -30,12 +30,12 @@ Get-AzsUpdateRun -ResourceId <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the list of update runs.
+Get the list of update runs. 
 Instances of the UpdateRun objects returned can be piped to Restart-AzsUpdateRun, when applicable.
 
 ## EXAMPLES
 
-### -------------------------- EXAMPLE 1 --------------------------
+### EXAMPLE 1
 ```
 Get-AzsUpdateRun -UpdateName Microsoft1.0.180302.1
 ```
@@ -43,6 +43,21 @@ Get-AzsUpdateRun -UpdateName Microsoft1.0.180302.1
 Get a list of all attempts to apply a specific update.
 
 ## PARAMETERS
+
+### -Name
+Update run identifier.
+
+```yaml
+Type: String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -UpdateName
 Name of the update.
@@ -68,21 +83,6 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Update run identifier.
-
-```yaml
-Type: String
-Parameter Sets: Get
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,4 +162,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
