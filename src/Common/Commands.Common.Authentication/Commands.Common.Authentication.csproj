@@ -137,6 +137,8 @@
     <Compile Include="ContextAutosaveSettings.cs" />
     <Compile Include="Extensions\CloudExceptionExtensions.cs" />
     <Compile Include="Factories\AuthenticationFactory.cs" />
+    <Compile Include="Factories\AzureHttpRetryPolicy.cs" />
+    <Compile Include="Factories\HyakRetryPolicy.cs" />
     <Compile Include="Factories\ClientFactory.cs" />
     <Compile Include="HttpClientOperationsFactory.cs" />
     <Compile Include="Utilities\HttpClientWithRetry.cs" />

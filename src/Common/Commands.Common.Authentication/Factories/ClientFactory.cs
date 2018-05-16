@@ -16,6 +16,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Rest.TransientFaultHandling;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -56,10 +57,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             var creds = AzureSession.Instance.AuthenticationFactory.GetServiceClientCredentials(context, endpoint);
+            var baseUri = context.Environment.GetEndpointAsUri(endpoint);
             var newHandlers = GetCustomHandlers();
             TClient client = (newHandlers == null || newHandlers.Length == 0)
-                ? CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds)
-                : CreateCustomArmClient<TClient>(context.Environment.GetEndpointAsUri(endpoint), creds, GetCustomHandlers());
+                ? CreateCustomArmClient<TClient>(baseUri, creds)
+                : CreateCustomArmClient<TClient>(baseUri, creds, GetCustomHandlers());
 
             var subscriptionId = typeof(TClient).GetProperty("SubscriptionId");
             if (subscriptionId != null && context.Subscription != null)
@@ -105,6 +107,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 client.UserAgent.Add(userAgent);
             }
+            
+            client.SetRetryPolicy(new AzureHttpRetryPolicy());
 
             return client;
         }
@@ -209,6 +213,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 client.UserAgent.Add(userAgent);
             }
 
+            client.SetRetryPolicy(new HyakHttpRetryPolicy());
             return client;
         }
 
