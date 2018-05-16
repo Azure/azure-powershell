@@ -4,7 +4,7 @@
 3. [Breaking changes in storage admin module](#Breaking-changes-in-storage-admin-module)
 
 ## Summary
-The module version 1.2.12 of AzureStack brings in many breaking changes. Most of these breaking changes were noted with warnings in the previous releases. Please note that there are no changes in the AzureRM version of the module specific to Azure Stack.  
+The module version 1.3.0 of AzureStack brings in many breaking changes. Most of these breaking changes were noted with warnings in the previous releases. Please note that there are no changes in the AzureRM version of the module specific to Azure Stack.  
 
 AzureRm.AzureStackAdmin module is replaced with Azs.Subscriptions.Admin and Azs.Subscriptions module
 AzureRm.AzureStackStorage module is replaced with Azs.Storage.Admin module
