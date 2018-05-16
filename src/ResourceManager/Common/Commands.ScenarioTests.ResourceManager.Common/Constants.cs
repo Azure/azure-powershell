@@ -55,7 +55,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public const string Network = "Network";
 
         // Owners
+        public const string Owner = "Owner";
+
         public const string OneSDK = "OneSDK";
+
+        // Below is the list of aliases to contact on test behavior
+        public const string nvadev = "nvadev";
+
+        public const string sdnnrp = "sdnnrp";
+
+        public const string pgtm = "pgtm";
+
+        public const string slbdev = "slbdev";
+
+        public const string brooklynft = "brooklynft";
+
+        public const string netanalyticsdev = "netanalyticsdev";
+
+        public const string wanrpdev = "wanrpdev";
 
         // Acceptance type
         public const string AcceptanceType = "AcceptanceType";
