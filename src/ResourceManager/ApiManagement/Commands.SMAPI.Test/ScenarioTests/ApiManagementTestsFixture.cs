@@ -14,25 +14,19 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.Management.ApiManagement;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Management;
+    using Management.ApiManagement;
+    using Management.Resources;
+    using Azure.Test;
+    using WindowsAzure.Management;
     using System;
 
     public class ApiManagementTestsFixture : TestsFixture
     {
-        private ManagementClient _managmentClient;
         private ResourceManagementClient _resourceManagementClient;
 
         public string Location { get; set; }
         public string ResourceGroupName { get; set; }
         public string ApiManagementServiceName { get; set; }
-
-        public ManagementClient ManagmentClient
-        {
-            get { return _managmentClient ?? (_managmentClient = ApiManagementHelper.GetManagementClient()); }
-        }
 
         public ResourceManagementClient ResourceManagementClient
         {
@@ -50,17 +44,17 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             {
                 TestUtilities.StartTest("ApiManagementTests", "CreateApiManagementService");
 
-                this.ResourceGroupName = this.ResourceManagementClient.TryGetResourceGroup(Location);
-                this.Location = "West US"; //this.ManagmentClient.TryGetLocation("West US");
+                ResourceGroupName = ResourceManagementClient.TryGetResourceGroup(Location);
+                Location = "West US"; //this.ManagmentClient.TryGetLocation("West US");
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
                     ResourceGroupName = TestUtilities.GenerateName("Api-Default");
-                    this.ResourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
+                    ResourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
                 }
 
                 ApiManagementServiceName = TestUtilities.GenerateName("hydraapimservice");
-                this.ApiManagementClient.TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
+                ApiManagementClient.TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
             }
             catch (Exception)
             {
