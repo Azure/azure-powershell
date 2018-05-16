@@ -80,5 +80,24 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
 
             return null;
         }
+
+        public static bool ShouldShowEventSubscriptionWarningMessage(string Endpoint, string EndpointType)
+        {
+            if (string.IsNullOrWhiteSpace(Endpoint) || string.IsNullOrWhiteSpace(EndpointType))
+            {
+                return false;
+            }
+
+            // If the endpoint belongs to a service that we know implements the subscription validation
+            // handshake, there's no need to show this message, hence we check for those services
+            // before showing this message. This list includes Azure Automation, EventGrid Trigger based
+            // Azure functions, and Azure Logic Apps.
+
+            return (string.Equals(EndpointType, "webhook", System.StringComparison.OrdinalIgnoreCase) &&
+                !Endpoint.ToLowerInvariant().Contains("eventgridextension") &&
+                !Endpoint.ToLowerInvariant().Contains("logic.azure.com") &&
+                !Endpoint.ToLowerInvariant().Contains("hookbin") &&
+                !Endpoint.ToLowerInvariant().Contains("azure-automation"));
+        }
     }
 }

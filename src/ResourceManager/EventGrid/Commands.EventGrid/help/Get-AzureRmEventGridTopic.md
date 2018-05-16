@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopic
@@ -130,7 +130,7 @@ Resource Identifier representing the Event Grid Topic.
 ```yaml
 Type: String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -155,4 +155,3 @@ System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PST
 ## NOTES
 
 ## RELATED LINKS
-

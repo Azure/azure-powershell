@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -19,6 +20,8 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.Azure.Commands.EventGrid.Utilities;
+using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -34,7 +37,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The resource group in which the topic should be created.",
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -45,7 +48,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the topic.",
+            HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("TopicName")]
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The location of the topic",
+            HelpMessage = EventGridConstants.TopicLocationHelp,
             ParameterSetName = TopicNameParameterSet)]
         [LocationCompleter("Microsoft.EventGrid/topics")]
         [ValidateNotNullOrEmpty]
@@ -68,20 +71,97 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtable which represents resource Tags.",
+            HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = TopicNameParameterSet)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 4,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputSchemaHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(EventGridModels.InputSchema.EventGridSchema, EventGridModels.InputSchema.CustomEventSchema, EventGridModels.InputSchema.CloudEventV01Schema, IgnoreCase = true)]
+        public string InputSchema { get; set; } = EventGridModels.InputSchema.EventGridSchema;
+
+        [Parameter(
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputMappingFieldsHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        public Hashtable InputMappingFields { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.InputMappingDefaultValuesHelp,
+            ParameterSetName = TopicNameParameterSet)]
+        public Hashtable InputMappingDefaultValues { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Create a new Event Grid Topic
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
+            Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingFields, true);
+            Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValues, true);
+
+            this.ValidateInputMappingInfo(inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
             if (this.ShouldProcess(this.Name, $"Create a new EventGrid topic {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                Topic topic = this.Client.CreateTopic(this.ResourceGroupName, this.Name, this.Location, tagDictionary);
+                Topic topic = this.Client.CreateTopic(this.ResourceGroupName, this.Name, this.Location, tagDictionary, InputSchema, inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
                 PSTopic psTopic = new PSTopic(topic);
                 this.WriteObject(psTopic);
+            }
+        }
+
+        void ValidateInputMappingInfo(Dictionary<string, string> inputMappingFieldsDictionary, Dictionary<string, string> inputMappingDefaultValuesDictionary)
+        {
+            if (string.Equals(this.InputSchema, EventGridModels.InputSchema.CustomEventSchema, StringComparison.OrdinalIgnoreCase))
+            {
+                if (inputMappingFieldsDictionary == null && inputMappingDefaultValuesDictionary == null)
+                {
+                    throw new Exception($"Either input mapping fields or input mapping default values should be specified if the input mapping schema is customeventschema.");
+                }
+            }
+            else
+            {
+                if (inputMappingFieldsDictionary != null || inputMappingDefaultValuesDictionary != null)
+                {
+                    throw new Exception($"Input mapping fields and input mapping default values cannot be specified if the input mapping schema is not customeventschema.");
+                }
+            }
+
+            if (inputMappingFieldsDictionary != null)
+            {
+                foreach (var entry in inputMappingFieldsDictionary)
+                {
+                    if (!string.Equals(entry.Key, EventGridConstants.InputMappingId, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingTopic, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventTime, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingSubject, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingFields");
+                    }
+                }
+            }
+
+            if (inputMappingDefaultValuesDictionary != null)
+            {
+                foreach (var entry in inputMappingDefaultValuesDictionary)
+                {
+                    if (!string.Equals(entry.Key, EventGridConstants.InputMappingSubject, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase) &&
+                        !string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingDefaultValues");
+                    }
+                }
             }
         }
     }

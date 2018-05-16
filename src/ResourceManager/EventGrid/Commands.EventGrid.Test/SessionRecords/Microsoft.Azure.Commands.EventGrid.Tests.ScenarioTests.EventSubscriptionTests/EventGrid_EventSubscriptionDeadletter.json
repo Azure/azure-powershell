@@ -1,0 +1,81 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "//subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/providers/Microsoft.EventGrid/eventSubscriptions/EventSubscription-ps3643?api-version=2018-05-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzU1ZjNkY2Q0LWNhYzctNDNiNC05OTBiLWExMzlkNjJhMWViMi9wcm92aWRlcnMvTWljcm9zb2Z0LkV2ZW50R3JpZC9ldmVudFN1YnNjcmlwdGlvbnMvRXZlbnRTdWJzY3JpcHRpb24tcHMzNjQzP2FwaS12ZXJzaW9uPTIwMTgtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"destination\": {\r\n      \"endpointType\": \"WebHook\",\r\n      \"properties\": {\r\n        \"endpointUrl\": \"https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=VbOalRw5qWMltR57RaCn6BaeQqELvPfC/ad0k/kjv6yCe0JLIsLYaw==\"\r\n      }\r\n    },\r\n    \"filter\": {\r\n      \"includedEventTypes\": [\r\n        \"All\"\r\n      ],\r\n      \"isSubjectCaseSensitive\": false\r\n    },\r\n    \"labels\": [\r\n      \"Finance\",\r\n      \"HR\"\r\n    ],\r\n    \"eventDeliverySchema\": \"EventGridSchema\",\r\n    \"deadLetterDestination\": {\r\n      \"endpointType\": \"StorageBlob\",\r\n      \"properties\": {\r\n        \"resourceId\": \"/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/testpowershelResourceGroup/providers/Microsoft.Storage/storageAccounts/testpsstorageaccount\",\r\n        \"blobContainerName\": \"psdeadletterqueue\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "851"
+        ],
+        "x-ms-client-request-id": [
+          "bdf79fdc-3487-499e-ba5b-faf5ce74747e"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3101.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidRequest\",\r\n    \"message\": \"DeadLettering is currently not enabled in the service and support for it is coming soon. Until then, please re-issue the event subscription creation/update request without setting a deadletter destination.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "253"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "2de749af-b742-4851-8c1e-267a5b967ad5"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1187"
+        ],
+        "x-ms-correlation-request-id": [
+          "1f1b4f9f-29a2-4d42-a42a-5164610b0f4b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180516T031520Z:1f1b4f9f-29a2-4d42-a42a-5164610b0f4b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 16 May 2018 03:15:20 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 400
+    }
+  ],
+  "Names": {
+    "": [
+      "ps3643"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "55f3dcd4-cac7-43b4-990b-a139d62a1eb2"
+  }
+}

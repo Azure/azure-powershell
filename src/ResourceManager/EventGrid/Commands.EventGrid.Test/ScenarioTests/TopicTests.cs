@@ -55,5 +55,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
         {
             EventGridController.NewInstance.RunPsTest("TopicNewKeyTests");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_TopicsInputMappingCreateGetAndDelete()
+        {
+            EventGridController.NewInstance.RunPsTest("TopicInputMappingTests");
+        }
     }
 }

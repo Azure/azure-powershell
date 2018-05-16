@@ -30,6 +30,69 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.ProvisioningState = topic.ProvisioningState;
             this.Tags = topic.Tags;
             this.Endpoint = topic.Endpoint;
+            this.InputSchema = topic.InputSchema;
+
+            if (topic.InputSchemaMapping != null)
+            {
+                this.InputMappingFields = new Dictionary<string, string>();
+                this.InputMappingDefaultValues = new Dictionary<string, string>();
+
+                var jsonInputSchemaMapping = topic.InputSchemaMapping as JsonInputSchemaMapping;
+
+                if (jsonInputSchemaMapping.Id != null)
+                {
+                    this.InputMappingFields["id"] = jsonInputSchemaMapping.Id.SourceField;
+                }
+
+                if (jsonInputSchemaMapping.Topic != null)
+                {
+                    this.InputMappingFields["topic"] = jsonInputSchemaMapping.Topic.SourceField;
+                }
+
+                if (jsonInputSchemaMapping.EventTime != null)
+                {
+                    this.InputMappingFields["eventtime"] = jsonInputSchemaMapping.EventTime.SourceField;
+                }
+
+                if (jsonInputSchemaMapping.EventType != null)
+                {
+                    if (jsonInputSchemaMapping.EventType.SourceField != null)
+                    {
+                        this.InputMappingFields["eventtype"] = jsonInputSchemaMapping.EventType.SourceField;
+                    }
+
+                    if (jsonInputSchemaMapping.EventType.DefaultValue != null)
+                    {
+                        this.InputMappingDefaultValues["eventtype"] = jsonInputSchemaMapping.EventType.DefaultValue;
+                    }
+                }
+
+                if (jsonInputSchemaMapping.Subject != null)
+                {
+                    if (jsonInputSchemaMapping.Subject.SourceField != null)
+                    {
+                        this.InputMappingFields["subject"] = jsonInputSchemaMapping.Subject.SourceField;
+                    }
+
+                    if (jsonInputSchemaMapping.Subject.DefaultValue != null)
+                    {
+                        this.InputMappingDefaultValues["subject"] = jsonInputSchemaMapping.Subject.DefaultValue;
+                    }
+                }
+
+                if (jsonInputSchemaMapping.DataVersion != null)
+                {
+                    if (jsonInputSchemaMapping.DataVersion.SourceField != null)
+                    {
+                        this.InputMappingFields["dataversion"] = jsonInputSchemaMapping.DataVersion.SourceField;
+                    }
+
+                    if (jsonInputSchemaMapping.DataVersion.DefaultValue != null)
+                    {
+                        this.InputMappingDefaultValues["dataversion"] = jsonInputSchemaMapping.DataVersion.DefaultValue;
+                    }
+                }
+            }
         }
 
         public string ResourceGroupName { get; set; }
@@ -46,7 +109,13 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 
         public string ProvisioningState { get; set; }
 
+        public string InputSchema { get; set; }
+
         public IDictionary<string, string> Tags { get; set; }
+
+        public IDictionary<string, string> InputMappingFields { get; set; }
+
+        public IDictionary<string, string> InputMappingDefaultValues { get; set; }
 
         /// <summary>
         /// Return a string representation of this topic
