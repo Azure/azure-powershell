@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public DataLakeAnalyticsAccount CreateOrUpdateAccount(string resourceGroupName, string accountName,
             string location,
-            DataLakeStoreAccountInfo defaultDataLakeStoreAccount = null,
-            IList<DataLakeStoreAccountInfo> additionalDataLakeStoreAccounts = null,
-            IList<StorageAccountInfo> additionalStorageAccounts = null,
+            AddDataLakeStoreWithAccountParameters defaultDataLakeStoreAccount = null,
+            IList<AddDataLakeStoreWithAccountParameters> additionalDataLakeStoreAccounts = null,
+            IList<AddStorageAccountWithAccountParameters> additionalStorageAccounts = null,
             Hashtable customTags = null,
             int? maxAnalyticsUnits = 0,
             int? maxJobCount = 0,
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var tags = TagsConversionHelper.CreateTagDictionary(customTags, true);
 
-            var parameters = new DataLakeAnalyticsAccount
+            var parameters = new CreateDataLakeAnalyticsAccountParameters
             {
                 Location = location,
                 Tags = tags ?? new Dictionary<string, string>()
@@ -125,23 +125,23 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
             else if (defaultDataLakeStoreAccount != null)
             {
-                parameters.DataLakeStoreAccounts = new List<DataLakeStoreAccountInfo>
+                parameters.DataLakeStoreAccounts = new List<AddDataLakeStoreWithAccountParameters>
                 {
                     defaultDataLakeStoreAccount
                 };
             }
 
-            if(maxAnalyticsUnits.HasValue && maxAnalyticsUnits > 0)
+            if (maxAnalyticsUnits.HasValue && maxAnalyticsUnits > 0)
             {
                 parameters.MaxDegreeOfParallelism = maxAnalyticsUnits;
             }
 
-            if(maxJobCount.HasValue && maxJobCount > 0)
+            if (maxJobCount.HasValue && maxJobCount > 0)
             {
                 parameters.MaxJobCount = maxJobCount;
             }
 
-            if(queryStoreRetention.HasValue && queryStoreRetention > 0)
+            if (queryStoreRetention.HasValue && queryStoreRetention > 0)
             {
                 parameters.QueryStoreRetention = queryStoreRetention;
             }
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
 
             return accountExists
-                ? _accountClient.Account.Update(resourceGroupName, accountName, new DataLakeAnalyticsAccountUpdateParameters
+                ? _accountClient.Accounts.Update(resourceGroupName, accountName, new UpdateDataLakeAnalyticsAccountParameters
                 {
                     MaxDegreeOfParallelism = parameters.MaxDegreeOfParallelism,
                     MaxJobCount = parameters.MaxJobCount,
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     FirewallState = parameters.FirewallState,
                     FirewallAllowAzureIps = parameters.FirewallAllowAzureIps
                 })
-                : _accountClient.Account.Create(resourceGroupName, accountName, parameters);
+                : _accountClient.Accounts.Create(resourceGroupName, accountName, parameters);
         }
 
         public void DeleteAccount(string resourceGroupName, string accountName)
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 throw new InvalidOperationException(string.Format(Properties.Resources.AccountDoesNotExist, accountName));
             }
 
-            _accountClient.Account.Delete(resourceGroupName, accountName);
+            _accountClient.Accounts.Delete(resourceGroupName, accountName);
         }
 
         public bool TestAccount(string resourceGroupName, string accountName)
@@ -230,12 +230,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            return _accountClient.Account.Get(resourceGroupName, accountName);
+            return _accountClient.Accounts.Get(resourceGroupName, accountName);
         }
 
         public List<DataLakeAnalyticsAccountBasic> ListAccounts(string resourceGroupName, string filter, int? top, int? skip)
         {
-            var parameters = new ODataQuery<DataLakeAnalyticsAccount>
+            var parameters = new ODataQuery<DataLakeAnalyticsAccountBasic>
             {
                 Filter = filter,
                 Top = top,
@@ -244,8 +244,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var accountList = new List<DataLakeAnalyticsAccountBasic>();
             var response = string.IsNullOrEmpty(resourceGroupName)
-                ? _accountClient.Account.List(parameters)
-                : _accountClient.Account.ListByResourceGroup(resourceGroupName, parameters);
+                ? _accountClient.Accounts.List(parameters)
+                : _accountClient.Accounts.ListByResourceGroup(resourceGroupName, parameters);
             accountList.AddRange(response);
 
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         }
 
         public void AddDataLakeStoreAccount(string resourceGroupName, string accountName,
-            DataLakeStoreAccountInfo storageToAdd)
+            DataLakeStoreAccountInformation storageToAdd)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 storageToAdd.Name);
         }
 
-        public IEnumerable<DataLakeStoreAccountInfo> ListDataLakeStoreAccounts(string resourceGroupName, string accountName)
+        public IEnumerable<DataLakeStoreAccountInformation> ListDataLakeStoreAccounts(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -277,7 +277,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
 
             var response = _accountClient.DataLakeStoreAccounts.ListByAccount(resourceGroupName, accountName);
-            var toReturn = new List<DataLakeStoreAccountInfo>();
+            var toReturn = new List<DataLakeStoreAccountInformation>();
             toReturn.AddRange(response);
 
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        public DataLakeStoreAccountInfo GetDataLakeStoreAccount(string resourceGroupName, string accountName, string dataLakeStoreAccountName)
+        public DataLakeStoreAccountInformation GetDataLakeStoreAccount(string resourceGroupName, string accountName, string dataLakeStoreAccountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -311,39 +311,27 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 dataLakeStoreAccountName);
         }
 
-        public void AddStorageAccount(string resourceGroupName, string accountName, StorageAccountInfo storageToAdd)
+        public void AddStorageAccount(string resourceGroupName, string accountName, string storageAccountName, AddStorageAccountParameters storageParams)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            var storageParams = new AddStorageAccountParameters
-            {
-                AccessKey = storageToAdd.AccessKey
-            };
-
-            _accountClient.StorageAccounts.Add(resourceGroupName, accountName, storageToAdd.Name,
-                storageParams);
+            _accountClient.StorageAccounts.Add(resourceGroupName, accountName, storageAccountName, storageParams);
         }
 
-        public void SetStorageAccount(string resourceGroupName, string accountName, StorageAccountInfo storageToSet)
+        public void SetStorageAccount(string resourceGroupName, string accountName, string storageAccountName, UpdateStorageAccountParameters storageParams)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            var storageParams = new UpdateStorageAccountParameters
-            {
-                AccessKey = storageToSet.AccessKey
-            };
-
-            _accountClient.StorageAccounts.Update(resourceGroupName, accountName,
-                storageToSet.Name, storageParams);
+            _accountClient.StorageAccounts.Update(resourceGroupName, accountName, storageAccountName, storageParams);
         }
 
-        public IEnumerable<StorageAccountInfo> ListStorageAccounts(string resourceGroupName, string accountName)
+        public IEnumerable<StorageAccountInformation> ListStorageAccounts(string resourceGroupName, string accountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -351,7 +339,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
 
             var response = _accountClient.StorageAccounts.ListByAccount(resourceGroupName, accountName);
-            var toReturn = new List<StorageAccountInfo>();
+            var toReturn = new List<StorageAccountInformation>();
             toReturn.AddRange(response);
 
             while (!string.IsNullOrEmpty(response.NextPageLink))
@@ -363,7 +351,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        public StorageAccountInfo GetStorageAccount(string resourceGroupName, string accountName, string storageAccountName)
+        public StorageAccountInformation GetStorageAccount(string resourceGroupName, string accountName, string storageAccountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -408,9 +396,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         private IPage<DataLakeAnalyticsAccountBasic> ListAccountsWithNextLink(string nextLink)
         {
-            return _accountClient.Account.ListNext(nextLink);
+            return _accountClient.Accounts.ListNext(nextLink);
         }
-
         #endregion
         #region Firewall Management
 
@@ -421,7 +408,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            if (_accountClient.Account.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
+            if (_accountClient.Accounts.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
             {
                 runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
             }
@@ -430,7 +417,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName,
                 accountName,
                 ruleName,
-                new FirewallRule
+                new CreateOrUpdateFirewallRuleParameters
                 {
                     StartIpAddress = startIp,
                     EndIpAddress = endIp
@@ -445,7 +432,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            if (_accountClient.Account.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
+            if (_accountClient.Accounts.Get(resourceGroupName, accountName).FirewallState == FirewallState.Disabled)
             {
                 runningCommand.WriteWarning(string.Format(Properties.Resources.FirewallDisabledWarning, accountName));
             }
@@ -1177,7 +1164,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            return _accountClient.ComputePolicies.CreateOrUpdate(resourceGroupName, accountName, policyName, new ComputePolicyCreateOrUpdateParameters
+            return _accountClient.ComputePolicies.CreateOrUpdate(resourceGroupName, accountName, policyName, new CreateOrUpdateComputePolicyParameters
             {
                 ObjectId = objectId,
                 ObjectType = objectType,
@@ -1193,7 +1180,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            return _accountClient.ComputePolicies.Update(resourceGroupName, accountName, policyName, new ComputePolicy
+            return _accountClient.ComputePolicies.Update(resourceGroupName, accountName, policyName, new UpdateComputePolicyParameters
             {
                 MaxDegreeOfParallelismPerJob = maxAnalyticsUnitsPerJob,
                 MinPriorityPerJob = minPriorityPerJob
@@ -1324,7 +1311,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 top = 500;
             }
 
-            var parameters = new ODataQuery<JobInformation>
+            var parameters = new ODataQuery<JobInformationBasic>
             {
                 Filter = filter,
                 Skip = skip,
@@ -1522,6 +1509,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             return isList;
         }
-#endregion
+
+        private static List<Acl> GetCatalogItemAclEntry(IPage<Acl> firstPage, Func<string, IPage<Acl>> listAclsNext)
+        {
+            var toReturn = new List<Acl>();
+            var currentPage = firstPage;
+            toReturn.AddRange(currentPage);
+            while (!string.IsNullOrEmpty(currentPage.NextPageLink))
+            {
+                currentPage = listAclsNext(currentPage.NextPageLink);
+                toReturn.AddRange(currentPage);
+            }
+
+            return toReturn;
+        }
+        #endregion
     }
 }
