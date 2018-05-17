@@ -85,7 +85,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
     @{ModuleName = 'AzureRM.NotificationHubs.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.OperationalInsights.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.PowerBIEmbedded.Netcore'; ModuleVersion = '0.12.0'; }, 
-    @{ModuleName = 'AzureRM.RedisCache.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Relay.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Resources.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Scheduler.Netcore'; ModuleVersion = '0.12.0'; }, 
