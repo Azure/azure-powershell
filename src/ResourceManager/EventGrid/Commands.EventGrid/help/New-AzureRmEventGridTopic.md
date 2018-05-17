@@ -14,8 +14,8 @@ Creates a new Azure Event Grid Topic.
 
 ```
 New-AzureRmEventGridTopic [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-Tag] <Hashtable>] [-InputSchema <String>] [-InputMappingFields <Hashtable>]
- [-InputMappingDefaultValues <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [[-Tag] <Hashtable>] [[-InputSchema] <String>] [[-InputMappingFields] <Hashtable>]
+ [[-InputMappingDefaultValues] <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -64,7 +64,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -79,7 +79,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -92,9 +92,10 @@ The schema of the input events for the topic. Allowed values are: eventgridschem
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: EventGridSchema, CustomEventSchema, CloudEventV01Schema
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
