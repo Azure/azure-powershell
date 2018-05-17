@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.1'
+ModuleVersion = '5.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -130,8 +130,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support get the Storage resource usage of a specific location
-        - Get-AzureRmStorageUsage'
+        ReleaseNotes = '* Support create Storage Context with OAuth.
+        - The PR pending change：
+        - Change to signed package
+        - Use AuthenticationFactory in Powershell to replace ADAL reference.'
 
         # Prerelease string of this module
         Prerelease = 'preview'
