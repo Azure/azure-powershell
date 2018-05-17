@@ -19,12 +19,6 @@
 -->
 ## Current Release
 
-## Version 5.0.2-preview
-* Support create Storage Context with OAuth.
-   - The PR pending change：
-     - Change to signed package
-     - Use AuthenticationFactory in Powershell to replace ADAL reference.
-
 ## Version 5.0.1-preview
 * Support get the Storage resource usage of a specific location
     - Get-AzureRmStorageUsage
