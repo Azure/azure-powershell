@@ -69,8 +69,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private string templateFile = string.Empty;
 
-        private string storageAccountName = "myStorageAccount";
-
         private string requestId = "1234567890";
 
         private string resourceName = "myResource";
@@ -332,8 +330,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
 
             IEnumerable<PSResourceManagerError> error = resourcesClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode.Incremental);
-            Assert.Equal(1, error.Count());
-            Assert.Equal(1, error.ElementAtOrDefault(0).Details.Count);
+            Assert.Single(error);
+            Assert.Single(error.ElementAtOrDefault(0).Details);
         }
 
         [Fact]
@@ -366,7 +364,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 .Callback((string rg, string dn, Deployment d, Dictionary<string, List<string>> customHeaders, CancellationToken c) => { deploymentFromValidate = d; });
 
             IEnumerable<PSResourceManagerError> error = resourcesClient.ValidatePSResourceGroupDeployment(parameters, DeploymentMode.Incremental);
-            Assert.Equal(0, error.Count());
+            Assert.Empty(error);
             progressLoggerMock.Verify(f => f("Template is valid."), Times.Once());
         }
 
@@ -1099,7 +1097,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(name, null, true);
 
-            Assert.Equal(1, actual.Count);
+            Assert.Single(actual);
             Assert.Equal(name, actual[0].ResourceGroupName);
             Assert.Equal(resourceGroupLocation, actual[0].Location);
             Assert.Equal("Succeeded", actual[0].ProvisioningState);
@@ -1194,7 +1192,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null, 
                 new Hashtable(new Dictionary<string, string> { { "tag1", "val1" } }), false);
 
-            Assert.Equal(1, groups1.Count);
+            Assert.Single(groups1);
             Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
 
             List<PSResourceGroup> groups2 = resourcesClient.FilterResourceGroups(null,
@@ -1207,12 +1205,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             List<PSResourceGroup> groups3 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "Name", "tag3" } }), false);
 
-            Assert.Equal(0, groups3.Count);
+            Assert.Empty(groups3);
 
             List<PSResourceGroup> groups4 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "TAG1", "val1" } }), false);
 
-            Assert.Equal(1, groups4.Count);
+            Assert.Single(groups4);
             Assert.Equal(resourceGroup1.Name, groups4[0].ResourceGroupName);
         }
 
@@ -1245,7 +1243,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             List<PSResourceGroup> groups1 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "tag1", "val1" } }), true);
 
-            Assert.Equal(1, groups1.Count);
+            Assert.Single(groups1);
             Assert.Equal(resourceGroup1.Name, groups1[0].ResourceGroupName);
 
             List<PSResourceGroup> groups2 = resourcesClient.FilterResourceGroups(null,
@@ -1258,12 +1256,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             List<PSResourceGroup> groups3 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "tag3", "" } }), true);
 
-            Assert.Equal(0, groups3.Count);
+            Assert.Empty(groups3);
 
             List<PSResourceGroup> groups4 = resourcesClient.FilterResourceGroups(null,
                 new Hashtable(new Dictionary<string, string> { { "TAG1", "val1" }}), true);
 
-            Assert.Equal(1, groups4.Count);
+            Assert.Single(groups4);
             Assert.Equal(resourceGroup1.Name, groups4[0].ResourceGroupName);
         }
 

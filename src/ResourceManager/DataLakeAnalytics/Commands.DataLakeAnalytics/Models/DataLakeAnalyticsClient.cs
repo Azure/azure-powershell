@@ -491,8 +491,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public void CreateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
-            _catalogClient.Catalog.CreateSecret(accountName, databaseName, secretName,
-                new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
+            _catalogClient.Catalog.CreateCredential(accountName, databaseName, secretName,
+                new DataLakeAnalyticsCatalogCredentialCreateParameters
                 {
                     Password = password,
                     Uri = hostUri
@@ -502,8 +502,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public USqlSecret UpdateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
-            _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
-                new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
+            _catalogClient.Catalog.UpdateCredential(accountName, databaseName, secretName,
+                new DataLakeAnalyticsCatalogCredentialUpdateParameters
                 {
                     Password = password,
                     Uri = hostUri
@@ -517,17 +517,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         {
             if (string.IsNullOrEmpty(secretName))
             {
-                _catalogClient.Catalog.DeleteAllSecrets(accountName, databaseName);
+                var credentials = _catalogClient.Catalog.ListCredentials(accountName, databaseName);
+                foreach (var credential in credentials)
+                {
+                    _catalogClient.Catalog.DeleteCredential(accountName, databaseName, credential.Name);
+                }
             }
             else
             {
-                _catalogClient.Catalog.DeleteSecret(accountName, databaseName, secretName);
+                _catalogClient.Catalog.DeleteCredential(accountName, databaseName, secretName);
             }
         }
 
-        public USqlSecret GetSecret(string accountName, string databaseName, string secretName)
+        public USqlCredential GetSecret(string accountName, string databaseName, string secretName)
         {
-            return _catalogClient.Catalog.GetSecret(accountName, databaseName, secretName);
+            return _catalogClient.Catalog.GetCredential(accountName, databaseName, secretName);
         }
 
         public bool TestCatalogItem(string accountName, CatalogPathInstance path,
@@ -843,16 +847,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private ObsoleteUSqlCredential GetCredential(string accountName,
-            string databaseName, string credName)
+        private USqlCredential GetCredential(string accountName, string databaseName, string credName)
         {
-            return
-                new ObsoleteUSqlCredential(_catalogClient.Catalog.GetCredential(accountName, databaseName,
-                    credName), databaseName, computeAccountName: accountName);
+            return _catalogClient.Catalog.GetCredential(accountName, databaseName, credName);
         }
 
-        private IList<ObsoleteUSqlCredential> GetCredentials(string accountName,
-            string databaseName)
+        private IList<USqlCredential> GetCredentials(string accountName, string databaseName)
         {
             List<USqlCredential> toReturn = new List<USqlCredential>();
             var response = _catalogClient.Catalog.ListCredentials(accountName, databaseName);
@@ -863,7 +863,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 toReturn.AddRange(response);
             }
 
-            return toReturn.Select(element => new ObsoleteUSqlCredential(element, databaseName, computeAccountName: accountName)).ToList();
+            return toReturn;
         }
 
         private USqlSchema GetSchema(string accountName, string databaseName,

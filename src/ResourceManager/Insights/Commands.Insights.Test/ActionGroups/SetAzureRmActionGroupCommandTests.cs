@@ -111,17 +111,17 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             Assert.Equal("AgShortName", this.createOrUpdatePrms.GroupShortName);
 
             Assert.Equal(1, this.createOrUpdatePrms.EmailReceivers.Count);
-            Assert.Equal(this.createOrUpdatePrms.EmailReceivers[0].Name, "email");
-            Assert.Equal(this.createOrUpdatePrms.EmailReceivers[0].EmailAddress, "foo@email.com");
+            Assert.Equal("email", this.createOrUpdatePrms.EmailReceivers[0].Name);
+            Assert.Equal("foo@email.com", this.createOrUpdatePrms.EmailReceivers[0].EmailAddress);
 
             Assert.Equal(1, this.createOrUpdatePrms.SmsReceivers.Count);
-            Assert.Equal(this.createOrUpdatePrms.SmsReceivers[0].Name, "sms");
-            Assert.Equal(this.createOrUpdatePrms.SmsReceivers[0].CountryCode, "1");
-            Assert.Equal(this.createOrUpdatePrms.SmsReceivers[0].PhoneNumber, "4254251234");
+            Assert.Equal("sms", this.createOrUpdatePrms.SmsReceivers[0].Name);
+            Assert.Equal("1", this.createOrUpdatePrms.SmsReceivers[0].CountryCode);
+            Assert.Equal("4254251234", this.createOrUpdatePrms.SmsReceivers[0].PhoneNumber);
 
             Assert.Equal(1, this.createOrUpdatePrms.WebhookReceivers.Count);
-            Assert.Equal(this.createOrUpdatePrms.WebhookReceivers[0].Name, "webhook");
-            Assert.Equal(this.createOrUpdatePrms.WebhookReceivers[0].ServiceUri, "http://test.com");
+            Assert.Equal("webhook", this.createOrUpdatePrms.WebhookReceivers[0].Name);
+            Assert.Equal("http://test.com", this.createOrUpdatePrms.WebhookReceivers[0].ServiceUri);
 
             Assert.True(this.createOrUpdatePrms.Enabled);
             Assert.Null(this.createOrUpdatePrms.Type);
