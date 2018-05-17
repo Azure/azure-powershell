@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 82DC8DC4-D8EC-4847-A54C-B779256FD590
@@ -56,7 +56,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ Specifies a deallocation option for the resizing operation that this cmdlet star
 ```yaml
 Type: ComputeNodeDeallocationOption
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
 
 Required: False
@@ -102,7 +102,7 @@ Specifies the ID of the pool that this cmdlet resizes.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -118,7 +118,7 @@ If the pool does not reach the target size by this time, the resize operation st
 ```yaml
 Type: TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -148,7 +148,7 @@ The number of target low-priority compute nodes.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

@@ -15,28 +15,14 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Newtonsoft.Json;
-    using System;
     using System.Collections.Generic;
-
-    public class PSTroubleshootResult : PSTopLevelResource
+    public class PSExpressRouteCircuitConnection : PSChildResource
     {
-        public string Code { get; set; }
-
-        public DateTime? EndTime { get; set; }
-
-        public List<PSTroubleshootDetails> Results { get; set; }
-
-        public DateTime? StartTime { get; set; }
-
-        [JsonIgnore]
-        public string ResultsText
-        {
-            get { return JsonConvert.SerializeObject(Results, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        public bool ShouldSerializeResults()
-        {
-            return !string.IsNullOrEmpty(this.Name);
-        }
+        public string AddressPrefix { get; set; }
+        public string AuthorizationKey { get; set; }
+        public string CircuitConnectionStatus { get; set; }
+        public string ProvisioningState { get; set; }
+        public PSResourceId PeerExpressRouteCircuitPeering { get; set; }
+        public PSResourceId ExpressRouteCircuitPeering { get; set; }
     }
 }

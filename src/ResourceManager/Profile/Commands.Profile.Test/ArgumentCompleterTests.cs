@@ -36,14 +36,14 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationCompleter()
         {
             ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-LocationCompleter");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceGroupCompleter()
         {
             ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-ResourceGroupCompleter");
