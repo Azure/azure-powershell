@@ -214,25 +214,12 @@
 
   	<!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
 	<FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
-	  <Output TaskParameter="Output" ItemName="XUnitTests"/>
+		<Output TaskParameter="Output" ItemName="XUnitTests"/>
 	</FilterTask>
 	<Message Text="Using these test assemblies:"/>
 	<Message Text="%(XUnitTests.Identity)"/>
 	<Message Text="Total: @(XunitTests->Count())"/>
 	<Message Text=""/>
-
-	<!-- Restore packages for the solutions to build -->
-    <Delete Files="$(NuGetRestoreConfigFile)" />
-    <WriteLinesToFile
-      File="$(NuGetRestoreConfigFile)"
-      Lines="&lt;configuration&gt;&lt;/configuration&gt;"
-      Overwrite="true"
-      Encoding="Unicode"/>
-    <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
-    <Exec Command="$(NuGetCommand) sources add -Name nugetRemote -Source &quot;https://api.nuget.org/v3/index.json&quot; $(NuGetRestoreConfigSwitch)"/>
-    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
-          ContinueOnError="false" />
-    <Delete Files="$(NuGetRestoreConfigFile)" />
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->

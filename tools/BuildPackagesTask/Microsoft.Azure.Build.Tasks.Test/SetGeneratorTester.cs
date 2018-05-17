@@ -382,7 +382,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 "random3"
             };
 
-            string mapFilePath = MapFilePath;
             HashSet<string> expected = new HashSet<string>()
             {
                 "test1.dll",
@@ -390,17 +389,17 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 "test3.dll"
             };
 
-            int expectedNumberFiles = 53;
+            int expectedNumberFiles = GetFullSetFromMappingsFile(MapFilePath).Count;
             HashSet<string> actual;
 
             //act
-            actual = (HashSet<string>)(SetGenerator.Generate(paths, mapFilePath));
+            actual = (HashSet<string>)(SetGenerator.Generate(paths, MapFilePath));
 
             //assert
             Assert.True(expectedNumberFiles <= actual.Count);
         }
 
-        [Fact(Skip = "https://github.com/Azure/azure-powershell/issues/4723")]
+        [Fact]
         [Trait(AcceptanceType, CheckIn)]
         public void GetTests_MultiplePathsAndMultipleMappingsWithMatchingPaths_ReturnsMatchingTests()
         {
@@ -412,7 +411,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             };
 
             string mapFilePath = MapFilePath;
-            int expectedNumberFiles = 2;
+            int expectedNumberFiles = 3;
             HashSet<string> actual;
 
             //act
