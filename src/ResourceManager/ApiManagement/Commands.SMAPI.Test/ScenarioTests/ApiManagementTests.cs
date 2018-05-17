@@ -19,14 +19,9 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-#if !NETSTANDARD
-using Microsoft.Azure.Test;
-using TestBase = Microsoft.Azure.Test.TestBase;
-#endif
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Management.ApiManagement;
     using WindowsAzure.Commands.ScenarioTest;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
@@ -41,23 +36,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             _fixture = fixture;
             _helper = new EnvironmentSetupHelper();
         }
-
-        protected void SetupManagementClients(MockContext context)
-        {
-            var apiManagementManagementClient = GetApiManagementManagementClient(context);
-            _helper.SetupManagementClients(apiManagementManagementClient);
-        }
-
-        private ApiManagementClient GetApiManagementManagementClient(MockContext context)
-        {
-#if NETSTANDARD
-            //return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-            return null;
-#else
-            return TestBase.GetServiceClient<ApiManagementClient>(new CSMTestEnvironmentFactory());
-#endif
-        }
-
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -207,9 +185,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext context = MockContext.Start(callingClassType, mockName))
+            using (MockContext.Start(callingClassType, mockName))
             {
-                SetupManagementClients(context);
+                _helper.SetupSomeOfManagementClients();
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 _helper.SetupModules(AzureModule.AzureResourceManager,

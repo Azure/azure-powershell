@@ -18,19 +18,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-#if !NETSTANDARD
-using Microsoft.Azure.Test;
-using TestBase = Microsoft.Azure.Test.TestBase;
-#endif
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
     using Azure.Test.HttpRecorder;
     using WindowsAzure.Commands.ScenarioTest;
     using WindowsAzure.Commands.Test.Utilities.Common;
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
     using ResourceManagementClient = Management.Internal.Resources.ResourceManagementClient;
     using Xunit;
 
@@ -40,21 +36,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         public ApiManagementTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _helper = new EnvironmentSetupHelper();
-            _helper.TracingInterceptor = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
+            _helper = new EnvironmentSetupHelper
+            {
+                TracingInterceptor = new XunitTracingInterceptor(output)
+            };
+            XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
         }
 
         protected void SetupManagementClients(MockContext context)
         {
-            var apiManagementManagementClient = GetApiManagementManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient(context);
             var armStorageManagementClient = GetArmStorageManagementClient(context);
 
-            _helper.SetupManagementClients(
-                apiManagementManagementClient,
-                resourceManagementClient,
-                armStorageManagementClient);
+            _helper.SetupSomeOfManagementClients( resourceManagementClient, armStorageManagementClient);
         }
 
         protected StorageManagementClient GetArmStorageManagementClient(MockContext context)
@@ -67,22 +61,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ApiManagementClient GetApiManagementManagementClient(MockContext context)
-        {
-#if NETSTANDARD
-            //return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-            return null;
-#else
-            return TestBase.GetServiceClient<ApiManagementClient>(new CSMTestEnvironmentFactory());
-#endif
-        }
-
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagement()
         {
@@ -101,96 +80,56 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             RunPowerShellTest("Test-BackupRestoreApiManagement");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApiManagementDeploymentExternalVN()
         {
             RunPowerShellTest("Test-SetApiManagementDeploymentExternalVirtualNetwork");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApiManagementDeploymentInternalVN()
         {
             RunPowerShellTest("Test-SetApiManagementDeploymentInternalVirtualNetwork");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateApiManagementDeployment()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeployment");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateDeploymentComplex()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipeline");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestImportApiManagementHostnameCertificate()
         {
             RunPowerShellTest("Test-ImportApiManagementHostnameCertificate");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApiManagementHostnames()
         {
             RunPowerShellTest("Test-SetApiManagementHostnames");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagementWithExternalVpn()
         {
             RunPowerShellTest("Test-CrudApiManagementWithExternalVpn");
         }
 
-#if NETSTANDARD
-        [Fact(Skip = "Cannot construct ApiManagementClient using MockContext")]
-        [Trait(Category.RunType, Category.DesktopOnly)]
-#else
         [Fact]
-#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagementWithAdditionalRegions()
         {
@@ -203,12 +142,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Resources", null);
-            d.Add("Microsoft.Features", null);
-            d.Add("Microsoft.Authorization", null);
-            var providersToIgnore = new Dictionary<string, string>();
-            providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            Dictionary<string, string> d = new Dictionary<string, string>
+            {
+                {"Microsoft.Resources", null},
+                {"Microsoft.Features", null},
+                {"Microsoft.Authorization", null}
+            };
+            var providersToIgnore = new Dictionary<string, string>
+            {
+                {"Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01"}
+            };
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
