@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.0
 * Added support for ApiVersions, ApiReleases and ApiRevisions
 * Added suppport for ServiceFabric Backend
 * Added support for Application Insights Logger
