@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Release new cmdlet Get-AzureBatchPoolNodeCounts
+* Release new cmdlet Start-AzureBatchComputeNodeServiceLogUpload
 
 ## Version 4.0.7
 * Set minimum dependency of module to PowerShell 5.0

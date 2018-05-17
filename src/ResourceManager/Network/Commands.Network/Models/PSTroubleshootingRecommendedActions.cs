@@ -12,27 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
-
-    public class PSTroubleshootDetails
+    public class PSTroubleshootingRecommendedActions
     {
-        public string Detail { get; set; }
+        public string ActionId { get; set; }
 
-        public string Id { get; set; }
+        public string ActionText { get; set; }
 
-        public string ReasonType { get; set; }
+        public string ActionUri { get; set; }
 
-        public List<PSTroubleshootRecommendedActions> RecommendedActions { get; set; }
-
-        public string Summary { get; set; }
-
-        [JsonIgnore]
-        public string RecommendedActionsText
-        {
-            get { return JsonConvert.SerializeObject(RecommendedActions, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
+        public string ActionUriText { get; set; }
     }
 }

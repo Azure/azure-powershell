@@ -12,18 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSTroubleshootRecommendedActions
+    public class PSNetworkWatcherProtocolConfiguration
     {
-        public string ActionId { get; set; }
+        [JsonProperty(Order = 2)]
+        public string Protocol { get; set; }
 
-        public string ActionText { get; set; }
+        [JsonProperty(Order = 2)]
+        public string Method { get; set; }
 
-        public string ActionUri { get; set; }
+        [JsonProperty(Order = 2)]
+        public IDictionary Header { get; set; }
 
-        public string ActionUriText { get; set; }
+        [JsonProperty(Order = 2)]
+        public int[] ValidStatusCode { get; set; }
     }
 }

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
@@ -688,6 +689,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        private string _implementationBackgroundJobDescription;
+
         /// <summary>
         /// Job Name paroperty iof this cmdlet is run as a job
         /// </summary>
@@ -695,15 +698,69 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get
             {
-                string name = "Long Running Azure Operation";
-                string commandName = MyInvocation?.MyCommand?.Name;
-                if (!string.IsNullOrWhiteSpace(commandName))
+                if (_implementationBackgroundJobDescription != null)
                 {
-                    name = string.Format("Long Running Operation for '{0}'", commandName);
+                    return _implementationBackgroundJobDescription;
                 }
+                else
+                {
+                    string name = "Long Running Azure Operation";
+                    string commandName = MyInvocation?.MyCommand?.Name;
+                    string objectName = null;
+                    if (this.IsBound("Name"))
+                    {
+                        objectName = MyInvocation.BoundParameters["Name"].ToString();
+                    }
+                    else if (this.IsBound("InputObject") == true)
+                    {
+                        var type = MyInvocation.BoundParameters["InputObject"].GetType();
+                        var inputObject = Convert.ChangeType(MyInvocation.BoundParameters["InputObject"], type);
+                        if (type.GetProperty("Name") != null)
+                        {
+                            objectName = inputObject.GetType().GetProperty("Name").GetValue(inputObject).ToString();
+                        }
+                        else if (type.GetProperty("ResourceId") != null)
+                        {
+                            string[] tokens = inputObject.GetType().GetProperty("ResourceId").GetValue(inputObject).ToString().Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                            if (tokens.Length >= 8)
+                            {
+                                objectName = tokens[tokens.Length - 1];
+                            }
+                        }
+                    }
+                    else if (this.IsBound("ResourceId") == true)
+                    {
+                        string[] tokens = MyInvocation.BoundParameters["ResourceId"].ToString().Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (tokens.Length >= 8)
+                        {
+                            objectName = tokens[tokens.Length - 1];
+                        }
+                    }
 
-                return name;
+                    if (!string.IsNullOrWhiteSpace(commandName))
+                    {
+                        if (!string.IsNullOrWhiteSpace(objectName))
+                        {
+                            name = string.Format("Long Running Operation for '{0}' on resource '{1}'", commandName, objectName);
+                        }
+                        else
+                        {
+                            name = string.Format("Long Running Operation for '{0}'", commandName);
+                        }
+                    }
+
+                    return name;
+                }
             }
+            set
+            {
+                _implementationBackgroundJobDescription = value;
+            }
+        }
+
+        public void SetBackgroundJobDescription(string jobName)
+        {
+            ImplementationBackgroundJobDescription = jobName;
         }
 
         protected virtual void Dispose(bool disposing)
