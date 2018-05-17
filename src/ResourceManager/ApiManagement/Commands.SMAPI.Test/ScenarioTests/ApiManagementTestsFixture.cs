@@ -14,11 +14,10 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Microsoft.Azure.Management.ApiManagement;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Management;
-    using System;
+    using Management.ApiManagement;
+    using Management.Resources;
+    using Rest.ClientRuntime.Azure.TestFramework;
+    using WindowsAzure.Management;
 
     public class ApiManagementTestsFixture : TestsFixture
     {
@@ -39,37 +38,29 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             get { return _resourceManagementClient ?? (_resourceManagementClient = ApiManagementHelper.GetResourceManagementClient()); }
         }
 
-        public ApiManagementClient ApiManagementClient
+        public ApiManagementClient GetApiManagementClient(MockContext context)
         {
-            get { return ApiManagementHelper.GetApiManagementClient(); }
+            return ApiManagementHelper.GetApiManagementClient(context); 
         }
 
         public ApiManagementTestsFixture()
         {
-            try
+            using (MockContext context = MockContext.Start(
+                "ApiManagementTests",
+                "CreateApiManagementService"))
             {
-                TestUtilities.StartTest("ApiManagementTests", "CreateApiManagementService");
-
-                this.ResourceGroupName = this.ResourceManagementClient.TryGetResourceGroup(Location);
-                this.Location = "West US"; //this.ManagmentClient.TryGetLocation("West US");
+                this.ResourceGroupName = "powershelltest";
+                this.Location = "West US";
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
-                    ResourceGroupName = TestUtilities.GenerateName("Api-Default");
+                    ResourceGroupName = Azure.Test.TestUtilities.GenerateName("Api-Default");
                     this.ResourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
                 }
 
-                ApiManagementServiceName = TestUtilities.GenerateName("hydraapimservice");
-                this.ApiManagementClient.TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
-            }
-            catch (Exception)
-            {
-                Cleanup();
-                throw;
-            }
-            finally
-            {
-                TestUtilities.EndTest();
+                ApiManagementServiceName = "powershellsdkservice";
+                var apiManagementClient = GetApiManagementClient(context);
+                apiManagementClient.TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
             }
         }
     }
