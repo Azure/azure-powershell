@@ -40,7 +40,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
                 if (ex is TaskCanceledException)
                 {
-                    Console.WriteLine("[Retrying]: !!! Retrying a TaskCanceled Exception !!!");
                     return true;
                 }
             }

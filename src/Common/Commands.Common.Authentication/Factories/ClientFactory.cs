@@ -16,7 +16,6 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
-using Microsoft.Rest.TransientFaultHandling;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -108,9 +107,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 client.UserAgent.Add(userAgent);
             }
 
-            Console.WriteLine("[Factory]: !!! Setting new Retry Policy !!!");
             client.SetRetryPolicy(new AzureHttpRetryPolicy());
-
             return client;
         }
 
@@ -214,7 +211,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 client.UserAgent.Add(userAgent);
             }
 
-            Console.WriteLine("[Factory]: !!! Setting new Retry Policy !!!");
             client.SetRetryPolicy(new HyakHttpRetryPolicy());
             return client;
         }
