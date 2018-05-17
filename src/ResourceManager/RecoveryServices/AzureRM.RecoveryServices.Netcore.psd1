@@ -54,7 +54,14 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.RecoveryServices.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
+    '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Logger.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll', 
+    '.\Microsoft.Azure.Management.RecoveryServices.dll', 
     '.\Security.Cryptography.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -79,7 +86,30 @@ CmdletsToExport = 'Get-AzureRmRecoveryServicesBackupProperty',
     'New-AzureRmRecoveryServicesVault', 
     'Remove-AzureRmRecoveryServicesVault', 
     'Set-AzureRmRecoveryServicesBackupProperties', 
-    'Set-AzureRmRecoveryServicesVaultContext'
+    'Set-AzureRmRecoveryServicesVaultContext',
+	# RS.Backup
+	'Backup-AzureRmRecoveryServicesBackupItem', 
+    'Get-AzureRmRecoveryServicesBackupManagementServer', 
+    'Get-AzureRmRecoveryServicesBackupContainer', 
+    'Unregister-AzureRmRecoveryServicesBackupContainer', 
+    'Disable-AzureRmRecoveryServicesBackupProtection', 
+    'Enable-AzureRmRecoveryServicesBackupProtection', 
+    'Get-AzureRmRecoveryServicesBackupItem', 
+    'Get-AzureRmRecoveryServicesBackupJob', 
+    'Get-AzureRmRecoveryServicesBackupJobDetails', 
+    'Stop-AzureRmRecoveryServicesBackupJob', 
+    'Wait-AzureRmRecoveryServicesBackupJob', 
+    'Get-AzureRmRecoveryServicesBackupProtectionPolicy', 
+    'Get-AzureRmRecoveryServicesBackupRetentionPolicyObject', 
+    'Get-AzureRmRecoveryServicesBackupSchedulePolicyObject', 
+    'New-AzureRmRecoveryServicesBackupProtectionPolicy', 
+    'Remove-AzureRmRecoveryServicesBackupProtectionPolicy', 
+    'Set-AzureRmRecoveryServicesBackupProtectionPolicy', 
+    'Get-AzureRmRecoveryServicesBackupRecoveryPoint', 
+    'Restore-AzureRmRecoveryServicesBackupItem', 
+    'Unregister-AzureRmRecoveryServicesBackupManagementServer', 
+    'Get-AzureRmRecoveryServicesBackupRPMountScript', 
+    'Disable-AzureRmRecoveryServicesBackupRPMountScript'
 
 # Variables to export from this module
 # VariablesToExport = @()

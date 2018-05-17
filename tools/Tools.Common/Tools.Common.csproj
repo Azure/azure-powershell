@@ -193,9 +193,6 @@
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RecoveryServices.ARM.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RecoveryServices.Backup.dll.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="SerializedCmdlets\Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
