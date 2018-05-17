@@ -17,6 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Management.Automation;
+    using Management.ApiManagement.Models;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementOperation)]
     [OutputType(typeof(PsApiManagementOperation))]
@@ -35,6 +36,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Identifier of API. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of API Revision. This parameter is optional. If not specified, the operation will be " +
+            "updated in the currently active api revision.")]
+        public String ApiRevision { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -100,6 +108,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
+            // determine the apiId
+            string apiId = ApiId;
+            if (!string.IsNullOrEmpty(ApiRevision))
+            {
+                apiId = ApiId.ApiRevisionIdentifier(ApiRevision);
+            }
+
             Client.OperationSet(Context, ApiId, OperationId, Name, Method, UrlTemplate, Description, TemplateParameters, Request, Responses);
 
             if (PassThru.IsPresent)
