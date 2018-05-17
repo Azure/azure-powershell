@@ -24,7 +24,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using DatabaseEdition = Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition;
 using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
@@ -91,7 +90,39 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         }
 
         /// <summary>
-        /// Creates or updates an Azure Sql Database ElasticPool.
+        /// Creates an Azure Sql Database ElasticPool.
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure Sql Database Server</param>
+        /// <param name="model">The input parameters for the create/update operation</param>
+        /// <returns>The upserted Azure Sql Database ElasticPool</returns>
+        internal AzureSqlElasticPoolModel CreateElasticPool(AzureSqlElasticPoolModel model)
+        {
+            var resp = Communicator.Create(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPool
+            {
+                Location = model.Location,
+                Tags = model.Tags,
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Sku()
+                {
+                    Name = model.SkuName,
+                    Tier = model.Edition,
+                    Family = model.Family,
+                    Capacity = model.Capacity
+                },
+                MaxSizeBytes = model.MaxSizeBytes,
+                ZoneRedundant = model.ZoneRedundant,
+                PerDatabaseSettings = new ElasticPoolPerDatabaseSettings()
+                {
+                    MinCapacity = model.DatabaseCapacityMin,
+                    MaxCapacity = model.DatabaseCapacityMax
+                }
+            });
+
+            return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+        }
+
+        /// <summary>
+        /// Updates an Azure Sql Database ElasticPool using Patch.
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure Sql Database Server</param>
@@ -99,16 +130,24 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The upserted Azure Sql Database ElasticPool</returns>
         internal AzureSqlElasticPoolModel UpsertElasticPool(AzureSqlElasticPoolModel model)
         {
-            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPool
+            var resp = Communicator.CreateOrUpdate(model.ResourceGroupName, model.ServerName, model.ElasticPoolName, new Management.Sql.Models.ElasticPoolUpdate
             {
                 Location = model.Location,
                 Tags = model.Tags,
-                DatabaseDtuMax = model.DatabaseDtuMax,
-                DatabaseDtuMin = model.DatabaseDtuMin,
-                Edition = model.Edition.ToString(),
-                Dtu = model.Dtu,
-                StorageMB = model.StorageMB,
-                ZoneRedundant = model.ZoneRedundant
+                Sku = string.IsNullOrWhiteSpace(model.SkuName) ? null : new Sku()
+                {
+                    Name = model.SkuName,
+                    Tier = model.Edition,
+                    Family = model.Family,
+                    Capacity = model.Capacity
+                },
+                MaxSizeBytes = model.MaxSizeBytes,
+                ZoneRedundant = model.ZoneRedundant,
+                PerDatabaseSettings = new ElasticPoolPerDatabaseSettings()
+                {
+                    MinCapacity = model.DatabaseCapacityMin,
+                    MaxCapacity = model.DatabaseCapacityMax
+                }
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -135,7 +174,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns></returns>
         public AzureSqlDatabaseModel GetElasticPoolDatabase(string resourceGroupName, string serverName, string poolName, string databaseName)
         {
-            var resp = Communicator.GetDatabase(resourceGroupName, serverName, poolName, databaseName);
+            var resp = Communicator.GetDatabase(resourceGroupName, serverName, databaseName);
             return AzureSqlDatabaseAdapter.CreateDatabaseModelFromResponse(resourceGroupName, serverName, resp);
         }
 
@@ -342,9 +381,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <returns>The converted model</returns>
         private AzureSqlElasticPoolModel CreateElasticPoolModelFromResponse(string resourceGroup, string serverName, Management.Sql.Models.ElasticPool pool)
         {
-            DatabaseEdition edition = DatabaseEdition.None;
-            Enum.TryParse<DatabaseEdition>(pool.Edition, out edition);
-
             AzureSqlElasticPoolModel model = new AzureSqlElasticPoolModel
             {
                 ResourceId = pool.Id,
@@ -352,19 +388,52 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 ServerName = serverName,
                 ElasticPoolName = pool.Name,
                 CreationDate = pool.CreationDate ?? DateTime.MinValue,
-                DatabaseDtuMax = pool.DatabaseDtuMax.Value,
-                DatabaseDtuMin = pool.DatabaseDtuMin.Value,
-                Dtu = pool.Dtu,
                 State = pool.State,
                 StorageMB = pool.StorageMB,
+                MaxSizeBytes = pool.MaxSizeBytes,
                 Tags =
                     TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(pool.Tags), false),
                 Location = pool.Location,
-                Edition = edition,
-                ZoneRedundant = pool.ZoneRedundant
+                Edition = pool.Edition,
+                ZoneRedundant = pool.ZoneRedundant,
+                Capacity = pool.Sku.Capacity,
+                SkuName = pool.Sku.Name,
+                DatabaseCapacityMin = pool.PerDatabaseSettings.MinCapacity,
+                DatabaseCapacityMax = pool.PerDatabaseSettings.MaxCapacity,
+                Dtu = pool.Dtu,
+                DatabaseDtuMin = pool.DatabaseDtuMin,
+                DatabaseDtuMax = pool.DatabaseDtuMax,
+                Family = pool.Sku.Family
             };
 
             return model;
+        }
+
+        /// <summary>
+        /// Get elastic pool sku name based on tier
+        ///    Edition              | SkuName
+        ///    GeneralPurpose       | GP
+        ///    BusinessCritical     | BC
+        ///    Standard             | StandardPool
+        ///    Basic                | BasicPool
+        ///    Premium              | PremiumPool
+        /// </summary>
+        /// <param name="tier">Azure Sql elastic pool edition</param>
+        /// <returns>The sku name</returns>
+        public static string GetPoolSkuName(string tier)
+        {
+            if (string.IsNullOrWhiteSpace(tier))
+                return null;
+
+            switch (tier.ToLowerInvariant())
+            {
+                case "generalpurpose":
+                    return "GP";
+                case "businesscritical":
+                    return "BC";
+                default:
+                    return string.Format("{0}Pool", tier);
+            }
         }
     }
 }
