@@ -29,19 +29,19 @@ function Test-ThreatDetectionGetDefualtPolicy
 		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 
 		# Assert
-		Assert-AreEqual $policy.ThreatDetectionState "New"
+		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmails ""
-		Assert-True {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Length 1
+		Assert-False {$policy.EmailAdmins}
+		Assert-AreEqual $policy.ExcludedDetectionTypes.Length 0
 
 		# Test
 		$policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 
 		# Assert
-		Assert-AreEqual $policy.ThreatDetectionState "New"
+		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmails ""
-		Assert-True {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Length 1
+		Assert-False {$policy.EmailAdmins}
+		Assert-AreEqual $policy.ExcludedDetectionTypes.Length 0
 	}
 	finally
 	{
@@ -201,7 +201,7 @@ function Test-DisablingThreatDetection
 	try
 	{
 		# 1. Test
-		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
+		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount -EmailAdmins $true
 		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
 		# Assert
