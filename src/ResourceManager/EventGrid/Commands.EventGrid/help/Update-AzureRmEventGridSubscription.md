@@ -16,8 +16,8 @@ Update the properties of an Event Grid event subscription.
 ```
 Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [[-ResourceGroupName] <String>]
  [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
- [-IncludedEventType <String[]>] [-Label <String[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempts <Int32>]
- [-DeadLetterEndpoint <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-IncludedEventType <String[]>] [-Label <String[]>] [[-EventTtl] <Int32>] [[-MaxDeliveryAttempts] <Int32>]
+ [[-DeadLetterEndpoint] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,8 +25,8 @@ Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [[-Resourc
 ```
 Update-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <String>
  [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
- [-IncludedEventType <String[]>] [-Label <String[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempts <Int32>]
- [-DeadLetterEndpoint <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-IncludedEventType <String[]>] [-Label <String[]>] [[-EventTtl] <Int32>] [[-MaxDeliveryAttempts] <Int32>]
+ [[-DeadLetterEndpoint] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ Update-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionNa
 ```
 Update-AzureRmEventGridSubscription [-InputObject] <PSEventSubscription> [-EndpointType <String>]
  [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-IncludedEventType <String[]>]
- [-Label <String[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempts <Int32>] [-DeadLetterEndpoint <String>]
+ [-Label <String[]>] [[-EventTtl] <Int32>] [[-MaxDeliveryAttempts] <Int32>] [[-DeadLetterEndpoint] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,8 +42,8 @@ Update-AzureRmEventGridSubscription [-InputObject] <PSEventSubscription> [-Endpo
 ```
 Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
  [-TopicName] <String> [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>]
- [-SubjectEndsWith <String>] [-IncludedEventType <String[]>] [-Label <String[]>] [-EventTtl <Int32>]
- [-MaxDeliveryAttempts <Int32>] [-DeadLetterEndpoint <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-SubjectEndsWith <String>] [-IncludedEventType <String[]>] [-Label <String[]>] [[-EventTtl] <Int32>]
+ [[-MaxDeliveryAttempts] <Int32>] [[-DeadLetterEndpoint] <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -92,7 +92,7 @@ Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParame
 Aliases:
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -104,7 +104,7 @@ Parameter Sets: EventSubscriptionInputObjectSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -149,7 +149,7 @@ This can be webhook or eventhub
 Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: webhook, eventhub
+Accepted values: webhook, eventhub, storagequeue, hybridconnection
 
 Required: False
 Position: Named
@@ -182,7 +182,7 @@ Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParame
 Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -194,7 +194,7 @@ Parameter Sets: EventSubscriptionInputObjectSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -254,7 +254,7 @@ Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParame
 Aliases:
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -266,7 +266,7 @@ Parameter Sets: EventSubscriptionInputObjectSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 4
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

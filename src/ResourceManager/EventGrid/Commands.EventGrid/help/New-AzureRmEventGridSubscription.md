@@ -17,16 +17,17 @@ Creates a new Azure Event Grid Event Subscription to a topic, Azure resource, Az
 New-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
  [[-ResourceGroupName] <String>] [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
  [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
- [-EventTtl <Int32>] [-MaxDeliveryAttempts <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-EventTtl] <Int32>] [[-MaxDeliveryAttempts] <Int32>] [[-DeliverySchema] <String>]
+ [[-DeadLetterEndpoint] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
 New-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <String> [-Endpoint] <String>
  [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
- [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-EventTtl <Int32>]
- [-MaxDeliveryAttempts <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
+ [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [[-EventTtl] <Int32>]
+ [[-MaxDeliveryAttempts] <Int32>] [[-DeliverySchema] <String>] [[-DeadLetterEndpoint] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,8 +35,8 @@ New-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName]
 ```
 New-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionName] <String>
  [-Endpoint] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>] [[-SubjectEndsWith] <String>]
- [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [-EventTtl <Int32>]
- [-MaxDeliveryAttempts <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
+ [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>] [[-EventTtl] <Int32>]
+ [[-MaxDeliveryAttempts] <Int32>] [[-DeliverySchema] <String>] [[-DeadLetterEndpoint] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,8 +45,9 @@ New-AzureRmEventGridSubscription [-InputObject] <PSTopic> [-EventSubscriptionNam
 New-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-Endpoint] <String>
  [-ResourceGroupName] <String> [-TopicName] <String> [[-EndpointType] <String>] [[-SubjectBeginsWith] <String>]
  [[-SubjectEndsWith] <String>] [-SubjectCaseSensitive] [[-IncludedEventType] <String[]>] [[-Label] <String[]>]
- [-EventTtl <Int32>] [-MaxDeliveryAttempts <Int32>] [-DeliverySchema <String>] [-DeadLetterEndpoint <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-EventTtl] <Int32>] [[-MaxDeliveryAttempts] <Int32>] [[-DeliverySchema] <String>]
+ [[-DeadLetterEndpoint] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,7 +114,7 @@ Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParame
 Aliases:
 
 Required: False
-Position: Named
+Position: 12
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -124,7 +126,7 @@ Parameter Sets: EventSubscriptionInputObjectSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 12
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -152,9 +154,10 @@ The schema to be used when delivering events to the destination. The possible va
 Type: String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
+Accepted values: EventGridSchema, InputEventSchema, CloudEventV01Schema
 
 Required: False
-Position: Named
+Position: 11
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -164,9 +167,10 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: EventSubscriptionInputObjectSet
 Aliases:
+Accepted values: EventGridSchema, InputEventSchema, CloudEventV01Schema
 
 Required: False
-Position: Named
+Position: 11
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -208,7 +212,7 @@ This can be webhook or eventhub
 Type: String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
-Accepted values: webhook, eventhub, webhook, eventhub
+Accepted values: webhook, eventhub, storagequeue, hybridconnection
 
 Required: False
 Position: 4
@@ -221,7 +225,7 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: EventSubscriptionInputObjectSet
 Aliases:
-Accepted values: webhook, eventhub, webhook, eventhub
+Accepted values: webhook, eventhub, storagequeue, hybridconnection
 
 Required: False
 Position: 4
@@ -266,7 +270,7 @@ Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParame
 Aliases:
 
 Required: False
-Position: Named
+Position: 9
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -278,7 +282,7 @@ Parameter Sets: EventSubscriptionInputObjectSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 9
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -362,7 +366,7 @@ Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParame
 Aliases:
 
 Required: False
-Position: Named
+Position: 10
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -374,7 +378,7 @@ Parameter Sets: EventSubscriptionInputObjectSet
 Aliases:
 
 Required: False
-Position: Named
+Position: 10
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
