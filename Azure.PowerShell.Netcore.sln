@@ -135,6 +135,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Storage.Netcore", "src\Storage\Commands.Storage\Commands.Storage.Netcore.csproj", "{4F18000A-0329-4450-ADC8-8AA1C04A4666}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.UsageAggregates.Netcore", "src\ResourceManager\UsageAggregates\Commands.UsageAggregates\Commands.UsageAggregates.Netcore.csproj", "{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -937,6 +939,18 @@ Global
 		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x64.Build.0 = Release|Any CPU
 		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x86.ActiveCfg = Release|Any CPU
 		{4F18000A-0329-4450-ADC8-8AA1C04A4666}.Release|x86.Build.0 = Release|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Debug|x64.Build.0 = Debug|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Debug|x86.Build.0 = Debug|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Release|x64.ActiveCfg = Release|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Release|x64.Build.0 = Release|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Release|x86.ActiveCfg = Release|Any CPU
+		{AC30CFA4-0EC7-4303-ABC1-A60DFCA44B74}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
