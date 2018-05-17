@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSTroubleshootRecommendedActions
+    public class PSTroubleshootingRecommendedActions
     {
         public string ActionId { get; set; }
 
