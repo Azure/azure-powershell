@@ -15,17 +15,42 @@
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
     using System;
+    using System.Text.RegularExpressions;
 
-    public class PsApiManagementApiRelease
+    public class PsApiManagementApiRelease : PsApiManagementArmResource
     {
-        public string ResourceGroupName { get;  set;}
-
-        public string ServiceName { get; set; }
+        // resource group regex
+        static readonly Regex ApiNameRegex = new Regex(@"(.*?)/apis/(?<apiName>\S+)/releases/(.*?)", RegexOptions.IgnoreCase);
 
         public string ReleaseId { get; set; }
 
-        public string ApiId { get; set; }
-        
+        private string apiId;
+        public string ApiId
+        {
+            get
+            {
+                if (!string.IsNullOrWhiteSpace(Id))
+                {
+                    var match = ApiNameRegex.Match(Id);
+                    if (match.Success)
+                    {
+                        var apiNameGroup = match.Groups["apiName"];
+                        if (apiNameGroup != null && apiNameGroup.Success)
+                        {
+                            return apiNameGroup.Value;
+                        }
+                    }
+                }
+
+                return this.apiId;                
+            }
+
+            set
+            {
+                this.apiId = value;
+            }
+        }
+
         public DateTime? CreatedDateTime { get; private set; }
 
         public DateTime? UpdatedDateTime { get; private set; }

@@ -432,12 +432,16 @@ namespace Microsoft.Azure.Commands.ApiManagement
             PsApiManagement currentState)
         {
             var hostnameToDelete = new List<HostnameType?>();
+#pragma warning disable CS0618
             if (portalHostnameConfiguration == null && currentState.PortalHostnameConfiguration != null)
+#pragma warning restore CS0618
             {
                 hostnameToDelete.Add(HostnameType.Portal);
             }
 
+#pragma warning disable CS0618
             if (proxyHostnameConfiguration == null && currentState.ProxyHostnameConfiguration != null)
+#pragma warning restore CS0618
             {
                 hostnameToDelete.Add(HostnameType.Proxy);
             }

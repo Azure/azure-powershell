@@ -57,21 +57,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String ApiVersionSetId { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The name of the ApiVersion Set. This parameter is optional.")]
         public String Name { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Versioning Scheme to select for the Api Versioning Set. This parameter is optional.")]
         public PsApiManagementVersioningScheme Scheme { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The Header value which will contain the versioning information. " +
@@ -79,7 +76,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String HeaderName { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "The Query value which will contain the versioning information. " +
@@ -87,7 +83,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String QueryName { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Description of the Api Version set.")]

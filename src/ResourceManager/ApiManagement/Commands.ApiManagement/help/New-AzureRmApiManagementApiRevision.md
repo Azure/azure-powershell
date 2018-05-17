@@ -26,7 +26,27 @@ The **New-AzureRmApiManagementApiRevision** cmdlet creates an API Revision for a
 ### Example 1: Create an API Revision for an API
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementApiRevision -Context $ApiMgmtContext -ApiId "echo-api" -ApiRevision "2"
+PS C:\>New-AzureRmApiManagementApiRevision -Context $ApiMgmtContext  -ApiId 5adf6fbf0faadf3ad8558065 -ApiRevision 6
+
+
+ApiId                         : 5adf6fbf0faadf3ad8558065;rev=6
+Name                          : httpbin.org
+Description                   : API Management facade for a very handy and free online HTTP tool.
+ServiceUrl                    : https://httpbin.org/
+Path                          : httpbin
+ApiType                       : http
+Protocols                     : {Http, Https}
+AuthorizationServerId         : contoso-oauth
+AuthorizationScope            : contoso-oauth
+SubscriptionKeyHeaderName     : Ocp-Apim-Subscription-Key
+SubscriptionKeyQueryParamName : subscription-key
+ApiRevision                   : 6
+ApiVersion                    : v1
+IsCurrent                     : False
+IsOnline                      : False
+Id                            : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065;rev=6
+ResourceGroupName             : Api-Default-WestUS
+ServiceName                   : contoso
 ```
 
 This command creates an API Revision `2` of the `echo-api` API.

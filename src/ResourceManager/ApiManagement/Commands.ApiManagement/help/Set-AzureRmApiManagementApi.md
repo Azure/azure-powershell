@@ -24,8 +24,10 @@ Set-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> -N
 
 ### ByInputObject
 ```
-Set-AzureRmApiManagementApi -InputObject <PsApiManagementApi> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmApiManagementApi -InputObject <PsApiManagementApi> -Name <String> [-Description <String>]
+ -ServiceUrl <String> [-Path <String>] -Protocols <PsApiManagementSchema[]> [-AuthorizationServerId <String>]
+ [-AuthorizationScope <String>] [-SubscriptionKeyHeaderName <String>] [-SubscriptionKeyQueryParamName <String>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +64,7 @@ The default value is $Null.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -79,7 +81,7 @@ You must specify this parameter if *AuthorizationScope* is specified.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,7 +126,7 @@ Specifies a description for the web API.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -154,7 +156,7 @@ Specifies the name of the web API.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -186,7 +188,7 @@ The default value is $Null.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -204,7 +206,7 @@ The default value is $Null.
 
 ```yaml
 Type: PsApiManagementSchema[]
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 Accepted values: Http, Https
 
@@ -222,7 +224,7 @@ The URL must be one to 2000 characters long.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -238,7 +240,7 @@ The default value is $Null.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -254,7 +256,7 @@ The default value is $Null.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False

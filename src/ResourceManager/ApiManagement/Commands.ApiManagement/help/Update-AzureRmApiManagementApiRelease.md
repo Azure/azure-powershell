@@ -21,7 +21,7 @@ Update-AzureRmApiManagementApiRelease -Context <PsApiManagementContext> -Release
 
 ### ByInputObject
 ```
-Update-AzureRmApiManagementApiRelease -InputObject <PsApiManagementApiRelease> [-PassThru]
+Update-AzureRmApiManagementApiRelease [-Note <String>] -InputObject <PsApiManagementApiRelease> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -108,7 +108,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False

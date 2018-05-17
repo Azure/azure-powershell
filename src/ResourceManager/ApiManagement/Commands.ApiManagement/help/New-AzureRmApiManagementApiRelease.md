@@ -27,7 +27,19 @@ The **New-AzureRmApiManagementApiRelease** cmdlet creates an API Release for an 
 ### Example 1: Create an API Release for an API Revision
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementApiRelease -Context $ApiMgmtContext -ApiId "echo-api" -ApiRevision "2" -ReleaseId "echo-api-release" -Note "Releasing version 2 of the echo-api to public"
+PS C:\>New-AzureRmApiManagementApiRelease -Context $context  -ApiId 5adf6fbf0faadf3ad8558065 -ApiRevision 6 -Note "Releasing version 6"
+
+
+ReleaseId         : 7e4d3fbb43c146c4bf406499ef9411f4
+ApiId             : 5adf6fbf0faadf3ad8558065
+CreatedDateTime   : 5/17/2018 1:16:29 AM
+UpdatedDateTime   : 5/17/2018 1:16:29 AM
+Notes             : Releasing version 6
+Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Mi
+                    crosoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065/releases/7e4d3fbb43c146c4bf40649
+                    9ef9411f4
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contoso
 ```
 
 This command creates an API Release of Revision `2` of the `echo-api`.

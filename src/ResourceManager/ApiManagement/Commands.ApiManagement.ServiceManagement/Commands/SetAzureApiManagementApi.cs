@@ -47,7 +47,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String ApiId { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementApi. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementApi InputObject { get; set; }
+
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Web API name. Public name of the API as it would appear on the developer and admin portals. " +
@@ -56,14 +63,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String Name { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Web API description. This parameter is optional.")]
         public String Description { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "A URL of the web service exposing the API. " +
@@ -73,7 +78,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String ServiceUrl { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Web API Path. Last part of the API's public URL." +
@@ -82,7 +86,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String Path { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Web API protocols (http, https). Protocols over which API is made available." +
@@ -91,7 +94,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementSchema[] Protocols { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "OAuth authorization server identifier. This parameter is optional. Default value is $null. " +
@@ -99,33 +101,22 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String AuthorizationServerId { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "OAuth operations scope. This parameter is optional. Default value is $null.")]
         public String AuthorizationScope { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Subscription key header name. This parameter is optional. Default value is $null.")]
         public String SubscriptionKeyHeaderName { get; set; }
 
         [Parameter(
-            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Subscription key query string parameter name. This parameter is optional. Default value is $null.")]
         public String SubscriptionKeyQueryParamName { get; set; }
-        
-        [Parameter(
-            ParameterSetName = ByInputObjectParameterSet,
-            ValueFromPipeline = true,
-            Mandatory = true,
-            HelpMessage = "Instance of PsApiManagementApi. This parameter is required.")]
-        [ValidateNotNullOrEmpty]
-        public PsApiManagementApi InputObject { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -154,7 +145,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 apiId = ApiId;
             }
 
-            Client.ApiSet(
+            var updatedApi = Client.ApiSet(
                 resourcegroupName,
                 serviceName,
                 apiId,
@@ -171,8 +162,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
             if (PassThru.IsPresent)
             {
-                var api = Client.ApiById(resourcegroupName, serviceName, ApiId);
-                WriteObject(api);
+                WriteObject(updatedApi);
             }
         }
     }

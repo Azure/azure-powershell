@@ -47,7 +47,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             WriteObject(
                 new PsApiManagementVirtualNetwork
                 {
+#pragma warning disable CS0618
                     Location = Location,
+#pragma warning restore CS0618
                     SubnetResourceId = SubnetResourceId
                 });
         }

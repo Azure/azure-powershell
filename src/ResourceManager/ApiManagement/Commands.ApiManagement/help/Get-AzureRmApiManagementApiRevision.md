@@ -25,7 +25,34 @@ The **Get-AzureRmApiManagementApiRevision** cmdlet gets the details of all revis
 ### Example 1: Get all API Revisions of an API
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApiRevision -Context $ApiMgmtContext -ApiId "echo-api"
+PS C:\>Get-AzureRmApiManagementApiRevision -Context $ApiMgmtContext -ApiId "5adf6fbf0faadf3ad8558065"
+
+ApiId           : /apis/5adf6fbf0faadf3ad8558065;rev=3
+ApiRevision     : 3
+CreatedDateTime : 4/26/2018 10:57:42 PM
+UpdatedDateTime : 4/26/2018 10:57:42 PM
+Description     : ddsds
+PrivateUrl      : /httpbin/v1;rev=3
+IsOnline        : True
+IsCurrent       : False
+
+ApiId           : /apis/5adf6fbf0faadf3ad8558065;rev=2
+ApiRevision     : 2
+CreatedDateTime : 4/26/2018 10:57:33 PM
+UpdatedDateTime : 4/26/2018 10:57:33 PM
+Description     : AA
+PrivateUrl      : /httpbin/v1
+IsOnline        : True
+IsCurrent       : True
+
+ApiId           : /apis/5adf6fbf0faadf3ad8558065;rev=1
+ApiRevision     : 1
+CreatedDateTime : 4/24/2018 5:56:17 PM
+UpdatedDateTime : 5/9/2018 9:29:06 PM
+Description     :
+PrivateUrl      : /httpbin/v1;rev=1
+IsOnline        : True
+IsCurrent       : False
 ```
 
 This command gets all of the API revision of specified API for particular ApiManagement Context.

@@ -284,10 +284,6 @@
     <value>Are you sure  you want to overwrite your changes in Git repository "{0}" with Configuration Database?</value>
     <comment>Process workflow</comment>
   </data>
-  <data name="SetApiRelease" xml:space="preserve">
-    <value>Update the Api Release</value>
-    <comment>Process workflow</comment>
-  </data>
   <data name="SetApiRevision" xml:space="preserve">
     <value>Update the Api Revision</value>
     <comment>Process workflow</comment>
@@ -309,6 +305,10 @@
   </data>
   <data name="SubscriptionRemoveWarning" xml:space="preserve">
     <value>Are you sure you want to remove Subscription "{0}"?</value>
+    <comment>Process workflow</comment>
+  </data>
+  <data name="UpdateApiRelease" xml:space="preserve">
+    <value>Update the Api Release</value>
     <comment>Process workflow</comment>
   </data>
   <data name="UserRemoveDescription" xml:space="preserve">

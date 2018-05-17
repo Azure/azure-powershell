@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             ParameterSetName = EventHubLoggerSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "EventHub Connection String with Send Policy Rights. This parameter is optional.")]
+            HelpMessage = "EventHub Connection String with Send Policy Rights. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ConnectionString { get; set; }
 

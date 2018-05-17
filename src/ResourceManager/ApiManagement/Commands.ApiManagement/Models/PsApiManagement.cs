@@ -66,7 +66,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 staticIPList.AddRange(apiServiceResource.PrivateIPAddresses);
             }
+#pragma warning disable CS0618
             StaticIPs = staticIPList.ToArray();
+#pragma warning restore CS0618
             VpnType = ApiManagementClient.Mapper.Map<string, PsApiManagementVpnType>(apiServiceResource.VirtualNetworkType);            
 
             if (apiServiceResource.AdditionalLocations != null)
@@ -88,14 +90,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 var portalHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Portal);
                 if (portalHostnameResource != null)
                 {
+#pragma warning disable CS0618
                     PortalHostnameConfiguration = new PsApiManagementHostnameConfiguration(portalHostnameResource);
+#pragma warning restore CS0618
                     PortalCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(portalHostnameResource);
                 }
 
                 var proxyHostnameResources = apiServiceResource.HostnameConfigurations.Where(conf => conf.Type == HostnameType.Proxy);
                 if (proxyHostnameResources != null && proxyHostnameResources.Any())
                 {
+#pragma warning disable CS0618
                     ProxyHostnameConfiguration = new PsApiManagementHostnameConfiguration(proxyHostnameResources.First());
+#pragma warning restore CS0618
                     var proxyCustomHostnameResources = new List<PsApiManagementCustomHostNameConfiguration>();
                     foreach (var proxyHostNameResource in proxyHostnameResources)
                     {
@@ -108,14 +114,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
                 var managementHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Management);
                 if (managementHostnameResource != null)
                 {
+#pragma warning disable CS0618
                     ManagementHostnameConfiguration = new PsApiManagementHostnameConfiguration(managementHostnameResource);
+#pragma warning restore CS0618
                     ManagementCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(managementHostnameResource);
                 }
 
                 var scmHostnameResource = apiServiceResource.HostnameConfigurations.FirstOrDefault(conf => conf.Type == HostnameType.Scm);
                 if (scmHostnameResource != null)
                 {
+#pragma warning disable CS0618
                     ScmHostnameConfiguration = new PsApiManagementHostnameConfiguration(scmHostnameResource);
+#pragma warning restore CS0618
                     ScmCustomHostnameConfiguration = new PsApiManagementCustomHostNameConfiguration(scmHostnameResource);
                 }
             }

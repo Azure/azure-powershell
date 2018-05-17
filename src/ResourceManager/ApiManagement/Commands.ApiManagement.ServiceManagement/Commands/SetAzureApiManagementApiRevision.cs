@@ -14,18 +14,18 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.Linq;
     using System.Management.Automation;
-    using Properties;
     using Management.ApiManagement.Models;
+    using Models;
+    using Properties;
 
     [Cmdlet(VerbsCommon.Set,
         Constants.ApiManagementApiRevision,
         DefaultParameterSetName = ExpandedParameterSet,
         SupportsShouldProcess = true)]
-    [OutputType(typeof(PsApiManagementApi))]
+    [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class SetAzureApiManagementApiRevision : SetAzureApiManagementApi
     {   
         [Parameter(
@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
             if (ParameterSetName.Equals(ByInputObjectParameterSet))
             {
+                // identity properties from InputObject
                 resourcegroupName = InputObject.ResourceGroupName;
                 serviceName = InputObject.ServiceName;
                 apiId = InputObject.ApiId;
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else
             {
+                // identity properties from individual variables
                 resourcegroupName = Context.ResourceGroupName;
                 serviceName = Context.ServiceName;
                 apiId = ApiId;
@@ -62,7 +64,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
             if (ShouldProcess(id, Resources.SetApiRevision))
             {
-                Client.ApiSet(
+                var updatedApiRevision = Client.ApiSet(
                     resourcegroupName,
                     serviceName,
                     id,
@@ -78,9 +80,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     InputObject);
 
                 if (PassThru.IsPresent)
-                {
-                    var api = Client.ApiById(resourcegroupName, serviceName, id);
-                    WriteObject(api);
+                {                                      
+                    WriteObject(updatedApiRevision);
                 }
             }
         }

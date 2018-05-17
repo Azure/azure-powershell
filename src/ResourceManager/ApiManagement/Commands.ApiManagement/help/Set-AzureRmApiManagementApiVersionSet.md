@@ -22,8 +22,10 @@ Set-AzureRmApiManagementApiVersionSet -Context <PsApiManagementContext> -ApiVers
 
 ### ByInputObject
 ```
-Set-AzureRmApiManagementApiVersionSet -InputObject <PsApiManagementApiVersionSet> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmApiManagementApiVersionSet -InputObject <PsApiManagementApiVersionSet> [-Name <String>]
+ [-Scheme <PsApiManagementVersioningScheme>] [-HeaderName <String>] [-QueryName <String>]
+ [-Description <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +95,7 @@ Description of the Api Version set.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -109,7 +111,7 @@ If versioning Scheme HEADER is choosen, then this value must be specified.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -140,7 +142,7 @@ This parameter is optional.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -171,7 +173,7 @@ If versioning Scheme Query is choosen, then this value must be specified.
 
 ```yaml
 Type: String
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -187,7 +189,7 @@ This parameter is optional.
 
 ```yaml
 Type: PsApiManagementVersioningScheme
-Parameter Sets: ExpandedParameter
+Parameter Sets: (All)
 Aliases:
 Accepted values: Segment, Query, Header
 
