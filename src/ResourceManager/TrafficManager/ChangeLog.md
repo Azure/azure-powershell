@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update the parameters for `Get-AzureRmTrafficManagerProfile` so that -ResourceGroupName parameter is required when using -Name parameter.
+
+## Version 4.0.4
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.0.3
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.0.2
+* Fix issue with Default Resource Group in CloudShell
 
 ## Version 4.0.1
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations

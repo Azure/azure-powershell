@@ -22,30 +22,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricNode, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricNode : UpdateAzureRmServiceFabricNodeBase
     {
-        /// <summary>
-        /// Resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specify the name of the resource group.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty()]
-        public override string ResourceGroupName { get; set; }
-
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Specify the name of the cluster")]
-        [ValidateNotNullOrEmpty()]
-        [Alias("ClusterName")]
-        public override string Name { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
-           HelpMessage = "Node type name")]
-        public override string NodeType { get; set; }
-
-        protected override int Number
-        {
-            get { return this.NumberOfNodesToAdd; }
-        }
-
         [Parameter(Mandatory = true, ValueFromPipeline = true,
           HelpMessage = "The number of nodes to add")]
         [ValidateRange(1, 2147483647)]
@@ -53,6 +29,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public int NumberOfNodesToAdd
         {
             get; set;
+        }
+
+        protected override int Number
+        {
+            get { return this.NumberOfNodesToAdd; }
         }
 
         public override void ExecuteCmdlet()

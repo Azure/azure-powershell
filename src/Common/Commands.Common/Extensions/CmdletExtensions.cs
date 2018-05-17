@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq.Expressions;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text;
@@ -202,6 +203,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        /// <summary>
+        /// Return the value of a paramater, or null if not set
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cmdlet">the executing cmdlet</param>
+        /// <param name="parameterName">The name of the parameter to return</param>
+        /// <returns>true if the parameter was provided by the user, otherwise false</returns>
+        public static bool IsBound(this PSCmdlet cmdlet, string parameterName) 
+        {
+            return cmdlet.MyInvocation.BoundParameters.ContainsKey(parameterName);
+        }
+
         public static string AsAbsoluteLocation(this string realtivePath)
         {
             return Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, realtivePath));
@@ -244,7 +257,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
-        /// Execute the given cmdlet in powershell usign the given pipeline parameters.  
+        /// Execute the given cmdlet in powershell usign the given pipeline parameters.
         /// </summary>
         /// <typeparam name="T">The output type for the cmdlet</typeparam>
         /// <param name="cmdlet">The cmdlet to execute</param>
@@ -341,6 +354,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
             return output;
         }
+
+        public static bool IsParameterBound<TPSCmdlet, TProp>(this TPSCmdlet cmdlet, Expression<Func<TPSCmdlet, TProp>> propertySelector) where TPSCmdlet : PSCmdlet
+        {
+            var propName = ((MemberExpression)propertySelector.Body).Member.Name;
+            return cmdlet.MyInvocation.BoundParameters.ContainsKey(propName);
+        }
+
         #region PowerShell Commands
 
         public static void RemoveModule(this PSCmdlet cmdlet, string moduleName)

@@ -12,11 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Management.Automation.Runspaces;
 using AutoMapper;
 using Hyak.Common;
 using Microsoft.Azure;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
@@ -24,12 +27,6 @@ using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Network;
 using Microsoft.WindowsAzure.Management.Storage;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Management.Automation.Runspaces;
-using System.ServiceModel;
-using System.ServiceModel.Dispatcher;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -246,6 +243,29 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 WriteExceptionError(ex);
             }
+        }
+
+        protected Dictionary<string, string> ConvertToDictionary(Hashtable extendedProperty)
+        {
+            Dictionary<string, string> resultDictionary = null;
+            if (extendedProperty != null)
+            {
+                resultDictionary = new Dictionary<string, string>();
+
+                foreach (DictionaryEntry entry in extendedProperty)
+                {
+                    if (entry.Value != null)
+                    {
+                        resultDictionary[entry.Key.ToString()] = entry.Value.ToString();
+                    }
+                    else
+                    {
+                        resultDictionary[entry.Key.ToString()] = string.Empty;
+                    }
+                }
+            }
+
+            return resultDictionary;
         }
     }
 }

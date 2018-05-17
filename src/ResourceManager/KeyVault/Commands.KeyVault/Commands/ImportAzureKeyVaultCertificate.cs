@@ -34,15 +34,13 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsData.Import, CmdletNoun.AzureKeyVaultCertificate,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ImportCertificateFromFileParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificate))]
+        DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
+    [OutputType(typeof(PSKeyVaultCertificate))]
     public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string ImportCertificateFromFileParameterSet = "ImportCertificateFromFile";
-        private const string ImportWithPrivateKeyFromFileParameterSet = "ImportWithPrivateKeyFromFile";
         private const string ImportWithPrivateKeyFromCollectionParameterSet = "ImportWithPrivateKeyFromCollection";
         private const string ImportWithPrivateKeyFromStringParameterSet = "ImportWithPrivateKeyFromString";
 
@@ -77,9 +75,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    ParameterSetName = ImportCertificateFromFileParameterSet,
                    HelpMessage = "Specifies the path to the file that contains the certificate to add to key vault.")]
-        [Parameter(Mandatory = true,
-                   ParameterSetName = ImportWithPrivateKeyFromFileParameterSet,
-                   HelpMessage = "Specifies the path to the file that contains the certificate and private key to add to key vault.")]
         public string FilePath { get; set; }
 
         /// <summary>
@@ -94,7 +89,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Password
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = ImportWithPrivateKeyFromFileParameterSet,
+                   ParameterSetName = ImportCertificateFromFileParameterSet,
                    HelpMessage = "Specifies the password for the certificate and private key file to import.")]
         [Parameter(Mandatory = false,
                     ParameterSetName = ImportWithPrivateKeyFromStringParameterSet,
@@ -105,6 +100,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Certificate Collection
         /// </summary>
         [Parameter(Mandatory = true,
+                   Position = 2,
+                   ValueFromPipeline = true,
                    ParameterSetName = ImportWithPrivateKeyFromCollectionParameterSet,
                    HelpMessage = "Specifies the certificate collection to add to key vault.")]
         public X509Certificate2Collection CertificateCollection { get; set; }
@@ -119,44 +116,52 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Properties.Resources.ImportCertificate))
             {
                 List<CertificateBundle> certBundleList = new List<CertificateBundle>();
-                CertificateBundle certBundle = null;
+                PSKeyVaultCertificate certBundle = null;
 
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
 
-                        certBundle = this.DataServiceClient.MergeCertificate(
-                            VaultName,
-                            Name,
-                            LoadCertificateFromFile(),
-                            Tag == null ? null : Tag.ConvertToDictionary());
-
-                        break;
-
-                    case ImportWithPrivateKeyFromFileParameterSet:
-
+                        bool doImport = false;
                         X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
-                        X509Certificate2Collection certColl = new X509Certificate2Collection();
 
-                        byte[] base64Bytes;
-
-                        if (Password == null)
+                        // look for at least one certificate which contains a private key
+                        foreach (var cert in userProvidedCertColl)
                         {
-                            base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx);
+                            doImport |= cert.HasPrivateKey;
+                            if (doImport)
+                                break;
+                        }
+
+                        if (doImport)
+                        {
+                            byte[] base64Bytes;
+
+                            if (Password == null)
+                            {
+                                base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx);
+                            }
+                            else
+                            {
+                                base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password.ConvertToString());
+                            }
+
+                            string base64CertCollection = Convert.ToBase64String(base64Bytes);
+                            certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, base64CertCollection, Password, Tag == null ? null : Tag.ConvertToDictionary());
                         }
                         else
                         {
-                            base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password.ConvertToString());
+                            certBundle = this.DataServiceClient.MergeCertificate(
+                                VaultName,
+                                Name,
+                                userProvidedCertColl,
+                                Tag == null ? null : Tag.ConvertToDictionary());
                         }
-
-                        string base64CertCollection = Convert.ToBase64String(base64Bytes);
-                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, base64CertCollection, Password, Tag == null ? null : Tag.ConvertToDictionary());
-
                         break;
 
                     case ImportWithPrivateKeyFromCollectionParameterSet:
@@ -168,27 +173,10 @@ namespace Microsoft.Azure.Commands.KeyVault
                         certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag == null ? null : Tag.ConvertToDictionary());
 
                         break;
-
-                    default:
-                        throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
                 }
 
-                var certificate = KeyVaultCertificate.FromCertificateBundle(certBundle);
-                this.WriteObject(certificate);
+                this.WriteObject(certBundle);
             }
-        }
-
-        internal X509Certificate2Collection LoadCertificateFromFile()
-        {
-            FileInfo certFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.FilePath));
-            if (!certFile.Exists)
-            {
-                throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.CertificateFileNotFound, this.FilePath));
-            }
-
-            var certificates = new X509Certificate2Collection();
-            certificates.Import(certFile.FullName);
-            return certificates;
         }
 
         internal X509Certificate2Collection InitializeCertificateCollection()

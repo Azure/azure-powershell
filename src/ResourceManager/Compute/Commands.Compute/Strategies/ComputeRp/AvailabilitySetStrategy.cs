@@ -13,19 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Common.Strategies.Compute;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using System;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class AvailabilitySetStrategy
     {
         public static ResourceStrategy<AvailabilitySet> Strategy { get; }
-            = ComputePolicy.Create(
-                type: "availability set",
+            = ComputeStrategy.Create(
                 provider: "availabilitySets",
                 getOperations: client => client.AvailabilitySets,
                 getAsync: (o, p) => o.GetAsync(
@@ -39,11 +38,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription => new AvailabilitySet
+                createModel: _ =>
                 {
-                    Sku = new Azure.Management.Compute.Models.Sku {  Name = "Aligned" },
-                    PlatformFaultDomainCount = 2,
-                    PlatformUpdateDomainCount = 2,
-                });
+                    throw new InvalidOperationException("Availability set doesn't exist.");
+                },
+                dependencies: Enumerable.Empty<IEntityConfig>());
     }
 }

@@ -19,6 +19,17 @@
 -->
 ## Current Release
 
+## Version 0.10.0
+* Set minimum dependency of module to PowerShell 5.0
+* Remove deprecated `Tags` alias from cmdlets
+    - `Set-AzureRmMediaService`
+
+## Version 0.9.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 0.9.1
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 0.9.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

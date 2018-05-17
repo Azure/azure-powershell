@@ -98,7 +98,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.10\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -291,9 +291,6 @@
     <None Include="Automation\RunCodeGeneration.ps1" />
     <None Include="AzurePreview.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll-Help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.format.ps1xml">
       <SubType>Designer</SubType>

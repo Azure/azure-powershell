@@ -7,7 +7,6 @@
 		<CommonTestDebug>.\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll</CommonTestDebug>
 		<BackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll</BackupTestDebug>
 		<RecoveryServicesBackupTestDebug>.\src\ResourceManager\AzureBackup\Commands.RecoveryServices.Backup.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll</RecoveryServicesBackupTestDebug>
-		<SiteRecoveryTestDebug>.\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll</SiteRecoveryTestDebug>
 		<SqlTestDebug>.\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll</SqlTestDebug>
 		<ComputeDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.dll</ComputeDebug>
 		<ComputeTestDebug>.\src\ResourceManager\Compute\Commands.Compute.Test\bin\Debug\Microsoft.Azure.Commands.Compute.Test.dll</ComputeTestDebug>
@@ -81,8 +80,6 @@
 			DiagnosticMessages="false"
 			ContinueOnError="false" 
 			Condition=" @(XUnitTests) != '' "/>
-		
-		<CallTarget Targets="TestSetup" />
 	</Target>
 
 	<Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
@@ -101,8 +98,6 @@
 			DiagnosticMessages="false"
 			ContinueOnError="false" 
 			Condition=" @(XUnitTests) != '' "/>
-	
-		<CallTarget Targets="TestSetup" />
 	</Target>
 
 	<Target Name="TimeoutErrorHandler">
@@ -111,54 +106,6 @@
 
 	<Target Name="BeforeRunTests">
 		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-	</Target>
-
-	<Target Name="TestSetup">
-		<Message Importance="high" Text="Setup XUnit tests" />
-		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
-		
-		<Message Text="Copying test assets" />
-		<!-- We copy this file right after we build setup test for signing, so now copying the signed copy back where it is needed for the test -->
-		<Copy SourceFiles="$(PackageDirectory)\$(Configuration)\PowerShellSetup.Test.dll"
-			DestinationFolder="$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)" Condition="Exists('$(PackageDirectory)\$(Configuration)\PowerShellSetup.Test.dll')" />
-	
-		<Copy SourceFiles="$(SignedOutputRootDir)\AzurePowerShell.msi"
-			DestinationFolder="$(LibraryRoot)\setup\PowerShellSetup.Test\bin\$(Configuration)" Condition="Exists('$(SignedOutputRootDir)\AzurePowerShell.msi')" />
-	
-		<ItemGroup Condition=" '$(scope)' == 'all' AND '$(CodeSign)' != 'true' ">
-			<SetupDebugTests Include=".\setup\PowerShellSetup.Test\bin\Debug\PowerShellSetup.Test.dll" />
-		</ItemGroup>
-		
-		<ItemGroup Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' ">
-			<!-- We want to run setup tests related to signing that can only be run on signed bits -->
-			<SetupReleaseTests Include=".\setup\PowerShellSetup.Test\bin\Release\PowerShellSetup.Test.dll" />
-		</ItemGroup>
-		<xunit 
-			Assemblies="@(SetupDebugTests)"
-			AppDomains="true"
-			ShadowCopy="false"
-			ParallelizeTestCollections="false"
-			ParallelizeAssemblies="true"
-			IncludeTraits="AcceptanceType=CheckIn"
-			ExcludeTraits="SignedBuild=BVT"
-			Html="$(TestOutputDirectory)\AzPsSetupTest.html"
-			MaxParallelThreads="10"
-			DiagnosticMessages="false"
-			ContinueOnError="false"
-			Condition=" '$(scope)' == 'all' "/>
-			
-		<xunit 
-			Assemblies="@(SetupReleaseTests)"
-			AppDomains="true"
-			ShadowCopy="false"
-			ParallelizeTestCollections="false"
-			ParallelizeAssemblies="true"
-			IncludeTraits="SignedBuild=BVT"
-			Html="$(TestOutputDirectory)\AzPsSetupTestSigned.html"
-			MaxParallelThreads="10"
-			DiagnosticMessages="false"
-			ContinueOnError="false"
-			Condition=" '$(Configuration)' == 'Release' AND '$(scope)' == 'all' AND '$(CodeSign)' == 'true' "/>
 	</Target>
 	
 	<Target Name="TestManagement">

@@ -1,8 +1,8 @@
 ---
 Module Name: Azure.Storage
 Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: ./Azure.Storage.md
-Help Version: 
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azure.storage
+Help Version: 4.2.1.0
 Locale: en-US
 ---
 
@@ -11,6 +11,12 @@ Locale: en-US
 This topic displays help topics for the Azure Storage Cmdlets.
 
 ## Azure.Storage Cmdlets
+### [Disable-AzureStorageDeleteRetentionPolicy](Disable-AzureStorageDeleteRetentionPolicy.md)
+Disable delete retention policy  for the Azure Storage Blob service.
+
+### [Enable-AzureStorageDeleteRetentionPolicy](Enable-AzureStorageDeleteRetentionPolicy.md)
+Enable delete retention policy  for the Azure Storage Blob service.
+
 ### [Get-AzureStorageBlob](Get-AzureStorageBlob.md)
 Lists blobs in a container.
 

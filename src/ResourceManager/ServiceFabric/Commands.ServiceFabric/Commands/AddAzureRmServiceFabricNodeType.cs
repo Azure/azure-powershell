@@ -1,4 +1,5 @@
 ﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +26,7 @@ using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -41,8 +42,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {
         private const string LoadBalancerIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}";
         private const string BackendAddressIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/backendAddressPools/{3}";
-        private const string FrontendIDFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/frontendIPConfigurations/{3}";
-        private const string ProbeIDFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/probes/{3}";
+        private const string FrontendIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/frontendIPConfigurations/{3}";
+        private const string ProbeIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/probes/{3}";
         private readonly HashSet<string> skusSupportGoldDurability =
          new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "Standard_D15_v2", "Standard_G5" };
 
@@ -67,11 +68,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         [ValidateNotNullOrEmpty()]
         [Alias("ClusterName")]
         public override string Name { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipeline = true,
-                  HelpMessage = "The node type name")]
-        [ValidateNotNullOrEmpty()]
-        public override string NodeType { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Capacity")]
@@ -107,71 +103,45 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             set { this.tier = value; }
         }
 
-        private DurabilityLevel durabilityLevel = DurabilityLevel.Bronze;
         [Parameter(Mandatory = false, ValueFromPipeline = true,
                    HelpMessage = "Specify the durability level of the NodeType.")]
         [ValidateNotNullOrEmpty()]
-        public DurabilityLevel DurabilityLevel
-        {
-            get { return this.durabilityLevel; }
-            set
-            {
-                this.durabilityLevel = value;
-            }
-        }
+        public DurabilityLevel DurabilityLevel { get; set; } = DurabilityLevel.Bronze;
 
         public override void ExecuteCmdlet()
         {
             if (this.DurabilityLevel == DurabilityLevel.Gold && !skusSupportGoldDurability.Contains(this.VmSku))
             {
-                throw new PSArgumentException("Only Standard_D15_v2 and Standard_G5 supports Gold durability,please specify -VmSku to right value");
-            }
-
-            if (CheckNodeTypeExistence())
-            {
-                throw new PSArgumentException(string.Format("{0} exists", this.NodeType));
+                throw new PSArgumentException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.UnsupportedVmSkuForGold,
+                        string.Join(" / ", skusSupportGoldDurability)));
             }
 
             if (ShouldProcess(target: this.NodeType, action: string.Format("Add an new node type {0}", this.NodeType)))
             {
-                var cluster = AddNodeTypeToSfrp();
-                try
-                {
-                    CreateVmss();
-                }
-                catch (Exception)
-                {
-                    WriteWarning("Rolling back the changes to the cluster");
-                    RemoveNodeTypeFromSfrp();
-                    throw;
-                }
-
-                WriteObject(cluster, true);
+                var cluster = GetCurrentCluster();
+                this.diagnosticsStorageName = cluster.DiagnosticsStorageAccountConfig.StorageAccountName;
+                CreateVmss();
+                var pscluster = AddNodeTypeToSfrp(cluster);
+                WriteObject(pscluster, true);
             }
         }
 
-        private PSCluster AddNodeTypeToSfrp()
+        private PSCluster AddNodeTypeToSfrp(Cluster cluster)
         {
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
-
             if (cluster.NodeTypes == null)
-            {
-                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.NoneNodeTypeFound);
-            }
-
-            var existingNodeType = cluster.NodeTypes.SingleOrDefault(
-                n =>
-                string.Equals(
-                    this.NodeType,
-                    n.Name,
-                    StringComparison.OrdinalIgnoreCase));
-
-            if (existingNodeType != null)
             {
                 throw new PSInvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.NodeTypeAlreadyExist,
-                        this.NodeType));
+                        ServiceFabricProperties.Resources.NoneNodeTypeFound,
+                        this.ResourceGroupName));
+            }
+
+            var existingNodeType = GetNodeType(cluster, this.NodeType, ignoreErrors:true);
+            if (existingNodeType != null)
+            {
+                return new PSCluster(cluster);
             }
 
             cluster.NodeTypes.Add(new Management.ServiceFabric.Models.NodeTypeDescription()
@@ -193,8 +163,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 IsPrimary = false,
                 VmInstanceCount = this.Capacity
             });
-
-            this.diagnosticsStorageName = cluster.DiagnosticsStorageAccountConfig.StorageAccountName;
 
             return SendPatchRequest(new Management.ServiceFabric.Models.ClusterUpdateParameters()
             {
@@ -237,7 +205,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                      VirtualMachineProfile = virtualMachineScaleSetProfile
                  });
 
-            WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { vmssTask }, false);
+            WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { vmssTask }, false, this.NodeType);
         }
 
         private string GetLocation()
@@ -256,15 +224,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             storageProfile = null;
             networkProfile = null;
 
-            VirtualMachineScaleSetExtension existingFabircExtension = null;
+            VirtualMachineScaleSetExtension existingFabricExtension = null;
             VirtualMachineScaleSetExtension diagnosticsVmExt = null;
 
             VirtualMachineScaleSetStorageProfile existingStorageProfile = null;
             VirtualMachineScaleSetNetworkProfile existingNetworkProfile = null;
-            var vms = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
-            if (vms != null)
+            var vmss = ComputeClient.VirtualMachineScaleSets.List(this.ResourceGroupName);
+            if (vmss != null)
             {
-                foreach (var vm in vms)
+                foreach (var vm in vmss)
                 {
                     var ext = vm.VirtualMachineProfile.ExtensionProfile.Extensions.FirstOrDefault(
                         e =>
@@ -285,7 +253,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
                     if (ext != null)
                     {
-                        existingFabircExtension = ext;
+                        existingFabricExtension = ext;
                         osProfile = vm.VirtualMachineProfile.OsProfile;
                         existingStorageProfile = vm.VirtualMachineProfile.StorageProfile;
                         existingNetworkProfile = vm.VirtualMachineProfile.NetworkProfile;
@@ -303,17 +271,17 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
             }
 
-            if (existingFabircExtension == null || existingStorageProfile == null || existingNetworkProfile == null)
+            if (existingFabricExtension == null || existingStorageProfile == null || existingNetworkProfile == null)
             {
-                throw new NotSupportedException("The resource group should have at least one valid vmext for service fabric");
+                throw new InvalidOperationException(ServiceFabricProperties.Resources.VmExtensionNotFound);
             }
 
             osProfile = GetOsProfile(osProfile);
             storageProfile = GetStorageProfile(existingStorageProfile);
             networkProfile = CreateNetworkResource(existingNetworkProfile.NetworkInterfaceConfigurations.FirstOrDefault());
 
-            existingFabircExtension.Name = string.Format("{0}_ServiceFabricNode", this.NodeType);
-            existingFabircExtension = GetFabriExtension(existingFabircExtension);
+            existingFabricExtension.Name = string.Format("{0}_ServiceFabricNode", this.NodeType);
+            existingFabricExtension = GetFabricExtension(existingFabricExtension);
 
             if (diagnosticsVmExt != null)
             {
@@ -321,14 +289,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 diagnosticsVmExt = GetDiagnosticsExtension(diagnosticsVmExt);
                 vmExtProfile = new VirtualMachineScaleSetExtensionProfile()
                 {
-                    Extensions = new[] { existingFabircExtension, diagnosticsVmExt }
+                    Extensions = new[] { existingFabricExtension, diagnosticsVmExt }
                 };
             }
             else
             {
                 vmExtProfile = new VirtualMachineScaleSetExtensionProfile()
                 {
-                    Extensions = new[] { existingFabircExtension }
+                    Extensions = new[] { existingFabricExtension }
                 };
             }
         }
@@ -341,9 +309,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return osProfile;
         }
 
-        private VirtualMachineScaleSetExtension GetFabriExtension(VirtualMachineScaleSetExtension fabircExtension)
+        private VirtualMachineScaleSetExtension GetFabricExtension(VirtualMachineScaleSetExtension fabricExtension)
         {
-            var settings = fabircExtension.Settings as JObject;
+            var settings = fabricExtension.Settings as JObject;
             if (settings == null)
             {
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.InvalidVmssConfiguration);
@@ -365,8 +333,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 ["StorageAccountKey2"] = keys[1]
             };
 
-            fabircExtension.ProtectedSettings = protectedSettings;
-            return fabircExtension;
+            fabricExtension.ProtectedSettings = protectedSettings;
+            return fabricExtension;
         }
 
         private VirtualMachineScaleSetExtension GetDiagnosticsExtension(VirtualMachineScaleSetExtension diagnosticsExtension)
@@ -378,7 +346,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 throw new PSInvalidOperationException(ServiceFabricProperties.Resources.InvalidVmssConfiguration);
             }
 
-            var accountName = settings["StorageAccount"];
+            var accountName = settings.GetValue("StorageAccount", StringComparison.OrdinalIgnoreCase)?.Value<string>();
+            if (accountName == null)
+            {
+                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.InvalidVmssConfiguration);
+            }
+
             var protectedSettings = new JObject
             {
                 ["storageAccountName"] = accountName,
@@ -396,112 +369,22 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             return new List<string>() { keys.Keys.ElementAt(0).Value, keys.Keys.ElementAt(1).Value };
         }
 
-        private List<StorageAccount> CreateStorageAccount()
-        {
-            var randomName = GetStorageRandomName();
-            var accounts = new List<StorageAccount>();
-            for (int i = 0, start = 0; i < Constants.StorageAccountsPerNodeType; i++)
-            {
-                string accountName = string.Empty;
-                int retry = 10;
-                while (retry-- >= 0)
-                {
-                    try
-                    {
-                        start++;
-                        accountName = randomName + start;
-                        StorageManagementClient.StorageAccounts.Create(
-                             this.ResourceGroupName,
-                             accountName,
-                             new StorageAccountCreateParameters()
-                             {
-                                 Sku = new Management.Storage.Models.Sku(SkuName.StandardLRS),
-                                 Location = GetLocation(),
-                                 Tags = GetServiceFabricTags()
-                             });
-
-                        break;
-                    }
-                    catch (Rest.Azure.CloudException e)
-                    {
-                        if (e.Body.Code == "StorageAccountAlreadyExists")
-                        {
-                            continue;
-                        }
-
-                        throw;
-                    }
-                }
-
-                if (retry < 0)
-                {
-                    throw new PSInvalidOperationException(ServiceFabricProperties.Resources.FailedToCreateStorageAccount);
-                }
-
-                var account = StorageManagementClient.StorageAccounts.GetProperties(this.ResourceGroupName, accountName);
-                accounts.Add(account);
-            }
-
-            return accounts;
-        }
-
-        private string GetStorageRandomName()
-        {
-            var name = this.NodeType.ToLower();
-
-            if (!dontRandom)
-            {
-                do
-                {
-                    name = string.Concat(
-                        name,
-                        System.IO.Path.GetFileNameWithoutExtension(System.IO.Path.GetRandomFileName()));
-
-                    StringBuilder sb = new StringBuilder();
-                    foreach (var n in name)
-                    {
-                        if ((n >= 'a' && n <= 'z') || (n >= '0' && n <= '9'))
-                        {
-                            sb.Append(n);
-                        }
-                    }
-
-                    name = sb.ToString();
-                } while (name.Length < 3);
-            }
-            else
-            {
-                // for testing
-                name = "powershelltest";
-            }
-
-            if (name.Length > 22)
-            {
-                name = name.Substring(0, 22);
-            }
-
-            return name;
-        }
-
         private VirtualMachineScaleSetStorageProfile GetStorageProfile(VirtualMachineScaleSetStorageProfile existingProfile)
         {
+            var storageType = existingProfile.OsDisk.ManagedDisk != null
+                ? existingProfile.OsDisk.ManagedDisk.StorageAccountType
+                : StorageAccountTypes.StandardLRS;
+
             var osDisk = new VirtualMachineScaleSetOSDisk()
             {
                 Caching = existingProfile.OsDisk.Caching,
                 OsType = existingProfile.OsDisk.OsType,
-                CreateOption = existingProfile.OsDisk.CreateOption
+                CreateOption = existingProfile.OsDisk.CreateOption,
+                ManagedDisk = new VirtualMachineScaleSetManagedDiskParameters()
+                {
+                    StorageAccountType = storageType
+                }
             };
-
-            if(existingProfile.OsDisk.ManagedDisk != null)
-            {
-                osDisk.ManagedDisk = existingProfile.OsDisk.ManagedDisk;
-            }
-            else
-            {
-                osDisk.Image = existingProfile.OsDisk.Image;
-                osDisk.Name = existingProfile.OsDisk.Name;
-                osDisk.VhdContainers = CreateStorageAccount().Select(a => string.Concat(a.PrimaryEndpoints.Blob, "vhd")).ToList();
-            }
 
             return new VirtualMachineScaleSetStorageProfile()
             {
@@ -512,86 +395,21 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         private VirtualMachineScaleSetNetworkProfile CreateNetworkResource(VirtualMachineScaleSetNetworkConfiguration existingNetworkConfig)
         {
-            var subsetName = string.Format("Subnet-{0}", this.NodeType);
+            var suffix = $"{this.Name.ToLower()}-{this.NodeType.ToLower()}";
+            var publicAddressName = $"LBIP-{suffix}";
+            var dnsLabel = $"dns-{suffix}";
+            var lbName = $"LB-{suffix}";
+            var nicName = $"NIC-{suffix}";
+            var ipconfigName = $"IpCfg-{suffix}";
 
             var ipConfiguration = existingNetworkConfig.IpConfigurations.FirstOrDefault();
 
             if (ipConfiguration == null)
             {
-                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.InvalidVmssConfiguration);
+                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.InvalidVmssNetworkConfiguration);
             }
 
-            var subNetId = ipConfiguration.Subnet.Id;
-            const string virtualNetworks = "Microsoft.Network/virtualNetworks/";
-            var virtualNetwork = string.Empty;
-            int index = -1;
-            if ((index = subNetId.IndexOf(virtualNetworks, StringComparison.OrdinalIgnoreCase)) != -1)
-            {
-                var end = subNetId.IndexOf("/", index + virtualNetworks.Length);
-                virtualNetwork = subNetId.Substring(index + virtualNetworks.Length, end - index - virtualNetworks.Length);
-            }
-
-            if (string.IsNullOrEmpty(virtualNetwork))
-            {
-                throw new InvalidOperationException();
-            }
-
-            var network = NetworkManagementClient.VirtualNetworks.Get(this.ResourceGroupName, virtualNetwork);
-
-            var start = 1;
-            Subnet subnet = null;
-            var retry = 5;
-            while (retry-- >= 0)
-            {
-                try
-                {
-                    subnet = NetworkManagementClient.Subnets.CreateOrUpdate(
-                       this.ResourceGroupName,
-                       virtualNetwork,
-                       string.Format("{0}-{1}", subsetName, start),
-                       new Subnet()
-                       {
-                           AddressPrefix = string.Format("10.0.{0}.0/24", start++)
-                       });
-
-                    network.Subnets.Add(subnet);
-                    network = NetworkManagementClient.VirtualNetworks.CreateOrUpdate(
-                        this.ResourceGroupName,
-                        virtualNetwork,
-                        network);
-
-                    this.addressPrefix = subnet.AddressPrefix;
-                    break;
-                }
-                catch (Rest.Azure.CloudException ex)
-                {
-                    if (ex.Body.Code == "NetcfgInvalidSubnet" ||
-                        ex.Body.Code == "InUseSubnetCannotBeUpdated")
-                    {
-                        network.Subnets.Remove(subnet);
-                        continue;
-                    }
-
-                    if (ex.Body.Code == "InvalidRequestFormat")
-                    {
-                        if (ex.Body.Details != null)
-                        {
-                            var details = ex.Body.Details.Where(d => d.Code == "DuplicateResourceName");
-                            if (details.Any())
-                            {
-                                network.Subnets.Remove(subnet);
-                                continue;
-                            }
-                        }
-                    }
-
-                    throw;
-                }
-            }
-
-            var publicAddressName = string.Format("LBIP-{0}-{1}{2}", this.Name.ToLower(), this.NodeType.ToLower(), index);
-            var dnsLable = string.Format("{0}-{1}{2}", this.Name.ToLower(), this.NodeType.ToLower(), index);
-            var lbName = string.Format("LB-{0}-{1}{2}", this.Name.ToLower(), this.NodeType.ToLower(), index);
+            this.addressPrefix = GetSubnetAddressPrefix(ipConfiguration);
 
             var publicIp = NetworkManagementClient.PublicIPAddresses.CreateOrUpdate(
                 this.ResourceGroupName,
@@ -600,14 +418,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     PublicIPAllocationMethod = "Dynamic",
                     Location = GetLocation(),
-                    DnsSettings = new PublicIPAddressDnsSettings(dnsLable)
+                    DnsSettings = new PublicIPAddressDnsSettings(dnsLabel)
                 });
 
-            var backendAdressPollName = "LoadBalancerBEAddressPool";
+            var backendAddressPoolName = "LoadBalancerBEAddressPool";
             var frontendIpConfigurationName = "LoadBalancerIPConfig";
             var probeName = "FabricGatewayProbe";
             var probeHTTPName = "FabricHttpGatewayProbe";
-            var inboundNatPoolsName = "LoadBalancerBEAddressNatPool";
+            var inboundNatPoolName = "LoadBalancerBEAddressNatPool";
 
             var newLoadBalancerId = string.Format(
                 LoadBalancerIdFormat,
@@ -633,7 +451,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     new BackendAddressPool()
                     {
-                        Name = backendAdressPollName
+                        Name = backendAddressPoolName
                     }
                 },
                 LoadBalancingRules = new List<LoadBalancingRule>()
@@ -648,14 +466,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                NetworkManagementClient.SubscriptionId,
                                this.ResourceGroupName,
                                lbName,
-                               backendAdressPollName)
+                               backendAddressPoolName)
                         },
                         BackendPort = Constants.DefaultTcpPort,
                         EnableFloatingIP = false,
                         FrontendIPConfiguration = new Management.Network.Models.SubResource()
                         {
                             Id = string.Format(
-                                FrontendIDFormat,
+                                FrontendIdFormat,
                                 NetworkManagementClient.SubscriptionId,
                                 this.ResourceGroupName,
                                 lbName,
@@ -667,7 +485,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                        Probe = new Management.Network.Models.SubResource()
                        {
                            Id = string.Format(
-                                ProbeIDFormat,
+                                ProbeIdFormat,
                                 NetworkManagementClient.SubscriptionId,
                                 this.ResourceGroupName,
                                 lbName,
@@ -684,14 +502,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                                NetworkManagementClient.SubscriptionId,
                                this.ResourceGroupName,
                                lbName,
-                               backendAdressPollName)
+                               backendAddressPoolName)
                         },
                         BackendPort = Constants.DefaultHttpPort,
                         EnableFloatingIP = false,
                         FrontendIPConfiguration = new Management.Network.Models.SubResource()
                         {
                             Id = string.Format(
-                                FrontendIDFormat,
+                                FrontendIdFormat,
                                 NetworkManagementClient.SubscriptionId,
                                 this.ResourceGroupName,
                                 lbName,
@@ -703,7 +521,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         Probe = new Management.Network.Models.SubResource()
                         {
                            Id = string.Format(
-                                ProbeIDFormat,
+                                ProbeIdFormat,
                                 NetworkManagementClient.SubscriptionId,
                                 this.ResourceGroupName,
                                 lbName,
@@ -732,12 +550,12 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 {
                     new InboundNatPool()
                     {
-                        Name = inboundNatPoolsName,
+                        Name = inboundNatPoolName,
                         BackendPort = Constants.DefaultBackendPort,
                         FrontendIPConfiguration = new Management.Network.Models.SubResource()
                         {
                              Id = string.Format(
-                                FrontendIDFormat,
+                                FrontendIdFormat,
                                 NetworkManagementClient.SubscriptionId,
                                 this.ResourceGroupName,
                                 lbName,
@@ -767,28 +585,53 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         {
                             new VirtualMachineScaleSetIPConfiguration()
                             {
-                                Name = string.Format("Nic-{0}",start),
+                                Name = ipconfigName,
                                 LoadBalancerBackendAddressPools = newLoadBalancer.BackendAddressPools.Select(
-                                    b=> new Management.Compute.Models.SubResource()
+                                    b => new Management.Compute.Models.SubResource()
                                     {
-                                        Id =b.Id
+                                        Id = b.Id
                                     }
                                     ).ToList(),
 
                                 LoadBalancerInboundNatPools = newLoadBalancer.InboundNatPools.Select(
-                                    p=>new Management.Compute.Models.SubResource()
+                                    p => new Management.Compute.Models.SubResource()
                                     {
                                         Id = p.Id
                                     }
                                     ).ToList(),
-                                Subnet = new ApiEntityReference(){Id = subnet.Id}
+                                Subnet = new ApiEntityReference() {Id = ipConfiguration.Subnet.Id}
                             }
                         },
-                        Name = string.Format("NIC-{0}-{1}", this.NodeType,start),
+                        Name = nicName,
                         Primary = true
                     }
                 }
             };
+        }
+
+        private string GetSubnetAddressPrefix(VirtualMachineScaleSetIPConfiguration ipConfiguration)
+        {
+            if (ipConfiguration?.Subnet == null)
+            {
+                throw new InvalidOperationException(ServiceFabricProperties.Resources.InvalidVmssIpConfiguration);
+            }
+
+            var subnetId = ipConfiguration.Subnet.Id;
+            var segments = subnetId.Split('/');
+            if (!segments[segments.Length - 2].Equals("subnets", StringComparison.OrdinalIgnoreCase) || 
+                !segments[segments.Length - 4].Equals("virtualNetworks", StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                        ServiceFabricProperties.Resources.InvalidNetworkNameInResourceId, 
+                        subnetId));
+            }
+
+            var subnetName = segments[segments.Length - 1];
+            var virtualNetworkName = segments[segments.Length - 3];
+
+            var subnet = NetworkManagementClient.Subnets.Get(this.ResourceGroupName, virtualNetworkName, subnetName);
+            return subnet.AddressPrefix;
         }
     }
 }

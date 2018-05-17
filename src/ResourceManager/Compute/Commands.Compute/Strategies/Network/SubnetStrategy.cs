@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 
         public static NestedResourceConfig<Subnet, VirtualNetwork> CreateSubnet(
             this ResourceConfig<VirtualNetwork> virtualNetwork, string name, string addressPrefix)
-            => Strategy.CreateConfig(
-                parent: virtualNetwork,
+            => virtualNetwork.CreateNested(
+                strategy: Strategy,
                 name: name,
                 createModel: _ => new Subnet { Name = name, AddressPrefix = addressPrefix });
     }

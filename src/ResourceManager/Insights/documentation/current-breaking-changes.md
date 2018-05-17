@@ -27,6 +27,43 @@
 
 ## Current Breaking Changes
 
+### Release 5.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**Add-AzureRmAutoscaleSetting**
+- The parameter aliases `AutoscaleProfiles` and `Notifications` are being removed
+
+**Add-AzureRmLogProfile**
+- The parameter aliases `Categories` and `Locations` are being removed
+
+**Add-AzureRmMetricAlertRule**
+- The parameter alias `Actions` is being removed
+
+**Add-AzureRmWebtestAlertRule**
+- The parameter alias `Actions` is being removed
+
+**Get-AzureRmLog**
+- The parameter aliases `MaxRecords` and `MaxEvents` are being removed
+
+**Get-AzureRmMetricDefinition**
+- The parameter alias `MetricNames` is being removed
+
+**New-AzureRmAlertRuleEmail**
+- The parameter aliases `CustomEmails` and `SendToServiceOwners` are being removed
+
+**New-AzureRmAlertRuleWebhook**
+- The parameter alias `Properties` is being removed
+
+**New-AzureRmAutoscaleNotification**
+- The parameter aliases `CustomEmails`, `SendEmailToSubscriptionCoAdministrators` and `Webhooks` are being removed
+
+**New-AzureRmAutoscaleProfile**
+- The parameter aliases `Rules`, `ScheduleDays`, `ScheduleHours` and `ScheduleMinutes` are being removed
+
+**New-AzureRmAutoscaleWebhook**
+- The parameter alias `Properties` is being removed
+
 ### Release 4.0.0 - November 2017
 
 The following cmdlets were affected this release:

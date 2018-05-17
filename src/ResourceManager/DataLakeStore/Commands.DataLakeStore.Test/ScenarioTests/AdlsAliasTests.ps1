@@ -416,7 +416,10 @@ function Test-DataLakeStoreFileSystem
 		$movefolder = "/adlspstestmovefolder"
 		$importFile = "$folderToCreate/importfile.txt"
 		$content = "Test file content! @ Azure PsTest01?"
-	
+		$summaryFolder="/adlspstestsummaryfolder"
+		$subFolderToCreate = "$summaryFolder/Folder0"
+		$subSubFolderToCreate = "$summaryFolder/Folder0/SubFolder0"
+		$subFileToCreate = "$summaryFolder/File0"
 
 		# Create and get Empty folder
 		$result = New-AdlStoreItem -Account $accountName -path $folderToCreate -Folder
@@ -424,13 +427,16 @@ function Test-DataLakeStoreFileSystem
 		$result = Get-AdlStoreItem -Account $accountName -path $folderToCreate
 		Assert-NotNull $result "No value was returned on folder get"
 		Assert-AreEqual "Directory" $result.Type
+
 		# Create and get Empty File
 		$result = New-AdlStoreItem -Account $accountName -path $emptyFilePath
 		Assert-NotNull $result "No value was returned on empty file creation"
 		$result = Get-AdlStoreItem -Account $accountName -path $emptyFilePath
+		$emptyFileCreationDate=$result.LastWriteTime # To be used later
 		Assert-NotNull $result "No value was returned on empty file get"
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual 0 $result.Length
+
 		# Create and get file with content
 		$result = New-AdlStoreItem -Account $accountName -path $contentFilePath -Value $content
 		Assert-NotNull $result "No value was returned on content file creation"
@@ -438,24 +444,29 @@ function Test-DataLakeStoreFileSystem
 		Assert-NotNull $result "No value was returned on content file get"
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual $content.length $result.Length
-		# set and validate expiration for a file
+		
+		# set absolute expiration for content file
 		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value
 		[DateTimeOffset]$timeToUse = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("absoluteTime", [DateTimeOffset]::UtcNow.AddSeconds(120))
 		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath -Expiration $timeToUse
-		Assert-AreEqual $timeToUse.UtcTicks $result.Expiration.UtcTicks
+		Assert-NumAreInRange $timeToUse.UtcTicks $result.Expiration.UtcTicks 500000 # range of 50 milliseconds
+		
 		# set it back to "never expire"
 		$result = Set-AdlStoreItemExpiry -Account $accountName -path $contentFilePath
 		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value
+
 		# list files
 		$result = Get-AdlStoreChildItem -Account $accountName -path $folderToCreate
 		Assert-NotNull $result "No value was returned on folder list"
 		Assert-AreEqual 2 $result.length
+		
 		# add content to empty file
 		Add-AdlStoreItemContent -Account $accountName -Path $emptyFilePath -Value $content
 		$result = Get-AdlStoreItem -Account $accountName -path $emptyFilePath
 		Assert-NotNull $result "No value was returned on empty file get with content added"
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual $content.length $result.Length
+		
 		# concat files
 		$result = Join-AdlStoreItem -Account $accountName -Paths $emptyFilePath,$contentFilePath -Destination $concatFile
 		Assert-NotNull $result "No value was returned on concat file"
@@ -506,6 +517,7 @@ function Test-DataLakeStoreFileSystem
 		Assert-NotNull $result "No value was returned on import file get"
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual $localFileInfo.length $result.Length
+		
 		# download file
 		$currentDir = Split-Path $fileToCopy
 		$targetFile = Join-Path $currentDir "adlspstestdownload.txt"
@@ -527,6 +539,7 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual $($content.length*2) $result.Length
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $concatFile}
+		
 		# move a folder
 		$result = Move-AdlStoreItem -Account $accountName -Path $folderToCreate -Destination $moveFolder
 		Assert-NotNull $result "No value was returned on move folder"
@@ -535,13 +548,38 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual "Directory" $result.Type
 		Assert-AreEqual 0 $result.Length
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $folderToCreate}
+		
+		# getcontentsummary
+		$result = New-AdlStoreItem -Account $accountName -path $summaryFolder -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		$result = New-AdlStoreItem -Account $accountName -path $subFolderToCreate -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		$result = New-AdlStoreItem -Account $accountName -path $subSubFolderToCreate -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		New-AdlStoreItem -Account $accountName -Path $subFileToCreate -Force -Value $content
+		$result = Get-AdlStoreChildItemSummary -Account $accountName -Path $summaryFolder
+		Assert-AreEqual $result.Length $content.Length
+		# Files will be the test file and the above moved file
+		Assert-AreEqual $result.FileCount 1
+
+		# Export DiskUsage
+		$targetFile = "/DuOutputFile"
+		Export-AdlStoreChildItemProperties -Account $accountName -Path $summaryFolder -OutputPath $targetFile -GetDiskUsage -IncludeFile -SaveToAdl
+		$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $targetFile
+		Assert-NotNull $result "No file was created on export properties"
+
 		# delete a file
 		Assert-True {Remove-AdlStoreItem -Account $accountName -paths "$moveFolder/movefile.txt" -force -passthru } "Remove File Failed"
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $moveFile}
+		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $targetFile -force -passthru } "Remove File Failed"
+		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $targetFile}
+		
 		# delete a folder
 		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $moveFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $moveFolder}
-    
+    	Assert-True {Remove-AdlStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
+		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $summaryFolder}
+		
 		# Delete Data Lake account
 		Assert-True {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
@@ -597,9 +635,23 @@ function Test-DataLakeStoreFileSystemPermissions
 			[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 			Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
 		}
+		
+		#define folder name to create for recursive Acl
+		$folderToCreate = "/aclRecurseFolder"
 
 		# define the permissions to add/remove
 		$aceUserId = "027c28d5-c91d-49f0-98c5-d10134b169b3"
+
+		#set owner
+        New-AdlStoreItem -Account $accountName -Path "/temp"
+        $prevOwner=Get-AdlStoreItemOwner -Account $accountName -Path "/temp" -Type User
+        $prevGroup=Get-AdlStoreItemOwner -Account $accountName -Path "/temp" -Type Group
+        $currentOwner=Set-AdlStoreItemOwner -Account $accountName -Path "/temp" -Type User -Id $aceUserId -PassThru
+        $currentGroup=Get-AdlStoreItemOwner -Account $accountName -Path "/temp" -Type Group
+        Assert-AreEqual $aceUserId $currentOwner
+        Assert-AreNotEqual $prevOwner $currentOwner
+        Assert-AreEqual $prevGroup $currentGroup
+        Remove-AdlStoreItem -Account $accountName -paths "/temp" -force
 
 		# Set and get all the permissions
 		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
@@ -635,17 +687,40 @@ function Test-DataLakeStoreFileSystemPermissions
 		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Permissions All
 		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.Count
+		
 		# remove a specific permission with friendly remove
 		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId
 		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount) $result.Count
+		
 		# set and get a specific permission with the ACE string
 		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:rwx", $aceUserId))
 		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount+1) $result.Count
+		
 		# remove a specific permission with the ACE string
 		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -Acl $([string]::Format("user:{0}:---", $aceUserId))
 		$result = Get-AdlStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount) $result.Count
+
+		# Create file/folder for recursive Acl
+		$result = New-AdlStoreItem -Account $accountName -path $folderToCreate -Folder
+		Assert-NotNull $result "No value was returned on folder creation"
+		
+		#Recursive Acl Modify
+		Set-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Permissions All -Id $aceUserId -Recurse
+		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
+		Assert-AreEqual $($currentCount+1) $result.Count
+
+		# Export Acl
+		$targetFile = "/aclOutputFile"
+		Export-AdlStoreChildItemProperties -Account $accountName -Path "/" -OutputPath $targetFile -GetAcl -IncludeFile -SaveToAdl
+		$result = Get-AzureRMDataLakeStoreItem -Account $accountName -path $targetFile
+		Assert-NotNull $result "No file was created on export properties"
+
+		#Recursive Acl remove
+		Remove-AdlStoreItemAclEntry -Account $accountName -path "/" -AceType User -Id $aceUserId -Recurse
+		$result = Get-AzureRMDataLakeStoreItemAclEntry -Account $accountName -path "/"
 		Assert-AreEqual $($currentCount) $result.Count
 
 		# Validate full ACL removal

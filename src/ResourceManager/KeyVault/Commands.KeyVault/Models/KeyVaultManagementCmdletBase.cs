@@ -17,24 +17,23 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 #else
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 #endif
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
+using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Rest.Azure;
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             set { this._resourceClient = value; }
         }
 
-        protected List<PSKeyVaultModels.PSVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
+        protected List<PSKeyVaultModels.PSKeyVaultIdentityItem> ListVaults(string resourceGroupName, Hashtable tag)
         {
             IResourceManagementClient armClient = this.ResourceClient;
 
@@ -133,11 +132,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                              r.Tagvalue == tagValuePair.Value));
             }
 
-            List<PSKeyVaultModels.PSVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSVaultIdentityItem>();
+            List<PSKeyVaultModels.PSKeyVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSKeyVaultIdentityItem>();
             if (listResult != null)
             {
                 vaults.AddRange(listResult.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
-                    .Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
+                    .Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
             }
 
             while (!string.IsNullOrEmpty(listResult.NextPageLink))
@@ -153,7 +152,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (listResult != null)
                 {
-                    vaults.AddRange(listResult.Select(r => new PSKeyVaultModels.PSVaultIdentityItem(r)));
+                    vaults.AddRange(listResult.Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
                 }
             }
 
@@ -265,7 +264,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (!string.IsNullOrWhiteSpace(spn))
             {
 #if NETSTANDARD
-                var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { SPN = spn }).SingleOrDefault();
+                var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
+                var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(odataQuery).SingleOrDefault();
                 objId = servicePrincipal?.Id.ToString();
 #else
                 var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
@@ -425,7 +425,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Managecontacts,
             CertPerms.Manageissuers,
             CertPerms.Setissuers,
-            CertPerms.Recover
+            CertPerms.Recover,
+            CertPerms.Backup,
+            CertPerms.Restore
         };
 
         protected readonly string[] DefaultPermissionsToStorage = 
@@ -440,6 +442,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             StoragePerms.Set,
             StoragePerms.Setsas,
             StoragePerms.Update,
+            StoragePerms.Recover,
+            StoragePerms.Backup,
+            StoragePerms.Restore
         };
 
         protected readonly string DefaultSkuFamily = "A";

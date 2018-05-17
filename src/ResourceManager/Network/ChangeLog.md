@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,37 @@
 --->
 
 ## Current Release
+
+* Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
+
+## Version 6.0.0
+* Added cmdlet to add a new circuit connection to an existing express route circuit.
+    - Add-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to remove a circuit connection from an existing express route circuit.
+    - Remove-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to retrieve a circuit connection
+    - Get-AzureRmExpressRouteCircuitConnectionConfig
+* Bump up network sdk version from 17.0.0.preview to 18.0.0.preview
+* Rerecord all network tests with latest sdk version* Set minimum dependency of module to PowerShell 5.0
+* Add support for DDoS protection plan resource
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+## Version 5.4.2
+* Fix error message with Network cmdlets
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 5.4.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 5.4.0
+* Updating model types for compatibility with DNS cmdlets.
+
+## Version 5.3.0
+* Fixed issue with importing aliases
+* Fix bug to serialize and display IPTags
+
+## Version 5.2.0
 * Added cmdlet to create a new connection monitor
     - New-AzureRmNetworkWatcherConnectionMonitor
 * Added cmdlet to update a connection monitor
@@ -34,6 +65,7 @@
 * Added cmdlet to remove connection monitor
     - Remove-AzureRmNetworkWatcherConnectionMonitor
 * Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
+* Fix to support 32 bit AS Numbers in the Powershell API for Public and Private Expressroute Peerings
 * Added EnableHttp2 flag to Application Gateway
     - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
 * Add IpTags to PublicIpAddress

@@ -10,7 +10,7 @@ Param(
 )
 
 Import-Module "$PSScriptRoot\HelpGeneration\HelpGeneration.psm1"
-$HelpFolders = Get-ChildItem "help" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" }
+$HelpFolders = Get-ChildItem "help" -Recurse -Directory | where { $_.FullName -like "*$BuildConfig*" -and $_.FullName -notlike "*Stack*" }
 
 # ---------------------------------------------------------------------------------------------
 

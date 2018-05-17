@@ -56,10 +56,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         public override void ExecuteCmdlet()
         {
             var cluster = GetCurrentCluster();
-            DurabilityLevel durabilityLevel;
-            bool isMismatched = false;
             var vmss = GetVmss(this.NodeType);
-            GetDurabilityLevel(this.NodeType, out durabilityLevel, out isMismatched);
+            var nodeType = GetNodeType(cluster, this.NodeType);
+            var durabilityLevel = (DurabilityLevel)Enum.Parse(typeof(DurabilityLevel), nodeType.DurabilityLevel);
 
             if (this.Number < 0)
             {
@@ -77,55 +76,36 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             vmss.Sku.Capacity += this.Number;
             if (vmss.Sku.Capacity < 0)
             {
-                throw new PSArgumentException("The Vm size is less then zero");
+                throw new PSArgumentException(ServiceFabricProperties.Resources.SkuCapacityZero);
             }
 
-            var minInstanceCount = GetReliabilityLevel();
+            var reliabilityLevel = GetReliabilityLevel(cluster);
+            var minInstanceCount = (int)reliabilityLevel;
             if (vmss.Sku.Capacity < minInstanceCount)
             {
                 throw new PSArgumentException(
                     string.Format(
                         ServiceFabricProperties.Resources.CannotUpdateNodeCountLessThenReliabilityLevel,
                         vmss.Sku.Capacity,
-                        cluster.ReliabilityLevel));
+                        minInstanceCount,
+                        reliabilityLevel));
             }
 
             WriteVerboseWithTimestamp("Begin to add nodes to the node type");
 
             var updateTask = this.ComputeClient.VirtualMachineScaleSets.CreateOrUpdateAsync(this.ResourceGroupName, vmss.Name, vmss);
 
-            WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { updateTask }, false);
+            WriteClusterAndVmssVerboseWhenUpdate(new List<Task>() { updateTask }, false, this.NodeType);
 
-            cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
-            var nodeType = cluster.NodeTypes.Single(
-                n => this.NodeType.Equals(
-                    n.Name,
-                    StringComparison.OrdinalIgnoreCase));
-
+            cluster = GetCurrentCluster();
+            nodeType = GetNodeType(cluster, this.NodeType);
             nodeType.VmInstanceCount = Convert.ToInt32(vmss.Sku.Capacity);
-
             cluster = SendPatchRequest(new ClusterUpdateParameters()
             {
                 NodeTypes = cluster.NodeTypes
             });
 
             WriteObject((PSCluster)cluster, true);
-        }
-
-        protected int GetReliabilityLevel()
-        {
-            var clusterResouce = GetCurrentCluster();
-            var level = clusterResouce.ReliabilityLevel;
-            ReliabilityLevel reliabilitylevel;
-            if (Enum.TryParse(level, out reliabilitylevel))
-            {
-                return (int)reliabilitylevel;
-            }
-            else
-            {
-                throw new PSInvalidOperationException(
-                    ServiceFabricProperties.Resources.CannotGetReliabilityLevel);
-            }
         }
     }
 }

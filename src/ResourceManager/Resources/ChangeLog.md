@@ -18,6 +18,36 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
+* Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Add convenience cmdlet for creating ServicePrincipals
+* Add Tab completers for Scope and ResourceType
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add AD Cmdlets:
+  - Remove-AzureRmADGroupMember
+  - Get-AzureRmADGroup
+  - New-AzureRmADGroup
+  - Remove-AzureRmADGroup
+  - Remove-AzureRmADUser
+  - Update-AzureRmADApplication
+  - Update-AzureRmADServicePrincipal
+  - Update-AzureRmADUser
+
+## Version 5.5.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 5.5.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 5.5.0
+* Fixed issue with importing aliases
+* Add Support for DataActions and NotDataActions to be passed in roledefinition create calls
+* Fix Roledefinitions calls to use the type filter
+
+## Version 5.4.0
 * Register-AzureRmProviderFeature: Added missing example in the docs
 * Register-AzureRmResourceProvider: Added missing example in the docs
 * Add proper error handling for Insufficient graph permission Issue whilst performing Roleassignment calls.

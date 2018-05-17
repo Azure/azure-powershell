@@ -17,7 +17,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Services Provider.
+    ///     Deletes/unregister the specified Azure Site Recovery recovery services provider from the recovery services vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets the Recovery Services Provider.
+        ///     Gets or sets the recovery services provider object corresponding to the 
+        ///     ASR recovery services provider to be deleted.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,
