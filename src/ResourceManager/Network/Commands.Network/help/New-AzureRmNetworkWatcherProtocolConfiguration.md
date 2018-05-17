@@ -1,47 +1,69 @@
 ---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworkwatcher
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermnetworkwatcherprotocolconfiguration
 schema: 2.0.0
 ---
 
-# New-AzureRmNetworkWatcher
+# New-AzureRmNetworkWatcherProtocolConfiguration
 
 ## SYNOPSIS
-Creates a new Network Watcher resource.
+Creates a new protocol configuration object.
 
 ## SYNTAX
 
 ```
-New-AzureRmNetworkWatcher -Name <String> -ResourceGroupName <String> -Location <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmNetworkWatcherProtocolConfiguration [-Protocol <String>] [-Method <String>] [-Header <IDictionary>]
+ [-ValidStatusCode <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzureRmNetworkWatcher cmdlet creates a new Network Watcher resource.
+The New-AzureRmNetworkWatcherProtocolConfiguration cmdlet creates a new protocol configuration object. 
+This object is used to restrict the protocol confiuration during a connecitivity check session using the specified criteria. 
 
 ## EXAMPLES
 
-### Example 1: Create a Network Watcher
+### ---------------  Example 1: Test Network Watcher Connectivity from a VM to a website with protocol configuration ---------------
 ```
-New-AzureRmResourceGroup -Name NetworkWatcherRG -Location westcentralus
-New-AzureRmNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup NetworkWatcherRG
+$config = New-AzureRmNetworkWatcherProtocolConfiguration -Protocol Http -Method Get -Headers @{"accept"="application/json"} -ValidStatusCodes @(200,202,204)
 
-Name              : NetworkWatcher_westcentralus
-Id                : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westcentralus
-Etag              : W/"7cf1f2fe-8445-4aa7-9bf5-c15347282c39"
-Location          : westcentralus
-Tags              :
-ProvisioningState : Succeeded
+Test-AzureRmNetworkWatcherConnectivity -NetworkWatcherName NetworkWatcher -ResourceGroupName NetworkWatcherRG -SourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/providers/Microsoft.Compute/virtualMachines/MultiTierApp0" -DestinationAddress "bing.com" -DestinationPort 80 -ProtocolConfiguration $config
+
+
+ConnectionStatus : Reachable
+AvgLatencyInMs   : 4
+MinLatencyInMs   : 2
+MaxLatencyInMs   : 15
+ProbesSent       : 15
+ProbesFailed     : 0
+Hops             : [
+                     {
+                       "Type": "Source",
+                       "Id": "f8cff464-e13f-457f-a09e-4dcd53d38a85",
+                       "Address": "10.1.1.4",
+                       "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/ContosoRG/provi                   iders/Microsoft.Network/networkInterfaces/appNic0/ipConfigurations/ipconfig1",
+                       "NextHopIds": [
+                         "1034b1bf-0b1b-4f0a-93b2-900477f45485"
+                       ],
+                       "Issues": []
+                     },
+                     {
+                       "Type": "Internet",
+                       "Id": "1034b1bf-0b1b-4f0a-93b2-900477f45485",
+                       "Address": "13.107.21.200",
+                       "ResourceId": "Internet",
+                       "NextHopIds": [],
+                       "Issues": []
+                     }
+                   ]
 ```
 
-This example creates a new Network Watcher inside a newly created Resource Group. Note that only
-one Network Watcher can be created per region per subscription.
+In this example we test connectivity from a VM in Azure to www.bing.com.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -55,8 +77,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location.
+### -Header
+list of HTTP headers
+
+```yaml
+Type: IDictionary
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Method
+HTTP method
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Protocol
+Procotol type
 
 ```yaml
 Type: String
@@ -66,102 +118,42 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The network watcher name.
+### -ValidStatusCode
+valid status codes
 
 ```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Tag
-Key-value pairs in the form of a hash table. For example:
-
-@{key0="value0";key1=$null;key2="value2"}
-
-```yaml
-Type: Hashtable
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+System.Collections.IDictionary
+System.Int32[]
+
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcherProtocolConfiguration
 
 ## NOTES
-Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher
+Keywords: azure, azurerm, arm, resource, management, manager, network, networking, watcher, packet, capture, traffic, filter
 
 ## RELATED LINKS
 

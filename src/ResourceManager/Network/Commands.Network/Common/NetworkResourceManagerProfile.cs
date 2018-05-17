@@ -209,14 +209,14 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Troubleshoot
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSTroubleshootResult, MNM.TroubleshootingResult>();
-                cfg.CreateMap<CNM.PSTroubleshootDetails, MNM.TroubleshootingDetails>();
-                cfg.CreateMap<CNM.PSTroubleshootRecommendedActions, MNM.TroubleshootingRecommendedActions>();
+                cfg.CreateMap<CNM.PSTroubleshootingResult, MNM.TroubleshootingResult>();
+                cfg.CreateMap<CNM.PSTroubleshootingDetails, MNM.TroubleshootingDetails>();
+                cfg.CreateMap<CNM.PSTroubleshootingRecommendedActions, MNM.TroubleshootingRecommendedActions>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.TroubleshootingResult, CNM.PSTroubleshootResult>();
-                cfg.CreateMap<MNM.TroubleshootingDetails, CNM.PSTroubleshootDetails>();
-                cfg.CreateMap<MNM.TroubleshootingRecommendedActions, CNM.PSTroubleshootRecommendedActions>();
+                cfg.CreateMap<MNM.TroubleshootingResult, CNM.PSTroubleshootingResult>();
+                cfg.CreateMap<MNM.TroubleshootingDetails, CNM.PSTroubleshootingDetails>();
+                cfg.CreateMap<MNM.TroubleshootingRecommendedActions, CNM.PSTroubleshootingRecommendedActions>();
 
                 // FlowLog
                 // CNM to MNM

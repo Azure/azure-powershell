@@ -12,31 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Newtonsoft.Json;
+using System.Collections;
+
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.Generic;
-
-    public class PSTroubleshootResult : PSTopLevelResource
+    public class PSNetworkWatcherProtocolConfiguration
     {
-        public string Code { get; set; }
+        [JsonProperty(Order = 2)]
+        public string Protocol { get; set; }
 
-        public DateTime? EndTime { get; set; }
+        [JsonProperty(Order = 2)]
+        public string Method { get; set; }
 
-        public List<PSTroubleshootDetails> Results { get; set; }
+        [JsonProperty(Order = 2)]
+        public IDictionary Header { get; set; }
 
-        public DateTime? StartTime { get; set; }
-
-        [JsonIgnore]
-        public string ResultsText
-        {
-            get { return JsonConvert.SerializeObject(Results, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        public bool ShouldSerializeResults()
-        {
-            return !string.IsNullOrEmpty(this.Name);
-        }
+        [JsonProperty(Order = 2)]
+        public int[] ValidStatusCode { get; set; }
     }
 }
