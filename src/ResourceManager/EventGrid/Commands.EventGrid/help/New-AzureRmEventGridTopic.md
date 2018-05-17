@@ -56,7 +56,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputMappingDefaultValues
-Hashtable which represents the input mapping fields with default value in space separated key=value format. Allowed key names are subject, eventtype, and dataversion.```yaml
+Hashtable which represents the input mapping fields with default value in space separated key=value format. Allowed key names are subject, eventtype, and dataversion.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases:
@@ -69,7 +71,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputMappingFields
-Hashtable which represents the input mapping fields in space separated key=value format. Allowed key names are id, topic, eventtime, subject, eventtype, and dataversion.```yaml
+Hashtable which represents the input mapping fields in space separated key=value format. Allowed key names are id, topic, eventtime, subject, eventtype, and dataversion.
+
+```yaml
 Type: Hashtable
 Parameter Sets: (All)
 Aliases:
@@ -82,7 +86,9 @@ Accept wildcard characters: False
 ```
 
 ### -InputSchema
-The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default is eventgridschema.```yaml
+The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default is eventgridschema.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:

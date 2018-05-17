@@ -84,7 +84,9 @@ Updates the properties of the event subscription \`ES1\` for the resource group 
 ## PARAMETERS
 
 ### -DeadLetterEndpoint
-The endpoint used for storing undelivered events. This can be a storage blob destination only.```yaml
+The endpoint used for storing undelivered events. This can be a storage blob destination only.
+
+```yaml
 Type: String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
@@ -172,7 +174,9 @@ Accept wildcard characters: False
 ```
 
 ### -EventTtl
-The time in minutes for the event delivery. This value must be between 1 and 1440```yaml
+The time in minutes for the event delivery. This value must be between 1 and 1440
+
+```yaml
 Type: Int32
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
@@ -242,7 +246,9 @@ Accept wildcard characters: False
 ```
 
 ### -MaxDeliveryAttempts
-The maximum number of attempts to deliver the event. This value must be between 1 and 30```yaml
+The maximum number of attempts to deliver the event. This value must be between 1 and 30
+
+```yaml
 Type: Int32
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
