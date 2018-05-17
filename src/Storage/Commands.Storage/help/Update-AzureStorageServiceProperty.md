@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
 Module Name: Azure.Storage
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/update-azurestorageserviceproperty
 schema: 2.0.0
 ---
 

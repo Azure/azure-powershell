@@ -32,21 +32,52 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVm()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVm");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
+        public void TestNewVmWin10()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-NewVmWin10");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithSystemAssignedIdentity()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmSystemAssignedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestSimpleNewVmWithSystemAssignedAndUserAssignedIdentity()
+        {
+            /**
+             * To record this test run these commands first :
+             * New-AzureRmResourceGroup -Name UAITG123456 -Location 'Central US'
+             * New-AzureRmUserAssignedIdentity -ResourceGroupName  UAITG123456 -NameUAITG123456Identity
+             * 
+             * Now get the identity :
+             * 
+             * Get-AzureRmUserAssignedIdentity -ResourceGroupName UAITG123456 -Name UAITG123456Identity
+             * Nore down the Id and use it in the PS code
+             * */
+            ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmUserAssignedIdentitySystemAssignedIdentity");
+        }
+
+        [Fact] 
+        [Trait(Category.AcceptanceType, Category.CheckIn)] 
         public void TestSimpleNewVmWithAvailabilitySet()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmWithAvailabilitySet2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2");
@@ -80,7 +111,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmWithDefaultDomainName2()
         {
             var i = 0;
@@ -101,14 +132,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmImageName()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmImageName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmImageNameMicrosoftSqlUbuntu()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmImageNameMicrosoftSqlUbuntu");

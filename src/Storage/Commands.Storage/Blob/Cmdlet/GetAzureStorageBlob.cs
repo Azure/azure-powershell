@@ -91,6 +91,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         private string containerName = String.Empty;
+        
+        [Parameter(Mandatory = false, HelpMessage = "Include deleted blobs, by default get blob won't include deleted blobs")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IncludeDeleted { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The max count of the blobs that can return.")]
         public int? MaxCount
@@ -161,7 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="containerName">container name</param>
         /// <param name="blobName">blob name pattern</param>
         /// <returns>An enumerable collection of IListBlobItem</returns>
-        internal async Task ListBlobsByName(long taskId, IStorageBlobManagement localChannel, string containerName, string blobName)
+        internal async Task ListBlobsByName(long taskId, IStorageBlobManagement localChannel, string containerName, string blobName, bool includeDeleted = false)
         {
             CloudBlobContainer container = null;
             BlobRequestOptions requestOptions = RequestOptions;
@@ -169,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             string prefix = string.Empty;
 
-            if (String.IsNullOrEmpty(blobName) || WildcardPattern.ContainsWildcardCharacters(blobName))
+            if (String.IsNullOrEmpty(blobName) || WildcardPattern.ContainsWildcardCharacters(blobName) || includeDeleted)
             {
                 container = await GetCloudBlobContainerByName(localChannel, containerName).ConfigureAwait(false);
                 prefix = NameUtil.GetNonWildcardPrefix(blobName);
@@ -182,7 +186,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
 
                 Func<CloudBlob, bool> blobFilter = (blob) => wildcard == null || wildcard.IsMatch(blob.Name);
-                await ListBlobsByPrefix(taskId, localChannel, containerName, prefix, blobFilter).ConfigureAwait(false);
+                await ListBlobsByPrefix(taskId, localChannel, containerName, prefix, blobFilter, includeDeleted).ConfigureAwait(false);
             }
             else
             {
@@ -212,13 +216,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="containerName">container name</param>
         /// <param name="prefix">blob preifx</param>
         /// <returns>An enumerable collection of IListBlobItem</returns>
-        internal async Task ListBlobsByPrefix(long taskId, IStorageBlobManagement localChannel, string containerName, string prefix, Func<CloudBlob, bool> blobFilter = null)
+        internal async Task ListBlobsByPrefix(long taskId, IStorageBlobManagement localChannel, string containerName, string prefix, Func<CloudBlob, bool> blobFilter = null, bool includeDeleted = false)
         {
             CloudBlobContainer container = await GetCloudBlobContainerByName(localChannel, containerName).ConfigureAwait(false);
 
             BlobRequestOptions requestOptions = RequestOptions;
             bool useFlatBlobListing = true;
             BlobListingDetails details = BlobListingDetails.Snapshots | BlobListingDetails.Metadata | BlobListingDetails.Copy;
+            if (includeDeleted)
+            {
+                details = details | BlobListingDetails.Deleted;
+            }
 
             int listCount = InternalMaxCount;
             int MaxListCount = 5000;
@@ -272,13 +280,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 string localContainerName = containerName;
                 string localPrefix = blobPrefix;
-                taskGenerator = (taskId) => ListBlobsByPrefix(taskId, localChannel, localContainerName, localPrefix);
+                taskGenerator = (taskId) => ListBlobsByPrefix(taskId, localChannel, localContainerName, localPrefix, includeDeleted: IncludeDeleted.IsPresent);
             }
             else
             {
                 string localContainerName = containerName;
                 string localBlobName = blobName;
-                taskGenerator = (taskId) => ListBlobsByName(taskId, localChannel, localContainerName, localBlobName);
+                taskGenerator = (taskId) => ListBlobsByName(taskId, localChannel, localContainerName, localBlobName, includeDeleted: IncludeDeleted.IsPresent);
             }
 
             RunTask(taskGenerator);

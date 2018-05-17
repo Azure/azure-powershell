@@ -28,6 +28,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
@@ -108,6 +110,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             get
             {
                 return ComputeClient.ComputeManagementClient.Images;
+            }
+        }
+
+        public ILogAnalyticsOperations LogAnalyticsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.LogAnalytics;
             }
         }
 
@@ -280,6 +290,43 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         private static Tuple<string, string, int> MakeTuple(string key, string value, int depth)
         {
             return new Tuple<string, string, int>(key, value, depth);
+        }
+
+        public static string GetResourceGroupName(string resourceId)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/resourcegroups/(?<rgname>\S+)/providers/(.*?)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+
+        public static string GetResourceName(string resourceId, string resourceName)
+        {
+            if (string.IsNullOrEmpty(resourceId)) { return null; }
+            Regex r = new Regex(@"(.*?)/" + resourceName + @"/(?<rgname>\S+)", RegexOptions.IgnoreCase);
+            Match m = r.Match(resourceId);
+            return m.Success ? m.Groups["rgname"].Value : null;
+        }
+    }
+    public static class LocationStringExtensions
+    {
+        public static string Canonicalize(this string location)
+        {
+            if (!string.IsNullOrEmpty(location))
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (char ch in location)
+                {
+                    if (!char.IsWhiteSpace(ch))
+                    {
+                        sb.Append(ch);
+                    }
+                }
+
+                location = sb.ToString().ToLower();
+            }
+
+            return location;
         }
     }
 }

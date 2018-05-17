@@ -1,7 +1,7 @@
 ﻿---
 Module Name: AzureRM.UsageAggregates
 Module Guid: e43e47c8-8bff-4013-b003-ded1741f403a
-Download Help Link: None
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.usageaggregates
 Help Version: 4.0.0.0
 Locale: en-US
 ---

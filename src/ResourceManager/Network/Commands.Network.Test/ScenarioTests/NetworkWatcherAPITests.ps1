@@ -40,7 +40,7 @@ function Get-TestResourcesDeployment([string]$rgn)
             "value": "$virtualMachineName"
             },
             "virtualMachineSize": {
-            "value": "Standard_DS1_v2"
+            "value": "Standard_A4"
             },
             "adminUsername": {
             "value": "netanaytics12"
@@ -64,7 +64,7 @@ function Get-TestResourcesDeployment([string]$rgn)
             "value": "netanalytics-32${resourceGroupName}"
             },
             "storageAccountType": {
-            "value": "Premium_LRS"
+            "value": "Standard_LRS"
             },
             "diagnosticsStorageAccountName": {
             "value": "$diagnosticsStorageAccountName"
@@ -106,7 +106,7 @@ function Test-GetTopology
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -155,7 +155,7 @@ function Test-GetSecurityGroupView
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -218,7 +218,7 @@ function Test-GetNextHop
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -274,7 +274,7 @@ function Test-VerifyIPFlow
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -341,7 +341,7 @@ function Test-PacketCapture
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -503,7 +503,7 @@ function Test-FlowLog
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "centraluseuap"
+    $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
@@ -638,7 +638,7 @@ function Test-ReachabilityReport
     $nwName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "centraluseuap"
+    $location = "westus"
     
     try 
     {
@@ -683,7 +683,7 @@ function Test-ProvidersList
     $nwName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
-    $location = "centraluseuap"
+    $location = "westcentralus"
     
     try 
     {
@@ -703,9 +703,6 @@ function Test-ProvidersList
         Assert-AreEqual $list1.Countries.CountryName "United States"
         Assert-AreEqual $list2.Countries.CountryName "United States"
         Assert-AreEqual $list2.Countries.States.StateName "washington"
-        Assert-AreEqual $list3.Countries.CountryName "United States"
-        Assert-AreEqual $list3.Countries.States.StateName "washington"
-        Assert-AreEqual $list3.Countries.States.Cities.CityName "seattle"
     }
     finally
     {
@@ -723,7 +720,7 @@ function Test-ConnectionMonitor
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "westcentralus"
+    $location = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName

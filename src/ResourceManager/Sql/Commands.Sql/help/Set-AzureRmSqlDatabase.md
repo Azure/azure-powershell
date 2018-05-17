@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
@@ -193,9 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -MaxSizeBytes
-Specifies the new maximum size for the database in bytes.
-You can specify either this parameter or *MaxSizeGB*.
-See the *MaxSizeGB* parameter for acceptable values per edition.
+The maximum size of the Azure SQL Database in bytes.
 
 ```yaml
 Type: Int64
@@ -354,6 +352,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

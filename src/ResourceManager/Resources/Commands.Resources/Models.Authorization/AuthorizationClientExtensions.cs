@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public const string CustomRole = "CustomRole";
         public const string AuthorizationDeniedException = "Authorization_RequestDenied";
+        public const string DeletedObject = "Unknown";
 
         public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
         {
@@ -49,6 +50,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Name = role.RoleName,
                     Actions = new List<string>(role.Permissions.SelectMany(r => r.Actions)),
                     NotActions = new List<string>(role.Permissions.SelectMany(r => r.NotActions)),
+                    DataActions = new List<string>(role.Permissions.SelectMany(r => r.DataActions)),
+                    NotDataActions = new List<string>(role.Permissions.SelectMany(r => r.NotDataActions)),
                     Id = role.Id.GuidFromFullyQualifiedId(),
                     AssignableScopes = role.AssignableScopes.ToList(),
                     Description = role.Description,
@@ -87,8 +90,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, string scopeForRoleDefinitions, bool excludeAssignmentsForDeletedPrincipals = true)
         {
-            List<PSRoleDefinition> roleDefinitions = null;
-
+            IEnumerable<PSRoleDefinition> roleDefinitions = null;
             try
             {
                 roleDefinitions = policyClient.GetAllRoleDefinitionsAtScopeAndBelow(scopeForRoleDefinitions);
@@ -109,7 +111,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return assignments.ToPSRoleAssignments(roleDefinitions, policyClient, activeDirectoryClient, excludeAssignmentsForDeletedPrincipals);
         }
 
-        private static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, List<PSRoleDefinition> roleDefinitions, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, bool excludeAssignmentsForDeletedPrincipals)
+        private static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, IEnumerable<PSRoleDefinition> roleDefinitions, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, bool excludeAssignmentsForDeletedPrincipals)
         {
             List<PSRoleAssignment> psAssignments = new List<PSRoleAssignment>();
             if (assignments == null || !assignments.Any())
@@ -135,7 +137,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 assignment.RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId();
                 PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == Guid.Parse(assignment.PrincipalId)) ??
                     new PSADObject() { Id = Guid.Parse(assignment.PrincipalId) };
-                PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ?? 
+                PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ??
                     new PSRoleDefinition() { Id = assignment.RoleDefinitionId };
                 bool delegationFlag = assignment.CanDelegate.HasValue ? (bool)assignment.CanDelegate : false;
                 if (adObject is PSADUser)
@@ -191,7 +193,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
                         ObjectId = adObject.Id,
-                        CanDelegate = delegationFlag
+                        CanDelegate = delegationFlag,
+                        ObjectType = DeletedObject
                     });
                 }
 

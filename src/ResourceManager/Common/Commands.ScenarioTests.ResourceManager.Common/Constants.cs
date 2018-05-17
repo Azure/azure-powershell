@@ -65,6 +65,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         public const string BVT = "BVT";
 
         public const string CheckIn = "CheckIn";
+        
+        public const string Flaky = "Flaky";
 
         // Run Type
         public const string RunType = "RunType";

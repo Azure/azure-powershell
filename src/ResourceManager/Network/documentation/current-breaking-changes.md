@@ -40,6 +40,22 @@
 
 ## Current Breaking Changes
 
+### Release 6.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**Add-AzureRmApplicationGatewayBackendHttpSettings**
+- The parameter `ProbeEnabled` is being removed
+
+**Add-AzureRmVirtualNetworkPeering**
+- The parameter alias `AlloowGatewayTransit` is being removed
+
+**New-AzureRmApplicationGatewayBackendHttpSettings**
+- The parameter `ProbeEnabled` is being removed
+
+**Set-AzureRmApplicationGatewayBackendHttpSettings**
+- The parameter `ProbeEnabled` is being removed
+
 ### Release 5.0.0 - November 2017
 
 The following cmdlets were affected this release:

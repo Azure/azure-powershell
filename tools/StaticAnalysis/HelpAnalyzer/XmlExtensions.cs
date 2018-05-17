@@ -26,7 +26,7 @@ namespace StaticAnalysis
         /// </summary>
         /// <param name="parent">The element to search</param>
         /// <param name="name">The child element name to search for</param>
-        /// <returns>An enumeration of child elements with the given name, or null if none 
+        /// <returns>An enumeration of child elements with the given name, or null if none
         /// are found.</returns>
         public static IEnumerable<XElement> GetChildElements(this XElement parent, string name)
         {
@@ -39,12 +39,12 @@ namespace StaticAnalysis
         /// <param name="parent">The element to search</param>
         /// <param name="name">The child element name to search for</param>
         /// <param name="predicate">The additional condition to satisfy</param>
-        /// <returns>An enumeration of child elements with the given name that satisfy the predicate, 
+        /// <returns>An enumeration of child elements with the given name that satisfy the predicate,
         /// or null if none are found.</returns>
-        public static IEnumerable<XElement> GetChildElements(this XElement parent, string name, 
+        public static IEnumerable<XElement> GetChildElements(this XElement parent, string name,
             Func<XElement, bool> predicate )
         {
-            return parent.Descendants().Where(e => String.Equals(e.Name.LocalName, name) 
+            return parent.Descendants().Where(e => String.Equals(e.Name.LocalName, name)
                 && predicate(e));
         }
 
@@ -66,10 +66,10 @@ namespace StaticAnalysis
         /// <param name="name">The child element name to search for</param>
         /// <param name="predicate">Additional conditions over the desired child element</param>
         /// <returns></returns>
-        public static XElement GetChildElement(this XElement parent, string name, 
+        public static XElement GetChildElement(this XElement parent, string name,
             Func<XElement, bool> predicate )
         {
-            return parent.Descendants().FirstOrDefault(e => String.Equals(e.Name.LocalName, name) 
+            return parent.Descendants().FirstOrDefault(e => String.Equals(e.Name.LocalName, name)
                 && predicate(e));
         }
 
@@ -85,17 +85,17 @@ namespace StaticAnalysis
         }
 
         /// <summary>
-        /// Determines if the given element contains a child element of the given name that satisfies 
+        /// Determines if the given element contains a child element of the given name that satisfies
         /// the specified predicate
         /// </summary>
         /// <param name="element">The element to search</param>
         /// <param name="name">The child element name to search for</param>
         /// <param name="predicate">An additional condition on descendant elements</param>
         /// <returns>true if the given child element exists, otherwise false</returns>
-        public static bool ContainsChildElement(this XElement element, string name, 
+        public static bool ContainsChildElement(this XElement element, string name,
             Func<XElement, bool> predicate)
         {
-            return element.Descendants().Any(e => string.Equals(e.Name.LocalName, name) 
+            return element.Descendants().Any(e => string.Equals(e.Name.LocalName, name)
                 && predicate(e));
         }
 
@@ -111,15 +111,15 @@ namespace StaticAnalysis
         }
 
         /// <summary>
-        /// Determines if the given element contains a child element with any of the provided names that 
+        /// Determines if the given element contains a child element with any of the provided names that
         /// satisfies the given predicate
         /// </summary>
         /// <param name="element">The element to search</param>
         /// <param name="names">The child element names to search for</param>
         /// <param name="predicate">An additional condition to check on descendant elements</param>
-        /// <returns>True if any child element has the specified name and satisfies the specified 
+        /// <returns>True if any child element has the specified name and satisfies the specified
         /// predicate.</returns>
-        public static bool ContainsChildElement(this XElement element, IEnumerable<string> names, 
+        public static bool ContainsChildElement(this XElement element, IEnumerable<string> names,
             Func<XElement, bool> predicate )
         {
             return names.Any( n => element.ContainsChildElement(n, predicate));

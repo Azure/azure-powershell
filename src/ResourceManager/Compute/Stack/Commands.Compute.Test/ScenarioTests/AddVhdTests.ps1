@@ -29,7 +29,7 @@ function Test-AddVhd
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
-        $stotype = 'Standard_GRS';
+        $stotype = 'Standard_LRS';
         New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
         $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
         $storageKey = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;

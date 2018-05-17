@@ -23,7 +23,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
     /// <typeparam name="TParenModel"></typeparam>
-    public sealed class NestedResourceConfig<TModel, TParenModel> : IEntityConfig<TModel>
+    public sealed class NestedResourceConfig<TModel, TParenModel> : 
+        INestedResourceConfig<TParenModel>,
+        IEntityConfig<TModel>
         where TModel : class
         where TParenModel : class
     {
@@ -36,26 +38,50 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// </summary>
         public IEntityConfig<TParenModel> Parent { get; }
 
-        public Func<string, TModel> CreateModel { get; }
+        public Func<IEngine, TModel> CreateModel { get; }
 
         public IResourceConfig Resource => Parent.Resource;
 
         IEntityStrategy IEntityConfig.Strategy => Strategy;
 
+        IEntityConfig INestedResourceConfig.Parent => Parent;
+
+        INestedResourceStrategy INestedResourceConfig.Strategy => Strategy;
+
+        IList<INestedResourceConfig<TModel>> _NestedResources { get; }
+            = new List<INestedResourceConfig<TModel>>();
+
+        public IResourceConfig ResourceGroup 
+            => Resource.ResourceGroup;
+
+        public IEnumerable<INestedResourceConfig<TModel>> NestedResources
+            => _NestedResources;
+
+        IEnumerable<IEntityConfig> IEntityConfig.Dependencies => _Dependencies;
+
+        readonly IEnumerable<IEntityConfig> _Dependencies;
+
+        IEnumerable<INestedResourceConfig> IEntityConfig.NestedResources
+            => _NestedResources;
+
         public NestedResourceConfig(
-            NestedResourceStrategy<TModel, TParenModel> strategy,            
             IEntityConfig<TParenModel> parent,
+            NestedResourceStrategy<TModel, TParenModel> strategy,
             string name,
-            Func<string, TModel> createModel)
+            Func<IEngine, TModel> createModel,
+            IEnumerable<IEntityConfig> dependencies)
         {
+            Parent = parent;
             Strategy = strategy;
             Name = name;
-            Parent = parent;
             CreateModel = createModel;
+            _Dependencies = dependencies;
+
+            parent.AddNested(this);
         }
 
-        public IEnumerable<string> GetId(string subscription)
-            => Parent.GetId(subscription).Concat(Strategy.GetId(Name));
+        public IEnumerable<string> GetIdFromResourceGroup()
+            => Parent.GetIdFromResourceGroup().Concat(Strategy.GetId(Name)); 
 
         TResult IEntityConfig.Accept<TContext, TResult>(
             IEntityConfigVisitor<TContext, TResult> visitor, TContext context)
@@ -64,5 +90,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         TResult IEntityConfig<TModel>.Accept<TContext, TResult>(
             IEntityConfigVisitor<TModel, TContext, TResult> visitor, TContext context)
             => visitor.Visit(this, context);
+
+        TResult INestedResourceConfig<TParenModel>.Accept<TContext, TResult>(
+            INestedResourceConfigVisitor<TParenModel, TContext, TResult> visitor, TContext context)
+            => visitor.Visit(this, context);
+
+        void IEntityConfig<TModel>.AddNested<TNestedModel>(NestedResourceConfig<TNestedModel, TModel> config)
+            => _NestedResources.Add(config);
     }
 }

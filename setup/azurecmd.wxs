@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-
-  <?define productName="Microsoft Azure PowerShell - February 2018" ?>
-  <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
-  <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
-
-  <?define version="5.3.0" ?>
-
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" >
   <Product Id="*"
            Name="$(var.productName)"
            Language="1033"
@@ -14,106 +7,80 @@
            Manufacturer="Microsoft Corporation"
            UpgradeCode="EBC1AD5E-1BBE-45B5-9E8D-ACFC8951C252">
 
-    <Package InstallerVersion="200" Compressed="yes" Platform="x86" />
-
+    <Package InstallerVersion="200" Compressed="yes"  />
     <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
-
     <MajorUpgrade AllowSameVersionUpgrades="yes"
                   DowngradeErrorMessage="A later version of Microsoft Azure PowerShell is already installed. Setup will now exit." />
 
     <Icon Id="icon.ico" SourceFile="media\WAIcon.ico"/>
+
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
     <Property Id="ALLUSERS" Value="1" />
     <Property Id="ISVSINSTALL" Secure="yes"/>
+    <Property Id="POWERSHELLEXE">c:\windows\system32\WindowsPowerShell\v1.0\powershell.exe</Property>
+
+    <WixVariable Id="WixUILicenseRtf" Value="$(sys.SOURCEFILEDIR)\media\License.rtf" />
+    <UIRef Id="WixUI_Minimal" />
+    <WixVariable Id="WixUIBannerBmp" Value="media\bannrbmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="media\dlgbmp.bmp" />
+
     <!-- per machine install-->
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
     </Property>
 
-    <SetProperty Action="SetBase64" Id="BaseModulesFolder" Value="[ProgramFiles64Folder]WindowsPowerShell\Modules\" Before="AppSearch">
-      VersionNT64
-    </SetProperty>
-
-    <SetProperty Action="SetBase32" Id="BaseModulesFolder" Value="[ProgramFilesFolder]WindowsPowerShell\Modules\" Before="AppSearch">
-      NOT VersionNT64
-    </SetProperty>
-
-    <SetProperty Id="POWERSHELLEXE" Value="[WindowsFolder]System32\WindowsPowerShell\v1.0\powershell.exe" Before="AppSearch"/>
-    
-    <util:CloseApplication Id="ClosePowerShellExe" Target="powershell.exe" ElevatedCloseMessage="yes" CloseMessage="yes" PromptToContinue="yes" Description="PowerShell must be closed to continue with this installation.  Please close any PowerShell windows and click 'Retry', or click 'Cancel' to stop installation. If you click 'Ignore' the installer will attempt to close any open PowerShell window."/>
-    <util:CloseApplication Id="ClosePowerShellIseExe" Target="powershell_ise.exe" ElevatedCloseMessage="yes" CloseMessage="yes" PromptToContinue="yes" Description="PowerShell ISE must be closed to continue with this installation. Please close any PowerShell ISE windows and click 'Retry', or click 'Cancel' to stop installation. If you click 'Ignore' the installer will attempt to close any open PowerShell ISE window."/>
-
-    <Condition Message="This setup requires the Windows PowerShell 3.0 or compatible version to be installed.">
-      <!-- This condition will break if PowerShell has version x3.0 and it is not compatible with 3.0 -->
-      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "3.0")]]>
-    </Condition>
-
-    <PropertyRef Id="NETFRAMEWORK45" />
-    <Condition Message="This setup requires the .NET Framework 4.5.2 or higher to be installed.">
-      <!-- NETFRAMEWORK45 contains a DWORD with installed version key to versions is here: -->
-      <!-- https://msdn.microsoft.com/en-us/library/ee942965(v=vs.110).aspx#detect_net -->
-      <![CDATA[Installed or (NETFRAMEWORK45 >= "#379893") or ISVSINSTALL]]>
+    <!-- This condition will break if PowerShell has less than version x5.0 -->
+    <Condition Message="This setup requires the Windows PowerShell 5.0 or compatible version to be installed.">
+      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "5.0")]]>
     </Condition>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="MicrosoftSdkFolder" Name="Microsoft SDKs">
-          <Directory Id="AzureSdkFolder" Name="Azure">
-            <Directory Id="PowerShellFolder" Name="PowerShell"/>
+      <!-- x64 files -->
+      <?if $(sys.BUILDARCH) = "x64" ?>      
+        <Directory Id="ProgramFiles64Folder">
+          <Directory Id="WindowsPowerShellx64" Name="WindowsPowerShell">
+            <Directory Id="Modulesx64" Name="Modules" />
           </Directory>
+        </Directory>
+      <?endif?>
+    <!-- x86 files -->
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="WindowsPowerShellx86" Name="WindowsPowerShell">
+          <Directory Id="Modulesx86" Name="Modules" />
         </Directory>
       </Directory>
     </Directory>
 
-    <Property Id="POWERSHELLPATH">
-      <RegistrySearch Id="POWERSHELLPATH"
-                      Type="raw"
-                      Root="HKLM"
-                      Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
-                      Name="ApplicationBase" />
-    </Property>
-
-    <DirectoryRef Id="PowerShellFolder">
-      <Component Id="PSModulePath.System" Guid="273525B9-7AAB-421A-90C8-8E50A1840B8D">
-        <CreateFolder />
-        <!-- Work around bug that PowerShell does not always consider default module paths. -->
-        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager\;[PowerShellFolder]ServiceManagement\;[PowerShellFolder]Storage\" System="yes" />
-     </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="PowerShellFolder">
-      <Component Id="AzureSdkExecutionPolicyScript" Guid="3d0d589a-b34c-4c48-9a4c-df78f286c6a3">
-        <File Id="AzureSdkExecutionPolicyScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\SetExecutionPolicy.ps1" />
-      </Component>
-    </DirectoryRef>
-
-    <DirectoryRef Id="PowerShellFolder">
-      <Component Id="AzureSdkRemoveModulesScript" Guid="7d75fe67-88e4-40da-bc3d-874cb0438d30">
-        <File Id="AzureSdkRemoveModulesScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\RemoveGalleryModules.ps1" />
-      </Component>
-    </DirectoryRef>
-
     <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Windows PowerShell commandlets">
-      <ComponentGroupRef Id="azurecmdfiles" />
-      <ComponentRef Id="PSModulePath.System" />
-      <ComponentRef Id="AzureSdkExecutionPolicyScript" />
-      <ComponentRef Id="AzureSdkRemoveModulesScript" />
+      <?if $(sys.BUILDARCH) = "x64" ?>  
+        <ComponentGroupRef Id="azurecmdfilesx64" />
+      <?endif?>      
+      <ComponentGroupRef Id="azurecmdfilesx86" />
    </Feature>
 
-    <Binary Id="CustomActions" SourceFile="$(var.caSourceDir)\Microsoft.WindowsAzure.Setup.CA.dll"/>
-    <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]SetExecutionPolicy.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
-    <CustomAction Id="RemoveGalleryModules" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -WindowStyle Hidden -NonInteractive -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]RemoveGalleryModules.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
-
     <InstallExecuteSequence>
-      <Custom Action="RemoveGalleryModules" After="CreateShortcuts">NOT Installed</Custom>
-      <Custom Action="SetExecutionPolicy" After="RemoveGalleryModules">NOT Installed</Custom>
+      <Custom Action='ExecutionPolicy' Before='InstallFiles'/>
     </InstallExecuteSequence>
 
-    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
-    <UIRef Id="WixUI_Minimal" />
-    <WixVariable Id="WixUIBannerBmp" Value="media\bannrbmp.bmp" />
-    <WixVariable Id="WixUIDialogBmp" Value="media\dlgbmp.bmp" />
+  <?if $(sys.BUILDARCH) = "x64" ?>
+<!-- 
+# to regenerate the EncodedCommand, run this (x64): 
+$command = 'if( (get-executionpolicy -scope localmachine) -eq "undefined" ) { & "$env:windir\system32\windowspowershell\v1.0\powershell.exe" -noprofile -nologo -noninteractive -executionpolicy allsigned -command set-executionpolicy allsigned ;  & "$env:windir\syswow64\windowspowershell\v1.0\powershell.exe" -noprofile -nologo -noninteractive -executionpolicy allsigned -command set-executionpolicy allsigned  } '
+[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($command))
+-->
+    <CustomAction Id='ExecutionPolicy' Execute='deferred' Property="POWERSHELLEXE" ExeCommand="-noprofile -nologo -noninteractive -EncodedCommand aQBmACgAIAAoAGcAZQB0AC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIAAtAHMAYwBvAHAAZQAgAGwAbwBjAGEAbABtAGEAYwBoAGkAbgBlACkAIAAtAGUAcQAgACIAdQBuAGQAZQBmAGkAbgBlAGQAIgAgACkAIAB7ACAAJgAgACIAJABlAG4AdgA6AHcAaQBuAGQAaQByAFwAcwB5AHMAdABlAG0AMwAyAFwAdwBpAG4AZABvAHcAcwBwAG8AdwBlAHIAcwBoAGUAbABsAFwAdgAxAC4AMABcAHAAbwB3AGUAcgBzAGgAZQBsAGwALgBlAHgAZQAiACAALQBuAG8AcAByAG8AZgBpAGwAZQAgAC0AbgBvAGwAbwBnAG8AIAAtAG4AbwBuAGkAbgB0AGUAcgBhAGMAdABpAHYAZQAgAC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIABhAGwAbABzAGkAZwBuAGUAZAAgAC0AYwBvAG0AbQBhAG4AZAAgAHMAZQB0AC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIABhAGwAbABzAGkAZwBuAGUAZAAgADsAIAAgACYAIAAiACQAZQBuAHYAOgB3AGkAbgBkAGkAcgBcAHMAeQBzAHcAbwB3ADYANABcAHcAaQBuAGQAbwB3AHMAcABvAHcAZQByAHMAaABlAGwAbABcAHYAMQAuADAAXABwAG8AdwBlAHIAcwBoAGUAbABsAC4AZQB4AGUAIgAgAC0AbgBvAHAAcgBvAGYAaQBsAGUAIAAtAG4AbwBsAG8AZwBvACAALQBuAG8AbgBpAG4AdABlAHIAYQBjAHQAaQB2AGUAIAAtAGUAeABlAGMAdQB0AGkAbwBuAHAAbwBsAGkAYwB5ACAAYQBsAGwAcwBpAGcAbgBlAGQAIAAtAGMAbwBtAG0AYQBuAGQAIABzAGUAdAAtAGUAeABlAGMAdQB0AGkAbwBuAHAAbwBsAGkAYwB5ACAAYQBsAGwAcwBpAGcAbgBlAGQAIAAgAH0AIAA="  Impersonate="no" Return='asyncNoWait'/>
+  <?else ?>  
+<!-- 
+# to regenerate the EncodedCommand, run this (x86): 
+$command = 'if( (get-executionpolicy -scope localmachine) -eq "undefined" ) { & "$env:windir\system32\windowspowershell\v1.0\powershell.exe" -noprofile -nologo -noninteractive -executionpolicy allsigned -command set-executionpolicy allsigned } '
+[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($command))
+--> 
+    <CustomAction Id='ExecutionPolicy' Execute='deferred' Property="POWERSHELLEXE" ExeCommand="-noprofile -nologo -noninteractive -EncodedCommand aQBmACgAIAAoAGcAZQB0AC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIAAtAHMAYwBvAHAAZQAgAGwAbwBjAGEAbABtAGEAYwBoAGkAbgBlACkAIAAtAGUAcQAgACIAdQBuAGQAZQBmAGkAbgBlAGQAIgAgACkAIAB7ACAAJgAgACIAJABlAG4AdgA6AHcAaQBuAGQAaQByAFwAcwB5AHMAdABlAG0AMwAyAFwAdwBpAG4AZABvAHcAcwBwAG8AdwBlAHIAcwBoAGUAbABsAFwAdgAxAC4AMABcAHAAbwB3AGUAcgBzAGgAZQBsAGwALgBlAHgAZQAiACAALQBuAG8AcAByAG8AZgBpAGwAZQAgAC0AbgBvAGwAbwBnAG8AIAAtAG4AbwBuAGkAbgB0AGUAcgBhAGMAdABpAHYAZQAgAC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIABhAGwAbABzAGkAZwBuAGUAZAAgAC0AYwBvAG0AbQBhAG4AZAAgAHMAZQB0AC0AZQB4AGUAYwB1AHQAaQBvAG4AcABvAGwAaQBjAHkAIABhAGwAbABzAGkAZwBuAGUAZAAgAH0AIAA="  Impersonate="no" Return='asyncNoWait'/>
+  <?endif ?>
   </Product>
 
-  <?include azurecmdfiles.wxi ?>
+  <?if $(sys.BUILDARCH) = "x64" ?>
+    <?include azurecmdfiles-x64.wxi ?>
+  <?endif ?>  
+  <?include azurecmdfiles-x86.wxi ?>
 </Wix>

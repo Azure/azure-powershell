@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
+
         public string UserDomain { get; private set; }
 
         public static ResourcesController NewInstance

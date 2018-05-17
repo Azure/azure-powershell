@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 43D01A97-75B9-46CE-B007-26FE6A97C31C
@@ -48,7 +48,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -63,7 +63,7 @@ Specifies a local **ContainerService** object that contains changes.
 ```yaml
 Type: PSContainerService
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -93,7 +93,7 @@ Specifies the name of the container service that this cmdlet updates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -108,7 +108,7 @@ Specifies the resource group of the container service that this cmdlet updates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

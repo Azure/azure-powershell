@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkGateway.Name));
             }
 
             if (this.VirtualNetworkGateway.VpnClientConfiguration == null)

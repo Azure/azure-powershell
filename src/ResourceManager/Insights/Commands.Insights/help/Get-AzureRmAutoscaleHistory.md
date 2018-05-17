@@ -289,6 +289,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
 ### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>

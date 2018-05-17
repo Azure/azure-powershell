@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ServiceFabric;
+using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
@@ -45,58 +46,64 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            WriteWarning("After the NodeType is removed, you may see the nodes of the NodeType are in error state," +
-                 "you need to run 'Remove-ServiceFabricNodeState' on those nodes to fix them, read this document for details on how to " +
-                 " https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps");
+            WriteWarning("After the NodeType is removed, you may see the nodes of the NodeType are in error state. " +
+                "Run 'Remove-ServiceFabricNodeState' on those nodes to fix them. Read this document for details: " +
+                "https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps");
 
-            if (!CheckNodeTypeExistence())
+            var cluster = GetCurrentCluster();
+            var vmssExists = VmssExists();
+            var existingNodeType = GetNodeType(cluster, this.NodeType, ignoreErrors:true);
+            if (existingNodeType != null)
             {
-                throw new PSArgumentException(this.NodeType);
+                if (existingNodeType.IsPrimary)
+                {
+                    throw new PSInvalidOperationException(
+                        string.Format(
+                            ServiceFabricProperties.Resources.CannotDeletePrimaryNodeType,
+                            this.NodeType));
+                }
+
+                var durabilityLevel = GetDurabilityLevel(existingNodeType.DurabilityLevel);
+                if (durabilityLevel == DurabilityLevel.Bronze)
+                {
+                    throw new PSInvalidOperationException(
+                        ServiceFabricProperties.Resources.CannotUpdateBronzeNodeType);
+                }
             }
 
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
-
-            if (cluster.NodeTypes == null)
+            if (!vmssExists && existingNodeType == null)
             {
-                throw new PSInvalidOperationException(ServiceFabricProperties.Resources.NoneNodeTypeFound);
-            }
-
-            var existingNodeType = cluster.NodeTypes.FirstOrDefault(n =>
-                this.NodeType.Equals(
-                    n.Name,    
-                    StringComparison.OrdinalIgnoreCase));
-
-            if (existingNodeType == null)
-            {
-                throw new PSInvalidOperationException(
+                throw new PSArgumentException(
                     string.Format(
                         ServiceFabricProperties.Resources.CannotFindTheNodeType,
                         this.NodeType));
             }
 
-            if (existingNodeType.IsPrimary)
-            {
-                throw new PSInvalidOperationException(
-                    string.Format(
-                        ServiceFabricProperties.Resources.CannotDeletePrimayNodeType,
-                        this.NodeType));
-            }
-
-            DurabilityLevel durabilityLevel;
-            bool missMatch;
-            GetDurabilityLevel(this.NodeType, out durabilityLevel, out missMatch);
-
-            if (durabilityLevel == DurabilityLevel.Bronze)
-            {
-                throw new PSInvalidOperationException(
-                    ServiceFabricProperties.Resources.CannotUpdateBronzeNodeType);
-            }
-
             if (ShouldProcess(target: this.NodeType, action: string.Format("Remove a nodetype {0} ", this.NodeType)))
             {
-                cluster = RemoveNodeTypeFromSfrp();
-                this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
+                if (vmssExists)
+                {
+                    this.ComputeClient.VirtualMachineScaleSets.Delete(this.ResourceGroupName, this.NodeType);
+                }
 
+                if (cluster.NodeTypes == null)
+                {
+                    throw new PSInvalidOperationException(ServiceFabricProperties.Resources.NoneNodeTypeFound);
+                }
+
+                if (existingNodeType != null)
+                {
+                    cluster.NodeTypes.Remove(existingNodeType);
+                    cluster.UpgradeDescription.DeltaHealthPolicy = new ClusterUpgradeDeltaHealthPolicy()
+                    {
+                        MaxPercentDeltaUnhealthyApplications = 0,
+                        MaxPercentDeltaUnhealthyNodes = 0,
+                        MaxPercentUpgradeDomainDeltaUnhealthyNodes = 0
+                    };
+
+                    cluster = SendPutRequest(cluster);
+                }
+                
                 WriteObject((PSCluster)cluster, true);
             }
         }

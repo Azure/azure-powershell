@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.ServiceFabric;
 using LegacyTest = Microsoft.Azure.Test;
@@ -35,7 +35,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Network;
 
-namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 {
     public class TestController
     {
@@ -169,6 +169,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             ResourcesResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
             ServiceFabricClient = GetServiceFabricManagementClient(context);
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                ServiceFabricClient.LongRunningOperationRetryTimeout = 20;
+            }
+
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphRbacManagementClient = GetGraphRbacManagementClient(context);
@@ -222,7 +227,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         private GraphRbacManagementClient GetGraphRbacManagementClient(MockContext context)
         {
-            return context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetGraphServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ComputeManagementClient GetComputeManagementClient(MockContext context)

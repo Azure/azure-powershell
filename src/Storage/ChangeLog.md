@@ -19,6 +19,27 @@
 -->
 ## Current Release
 
+## Version 4.3.0
+* Set minimum dependency of module to PowerShell 5.0
+* Support $web as Storage blob container name
+	- New-AzureStorageBlobContainer
+	- Remove-AzureStorageBlobContainer
+	- Set-AzureStorageBlobContent
+	- Get-AzureStorageBlobContent
+* Fix the issue that some Storage cmdlets failure output not contain detail failure information
+
+## Version 4.2.1
+* Fix the issue that upload Blob and upload File cmdlets fail on FIPS policy enabled machines
+	- Set-AzureStorageBlobContent
+	- Set-AzureStorageFileContent
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.2.0
+* Support Soft-Delete feature
+	- Enable-AzureStorageDeleteRetentionPolicy
+	- Disable-AzureStorageDeleteRetentionPolicy
+	- Get-AzureStorageBlob
+
 ## Version 4.1.1
 * Fix Get Blob Container cmdlet execute fail with Accout SAS credential issue
 	- Get-AzureStorageContainer

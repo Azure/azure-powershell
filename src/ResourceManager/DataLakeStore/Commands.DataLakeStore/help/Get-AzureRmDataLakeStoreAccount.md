@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: 234D579E-B62D-4D70-8D2E-22AC0D9AC513
@@ -65,7 +65,7 @@ Specifies the name of the account to get.
 ```yaml
 Type: String
 Parameter Sets: GetBySpecificAccount
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -80,7 +80,7 @@ Specifies the name of the resource group that contains the Data Lake Store accou
 ```yaml
 Type: String
 Parameter Sets: GetByResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetBySpecificAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -105,6 +105,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

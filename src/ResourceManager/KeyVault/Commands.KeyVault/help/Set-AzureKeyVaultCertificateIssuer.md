@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 4C2C77F7-ECE4-4106-8AF1-256A496A977B
@@ -15,15 +15,17 @@ Sets a certificate issuer in a key vault.
 
 ### Expanded (Default)
 ```
-Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> [-IssuerProvider <String>]
- [-AccountId <String>] [-ApiKey <SecureString>] [-OrganizationDetails <KeyVaultCertificateOrganizationDetails>]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -IssuerProvider <String>
+ [-AccountId <String>] [-ApiKey <SecureString>]
+ [-OrganizationDetails <PSKeyVaultCertificateOrganizationDetails>] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByValue
 ```
-Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -Issuer <KeyVaultCertificateIssuer>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String>
+ -InputObject <PSKeyVaultCertificateIssuerIdentityItem> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,12 +48,12 @@ Specifies the account ID for the certificate issuer.
 ```yaml
 Type: String
 Parameter Sets: Expanded
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -61,12 +63,12 @@ Specifies the API key for the certificate issuer.
 ```yaml
 Type: SecureString
 Parameter Sets: Expanded
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,18 +87,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Issuer
-Specifies the certificate issuer to update.
+### -InputObject
+Specifies the certificate issuer to set.
 
 ```yaml
-Type: KeyVaultCertificateIssuer
+Type: PSKeyVaultCertificateIssuerIdentityItem
 Parameter Sets: ByValue
-Aliases: 
+Aliases: Issuer
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -106,12 +108,12 @@ Specifies the type of certificate issuer.
 ```yaml
 Type: String
 Parameter Sets: Expanded
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -126,7 +128,7 @@ Aliases: IssuerName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -134,14 +136,14 @@ Accept wildcard characters: False
 Organization details to be used with the issuer.
 
 ```yaml
-Type: KeyVaultCertificateOrganizationDetails
+Type: PSKeyVaultCertificateOrganizationDetails
 Parameter Sets: Expanded
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -152,7 +154,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -167,12 +169,12 @@ Specifies the name of the key vault.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -212,9 +214,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificatePolicy
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
 
 ## NOTES
 

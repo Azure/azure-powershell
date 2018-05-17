@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Services Provider.
+    ///     Gets the details of the ASR recovery services providers registered to the Recovery Services vault.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class GetAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets ID of the Recovery Services Provider.
+        ///     Gets or sets the name of the ASR recovery services provider to get details for.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets name of the Recovery Services Provider.
+        ///     Gets or sets the friendly name of the ASR recovery services provider to get details for.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByFriendlyName,
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string FriendlyName { get; set; }
 
         /// <summary>
-        ///     Gets or sets Fabric object.
+        ///     Gets or sets the ASR fabric object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,

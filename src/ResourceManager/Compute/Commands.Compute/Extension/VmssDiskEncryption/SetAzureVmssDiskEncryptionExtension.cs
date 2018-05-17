@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             Hashtable SettingString = GetExtensionPublicSettings();
             Hashtable ProtectedSettingString = GetExtensionProtectedSettings();
-            
+
             VirtualMachineScaleSetExtension vmssExtensionParameters = null;
 
             if (OperatingSystemTypes.Windows.Equals(this.CurrentOSType))

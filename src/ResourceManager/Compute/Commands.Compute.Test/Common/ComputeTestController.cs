@@ -17,6 +17,7 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
@@ -54,8 +55,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
-
         public StorageManagementClient StorageClient { get; private set; }
+
+        public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
@@ -155,6 +157,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     helper.RMStorageModule,
                     helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
+                    helper.GetRMModulePath("AzureRM.ServiceFabric.psd1"),
+                    helper.RMStorageDataPlaneModule,
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
@@ -187,6 +191,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             StorageClient = GetStorageManagementClient(context);
             GalleryClient = GetGalleryClient();
             //var eventsClient = GetEventsClient();
+            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -200,6 +205,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 StorageClient,
                 GalleryClient,
                 //eventsClient,
+                KeyVaultManagementClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
                 AuthorizationManagementClient,
@@ -274,6 +280,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         //{
         //    return TestBase.GetServiceClient<EventsClient>(this.csmTestFactory);
         //}
+
+        private KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<KeyVaultManagementClient>(new RDFETestEnvironmentFactory());
+        }
 
         private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
         {

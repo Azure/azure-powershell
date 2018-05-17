@@ -12,11 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -24,15 +23,15 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateIssuer,        
-        DefaultParameterSetName = ByVaultNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(List<CertificateIssuerIdentityItem>), typeof(KeyVaultCertificateIssuer))]
+        DefaultParameterSetName = ByNameParameterSet)]
+    [OutputType(typeof(List<PSKeyVaultCertificateIssuerIdentityItem>), typeof(PSKeyVaultCertificateIssuer))]
     public class GetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
         private const string ByNameParameterSet = "ByName";
-        private const string ByVaultNameParameterSet = "ByVaultName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+        private const string ByResourceIdParameterSet = "ByResourceId";
 
         #endregion
 
@@ -42,19 +41,39 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Vault name
         /// </summary>
         [Parameter(Mandatory = true,
+            ParameterSetName = ByNameParameterSet,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         /// <summary>
-        /// Name.
+        /// Vault object
         /// </summary>
         [Parameter(Mandatory = true,
-            ParameterSetName = ByNameParameterSet,
-            Position = 1,
+            ParameterSetName = ByInputObjectParameterSet,
+            Position = 0,
+            ValueFromPipeline = true,
+            HelpMessage = "KeyVault object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVault InputObject { get; set; }
+
+        /// <summary>
+        /// Vault resource id
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ByResourceIdParameterSet,
+            Position = 0,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "KeyVault Resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Name.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            Position = 1,
             HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
@@ -62,22 +81,30 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-
-            switch (ParameterSetName)
+            if (InputObject != null)
             {
-                case ByNameParameterSet:
-                    var issuer = this.DataServiceClient.GetCertificateIssuer(VaultName, Name);
-                    this.WriteObject(KeyVaultCertificateIssuer.FromIssuer(issuer));
-                    break;
+                VaultName = InputObject.VaultName.ToString();
+            }
+            else if (!string.IsNullOrEmpty(ResourceId))
+            {
+                var parsedResourceId = new ResourceIdentifier(ResourceId);
+                VaultName = parsedResourceId.ResourceName;
+            }
 
-                case ByVaultNameParameterSet:
-                    GetAndWriteCertificateIssuers(VaultName);
-                    break;
-
-                default:
-                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
+            if (string.IsNullOrEmpty(Name))
+            {
+                GetAndWriteCertificateIssuers(VaultName);
+            }
+            else
+            {
+                var issuer = this.DataServiceClient.GetCertificateIssuer(VaultName, Name);
+                if (issuer != null)
+                {
+                    issuer.VaultName = VaultName;
+                }
+                this.WriteObject(issuer);
             }
         }
 
@@ -92,7 +119,13 @@ namespace Microsoft.Azure.Commands.KeyVault
             do
             {
                 var pageResults = this.DataServiceClient.GetCertificateIssuers(options);
-                WriteObject(pageResults, true);
+                var psPageResults = new List<PSKeyVaultCertificateIssuerIdentityItem>();
+                foreach (var page in pageResults)
+                {
+                    page.VaultName = VaultName;
+                    psPageResults.Add(page);
+                }
+                WriteObject(psPageResults, true);
             } while (!string.IsNullOrEmpty(options.NextLink));
         }
     }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 775AB0E8-EC3C-4F96-8AF8-51C1DFEEF082
@@ -54,7 +54,7 @@ Specifies the email address for the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -69,7 +69,7 @@ Specifies the first name of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,7 +84,7 @@ Specifies the last name of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ Specifies the phone number of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -144,9 +144,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateAdministratorDetails
 
 ## NOTES
 

@@ -30,26 +30,26 @@ The New-AzureRmEventHubKey cmdlet regenerates the primary or secondary SAS key f
 
 ## EXAMPLES
 
-### Example 1.1
+### Example 1.1 - Namespace - AuthorizationRule PrimaryKey
 ```
 PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -Name MyAuthRuleName -RegenerateKey PrimaryKey
 ```
 
 Regenerates the primary key for the authorization rule \`MyAuthRuleName\`.
 
-### Example 1.2
+### Example 1.2 - EventHub - AuthorizationRule PrimaryKey
 ```
 PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyAuthRuleName -RegenerateKey PrimaryKey
 ```
 
 Regenerates the primary key for the authorization rule \`MyAuthRuleName\`.
 
-### Example 2.1
+### Example 2.1  - Namespace - AuthorizationRule SecondaryKey
 ```
 PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -Name MyAuthRuleName -RegenerateKey SecondaryKey
 ```
 
-### Example 2.2
+### Example 2.2 - EventHub - AuthorizationRule SecondaryKey
 ```
 PS C:\> New-AzureRmEventHubKey -ResourceGroup MyResourceGroupName -Namespace MyNamespaceName -EventHub MyEventHubName -Name MyAuthRuleName -RegenerateKey SecondaryKey
 ```

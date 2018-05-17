@@ -54,7 +54,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VerifyIPFlow");
         }
 
-        [Fact]
+        [Fact(Skip = "There was a bug in API. After fix is deployed, we need to rerecord test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPacketCapture()
         {
@@ -75,7 +75,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-FlowLog");
         }
 
-        [Fact]
+        [Fact(Skip = "Test is failing due to design changes. Service team is going to re-record and submit it.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConnectivityCheck()
         {

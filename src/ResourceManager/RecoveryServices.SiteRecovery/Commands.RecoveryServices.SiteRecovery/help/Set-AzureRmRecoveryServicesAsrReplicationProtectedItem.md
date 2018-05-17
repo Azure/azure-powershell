@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/set-azurermrecoveryservicesasrreplicationprotecteditem
@@ -15,10 +15,10 @@ Sets recovery properties such as target network and virtual machine size for the
 ```
 Set-AzureRmRecoveryServicesAsrReplicationProtectedItem -InputObject <ASRReplicationProtectedItem>
  [-Name <String>] [-Size <String>] [-PrimaryNic <String>] [-RecoveryNetworkId <String>]
- [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>] [-NicSelectionType <String>]
- [-RecoveryResourceGroupId <String>] [-LicenseType <String>] [-RecoveryAvailabilitySet <String>]
- [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RecoveryCloudServiceId <String>] [-RecoveryNicSubnetName <String>] [-RecoveryNicStaticIPAddress <String>]
+ [-NicSelectionType <String>] [-RecoveryResourceGroupId <String>] [-LicenseType <String>]
+ [-RecoveryAvailabilitySet <String>] [-UseManagedDisk <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,6 +50,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The input object to the cmdlet: The ASR replication protected item object corresponding to the replication protected item to update.
 
@@ -71,7 +85,7 @@ Specifiy the license type selection to be used for Windows Server virtual machin
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: NoLicenseType, WindowsServer
 
 Required: False
@@ -87,7 +101,7 @@ Specifies the name of the recovery virtual machine that will be created on failo
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -103,7 +117,7 @@ You can specify NotSelected to go back to the default values.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: NotSelected, SelectedByUser
 
 Required: False
@@ -119,7 +133,37 @@ Specifies the NIC of the virtual machine for which this cmdlet sets the recovery
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryAvailabilitySet
+Availability set for replication protected item after failover.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryCloudServiceId
+The resource ID of the recovery cloud service to failover this virtual machine to.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -134,7 +178,7 @@ Specifies the ID of the Azure virtual network to which the protected item should
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,7 +193,7 @@ Specifies the static IP address that should be assigned to primary NIC on recove
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -164,7 +208,7 @@ Specifies the name of the subnet on the recovery Azure virtual network to which 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -179,7 +223,7 @@ The ID of the Azure resource group in the recovery region in which the protected
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -195,7 +239,23 @@ The value should be from the set of sizes supported by Azure virtual machines.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseManagedDisk
+Specifies if the Azure virtual machine that is created on failover should use managed disks.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: True, False
 
 Required: False
 Position: Named
@@ -211,54 +271,6 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryAvailabilitySet
-Availability set for replication protected item after failover.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UseManagedDisk
-Specifies if the Azure virtual machine that is created on failover should use managed disks.
-Valid Values 
-- True
-- False
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
 
 Required: False
 Position: Named

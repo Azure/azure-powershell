@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
@@ -102,6 +102,8 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 3: Policy assignment at resource group level with policy parameter file
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
+
+
 ```
 {
     "listOfAllowedLocations":  {
@@ -128,7 +130,6 @@ The command stores that object in the $Policy variable.
 
 The final command assigns the policy in $Policy at the level of a resource group using the policy parameter file AllowedLocations.json from the local working directory.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
-
 
 ## PARAMETERS
 
@@ -398,6 +399,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

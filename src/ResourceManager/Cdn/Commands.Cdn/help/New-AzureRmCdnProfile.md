@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 2785A8E5-6905-4EDE-BFE1-FF7B1E386A39
@@ -112,7 +112,7 @@ The tags to associate with the Azure CDN profile.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named
