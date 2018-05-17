@@ -325,6 +325,7 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
                'New-AzureRmDdosProtectionPlan',
                'Get-AzureRmDdosProtectionPlan',
                'Remove-AzureRmDdosProtectionPlan',
+               'New-AzureRMNetworkWatcherProtocolConfiguration',
                'Add-AzureRmExpressRouteCircuitConnectionConfig',
                'Get-AzureRmExpressRouteCircuitConnectionConfig',
                'Remove-AzureRmExpressRouteCircuitConnectionConfig'

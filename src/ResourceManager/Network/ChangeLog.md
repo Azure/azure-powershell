@@ -31,6 +31,8 @@
 	- Get-AzureRmVpnClientIpsecParameter
 	- Remove-AzureRmVpnClientIpsecParameter
 * Added a warning note for existing command: Set-AzureRmVirtualNetworkGatewayVpnClientConfig to let users know of its plan of removal in next release.
+* Added cmdlet to create protocol configuration
+    - New-AzureRmNetworkWatcherProtocolConfiguration
 
 ## Version 6.0.0
 * Added cmdlet to add a new circuit connection to an existing express route circuit.
