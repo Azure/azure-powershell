@@ -87,7 +87,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
     @{ModuleName = 'AzureRM.PowerBIEmbedded.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Relay.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Resources.Netcore'; ModuleVersion = '0.12.0'; }, 
-    @{ModuleName = 'AzureRM.Scheduler.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.ServiceBus.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.ServiceFabric.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Sql.Netcore'; ModuleVersion = '0.12.0'; }, 

@@ -97,8 +97,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Relay.Netcore", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Reservations.Netcore", "src\ResourceManager\Reservations\Commands.Reservations\Commands.Reservations.Netcore.csproj", "{A5A69D05-6FEB-49B8-8D3D-07F51F9D470C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Scheduler.Netcore", "src\ResourceManager\Scheduler\Commands.Scheduler\Commands.Scheduler.Netcore.csproj", "{A65322AC-2B28-482C-84A5-59D8BAF2F46D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ServiceBus.Netcore", "src\ResourceManager\ServiceBus\Commands.ServiceBus\Commands.ServiceBus.Netcore.csproj", "{3BA76D29-C71E-42FC-B6E8-C9D06668D07C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.ServiceFabric.Netcore", "src\ResourceManager\ServiceFabric\Commands.ServiceFabric\Commands.ServiceFabric.Netcore.csproj", "{6F245A28-8648-4A71-9DBA-ABC381CA9B7D}"
@@ -711,18 +709,6 @@ Global
 		{A5A69D05-6FEB-49B8-8D3D-07F51F9D470C}.Release|x64.Build.0 = Release|Any CPU
 		{A5A69D05-6FEB-49B8-8D3D-07F51F9D470C}.Release|x86.ActiveCfg = Release|Any CPU
 		{A5A69D05-6FEB-49B8-8D3D-07F51F9D470C}.Release|x86.Build.0 = Release|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Debug|x64.Build.0 = Debug|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Debug|x86.Build.0 = Debug|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Release|x64.ActiveCfg = Release|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Release|x64.Build.0 = Release|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Release|x86.ActiveCfg = Release|Any CPU
-		{A65322AC-2B28-482C-84A5-59D8BAF2F46D}.Release|x86.Build.0 = Release|Any CPU
 		{3BA76D29-C71E-42FC-B6E8-C9D06668D07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BA76D29-C71E-42FC-B6E8-C9D06668D07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BA76D29-C71E-42FC-B6E8-C9D06668D07C}.Debug|x64.ActiveCfg = Debug|Any CPU
