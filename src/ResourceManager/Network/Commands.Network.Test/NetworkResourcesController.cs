@@ -95,7 +95,6 @@ namespace Commands.Network.Test
                     _helper.RMProfileModule,
                     _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.Insights.psd1"),
-                    _helper.GetRMModulePath("AzureRM.RedisCache.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
                     _helper.RMStorageDataPlaneModule,
