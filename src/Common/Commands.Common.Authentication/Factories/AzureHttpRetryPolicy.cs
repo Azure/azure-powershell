@@ -19,7 +19,7 @@ using System.Threading;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 { 
-    public class AzureHttpRetryPolicy : RetryPolicy<HttpStatusCodeErrorDetectionStrategy>
+    public class AzureHttpRetryPolicy : RetryPolicy<AzureHttpRetryStrategy>
     {
         private const int DefaultNumberOfAttempts = 3;
         private static readonly TimeSpan DefaultBackoffDelta = new TimeSpan(0, 0, 10);
@@ -33,21 +33,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public AzureHttpRetryPolicy() : base(DefaultStrategy)
         {
-        }
-
-        public override TResult ExecuteAction<TResult>(Func<TResult> func)
-        {
-            while (true)
-            {
-                try
-                {
-                    return base.ExecuteAction(func);
-                }
-                catch (TaskCanceledException)
-                {
-                    Thread.Sleep(DefaultMinBackoff);
-                }
-            }
         }
     }
 }

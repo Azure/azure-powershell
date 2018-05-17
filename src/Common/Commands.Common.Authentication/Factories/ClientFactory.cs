@@ -107,7 +107,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 client.UserAgent.Add(userAgent);
             }
-            
+
+            Console.WriteLine("[Factory]: !!! Setting new Retry Policy !!!");
             client.SetRetryPolicy(new AzureHttpRetryPolicy());
 
             return client;
@@ -213,6 +214,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 client.UserAgent.Add(userAgent);
             }
 
+            Console.WriteLine("[Factory]: !!! Setting new Retry Policy !!!");
             client.SetRetryPolicy(new HyakHttpRetryPolicy());
             return client;
         }
