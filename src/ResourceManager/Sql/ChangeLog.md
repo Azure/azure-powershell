@@ -18,8 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.5.0
 * Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
-* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with "Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy".
+* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with 'Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy'.
 * Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
 * The updated cmdlets including: 
 	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
