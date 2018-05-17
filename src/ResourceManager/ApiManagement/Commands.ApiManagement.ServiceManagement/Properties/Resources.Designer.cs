@@ -439,15 +439,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update the Api Release.
-        /// </summary>
-        internal static string SetApiRelease {
-            get {
-                return ResourceManager.GetString("SetApiRelease", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Update the Api Revision.
         /// </summary>
         internal static string SetApiRevision {
@@ -498,6 +489,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties {
         internal static string SubscriptionRemoveWarning {
             get {
                 return ResourceManager.GetString("SubscriptionRemoveWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update the Api Release.
+        /// </summary>
+        internal static string UpdateApiRelease {
+            get {
+                return ResourceManager.GetString("UpdateApiRelease", resourceCulture);
             }
         }
         

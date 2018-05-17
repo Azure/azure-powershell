@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementBackend
+    public class PsApiManagementBackend : PsApiManagementArmResource
     {
         public string BackendId { get; set; }
 

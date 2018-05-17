@@ -26,7 +26,17 @@ The **New-AzureRmApiManagementApiVersionSet** cmdlet creates an API Version set 
 ### Example 1
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>New-AzureRmApiManagementApiVersionSet -Context $ApiMgmtContext -Name "Query VersionSet" -Scheme Query -QueryName "api-version" -Description "Azure version query string"
+PS C:\> New-AzureRmApiManagementApiVersionSet -Context $ApiMgmtContext  -Name "newversion" -Scheme Header -HeaderName "x-ms-version" -Description "version by xmsversion"
+
+ApiVersionSetId   : ea9a87cd-a699-4a75-bf7d-909846b91268
+Description       : version by xmsversion
+VersionQueryName  :
+VersionHeaderName : x-ms-version
+DisplayName       : newversion
+VersioningScheme  : Header
+Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/api-version-sets/ea9a87cd-a699-4a75-bf7d-909846b91268
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contoso
 ```
 
 This command creates an API Version Set which versioning scheme `Query` and Query parameter `api-version`.

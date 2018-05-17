@@ -28,6 +28,37 @@ The **Get-AzureRmApiManagementApiVersionSet** cmdlet gets the details of the API
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Get-AzureRmApiManagementApiVersionSet -Context $ApiMgmtContext
+
+ApiVersionSetId   : a93316c8-8b88-46cc-8260-380789a5d598
+Description       :
+VersionQueryName  :
+VersionHeaderName :
+DisplayName       : Echo API
+VersioningScheme  : Segment
+Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/api-version-sets/a916c8-8b88-46cc-8260-380789a5d598
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contoso
+
+ApiVersionSetId   : 4cbdfa34-25f3-4a93-a9b6-76b6eade7562
+Description       :
+VersionQueryName  : api-version
+VersionHeaderName :
+DisplayName       : getproduct old
+VersioningScheme  : Query
+Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/api-version-sets/4cbdfa34-25f3-4a93-a9b6-76b6eade7562
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contoso
+
+
+ApiVersionSetId   : 8c441e0e-a0cd-47d8-8d88-f944a83b41bd
+Description       :
+VersionQueryName  :
+VersionHeaderName : Api-Version
+DisplayName       : ordersapi
+VersioningScheme  : Header
+Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/api-version-sets/8c441e0e-a0cd-47d8-8d88-f944a83b41bd
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contoso
 ```
 
 This command gets all of the API Version sets for the specified context.
@@ -35,7 +66,18 @@ This command gets all of the API Version sets for the specified context.
 ### Example 2: Get a API Version Set by ID
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApiVersionSet -Context $ApiMgmtContext -ApiId $ApiId
+PS C:\>Get-AzureRmApiManagementApiVersionSet -Context $ApiMgmtContext -ApiVersionSetId $ApiVersionSetId
+
+ApiVersionSetId   : 8c441e0e-a0cd-47d8-8d88-f944a83b41bd
+Description       :
+VersionQueryName  :
+VersionHeaderName : Api-Version
+DisplayName       : ordersapi
+VersioningScheme  : Header
+Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/api-version-sets/8c441e0e-a0cd-47d8-8d88-f944a83b41bd
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contoso
+
 ```
 
 This command gets the API Version Set with the specified ID.

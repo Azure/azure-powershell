@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ExpandedParameterSet,
             Mandatory = false,
             HelpMessage = "Api Release Notes. This parameter is optional.")]
         public String Note { get; set; }
@@ -87,6 +86,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
             if (ParameterSetName == ExpandedParameterSet)
             {
+                // get identity properties from individual variables
                 resourceGroupName = Context.ResourceGroupName;
                 serviceName = Context.ServiceName;
                 apiId = ApiId;
@@ -94,13 +94,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else
             {
+                // get identity properties from InputObject
                 resourceGroupName = InputObject.ResourceGroupName;
                 serviceName = InputObject.ServiceName;
                 apiId = InputObject.ApiId;
                 releaseId = InputObject.ReleaseId;
             }
 
-            if (ShouldProcess(releaseId, Resources.SetApiRelease))
+            if (ShouldProcess(releaseId, Resources.UpdateApiRelease))
             {                          
                 Client.UpdateApiRelease(
                     resourceGroupName,

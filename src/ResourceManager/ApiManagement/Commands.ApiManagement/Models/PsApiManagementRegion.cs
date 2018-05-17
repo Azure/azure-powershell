@@ -49,7 +49,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 staticIPList.AddRange(additionalLocation.PrivateIPAddresses);
             }
+#pragma warning disable CS0618
             StaticIPs = staticIPList.ToArray();
+#pragma warning restore CS0618
             if (additionalLocation.VirtualNetworkConfiguration != null)
             {
                 VirtualNetwork = new PsApiManagementVirtualNetwork(additionalLocation.VirtualNetworkConfiguration);

@@ -25,7 +25,15 @@ The **Get-AzureRmApiManagementApiRelease** cmdlet gets one or more releases of t
 ### Example 1: Get all releases of the API
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApiRelease -Context $ApiMgmtContext -ApiId "echo-api"
+PS C:\>Get-AzureRmApiManagementApiRelease -Context $ApiMgmtContext -ApiId 5adf6fbf0faadf3ad8558065
+ReleaseId         : 5afccaf6b89fd067426d402e
+ApiId             : 5adf6fbf0faadf3ad8558065
+CreatedDateTime   : 5/17/2018 12:21:12 AM
+UpdatedDateTime   : 5/17/2018 12:21:12 AM
+Notes             : creating a new release
+Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Microsoft.ApiManagement/service/contoso/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402e
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contos
 ```
 
 This command gets all of the releases of the `echo-api` API for the specified context.
@@ -33,7 +41,17 @@ This command gets all of the releases of the `echo-api` API for the specified co
 ### Example 2: Get the release information of the particular API release
 ```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementApiRelease -Context $ApiMgmtContext -ApiId "echo-api" -ReleaseId "version2-release"
+PS C:\>Get-AzureRmApiManagementApiRelease -Context $ApiMgmtContext -ApiId 5adf6fbf0faadf3ad8558065 -ReleaseId 5afccaf6b89fd067426d402e
+ReleaseId         : 5afccaf6b89fd067426d402e
+ApiId             : 5adf6fbf0faadf3ad8558065
+CreatedDateTime   : 5/17/2018 12:21:12 AM
+UpdatedDateTime   : 5/17/2018 12:21:12 AM
+Notes             : creating a new release
+Id                : /subscriptions/subid/resourceGroups/Api-Default-WestUS/providers/Mi
+                    crosoft.ApiManagement/service/contos/apis/5adf6fbf0faadf3ad8558065/releases/5afccaf6b89fd067426d402
+                    e
+ResourceGroupName : Api-Default-WestUS
+ServiceName       : contos
 ```
 
 This command gets the releases information of a particular API with the specified releaseId.
