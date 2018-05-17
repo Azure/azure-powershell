@@ -152,7 +152,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Container PublicAccess
+Container LegalHold Tags
 
 ```yaml
 Type: String[]

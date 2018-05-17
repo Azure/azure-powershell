@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public PSContainer Container { get; set; }
 
-        [Parameter(HelpMessage = "Container PublicAccess", Mandatory = true)]
+        [Parameter(HelpMessage = "Container LegalHold Tags", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string[] Tag { get; set; }
         
