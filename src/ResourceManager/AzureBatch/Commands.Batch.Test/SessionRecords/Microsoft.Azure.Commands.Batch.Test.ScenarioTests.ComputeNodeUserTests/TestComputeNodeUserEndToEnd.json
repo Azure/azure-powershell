@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testPool/nodes?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/testPool/nodes?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -53,7 +53,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/users?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/users?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS04OTIxOTEyMTdfMS0yMDE3MTAwNnQwMjU5MjF6L3VzZXJzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"name\": \"userendtoend\",\r\n  \"isAdmin\": false,\r\n  \"expiryTime\": \"0001-01-01T00:00:00Z\",\r\n  \"password\": \"Password1234!\"\r\n}",
@@ -114,7 +114,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/users/userendtoend?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/users/userendtoend?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS04OTIxOTEyMTdfMS0yMDE3MTAwNnQwMjU5MjF6L3VzZXJzL3VzZXJlbmR0b2VuZD9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"password\": \"Abcdefghijk1234!\",\r\n  \"expiryTime\": \"2017-10-11T03:20:01.1921213Z\"\r\n}",
@@ -172,7 +172,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/users/userendtoend?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/users/userendtoend?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS04OTIxOTEyMTdfMS0yMDE3MTAwNnQwMjU5MjF6L3VzZXJzL3VzZXJlbmR0b2VuZD9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -221,7 +221,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/users/userendtoend?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/users/userendtoend?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS04OTIxOTEyMTdfMS0yMDE3MTAwNnQwMjU5MjF6L3VzZXJzL3VzZXJlbmR0b2VuZD9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",

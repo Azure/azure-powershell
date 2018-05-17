@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"removenodepool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 2,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
@@ -68,7 +68,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -126,7 +126,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -184,7 +184,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -242,7 +242,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -300,7 +300,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -358,7 +358,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -416,7 +416,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -474,7 +474,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -532,7 +532,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -590,7 +590,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -648,7 +648,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool/nodes?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool/nodes?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -700,7 +700,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool/removenodes?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool/removenodes?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL3JlbW92ZW5vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"nodeList\": [\r\n    \"tvm-892191217_1-20171006t031320z\",\r\n    \"tvm-892191217_2-20171006t031320z\"\r\n  ]\r\n}",
@@ -764,7 +764,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/removenodepool/nodes?api-version=2017-09-01.6.0&$select=id%2Cstate",
+      "RequestUri": "/pools/removenodepool/nodes?api-version=2018-03-01.6.1&$select=id%2Cstate",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -816,7 +816,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool/nodes?api-version=2017-09-01.6.0&$select=id%2Cstate",
+      "RequestUri": "/pools/removenodepool/nodes?api-version=2018-03-01.6.1&$select=id%2Cstate",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -868,7 +868,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool/nodes?api-version=2017-09-01.6.0&$select=id%2Cstate",
+      "RequestUri": "/pools/removenodepool/nodes?api-version=2018-03-01.6.1&$select=id%2Cstate",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRzZWxlY3Q9aWQlMkNzdGF0ZQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -920,7 +920,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/removenodepool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/removenodepool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3JlbW92ZW5vZGVwb29sP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "DELETE",
       "RequestBody": "",

@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"deletetaskFile\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  }\r\n}",
@@ -68,7 +68,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"task1\",\r\n  \"commandLine\": \"cmd /c echo \\\"test\\\" > testFile.txt\",\r\n  \"userIdentity\": {\r\n    \"autoUser\": {\r\n      \"scope\": \"task\",\r\n      \"elevationLevel\": \"admin\"\r\n    }\r\n  }\r\n}",
@@ -135,7 +135,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks/task1?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/deletetaskFile/tasks/task1?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazE/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -193,7 +193,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-09-01.6.0&$filter=id%20eq%20'task1'&$select=id%2Cstate",
+      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2018-03-01.6.1&$filter=id%20eq%20'task1'&$select=id%2Cstate",
       "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjcmJHNlbGVjdD1pZCUyQ3N0YXRl",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -245,7 +245,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2017-09-01.6.0&$filter=id%20eq%20'task1'&$select=id%2Cstate",
+      "RequestUri": "/jobs/deletetaskFile/tasks?api-version=2018-03-01.6.1&$filter=id%20eq%20'task1'&$select=id%2Cstate",
       "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjcmJHNlbGVjdD1pZCUyQ3N0YXRl",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -297,7 +297,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files/wd%5CtestFile.txt?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files/wd%5CtestFile.txt?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXMvd2QlNUN0ZXN0RmlsZS50eHQ/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "HEAD",
       "RequestBody": "",
@@ -361,7 +361,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files/wd%5CtestFile.txt?recursive=false&api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files/wd%5CtestFile.txt?recursive=false&api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXMvd2QlNUN0ZXN0RmlsZS50eHQ/cmVjdXJzaXZlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -410,7 +410,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files?recursive=false&api-version=2017-09-01.6.0&$filter=startswith(name%2C'wd%5CtestFile.txt')",
+      "RequestUri": "/jobs/deletetaskFile/tasks/task1/files?recursive=false&api-version=2018-03-01.6.1&$filter=startswith(name%2C'wd%5CtestFile.txt')",
       "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGUvdGFza3MvdGFzazEvZmlsZXM/cmVjdXJzaXZlPWZhbHNlJmFwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRmaWx0ZXI9c3RhcnRzd2l0aCUyOG5hbWUlMkMlMjd3ZCU1Q3Rlc3RGaWxlLnR4dCUyNyUyOQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -462,7 +462,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/deletetaskFile?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/deletetaskFile?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvZGVsZXRldGFza0ZpbGU/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",

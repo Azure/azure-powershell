@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"testJobCompletesWhenTaskFails\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"autoPoolSpecification\": {\r\n      \"autoPoolIdPrefix\": \"TestSpecPrefix\",\r\n      \"poolLifetimeOption\": \"job\",\r\n      \"keepAlive\": false,\r\n      \"pool\": {\r\n        \"vmSize\": \"small\",\r\n        \"cloudServiceConfiguration\": {\r\n          \"osFamily\": \"4\",\r\n          \"targetOSVersion\": \"\"\r\n        },\r\n        \"targetDedicatedNodes\": 3\r\n      }\r\n    }\r\n  },\r\n  \"onTaskFailure\": \"performExitOptionsJobAction\",\r\n  \"usesTaskDependencies\": false\r\n}",
@@ -68,7 +68,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/testJobCompletesWhenTaskFails/tasks?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/testJobCompletesWhenTaskFails/tasks?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGVzdEpvYkNvbXBsZXRlc1doZW5UYXNrRmFpbHMvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"taskId-1\",\r\n  \"commandLine\": \"cmd /c exit 3\",\r\n  \"exitConditions\": {\r\n    \"exitCodeRanges\": [\r\n      {\r\n        \"start\": 2,\r\n        \"end\": 4,\r\n        \"exitOptions\": {\r\n          \"jobAction\": \"terminate\"\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
@@ -135,7 +135,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -187,7 +187,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -239,7 +239,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -291,7 +291,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -343,7 +343,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -395,7 +395,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -447,7 +447,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -499,7 +499,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -551,7 +551,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -603,7 +603,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -655,7 +655,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -707,7 +707,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -759,7 +759,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -811,7 +811,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -863,7 +863,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -915,7 +915,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -967,7 +967,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1019,7 +1019,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1071,7 +1071,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -1123,7 +1123,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/testJobCompletesWhenTaskFails?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/testJobCompletesWhenTaskFails?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGVzdEpvYkNvbXBsZXRlc1doZW5UYXNrRmFpbHM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",

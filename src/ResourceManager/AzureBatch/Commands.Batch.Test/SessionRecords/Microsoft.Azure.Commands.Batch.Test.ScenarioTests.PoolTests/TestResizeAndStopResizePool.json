@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"resizePool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
@@ -68,7 +68,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/resizePool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/resizePool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -126,7 +126,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/resizePool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/resizePool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -184,7 +184,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/resizePool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/resizePool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -242,7 +242,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/resizePool/resize?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/resizePool/resize?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2wvcmVzaXplP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"targetDedicatedNodes\": 1\r\n}",
@@ -306,7 +306,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/resizePool/stopresize?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/resizePool/stopresize?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2wvc3RvcHJlc2l6ZT9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "POST",
       "RequestBody": "",
@@ -364,7 +364,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/resizePool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/resizePool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",

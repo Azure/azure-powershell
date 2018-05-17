@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testIaasPool/nodes?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/testIaasPool/nodes?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcz9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -53,7 +53,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm0tODkyMTkxMjE3XzEtMjAxNzEwMDZ0MDI0ODI3ej9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -105,7 +105,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z/remoteloginsettings?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/testIaasPool/nodes/tvm-892191217_1-20171006t024827z/remoteloginsettings?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL3Rlc3RJYWFzUG9vbC9ub2Rlcy90dm0tODkyMTkxMjE3XzEtMjAxNzEwMDZ0MDI0ODI3ei9yZW1vdGVsb2dpbnNldHRpbmdzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "GET",
       "RequestBody": "",

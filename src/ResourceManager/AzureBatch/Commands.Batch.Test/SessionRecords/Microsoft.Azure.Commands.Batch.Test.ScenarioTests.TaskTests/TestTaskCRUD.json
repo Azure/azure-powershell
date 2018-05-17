@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobs?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"taskCrudJob\",\r\n  \"priority\": 0,\r\n  \"poolInfo\": {\r\n    \"poolId\": \"testPool\"\r\n  }\r\n}",
@@ -68,7 +68,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"task1\",\r\n  \"commandLine\": \"cmd /c echo task1\"\r\n}",
@@ -135,7 +135,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"task2\",\r\n  \"commandLine\": \"cmd /c echo task2\"\r\n}",
@@ -202,7 +202,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0&$filter=id%20eq%20'task1'%20or%20id%20eq%20'task2'",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-03-01.6.1&$filter=id%20eq%20'task1'%20or%20id%20eq%20'task2'",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGFzazElMjclMjBvciUyMGlkJTIwZXElMjAlMjd0YXNrMiUyNw==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -254,7 +254,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"constraints\": {\r\n    \"maxTaskRetryCount\": 3\r\n  }\r\n}",
@@ -318,7 +318,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -376,7 +376,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -428,7 +428,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob/tasks?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -480,7 +480,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks/task1?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob/tasks/task1?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazE/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -529,7 +529,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob/tasks/task2?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2IvdGFza3MvdGFzazI/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
@@ -578,7 +578,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobs/taskCrudJob?api-version=2017-09-01.6.0",
+      "RequestUri": "/jobs/taskCrudJob?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L2pvYnMvdGFza0NydWRKb2I/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",

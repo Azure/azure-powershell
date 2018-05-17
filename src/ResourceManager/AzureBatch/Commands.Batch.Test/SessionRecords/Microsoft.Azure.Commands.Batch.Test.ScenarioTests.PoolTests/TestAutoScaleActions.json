@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"autoscalePool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
@@ -68,7 +68,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/autoscalePool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/autoscalePool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -126,7 +126,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/autoscalePool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -184,7 +184,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool/enableautoscale?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/autoscalePool/enableautoscale?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZW5hYmxlYXV0b3NjYWxlP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"autoScaleFormula\": \"$TargetDedicatedNodes=0\",\r\n  \"autoScaleEvaluationInterval\": \"PT8M\"\r\n}",
@@ -248,7 +248,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0&$filter=id%20eq%20'autoscalePool'",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1&$filter=id%20eq%20'autoscalePool'",
       "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN2F1dG9zY2FsZVBvb2wlMjc=",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -300,7 +300,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool/evaluateautoscale?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/autoscalePool/evaluateautoscale?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZXZhbHVhdGVhdXRvc2NhbGU/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"autoScaleFormula\": \"$TargetDedicatedNodes=1\"\r\n}",
@@ -361,7 +361,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool/disableautoscale?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/autoscalePool/disableautoscale?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2wvZGlzYWJsZWF1dG9zY2FsZT9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "POST",
       "RequestBody": "",
@@ -419,7 +419,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/autoscalePool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/autoscalePool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2F1dG9zY2FsZVBvb2w/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "DELETE",
       "RequestBody": "",

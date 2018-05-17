@@ -1,7 +1,7 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"changeospool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
@@ -68,7 +68,7 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/changeospool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/changeospool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -126,7 +126,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/changeospool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/changeospool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "GET",
       "RequestBody": "",
@@ -184,7 +184,7 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/changeospool/upgradeos?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/changeospool/upgradeos?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbC91cGdyYWRlb3M/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"targetOSVersion\": \"WA-GUEST-OS-2.51_201605-01\"\r\n}",
@@ -248,7 +248,7 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/changeospool?api-version=2017-09-01.6.0",
+      "RequestUri": "/pools/changeospool?api-version=2018-03-01.6.1",
       "EncodedRequestUri": "L3Bvb2xzL2NoYW5nZW9zcG9vbD9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
