@@ -104,7 +104,9 @@ Creates a new event subscription \`EventSubscription1\` to an EventHub namespace
 ## PARAMETERS
 
 ### -DeadLetterEndpoint
-The endpoint used for storing undelivered events. This can be a storage blob destination only.```yaml
+The endpoint used for storing undelivered events. This can be a storage blob destination only.
+
+```yaml
 Type: String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
@@ -144,7 +146,9 @@ Accept wildcard characters: False
 ```
 
 ### -DeliverySchema
-The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default is eventgridschema```yaml
+The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default is eventgridschema
+
+```yaml
 Type: String
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
@@ -254,7 +258,9 @@ Accept wildcard characters: False
 ```
 
 ### -EventTtl
-The time in minutes for the event delivery. This value must be between 1 and 1440```yaml
+The time in minutes for the event delivery. This value must be between 1 and 1440
+
+```yaml
 Type: Int32
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
@@ -348,7 +354,9 @@ Accept wildcard characters: False
 ```
 
 ### -MaxDeliveryAttempts
-The maximum number of attempts to deliver the event. This value must be between 1 and 30```yaml
+The maximum number of attempts to deliver the event. This value must be between 1 and 30
+
+```yaml
 Type: Int32
 Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
 Aliases:
