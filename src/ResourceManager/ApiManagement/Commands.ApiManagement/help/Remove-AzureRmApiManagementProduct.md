@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: D6B7F253-03CD-40BE-87D6-E4AE300A29D5
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementproduct
 schema: 2.0.0
@@ -23,7 +24,7 @@ The **Remove-AzureRmApiManagementProduct** cmdlet removes an existing API Manage
 ## EXAMPLES
 
 ### Example 1: Remove an existing product and all subscriptions
-```
+```powershell
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Remove-AzureRmApiManagementProduct -Context $apimContext -Id "0123456789" -DeleteSubscriptions -Force
 ```
@@ -38,7 +39,7 @@ Specifies an instance of the **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,7 +70,7 @@ If you do not set this parameter and subscriptions exists, an exception is throw
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,7 +85,7 @@ Indicates that this cmdlet returns a value of $True, if it succeeds, or a value 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +100,7 @@ Specifies the identifier of the existing product.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

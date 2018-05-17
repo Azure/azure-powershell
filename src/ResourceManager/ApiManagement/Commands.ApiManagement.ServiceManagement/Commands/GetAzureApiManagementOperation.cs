@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Management.ApiManagement.Models;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementOperation, DefaultParameterSetName = AllApiOperations)]
     [OutputType(typeof(IList<PsApiManagementOperation>), ParameterSetName = new[] { AllApiOperations })]
@@ -48,6 +49,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String ApiId { get; set; }
 
         [Parameter(
+            ParameterSetName = AllApiOperations,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of API Revision. This parameter is optional. If not specified, the operation will be " +
+            "retrieved from the currently active api revision.")]
+        [Parameter(
+            ParameterSetName = FindById,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of API Revision. This parameter is optional. If not specified, the operation will be " +
+            "retrieved from the currently active api revision.")]
+        public String ApiRevision { get; set; }
+
+        [Parameter(
             ParameterSetName = FindById,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
@@ -56,13 +71,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
+            string apiId = ApiId;
+            if (!string.IsNullOrEmpty(ApiRevision))
+            {
+                apiId = ApiId.ApiRevisionIdentifier(ApiRevision);
+            }
+
             if (ParameterSetName.Equals(AllApiOperations))
             {
-                WriteObject(Client.OperationList(Context, ApiId), true);
+                WriteObject(Client.OperationList(Context, apiId), true);
             }
             else if (ParameterSetName.Equals(FindById))
             {
-                WriteObject(Client.OperationById(Context, ApiId, OperationId));
+                WriteObject(Client.OperationById(Context, apiId, OperationId));
             }
             else
             {
