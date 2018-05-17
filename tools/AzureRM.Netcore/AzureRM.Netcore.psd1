@@ -67,8 +67,6 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
     @{ModuleName = 'AzureRM.Consumption.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.ContainerInstance.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.ContainerRegistry.Netcore'; ModuleVersion = '0.12.0'; }, 
-    @{ModuleName = 'AzureRM.DataFactories.Netcore'; ModuleVersion = '0.12.0'; }, 
-    @{ModuleName = 'AzureRM.DataFactoryV2.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.DataLakeAnalytics.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.DataLakeStore.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.DevTestLabs.Netcore'; ModuleVersion = '0.12.0'; }, 
