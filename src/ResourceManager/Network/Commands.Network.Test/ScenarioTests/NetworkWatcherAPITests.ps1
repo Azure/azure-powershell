@@ -572,9 +572,9 @@ function Test-FlowLog
         Assert-AreEqual $status.RetentionPolicy.Days 0
         Assert-AreEqual $status.RetentionPolicy.Enabled $false
 		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled $true
-		# Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId $workspace.Id
-		# Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId $workspace.CustomerId
-		# Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion $workspace.Location
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId $workspace.Id
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId $workspace.CustomerId
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion $workspace.Location
     }
     finally
     {
