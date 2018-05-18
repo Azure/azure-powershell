@@ -676,30 +676,30 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.DdosProtectionPlan, CNM.PSDdosProtectionPlan>();
 
-                // Secure Gateways
+                // Azure Firewalls
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSSecureGateway, MNM.SecureGateway>();
-                cfg.CreateMap<CNM.PSSecureGatewaySku, MNM.SecureGatewaySku>();
-                cfg.CreateMap<CNM.PSSecureGatewayIpConfiguration, MNM.SecureGatewayIPConfiguration>();
-                cfg.CreateMap<CNM.PSSecureGatewayApplicationRuleCollection, MNM.SecureGatewayApplicationRuleCollection>();
-                cfg.CreateMap<CNM.PSSecureGatewayNetworkRuleCollection, MNM.SecureGatewayNetworkRuleCollection>();
-                cfg.CreateMap<CNM.PSSecureGatewayApplicationRule, MNM.SecureGatewayApplicationRule>();
-                cfg.CreateMap<CNM.PSSecureGatewayNetworkRule, MNM.SecureGatewayNetworkRule>();
-                cfg.CreateMap<CNM.PSSecureGatewayApplicationRuleAction, MNM.SecureGatewayApplicationRuleAction>();
-                cfg.CreateMap<CNM.PSSecureGatewayNetworkRuleAction, MNM.SecureGatewayNetworkRuleAction>();
-                cfg.CreateMap<CNM.PSSecureGatewayApplicationRuleProtocol, MNM.SecureGatewayApplicationRuleProtocol>();
+                cfg.CreateMap<CNM.PSAzureFirewall, MNM.AzureFirewall>();
+                cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
+                cfg.CreateMap<CNM.PSAzureFirewallIpConfiguration, MNM.AzureFirewallIPConfiguration>();
+                cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleCollection, MNM.AzureFirewallApplicationRuleCollection>();
+                cfg.CreateMap<CNM.PSAzureFirewallNetworkRuleCollection, MNM.AzureFirewallNetworkRuleCollection>();
+                cfg.CreateMap<CNM.PSAzureFirewallApplicationRule, MNM.AzureFirewallApplicationRule>();
+                cfg.CreateMap<CNM.PSAzureFirewallNetworkRule, MNM.AzureFirewallNetworkRule>();
+                cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleAction, MNM.AzureFirewallApplicationRuleAction>();
+                cfg.CreateMap<CNM.PSAzureFirewallNetworkRuleAction, MNM.AzureFirewallNetworkRuleAction>();
+                cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleProtocol, MNM.AzureFirewallApplicationRuleProtocol>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.SecureGateway, CNM.PSSecureGateway>();
-                cfg.CreateMap<MNM.SecureGatewaySku, CNM.PSSecureGatewaySku>();
-                cfg.CreateMap<MNM.SecureGatewayIPConfiguration, CNM.PSSecureGatewayIpConfiguration>();
-                cfg.CreateMap<MNM.SecureGatewayApplicationRuleCollection, CNM.PSSecureGatewayApplicationRuleCollection>();
-                cfg.CreateMap<MNM.SecureGatewayNetworkRuleCollection, CNM.PSSecureGatewayNetworkRuleCollection>();
-                cfg.CreateMap<MNM.SecureGatewayApplicationRule, CNM.PSSecureGatewayApplicationRule>();
-                cfg.CreateMap<MNM.SecureGatewayNetworkRule, CNM.PSSecureGatewayNetworkRule>();
-                cfg.CreateMap<MNM.SecureGatewayApplicationRuleAction, CNM.PSSecureGatewayApplicationRuleAction>();
-                cfg.CreateMap<MNM.SecureGatewayNetworkRuleAction, CNM.PSSecureGatewayNetworkRuleAction>();
-                cfg.CreateMap<MNM.SecureGatewayApplicationRuleProtocol, CNM.PSSecureGatewayApplicationRuleProtocol>();
+                cfg.CreateMap<MNM.AzureFirewall, CNM.PSAzureFirewall>();
+                cfg.CreateMap<MNM.AzureFirewallSku, CNM.PSAzureFirewallSku>();
+                cfg.CreateMap<MNM.AzureFirewallIPConfiguration, CNM.PSAzureFirewallIpConfiguration>();
+                cfg.CreateMap<MNM.AzureFirewallApplicationRuleCollection, CNM.PSAzureFirewallApplicationRuleCollection>();
+                cfg.CreateMap<MNM.AzureFirewallNetworkRuleCollection, CNM.PSAzureFirewallNetworkRuleCollection>();
+                cfg.CreateMap<MNM.AzureFirewallApplicationRule, CNM.PSAzureFirewallApplicationRule>();
+                cfg.CreateMap<MNM.AzureFirewallNetworkRule, CNM.PSAzureFirewallNetworkRule>();
+                cfg.CreateMap<MNM.AzureFirewallApplicationRuleAction, CNM.PSAzureFirewallApplicationRuleAction>();
+                cfg.CreateMap<MNM.AzureFirewallNetworkRuleAction, CNM.PSAzureFirewallNetworkRuleAction>();
+                cfg.CreateMap<MNM.AzureFirewallApplicationRuleProtocol, CNM.PSAzureFirewallApplicationRuleProtocol>();
 
             });
 
