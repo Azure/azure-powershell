@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.1'
+ModuleVersion = '5.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -131,8 +131,18 @@ PrivateData = @{
 
         # ReleaseNotes of this module
 
-        ReleaseNotes = '* Query Storage Usage By Location
-        - Get-AzureRmStorageUsage'
+        ReleaseNotes = '* Support Immutability Policy in AzureRm.Storage
+        - Remove-AzureRmStorageAccountNetworkRule,
+        - Get-AzureRmStorageContainer,
+        - Update-AzureRmStorageContainer,
+        - New-AzureRmStorageContainer,
+        - Remove-AzureRmStorageContainer,
+        - Add-AzureRmStorageContainerLegalHold,
+        - Remove-AzureRmStorageContainerLegalHold,
+        - Set-AzureRmStorageContainerImmutabilityPolicy,
+        - Get-AzureRmStorageContainerImmutabilityPolicy,
+        - Remove-AzureRmStorageContainerImmutabilityPolicy,
+        - Lock-AzureRmStorageContainerImmutabilityPolicy'
 
         # Prerelease string of this module
         Prerelease = 'preview'
