@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
     <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
@@ -25,12 +25,6 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
-    <PackageReference Include="System.Net.WebHeaderCollection" Version="4.3.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />

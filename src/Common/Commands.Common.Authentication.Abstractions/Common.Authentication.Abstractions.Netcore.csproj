@@ -27,12 +27,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
-    <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-    <PackageReference Include="System.Reflection" Version="4.3.0" />
-    <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
-    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
-    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
   </ItemGroup>
 
   <ItemGroup>

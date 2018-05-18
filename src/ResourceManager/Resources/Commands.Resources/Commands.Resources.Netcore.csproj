@@ -76,10 +76,4 @@
     <Content Include="help\**\*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="Models.ResourceGroups\GalleryTemplatesClient.cs" />
-    <Compile Remove="Models.ResourceGroups\PSGalleryItem.cs" />
-    <Compile Remove="Models.ResourceGroups\ResourceClient.Events.cs" />
-  </ItemGroup>
-
 </Project>
