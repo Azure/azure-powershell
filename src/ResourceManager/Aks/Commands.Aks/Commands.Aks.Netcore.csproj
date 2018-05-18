@@ -30,20 +30,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Aks.Netcore.psd1" Link="AzureRM.Aks.Netcore.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <PackageReference Include="YamlDotNet.Signed" Version="4.2.2" />
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
-    <PackageReference Include="System.Reflection" Version="4.3.0" />
-    <PackageReference Include="System.Security.SecureString" Version="4.3.0" />
-    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
-    <PackageReference Include="System.Xml.XmlSerializer" Version="4.3.0" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="1.1.1" />
-    <PackageReference Include="YamlDotNet.Signed" Version="4.2.2" />
-    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <None Include="..\AzureRM.Aks.Netcore.psd1" Link="AzureRM.Aks.Netcore.psd1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

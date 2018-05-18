@@ -30,10 +30,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\AzureRM.Storage.Netcore.psd1" Link="AzureRM.Storage.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
