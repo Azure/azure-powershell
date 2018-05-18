@@ -158,14 +158,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Support create Storage Context with OAuth. 
-        - Get-AzureRmStorageUsage' 
-        - The PR pending change: 
-            - Change to signed package 
-            - Use AuthenticationFactory in Powershell to replace ADAL reference.'
+
+        ReleaseNotes = '* Support creating Storage Context with OAuth credentials.'
 
         # Prerelease string of this module
-        # Prerelease = 'preview'
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
