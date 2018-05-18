@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.3.0'
+ModuleVersion = '4.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -158,16 +158,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
-* Support  as Storage blob container name
-	- New-AzureStorageBlobContainer
-	- Remove-AzureStorageBlobContainer
-	- Set-AzureStorageBlobContent
-	- Get-AzureStorageBlobContent
-* Fix the issue that some Storage cmdlets failure output not contain detail failure information'
+        ReleaseNotes = '* Support creating Storage Context with OAuth credentials.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
