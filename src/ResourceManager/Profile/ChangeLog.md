@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.0
 * Fix issue where running `Clear-AzureRmContext` would keep an empty context with the name of the previous default context, which prevented the user from creating a new context with the old name
 
 ## Version 5.0.1
