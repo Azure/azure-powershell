@@ -183,14 +183,18 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscriptionToResourceGroup2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscription_Deadletter.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.EventSubscriptionTests\EventGrid_EventSubscription_Deadletter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsCreateGetAndDelete.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsGetKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsInputMappingCreateGetAndDelete.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsInputMappingCreateGetAndDelete.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests.TopicTests\EventGrid_TopicsNewKey.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
