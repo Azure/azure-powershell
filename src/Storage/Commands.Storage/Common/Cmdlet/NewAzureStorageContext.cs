@@ -38,6 +38,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     public class NewAzureStorageContext : AzureDataCmdlet
     {
         /// <summary>
+        /// Default resourceId for storage OAuth tokens
+        /// </summary>
+        public const string StorageOAuthEndpointResourceValue = "https://storage.azure.com";
+
+        /// <summary>
+        /// The extension key to use for the storage token audience value
+        /// </summary>
+        public const string StorageOAuthEndpointResourceKey = "StorageOAuthEndpointResourceId";
+
+        /// <summary>
         /// Account name and key parameter set name
         /// </summary>
         private const string AccountNameKeyParameterSet = "AccountNameAndKey";
@@ -356,6 +366,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             return renewer;
         }
 
+        private IAzureEnvironment EnsureStorageOAuthAudienceSet(IAzureEnvironment environment)
+        {
+            if (environment != null)
+            {
+                if (!environment.IsPropertySet(StorageOAuthEndpointResourceKey))
+                {
+                    environment.SetProperty(StorageOAuthEndpointResourceKey, StorageOAuthEndpointResourceValue);
+                }
+            }
+
+            return environment;
+        }
+
         /// <summary>
         /// Create a OAuth Token
         /// </summary>
@@ -364,12 +387,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             IAccessToken accessToken = AzureSession.Instance.AuthenticationFactory.Authenticate(
                DefaultContext.Account,
-               DefaultContext.Environment,
+               EnsureStorageOAuthAudienceSet(DefaultContext.Environment),
                DefaultContext.Tenant.Id,
                null,
                ShowDialog.Never,
                null,
-               AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId);
+               StorageOAuthEndpointResourceKey);
             return accessToken;
         }
 
