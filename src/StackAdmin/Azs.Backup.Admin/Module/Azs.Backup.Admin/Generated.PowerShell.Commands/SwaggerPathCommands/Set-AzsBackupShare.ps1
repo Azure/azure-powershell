@@ -161,10 +161,25 @@ function Set-AzsBackupShare {
                     $InputObject = Get-AzsBackupLocation -ResourceGroupName $ResourceGroupName -Location $Location
                 }
 
-                $InputObject.Path = $BackupShare
-                $InputObject.UserName = $Username
-                $InputObject.Password = ConvertTo-String -SecureString $Password
-                $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
+                if ($PSBoundParameters.ContainsKey('BackupShare'))
+                {
+                    $InputObject.Path = $BackupShare
+                }
+
+                if ($PSBoundParameters.ContainsKey('Username'))
+                {
+                    $InputObject.UserName = $Username
+                }
+
+                if ($PSBoundParameters.ContainsKey('Password'))
+                {
+                    $InputObject.Password = ConvertTo-String -SecureString $Password
+                }
+
+                if ($PSBoundParameters.ContainsKey('EncryptionKey'))
+                {
+                    $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
+                }
 
                 Write-Verbose -Message 'Performing operation update on $BackupAdminClient.'
                 $TaskResult = $BackupAdminClient.BackupLocations.UpdateWithHttpMessagesAsync($ResourceGroupName, $Location, $InputObject)
