@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: BF0C1A2F-2703-492F-A3A7-053416A5D1EB
@@ -45,7 +45,7 @@ Specifies the formula for the desired number of compute nodes in the pool.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -61,7 +61,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,7 +91,7 @@ Specifies the object ID of the pool for which to test automatic scaling.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
