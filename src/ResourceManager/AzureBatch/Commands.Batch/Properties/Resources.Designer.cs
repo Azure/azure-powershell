@@ -781,6 +781,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No container url specified. The container url should include Shared access signature for the Azure Storage container..
+        /// </summary>
+        internal static string NoContainerUrl {
+            get {
+                return ResourceManager.GetString("NoContainerUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No destination was provided for the downloaded file. Either provide a file path or a Stream object..
         /// </summary>
         internal static string NoDownloadDestination {
@@ -831,6 +840,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string NoPool {
             get {
                 return ResourceManager.GetString("NoPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No start time specified..
+        /// </summary>
+        internal static string NoStartTime {
+            get {
+                return ResourceManager.GetString("NoStartTime", resourceCulture);
             }
         }
         

@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 this.resourceFiles = value;
             }
         }
-
+        
         public PSUserIdentity UserIdentity
         {
             get
