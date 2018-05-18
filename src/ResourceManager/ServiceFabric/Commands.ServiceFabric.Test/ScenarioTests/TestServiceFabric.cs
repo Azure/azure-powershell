@@ -31,17 +31,18 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             AddAzureRmServiceFabricNodeType.dontRandom = true;
             ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 3;
             ServiceFabricCmdletBase.RunningTest = true;
-            ServiceFabricCmdletBase.TestThumbprint = "2F51AC39C590551FC7391A7A0A187A67BF8256CA";
+            //change the thumbprint in the common.ps1 file as well
+            ServiceFabricCmdletBase.TestThumbprint = "570BBCC85CBDAB98A442D08630996708F60A356D";
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the Dependencies.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAzureRmServiceFabricDurability()
         {
             TestController.NewInstance.RunPsTest("Test-UpdateAzureRmServiceFabricDurability");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the Dependencies.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateAzureRmServiceFabricReliability()
         {
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             TestController.NewInstance.RunPsTest("Test-RemoveAzureRmServiceFabricSettings");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the Dependencies")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricClusterCertificate()
         {
@@ -104,28 +105,28 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             TestController.NewInstance.RunPsTest("Test-NewAzureRmServiceFabricCluster");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the Dependencies")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricNode()
         {
             TestController.NewInstance.RunPsTest("Test-AddAzureRmServiceFabricNode");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the Dependencies")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmServiceFabricNode()
         {
             TestController.NewInstance.RunPsTest("Test-RemoveAzureRmServiceFabricNode");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the Dependencies")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricNodeType()
         {
             TestController.NewInstance.RunPsTest("Test-AddAzureRmServiceFabricNodeType");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveAzureRmServiceFabricNodeType()

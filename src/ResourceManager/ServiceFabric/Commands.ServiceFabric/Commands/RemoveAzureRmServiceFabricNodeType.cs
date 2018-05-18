@@ -94,12 +94,15 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 if (existingNodeType != null)
                 {
                     cluster.NodeTypes.Remove(existingNodeType);
+
+                    /**
+                     * * Pulled this out after discussion with Justin. Opened Issue #6246 to track the Null Ptr Exception.
                     cluster.UpgradeDescription.DeltaHealthPolicy = new ClusterUpgradeDeltaHealthPolicy()
                     {
                         MaxPercentDeltaUnhealthyApplications = 0,
                         MaxPercentDeltaUnhealthyNodes = 0,
                         MaxPercentUpgradeDomainDeltaUnhealthyNodes = 0
-                    };
+                    };**/
 
                     cluster = SendPutRequest(cluster);
                 }
