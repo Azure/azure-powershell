@@ -233,8 +233,7 @@
     <Compile Include="Models\PSEndpointServiceResult.cs" />
     <Compile Include="Models\PSAzureFirewall.cs" />
     <Compile Include="Models\PSAzureFirewallIpConfiguration.cs" />
-    <Compile Include="Models\PSAzureFirewallNetworkRuleAction.cs" />
-    <Compile Include="Models\PSAzureFirewallApplicationRuleAction.cs" />
+    <Compile Include="Models\PSAzureFirewallRCAction.cs" />
     <Compile Include="Models\PSAzureFirewallApplicationRuleProtocol.cs" />
     <Compile Include="Models\PSAzureFirewallApplicationRule.cs" />
     <Compile Include="Models\PSAzureFirewallApplicationRuleCollection.cs" />

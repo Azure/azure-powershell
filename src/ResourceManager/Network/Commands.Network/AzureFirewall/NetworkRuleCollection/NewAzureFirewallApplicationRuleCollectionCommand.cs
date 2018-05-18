@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -41,6 +42,16 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public List<PSAzureFirewallNetworkRule> Rule { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The type of the rule action")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.AzureFirewallRCActionType.Allow,
+            MNM.AzureFirewallRCActionType.Deny,
+            IgnoreCase = false)]
+        public string ActionType { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -54,8 +65,10 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Priority = this.Priority,
-                Rules = this.Rule
+                Rules = this.Rule,
+                Action = new PSAzureFirewallRCAction { Type = ActionType }
             };
+
             WriteObject(networkRuleCollection);
         }
     }

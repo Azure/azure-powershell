@@ -22,17 +22,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Name { get; set; }
 
-        public uint Priority { get; set; }
-
         public string Description { get; set; }
-
-        public string Direction { get; set; }
 
         public List<PSAzureFirewallApplicationRuleProtocol> Protocols { get; set; }
 
         public List<string> TargetUrls { get; set; }
-
-        public List<PSAzureFirewallApplicationRuleAction> Actions { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
@@ -44,12 +38,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string TargetUrlsText
         {
             get { return JsonConvert.SerializeObject(TargetUrls, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string ActionsText
-        {
-            get { return JsonConvert.SerializeObject(Actions, Formatting.Indented); }
         }
     }
 }
