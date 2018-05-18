@@ -1,11 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
-using NET_API_STATUS = System.UInt32;
-
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using System;
+    using System.Runtime.InteropServices;
+    using NET_API_STATUS = System.UInt32;
+
     public static class WinErrors
     {
         #region definitions
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         }
     }
 
-    public class UNCNetworkConnector : IDisposable
+    public class UncNetworkConnector : IDisposable
     {
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         internal struct USE_INFO_2
@@ -163,7 +161,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             }
         }
 
-        ~UNCNetworkConnector()
+        ~UncNetworkConnector()
         {
             Dispose();
         }

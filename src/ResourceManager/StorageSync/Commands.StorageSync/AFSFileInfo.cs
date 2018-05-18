@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
-    class AFSFileInfo : IFileInfo
-    {
-        private FileInfo node;
+    using System.IO;
 
-        public AFSFileInfo(FileInfo node)
+    class AfsFileInfo : IFileInfo
+    {
+        private FileInfo _node;
+
+        public AfsFileInfo(FileInfo node)
         {
-            this.node = node;
+            this._node = node;
         }
 
-        public string Name => node.Name;
-        public string FullName => node.FullName;
-        public long Length => node.Length;
-        public IDirectoryInfo Directory => new AFSDirectoryInfo(node.Directory);
-
-
+        public string Name => _node.Name;
+        public string FullName => _node.FullName;
+        public long Length => _node.Length;
+        public IDirectoryInfo Directory => new AfsDirectoryInfo(_node.Directory);
     }
 }

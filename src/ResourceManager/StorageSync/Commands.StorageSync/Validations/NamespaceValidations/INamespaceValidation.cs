@@ -4,5 +4,6 @@
     {
         IValidationResult Validate(IFileInfo node);
         IValidationResult Validate(IDirectoryInfo node);
+        IValidationResult Validate(INamespaceInfo namespaceInfo);
     }
 }

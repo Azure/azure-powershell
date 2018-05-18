@@ -42,6 +42,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             return configurationMockFactory.Object;
         }
 
+        public static IConfiguration ConfigurationWithMaximumDatasetSizeOf(long maxDatasetSize)
+        {
+            var configurationMockFactory = new Moq.Mock<IConfiguration>();
+            configurationMockFactory.Setup(configuration => configuration.MaximumDatasetSizeInBytes())
+                .Returns(maxDatasetSize);
+
+            return configurationMockFactory.Object;
+        }
+
         internal static IDirectoryInfo DirectoryWithPath(string path)
         {
             var directoryInfoMockFactory = new Moq.Mock<IDirectoryInfo>();
@@ -98,6 +107,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             configurationMockFactory.Setup(configuration => configuration.ValidOsVersions()).Returns(validOsVersions);
 
             return configurationMockFactory.Object;
+        }
+
+        public static INamespaceInfo NamespaceWithPathAndSize(string path, long size)
+        {
+            var namespaceInfoMock = new Moq.Mock<INamespaceInfo>();
+            namespaceInfoMock.SetupGet(namespaceInfo => namespaceInfo.Path).Returns(path);
+            namespaceInfoMock.SetupGet(namespaceInfo => namespaceInfo.TotalFileSizeInBytes).Returns(size);
+
+            return namespaceInfoMock.Object;
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using System.IO;
-using System.Text.RegularExpressions;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
-    internal class AFSPath
+    using System.IO;
+    using System.Text.RegularExpressions;
+
+    internal class AfsPath
     {
         private readonly string _fullName;
 
-        public AFSPath(string fullName)
+        public AfsPath(string fullName)
         {
             _fullName = fullName;
         }

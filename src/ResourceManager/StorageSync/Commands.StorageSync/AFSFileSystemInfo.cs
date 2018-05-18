@@ -1,24 +1,24 @@
-﻿using System.IO;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
-    class AFSFileSystemInfo : IFileSystemInfo
-    {
-        private readonly FileSystemInfo info;
+    using System.IO;
 
-        public AFSFileSystemInfo(FileSystemInfo info)
+    class AfsFileSystemInfo : INamedObjectInfo
+    {
+        private readonly FileSystemInfo _info;
+
+        public AfsFileSystemInfo(FileSystemInfo info)
         {
-            this.info = info;
+            this._info = info;
         }
 
         public string Name
         {
-            get { return info.Name; }
+            get { return _info.Name; }
         }
 
         public string FullName
         {
-            get { return info.FullName; }
+            get { return _info.FullName; }
         }
 
     }

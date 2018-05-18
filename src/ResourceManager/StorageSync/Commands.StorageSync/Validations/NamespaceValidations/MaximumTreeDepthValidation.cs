@@ -1,48 +1,55 @@
-﻿using System;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
-    public class MaximumTreeDepthValidation : INamespaceValidation
+    public class MaximumTreeDepthValidation : BaseNamespaceValidation
     {
-        private readonly IConfiguration _configuration;
+        #region Fields and Properties
+        private readonly int _maxTreeDepth;
 
-        public MaximumTreeDepthValidation(IConfiguration configuration)
+        #endregion
+
+        #region Constructors
+
+        public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, ValidationType.NodeDepth)
         {
-            _configuration = configuration;
+            this._maxTreeDepth = configuration.MaximumTreeDepth();
         }
 
-        public IValidationResult Validate(IFileInfo node)
+        #endregion
+
+        #region Protected methods
+        protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return Validate((IFileSystemInfo) node);
+            return Validate(node);
         }
 
-        public IValidationResult Validate(IDirectoryInfo node)
+        protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return Validate((IFileSystemInfo)node);
+            return Validate(node);
         }
+        #endregion
 
-        private IValidationResult Validate(IFileSystemInfo node)
+        #region Private methods
+        private IValidationResult Validate(INamedObjectInfo node)
         {
-            int maxTreeDepth = _configuration.MaximumTreeDepth();
-            AFSPath path = new AFSPath(node.FullName);
+            AfsPath path = new AfsPath(node.FullName);
             int depth = path.Depth();
 
-            bool isTooDeep = depth > maxTreeDepth;
+            bool isTooDeep = depth > this._maxTreeDepth;
             if (isTooDeep)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"Node {node.Name} is too deep in the directory tree. Maximum tree depth is {maxTreeDepth}.",
+                    Description = $"Node {node.Name} is too deep in the directory tree. Maximum tree depth is {this._maxTreeDepth}.",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = ValidationType.NodeDepth
+                    Type = this.ValidationType
 
                 };
             }
 
-            return ValidationResult.SuccessfullValidationResult(ValidationType.NodeDepth);
+            return this.SuccessfulResult;
         }
-
+        #endregion
     }
 }

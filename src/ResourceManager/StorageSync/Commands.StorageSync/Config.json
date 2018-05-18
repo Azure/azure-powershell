@@ -8,7 +8,8 @@
     "NTFS"
   ],
   "ValidOSVersions": [
-    "6.3.9600"
+    "6.3",
+    "10.0"
   ],
   "InvalidFilenames": [
     "AUX",

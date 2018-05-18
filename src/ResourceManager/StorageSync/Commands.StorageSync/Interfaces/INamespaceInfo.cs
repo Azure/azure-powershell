@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
-    public interface IFileInfo : IFileSystemInfo
+    public interface INamespaceInfo
     {
-        long Length { get; }
-        IDirectoryInfo Directory { get; }
+        string Path { get; }
+
+        long NumberOfFiles { get; }
+
+        long NumberOfDirectories { get; }
+
+        long TotalFileSizeInBytes { get; }
     }
 }

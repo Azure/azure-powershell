@@ -1,43 +1,52 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
-    public class MaximumFilenameLengthValidation : INamespaceValidation
+    public class MaximumFilenameLengthValidation : BaseNamespaceValidation
     {
-        private readonly IConfiguration _configuration;
+        #region Fields and Properties
+        private readonly int _maxFilenameLength;
+        #endregion
 
-        public MaximumFilenameLengthValidation(IConfiguration configuration)
+        #region Constructors
+        public MaximumFilenameLengthValidation(IConfiguration configuration): base(configuration, ValidationType.FilenameLength)
         {
-            _configuration = configuration;
+            this._maxFilenameLength = configuration.MaximumFilenameLength();
+        }
+        #endregion
+
+        #region Protected methods
+        protected override IValidationResult DoValidate(IFileInfo node)
+        {
+            return Validate((INamedObjectInfo)node);
         }
 
-        public IValidationResult Validate(IFileInfo node)
+        protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return Validate((IFileSystemInfo) node);
+            return Validate((INamedObjectInfo)node);
         }
+        #endregion
 
-        public IValidationResult Validate(IDirectoryInfo node)
-        {
-            return Validate((IFileSystemInfo) node);
-        }
+        #region Private methods
 
-        private IValidationResult Validate(IFileSystemInfo node)
+        private IValidationResult Validate(INamedObjectInfo node)
         {
-            int maxFilenameLength = _configuration.MaximumFilenameLength();
-            bool filenameIsTooLong = node.Name.Length > maxFilenameLength;
+            bool filenameIsTooLong = node.Name.Length > this._maxFilenameLength;
 
             if (filenameIsTooLong)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"Filename {node.Name} is too long. Max length is {maxFilenameLength}",
+                    Description = $"Filename {node.Name} is too long. Max length is {this._maxFilenameLength}",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = ValidationType.FilenameLength
+                    Type = this.ValidationType
 
                 };
             }
 
             return ValidationResult.SuccessfullValidationResult(ValidationType.FilenameLength);
         }
+
+        #endregion
     }
 }

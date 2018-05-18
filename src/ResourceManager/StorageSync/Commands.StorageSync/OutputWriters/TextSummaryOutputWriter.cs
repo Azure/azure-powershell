@@ -10,8 +10,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 {
     class TextSummaryOutputWriter : IOutputWriter, INamespaceEnumeratorListener
     {
-        private int _filesScanned;
-        private int _directoriesScanned;
         private readonly List<IValidationResult> _systemValidationResults;
         private readonly Dictionary<ValidationType, long> _validationErrorsHistogram;
         private readonly string _rootPath;
@@ -25,14 +23,14 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 
         private readonly Dictionary<ValidationType, string> _validationTypeDescriptions = new Dictionary<ValidationType, string>
         {
-            {ValidationType.FileSystem, "Filesystem check"},
-            {ValidationType.OsVersion, "OS Compatibility check"},
-            {ValidationType.FilenameCharacters, "Invalid characters on filenames"},
-            {ValidationType.FilenameLength, "Too long filenames"},
-            {ValidationType.Filename, "Invalid Filenames"},
-            {ValidationType.PathLength, "Too long paths"},
-            {ValidationType.NodeDepth, "Files are too deep"},
-            {ValidationType.DatasetSize, "Dataset is too big"}
+            {ValidationType.FileSystem, "File System type"},
+            {ValidationType.OsVersion, "OS version"},
+            {ValidationType.FilenameCharacters, "Unsupported characters in file names"},
+            {ValidationType.FilenameLength, "File names length limit exceeded"},
+            {ValidationType.Filename, "Unsupported file names"},
+            {ValidationType.PathLength, "Path length limit"},
+            {ValidationType.NodeDepth, "Dataset depth limit"},
+            {ValidationType.DatasetSize, "Dataset size limit"}
         };
 
         public TextSummaryOutputWriter(string rootPath, IConsoleWriter consoleWriter)
@@ -41,13 +39,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
             _consoleWriter = consoleWriter;
             _validationErrorsHistogram = new Dictionary<ValidationType, long>();
             _systemValidationResults = new List<IValidationResult>();
-            _filesScanned = 0;
-            _directoriesScanned = 0;
         }
 
         public void BeginDir(IDirectoryInfo node)
         {
-            _directoriesScanned += 1;
         }
 
         public void EndDir(IDirectoryInfo node)
@@ -57,7 +52,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 
         public void NextFile(IFileInfo node)
         {
-            _filesScanned += 1;
         }
 
         public void Write(IValidationResult validationResult)
@@ -91,12 +85,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
             return validationResult.Result == Result.Fail;
         }
 
-        public void EndOfEnumeration()
+        public void EndOfEnumeration(INamespaceInfo namespaceInfo)
         {
-            WriteReport();
+            WriteReport(namespaceInfo);
         }
 
-        private void WriteReport()
+        private void WriteReport(INamespaceInfo namespaceInfo)
         {
             _consoleWriter.WriteLine(" ");
             WritePathScanned();
@@ -107,7 +101,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 
             _consoleWriter.WriteLine(" ");
             _consoleWriter.WriteLine("Namespace Validation Results");
-            WriteCountOfScannedNodes();
+            _consoleWriter.WriteLine($"Files scanned: {namespaceInfo.NumberOfFiles}");
+            _consoleWriter.WriteLine($"Directories scanned: {namespaceInfo.NumberOfDirectories}");
+
             WriteCountOfErrorsFound();
 
             _consoleWriter.WriteLine(" ");
@@ -136,12 +132,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
             return validationType.ToString();
         }
 
-        private void WriteCountOfScannedNodes()
-        {
-            _consoleWriter.WriteLine($"Files scanned: {_filesScanned}");
-            _consoleWriter.WriteLine($"Directories scanned: {_directoriesScanned}");
-        }
-
         private void WriteSystemValidationResults()
         {
             foreach (IValidationResult validatonResult in _systemValidationResults)
@@ -153,7 +143,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 
         private void WritePathScanned()
         {
-            _consoleWriter.WriteLine($"Evaluated: {_rootPath}");
+            _consoleWriter.WriteLine($"Evaluated path: {_rootPath}");
         }
 
         public void UnauthorizedDir(IDirectoryInfo dir)

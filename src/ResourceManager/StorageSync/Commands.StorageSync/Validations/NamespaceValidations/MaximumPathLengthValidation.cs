@@ -1,51 +1,53 @@
-﻿using System;
-using System.Text.RegularExpressions;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
-    public class MaximumPathLengthValidation : INamespaceValidation
+    public class MaximumPathLengthValidation : BaseNamespaceValidation
     {
-        private readonly IConfiguration _configuration;
+        #region Fields and Properties
+        private readonly int _maxPathLength;
+        #endregion
 
-        public MaximumPathLengthValidation(IConfiguration configuration)
+        #region Constructors
+        public MaximumPathLengthValidation(IConfiguration configuration) : base(configuration, ValidationType.PathLength)
         {
-            _configuration = configuration;
+            this._maxPathLength = configuration.MaximumPathLength();
+        }
+        #endregion
+
+        #region Protected methods
+        protected override IValidationResult DoValidate(IFileInfo node)
+        {
+            return Validate(node);
         }
 
-        public IValidationResult Validate(IFileInfo node)
+        protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return Validate((IFileSystemInfo) node);
+            return Validate(node);
         }
+        #endregion
 
-        public IValidationResult Validate(IDirectoryInfo node)
+        #region Private methods
+        private IValidationResult Validate(INamedObjectInfo node)
         {
-            return Validate((IFileSystemInfo) node);
-        }
-
-        private IValidationResult Validate(IFileSystemInfo node)
-        {
-            int maxPathLength = _configuration.MaximumPathLength();
-
-            AFSPath path = new AFSPath(node.FullName);
+            AfsPath path = new AfsPath(node.FullName);
             int pathLength = path.Length();
 
-            bool pathIsTooLong = pathLength > maxPathLength;
+            bool pathIsTooLong = pathLength > this._maxPathLength;
             if (pathIsTooLong)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"File {node.Name} path's is too long. Maximum path length is {maxPathLength}.",
+                    Description = $"File {node.Name} path's is too long. Maximum path length is {this._maxPathLength}.",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = ValidationType.PathLength
+                    Type = this.ValidationType
 
                 };
             }
 
 
-            return ValidationResult.SuccessfullValidationResult(ValidationType.PathLength);
+            return this.SuccessfulResult;
         }
-
+        #endregion
     }
 }
