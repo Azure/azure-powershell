@@ -5,7 +5,7 @@
         void NextFile(IFileInfo node);
         void BeginDir(IDirectoryInfo node);
         void EndDir(IDirectoryInfo node);
-        void EndOfEnumeration();
+        void EndOfEnumeration(INamespaceInfo namespaceInfo);
         void UnauthorizedDir(IDirectoryInfo dir);
     }
 }

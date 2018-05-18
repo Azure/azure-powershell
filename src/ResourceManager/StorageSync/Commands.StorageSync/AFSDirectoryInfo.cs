@@ -1,27 +1,31 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
-    class AFSDirectoryInfo : IDirectoryInfo
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+
+    class AfsDirectoryInfo : IDirectoryInfo
     {
         private readonly DirectoryInfo _node;
 
-        public AFSDirectoryInfo(DirectoryInfo node)
+        public AfsDirectoryInfo(string path) : this(new DirectoryInfo(path))
+        {
+        }
+
+        public AfsDirectoryInfo(DirectoryInfo node)
         {
             this._node = node;
         }
 
         public string Name => _node.Name;
         public string FullName => _node.FullName;
-        public IDirectoryInfo Parent => new AFSDirectoryInfo(_node.Parent);
+        public IDirectoryInfo Parent => new AfsDirectoryInfo(_node.Parent);
 
         public IEnumerable<IDirectoryInfo> EnumerateDirectories()
         {
             IEnumerable<DirectoryInfo> dirs = _node.EnumerateDirectories();
 
-            return dirs.Select(dir => new AFSDirectoryInfo(dir));
+            return dirs.Select(dir => new AfsDirectoryInfo(dir));
 
 
         }
@@ -30,7 +34,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         {
             IEnumerable<FileInfo> files = _node.EnumerateFiles();
 
-            return files.Select(file => new AFSFileInfo(file));
+            return files.Select(file => new AfsFileInfo(file));
         }
     }
 }

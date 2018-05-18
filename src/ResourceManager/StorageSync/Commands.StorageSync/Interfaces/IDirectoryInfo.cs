@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
-    public interface IDirectoryInfo : IFileSystemInfo
+    public interface IDirectoryInfo : INamedObjectInfo
     {
         IDirectoryInfo Parent { get; }
 

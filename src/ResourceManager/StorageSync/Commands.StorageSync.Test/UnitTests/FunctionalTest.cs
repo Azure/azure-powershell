@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         public void WhenComputerNameDoestNotExistsItThrows()
         {
             // Prepare
-            InvokeAzureRmStorageSyncCompatibilityCheckCmdlet cmdlet = new InvokeAzureRmStorageSyncCompatibilityCheckCmdlet()
+            InvokeCompatibilityCheckCmdlet cmdlet = new InvokeCompatibilityCheckCmdlet()
             {
                 ComputerName = "non_existent_computer_name"
             };
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         public void WhenCredentialsAreIncorrectItThrows()
         {
             SecureString secureInvalidPassword = CreateSecureStringFrom("invalid_password");
-            InvokeAzureRmStorageSyncCompatibilityCheckCmdlet cmdlet = new InvokeAzureRmStorageSyncCompatibilityCheckCmdlet
+            InvokeCompatibilityCheckCmdlet cmdlet = new InvokeCompatibilityCheckCmdlet
             {
                 ComputerName = _computerName,
                 Credential = new PSCredential("invalid_username", secureInvalidPassword)

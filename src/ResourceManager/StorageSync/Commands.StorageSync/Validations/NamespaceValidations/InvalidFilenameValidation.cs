@@ -1,29 +1,41 @@
-﻿using System.Linq;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
-    public class InvalidFilenameValidation : INamespaceValidation
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public class InvalidFilenameValidation : BaseNamespaceValidation
     {
-        private readonly IConfiguration _configuration;
+        #region Fields and Properties
+        private readonly HashSet<string> _invalidFileNames;
+        #endregion
 
-        public InvalidFilenameValidation(IConfiguration configuration)
+        #region Constructors
+
+        public InvalidFilenameValidation(IConfiguration configuration) : base(configuration, ValidationType.Filename)
         {
-            _configuration = configuration;
+            this._invalidFileNames = new HashSet<string>(configuration.InvalidFileNames(), StringComparer.OrdinalIgnoreCase);
         }
 
-        public IValidationResult Validate(IFileInfo node)
+        #endregion
+
+        #region Protected methods
+        protected override IValidationResult DoValidate(IFileInfo node)
         {
             return Validate(node.Name, node.FullName);
         }
 
-        public IValidationResult Validate(IDirectoryInfo node)
+        protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
             return Validate(node.Name, node.FullName);
         }
+        #endregion
+
+        #region Private methods
 
         private IValidationResult Validate(string name, string path)
         {
-            if (_configuration.InvalidFileNames().Contains(name))
+            if (this._invalidFileNames.Contains(name))
             {
                 return new ValidationResult
                 {
@@ -31,11 +43,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Description = $"The name {name} is not allowed.",
                     Level = ResultLevel.Error,
                     Path = path,
-                    Type = ValidationType.Filename
+                    Type = this.ValidationType
                 };
             }
 
-            return ValidationResult.SuccessfullValidationResult(ValidationType.Filename);
+            return this.SuccessfulResult;
         }
+
+        #endregion
     }
 }

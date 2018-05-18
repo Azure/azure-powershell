@@ -1,11 +1,10 @@
-﻿using System;
-using Microsoft.Azure.Commands.StorageSync.Evaluation;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
+﻿namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 {
+    using Microsoft.Azure.Commands.StorageSync.Evaluation;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
+    using Xunit;
+
     public class MaximumTreeDepthValidationTest
     {
         [Fact]

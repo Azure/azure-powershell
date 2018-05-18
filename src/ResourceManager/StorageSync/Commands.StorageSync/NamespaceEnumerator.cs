@@ -5,54 +5,94 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public class NamespaceEnumerator
     {
+        private NamespaceInfo _namespaceInfo;
         private readonly IEnumerable<INamespaceEnumeratorListener> _listeners;
+
+        public NamespaceEnumerator(): this(new List<INamespaceEnumeratorListener> { })
+        {
+        }
 
         public NamespaceEnumerator(IEnumerable<INamespaceEnumeratorListener> listeners)
         {
             _listeners = listeners;
+            _namespaceInfo = new NamespaceInfo();
         }
 
-        public void Run(IDirectoryInfo root)
+        public NamespaceInfo Run(IDirectoryInfo root)
         {
-            NotifyBeginDir(root);
-            Enumerate(root);
-            NotifyEndDir(root);
+            this.EnumeratePostOrderNonRecursive(root);
             NotifyEndOfEnumeration();
+            return this._namespaceInfo;
         }
 
         private void NotifyEndOfEnumeration()
         {
             foreach (INamespaceEnumeratorListener listener in _listeners)
             {
-                listener.EndOfEnumeration();
+                listener.EndOfEnumeration(this._namespaceInfo);
             }
         }
 
-        private void Enumerate(IDirectoryInfo root)
+        // implementation of post-order traversal of directory tree
+        // it is done this way to guarantee that by the time we finish visiting directory
+        // all of its subdirectories had been visited
+        private void EnumeratePostOrderNonRecursive(IDirectoryInfo root)
         {
-            IEnumerable<IDirectoryInfo> dirs;
-            try
+            _namespaceInfo = new NamespaceInfo {
+                Path = root.FullName
+            };
+
+            Stack<IDirectoryInfo> stack1 = new Stack<IDirectoryInfo>();
+            Stack<IDirectoryInfo> stack2 = new Stack<IDirectoryInfo>();
+
+            stack1.Push(root);
+
+            while (stack1.Count > 0)
             {
-                dirs = root.EnumerateDirectories();
-            }
-            catch (UnauthorizedAccessException)
-            {
-                NotifyUnauthorizedDir(root);
-                // Console.WriteLine(unauthorizedAccessException);
-                return;
-            }
-            
-            foreach (IDirectoryInfo dir in dirs)
-            {
-                NotifyBeginDir(dir);
-                Enumerate(dir);
-                NotifyEndDir(dir);
+                IDirectoryInfo currentDirectory = stack1.Pop();
+
+                stack2.Push(currentDirectory);
+
+                // notify we have started processing directory
+                // processing means accessing subdirectories and files
+                NotifyBeginDir(currentDirectory);
+
+                IList<IDirectoryInfo> subdirs = null;
+
+                try
+                {
+                    subdirs = new List<IDirectoryInfo>(currentDirectory.EnumerateDirectories());
+                }
+                catch (UnauthorizedAccessException)
+                {
+                    NotifyUnauthorizedDir(currentDirectory);
+                    continue;
+                }
+
+                foreach (IDirectoryInfo subdir in subdirs)
+                {
+                    stack1.Push(subdir);
+                }
             }
 
-            IEnumerable<IFileInfo> files = root.EnumerateFiles();
-            foreach (IFileInfo file in files)
+            _namespaceInfo.NumberOfDirectories = stack2.Count - 1;
+
+            while (stack2.Count > 0)
             {
-                NotifyNextFile(file);
+                IDirectoryInfo currentDirectory = stack2.Pop();
+
+                IEnumerable<IFileInfo> files = currentDirectory.EnumerateFiles();
+
+                foreach (IFileInfo file in files)
+                {
+                    _namespaceInfo.NumberOfFiles += 1;
+                    _namespaceInfo.TotalFileSizeInBytes += file.Length;
+
+                    NotifyNextFile(file);
+                }
+
+                // notify we have finished processing directory
+                NotifyEndDir(currentDirectory);
             }
         }
 

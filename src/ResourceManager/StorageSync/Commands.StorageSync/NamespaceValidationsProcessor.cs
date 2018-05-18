@@ -8,11 +8,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     public class NamespaceValidationsProcessor : INamespaceEnumeratorListener
     {
-        private readonly IEnumerable<INamespaceValidation> _validations;
-        private readonly IEnumerable<IOutputWriter> _outputWriters;
+        private readonly IList<INamespaceValidation> _validations;
+        private readonly IList<IOutputWriter> _outputWriters;
         private readonly IProgressReporter _progressReporter;
 
-        public NamespaceValidationsProcessor(IEnumerable<INamespaceValidation> validations, IEnumerable<IOutputWriter> outputWriters, IProgressReporter progressReporter)
+        public NamespaceValidationsProcessor(IList<INamespaceValidation> validations, IList<IOutputWriter> outputWriters, IProgressReporter progressReporter)
         {
             _validations = validations;
             _outputWriters = outputWriters;
@@ -33,9 +33,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             _progressReporter.CompleteStep();
         }
 
-        public void EndOfEnumeration()
+        public void EndOfEnumeration(INamespaceInfo namespaceInfo)
         {
-            return;
+            foreach (INamespaceValidation validation in _validations)
+            {
+                IValidationResult validationResult = validation.Validate(namespaceInfo);
+                Broadcast(validationResult);
+            }
         }
 
         public void NextFile(IFileInfo node)
@@ -60,6 +64,5 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
                 outputWriter.Write(validationResult);
             }
         }
-
     }
 }

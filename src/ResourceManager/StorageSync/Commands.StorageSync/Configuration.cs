@@ -89,6 +89,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             return _validationsConfiguration.ValidOSVersions;
         }
 
+        public IEnumerable<uint> ValidOsSKU()
+        {
+            return new uint[] {
+                7, 8, 9, 10
+            };
+        }
+
         public IEnumerable<string> InvalidFileNames()
         {
             return _validationsConfiguration.InvalidFilenames;

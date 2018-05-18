@@ -161,6 +161,7 @@
     <Compile Include="UnitTests\FileSystemValidationTest.cs" />
     <Compile Include="UnitTests\FunctionalTest.cs" />
     <Compile Include="UnitTests\InvalidFilenameValidationTest.cs" />
+    <Compile Include="UnitTests\MaximumDatasetSizeValidationTest.cs" />
     <Compile Include="UnitTests\MaximumFilenameLengthValidationTest.cs" />
     <Compile Include="UnitTests\MaximumFileSizeValidationTest.cs" />
     <Compile Include="UnitTests\MaximumPathLengthValidationTest.cs" />

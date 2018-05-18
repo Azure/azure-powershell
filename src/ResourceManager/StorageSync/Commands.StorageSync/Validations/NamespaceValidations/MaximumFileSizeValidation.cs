@@ -1,38 +1,38 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
-    public class MaximumFileSizeValidation : INamespaceValidation
+    public class MaximumFileSizeValidation : BaseNamespaceValidation
     {
-        private readonly IConfiguration _configuration;
+        #region Fields and Properties
+        private readonly long _maxFileSizeInBytes;
+        #endregion
 
-        public MaximumFileSizeValidation(IConfiguration configuration)
+        #region Constructors
+        public MaximumFileSizeValidation(IConfiguration configuration): base(configuration, ValidationType.FileSize)
         {
-            _configuration = configuration;
+            this._maxFileSizeInBytes = configuration.MaximumFileSizeInBytes();
         }
+        #endregion
 
-        public IValidationResult Validate(IFileInfo node)
+        #region Protected methods
+        protected override IValidationResult DoValidate(IFileInfo node)
         {
-            long maxFileSizeInBytes = _configuration.MaximumFileSizeInBytes();
-            bool fileIsTooBig = node.Length > maxFileSizeInBytes;
+            bool fileIsTooBig = node.Length > this._maxFileSizeInBytes;
 
             if (fileIsTooBig)
             {
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"File {node.Name} is too big. Maximum allowed file size is {maxFileSizeInBytes} bytes",
+                    Description = $"File {node.Name} is too big. Maximum allowed file size is {this._maxFileSizeInBytes} bytes",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = ValidationType.FileSize
+                    Type = this.ValidationType
 
                 };
             }
 
-            return ValidationResult.SuccessfullValidationResult(ValidationType.FileSize);
+            return this.SuccessfulResult;
         }
-
-        public IValidationResult Validate(IDirectoryInfo node)
-        {
-            return ValidationResult.SuccessfullValidationResult(ValidationType.FileSize);
-        }
+        #endregion
     }
 }

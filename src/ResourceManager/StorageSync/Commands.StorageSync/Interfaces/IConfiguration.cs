@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
     public interface IConfiguration
     {
         IEnumerable<string> ValidOsVersions();
+        IEnumerable<uint> ValidOsSKU();
         IEnumerable<string> ValidFilesystems();
         IEnumerable<Configuration.CodePointRange> BlacklistOfCodePointRanges();
         IEnumerable<int> BlacklistOfCodePoints();

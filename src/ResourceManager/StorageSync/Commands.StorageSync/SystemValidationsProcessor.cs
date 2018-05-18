@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using System.Collections.Generic;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
+
     public class SystemValidationsProcessor
     {
         private readonly IPowershellCommandRunner _commandRunner;
-        private readonly IEnumerable<ISystemValidation> _validations;
-        private readonly IEnumerable<IOutputWriter> _outputWriters;
+        private readonly IList<ISystemValidation> _validations;
+        private readonly IList<IOutputWriter> _outputWriters;
         private readonly IProgressReporter _progressReporter;
 
-        public SystemValidationsProcessor(IPowershellCommandRunner commandRunner, IEnumerable<ISystemValidation> validations, IEnumerable<IOutputWriter> outputWriters, IProgressReporter progressReporter)
+        public SystemValidationsProcessor(IPowershellCommandRunner commandRunner, IList<ISystemValidation> validations, IList<IOutputWriter> outputWriters, IProgressReporter progressReporter)
         {
             _commandRunner = commandRunner;
             _validations = validations;
@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 
         public void Run()
         {
+            _progressReporter.ResetSteps(_validations.Count);
             foreach (ISystemValidation validation in _validations)
             {
                 IValidationResult validationResult = validation.ValidateUsing(_commandRunner);

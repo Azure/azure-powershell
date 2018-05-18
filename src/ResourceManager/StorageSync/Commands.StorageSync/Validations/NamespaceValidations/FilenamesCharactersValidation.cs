@@ -1,29 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
-    public class FilenamesCharactersValidation : INamespaceValidation
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    public class FilenamesCharactersValidation : BaseNamespaceValidation
     {
-        private readonly IConfiguration _configuration;
+        #region Fields and Properties
+        private IEnumerable<Configuration.CodePointRange> _blacklistOfCodePointRanges;
+        private IEnumerable<int> _blacklistOfCodePoints;
+        #endregion
 
-        public FilenamesCharactersValidation(IConfiguration configuration)
+        #region Constructors
+        public FilenamesCharactersValidation(IConfiguration configuration): base(configuration, ValidationType.FilenameCharacters)
         {
-            _configuration = configuration;
+            this._blacklistOfCodePointRanges = configuration.BlacklistOfCodePointRanges().ToList();
+            this._blacklistOfCodePoints = configuration.BlacklistOfCodePoints().ToList();
+        }
+        #endregion
+
+        #region Protected methods
+        protected override IValidationResult DoValidate(IFileInfo file)
+        {
+            return Validate((INamedObjectInfo)file);
         }
 
-        public IValidationResult Validate(IFileInfo file)
+        protected override IValidationResult DoValidate(IDirectoryInfo file)
         {
-            return Validate((IFileSystemInfo)file);
+            return Validate((INamedObjectInfo)file);
         }
 
-        public IValidationResult Validate(IDirectoryInfo file)
-        {
-            return Validate((IFileSystemInfo)file);
-        }
+        #endregion
 
-        private IValidationResult Validate (IFileSystemInfo node)
+        #region Private methods
+
+        private IValidationResult Validate (INamedObjectInfo node)
         {
             string name = node.Name;
             List<int> positions = new List<int>();
@@ -51,22 +62,24 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
                     Result = Result.Fail,
                     Level = ResultLevel.Error,
                     Path = node.FullName,
-                    Type = ValidationType.FilenameCharacters,
+                    Type = this.ValidationType,
                     Description = description,
                     Positions = positions
                 };
             }
 
-            return ValidationResult.SuccessfullValidationResult(ValidationType.FilenameCharacters);
+            return this.SuccessfulResult;
         }
 
         private bool IsBlacklisted(char aChar)
         {
             return 
                 Char.IsHighSurrogate(aChar) ||
-                _configuration.BlacklistOfCodePointRanges().Any(range => range.Includes(aChar)) ||
-                _configuration.BlacklistOfCodePoints().Contains(aChar);
+                _blacklistOfCodePointRanges.Any(range => range.Includes(aChar)) ||
+                _blacklistOfCodePoints.Contains(aChar);
         }
+
+        #endregion
 
     }
 }
