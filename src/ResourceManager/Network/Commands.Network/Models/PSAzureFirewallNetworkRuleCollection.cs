@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public uint Priority { get; set; }
 
+        public PSAzureFirewallRCAction Action { get; set; }
+
         public List<PSAzureFirewallNetworkRule> Rules { get; set; }
 
         [JsonIgnore]
@@ -40,12 +42,6 @@ namespace Microsoft.Azure.Commands.Network.Models
                 if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
                 {
                     throw new ArgumentException($"Application Rule names must be unique. {rule.Name} name is already used.");
-                }
-
-                var samePriorityRules = this.Rules.Where(rc => rc.Priority == rule.Priority);
-                if (samePriorityRules.Any())
-                {
-                    throw new ArgumentException($"Application Rule priorities must be unique. Priority {rule.Priority} is already used by Rule {samePriorityRules.First().Name}.");
                 }
             }
             else
@@ -66,20 +62,9 @@ namespace Microsoft.Azure.Commands.Network.Models
             return this.Rules?.FirstOrDefault(rule => ruleName.Equals(rule.Name));
         }
 
-        public PSAzureFirewallNetworkRule GetRuleByPriority(uint priority)
-        {
-            return this.Rules?.FirstOrDefault(rule => rule.Priority == priority);
-        }
-
         public void RemoveRuleByName(string ruleName)
         {
             var rule = this.GetRuleByName(ruleName);
-            this.Rules?.Remove(rule);
-        }
-
-        public void RemoveRuleByPriority(uint priority)
-        {
-            var rule = this.GetRuleByPriority(priority);
             this.Rules?.Remove(rule);
         }
     }

@@ -16,7 +16,6 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -28,12 +27,6 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The name of the Network Rule")]
         [ValidateNotNullOrEmpty]
         public virtual string Name { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The priority of the rule")]
-        [ValidateNotNullOrEmpty]
-        public uint Priority { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -71,16 +64,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public List<string> DestinationPort { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The type of the rule action")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.AzureFirewallNetworkRuleActionType.Allow,
-            MNM.AzureFirewallNetworkRuleActionType.Deny,
-            IgnoreCase = false)]
-        public string ActionType { get; set; }
-
         public override void Execute()
         {
             base.Execute();
@@ -109,21 +92,12 @@ namespace Microsoft.Azure.Commands.Network
             var networkRule = new PSAzureFirewallNetworkRule
             {
                 Name = this.Name,
-                Priority = this.Priority,
                 Description = this.Description,
-                Direction = MNM.AzureFirewallRuleDirection.Outbound,
                 Protocols = this.Protocol,
                 SourceIps = this.SourceIp,
                 DestinationIps = this.DestinationIp,
                 SourcePorts = this.SourcePort,
-                DestinationPorts = this.DestinationPort,
-                Actions = new List<PSAzureFirewallNetworkRuleAction>
-                {
-                    new PSAzureFirewallNetworkRuleAction
-                    {
-                        Type = this.ActionType
-                    }
-                }
+                DestinationPorts = this.DestinationPort
             };
             WriteObject(networkRule);
         }

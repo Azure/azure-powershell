@@ -22,11 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Name { get; set; }
 
-        public uint Priority { get; set; }
-
         public string Description { get; set; }
-
-        public string Direction { get; set; }
 
         public List<string> Protocols { get; set; }
 
@@ -37,8 +33,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> SourcePorts { get; set; }
 
         public List<string> DestinationPorts { get; set; }
-
-        public List<PSAzureFirewallNetworkRuleAction> Actions { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
@@ -70,13 +64,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string DestinationPortsText
         {
             get { return JsonConvert.SerializeObject(DestinationPorts, Formatting.Indented); }
-        }
-
-
-        [JsonIgnore]
-        public string ActionsText
-        {
-            get { return JsonConvert.SerializeObject(Actions, Formatting.Indented); }
         }
     }
 }

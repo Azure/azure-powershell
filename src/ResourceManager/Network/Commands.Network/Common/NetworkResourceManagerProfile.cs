@@ -15,10 +15,7 @@
 namespace Microsoft.Azure.Commands.Network
 {
     using AutoMapper;
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Security;
     using WindowsAzure.Commands.Common;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
@@ -685,8 +682,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSAzureFirewallNetworkRuleCollection, MNM.AzureFirewallNetworkRuleCollection>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRule, MNM.AzureFirewallApplicationRule>();
                 cfg.CreateMap<CNM.PSAzureFirewallNetworkRule, MNM.AzureFirewallNetworkRule>();
-                cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleAction, MNM.AzureFirewallApplicationRuleAction>();
-                cfg.CreateMap<CNM.PSAzureFirewallNetworkRuleAction, MNM.AzureFirewallNetworkRuleAction>();
+                cfg.CreateMap<CNM.PSAzureFirewallRCAction, MNM.AzureFirewallRCAction>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleProtocol, MNM.AzureFirewallApplicationRuleProtocol>();
 
                 // MNM to CNM
@@ -697,8 +693,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.AzureFirewallNetworkRuleCollection, CNM.PSAzureFirewallNetworkRuleCollection>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRule, CNM.PSAzureFirewallApplicationRule>();
                 cfg.CreateMap<MNM.AzureFirewallNetworkRule, CNM.PSAzureFirewallNetworkRule>();
-                cfg.CreateMap<MNM.AzureFirewallApplicationRuleAction, CNM.PSAzureFirewallApplicationRuleAction>();
-                cfg.CreateMap<MNM.AzureFirewallNetworkRuleAction, CNM.PSAzureFirewallNetworkRuleAction>();
+                cfg.CreateMap<MNM.AzureFirewallRCAction, CNM.PSAzureFirewallRCAction>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleProtocol, CNM.PSAzureFirewallApplicationRuleProtocol>();
 
             });

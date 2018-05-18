@@ -31,12 +31,6 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The priority of the rule")]
-        [ValidateNotNullOrEmpty]
-        public uint Priority { get; set; }
-
-        [Parameter(
             Mandatory = false,
             HelpMessage = "The description of the rule")]
         [ValidateNotNullOrEmpty]
@@ -54,12 +48,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public List<string> TargetFqdn { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The actions of the rule")]
-        [ValidateNotNullOrEmpty]
-        public List<string> ActionType { get; set; }
-
         public override void Execute()
         {
             base.Execute();
@@ -72,11 +60,6 @@ namespace Microsoft.Azure.Commands.Network
             if (this.TargetFqdn == null || this.TargetFqdn.Count == 0)
             {
                 throw new ArgumentException("At least one application rule target URL should be specified!");
-            }
-
-            if (this.ActionType == null || this.ActionType.Count == 0)
-            {
-                throw new ArgumentException("At least one application rule action should be specified!");
             }
 
             // User can pass "http" or "HTTP" protocol instead of "Http"
@@ -107,39 +90,12 @@ namespace Microsoft.Azure.Commands.Network
                 };
             }).ToList();
 
-            // User can pass "allow" or "ALLOW" action instead of "Allow"
-            var actionsAsWeExpectThem = this.ActionType.Select(userActionText =>
-            {
-                string actionText = null;
-
-                if (MNM.AzureFirewallApplicationRuleActionType.Allow.Equals(userActionText, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    actionText = MNM.AzureFirewallApplicationRuleActionType.Allow;
-                }
-                else if (MNM.AzureFirewallApplicationRuleActionType.Deny.Equals(userActionText, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    actionText = MNM.AzureFirewallApplicationRuleActionType.Deny;
-                }
-                else
-                {
-                    throw new ArgumentException($"Unsupported action {userActionText}.");
-                }
-
-                return new PSAzureFirewallApplicationRuleAction
-                {
-                    Type = actionText
-                };
-            }).ToList();
-
             var applicationRule = new PSAzureFirewallApplicationRule
             {
                 Name = this.Name,
-                Priority = this.Priority,
                 Description = this.Description,
-                Direction = MNM.AzureFirewallRuleDirection.Outbound,
                 Protocols = protocolsAsWeExpectThem,
-                TargetUrls = this.TargetFqdn,
-                Actions = actionsAsWeExpectThem
+                TargetUrls = this.TargetFqdn
             };
             WriteObject(applicationRule);
         }
