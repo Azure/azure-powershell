@@ -34,7 +34,7 @@ function EventSubscriptionTests_CustomTopic {
     Write-Debug "Topic: $topicName"
     $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName -Location $location
 
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code= <HIDDEN> "
+    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
     $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
 
     # Assert
@@ -154,7 +154,7 @@ function EventSubscriptionTests_CustomTopic2 {
     $eventSubscriptionName = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
 
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code= <HIDDEN> "
+    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
     $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
 
     Write-Host "Creating resource group"
@@ -201,7 +201,7 @@ function EventSubscriptionTests_ResourceGroup {
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionName2 = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code= <HIDDEN> "
+    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
 
     Write-Debug "Creating resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
@@ -265,11 +265,11 @@ function EventSubscriptionTests_Subscription {
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionName2 = Get-EventSubscriptionName
     $eventSubscriptionName3 = Get-EventSubscriptionName
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code= <HIDDEN> "
+    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
     $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
 
-    $eventSubscriptionStorageDestinationResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>/queueServices/default/queues/<QueueName>"
-    $eventSubscriptionHybridConnectionResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Relay/namespaces/<NameSpace>/hybridConnections/<HybridConnectionName>"
+     $eventSubscriptionStorageDestinationResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>/queueServices/default/queues/<QueueName>"
+     $eventSubscriptionHybridConnectionResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Relay/namespaces/<NameSpace>/hybridConnections/<HybridConnectionName>"
 
     Write-Debug " Creating a new EventSubscription $eventSubscriptionName to subscription $subscriptionId using webhook as a destination"
     $result = New-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName
@@ -327,7 +327,7 @@ function EventSubscriptionTests_Resource {
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionName2 = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code= <HIDDEN> "
+    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
     $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
 
     Write-Debug "Creating resource group"
@@ -413,8 +413,7 @@ function EventSubscriptionTests_ResourceGroup2 {
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionName2 = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code= <HIDDEN> "
-    $eventSubscriptionQueueEndpoing = ""
+    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
 
     Write-Debug "Creating resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
@@ -461,7 +460,7 @@ function EventSubscriptionTests_Subscription2 {
     # Setup
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionName2 = Get-EventSubscriptionName
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code= <HIDDEN> "
+    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
 
     Write-Debug " Creating a new EventSubscription $eventSubscriptionName to Azure subscription"
     $labels = "Finance", "HR"
@@ -498,7 +497,7 @@ function EventSubscriptionTests_Deadletter {
     $subscriptionId = Get-SubscriptionId
     $location = Get-LocationForEventGrid
     $eventSubscriptionName = Get-EventSubscriptionName
-    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code= <HIDDEN> "
+    $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
     $deadletterResourceId = "/subscriptions/$subscriptionId/resourceGroups/testpowershelResourceGroup/providers/Microsoft.Storage/storageAccounts/testpsstorageaccount/blobServices/default/containers/psdeadletterqueue"
 
     try
