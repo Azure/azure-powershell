@@ -16,6 +16,7 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -51,6 +52,14 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -93,7 +102,20 @@ namespace Microsoft.Azure.Commands.Network
 
             MNM.NextHopResult nextHop = new MNM.NextHopResult();
 
-            if (ParameterSetName.Contains("SetByResource"))
+            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
+
+                if (networkWatcher == null)
+                {
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                }
+
+                this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                this.NetworkWatcherName = networkWatcher.Name;
+                nextHop = this.NetworkWatcherClient.GetNextHop(this.ResourceGroupName, this.NetworkWatcherName, parameters);
+            }
+            else if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
             {
                 nextHop = this.NetworkWatcherClient.GetNextHop(this.NetworkWatcher.ResourceGroupName, this.NetworkWatcher.Name, parameters);
             }

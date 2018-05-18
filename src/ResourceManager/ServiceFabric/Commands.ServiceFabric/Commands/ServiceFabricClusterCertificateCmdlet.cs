@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 X509CertificateProperties = new X509CertificateProperties()
                 {
                     Subject = subjectName,
-                    Ekus = new List<string> { "1.3.6.1.5.5.7.3.2" }
+                    Ekus = new List<string> { "1.3.6.1.5.5.7.3.1", "1.3.6.1.5.5.7.3.2" }
                 },
                 IssuerParameters = new IssuerParameters() { Name = Constants.SelfSignedIssuerName }
             };

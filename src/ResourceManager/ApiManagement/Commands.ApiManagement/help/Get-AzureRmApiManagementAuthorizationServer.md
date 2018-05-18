@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 8B0116E5-0AED-4050-BF11-1BFE65DB9436
@@ -52,7 +52,7 @@ This command gets the specified authorization server.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetByServerId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
