@@ -89,9 +89,9 @@ function Set-AzsBackupShare {
         [securestring]
         $Password,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNull()]
         [securestring]
         $EncryptionKey,
