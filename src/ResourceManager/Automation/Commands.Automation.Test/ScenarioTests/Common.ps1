@@ -36,7 +36,7 @@ Gets autoamtion account test location
 #>
 function Get-AutomationAccountTestLocation
 {
-	return Get-Location -providerNamespace "Microsoft.Automation" -resourceType "automationAccounts" -preferredLocation "Japan East"
+	return Get-Resource-Location -providerNamespace "Microsoft.Automation" -resourceType "automationAccounts" -preferredLocation "Japan East"
 }
 
 <#

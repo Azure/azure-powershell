@@ -121,3 +121,27 @@ function WaitForJobStatus
     }
     Assert-AreEqual $Status $job.Status "Job did not reach $Status status within $numOfSeconds seconds.";
 }
+
+
+function Get-Resource-Location
+{
+    param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation)
+    $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
+    $resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceTypeName -eq $resourceType}
+    $location = $resourceTypes.Locations | Where-Object { $_ -eq $preferredLocation }
+    if ($location -eq $null)
+    {
+        if ($resourceTypes.Locations.Length -ne 0)
+        {
+            return $resourceTypes.Locations[0]
+        }
+        else
+        {
+            return "West US"
+        }
+    }
+    else
+    {
+        return $location
+    }
+}

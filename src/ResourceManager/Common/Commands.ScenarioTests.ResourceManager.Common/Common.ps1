@@ -584,7 +584,7 @@ function Get-Location
 {
     param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation)
     $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
-    $resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceTypeName -eq $resourceType}
+    $resourceTypes = $provider.ResourceTypes | Where-Object { $_.Name -eq $resourceType}
     $location = $resourceTypes.Locations | Where-Object { $_ -eq $preferredLocation }
     if ($location -eq $null)
     {
