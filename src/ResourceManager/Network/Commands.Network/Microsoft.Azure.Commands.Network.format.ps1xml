@@ -2655,9 +2655,43 @@
       </CustomControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSSecureGateway</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSDdosProtectionPlan</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSSecureGateway</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSDdosProtectionPlan</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualNetworks</Label>
+                <PropertyName>VirtualNetworksText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewall</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewall</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -2709,9 +2743,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayIpConfiguration</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallIpConfiguration</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayIpConfiguration</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallIpConfiguration</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -2739,9 +2773,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRuleCollection</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRuleCollection</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -2773,9 +2807,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRule</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRule</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRule</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -2815,9 +2849,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayNetworkRuleCollection</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayNetworkRuleCollection</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -2849,9 +2883,9 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayNetworkRule</Name>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSSecureGatewayNetworkRule</TypeName>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -2896,40 +2930,6 @@
               <ListItem>
                 <Label>Actions</Label>
                 <PropertyName>ActionsText</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.Network.Models.PSDdosProtectionPlan</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Network.Models.PSDdosProtectionPlan</TypeName>
-      </ViewSelectedBy>
-      <ListControl>
-        <ListEntries>
-          <ListEntry>
-            <ListItems>
-              <ListItem>
-                <Label>Name</Label>
-                <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Id</Label>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Etag</Label>
-                <PropertyName>Etag</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>ProvisioningState</Label>
-                <PropertyName>ProvisioningState</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>VirtualNetworks</Label>
-                <PropertyName>VirtualNetworksText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

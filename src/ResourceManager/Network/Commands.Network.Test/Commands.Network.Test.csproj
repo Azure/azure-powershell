@@ -179,7 +179,7 @@
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
     <Compile Include="ScenarioTests\LoadBalancerTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteCircuitTests.cs" />
-    <Compile Include="ScenarioTests\SecureGatewayTests.cs" />
+    <Compile Include="ScenarioTests\AzureFirewallTests.cs" />
     <Compile Include="ScenarioTests\RouteTableTests.cs" />
     <Compile Include="ScenarioTests\NetworkSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\RouteTableTestsGenerated.cs" />
@@ -246,7 +246,7 @@
     <None Include="ScenarioTests\ExpressRouteCircuitTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="ScenarioTests\SecureGatewayTests.ps1">
+    <None Include="ScenarioTests\AzureFirewallTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\RouteTableTests.ps1">
