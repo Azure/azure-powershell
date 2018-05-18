@@ -12,9 +12,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
     <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -24,6 +26,8 @@
     <DelaySign>True</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>
