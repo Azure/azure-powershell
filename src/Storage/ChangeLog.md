@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Vearion 4.4.0
+## Version 4.4.0
 * Support create Storage Context with OAuth.
    - The PR pending change：
      - Change to signed package
