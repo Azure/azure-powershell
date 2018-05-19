@@ -66,6 +66,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
     '.\Microsoft.WindowsAzure.Commands.Common.Storage.dll',
     '.\Microsoft.Azure.Commands.Common.KeyVault.dll',
     '.\Microsoft.Azure.Commands.Common.Storage.Management.dll',
+    '.\Microsoft.Azure.Commands.Common.Websites.dll',
     '.\Hyak.Common.dll',
     '.\Microsoft.ApplicationInsights.dll',
     '.\Microsoft.Azure.Common.dll',
@@ -75,9 +76,9 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
     '.\Microsoft.Rest.ClientRuntime.dll',
     '.\Microsoft.Rest.ClientRuntime.Azure.dll',
     '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll',
-	'.\Microsoft.WindowsAzure.Storage.dll',
-	'.\Microsoft.WindowsAzure.Storage.DataMovement.dll',
-	'.\Microsoft.Azure.Management.Storage.dll',
+    '.\Microsoft.WindowsAzure.Storage.dll',
+    '.\Microsoft.WindowsAzure.Storage.DataMovement.dll',
+    '.\Microsoft.Azure.Management.Storage.dll',
     '.\Newtonsoft.Json.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
