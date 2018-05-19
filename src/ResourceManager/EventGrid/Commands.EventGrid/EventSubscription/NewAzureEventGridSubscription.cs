@@ -360,7 +360,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
         [ValidateSet(EventDeliverySchema.EventGridSchema, EventDeliverySchema.InputEventSchema, EventDeliverySchema.CloudEventV01Schema, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string DeliverySchema { get; set; } = EventDeliverySchema.EventGridSchema;
+        public string DeliverySchema { get; set; } = EventDeliverySchema.InputEventSchema;
 
         [Parameter(
             Mandatory = false,
