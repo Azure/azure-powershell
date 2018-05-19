@@ -16,35 +16,31 @@ Update the properties of an Event Grid event subscription.
 ```
 Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [[-ResourceGroupName] <String>]
  [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
- [-IncludedEventType <String[]>] [-Label <String[]>] [[-EventTtl] <Int32>] [[-MaxDeliveryAttempts] <Int32>]
- [[-DeadLetterEndpoint] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IncludedEventType <String[]>] [-Label <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
 ```
 Update-AzureRmEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <String>
  [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
- [-IncludedEventType <String[]>] [-Label <String[]>] [[-EventTtl] <Int32>] [[-MaxDeliveryAttempts] <Int32>]
- [[-DeadLetterEndpoint] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IncludedEventType <String[]>] [-Label <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### EventSubscriptionInputObjectSet
 ```
 Update-AzureRmEventGridSubscription [-InputObject] <PSEventSubscription> [-EndpointType <String>]
  [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-IncludedEventType <String[]>]
- [-Label <String[]>] [[-EventTtl] <Int32>] [[-MaxDeliveryAttempts] <Int32>] [[-DeadLetterEndpoint] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Label <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomTopicEventSubscriptionParameterSet
 ```
 Update-AzureRmEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
  [-TopicName] <String> [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>]
- [-SubjectEndsWith <String>] [-IncludedEventType <String[]>] [-Label <String[]>] [[-EventTtl] <Int32>]
- [[-MaxDeliveryAttempts] <Int32>] [[-DeadLetterEndpoint] <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubjectEndsWith <String>] [-IncludedEventType <String[]>] [-Label <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,33 +78,6 @@ PS C:\> Update-AzureRmEventGridSubscription -EventSubscriptionName ES1 -Resource
 Updates the properties of the event subscription \`ES1\` for the resource group \`MyResourceGroupName\` with the new labels $labels.
 
 ## PARAMETERS
-
-### -DeadLetterEndpoint
-The endpoint used for storing undelivered events. This can be a storage blob destination only.
-
-```yaml
-Type: String
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -149,7 +118,7 @@ This can be webhook or eventhub
 Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: webhook, eventhub, storagequeue, hybridconnection
+Accepted values: webhook, eventhub
 
 Required: False
 Position: Named
@@ -168,33 +137,6 @@ Aliases:
 
 Required: True
 Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EventTtl
-The time in minutes for the event delivery. This value must be between 1 and 1440
-
-```yaml
-Type: Int32
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: Int32
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases:
-
-Required: False
-Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -242,33 +184,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaxDeliveryAttempts
-The maximum number of attempts to deliver the event. This value must be between 1 and 30
-
-```yaml
-Type: Int32
-Parameter Sets: ResourceGroupNameParameterSet, ResourceIdEventSubscriptionParameterSet, CustomTopicEventSubscriptionParameterSet
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: Int32
-Parameter Sets: EventSubscriptionInputObjectSet
-Aliases:
-
-Required: False
-Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
