@@ -30,11 +30,6 @@ The **Stop-AzureRmCdnEndpoint** cmdlet stops the Azure Content Delivery Network 
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnEndpoint
