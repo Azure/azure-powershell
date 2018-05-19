@@ -8,7 +8,7 @@ using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 {
-    class TextSummaryOutputWriter : IOutputWriter, INamespaceEnumeratorListener
+    class TextSummaryOutputWriter : IOutputWriter
     {
         private readonly List<IValidationResult> _systemValidationResults;
         private readonly Dictionary<ValidationType, long> _validationErrorsHistogram;
@@ -39,19 +39,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
             _consoleWriter = consoleWriter;
             _validationErrorsHistogram = new Dictionary<ValidationType, long>();
             _systemValidationResults = new List<IValidationResult>();
-        }
-
-        public void BeginDir(IDirectoryInfo node)
-        {
-        }
-
-        public void EndDir(IDirectoryInfo node)
-        {
-            return;
-        }
-
-        public void NextFile(IFileInfo node)
-        {
         }
 
         public void Write(IValidationResult validationResult)
@@ -85,12 +72,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
             return validationResult.Result == Result.Fail;
         }
 
-        public void EndOfEnumeration(INamespaceInfo namespaceInfo)
-        {
-            WriteReport(namespaceInfo);
-        }
-
-        private void WriteReport(INamespaceInfo namespaceInfo)
+        public void WriteReport(INamespaceInfo namespaceInfo)
         {
             _consoleWriter.WriteLine(" ");
             WritePathScanned();

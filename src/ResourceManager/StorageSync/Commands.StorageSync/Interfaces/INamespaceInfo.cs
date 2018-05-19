@@ -15,5 +15,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         long NumberOfDirectories { get; }
 
         long TotalFileSizeInBytes { get; }
+
+        bool IsComplete { get; }
     }
 }

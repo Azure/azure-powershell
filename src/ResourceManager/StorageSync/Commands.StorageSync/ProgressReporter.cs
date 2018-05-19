@@ -1,11 +1,16 @@
-﻿using System.Management.Automation;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
+    using System.Management.Automation;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
+    using System;
+    using System.Diagnostics;
+
     internal abstract class ProgressReporter : IProgressReporter
     {
+        private readonly TimeSpan _updateFrequency = TimeSpan.FromSeconds(1);
+        private Stopwatch _timer;
         private long _steps;
+        private long _reserveSteps;
         private long _completedSteps;
         private int _lastCompletePercentage;
         private readonly ICmdlet _cmdlet;
@@ -22,6 +27,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             _lastCompletePercentage = 0;
             _cmdlet = cmdlet;
             _withProgressBar = withProgressBar;
+            _timer = Stopwatch.StartNew();
         }
 
         protected ProgressRecord CreateProgressRecord(int percentage)
@@ -49,11 +55,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
         public void ReserveSteps(long steps)
         {
-            long stepsRemaining = _steps - _completedSteps;
-            if (stepsRemaining >= 0 && stepsRemaining < steps)
-            {
-                _steps += steps - stepsRemaining;
-            }
+            _reserveSteps += steps;
         }
 
         public void ResetSteps(long steps)
@@ -66,11 +68,36 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             _cmdlet.WriteProgress(this.CreateProgressRecord(_lastCompletePercentage));
         }
 
+        private bool shouldUpdateProgress()
+        {
+            _timer.Stop();
+            if (_timer.Elapsed < _updateFrequency)
+            {
+                _timer.Start();
+                return false;
+            }
+
+            _timer.Restart();
+            return true;
+        }
+
+        /// <summary>
+        /// Marks completion of a single step and recalculates the progress.
+        /// </summary>
         public void CompleteStep()
         {
+            bool shouldUpdateProgress = this.shouldUpdateProgress();
+
             _completedSteps += 1;
-            int newCompletePercentage = (int) (_completedSteps * 100 / _steps);
-            if (newCompletePercentage != _lastCompletePercentage)
+            
+            // It is possible to have more actual steps than predicted
+            // and if that happens, we might not have a good estimate on remaining work
+            // we limit it to 100 to avoid going above the limit.
+            // Callers can use AddSteps, ResetSteps or ReserveSteps to update number of steps
+            // and make progress behave better if they can predict amount of pending work.
+            int newCompletePercentage = System.Math.Min(100, (int)(_completedSteps * 100 / System.Math.Max(_steps, _reserveSteps)));
+
+            if (newCompletePercentage != _lastCompletePercentage && shouldUpdateProgress)
             {
                 _lastCompletePercentage = newCompletePercentage;
                 _cmdlet.WriteProgress(this.CreateProgressRecord(newCompletePercentage));
