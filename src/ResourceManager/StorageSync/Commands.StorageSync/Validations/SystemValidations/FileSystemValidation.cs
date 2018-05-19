@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
+using System;
 using System.Linq;
 using System.Management.Automation;
 
@@ -14,9 +15,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
 
         public FileSystemValidation(IConfiguration configuration, string path)
         {
-            if (IsDriveSpecified(path))
+            AfsPath afsPath = new AfsPath(path);
+            string computerName;
+
+            if (afsPath.TryGetDriveLetterFromPath(out _driveLetter))
             {
-                _driveLetter = path[0];
+                _haveDriveLetter = true;
+            }
+            else if (afsPath.TryGetComputerNameAndDriveFromPath(out computerName, out _driveLetter))
+            {
                 _haveDriveLetter = true;
             }
             else
@@ -27,17 +34,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
             _configuration = configuration;
         }
 
-        private bool IsDriveSpecified(string path)
-        {
-            return Char.IsLetter(path[0]) && path[0] <= 0x007a;
-        }
-
         public IValidationResult ValidateUsing(IPowershellCommandRunner commandRunner)
         {
             if (!_haveDriveLetter)
             {
                 return UnableToRunBecause(
-                    "Unable to perform the File System validation. The path provided does not includes a drive.");
+                    @"Unable to perform the File System validation. In order to run this validation, specify 'Path' parameter such that it includes the drive letter, e.g. C:\MyDataSet or \\contoso-server\d$\data");
             }
 
             string filesystem;

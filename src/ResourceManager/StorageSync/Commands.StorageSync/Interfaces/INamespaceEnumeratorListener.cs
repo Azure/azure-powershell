@@ -7,5 +7,6 @@
         void EndDir(IDirectoryInfo node);
         void EndOfEnumeration(INamespaceInfo namespaceInfo);
         void UnauthorizedDir(IDirectoryInfo dir);
+        void NamespaceHint(long directoryCount, long fileCount);
     }
 }

@@ -9,5 +9,7 @@
         public long NumberOfDirectories { get; set; }
 
         public long TotalFileSizeInBytes { get; set; }
+
+        public bool IsComplete { get; set; }
     }
 }
