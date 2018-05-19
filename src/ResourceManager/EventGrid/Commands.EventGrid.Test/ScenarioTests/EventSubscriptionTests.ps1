@@ -74,7 +74,7 @@ function EventSubscriptionTests_CustomTopic {
     {
         $invalidEventDeliverySchema = "InvalidEventDeliverySchema"
         Write-Debug " Creating a new EventSubscription $eventSubscriptionName3 to topic $topicName in resource group $resourceGroupName"
-        $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -EventDeliverySchema $invalidEventDeliverySchema
+        $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -DeliverySchema $invalidEventDeliverySchema
         Assert-True {$false} "New-AzureRmEventGridSubscription succeeded while it is expected to fail as DeliverySchema range is invalid"
     }
     catch
