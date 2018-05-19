@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -62,33 +63,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("At least one application rule target URL should be specified!");
             }
 
-            // User can pass "http" or "HTTP" protocol instead of "Http"
-            var protocolsAsWeExpectThem = this.Protocol.Select(userProtocolText =>
-            {
-                string expectedProtocolText = null;
-                uint port;
-
-                if (MNM.AzureFirewallApplicationRuleProtocolType.Http.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    expectedProtocolText = MNM.AzureFirewallApplicationRuleProtocolType.Http;
-                    port = 80;
-                }
-                else if (MNM.AzureFirewallApplicationRuleProtocolType.Https.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    expectedProtocolText = MNM.AzureFirewallApplicationRuleProtocolType.Https;
-                    port = 443;
-                }
-                else
-                {
-                    throw new ArgumentException($"Unsupported protocol {userProtocolText}.");
-                }
-
-                return new PSAzureFirewallApplicationRuleProtocol
-                {
-                    ProtocolType = expectedProtocolText,
-                    Port = port
-                };
-            }).ToList();
+            var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol);
 
             var applicationRule = new PSAzureFirewallApplicationRule
             {
@@ -98,6 +73,60 @@ namespace Microsoft.Azure.Commands.Network
                 TargetUrls = this.TargetFqdn
             };
             WriteObject(applicationRule);
+        }
+
+        private List<PSAzureFirewallApplicationRuleProtocol> MapUserProtocolsToFirewallProtocols(List<string> userProtocols)
+        {
+            var protocolRegEx = new Regex("^[hH][tT][tT][pP][sS]?(:[1-9][0-9]*)?$");
+
+            var supportedProtocolsAndTheirDefaultPorts = new List<PSAzureFirewallApplicationRuleProtocol>
+            {
+                new PSAzureFirewallApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Http, Port = 80 },
+                new PSAzureFirewallApplicationRuleProtocol { ProtocolType = MNM.AzureFirewallApplicationRuleProtocolType.Https, Port = 443 }
+            };
+
+            // User can pass "http", "HTtP" or "hTTp:8080"
+            var protocolsAsWeExpectThem = this.Protocol.Select(userText =>
+            {
+                //The actual validation is performed in NRP. Here we are just trying to map user info to our model
+                if (!protocolRegEx.IsMatch(userText))
+                {
+                    throw new ArgumentException($"Invalid protocol {userText}");
+                }
+
+                var userParts = userText.Split(':');
+                var userProtocolText = userParts[0];
+                var userPortText = userParts.Length == 2 ? userParts[1] : null;
+
+                PSAzureFirewallApplicationRuleProtocol supportedProtocol;
+                try
+                {
+                    supportedProtocol = supportedProtocolsAndTheirDefaultPorts.Single(protocol => protocol.ProtocolType.Equals(userProtocolText, StringComparison.InvariantCultureIgnoreCase));
+                }
+                catch
+                {
+                    throw new ArgumentException($"Unsupported protocol {userProtocolText}. Supported protocols are {string.Join(", ", supportedProtocolsAndTheirDefaultPorts.Select(proto => proto.ProtocolType))}", nameof(Protocol));
+                }
+
+                uint port;
+                if(userPortText == null)
+                {
+                    // Use default port for this protocol
+                    port = supportedProtocol.Port;
+                }
+                else if (!uint.TryParse(userPortText, out port))
+                {
+                    throw new ArgumentException($"Invalid protocol {userText}", nameof(Protocol));
+                }
+
+                return new PSAzureFirewallApplicationRuleProtocol
+                {
+                    ProtocolType = supportedProtocol.ProtocolType,
+                    Port = port
+                };
+            }).ToList();
+
+            return protocolsAsWeExpectThem;
         }
     }
 }
