@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string InputMappingDefaultValuesHelp = "Hashtable which represents the input mapping fields with default value in space separated key=value format. Allowed key names are subject, eventtype, and dataversion.";
         public const string EventTtlHelp = "The time in minutes for the event delivery. This value must be between 1 and 1440";
         public const string MaxDeliveryAttemptsHelp = "The maximum number of attempts to deliver the event. This value must be between 1 and 30";
-        public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default is eventgridschema";
+        public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default is inputeventschema";
         public const string DeadletterEndpointHelp = "The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: " +
                                                      "/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].";
 
