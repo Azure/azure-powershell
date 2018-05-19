@@ -12,39 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common.TransientFaultHandling;
 using System;
-using System.Net;
+using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
-    public class HyakRetryStrategy : ITransientErrorDetectionStrategy
+    public class CancelRetryHandler : DelegatingHandler, ICloneable
     {
-        public bool IsTransient(Exception ex)
+        public CancelRetryHandler()
         {
-            if (ex != null)
-            {
-                HttpRequestExceptionWithStatus httpException = ex as HttpRequestExceptionWithStatus;
-                if (httpException != null)
-                {
-                    if (httpException.StatusCode == HttpStatusCode.RequestTimeout ||
-                        (httpException.StatusCode >= HttpStatusCode.InternalServerError &&
-                         httpException.StatusCode != HttpStatusCode.NotImplemented &&
-                         httpException.StatusCode != HttpStatusCode.HttpVersionNotSupported) || 
-                         httpException.StatusCode == (HttpStatusCode)429)
-                    {
-                        return true;
-                    }
-                }
+            WaitInterval = TimeSpan.Zero;
+        }
+        public CancelRetryHandler(TimeSpan waitInterval)
+        {
+            WaitInterval = waitInterval;
+        }
 
-                if (ex is TaskCanceledException)
+        public TimeSpan WaitInterval { get; set; }
+
+        public int MaxTries { get; set; } = 3;
+
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            int tries = 0;
+            do
+            {
+                try
                 {
-                    return true;
+                    return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                }
+                catch (TaskCanceledException) when (tries++ < MaxTries)
+                {
+                    Thread.Sleep(WaitInterval);
                 }
             }
+            while (true);
+        }
 
-            return false;
+        public object Clone()
+        {
+            return new CancelRetryHandler(WaitInterval);
         }
     }
 }
