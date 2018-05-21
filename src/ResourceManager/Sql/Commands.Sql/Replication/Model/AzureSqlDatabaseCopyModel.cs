@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
@@ -55,5 +56,25 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the location of the partner database
         /// </summary>
         public string CopyLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SkuName of the database
+        /// </summary>
+        public string SkuName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the edition of the database
+        /// </summary>
+        public string Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Family of the database
+        /// </summary>
+        public string Family { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Capacity of the database
+        /// </summary>
+        public int? Capacity { get; set; }
     }
 }

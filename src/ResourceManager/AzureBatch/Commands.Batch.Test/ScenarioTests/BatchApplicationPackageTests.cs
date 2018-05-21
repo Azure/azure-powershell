@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestCreatePoolWithApplicationPackage()
         {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestUpdatePoolWithApplicationPackage()
         {

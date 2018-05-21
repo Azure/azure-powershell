@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.8
 * Enable Gateway assocaite/disassociate operations on AS.
 
 ## Version 0.6.7
