@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.Labels = eventSubscription.Labels;
             this.Topic = eventSubscription.Topic;
             this.EventTtl = eventSubscription.RetryPolicy?.EventTimeToLiveInMinutes;
-            this.MaxDeliveryAttempts = eventSubscription.RetryPolicy?.MaxDeliveryAttempts;
+            this.MaxDeliveryAttempt = eventSubscription.RetryPolicy?.MaxDeliveryAttempts;
             this.EventDeliverySchema = eventSubscription.EventDeliverySchema;
             this.deadletterDestination = eventSubscription.DeadLetterDestination;
         }
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 
         public int? EventTtl { get; set; }
 
-        public int? MaxDeliveryAttempts { get; set; }
+        public int? MaxDeliveryAttempt { get; set; }
 
         public string EventDeliverySchema { get; set; }
 

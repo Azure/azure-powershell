@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "75010ece-f7cc-40ea-954a-c2454ed00481"
+          "8e7fafe2-1875-4dc8-8cf9-f02494135c99"
         ],
         "accept-language": [
           "en-US"
@@ -37,16 +37,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14996"
+          "14997"
         ],
         "x-ms-request-id": [
-          "83a5139d-799e-464b-8baa-94fdb1bb97ee"
+          "a426f6fa-3731-4c07-a998-84ed5dc1463d"
         ],
         "x-ms-correlation-request-id": [
-          "83a5139d-799e-464b-8baa-94fdb1bb97ee"
+          "a426f6fa-3731-4c07-a998-84ed5dc1463d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180518T031359Z:83a5139d-799e-464b-8baa-94fdb1bb97ee"
+          "WESTUS2:20180521T214952Z:a426f6fa-3731-4c07-a998-84ed5dc1463d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -55,7 +55,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 18 May 2018 03:13:58 GMT"
+          "Mon, 21 May 2018 21:49:51 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -70,7 +70,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4c2e0a91-e469-432a-81fa-be5bd007b1b8"
+          "fb9ff4ee-7850-472b-9f04-e9171dcc8f76"
         ],
         "accept-language": [
           "en-US"
@@ -100,16 +100,79 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "7d12fbb2-dbc6-461a-96b9-002d15b584bd"
+          "003c3f75-1dbf-4ffc-8248-2ba83515f60c"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14996"
+        ],
+        "x-ms-correlation-request-id": [
+          "33f2962c-fa88-41e1-bb96-6537ee7f07cf"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180521T214952Z:33f2962c-fa88-41e1-bb96-6537ee7f07cf"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 21 May 2018 21:49:51 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts?api-version=2018-05-01-preview",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXMvTWljcm9zb2Z0LlN0b3JhZ2UuU3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMTgtMDUtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fa7534b7-39d6-42bd-9967-77796bb84985"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3101.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provider\": \"Microsoft.Storage\",\r\n    \"displayName\": \"Storage Accounts\",\r\n    \"description\": \"Microsoft Storage service events.\",\r\n    \"resourceRegionType\": \"RegionalResource\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"supportedLocations\": [\r\n      \"West US 2\",\r\n      \"West Central US\",\r\n      \"East US 2 EUAP\",\r\n      \"East US\",\r\n      \"West US\",\r\n      \"Central US\",\r\n      \"East US 2\",\r\n      \"West Europe\",\r\n      \"North Europe\",\r\n      \"Southeast Asia\",\r\n      \"East Asia\",\r\n      \"Japan East\",\r\n      \"Japan West\",\r\n      \"Australia East\",\r\n      \"Australia Southeast\"\r\n    ]\r\n  },\r\n  \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts\",\r\n  \"name\": \"Microsoft.Storage.StorageAccounts\",\r\n  \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "605"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "212195dc-8070-48e3-a8af-b1af9a345912"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
           "14995"
         ],
         "x-ms-correlation-request-id": [
-          "58c52f4e-6635-4f8d-be15-05371345c1d7"
+          "289b1578-259d-4642-ab77-23f53e553cb8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180518T031359Z:58c52f4e-6635-4f8d-be15-05371345c1d7"
+          "WESTUS2:20180521T214952Z:289b1578-259d-4642-ab77-23f53e553cb8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -118,70 +181,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 18 May 2018 03:13:58 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts?api-version=2018-05-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuRXZlbnRHcmlkL3RvcGljVHlwZXMvTWljcm9zb2Z0LlN0b3JhZ2UuU3RvcmFnZUFjY291bnRzP2FwaS12ZXJzaW9uPTIwMTgtMDUtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "3563aa0b-c237-479f-b7d6-ca2a867ef01d"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3101.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.EventGrid.EventGridManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"provider\": \"Microsoft.Storage\",\r\n    \"displayName\": \"Storage Accounts\",\r\n    \"description\": \"Microsoft Storage service events.\",\r\n    \"resourceRegionType\": \"RegionalResource\",\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"supportedLocations\": [\r\n      \"West US 2\",\r\n      \"West Central US\",\r\n      \"East US 2 EUAP\",\r\n      \"East US\",\r\n      \"West US\",\r\n      \"Central US\",\r\n      \"East US 2\",\r\n      \"West Europe\",\r\n      \"North Europe\",\r\n      \"Southeast Asia\",\r\n      \"East Asia\",\r\n      \"Japan East\",\r\n      \"Japan West\",\r\n      \"Australia East\",\r\n      \"Australia Southeast\"\r\n    ]\r\n  },\r\n  \"id\": \"providers/Microsoft.EventGrid/topicTypes/Microsoft.Storage.StorageAccounts\",\r\n  \"name\": \"Microsoft.Storage.StorageAccounts\",\r\n  \"type\": \"Microsoft.EventGrid/topicTypes\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "605"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "72cba208-cc17-4018-89c1-afadc876f4f9"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14994"
-        ],
-        "x-ms-correlation-request-id": [
-          "64fe4427-3587-4aaa-b3d3-b3ff34c6e1b1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180518T031359Z:64fe4427-3587-4aaa-b3d3-b3ff34c6e1b1"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Fri, 18 May 2018 03:13:58 GMT"
+          "Mon, 21 May 2018 21:49:51 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -196,7 +196,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c9f9c055-ee19-4487-a1da-7e69ea6e7f99"
+          "7a47ab47-413a-4529-8a58-9e1d6a4673f2"
         ],
         "accept-language": [
           "en-US"
@@ -226,16 +226,16 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "e4a9c31d-c851-4612-a310-322d57c252b1"
+          "e98270fd-6712-4bc5-87c7-0ef0c77f5c1b"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14993"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "35fd5aeb-cf5f-4213-9c42-d9970b783a4b"
+          "d19dafa9-07ba-4d00-8d7d-3b3f971c3b4f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180518T031359Z:35fd5aeb-cf5f-4213-9c42-d9970b783a4b"
+          "WESTUS2:20180521T214952Z:d19dafa9-07ba-4d00-8d7d-3b3f971c3b4f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -244,7 +244,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 18 May 2018 03:13:58 GMT"
+          "Mon, 21 May 2018 21:49:51 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"

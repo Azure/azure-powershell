@@ -89,24 +89,24 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             Position = 5,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.InputMappingFieldsHelp,
+            HelpMessage = EventGridConstants.InputMappingFieldHelp,
             ParameterSetName = TopicNameParameterSet)]
-        public Hashtable InputMappingFields { get; set; }
+        public Hashtable InputMappingField { get; set; }
 
         [Parameter(
             Mandatory = false,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.InputMappingDefaultValuesHelp,
+            HelpMessage = EventGridConstants.InputMappingDefaultValueHelp,
             ParameterSetName = TopicNameParameterSet)]
-        public Hashtable InputMappingDefaultValues { get; set; }
+        public Hashtable InputMappingDefaultValue { get; set; }
 
         public override void ExecuteCmdlet()
         {
             // Create a new Event Grid Topic
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-            Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingFields, true);
-            Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValues, true);
+            Dictionary<string, string> inputMappingFieldsDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingField, true);
+            Dictionary<string, string> inputMappingDefaultValuesDictionary = TagsConversionHelper.CreateTagDictionary(this.InputMappingDefaultValue, true);
 
             this.ValidateInputMappingInfo(inputMappingFieldsDictionary, inputMappingDefaultValuesDictionary);
 
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                         !string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase) &&
                         !string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingFields");
+                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingField");
                     }
                 }
             }
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                         !string.Equals(entry.Key, EventGridConstants.InputMappingEventType, StringComparison.OrdinalIgnoreCase) &&
                         !string.Equals(entry.Key, EventGridConstants.InputMappingDataVersion, StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingDefaultValues");
+                        throw new InvalidOperationException($"{entry.Key} is an invalid key value for InputMappingDefaultValue");
                     }
                 }
             }

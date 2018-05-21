@@ -237,28 +237,28 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 4,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptsHelp,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptsHelp,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptsHelp,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
             Position = 2,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptsHelp,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
         [ValidateRange(1, 30)]
-        public int? MaxDeliveryAttempts { get; set; }
+        public int? MaxDeliveryAttempt { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -328,14 +328,14 @@ namespace Microsoft.Azure.Commands.EventGrid
                     throw new Exception($"Cannot find an existing event subscription with name {this.EventSubscriptionName}.");
                 }
 
-                if (this.MaxDeliveryAttempts.HasValue || this.EventTtl.HasValue)
+                if (this.MaxDeliveryAttempt.HasValue || this.EventTtl.HasValue)
                 {
                     retryPolicy = new RetryPolicy(existingEventSubscription.RetryPolicy?.MaxDeliveryAttempts, existingEventSubscription.RetryPolicy?.EventTimeToLiveInMinutes);
 
                     // Only override the new values if any.
-                    if (this.MaxDeliveryAttempts.HasValue)
+                    if (this.MaxDeliveryAttempt.HasValue)
                     {
-                        retryPolicy.MaxDeliveryAttempts = this.MaxDeliveryAttempts;
+                        retryPolicy.MaxDeliveryAttempts = this.MaxDeliveryAttempt;
                     }
 
                     if (this.EventTtl.HasValue)
