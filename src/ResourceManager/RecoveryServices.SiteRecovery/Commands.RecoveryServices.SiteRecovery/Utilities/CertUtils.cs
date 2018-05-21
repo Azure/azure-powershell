@@ -78,14 +78,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var startTime = DateTime.UtcNow.AddMinutes(-10);
             var endTime = DateTime.UtcNow.AddHours(validForHours);
 
-            var key = Create2048RsaKey();
+            CngKey key = Create2048RsaKey();
 
             var creationParams =
                 new X509CertificateCreationParameters(new X500DistinguishedName(issuer))
                 {
                     TakeOwnershipOfKey = true,
                     StartTime = startTime,
-                    EndTime = endTime
+                    EndTime = endTime,
+                    SignatureAlgorithm = X509CertificateSignatureAlgorithm.RsaSha256
                 };
 
             //// adding client authentication, -eku = 1.3.6.1.5.5.7.3.2, 
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             // now controlled by the certificate object).
             // We don't dispose it ourselves in this case.
             var cert = key.CreateSelfSignedCertificate(creationParams);
+
             key = null;
             cert.FriendlyName = friendlyName;
 

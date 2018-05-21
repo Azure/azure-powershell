@@ -182,7 +182,7 @@ Specifies the recovery tag to failover to.
 Type: String
 Parameter Sets: ByRPObject
 Aliases:
-Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
+Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent, Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
 
 Required: False
 Position: Named
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: ByRPIObjectWithRecoveryTag
 Aliases:
-Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
+Accepted values: Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent, Latest, LatestAvailable, LatestAvailableApplicationConsistent, LatestAvailableCrashConsistent
 
 Required: True
 Position: Named

@@ -44,7 +44,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.RecoveryServices.SiteRecovery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.0.3-preview\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.1.1.5-alpha\lib\net452\Microsoft.Azure.Management.RecoveryServices.SiteRecovery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Security.Cryptography">
       <HintPath>Utilities\Security.Cryptography.dll</HintPath>
@@ -55,6 +62,7 @@
     <Compile Include="AlertSetting\SetAzureRmRecoveryServicesAsrAlertSetting.cs" />
     <Compile Include="AlertSetting\GetAzureRmRecoveryServicesAsrAlertSetting.cs" />
     <Compile Include="Common\PSAsrAlertSettingClient.cs" />
+    <Compile Include="Common\PSAsrComputeManagementClient.cs" />
     <Compile Include="Common\PSAsrEventClient.cs" />
     <Compile Include="Common\PSAsrNetworkClient.cs" />
     <Compile Include="Common\PSAsrNetworkMappingClient.cs" />
@@ -178,6 +186,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
       <Project>{D3804B64-C0D3-48F8-82EC-1F632F833C9E}</Project>
       <Name>Commands.Common.Authentication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Compute\Commands.Common.Compute.csproj">
+      <Project>{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}</Project>
+      <Name>Commands.Common.Compute</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
