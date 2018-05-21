@@ -42,11 +42,6 @@ If the cmdlet finds more than one running deployment, the command fails.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -ApiVersion

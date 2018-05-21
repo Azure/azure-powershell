@@ -32,11 +32,6 @@ The **Add-AzureRmVirtualNetworkGatewayIpConfig** cmdlet adds an IP configuration
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -25,11 +25,6 @@ The **New-AzureRmSqlServerDisasterRecoveryConfiguration** cmdlet creates a SQL d
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -AsJob

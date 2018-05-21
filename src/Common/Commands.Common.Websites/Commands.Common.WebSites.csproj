@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.Common.WebSites</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.WebSites</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Management.Utilities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.12\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Version2016-09-01\AppServiceCertificateOrdersOperations.cs" />
+    <Compile Include="Version2016-09-01\AppServiceCertificateOrdersOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\AppServiceEnvironmentsOperations.cs" />
+    <Compile Include="Version2016-09-01\AppServiceEnvironmentsOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\AppServicePlansOperations.cs" />
+    <Compile Include="Version2016-09-01\AppServicePlansOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\BillingMetersOperations.cs" />
+    <Compile Include="Version2016-09-01\BillingMetersOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\CertificateRegistrationProviderOperations.cs" />
+    <Compile Include="Version2016-09-01\CertificateRegistrationProviderOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\CertificatesOperations.cs" />
+    <Compile Include="Version2016-09-01\CertificatesOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\DeletedWebAppsOperations.cs" />
+    <Compile Include="Version2016-09-01\DeletedWebAppsOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\DiagnosticsOperations.cs" />
+    <Compile Include="Version2016-09-01\DiagnosticsOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\DomainRegistrationProviderOperations.cs" />
+    <Compile Include="Version2016-09-01\DomainRegistrationProviderOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\DomainsOperations.cs" />
+    <Compile Include="Version2016-09-01\DomainsOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\IAppServiceCertificateOrdersOperations.cs" />
+    <Compile Include="Version2016-09-01\IAppServiceEnvironmentsOperations.cs" />
+    <Compile Include="Version2016-09-01\IAppServicePlansOperations.cs" />
+    <Compile Include="Version2016-09-01\IBillingMetersOperations.cs" />
+    <Compile Include="Version2016-09-01\ICertificateRegistrationProviderOperations.cs" />
+    <Compile Include="Version2016-09-01\ICertificatesOperations.cs" />
+    <Compile Include="Version2016-09-01\IDeletedWebAppsOperations.cs" />
+    <Compile Include="Version2016-09-01\IDiagnosticsOperations.cs" />
+    <Compile Include="Version2016-09-01\IDomainRegistrationProviderOperations.cs" />
+    <Compile Include="Version2016-09-01\IDomainsOperations.cs" />
+    <Compile Include="Version2016-09-01\IProviderOperations.cs" />
+    <Compile Include="Version2016-09-01\IRecommendationsOperations.cs" />
+    <Compile Include="Version2016-09-01\IResourceHealthMetadataOperations.cs" />
+    <Compile Include="Version2016-09-01\ITopLevelDomainsOperations.cs" />
+    <Compile Include="Version2016-09-01\IWebAppsOperations.cs" />
+    <Compile Include="Version2016-09-01\IWebSiteManagementClient.cs" />
+    <Compile Include="Version2016-09-01\Models\AbnormalTimePeriod.cs" />
+    <Compile Include="Version2016-09-01\Models\AccessControlEntryAction.cs" />
+    <Compile Include="Version2016-09-01\Models\Address.cs" />
+    <Compile Include="Version2016-09-01\Models\AddressResponse.cs" />
+    <Compile Include="Version2016-09-01\Models\AnalysisData.cs" />
+    <Compile Include="Version2016-09-01\Models\AnalysisDefinition.cs" />
+    <Compile Include="Version2016-09-01\Models\ApiDefinitionInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\ApplicationLogsConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\ApplicationStack.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServiceCertificate.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServiceCertificateOrder.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServiceCertificateOrderPatchResource.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServiceCertificatePatchResource.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServiceCertificateResource.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServiceEnvironment.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServiceEnvironmentPatchResource.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServiceEnvironmentResource.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServicePlan.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServicePlanPatchResource.cs" />
+    <Compile Include="Version2016-09-01\Models\AppServicePlanRestrictions.cs" />
+    <Compile Include="Version2016-09-01\Models\AutoHealActions.cs" />
+    <Compile Include="Version2016-09-01\Models\AutoHealActionType.cs" />
+    <Compile Include="Version2016-09-01\Models\AutoHealCustomAction.cs" />
+    <Compile Include="Version2016-09-01\Models\AutoHealRules.cs" />
+    <Compile Include="Version2016-09-01\Models\AutoHealTriggers.cs" />
+    <Compile Include="Version2016-09-01\Models\AzureBlobStorageApplicationLogsConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\AzureBlobStorageHttpLogsConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\AzureResourceType.cs" />
+    <Compile Include="Version2016-09-01\Models\AzureTableStorageApplicationLogsConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\BackupItem.cs" />
+    <Compile Include="Version2016-09-01\Models\BackupItemStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\BackupRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\BackupRestoreOperationType.cs" />
+    <Compile Include="Version2016-09-01\Models\BackupSchedule.cs" />
+    <Compile Include="Version2016-09-01\Models\BillingMeter.cs" />
+    <Compile Include="Version2016-09-01\Models\BuiltInAuthenticationProvider.cs" />
+    <Compile Include="Version2016-09-01\Models\Capability.cs" />
+    <Compile Include="Version2016-09-01\Models\Certificate.cs" />
+    <Compile Include="Version2016-09-01\Models\CertificateDetails.cs" />
+    <Compile Include="Version2016-09-01\Models\CertificateEmail.cs" />
+    <Compile Include="Version2016-09-01\Models\CertificateOrderAction.cs" />
+    <Compile Include="Version2016-09-01\Models\CertificateOrderActionType.cs" />
+    <Compile Include="Version2016-09-01\Models\CertificateOrderStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\CertificatePatchResource.cs" />
+    <Compile Include="Version2016-09-01\Models\CertificateProductType.cs" />
+    <Compile Include="Version2016-09-01\Models\Channels.cs" />
+    <Compile Include="Version2016-09-01\Models\CheckNameResourceTypes.cs" />
+    <Compile Include="Version2016-09-01\Models\CloneAbilityResult.cs" />
+    <Compile Include="Version2016-09-01\Models\CloningInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\ComputeModeOptions.cs" />
+    <Compile Include="Version2016-09-01\Models\ConnectionStringDictionary.cs" />
+    <Compile Include="Version2016-09-01\Models\ConnectionStringType.cs" />
+    <Compile Include="Version2016-09-01\Models\ConnStringInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\ConnStringValueTypePair.cs" />
+    <Compile Include="Version2016-09-01\Models\Contact.cs" />
+    <Compile Include="Version2016-09-01\Models\ContinuousWebJob.cs" />
+    <Compile Include="Version2016-09-01\Models\ContinuousWebJobStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\CorsSettings.cs" />
+    <Compile Include="Version2016-09-01\Models\CsmMoveResourceEnvelope.cs" />
+    <Compile Include="Version2016-09-01\Models\CsmOperationDescription.cs" />
+    <Compile Include="Version2016-09-01\Models\CsmOperationDescriptionProperties.cs" />
+    <Compile Include="Version2016-09-01\Models\CsmOperationDisplay.cs" />
+    <Compile Include="Version2016-09-01\Models\CsmPublishingProfileOptions.cs" />
+    <Compile Include="Version2016-09-01\Models\CsmSlotEntity.cs" />
+    <Compile Include="Version2016-09-01\Models\CsmUsageQuota.cs" />
+    <Compile Include="Version2016-09-01\Models\CustomHostnameAnalysisResult.cs" />
+    <Compile Include="Version2016-09-01\Models\CustomHostNameDnsRecordType.cs" />
+    <Compile Include="Version2016-09-01\Models\DatabaseBackupSetting.cs" />
+    <Compile Include="Version2016-09-01\Models\DatabaseType.cs" />
+    <Compile Include="Version2016-09-01\Models\DataSource.cs" />
+    <Compile Include="Version2016-09-01\Models\DefaultErrorResponse.cs" />
+    <Compile Include="Version2016-09-01\Models\DefaultErrorResponseError.cs" />
+    <Compile Include="Version2016-09-01\Models\DefaultErrorResponseErrorDetailsItem.cs" />
+    <Compile Include="Version2016-09-01\Models\DefaultErrorResponseException.cs" />
+    <Compile Include="Version2016-09-01\Models\DeletedSite.cs" />
+    <Compile Include="Version2016-09-01\Models\Deployment.cs" />
+    <Compile Include="Version2016-09-01\Models\DeploymentLocations.cs" />
+    <Compile Include="Version2016-09-01\Models\DetectorAbnormalTimePeriod.cs" />
+    <Compile Include="Version2016-09-01\Models\DetectorDefinition.cs" />
+    <Compile Include="Version2016-09-01\Models\DiagnosticAnalysis.cs" />
+    <Compile Include="Version2016-09-01\Models\DiagnosticCategory.cs" />
+    <Compile Include="Version2016-09-01\Models\DiagnosticDetectorResponse.cs" />
+    <Compile Include="Version2016-09-01\Models\DiagnosticMetricSample.cs" />
+    <Compile Include="Version2016-09-01\Models\DiagnosticMetricSet.cs" />
+    <Compile Include="Version2016-09-01\Models\Dimension.cs" />
+    <Compile Include="Version2016-09-01\Models\DnsType.cs" />
+    <Compile Include="Version2016-09-01\Models\DnsVerificationTestResult.cs" />
+    <Compile Include="Version2016-09-01\Models\Domain.cs" />
+    <Compile Include="Version2016-09-01\Models\DomainAvailablilityCheckResult.cs" />
+    <Compile Include="Version2016-09-01\Models\DomainControlCenterSsoRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\DomainOwnershipIdentifier.cs" />
+    <Compile Include="Version2016-09-01\Models\DomainPatchResource.cs" />
+    <Compile Include="Version2016-09-01\Models\DomainPurchaseConsent.cs" />
+    <Compile Include="Version2016-09-01\Models\DomainRecommendationSearchParameters.cs" />
+    <Compile Include="Version2016-09-01\Models\DomainStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\DomainType.cs" />
+    <Compile Include="Version2016-09-01\Models\EnabledConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\ErrorEntity.cs" />
+    <Compile Include="Version2016-09-01\Models\ErrorResponse.cs" />
+    <Compile Include="Version2016-09-01\Models\ErrorResponseException.cs" />
+    <Compile Include="Version2016-09-01\Models\Experiments.cs" />
+    <Compile Include="Version2016-09-01\Models\FileSystemApplicationLogsConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\FileSystemHttpLogsConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\FrequencyUnit.cs" />
+    <Compile Include="Version2016-09-01\Models\FunctionEnvelope.cs" />
+    <Compile Include="Version2016-09-01\Models\FunctionSecrets.cs" />
+    <Compile Include="Version2016-09-01\Models\GeoRegion.cs" />
+    <Compile Include="Version2016-09-01\Models\GlobalCsmSkuDescription.cs" />
+    <Compile Include="Version2016-09-01\Models\HandlerMapping.cs" />
+    <Compile Include="Version2016-09-01\Models\HostingEnvironmentDeploymentInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\HostingEnvironmentDiagnostics.cs" />
+    <Compile Include="Version2016-09-01\Models\HostingEnvironmentProfile.cs" />
+    <Compile Include="Version2016-09-01\Models\HostingEnvironmentStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\HostName.cs" />
+    <Compile Include="Version2016-09-01\Models\HostNameBinding.cs" />
+    <Compile Include="Version2016-09-01\Models\HostNameSslState.cs" />
+    <Compile Include="Version2016-09-01\Models\HostNameType.cs" />
+    <Compile Include="Version2016-09-01\Models\HostType.cs" />
+    <Compile Include="Version2016-09-01\Models\HttpLogsConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\HybridConnection.cs" />
+    <Compile Include="Version2016-09-01\Models\HybridConnectionKey.cs" />
+    <Compile Include="Version2016-09-01\Models\HybridConnectionLimits.cs" />
+    <Compile Include="Version2016-09-01\Models\Identifier.cs" />
+    <Compile Include="Version2016-09-01\Models\InAvailabilityReasonType.cs" />
+    <Compile Include="Version2016-09-01\Models\InternalLoadBalancingMode.cs" />
+    <Compile Include="Version2016-09-01\Models\IpSecurityRestriction.cs" />
+    <Compile Include="Version2016-09-01\Models\IssueType.cs" />
+    <Compile Include="Version2016-09-01\Models\KeyVaultSecretStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\LocalizableString.cs" />
+    <Compile Include="Version2016-09-01\Models\LogLevel.cs" />
+    <Compile Include="Version2016-09-01\Models\ManagedPipelineMode.cs" />
+    <Compile Include="Version2016-09-01\Models\ManagedServiceIdentity.cs" />
+    <Compile Include="Version2016-09-01\Models\ManagedServiceIdentityType.cs" />
+    <Compile Include="Version2016-09-01\Models\MetricAvailabilily.cs" />
+    <Compile Include="Version2016-09-01\Models\MetricAvailability.cs" />
+    <Compile Include="Version2016-09-01\Models\MetricDefinition.cs" />
+    <Compile Include="Version2016-09-01\Models\MetricSpecification.cs" />
+    <Compile Include="Version2016-09-01\Models\MigrateMySqlRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\MigrateMySqlStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\MSDeploy.cs" />
+    <Compile Include="Version2016-09-01\Models\MSDeployLog.cs" />
+    <Compile Include="Version2016-09-01\Models\MSDeployLogEntry.cs" />
+    <Compile Include="Version2016-09-01\Models\MSDeployLogEntryType.cs" />
+    <Compile Include="Version2016-09-01\Models\MSDeployProvisioningState.cs" />
+    <Compile Include="Version2016-09-01\Models\MSDeployStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\MySqlMigrationType.cs" />
+    <Compile Include="Version2016-09-01\Models\NameIdentifier.cs" />
+    <Compile Include="Version2016-09-01\Models\NameValuePair.cs" />
+    <Compile Include="Version2016-09-01\Models\NetworkAccessControlEntry.cs" />
+    <Compile Include="Version2016-09-01\Models\NetworkFeatures.cs" />
+    <Compile Include="Version2016-09-01\Models\NotificationLevel.cs" />
+    <Compile Include="Version2016-09-01\Models\Operation.cs" />
+    <Compile Include="Version2016-09-01\Models\OperationStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\Page.cs" />
+    <Compile Include="Version2016-09-01\Models\PerfMonResponse.cs" />
+    <Compile Include="Version2016-09-01\Models\PerfMonSample.cs" />
+    <Compile Include="Version2016-09-01\Models\PerfMonSet.cs" />
+    <Compile Include="Version2016-09-01\Models\PremierAddOn.cs" />
+    <Compile Include="Version2016-09-01\Models\PremierAddOnOffer.cs" />
+    <Compile Include="Version2016-09-01\Models\ProcessInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\ProcessModuleInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\ProcessThreadInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\ProvisioningState.cs" />
+    <Compile Include="Version2016-09-01\Models\ProxyOnlyResource.cs" />
+    <Compile Include="Version2016-09-01\Models\PublicCertificate.cs" />
+    <Compile Include="Version2016-09-01\Models\PublicCertificateLocation.cs" />
+    <Compile Include="Version2016-09-01\Models\PublishingProfileFormat.cs" />
+    <Compile Include="Version2016-09-01\Models\PushSettings.cs" />
+    <Compile Include="Version2016-09-01\Models\RampUpRule.cs" />
+    <Compile Include="Version2016-09-01\Models\Recommendation.cs" />
+    <Compile Include="Version2016-09-01\Models\RecommendationRule.cs" />
+    <Compile Include="Version2016-09-01\Models\ReissueCertificateOrderRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\RelayServiceConnectionEntity.cs" />
+    <Compile Include="Version2016-09-01\Models\RenewCertificateOrderRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\RequestsBasedTrigger.cs" />
+    <Compile Include="Version2016-09-01\Models\Resource.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceHealthMetadata.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceMetric.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceMetricAvailability.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceMetricDefinition.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceMetricName.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceMetricProperty.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceMetricValue.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceNameAvailability.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceNameAvailabilityRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\ResourceScopeType.cs" />
+    <Compile Include="Version2016-09-01\Models\ResponseMetaData.cs" />
+    <Compile Include="Version2016-09-01\Models\RestoreRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\RestoreResponse.cs" />
+    <Compile Include="Version2016-09-01\Models\RouteType.cs" />
+    <Compile Include="Version2016-09-01\Models\ScmType.cs" />
+    <Compile Include="Version2016-09-01\Models\ServiceSpecification.cs" />
+    <Compile Include="Version2016-09-01\Models\Site.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteAuthSettings.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteAvailabilityState.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteCloneability.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteCloneabilityCriterion.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteConfigResource.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteConfigurationSnapshotInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteExtensionInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteExtensionType.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteInstance.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteLimits.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteLoadBalancing.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteLogsConfig.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteMachineKey.cs" />
+    <Compile Include="Version2016-09-01\Models\SitePatchResource.cs" />
+    <Compile Include="Version2016-09-01\Models\SitePhpErrorLogFlag.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteSeal.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteSealRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\SiteSourceControl.cs" />
+    <Compile Include="Version2016-09-01\Models\SkuCapacity.cs" />
+    <Compile Include="Version2016-09-01\Models\SkuDescription.cs" />
+    <Compile Include="Version2016-09-01\Models\SkuInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\SkuInfos.cs" />
+    <Compile Include="Version2016-09-01\Models\SkuName.cs" />
+    <Compile Include="Version2016-09-01\Models\SlotConfigNamesResource.cs" />
+    <Compile Include="Version2016-09-01\Models\SlotDifference.cs" />
+    <Compile Include="Version2016-09-01\Models\SlotSwapStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\SlowRequestsBasedTrigger.cs" />
+    <Compile Include="Version2016-09-01\Models\Snapshot.cs" />
+    <Compile Include="Version2016-09-01\Models\SnapshotRecoveryRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\SnapshotRecoveryTarget.cs" />
+    <Compile Include="Version2016-09-01\Models\Solution.cs" />
+    <Compile Include="Version2016-09-01\Models\SolutionType.cs" />
+    <Compile Include="Version2016-09-01\Models\SourceControl.cs" />
+    <Compile Include="Version2016-09-01\Models\SslState.cs" />
+    <Compile Include="Version2016-09-01\Models\StackMajorVersion.cs" />
+    <Compile Include="Version2016-09-01\Models\StackMinorVersion.cs" />
+    <Compile Include="Version2016-09-01\Models\StampCapacity.cs" />
+    <Compile Include="Version2016-09-01\Models\StatusCodesBasedTrigger.cs" />
+    <Compile Include="Version2016-09-01\Models\StatusOptions.cs" />
+    <Compile Include="Version2016-09-01\Models\StorageMigrationOptions.cs" />
+    <Compile Include="Version2016-09-01\Models\StorageMigrationResponse.cs" />
+    <Compile Include="Version2016-09-01\Models\StringDictionary.cs" />
+    <Compile Include="Version2016-09-01\Models\SupportedTlsVersions.cs" />
+    <Compile Include="Version2016-09-01\Models\TldLegalAgreement.cs" />
+    <Compile Include="Version2016-09-01\Models\TopLevelDomain.cs" />
+    <Compile Include="Version2016-09-01\Models\TopLevelDomainAgreementOption.cs" />
+    <Compile Include="Version2016-09-01\Models\TriggeredJobHistory.cs" />
+    <Compile Include="Version2016-09-01\Models\TriggeredJobRun.cs" />
+    <Compile Include="Version2016-09-01\Models\TriggeredWebJob.cs" />
+    <Compile Include="Version2016-09-01\Models\TriggeredWebJobStatus.cs" />
+    <Compile Include="Version2016-09-01\Models\UnauthenticatedClientAction.cs" />
+    <Compile Include="Version2016-09-01\Models\Usage.cs" />
+    <Compile Include="Version2016-09-01\Models\UsageState.cs" />
+    <Compile Include="Version2016-09-01\Models\User.cs" />
+    <Compile Include="Version2016-09-01\Models\ValidateRequest.cs" />
+    <Compile Include="Version2016-09-01\Models\ValidateResourceTypes.cs" />
+    <Compile Include="Version2016-09-01\Models\ValidateResponse.cs" />
+    <Compile Include="Version2016-09-01\Models\ValidateResponseError.cs" />
+    <Compile Include="Version2016-09-01\Models\VirtualApplication.cs" />
+    <Compile Include="Version2016-09-01\Models\VirtualDirectory.cs" />
+    <Compile Include="Version2016-09-01\Models\VirtualIPMapping.cs" />
+    <Compile Include="Version2016-09-01\Models\VirtualNetworkProfile.cs" />
+    <Compile Include="Version2016-09-01\Models\VnetGateway.cs" />
+    <Compile Include="Version2016-09-01\Models\VnetInfo.cs" />
+    <Compile Include="Version2016-09-01\Models\VnetParameters.cs" />
+    <Compile Include="Version2016-09-01\Models\VnetRoute.cs" />
+    <Compile Include="Version2016-09-01\Models\VnetValidationFailureDetails.cs" />
+    <Compile Include="Version2016-09-01\Models\VnetValidationTestFailure.cs" />
+    <Compile Include="Version2016-09-01\Models\WebJob.cs" />
+    <Compile Include="Version2016-09-01\Models\WebJobType.cs" />
+    <Compile Include="Version2016-09-01\Models\WorkerPool.cs" />
+    <Compile Include="Version2016-09-01\Models\WorkerPoolResource.cs" />
+    <Compile Include="Version2016-09-01\Models\WorkerSizeOptions.cs" />
+    <Compile Include="Version2016-09-01\ProviderOperations.cs" />
+    <Compile Include="Version2016-09-01\ProviderOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\RecommendationsOperations.cs" />
+    <Compile Include="Version2016-09-01\RecommendationsOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\ResourceHealthMetadataOperations.cs" />
+    <Compile Include="Version2016-09-01\ResourceHealthMetadataOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\TopLevelDomainsOperations.cs" />
+    <Compile Include="Version2016-09-01\TopLevelDomainsOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\WebAppsOperations.cs" />
+    <Compile Include="Version2016-09-01\WebAppsOperationsExtensions.cs" />
+    <Compile Include="Version2016-09-01\WebSiteManagementClient.cs" />
+    <Compile Include="Version2016-09-01\WebSiteManagementClientExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
