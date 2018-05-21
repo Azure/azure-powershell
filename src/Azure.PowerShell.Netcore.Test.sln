@@ -27,8 +27,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Network.Netcore", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Strategies.Netcore", "ResourceManager\Common\Commands.Common.Strategies\Common.Strategies.Netcore.csproj", "{C1F773EB-551B-4735-BC6E-800122B2D2FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Compute.Netcore", "ResourceManager\Compute\Commands.Compute\Commands.Compute.Netcore.csproj", "{72F6252D-EB47-45B0-BD29-B22F7DF3884E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Network.Test.Netcore", "ResourceManager\Network\Commands.Network.Test\Commands.Network.Test.Netcore.csproj", "{0F4219ED-4A8E-4E6A-88A0-352D804B912D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Sql.Test.Netcore", "ResourceManager\Sql\Commands.Sql.Test\Commands.Sql.Test.Netcore.csproj", "{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}"
@@ -211,18 +209,6 @@ Global
 		{C1F773EB-551B-4735-BC6E-800122B2D2FE}.Release|x64.Build.0 = Release|Any CPU
 		{C1F773EB-551B-4735-BC6E-800122B2D2FE}.Release|x86.ActiveCfg = Release|Any CPU
 		{C1F773EB-551B-4735-BC6E-800122B2D2FE}.Release|x86.Build.0 = Release|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Debug|x64.Build.0 = Debug|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Debug|x86.Build.0 = Debug|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Release|x64.ActiveCfg = Release|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Release|x64.Build.0 = Release|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Release|x86.ActiveCfg = Release|Any CPU
-		{72F6252D-EB47-45B0-BD29-B22F7DF3884E}.Release|x86.Build.0 = Release|Any CPU
 		{0F4219ED-4A8E-4E6A-88A0-352D804B912D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F4219ED-4A8E-4E6A-88A0-352D804B912D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4219ED-4A8E-4E6A-88A0-352D804B912D}.Debug|x64.ActiveCfg = Debug|Any CPU
