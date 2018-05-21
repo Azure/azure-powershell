@@ -23,11 +23,6 @@ The **Get-AzureRmBatchAccountKeys** cmdlet gets the keys of an Azure Batch accou
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -AccountName

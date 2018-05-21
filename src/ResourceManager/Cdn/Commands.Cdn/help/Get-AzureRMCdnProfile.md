@@ -23,11 +23,6 @@ The **Get-AzureRMCdnProfile** cmdlet gets an Azure Content Delivery Network (CDN
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
