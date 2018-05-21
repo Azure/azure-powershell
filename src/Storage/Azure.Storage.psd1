@@ -158,6 +158,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
+
         ReleaseNotes = '* Support creating Storage Context with OAuth credentials.'
 
         # Prerelease string of this module

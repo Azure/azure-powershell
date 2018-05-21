@@ -280,6 +280,106 @@ function Publish-RMModule
     }
 }
 
+<#
+.SYNOPSIS
+    Saves a module into the local temporary repository
+
+.PARAMETER Module
+    Module information.
+
+.PARAMETER TempRepo
+    Name of the local temporary repository
+
+.PARAMETER TempRepoPath
+    Path to the local temporary repository
+#>
+function Save-PackageLocally {
+    [CmdletBinding()]
+    param(
+        $Module,
+        [string]$TempRepo,
+        [string]$TempRepoPath
+    )
+
+    $ModuleName = $module['ModuleName']
+    $RequiredVersion = $module['RequiredVersion']
+    if ($RequiredVersion -eq $null)
+    {
+        $RequiredVersion = $module['ModuleVersion']
+    }
+
+    # Only check for the modules that specifies = required exact dependency version
+    if ($RequiredVersion -ne $null) {
+        Write-Output "Checking for required module $ModuleName, $RequiredVersion"
+        if (Find-Module -Name $ModuleName -RequiredVersion $RequiredVersion -Repository $TempRepo -ErrorAction SilentlyContinue) {
+            Write-Output "Required dependency $ModuleName, $RequiredVersion found in the repo $TempRepo"
+        } elseif ((Get-Module -ListAvailable -Name $ModuleName | Where-Object {$_.Version -eq $RequiredVersion}) -ne $null) {
+            Write-Output "Required dependency $ModuleName, $RequiredVersion found in build modules"
+        } else {
+            Write-Warning "Required dependency $ModuleName, $RequiredVersion not found in the repo $TempRepo"
+            Write-Output "Downloading the package from PsGallery to the path $TempRepoPath"
+            # We try to download the package from the PsGallery as we are likely intending to use the existing version of the module.
+            # If the module not found in psgallery, the following commnad would fail and hence publish to local repo process would fail as well
+            Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 | Out-Null
+            Write-Output "Downloaded the package sucessfully"
+        }
+    }
+}
+
+<#
+.SYNOPSIS
+Save the packages from PsGallery to local repo path
+This is typically used in a scenario where we are intending to use the existing publshed version of the module as a dependency
+Checks whether the module is already published in the local temp repo, if not downloads from the PSGallery
+This is used only for the rollup modules AzureRm or AzureStack at the moment
+
+.PARAMETER ModulePaths
+List of paths to modules.
+
+.PARAMETER TempRepo
+Name of local temporary repository.
+
+.PARAMETER TempRepoPath
+path to local temporary repository.
+
+#>
+function Save-PackagesFromPsGallery {
+    [CmdletBinding()]
+    param(
+        [String[]]$ModulePaths,
+
+        [ValidateNotNullOrEmpty()]
+        [String]$TempRepo,
+
+        [ValidateNotNullOrEmpty()]
+        [String]$TempRepoPath
+    )
+    PROCESS {
+
+        Write-Output "Saving..."
+
+        foreach ($modulePath in $ModulePaths) {
+
+            Write-Output "module path $modulePath"
+
+            $module = (Get-Item -Path $modulePath).Name
+            $moduleManifest = $module + ".psd1"
+
+            Write-Host "Verifying $module has all the dependencies in the repo $TempRepo"
+
+            $psDataFile = Import-PowershellDataFile (Join-Path $modulePath -ChildPath $moduleManifest)
+            $RequiredModules = $psDataFile['RequiredModules']
+
+            if ($RequiredModules -ne $null) {
+                foreach ($tmp in $RequiredModules) {
+                    foreach ($module in $tmp) {
+                        Save-PackageLocally -Module $module -TempRepo $TempRepo -TempRepoPath $TempRepoPath
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 if ([string]::IsNullOrEmpty($buildConfig))
@@ -336,10 +436,17 @@ if ($repo -ne $null) {
     Register-PSRepository -Name $tempRepoName -SourceLocation $tempRepoPath -PublishLocation $tempRepoPath -InstallationPolicy Trusted -PackageManagementProvider NuGet
 }
 
-$env:PSModulePath="$env:PSModulePath;$tempRepoPath"
+
+
+        $sourceModulePath = "$packageFolder\ResourceManager\AzureResourceManager"
+
+$sourceModulePath
+$env:PSModulePath="$env:PSModulePath;$tempRepoPath;$sourceModulePath"
+$env:PSModulePath
 
 try {
     $modulesInScope = Get-TargetModules -buildConfig $buildConfig -Scope $scope -PublishLocal $publishToLocal -Profile $Profile
+    Save-PackagesFromPsGallery -ModulePaths $modulesInScope -TempRepo $tempRepoName -TempRepoPath $tempRepoPath
     foreach ($modulePath in $modulesInScope) {
         # filter out AzureRM.Profile which always gets published first 
         # And "Azure.Storage" which is built out as test dependencies  

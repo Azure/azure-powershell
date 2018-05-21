@@ -20,10 +20,18 @@
 ## Current Release
 
 ## Version 5.0.2-preview
-* Support create Storage Context with OAuth.
-   - The PR pending change：
-     - Change to signed package
-     - Use AuthenticationFactory in Powershell to replace ADAL reference.
+* Support Immutability Policy in AzureRm.Storage
+        - Remove-AzureRmStorageAccountNetworkRule,
+        - Get-AzureRmStorageContainer,
+        - Update-AzureRmStorageContainer,
+        - New-AzureRmStorageContainer,
+        - Remove-AzureRmStorageContainer,
+        - Add-AzureRmStorageContainerLegalHold,
+        - Remove-AzureRmStorageContainerLegalHold,
+        - Set-AzureRmStorageContainerImmutabilityPolicy,
+        - Get-AzureRmStorageContainerImmutabilityPolicy,
+        - Remove-AzureRmStorageContainerImmutabilityPolicy,
+        - Lock-AzureRmStorageContainerImmutabilityPolicy
 
 ## Version 5.0.1-preview
 * Support get the Storage resource usage of a specific location
