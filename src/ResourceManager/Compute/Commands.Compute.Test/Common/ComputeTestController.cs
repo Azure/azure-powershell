@@ -218,9 +218,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         private KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
         {
-            return testViaCsm
-                ? context.GetServiceClient<KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
-                : TestBase.GetServiceClient<KeyVaultManagementClient>(new RDFETestEnvironmentFactory());
+            return context.GetServiceClient<KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
