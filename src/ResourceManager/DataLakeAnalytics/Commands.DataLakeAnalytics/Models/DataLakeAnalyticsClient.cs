@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
+using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.DataLake.Analytics;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
@@ -33,6 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private readonly DataLakeAnalyticsAccountManagementClient _accountClient;
         private readonly DataLakeAnalyticsCatalogManagementClient _catalogClient;
         private readonly DataLakeAnalyticsJobManagementClient _jobClient;
+        private readonly ActiveDirectoryClient _activeDirectoryClient;
         private readonly Guid _subscriptionId;
         private static Queue<Guid> jobIdQueue;
 
@@ -73,6 +75,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             _catalogClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsCatalogManagementClient>(context,
                 AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, true);
+
+            _activeDirectoryClient = new ActiveDirectoryClient(context);
         }
 
         #region Account Related Operations
@@ -808,6 +812,167 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
+        public List<Acl> GetCatalogItemAclEntry(string accountName, CatalogPathInstance path, string catalogItemType, IEnumerable<string> requiredAceTypes)
+        {
+            IPage<Acl> firstPage;
+            Func<string, IPage<Acl>> getNextPage;
+
+            // If catalog item type is not specified, the entire ACL of catalog will be retrieved
+            if (string.IsNullOrEmpty(catalogItemType))
+            {
+                firstPage = _catalogClient.Catalog.ListAcls(accountName);
+                getNextPage = nextPageLink => _catalogClient.Catalog.ListAclsNext(nextPageLink);
+            }
+            else
+            {
+                // If catalog item type is specified, ACL of the specified catalog item will be retrieved.
+                if (string.IsNullOrEmpty(path?.FullCatalogItemPath))
+                {
+                    throw new InvalidOperationException(Properties.Resources.MissingCatalogPathForAclOperation);
+                }
+
+                var itemType = (DataLakeAnalyticsEnums.CatalogItemType)Enum.Parse(typeof(DataLakeAnalyticsEnums.CatalogItemType), catalogItemType, true);
+                switch (itemType)
+                {
+                    case DataLakeAnalyticsEnums.CatalogItemType.Database:
+                        firstPage = _catalogClient.Catalog.ListAclsByDatabase(accountName, path.DatabaseName);
+                        getNextPage = nextPageLink => _catalogClient.Catalog.ListAclsByDatabase(nextPageLink, path.DatabaseName);
+                        break;
+
+                    default: throw new ArgumentException($"ACL operations are unsupported for catatlog item type: {itemType}");
+                }
+            }
+
+            var toReturn = GetCatalogItemAclEntry(firstPage, getNextPage);
+            return toReturn.Where(acl => acl?.AceType != null && requiredAceTypes.Contains(acl.AceType)).ToList();
+        }
+
+        public void AddOrUpdateCatalogItemAclEntry(
+            string accountName,
+            CatalogPathInstance path,
+            string catalogItemType,
+            string aceType,
+            Guid principalId,
+            DataLakeAnalyticsEnums.PermissionType permissions)
+        {
+            // Make sure principal ID is not empty GUID. 
+            // When principal ID is empty GUID:
+            // If ACE type is User or Group: principal ID should be provided by end user so an exception will be thrown;
+            // In other cases (Other/UserOwner/GroupOwner), a new GUID will be created and served as principal id.
+            if (principalId == Guid.Empty)
+            {
+                if (aceType != AclType.Other && aceType != AclType.UserObj && aceType != AclType.GroupObj)
+                {
+                    throw new InvalidOperationException(Properties.Resources.MissingPrincipalId);
+                }
+
+                principalId = Guid.NewGuid();
+            }
+
+            // If ACE type has not been set yet, it indicates that the ACE type can be inferred by principal ID,
+            // and the ACE type should be either user or group. The strategy of determining ACE type is,
+            // if an object ID does not represent group, for example, user or service principal, its ACE type will be user.
+            if (string.IsNullOrEmpty(aceType))
+            {
+                var adObject = _activeDirectoryClient.GetADObject(new ADObjectFilterOptions { Id = principalId.ToString() });
+                if (adObject == null)
+                {
+                    throw new InvalidOperationException(Properties.Resources.PrincipalNotFound);
+                }
+
+                aceType = adObject.Type == "Group" ? AclType.Group : AclType.User;
+            }
+
+            var parameters = new AclCreateOrUpdateParameters(aceType, principalId, GetPermissionType(permissions));
+
+            // If catalog item type is not specified, grant an ACL entry to catalog
+            if (string.IsNullOrEmpty(catalogItemType))
+            {
+                _catalogClient.Catalog.GrantAcl(accountName, parameters);
+            }
+            else
+            {
+                // If catalog item type is specified, grant an ACL entry to catalog item
+                if (string.IsNullOrEmpty(path?.FullCatalogItemPath))
+                {
+                    throw new InvalidOperationException(Properties.Resources.MissingCatalogPathForAclOperation);
+                }
+
+                var itemType = (DataLakeAnalyticsEnums.CatalogItemType)Enum.Parse(typeof(DataLakeAnalyticsEnums.CatalogItemType), catalogItemType, true);
+                switch (itemType)
+                {
+                    case DataLakeAnalyticsEnums.CatalogItemType.Database:
+                        _catalogClient.Catalog.GrantAclToDatabase(accountName, path.DatabaseName, parameters);
+                        break;
+
+                    default: throw new ArgumentException($"ACL operations are unsupported for catatlog item type: {itemType}");
+                }
+            }
+        }
+
+        public void RemoveCatalogItemAclEntry(
+            string accountName,
+            CatalogPathInstance path,
+            string catalogItemType,
+            Guid principalId)
+        {
+            string aceType = string.Empty;
+
+            // Make sure principal ID is not empty GUID. 
+            // When principal ID is empty GUID:
+            // If ACE type is User or Group: principal ID should be provided by end user so an exception will be thrown;
+            // If ACE type is Other, a new GUID will be created and served as principal id.
+            if (principalId == Guid.Empty)
+            {
+                if (aceType != AclType.Other && aceType != AclType.UserObj && aceType != AclType.GroupObj)
+                {
+                    throw new InvalidOperationException(Properties.Resources.MissingPrincipalId);
+                }
+
+                principalId = Guid.NewGuid();
+            }
+
+            // If ACE type has not been set yet, it indicates that the ACE type can be inferred by principal ID,
+            // and the ACE type should be either user or group. The strategy of determining ACE type is,
+            // if an object ID does not represent group, for example, user or service principal, its ACE type will be user.
+            if (string.IsNullOrEmpty(aceType))
+            {
+                var adObject = _activeDirectoryClient.GetADObject(new ADObjectFilterOptions { Id = principalId.ToString() });
+                if (adObject == null)
+                {
+                    throw new InvalidOperationException(Properties.Resources.PrincipalNotFound);
+                }
+
+                aceType = adObject.Type == "Group" ? AclType.Group : AclType.User;
+            }
+
+            var parameters = new AclDeleteParameters(aceType, principalId);
+
+            // If catalog item type is not specified, revoke an ACL entry to catalog
+            if (string.IsNullOrEmpty(catalogItemType))
+            {
+                _catalogClient.Catalog.RevokeAcl(accountName, parameters);
+            }
+            else
+            {
+                // If catalog item type is specified, revoke an ACL entry to catalog item
+                if (string.IsNullOrEmpty(path?.FullCatalogItemPath))
+                {
+                    throw new InvalidOperationException(Properties.Resources.MissingCatalogPathForAclOperation);
+                }
+
+                var itemType = (DataLakeAnalyticsEnums.CatalogItemType)Enum.Parse(typeof(DataLakeAnalyticsEnums.CatalogItemType), catalogItemType, true);
+                switch (itemType)
+                {
+                    case DataLakeAnalyticsEnums.CatalogItemType.Database:
+                        _catalogClient.Catalog.RevokeAclFromDatabase(accountName, path.DatabaseName, parameters);
+                        break;
+
+                    default: throw new ArgumentException($"ACL operations are unsupported for catatlog item type: {itemType}");
+                }
+            }
+        }
+
         private USqlDatabase GetDatabase(string accountName, string databaseName)
         {
             return _catalogClient.Catalog.GetDatabase(accountName, databaseName);
@@ -1522,6 +1687,17 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
 
             return toReturn;
+        }
+
+        private static string GetPermissionType(DataLakeAnalyticsEnums.PermissionType permission)
+        {
+            switch (permission)
+            {
+                case DataLakeAnalyticsEnums.PermissionType.None: return PermissionType.None;
+                case DataLakeAnalyticsEnums.PermissionType.Read: return PermissionType.Use;
+                case DataLakeAnalyticsEnums.PermissionType.ReadWrite: return PermissionType.All;
+                default: throw new ArgumentException("PermissionType is invalid");
+            }
         }
         #endregion
     }

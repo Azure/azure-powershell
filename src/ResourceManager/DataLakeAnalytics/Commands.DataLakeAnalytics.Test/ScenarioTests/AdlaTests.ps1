@@ -1217,6 +1217,207 @@ function Test-DataLakeAnalyticsCatalog
 		# verify that the second secret cannot be retrieved
 		Assert-Throws {Get-AzureRMDataLakeAnalyticsCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName2"}
 
+		# prepare to grant/revoke ACLs
+		$userPrincipalId = (Get-AzureRmADUser | Select-Object -First 1).Id.Guid
+		$groupPrincipalId = (Get-AzureRmADGroup | Select-Object -First 1).Id.Guid
+
+		# get the initial number of ACL by db
+		$aclByDbList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
+		$aclByDbInitialCount = $aclByDbList.count
+
+		# get the initial number of ACL by catalog
+		$aclList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
+		$aclInitialCount = $aclList.count
+
+		# grant ACL entry for user to the db
+		$aclByDbList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ObjectId $userPrincipalId -ItemType Database -Path $databaseName -Permissions Read
+
+		Assert-AreEqual $($aclByDbInitialCount+1) $aclByDbList.count
+		$found = $false
+		foreach($acl in $aclByDbList)
+		{
+			if($acl.Id -eq $userPrincipalId)
+			{
+				# confirm the ACE's information
+				Assert-AreEqual User $acl.Type
+				Assert-AreEqual $userPrincipalId $acl.Id
+				Assert-AreEqual Read $acl.Permissions
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the entry for $userPrincipalId in the ACL list of $databaseName"
+
+		# revoke ACE for user from the db
+		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ObjectId $userPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
+
+		$aclByDbList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
+		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
+
+		# grant ACL entry for group to the db
+		$aclByDbList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -Permissions Read
+
+		Assert-AreEqual $($aclByDbInitialCount+1) $aclByDbList.count
+		$found = $false
+		foreach($acl in $aclByDbList)
+		{
+			if($acl.Id -eq $groupPrincipalId)
+			{
+				# confirm the ACE's information
+				Assert-AreEqual Group $acl.Type
+				Assert-AreEqual $groupPrincipalId $acl.Id
+				Assert-AreEqual Read $acl.Permissions
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the ACL list of $databaseName"
+
+		# revoke ACE for group from the db
+		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
+
+		$aclByDbList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
+		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
+
+		# set ACL entry for other
+		$aclByDbList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -ItemType Database -Path $databaseName -Permissions None
+		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
+		$found = $false
+		foreach($acl in $aclByDbList)
+		{
+			if($acl.Type -eq "Other")
+			{
+				# confirm the ACE's information
+				Assert-AreEqual None $acl.Permissions
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the entry for Other in the ACL list of $databaseName"
+
+		$aclByDbList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -ItemType Database -Path $databaseName -Permissions Read
+		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
+		$found = $false
+		foreach($acl in $aclByDbList)
+		{
+			if($acl.Type -eq "Other")
+			{
+				# confirm the ACE's information
+				Assert-AreEqual Read $acl.Permissions
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the entry for Other in the ACL list of $databaseName"
+
+		# set owner permission to the db
+		$prevDbOwnerAcl = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -ItemType Database -Path $databaseName
+		Assert-AreNotEqual None $prevDbOwnerAcl.Permissions
+		$currentDbOwnerAcl = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -ItemType Database -Path $databaseName -Permissions None
+		Assert-AreEqual None $currentDbOwnerAcl.Permissions
+		$prevDbGroupAcl = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -ItemType Database -Path $databaseName
+		Assert-AreNotEqual None $prevDbGroupAcl.Permissions
+		$currentDbGroupAcl = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -ItemType Database -Path $databaseName -Permissions None
+		Assert-AreEqual None $currentDbGroupAcl.Permissions
+
+		# grant ACE for user to the catalog
+		$aclList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ObjectId $userPrincipalId -Permissions Read
+		Assert-AreEqual $($aclInitialCount+1) $aclList.count
+		$found = $false
+		foreach($acl in $aclList)
+		{
+			if($acl.Id -eq $userPrincipalId)
+			{
+				# confirm the ACE's information
+				Assert-AreEqual User $acl.Type
+				Assert-AreEqual $userPrincipalId $acl.Id
+				Assert-AreEqual Read $acl.Permissions
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the entry for $userPrincipalId in the Catalog ACL list"
+
+		# revoke ACE for user from the catalog
+		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ObjectId $userPrincipalId -Force -PassThru} "Remove ACE failed."
+
+		$aclList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
+		Assert-AreEqual $aclInitialCount $aclList.count
+
+		# grant ACL entry for group to the catalog
+		$aclList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ObjectId $groupPrincipalId -Permissions Read
+
+		Assert-AreEqual $($aclInitialCount+1) $aclList.count
+		$found = $false
+		foreach($acl in $aclList)
+		{
+			if($acl.Id -eq $groupPrincipalId)
+			{
+				# confirm the ACE's information
+				Assert-AreEqual Group $acl.Type
+				Assert-AreEqual $groupPrincipalId $acl.Id
+				Assert-AreEqual Read $acl.Permissions
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the ACL list of $databaseName"
+
+		# revoke ACE for group from the db
+		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
+
+		$aclList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
+		Assert-AreEqual $aclInitialCount $aclList.count
+
+		# set ACL entry for other
+		$aclList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -Permissions None
+		Assert-AreEqual $aclInitialCount $aclList.count
+		$found = $false
+		foreach($acl in $aclList)
+		{
+			if($acl.Type -eq "Other")
+			{
+				# confirm the ACE's information
+				Assert-AreEqual None $acl.Permissions
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the entry for Other in the Catalog ACL list"
+
+		$aclList = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Other -Permissions Read
+		Assert-AreEqual $aclInitialCount $aclList.count
+		$found = $false
+		foreach($acl in $aclList)
+		{
+			if($acl.Type -eq "Other")
+			{
+				# confirm the ACE's information
+				Assert-AreEqual Read $acl.Permissions
+				$found = $true
+				break
+			}
+		}
+
+		Assert-True {$found} "Could not find the entry for Other in the Catalog ACL list"
+
+		# set owner permission to the catalog
+		$prevCatalogOwnerAcl = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner
+		Assert-AreNotEqual None $prevCatalogOwnerAcl.Permissions
+		$currentCatalogOwnerAcl = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -UserOwner -Permissions None
+		Assert-AreEqual None $currentCatalogOwnerAcl.Permissions
+		$prevCatalogGroupAcl = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner
+		Assert-AreNotEqual None $prevCatalogGroupAcl.Permissions
+		$currentCatalogGroupAcl = Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -GroupOwner -Permissions None
+		Assert-AreEqual None $currentCatalogGroupAcl.Permissions
+
 		# Delete the DataLakeAnalytics account
 		Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 

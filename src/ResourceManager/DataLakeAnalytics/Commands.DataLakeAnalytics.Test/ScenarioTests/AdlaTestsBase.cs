@@ -36,6 +36,7 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         internal string resourceGroupName { get; set; }
         internal string azureBlobStoreName { get; set; }
         internal string azureBlobStoreAccessKey { get; set; }
-        internal const string resourceGroupLocation = "East US 2";
+        internal const string resourceGroupLocation = "eastus2";
 
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
@@ -63,6 +64,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         public DataLakeAnalyticsJobManagementClient DataLakeAnalyticsJobManagementClient { get; private set; }
 
         public DataLakeAnalyticsCatalogManagementClient DataLakeAnalyticsCatalogManagementClient { get; private set; }
+
+        public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
 
@@ -196,6 +199,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             DataLakeAnalyticsAccountManagementClient = GetDataLakeAnalyticsAccountManagementClient(context);
             DataLakeAnalyticsJobManagementClient = GetDataLakeAnalyticsJobManagementClient(context);
             DataLakeAnalyticsCatalogManagementClient = GetDataLakeAnalyticsCatalogManagementClient(context);
+            GraphRbacManagementClient = GetRbacManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             StorageManagementClient = GetStorageManagementClient();
             GalleryClient = GetGalleryClient();
@@ -207,6 +211,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 DataLakeAnalyticsJobManagementClient,
                 DataLakeAnalyticsCatalogManagementClient,
                 DataLakeStoreAccountManagementClient,
+                GraphRbacManagementClient,
                 AuthorizationManagementClient,
                 StorageManagementClient,
                 GalleryClient
@@ -265,6 +270,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             toReturn.AdlaCatalogDnsSuffix =
                 currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", "");
             return toReturn;
+        }
+
+        private GraphRbacManagementClient GetRbacManagementClient(MockContext context)
+        {
+            return context.GetGraphServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()
