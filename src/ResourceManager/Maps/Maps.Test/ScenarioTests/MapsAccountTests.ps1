@@ -24,7 +24,7 @@ function Test-NewAzureRmMapsAccount
     try
     {
         # Test
-        $accountname = 'lbsa' + $rgname;
+        $accountname = 'ps-' + $rgname;
         $skuname = 'S0';
         $location = 'West US';
 
@@ -62,7 +62,7 @@ function Test-RemoveAzureRmMapsAccount
     try
     {
         # Test
-        $accountname = 'lbsa' + $rgname;
+        $accountname = 'ps-' + $rgname;
         $skuname = 'S0';
 		$location = 'West US';
 
@@ -104,7 +104,7 @@ function Test-GetAzureMapsAccount
     try
     {
         # Test
-        $accountname = 'lbsa' + $rgname;
+        $accountname = 'ps-' + $rgname;
         $skuname = 'S0';
         $location = 'West US';
 
@@ -158,7 +158,7 @@ function Test-GetAzureRmMapsAccountKey
     try
     {
         # Test
-        $accountname = 'lbsa' + $rgname;
+        $accountname = 'ps-' + $rgname;
         $skuname = 'S0';
         $location = 'West US';
 
@@ -200,7 +200,7 @@ function Test-NewAzureRmMapsAccountKey
     try
     {
         # Test
-        $accountname = 'lbsa' + $rgname;
+        $accountname = 'ps-' + $rgname;
         $skuname = 'S0';
         $location = 'West US';
 
@@ -253,7 +253,7 @@ function Test-PipingGetAccountToGetKey
     try
     {
         # Test
-        $accountname = 'lbsa' + $rgname;
+        $accountname = 'ps-' + $rgname;
         $skuname = 'S0';
         $location = 'West US';
 

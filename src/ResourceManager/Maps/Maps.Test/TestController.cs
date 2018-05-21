@@ -29,6 +29,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+using LegacyResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
 
 namespace Microsoft.Azure.Commands.Maps.Test
 {
@@ -47,6 +48,7 @@ namespace Microsoft.Azure.Commands.Maps.Test
 
         public GalleryClient GalleryClient { get; private set; }
 
+        public LegacyResourceManagementClient LegacyResourceManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -155,13 +157,14 @@ namespace Microsoft.Azure.Commands.Maps.Test
             MapsClient = GetMapsManagementClient(context);
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-
+            LegacyResourceManagementClient = GetLegacyResourceManagementClient(context);
             helper.SetupManagementClients(
                 ResourceManagementClient,
                 SubscriptionClient,
                 MapsClient,
                 GalleryClient,
-                AuthorizationManagementClient);
+                AuthorizationManagementClient,
+                LegacyResourceManagementClient);
         }
 
         private ResourceManagementClient GetResourceManagementClient()
@@ -187,6 +190,11 @@ namespace Microsoft.Azure.Commands.Maps.Test
         private MapsManagementClient GetMapsManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<MapsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private LegacyResourceManagementClient GetLegacyResourceManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<LegacyResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
