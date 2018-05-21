@@ -23,11 +23,6 @@ The **Get-AzureRmVMADDomainExtension** cmdlet gets information about the specifi
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
