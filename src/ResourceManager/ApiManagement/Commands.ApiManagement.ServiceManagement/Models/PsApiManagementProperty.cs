@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementProperty
+    public class PsApiManagementProperty : PsApiManagementArmResource
     {
         public string PropertyId { get; set; }
 

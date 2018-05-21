@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementCertificate
+    public class PsApiManagementCertificate : PsApiManagementArmResource
     {
         public string CertificateId { get; set; }
 
