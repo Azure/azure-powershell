@@ -612,3 +612,39 @@ function Test-AnalysisServicesServerLoginWithSPN
 
 	}
 }
+
+<#
+.SYNOPSIS
+Tests Analysis Services server gateway scenarios (associate/dissociate).
+The assocaited gateway is a unified gateway, which required pre-setup.
+1. Install on-premise gateway on target host https://www.microsoft.com/en-us/download/details.aspx?id=53127 
+2. Follow installation instruction to create azure on-premise gateway resource associating to the host.
+Afterward, use the gateway resource to associate with the AAS for testing.
+#>
+function Test-AnalysisServicesServerGateway
+{
+    try
+    {
+        # Creating server
+        $location = Get-Location
+        $resourceGroupName = Get-ResourceGroupName
+        $serverName = Get-AnalysisServicesServerName
+        $gatewayName = $env:GATEWAY_NAME
+        $gateway = Get-AzureRmResource -ResourceName $gatewayName -ResourceGroupName $resourceGroupName
+        $serverCreated = New-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -Location $location -Sku S0 -GatewayResourceId $gateway.ResourceId -PassThru
+
+        Assert-True {$serverCreated.ProvisioningState -like "Succeeded"}
+        Assert-True {$serverCreated.State -like "Succeeded"}
+        Assert-AreEqual $gateway.ResourceId $serverCreated.GatewayDetails.GatewayResourceId
+
+        # Dissociate gateway from server
+        $serverUpdated = Set-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -DisassociateGateway -PassThru
+        Assert-True {[string]::IsNullOrEmpty($serverUpdated.GatewayDetails.GatewayResourceId)}
+    }
+    finally
+    {
+        # cleanup the resource group that was used in case it still exists. This is a best effort task, we ignore failures here.
+        Invoke-HandledCmdlet -Command {Remove-AzureRmAnalysisServicesServer -ResourceGroupName $resourceGroupName -Name $serverName -ErrorAction SilentlyContinue} -IgnoreFailures
+        Invoke-HandledCmdlet -Command {Remove-AzureRmResourceGroup -Name $resourceGroupName -ErrorAction SilentlyContinue} -IgnoreFailures
+    }
+}

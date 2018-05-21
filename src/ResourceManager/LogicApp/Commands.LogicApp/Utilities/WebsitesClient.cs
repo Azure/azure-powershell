@@ -18,9 +18,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
     using System;
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.Common.Authentication.Models;
-    using Microsoft.Azure.Management.WebSites;
-    using Microsoft.Azure.Management.WebSites.Models;
     using Common.Authentication.Abstractions;
+    using Microsoft.Azure.Management.WebSites.Version2016_09_01;
+    using Microsoft.Azure.Management.WebSites.Version2016_09_01.Models;
 
     /// <summary>
     /// Website client to perform operation on AppServicePlan
@@ -66,18 +66,11 @@ namespace Microsoft.Azure.Commands.LogicApp.Utilities
         /// <param name="resourceGroupName">Name of the resource group</param>
         /// <param name="appServicePlanName">Name of the App Service Plan name</param>
         /// <returns>Object represents the AppServicePlan</returns>
-#if NETSTANDARD
         public AppServicePlan GetAppServicePlan(string resourceGroupName, string appServicePlanName)
         {
             return WrappedWebsitesClient.AppServicePlans.Get(resourceGroupName, appServicePlanName);
         }
-#else
-        public ServerFarmWithRichSku GetAppServicePlan(string resourceGroupName, string appServicePlanName)
-        {
-            return WrappedWebsitesClient.ServerFarms.GetServerFarm(resourceGroupName, appServicePlanName);
-        }
 
-#endif
 
         /// <summary>
         /// Writes verbose

@@ -68,13 +68,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            ExecuteTenantConfigurationLongRunningCmdletWrap(
-                () => Client.BeginSaveTenantGitConfiguration(
+            var operationResult = Client.SaveTenantGitConfiguration(
                     Context,
                     Branch,
-                    Force.IsPresent),
-                PassThru.IsPresent
-                );
+                    Force.IsPresent);
+
+            if (PassThru.IsPresent)
+            {
+                this.WriteObject(operationResult);
+            }
         }
     }
 }

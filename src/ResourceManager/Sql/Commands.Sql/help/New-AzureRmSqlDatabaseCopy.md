@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: CED38886-2DC9-450E-91FF-8209602C76CD
@@ -13,10 +13,19 @@ Creates a copy of a SQL Database that uses the snapshot at the current time.
 
 ## SYNTAX
 
+### DtuBasedDatabase
 ```
 New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>]
  -CopyDatabaseName <String> [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### VcoreBasedDatabase
+```
+New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
+ [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String>
+ -Vcore <Int32> [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,11 +40,6 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -AsJob
@@ -46,6 +50,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeGeneration
+The compute generation of teh Azure Sql Database copy.
+
+```yaml
+Type: String
+Parameter Sets: VcoreBasedDatabase
+Aliases: Family
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -97,6 +116,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Vcore
+The Vcore numbers of the Azure Sql Database copy.
+
+```yaml
+Type: Int32
+Parameter Sets: VcoreBasedDatabase
+Aliases: Capacity
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DatabaseName
 Specifies the name of the SQL Database to copy.
 
@@ -132,7 +166,7 @@ Specifies the name of the elastic pool in which to assign the copy.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DtuBasedDatabase
 Aliases:
 
 Required: False
@@ -177,7 +211,7 @@ Specifies the name of the service objective to assign to the copy.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DtuBasedDatabase
 Aliases:
 
 Required: False
