@@ -17,20 +17,23 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         public void WhenOsVersionIsSupportedValidationResultIsSuccessful()
         {
             // Prepare
-            string aValidOSVersion = "valid_os_version";
-            List<string> validOsVersions = new List<string>() {aValidOSVersion};
+            string aValidOSVersion = "1.0";
+            uint aValidOSSku = 0;
+            List<string> validOsVersions = new List<string>() { aValidOSVersion };
+            List<uint> validOsSkus = new List<uint>() { aValidOSSku };
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
             configurationMockFactory.Setup(configuration => configuration.ValidOsVersions()).Returns(validOsVersions);
+            configurationMockFactory.Setup(configuration => configuration.ValidOsSKU()).Returns(validOsSkus);
 
             var powershellCommandRunnerMockFactory = new Moq.Mock<IPowershellCommandRunner>();
             powershellCommandRunnerMockFactory.Setup(powershellCommandRunner => powershellCommandRunner.AddScript(It.IsAny<string>())).Verifiable();
-            
-            PSObject operatingSystemResult = new PSObject();
-            PSMemberInfo versionMember = new PSNoteProperty("version", aValidOSVersion);
-            operatingSystemResult.Members.Add(versionMember);
+
+            PSObject getCimInstanceResult = new PSObject();
+            getCimInstanceResult.Members.Add(new PSNoteProperty("version", "1.0.123"));
+            getCimInstanceResult.Members.Add(new PSNoteProperty("OperatingSystemSKU", aValidOSSku));
             Collection<PSObject> commandResults = new Collection<PSObject>
             {
-                operatingSystemResult
+                getCimInstanceResult
             };
             powershellCommandRunnerMockFactory.Setup(powershellCommandRunner => powershellCommandRunner.Invoke()).Returns(commandResults);
 
@@ -47,18 +50,56 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
         public void WhenOsVersionIsNotSupportedValidationResultIsError()
         {
             // Prepare
-            string aValidOSVersion = "valid_os_version";
+            string aValidOSVersion = "1.0";
+            uint aValidOSSku = 0;
             List<string> validOsVersions = new List<string>() { aValidOSVersion };
+            List<uint> validOsSkus = new List<uint>() { aValidOSSku };
             var configurationMockFactory = new Moq.Mock<IConfiguration>();
             configurationMockFactory.Setup(configuration => configuration.ValidOsVersions()).Returns(validOsVersions);
+            configurationMockFactory.Setup(configuration => configuration.ValidOsSKU()).Returns(validOsSkus);
 
             var powershellCommandRunnerMockFactory = new Moq.Mock<IPowershellCommandRunner>();
             powershellCommandRunnerMockFactory.Setup(powershellCommandRunner => powershellCommandRunner.AddScript(It.IsAny<string>())).Verifiable();
 
             PSObject getCimInstanceResult = new PSObject();
-            string anInalidOSVersion = "invalid_os_version";
-            PSMemberInfo versionMember = new PSNoteProperty("version", anInalidOSVersion);
-            getCimInstanceResult.Members.Add(versionMember);
+
+            getCimInstanceResult.Members.Add(new PSNoteProperty("version", "2.0"));
+            getCimInstanceResult.Members.Add(new PSNoteProperty("OperatingSystemSKU", aValidOSSku));
+
+            Collection<PSObject> commandResults = new Collection<PSObject>
+            {
+                getCimInstanceResult
+            };
+            powershellCommandRunnerMockFactory.Setup(powershellCommandRunner => powershellCommandRunner.Invoke()).Returns(commandResults);
+
+            // Exercise
+            OSVersionValidation osVersionValidation = new OSVersionValidation(configurationMockFactory.Object);
+            IValidationResult validationResult = osVersionValidation.ValidateUsing(powershellCommandRunnerMockFactory.Object);
+
+            // Verify
+            Assert.StrictEqual<Result>(Result.Fail, validationResult.Result);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WhenOsEditionIsNotSupportedValidationResultIsError()
+        {
+            // Prepare
+            string aValidOSVersionPrefix = "1.0";
+            uint aValidOSSku = 0;
+            List<string> validOsVersions = new List<string>() { aValidOSVersionPrefix };
+            List<uint> validOsSkus = new List<uint>() { aValidOSSku };
+            var configurationMockFactory = new Moq.Mock<IConfiguration>();
+            configurationMockFactory.Setup(configuration => configuration.ValidOsVersions()).Returns(validOsVersions);
+            configurationMockFactory.Setup(configuration => configuration.ValidOsSKU()).Returns(validOsSkus);
+
+            var powershellCommandRunnerMockFactory = new Moq.Mock<IPowershellCommandRunner>();
+            powershellCommandRunnerMockFactory.Setup(powershellCommandRunner => powershellCommandRunner.AddScript(It.IsAny<string>())).Verifiable();
+
+            PSObject getCimInstanceResult = new PSObject();
+            getCimInstanceResult.Members.Add(new PSNoteProperty("version", $"{aValidOSVersionPrefix}.123")); // valid version
+            getCimInstanceResult.Members.Add(new PSNoteProperty("OperatingSystemSKU", aValidOSSku + 1)); // invalid edition
+
             Collection<PSObject> commandResults = new Collection<PSObject>
             {
                 getCimInstanceResult
@@ -86,8 +127,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             powershellCommandRunnerMockFactory.Setup(powershellCommandRunner => powershellCommandRunner.AddScript(It.IsAny<string>())).Verifiable();
 
             PSObject getCimInstanceResult = new PSObject();
-            string anInalidOSVersion = "invalid_os_version";
-            PSMemberInfo versionMember = new PSNoteProperty("version", anInalidOSVersion);
+            string anInvalidOSVersion = "invalid_os_version";
+            PSMemberInfo versionMember = new PSNoteProperty("version", anInvalidOSVersion);
             getCimInstanceResult.Members.Add(versionMember);
             Collection<PSObject> commandResults = new Collection<PSObject>
             {
