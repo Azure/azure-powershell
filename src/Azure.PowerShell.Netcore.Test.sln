@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Profile.Test.Netcore", "ResourceManager\Profile\Commands.Profile.Test\Commands.Profile.Test.Netcore.csproj", "{87246108-B555-4F5F-B916-A9C6FABB1971}"
 EndProject
@@ -30,8 +30,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Compute.Netcore", "ResourceManager\Compute\Commands.Compute\Commands.Compute.Netcore.csproj", "{72F6252D-EB47-45B0-BD29-B22F7DF3884E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Network.Test.Netcore", "ResourceManager\Network\Commands.Network.Test\Commands.Network.Test.Netcore.csproj", "{0F4219ED-4A8E-4E6A-88A0-352D804B912D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Storage.Netcore", "Common\Commands.Common.Storage\Common.Storage.Netcore.csproj", "{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Sql.Test.Netcore", "ResourceManager\Sql\Commands.Sql.Test\Commands.Sql.Test.Netcore.csproj", "{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}"
 EndProject
@@ -237,18 +235,6 @@ Global
 		{0F4219ED-4A8E-4E6A-88A0-352D804B912D}.Release|x64.Build.0 = Release|Any CPU
 		{0F4219ED-4A8E-4E6A-88A0-352D804B912D}.Release|x86.ActiveCfg = Release|Any CPU
 		{0F4219ED-4A8E-4E6A-88A0-352D804B912D}.Release|x86.Build.0 = Release|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Debug|x64.Build.0 = Debug|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Debug|x86.Build.0 = Debug|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|x64.ActiveCfg = Release|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|x64.Build.0 = Release|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|x86.ActiveCfg = Release|Any CPU
-		{3BDE1B1A-AA9A-45B1-A897-CDB31B6800C8}.Release|x86.Build.0 = Release|Any CPU
 		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6D1E454-E51D-4F1F-916A-A4A3DED5850A}.Debug|x64.ActiveCfg = Debug|Any CPU
