@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue where `Export-AzureRmResourceGroup` wrote to incorrect location when a relative path was provided
 
 ## Version 6.0.0
 * Set minimum dependency of module to PowerShell 5.0
