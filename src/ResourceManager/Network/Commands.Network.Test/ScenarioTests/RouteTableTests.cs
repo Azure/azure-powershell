@@ -28,6 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestEmptyRouteTable()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-EmptyRouteTable");
@@ -35,6 +36,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteTableCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableCRUD");
@@ -42,6 +44,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteTableSubnetRef()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableSubnetRef");
@@ -49,6 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteTableRouteCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableRouteCRUD");
@@ -56,6 +60,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteHopTypeTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteHopTypeTest");
@@ -63,6 +68,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteWithDisableBgpRoutePropagation()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableWithDisableBgpRoutePropagation");

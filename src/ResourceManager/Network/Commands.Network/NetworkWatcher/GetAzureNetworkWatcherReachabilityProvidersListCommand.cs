@@ -31,7 +31,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherReachabilityProvidersList", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSAvailableProvidersList))]
-    public class GetAzureRmNetworkWatcherAvailableProviders : NetworkBaseCmdlet
+    public class GetAzureRmNetworkWatcherAvailableProviders : NetworkWatcherBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -55,6 +55,14 @@ namespace Microsoft.Azure.Commands.Network.Automation
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string NetworkWatcherLocation { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -98,6 +106,19 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 State = this.State,
                 City = this.City,
             };
+
+            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                var networkWatcher = this.GetNetworkWatcherByLocation(this.NetworkWatcherLocation);
+
+                if (networkWatcher == null)
+                {
+                    throw new ArgumentException("There is no network watcher in location {0}", this.NetworkWatcherLocation);
+                }
+
+                ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                NetworkWatcherName = networkWatcher.Name;
+            }
 
             if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
             {

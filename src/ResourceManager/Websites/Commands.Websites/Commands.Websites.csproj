@@ -110,7 +110,6 @@
     <Compile Include="Models.WebApp\WebAppSSLBindingBaseCmdlet.cs" />
     <Compile Include="Strategies\AppServicePolicy.cs" />
     <Compile Include="Strategies\GitCommand.cs" />
-    <Compile Include="Strategies\ICmdletAdapter.cs" />
     <Compile Include="Strategies\ExternalCommand.cs" />
     <Compile Include="Strategies\PSCmdletAdapter.cs" />
     <Compile Include="Strategies\ResourceGroupStrategy.cs" />

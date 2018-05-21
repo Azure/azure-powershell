@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 1CE08F0F-A59E-46AC-B470-F1DCCD46513E
@@ -9,6 +9,7 @@ schema: 2.0.0
 # Remove-AzureRmVirtualNetworkPeering
 
 ## SYNOPSIS
+Removes a virtual network peering.
 
 ## SYNTAX
 
@@ -19,6 +20,7 @@ Remove-AzureRmVirtualNetworkPeering -VirtualNetworkName <String> -Name <String> 
 ```
 
 ## DESCRIPTION
+Removes a virtual network peering.
 
 ## EXAMPLES
 

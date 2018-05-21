@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetNodeFileContentByTask()
         {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetNodeFileContentByComputeNode()
         {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetRemoteDesktopProtocolFile()
         {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeleteNodeFileByTask()
         {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCurrentMethodName());
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeleteNodeFileByComputeNode()
         {
