@@ -315,7 +315,7 @@ function TopicInputMappingTests {
     try
     {
         Write-Debug "Creating a fifth EventGrid topic: $topicName5 in resource group $resourceGroupName with InputSchema $inputSchemaEventGridSchema1"
-        $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaEventGridSchema1 -InputMappingFields @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField" }
+        $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaEventGridSchema1 -InputMappingField @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField" }
         Assert-True {$false} "New-AzureRmEventGridTopic succeeded while it is expected to fail as inputmapping parameters is not null for input mapping schema EventGridSchema"
     }
     catch
@@ -326,7 +326,7 @@ function TopicInputMappingTests {
     try
     {
         Write-Debug "Creating a fifth EventGrid topic: $topicName5 in resource group $resourceGroupName with InputSchema $inputSchemaCloudEventSchema1"
-        $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaCloudEventSchema1 -InputMappingFields @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField" }
+        $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaCloudEventSchema1 -InputMappingField @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField" }
         Assert-True {$false} "New-AzureRmEventGridTopic succeeded while it is expected to fail as inputmapping parameters is not null for input mapping schema CloudEventSchema"
     }
     catch
@@ -346,12 +346,12 @@ function TopicInputMappingTests {
     }
 
     Write-Debug "Creating a fifth EventGrid topic: $topicName5 in resource group $resourceGroupName with InputSchema $inputSchemaCustomEventSchema1"
-    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaCustomEventSchema1 -InputMappingFields @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField"; dataversion = "MyDataVersionField" }
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName5 -Location $location -InputSchema $inputSchemaCustomEventSchema1 -InputMappingField @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField"; dataversion = "MyDataVersionField" }
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
     Assert-True {$result.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
 
     Write-Debug "Creating a sixth EventGrid topic: $topicName6 in resource group $resourceGroupName with InputSchema $inputSchemaCustomEventSchema2"
-    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName6 -Location $location -InputSchema $inputSchemaCustomEventSchema2 -InputMappingFields @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField"; dataversion = "MyDataVersionField" } -InputMappingDefaultValues @{ subject = "MySubjectDefaultValue"; eventtype = "MyEventTypeDefaultValue"; dataversion = "MyDataVersionDefaultValue" }
+    $result = New-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName6 -Location $location -InputSchema $inputSchemaCustomEventSchema2 -InputMappingField @{ id = "MyIdField"; topic = "MyTopicField"; eventtime = "MyEventTimeField"; subject = "MySubjectField"; eventtype = "MyEventTypeField"; dataversion = "MyDataVersionField" } -InputMappingDefaultValue @{ subject = "MySubjectDefaultValue"; eventtype = "MyEventTypeDefaultValue"; dataversion = "MyDataVersionDefaultValue" }
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
     Assert-True {$result.InputSchema -eq $expectedInputMappingCustomEventSchema} "InputSchema is not correct. CustomEventSchema is expected"
 

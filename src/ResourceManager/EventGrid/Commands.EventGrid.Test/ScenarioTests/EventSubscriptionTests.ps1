@@ -62,8 +62,8 @@ function EventSubscriptionTests_CustomTopic {
     try
     {
         Write-Debug " Creating a new EventSubscription $eventSubscriptionName3 to topic $topicName in resource group $resourceGroupName"
-        $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -MaxDeliveryAttempts 300
-        Assert-True {$false} "New-AzureRmEventGridSubscription succeeded while it is expected to fail as MaxDeliveryAttempts range is invalid"
+        $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -MaxDeliveryAttempt 300
+        Assert-True {$false} "New-AzureRmEventGridSubscription succeeded while it is expected to fail as MaxDeliveryAttempt range is invalid"
     }
     catch
     {
@@ -83,7 +83,7 @@ function EventSubscriptionTests_CustomTopic {
     }
 
     Write-Debug " Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
-    $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -EventTtl 50 -MaxDeliveryAttempts 20 -DeliverySchema "CloudEventV01Schema"
+    $result = New-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -EventTtl 50 -MaxDeliveryAttempt 20 -DeliverySchema "CloudEventV01Schema"
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
 
     Write-Debug "Getting the created event subscription $eventSubscriptionName3"
@@ -91,7 +91,7 @@ function EventSubscriptionTests_CustomTopic {
     Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName3}
     Assert-True {$result.EventTtl -eq 50}
     Assert-True {$result.EventDeliverySchema -eq "CloudEventV01Schema"}
-    Assert-True {$result.MaxDeliveryAttempts -eq 20}
+    Assert-True {$result.MaxDeliveryAttempt -eq 20}
 
 #        [ValidateNotNullOrEmpty]
 #        public string DeadLetterEndpoint { get; set; }
@@ -111,12 +111,12 @@ function EventSubscriptionTests_CustomTopic {
     Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
 
     Write-Debug "Updating eventSubscription $eventSubscriptionName3 to topic $topicName in resource group $resourceGroupName"
-    $result = Update-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -EventTtl 40 -MaxDeliveryAttempts 10
+    $result = Update-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName3 -EventTtl 40 -MaxDeliveryAttempt 10
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
     $webHookDestination = $result.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
     Assert-AreEqual $webHookDestination.EndpointBaseUrl $eventSubscriptionBaseEndpoint
     Assert-True {$result.EventTtl -eq 40}
-    Assert-True {$result.MaxDeliveryAttempts -eq 10}
+    Assert-True {$result.MaxDeliveryAttempt -eq 10}
 
     Write-Debug "Listing all the event subscriptions created for $topicName in the resourceGroup $resourceGroup"
     $allCreatedSubscriptions = Get-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -IncludeFullEndpointUrl
@@ -153,9 +153,7 @@ function EventSubscriptionTests_CustomTopic2 {
     $topicName = Get-TopicName
     $eventSubscriptionName = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
-
     $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
-    $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
 
     Write-Host "Creating resource group"
     Write-Host "ResourceGroup name : $resourceGroupName"
@@ -268,8 +266,8 @@ function EventSubscriptionTests_Subscription {
     $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
     $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
 
-     $eventSubscriptionStorageDestinationResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>/queueServices/default/queues/<QueueName>"
-     $eventSubscriptionHybridConnectionResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Relay/namespaces/<NameSpace>/hybridConnections/<HybridConnectionName>"
+    $eventSubscriptionStorageDestinationResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>/queueServices/default/queues/<QueueName>"
+    $eventSubscriptionHybridConnectionResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/Microsoft.Relay/namespaces/<NameSpace>/hybridConnections/<HybridConnectionName>"
 
     Write-Debug " Creating a new EventSubscription $eventSubscriptionName to subscription $subscriptionId using webhook as a destination"
     $result = New-AzureRmEventGridSubscription -ResourceId "/subscriptions/$subscriptionId" -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName

@@ -311,28 +311,28 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 10,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptsHelp,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 9,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptsHelp,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 9,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptsHelp,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
             Position = 9,
-            HelpMessage = EventGridConstants.MaxDeliveryAttemptsHelp,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
         [ValidateRange(1, 30)]
-        public int? MaxDeliveryAttempts { get; set; }
+        public int? MaxDeliveryAttempt { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -412,9 +412,9 @@ namespace Microsoft.Azure.Commands.EventGrid
                     scope = EventGridUtils.GetScope(this.DefaultContext.Subscription.Id, this.ResourceGroupName, this.TopicName);
                 }
 
-                if (this.MaxDeliveryAttempts.HasValue || this.EventTtl.HasValue)
+                if (this.MaxDeliveryAttempt.HasValue || this.EventTtl.HasValue)
                 {
-                    retryPolicy = new RetryPolicy(this.MaxDeliveryAttempts, this.EventTtl);
+                    retryPolicy = new RetryPolicy(this.MaxDeliveryAttempt, this.EventTtl);
                 }
 
                 if (EventGridUtils.ShouldShowEventSubscriptionWarningMessage(this.Endpoint, this.EndpointType))
