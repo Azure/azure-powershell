@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 089954C3-7F3E-46C2-AA93-C0151EACDA2F
@@ -41,6 +41,25 @@ If you omit the *Name* parameter, **Stop-AzureRmResourceGroupDeployment** search
 If the cmdlet finds more than one running deployment, the command fails.
 
 ## EXAMPLES
+
+### Example 1: Starting and stopping a resource group deployment
+
+```powershell
+PS C:\> New-AzureRmResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg -TemplateFile .\storage-account-create-azuredeploy.json -TemplateParameterFile .\storage-account-create-azuredeploy.parameters.json -AsJob
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmResourceGro...
+
+PS C:\> Stop-AzureRmResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg
+True
+
+PS C:\> Get-Job 1
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Long Running... AzureLongRun... Failed        True            localhost            New-AzureRmResourceGro...
+```
 
 ## PARAMETERS
 
