@@ -20,12 +20,8 @@ using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallApplicationRuleCollection : PSChildResource
+    public class PSAzureFirewallApplicationRuleCollection : PSAzureFirewallBaseRuleCollection
     {
-        public uint Priority { get; set; }
-
-        public PSAzureFirewallRCAction Action { get; set; }
-
         public List<PSAzureFirewallApplicationRule> Rules { get; set; }
 
         [JsonIgnore]
