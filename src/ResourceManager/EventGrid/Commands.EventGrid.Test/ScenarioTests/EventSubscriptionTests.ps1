@@ -154,6 +154,7 @@ function EventSubscriptionTests_CustomTopic2 {
     $eventSubscriptionName = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
     $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
+    $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1
 
     Write-Host "Creating resource group"
     Write-Host "ResourceGroup name : $resourceGroupName"
