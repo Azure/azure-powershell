@@ -22,21 +22,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Assert.ps1" Link="ScenarioTests\Assert.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1" Link="AzureRM.Resources.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1" Link="AzureRM.Storage.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ps1" Link="ScenarioTests\Common.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0-alpha" />
     <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0-alpha" />
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
@@ -69,53 +54,26 @@
     <None Update="ScenarioTests\*.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="ConfigFiles\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ConfigFiles\DiagnosticsExtensionConfig.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Assert.ps1" Link="Assert.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithSasToken.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1" Link="AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithSasToken.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1" Link="AzureRM.Storage.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithStorageType.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithStorageType.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithWrongName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionConfigWithWrongName.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionPrivateConfig.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionPrivateConfigWithSasToken.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionPrivateConfigWithWrongName.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionPublicConfig.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="ConfigFiles\DiagnosticsExtensionPublicConfigWithStorageType.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Templates\azuredeploy.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Templates\client.rb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Templates\tstorgnztn-validator.pem">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ps1" Link="Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

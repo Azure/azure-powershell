@@ -13,70 +13,55 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+//using NetworkManagementClient = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public sealed class ComputeTestController : RMTestBase
     {
-        bool testViaCsm = true; // Currently set to true, we will get this from Environment varialbe.
-
-        private EnvironmentSetupHelper helper;
-        private const string TenantIdKey = "TenantId";
-        private const string DomainKey = "Domain";
-
-        public GraphRbacManagementClient GraphClient { get; private set; }
-
-
+        private readonly EnvironmentSetupHelper _helper;
 
         public StorageManagementClient StorageClient { get; private set; }
 
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
-        public NetworkManagementClient NetworkManagementClient { get; private set; }
-
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
-        public Microsoft.Azure.Management.ResourceManager.ResourceManagementClient ResourceManagementClient { get; private set; }
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
 
-        public Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient InternalNetworkManagementClient { get; private set; }
-
-        public Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient InternalResourceManagementClient { get; private set; }
+        public ResourceManagementClient InternalResourceManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
-        public static ComputeTestController NewInstance
-        {
-            get
-            {
-                return new ComputeTestController();
-            }
-        }
+        public static ComputeTestController NewInstance => new ComputeTestController();
 
         public ComputeTestController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            helper.TracingInterceptor = logger;
+            _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
@@ -89,8 +74,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public void RunPsTest(params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             RunPsTestWorkflow(
                 () => scripts,
@@ -122,118 +108,85 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-
-                if (initialize != null)
-                {
-                    initialize(this);
-                }
+                initialize?.Invoke(this);
 
                 SetupManagementClients(context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\ComputeTestCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.RMStorageDataPlaneModule,
-                    helper.RMStorageModule,
-                    helper.GetRMModulePath("AzureRM.Compute.psd1"),
-                    helper.GetRMModulePath("AzureRM.Network.psd1"),
-                    helper.GetRMModulePath("AzureRM.ServiceFabric.psd1"),
-                    helper.RMStorageDataPlaneModule,
+                    _helper.RMProfileModule,
+                    //_helper.RMResourceModule,
+                    _helper.RMStorageDataPlaneModule,
+                    _helper.RMStorageModule,
+                    _helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    //_helper.GetRMModulePath("AzureRM.Network.psd1"),
+                    //_helper.GetRMModulePath("AzureRM.ServiceFabric.psd1"),
+                    //_helper.RMStorageDataPlaneModule,
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
                 try
                 {
-                    if (scriptBuilder != null)
-                    {
-                        var psScripts = scriptBuilder();
+                    var psScripts = scriptBuilder?.Invoke();
 
-                        if (psScripts != null)
-                        {
-                            helper.RunPowerShellTest(psScripts);
-                        }
+                    if (psScripts != null)
+                    {
+                        _helper.RunPowerShellTest(psScripts);
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
 
-        private void SetupManagementClients(RestTestFramework.MockContext context)
+        private void SetupManagementClients(MockContext context)
         {
             StorageClient = GetStorageManagementClient(context);
-            //var eventsClient = GetEventsClient();
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
-            NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
-            InternalNetworkManagementClient = this.GetNetworkManagementClientInternal(context);
-            InternalResourceManagementClient = this.GetResourceManagementClientInternal(context);
-            ResourceManagementClient = GetResourceManagerResourceManagementClient(context);
-            // GraphClient = GetGraphClient();
+            NetworkManagementClient = GetNetworkManagementClient(context);
+            InternalResourceManagementClient = GetResourceManagementClientInternal(context);
 
-            helper.SetupManagementClients(
+            _helper.SetupSomeOfManagementClients(
                 StorageClient,
                 KeyVaultManagementClient,
-                NetworkManagementClient,
                 ComputeManagementClient,
-                InternalNetworkManagementClient,
-                ResourceManagementClient,
+                NetworkManagementClient,
                 InternalResourceManagementClient);
-            // GraphClient);
         }
 
-
-
-
-        private Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient GetResourceManagementClientInternal(RestTestFramework.MockContext context)
+        private static ResourceManagementClient GetResourceManagementClientInternal(MockContext context)
         {
-            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-
-        private StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
+        private static StorageManagementClient GetStorageManagementClient(MockContext context)
         {
-            return context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetResourceManagerResourceManagementClient(RestTestFramework.MockContext context)
+        private static KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
         {
-            return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
+        private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
-            return context.GetServiceClient<KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
+        private static ComputeManagementClient GetComputeManagementClient(MockContext context)
         {
-            return context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient GetNetworkManagementClientInternal(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private ComputeManagementClient GetComputeManagementClient(RestTestFramework.MockContext context)
-        {
-            return context.GetServiceClient<ComputeManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ComputeManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }
