@@ -507,7 +507,8 @@ Gets the parameters for import/export tests
 function Get-SqlDatabaseImportExportTestEnvironmentParameters ($testSuffix)
 {
     $databaseName = "sql-ie-cmdlet-db" + $testSuffix;
-    $password = [Microsoft.Azure.Test.TestUtilities]::GenerateName("IEp@ssw0rd");
+    # TODO: Remove "CallSite.Target" when re-recording ImportExportTests
+    $password = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::GenerateName("IEp@ssw0rd", "CallSite.Target");
     #Fake storage account data. Used for playback mode
     $exportBacpacUri = "http://test.blob.core.windows.net/bacpacs"
     $importBacpacUri = "http://test.blob.core.windows.net/bacpacs/test.bacpac"
@@ -606,8 +607,8 @@ Gets dns name according to environment
 function Get-DNSNameBasedOnEnvironment ()
 {
      $connectingString = [System.Environment]::GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION")
-     $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectingString)
-     $environment = $parsedString[[Microsoft.Azure.Test.TestEnvironment]::EnvironmentKey]
+     $parsedString = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::ParseConnectionString($connectingString)
+     $environment = $parsedString[[Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringKeys]::EnvironmentKey]
      if ($environment -eq "Dogfood"){
          return ".sqltest-eg1.mscds.com"
      }

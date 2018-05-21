@@ -57,7 +57,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.3.0-preview\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.2.4.1-alpha\lib\net452\Microsoft.Azure.Management.KeyVault.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
@@ -282,9 +282,6 @@
     <Compile Include="Strategies\ComputeRp\VirtualMachineScaleSetStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\VirtualMachineStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\WindowsConfigurationStrategy.cs" />
-    <Compile Include="Strategies\IAsyncCmdlet.cs" />
-    <Compile Include="Strategies\IParameters.cs" />
-    <Compile Include="Strategies\Location.cs" />
     <Compile Include="Strategies\Network\BackendAddressPoolStrategy.cs" />
     <Compile Include="Strategies\Network\FrontendIPConfigurationStrategy.cs" />
     <Compile Include="Strategies\Network\InboundNetPoolStrategy.cs" />
@@ -298,8 +295,6 @@
     <Compile Include="Strategies\Network\SubnetStrategy.cs" />
     <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
-    <Compile Include="Strategies\ShouldProcess.cs" />
-    <Compile Include="Strategies\StrategyCmdlet.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
@@ -384,9 +379,6 @@
     <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Microsoft.Azure.Commands.Compute.dll-Help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Compute.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

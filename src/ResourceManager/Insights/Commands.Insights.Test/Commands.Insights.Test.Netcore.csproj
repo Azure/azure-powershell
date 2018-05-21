@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Monitor" Version="0.16.1-preview" />
-    <PackageReference Include="Moq" Version="4.2.1510.2205" />
   </ItemGroup>
 
   <ItemGroup>

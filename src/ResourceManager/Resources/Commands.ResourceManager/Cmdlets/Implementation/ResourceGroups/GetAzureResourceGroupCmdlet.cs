@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.IO;
     using System.Management.Automation;
@@ -57,12 +58,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The tag hashtable to filter resource groups by.")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable Tag { get; set; }
+
         public override void ExecuteCmdlet()
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
             this.WriteObject(
-                ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: null, detailed: false, location: this.Location),
+                ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location),
                 true);
         }
 

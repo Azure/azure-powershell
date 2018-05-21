@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -40,7 +41,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public GraphRbacManagementClient GraphClient { get; private set; }
 
 
+
         public StorageManagementClient StorageClient { get; private set; }
+
+        public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
@@ -174,6 +178,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             StorageClient = GetStorageManagementClient(context);
             //var eventsClient = GetEventsClient();
+            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             InternalNetworkManagementClient = this.GetNetworkManagementClientInternal(context);
@@ -183,6 +188,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
             helper.SetupManagementClients(
                 StorageClient,
+                KeyVaultManagementClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
                 InternalNetworkManagementClient,
@@ -208,6 +214,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         private Microsoft.Azure.Management.ResourceManager.ResourceManagementClient GetResourceManagerResourceManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<Microsoft.Azure.Management.ResourceManager.ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<KeyVaultManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         private NetworkManagementClient GetNetworkManagementClientClient(RestTestFramework.MockContext context)
