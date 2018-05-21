@@ -32,13 +32,25 @@ function Test-GetAzureVM
 
     $vmName = "vm1"
     $svcName = Get-CloudServiceName
+    $extProp1 = @{"extended1"="property1";"extended2"="property2"}
 
     # Test
-    New-AzureService -ServiceName $svcName -Location $location
+    New-AzureService -ServiceName $svcName -Location $location -ExtendedProperty $extProp1
+    $result = Get-AzureService -ServiceName $svcName
+    Assert-AreEqual "property1" $result.ExtendedProperties["extended1"]
+    Assert-AreEqual "property2" $result.ExtendedProperties["extended2"]
+
     New-AzureQuickVM -Windows -ImageName $imgName -Name $vmName -ServiceName $svcName -AdminUsername "pstestuser" -Password $PLACEHOLDER
+    $result = Get-AzureVM -ServiceName $svcName -Name $vmName
 
-    Get-AzureVM -ServiceName $svcName -Name $vmName
+    $extProp2 =  @{"extended1"="property2";"extended2"="property1"}
+    Set-AzureService -ServiceName $svcName -ExtendedProperty $extProp2
 
+    $result = Get-AzureService -ServiceName $svcName
+    Assert-AreEqual "property2" $result.ExtendedProperties["extended1"]
+    Assert-AreEqual "property1" $result.ExtendedProperties["extended2"]
+
+    $result = Get-AzureVM -ServiceName $svcName -Name $vmName
 
     # Cleanup
     Cleanup-CloudService $svcName
