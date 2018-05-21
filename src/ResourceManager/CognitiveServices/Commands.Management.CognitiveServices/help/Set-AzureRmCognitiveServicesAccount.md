@@ -24,11 +24,6 @@ The **Set-AzureRmCognitiveServicesAccount** cmdlet modifies the SKU or tags of t
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -54,6 +54,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The target resource ID.")]
         [ValidateNotNullOrEmpty]
@@ -97,7 +105,19 @@ namespace Microsoft.Azure.Commands.Network
             string resourceGroupName;
             string name;
 
-            if (ParameterSetName.Contains("SetByResource"))
+            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
+
+                if (networkWatcher == null)
+                {
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                }
+
+                resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                name = networkWatcher.Name;
+            }
+            else if (ParameterSetName.Contains("SetByResource"))
             {
                 resourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 name = this.NetworkWatcher.Name;
