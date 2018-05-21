@@ -50,9 +50,9 @@ Get the disk usage and ACL usage for all subdirectories and files under /a. Incl
 
 ### Example 2: Get the ACL usage for all subdirectories and files with the consistent ACL hidden
 ```
-PS C:\> $fullAcl="user:c9d53a11-cbd5-4a04-8b7c-0d6e39d7fa35:--x|user::rwx|other::---|group::rwx"
+PS C:\> $fullAcl="user:contoso-userid:--x|user::rwx|other::---|group::rwx"
 PS C:\> $newFullAcl = $fullAcl.Split("{|}");
-PS C:\> Set-AzureRmDataLakeStoreItemAcl -Account rdutta1 -Path /a -Acl $newFullAcl -Recurse -Debug
+PS C:\> Set-AzureRmDataLakeStoreItemAcl -Account ContosoADL -Path /a -Acl $newFullAcl -Recurse -Debug
 
 PS C:\> Export-AzureRmDataLakeStoreChildItemProperties -Account ContosoADL -Path /a -OutputPath "C:\Users\contoso\Desktop\DumpFile.txt" -GetAcl -HideConsistentAcl -IncludeFile
 ```
