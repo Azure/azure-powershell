@@ -29,7 +29,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSAzureFirewallIpConfiguration> IpConfigurations { get; set; }
 
         public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollections { get; set; }
-        
+
+        public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollections { get; set; }
+
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -43,6 +45,14 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(ApplicationRuleCollections, Formatting.Indented); }
         }
+
+        [JsonIgnore]
+        public string NetworkRuleCollectionsText
+        {
+            get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
+        }
+
+        #region Virtual Network Operations
 
         public void AttachToVirtualNetwork(PSVirtualNetwork virtualNetwork)
         {
@@ -82,38 +92,18 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.IpConfigurations = null;
         }
 
+        #endregion // Virtual Network Operations
+
+        #region Application Rule Collections Operations
+
         public void AddApplicationRuleCollection(PSAzureFirewallApplicationRuleCollection ruleCollection)
         {
-            // Validate
-            if (this.ApplicationRuleCollections != null)
-            {
-                if (this.ApplicationRuleCollections.Any(rc => rc.Name.Equals(ruleCollection.Name)))
-                {
-                    throw new ArgumentException($"Application Rule Collection names must be unique. {ruleCollection.Name} name is already used.");
-                }
-
-                var samePriorityRuleCollections = this.ApplicationRuleCollections.Where(rc => rc.Priority == ruleCollection.Priority);
-                if (samePriorityRuleCollections.Any())
-                {
-                    throw new ArgumentException($"Application Rule Collection priorities must be unique. Priority {ruleCollection.Priority} is already used by Rule Collection {samePriorityRuleCollections.First().Name}.");
-                }
-            }
-            else
-            {
-                this.ApplicationRuleCollections = new List<PSAzureFirewallApplicationRuleCollection>();
-            }
-
-            this.ApplicationRuleCollections.Add(ruleCollection);
+            this.ApplicationRuleCollections = AddRuleCollection(ruleCollection, this.ApplicationRuleCollections);
         }
 
         public PSAzureFirewallApplicationRuleCollection GetApplicationRuleCollectionByName(string ruleCollectionName)
         {
-            if (null == ruleCollectionName)
-            {
-                return null;
-            }
-
-            return this.ApplicationRuleCollections?.FirstOrDefault(rc => ruleCollectionName.Equals(rc.Name));
+            return GetRuleCollectionByName(ruleCollectionName, this.ApplicationRuleCollections);
         }
 
         public PSAzureFirewallApplicationRuleCollection GetApplicationRuleCollectionByPriority(uint priority)
@@ -132,5 +122,77 @@ namespace Microsoft.Azure.Commands.Network.Models
             var ruleCollection = this.GetApplicationRuleCollectionByPriority(priority);
             this.ApplicationRuleCollections?.Remove(ruleCollection);
         }
+
+        #endregion // Application Rule Collections Operations
+
+        #region Network Rule Collections Operations
+
+        public void AddNetworkRuleCollection(PSAzureFirewallNetworkRuleCollection ruleCollection)
+        {
+            this.NetworkRuleCollections = AddRuleCollection(ruleCollection, this.NetworkRuleCollections);
+        }
+
+        public PSAzureFirewallNetworkRuleCollection GetNetworkRuleCollectionByName(string ruleCollectionName)
+        {
+            return this.GetRuleCollectionByName(ruleCollectionName, this.NetworkRuleCollections);
+        }
+
+        public PSAzureFirewallNetworkRuleCollection GetNetworkRuleCollectionByPriority(uint priority)
+        {
+            return this.NetworkRuleCollections?.FirstOrDefault(rc => rc.Priority == priority);
+        }
+
+        public void RemoveNetworkRuleCollectionByName(string ruleCollectionName)
+        {
+            var ruleCollection = this.GetNetworkRuleCollectionByName(ruleCollectionName);
+            this.NetworkRuleCollections?.Remove(ruleCollection);
+        }
+
+        public void RemoveNetworkRuleCollectionByPriority(uint priority)
+        {
+            var ruleCollection = this.GetNetworkRuleCollectionByPriority(priority);
+            this.NetworkRuleCollections?.Remove(ruleCollection);
+        }
+
+        #endregion // Application Rule Collections Operations
+
+        #region Private Methods
+
+        private List<BaseRuleCollection> AddRuleCollection<BaseRuleCollection>(BaseRuleCollection ruleCollection, List<BaseRuleCollection> existingRuleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
+        {
+            // Validate
+            if (existingRuleCollections != null)
+            {
+                if (existingRuleCollections.Any(rc => rc.Name.Equals(ruleCollection.Name)))
+                {
+                    throw new ArgumentException($"Rule Collection names must be unique. {ruleCollection.Name} name is already used.");
+                }
+
+                var samePriorityRuleCollections = existingRuleCollections.Where(rc => rc.Priority == ruleCollection.Priority);
+                if (existingRuleCollections.Any())
+                {
+                    throw new ArgumentException($"Rule Collection priorities must be unique. Priority {ruleCollection.Priority} is already used by Rule Collection {samePriorityRuleCollections.First().Name}.");
+                }
+            }
+            else
+            {
+                existingRuleCollections = new List<BaseRuleCollection>();
+            }
+
+            existingRuleCollections.Add(ruleCollection);
+            return existingRuleCollections;
+        }
+
+        private BaseRuleCollection GetRuleCollectionByName<BaseRuleCollection> (string ruleCollectionName, List<BaseRuleCollection> ruleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
+        {
+            if (null == ruleCollectionName)
+            {
+                return null;
+            }
+
+            return ruleCollections?.FirstOrDefault(rc => ruleCollectionName.Equals(rc.Name));
+        }
+
+        #endregion // Private Methods
     }
 }

@@ -15,10 +15,10 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallSku
+    public class PSAzureFirewallBaseRuleCollection : PSChildResource
     {
-        public string Name { get; set; }
+        public uint Priority { get; set; }
 
-        public string Tier { get; set; }
+        public PSAzureFirewallRCAction Action { get; set; }
     }
 }

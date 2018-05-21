@@ -62,6 +62,12 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollection { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of AzureFirewallNetworkRuleCollections")]
+        public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollection { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable which represents resource tags.")]
@@ -100,7 +106,8 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 ResourceGroupName = this.ResourceGroupName,
                 Location = this.Location,
-                ApplicationRuleCollections = this.ApplicationRuleCollection
+                ApplicationRuleCollections = this.ApplicationRuleCollection,
+                NetworkRuleCollections = this.NetworkRuleCollection
             };
 
             if (this.virtualNetwork != null)
@@ -111,11 +118,7 @@ namespace Microsoft.Azure.Commands.Network
             // Map to the sdk object
             var nsgModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);
             nsgModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-            nsgModel.Sku = new MNM.AzureFirewallSku
-            {
-                Name = MNM.AzureFirewallSkuName.StandardLarge,
-                Tier = MNM.AzureFirewallTier.Standard
-            };
+            // nsgModel.Sku = null;
 
             // Execute the Create AzureFirewall call
             this.AzureFirewallClient.CreateOrUpdate(this.ResourceGroupName, this.Name, nsgModel);
