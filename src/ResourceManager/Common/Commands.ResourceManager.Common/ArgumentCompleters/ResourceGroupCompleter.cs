@@ -48,15 +48,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                         var tempResourceGroupList = new List<string>();
                         try
                         {
-                            var instance = AzureSession.Instance;
-                            var client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
-                                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
-                                instance.ClientFactory.GetCustomHandlers());
-                            client.SubscriptionId = context.Subscription.Id;
+                            var client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                             // Retrieve only the first page of ResourceGroups to display to the user
                             var resourceGroups = client.ResourceGroups.ListAsync();
-                            if (resourceGroups.Wait(TimeSpan.FromSeconds(_timeout)))
+
+                            if (_timeout == -1)
+                            {
+                                resourceGroups.Wait();
+                                tempResourceGroupList = CreateResourceGroupList(resourceGroups.Result);
+                                if (resourceGroups.Result != null)
+                                {
+                                    _resourceGroupNamesDictionary[contextHash] = tempResourceGroupList;
+                                }
+                            }
+                            else if (resourceGroups.Wait(TimeSpan.FromSeconds(_timeout)))
                             {
                                 tempResourceGroupList = CreateResourceGroupList(resourceGroups.Result);
                                 if (resourceGroups.Result != null)

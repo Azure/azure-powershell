@@ -160,9 +160,6 @@
       <Link>AzureRM.OperationalInsights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.OperationalInsights.dll-Help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <Content Include="Microsoft.Azure.Commands.OperationalInsights.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

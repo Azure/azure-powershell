@@ -48,12 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                         var tempResourceTypeList = new List<string>();
                         try
                         {
-                            var instance = AzureSession.Instance;
-                            var client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
-                                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
-                                instance.ClientFactory.GetCustomHandlers());
-                            client.SubscriptionId = context.Subscription.Id;
+                            var client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                             var resourceTypes = new List<Provider>();
                             var task = client.Providers.ListAsync();
                             if (task.Wait(TimeSpan.FromSeconds(_timeout)))
@@ -63,7 +58,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                                 while (!string.IsNullOrEmpty(page.NextPageLink))
                                 {
                                     task = client.Providers.ListNextAsync(page.NextPageLink);
-                                    if (task.Wait(TimeSpan.FromSeconds(_timeout)))
+
+                                    if (_timeout == -1)
+                                    {
+                                        task.Wait();
+                                        page = task.Result;
+                                        resourceTypes.AddRange(page);
+                                    }
+                                    else if (task.Wait(TimeSpan.FromSeconds(_timeout)))
                                     {
                                         page = task.Result;
                                         resourceTypes.AddRange(page);
