@@ -190,6 +190,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             }
         }
 
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateStorageContextNameAndKey_SmNotNull_RmNull()
@@ -220,6 +221,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 CleanupSession();
             }
         }
+#endif
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -285,6 +287,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             }
         }
 
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateStorageContextInChinaCloud_SmNotNull_RmNull()
@@ -317,6 +320,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 CleanupSession();
             }
         }
+#endif
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -416,7 +420,8 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 CleanupSession();
             }
         }
-        
+
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateStorageContextSASToken_SmNotNull_RmNull()
@@ -449,6 +454,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 CleanupSession();
             }
         }
+#endif
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -549,6 +555,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             }
         }
 
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateStorageContextAnonymous_SmNotNull_RmNull()
@@ -581,6 +588,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 CleanupSession();
             }
         }
+#endif
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -685,6 +693,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             }
         }
 
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateStorageContextEndPoint_SmNotNull_RmNull()
@@ -719,6 +728,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 CleanupSession();
             }
         }
+#endif
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -819,6 +829,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
             }
         }
 
+#if !NETSTANDARD
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateStorageContextConnectionString_SmNotNull_RmNull()
@@ -850,6 +861,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Common.Cmdlet
                 CleanupSession();
             }
         }
+#endif
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

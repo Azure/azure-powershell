@@ -475,7 +475,7 @@ The connection string containing username and password information
 function getTestCredentialFromString
 {
   param([string] $connectionString)
-  $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectionString)
+  $parsedString = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::ParseConnectionString($connectionString)
   if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::UserIdKey) -or ((-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::AADPasswordKey))))))
   {
     throw "The connection string '$connectionString' must have a valid value, including username and password " +`
@@ -494,7 +494,7 @@ The connection string containing subscription information
 function getSubscriptionFromString
 {
   param([string] $connectionString)
-  $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectionString)
+  $parsedString = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::ParseConnectionString($connectionString)
   if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::SubscriptionIdKey)))
   {
     throw "The connection string '$connectionString' must have a valid value, including subscription " +`

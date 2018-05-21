@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.0" />
+    <PackageReference Include="Microsoft.Azure.Commerce.UsageAggregates" Version="1.5.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,12 +30,6 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.UsageAggregates">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates.Netcore\Microsoft.Azure.Commands.UsageAggregates.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

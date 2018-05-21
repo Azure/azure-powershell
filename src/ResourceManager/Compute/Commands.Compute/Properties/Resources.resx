@@ -594,4 +594,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Can't find the image '{0}'.</value>
     <comment>{0} = image name</comment>
   </data>
+  <data name="NoSubscriptionInContext" xml:space="preserve">
+    <value>No subscription found in the context.  Please ensure that the credentials you provided are authorized to access an Azure subscription, then run Connect-AzureRmAccount to login.</value>
+  </data>
 </root>

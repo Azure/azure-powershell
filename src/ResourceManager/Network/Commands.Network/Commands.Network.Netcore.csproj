@@ -26,9 +26,9 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup >
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="17.0.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.0.0-preview" />
   </ItemGroup>
 
   <ItemGroup>

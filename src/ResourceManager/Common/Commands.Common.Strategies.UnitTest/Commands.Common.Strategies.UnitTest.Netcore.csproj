@@ -25,10 +25,4 @@
     <ProjectReference Include="..\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.Azure.Commands.Common.Strategies">
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Strategies.Netcore\Microsoft.Azure.Commands.Common.Strategies.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

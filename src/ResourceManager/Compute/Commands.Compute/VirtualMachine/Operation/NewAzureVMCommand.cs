@@ -37,6 +37,7 @@ using Microsoft.WindowsAzure.Commands.Tools.Vhd;
 using Microsoft.WindowsAzure.Commands.Tools.Vhd.Model;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -190,7 +191,8 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2012Datacenter",
             "Win2008R2SP1",
             "Win10")]
-        public string ImageName { get; set; } = "Win2016Datacenter";
+        [Alias("ImageName")]
+        public string Image { get; set; } = "Win2016Datacenter";
 
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
@@ -206,6 +208,15 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string AvailabilitySetName { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false, HelpMessage = "Use this to add system assigned identity (MSI) to the vm")]
+        public SwitchParameter SystemAssignedIdentity { get; set; }
+
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false, HelpMessage = "Use this to add the assign user specified identity (MSI) to the VM")]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentity { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -250,6 +261,8 @@ namespace Microsoft.Azure.Commands.Compute
                 set { _cmdlet.Location = value; }
             }
 
+            public string DefaultLocation => "eastus";
+
             public BlobUri DestinationUri;
 
             public async Task<ResourceConfig<VirtualMachine>> CreateConfigAsync()
@@ -257,7 +270,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (_cmdlet.DiskFile == null)
                 {
                     ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
-                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
+                        ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.Image, Location);
                 }
 
                 _cmdlet.DomainNameLabel = await PublicIPAddressStrategy.UpdateDomainNameLabelAsync(
@@ -302,7 +315,8 @@ namespace Microsoft.Azure.Commands.Compute
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
-                        zones: _cmdlet.Zone);
+                        zones: _cmdlet.Zone,
+                        identity: _cmdlet.GetVMIdentityFromArgs());
                 }
                 else
                 {
@@ -318,7 +332,8 @@ namespace Microsoft.Azure.Commands.Compute
                         size: _cmdlet.Size,
                         availabilitySet: availabilitySet,
                         dataDisks: _cmdlet.DataDiskSizeInGb,
-                        zones: _cmdlet.Zone);
+                        zones: _cmdlet.Zone,
+                        identity: _cmdlet.GetVMIdentityFromArgs());
                 }
             }
         }
@@ -411,7 +426,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var result = await StrategyCmdlet.RunAsync(client, parameters, asyncCmdlet, new CancellationToken());
+            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
 
             if (result != null)
             {
@@ -507,6 +522,29 @@ namespace Microsoft.Azure.Commands.Compute
                     WriteObject(psResult);
                 });
             }
+        }
+
+        /// <summary>
+        /// Heres whats happening here :
+        /// If "SystemAssignedIdentity" and "UserAssignedIdentity" are both present we set the type of identity to be SystemAssignedUsrAssigned and set the user 
+        /// defined identity in the VM identity object.
+        /// If only "SystemAssignedIdentity" is present, we just set the type of the Identity to "SystemAssigned" and no identity ids are set as its created by Azure
+        /// If only "UserAssignedIdentity" is present, we set the type of the Identity to be "UserAssigned" and set the Identity in the VM identity object.
+        /// If neither is present, we return a null.
+        /// </summary>
+        /// <returns>Returning the Identity generated form the cmdlet parameters "SystemAssignedIdentity" and "UserAssignedIdentity"</returns>
+        private VirtualMachineIdentity GetVMIdentityFromArgs()
+        {
+            var isUserAssignedEnabled = !string.IsNullOrWhiteSpace(UserAssignedIdentity);
+            return (SystemAssignedIdentity.IsPresent || isUserAssignedEnabled)
+                ? new VirtualMachineIdentity
+                {
+                    Type = !isUserAssignedEnabled ? 
+                           CM.ResourceIdentityType.SystemAssigned :
+                           (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
+                    IdentityIds = isUserAssignedEnabled ? new[] { UserAssignedIdentity } : null,
+                }
+                : null;
         }
 
         private string GetBginfoExtension()
