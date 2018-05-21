@@ -43,10 +43,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\GetAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsJobRecurrence.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsJobPipeline.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsComputePolicy.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\UpdateAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\NewAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsFirewallRule.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Models\DataLakeAnalyticsFirewallRule.cs" />
+    <Compile Include="Models\PSDataLakeAnalyticsAcl.cs" />
     <Compile Include="Models\PSDataLakeAnalyticsAccountBasic.cs" />
     <Compile Include="Models\PSJobInformationBasic.cs" />
     <Compile Include="Models\PSJobRecurrenceInformation.cs" />
@@ -115,12 +119,17 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Commands.Common.Graph.RBAC.csproj">
+      <Project>{269acf73-0a34-42dc-ab9c-4b15931a489d}</Project>
+      <Name>Commands.Common.Graph.RBAC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
