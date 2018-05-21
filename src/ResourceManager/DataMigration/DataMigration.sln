@@ -1,10 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-<<<<<<< HEAD
-=======
-
->>>>>>> 4008978a4fe1b102a910cf37caaa640aba569be2
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataMigration", "Commands.DataMigration\Commands.DataMigration.csproj", "{A03670F6-F8D1-4890-9939-21B546927238}"
