@@ -227,6 +227,7 @@
     <Compile Include="Models\PSConnectionMonitorSource.cs" />
     <Compile Include="Models\PSConnectionStateSnapshot.cs" />
     <Compile Include="Models\PSEndpointServiceResult.cs" />
+    <Compile Include="Models\PSNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
     <Compile Include="Models\PSLoadBalancerSku.cs" />
     <Compile Include="Models\PSPublicIpAddressSku.cs" />
@@ -319,9 +320,9 @@
     <Compile Include="Models\PSSubnet.cs" />
     <Compile Include="Models\PSSubnetAssociation.cs" />
     <Compile Include="Models\PSTopLevelResource.cs" />
-    <Compile Include="Models\PSTroubleshootDetails.cs" />
-    <Compile Include="Models\PSTroubleshootRecommendedActions.cs" />
-    <Compile Include="Models\PSTroubleshootResult.cs" />
+    <Compile Include="Models\PSTroubleshootingDetails.cs" />
+    <Compile Include="Models\PSTroubleshootingRecommendedActions.cs" />
+    <Compile Include="Models\PSTroubleshootingResult.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Models\PSUsageCustom.cs" />
     <Compile Include="Models\PSUsageName.cs" />
@@ -371,6 +372,7 @@
     <Compile Include="NetworkWatcher\ConnectionMonitor\SetAzureNetworkWatcherConnectionMonitorCommand.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\StartAzureNetworkWatcherConnectionMonitorCommand.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\StopAzureNetworkWatcherConnectionMonitorCommand.cs" />
+    <Compile Include="NetworkWatcher\NewAzureNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="NetworkWatcher\TestAzureNetworkWatcherConnectivityCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureBgpServiceCommunityCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherCommand.cs" />

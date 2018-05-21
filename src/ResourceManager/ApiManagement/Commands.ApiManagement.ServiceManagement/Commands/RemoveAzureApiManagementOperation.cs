@@ -14,11 +14,12 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Properties;
     using System;
     using System.Globalization;
     using System.Management.Automation;
+    using Management.ApiManagement.Models;
+    using Models;
+    using Properties;
 
     [Cmdlet(VerbsCommon.Remove, Constants.ApiManagementOperation, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
@@ -37,6 +38,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Identifier of API. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiId { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of API Revision. This parameter is optional. If not specified, the operation will be " +
+            "removed from the currently active api revision.")]
+        public String ApiRevision { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -65,7 +73,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 return;
             }
 
-            Client.OperationRemove(Context, ApiId, OperationId);
+            // determine the apiId
+            string apiId = ApiId;
+            if (!string.IsNullOrEmpty(ApiRevision))
+            {
+                apiId = ApiId.ApiRevisionIdentifier(ApiRevision);
+            }
+
+            Client.OperationRemove(Context, apiId, OperationId);
 
             if (PassThru.IsPresent)
             {
