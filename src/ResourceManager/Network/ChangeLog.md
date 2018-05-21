@@ -1,4 +1,4 @@
-﻿<!--
+<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -20,17 +20,20 @@
 
 ## Current Release
 
+## Version 6.1.0
 * Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
-
-## Version 6.0.0
+* Added cmdlet to create protocol configuration
+    - New-AzureRmNetworkWatcherProtocolConfiguration
 * Added cmdlet to add a new circuit connection to an existing express route circuit.
     - Add-AzureRmExpressRouteCircuitConnectionConfig
 * Added cmdlet to remove a circuit connection from an existing express route circuit.
     - Remove-AzureRmExpressRouteCircuitConnectionConfig
 * Added cmdlet to retrieve a circuit connection
     - Get-AzureRmExpressRouteCircuitConnectionConfig
+
+## Version 6.0.0
 * Bump up network sdk version from 17.0.0.preview to 18.0.0.preview
-* Rerecord all network tests with latest sdk version* Set minimum dependency of module to PowerShell 5.0
+* Set minimum dependency of module to PowerShell 5.0
 * Add support for DDoS protection plan resource
 * Introduced multiple breaking changes
     - Please refer to the migration guide for more information

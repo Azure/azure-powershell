@@ -317,6 +317,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public void Clear()
         {
             Contexts.Clear();
+            DefaultContextKey = "Default";
             DefaultContext = new AzureContext();
             EnvironmentTable.Clear();
             foreach (var environment in AzureEnvironment.PublicEnvironments)

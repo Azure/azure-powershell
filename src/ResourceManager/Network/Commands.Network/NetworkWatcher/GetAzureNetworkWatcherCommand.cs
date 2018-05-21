@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -45,11 +46,30 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string Location { get; set; }
+
         public override void Execute()
         {
             base.Execute();
 
-            if (!string.IsNullOrEmpty(this.Name))
+            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                var psNetworkWatcher = this.GetNetworkWatcherByLocation(this.Location);
+
+                if (psNetworkWatcher == null)
+                {
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                }
+
+                WriteObject(psNetworkWatcher);
+            }
+            else if (!string.IsNullOrEmpty(this.Name))
             {
                 PSNetworkWatcher psNetworkWatcher;
                 psNetworkWatcher = this.GetNetworkWatcher(this.ResourceGroupName, this.Name);

@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -24,6 +25,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     public abstract class AzureSqlDatabaseCmdletBase<TModel> : AzureSqlCmdletBase<TModel, AzureSqlDatabaseAdapter>
     {
+        // Some const variables used by SetAzureSqlDatabase and NewAzureSqlDatabase cmdlet
+        public const string DtuDatabaseParameterSet = "DtuBasedDatabase";
+        public const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
+        public const string DefaultDatabaseSkuName = "Standard";
+
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>

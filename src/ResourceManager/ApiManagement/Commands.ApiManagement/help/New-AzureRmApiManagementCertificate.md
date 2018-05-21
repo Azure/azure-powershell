@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 5CBEDFF8-C441-44CC-B011-5F5AAFA2E5C6
@@ -47,7 +47,7 @@ If you do not specify this parameter, an ID is generated for you.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -62,7 +62,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,7 +93,7 @@ This parameter is required if you do not specify the *PfxFilePath* parameter.
 ```yaml
 Type: Byte[]
 Parameter Sets: Raw
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -109,7 +109,7 @@ This parameter is required if you do not specify the *PfxBytes* parameter.
 ```yaml
 Type: String
 Parameter Sets: LoadFromFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -124,7 +124,7 @@ Specifies the password for the certificate.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
