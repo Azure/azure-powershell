@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\..\packages\xunit.runner.visualstudio.2.1.0\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props" Condition="Exists('..\..\..\packages\xunit.core.2.1.0\build\portable-net45+win8+wp8+wpa81\xunit.core.props')" />
@@ -224,6 +224,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Network\Commands.Network\Commands.Network.csproj">
+      <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>
+      <Name>Commands.Network</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.Compute\Commands.Compute.csproj">
       <Project>{52643bd5-6378-49bd-9f6e-dac9dd8a867b}</Project>
