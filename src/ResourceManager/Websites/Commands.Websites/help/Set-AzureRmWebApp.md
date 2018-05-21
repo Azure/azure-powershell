@@ -22,7 +22,7 @@ Set-AzureRmWebApp [[-AppServicePlan] <String>] [[-DefaultDocuments] <String[]>]
  [[-HandlerMappings] <System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HandlerMapping]>]
  [[-ManagedPipelineMode] <String>] [[-WebSocketsEnabled] <Boolean>] [[-Use32BitWorkerProcess] <Boolean>]
  [[-AutoSwapSlotName] <String>] [-HostNames <String[]>] [-NumberOfWorkers <Int32>] [-AsJob] [[-AssignIdentity] <Boolean>]
- [[-HttpsOnly] <Boolean>] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [[-HttpsOnly] <Boolean>] [[ClientAffinityEnabled] <Boolean>] [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -229,6 +229,21 @@ Accept wildcard characters: False
 
 ### -HttpsOnly
 Enable/disable redirecting all traffic to HTTPS on an existing azure webapp or functionapp
+
+```yaml
+Type: Boolean
+Parameter Sets: S1
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClientAffinityEnabled
+Enable/disable affinitizing clients to particular instances of a webapp
 
 ```yaml
 Type: Boolean
