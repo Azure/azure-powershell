@@ -25,11 +25,6 @@ This is an Azure Backup resource that is used to define backup storage policy.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DatabaseName
