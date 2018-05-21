@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch/get-azurebatchjobpreparationandreleasetaskstatus
@@ -68,7 +68,7 @@ Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object w
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,7 +99,7 @@ Specify a value for this parameter to get associated entities of the main entity
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -115,7 +115,7 @@ If you do not specify a filter, this cmdlet returns all job preparation and rele
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -131,7 +131,7 @@ You cannot specify wildcard characters.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -147,7 +147,7 @@ To obtain a **PSCloudJob** object, use the Get-AzureBatchJob cmdlet.
 ```yaml
 Type: PSCloudJob
 Parameter Sets: InputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -164,7 +164,7 @@ The default value is 1000.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -180,7 +180,7 @@ Specify a value for this parameter to get specific properties rather than all ob
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

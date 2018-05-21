@@ -99,6 +99,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             HelpMessage = "Proxy Server details to be used while sending request to the Backend. This parameter is optional.")]
         public PsApiManagementBackendProxy Proxy { get; set; }
 
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Service Fabric Cluster Backend details. This parameter is optional.")]
+        public PsApiManagementServiceFabric ServiceFabricCluster { get; set; }
+
         public override void ExecuteApiManagementCmdlet()
         {
             string backendId = BackendId ?? Guid.NewGuid().ToString("N");
@@ -116,7 +122,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     SkipCertificateChainValidation,
                     SkipCertificateNameValidation,
                     Credential,
-                    Proxy);
+                    Proxy,
+                    ServiceFabricCluster);
 
                 WriteObject(backend);
             }
