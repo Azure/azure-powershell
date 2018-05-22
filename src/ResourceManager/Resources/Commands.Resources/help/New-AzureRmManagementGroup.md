@@ -42,6 +42,7 @@ DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 11:06:27 AM
 UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ParentId          : /providers/Microsoft.Management/managementGroups/14307de0-5e6f-46cf-b2ba-64a062964d30
+ParentName        : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ParentDisplayName : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ```
 
@@ -59,6 +60,7 @@ DisplayName       : TestGroup
 UpdatedTime       : 2/1/2018 11:06:27 AM
 UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ParentId          : /providers/Microsoft.Management/managementGroups/14307de0-5e6f-46cf-b2ba-64a062964d30
+ParentName        : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ParentDisplayName : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ```
 
@@ -76,6 +78,7 @@ DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
 UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
+ParentName        : TestGroupParent
 ParentDisplayName : TestGroupParent
 ```
 
@@ -92,6 +95,7 @@ DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
 UpdatedBy         : 14307de0-5e6f-46cf-b2ba-64a062964d30
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
+ParentName        : TestGroupParent
 ParentDisplayName : TestGroupParent
 ```
 

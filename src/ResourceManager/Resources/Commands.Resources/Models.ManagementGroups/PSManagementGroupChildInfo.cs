@@ -20,9 +20,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.ManagementGroups
 {
     public class PSManagementGroupChildInfo
     {
-        public string ChildType { get; set; }
+        public string Type { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
         public string DisplayName { get; set; }
-        public string ChildId { get; set; }
 
         public IList<PSManagementGroupChildInfo> Children { get; set; }
 
@@ -35,10 +36,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.ManagementGroups
         {
             if (childInfo != null)
             {
-                this.ChildType = childInfo.ChildType;
+                this.Type = childInfo.Type;
                 this.DisplayName = childInfo.DisplayName;
-                this.ChildId = childInfo.ChildId;
-                if (childInfo.Children != null)
+                this.Id = childInfo.Id;
+                this.Name = childInfo.Name;
+
+                if (childInfo.Children != null && childInfo.Children.Count != 0)
                 {
                     this.Children = childInfo.Children.Select(child => new PSManagementGroupChildInfo(child)).ToList();
                 }

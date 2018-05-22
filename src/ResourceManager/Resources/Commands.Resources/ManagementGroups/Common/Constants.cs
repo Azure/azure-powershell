@@ -40,5 +40,8 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups.Common
             public const string InputObject = "Input Object from the Get call";
             public const string ParentObject = "Parent Object";
         }
+
+        public static string GroupUrlPrefix = "/providers/Microsoft.Management/managementGroups/";
+        public static string GroupType = "/providers/Microsoft.Management/managementGroups";
     }
 }

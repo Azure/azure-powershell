@@ -36,9 +36,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.ManagementGroups
 
         public string ParentId { get; set; }
 
+        public string ParentName { get; set; }
+
         public string ParentDisplayName { get; set; }
 
-        public IList<PSManagementGroupChildInfo> Children { get; private set; }
+        public IList<PSManagementGroupChildInfo> Children { get; set; }
 
 
         public PSManagementGroup()
@@ -59,17 +61,21 @@ namespace Microsoft.Azure.Commands.Resources.Models.ManagementGroups
 
                 if (managementGroup.Details.Parent != null)
                 {
-                    if (managementGroup.Details.Parent.ParentId != null)
+                    if (managementGroup.Details.Parent.Id != null)
                     {
-                        ParentId = managementGroup.Details.Parent.ParentId;
+                        ParentId = managementGroup.Details.Parent.Id;
                     }
                     if (managementGroup.Details.Parent.DisplayName != null)
                     {
                         ParentDisplayName = managementGroup.Details.Parent.DisplayName;
                     }
+                    if (managementGroup.Details.Parent.Name != null)
+                    {
+                        ParentName = managementGroup.Details.Parent.Name;
+                    }
                 }
 
-                if (managementGroup.Children != null)
+                if (managementGroup.Children != null && managementGroup.Children.Count!=0)
                 {
                     this.Children = managementGroup.Children.Select(child => new PSManagementGroupChildInfo(child)).ToList();
                 }

@@ -57,7 +57,8 @@ DisplayName       : TestGroupDisplayName
 UpdatedTime       : 2/1/2018 11:16:12 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          : /providers/Microsoft.Management/managementGroups/TestGroupParent
-ParentDisplayName :
+ParentName        : TestGroupParent
+ParentDisplayName : TestGroupParent
 ```
 
 ### Example 3: Get specific Management Group and first level of hierarchy
@@ -73,13 +74,15 @@ DisplayName       : TestGroupParent
 UpdatedTime       : 2/1/2018 11:15:46 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 Children          : {TestGroup1DisplayName, TestGroup2DisplayName}
 
 PS C:\> $response.Children[0]
 
-ChildType   : /managementGroup
-ChildId     : /providers/Microsoft.Management/managementGroups/TestGroup1
+Type        : /managementGroup
+Id          : /providers/Microsoft.Management/managementGroups/TestGroup1
+Name        : TestGroup1
 DisplayName : TestGroup1DisplayName
 Children    :
 ```
@@ -99,20 +102,23 @@ DisplayName       : TestGroupParent
 UpdatedTime       : 2/1/2018 11:15:46 AM
 UpdatedBy         : 64360beb-ffb4-43a8-9314-01aa34db95a9
 ParentId          : /providers/Microsoft.Management/managementGroups/6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
+ParentName        : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 ParentDisplayName : 6b2064b9-34bd-46e6-9092-52f2dd5f7fc0
 Children          : {TestGroup1DisplayName, TestGroup2DisplayName}
 
 PS C:\> $response.Children[0]
 
-ChildType   : /managementGroup
-ChildId     : /providers/Microsoft.Management/managementGroups/TestGroup1
+Type        : /managementGroup
+Id          : /providers/Microsoft.Management/managementGroups/TestGroup1
+Name        : TestGroup1
 DisplayName : TestGroup1DisplayName
 Children    : {TestRecurseChild}
 
 PS C:\> $response.Children[0].Children[0]
 
-ChildType   : /managementGroup
-ChildId     : /providers/Microsoft.Management/managementGroups/TestRecurseChild
+Type        : /managementGroup
+Id          : /providers/Microsoft.Management/managementGroups/TestRecurseChild
+Name        : TestRecurseChild
 DisplayName : TestRecurseChild
 Children    :
 ```

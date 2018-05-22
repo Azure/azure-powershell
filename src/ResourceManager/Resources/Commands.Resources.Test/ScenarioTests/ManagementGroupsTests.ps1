@@ -33,6 +33,7 @@ function Test-GetManagementGroup
 	$expectedDisplayName = "TestPSGetGroup2"
 	$expectedParentId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
 	$expectedParentDisplayName = "TestPSGetGroup1"
+	$expectedParentName = "TestPSGetGroup1"
 
 	Assert-NotNull $response
 	Assert-Null $response.Children
@@ -42,6 +43,7 @@ function Test-GetManagementGroup
 	Assert-AreEqual $response.DisplayName $expectedDisplayName
 	Assert-AreEqual $response.ParentId $expectedParentId
 	Assert-AreEqual $response.ParentDisplayName $expectedParentDisplayName
+	Assert-AreEqual $response.ParentName $expectedParentName
 }
 
 function Test-GetManagementGroupWithExpand
@@ -62,10 +64,11 @@ function Test-GetManagementGroupWithExpand
 	$expectedDisplayName = "TestPSGetGroup2"
 	$expectedParentId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
 	$expectedParentDisplayName = "TestPSGetGroup1"
+	$expectedParentName = "TestPSGetGroup1"
 
 	$expectedChild0Id = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup3"
 	$expectedChild0DisplayName = "TestPSGetGroup3"
-
+	$expectedChild0Name = "TestPSGetGroup3"
 
 	Assert-NotNull $response
 	Assert-NotNull $response.Children
@@ -76,9 +79,11 @@ function Test-GetManagementGroupWithExpand
 	Assert-AreEqual $response.DisplayName $expectedDisplayName
 	Assert-AreEqual $response.ParentId $expectedParentId
 	Assert-AreEqual $response.ParentDisplayName $expectedParentDisplayName
+	Assert-AreEqual $response.ParentName $expectedParentName
 
-	Assert-AreEqual $response.Children[0].ChildId $expectedChild0Id
-	Assert-AreEqual $response.Children[0].DisplayName $expectedChild0DisplayName	
+	Assert-AreEqual $response.Children[0].Id $expectedChild0Id
+	Assert-AreEqual $response.Children[0].DisplayName $expectedChild0DisplayName
+	Assert-AreEqual $response.Children[0].Name $expectedChild0Name
 }
 
 function Test-GetManagementGroupWithExpandAndRecurse
@@ -101,13 +106,15 @@ function Test-GetManagementGroupWithExpandAndRecurse
 	$expectedDisplayName = "TestPSGetGroup2"
 	$expectedParentId = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup1"
 	$expectedParentDisplayName = "TestPSGetGroup1"
+	$expectedParentName = "TestPSGetGroup1"
 
 	$expectedChild0Id = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup3"
 	$expectedChild0DisplayName = "TestPSGetGroup3"
+	$expectedChild0Name = "TestPSGetGroup3"
 
 	$expectedChild0Child0Id = "/providers/Microsoft.Management/managementGroups/TestPSGetGroup4"
 	$expectedChild0Child0DisplayName = "TestPSGetGroup4"
-
+	$expectedChild0Child0Name = "TestPSGetGroup4"
 
 	Assert-NotNull $response
 	Assert-NotNull $response.Children
@@ -118,12 +125,15 @@ function Test-GetManagementGroupWithExpandAndRecurse
 	Assert-AreEqual $response.DisplayName $expectedDisplayName
 	Assert-AreEqual $response.ParentId $expectedParentId
 	Assert-AreEqual $response.ParentDisplayName $expectedParentDisplayName
+	Assert-AreEqual $response.ParentName $expectedParentName
 
-	Assert-AreEqual $response.Children[0].ChildId $expectedChild0Id
-	Assert-AreEqual $response.Children[0].DisplayName $expectedChild0DisplayName	
+	Assert-AreEqual $response.Children[0].Id $expectedChild0Id
+	Assert-AreEqual $response.Children[0].DisplayName $expectedChild0DisplayName
+	Assert-AreEqual $response.Children[0].Name $expectedChild0Name
 
-	Assert-AreEqual $response.Children[0].Children[0].ChildId $expectedChild0Child0Id
+	Assert-AreEqual $response.Children[0].Children[0].Id $expectedChild0Child0Id
 	Assert-AreEqual $response.Children[0].Children[0].DisplayName $expectedChild0Child0DisplayName
+	Assert-AreEqual $response.Children[0].Children[0].Name $expectedChild0Child0Name
 }
 
 function Test-NewManagementGroup

@@ -84,8 +84,9 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                 {
                     PreregisterSubscription();
 
-                    CreateManagementGroupRequest createGroupRequest = new CreateManagementGroupRequest(DisplayName, ParentId);
-                    var response = ManagementGroupsApiClient.ManagementGroups.Update(GroupName, createGroupRequest);
+                    PatchManagementGroupRequest patchGroupRequest =
+                        new PatchManagementGroupRequest(DisplayName, ParentId);
+                    var response = ManagementGroupsApiClient.ManagementGroups.Update(GroupName, patchGroupRequest);
                     WriteObject(new PSManagementGroup(response));
                 }
             }

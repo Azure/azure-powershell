@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ManagementGroups
     {
         public string ParentId { get; set; }
 
+        public string ParentName { get; set; }
+
         public string DisplayName { get; set; }
 
         public PSParentGroupInfo()
@@ -31,8 +33,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.ManagementGroups
         {
             if (parentGroupInfo != null)
             {
-                this.ParentId = parentGroupInfo.ParentId;
+                this.ParentId = parentGroupInfo.Id;
                 this.DisplayName = parentGroupInfo.DisplayName;
+                this.ParentName = parentGroupInfo.Name;
             }
         }
     }

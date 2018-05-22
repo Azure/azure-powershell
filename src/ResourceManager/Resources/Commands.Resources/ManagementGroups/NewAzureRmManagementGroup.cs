@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.Resources.ManagementGroups.Common;
 using Microsoft.Azure.Commands.Resources.Models.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
@@ -63,9 +65,19 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                 {
                     PreregisterSubscription();
 
-                    CreateManagementGroupRequest createGroupRequest = new CreateManagementGroupRequest(DisplayName, ParentId);
+                    CreateManagementGroupRequest createGroupRequest = new CreateManagementGroupRequest(
+                        id: Constants.GroupUrlPrefix + GroupName, type: Constants.GroupType, name: GroupName,
+                        displayName: DisplayName,
+                        details: new CreateManagementGroupDetails()
+                        {
+                            Parent = new CreateParentGroupInfo() {Id = ParentId}
+                        });
+
                     var response = ManagementGroupsApiClient.ManagementGroups.CreateOrUpdate(GroupName, createGroupRequest);
-                    WriteObject(new PSManagementGroup(response));
+                    var managementGroup =
+                        ((JObject) response).ToObject<ManagementGroup>(
+                            JsonSerializer.Create(ManagementGroupsApiClient.DeserializationSettings));
+                    WriteObject(new PSManagementGroup(managementGroup));
                 }
             }
             catch (ErrorResponseException ex)
