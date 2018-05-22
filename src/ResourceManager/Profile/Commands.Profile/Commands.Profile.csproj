@@ -168,6 +168,10 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Websites\Commands.Common.WebSites.csproj">
+      <Project>{592b3e1b-49e3-4f3c-bf6b-e5d4133b1443}</Project>
+      <Name>Commands.Common.WebSites</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 288EF15B-FE5C-44AE-ABD5-2B92F408B9EB
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementtenantsyncstate
 schema: 2.0.0
@@ -25,7 +26,7 @@ The **Get-AzureRmApiManagementTenantSyncState** cmdlet gets the status of the mo
 ### Example 1: Get the status of the most recent synchronization
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementTenantSyncState -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementTenantSyncState -Context $apimContext
 ```
 
 This command gets the status of the most recent synchronization between the configuration database and the Git repository.
@@ -38,7 +39,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -77,4 +78,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

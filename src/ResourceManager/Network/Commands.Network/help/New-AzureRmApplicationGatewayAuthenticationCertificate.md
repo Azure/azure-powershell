@@ -23,11 +23,6 @@ The **New-AzureRmApplicationGatewayAuthenticationCertificate** cmdlet creates an
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CertificateFile

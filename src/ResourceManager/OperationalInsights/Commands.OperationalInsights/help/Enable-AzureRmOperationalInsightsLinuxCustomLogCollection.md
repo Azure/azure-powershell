@@ -30,11 +30,6 @@ The **Enable-AzureRmOperationalInsightsLinuxCustomLogCollection** cmdlet starts 
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

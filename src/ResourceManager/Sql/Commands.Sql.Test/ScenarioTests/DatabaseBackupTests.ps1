@@ -19,7 +19,7 @@
 function Test-ListDatabaseRestorePoints
 {
 	# Setup
-	$location = "Japan East"
+	$location = "Southeast Asia"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 
@@ -59,14 +59,21 @@ function Test-RestoreGeoBackup
 	# Setup
 	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
-	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb-geo2 -ResourceGroupName $rg.ResourceGroupName
-	$restoredDbName = "powershell_db_georestored"
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName payi-testdb-geo2 -ResourceGroupName $rg.ResourceGroupName
+	$restoredDbName = "powershell_db_georestored2"
+	$restoredVcoreDbName = "powershell_db_georestored_vcore"
 
 	$geobackup = Get-AzureRmSqlDatabaseGeoBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName 
-	$job = $geobackup | Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName -AsJob
+	# Restore to a same db as it in geo backup
+	$job = Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredDbName -ResourceGroupName $geobackup.ResourceGroupName `
+		-ServerName $geobackup.ServerName -ResourceId $geobackup.ResourceId -AsJob
 	$job | Wait-Job
+
+	# restore to a vcore db using geobackup
+	Restore-AzureRmSqlDatabase -FromGeoBackup -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $geobackup.ResourceGroupName `
+		-ServerName $geobackup.ServerName -ResourceId $geobackup.ResourceId -Edition "GeneralPurpose" -VCore 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestoreDeletedDatabaseBackup
@@ -74,14 +81,24 @@ function Test-RestoreDeletedDatabaseBackup
 	# Setup
 	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test2
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr2 -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$droppedDbName = "powershell_db_georestored"
 	$restoredDbName = "powershell_db_deleted"
+	$restoredVcoreDbName = "powershell_db_deleted_vcore"
 
+	# this Get command has regression in MS when specifying Deletiondate. Fix should be in Prod by 5/7/2018. so currently use another way to do testing
 	$deletedDb = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $server.ResourceGroupName -ServerName $server.ServerName `
-		-DatabaseName $droppedDbName -DeletionDate "2016-02-23T00:21:22.847Z" 
-	$deletedDb | Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName
+		-DatabaseName $droppedDbName #-DeletionDate "2018-04-20 20:21:37.397Z" 
+
+	# restore to a db same as the deleted db
+	Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
+		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId
+	
+	# restore to a vcore db
+	Restore-AzureRmSqlDatabase -FromDeletedDatabaseBackup -TargetDatabaseName $restoredVcoreDbName -DeletionDate "2018-04-20 20:21:37.397Z" `
+		-ResourceGroupName $deletedDb[0].ResourceGroupName -ServerName $deletedDb[0].ServerName -ResourceId $deletedDb[0].ResourceId -Edition "GeneralPurpose" `
+		-VCore 2 -ComputeGeneration "Gen4"
 }
 
 function Test-RestorePointInTimeBackup
@@ -89,13 +106,19 @@ function Test-RestorePointInTimeBackup
 	# Setup
 	$location = "Southeast Asia"
 	$serverVersion = "12.0"
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName hchung-test
-	$server = Get-AzureRmSqlServer -ServerName hchung-testsvr -ResourceGroupName $rg.ResourceGroupName
-	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName hchung-testdb -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
+	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName payi-testdb -ResourceGroupName $rg.ResourceGroupName
 	$restoredDbName = "powershell_db_restored"
+	$restoredVcoreDbName = "powershell_db_restored_vcore"
 
-	Get-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $db.DatabaseName | 
-	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2016-02-20T00:06:00Z" -TargetDatabaseName $restoredDbName
+	# Restore to same with source db
+	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredDbName -ResourceGroupName $db.ResourceGroupName `
+	-ServerName $db.ServerName -ResourceId $db.ResourceId
+
+	# Restore to a Vcore db
+	Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime "2018-04-18T20:20:00Z" -TargetDatabaseName $restoredVcoreDbName -ResourceGroupName $db.ResourceGroupName `
+		-ServerName $db.ServerName -ResourceId $db.ResourceId -Edition 'GeneralPurpose' -VCore 2 -ComputeGeneration 'Gen4'
 }
 
 function Test-ServerBackupLongTermRetentionVault
@@ -132,6 +155,7 @@ function Test-DatabaseBackupLongTermRetentionPolicy
 	Assert-True { $result.RecoveryServicesBackupPolicyResourceId -eq $policyResourceId }
 }
 
+# LTR-V1 restore tests need to be removed once the service is retired completely
 function Test-RestoreLongTermRetentionBackup
 {
 	$location = "North Europe"
@@ -148,7 +172,7 @@ function Test-RestoreLongTermRetentionBackup
 function Test-LongTermRetentionV2Policy($location = "westcentralus")
 {
 	# Setup
-	$location = Get-Location Microsoft.Sql "servers" $location
+	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 	$weeklyRetention1 = "P1W"
@@ -184,7 +208,7 @@ function Test-LongTermRetentionV2Policy($location = "westcentralus")
 function Test-LongTermRetentionV2Backup($location = "westcentralus")
 {
 	# Setup
-	$location = Get-Location Microsoft.Sql "servers" $location
+	$location = Get-Location "Microsoft.Sql" "servers" "West central US"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -223,7 +247,7 @@ function Test-LongTermRetentionV2
 	$databaseName = "testdb2"
 	$weeklyRetention1 = "P1W"
 	$weeklyRetention2 = "P2W"
-	$restoredDatabase = "testdb3"
+	$restoredDatabase = "testdb5"
 	$databaseWithRemovableBackup = "testdb";
 
 	# Basic Get Tests
@@ -256,15 +280,18 @@ function Test-LongTermRetentionV2
 	Assert-AreEqual $db.DatabaseName $restoredDatabase
 
 	# Test Remove with Piping
-	#Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $removalDatabase -BackupName $backups[0].BackupName | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+	#Get-AzureRmSqlDatabaseLongTermRetentionBackup -Location $locationName -ServerName $serverName -DatabaseName $databaseWithRemovableBackup -BackupName $backups[0].BackupName | Remove-AzureRmSqlDatabaseLongTermRetentionBackup
 	$backups = Get-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $databaseWithRemovableBackup | Get-AzureRmSqlDatabaseLongTermRetentionBackup -OnlyLatestPerDatabase
 	Assert-AreEqual $backups.Count 0
+
+	# drop the restored db
+	Remove-AzureRmSqlDatabase -ResourceGroup $resourceGroup -ServerName $serverName -DatabaseName $restoredDatabase
 }
 
 function Test-DatabaseGeoBackupPolicy
 {
-	$rg = Get-AzureRmResourceGroup -ResourceGroupName alazad-rg
-	$server = Get-AzureRmSqlServer -ServerName testsvr-alazad -ResourceGroupName $rg.ResourceGroupName
+	$rg = Get-AzureRmResourceGroup -ResourceGroupName payi-test
+	$server = Get-AzureRmSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
 	$db = Get-AzureRmSqlDatabase -ServerName $server.ServerName -DatabaseName testdwdb -ResourceGroupName $rg.ResourceGroupName
 
 	# Enable and verify
@@ -345,6 +372,7 @@ function Test-RemoveDatabaseRestorePoint
 
 		Remove-AzureRmSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointCreationDate $restorePoint.RestorePointCreationDate
 
+		Start-Sleep -s 60
 	    # Get restore points from data warehouse database.
 		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 

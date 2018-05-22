@@ -114,8 +114,8 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
             return new RecommendedDatabaseProperties()
             {
                 Name = database.Name,
-                TargetEdition = SloToEdition(database.Properties.UpgradeHint.TargetServiceLevelObjective),
-                TargetServiceLevelObjective = database.Properties.UpgradeHint.TargetServiceLevelObjective
+                TargetEdition = SloToEdition(database.Properties.UpgradeHint != null ? database.Properties.UpgradeHint.TargetServiceLevelObjective : null),
+                TargetServiceLevelObjective = database.Properties.UpgradeHint != null ? database.Properties.UpgradeHint.TargetServiceLevelObjective : null
             };
         }
 
@@ -126,6 +126,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <returns>Edition</returns>
         private string SloToEdition(string ServiceLevelObjective)
         {
+            if (string.IsNullOrWhiteSpace(ServiceLevelObjective))
+                return null;
+
             if (ServiceLevelObjective.StartsWith("B")) return "Basic";
             if (ServiceLevelObjective.StartsWith("S")) return "Standard";
             if (ServiceLevelObjective.StartsWith("P")) return "Premium";

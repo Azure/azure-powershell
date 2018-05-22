@@ -33,11 +33,6 @@ The cmdlet uses the specified resource group and name of the lab to set the poli
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -Days
