@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementidentityprovider
 schema: 2.0.0
 ---
@@ -40,7 +41,7 @@ List of allowed Azure Active Directory Tenants
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -56,7 +57,7 @@ It is App ID for Facebook login, Client ID for Google login, App ID for Microsof
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -72,7 +73,7 @@ For example, it is App Secret for Facebook login, API Key for Google login, Publ
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -88,7 +89,7 @@ This parameter is required.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -120,7 +121,7 @@ This parameter is optional.
 ```yaml
 Type: PsApiManagementIdentityProviderType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Facebook, Google, Microsoft, Twitter, Aad
 
 Required: True

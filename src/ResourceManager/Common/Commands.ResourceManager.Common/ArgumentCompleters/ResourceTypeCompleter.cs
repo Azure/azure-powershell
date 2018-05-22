@@ -58,7 +58,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                                 while (!string.IsNullOrEmpty(page.NextPageLink))
                                 {
                                     task = client.Providers.ListNextAsync(page.NextPageLink);
-                                    if (task.Wait(TimeSpan.FromSeconds(_timeout)))
+
+                                    if (_timeout == -1)
+                                    {
+                                        task.Wait();
+                                        page = task.Result;
+                                        resourceTypes.AddRange(page);
+                                    }
+                                    else if (task.Wait(TimeSpan.FromSeconds(_timeout)))
                                     {
                                         page = task.Result;
                                         resourceTypes.AddRange(page);

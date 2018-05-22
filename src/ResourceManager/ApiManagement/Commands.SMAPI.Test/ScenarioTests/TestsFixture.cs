@@ -1,4 +1,17 @@
-﻿using Microsoft.Azure.Management.Resources;
+﻿// 
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//    http://www.apache.org/licenses/LICENSE-2.0
+// 
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+
+using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
@@ -18,29 +31,28 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         {
             // Initialize has bug which causes null reference exception
             HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();
-            TestUtilities.StartTest();
-            try
+            LegacyTest.TestUtilities.StartTest();
+            using (MockContext context = MockContext.Start(
+                Azure.Test.TestUtilities.GetCallingClass(),
+                Azure.Test.TestUtilities.GetCurrentMethodName(2)))
             {
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
                 resourceManagementClient.TryRegisterSubscriptionForResource();
-            }
-            finally
-            {
-                TestUtilities.EndTest();
             }
         }
     }
 
     public static class ApiManagementHelper
     {
-        public static ApiManagementClient GetApiManagementClient()
+        public static ApiManagementClient GetApiManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ApiManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<ApiManagementClient>(
+                Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         public static ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private static void ThrowIfTrue(bool condition, string message)
@@ -91,29 +103,26 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             string resourceGroupName,
             string apiServiceName,
             string location,
-            SkuType skuType = SkuType.Developer)
+            string skuType = SkuType.Developer)
         {
-            client.ResourceProvider.CreateOrUpdate(
+            client.ApiManagementService.CreateOrUpdate(
                 resourceGroupName,
                 apiServiceName,
-                new ApiServiceCreateOrUpdateParameters
+                new ApiManagementServiceResource
                 {
                     Location = location,
-                    Properties = new ApiServiceProperties
-                    {
-                        AddresserEmail = "foo@live.com",
-                        PublisherEmail = "foo@live.com",
-                        PublisherName = "apimgmt"
-                    },
-                    SkuProperties = new ApiServiceSkuProperties
+                    NotificationSenderEmail = "apimgmt-noreply@mail.windowsazure.com",
+                    PublisherEmail = "foo@live.com",
+                    PublisherName = "apimgmt",
+                    Sku = new ApiManagementServiceSkuProperties
                     {
                         Capacity = 1,
-                        SkuType = skuType
+                        Name = skuType
                     },
                 });
 
-            var response = client.ResourceProvider.Get(resourceGroupName, apiServiceName);
-            ThrowIfTrue(!response.Value.Name.Equals(apiServiceName), $"ApiService name is not equal to {apiServiceName}");
+            var response = client.ApiManagementService.Get(resourceGroupName, apiServiceName);
+            ThrowIfTrue(!response.Name.Equals(apiServiceName), string.Format("ApiService name is not equal to {0}", apiServiceName));
         }
     }
 }

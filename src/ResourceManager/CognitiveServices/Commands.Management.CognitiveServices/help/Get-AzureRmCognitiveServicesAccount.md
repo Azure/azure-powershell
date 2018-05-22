@@ -32,11 +32,6 @@ If you do not specify the *ResoureGroupName* parameter, this cmdlet gets all Cog
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

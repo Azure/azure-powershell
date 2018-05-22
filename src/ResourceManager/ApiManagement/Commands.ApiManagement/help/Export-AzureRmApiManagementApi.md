@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 2BA76B02-B786-4A77-86E0-E7D4191120B5
@@ -15,14 +15,14 @@ Exports an API to a file.
 
 ### ExportToPipeline (Default)
 ```
-Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
+Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  -SpecificationFormat <PsApiManagementApiFormat> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ExportToFile
 ```
-Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
+Export-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SaveAs <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -33,7 +33,7 @@ The **Export-AzureRmApiManagementApi** cmdlet exports an Azure API Management AP
 ## EXAMPLES
 
 ### Example 1: Export an API in Web Application Description Language (WADL) format
-```
+```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Export-AzureRmApiManagementApi -Context $ApiMgmtContext -ApiId "0123456789" -SpecificationFormat "Wadl" -SaveAs "C:\contoso\specifications\0123456789.wadl"
 ```
@@ -48,9 +48,24 @@ Specifies the ID of the API to export.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApiRevision
+Identifier of API Revision. This parameter is optional. If not specified, the export will be done for the currently active api revision.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -63,7 +78,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,7 +108,7 @@ Indicates that this operation overwrites the file of the same name if it already
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ExportToFile
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -108,7 +123,7 @@ Indicates that this operation returns $True if the API is exported successfully,
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ExportToFile
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,7 +138,7 @@ Specifies the file path to which to save the exported API.
 ```yaml
 Type: String
 Parameter Sets: ExportToFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -139,7 +154,7 @@ psdx_paramvalues Wadl and Swagger.
 ```yaml
 Type: PsApiManagementApiFormat
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Wadl, Swagger, Wsdl
 
 Required: True

@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreDatabaseCreate()
+        {
+            RunPowerShellTest("Test-CreateVcoreDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCreateWithSampleName()
         {
             RunPowerShellTest("Test-CreateDatabaseWithSampleName");
@@ -59,6 +66,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestDatabaseUpdate()
         {
             RunPowerShellTest("Test-UpdateDatabase");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreDatabaseUpdate()
+        {
+            RunPowerShellTest("Test-UpdateVcoreDatabase");
         }
 
         [Fact]

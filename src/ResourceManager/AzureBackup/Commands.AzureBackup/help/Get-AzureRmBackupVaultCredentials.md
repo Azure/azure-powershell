@@ -26,11 +26,6 @@ You must register a server before Backup can send backup data to the vault.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

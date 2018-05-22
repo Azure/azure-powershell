@@ -26,9 +26,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
     using Azure.Test.HttpRecorder;
     using WindowsAzure.Commands.ScenarioTest;
+    using Rest.ClientRuntime.Azure.TestFramework;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using ResourceManagementClient = Management.Internal.Resources.ResourceManagementClient;
     using Xunit;
+    using LegacyTest = Microsoft.Azure.Test;
 
     public class ApiManagementTests : RMTestBase
     {
@@ -48,7 +50,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             var resourceManagementClient = GetResourceManagementClient(context);
             var armStorageManagementClient = GetArmStorageManagementClient(context);
 
-            _helper.SetupSomeOfManagementClients( resourceManagementClient, armStorageManagementClient);
+            _helper.SetupSomeOfManagementClients(resourceManagementClient, armStorageManagementClient);
         }
 
         protected StorageManagementClient GetArmStorageManagementClient(MockContext context)
@@ -59,6 +61,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private ApiManagementClient GetApiManagementManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ApiManagementClient>(
+                Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         [Fact]
@@ -82,39 +90,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetApiManagementDeploymentExternalVN()
-        {
-            RunPowerShellTest("Test-SetApiManagementDeploymentExternalVirtualNetwork");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetApiManagementDeploymentInternalVN()
-        {
-            RunPowerShellTest("Test-SetApiManagementDeploymentInternalVirtualNetwork");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateApiManagementDeployment()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeployment");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateDeploymentComplex()
-        {
-            RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipeline");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestImportApiManagementHostnameCertificate()
-        {
-            RunPowerShellTest("Test-ImportApiManagementHostnameCertificate");
-        }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApiManagementHostnames()
@@ -124,20 +104,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCrudApiManagementWithExternalVpn()
+        public void TestApiManagementHostnamesCrud()
         {
-            RunPowerShellTest("Test-CrudApiManagementWithExternalVpn");
+            RunPowerShellTest("Test-ApiManagementHostnamesCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementWithVirtualNetwork()
+        {
+            RunPowerShellTest("Test-ApiManagementVirtualNetworkCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagementWithAdditionalRegions()
         {
-            RunPowerShellTest("Test-CrudApiManagementWithAdditionalRegions");
+            RunPowerShellTest("Test-ApiManagementWithAdditionalRegionsCRUD");
         }
 
         private void RunPowerShellTest(params string[] scripts)
-        {
+        {           
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
