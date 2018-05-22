@@ -204,6 +204,20 @@ namespace StaticAnalysis.SignatureVerifier
                                         remediation: "Consider using a singular noun for the cmdlet name.");
                                     }
 
+                                    if (!cmdlet.OutputTypes.Any())
+                                    {
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            severity: 1,
+                                        problemId: SignatureProblemId.CmdletWithNoOutputType,
+                                        description:
+                                            string.Format(
+                                                "Cmdlet '{0}' has no defined output type.", cmdlet.Name),
+                                        remediation: "Add an OutputType attribute that declares the type of the object(s) returned " +
+                                                     "by this cmdlet. If this cmdlet returns no output, please set the output " +
+                                                     "type to 'bool' and make sure to implement the 'PassThru' parameter.");
+                                    }
+
                                     foreach (var parameter in cmdlet.GetParametersWithPluralNoun())
                                     {
                                         issueLogger.LogSignatureIssue(
@@ -216,6 +230,51 @@ namespace StaticAnalysis.SignatureVerifier
                                                 "naming convention of using a singular noun for a parameter name.",
                                                 parameter.Name, cmdlet.Name),
                                         remediation: "Consider using a singular noun for the parameter name.");
+                                    }
+
+                                    foreach (var parameterSet in cmdlet.ParameterSets)
+                                    {
+                                        if (parameterSet.Name.Contains(" "))
+                                        {
+                                            issueLogger.LogSignatureIssue(
+                                                cmdlet: cmdlet,
+                                                severity: 1,
+                                            problemId: SignatureProblemId.ParameterSetWithSpace,
+                                            description:
+                                                string.Format(
+                                                    "Parameter set '{0}' of cmdlet '{1}' contains a space, which " +
+                                                    "is discouraged for PowerShell parameter sets.",
+                                                    parameterSet.Name, cmdlet.Name),
+                                            remediation: "Remove the space(s) in the parameter set name.");
+                                        }
+
+                                        if (parameterSet.Parameters.Any(p => p.Position >= 4))
+                                        {
+                                            issueLogger.LogSignatureIssue(
+                                                cmdlet: cmdlet,
+                                                severity: 1,
+                                            problemId: SignatureProblemId.ParameterWithOutOfRangePosition,
+                                            description:
+                                                string.Format(
+                                                    "Parameter set '{0}' of cmdlet '{1}' contains at least one parameter " +
+                                                    "with a position larger than four, which is discouraged.",
+                                                    parameterSet.Name, cmdlet.Name),
+                                            remediation: "Limit the number of positional parameters in a single parameter set to " +
+                                                         "four or fewer.");
+                                        }
+                                    }
+
+                                    if (cmdlet.ParameterSets.Count() > 2 && cmdlet.DefaultParameterSetName == "__AllParameterSets")
+                                    {
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            severity: 1,
+                                        problemId: SignatureProblemId.MultipleParameterSetsWithNoDefault,
+                                        description:
+                                            string.Format(
+                                                "Cmdlet '{0}' has multiple parameter sets, but no defined default parameter set.",
+                                                cmdlet.Name),
+                                        remediation: "Define a default parameter set in the cmdlet attribute.");
                                     }
                                 }
 

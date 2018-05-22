@@ -64,13 +64,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             if (ValidateOnly.IsPresent)
             {
-                ExecuteTenantConfigurationLongRunningCmdletWrap(
-                    () => Client.BeginValidateTenantGitConfiguration(
-                        Context,
-                        Branch,
-                        Force.IsPresent),
-                    PassThru.IsPresent
-                    );
+                var operationContract = Client.ValidateTenantGitConfiguration(
+                    Context,
+                    Branch,
+                    Force.IsPresent);
+
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(operationContract);
+                }
             }
             else
             {
@@ -83,13 +85,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     return;
                 }
 
-                ExecuteTenantConfigurationLongRunningCmdletWrap(
-                    () => Client.BeginPublishTenantGitConfiguration(
+                var operationResult = Client.PublishGitConfiguration(
                         Context,
                         Branch,
-                        Force.IsPresent),
-                    PassThru.IsPresent
-                    );
+                        Force.IsPresent);
+                if (PassThru.IsPresent)
+                {
+                    this.WriteObject(operationResult);
+                }
             }
         }
     }

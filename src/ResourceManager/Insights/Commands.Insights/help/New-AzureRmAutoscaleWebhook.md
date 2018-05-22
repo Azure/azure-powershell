@@ -22,11 +22,6 @@ The **New-AzureRmAutoscaleWebhook** cmdlet creates an Autoscale webhook.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

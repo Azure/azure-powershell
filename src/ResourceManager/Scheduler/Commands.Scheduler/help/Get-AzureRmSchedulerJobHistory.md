@@ -23,11 +23,6 @@ The **Get-AzureRmSchedulerJobHistory** cmdlet gets history for an Azure Schedule
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

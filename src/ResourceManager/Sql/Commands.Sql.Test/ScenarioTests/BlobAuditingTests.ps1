@@ -62,7 +62,7 @@ function Test-BlobAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegi
 		Assert-AreEqual $policy.AuditState "Enabled"  
 
 		$newResourceGroupName =  "test-rg2-for-sql-cmdlets-" + $testSuffix
-		New-AzureRmResourceGroup -Location "japanwest" -ResourceGroupName $newResourceGroupName
+		New-AzureRmResourceGroup -Location "West Europe" -ResourceGroupName $newResourceGroupName
 		New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $newResourceGroupName -Location "West Europe" -Type Standard_GRS 
 
 		Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount

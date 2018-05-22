@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Model
 {
@@ -27,6 +28,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Template to generate database id
         /// </summary>
         public const string IdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/databases/{3}";
+
+        /// <summary>
+        /// Template to generate elastic pool id for the database
+        /// </summary>
+        public const string PoolIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/elasticPools/{3}";
 
         /// <summary>
         /// Gets or sets the name of the resource group
@@ -56,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// <summary>
         /// Gets or sets the edition of the database
         /// </summary>
-        public DatabaseEdition Edition { get; set; }
+        public string Edition { get; set; }
 
         /// <summary>
         /// Gets or sets the database collation
@@ -94,14 +100,14 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string CurrentServiceObjectiveName { get; set; }
 
         /// <summary>
-        /// gets or sets the requested service objective ID
-        /// </summary>
-        public Guid? RequestedServiceObjectiveId { get; set; }
-
-        /// <summary>
         /// Gets or sets the requested service objective name
         /// </summary>
         public string RequestedServiceObjectiveName { get; set; }
+
+        /// <summary>
+        /// gets or sets the requested service objective ID
+        /// </summary>
+        public Guid? RequestedServiceObjectiveId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the Elastic Pool the database is in
@@ -139,6 +145,22 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public bool? ZoneRedundant { get; set; }
 
         /// <summary>
+        /// Gets or sets the capacity of the database. 
+        ///    The capacity is Dtu number if the database is dtu based database; capacity is Vcore number if the database is vcore based database.
+        /// </summary>
+        public int? Capacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Family of the database.
+        /// </summary>
+        public string Family { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SkuName of the database.
+        /// </summary>
+        public string SkuName { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -154,7 +176,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.LegacySdk.Models.Database database)
         {
             Guid id = Guid.Empty;
-            DatabaseEdition edition = DatabaseEdition.None;
             DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
             ResourceGroupName = resourceGroup;
@@ -178,8 +199,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Guid.TryParse(database.Properties.DatabaseId, out id);
             DatabaseId = id;
 
-            Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
-            Edition = edition;
+            Edition = database.Properties.Edition;
 
             Guid.TryParse(database.Properties.RequestedServiceObjectiveId, out id);
             RequestedServiceObjectiveId = id;
@@ -191,22 +211,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         }
 
         /// <summary>
-        /// Construct AzureSqlDatabaseModel from Management.Sql.LegacySdk.Models.Database object
+        /// Construct AzureSqlDatabaseModel from Management.Sql.Database object
         /// </summary>
         /// <param name="resourceGroup">Resource group</param>
         /// <param name="serverName">Server name</param>
         /// <param name="database">Database object</param>
         public AzureSqlDatabaseModel(string resourceGroup, string serverName, Management.Sql.Models.Database database)
         {
-            DatabaseEdition edition = DatabaseEdition.None;
             DatabaseReadScale readScale = DatabaseReadScale.Enabled;
 
             ResourceGroupName = resourceGroup;
             ServerName = serverName;
             CollationName = database.Collation;
             CreationDate = database.CreationDate.Value;
-            CurrentServiceObjectiveName = database.ServiceLevelObjective;
-            MaxSizeBytes = long.Parse(database.MaxSizeBytes);
+            MaxSizeBytes = (long)database.MaxSizeBytes;
             DatabaseName = database.Name;
             Status = database.Status;
             Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(database.Tags), false);
@@ -216,19 +234,24 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             CreateMode = database.CreateMode;
             EarliestRestoreDate = database.EarliestRestoreDate;
 
-            CurrentServiceObjectiveId = database.CurrentServiceObjectiveId.Value;
+            CurrentServiceObjectiveName = database.CurrentServiceObjectiveName;
 
             DatabaseId = database.DatabaseId.Value;
 
-            Enum.TryParse<DatabaseEdition>(database.Edition, true, out edition);
-            Edition = edition;
+            Edition = database.Edition;
 
-            RequestedServiceObjectiveId = database.RequestedServiceObjectiveId.Value;
+            RequestedServiceObjectiveName = database.RequestedServiceObjectiveName;
 
             Enum.TryParse<DatabaseReadScale>(database.ReadScale.ToString(), true, out readScale);
             ReadScale = readScale;
 
             ZoneRedundant = database.ZoneRedundant;
+
+            Capacity = database.Sku == null ? (int?)null : database.Sku.Capacity;
+
+            Family = database.Sku == null ? null : database.Sku.Family;
+
+            SkuName = database.Sku == null ? null : database.Sku.Name;
         }
     }
 }

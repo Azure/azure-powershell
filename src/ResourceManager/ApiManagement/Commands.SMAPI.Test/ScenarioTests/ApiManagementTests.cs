@@ -23,8 +23,10 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
     using WindowsAzure.Commands.ScenarioTest;
+    using Rest.ClientRuntime.Azure.TestFramework;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
+    using LegacyTest = Microsoft.Azure.Test;
 
     public class ApiManagementTests : RMTestBase, IClassFixture<ApiManagementTestsFixture>
     {
@@ -63,13 +65,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         public void ApiImportExportWsdlTest()
         {
             RunPowerShellTest("Api-ImportExportWsdlTest");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ApiImportWsdlToCreateSoapToRest()
-        {
-            RunPowerShellTest("Api-ImportWsdlToCreateSoapToRestApi");
         }
 
         [Fact]
@@ -175,6 +170,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         public void BackendCrudTest()
         {
             RunPowerShellTest("Backend-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BackendServiceFabricCrudTest()
+        {
+            RunPowerShellTest("BackendServiceFabric-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiVersionSetCrudTest()
+        {
+            RunPowerShellTest("ApiVersionSet-CrudTest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ApiRevisionCrudTest()
+        {
+            RunPowerShellTest("ApiRevision-CrudTest");
         }
 
         private void RunPowerShellTest(params string[] scripts)
