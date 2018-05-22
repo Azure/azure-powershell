@@ -14,7 +14,6 @@
 
 
 using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
@@ -32,8 +31,6 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups.Common
     public abstract class AzureManagementGroupsCmdletBase : AzureRMCmdlet
     {
         private IManagementGroupsAPIClient _managementGroupsApiClient;
-
-        private Dictionary<string, List<string>> _defaultRequestHeaders;
 
         /// <summary>
         /// Gets or sets the Groups RP client.

@@ -21,13 +21,13 @@ using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using LegacyRMClient = Microsoft.Azure.Management.Resources;
 using LegacyRMSubscription = Microsoft.Azure.Subscriptions;
@@ -66,6 +66,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
+
+        public ManagementGroupsAPIClient ManagementGroupsApiClient { get; private set; }
 
 
         public string UserDomain { get; private set; }
@@ -182,6 +184,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             GraphClient = GetGraphClient(context);
             InsightsClient = GetInsightsClient();
+            ManagementGroupsApiClient = GetManagementGroupsApiClient(context);
             this.FeatureClient = this.GetFeatureClient(context);
             var testEnvironment = this.csmTestFactory.GetTestEnvironment();
             var credentials = new SubscriptionCredentialsAdapter(
@@ -197,7 +200,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 AuthorizationManagementClient,
                 GraphClient,
                 InsightsClient,
-                this.FeatureClient);
+                this.FeatureClient,
+                ManagementGroupsApiClient);
         }
 
         private GraphRbacManagementClient GetGraphClient(MockContext context)
@@ -279,6 +283,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private InsightsClient GetInsightsClient()
         {
             return LegacyTest.TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
+        }
+
+        private ManagementGroupsAPIClient GetManagementGroupsApiClient(MockContext context)
+        {
+            return context.GetServiceClient<ManagementGroupsAPIClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         /// <summary>

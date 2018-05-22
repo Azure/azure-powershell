@@ -55,7 +55,8 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; }
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll', 
-               '.\Microsoft.Azure.Management.Authorization.dll'
+               '.\Microsoft.Azure.Management.Authorization.dll',
+               '.\Microsoft.Azure.Management.ManagementGroups.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -120,7 +121,10 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Set-AzureRmManagedApplicationDefinition', 
                'Remove-AzureRmManagedApplicationDefinition', 
                'Get-AzureRmManagedApplication', 'New-AzureRmManagedApplication', 
-               'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication'
+               'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication',
+               'Get-AzureRmManagementGroup', 'New-AzureRmManagementGroup',
+               'Update-AzureRmManagementGroup', 'Remove-AzureRmManagementGroup',
+               'New-AzureRmManagementGroupSubscription', 'Remove-AzureRmManagementGroupSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -148,7 +152,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Provider','ResourceGroup','Deployment','ActiveDirectory','Authorization'
+        Tags = 'Azure','ResourceManager','ARM','Provider','ResourceGroup','Deployment','ActiveDirectory','Authorization', 'Management','ManagementGroups'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -160,7 +164,14 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
+        ReleaseNotes = '* Add ManagementGroups Cmdlets:
+		- Get-AzureRmManagementGroup
+		- New-AzureRmManagementGroup
+		- Update-AzureRmManagementGroup
+		- Remove-AzureRmManagementGroup
+		- New-AzureRmManagementGroupSubscription
+		- Remove-AzureRmManagementGroupSubscription
+* Set minimum dependency of module to PowerShell 5.0
 * Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
 * Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
 * Add convenience cmdlet for creating ServicePrincipals
