@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -24,11 +23,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Network;
+#if NETSTANDARD
+using Microsoft.Azure.Management.ResourceManager;
+#else
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Test;
+#endif
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-//using NetworkManagementClient = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient;
+using NetworkManagementClientInternal = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient;
+using ResourceManagementClientInternal = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
@@ -38,13 +44,15 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         public StorageManagementClient StorageClient { get; private set; }
 
-        public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
-
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
-        public ResourceManagementClient InternalResourceManagementClient { get; private set; }
+        public NetworkManagementClientInternal NetworkManagementClientInternal { get; private set; }
+
+        public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public ResourceManagementClientInternal InternalResourceManagementClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -105,6 +113,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
+            providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-09-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
@@ -122,13 +132,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     "ScenarioTests\\ComputeTestCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    //_helper.RMResourceModule,
+                    _helper.RMResourceModule,
                     _helper.RMStorageDataPlaneModule,
                     _helper.RMStorageModule,
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
-                    //_helper.GetRMModulePath("AzureRM.Network.psd1"),
-                    //_helper.GetRMModulePath("AzureRM.ServiceFabric.psd1"),
-                    //_helper.RMStorageDataPlaneModule,
+                    _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
@@ -151,22 +159,33 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             StorageClient = GetStorageManagementClient(context);
-            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
+            NetworkManagementClientInternal = GetNetworkManagementClientInternal(context);
+            ResourceManagementClient = GetResourceManagementClient(context);
             InternalResourceManagementClient = GetResourceManagementClientInternal(context);
 
             _helper.SetupSomeOfManagementClients(
                 StorageClient,
-                KeyVaultManagementClient,
                 ComputeManagementClient,
                 NetworkManagementClient,
+                NetworkManagementClientInternal,
+                ResourceManagementClient,
                 InternalResourceManagementClient);
         }
 
-        private static ResourceManagementClient GetResourceManagementClientInternal(MockContext context)
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
+#if NETSTANDARD
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+#else
+            return Microsoft.Azure.Test.TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+#endif
+        }
+
+        private static ResourceManagementClientInternal GetResourceManagementClientInternal(MockContext context)
+        {
+            return context.GetServiceClient<ResourceManagementClientInternal>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static StorageManagementClient GetStorageManagementClient(MockContext context)
@@ -174,14 +193,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private static KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
         private static NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static NetworkManagementClientInternal GetNetworkManagementClientInternal(MockContext context)
+        {
+            return context.GetServiceClient<NetworkManagementClientInternal>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static ComputeManagementClient GetComputeManagementClient(MockContext context)
