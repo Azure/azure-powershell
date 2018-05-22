@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class InboundNetPoolStrategy
     {
-        public static NestedResourceStrategy<InboundNatPool, LoadBalancer> Strategy { get; }
+        public static INestedResourceStrategy<InboundNatPool, LoadBalancer> Strategy { get; }
             = NestedResourceStrategy.Create<InboundNatPool, LoadBalancer>(
                 provider: "inboundNatPools",
                 getList: b => b.InboundNatPools,
@@ -27,10 +28,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 getName: p => p.Name,
                 setName: (p, name) => p.Name = name);
 
-        public static NestedResourceConfig<InboundNatPool, LoadBalancer> CreateInboundNatPool(
-            this ResourceConfig<LoadBalancer> loadBalancer,
+        public static INestedResourceConfig<InboundNatPool, LoadBalancer> CreateInboundNatPool(
+            this IResourceConfig<LoadBalancer> loadBalancer,
             string name,
-            NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> frontendIpConfiguration,
+            INestedResourceConfig<FrontendIPConfiguration, LoadBalancer> frontendIpConfiguration,
             int frontendPortRangeStart,
             int frontendPortRangeEnd,
             int backendPort)

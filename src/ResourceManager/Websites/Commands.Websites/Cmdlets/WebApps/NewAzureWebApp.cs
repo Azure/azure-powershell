@@ -30,14 +30,14 @@ using Microsoft.Azure.Commands.Common.Strategies.Resources;
 using Microsoft.Azure.Commands.Common.Strategies.WebApps;
 using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Commands.WebApps.Strategies;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
-using Microsoft.Azure.Commands.WebApps.Properties;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Commands.ResourceManager.Common.Utilities.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Cmdlets;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             return result;
         }
 
-        sealed class Parameters : IParameters<Site>
+        sealed class Parameters : INewCmdletParameters<Site, ResourceGroup>
         {
             readonly NewAzureWebAppCmdlet _cmdlet; 
 
@@ -270,16 +270,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 set { _cmdlet.Location = value; }
             }
 
-            public async Task<ResourceConfig<Site>> CreateConfigAsync()
-            {
-                _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
-                _cmdlet.AppServicePlan = _cmdlet.AppServicePlan ?? _cmdlet.Name;
+            public string OutputTemplateFile
+                => null;
 
+            public async Task<IResourceConfig<Site>> CreateConfigAsync(IResourceConfig<ResourceGroup> resourceGroup)
+            {
                 var planResourceGroup = _cmdlet.ResourceGroupName;
                 var planName = _cmdlet.AppServicePlan;
 
-                var rgStrategy = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
-                var planRG = rgStrategy;
+                var planRG = resourceGroup;
                 if (_cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(AppServicePlan)))
                 {
                     if (!_cmdlet.TryGetServerFarmFromResourceId(_cmdlet.AppServicePlan, out planResourceGroup, out planName))
@@ -301,15 +300,21 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     }
                 }
                 var farmStrategy = planRG.CreateServerFarmConfig(planResourceGroup, planName);
-                return rgStrategy.CreateSiteConfig(farmStrategy, _cmdlet.Name);
+                return resourceGroup.CreateSiteConfig(farmStrategy, _cmdlet.Name);
             }
+
+            public IResourceConfig<ResourceGroup> CreateResourceGroup()
+                => ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
         }
 
         public async Task CreateWithSimpleParameters(IAsyncCmdlet adapter)
         {
+            ResourceGroupName = ResourceGroupName ?? Name;
+            AppServicePlan = AppServicePlan ?? Name;
+
             var parameters = new Parameters(this);
             var client = new WebClient(DefaultContext);
-            var output = await client.RunAsync(client.SubscriptionId, parameters, adapter);
+            var output = await client.RunAsync(parameters, adapter);
 
             output.SiteConfig = WebsitesClient
                 .WrappedWebsitesClient

@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class ManagedDiskStrategy
     {
-        public static ResourceStrategy<Disk> Strategy { get; }
+        public static IResourceStrategy<Disk> Strategy { get; }
             = ComputeStrategy.Create(
                 provider: "disks",
                 getOperations: client => client.Disks,
@@ -31,8 +32,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: d => 120);
 
-        public static ResourceConfig<Disk> CreateManagedDiskConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
+        public static IResourceConfig<Disk> CreateManagedDiskConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup,
             string name,
             string sourceUri)
             => Strategy.CreateResourceConfig(

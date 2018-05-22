@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
 using Microsoft.Azure.Commands.Compute.Properties;
 using Microsoft.Rest;
 using System;

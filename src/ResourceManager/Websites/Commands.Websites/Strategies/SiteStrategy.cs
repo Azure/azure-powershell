@@ -14,22 +14,26 @@
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
 {
     static class SiteStrategy
     {
-        public static ResourceStrategy<Site> Strategy { get; } = AppServicePolicy.Create(
+        public static IResourceStrategy<Site> Strategy { get; } = AppServicePolicy.Create(
             provider: "sites",
             getOperations: client => client.WebApps,
             getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
-            createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 20,
-            compulsoryLocation: true);
+            createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
+                p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
+            createTime: _ => 20);
 
-        public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup,
-            ResourceConfig<AppServicePlan> plan, string siteName) =>
-            Strategy.CreateResourceConfig(
+        public static IResourceConfig<Site> CreateSiteConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup,
+            IResourceConfig<AppServicePlan> plan,
+            string siteName)
+            => Strategy.CreateResourceConfig(
                 resourceGroup,
                 siteName,
                 createModel: engine =>

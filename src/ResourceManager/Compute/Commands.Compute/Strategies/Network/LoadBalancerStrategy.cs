@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         public const string Dynamic = "Dynamic";
         public const string Static = "Static";
 
-        public static ResourceStrategy<LoadBalancer> Strategy { get; }
+        public static IResourceStrategy<LoadBalancer> Strategy { get; }
             = NetworkStrategy.Create(
                 "loadBalancers",
                 client => client.LoadBalancers,
@@ -41,8 +42,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             Standard,
         }
 
-        public static ResourceConfig<LoadBalancer> CreateLoadBalancerConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
+        public static IResourceConfig<LoadBalancer> CreateLoadBalancerConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup,
             string name,
             Sku sku)
             => Strategy.CreateResourceConfig(

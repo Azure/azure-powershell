@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -21,7 +23,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class VirtualNetworkStrategy
     {
-        public static ResourceStrategy<VirtualNetwork> Strategy { get; }
+        public static IResourceStrategy<VirtualNetwork> Strategy { get; }
             = NetworkStrategy.Create(
                 provider: "virtualNetworks",
                 getOperations: client => client.VirtualNetworks,
@@ -31,18 +33,22 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: _ => 15);
 
-        public static ResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
+        public static IResourceConfig<VirtualNetwork> CreateVirtualNetworkConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup,
             string name,
             string addressPrefix)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: _ => new VirtualNetwork
+                createModel: engine => new VirtualNetwork
                 {
                     AddressSpace = new AddressSpace
                     {
-                        AddressPrefixes = new[] { addressPrefix }
+                        AddressPrefixes = new[] 
+                        {
+                            engine.GetParameterValue(Parameter.Create(
+                                "vnetAddressPrefix", addressPrefix))
+                        }
                     }
                 });
     }

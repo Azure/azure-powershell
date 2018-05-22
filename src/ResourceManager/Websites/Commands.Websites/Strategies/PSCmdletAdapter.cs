@@ -15,9 +15,9 @@
 using System;
 using System.Management.Automation;
 using System.Threading.Tasks;
-using Microsoft.Azure.Commands.Common.Strategies;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.Common.Strategies.Cmdlets;
 
 namespace Microsoft.Azure.Commands.WebApps.Strategies
 {

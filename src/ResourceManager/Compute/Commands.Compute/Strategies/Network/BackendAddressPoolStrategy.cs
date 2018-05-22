@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class BackendAddressPoolStrategy
     {
-        public static NestedResourceStrategy<BackendAddressPool, LoadBalancer> Strategy { get; }
+        public static INestedResourceStrategy<BackendAddressPool, LoadBalancer> Strategy { get; }
             = NestedResourceStrategy.Create<BackendAddressPool, LoadBalancer>(
                 provider: "backendAddressPools",
                 getList: parentModel => parentModel.BackendAddressPools,
@@ -27,8 +28,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 getName: model => model.Name,
                 setName: (model, name) => model.Name = name);
 
-        public static NestedResourceConfig<BackendAddressPool, LoadBalancer> CreateBackendAddressPool(
-            this ResourceConfig<LoadBalancer> loadBalancer,
+        public static INestedResourceConfig<BackendAddressPool, LoadBalancer> CreateBackendAddressPool(
+            this IResourceConfig<LoadBalancer> loadBalancer,
             string name)
             => loadBalancer.CreateNested(
                 strategy: Strategy,

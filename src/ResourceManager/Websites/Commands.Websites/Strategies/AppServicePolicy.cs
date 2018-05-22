@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using System;
@@ -21,21 +23,20 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
 {
     static class AppServicePolicy
     {
-        public static ResourceStrategy<TModel> Create<TModel, TOperations>(
+        public static IResourceStrategy<TModel> Create<TModel, TOperations>(
             string provider,
             Func<WebSiteManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
-            Func<TModel, int> createTime,
-            bool compulsoryLocation = false) where TModel : Resource
+            Func<TModel, int> createTime) where TModel : Resource
             => ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.Web", provider),
+                getApiVersion: client => client.ApiVersion(),
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
                 getLocation: config => config.Location,
                 setLocation: (config, location) => config.Location = location,
-                createTime: createTime,
-                compulsoryLocation: compulsoryLocation);
+                createTime: createTime);
     }
 }

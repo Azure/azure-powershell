@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
 using Microsoft.Azure.Management.Compute.Models;
 using N = Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
@@ -25,21 +26,21 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             => config == null ? null : new SubResource { Id = engine.GetId(config) };
 
         public static SubResource GetReference(
-            this IEngine engine, ResourceConfig<AvailabilitySet> availabilitySet)
+            this IEngine engine, IResourceConfig<AvailabilitySet> availabilitySet)
             => engine.GetSubResourceReference(availabilitySet);
 
         public static SubResource GetReference(
-            this IEngine engine, ResourceConfig<N.NetworkSecurityGroup> networkSecurityGroup)
+            this IEngine engine, IResourceConfig<N.NetworkSecurityGroup> networkSecurityGroup)
             => engine.GetSubResourceReference(networkSecurityGroup);
 
         public static SubResource GetReference(
             this IEngine engine,
-            NestedResourceConfig<N.BackendAddressPool, N.LoadBalancer> backendAddressPool)
+            INestedResourceConfig<N.BackendAddressPool, N.LoadBalancer> backendAddressPool)
             => engine.GetSubResourceReference(backendAddressPool);
 
         public static SubResource GetReference(
             this IEngine engine,
-            NestedResourceConfig<N.InboundNatPool, N.LoadBalancer> inboundNatPool)
+            INestedResourceConfig<N.InboundNatPool, N.LoadBalancer> inboundNatPool)
             => engine.GetSubResourceReference(inboundNatPool);
     }
 }

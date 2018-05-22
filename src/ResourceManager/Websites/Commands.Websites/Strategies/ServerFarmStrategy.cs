@@ -15,21 +15,23 @@ using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
 {
     static class ServerFarmStrategy
     {
-        public static ResourceStrategy<AppServicePlan> Strategy { get; } = AppServicePolicy.Create(
+        public static IResourceStrategy<AppServicePlan> Strategy { get; } = AppServicePolicy.Create(
             provider: "serverFarms",
             getOperations: client => client.AppServicePlans,
             getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
-            createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 5,
-            compulsoryLocation: true);
+            createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
+                p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
+            createTime: _ => 5);
 
-        public static ResourceConfig<AppServicePlan> CreateServerFarmConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
+        public static IResourceConfig<AppServicePlan> CreateServerFarmConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup,
             string resourceGroupName,
             string name) => Strategy.CreateResourceConfig(
                 resourceGroup,
@@ -37,7 +39,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
                 createModel: _ =>
                     new AppServicePlan(location: null, name: name)
                     {
-                        Sku = new SkuDescription { Tier = "Basic", Capacity = 1, Name = CmdletHelpers.GetSkuName("Basic", 1) }
+                        Sku = new SkuDescription
+                        {
+                            Tier = "Basic",
+                            Capacity = 1,
+                            Name = CmdletHelpers.GetSkuName("Basic", 1)
+                        }
                     });
     }
 }

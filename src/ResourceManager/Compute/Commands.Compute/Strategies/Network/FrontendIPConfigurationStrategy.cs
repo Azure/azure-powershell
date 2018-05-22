@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
-using System.Collections.Generic;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class FrontendIPConfigurationStrategy
     {
-        public static NestedResourceStrategy<FrontendIPConfiguration, LoadBalancer> Strategy { get; }
+        public static INestedResourceStrategy<FrontendIPConfiguration, LoadBalancer> Strategy { get; }
             = NestedResourceStrategy.Create<FrontendIPConfiguration, LoadBalancer>(
                 provider: "frontendIPConfigurations",
                 getList: parentModel => parentModel.FrontendIPConfigurations,
@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 getName: model => model.Name,
                 setName: (model, name) => model.Name = name);
 
-        public static NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> CreateFrontendIPConfiguration(
-            this ResourceConfig<LoadBalancer> loadBalancer,
+        public static INestedResourceConfig<FrontendIPConfiguration, LoadBalancer> CreateFrontendIPConfiguration(
+            this IResourceConfig<LoadBalancer> loadBalancer,
             string name,
-            ResourceConfig<PublicIPAddress> publicIpAddress)
+            IResourceConfig<PublicIPAddress> publicIpAddress)
                 => loadBalancer.CreateNested(
                     strategy: Strategy,
                     name: name,

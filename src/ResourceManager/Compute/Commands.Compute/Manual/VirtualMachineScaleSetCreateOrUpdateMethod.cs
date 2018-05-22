@@ -25,12 +25,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    using Commands.Common.Strategies.Cmdlets;
+    using Commands.Common.Strategies.Rm.Config;
+    using Rm = Azure.Management.Internal.Resources.Models;
+
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         // SimpleParameterSet
@@ -126,7 +128,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         const int FirstPortRangeStart = 50000;
 
-        sealed class Parameters : IParameters<VirtualMachineScaleSet>
+        sealed class Parameters : INewCmdletParameters<VirtualMachineScaleSet, Rm.ResourceGroup>
         {
             NewAzureRmVmss _cmdlet { get; }
 
@@ -148,7 +150,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             public string DefaultLocation => "eastus";
 
-            public async Task<ResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync()
+            public async Task<IResourceConfig<VirtualMachineScaleSet>> CreateConfigAsync(
+                IResourceConfig<Rm.ResourceGroup> resourceGroup)
             {
                 ImageAndOsType = await _client.UpdateImageAndOsTypeAsync(
                     ImageAndOsType, _cmdlet.ResourceGroupName, _cmdlet.ImageName, Location);
@@ -159,8 +162,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     name: _cmdlet.VMScaleSetName,
                     location: Location,
                     client: _client);
-
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
 
                 var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Count == 0;
 
@@ -241,8 +242,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     inboundNatPools: inboundNatPools,
                     networkSecurityGroup: networkSecurityGroup,
                     imageAndOsType: ImageAndOsType,
-                    adminUsername: _cmdlet.Credential.UserName,
-                    adminPassword: new NetworkCredential(string.Empty, _cmdlet.Credential.Password).Password,
+                    credential: new Credential(_cmdlet.Credential),
                     vmSize: _cmdlet.VmSize,
                     instanceCount: _cmdlet.InstanceCount,
                     upgradeMode: _cmdlet.MyInvocation.BoundParameters.ContainsKey(nameof(UpgradePolicyMode))
@@ -252,6 +252,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     zones: _cmdlet.Zone,
                     identity: _cmdlet.GetVmssIdentityFromArgs());
             }
+
+            public IResourceConfig<Rm.ResourceGroup> CreateResourceGroup()
+                => ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
         }
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
@@ -269,7 +272,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
-            var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+            var result = await client.RunAsync(parameters, asyncCmdlet);
 
             if (result != null)
             {

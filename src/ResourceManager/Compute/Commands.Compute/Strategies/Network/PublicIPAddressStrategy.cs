@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -23,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class PublicIPAddressStrategy
     {
-        public static ResourceStrategy<PublicIPAddress> Strategy { get; }
+        public static IResourceStrategy<PublicIPAddress> Strategy { get; }
             = NetworkStrategy.Create(
                 provider: "publicIPAddresses",
                 getOperations: client => client.PublicIPAddresses,
@@ -39,8 +41,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             Standard,
         }
 
-        public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
+        public static IResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup,
             string name,
             string domainNameLabel,
             string allocationMethod,
@@ -49,12 +51,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: _ => new PublicIPAddress
+                createModel: engine => new PublicIPAddress
                 {
                     PublicIPAllocationMethod = allocationMethod,
                     DnsSettings = new PublicIPAddressDnsSettings
                     {
-                        DomainNameLabel = domainNameLabel,
+                        DomainNameLabel = engine.GetParameterValue(Parameter.Create(
+                            "domainNameLabel", domainNameLabel)),
                     },
                     Sku = new PublicIPAddressSku
                     {
