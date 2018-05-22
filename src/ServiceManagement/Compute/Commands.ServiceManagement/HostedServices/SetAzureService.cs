@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -58,12 +59,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             set;
         }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Extended properties.")]
+        public Hashtable ExtendedProperty
+        {
+            get;
+            set;
+        }
 
         protected override void OnProcessRecord()
         {
             ServiceManagementProfile.Initialize();
 
-            if (this.Label == null && this.Description == null && this.ReverseDnsFqdn == null)
+            if (this.Label == null && this.Description == null && this.ReverseDnsFqdn == null && this.ExtendedProperty == null)
             {
                 ThrowTerminatingError(new ErrorRecord(
                                                new Exception(
@@ -75,9 +82,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 
             var parameters = new HostedServiceUpdateParameters
             {
-                Label = this.Label ?? null,
+                Label = this.Label,
                 Description = this.Description,
-                ReverseDnsFqdn = this.ReverseDnsFqdn
+                ReverseDnsFqdn = this.ReverseDnsFqdn,
+                ExtendedProperties = this.ExtendedProperty != null ? ConvertToDictionary(this.ExtendedProperty) : null
             };
             ExecuteClientActionNewSM(parameters, 
                 CommandRuntime.ToString(),

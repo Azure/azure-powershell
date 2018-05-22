@@ -14,10 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Management.ApiManagement.SmapiModels;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
-    using System;
-    using System.Collections.Generic;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.New, "AzureRmApiManagementBackendProxy")]
