@@ -224,11 +224,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="VulnerabilityAssessment\Cmdlet\GetAzureSqlDatabaseVulnerabilityAssessment.cs" />
-    <Compile Include="VulnerabilityAssessment\Cmdlet\RemoveSqlDatabaseVulnerabilityAssessment.cs" />
-    <Compile Include="VulnerabilityAssessment\Cmdlet\SetAzureSqlDatabaseVulnerabilityAssessment.cs" />
-    <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\GetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\RemoveSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\SetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\SqlDatabaseVulnerabilityAssessmentRuleBaselineCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessment\GetAzureSqlDatabaseVulnerabilityAssessment.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessment\RemoveSqlDatabaseVulnerabilityAssessment.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessment\SetAzureSqlDatabaseVulnerabilityAssessment.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessment\SqlDatabaseVulnerabilityAssessmentCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineItemModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentPolicyModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\BaseSqlVulnerabilityAssessmentAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentRuleBaselineAdapter.cs" />
     <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentAdapter.cs" />
     <Compile Include="VulnerabilityAssessment\Services\VulnerabilityAssessmentEndpointsCommunicator.cs" />
     <Content Include="Microsoft.Azure.Commands.Sql.format.ps1xml">
