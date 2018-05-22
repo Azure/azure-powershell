@@ -43,7 +43,5 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         /// <returns></returns>
         Task<IResourceConfig<TModel>> CreateConfigAsync(
             IResourceConfig<TResourceGroup> resourceGroupConfig);
-
-        string OutputTemplateFile { get; }
     }
 }
