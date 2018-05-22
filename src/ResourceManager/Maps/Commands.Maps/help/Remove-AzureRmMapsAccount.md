@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
 Module Name: AzureRM.Maps
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.maps/remove-azurermmapsaccount
 schema: 2.0.0
 ---
 
@@ -173,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
+### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
 
 ## OUTPUTS
 

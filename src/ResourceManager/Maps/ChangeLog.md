@@ -18,9 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 1.0.0
-* First release of Location Based Services management cmdlets
-
-## Version 2.0.0
-* Service rename of Location Based Services to Maps
+* First release of Maps management cmdlets
