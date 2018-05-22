@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.0.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.dll', 
@@ -62,7 +62,7 @@ RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.d
                '.\Microsoft.WindowsAzure.Commands.Sync.dll', 
                '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll', 
                '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll', 
-               '.\Microsoft.Azure.Commands.Common.Strategies.3.dll'
+               '.\Microsoft.Azure.Commands.Common.Strategies.4.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

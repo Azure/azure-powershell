@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 9BEE5888-304D-4438-BE97-D1FE254AEE98
@@ -67,7 +67,7 @@ Specifies the resource ID of the storage account to be used for auto storage.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +97,7 @@ Specifies the resource group of the account that this cmdlet updates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

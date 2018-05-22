@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: B64E9C13-97A6-4E8B-92DB-EFAF8A48C5B8
@@ -60,7 +60,7 @@ Specifies an instance of a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -90,7 +90,7 @@ Specifies the identifier of the product to search for.
 ```yaml
 Type: String
 Parameter Sets: GetByProductId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +106,7 @@ If specified, the cmdlet attempts to get the product by title.
 ```yaml
 Type: String
 Parameter Sets: GetByTitle
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
