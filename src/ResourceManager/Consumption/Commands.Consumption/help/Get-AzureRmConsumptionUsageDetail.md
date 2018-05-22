@@ -29,7 +29,7 @@ The **Get-AzureRmConsumptionUsageDetail** cmdlet gets usage details of the subsc
 PS C:\> Get-AzureRmConsumptionUsageDetail -Expand MeterDetails -Top 10
 ```
 
-Get top 10 records of usage details with expand of MeterDetails  in the result.
+Get top 10 records of usage details with expand of MeterDetails in the result.
 
 ### Example 2
 ```powershell

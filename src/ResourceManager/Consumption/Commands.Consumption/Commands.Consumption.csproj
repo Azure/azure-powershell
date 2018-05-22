@@ -48,10 +48,15 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\Budget\GetAzureRmConsumptionBudget.cs" />
+    <Compile Include="Cmdlets\Budget\NewAzureRmConsumptionBudget.cs" />
+    <Compile Include="Cmdlets\Budget\RemoveAzureRmConsumptionBudget.cs" />
+    <Compile Include="Cmdlets\Budget\SetAzureRmConsumptionBudget.cs" />
     <Compile Include="Cmdlets\UsageDetails\GetAzureRmConsumptionUsageDetail.cs" />
     <Compile Include="Common\AzureConsumptionCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Utilities.cs" />
+    <Compile Include="Models\PSBudget.cs" />
     <Compile Include="Models\PSUsageDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
