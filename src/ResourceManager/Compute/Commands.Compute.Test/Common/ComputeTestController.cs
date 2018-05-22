@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.ResourceManager;
 #else
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test;
+using TestBase = Microsoft.Azure.Test.TestBase;
 #endif
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -179,7 +180,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 #if NETSTANDARD
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
 #else
-            return Microsoft.Azure.Test.TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
 #endif
         }
 
