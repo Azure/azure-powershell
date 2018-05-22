@@ -62,7 +62,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             Stack<IDirectoryInfo> stack1 = new Stack<IDirectoryInfo>(5000);
             Stack<IDirectoryInfo> stack2 = new Stack<IDirectoryInfo>(5000);
 
-            Func<bool> shouldCancel = () => cancelationCallback == null ? false : cancelationCallback.Invoke();
+            Func<bool> shouldCancel = () =>
+            {
+                if (System.Diagnostics.Debugger.IsAttached)
+                {
+                    return false;
+                }
+
+                return cancelationCallback == null ? false : cancelationCallback.Invoke();
+            };
 
             stack1.Push(root);
 
