@@ -271,6 +271,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("PowerShellVersion", PSVersion);
             eventProperties.Add("Version", AzurePowerShell.AssemblyVersion);
             eventProperties.Add("CommandParameterSetName", qos.ParameterSetName);
+            if (!string.IsNullOrWhiteSpace(qos.InvocationName))
+            {
+                eventProperties.Add("CommandInvocationName", qos.InvocationName);
+            }
+
             if (qos.InputFromPipeline != null)
             {
                 eventProperties.Add("InputFromPipeline", qos.InputFromPipeline.Value.ToString());
@@ -377,6 +382,7 @@ public class AzurePSQoSEvent
     public string ClientRequestId { get; set; }
     public string SessionId { get; set; }
     public string ParameterSetName { get; set; }
+    public string InvocationName { get; set; }
     public Dictionary<string, string> CustomProperties { get; private set; }
 
     public AzurePSQoSEvent()

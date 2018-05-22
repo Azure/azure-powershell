@@ -206,6 +206,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 IsSuccess = true,
             };
 
+            if (this.MyInvocation != null && !string.IsNullOrWhiteSpace(this.MyInvocation.InvocationName))
+            {
+                _qosEvent.InvocationName = this.MyInvocation.InvocationName;
+            }
+
             if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null 
                 && this.MyInvocation.BoundParameters.Keys != null)
             {
