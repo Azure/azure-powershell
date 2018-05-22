@@ -585,10 +585,6 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\OperationalInsights\Commands.OperationalInsights\Commands.OperationalInsights.csproj">
-      <Project>{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}</Project>
-      <Name>Commands.ResourceManager.OperationalInsights</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
