@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
 Module Name: AzureRM.Maps
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.maps/get-azurermmapsaccount
 schema: 2.0.0
 ---
 
@@ -80,6 +80,8 @@ ResourceGroupName AccountName Id
 ----------------- ----------- --
 MyResourceGroup   MyAccount   /subscriptions/21a9967a-e8a9-4656-a70b-96ff1c4d05a0/resourceGroups/MyResourceGroup/providers/Microsoft.Maps/accounts/MyAccount
 ```
+
+Gets the Maps account specified by the Resource Id.
 
 ## PARAMETERS
 

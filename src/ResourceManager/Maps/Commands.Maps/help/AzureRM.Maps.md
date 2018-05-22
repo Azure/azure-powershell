@@ -1,7 +1,7 @@
 ---
 Module Name: AzureRM.Maps
 Module Guid: bf60f35d-6c0b-42f2-be30-eb333a31279d
-Download Help Link: None
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.maps
 Help Version: 1.0.0.0
 Locale: en-US
 ---

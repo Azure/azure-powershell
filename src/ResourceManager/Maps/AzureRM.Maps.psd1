@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.0.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -75,7 +75,6 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzureRmMapsAccount', 
                'New-AzureRmMapsAccount', 
                'Remove-AzureRmMapsAccount', 
-               'Set-AzureRmMapsAccount', 
                'Get-AzureRmMapsAccountKey', 
                'New-AzureRmMapsAccountKey'
 
@@ -115,7 +114,7 @@ PrivateData = @{
         ReleaseNotes = 'Service rename of Location Based Services to Maps'
 
         # Prerelease string of this module
-        Prerelease = ''
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

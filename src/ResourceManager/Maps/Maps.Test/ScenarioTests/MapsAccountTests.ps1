@@ -20,7 +20,6 @@ function Test-NewAzureRmMapsAccount
 {
     # Setup
     $rgname = Get-MapsManagementTestResourceName;
-
     try
     {
         # Test
@@ -64,7 +63,7 @@ function Test-RemoveAzureRmMapsAccount
         # Test
         $accountname = 'ps-' + $rgname;
         $skuname = 'S0';
-		$location = 'West US';
+        $location = 'West US';
 
         New-AzureRmResourceGroup -Name $rgname -Location $location;
 

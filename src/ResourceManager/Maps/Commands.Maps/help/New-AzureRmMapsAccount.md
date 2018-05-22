@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Maps.dll-Help.xml
 Module Name: AzureRM.Maps
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.maps/new-azurermmapsaccount
 schema: 2.0.0
 ---
 
