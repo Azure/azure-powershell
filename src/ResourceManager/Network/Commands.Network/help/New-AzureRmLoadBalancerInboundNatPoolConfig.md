@@ -31,11 +31,6 @@ New-AzureRmLoadBalancerInboundNatPoolConfig -Name <String>
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -BackendPort

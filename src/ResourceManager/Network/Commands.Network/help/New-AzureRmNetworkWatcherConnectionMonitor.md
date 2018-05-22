@@ -397,6 +397,24 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 
 [Set-AzureRmNetworkWatcherConnectionMonitor]()
 
+[Stop-AzureRmNetworkWatcherConnectionMonitor]()
+
+[New-AzureRmNetworkWatcherConnectionMonitor]()
+
+[New-AzureRmNetworkWatcherProtocolConfiguration]()
+
+[Test-AzureRmNetworkWatcherIPFlow]()
+
+[Test-AzureRmNetworkWatcherConnectivity]()
+
+[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+
 [Start-AzureRmNetworkWatcherConnectionMonitor]()
 
-[Stop-AzureRmNetworkWatcherConnectionMonitor]()
+[Set-AzureRmNetworkWatcherConfigFlowLog]()
+
+[Get-AzureRMNetworkWatcherReachabilityReport]()
+
+[Get-AzureRmNetworkWatcherReachabilityProvidersList]()
+
+[Get-AzureRmNetworkWatcherFlowLogStatus]()

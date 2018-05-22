@@ -30,11 +30,6 @@ The **Enable-AzureRmOperationalInsightsLinuxPerformanceCollection** cmdlet start
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
