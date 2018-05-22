@@ -14,17 +14,18 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
     using System;
     using System.IO;
     using System.Management.Automation;
-    using System.Text;
+    using Management.ApiManagement.Models;
+    using Models;
 
     [Cmdlet(VerbsCommon.Set, Constants.ApiManagementPolicy, DefaultParameterSetName = TenantLevel)]
     [OutputType(typeof(bool))]
     public class SetAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
         private const string DefaultFormat = "application/vnd.ms-azure-apim.policy+xml";
+        private const string NonEscapedXmlFormat = "application/vnd.ms-azure-apim.policy.raw+xml";
 
         private const string TenantLevel = "SetTenantLevel";
         private const string ProductLevel = "SetProductLevel";
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                           "When using application/vnd.ms-azure-apim.policy+xml, expressions contained within the policy must be XML-escaped." +
                           "When using application/vnd.ms-azure-apim.policy.raw+xml no escaping is necessary." +
                           "Default value is 'application/vnd.ms-azure-apim.policy+xml'.")]
+        [ValidateSet(NonEscapedXmlFormat, DefaultFormat), PSDefaultValue(Value = DefaultFormat)]
         public String Format { get; set; }
 
         [Parameter(
@@ -67,6 +69,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public String ApiId { get; set; }
 
         [Parameter(
+            ParameterSetName = ApiLevel,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of API Revision. This parameter is optional. If not specified, the policy will be " +
+            "updated in the currently active api revision.")]
+        [Parameter(
+            ParameterSetName = OperationLevel,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of API Revision. This parameter is optional. If not specified, the policy will be " +
+            "updated in the currently active api revision.")]
+        public String ApiRevision { get; set; }
+
+        [Parameter(
             ParameterSetName = OperationLevel,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
@@ -76,14 +92,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Policy document as a string. This parameter is required if -PolicyFilePath not specified.")]
+            HelpMessage = "Policy document as a string. This parameter is required if -PolicyFilePath or -PolicyUrl is not specified.")]
         public String Policy { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "Policy document file path. This parameter is required if -Policy not specified.")]
+            HelpMessage = "Policy document file path. This parameter is required if -Policy or -PolicyUrl is not specified.")]
         public String PolicyFilePath { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "The Url where the Policy document is hosted. This parameter is required if -Policy or -PolicyFilePath is not specified.")]
+        public String PolicyUrl { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -93,56 +115,77 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Stream stream = null;
-            try
+            string policyContent;
+            string contentFormat;
+            string format = Format ?? DefaultFormat;
+            if (!string.IsNullOrWhiteSpace(Policy))
             {
-                if (!string.IsNullOrWhiteSpace(Policy))
+                policyContent = Policy;
+                contentFormat = PolicyContentFormat.Xml;
+                if (format.Equals(NonEscapedXmlFormat))
                 {
-                    stream = new MemoryStream(Encoding.UTF8.GetBytes(Policy));
-                }
-                else if (!string.IsNullOrEmpty(PolicyFilePath))
-                {
-                    stream = File.OpenRead(PolicyFilePath);
-                }
-                else
-                {
-                    throw new PSInvalidOperationException("Either Policy or PolicyFilePath should be specified.");
-                }
-
-                string format = Format ?? DefaultFormat;
-                switch (ParameterSetName)
-                {
-                    case TenantLevel:
-                        Client.PolicySetTenantLevel(Context, format, stream);
-                        break;
-                    case ProductLevel:
-                        Client.PolicySetProductLevel(Context, format, stream, ProductId);
-                        break;
-                    case ApiLevel:
-                        Client.PolicySetApiLevel(Context, format, stream, ApiId);
-                        break;
-                    case OperationLevel:
-                        if (string.IsNullOrWhiteSpace(ApiId))
-                        {
-                            throw new PSArgumentNullException("ApiId");
-                        }
-                        Client.PolicySetOperationLevel(Context, format, stream, ApiId, OperationId);
-                        break;
-                    default:
-                        throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
-                }
-
-                if (PassThru)
-                {
-                    WriteObject(true);
+                    contentFormat = PolicyContentFormat.Rawxml;
                 }
             }
-            finally
+            else if (!string.IsNullOrEmpty(PolicyFilePath))
             {
-                if (stream != null)
+                policyContent = File.ReadAllText(PolicyFilePath);
+                contentFormat = PolicyContentFormat.Xml;
+                if (format.Equals(NonEscapedXmlFormat))
                 {
-                    stream.Dispose();
+                    contentFormat = PolicyContentFormat.Rawxml;
                 }
+            }
+            else if (!string.IsNullOrEmpty(PolicyUrl))
+            {
+                policyContent = PolicyUrl;
+                contentFormat = PolicyContentFormat.XmlLink;
+                if (format.Equals(NonEscapedXmlFormat))
+                {
+                    contentFormat = PolicyContentFormat.RawxmlLink;
+                }
+            }
+            else
+            {
+                throw new PSInvalidOperationException("Either -Policy or -PolicyFilePath or -PolicyUrl should be specified.");
+            }
+
+            string apiId;            
+            switch (ParameterSetName)
+            {
+                case TenantLevel:
+                    Client.PolicySetTenantLevel(Context, policyContent, contentFormat);
+                    break;
+                case ProductLevel:
+                    Client.PolicySetProductLevel(Context, policyContent, ProductId, contentFormat);
+                    break;
+                case ApiLevel:
+                    apiId = ApiId;
+                    if (!string.IsNullOrEmpty(ApiRevision))
+                    {
+                        apiId = ApiId.ApiRevisionIdentifier(ApiRevision);
+                    }
+                    Client.PolicySetApiLevel(Context, policyContent, apiId, contentFormat);
+                    break;
+                case OperationLevel:
+                    if (string.IsNullOrWhiteSpace(ApiId))
+                    {
+                        throw new PSArgumentNullException("ApiId");
+                    }
+                    apiId = ApiId;
+                    if (!string.IsNullOrEmpty(ApiRevision))
+                    {
+                        apiId = ApiId.ApiRevisionIdentifier(ApiRevision);
+                    }
+                    Client.PolicySetOperationLevel(Context, policyContent, apiId, OperationId, contentFormat);
+                    break;
+                default:
+                    throw new InvalidOperationException(string.Format("Parameter set name '{0}' is not supported.", ParameterSetName));
+            }
+
+            if (PassThru)
+            {
+                WriteObject(true);
             }
         }
     }

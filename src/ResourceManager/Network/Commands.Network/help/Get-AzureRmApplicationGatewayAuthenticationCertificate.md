@@ -23,11 +23,6 @@ The **Get-AzureRmApplicationGatewayAuthenticationCertificate** cmdlet gets an au
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -ApplicationGateway

@@ -24,11 +24,6 @@ The cmdlet returns whether the status of the policy is enabled, and the time of 
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -29,6 +29,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkExpressRouteGatewayCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkExpressRouteGatewayCRUD");
@@ -36,6 +37,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayCRUD");
@@ -43,31 +45,35 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayP2SAndSKU()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayP2SAndSKU");
         }
 
         [Fact]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestSetVirtualNetworkGatewayCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-SetVirtualNetworkGatewayCRUD");
         }
 
         [Fact]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void VirtualNetworkGatewayActiveActiveFeatureTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayActiveActiveFeatureOperations");
         }
 
         [Fact]
-        [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void VirtualNetworkGatewayRouteApiTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayBgpRouteApi");
         }
 
         [Fact]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayP2SVpnProfile()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format(
@@ -76,6 +82,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void VirtualNetworkGatewayIkeV2Test()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayIkeV2");
