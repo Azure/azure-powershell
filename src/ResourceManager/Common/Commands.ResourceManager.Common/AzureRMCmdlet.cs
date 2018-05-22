@@ -214,6 +214,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
             }
 
+            if (!string.IsNullOrWhiteSpace(this.ParameterSetName))
+            {
+                _qosEvent.ParameterSetName = this.ParameterSetName;
+            }
+
             IAzureContext context;
             if (TryGetDefaultContext(out context) 
                 && context.Account != null 

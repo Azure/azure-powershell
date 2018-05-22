@@ -226,6 +226,10 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 eventProperties.Add("Message", "Message removed due to PII.");
                 eventProperties.Add("StackTrace", qos.Exception.StackTrace);
                 eventProperties.Add("ExceptionType", qos.Exception.GetType().ToString());
+                if (qos.Exception.InnerException != null)
+                {
+                    eventProperties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().ToString());
+                }
                 client.TrackException(null, eventProperties, eventMetrics);
             }
         }
@@ -266,6 +270,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("HashMacAddress", HashMacAddress);
             eventProperties.Add("PowerShellVersion", PSVersion);
             eventProperties.Add("Version", AzurePowerShell.AssemblyVersion);
+            eventProperties.Add("CommandParameterSetName", qos.ParameterSetName);
             if (qos.InputFromPipeline != null)
             {
                 eventProperties.Add("InputFromPipeline", qos.InputFromPipeline.Value.ToString());
@@ -371,6 +376,7 @@ public class AzurePSQoSEvent
     public string Uid { get; set; }
     public string ClientRequestId { get; set; }
     public string SessionId { get; set; }
+    public string ParameterSetName { get; set; }
     public Dictionary<string, string> CustomProperties { get; private set; }
 
     public AzurePSQoSEvent()
