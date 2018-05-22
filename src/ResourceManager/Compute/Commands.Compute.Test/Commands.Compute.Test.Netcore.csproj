@@ -22,13 +22,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0-alpha" />
-    <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0-alpha" />
+    <!-- <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0-alpha" />
+    <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0-alpha" /> -->
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="18.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1-alpha" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.0.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
     <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
 
@@ -36,6 +35,7 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.Common.Strategies\Common.Strategies.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
@@ -60,19 +60,35 @@
     <None Update="Templates\*.*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="VhdFiles\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Assert.ps1" Link="ScenarioTests\Assert.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Assert.ps1" Link="Assert.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1" Link="AzureRM.Resources.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1" Link="AzureRM.Storage.ps1">
+    <None Include="..\..\Resources\Commands.Resources.Test\ScenarioTests\Common.ps1" Link="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ps1" Link="Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Remove="AzureRM.Resources.ps1" />
+    <!-- <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1" Link="AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None> -->
+    <None Include="AzureRM.Resources.Netcore.ps1" Link="ScenarioTests\AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AzureRM.Resources.Netcore.ps1" Link="AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Storage.ps1" Link="AzureRM.Storage.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
