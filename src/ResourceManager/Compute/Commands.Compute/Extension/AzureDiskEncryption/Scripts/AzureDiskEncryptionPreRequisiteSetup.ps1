@@ -1,4 +1,6 @@
-﻿
+﻿#Requires -Module AzureRM.Resources
+#Requires -Module AzureRM.KeyVault
+
 Param(
   [Parameter(Mandatory = $true, 
              HelpMessage="Name of the resource group to which the KeyVault belongs to.  A new resource group with this name will be created if one doesn't exist")]
@@ -20,7 +22,7 @@ Param(
   [ValidateNotNullOrEmpty()]
   [string]$subscriptionId,
 
-  [Parameter(Mandatory = $true,
+  [Parameter(Mandatory = $false,
              HelpMessage="Name of the AAD application that will be used to write secrets to KeyVault. A new application with this name will be created if one doesn't exist. If this app already exists, pass aadClientSecret parameter to the script")]
   [ValidateNotNullOrEmpty()]
   [string]$aadAppName,
@@ -46,56 +48,60 @@ $ErrorActionPreference = "Stop"
 
     Select-AzureRmSubscription -SubscriptionId $subscriptionId;
 
-########################################################################################################################
-# Section2:  Create AAD app . Fill in $aadClientSecret variable if AAD app was already created
-########################################################################################################################
+####################################################################################################################################
+# Section2:  Create AAD app if encryption is enabled using AAD. Fill in $aadClientSecret variable if AAD app was already created.
+####################################################################################################################################
 
-    # Check if AAD app with $aadAppName was already created
-    $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
-    if(-not $SvcPrincipals)
+    $azureResourcesModule = Get-Module 'AzureRM.Resources';
+
+    if($aadAppName)
     {
-        # Create a new AD application if not created before
-        $identifierUri = [string]::Format("http://localhost:8080/{0}",[Guid]::NewGuid().ToString("N"));
-        $defaultHomePage = 'http://contoso.com';
-        $now = [System.DateTime]::Now;
-        $oneYearFromNow = $now.AddYears(1);
-        $aadClientSecret = [Guid]::NewGuid().ToString();
-        Write-Host "Creating new AAD application ($aadAppName)";
-
-        $azureResourcesModule = Get-Module 'AzureRM.Resources';
-        if($azureResourcesModule.Version.Major -ge 5)
-        {
-            $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
-            $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
-        }
-        else
-        {
-            $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
-        }
-
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $ADApp.ApplicationId;
+        # Check if AAD app with $aadAppName was already created
         $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
         if(-not $SvcPrincipals)
         {
-            # AAD app wasn't created 
-            Write-Error "Failed to create AAD app $aadAppName. Please log in to Azure using Connect-AzureRmAccount and try again";
-            return;
+            # Create a new AD application if not created before
+            $identifierUri = [string]::Format("http://localhost:8080/{0}",[Guid]::NewGuid().ToString("N"));
+            $defaultHomePage = 'http://contoso.com';
+            $now = [System.DateTime]::Now;
+            $oneYearFromNow = $now.AddYears(1);
+            $aadClientSecret = [Guid]::NewGuid().ToString();
+            Write-Host "Creating new AAD application ($aadAppName)";
+
+            if($azureResourcesModule.Version.Major -ge 5)
+            {
+                $secureAadClientSecret = ConvertTo-SecureString -String $aadClientSecret -AsPlainText -Force;
+                $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $secureAadClientSecret;
+            }
+            else
+            {
+                $ADApp = New-AzureRmADApplication -DisplayName $aadAppName -HomePage $defaultHomePage -IdentifierUris $identifierUri  -StartDate $now -EndDate $oneYearFromNow -Password $aadClientSecret;
+            }
+
+            $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $ADApp.ApplicationId;
+            $SvcPrincipals = (Get-AzureRmADServicePrincipal -SearchString $aadAppName);
+            if(-not $SvcPrincipals)
+            {
+                # AAD app wasn't created 
+                Write-Error "Failed to create AAD app $aadAppName. Please log in to Azure using Connect-AzureRmAccount and try again";
+                return;
+            }
+            $aadClientID = $servicePrincipal.ApplicationId;
+            Write-Host "Created a new AAD Application ($aadAppName) with ID: $aadClientID ";
         }
-        $aadClientID = $servicePrincipal.ApplicationId;
-        Write-Host "Created a new AAD Application ($aadAppName) with ID: $aadClientID ";
-    }
-    else
-    {
-        if(-not $aadClientSecret)
+        else
         {
-            $aadClientSecret = Read-Host -Prompt "Aad application ($aadAppName) was already created, input corresponding aadClientSecret and hit ENTER. It can be retrieved from https://manage.windowsazure.com portal" ;
+            if(-not $aadClientSecret)
+            {
+                $aadClientSecret = Read-Host -Prompt "Aad application ($aadAppName) was already created, input corresponding aadClientSecret and hit ENTER. It can be retrieved from https://manage.windowsazure.com portal" ;
+            }
+            if(-not $aadClientSecret)
+            {
+                Write-Error "Aad application ($aadAppName) was already created. Re-run the script by supplying aadClientSecret parameter with corresponding secret from https://manage.windowsazure.com portal";
+                return;
+            }
+            $aadClientID = $SvcPrincipals[0].ApplicationId;
         }
-        if(-not $aadClientSecret)
-        {
-            Write-Error "Aad application ($aadAppName) was already created. Re-run the script by supplying aadClientSecret parameter with corresponding secret from https://manage.windowsazure.com portal";
-            return;
-        }
-        $aadClientID = $SvcPrincipals[0].ApplicationId;
     }
 
 # Before proceeding to Section3, make sure $aadClientID  and $aadClientSecret have valid values
@@ -138,8 +144,12 @@ $ErrorActionPreference = "Stop"
         $keyVault = New-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Sku Standard -Location $location;
         Write-Host "Created a new KeyVault named $keyVaultName to store encryption keys";
     }
-    # Specify privileges to the vault for the AAD application - https://msdn.microsoft.com/en-us/library/mt603625.aspx
-    Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys wrapKey -PermissionsToSecrets set;
+
+    if($aadAppName)
+    {
+        # Specify privileges to the vault for the AAD application - https://msdn.microsoft.com/en-us/library/mt603625.aspx
+        Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys wrapKey -PermissionsToSecrets set;
+    }
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption;
 
@@ -182,14 +192,18 @@ $ErrorActionPreference = "Stop"
 ########################################################################################################################
 # Section3:  Displays values that should be used while enabling encryption. Please note these down
 ########################################################################################################################
-    Write-Host "Please note down below aadClientID, aadClientSecret, diskEncryptionKeyVaultUrl, keyVaultResourceId values that will be needed to enable encryption on your VMs " -foregroundcolor Green;
-    Write-Host "`t aadClientID: $aadClientID" -foregroundcolor Green;
-    Write-Host "`t aadClientSecret: $aadClientSecret" -foregroundcolor Green;
-    Write-Host "`t diskEncryptionKeyVaultUrl: $diskEncryptionKeyVaultUrl" -foregroundcolor Green;
-    Write-Host "`t keyVaultResourceId: $keyVaultResourceId" -foregroundcolor Green;
+    Write-Host "Please note down below details that will be needed to enable encryption on your VMs " -foregroundcolor Green;
+    if($aadAppName)
+    {
+        Write-Host "`t aadClientID: $aadClientID" -foregroundcolor Green;
+        Write-Host "`t aadClientSecret: $aadClientSecret" -foregroundcolor Green;
+    }
+    Write-Host "`t DiskEncryptionKeyVaultUrl: $diskEncryptionKeyVaultUrl" -foregroundcolor Green;
+    Write-Host "`t DiskEncryptionKeyVaultId: $keyVaultResourceId" -foregroundcolor Green;
     if($keyEncryptionKeyName)
     {
-        Write-Host "`t keyEncryptionKeyURL: $keyEncryptionKeyUrl" -foregroundcolor Green;
+        Write-Host "`t KeyEncryptionKeyURL: $keyEncryptionKeyUrl" -foregroundcolor Green;
+        Write-Host "`t KeyEncryptionKeyVaultId: $keyVaultResourceId" -foregroundcolor Green;
     }
     Write-Host "Please Press [Enter] after saving values displayed above. They are needed to enable encryption using Set-AzureRmVmDiskEncryptionExtension cmdlet" -foregroundcolor Green;
     Read-Host;
@@ -216,14 +230,40 @@ $ErrorActionPreference = "Stop"
 
 foreach($vm in $allVMs)
 {
-    Write-Host "Encrypting VM: $($vm.Name) in ResourceGroup: $($vm.ResourceGroupName) " -foregroundcolor Green;
-    if(-not $kek)
+    if($vm.Location.ToLower() -ne $keyVault.Location.ToLower())
     {
-        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';    
+        Write-Error "To enable AzureDiskEncryption, VM and KeyVault must belong to same subscription and same region. vm Location:  $($vm.Location.ToLower()) , keyVault Location: $($keyVault.Location.ToLower())";
+        return;
+    }
+
+    Write-Host "Encrypting VM: $($vm.Name) in ResourceGroup: $($vm.ResourceGroupName) " -foregroundcolor Green;
+    if($aadAppName)
+    {
+        if(-not $kek)
+        {
+            Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
+        }
+        else
+        {
+            Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
+        }
     }
     else
     {
-        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';            
+        if($azureResourcesModule.Version.Major -lt 6)
+        {
+            Write-Error "Please specify AAD application details, or install AzurePowershell version 6.0.0.0 or above to use AzureDiskEncryption without AAD";
+            return;
+        }
+
+        if(-not $kek)
+        {
+            Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
+        }
+        else
+        {
+            Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $keyVaultResourceId -VolumeType 'All';
+        }
     }
     # Show encryption status of the VM
     Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name;

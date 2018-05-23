@@ -147,7 +147,6 @@
       <Link>AzureRM.Cdn.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.Cdn.dll-help.psd1" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">

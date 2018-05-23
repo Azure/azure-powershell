@@ -57,8 +57,8 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=18.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.18.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +189,10 @@
     <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationCommand.cs" />
     <Compile Include="ExpressRouteCircuit\MoveAzureExpressRouteCircuitCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\AddAzureExpressRouteCircuitConnectionConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\AzureExpressRouteCircuitConnectionConfigBase.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\GetAzureExpressRouteCircuitConnectionConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\Connection\RemoveAzureExpressRouteCircuitConnectionConfigCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitARPTableCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableSummaryCommand.cs" />
@@ -223,6 +227,7 @@
     <Compile Include="Models\PSConnectionMonitorSource.cs" />
     <Compile Include="Models\PSConnectionStateSnapshot.cs" />
     <Compile Include="Models\PSEndpointServiceResult.cs" />
+    <Compile Include="Models\PSNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
     <Compile Include="Models\PSLoadBalancerSku.cs" />
     <Compile Include="Models\PSPublicIpAddressSku.cs" />
@@ -275,6 +280,7 @@
     <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
     <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitConnection.cs" />
     <Compile Include="Models\PSIPConfiguration.cs" />
     <Compile Include="Models\PSIpsecPolicy.cs" />
     <Compile Include="Models\PSIpFlowVerify.cs" />
@@ -314,9 +320,9 @@
     <Compile Include="Models\PSSubnet.cs" />
     <Compile Include="Models\PSSubnetAssociation.cs" />
     <Compile Include="Models\PSTopLevelResource.cs" />
-    <Compile Include="Models\PSTroubleshootDetails.cs" />
-    <Compile Include="Models\PSTroubleshootRecommendedActions.cs" />
-    <Compile Include="Models\PSTroubleshootResult.cs" />
+    <Compile Include="Models\PSTroubleshootingDetails.cs" />
+    <Compile Include="Models\PSTroubleshootingRecommendedActions.cs" />
+    <Compile Include="Models\PSTroubleshootingResult.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Models\PSUsageCustom.cs" />
     <Compile Include="Models\PSUsageName.cs" />
@@ -366,6 +372,7 @@
     <Compile Include="NetworkWatcher\ConnectionMonitor\SetAzureNetworkWatcherConnectionMonitorCommand.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\StartAzureNetworkWatcherConnectionMonitorCommand.cs" />
     <Compile Include="NetworkWatcher\ConnectionMonitor\StopAzureNetworkWatcherConnectionMonitorCommand.cs" />
+    <Compile Include="NetworkWatcher\NewAzureNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="NetworkWatcher\TestAzureNetworkWatcherConnectivityCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureBgpServiceCommunityCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherCommand.cs" />
@@ -586,9 +593,6 @@
     <None Include="..\AzureRM.Network.psd1">
       <Link>AzureRM.Network.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
