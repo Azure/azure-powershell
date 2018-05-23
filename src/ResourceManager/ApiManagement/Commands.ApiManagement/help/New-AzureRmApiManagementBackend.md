@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend
 schema: 2.0.0
 ---
@@ -16,7 +17,8 @@ New-AzureRmApiManagementBackend -Context <PsApiManagementContext> [-BackendId <S
  -Url <String> [-ResourceId <String>] [-Title <String>] [-Description <String>]
  [-SkipCertificateChainValidation <Boolean>] [-SkipCertificateNameValidation <Boolean>]
  [-Credential <PsApiManagementBackendCredential>] [-Proxy <PsApiManagementBackendProxy>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ServiceFabricCluster <PsApiManagementServiceFabric>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +27,7 @@ Creates a new backend entity in Api Management.
 ## EXAMPLES
 
 ### Create Backend 123 with a Basic Authorization Scheme
-```
+```powershell
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$credential = New-AzureRmApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}
 
@@ -44,7 +46,7 @@ If not specified will be generated.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -60,7 +62,7 @@ This parameter is required.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -76,7 +78,7 @@ This parameter is optional.
 ```yaml
 Type: PsApiManagementBackendCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -107,7 +109,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,7 +126,7 @@ Valid values are 'http' and 'soap'.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: http, soap
 
 Required: True
@@ -141,7 +143,7 @@ This parameter is optional.
 ```yaml
 Type: PsApiManagementBackendProxy
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -158,7 +160,22 @@ This url can be the Arm Resource Id of Logic Apps, Function Apps or Api Apps.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServiceFabricCluster
+Service Fabric Cluster Backend details. This parameter is optional.
+
+```yaml
+Type: PsApiManagementServiceFabric
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -174,7 +191,7 @@ This parameter is optional.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -190,7 +207,7 @@ This parameter is optional.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -206,7 +223,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -222,7 +239,7 @@ This parameter is required.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

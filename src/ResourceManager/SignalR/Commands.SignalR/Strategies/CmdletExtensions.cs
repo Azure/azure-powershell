@@ -84,6 +84,9 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies
                         CurrentOperation = currentOperation,
                         PercentComplete = percentComplete,
                     });
+
+            public void WriteWarning(string message)
+                => _Cmdlet.WriteWarning(message);
         }
     }
 }

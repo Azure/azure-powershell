@@ -712,6 +712,17 @@ namespace Microsoft.Azure.Commands.Batch.Test
             return response;
         }
 
+        public static AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders> CreatePoolNodeCountsGetResponse(
+            IEnumerable<ProxyModels.PoolNodeCounts> poolNodeCounts)
+        {
+            var response = new AzureOperationResponse<IPage<ProxyModels.PoolNodeCounts>, ProxyModels.AccountListPoolNodeCountsHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            response.Body = new MockPagedEnumerable<ProxyModels.PoolNodeCounts>(poolNodeCounts);
+
+            return response;
+        }
+
         /// <summary>
         /// Builds a CloudTaskListResponse object
         /// </summary>
@@ -978,6 +989,23 @@ namespace Microsoft.Azure.Commands.Batch.Test
             });
 
             return context.BatchOMClient.JobOperations.GetTask("jobId", taskId, additionalBehaviors: new BatchClientBehavior[] { interceptor });
+        }
+
+        /// <summary>
+        /// Builds a ComputeNodeGetResponse object
+        /// </summary>
+        public static AzureOperationResponse<ProxyModels.UploadBatchServiceLogsResult, ProxyModels.ComputeNodeUploadBatchServiceLogsHeaders> CreateComputeNodeServiceLogsAddResponse(int numberOfFilesUploaded, string virtualDirectoryName)
+        {
+            var response = new AzureOperationResponse<ProxyModels.UploadBatchServiceLogsResult, ProxyModels.ComputeNodeUploadBatchServiceLogsHeaders>();
+            response.Response = new HttpResponseMessage(HttpStatusCode.OK);
+
+            ProxyModels.UploadBatchServiceLogsResult result = new ProxyModels.UploadBatchServiceLogsResult();
+            result.NumberOfFilesUploaded = numberOfFilesUploaded;
+            result.VirtualDirectoryName = virtualDirectoryName;
+
+            response.Body = result;
+
+            return response;
         }
 
         /// <summary>

@@ -53,6 +53,9 @@ Adds an ExpressRoute circuit authorization.
 ### [Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
 
+### [Add-AzureRmExpressRouteCircuitConnectionConfig](Add-AzureRmExpressRouteCircuitConnectionConfig.md) 
+Adds a circuit connection configuration to Private Peering of an ExpressRoute circuit.
+
 ### [Add-AzureRmLoadBalancerBackendAddressPoolConfig](Add-AzureRmLoadBalancerBackendAddressPoolConfig.md)
 Adds a backend address pool configuration to a load balancer.
 
@@ -60,7 +63,7 @@ Adds a backend address pool configuration to a load balancer.
 Adds a front-end IP configuration to a load balancer.
 
 ### [Add-AzureRmLoadBalancerInboundNatPoolConfig](Add-AzureRmLoadBalancerInboundNatPoolConfig.md)
-{{Manually Enter Add-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
+Adds an inbound NAT pool configuration to a load balancer.
 
 ### [Add-AzureRmLoadBalancerInboundNatRuleConfig](Add-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Adds an inbound NAT rule configuration to a load balancer.
@@ -188,6 +191,9 @@ Gets information about ExpressRoute circuit authorizations.
 ### [Get-AzureRmExpressRouteCircuitPeeringConfig](Get-AzureRmExpressRouteCircuitPeeringConfig.md)
 Gets an ExpressRoute circuit peering configuration.
 
+### [Get-AzureRmExpressRouteCircuitConnectionConfig](Get-AzureRmExpressRouteCircuitConnectionConfig.md) 
+Gets an ExpressRoute circuit connection configuration. 
+
 ### [Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
 Gets a route table from an ExpressRoute circuit.
 
@@ -207,10 +213,10 @@ Gets a load balancer.
 Gets a backend address pool configuration for a load balancer.
 
 ### [Get-AzureRmLoadBalancerFrontendIpConfig](Get-AzureRmLoadBalancerFrontendIpConfig.md)
-Gets a front-end IP configuration in a load balancer.
+Gets a front-end IP configuration for a load balancer.
 
 ### [Get-AzureRmLoadBalancerInboundNatPoolConfig](Get-AzureRmLoadBalancerInboundNatPoolConfig.md)
-{{Manually Enter Get-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
+Gets an inbound NAT pool configuration for a load balancer.
 
 ### [Get-AzureRmLoadBalancerInboundNatRuleConfig](Get-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Gets an inbound NAT rule configuration for a load balancer.
@@ -429,7 +435,7 @@ Creates a backend address pool configuration for a load balancer.
 Creates a front-end IP configuration for a load balancer.
 
 ### [New-AzureRmLoadBalancerInboundNatPoolConfig](New-AzureRmLoadBalancerInboundNatPoolConfig.md)
-{{Manually Enter New-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
+Creates an inbound NAT pool configuration for a load balancer.
 
 ### [New-AzureRmLoadBalancerInboundNatRuleConfig](New-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Creates an inbound NAT rule configuration for a load balancer.
@@ -566,6 +572,9 @@ Removes an existing ExpressRoute configuration authorization.
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
 
+### [Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md) 
+Removes an ExpressRoute circuit connection configuration. 
+
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
 
@@ -576,7 +585,7 @@ Removes a backend address pool configuration from a load balancer.
 Removes a front-end IP configuration from a load balancer.
 
 ### [Remove-AzureRmLoadBalancerInboundNatPoolConfig](Remove-AzureRmLoadBalancerInboundNatPoolConfig.md)
-{{Manually Enter Remove-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
+Removes an inbound NAT pool configuration from a load balancer.
 
 ### [Remove-AzureRmLoadBalancerInboundNatRuleConfig](Remove-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Removes an inbound NAT rule configuration from a load balancer.
@@ -639,7 +648,7 @@ Removes the default site from a virtual network gateway.
 {{Manually Enter Remove-AzureRmVirtualNetworkGatewayIpConfig Description Here}}
 
 ### [Remove-AzureRmVirtualNetworkPeering](Remove-AzureRmVirtualNetworkPeering.md)
-{{Manually Enter Remove-AzureRmVirtualNetworkPeering Description Here}}
+Removes a virtual network peering.
 
 ### [Remove-AzureRmVirtualNetworkSubnetConfig](Remove-AzureRmVirtualNetworkSubnetConfig.md)
 Removes a subnet configuration from a virtual network.
@@ -723,7 +732,7 @@ Sets the goal state for a load balancer.
 Sets the goal state for a front-end IP configuration in a load balancer.
 
 ### [Set-AzureRmLoadBalancerInboundNatPoolConfig](Set-AzureRmLoadBalancerInboundNatPoolConfig.md)
-{{Manually Enter Set-AzureRmLoadBalancerInboundNatPoolConfig Description Here}}
+Sets an inbound NAT pool configuration for a load balancer.
 
 ### [Set-AzureRmLoadBalancerInboundNatRuleConfig](Set-AzureRmLoadBalancerInboundNatRuleConfig.md)
 Sets an inbound NAT rule configuration for a load balancer.
