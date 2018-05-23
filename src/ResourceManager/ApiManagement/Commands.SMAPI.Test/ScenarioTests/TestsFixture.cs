@@ -13,17 +13,22 @@
 
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Management.ApiManagement;
+using Microsoft.Azure.Management.ApiManagement.Models;
+using Microsoft.Azure.Test;
+using System;
+using System.Linq;
+using System.Net;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestBase = Microsoft.Azure.Test.TestBase;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Management.ApiManagement;
-    using Management.ApiManagement.Models;
-    using Azure.Test;
-    using System;
-    using System.Linq;
-    using System.Net;
-    using Azure.Test.HttpRecorder;
-    using WindowsAzure.Commands.Test.Utilities.Common;
+    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
 
     public class TestsFixture : RMTestBase
     {
@@ -31,10 +36,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         {
             // Initialize has bug which causes null reference exception
             HttpMockServer.FileSystemUtilsObject = new FileSystemUtils();
-            LegacyTest.TestUtilities.StartTest();
-            using (MockContext context = MockContext.Start(
-                Azure.Test.TestUtilities.GetCallingClass(),
-                Azure.Test.TestUtilities.GetCurrentMethodName(2)))
+            TestUtilities.StartTest();
+            using (MockContext context = MockContext.Start(TestUtilities.GetCallingClass(), TestUtilities.GetCurrentMethodName(2)))
             {
                 var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
                 resourceManagementClient.TryRegisterSubscriptionForResource();
@@ -46,13 +49,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
     {
         public static ApiManagementClient GetApiManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ApiManagementClient>(
-                Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         public static ResourceManagementClient GetResourceManagementClient()
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private static void ThrowIfTrue(bool condition, string message)

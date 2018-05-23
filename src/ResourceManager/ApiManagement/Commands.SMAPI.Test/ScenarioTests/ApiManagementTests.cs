@@ -19,14 +19,13 @@ using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using WindowsAzure.Commands.ScenarioTest;
-    using Rest.ClientRuntime.Azure.TestFramework;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-    using Xunit;
-    using LegacyTest = Microsoft.Azure.Test;
+    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
 
     public class ApiManagementTests : RMTestBase, IClassFixture<ApiManagementTestsFixture>
     {
@@ -201,9 +200,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (MockContext.Start(callingClassType, mockName))
+            using (var context = MockContext.Start(callingClassType, mockName))
             {
-                _helper.SetupSomeOfManagementClients();
+                _helper.SetupSomeOfManagementClients(context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment()));
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 _helper.SetupModules(AzureModule.AzureResourceManager,

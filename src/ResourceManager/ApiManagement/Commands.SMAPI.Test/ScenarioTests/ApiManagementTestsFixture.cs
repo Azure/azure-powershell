@@ -12,10 +12,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Azure.Test;
-
     public class ApiManagementTestsFixture : TestsFixture
     {
         public string Location { get; set; }
@@ -24,22 +24,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         public ApiManagementTestsFixture()
         {
-            using (MockContext context = MockContext.Start(
-                "ApiManagementTests",
-                "CreateApiManagementService"))
+            using (MockContext context = MockContext.Start("ApiManagementTests", "CreateApiManagementService"))
             {
-                this.ResourceGroupName = "powershelltest";
-                this.Location = "West US";
+                var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
+                ResourceGroupName = "powershelltest";
+                Location = "West US";
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
                     ResourceGroupName = Azure.Test.TestUtilities.GenerateName("Api-Default");
-                    resourceManagementClient.TryRegisterResourceGroup("eastus", ResourceGroupName);
+                    resourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
                 }
 
                 ApiManagementServiceName = "powershellsdkservice";
-                var apiManagementClient = GetApiManagementClient(context);
-                apiManagementClient.TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
+                ApiManagementHelper.GetApiManagementClient(context).TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
             }
         }
     }
