@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// <summary>
     /// Delete a Maps Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, MapsAccountNounStr, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, MapsAccountNounStr, DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureMapsAccount : MapsAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Return whether the specified account was successfully deleted or not.")]
+        public SwitchParameter PassThru { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -98,9 +103,11 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
                     && !string.IsNullOrEmpty(name)
                     && ShouldProcess(name, string.Format(CultureInfo.CurrentCulture, Resources.RemoveAccount_ProcessMessage, name)))
                 {
-                    this.MapsClient.Accounts.Delete(
-                        rgName,
-                        name);
+                    this.MapsClient.Accounts.Delete(rgName, name);
+                    if (PassThru.IsPresent)
+                    {
+                        WriteObject(true);
+                    }
                 }
             });
         }
