@@ -20,17 +20,16 @@ using System.IO;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using Azure.Test.HttpRecorder;
-    using WindowsAzure.Commands.ScenarioTest;
-    using Rest.ClientRuntime.Azure.TestFramework;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-    using ResourceManagementClient = Management.Internal.Resources.ResourceManagementClient;
-    using Xunit;
-    using LegacyTest = Microsoft.Azure.Test;
+    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
 
     public class ApiManagementTests : RMTestBase
     {
@@ -49,8 +48,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
         {
             var resourceManagementClient = GetResourceManagementClient(context);
             var armStorageManagementClient = GetArmStorageManagementClient(context);
+            var apiManagementClient = GetApiManagementManagementClient(context);
 
-            _helper.SetupSomeOfManagementClients(resourceManagementClient, armStorageManagementClient);
+            _helper.SetupSomeOfManagementClients(resourceManagementClient, armStorageManagementClient, apiManagementClient);
         }
 
         protected StorageManagementClient GetArmStorageManagementClient(MockContext context)
@@ -65,8 +65,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         private ApiManagementClient GetApiManagementManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ApiManagementClient>(
-                Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         [Fact]
