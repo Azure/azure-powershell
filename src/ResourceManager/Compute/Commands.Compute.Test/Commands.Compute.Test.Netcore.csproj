@@ -22,8 +22,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.0-alpha" />
-    <PackageReference Include="Microsoft.Azure.KeyVault.WebKey" Version="3.0.0-alpha" /> -->
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="18.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1-alpha" />
@@ -79,9 +77,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Remove="AzureRM.Resources.ps1" />
-    <!-- <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\AzureRM.Resources.ps1" Link="AzureRM.Resources.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None> -->
     <None Include="AzureRM.Resources.Netcore.ps1" Link="ScenarioTests\AzureRM.Resources.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
