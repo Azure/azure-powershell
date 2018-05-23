@@ -19547,6 +19547,7 @@
       "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes",
       "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSCorrelationFilterAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.5.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
+        "Properties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "RequiresPreprocessing": "System.Nullable`1[System.Boolean]",
         "CorrelationId": "System.String",
         "MessageId": "System.String",

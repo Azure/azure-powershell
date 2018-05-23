@@ -39,7 +39,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		$job1 | Wait-Job
 		$db = $job1.Output
 
-		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-AreEqual $databaseName $db.DatabaseName 
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.CurrentServiceObjectiveName
@@ -103,6 +103,49 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 
 <#
 	.SYNOPSIS
+	Tests creating a Vcore based database
+#>
+function Test-CreateVcoreDatabase
+{
+	# Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create with Edition and RequestedServiceObjectiveName
+		$databaseName = Get-DatabaseName
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_2 -Edition GeneralPurpose -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $databaseName $db.DatabaseName 
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual 2 $db.Capacity
+		Assert-AreEqual GeneralPurpose $db.Edition
+
+		# Create with VCore parameter set
+		$databaseName = Get-DatabaseName
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $databaseName $db.DatabaseName 
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual 2 $db.Capacity
+		Assert-AreEqual GeneralPurpose $db.Edition
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests creating a database with sample name.
 #>
 function Test-CreateDatabaseWithSampleName
@@ -142,7 +185,7 @@ function Test-CreateDatabaseWithSampleName
 function Test-CreateDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = "eastus2"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -264,12 +307,92 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 
 <#
 	.SYNOPSIS
+	Tests updating a vcore database 
+#>
+function Test-UpdateVcoreDatabase ()
+{
+	# Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4 -MaxSizeBytes 250GB
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		# Alter with defaults
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-NotNull $db1.MaxSizeBytes
+		Assert-NotNull $db1.Edition
+		Assert-NotNull $db1.CurrentServiceObjectiveName
+
+		# Alter with all properties
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-MaxSizeBytes 5GB -VCore 1 -Edition GeneralPurpose -ComputeGeneration Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.MaxSizeBytes 5GB
+		Assert-AreEqual $db1.Edition GeneralPurpose
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4_1
+		Assert-AreEqual $db1.CollationName $db.CollationName
+		Assert-NotNull $db1.Tags
+		Assert-AreEqual True $db1.Tags.ContainsKey("tag_key")
+		Assert-AreEqual "tag_new_value" $db1.Tags["tag_key"]
+
+		# Alter Edition only (can't only specify -Edition since Edition is shared parameter in two difference parameter sets)
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition BusinessCritical -ComputeGeneration Gen4 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition BusinessCritical
+		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen4_1
+
+		# Alter Vcore only
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-VCore 2 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition BusinessCritical
+		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen4_2
+
+		# Alter with Dtu based parameters (-Edition and -RequestedServiceObjectiveName)
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen4_2 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition GeneralPurpose
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4_2
+
+		# Alter ComputeGeneration only
+		# Need to add later, currently the service not support other Generations besides Gen4
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests updating a database with zone redundancy
 #>
 function Test-UpdateDatabaseWithZoneRedundant ()
 {
 	# Setup
-	$location = "eastus2" 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	
@@ -316,7 +439,7 @@ function Test-UpdateDatabaseWithZoneRedundant ()
 function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 {
 	# Setup
-	$location = "eastus2" 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	
@@ -462,7 +585,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 function Test-GetDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = "eastus2"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: B80389B9-E143-4E24-A222-E95F691DA2E9
@@ -21,7 +21,7 @@ Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [-DefaultProfile <
 
 ### GetByApiId
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -74,9 +74,24 @@ Specifies the ID of the API to get.
 ```yaml
 Type: String
 Parameter Sets: GetByApiId
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApiRevision
+Revision Identifier of the particular Api revision. This parameter is optional.
+
+```yaml
+Type: String
+Parameter Sets: GetByApiId
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -89,7 +104,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,7 +134,7 @@ Specifies the name of the API to get.
 ```yaml
 Type: String
 Parameter Sets: GetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -134,7 +149,7 @@ Specifies the ID of the product for which to get the API.
 ```yaml
 Type: String
 Parameter Sets: GetByProductId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
