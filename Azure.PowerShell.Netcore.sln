@@ -123,7 +123,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DataLakeStore.Netc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Insights.Netcore", "src\ResourceManager\Insights\Commands.Insights\Commands.Insights.Netcore.csproj", "{F900B1AF-C576-4A6D-A38E-722B73C79A25}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.LocationBasedServices.Netcore", "src\ResourceManager\LocationBasedServices\Commands.LocationBasedServices\Commands.LocationBasedServices.Netcore.csproj", "{025A3BBD-DB27-4F92-9E3D-3F5FB4D8D443}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Maps.Netcore", "src\ResourceManager\Maps\Commands.Maps\Commands.Maps.Netcore.csproj", "{025A3BBD-DB27-4F92-9E3D-3F5FB4D8D443}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Partner.Netcore", "src\ResourceManager\ManagementPartner\Commands.Partner\Commands.Partner.Netcore.csproj", "{E3F57ED9-36AA-43AE-9E37-8CDEF1278FAE}"
 EndProject
