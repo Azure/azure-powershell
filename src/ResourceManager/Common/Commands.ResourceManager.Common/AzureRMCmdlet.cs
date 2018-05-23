@@ -204,7 +204,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 ClientRequestId = this._clientRequestId,
                 SessionId = _sessionId,
                 IsSuccess = true,
-            };
+                ParameterSetName = this.ParameterSetName
+        };
 
             if (this.MyInvocation != null && !string.IsNullOrWhiteSpace(this.MyInvocation.InvocationName))
             {
@@ -217,11 +218,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 _qosEvent.Parameters = string.Join(" ",
                     this.MyInvocation.BoundParameters.Keys.Select(
                         s => string.Format(CultureInfo.InvariantCulture, "-{0} ***", s)));
-            }
-
-            if (!string.IsNullOrWhiteSpace(this.ParameterSetName))
-            {
-                _qosEvent.ParameterSetName = this.ParameterSetName;
             }
 
             IAzureContext context;

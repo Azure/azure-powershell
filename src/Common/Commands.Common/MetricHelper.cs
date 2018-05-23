@@ -226,9 +226,15 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 eventProperties.Add("Message", "Message removed due to PII.");
                 eventProperties.Add("StackTrace", qos.Exception.StackTrace);
                 eventProperties.Add("ExceptionType", qos.Exception.GetType().ToString());
-                if (qos.Exception.InnerException != null)
+                Exception innerEx = qos.Exception.InnerException;
+                int exceptionCount = 0;
+                //keep goin till we get to the last inner exception
+                while (innerEx != null)
                 {
-                    eventProperties.Add("InnerExceptionType", qos.Exception.InnerException.GetType().ToString());
+                    //Increment the inner exception count so that we can tell which is the outermmost
+                    //n which the innermost
+                    eventProperties.Add("InnerExceptionType-"+exceptionCount++, innerEx.GetType().ToString());
+                    innerEx = innerEx.InnerException;
                 }
                 client.TrackException(null, eventProperties, eventMetrics);
             }
@@ -271,10 +277,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
             eventProperties.Add("PowerShellVersion", PSVersion);
             eventProperties.Add("Version", AzurePowerShell.AssemblyVersion);
             eventProperties.Add("CommandParameterSetName", qos.ParameterSetName);
-            if (!string.IsNullOrWhiteSpace(qos.InvocationName))
-            {
-                eventProperties.Add("CommandInvocationName", qos.InvocationName);
-            }
+            eventProperties.Add("CommandInvocationName", qos.InvocationName);
 
             if (qos.InputFromPipeline != null)
             {
