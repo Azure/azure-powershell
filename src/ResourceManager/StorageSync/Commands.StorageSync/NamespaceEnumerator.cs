@@ -6,10 +6,13 @@
 
     public class NamespaceEnumerator
     {
+        #region Fields and Properties
         private NamespaceInfo _namespaceInfo;
         private readonly IList<INamespaceEnumeratorListener> _listeners;
+        #endregion
 
-        public NamespaceEnumerator(): this(new List<INamespaceEnumeratorListener> { })
+        #region Constructors
+        public NamespaceEnumerator() : this(new List<INamespaceEnumeratorListener> { })
         {
         }
 
@@ -18,7 +21,9 @@
             _listeners = listeners;
             _namespaceInfo = new NamespaceInfo();
         }
+        #endregion
 
+        #region Public methods
         public NamespaceInfo Run(IDirectoryInfo root)
         {
             this.EnumeratePostOrderNonRecursive(root);
@@ -34,7 +39,9 @@
             NotifyEndOfEnumeration();
             return this._namespaceInfo;
         }
+        #endregion
 
+        #region Private methods
         private void NotifyEndOfEnumeration()
         {
             foreach (INamespaceEnumeratorListener listener in _listeners)
@@ -55,7 +62,8 @@
         /// <param name="cancelationCallback">function to consult with for cancelation</param>
         private void EnumeratePostOrderNonRecursive(IDirectoryInfo root, Func<bool> cancelationCallback = null)
         {
-            _namespaceInfo = new NamespaceInfo {
+            _namespaceInfo = new NamespaceInfo
+            {
                 Path = root.FullName,
                 IsComplete = false
             };
@@ -185,6 +193,7 @@
                 listener.BeginDir(dir);
             }
         }
-        
+        #endregion
+
     }
 }

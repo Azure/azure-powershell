@@ -37,7 +37,7 @@
         #region Protected methods
         protected override IValidationResult DoValidate(IFileInfo file)
         {
-            return Validate(file);
+            return ValidateInternal(file);
         }
 
         protected override IValidationResult DoValidate(IDirectoryInfo directoryInfo)
@@ -48,14 +48,14 @@
                 return this.SuccessfulResult;
             }
 
-            return Validate(directoryInfo);
+            return ValidateInternal(directoryInfo);
         }
 
         #endregion
 
         #region Private methods
         
-        private IValidationResult Validate (INamedObjectInfo node)
+        private IValidationResult ValidateInternal (INamedObjectInfo node)
         {
             string name = node.Name;
             List<int> positions = new List<int>();

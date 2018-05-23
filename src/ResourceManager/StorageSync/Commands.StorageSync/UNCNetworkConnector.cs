@@ -4,7 +4,7 @@
     using System.Runtime.InteropServices;
     using NET_API_STATUS = System.UInt32;
 
-    public static class WinErrors
+    public static class NativeMethods
     {
         #region definitions
         [DllImport("kernel32.dll", SetLastError = true)]
@@ -23,6 +23,34 @@
             FORMAT_MESSAGE_FROM_HMODULE = 0x00000800,
             FORMAT_MESSAGE_FROM_STRING = 0x00000400,
         }
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        internal struct USE_INFO_2
+        {
+            internal string ui2_local;
+            internal string ui2_remote;
+            internal string ui2_password;
+            internal UInt32 ui2_status;
+            internal UInt32 ui2_asg_type;
+            internal UInt32 ui2_refcount;
+            internal UInt32 ui2_usecount;
+            internal string ui2_username;
+            internal string ui2_domainname;
+        }
+
+        [DllImport("NetApi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        internal static extern NET_API_STATUS NetUseAdd(
+            string UncServerName,
+            UInt32 Level,
+            ref USE_INFO_2 Buf,
+            out UInt32 ParmError);
+
+        [DllImport("NetApi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        internal static extern NET_API_STATUS NetUseDel(
+            string UncServerName,
+            string UseName,
+            UInt32 ForceCond);
+
         #endregion
 
         public static string GetSystemMessage(int errorCode)
@@ -57,35 +85,8 @@
         }
     }
 
-    public class UncNetworkConnector : IDisposable
+    public sealed class UncNetworkConnector : IDisposable
     {
-        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-        internal struct USE_INFO_2
-        {
-            internal string ui2_local;
-            internal string ui2_remote;
-            internal string ui2_password;
-            internal UInt32 ui2_status;
-            internal UInt32 ui2_asg_type;
-            internal UInt32 ui2_refcount;
-            internal UInt32 ui2_usecount;
-            internal string ui2_username;
-            internal string ui2_domainname;
-        }
-
-        [DllImport("NetApi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        internal static extern NET_API_STATUS NetUseAdd(
-            string UncServerName,
-            UInt32 Level,
-            ref USE_INFO_2 Buf,
-            out UInt32 ParmError);
-
-        [DllImport("NetApi32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        internal static extern NET_API_STATUS NetUseDel(
-            string UncServerName,
-            string UseName,
-            UInt32 ForceCond);
-
         private bool disposed = false;
         private string UNCPath;
         public int LastError { get; set; }
@@ -111,38 +112,38 @@
             UNCPath = userUNCPath;
 
             uint returncode;
+
+            NativeMethods.USE_INFO_2 useinfo = new NativeMethods.USE_INFO_2();
+
+            useinfo.ui2_local = null;
+            useinfo.ui2_remote = UNCPath;
+            useinfo.ui2_username = User;
+            useinfo.ui2_domainname = Domain;
+            useinfo.ui2_password = Password;
+            // useinfo.ui2_asg_type = 0;
+            useinfo.ui2_usecount = 1;
+            uint paramErrorIndex;
             try
             {
-                USE_INFO_2 useinfo = new USE_INFO_2();
-
-                useinfo.ui2_local = null;
-                useinfo.ui2_remote = UNCPath;
-                useinfo.ui2_username = User;
-                useinfo.ui2_domainname = Domain;
-                useinfo.ui2_password = Password;
-                // useinfo.ui2_asg_type = 0;
-                useinfo.ui2_usecount = 1;
-                uint paramErrorIndex;
-                returncode = NetUseAdd(null, 2, ref useinfo, out paramErrorIndex);
-
-                if (returncode != 0)
-                {
-                    LastError = (int)returncode;
-                }
-
-                return returncode == 0;
+                returncode = NativeMethods.NetUseAdd(null, 2, ref useinfo, out paramErrorIndex);
             }
             catch
             {
                 LastError = Marshal.GetLastWin32Error();
-
                 return false;
             }
+
+            if (returncode != 0)
+            {
+                LastError = (int)returncode;
+            }
+
+            return returncode == 0;
         }
 
         public string GetLastError()
         {
-            return WinErrors.GetSystemMessage(LastError);
+            return NativeMethods.GetSystemMessage(LastError);
         }
 
          // Return: True on success. LastError will hold the system error code in case of failure.
@@ -151,7 +152,7 @@
             uint returncode;
             try
             {
-                returncode = NetUseDel(null, UNCPath, 2);
+                returncode = NativeMethods.NetUseDel(null, UNCPath, 2);
                 return (returncode == 0);
             }
             catch
