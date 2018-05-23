@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+* Bump up Network SDK version from 19.0.0-preview to 20.0.0-preview
+* Expose new SKUs for zone resilient VPN/ER gateways - VpnGw1AZ/VpnGw2AZ/VpnGw3AZ/ErGw1AZ/ErGw2AZ/ErGw3AZ
 
 ## Version 6.1.0
 * Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
