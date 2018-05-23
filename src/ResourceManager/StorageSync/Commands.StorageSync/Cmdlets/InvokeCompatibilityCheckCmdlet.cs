@@ -1,24 +1,22 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
-using System.Text.RegularExpressions;
-using System;
-using System.Diagnostics;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Management.Automation;
+    using System.Net;
+    using OutputWriters;
+    using Validations.NamespaceValidations;
+    using Validations.SystemValidations;
+    using System;
+    using System.Diagnostics;
+    using Interfaces;
+    using Validations;
+    using Models;
 
     [Cmdlet(
         VerbsLifecycle.Invoke, "AzureRmStorageSyncCompatibilityCheck", 
         DefaultParameterSetName="PathBased")]
-    [OutputType(typeof(object))]
+    [OutputType(typeof(PSValidationResult))]
     public class InvokeCompatibilityCheckCmdlet : Cmdlet, ICmdlet
     {
         #region Fields and Properties
