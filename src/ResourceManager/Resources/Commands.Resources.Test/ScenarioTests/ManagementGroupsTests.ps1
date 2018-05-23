@@ -81,6 +81,7 @@ function Test-GetManagementGroupWithExpand
 	Assert-AreEqual $response.ParentDisplayName $expectedParentDisplayName
 	Assert-AreEqual $response.ParentName $expectedParentName
 
+	Assert-AreEqual $response.Children[0].Type $expectedType
 	Assert-AreEqual $response.Children[0].Id $expectedChild0Id
 	Assert-AreEqual $response.Children[0].DisplayName $expectedChild0DisplayName
 	Assert-AreEqual $response.Children[0].Name $expectedChild0Name
@@ -127,10 +128,12 @@ function Test-GetManagementGroupWithExpandAndRecurse
 	Assert-AreEqual $response.ParentDisplayName $expectedParentDisplayName
 	Assert-AreEqual $response.ParentName $expectedParentName
 
+	Assert-AreEqual $response.Children[0].Type $expectedType
 	Assert-AreEqual $response.Children[0].Id $expectedChild0Id
 	Assert-AreEqual $response.Children[0].DisplayName $expectedChild0DisplayName
 	Assert-AreEqual $response.Children[0].Name $expectedChild0Name
 
+	Assert-AreEqual $response.Children[0].Children[0].Type $expectedType
 	Assert-AreEqual $response.Children[0].Children[0].Id $expectedChild0Child0Id
 	Assert-AreEqual $response.Children[0].Children[0].DisplayName $expectedChild0Child0DisplayName
 	Assert-AreEqual $response.Children[0].Children[0].Name $expectedChild0Child0Name
@@ -283,8 +286,15 @@ function Test-UpdateManagementGroupWithDisplayNameAndParentId
 function Test-RemoveManagementGroup
 {
 	New-AzureRmManagementGroup -GroupName TestPSRemoveGroup
+	
+	$getresponse = Get-AzureRmManagementGroup -GroupName TestPSRemoveGroup
+
     $response = Remove-AzureRmManagementGroup -GroupName TestPSRemoveGroup
 
+	$getresponse2 = Get-AzureRmManagementGroup -GroupName TestPSRemoveGroup
+
+	Assert-NotNull $getresponse
+	Assert-Null $getresponse2
 	Assert-Null $response
 }
 
@@ -293,11 +303,27 @@ function Test-NewRemoveManagementGroupSubscription
 	New-AzureRmManagementGroup -GroupName TestSubGroup
 
 	$response1 = New-AzureRmManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 394ae65d-9e71-4462-930f-3332dedf845c
+
+	$getresponse = Get-AzureRmManagementGroup -GroupName TestSubGroup -Expand
+
 	$response2 = Remove-AzureRmManagementGroupSubscription -GroupName TestSubGroup -SubscriptionId 394ae65d-9e71-4462-930f-3332dedf845c
 	
+	$getresponse2 = Get-AzureRmManagementGroup -GroupName TestSubGroup -Expand
+
 	Remove-AzureRmManagementGroup -GroupName TestSubGroup
+
+	$expectedType =  "/subscriptions"
+	$expectedId = "/subscriptions/394ae65d-9e71-4462-930f-3332dedf845c"
+	$expectedName = "394ae65d-9e71-4462-930f-3332dedf845c"
+	$expectedDisplayName = "Pay-As-You-Go"
+
+	Assert-AreEqual $getresponse.Children[0].Type $expectedType
+	Assert-AreEqual $getresponse.Children[0].Id $expectedId
+	Assert-AreEqual $getresponse.Children[0].DisplayName $expectedDisplayName
+	Assert-AreEqual $getresponse.Children[0].Name $expectedName
 
 	Assert-Null $response1
 	Assert-Null $response2
+	Assert-Null $getresponse2.Children
 }
 

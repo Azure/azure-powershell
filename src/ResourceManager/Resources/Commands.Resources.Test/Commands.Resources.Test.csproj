@@ -93,8 +93,6 @@
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.9-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
@@ -407,18 +405,42 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagedApplicationTests\TestManagedApplicationCRUD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroup.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroupWithExpand.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroupWithExpandAndRecurse.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroup.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithDisplayName.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithDisplayNameAndParentId.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithParentId.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewRemoveManagementGroupSubscription.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestRemoveManagementGroup.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithDisplayName.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithDisplayNameAndParentId.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithParentId.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroupWithExpand.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestGetManagementGroupWithExpandAndRecurse.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithDisplayNameAndParentId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewManagementGroupWithParentId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestNewRemoveManagementGroupSubscription.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestRemoveManagementGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithDisplayName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithDisplayNameAndParentId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ManagementGroupsTests\TestUpdateManagementGroupWithParentId.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.MoveResourceTest\TestMoveAzureResource.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
