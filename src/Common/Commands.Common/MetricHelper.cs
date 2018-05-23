@@ -231,8 +231,8 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 //keep goin till we get to the last inner exception
                 while (innerEx != null)
                 {
-                    //Increment the inner exception count so that we can tell which is the outermmost
-                    //n which the innermost
+                    //Increment the inner exception count so that we can tell which is the outermost
+                    //and which the innermost
                     eventProperties.Add("InnerExceptionType-"+exceptionCount++, innerEx.GetType().ToString());
                     innerEx = innerEx.InnerException;
                 }
