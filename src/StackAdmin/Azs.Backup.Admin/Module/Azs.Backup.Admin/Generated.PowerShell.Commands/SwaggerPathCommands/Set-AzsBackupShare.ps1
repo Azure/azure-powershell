@@ -34,6 +34,15 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER EncryptionKey
     Encryption key used to encrypt backups.
 
+.PARAMETER IsBackupSchedulerEnabled
+    Whether the backup scheduler should be enabled.
+
+.PARAMETER BackupFrequencyInHours
+    The interval, in hours, for the frequency that the scheduler takes a backup.
+
+.PARAMETER BackupRetentionPeriodInDays
+    The retention period, in days, for backups in the storage location.
+
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
 
