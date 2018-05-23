@@ -56,7 +56,7 @@ Specifies the name of the network interface IP configuration to remove.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -72,7 +72,7 @@ This object contains the network interface IP configuration to remove.
 ```yaml
 Type: PSNetworkInterface
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

@@ -59,7 +59,7 @@ The resource reference to be expanded.
 ```yaml
 Type: String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -101,7 +101,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: NoExpand
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -136,4 +136,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
