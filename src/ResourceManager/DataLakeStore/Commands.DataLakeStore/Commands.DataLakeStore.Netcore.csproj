@@ -31,7 +31,7 @@
     <PackageReference Include="Microsoft.Azure.DataLake.Store" Version="1.1.6" />
     <PackageReference Include="Microsoft.Azure.Management.DataLake.Store" Version="2.3.0-preview" />
     <PackageReference Include="NLog" Version="4.5.0" />
-	<PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    <PackageReference Include="System.Net.Requests" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
