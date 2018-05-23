@@ -18,44 +18,44 @@ Create Automation account and return the account
 #>
 function CreateAutomationAccount
 {
-	$resourceGroupName = Get-RandomResourceGroupName
-	$location = Get-AutomationAccountTestLocation
-	$automationAccountName = Get-RandomAutomationAccountName
+    $resourceGroupName = Get-RandomResourceGroupName
+    $location = Get-AutomationAccountTestLocation
+    $automationAccountName = Get-RandomAutomationAccountName
     
     $resourceGroupCreated = New-AzureRMResourceGroup -Name $resourceGroupName -Location $location
-	$automationAccountCreated = New-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName `
-	                                                          -Location $location `
-															  -Name $automationAccountName `
-															  -Plan Basic
+    $automationAccountCreated = New-AzureRmAutomationAccount -ResourceGroupName $resourceGroupName `
+                                                              -Location $location `
+                                                              -Name $automationAccountName `
+                                                              -Plan Basic
 
-	return $automationAccountCreated
+    return $automationAccountCreated
 }
 
  function CreateAutomationAccountAndConnectionAsset
  {
     param([string] $connectionAssetName)
 
- 	$automationAccount = CreateAutomationAccount
-	$resourceGroupName = $automationAccount.ResourceGroupName
-	$automationAccountName = $automationAccount.AutomationAccountName
+    $automationAccount = CreateAutomationAccount
+    $resourceGroupName = $automationAccount.ResourceGroupName
+    $automationAccountName = $automationAccount.AutomationAccountName
     
-	$connectionTypeName = "AzureServicePrincipal"
-	$applicationId = "applicationIdString"
-	$tenantId = "tenantIdString"
-	$thumbprint  = "thumbprintIdString"
-	$subscriptionId  = "subscriptionIdString"
-	$connectionFieldValues = @{"ApplicationId" = $applicationId; `
-	                           "TenantId" = $tenantId; `
-							   "CertificateThumbprint" = $thumbprint; `
-							   "SubscriptionId" = $subscriptionId}
+    $connectionTypeName = "AzureServicePrincipal"
+    $applicationId = "applicationIdString"
+    $tenantId = "tenantIdString"
+    $thumbprint  = "thumbprintIdString"
+    $subscriptionId  = "subscriptionIdString"
+    $connectionFieldValues = @{"ApplicationId" = $applicationId; `
+                               "TenantId" = $tenantId; `
+                               "CertificateThumbprint" = $thumbprint; `
+                               "SubscriptionId" = $subscriptionId}
 
-	$connectionAssetCreated = New-AzureRmAutomationConnection -ResourceGroupName $resourceGroupName `
-	                                                          -AutomationAccountName $automationAccountName `
-															  -Name $connectionAssetName `
-															  -ConnectionTypeName $connectionTypeName `
-															  -ConnectionFieldValues $connectionFieldValues
+    $connectionAssetCreated = New-AzureRmAutomationConnection -ResourceGroupName $resourceGroupName `
+                                                              -AutomationAccountName $automationAccountName `
+                                                              -Name $connectionAssetName `
+                                                              -ConnectionTypeName $connectionTypeName `
+                                                              -ConnectionFieldValues $connectionFieldValues
 
-	return $connectionAssetCreated
+    return $connectionAssetCreated
  }
 
 <#
@@ -66,29 +66,29 @@ function CreateRunbook
 {
     param([string] $runbookPath, [boolean] $byName=$false, [string[]] $tag, [string] $description)
 
-	$automationAccount = CreateAutomationAccount
-	$resourceGroupName = $automationAccount.ResourceGroupName
-	$automationAccountName = $automationAccount.AutomationAccountName
+    $automationAccount = CreateAutomationAccount
+    $resourceGroupName = $automationAccount.ResourceGroupName
+    $automationAccountName = $automationAccount.AutomationAccountName
 
     $runbookName = gci $runbookPath | %{$_.BaseName}
 
     if(!$byName)
     {
         return Import-AzureRmAutomationRunbook -ResourceGroupName $resourceGroupName `
-		                                       -AutomationAccountName $automationAccountName `
-											   -Path $runbookPath `
-											   -Type PowerShell `
-											   -Tag $tag `
-											   -Description $description
+                                               -AutomationAccountName $automationAccountName `
+                                               -Path $runbookPath `
+                                               -Type PowerShell `
+                                               -Tag $tag `
+                                               -Description $description
     }
     else 
     {
         return New-AzureRmAutomationRunbook -ResourceGroupName $resourceGroupName `
-		                                    -AutomationAccountName $automationAccountName `
-									        -Name $runbookName `
-											-Type PowerShell `
-											-Tag $tag `
-											-Description $description
+                                            -AutomationAccountName $automationAccountName `
+                                            -Name $runbookName `
+                                            -Type PowerShell `
+                                            -Tag $tag `
+                                            -Description $description
     }
 }
 
@@ -108,13 +108,13 @@ function WaitForJobStatus
         Wait-Seconds $interval
         $timeElapse = $timeElapse + $interval
         $job = Get-AzureRmAutomationJob -ResourceGroupName $resourceGroupName `
-		                                -AutomationAccountName $automationAccountName -Id $Id
+                                        -AutomationAccountName $automationAccountName -Id $Id
         if($job.Status -eq $Status)
         {
             break
         }
         elseif($endStatus -contains $job.Status.ToLower())
-        {	    
+        {
             Write-Output ("The Job with ID $($job.JobId) reached $($job.Status) Status already.")
             return
         }

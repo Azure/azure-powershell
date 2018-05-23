@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationCreateNewAzureServicePrincipalConnection()
         {
             RunPowerShellTest("Test-CreateNewAzureServicePrincipalConnection");
@@ -35,6 +37,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationSetConnectionWithGetContent()
         {
             RunPowerShellTest("Test-SetConnectionWithGetContent");
@@ -43,6 +47,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationSetConnectionWithLargeValueThrowsTimeOut()
         {
             RunPowerShellTest("Test-SetConnectionWithLargeValueThrowsTimeOut");

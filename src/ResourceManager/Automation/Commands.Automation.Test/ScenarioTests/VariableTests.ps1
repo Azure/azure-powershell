@@ -18,24 +18,24 @@ Tests create new automation variable with string value.
 #>
 function Test-CreateNewVariableWithStringValue
 {
-	$automationAccount = CreateAutomationAccount
-	$resourceGroupName = $automationAccount.ResourceGroupName
-	$automationAccountName = $automationAccount.AutomationAccountName
+    $automationAccount = CreateAutomationAccount
+    $resourceGroupName = $automationAccount.ResourceGroupName
+    $automationAccountName = $automationAccount.AutomationAccountName
     
-	$variableName = "CreateNewVariableWithValue"
-	$variableValue = "StringValue"
+    $variableName = "CreateNewVariableWithValue"
+    $variableValue = "StringValue"
 
-	$variableCreated = New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
-	                                                 -AutomationAccountName $automationAccountName `
-													 -name $variableName `
-													 -value $variableValue `
-													 -Encrypted:$false
-	$getVariable = Get-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
-	                                             -AutomationAccountName $automationAccountName `
-												 -name $variableName
+    $variableCreated = New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                     -AutomationAccountName $automationAccountName `
+                                                     -name $variableName `
+                                                     -value $variableValue `
+                                                     -Encrypted:$false
+    $getVariable = Get-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                 -AutomationAccountName $automationAccountName `
+                                                 -name $variableName
 
-	Assert-AreEqual $variableName  $getVariable.Name	
-	Assert-AreEqual $variableValue $getVariable.Value	
+    Assert-AreEqual $variableName  $getVariable.Name
+    Assert-AreEqual $variableValue $getVariable.Value
  }
 
 <#
@@ -45,31 +45,31 @@ Test case for issue https://github.com/Azure/azure-powershell/issues/5607
 #>
 function Test-CreateNewVariableWithGetContent
 {
-	$automationAccount = CreateAutomationAccount
-	$resourceGroupName = $automationAccount.ResourceGroupName
-	$automationAccountName = $automationAccount.AutomationAccountName
+    $automationAccount = CreateAutomationAccount
+    $resourceGroupName = $automationAccount.ResourceGroupName
+    $automationAccountName = $automationAccount.AutomationAccountName
     
-	$variableName = "GetContentVariable"
+    $variableName = "GetContentVariable"
 
-	$fileName = "$env:temp\CreateNewVariableWithGetContent.txt"
-	
-	echo "testline1" > $fileName
+    $fileName = "$env:temp\CreateNewVariableWithGetContent.txt"
+
+    echo "testline1" > $fileName
     echo "testline2" >> $fileName
 
-	$variableValue = Get-Content $fileName
+    $variableValue = Get-Content $fileName
 
-	$variableCreated = New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
-	                                                 -AutomationAccountName $automationAccountName `
-													 -name $variableName `
-													 -value $variableValue `
-													 -Encrypted:$false
-	$getVariable = Get-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
-	                                             -AutomationAccountName $automationAccountName `
-												 -name $variableName
+    $variableCreated = New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                     -AutomationAccountName $automationAccountName `
+                                                     -name $variableName `
+                                                     -value $variableValue `
+                                                     -Encrypted:$false
+    $getVariable = Get-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+                                                 -AutomationAccountName $automationAccountName `
+                                                 -name $variableName
 
-	Assert-AreEqual $variableName $getVariable.Name
-		
-	Remove-Item $fileName
+    Assert-AreEqual $variableName $getVariable.Name
+
+    Remove-Item $fileName
  }
 
 <#
@@ -79,31 +79,31 @@ Test case for issue https://github.com/Azure/azure-powershell/issues/5607
 #>
 function Test-CreateNewVariableWithLargeDataThrowsTimeOut
 {
-	$automationAccount = CreateAutomationAccount
-	$resourceGroupName = $automationAccount.ResourceGroupName
-	$automationAccountName = $automationAccount.AutomationAccountName
+    $automationAccount = CreateAutomationAccount
+    $resourceGroupName = $automationAccount.ResourceGroupName
+    $automationAccountName = $automationAccount.AutomationAccountName
 
-	$variableName = "GetContentVariableWithLargeData"
+    $variableName = "GetContentVariableWithLargeData"
 
-	$fileName = "$env:temp\CreateNewVariableWithLargeDataThrowsTimeOut.txt"
-	
-	echo "testlines" > $fileName
+    $fileName = "$env:temp\CreateNewVariableWithLargeDataThrowsTimeOut.txt"
+
+    echo "testlines" > $fileName
     for($i = 0; $i -lt 1000; $i++)
     {
       echo "testline$i" >> $fileName
     }
-	
-	$variableValue = Get-Content $fileName
 
-	New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
-	                              -AutomationAccountName $automationAccountName `
-								  -name $variableName `
-								  -value $variableValue `
-								  -Encrypted:$false `
-								  -ErrorAction SilentlyContinue
+    $variableValue = Get-Content $fileName
 
-	Assert-True { $Error[0] -like "Input value could not be serialized to json. Operation had timed out in*" }
-	$Error.Clear()
-	
-	Remove-Item $fileName
+    New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `
+                                  -AutomationAccountName $automationAccountName `
+                                  -name $variableName `
+                                  -value $variableValue `
+                                  -Encrypted:$false `
+                                  -ErrorAction SilentlyContinue
+
+    Assert-True { $Error[0] -like "Input value could not be serialized to json. Operation had timed out in*" }
+    $Error.Clear()
+
+    Remove-Item $fileName
 }

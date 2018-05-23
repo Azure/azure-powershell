@@ -25,24 +25,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         }
 
         [Fact(Skip = "Exception on PUT of jobs and jobSchedules and need to fix test for Playback mode")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationStartAndStopRunbook()
         {
             RunPowerShellTest("Test-AutomationStartAndStopRunbook -runbookPath ScenarioTests\\Resources\\Test.ps1");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationPublishAndEditRunbook()
         {
             RunPowerShellTest("Test-AutomationPublishAndEditRunbook -runbookPath ScenarioTests\\Resources\\Test.ps1 -editRunbookPath ScenarioTests\\Resources\\Test-V2.ps1");
         }
 
         [Fact(Skip = "Exception on PUT of jobs and jobSchedules and need to fix test for Playback mode")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationConfigureRunbook()
         {
             RunPowerShellTest("Test-AutomationConfigureRunbook -runbookPath ScenarioTests\\Resources\\Write-DebugAndVerboseOutput.ps1");
@@ -51,6 +57,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact(Skip = "Need to re-record tests with latest version of automation library")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationSuspendAndResumeJob()
         {
             RunPowerShellTest("Test-AutomationSuspendAndResumeJob -runbookPath ScenarioTests\\Resources\\Use-WorkflowCheckpointSample.ps1");
@@ -59,22 +67,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact(Skip = "Exception on PUT of jobs and jobSchedules and need to fix test for Playback mode")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationStartRunbookOnASchedule()
         {
             RunPowerShellTest("Test-AutomationStartRunbookOnASchedule -runbookPath ScenarioTests\\Resources\\Test.ps1");
         }
 
         [Fact(Skip = "Need to re-record tests with latest version of automation library")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationStartUnpublishedRunbook()
         {
             RunPowerShellTest("Test-AutomationStartUnpublishedRunbook -runbookPath ScenarioTests\\Resources\\Test-WorkFlowWithVariousParameters.ps1");
         }
 
         [Fact(Skip = "Exception on PUT of jobs and jobSchedules and need to fix test for Playback mode")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Service, Category.Automation)]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationRunbookWithParameter()
         {
             RunPowerShellTest("Test-RunbookWithParameter -runbookPath ScenarioTests\\Resources\\fastJob.ps1");

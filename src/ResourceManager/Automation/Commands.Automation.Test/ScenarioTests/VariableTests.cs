@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationCreateNewVariableWithStringValue()
         {
             RunPowerShellTest("Test-CreateNewVariableWithStringValue");
@@ -35,6 +37,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationCreateNewVariableWithGetContent()
         {
             RunPowerShellTest("Test-CreateNewVariableWithGetContent");
@@ -43,6 +47,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
         [Fact]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestAutomationCreateNewVariableWithLargeDataThrowsTimeOut()
         {
             RunPowerShellTest("Test-CreateNewVariableWithLargeDataThrowsTimeOut");

@@ -27,7 +27,7 @@ Gets account name
 #>
 function Get-RandomAutomationAccountName
 {
-	return 'automationAccount-' + (getAssetName)
+    return 'automationAccount-' + (getAssetName)
 }
 
 <#
@@ -36,7 +36,7 @@ Gets autoamtion account test location
 #>
 function Get-AutomationAccountTestLocation
 {
-	return Get-Resource-Location -providerNamespace "Microsoft.Automation" -resourceType "automationAccounts" -preferredLocation "Japan East"
+    return Get-Resource-Location -providerNamespace "Microsoft.Automation" -resourceType "automationAccounts" -preferredLocation "Japan East"
 }
 
 <#
