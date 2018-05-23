@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.15.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,6 +42,7 @@
     <ProjectReference Include="..\LegacySdk\SqlManagement.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 
