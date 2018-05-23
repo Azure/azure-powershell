@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
-    public class BaseNamespaceValidation : INamespaceValidation
+    using Interfaces;
+
+    public class BaseNamespaceValidation : BaseValidation, INamespaceValidation
     {
         #region Fields and Properties
         protected IConfiguration Configuration { get;  }
-        protected ValidationType ValidationType { get; }
-        protected IValidationResult SuccessfulResult { get; }
         #endregion
 
         #region Constructors
         public BaseNamespaceValidation(
             IConfiguration configuration,
-            ValidationType validationType)
+            string validationName,
+            ValidationType validationType): base(validationName, validationType, ValidationKind.NamespaceValidation)
         {
             this.Configuration = configuration;
-            this.ValidationType = validationType;
-            this.SuccessfulResult = ValidationResult.SuccessfullValidationResult(validationType);
         }
 
         #endregion
@@ -56,9 +51,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         {
             return this.SuccessfulResult;
         }
-        #endregion
-
-        #region Private methods
         #endregion
     }
 }

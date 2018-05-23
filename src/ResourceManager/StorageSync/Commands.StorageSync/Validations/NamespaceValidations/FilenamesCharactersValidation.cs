@@ -1,5 +1,6 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
+    using Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -11,7 +12,11 @@
         #endregion
 
         #region Constructors
-        public FilenamesCharactersValidation(IConfiguration configuration): base(configuration, ValidationType.FilenameCharacters)
+        public FilenamesCharactersValidation(
+            IConfiguration configuration): base(
+                configuration,
+                "Unsupported characters validation",
+                ValidationType.FilenameCharacters)
         {
             IList<Configuration.CodePointRange> blacklistOfCodePointRanges = configuration.BlacklistOfCodePointRanges().ToList();
             HashSet<int> blacklistOfCodePoints = new HashSet<int>(configuration.BlacklistOfCodePoints());

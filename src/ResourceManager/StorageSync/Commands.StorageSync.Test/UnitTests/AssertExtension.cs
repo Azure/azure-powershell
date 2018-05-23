@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
+﻿using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests

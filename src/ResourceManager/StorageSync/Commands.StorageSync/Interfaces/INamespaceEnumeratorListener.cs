@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
     public interface INamespaceEnumeratorListener
     {

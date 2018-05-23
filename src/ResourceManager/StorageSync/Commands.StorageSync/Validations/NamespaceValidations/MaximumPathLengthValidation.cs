@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
+    using Interfaces;
+
     public class MaximumPathLengthValidation : BaseNamespaceValidation
     {
         #region Fields and Properties
@@ -7,7 +9,7 @@
         #endregion
 
         #region Constructors
-        public MaximumPathLengthValidation(IConfiguration configuration) : base(configuration, ValidationType.PathLength)
+        public MaximumPathLengthValidation(IConfiguration configuration) : base(configuration, "Path length limit", ValidationType.PathLength)
         {
             this._maxPathLength = configuration.MaximumPathLength();
         }

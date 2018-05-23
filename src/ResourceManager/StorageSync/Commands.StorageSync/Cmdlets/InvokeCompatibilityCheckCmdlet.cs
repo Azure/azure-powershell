@@ -9,6 +9,8 @@ using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidati
 using System.Text.RegularExpressions;
 using System;
 using System.Diagnostics;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
@@ -57,16 +59,47 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 
         [Parameter]
         public SwitchParameter Quiet { get; set; }
-        #endregion
 
         private bool CanRunNamespaceChecks => !string.IsNullOrEmpty(this.Path);
         private bool CanRunEstimation => CanRunNamespaceChecks;
         private bool CanRunSystemChecks => true;
 
+        private TimeSpan MaximumDurationOfNamespaceEstimation => TimeSpan.FromSeconds(30);
+
+        #endregion
+
         #region Protected methods
         protected override void ProcessRecord()
         {
             Configuration configuration = new Configuration();
+
+            // prepare namespace validations
+            var namespaceValidations = new List<INamespaceValidation>()
+            {
+                new InvalidFilenameValidation(configuration),
+                new FilenamesCharactersValidation(configuration),
+                new MaximumFileSizeValidation(configuration),
+                new MaximumPathLengthValidation(configuration),
+                new MaximumFilenameLengthValidation(configuration),
+                new MaximumTreeDepthValidation(configuration),
+                new MaximumDatasetSizeValidation(configuration),
+            };
+
+            // prepare system validations
+            var systemValidations = new List<ISystemValidation>
+            {
+                new OSVersionValidation(configuration),
+                new FileSystemValidation(configuration, Path)
+            };
+
+            // construct validation descriptions
+            List<IValidationDescription> validationDescriptions = new List<IValidationDescription>();
+            namespaceValidations.ForEach(o => validationDescriptions.Add((IValidationDescription)o));
+            systemValidations.ForEach(o => validationDescriptions.Add((IValidationDescription)o));
+
+            // output writers
+            TextSummaryOutputWriter summaryWriter = new TextSummaryOutputWriter(Path, new AfsConsoleWriter(), validationDescriptions);
+            PsObjectsOutputWriter psObjectsWriter = new PsObjectsOutputWriter(this);
 
             this.WriteVerbose($"Path = {this.Path}");
             this.WriteVerbose($"ComputerName = {this.ComputerName}");
@@ -77,6 +110,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             this.WriteVerbose($"SkipNamespaceChecks = {this.SkipNamespaceChecks}");
             this.WriteVerbose($"SkipSystemChecks = {this.SkipSystemChecks}");
             this.WriteVerbose($"Quiet = {this.Quiet}");
+            this.WriteVerbose($"NumberOfSystemChecks = {systemValidations.Count}");
+            this.WriteVerbose($"NumberOfNamespaceChecks = {namespaceValidations.Count}");
 
             long totalObjectsToScan = 0;
             if (this.CanRunEstimation && !SkipNamespaceChecks.ToBool())
@@ -86,7 +121,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 progressReporter.AddSteps(1);
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                INamespaceInfo namespaceInfo = new NamespaceEnumerator().Run(new AfsDirectoryInfo(this.Path), TimeSpan.FromSeconds(5));
+                INamespaceInfo namespaceInfo = new NamespaceEnumerator().Run(
+                    new AfsDirectoryInfo(this.Path),
+                    MaximumDurationOfNamespaceEstimation);
                 stopwatch.Stop();
 
                 totalObjectsToScan += namespaceInfo.NumberOfDirectories + namespaceInfo.NumberOfFiles;
@@ -94,6 +131,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 progressReporter.Complete();
                 string namespaceCompleteness = namespaceInfo.IsComplete ? "complete" : "incomplete";
                 TimeSpan duration = stopwatch.Elapsed;
+
                 WriteVerbose($"Namespace estimation took {duration.TotalSeconds:F3} seconds and is {namespaceCompleteness}");
             }
             else
@@ -101,27 +139,15 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 WriteVerbose("Skipping estimation.");
             }
 
-            TextSummaryOutputWriter summaryWriter = new TextSummaryOutputWriter(Path, new AfsConsoleWriter());
-            PsObjectsOutputWriter psObjectsWriter = new PsObjectsOutputWriter(this);
-
             if (this.CanRunSystemChecks && !SkipSystemChecks.ToBool())
             {
                 IProgressReporter progressReporter = new SystemCheckProgressReporter(this);
                 progressReporter.Show();
 
-                var validations = new List<ISystemValidation>
-                {
-                    new OSVersionValidation(configuration),
-                    new FileSystemValidation(configuration, Path)
-                };
-
-                progressReporter.AddSteps(validations.Count);
-
+                progressReporter.AddSteps(systemValidations.Count);
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                PerformSystemChecks(validations, progressReporter, this, summaryWriter, psObjectsWriter);
+                PerformSystemChecks(systemValidations, progressReporter, this, summaryWriter, psObjectsWriter);
                 stopwatch.Stop();
-
-                PerformSystemChecks(validations, progressReporter, this, summaryWriter, psObjectsWriter);
                 progressReporter.Complete();
                 TimeSpan duration = stopwatch.Elapsed;
 
@@ -138,24 +164,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                 progressReporter.Show();
                 progressReporter.AddSteps(totalObjectsToScan);
 
-                var validations = new List<INamespaceValidation>()
-                {
-                    new InvalidFilenameValidation(configuration),
-                    new FilenamesCharactersValidation(configuration),
-                    new MaximumFileSizeValidation(configuration),
-                    new MaximumPathLengthValidation(configuration),
-                    new MaximumFilenameLengthValidation(configuration),
-                    new MaximumTreeDepthValidation(configuration),
-                    new MaximumDatasetSizeValidation(configuration),
-                };
-
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                INamespaceInfo namespaceInfo = PerformNamespaceChecks(validations, progressReporter, this, summaryWriter, psObjectsWriter);
+                INamespaceInfo namespaceInfo = PerformNamespaceChecks(namespaceValidations, progressReporter, this, summaryWriter, psObjectsWriter);
                 stopwatch.Stop();
                 progressReporter.Complete();
 
                 TimeSpan duration = stopwatch.Elapsed;
-                var namespaceFileCount = namespaceInfo.NumberOfFiles;
+                long namespaceFileCount = namespaceInfo.NumberOfFiles;
                 double fileThroughput = namespaceFileCount > 0 ? duration.TotalMilliseconds / namespaceFileCount : 0.0;
                 WriteVerbose($"Namespace scan took {duration.TotalSeconds:F3} seconds with throughput of {fileThroughput:F3} milliseconds per file");
             }
@@ -208,7 +223,8 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
                     }
                     else
                     {
-                        WriteObject(connector.GetLastError());
+                        string errorMessage = connector.GetLastError();
+                        WriteError(new ErrorRecord(new Exception(errorMessage), errorMessage, ErrorCategory.ConnectionError, Path));
                     }
                 }
             }
@@ -232,6 +248,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
             };
 
             NamespaceValidationsProcessor validationsProcessor = new NamespaceValidationsProcessor(validations, outputWriters, progressReporter);
+
             List<INamespaceEnumeratorListener> namespaceEnumeratorListeners = new List<INamespaceEnumeratorListener>
             {
                 validationsProcessor,

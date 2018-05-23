@@ -1,5 +1,6 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using Interfaces;
     using System.IO;
 
     class AfsFileInfo : IFileInfo

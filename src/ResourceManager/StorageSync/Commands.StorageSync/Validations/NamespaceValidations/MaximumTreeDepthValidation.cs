@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
+    using Interfaces;
+
     public class MaximumTreeDepthValidation : BaseNamespaceValidation
     {
         #region Fields and Properties
@@ -9,7 +11,7 @@
 
         #region Constructors
 
-        public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, ValidationType.NodeDepth)
+        public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, "Dataset depth limit", ValidationType.NodeDepth)
         {
             this._maxTreeDepth = configuration.MaximumTreeDepth();
         }

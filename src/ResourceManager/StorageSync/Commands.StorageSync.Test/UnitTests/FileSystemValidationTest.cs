@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.StorageSync.Evaluation;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
 using Moq;
 using Xunit;

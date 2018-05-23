@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
+    using Interfaces;
+
     public class MaximumFileSizeValidation : BaseNamespaceValidation
     {
         #region Fields and Properties
@@ -7,7 +9,7 @@
         #endregion
 
         #region Constructors
-        public MaximumFileSizeValidation(IConfiguration configuration): base(configuration, ValidationType.FileSize)
+        public MaximumFileSizeValidation(IConfiguration configuration): base(configuration, "File size limit", ValidationType.FileSize)
         {
             this._maxFileSizeInBytes = configuration.MaximumFileSizeInBytes();
         }

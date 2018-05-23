@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
+    using Interfaces;
+
     public class MaximumFilenameLengthValidation : BaseNamespaceValidation
     {
         #region Fields and Properties
@@ -7,7 +9,7 @@
         #endregion
 
         #region Constructors
-        public MaximumFilenameLengthValidation(IConfiguration configuration): base(configuration, ValidationType.FilenameLength)
+        public MaximumFilenameLengthValidation(IConfiguration configuration): base(configuration, "File name length limit", ValidationType.FilenameLength)
         {
             this._maxFilenameLength = configuration.MaximumFilenameLength();
         }
@@ -44,7 +46,7 @@
                 };
             }
 
-            return ValidationResult.SuccessfullValidationResult(ValidationType.FilenameLength);
+            return this.SuccessfulResult;
         }
 
         #endregion

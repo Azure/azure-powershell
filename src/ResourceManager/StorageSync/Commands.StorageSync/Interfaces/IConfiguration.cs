@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    using System.Collections.Generic;
+
     public interface IConfiguration
     {
         IEnumerable<string> ValidOsVersions();

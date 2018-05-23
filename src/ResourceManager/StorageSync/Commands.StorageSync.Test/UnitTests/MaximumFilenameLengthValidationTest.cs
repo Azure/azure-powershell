@@ -1,5 +1,4 @@
-﻿using Microsoft.Azure.Commands.StorageSync.Evaluation;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
+﻿using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
 using Xunit;
 

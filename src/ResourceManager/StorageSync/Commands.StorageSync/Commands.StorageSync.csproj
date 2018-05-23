@@ -59,15 +59,17 @@
     <Compile Include="AfsDirectoryInfo.cs" />
     <Compile Include="AfsFileInfo.cs" />
     <Compile Include="AfsFileSystemInfo.cs" />
-    <Compile Include="BaseNamespaceValidation.cs" />
+    <Compile Include="Interfaces\IValidationDescription.cs" />
+    <Compile Include="Validations\BaseNamespaceValidation.cs" />
     <Compile Include="Cmdlets\InvokeCompatibilityCheckCmdlet.cs" />
     <Compile Include="Interfaces\INamespaceInfo.cs" />
     <Compile Include="Interfaces\IProgressReporter.cs" />
+    <Compile Include="Models\PSValidationResult.cs" />
     <Compile Include="NamespaceInfo.cs" />
     <Compile Include="OutputWriters\AFSConsoleWriter.cs" />
-    <Compile Include="OutputWriters\ICmdlet.cs" />
-    <Compile Include="OutputWriters\IConsoleWriter.cs" />
-    <Compile Include="OutputWriters\IOutputWriter.cs" />
+    <Compile Include="Interfaces\ICmdlet.cs" />
+    <Compile Include="Interfaces\IConsoleWriter.cs" />
+    <Compile Include="Interfaces\IOutputWriter.cs" />
     <Compile Include="OutputWriters\PSObjectsOutputWriter.cs" />
     <Compile Include="OutputWriters\TextSummaryOutputWriter.cs" />
     <Compile Include="ProgressReporter.cs" />
@@ -84,23 +86,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SystemValidationsProcessor.cs" />
     <Compile Include="UncNetworkConnector.cs" />
+    <Compile Include="Validations\BaseSystemValidation.cs" />
+    <Compile Include="Validations\BaseValidation.cs" />
     <Compile Include="Validations\NamespaceValidations\MaximumDatasetSizeValidation.cs" />
-    <Compile Include="Validations\IValidationResult.cs" />
-    <Compile Include="Validations\NamespaceValidations\AfsPath.cs" />
+    <Compile Include="Interfaces\IValidationResult.cs" />
+    <Compile Include="Validations\AfsPath.cs" />
     <Compile Include="Validations\NamespaceValidations\FilenamesCharactersValidation.cs" />
-    <Compile Include="Validations\NamespaceValidations\INamespaceValidation.cs" />
+    <Compile Include="Interfaces\INamespaceValidation.cs" />
     <Compile Include="Validations\NamespaceValidations\InvalidFilenameValidation.cs" />
     <Compile Include="Validations\NamespaceValidations\MaximumFilenameLengthValidation.cs" />
     <Compile Include="Validations\NamespaceValidations\MaximumFileSizeValidation.cs" />
     <Compile Include="Validations\NamespaceValidations\MaximumPathLengthValidation.cs" />
     <Compile Include="Validations\NamespaceValidations\MaximumTreeDepthValidation.cs" />
-    <Compile Include="Validations\Result.cs" />
-    <Compile Include="Validations\ResultLevel.cs" />
     <Compile Include="Validations\SystemValidations\FileSystemValidation.cs" />
-    <Compile Include="Validations\SystemValidations\ISystemValidation.cs" />
+    <Compile Include="Interfaces\ISystemValidation.cs" />
     <Compile Include="Validations\SystemValidations\OSVersionValidation.cs" />
     <Compile Include="Validations\ValidationResult.cs" />
-    <Compile Include="Validations\ValidationType.cs" />
   </ItemGroup>
   <ItemGroup>
     <!-- 

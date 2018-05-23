@@ -4,17 +4,18 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
+    using Interfaces;
 
-    public class OSVersionValidation : ISystemValidation
+    public class OSVersionValidation : BaseSystemValidation
     {
-        private readonly IConfiguration _configuration;
+        #region Fields and Properties
         private readonly Dictionary<string, string> _osversions;
         private readonly Dictionary<uint, string> _editions;
+        #endregion
 
-        public OSVersionValidation(IConfiguration configuration)
+        #region Constructors
+        public OSVersionValidation(IConfiguration configuration) : base(configuration, "OS version check", ValidationType.OsVersion)
         {
-            _configuration = configuration;
-
             _osversions = new Dictionary<string, string>();
             _osversions["10.0"] = "Windows Server 2016";
             _osversions["6.3"] = "Windows Server 2012 R2";
@@ -52,8 +53,10 @@
             _editions[41] = "Enterprise Edition without Hyper-V, Server Core";
             _editions[42] = "Hyper-V Server";
         }
+        #endregion
 
-        public IValidationResult ValidateUsing(IPowershellCommandRunner commandRunner)
+        #region Protected methods
+        protected override IValidationResult DoValidateUsing(IPowershellCommandRunner commandRunner)
         {
             string osVersion;
             UInt32 sku;
@@ -66,20 +69,20 @@
             }
             catch (Exception e)
             {
-                return ValidationResult.UnavailableValidation(ValidationType.OsVersion,
+                return ValidationResult.UnavailableValidation(this.ValidationType,
                     $"The OS Version validation was not able to complete. Cause: {e.Message}");
             }
-            
+
 
             if (!IsValidVersion(osVersion))
             {
-                string supportedVersions = String.Join(", ", _configuration.ValidOsVersions().Where(o => _osversions.ContainsKey(o)).Select(o => _osversions[o]));
+                string supportedVersions = String.Join(", ", this.Configuration.ValidOsVersions().Where(o => _osversions.ContainsKey(o)).Select(o => _osversions[o]));
 
                 return new ValidationResult()
                 {
                     Description = $"OS version {osVersion} is not supported. Supported versions are: {supportedVersions}",
                     Level = ResultLevel.Error,
-                    Type = ValidationType.OsVersion,
+                    Type = this.ValidationType,
                     Result = Result.Fail
                 };
             }
@@ -87,23 +90,25 @@
             if (!IsValidSKU(sku))
             {
                 string skuEdition = _editions.ContainsKey(sku) ? _editions[sku] : sku.ToString();
-                string supportedSKU = String.Join(", ", _configuration.ValidOsSKU().Where(o => _editions.ContainsKey(o)).Select(o => _editions[o]));
+                string supportedSKU = String.Join(", ", this.Configuration.ValidOsSKU().Where(o => _editions.ContainsKey(o)).Select(o => _editions[o]));
 
                 return new ValidationResult()
                 {
                     Description = $"OS edition '{skuEdition}' is not supported. Supported editions are: {supportedSKU}",
                     Level = ResultLevel.Error,
-                    Type = ValidationType.OsVersion,
+                    Type = this.ValidationType,
                     Result = Result.Fail
                 };
             }
 
-            return ValidationResult.SuccessfullValidationResult(ValidationType.OsVersion);
+            return this.SuccessfulResult;
         }
+        #endregion
 
+        #region Private methods
         private bool IsValidVersion(string osVersion)
         {
-            foreach (string supportedOsVersion in _configuration.ValidOsVersions())
+            foreach (string supportedOsVersion in this.Configuration.ValidOsVersions())
             {
                 if (osVersion.StartsWith($"{supportedOsVersion}."))
                 {
@@ -116,7 +121,8 @@
 
         private bool IsValidSKU(uint sku)
         {
-            return _configuration.ValidOsSKU().Contains(sku);
+            return this.Configuration.ValidOsSKU().Contains(sku);
         }
+        #endregion
     }
 }

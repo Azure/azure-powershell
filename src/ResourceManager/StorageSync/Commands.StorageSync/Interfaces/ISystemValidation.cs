@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
     public interface ISystemValidation
     {
