@@ -3,6 +3,7 @@ using Xunit;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
+using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
 
 namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 {

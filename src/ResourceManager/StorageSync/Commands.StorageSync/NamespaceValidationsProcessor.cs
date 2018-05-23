@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using System.Collections.Generic;
+    using Validations;
+    using Interfaces;
+
     public class NamespaceValidationsProcessor : INamespaceEnumeratorListener
     {
         private readonly IList<INamespaceValidation> _validations;

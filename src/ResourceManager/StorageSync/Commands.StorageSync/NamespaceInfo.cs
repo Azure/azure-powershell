@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using Interfaces;
+
     public class NamespaceInfo : INamespaceInfo
     {
         public string Path { get; set; }

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using Interfaces;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Reflection;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Json;
+
     public class Configuration : IConfiguration
     {
         [DataContract]

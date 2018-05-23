@@ -1,5 +1,6 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using Interfaces;
     using System.Collections.ObjectModel;
     using System.Management.Automation;
     using System.Management.Automation.Runspaces;

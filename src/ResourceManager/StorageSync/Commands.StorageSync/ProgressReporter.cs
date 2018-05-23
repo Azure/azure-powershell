@@ -1,9 +1,9 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
     using System;
     using System.Diagnostics;
+    using Interfaces;
 
     internal abstract class ProgressReporter : IProgressReporter
     {

@@ -1,10 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using Interfaces;
     using System.Collections.Generic;
-    using Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets;
-    using Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters;
-    using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
-    using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
 
     public class SystemValidationsProcessor
     {

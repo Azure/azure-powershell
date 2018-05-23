@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 {
     using System.IO;
     using System.Text.RegularExpressions;

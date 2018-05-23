@@ -3,6 +3,47 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 {
+    using Interfaces;
+
+    /// <summary>
+    /// Validation Result enumeration
+    /// </summary>
+    public enum Result
+    {
+        Unavailable,
+        Success,
+        Fail
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum ResultLevel
+    {
+        Error,
+        Warning,
+        Info
+    }
+
+    public enum ValidationType
+    {
+        FilenameCharacters,
+        Filename,
+        FilenameLength,
+        FileSize,
+        PathLength,
+        NodeDepth,
+        DatasetSize,
+        FileSystem,
+        OsVersion
+    }
+
+    public enum ValidationKind
+    {
+        SystemValidation,
+        NamespaceValidation
+    }
+
     public class ValidationResult : IValidationResult
     {
         public ValidationType Type { get; set; }

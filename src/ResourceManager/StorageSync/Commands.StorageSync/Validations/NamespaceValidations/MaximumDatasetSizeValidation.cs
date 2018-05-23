@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations
 {
+    using Interfaces;
+
     public class MaximumDatasetSizeValidation : BaseNamespaceValidation
     {
         #region Fields and Properties
@@ -8,7 +10,7 @@
 
         #region Constructors
 
-        public MaximumDatasetSizeValidation(IConfiguration configuration) : base(configuration, ValidationType.DatasetSize)
+        public MaximumDatasetSizeValidation(IConfiguration configuration) : base(configuration, "Dataset size limit", ValidationType.DatasetSize)
         {
             this._maxDataSetSize = configuration.MaximumDatasetSizeInBytes();
         }

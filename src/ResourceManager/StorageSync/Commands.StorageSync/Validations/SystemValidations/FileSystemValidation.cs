@@ -1,19 +1,19 @@
-﻿using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
-using System;
-using System.Linq;
-using System.Management.Automation;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations
 {
-    public class FileSystemValidation : ISystemValidation
+    using Interfaces;
+    using System;
+    using System.Linq;
+    using System.Management.Automation;
+
+    public class FileSystemValidation : BaseSystemValidation
     {
+        #region Fields and Properties
         private readonly char _driveLetter;
-
-        private readonly IConfiguration _configuration;
-
         private readonly bool _haveDriveLetter;
+        #endregion
 
-        public FileSystemValidation(IConfiguration configuration, string path)
+        #region Constructors
+        public FileSystemValidation(IConfiguration configuration, string path): base(configuration, "File System type", ValidationType.FileSystem)
         {
             AfsPath afsPath = new AfsPath(path);
             string computerName;
@@ -30,11 +30,11 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
             {
                 _haveDriveLetter = false;
             }
-
-            _configuration = configuration;
         }
+        #endregion
 
-        public IValidationResult ValidateUsing(IPowershellCommandRunner commandRunner)
+        #region Protected methods
+        protected override IValidationResult DoValidateUsing(IPowershellCommandRunner commandRunner)
         {
             if (!_haveDriveLetter)
             {
@@ -56,27 +56,30 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemVali
 
             if (IsValid(filesystem))
             {
-                return ValidationResult.SuccessfullValidationResult(ValidationType.FileSystem);
+                return this.SuccessfulResult;
             }
-            
-            
+
+
             return new ValidationResult
             {
                 Description = $"The {filesystem} filesystem is not supported.",
                 Level = ResultLevel.Error,
                 Result = Result.Fail,
-                Type = ValidationType.FileSystem
+                Type = this.ValidationType
             };
         }
+        #endregion
 
+        #region Private methods
         private bool IsValid(string filesystem)
         {
-            return _configuration.ValidFilesystems().Contains(filesystem);
+            return this.Configuration.ValidFilesystems().Contains(filesystem);
         }
 
         private IValidationResult UnableToRunBecause(string cause)
         {
-            return ValidationResult.UnavailableValidation(ValidationType.FileSystem, cause);
+            return ValidationResult.UnavailableValidation(this.ValidationType, cause);
         }
+        #endregion
     }
 }

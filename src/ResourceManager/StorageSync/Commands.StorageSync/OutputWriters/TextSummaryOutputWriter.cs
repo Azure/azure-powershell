@@ -1,46 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
+    using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
+
     class TextSummaryOutputWriter : IOutputWriter
     {
+        #region Fields and Properties
         private readonly List<IValidationResult> _systemValidationResults;
         private readonly Dictionary<ValidationType, long> _validationErrorsHistogram;
         private readonly string _rootPath;
         private readonly IConsoleWriter _consoleWriter;
+        private readonly HashSet<ValidationType> _systemValidationTypes;
+        private readonly Dictionary<ValidationType, string> _validationTypeDescriptions;
 
-        private readonly HashSet<ValidationType> _systemValidationTypes = new HashSet<ValidationType>
-        {
-            ValidationType.FileSystem,
-            ValidationType.OsVersion
-        };
+        #endregion
 
-        private readonly Dictionary<ValidationType, string> _validationTypeDescriptions = new Dictionary<ValidationType, string>
-        {
-            {ValidationType.FileSystem, "File System type"},
-            {ValidationType.OsVersion, "OS version"},
-            {ValidationType.FilenameCharacters, "Unsupported characters in file names"},
-            {ValidationType.FilenameLength, "File names length limit exceeded"},
-            {ValidationType.Filename, "Unsupported file names"},
-            {ValidationType.PathLength, "Path length limit"},
-            {ValidationType.NodeDepth, "Dataset depth limit"},
-            {ValidationType.DatasetSize, "Dataset size limit"}
-        };
-
-        public TextSummaryOutputWriter(string rootPath, IConsoleWriter consoleWriter)
+        #region Constructors
+        public TextSummaryOutputWriter(string rootPath, IConsoleWriter consoleWriter, IList<IValidationDescription> validationDescriptions)
         {
             _rootPath = rootPath;
             _consoleWriter = consoleWriter;
             _validationErrorsHistogram = new Dictionary<ValidationType, long>();
             _systemValidationResults = new List<IValidationResult>();
-        }
 
+            _systemValidationTypes = new HashSet<ValidationType>(validationDescriptions
+                .Where(o => o.ValidationKind == ValidationKind.SystemValidation)
+                .Select(o => o.ValidationType));
+
+            _validationTypeDescriptions = new Dictionary<ValidationType, string>();
+            foreach (IValidationDescription validationDescription in validationDescriptions)
+            {
+                _validationTypeDescriptions[validationDescription.ValidationType] = validationDescription.DisplayName;
+            }
+        }
+        #endregion
+
+        #region Public methods
         public void Write(IValidationResult validationResult)
         {
             if (IsSystemValidation(validationResult))
@@ -56,20 +53,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
                         _validationErrorsHistogram[validationResult.Type] = 0;
                     }
 
-                    _validationErrorsHistogram[validationResult.Type] =
-                        _validationErrorsHistogram[validationResult.Type] + 1;
+                    _validationErrorsHistogram[validationResult.Type] += 1;
                 }
             }
-        }
-
-        private bool IsSystemValidation(IValidationResult validationResult)
-        {
-            return _systemValidationTypes.Contains(validationResult.Type);
-        }
-
-        private bool IsError(IValidationResult validationResult)
-        {
-            return validationResult.Result == Result.Fail;
         }
 
         public void WriteReport(INamespaceInfo namespaceInfo)
@@ -83,16 +69,31 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
 
             _consoleWriter.WriteLine(" ");
             _consoleWriter.WriteLine("Namespace Validation Results");
-            _consoleWriter.WriteLine($"Files scanned: {namespaceInfo.NumberOfFiles}");
-            _consoleWriter.WriteLine($"Directories scanned: {namespaceInfo.NumberOfDirectories}");
-
-            WriteCountOfErrorsFound();
+            _consoleWriter.WriteLine($"Number of files scanned: {namespaceInfo.NumberOfFiles}");
+            _consoleWriter.WriteLine($"Number of directories scanned: {namespaceInfo.NumberOfDirectories}");
 
             _consoleWriter.WriteLine(" ");
             if (!_validationErrorsHistogram.Any())
             {
                 _consoleWriter.WriteLine("There were no compatibility issues found with your files.");
             }
+            else
+            {
+                WriteCountOfErrorsFound();
+            }
+        }
+
+        #endregion
+
+        #region Private methods
+        private bool IsSystemValidation(IValidationResult validationResult)
+        {
+            return _systemValidationTypes.Contains(validationResult.Type);
+        }
+
+        private bool IsError(IValidationResult validationResult)
+        {
+            return validationResult.Result == Result.Fail;
         }
 
         private void WriteCountOfErrorsFound()
@@ -128,9 +129,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.OutputWriters
             _consoleWriter.WriteLine($"Evaluated path: {_rootPath}");
         }
 
-        public void UnauthorizedDir(IDirectoryInfo dir)
-        {
-            return;
-        }
+        #endregion
     }
 }

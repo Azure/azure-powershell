@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 {
+    using System.Collections.Generic;
+    using Validations;
+
     public interface IValidationResult
     {
         ValidationType Type { get; }

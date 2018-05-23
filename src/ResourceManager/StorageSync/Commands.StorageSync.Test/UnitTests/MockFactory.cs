@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Azure.Commands.StorageSync.Evaluation;
-
-namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
+﻿namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 {
+    using System.Collections.Generic;
+    using Evaluation.Interfaces;
+
     static class MockFactory
     {
         public static IConfiguration ConfigurationWithInvalidFilenames(IEnumerable<string> invalidFilenames)

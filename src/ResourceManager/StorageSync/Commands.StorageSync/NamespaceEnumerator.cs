@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.Commands.StorageSync.Evaluation
+﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
+    using Interfaces;
+    using System;
+    using System.Collections.Generic;
+
     public class NamespaceEnumerator
     {
         private NamespaceInfo _namespaceInfo;
