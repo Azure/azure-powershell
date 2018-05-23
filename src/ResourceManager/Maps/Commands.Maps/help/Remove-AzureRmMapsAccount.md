@@ -107,7 +107,9 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return whether the specified account was successfully deleted or not.```yaml
+Return whether the specified account was successfully deleted or not.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
