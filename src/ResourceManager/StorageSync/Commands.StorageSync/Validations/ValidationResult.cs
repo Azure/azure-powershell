@@ -5,9 +5,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 {
     using Interfaces;
 
-    /// <summary>
-    /// Validation Result enumeration
-    /// </summary>
     public enum Result
     {
         Unavailable,
@@ -15,9 +12,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
         Fail
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public enum ResultLevel
     {
         Error,
@@ -46,14 +40,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
 
     public class ValidationResult : IValidationResult
     {
+        #region Fields and Properties
         public ValidationType Type { get; set; }
         public string Path { get; set; }
         public ResultLevel Level { get; set; }
         public string Description { get; set; }
         public List<int> Positions { get; set; }
         public Result Result { get; set; }
+        #endregion
 
-        internal static IValidationResult SuccessfullValidationResult(ValidationType validationType)
+        #region Public methods
+        public static IValidationResult SuccessfullValidationResult(ValidationType validationType)
         {
             return new ValidationResult
             {
@@ -84,5 +81,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations
                 Path = dir.FullName
             };
         }
+
+        #endregion
     }
 }

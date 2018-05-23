@@ -18,18 +18,18 @@
         #region Protected methods
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return Validate((INamedObjectInfo)node);
+            return ValidateInternal((INamedObjectInfo)node);
         }
 
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return Validate((INamedObjectInfo)node);
+            return ValidateInternal((INamedObjectInfo)node);
         }
         #endregion
 
         #region Private methods
 
-        private IValidationResult Validate(INamedObjectInfo node)
+        private IValidationResult ValidateInternal(INamedObjectInfo node)
         {
             bool filenameIsTooLong = node.Name.Length > this._maxFilenameLength;
 

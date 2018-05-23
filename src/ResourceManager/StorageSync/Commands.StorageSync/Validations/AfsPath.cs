@@ -3,15 +3,20 @@
     using System.IO;
     using System.Text.RegularExpressions;
 
-    internal class AfsPath
+    public class AfsPath
     {
+        #region Fields and Properties
         private readonly string _fullName;
+        #endregion
 
+        #region Constructors
         public AfsPath(string fullName)
         {
             _fullName = fullName;
         }
+        #endregion
 
+        #region Public methods
         public int Length()
         {
             if (IsUNCPath())
@@ -20,19 +25,6 @@
             }
 
             return _fullName.Length;
-        }
-
-        private string PathWithoutNetworkComponents()
-        {
-            string pattern = @"^\\\\[^\\]+\\[^\\]+";
-            Regex serverShareRegex = new Regex(pattern);
-
-            return serverShareRegex.Replace(_fullName, "");
-        }
-
-        private bool IsUNCPath()
-        {
-            return _fullName.StartsWith(@"\");
         }
 
         public bool TryGetDriveLetterFromPath(out char driveLetter)
@@ -75,28 +67,7 @@
             return false;
         }
 
-        public bool TryGetComputerNameAndShareFromPath(out string computerName, out string shareName)
-        {
-            if (!string.IsNullOrEmpty(this._fullName))
-            {
-                string pattern = @"^\\\\([^\\]+)\\([^\\]+)(?:|\\.*)$";
-                Regex serverShareRegex = new Regex(pattern);
-
-                Match match = serverShareRegex.Match(this._fullName);
-                if (match.Success && match.Groups.Count > 2)
-                {
-                    computerName = match.Groups[1].Value;
-                    shareName = match.Groups[2].Value;
-                    return true;
-                }
-            }
-
-            computerName = null;
-            shareName = null;
-            return false;
-        }
-
-        internal int Depth()
+        public int Depth()
         {
             string path = _fullName;
             if (IsUNCPath())
@@ -117,9 +88,49 @@
 
         }
 
+        public bool TryGetComputerNameAndShareFromPath(out string computerName, out string shareName)
+        {
+            if (!string.IsNullOrEmpty(this._fullName))
+            {
+                string pattern = @"^\\\\([^\\]+)\\([^\\]+)(?:|\\.*)$";
+                Regex serverShareRegex = new Regex(pattern);
+
+                Match match = serverShareRegex.Match(this._fullName);
+                if (match.Success && match.Groups.Count > 2)
+                {
+                    computerName = match.Groups[1].Value;
+                    shareName = match.Groups[2].Value;
+                    return true;
+                }
+            }
+
+            computerName = null;
+            shareName = null;
+            return false;
+        }
+        #endregion
+
+        #region Protected methods
+        #endregion
+
+        #region Private methods
+        private string PathWithoutNetworkComponents()
+        {
+            string pattern = @"^\\\\[^\\]+\\[^\\]+";
+            Regex serverShareRegex = new Regex(pattern);
+
+            return serverShareRegex.Replace(_fullName, "");
+        }
+
+        private bool IsUNCPath()
+        {
+            return _fullName.StartsWith(@"\");
+        }
+
         private string RemoveDriveLetter()
         {
             return _fullName.Substring(2);
         }
+        #endregion
     }
 }

@@ -7,9 +7,12 @@
 
     public class PowerShellCommandRunner : IPowershellCommandRunner
     {
+        #region Fields and Properties
         private readonly Runspace _runspace;
         private readonly PowerShell _powerShell;
+        #endregion
 
+        #region Constructors
         public PowerShellCommandRunner(string computerName, PSCredential credential)
         {
             WSManConnectionInfo connectionInfo = new WSManConnectionInfo();
@@ -36,7 +39,9 @@
             _powerShell.Dispose();
             _runspace.Close();
         }
+        #endregion
 
+        #region Public methods
         public void AddScript(string script)
         {
             _powerShell.AddScript(script);
@@ -51,5 +56,6 @@
         {
             return _powerShell.Streams.Error;
         }
+        #endregion
     }
 }

@@ -7,6 +7,7 @@
 
     internal abstract class ProgressReporter : IProgressReporter
     {
+        #region Fields and Properties
         private readonly TimeSpan _updateFrequency = TimeSpan.FromSeconds(1);
         private Stopwatch _timer;
         private long _steps;
@@ -19,7 +20,9 @@
         protected abstract int ActivityId { get; }
         protected abstract string ActivityDescription { get; }
         protected abstract string ActivityStatus { get; }
+        #endregion
 
+        #region Constructors
         public ProgressReporter(ICmdlet cmdlet, bool withProgressBar)
         {
             _steps = 0;
@@ -29,25 +32,9 @@
             _withProgressBar = withProgressBar;
             _timer = Stopwatch.StartNew();
         }
+        #endregion
 
-        protected ProgressRecord CreateProgressRecord(int percentage)
-        {
-            var result = new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus);
-            if (_withProgressBar)
-            {
-                result.PercentComplete = percentage;
-            }
-            return result;
-        }
-
-        protected ProgressRecord CreateCompletionRecord()
-        {
-            return new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus)
-            {
-                RecordType = ProgressRecordType.Completed
-            };
-        }
-
+        #region Public methods
         public void AddSteps(long steps)
         {
             _steps += steps;
@@ -68,28 +55,15 @@
             _cmdlet.WriteProgress(this.CreateProgressRecord(_lastCompletePercentage));
         }
 
-        private bool shouldUpdateProgress()
-        {
-            _timer.Stop();
-            if (_timer.Elapsed < _updateFrequency)
-            {
-                _timer.Start();
-                return false;
-            }
-
-            _timer.Restart();
-            return true;
-        }
-
         /// <summary>
         /// Marks completion of a single step and recalculates the progress.
         /// </summary>
         public void CompleteStep()
         {
-            bool shouldUpdateProgress = this.shouldUpdateProgress();
+            bool shouldUpdateProgress = this.ShouldUpdateProgress();
 
             _completedSteps += 1;
-            
+
             // It is possible to have more actual steps than predicted
             // and if that happens, we might not have a good estimate on remaining work
             // we limit it to 100 to avoid going above the limit.
@@ -108,6 +82,43 @@
         {
             _cmdlet.WriteProgress(this.CreateCompletionRecord());
         }
+        #endregion
+
+        #region Protected methods
+        protected ProgressRecord CreateProgressRecord(int percentage)
+        {
+            var result = new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus);
+            if (_withProgressBar)
+            {
+                result.PercentComplete = percentage;
+            }
+            return result;
+        }
+
+        protected ProgressRecord CreateCompletionRecord()
+        {
+            return new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus)
+            {
+                RecordType = ProgressRecordType.Completed
+            };
+        }
+        #endregion
+
+        #region Private methods
+        private bool ShouldUpdateProgress()
+        {
+            _timer.Stop();
+            if (_timer.Elapsed < _updateFrequency)
+            {
+                _timer.Start();
+                return false;
+            }
+
+            _timer.Restart();
+            return true;
+        }
+        #endregion
+
     }
 
     internal class NamespaceEstimationProgressReporter : ProgressReporter

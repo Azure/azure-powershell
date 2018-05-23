@@ -18,17 +18,17 @@
         #region Protected methods
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return Validate(node);
+            return ValidateInternal(node);
         }
 
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return Validate(node);
+            return ValidateInternal(node);
         }
         #endregion
 
         #region Private methods
-        private IValidationResult Validate(INamedObjectInfo node)
+        private IValidationResult ValidateInternal(INamedObjectInfo node)
         {
             AfsPath path = new AfsPath(node.FullName);
             int pathLength = path.Length();
