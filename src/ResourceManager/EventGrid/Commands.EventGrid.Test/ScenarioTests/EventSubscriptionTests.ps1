@@ -93,9 +93,6 @@ function EventSubscriptionTests_CustomTopic {
     Assert-True {$result.EventDeliverySchema -eq "CloudEventV01Schema"}
     Assert-True {$result.MaxDeliveryAttempt -eq 20}
 
-#        [ValidateNotNullOrEmpty]
-#        public string DeadLetterEndpoint { get; set; }
-
     Write-Debug "Getting the created event subscription $eventSubscriptionName"
     $result = Get-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -TopicName $topicName -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
     Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
@@ -154,7 +151,7 @@ function EventSubscriptionTests_CustomTopic2 {
     $eventSubscriptionName = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
     $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
-    $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1
+    $eventSubscriptionBaseEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1"
 
     Write-Host "Creating resource group"
     Write-Host "ResourceGroup name : $resourceGroupName"
@@ -510,7 +507,4 @@ function EventSubscriptionTests_Deadletter {
     {
         Assert-True {$true}
     }
-
-    # Write-Debug " Deleting event subscription: $eventSubscriptionName"
-    # Remove-AzureRmEventGridSubscription -EventSubscriptionName $eventSubscriptionName
 }

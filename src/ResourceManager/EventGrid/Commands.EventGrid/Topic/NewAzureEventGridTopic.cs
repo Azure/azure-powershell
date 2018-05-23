@@ -77,7 +77,6 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputSchemaHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -87,7 +86,6 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            Position = 5,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputMappingFieldHelp,
             ParameterSetName = TopicNameParameterSet)]
@@ -95,7 +93,6 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         [Parameter(
             Mandatory = false,
-            Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.InputMappingDefaultValueHelp,
             ParameterSetName = TopicNameParameterSet)]

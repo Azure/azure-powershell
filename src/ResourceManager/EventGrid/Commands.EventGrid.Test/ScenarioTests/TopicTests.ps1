@@ -365,8 +365,6 @@ function TopicInputMappingTests {
     Remove-AzureRmEventGridTopic -ResourceGroup $resourceGroupName -Name $topicName
 
     Write-Debug " Deleting topic: $topicName2 using the ResourceID parameter set"
-    # Offline playback of tests is failing if I use Get-AzureRmResource, hence temporarily commenting this out
-    # Get-AzureRmResource -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName3" | Remove-AzureRmEventGridTopic
     Remove-AzureRmEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventGrid/topics/$topicName2"
 
     Write-Debug " Deleting topic: $topicName3"
