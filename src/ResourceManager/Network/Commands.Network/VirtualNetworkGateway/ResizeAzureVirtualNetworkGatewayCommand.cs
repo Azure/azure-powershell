@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance/VpnGw1/VpnGw2/VpnGw3")]
+            HelpMessage = "The gatway Sku:- Basic/Standard/HighPerformance/VpnGw1/VpnGw2/VpnGw3/VpnGw1AZ/VpnGw2AZ/VpnGw3AZ/ErGw1AZ/ErGw2AZ/ErGw3AZ")]
         [ValidateSet(
         MNM.VirtualNetworkGatewaySkuTier.Basic,
         MNM.VirtualNetworkGatewaySkuTier.Standard,
@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Commands.Network
         MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
         MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
         MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
+        MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
+        MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
+        MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
+        MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
         IgnoreCase = true)]
         public string GatewaySku { get; set; }
 

@@ -127,6 +127,12 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -252,6 +258,7 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.ResourceGroupName = this.ResourceGroupName;
             vnetGateway.Location = this.Location;
 
+            // If gateway sku param value is not passed, set gateway sku to null and let NRP decide
             if (this.GatewaySku != null)
             {
                 vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
@@ -260,21 +267,9 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                // If gateway sku param value is not passed, set gateway sku to VpnGw1 if VpnType is RouteBased and Basic if VpnType is PolicyBased
-                if (this.VpnType != null && this.VpnType.Equals(MNM.VpnType.RouteBased))
-                {
-                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
-                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
-                }
-                else
-                {
-                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Basic;
-                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Basic;
-                }
+                vnetGateway.Sku = null;
             }
-
+            
             if (this.EnableActiveActiveFeature.IsPresent && !this.VpnType.Equals(MNM.VpnType.RouteBased))
             {
                 throw new ArgumentException("Virtual Network Gateway VpnType should be " + MNM.VpnType.RouteBased + " when Active-Active feature flag is set to True.");
