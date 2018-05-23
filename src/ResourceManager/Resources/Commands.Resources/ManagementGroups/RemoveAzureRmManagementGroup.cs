@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         [ValidateNotNullOrEmpty]
         public string GroupName { get; set; } = null;
 
+        [Parameter(ParameterSetName = Constants.ParameterSetNames.ManagementGroupParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 

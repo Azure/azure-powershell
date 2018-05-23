@@ -1,9 +1,9 @@
 ---
 Module Name: AzureRM.ManagementGroups
-Module Guid: {{ Update Module Guid }}
-Download Help Link: {{ Update Download Link }}
-Help Version: {{ Update Help Version }}
-Locale: {{ Update Locale }}
+Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.managementgroups
+Help Version: 1.0.0
+Locale: en-US
 ---
 
 # AzureRM.ManagementGroups Module
