@@ -25,7 +25,7 @@ The New-AzureRmNetworkWatcherPacketCapture cmdlet can accept multiple filter obj
 
 ## EXAMPLES
 
-### --- Example 1: Create a Packet Capture with multiple filters ---
+### Example 1: Create a Packet Capture with multiple filters
 ```
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
