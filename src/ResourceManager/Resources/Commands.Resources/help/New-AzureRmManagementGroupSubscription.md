@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ManagementGroups.dll-Help.xml
 Module Name: AzureRM.ManagementGroups
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.managementgroups/
+online version: https://docs.microsoft.com/en-us/powershell/module/new-azurermmanagementgroupsubscription/
 schema: 2.0.0
 ---
 

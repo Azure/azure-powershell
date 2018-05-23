@@ -164,14 +164,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Add ManagementGroups Cmdlets:
-		- Get-AzureRmManagementGroup
-		- New-AzureRmManagementGroup
-		- Update-AzureRmManagementGroup
-		- Remove-AzureRmManagementGroup
-		- New-AzureRmManagementGroupSubscription
-		- Remove-AzureRmManagementGroupSubscription
-* Set minimum dependency of module to PowerShell 5.0
+        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
 * Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
 * Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
 * Add convenience cmdlet for creating ServicePrincipals
