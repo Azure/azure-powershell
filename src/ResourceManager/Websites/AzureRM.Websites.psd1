@@ -55,7 +55,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; }
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Websites.dll', 
-               '.\Microsoft.Azure.Commands.Common.Strategies.3.dll'
+               '.\Microsoft.Azure.Commands.Common.Strategies.4.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
