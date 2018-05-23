@@ -24,14 +24,14 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string EventSubscriptionInputObject = "EventGridSubscription object.";
 
         // Help text
-        public const string IncludedEventTypesHelp = "Filter that specifies a list of event types to include.If not specified, all event types will be included.";
+        public const string IncludedEventTypesHelp = "Filter that specifies a list of event types to include. If not specified, all event types will be included.";
         public const string SubjectBeginsWithHelp = "Filter that specifies that only events matching the specified subject prefix will be included. If not specified, events with all subject prefixes will be included.";
         public const string SubjectEndsWithHelp = "Filter that specifies that only events matching the specified subject suffix will be included. If not specified, events with all subject suffixes will be included.";
         public const string SubjectCaseSensitiveHelp = "Filter that specifies that the subject field should be compared in a case sensitive manner. If not specified, subject will be compared in a case insensitive manner.";
         public const string LabelsHelp = "Labels for the event subscription.";
-        public const string EndpointTypeHelp = "Endpoint Type. This can be webhook, eventhub, storagequeue or hybridconnection. Default is webhook.";
+        public const string EndpointTypeHelp = "Endpoint Type. This can be webhook, eventhub, storagequeue, or hybridconnection. Default value is webhook.";
         public const string EndpointHelp = "Event subscription destination endpoint. This can be a webhook URL, or the Azure resource ID of an EventHub, storage queue or hybridconnection. For example, the resource ID for a hybrid connection " +
-                                           "takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName]";
+                                           "takes the following form: /subscriptions/[Azure Subscription ID]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Relay/namespaces/[NamespaceName]/hybridConnections/[HybridConnectionName].";
         public const string ResourceGroupNameHelp = "The name of the resource group.";
         public const string TopicNameHelp = "The name of the topic.";
         public const string TopicTypeNameHelp = "The name of the topic type.";
@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string TagsHelp = "Hashtable which represents resource Tags.";
         public const string ResourceIdNameHelp = "The identifier of the resource to which the event subscription should be created.";
         public const string TopicNameOfTheEventSubscriptionHelp = "The name of the topic to which the event subscription should be created.";
-        public const string InputSchemaHelp = "The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default is eventgridschema.";
-        public const string InputMappingFieldHelp = "Hashtable which represents the input mapping fields in space separated key=value format. Allowed key names are id, topic, eventtime, subject, eventtype, and dataversion.";
-        public const string InputMappingDefaultValueHelp = "Hashtable which represents the input mapping fields with default value in space separated key=value format. Allowed key names are subject, eventtype, and dataversion.";
+        public const string InputSchemaHelp = "The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default value is eventgridschema.";
+        public const string InputMappingFieldHelp = "Hashtable which represents the input mapping fields in space separated key=value format. Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion.";
+        public const string InputMappingDefaultValueHelp = "Hashtable which represents the input mapping fields with default value in space separated key=value format. Allowed key names are: subject, eventtype, and dataversion.";
         public const string EventTtlHelp = "The time in minutes for the event delivery. This value must be between 1 and 1440";
         public const string MaxDeliveryAttemptHelp = "The maximum number of attempts to deliver the event. This value must be between 1 and 30";
-        public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default is inputeventschema";
+        public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default value is inputeventschema.";
         public const string DeadletterEndpointHelp = "The endpoint used for storing undelivered events. Specify the Azure resource ID of a Storage blob container. For example: " +
                                                      "/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.Storage/storageAccounts/[StorageAccountName]/blobServices/default/containers/[ContainerName].";
 

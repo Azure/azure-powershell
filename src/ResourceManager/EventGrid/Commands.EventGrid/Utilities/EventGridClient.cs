@@ -341,7 +341,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 }
                 else
                 {
-                    throw new ArgumentNullException(nameof(endpointType), "EndpointType should be WebHook or EventHub");
+                    throw new ArgumentNullException(nameof(endpointType), "EndpointType should be WebHook, EventHub, storage queue, or hybrid connection");
                 }
             }
 
