@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecoveryServicesVaultCRUD()
         {
             TestController.NewInstance.RunPsTest("Test-RecoveryServicesVaultCRUD");
         }
 
-        [Fact]
+        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetRSVaultSettingsFile()
         {

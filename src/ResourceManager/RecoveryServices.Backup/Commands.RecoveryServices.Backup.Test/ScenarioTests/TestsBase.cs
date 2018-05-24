@@ -30,7 +30,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using HyakRmNS = Microsoft.Azure.Management.Internal.Resources;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using ResourceManagementNS = Microsoft.Azure.Management.Resources;
-using ResourceManagementRestNS = Microsoft.Azure.Management.ResourceManager;
+using ResourceManagementRestNS = Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using StorageMgmtNS = Microsoft.Azure.Management.Storage;
 using NetworkMgmtNS = Microsoft.Azure.Management.Network;

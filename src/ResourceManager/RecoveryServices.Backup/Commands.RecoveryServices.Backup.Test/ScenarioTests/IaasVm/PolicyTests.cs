@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMPolicy()
