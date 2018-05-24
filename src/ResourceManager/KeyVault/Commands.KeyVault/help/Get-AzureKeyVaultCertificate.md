@@ -73,7 +73,7 @@ The **Get-AzureKeyVaultCertificate** cmdlet gets the specified certificate or th
 ## EXAMPLES
 
 ### Example 1: Get a certificate
-```
+```powershell
 PS C:\>Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
 Name        : testCert01
 Certificate : [Subject] 
@@ -104,14 +104,14 @@ Updated     : 2/8/2016 11:21:45 PM
 This command gets the certificate named TestCert01 from the key vault named ContosoKV01.
 
 ### Example 2: Get all the certificates that have been deleted but not purged for this key vault.
-```
+```powershell
 PS C:\>Get-AzureKeyVaultCertificate -VaultName 'Contoso' -InRemovedState
 ```
 
 This command gets all the certificates that have been previously deleted, but not purged, in the key vault named Contoso.
 
 ### Example 3: Gets the certificate MyCert that has been deleted but not purged for this key vault.
-```
+```powershell
 PS C:\>Get-AzureKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
 ```
 
@@ -257,8 +257,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
