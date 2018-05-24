@@ -504,7 +504,7 @@ function Test-FlowLog
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
 	#Since Traffic Analytics is not available in all Azure regions, hardcoded locations are used
-    #Once Traffic Analytics is available in all azure regions, the below two location variables should be updated to Get-Location
+    #Once Traffic Analytics is available in all Azure regions, the below two location variables should be updated to Get-Location
     $location = "eastus2euap"
 	$workspaceLocation = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
