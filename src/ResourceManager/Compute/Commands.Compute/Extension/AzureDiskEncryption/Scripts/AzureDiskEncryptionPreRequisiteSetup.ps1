@@ -230,7 +230,7 @@ $ErrorActionPreference = "Stop"
 
 foreach($vm in $allVMs)
 {
-    if($vm.Location.ToLower() -ne $keyVault.Location.ToLower())
+    if($vm.Location.replace(' ','').ToLower() -ne $keyVault.Location.replace(' ','').ToLower())
     {
         Write-Error "To enable AzureDiskEncryption, VM and KeyVault must belong to same subscription and same region. vm Location:  $($vm.Location.ToLower()) , keyVault Location: $($keyVault.Location.ToLower())";
         return;
