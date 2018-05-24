@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementUser
+    public class PsApiManagementUser : PsApiManagementArmResource
     {
         public string UserId { get; set; }
 

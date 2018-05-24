@@ -53,7 +53,6 @@
     <Reference Include="Security.Cryptography">
       <HintPath>Cmdlets\VaultCredentials\Security.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
   </ItemGroup>
@@ -124,10 +123,6 @@
     <None Include="..\AzureRM.Backup.psd1">
       <Link>AzureRM.Backup.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Microsoft.Azure.Commands.AzureBackup.dll-help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Microsoft.Azure.Commands.AzureBackup.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

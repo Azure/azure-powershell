@@ -80,9 +80,6 @@ function Create-ModulePsm1 {
             $template = $template -replace "%PSVersionDeprecationMessage%", ""
         }
 
-        $completerCommands = Find-CompleterAttribute -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath -IsRMModule $IsRMModule
-        $template = $template -replace "%COMPLETERCOMMANDS%", $completerCommands
-
         $contructedCommands = Find-DefaultResourceGroupCmdlets -IsRMModule $IsRMModule -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
         $template = $template -replace "%DEFAULTRGCOMMANDS%", $contructedCommands
 
@@ -92,69 +89,6 @@ function Create-ModulePsm1 {
     }
 }
 
-
-function Find-CompleterAttribute {
-    [CmdletBinding()]
-    param(
-        [Hashtable]$ModuleMetadata,
-        [string]$ModulePath,
-        [bool]$IsRMModule
-    )
-    PROCESS {
-        if ($IsRMModule) {
-            $nestedModules = $ModuleMetadata.NestedModules
-            $AllCmdlets = @()
-            $nestedModules | ForEach-Object {
-                $dllPath = Join-Path -Path $ModulePath -ChildPath $_
-                $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
-                $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
-                $AllCmdlets += $dllCmdlets
-            }
-
-            $constructedCommands = "@("
-            $AllCmdlets | ForEach-Object {
-                $currentCmdlet = $_
-                $parameters = $_.GetProperties()
-                $parameters | ForEach-Object {
-                    $completerAttribute = $_.CustomAttributes | Where-Object {$_.AttributeType.BaseType.Name -eq "PSCompleterBaseAttribute"}
-                    if ($completerAttribute -ne $null) {
-                        $attributeTypeName = "System.Management.Automation.CmdletAttribute"
-                        $constructedCommands += "@{'Command' = '" + $currentCmdlet.GetCustomAttributes($attributeTypeName).VerbName + "-" + $currentCmdlet.GetCustomAttributes($attributeTypeName).NounName + "'; "
-                        $constructedCommands += "'Parameter' = '" + $_.Name + "'; "
-                        $constructedCommands += "'AttributeType' = '" + $completerAttribute.AttributeType + "'; "
-                        if ($completerAttribute.ConstructorArguments.Count -eq 0) {
-                            $constructedCommands += "'ArgumentList' = @()"
-                        }
-
-                        else {
-                            $constructedCommands += "'ArgumentList' = @("
-                            $completerAttribute.ConstructorArguments.Value | ForEach-Object {
-                                $constructedCommands += "'" + $_.Value + "',"
-                            }
-                            $constructedCommands = $constructedCommands -replace ".$", ")"
-                        }
-
-                        $constructedCommands += "},"
-                    }
-                }
-            }
-
-            if ($constructedCommands.Substring($constructedCommands.Length - 1) -eq ",") {
-                $constructedCommands = $constructedCommands -replace ".$", ")"
-            }
-            
-            else {
-                $constructedCommands += ")"
-            }
-        }
-
-        else {
-            $constructedCommands = "@()"    
-        }
-
-        return $constructedCommands
-    }
-}
 function Find-DefaultResourceGroupCmdlets {
     [CmdletBinding()]
     param(
@@ -341,6 +275,10 @@ if ($scope -eq 'AzureRM.Netcore') {
     Write-Host "Updating profile module"
     Create-ModulePsm1 -ModulePath "$resourceManagerRootFolder\AzureRM.Profile.Netcore" -TemplatePath $templateLocation -IsRMModule $true
     Write-Host "Updated profile module"
+
+    $modulePath = "$packageFolder\$buildConfig\Storage\Azure.Storage.Netcore"
+    Write-Host "Updating AzureStorage module from $modulePath"
+    Create-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule $false
 
     $env:PSModulePath += "$([IO.Path]::PathSeparator)$resourceManagerRootFolder\AzureRM.Profile.Netcore";
 

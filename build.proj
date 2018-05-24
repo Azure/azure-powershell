@@ -53,7 +53,7 @@
     <NetCore Condition=" $(NetCore) == '' " >false</NetCore>
     <SkipHelp Condition =" '$(SkipHelp)' == '' ">false</SkipHelp>
     <BuildTasksPath>$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks\bin\$(Configuration)</BuildTasksPath>
-    <Stack Condition = "'$(Scope)' == '' or '$(Scope)' == 'all' or '$(Scope)' == 'Stack' ">true</Stack>
+    <Stack Condition = "(('$(Scope)' == '' or '$(Scope)' == 'all') and '$(NetCore)' == 'false') or '$(Scope)' == 'Stack' ">true</Stack>
     <Latest Condition = "'$(Scope)' == '' or '$(Scope)' != 'Stack'">true</Latest>
   </PropertyGroup>
   <ItemGroup>
@@ -71,7 +71,7 @@
                             
     <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <LocalBuildTasks Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
-	  <LocalBuildTasks Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" />
+	  <LocalBuildTasks Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'"/>
   </ItemGroup>
 
   <!-- Tasks -->
@@ -417,7 +417,7 @@
       Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''"/>
 
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckSignature.ps1 -CustomPath $(LibrarySourceFolder)\Package\$(Configuration) &quot;"
-        ContinueOnError="ErrorAndContinue" />
+        ContinueOnError="ErrorAndContinue" Condition="'$(NetCore)' == 'false'"/>
 
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.Netcore.psd1"

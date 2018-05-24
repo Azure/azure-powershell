@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: A935ABAC-6C60-4AE3-9434-B9BCC1182A34
@@ -54,7 +54,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,7 +84,7 @@ Specifies the ID of the specific logger to get.
 ```yaml
 Type: String
 Parameter Sets: GetByLoggerId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

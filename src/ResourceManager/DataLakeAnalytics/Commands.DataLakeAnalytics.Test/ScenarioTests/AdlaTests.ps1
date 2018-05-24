@@ -262,7 +262,7 @@ function Test-DataLakeAnalyticsAccount
 
 		# Updating Account
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		$accountUpdated = Set-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
+		$accountUpdated = Set-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tag $tagsToUpdate
     
 		Assert-AreEqual $accountName $accountUpdated.Name
 		Assert-AreEqual $location $accountUpdated.Location
@@ -713,7 +713,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 
 		# attempt to update a non-existent account
 		$tagsToUpdate = @{"TestTag" = "TestUpdate"}
-		Assert-Throws {Set-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
+		Assert-Throws {Set-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tag $tagsToUpdate}
 
 		# attempt to get a non-existent account
 		Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}

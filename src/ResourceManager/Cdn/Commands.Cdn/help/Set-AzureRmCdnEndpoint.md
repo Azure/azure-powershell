@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 1A84AF77-1AEF-4FD0-9FAA-D195B361FCEB
@@ -23,11 +23,6 @@ The **Set-AzureRmCdnEndpoint** cmdlet updates an Azure Content Delivery Network 
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnEndpoint
@@ -36,7 +31,7 @@ Specifies the endpoint that this cmdlet updates.
 ```yaml
 Type: PSEndpoint
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

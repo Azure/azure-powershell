@@ -21,7 +21,7 @@ Get-AzureRmResourceProvider [-Location <String>] [-ListAvailable] [-ApiVersion <
 
 ### IndividualProvider
 ```
-Get-AzureRmResourceProvider -ProviderNamespace <String> [-Location <String>] [-ApiVersion <String>] [-Pre]
+Get-AzureRmResourceProvider -ProviderNamespace <String[]> [-Location <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -29,11 +29,6 @@ Get-AzureRmResourceProvider -ProviderNamespace <String> [-Location <String>] [-A
 The **Get-AzureRmResourceProvider** cmdlet gets an Azure resource provider.
 
 ## EXAMPLES
-
-### 1:
-```
-
-```
 
 ## PARAMETERS
 
@@ -117,7 +112,7 @@ Accept wildcard characters: False
 Specifies the namespace of the resource provider.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: IndividualProvider
 Aliases:
 

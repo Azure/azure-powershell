@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.11.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll',
@@ -241,6 +241,11 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
     'Reset-AzureRmVirtualNetworkGateway', 
     'Set-AzureRmVirtualNetworkGatewayDefaultSite', 
     'Remove-AzureRmVirtualNetworkGatewayDefaultSite', 
+	'New-AzureRmVpnClientIpsecPolicy', 
+	'New-AzureRmVpnClientIpsecParameter', 
+	'Set-AzureRmVpnClientIpsecParameter', 
+	'Get-AzureRmVpnClientIpsecParameter'	
+	'Remove-AzureRmVpnClientIpsecParameter',
     'Remove-AzureRmLocalNetworkGateway', 
     'Get-AzureRmLocalNetworkGateway', 'New-AzureRmLocalNetworkGateway', 
     'Set-AzureRmLocalNetworkGateway', 
@@ -317,7 +322,10 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
     'New-AzureRmApplicationSecurityGroup', 
     'Remove-AzureRmApplicationSecurityGroup', 
     'Get-AzureRmApplicationSecurityGroup', 
-    'New-AzureRmPublicIpTag'
+    'New-AzureRmPublicIpTag',
+    'New-AzureRmDdosProtectionPlan',
+    'Get-AzureRmDdosProtectionPlan',
+    'Remove-AzureRmDdosProtectionPlan'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void BeginProcessing()
         {
-            // Do not call base.BeginProcessing(), as context is not required for this cmdlet.
+            //cmdlet is failing due to _metrichelper being null, since we skipped beging processing. 
+            base.BeginProcessing(); 
 
             if (!this.CheckIfInteractive())
                 throw new PSInvalidOperationException(String.Format(Resources.SendFeedbackNonInteractiveMessage, nameof(SendFeedbackCommand)));
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.Profile
             this.Host.UI.WriteLine();
 
             // Log the event with force since the user specifically issued this command to provide feedback.
+
             this._metricHelper.LogCustomEvent(_eventName, feedbackPayload, true /* force */);
         }
 

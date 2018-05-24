@@ -54,7 +54,7 @@ The following prerequisites should be completed before contributing to the Azure
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the latest version of [WiX](http://wixtoolset.org/releases/)
     - After installation, ensure that the path to "WiX Toolset\bin" has been added to your `PATH` environment variable
-- Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/preview/documentation/help-generation.md#installing-platyps)
+- Install the [`platyPS` module](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/help-generation.md#installing-platyps)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:
     - `C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe`
     - `C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe`
@@ -246,6 +246,8 @@ To import modules automatically when debug has started, follow the below steps:
 - In the **Debug** tab mentioned previously, go to **Start Options**
 - Import the Profile module, along with the module you are testing, by pasting the following in the **Command line arguments** box (_note_: you have to update the <PATH_TO_REPO> and <SERVICE> values provided below):
     - `-NoExit -Command "Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.Profile/AzureRM.Profile.psd1;Import-Module <PATH_TO_REPO>/src/Package/Debug/ResourceManager/AzureResourceManager/AzureRM.<SERVICE>/AzureRM.<SERVICE>.psd1;$VerbosePreference='Continue'"`
+    
+- **Note**: if you do not see all of the changes you made to the cmdlets when importing your module in a PowerShell session (_e.g.,_ a cmdlet you added is not recognized as a cmdlet), you may need to delete any existing Azure PowerShell modules that you have on your machine (installed either through the PowerShell Gallery or by Web Platform Installer) before you import your module.
 
 ## Adding Help Content
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 7060D3D7-B397-447E-88E3-B6F0D094770D
@@ -31,11 +31,6 @@ The **New-AzureRmCdnCustomDomain** cmdlet creates a custom domain for the Azure 
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnEndpoint
@@ -44,7 +39,7 @@ Specifies the CDN endpoint object to which the custom domain is added.
 ```yaml
 Type: PSEndpoint
 Parameter Sets: ByObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -59,7 +54,7 @@ Specifies the resource name of the custom domain.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,7 +84,7 @@ Specifies the name of the endpoint.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -104,7 +99,7 @@ Specifies the host name of the custom domain.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,7 +114,7 @@ Specifies the name of the profile.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -134,7 +129,7 @@ Specifies the name of the resource group to which the custom domain belongs.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

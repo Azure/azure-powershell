@@ -209,14 +209,14 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Troubleshoot
                 // CNM to MNM
-                cfg.CreateMap<CNM.PSTroubleshootResult, MNM.TroubleshootingResult>();
-                cfg.CreateMap<CNM.PSTroubleshootDetails, MNM.TroubleshootingDetails>();
-                cfg.CreateMap<CNM.PSTroubleshootRecommendedActions, MNM.TroubleshootingRecommendedActions>();
+                cfg.CreateMap<CNM.PSTroubleshootingResult, MNM.TroubleshootingResult>();
+                cfg.CreateMap<CNM.PSTroubleshootingDetails, MNM.TroubleshootingDetails>();
+                cfg.CreateMap<CNM.PSTroubleshootingRecommendedActions, MNM.TroubleshootingRecommendedActions>();
 
                 // MNM to CNM
-                cfg.CreateMap<MNM.TroubleshootingResult, CNM.PSTroubleshootResult>();
-                cfg.CreateMap<MNM.TroubleshootingDetails, CNM.PSTroubleshootDetails>();
-                cfg.CreateMap<MNM.TroubleshootingRecommendedActions, CNM.PSTroubleshootRecommendedActions>();
+                cfg.CreateMap<MNM.TroubleshootingResult, CNM.PSTroubleshootingResult>();
+                cfg.CreateMap<MNM.TroubleshootingDetails, CNM.PSTroubleshootingDetails>();
+                cfg.CreateMap<MNM.TroubleshootingRecommendedActions, CNM.PSTroubleshootingRecommendedActions>();
 
                 // FlowLog
                 // CNM to MNM
@@ -484,6 +484,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSExpressRouteCircuitSku, MNM.ExpressRouteCircuitSku>();
                 cfg.CreateMap<CNM.PSPeering, MNM.ExpressRouteCircuitPeering>();
                 cfg.CreateMap<CNM.PSExpressRouteCircuitAuthorization, MNM.ExpressRouteCircuitAuthorization>();
+                cfg.CreateMap<CNM.PSExpressRouteCircuitConnection, MNM.ExpressRouteCircuitConnection>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRouteCircuit, CNM.PSExpressRouteCircuit>();
@@ -495,6 +496,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSExpressRouteCircuitArpTable, MNM.ExpressRouteCircuitArpTable>();
                 cfg.CreateMap<CNM.PSExpressRouteCircuitRoutesTable, MNM.ExpressRouteCircuitRoutesTable>();
                 cfg.CreateMap<CNM.PSExpressRouteCircuitRoutesTableSummary, MNM.ExpressRouteCircuitRoutesTableSummary>();
+                cfg.CreateMap<MNM.ExpressRouteCircuitConnection, CNM.PSExpressRouteCircuitConnection>();
 
                 // ExpressRouteCircuitPeering
                 // CNM to MNM
@@ -506,6 +508,13 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ExpressRouteCircuitPeering, CNM.PSPeering>();
                 cfg.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSPeeringConfig>();
                 cfg.CreateMap<MNM.Ipv6ExpressRouteCircuitPeeringConfig, CNM.PSIpv6PeeringConfig>();
+
+                // Express Route Circuit Connection 
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteCircuitConnection, MNM.ExpressRouteCircuitConnection>();
+
+                // MNM to CNM 
+                cfg.CreateMap<MNM.ExpressRouteCircuitConnection, CNM.PSExpressRouteCircuitConnection>();
 
                 // ExpressRouteServiceProvider
                 // CNM to MNM
@@ -540,6 +549,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSTunnelConnectionHealth, MNM.TunnelConnectionHealth>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewaySku, MNM.VirtualNetworkGatewaySku>();
                 cfg.CreateMap<CNM.PSVpnClientConfiguration, MNM.VpnClientConfiguration>();
+		cfg.CreateMap<CNM.PSVpnClientIPsecParameters, MNM.VpnClientIPsecParameters>();
                 cfg.CreateMap<CNM.PSVpnClientParameters, MNM.VpnClientParameters>();
                 cfg.CreateMap<CNM.PSVpnClientRevokedCertificate, MNM.VpnClientRevokedCertificate>();
                 cfg.CreateMap<CNM.PSVpnClientRootCertificate, MNM.VpnClientRootCertificate>();
@@ -558,6 +568,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.TunnelConnectionHealth, CNM.PSTunnelConnectionHealth>();
                 cfg.CreateMap<MNM.VirtualNetworkGatewaySku, CNM.PSVirtualNetworkGatewaySku>();
                 cfg.CreateMap<MNM.VpnClientConfiguration, CNM.PSVpnClientConfiguration>();
+		cfg.CreateMap<MNM.VpnClientIPsecParameters, CNM.PSVpnClientIPsecParameters>();
                 cfg.CreateMap<MNM.VpnClientParameters, CNM.PSVpnClientParameters>();
                 cfg.CreateMap<MNM.VpnClientRevokedCertificate, CNM.PSVpnClientRevokedCertificate>();
                 cfg.CreateMap<MNM.VpnClientRootCertificate, CNM.PSVpnClientRootCertificate>();
@@ -658,6 +669,14 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ApplicationSecurityGroup, CNM.PSApplicationSecurityGroup>();
+
+                //// DDoS protection plan
+
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSDdosProtectionPlan, MNM.DdosProtectionPlan>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.DdosProtectionPlan, CNM.PSDdosProtectionPlan>();
             });
 
             _mapper = config.CreateMapper();

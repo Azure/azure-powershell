@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeStore.dll-Help.xml
 Module Name: AzureRM.DataLakeStore
 ms.assetid: D79080D5-2785-4C46-86FD-FDAA11117D17
@@ -77,7 +77,7 @@ The name of the trusted identity provider to retrieve
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -92,7 +92,7 @@ Name of resource group under which want to retrieve the specified account's spec
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -120,4 +120,3 @@ The list of trusted identity providers in the specified account.
 ## NOTES
 
 ## RELATED LINKS
-

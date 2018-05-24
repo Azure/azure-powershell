@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 3.1.3
+* Set minimum dependency of module to PowerShell 5.0
+* Enable tags and Basic Sku to the IotHub
+
 ## Version 3.1.2
 * Updated to the latest version of the Azure ClientRuntime
 

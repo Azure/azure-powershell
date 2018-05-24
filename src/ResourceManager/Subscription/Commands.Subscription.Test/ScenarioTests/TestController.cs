@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -26,7 +25,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using SubscriptionDefinitionClient = Microsoft.Azure.Management.Subscription.SubscriptionDefinitionsClient;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
@@ -41,14 +39,14 @@ namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public SubscriptionClient SubscriptionClient { get; private set; }
+        public Microsoft.Azure.Subscriptions.SubscriptionClient OldSubscriptionClient { get; private set; }
+
+        public Microsoft.Azure.Management.Subscription.SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
-        public SubscriptionDefinitionClient SubscriptionDefinitionClient { get; private set; }
-
+        
         public static TestController NewInstance
         {
             get
@@ -65,17 +63,17 @@ namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
         protected void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
-            SubscriptionClient = GetSubscriptionClient();
+            OldSubscriptionClient = GetOldSubscriptionClient();
+            SubscriptionClient = GetSubscriptionClient(context);
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
-            SubscriptionDefinitionClient = GetSubscriptionDefinitionManagementClient(context);
-
+            
             _helper.SetupManagementClients(
                 ResourceManagementClient,
+                OldSubscriptionClient,
                 SubscriptionClient,
                 GalleryClient,
-                AuthorizationManagementClient,
-                SubscriptionDefinitionClient);
+                AuthorizationManagementClient);
         }
 
         public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
@@ -132,7 +130,7 @@ namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
 
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                   @"AzureRM.Subscription.Preview.psd1",
+                   @"AzureRM.Subscription.psd1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
                 try
                 {
@@ -166,19 +164,19 @@ namespace Microsoft.Azure.Commands.Subscription.Test.ScenarioTests.ScenarioTest
             return TestBase.GetServiceClient<AuthorizationManagementClient>(_csmTestFactory);
         }
 
-        private SubscriptionClient GetSubscriptionClient()
+        private Microsoft.Azure.Subscriptions.SubscriptionClient GetOldSubscriptionClient()
         {
-            return TestBase.GetServiceClient<SubscriptionClient>(_csmTestFactory);
+            return TestBase.GetServiceClient<Microsoft.Azure.Subscriptions.SubscriptionClient>(_csmTestFactory);
+        }
+
+        private Microsoft.Azure.Management.Subscription.SubscriptionClient GetSubscriptionClient(MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.Subscription.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(_csmTestFactory);
-        }
-
-        private SubscriptionDefinitionClient GetSubscriptionDefinitionManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<SubscriptionDefinitionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

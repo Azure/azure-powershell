@@ -39,3 +39,13 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 5.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**New-AzureRmStorageAccount**
+- The parameter `EnableEncryptionService` is being removed
+
+**Set-AzureRmStorageAccount**
+- The parameters `EnableEncryptionService` and `DisableEncryptionService` is being removed

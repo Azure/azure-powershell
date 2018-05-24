@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Batch, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Azure.Batch.8.0.0\lib\net452\Microsoft.Azure.Batch.dll</HintPath>
+      <HintPath>..\..\..\packages\Azure.Batch.8.1.1\lib\net452\Microsoft.Azure.Batch.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Batch, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Batch.4.2.0\lib\net45\Microsoft.Azure.Management.Batch.dll</HintPath>
@@ -61,9 +61,6 @@
       <HintPath>..\..\..\packages\WindowsAzure.Storage.6.2.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
@@ -77,12 +74,15 @@
     <Compile Include="BatchAccounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="BatchAccounts\SetBatchAccountCommand.cs" />
     <Compile Include="ApplicationPackages\NewBatchApplicationPackageCommand.cs" />
+    <Compile Include="ComputeNodes\StartBatchComputeNodeServiceLogUploadCommand.cs" />
     <Compile Include="Jobs\GetBatchJobPreparationAndReleaseTaskStatusCommand.cs" />
     <Compile Include="Jobs\GetBatchJobStatisticsCommand.cs" />
     <Compile Include="Models\AccountCreateParameters.cs" />
     <Compile Include="Models\BatchClient.ApplicationPackages.cs" />
+    <Compile Include="Models\StartComputeNodeServiceLogUploadParameters.cs" />
     <Compile Include="Models\ListJobPreparationAndReleaseStatusOptions.cs" />
     <Compile Include="Models\GetTaskCountsOptions.cs" />
+    <Compile Include="Models\ListPoolNodeCountsOptions.cs" />
     <Compile Include="Models\NewBulkTaskParameters.cs" />
     <Compile Include="Models\PSApplicationPackage.cs" />
     <Compile Include="Models\PSApplication.cs" />
@@ -161,6 +161,7 @@
     <Compile Include="Models\NodeFileOperationParameters.cs" />
     <Compile Include="Models\PoolOperationParameters.cs" />
     <Compile Include="Models\PSBatchLocationQuotas.cs" />
+    <Compile Include="Models\PSNodeCounts.FormatObject.cs" />
     <Compile Include="Models\PSPagedEnumerable.cs" />
     <Compile Include="Models\PoolResizeParameters.cs" />
     <Compile Include="Models\ComputeNodeUserOperationParameters.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Models\UpdateComputeNodeUserParameters.cs" />
     <Compile Include="Pools\DisableBatchAutoScaleCommand.cs" />
     <Compile Include="Pools\EnableBatchAutoScaleCommand.cs" />
+    <Compile Include="Pools\GetBatchPoolNodeCountsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolStatisticsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolUsageMetricsCommand.cs" />
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
@@ -217,7 +219,6 @@
       <Link>AzureRM.Batch.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.Batch.dll-Help.psd1" />
     <None Include="Microsoft.Azure.Commands.Batch.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
