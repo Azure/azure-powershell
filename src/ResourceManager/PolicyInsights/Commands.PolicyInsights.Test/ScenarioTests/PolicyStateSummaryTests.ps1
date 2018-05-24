@@ -18,7 +18,7 @@ Get policy states summary at management group scope
 #>
 function Get-AzureRmPolicyStateSummary-ManagementGroupScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ManagementGroupName "AzGovTest1"
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -ManagementGroupName $ManagementGroupName -Top $Top -From $From
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -28,7 +28,7 @@ Get policy states summary at subscription scope
 #>
 function Get-AzureRmPolicyStateSummary-SubscriptionScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -Top $Top -From $From
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -38,7 +38,7 @@ Get policy states summary at resource group scope
 #>
 function Get-AzureRmPolicyStateSummary-ResourceGroupScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName defaultresourcegroup-eus
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName $ResourceGroupName -Top $Top -From $From
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -48,7 +48,7 @@ Get policy states summary at resource scope
 #>
 function Get-AzureRmPolicyStateSummary-ResourceScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceId "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.OperationsManagement/solutions/LogicAppsManagement(defaultworkspace-d0610b27-9663-4c05-89f8-5b4be01e86a5-eus)"
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceId $ResourceId -Top $Top -From $From
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -58,7 +58,7 @@ Get policy states summary at policy set definition scope
 #>
 function Get-AzureRmPolicyStateSummary-PolicySetDefinitionScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicySetDefinitionName a03db67e-a286-43c3-9098-b2da83d361ad
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicySetDefinitionName $PolicySetDefinitionName -Top $Top -From $From
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -68,7 +68,7 @@ Get policy states summary at policy definition scope
 #>
 function Get-AzureRmPolicyStateSummary-PolicyDefinitionScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyDefinitionName 71ff7afc-0e90-481b-b19d-38106ce490f1
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyDefinitionName $PolicyDefinitionName -Top $Top -From $From
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -78,7 +78,7 @@ Get policy states summary at subscription level policy assignment scope
 #>
 function Get-AzureRmPolicyStateSummary-SubscriptionLevelPolicyAssignmentScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyAssignmentName 0727ffc1697048c5b4884aef
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyAssignmentName $PolicyAssignmentName -Top $Top -From $From
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -88,6 +88,6 @@ Get policy states summary at resource group level policy assignment scope
 #>
 function Get-AzureRmPolicyStateSummary-ResourceGroupLevelPolicyAssignmentScope
 {
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName bulenttestrg -PolicyAssignmentName f4d1645d-9180-4968-99df-17234d0f7019
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName $ResourceGroupName -PolicyAssignmentName $PolicyAssignmentName -Top $Top -From $From
 	Validate-PolicyStateSummary $policyStateSummary
 }
