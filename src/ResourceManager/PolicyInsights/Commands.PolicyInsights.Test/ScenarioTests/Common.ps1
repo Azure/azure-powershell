@@ -12,6 +12,15 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+$ManagementGroupName = "azgovtest4";
+$ResourceGroupName = "bulenttestrg";
+$ResourceId = "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/govintpolicyrp/providers/microsoft.network/trafficmanagerprofiles/gov-int-policy-rp";
+$PolicySetDefinitionName = "db6c5074-a529-4cc8-8882-43f10ef42002";
+$PolicyDefinitionName = "d7b13c30-e6aa-47e1-b50a-8e33f152d086";
+$PolicyAssignmentName = "45ab2ab7898d45ebb3087573";
+$From = "2018-04-04 00:00:00Z"
+$Top = 10
+
 <#
 .SYNOPSIS
 Validates a list of policy events
@@ -20,7 +29,7 @@ function Validate-PolicyEvents
 {
 	param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent]]]$policyEvents, [int]$count)
 
-    Assert-AreEqual $count $policyEvents.Count
+    Assert-True $count -ge $policyEvents.Count
 	Foreach($policyEvent in $policyEvents)
 	{
 		Validate-PolicyEvent $policyEvent
@@ -56,7 +65,7 @@ function Validate-PolicyStates
 {
 	param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates, [int]$count)
 
-    Assert-AreEqual $count $policyStates.Count
+    Assert-True $count -ge $policyStates.Count
 	Foreach($policyState in $policyStates)
 	{
 		Validate-PolicyState $policyState
@@ -97,7 +106,7 @@ function Validate-PolicyStateSummary
     Assert-NotNull $policyStateSummary.Results.NonCompliantPolicies
 
     Assert-NotNull $policyStateSummary.PolicyAssignments
-    Assert-AreEqual $policyStateSummary.PolicyAssignments.Count $policyStateSummary.Results.NonCompliantPolicies
+    Assert-True $policyStateSummary.PolicyAssignments.Count -le $policyStateSummary.Results.NonCompliantPolicies
 
 	Foreach($policyAssignmentSummary in $policyStateSummary.PolicyAssignments)
 	{
@@ -123,6 +132,11 @@ function Validate-PolicyStateSummary
 
             Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
             Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
+
+			if ($policyAssignmentSummary.PolicySetDefinitionId -ne $null -and $policyAssignmentSummary.PolicySetDefinitionId -ne '') 
+			{
+				Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionReferenceId
+			}
 
 			Assert-NotNull $policyDefinitionSummary.Results
 			Assert-NotNull $policyDefinitionSummary.Results.NonCompliantResources
