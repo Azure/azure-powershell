@@ -55,7 +55,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\AutoMapper.dll',
-    '.\Microsoft.Azure.Commands.Common.Strategies.dll', 
+    '.\Microsoft.Azure.Commands.Common.Strategies.4.dll', 
     '.\Microsoft.Azure.Management.Compute.dll',
     '.\Microsoft.Azure.Management.KeyVault.dll'
 

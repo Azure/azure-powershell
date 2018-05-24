@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Location of the virtual network.")]
         [LocationCompleter("Microsoft.ApiManagement/service")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("The location property will be deprecated in future" +
+            "breaking change release. It is no longer required.")]
         public string Location { get; set; }
 
         [Parameter(
@@ -45,7 +47,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             WriteObject(
                 new PsApiManagementVirtualNetwork
                 {
+#pragma warning disable CS0618
                     Location = Location,
+#pragma warning restore CS0618
                     SubnetResourceId = SubnetResourceId
                 });
         }

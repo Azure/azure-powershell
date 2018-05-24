@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementLogger
+    public class PsApiManagementLogger : PsApiManagementArmResource
     {
         public string LoggerId { get; set; }
 

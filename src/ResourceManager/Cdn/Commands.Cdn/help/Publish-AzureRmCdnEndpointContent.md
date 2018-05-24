@@ -30,11 +30,6 @@ The **Publish-AzureRmCdnEndpointContent** cmdlet loads content from an origin se
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnEndpoint

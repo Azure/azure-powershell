@@ -24,12 +24,11 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestBase = Microsoft.Azure.Test.TestBase;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 {
@@ -78,12 +77,11 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
                 ConsumptionManagementClient);
         }
 
-        public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPowerShellTest(params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
-            _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
@@ -179,7 +177,10 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
         private ConsumptionManagementClient GetConsumptionManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ConsumptionManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return
+                context.GetServiceClient<ConsumptionManagementClient>(
+                    new Rest.ClientRuntime.Azure.TestFramework.TestEnvironment(
+                        Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION")));
         }
     }
 }

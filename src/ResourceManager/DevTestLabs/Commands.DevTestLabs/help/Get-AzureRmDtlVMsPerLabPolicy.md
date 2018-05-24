@@ -24,11 +24,6 @@ The cmdlet returns the enabled or disabled status of the policy, and the total n
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

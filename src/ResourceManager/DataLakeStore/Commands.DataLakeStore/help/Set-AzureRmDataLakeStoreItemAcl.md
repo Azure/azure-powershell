@@ -37,7 +37,7 @@ The second command sets the ACL for the file Test.txt to the one in $ACL.
 ### Example 2: Set the ACL for folder recursively
 ```
 PS C:\>$ACL = Get-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path /Folder1
-PS C:\> Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/Folder2" -Acl $ACL -Recursive -Concurrency 128
+PS C:\> Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/Folder2" -Acl $ACL -Recurse -Concurrency 128
 ```
 
 The first command gets the ACL for the directory Folder1 of the ContosoADL account, and then stores it in the $ACL variable.

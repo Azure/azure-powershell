@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.0-preview
 * Adding support for listing certificates in a pending state
 
 ## Version 5.0.0
