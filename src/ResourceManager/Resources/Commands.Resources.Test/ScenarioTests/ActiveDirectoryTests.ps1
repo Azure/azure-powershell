@@ -549,10 +549,12 @@ function Test-NewADServicePrincipalWithoutApp
 
     # Test
     $servicePrincipal = New-AzureRmADServicePrincipal -DisplayName $displayName
+	$role = Get-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id
 
     # Assert
     Assert-NotNull $servicePrincipal
     Assert-AreEqual $servicePrincipal.DisplayName $displayName
+	Assert-Null $role
 
     # GetServicePrincipal by ObjectId
     $sp1 = Get-AzureRmADServicePrincipal -ObjectId $servicePrincipal.Id
