@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.Commands.ManagementGroups.dll-Help.xml
-Module Name: AzureRM.ManagementGroups
+external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/remove-azurermmanagementgroup/
 schema: 2.0.0
 ---
@@ -20,8 +20,8 @@ Remove-AzureRmManagementGroup [-GroupName] <String> [-PassThru] [-DefaultProfile
 
 ### ManagementGroupObject
 ```
-Remove-AzureRmManagementGroup -InputObject <PSManagementGroup> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzureRmManagementGroup -InputObject <PSManagementGroup> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +91,7 @@ Return `true` on successful execution
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: GroupOperations
+Parameter Sets: (All)
 Aliases: 
 
 Required: False

@@ -121,8 +121,6 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
     'Remove-AzureRmManagedApplicationDefinition', 
     'Get-AzureRmManagedApplication', 'New-AzureRmManagedApplication', 
     'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication',
-    'Get-AzureRmManagedApplication', 'New-AzureRmManagedApplication', 
-    'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication',
     'Get-AzureRmManagementGroup', 'New-AzureRmManagementGroup',
     'Update-AzureRmManagementGroup', 'Remove-AzureRmManagementGroup',
     'New-AzureRmManagementGroupSubscription', 'Remove-AzureRmManagementGroupSubscription'
