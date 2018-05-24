@@ -192,7 +192,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 CopyLocation = copyLocation,
                 ServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true)
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                LicenseType = LicenseType != null ? LicenseType : null
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

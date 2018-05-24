@@ -164,7 +164,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the license type for the Azure Sql database
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The license type for the Azure Sql database")]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The tags to associate with the Azure Sql Database",
+            ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The tags to associate with the Azure Sql Database",
+            ParameterSetName = VcoreDatabaseParameterSet)]
         [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
         public string LicenseType { get; set; }
 
@@ -208,7 +213,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ZoneRedundant =
                        ZoneRedundant != null
                            ? (bool?)ZoneRedundant.ToBool()
-                           : null
+                           : null,
+                LicenseType = LicenseType != null ? LicenseType : model.FirstOrDefault().LicenseType
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

@@ -161,6 +161,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string SkuName { get; set; }
 
         /// <summary>
+        /// Gets or sets the LicenseType of the database
+        /// </summary>
+        public string LicenseType { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -252,6 +257,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Family = database.Sku == null ? null : database.Sku.Family;
 
             SkuName = database.Sku == null ? null : database.Sku.Name;
+
+            LicenseType = database.LicenseType == null ? null : database.LicenseType;
         }
     }
 }

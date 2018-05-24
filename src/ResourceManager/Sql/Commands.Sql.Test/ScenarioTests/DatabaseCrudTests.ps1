@@ -180,6 +180,40 @@ function Test-CreateDatabaseWithSampleName
 
 <#
 	.SYNOPSIS
+	Tests creating a database with license type.
+#>
+function Test-CreateDatabaseWithSampleName
+{
+	# Setup
+	$location = "westcentralus"
+	$rg = Create-ResourceGroupForTest
+	try
+	{
+		$server = Create-ServerForTest $rg $location
+
+		# Create with samplename
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+			-DatabaseName $databaseName -SampleName "AdventureWorksLT" -RequestedServiceObjectiveName Basic `
+			-Tags @{"tag_key"="tag_value"}
+		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-AreEqual $db.CurrentServiceObjectiveName Basic
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-NotNull $db.Edition
+		Assert-NotNull $db.CurrentServiceObjectiveName
+		Assert-NotNull $db.CollationName
+		Assert-NotNull $db.Tags
+		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
+		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests creating a database with zone redundancy.
 #>
 function Test-CreateDatabaseWithZoneRedundancy

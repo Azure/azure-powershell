@@ -332,7 +332,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 ElasticPoolName = ElasticPoolName,
                 RequestedServiceObjectiveName = ServiceObjectiveName,
                 Edition = Edition,
-                CreateMode = createMode
+                CreateMode = createMode,
+                LicenseType = LicenseType != null ? LicenseType : null
             };
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||

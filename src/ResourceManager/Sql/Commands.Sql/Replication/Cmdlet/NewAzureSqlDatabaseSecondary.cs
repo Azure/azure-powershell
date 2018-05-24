@@ -183,6 +183,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                LicenseType = LicenseType != null ? LicenseType : null
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
