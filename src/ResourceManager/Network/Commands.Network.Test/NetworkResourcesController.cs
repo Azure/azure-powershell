@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -51,6 +52,8 @@ namespace Commands.Network.Test
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
         public StorageManagementClient StorageManagementClient { get; private set; }
+
+        public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
 
         public InsightsManagementClient InsightsManagementClient { get; private set; }
 
@@ -127,6 +130,7 @@ namespace Commands.Network.Test
                     helper.GetRMModulePath("AzureRM.RedisCache.psd1"),
                     helper.GetRMModulePath("AzureRM.Network.psd1"),
                     helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     helper.RMStorageDataPlaneModule,
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
@@ -177,6 +181,7 @@ namespace Commands.Network.Test
             this.NetworkManagementClient = this.GetNetworkManagementClient(context);
             this.ComputeManagementClient = this.GetComputeManagementClient(context);
             this.StorageManagementClient = this.GetStorageManagementClient(context);
+            this.OperationalInsightsManagementClient = this.GetOperationalInsightsManagementClient(context);
             this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
             this.InsightsManagementClient = this.GetInsightsManagementClient();
             this.RedisManagementClient = this.GetRedisManagementClient(context);
@@ -189,6 +194,7 @@ namespace Commands.Network.Test
                 this.NetworkManagementClient,
                 this.ComputeManagementClient,
                 this.StorageManagementClient,
+                this.OperationalInsightsManagementClient,
                 this.AuthorizationManagementClient,
                 this.InsightsManagementClient,
                 this.RedisManagementClient);
@@ -217,6 +223,11 @@ namespace Commands.Network.Test
         private StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private OperationalInsightsManagementClient GetOperationalInsightsManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()

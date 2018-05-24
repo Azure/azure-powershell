@@ -92,6 +92,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             module = GetModuleManifest(StorageDirectory, "Azure.Storage");
             LogIfNotNull($"Storage Data Plane Module path: {module}");
             RMStorageDataPlaneModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.OperationalInsights");
+            LogIfNotNull($"Storage Data Plane Module path: {module}");
+            RMOperationalInsightsModule = module;
             module = GetModuleManifest(RmDirectory, "AzureRM.Network");
             LogIfNotNull($"Network Module path: {module}");
             RMNetworkModule = module;
@@ -152,7 +155,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public string RMInsightsModule { get; private set; } 
 
-        public string RMStorageModule { get; private set; } 
+        public string RMStorageModule { get; private set; }
+
+        public string RMOperationalInsightsModule { get; private set; }
 
         //TODO: clarify (data plane should not be under ARM folder)
         public string RMStorageDataPlaneModule { get; private set; }
