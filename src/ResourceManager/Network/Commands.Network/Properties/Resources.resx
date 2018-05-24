@@ -134,6 +134,9 @@
   <data name="VirtualNetworkGatewayIpConfigName" xml:space="preserve">
     <value>virtualNetworkGatewayIpConfiguration</value>
   </data>
+  <data name="VirtualNetworkGatewayName" xml:space="preserve">
+    <value>virtualNetworkGatewayName</value>
+  </data>  
   <data name="LoadBalancerInBoundNatRuleName" xml:space="preserve">
     <value>inboundNatRules</value>
   </data>

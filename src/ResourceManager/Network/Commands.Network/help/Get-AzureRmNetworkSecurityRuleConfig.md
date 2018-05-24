@@ -62,7 +62,7 @@ Indicates whether this cmdlet gets a user-created rule configuration or a defaul
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,7 +77,7 @@ Specifies the name of the network security rule configuration to get.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,7 +92,7 @@ Specifies a **NetworkSecurityGroup** object that contains the network security r
 ```yaml
 Type: PSNetworkSecurityGroup
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
