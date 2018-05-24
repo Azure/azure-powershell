@@ -83,7 +83,7 @@ Specifies a name for the availability set.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+.Parameter Sets: (All)
 Aliases: ResourceName, AvailabilitySetName
 
 Required: True
@@ -139,7 +139,12 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-The Name of Sku
+The Name of Sku.
+The acceptable values for this parameter are:
+
+- Aligned: For managed disks
+- Classic: For unmanaged disks
+
 ```yaml
 Type: String
 Parameter Sets: (All)
