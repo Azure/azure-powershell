@@ -162,6 +162,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string ComputeGeneration { get; set; }
 
         /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The license type for the Azure Sql database")]
+        [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
+        public string LicenseType { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()

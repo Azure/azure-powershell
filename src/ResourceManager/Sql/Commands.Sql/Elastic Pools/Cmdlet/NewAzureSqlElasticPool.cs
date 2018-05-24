@@ -142,6 +142,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         public SwitchParameter ZoneRedundant { get; set; }
 
         /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The license type for the Azure Sql database")]
+        [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
+        public string LicenseType { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]

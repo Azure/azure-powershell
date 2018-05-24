@@ -265,6 +265,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         public int VCore { get; set; }
 
         /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The license type for the Azure Sql database")]
+        [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
+        public string LicenseType { get; set; }
+
+        /// <summary>
         /// The start of the cmdlet.
         /// </summary>
         public override void ExecuteCmdlet()
