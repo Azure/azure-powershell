@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: FB5E4ED2-8EF3-462F-A053-7EC82C767E8D
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementvirtualnetwork
 schema: 2.0.0
@@ -69,7 +70,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,7 +85,7 @@ Specifies the subnet resource ID of the virtual network.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

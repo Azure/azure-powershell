@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRMWebApp` is updated to use common algorithms from the Strategy library.
 
 ## Version 5.0.1
 * Set minimum dependency of module to PowerShell 5.0

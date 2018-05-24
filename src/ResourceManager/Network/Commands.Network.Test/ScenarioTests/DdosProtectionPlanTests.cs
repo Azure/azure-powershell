@@ -30,6 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestDdosProtectionPlanCrud()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCRUD"));
@@ -37,6 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestDdosProtectionPlanCrudWithVirtualNetwork()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCRUDWithVirtualNetwork"));
@@ -44,6 +46,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestDdosProtectionPlanCollections()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCollections"));

@@ -16,7 +16,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementSubscription
+    public class PsApiManagementSubscription : PsApiManagementArmResource
     {
         public string SubscriptionId { get; set; }
 

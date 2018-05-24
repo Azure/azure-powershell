@@ -103,14 +103,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Creates or updates a database
         /// </summary>
-        public Management.Sql.LegacySdk.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, DatabaseCreateOrUpdateParameters parameters)
-        {
-            return GetLegacySqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters).Database;
-        }
-
-        /// <summary>
-        /// Creates or updates a database
-        /// </summary>
         public Management.Sql.Models.Database CreateOrUpdate(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database parameters)
         {
             return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
@@ -137,7 +129,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         public void Remove(string resourceGroupName, string serverName, string databaseName)
         {
-            GetLegacySqlClient().Databases.Delete(resourceGroupName, serverName, databaseName);
+            GetCurrentSqlClient().Databases.Delete(resourceGroupName, serverName, databaseName);
         }
 
         /// <summary>
