@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
-online version: https://docs.microsoft.com/en-us/powershell/module/update-azurermmanagementgroup/
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/update-azurermmanagementgroup/
 schema: 2.0.0
 ---
 
