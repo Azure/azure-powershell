@@ -15,17 +15,17 @@ Creates an elastic database pool for a SQL Database.
 
 ### DtuBasedPool (Default)
 ```
-New-AzureRmSqlElasticPool -ElasticPoolName <String> [-Edition <String>] [-Dtu <Int32>] [-StorageMB <Int64>]
- [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-Dtu <Int32>] [-StorageMB <Int32>]
+ [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
+ [-LicenseType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedPool
 ```
-New-AzureRmSqlElasticPool -ElasticPoolName <String> -Edition <String> [-StorageMB <Int64>] -Vcore <Int32>
+New-AzureRmSqlElasticPool [-ElasticPoolName] <String> -Edition <String> [-StorageMB <Int32>] -VCore <Int32>
  -ComputeGeneration <String> [-DatabaseVCoreMin <Double>] [-DatabaseVCoreMax <Double>] [-Tags <Hashtable>]
- [-ZoneRedundant] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-ZoneRedundant] [-LicenseType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -214,7 +214,6 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: DtuBasedPool
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
@@ -227,7 +226,6 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: VcoreBasedPool
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: True
 Position: Named
@@ -245,6 +243,19 @@ Parameter Sets: (All)
 Aliases: Name
 
 Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -288,7 +299,7 @@ parameter, this cmdlet calculates a value that depends on the value of the *Dtu*
 See [eDTU and storage limits](/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools) for possible values.
 
 ```yaml
-Type: Int64
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -317,7 +328,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vcore
+### -VCore
 The total shared number of Vcores for the Sql Azure Elastic Pool.
 
 ```yaml
