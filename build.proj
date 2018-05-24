@@ -265,6 +265,7 @@
     <!-- Build and create package content -->
     <Exec Command="dotnet --version"/>
     <Exec Command="dotnet publish Azure.PowerShell.Netcore.sln -c $(Configuration)"/>
+    <Exec Command="dotnet publish src/Azure.PowerShell.Netcore.Test.sln -c $(Configuration)"/>
 
     <!-- Delete powershell runtime files -->
     <ItemGroup>
