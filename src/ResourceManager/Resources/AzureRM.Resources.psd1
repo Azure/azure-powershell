@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.0.0'
+ModuleVersion = '6.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -160,21 +160,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0
-* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
-* Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
-* Add convenience cmdlet for creating ServicePrincipals
-* Add Tab completers for Scope and ResourceType
-* Merge Get- and Find- functionality in Get-AzureRmResource
-* Add AD Cmdlets:
-  - Remove-AzureRmADGroupMember
-  - Get-AzureRmADGroup
-  - New-AzureRmADGroup
-  - Remove-AzureRmADGroup
-  - Remove-AzureRmADUser
-  - Update-AzureRmADApplication
-  - Update-AzureRmADServicePrincipal
-  - Update-AzureRmADUser'
+        ReleaseNotes = '* Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters
+    - If no values are provided for `Role` or `Scope`, the service principal is created with no permissions
+    - If a `Role` is provided, but no `Scope`, the service principal is created with the specified `Role` permissions over the current subscription
+    - If a `Scope` is provided, but no `Scope`, the service principal is created with `Contributor` permissions over the specified `Scope`
+    - If both `Role` and `Scope` are provided, the service principal is created with the specified `Role` permissions over the specified `Scope`'
 
         # Prerelease string of this module
         # Prerelease = ''
