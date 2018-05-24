@@ -12,15 +12,21 @@ Gets Key Vault managed Azure Storage Accounts.
 
 ## SYNTAX
 
-### ByVaultName (Default)
+### ByAccountName (Default)
 ```
-Get-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [[-AccountName] <String>] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ByAccountName
+### ByInputObject
 ```
-Get-AzureKeyVaultManagedStorageAccount [-VaultName] <String> [-AccountName] <String>
+Get-AzureKeyVaultManagedStorageAccount [-InputObject] <PSKeyVault> [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzureKeyVaultManagedStorageAccount [-ResourceId] <String> [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -53,10 +59,10 @@ Type: String
 Parameter Sets: ByAccountName
 Aliases: StorageAccountName, Name
 
-Required: True
+Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -75,19 +81,64 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultName
-Vault name.
-Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
+### -InputObject
+Vault object.
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InRemovedState
+Specifies whether to show the previously deleted storage accounts in the output.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Vault resource id.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByResourceId
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VaultName
+Vault name.
+Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
+
+```yaml
+Type: String
+Parameter Sets: ByAccountName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -100,8 +151,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount, Microsoft.Azure.Commands.KeyVault, Version=2.5.0.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccount, Microsoft.Azure.Commands.KeyVault, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageAccount, Microsoft.Azure.Commands.KeyVault, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageAccountIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
 
 ## NOTES
 

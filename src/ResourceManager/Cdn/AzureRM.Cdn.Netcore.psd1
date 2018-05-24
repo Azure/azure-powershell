@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.11.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Cdn.dll'
@@ -82,9 +82,11 @@ CmdletsToExport = 'Get-AzureRmCdnProfile', 'Get-AzureRmCdnProfileSsoUrl',
     'Start-AzureRmCdnEndpoint', 'Stop-AzureRmCdnEndpoint', 
     'Test-AzureRmCdnCustomDomain', 'Get-AzureRmCdnCustomDomain', 
     'New-AzureRmCdnCustomDomain', 'Remove-AzureRmCdnCustomDomain', 
-    'Get-AzureRmCdnProfileResourceUsage', 
-    'Get-AzureRmCdnEndpointResourceUsage', 
-    'Get-AzureRmCdnSubscriptionResourceUsage', 'Get-AzureRmCdnEdgeNodes'
+    'Enable-AzureRmCdnCustomDomain', 'Disable-AzureRmCdnCustomDomain', 
+    'Get-AzureRmCdnProfileResourceUsage', 'Confirm-AzureRmCdnEndpointProbeUrl',
+    'Get-AzureRmCdnEndpointResourceUsage', 'Get-AzureRmCdnProfileSupportedOptimizationType',
+    'Get-AzureRmCdnSubscriptionResourceUsage', 
+    'Get-AzureRmCdnEdgeNodes'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -119,7 +121,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = ''
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

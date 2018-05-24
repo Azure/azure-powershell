@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 7740AC3B-F643-4F8D-8DC5-ACBF59323BD8
@@ -15,8 +15,8 @@ Lists all Azure RBAC roles that are available for assignment.
 
 ### RoleDefinitionNameParameterSet
 ```
-Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-AtScopeAndBelow]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmRoleDefinition [[-Name] <String>] [-Scope <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### RoleDefinitionIdParameterSet
@@ -27,8 +27,8 @@ Get-AzureRmRoleDefinition -Id <Guid> [-Scope <String>] [-DefaultProfile <IAzureC
 
 ### RoleDefinitionCustomParameterSet
 ```
-Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-AtScopeAndBelow]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmRoleDefinition [-Scope <String>] [-Custom] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,21 +52,6 @@ PS C:\> Get-AzureRmRoleDefinition
 Lists all RBAC role definitions
 
 ## PARAMETERS
-
-### -AtScopeAndBelow
-If specified, displays all role definitions.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: RoleDefinitionNameParameterSet, RoleDefinitionCustomParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -Custom
 If specified, only displays the custom created roles in the directory.

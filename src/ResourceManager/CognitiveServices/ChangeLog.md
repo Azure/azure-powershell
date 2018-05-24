@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.9.5
+* Set minimum dependency of module to PowerShell 5.0
+
 ## Version 0.9.4
 * Updated to the latest version of the Azure ClientRuntime
 * Integrate with Cognitive Services Management SDK version 4.0.0.

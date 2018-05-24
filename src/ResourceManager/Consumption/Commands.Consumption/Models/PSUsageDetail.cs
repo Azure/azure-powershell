@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Consumption.Common;
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Consumption.Common;
 using ApiUsageDetail = Microsoft.Azure.Management.Consumption.Models.UsageDetail;
 using MeterDetails = Microsoft.Azure.Management.Consumption.Models.MeterDetails;
 
@@ -22,25 +22,35 @@ namespace Microsoft.Azure.Commands.Consumption.Models
 {
     public class PSUsageDetail
     {
-        public string Id { get; private set; }
-        public string Name { get; private set; }
-        public string Type { get; private set; }
-        public IDictionary<string, string> Tags { get; private set; }
-        public DateTime? UsageStart { get; private set; }
-        public DateTime? UsageEnd { get; private set; }
+        public string AccountName { get; set; }
+        public string AdditionalInfo { get; set; }
+        public IDictionary<string, string> AdditionalProperties { get; set; }
+        public decimal? BillableQuantity { get; set; }
+        public string BillingPeriodId { get; set; }
         public string BillingPeriodName { get; set; }
-        public string InvoiceName { get; set; }
-        public string InstanceName { get; set; }
+        public string ConsumedService { get; set; }
+        public string CostCenter { get; set; }
+        public string Currency { get; set; }
+        public string DepartmentName { get; set; }
+        public string Id { get; private set; }
         public string InstanceId { get; set; }
         public string InstanceLocation { get; set; }
-        public string Currency { get; set; }
-        public decimal? UsageQuantity { get; set; }
-        public decimal? BillableQuantity { get; set; }
-        public decimal? PretaxCost { get; set; }
+        public string InstanceName { get; set; }
+        public string InvoiceId { get; set; }
+        public string InvoiceName { get; set; }
         public bool? IsEstimated { get; set; }
-        public string MeterId { get; set; }
         public MeterDetails MeterDetails { get; set; }
-        public IDictionary<string, string> AdditionalProperties { get; set; }
+        public string MeterId { get; set; }
+        public string Name { get; private set; }
+        public decimal? PretaxCost { get; set; }
+        public string Product { get; set; }
+        public string SubscriptionGuid { get; set; }
+        public string SubscriptionName { get; set; }
+        public IDictionary<string, string> Tags { get; private set; }
+        public string Type { get; private set; }
+        public DateTime? UsageEnd { get; private set; }
+        public decimal? UsageQuantity { get; set; }
+        public DateTime? UsageStart { get; private set; }       
 
         public PSUsageDetail()
         {
@@ -50,25 +60,34 @@ namespace Microsoft.Azure.Commands.Consumption.Models
         {
             if (usageDetail != null)
             {
-                this.Id = usageDetail.Id;
-                this.Type = usageDetail.Type;
-                this.Name = usageDetail.Name;
-                this.Tags = usageDetail.Tags;
-                this.UsageStart = usageDetail.UsageStart;
-                this.UsageEnd = usageDetail.UsageEnd;
-                this.BillingPeriodName = Utilities.GetResourceNameFromId(usageDetail.BillingPeriodId);
-                this.InvoiceName = Utilities.GetResourceNameFromId(usageDetail.InvoiceId);
-                this.InstanceId = usageDetail.InstanceId;
-                this.InstanceName = usageDetail.InstanceName;
-                this.InstanceLocation = usageDetail.InstanceLocation;
-                this.Currency = usageDetail.Currency;
-                this.UsageQuantity = usageDetail.UsageQuantity;
+                this.AccountName = usageDetail.AccountName;
+                this.AdditionalInfo = usageDetail.AdditionalProperties;
                 this.BillableQuantity = usageDetail.BillableQuantity;
-                this.PretaxCost = usageDetail.PretaxCost;
+                this.BillingPeriodId = usageDetail.BillingPeriodId;
+                this.BillingPeriodName = Utilities.GetResourceNameFromId(usageDetail.BillingPeriodId);
+                this.ConsumedService = usageDetail.ConsumedService;
+                this.CostCenter = usageDetail.CostCenter;
+                this.Currency = usageDetail.Currency;
+                this.DepartmentName = usageDetail.DepartmentName;
+                this.Id = usageDetail.Id;
+                this.InstanceId = usageDetail.InstanceId;
+                this.InstanceLocation = usageDetail.InstanceLocation;
+                this.InstanceName = usageDetail.InstanceName;
+                this.InvoiceId = usageDetail.InvoiceId;
+                this.InvoiceName = Utilities.GetResourceNameFromId(usageDetail.InvoiceId);
                 this.IsEstimated = usageDetail.IsEstimated;
-                this.MeterId = usageDetail.MeterId;
                 this.MeterDetails = usageDetail.MeterDetails;
-                this.AdditionalProperties = usageDetail.AdditionalProperties;
+                this.MeterId = usageDetail.MeterId;
+                this.Name = usageDetail.Name;
+                this.PretaxCost = usageDetail.PretaxCost;
+                this.Product = usageDetail.Product;
+                this.SubscriptionGuid = usageDetail.SubscriptionGuid;
+                this.SubscriptionName = usageDetail.SubscriptionName;
+                this.Tags = usageDetail.Tags;
+                this.Type = usageDetail.Type;
+                this.UsageEnd = usageDetail.UsageEnd;
+                this.UsageQuantity = usageDetail.UsageQuantity;
+                this.UsageStart = usageDetail.UsageStart;              
             }
         }
     }

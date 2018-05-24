@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: A91F93D3-B8C7-4328-A049-AB9877C1166C
@@ -129,7 +129,7 @@ Tags to be associated with Property. This parameter is optional.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named

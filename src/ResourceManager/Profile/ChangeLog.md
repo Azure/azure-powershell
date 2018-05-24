@@ -19,6 +19,17 @@
 -->
 ## Current Release
 
+## Version 5.1.0
+* Fix issue where running `Clear-AzureRmContext` would keep an empty context with the name of the previous default context, which prevented the user from creating a new context with the old name
+
+## Version 5.0.1
+* Fix issue where default environments weren''t being retrieved without a default context set
+
+## Version 5.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Enable context autosave by default
+* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
+
 ## Version 4.6.0
 * Updated to the latest version of the Azure ClientRuntime
 

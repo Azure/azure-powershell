@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.2.5
+* Fixed Authentication Header
+* Set minimum dependency of module to PowerShell 5.0
+
 ## Version 0.2.4
 * Updated to the latest version of the Azure ClientRuntime
 

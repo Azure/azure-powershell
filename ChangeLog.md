@@ -1,4 +1,209 @@
-﻿## 5.7.0 - April 2018
+﻿## 6.1.0 - May 2018
+#### AzureRM.Profile
+* Fix issue where running 'Clear-AzureRmContext' would keep an empty context with the name of the previous default context, which prevented the user from creating a new context with the old name
+
+#### AzureRM.AnalysisServices
+* Enable Gateway assocaite/disassociate operations on AS.
+
+#### AzureRM.ApiManagement
+* Added support for ApiVersions, ApiReleases and ApiRevisions
+* Added suppport for ServiceFabric Backend
+* Added support for Application Insights Logger
+* Added support for recognizing 'Basic' sku as a valid sku of Api Management service
+* Added support for installing Certificates issued by private CA as Root or CA
+* Added support for accepting Custom SSL certificates via KeyVault and Multiple proxy hostnames
+* Added support for MSI identity
+* Added support for accepting Policies via Url
+NOTE: The following cmdlets will be deprecated in future release
+   - Import-AzureRmApiManagementHostnameCertificate
+   - New-AzureRmApiManagementHostnameConfiguration
+   - Set-AzureRmApiManagementHostnames
+   - Update-AzureRmApiManagementDeployment
+
+#### AzureRM.Batch
+* Release new cmdlet Get-AzureBatchPoolNodeCounts
+* Release new cmdlet Start-AzureBatchComputeNodeServiceLogUpload
+
+#### AzureRM.Consumption
+* Add new parameters Expand, ResourceGroup, InstanceName, InstanceId, Tags, and Top on Cmdlet Get-AzureRmConsumptionUsageDetail
+
+#### AzureRM.DataLakeStore
+* Fix example for Export-AzureRmDataLakeStoreChildItemProperties
+* Fix null parameter exception for Recurse case in Set-AzureRmDataLakeStoreItemAclEntry 
+* Fix the help files for Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl, Remove-AzureRmDataLakeStoreItemAclEntry 
+
+#### AzureRM.Network
+* Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
+* Added cmdlet to create protocol configuration
+    - New-AzureRmNetworkWatcherProtocolConfiguration
+* Added cmdlet to add a new circuit connection to an existing express route circuit.
+    - Add-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to remove a circuit connection from an existing express route circuit.
+    - Remove-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to retrieve a circuit connection
+    - Get-AzureRmExpressRouteCircuitConnectionConfig
+
+#### AzureRM.ServiceFabric
+* Fixed server authentication usage with generated certificates (Issue #5998)
+
+#### AzureRM.Sql
+* Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
+* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with 'Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy'.
+* Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
+* The updated cmdlets including: 
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
+	- New-AzureRmSqlDatabaseCopy
+	- New-AzureRmSqlDatabaseSecondary
+	- Restore-AzureRmSqlDatabase
+
+#### AzureRM.TrafficManager
+* Update the parameters for 'Get-AzureRmTrafficManagerProfile' so that -ResourceGroupName parameter is required when using -Name parameter.
+
+## 6.0.0 - May 2018
+#### General
+* Set minimum dependency of modules to PowerShell 5.0
+
+#### Azure.Storage
+* Support  as Storage blob container name
+	- New-AzureStorageBlobContainer
+	- Remove-AzureStorageBlobContainer
+	- Set-AzureStorageBlobContent
+	- Get-AzureStorageBlobContent
+* Fix the issue that some Storage cmdlets failure output not contain detail failure information
+
+#### AzureRM.ApiManagement
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Automation
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'Set-AzureRmAutomationRunbook'
+
+#### AzureRM.Batch
+* Updated New-AzureBatchPool documentation to remove deprecated example
+
+#### AzureRM.Cdn
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Compute
+* 'New-AzureRmVm' and 'New-AzureRmVmss' support verbose output of parameters
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).
+* VMSS Redeploy and PerformMaintenance feature
+    -  Add new switch parameter -Redeploy and -PerformMaintenance to 'Set-AzureRmVmss' and 'Set-AzureRmVmssVM'
+* Add DisableVMAgent switch parameter to 'Set-AzureRmVMOperatingSystem' cmdlet
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support a 'Win10' image.
+* 'Repair-AzureRmVmssServiceFabricUpdateDomain' cmdlet is added.
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more details
+* 'Set-AzureRmVmDiskEncryptionExtension' makes AAD parameters optional 
+
+#### AzureRM.DataFactories
+* Remove deprecated 'Tags' alias from cmdlets
+    - New-AzureRmDataFactory
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 0.7.0-preview containing following changes:
+    - Added execution parameters and connection managers property on ExecuteSSISPackage Activity
+    - Updated PostgreSql, MySql llinked service to use full connection string instead of server, database, schema, username and password
+    - Removed the schema from DB2 linked service
+    - Removed schema property from Teradata linked service
+    - Added LinkedService, Dataset, CopySource for Responsys
+
+#### AzureRM.DataLakeAnalytics
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'New-AzureRmDataLakeAnalyticsAccount'
+    - 'Set-AzureRmDataLakeAnalyticsAccount'
+
+#### AzureRM.DataLakeStore
+* Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
+* Add new cmdlet for retrieving the content summary under a directory
+* Add new cmdlet for retrieving the disk usage and Acl dump
+* Correct return type of Set-AzureRmDataLakeStoreItemAcl bool to IEnumerable<DataLakeStoreItemAce>
+* Correct return type of Set-AzureRmDataLakeStoreItemAclEntry bool to IEnumerable<DataLakeStoreItemAce>
+* Breaking changes in Export-AzureRmDataLakeStoreItem, Import-AzureRmDataLakeStoreItem, Remove-AzureRmDataLakeStoreItem
+
+#### AzureRM.Dns
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.EventHub
+* Updated Help for cmdlets with missing examples
+
+#### AzureRM.Insights
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.IotHub
+* Enable tags and Basic Sku to the IotHub
+
+#### AzureRM.KeyVault
+* Breaking changes to support piping scenarios
+* Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
+
+#### AzureRM.MachineLearning
+* Remove deprecated 'Tags' alias from cmdlets
+    - Update-AzureRmMlCommitmentPlan
+
+#### AzureRM.Media
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'Set-AzureRmMediaService'
+
+#### AzureRM.Network
+* Add support for DDoS protection plan resource
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.NotificationHubs
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.OperationalInsights
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Profile
+* Enable context autosave by default
+* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Fixed Authentication Header in SiteRecovery scenarios
+
+#### AzureRM.RedisCache
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Resources
+* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
+* Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Add Tab completers for Scope and ResourceType
+* Add convenience cmdlet for creating ServicePrincipals
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add AD Cmdlets:
+  - Remove-AzureRmADGroupMember
+  - Get-AzureRmADGroup
+  - New-AzureRmADGroup
+  - Remove-AzureRmADGroup
+  - Remove-AzureRmADUser
+  - Update-AzureRmADApplication
+  - Update-AzureRmADServicePrincipal
+  - Update-AzureRmADUser
+
+#### AzureRM.ServiceFabric
+* Update default Linux image version sku
+  - NewAzureServiceFabricCluster.cs default UbuntuServer1604 Sku update
+
+#### AzureRM.Storage
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Websites
+* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for Set-AzureRmWebApp and Set-AzureRmWebAppSlot
+- Added two new cmdlets: Get-AzureRmWebAppSnapshots and Restore-AzureRmWebAppSnapshot
+
+## 5.7.0 - April 2018
 
 #### General
 * Updated to the latest version of the Azure ClientRuntime
