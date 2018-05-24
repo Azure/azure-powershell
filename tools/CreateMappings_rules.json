@@ -129,7 +129,7 @@
     { "regex": "AD", "group": "Resources", "alias": "Active Directory" }, 
     { "regex": "Resources", "group": "Resources", "alias": "Resources" },
 
-    { "regex":  "LocationBasedServices", "alias":  "Location Based Services"  },
+    { "regex":  "Maps", "alias":  "Maps"  },
     { "regex": "Aks", "group": "Aks", "alias": "Aks" },
 
     { "regex": "ManagedServiceIdentity", "group": "Managed Service Identity", "alias": "Managed Service Identity" },

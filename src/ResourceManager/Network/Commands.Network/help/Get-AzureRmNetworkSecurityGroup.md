@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 5AECCBD7-1FDE-4217-9F59-36328062E669
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -100,7 +100,7 @@ Specifies the name of the resource group that the network security group belongs
 ```yaml
 Type: String
 Parameter Sets: NoExpand
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
