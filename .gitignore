@@ -229,3 +229,5 @@ Package
 .idea
 /src/ResourceManager/RecoveryServices.Backup/**/bin
 launchSettings.json
+/src/StackAdmin/AzureRM/AzureRM.psm1
+/src/StackAdmin/AzureStack/AzureStack.psm1

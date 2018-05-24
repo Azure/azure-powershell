@@ -29,7 +29,6 @@
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="15.1.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ServiceFabric" Version="1.0.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="6.5.0-preview" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="10.0.0.0" />
     <PackageReference Include="Moq" Version="4.2.1510.2205" />
   </ItemGroup>
 
