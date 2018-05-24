@@ -384,3 +384,40 @@ function Test-RemoveDatabaseRestorePoint
 		Remove-ResourceGroupForTest $rg
 	}
 }
+
+function Test-ShortTermRetentionPolicy($location = "westcentralus")
+{
+	# Setup
+	$location = Get-Location Microsoft.Sql "servers" $location
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$defaultRetention = 35
+	$updatedRetention = 14
+
+	try
+	{
+		# Create with default values
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+
+		# Test default retention
+		$policy_default = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $policy_default.Count 1
+		Assert-AreEqual $policy_default[0].Policy.RetentionDays $defaultRetention
+
+		# Test changing short term retention days
+		Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $updatedRetention
+		
+		#Test Piping
+		$shortTermRetentionPeriod = Get-AzureRmSqlDatabase -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName | Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy
+		Assert-AreEqual $shortTermRetentionPeriod.Count 1
+		Assert-AreEqual $shortTermRetentionPeriod[0].Policy.RetentionDays $defaultRetention
+		$policy_updated = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $policy_updated.Count 1
+		Assert-AreEqual $policy_updated[0].Policy.RetentionDays $updatedRetention
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}

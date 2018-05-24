@@ -383,6 +383,41 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Get the ShortTermRetention policy for a Azure SQL Database
+        /// </summary>
+        /// <param name="resourceGroup">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>A backup LongTermRetention policy</returns>
+        public BackupShortTermRetentionPolicy GetDatabaseBackupShortTermRetentionPolicy(
+            string resourceGroupName,
+            string serverName,
+            string databaseName)
+        {
+            return GetCurrentSqlClient().BackupShortTermRetentionPolicies.Get(
+                resourceGroupName,
+                serverName,
+                databaseName);
+        }
+
+        /// <summary>
+        /// Sets a database's backup Short Term Retention policy.
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name.</param>
+        /// <param name="serverName">The server name.</param>
+        /// <param name="databaseName">The database name.</param>
+        /// <param name="policy">The Long Term Retention policy to apply.</param>
+        /// <returns>A backup ShortTermRetention policy</returns>
+        public Management.Sql.Models.BackupShortTermRetentionPolicy SetDatabaseBackupShortTermRetentionPolicy(
+            string resourceGroup,
+            string serverName,
+            string databaseName,
+            Management.Sql.Models.BackupShortTermRetentionPolicy policy)
+        {
+            return GetCurrentSqlClient().BackupShortTermRetentionPolicies.CreateOrUpdate(resourceGroup, serverName, databaseName, policy);
+        }
+
+        /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>
