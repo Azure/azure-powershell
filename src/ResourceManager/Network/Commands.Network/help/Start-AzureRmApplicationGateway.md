@@ -38,7 +38,7 @@ Specifies the application gateway that this cmdlet starts.
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

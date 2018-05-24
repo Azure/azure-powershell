@@ -33,7 +33,11 @@ namespace Microsoft.Azure.Commands.Network
         private const string SetFlowlogByNameWithTAByResource = "SetFlowlogByNameWithTAByResource";
         private const string SetFlowlogByNameWithTAByDetails = "SetFlowlogByNameWithTAByDetails";
         private const string SetFlowlogByNameWithoutTA = "SetFlowlogByNameWithoutTA";
+        private const string SetFlowlogByLocationWithTAByResource = "SetFlowlogByLocationWithTAByResource";
+        private const string SetFlowlogByLocationWithTAByDetails = "SetFlowlogByLocationWithTAByDetails";
+        private const string SetFlowlogByLocationWithoutTA = "SetFlowlogByLocationWithoutTA";
         private const string SetFlowlogByResource = "SetFlowlogByResource";
+        private const string SetFlowlogByLocation = "SetFlowlogByLocation";
         private const string WithTA = "WithTA";
         private const string TAByDetails = "TAByDetails";
 
@@ -96,6 +100,25 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = SetFlowlogByLocationWithoutTA)]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The target resource ID.")]
         [ValidateNotNullOrEmpty]
         public string TargetResourceId { get; set; }
@@ -149,6 +172,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Flag to enable/disable retention.",
             ParameterSetName = SetFlowlogByNameWithTAByDetails)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable/disable retention.",
+            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Flag to enable/disable retention.",
+            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNull]
         public SwitchParameter EnableTrafficAnalytics { get; set; }
 
@@ -162,6 +193,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
             ParameterSetName = SetFlowlogByNameWithTAByDetails)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceResourceId { get; set; }
 
@@ -176,6 +212,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
             ParameterSetName = SetFlowlogByNameWithTAByDetails)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceGUID { get; set; }
 
@@ -189,6 +230,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
             ParameterSetName = SetFlowlogByNameWithTAByDetails)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
+            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
         [ValidateNotNullOrEmpty]
         public string WorkspaceLocation { get; set; }
 
@@ -202,6 +248,11 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipeline = true,
             HelpMessage = "The WS object which is used to store the traffic analytics data.",
             ParameterSetName = SetFlowlogByNameWithTAByResource)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The WS object which is used to store the traffic analytics data.",
+            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
         [ValidateNotNull]
         public IOperationalInsightWorkspace Workspace { get; set; }
 
@@ -214,7 +265,20 @@ namespace Microsoft.Azure.Commands.Network
             string WorkspaceGUID;
             string WorkspaceLocation;
 
-            if (ParameterSetName.Contains(SetFlowlogByResource))
+
+            if (ParameterSetName.Contains(SetFlowlogByLocation))
+            {
+                var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
+
+                if (networkWatcher == null)
+                {
+                    throw new System.ArgumentException("There is no network watcher in location {0}", this.Location);
+                }
+
+                resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                name = networkWatcher.Name;
+            }
+            else if (ParameterSetName.Contains(SetFlowlogByResource))
             {
                 resourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 name = this.NetworkWatcher.Name;
