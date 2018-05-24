@@ -13,7 +13,7 @@
           "112"
         ],
         "x-ms-client-request-id": [
-          "ec66724c-2882-42da-968b-50d563603d83"
+          "f732ce82-ac39-41bb-9b3c-b604ccb33acb"
         ],
         "Cache-Control": [
           "no-cache"
@@ -25,7 +25,7 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroupParent3\",\r\n  \"status\": \"NotStarted\"\r\n}",
@@ -46,22 +46,22 @@
           "0"
         ],
         "x-ms-request-id": [
-          "eastus:29f202bf-75a8-41e5-8a03-d6b4aab5665c"
+          "eastus:eedb9067-6739-4c98-ae82-08e58ab4cfd4"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "443dfab7-495e-48b6-ace5-97303ac89a5e"
+          "e79b2992-859e-4495-8d5d-9f5ddc88f89b"
         ],
         "x-ms-ratelimit-remaining-tenant-writes": [
-          "1168"
+          "1196"
         ],
         "x-ms-correlation-request-id": [
-          "7a8396e1-19ac-4a30-9107-33f0e858ef51"
+          "ba406ca9-9029-45ca-95ca-730698ea7251"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083106Z:7a8396e1-19ac-4a30-9107-33f0e858ef51"
+          "NORTHEUROPE:20180524T194545Z:ba406ca9-9029-45ca-95ca-730698ea7251"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -73,7 +73,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:31:05 GMT"
+          "Thu, 24 May 2018 19:45:45 GMT"
         ],
         "Location": [
           "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/create/managementGroups/TestPSUpdateGroupParent3?api-version=2018-03-01-preview"
@@ -100,85 +100,10 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroupParent3\",\r\n  \"status\": \"Running\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "193"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "0"
-        ],
-        "x-ms-request-id": [
-          "eastus:d3c3b5d2-b6ba-43d8-8b60-8b938ce62294"
-        ],
-        "x-ba-restapi": [
-          "1.0.3.790"
-        ],
-        "request-id": [
-          "7de447ec-3923-4d04-a7b8-d1452a02921c"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14849"
-        ],
-        "x-ms-correlation-request-id": [
-          "b90ea867-d214-4467-955c-cae732f5a34a"
-        ],
-        "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083117Z:b90ea867-d214-4467-955c-cae732f5a34a"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 23 May 2018 08:31:16 GMT"
-        ],
-        "Location": [
-          "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/create/managementGroups/TestPSUpdateGroupParent3?api-version=2018-03-01-preview"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/providers/Microsoft.Management/operationResults/create/managementGroups/TestPSUpdateGroupParent3?api-version=2018-03-01-preview",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuTWFuYWdlbWVudC9vcGVyYXRpb25SZXN1bHRzL2NyZWF0ZS9tYW5hZ2VtZW50R3JvdXBzL1Rlc3RQU1VwZGF0ZUdyb3VwUGFyZW50Mz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.3056.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroupParent3\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"tenantId\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n    \"displayName\": \"TestPSUpdateGroupParent3\",\r\n    \"details\": {\r\n      \"version\": 6,\r\n      \"updatedTime\": \"2018-05-23T08:31:16.2990682Z\",\r\n      \"updatedBy\": \"aef7ed39-6482-40be-a70c-8ec0669b0d04\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"name\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"displayName\": \"b1af47f1-138c-4ed2-8bba-119041b95450\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroupParent3\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"tenantId\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n    \"displayName\": \"TestPSUpdateGroupParent3\",\r\n    \"details\": {\r\n      \"version\": 7,\r\n      \"updatedTime\": \"2018-05-24T19:45:48.0041857Z\",\r\n      \"updatedBy\": \"aef7ed39-6482-40be-a70c-8ec0669b0d04\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"name\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"displayName\": \"b1af47f1-138c-4ed2-8bba-119041b95450\"\r\n      }\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "624"
@@ -196,22 +121,22 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14848"
+          "14973"
         ],
         "x-ms-request-id": [
-          "eastus:04374272-a8bf-45ec-812d-928443562ac3"
+          "eastus:7d960d76-db3f-4f73-b377-d1a36a7a16be"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "06b90db1-abb2-426e-aa82-c72c2653a341"
+          "7e72c845-b2d9-4f54-8cbc-a22eda2f6dd6"
         ],
         "x-ms-correlation-request-id": [
-          "fe42dfee-1c8a-43eb-9380-746c2e37f0b0"
+          "8ac68c17-bca1-4cf1-872a-893c952526ec"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083128Z:fe42dfee-1c8a-43eb-9380-746c2e37f0b0"
+          "NORTHEUROPE:20180524T194555Z:8ac68c17-bca1-4cf1-872a-893c952526ec"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -223,7 +148,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:31:28 GMT"
+          "Thu, 24 May 2018 19:45:55 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -253,7 +178,7 @@
           "106"
         ],
         "x-ms-client-request-id": [
-          "81b03103-67fe-4db0-890e-ca48d47783bb"
+          "37e3662a-bee3-4081-9ab8-284a91cb937b"
         ],
         "Cache-Control": [
           "no-cache"
@@ -265,7 +190,7 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroup3\",\r\n  \"status\": \"NotStarted\"\r\n}",
@@ -286,22 +211,22 @@
           "0"
         ],
         "x-ms-request-id": [
-          "eastus:5ef5b31a-33c6-4944-82f3-5f0970a602ca"
+          "eastus:446e4587-7d1b-482a-aaa5-20bd38792bcd"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "11159f09-0f91-49c1-a5fa-7b0c8c6b2cb8"
+          "0cf9e704-8b86-4d0f-bdaf-83cddcdd3191"
         ],
         "x-ms-ratelimit-remaining-tenant-writes": [
-          "1157"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "123efda9-6026-43c5-a853-a45667d09dcf"
+          "379b99be-5bbf-4d10-9ff7-e127f0d06dc0"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083131Z:123efda9-6026-43c5-a853-a45667d09dcf"
+          "NORTHEUROPE:20180524T194558Z:379b99be-5bbf-4d10-9ff7-e127f0d06dc0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -313,7 +238,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:31:30 GMT"
+          "Thu, 24 May 2018 19:45:57 GMT"
         ],
         "Location": [
           "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/create/managementGroups/TestPSUpdateGroup3?api-version=2018-03-01-preview"
@@ -340,10 +265,10 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroup3\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"tenantId\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n    \"displayName\": \"TestPSUpdateGroup3\",\r\n    \"details\": {\r\n      \"version\": 11,\r\n      \"updatedTime\": \"2018-05-23T08:31:40.5996186Z\",\r\n      \"updatedBy\": \"aef7ed39-6482-40be-a70c-8ec0669b0d04\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"name\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"displayName\": \"b1af47f1-138c-4ed2-8bba-119041b95450\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroup3\",\r\n  \"status\": \"Succeeded\",\r\n  \"properties\": {\r\n    \"tenantId\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n    \"displayName\": \"TestPSUpdateGroup3\",\r\n    \"details\": {\r\n      \"version\": 13,\r\n      \"updatedTime\": \"2018-05-24T19:46:04.1124268Z\",\r\n      \"updatedBy\": \"aef7ed39-6482-40be-a70c-8ec0669b0d04\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"name\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n        \"displayName\": \"b1af47f1-138c-4ed2-8bba-119041b95450\"\r\n      }\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "607"
@@ -361,22 +286,22 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14843"
+          "14972"
         ],
         "x-ms-request-id": [
-          "eastus:85abc32f-6ebf-4b4a-81fb-ef248b667dcc"
+          "eastus:ba9c8860-a45f-4c6d-bd83-17d82809b0c9"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "be274b56-7b67-4285-8cdc-c4c54cd0700f"
+          "824b4cb7-36b8-4eb2-a795-4b70616fc498"
         ],
         "x-ms-correlation-request-id": [
-          "fc62e93b-0f59-4675-b581-b34b863c7f2a"
+          "019e4e8b-5ed2-4859-9ac1-215bbf2a7679"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083142Z:fc62e93b-0f59-4675-b581-b34b863c7f2a"
+          "NORTHEUROPE:20180524T194608Z:019e4e8b-5ed2-4859-9ac1-215bbf2a7679"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -388,7 +313,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:31:42 GMT"
+          "Thu, 24 May 2018 19:46:07 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -418,7 +343,7 @@
           "132"
         ],
         "x-ms-client-request-id": [
-          "6f0ce835-b62d-46c4-bc8c-29e17d3fada3"
+          "15d27180-e5b7-4d16-9e45-cabfb19a9ba7"
         ],
         "Cache-Control": [
           "no-cache"
@@ -430,10 +355,10 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroup3\",\r\n  \"properties\": {\r\n    \"tenantId\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"version\": 12,\r\n      \"updatedTime\": \"2018-05-23T08:31:44.1034343Z\",\r\n      \"updatedBy\": \"aef7ed39-6482-40be-a70c-8ec0669b0d04\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n        \"name\": \"TestPSUpdateGroupParent3\",\r\n        \"displayName\": \"TestPSUpdateGroupParent3\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroup3\",\r\n  \"properties\": {\r\n    \"tenantId\": \"b1af47f1-138c-4ed2-8bba-119041b95450\",\r\n    \"displayName\": \"TestDisplayName\",\r\n    \"details\": {\r\n      \"version\": 14,\r\n      \"updatedTime\": \"2018-05-24T19:46:10.5452483Z\",\r\n      \"updatedBy\": \"aef7ed39-6482-40be-a70c-8ec0669b0d04\",\r\n      \"parent\": {\r\n        \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n        \"name\": \"TestPSUpdateGroupParent3\",\r\n        \"displayName\": \"TestPSUpdateGroupParent3\"\r\n      }\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "547"
@@ -450,23 +375,23 @@
         "Vary": [
           "Accept-Encoding"
         ],
-        "x-ms-correlation-request-id": [
-          "6e1da0f5-855b-41fa-baba-187ee8ea6606"
+        "x-ms-ratelimit-remaining-tenant-writes": [
+          "1194"
         ],
         "x-ms-request-id": [
-          "eastus:ec9a7914-a46c-4021-8c29-ca13cb41dfa8"
+          "eastus:7b051b99-685d-49d8-9eb3-5ede1fb2ee74"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "ca3b20e1-c86d-44c9-b178-7f260018bd3f"
+          "15fdc5c5-fb76-4a04-aa7f-32312e3b88b9"
         ],
-        "x-ms-ratelimit-remaining-tenant-writes": [
-          "1163"
+        "x-ms-correlation-request-id": [
+          "f12f466e-ca15-417d-a799-5a88d11341d6"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083145Z:6e1da0f5-855b-41fa-baba-187ee8ea6606"
+          "NORTHEUROPE:20180524T194612Z:f12f466e-ca15-417d-a799-5a88d11341d6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -478,7 +403,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:31:45 GMT"
+          "Thu, 24 May 2018 19:46:11 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -502,7 +427,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9623e7ed-f385-417b-aba8-cf7707e63f87"
+          "1a38908c-bc41-4c42-bb01-3ba85700ff29"
         ],
         "Cache-Control": [
           "no-cache"
@@ -514,7 +439,7 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroup3\",\r\n  \"status\": \"NotStarted\"\r\n}",
@@ -535,22 +460,22 @@
           "0"
         ],
         "x-ms-request-id": [
-          "eastus:3fbf12fc-77f7-4337-85c7-5d39274044ec"
+          "eastus:5a68c6fe-1fe7-4dc3-b22c-58b8d8e3389e"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "8c33af65-c2a6-4005-b5ee-fac1cefd8024"
+          "f3af3591-ead8-43ff-85be-f803401b52c2"
         ],
         "x-ms-ratelimit-remaining-tenant-writes": [
-          "1156"
+          "1193"
         ],
         "x-ms-correlation-request-id": [
-          "8087ce8a-1db3-4248-aae9-ddb3b9603e24"
+          "97952840-4d51-4c89-b622-087746750411"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083148Z:8087ce8a-1db3-4248-aae9-ddb3b9603e24"
+          "NORTHEUROPE:20180524T194614Z:97952840-4d51-4c89-b622-087746750411"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -562,7 +487,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:31:47 GMT"
+          "Thu, 24 May 2018 19:46:14 GMT"
         ],
         "Location": [
           "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSUpdateGroup3?api-version=2018-03-01-preview"
@@ -589,7 +514,7 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroup3\",\r\n  \"status\": \"Succeeded\"\r\n}",
@@ -610,22 +535,22 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14842"
+          "14971"
         ],
         "x-ms-request-id": [
-          "eastus:7c4944a5-a610-4a5d-9d4b-a0262f81162a"
+          "eastus:735eed7e-1363-40e8-9102-7e1b35ece6f7"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "8b95e31a-b394-4cc1-b835-cf30a105b0ba"
+          "4d5ef4b0-9d3f-49fb-9d96-ba767360864d"
         ],
         "x-ms-correlation-request-id": [
-          "e1c18f87-a1cc-4933-85bf-0ae32f498bfe"
+          "53d21f92-a98a-45ac-b45b-5a5d0772af43"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083158Z:e1c18f87-a1cc-4933-85bf-0ae32f498bfe"
+          "NORTHEUROPE:20180524T194624Z:53d21f92-a98a-45ac-b45b-5a5d0772af43"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -637,7 +562,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:31:57 GMT"
+          "Thu, 24 May 2018 19:46:24 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -664,7 +589,7 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroup3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroup3\",\r\n  \"status\": \"Succeeded\"\r\n}",
@@ -685,22 +610,22 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14841"
+          "14970"
         ],
         "x-ms-request-id": [
-          "eastus:011b6956-f7ea-468a-8328-f335776d2604"
+          "eastus:41804825-7383-4e24-bbcd-019d9cb928ae"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "7a718c07-4331-473c-b4c6-079ac0471a3b"
+          "45121e84-987b-4224-a8d8-64b10fad5da8"
         ],
         "x-ms-correlation-request-id": [
-          "048eea4f-6956-4da9-90ef-b9120e05e919"
+          "f19a31ed-3914-4efd-bc9a-135e7f283736"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083159Z:048eea4f-6956-4da9-90ef-b9120e05e919"
+          "NORTHEUROPE:20180524T194625Z:f19a31ed-3914-4efd-bc9a-135e7f283736"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -712,7 +637,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:31:58 GMT"
+          "Thu, 24 May 2018 19:46:24 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -736,7 +661,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "611fdb13-4022-4eb8-9048-b36da33eca87"
+          "7385ef02-6289-41b5-8623-623ca0d9424b"
         ],
         "Cache-Control": [
           "no-cache"
@@ -748,7 +673,7 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroupParent3\",\r\n  \"status\": \"NotStarted\"\r\n}",
@@ -769,22 +694,22 @@
           "0"
         ],
         "x-ms-request-id": [
-          "eastus:c151b7bb-d0c6-403b-b9fd-c30d878fc01f"
+          "eastus:fef8a77d-4284-43d6-91e6-d091afb985df"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "754af4ae-8ba8-4854-82a2-1fbb5f1fe77d"
+          "431f1e8c-752d-4bbb-8d81-cf3d331884d4"
         ],
         "x-ms-ratelimit-remaining-tenant-writes": [
-          "1167"
+          "1192"
         ],
         "x-ms-correlation-request-id": [
-          "8a08027a-3dc6-44f7-9687-57f17bf0ab3c"
+          "d3cc2b79-a852-4bbc-8203-7d248c1ec849"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083201Z:8a08027a-3dc6-44f7-9687-57f17bf0ab3c"
+          "NORTHEUROPE:20180524T194627Z:d3cc2b79-a852-4bbc-8203-7d248c1ec849"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -796,7 +721,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:32:01 GMT"
+          "Thu, 24 May 2018 19:46:26 GMT"
         ],
         "Location": [
           "https://api-dogfood.resources.windows-int.net/providers/Microsoft.Management/operationResults/delete/managementGroups/TestPSUpdateGroupParent3?api-version=2018-03-01-preview"
@@ -823,7 +748,7 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroupParent3\",\r\n  \"status\": \"Succeeded\"\r\n}",
@@ -843,23 +768,23 @@
         "Vary": [
           "Accept-Encoding"
         ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14847"
+        "x-ms-correlation-request-id": [
+          "6397cf9e-0886-4763-b994-01939ae613fa"
         ],
         "x-ms-request-id": [
-          "eastus:4a1c5f85-7c68-4be9-8509-f43d84d3f82b"
+          "eastus:06731480-22e4-403e-bdb4-b8baf59cb916"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "86076104-2f08-4215-9642-637bfdf32a08"
+          "1557c06c-f84a-443e-a244-58a856187bfa"
         ],
-        "x-ms-correlation-request-id": [
-          "9a344fcb-0693-4cf1-80ff-e9cee8798da3"
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14969"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083212Z:9a344fcb-0693-4cf1-80ff-e9cee8798da3"
+          "NORTHEUROPE:20180524T194637Z:6397cf9e-0886-4763-b994-01939ae613fa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -871,7 +796,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:32:12 GMT"
+          "Thu, 24 May 2018 19:46:37 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -898,7 +823,7 @@
           "FxVersion/4.7.3056.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.2.0.0"
+          "Microsoft.Azure.Management.ManagementGroups.ManagementGroupsAPIClient/1.1.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"id\": \"/providers/Microsoft.Management/managementGroups/TestPSUpdateGroupParent3\",\r\n  \"type\": \"/providers/Microsoft.Management/managementGroups\",\r\n  \"name\": \"TestPSUpdateGroupParent3\",\r\n  \"status\": \"Succeeded\"\r\n}",
@@ -919,22 +844,22 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14846"
+          "14968"
         ],
         "x-ms-request-id": [
-          "eastus:9ae3f891-ac92-44c3-874c-7eab1af17448"
+          "eastus:8757b356-a017-4408-b4b4-ff2cd3987cc8"
         ],
         "x-ba-restapi": [
-          "1.0.3.790"
+          "1.0.3.795"
         ],
         "request-id": [
-          "8cff8cc0-506e-456a-af56-b361a18f4e29"
+          "f840168a-da3b-4e7e-b96a-44e20956dfbb"
         ],
         "x-ms-correlation-request-id": [
-          "e019a242-3dac-433f-b27f-0c319199e36a"
+          "1923d658-9ecc-43ac-89c6-d2ba654aef0f"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180523T083213Z:e019a242-3dac-433f-b27f-0c319199e36a"
+          "NORTHEUROPE:20180524T194638Z:1923d658-9ecc-43ac-89c6-d2ba654aef0f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -946,7 +871,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 23 May 2018 08:32:12 GMT"
+          "Thu, 24 May 2018 19:46:38 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
