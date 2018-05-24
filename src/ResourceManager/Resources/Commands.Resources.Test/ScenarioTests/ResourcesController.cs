@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -121,6 +121,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
             d.Add("Microsoft.Authorization", null);
+            d.Add("Providers.Test", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2016-07-01");
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
