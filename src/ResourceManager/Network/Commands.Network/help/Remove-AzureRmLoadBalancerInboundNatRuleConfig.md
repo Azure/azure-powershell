@@ -56,7 +56,7 @@ Specifies the **LoadBalancer** object that contains the inbound NAT rule configu
 ```yaml
 Type: PSLoadBalancer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ Specifies the name of the inbound NAT rule configuration that this cmdlet remove
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

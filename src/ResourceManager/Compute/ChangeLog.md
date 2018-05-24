@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-* `New-AzureRmVm` and `New-AzureRmVmss` simple parameter set has the `OutputTemplateFile` parameter.
+* VMSS VM Update feature
+    - Added `Update-AzureRmVmssVM` and `New-AzureRmVMDataDisk` cmdlets
+    - Add VirtualMachineScaleSetVM parameter to `Add-AzureRmVMDataDisk` cmdlet to support adding a data disk to Vmss VM.
 
 ## Version 5.0.0
 * `New-AzureRmVm` and `New-AzureRmVmss` support verbose output of parameters

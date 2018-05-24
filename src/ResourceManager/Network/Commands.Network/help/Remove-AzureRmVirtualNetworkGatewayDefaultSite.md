@@ -64,7 +64,7 @@ You can create an object reference to a virtual network gateway by using the Get
 ```yaml
 Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
