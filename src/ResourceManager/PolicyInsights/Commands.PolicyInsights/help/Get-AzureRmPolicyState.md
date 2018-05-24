@@ -453,8 +453,8 @@ Accept wildcard characters: False
 ```
 
 ### -To
-ISO 8601 formatted timestamp specifying the start time of the interval to query.
-When not specified, defaults to 'To' parameter value minus 1 day.
+ISO 8601 formatted timestamp specifying the end time of the interval to query.
+When not specified, defaults to time of request.
 
 ```yaml
 Type: DateTime
