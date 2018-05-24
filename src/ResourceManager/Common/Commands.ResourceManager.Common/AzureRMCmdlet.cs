@@ -205,7 +205,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 SessionId = _sessionId,
                 IsSuccess = true,
                 ParameterSetName = this.ParameterSetName
-        };
+            };
 
             if (this.MyInvocation != null && !string.IsNullOrWhiteSpace(this.MyInvocation.InvocationName))
             {
