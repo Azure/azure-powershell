@@ -600,18 +600,21 @@ function Test-ConnectivityCheck
         # Create Network Watcher
         $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
 
-        #Get Vm
+        # Get Vm
         $vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName
         
-        #Install networkWatcherAgent on Vm
+        # Install networkWatcherAgent on Vm
         Set-AzureRmVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher"
 
-        #Connectivity check
-        $job = Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" -DestinationPort 80 -AsJob
+		# Set up protocol configuration
+		$config = New-AzureRMNetworkWatcherProtocolConfiguration -Protocol "Http" -Method "Get" -Header @{"accept"="application/json"} -ValidStatusCode @(200,202,204)
+
+        # Connectivity check
+        $job = Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $nw -SourceId $vm.Id -DestinationAddress "bing.com" -DestinationPort 80 -ProtocolConfiguration $config -AsJob
         $job | Wait-Job
         $check = $job | Receive-Job
 
-        #Verification
+        # Verification
         Assert-AreEqual $check.ConnectionStatus "Reachable"
         Assert-AreEqual $check.ProbesFailed 0
         Assert-AreEqual $check.Hops.Count 2
