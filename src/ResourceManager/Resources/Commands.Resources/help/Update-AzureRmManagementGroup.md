@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.Commands.ManagementGroups.dll-Help.xml
-Module Name: AzureRM.ManagementGroups
+external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/update-azurermmanagementgroup/
 schema: 2.0.0
 ---
@@ -14,26 +14,26 @@ Updates a Management Group
 
 ### GroupOperations (Default)
 ```
-Update-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>] [[-ParentId] <String>]
+Update-AzureRmManagementGroup -GroupName <String> [-DisplayName <String>] [-ParentId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentAndManagementGroupObject
 ```
-Update-AzureRmManagementGroup -InputObject <PSManagementGroup> [-DisplayName] <String>
+Update-AzureRmManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>]
  [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ManagementGroupObject
 ```
-Update-AzureRmManagementGroup -InputObject <PSManagementGroup> [[-DisplayName] <String>] [[-ParentId] <String>]
+Update-AzureRmManagementGroup -InputObject <PSManagementGroup> [-DisplayName <String>] [-ParentId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
-Update-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>]
+Update-AzureRmManagementGroup -GroupName <String> [-DisplayName <String>]
  [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -130,23 +130,11 @@ Display Name of the management group
 
 ```yaml
 Type: String
-Parameter Sets: GroupOperations, ManagementGroupObject, ParentGroupObject
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ParentAndManagementGroupObject
-Aliases: 
-
-Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -161,7 +149,7 @@ Parameter Sets: GroupOperations, ParentGroupObject
 Aliases: 
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -191,7 +179,7 @@ Parameter Sets: GroupOperations, ManagementGroupObject
 Aliases: 
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

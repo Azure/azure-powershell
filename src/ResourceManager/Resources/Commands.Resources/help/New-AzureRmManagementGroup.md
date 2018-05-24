@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.Commands.ManagementGroups.dll-Help.xml
-Module Name: AzureRM.ManagementGroups
+external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/new-azurermmanagementgroup/
 schema: 2.0.0
 ---
@@ -14,13 +14,13 @@ Creates a Management Group
 
 ### GroupOperations (Default)
 ```
-New-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>] [[-ParentId] <String>]
+New-AzureRmManagementGroup [-GroupName] <String> [-DisplayName <String>] [-ParentId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
-New-AzureRmManagementGroup [-GroupName] <String> [[-DisplayName] <String>]
+New-AzureRmManagementGroup [-GroupName] <String> [-DisplayName <String>]
  [-DefaultProfile <IAzureContextContainer>] -ParentObject <PSManagementGroup> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -125,7 +125,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -155,7 +155,7 @@ Parameter Sets: GroupOperations
 Aliases: 
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

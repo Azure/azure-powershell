@@ -1,6 +1,6 @@
 ---
-external help file: Microsoft.Azure.Commands.ManagementGroups.dll-Help.xml
-Module Name: AzureRM.ManagementGroups
+external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
+Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/get-azurermmanagementgroup/
 schema: 2.0.0
 ---
