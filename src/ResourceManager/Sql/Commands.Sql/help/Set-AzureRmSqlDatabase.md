@@ -32,9 +32,9 @@ Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Editio
 
 ### Rename
 ```
-Set-AzureRmSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-LicenseType <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 ### -LicenseType
 The license type for the Azure Sql database```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
 
 Required: False
