@@ -39,7 +39,7 @@ PS C:\> Add-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName
 Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : myvault
 AccountName         : mystorageaccount
-Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myvault/providers/Microsoft.St
+Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
                       orage/storageAccounts/mystorageaccount
 Active Key Name     : key1
 Auto Regenerate Key : True

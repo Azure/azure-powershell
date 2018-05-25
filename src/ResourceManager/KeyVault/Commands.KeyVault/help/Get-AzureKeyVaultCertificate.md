@@ -74,7 +74,7 @@ The **Get-AzureKeyVaultCertificate** cmdlet gets the specified certificate or th
 
 ### Example 1: Get a certificate
 ```powershell
-PS C:\>Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+PS C:\> Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
 Name        : testCert01
 Certificate : [Subject] 
                 CN=contoso.com
@@ -83,7 +83,7 @@ Certificate : [Subject]
                 CN=contoso.com
 
               [Serial Number] 
-                05979C5A2F0741D5A3B6F97673E8A118
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
               [Not Before] 
                 2/8/2016 3:11:45 PM
@@ -92,9 +92,9 @@ Certificate : [Subject]
                 8/8/2016 4:21:45 PM
 
               [Thumbprint] 
-                3E9B6848AD1834284157D68B060F748037F663C8
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Thumbprint  : 3E9B6848AD1834284157D68B060F748037F663C8
+Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Tags        : 
 Enabled     : True
 Created     : 2/8/2016 11:21:45 PM
@@ -105,14 +105,74 @@ This command gets the certificate named TestCert01 from the key vault named Cont
 
 ### Example 2: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell
-PS C:\>Get-AzureKeyVaultCertificate -VaultName 'Contoso' -InRemovedState
+PS C:\> Get-AzureKeyVaultCertificate -VaultName 'contoso' -InRemovedState
+
+DeletedDate        : 5/24/2018 6:08:32 PM
+Enabled            : True
+Expires            : 11/24/2018 6:08:13 PM
+NotBefore          : 5/24/2018 5:58:13 PM
+Created            : 5/24/2018 6:08:13 PM
+Updated            : 5/24/2018 6:08:13 PM
+Tags               :
+VaultName          : contoso
+Name               : test1
+Version            :
+Id                 : https://contoso.vault.azure.net:443/certificates/test1
+
+ScheduledPurgeDate : 8/22/2018 6:10:47 PM
+DeletedDate        : 5/24/2018 6:10:47 PM
+Enabled            : True
+Expires            : 11/24/2018 6:09:44 PM
+NotBefore          : 5/24/2018 5:59:44 PM
+Created            : 5/24/2018 6:09:44 PM
+Updated            : 5/24/2018 6:09:44 PM
+Tags               :
+VaultName          : contoso
+Name               : test2
+Version            :
+Id                 : https://contoso.vault.azure.net:443/certificates/test2
 ```
 
 This command gets all the certificates that have been previously deleted, but not purged, in the key vault named Contoso.
 
 ### Example 3: Gets the certificate MyCert that has been deleted but not purged for this key vault.
 ```powershell
-PS C:\>Get-AzureKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
+PS C:\> Get-AzureKeyVaultCertificate -VaultName 'contoso' -Name 'test1' -InRemovedState
+
+Certificate        : [Subject]
+                       CN=contoso.com
+
+                     [Issuer]
+                       CN=contoso.com
+
+                     [Serial Number]
+                       1525BCF643384270ABEA5316F3720580
+
+                     [Not Before]
+                       5/24/2018 10:58:13 AM
+
+                     [Not After]
+                       11/24/2018 10:08:13 AM
+
+                     [Thumbprint]
+                       57C653C4A0733FEBD05396DD58A6AAFB00BB0540
+
+KeyId              : https://contoso.vault.azure.net:443/keys/test1/7fe415d5518240c1a6fce89986b8d334
+SecretId           : https://contoso.vault.azure.net:443/secrets/test1/7fe415d5518240c1a6fce89986b8d334
+Thumbprint         : 57C653C4A0733FEBD05396DD58A6AAFB00BB0540
+RecoveryLevel      : Recoverable+Purgeable
+ScheduledPurgeDate : 8/22/2018 6:08:32 PM
+DeletedDate        : 5/24/2018 6:08:32 PM
+Enabled            : True
+Expires            : 11/24/2018 6:08:13 PM
+NotBefore          : 5/24/2018 5:58:13 PM
+Created            : 5/24/2018 6:08:13 PM
+Updated            : 5/24/2018 6:08:13 PM
+Tags               :
+VaultName          : contoso
+Name               : test1
+Version            : 7fe415d5518240c1a6fce89986b8d334
+Id                 : https://contoso.vault.azure.net:443/certificates/test1/7fe415d5518240c1a6fce89986b8d334
 ```
 
 This command gets the certificate named 'MyCert' that has been previously deleted, but not purged, in the key vault named Contoso.
