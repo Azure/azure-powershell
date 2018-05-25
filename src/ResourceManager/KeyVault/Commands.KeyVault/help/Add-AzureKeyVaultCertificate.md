@@ -84,6 +84,10 @@ The first command uses the New-AzureKeyVaultCertificatePolicy cmdlet to create a
 
 The second command uses **Add-AzureKeyVaultCertificate** to start the process to create a certificate.
 
+The third command uses the Get-AzureKeyVaultCertificateOperation cmdlet to poll the operation to verify that it's complete.
+
+The final command uses the Get-AzureKeyVaultCertificate cmdlet to get the certificate.
+
 ## PARAMETERS
 
 ### -CertificatePolicy

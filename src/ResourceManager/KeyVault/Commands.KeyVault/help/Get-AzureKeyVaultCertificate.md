@@ -146,7 +146,7 @@ Certificate        : [Subject]
                        CN=contoso.com
 
                      [Serial Number]
-                       1525BCF643384270ABEA5316F3720580
+                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
                      [Not Before]
                        5/24/2018 10:58:13 AM
@@ -155,11 +155,11 @@ Certificate        : [Subject]
                        11/24/2018 10:08:13 AM
 
                      [Thumbprint]
-                       57C653C4A0733FEBD05396DD58A6AAFB00BB0540
+                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 KeyId              : https://contoso.vault.azure.net:443/keys/test1/7fe415d5518240c1a6fce89986b8d334
 SecretId           : https://contoso.vault.azure.net:443/secrets/test1/7fe415d5518240c1a6fce89986b8d334
-Thumbprint         : 57C653C4A0733FEBD05396DD58A6AAFB00BB0540
+Thumbprint         : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 RecoveryLevel      : Recoverable+Purgeable
 ScheduledPurgeDate : 8/22/2018 6:08:32 PM
 DeletedDate        : 5/24/2018 6:08:32 PM
@@ -321,9 +321,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem]
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificate
 
 ## NOTES
 

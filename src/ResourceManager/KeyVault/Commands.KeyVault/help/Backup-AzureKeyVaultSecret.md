@@ -49,7 +49,7 @@ This command retrieves the secret named MySecret from the key vault named MyKeyV
 
 ### Example 2: Back up a secret to a specified file name, overwriting the existing file without prompting
 ```powershell
-PS C:\>Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob' -Force
+PS C:\> Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob' -Force
 
 C:\Backup.blob
 ```
