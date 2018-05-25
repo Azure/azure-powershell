@@ -48,13 +48,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateVcoreDatabaseSecondary()
-        {
-            RunPowerShellTest("Test-CreateVcoreDatabaseSecondary");
-        }
-
-        [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
         public void TestGetReplicationLink()
         {
