@@ -20,14 +20,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 ServerName = InputObject.ServerName;
                 DatabaseName = InputObject.DatabaseName;
             }
-            else if (!string.IsNullOrWhiteSpace(ResourceId))
-            {
-                ResourceIdentifier identifier = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = identifier.ResourceGroupName;
-                DatabaseName = identifier.ResourceName;
-                identifier = new ResourceIdentifier(identifier.ParentResource);
-                ServerName = identifier.ResourceName;
-            }
 
             ICollection<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> results = new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>();
 

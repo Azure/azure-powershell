@@ -15,13 +15,10 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Gets or sets backup retention days.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true,
             Position = 3,
             HelpMessage = "The name of the Azure SQL Database to use.")]
         [ValidateNotNullOrEmpty]
-        //[ValidateScript(new ScriptBlock()]
         [ValidateRetentionDays]
         public int RetentionDays{ get; set; }
 
@@ -99,7 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
                 // Retention is only accepted in week intervals.
                 if ((int)arguments % 7 != 0)
                 {
-                    throw new PSArgumentException("Backup retention must be in 7-day intervals (7, 14, 21, etc.");
+                    throw new PSArgumentException("Backup retention must be in 7-day intervals (7, 14, 21, etc.)");
                 }
             }
         }
