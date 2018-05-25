@@ -152,9 +152,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GraphClient = GetGraphClient(context);
             ManagementGroupsApiClient = GetManagementGroupsApiClient(context);
             FeatureClient = GetFeatureClient(context);
-            var testEnvironment = this.csmTestFactory.GetTestEnvironment();
-            var credentials = new SubscriptionCredentialsAdapter(
-                testEnvironment.AuthorizationContext.TokenCredentials[Microsoft.Azure.Test.TokenAudience.Management],
+            var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+            var credentials = new SubscriptionCloudCredentialsAdapter(
+                testEnvironment.TokenInfo[TokenAudience.Management],
                 testEnvironment.SubscriptionId);
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
 
