@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices.Backup.Providers", "Commands.RecoveryServices.Backup.Providers\Commands.RecoveryServices.Backup.Providers.csproj", "{02234E90-BCDE-4B20-B1F5-01B1005821DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices", "..\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServices.csproj", "{604260DC-B392-4CF4-81EC-34B14591E2D2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServices", "Commands.RecoveryServices\Commands.RecoveryServices.csproj", "{604260DC-B392-4CF4-81EC-34B14591E2D2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{54815A13-6BFB-406A-BEFC-44C31CABAFB4}"
 EndProject
