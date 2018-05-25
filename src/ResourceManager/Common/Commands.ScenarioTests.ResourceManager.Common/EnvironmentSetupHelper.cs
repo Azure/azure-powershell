@@ -630,11 +630,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 catch (Exception psException)
                 {
                     powershell.LogPowerShellException(psException, TracingInterceptor);
+                    powershell.LogPowerShellResults(output, TracingInterceptor);
                     throw;
                 }
                 finally
                 {
-                    powershell.LogPowerShellResults(output, TracingInterceptor);
+                    //powershell.LogPowerShellResults(output, TracingInterceptor);
                     powershell.Streams.Error.Clear();
                 }
             }
