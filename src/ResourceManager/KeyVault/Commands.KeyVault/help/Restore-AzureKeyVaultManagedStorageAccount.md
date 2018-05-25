@@ -58,7 +58,6 @@ Created             : 5/21/2018 11:55:58 PM
 Updated             : 5/21/2018 11:55:58 PM
 Tags                :
 ```
-```
 
 This command restores a managed storage account, including all of its versions, from the backup file named Backup.blob into the key vault named MyKeyVault.
 
