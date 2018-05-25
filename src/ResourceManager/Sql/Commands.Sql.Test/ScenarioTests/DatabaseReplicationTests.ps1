@@ -37,7 +37,7 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 	$copyDatabaseName = Get-DatabaseName
 
 	try
-	{	
+	{
 		# Create a local database copy
 		$job = New-AzureRmSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -CopyDatabaseName $copyDatabaseName -AsJob
@@ -74,7 +74,7 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 #>
 function Test-CreateVcoreDatabaseCopy
 {
-    Test-CreateVcoreCopyInternal "12.0" "Southeast Asia"
+	Test-CreateVcoreCopyInternal "12.0" "Southeast Asia"
 }
 
 
@@ -89,46 +89,46 @@ function Test-CreateVcoreCopyInternal ($serverVersion, $location = "North Europe
 	$server = Create-ServerForTest $rg $location
 	$db = Create-VcoreDatabaseForTest $rg $server 1 BasePrice
 
-    try
-    {
-        # Create a local database copy from a vcore database with base price license type - Default
-        $copyDatabaseName = Get-DatabaseName
-        $dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName
+	try
+	{
+		# Create a local database copy from a vcore database with base price license type - Default
+		$copyDatabaseName = Get-DatabaseName
+		$dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName
 
-        Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
 		Assert-AreEqual $dbLocalCopy.DatabaseName $db.DatabaseName
-        Assert-AreEqual $dbLocalCopy.LicenseType BasePrice # Copy should have same license as src unless specified
+		Assert-AreEqual $dbLocalCopy.LicenseType BasePrice # Copy should have same license as src unless specified
 		Assert-AreEqual $dbLocalCopy.CopyResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $dbLocalCopy.CopyServerName $server.ServerName
 		Assert-AreEqual $dbLocalCopy.CopyDatabaseName $copyDatabaseName
 
 
-        # Create a local database copy from a vcore database with license type option - Base Price
-        $copyDatabaseName = Get-DatabaseName
-        $dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName -LicenseType BasePrice
+		# Create a local database copy from a vcore database with license type option - Base Price
+		$copyDatabaseName = Get-DatabaseName
+		$dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName -LicenseType BasePrice
 
-        Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
 		Assert-AreEqual $dbLocalCopy.DatabaseName $db.DatabaseName
-        Assert-AreEqual $dbLocalCopy.LicenseType BasePrice # Copy should be set Base Price since specified
+		Assert-AreEqual $dbLocalCopy.LicenseType BasePrice # Copy should be set Base Price since specified
 		Assert-AreEqual $dbLocalCopy.CopyResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $dbLocalCopy.CopyServerName $server.ServerName
 		Assert-AreEqual $dbLocalCopy.CopyDatabaseName $copyDatabaseName
 
-        # Create a local database copy from a vcore database with license type option - License Included
-        $copyDatabaseName = Get-DatabaseName
-        $dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName -LicenseType LicenseIncluded
+		# Create a local database copy from a vcore database with license type option - License Included
+		$copyDatabaseName = Get-DatabaseName
+		$dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName -LicenseType LicenseIncluded
 
-        Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
 		Assert-AreEqual $dbLocalCopy.DatabaseName $db.DatabaseName
-        Assert-AreEqual $dbLocalCopy.LicenseType LicenseIncluded # Copy should be License Included since specified
+		Assert-AreEqual $dbLocalCopy.LicenseType LicenseIncluded # Copy should be License Included since specified
 		Assert-AreEqual $dbLocalCopy.CopyResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $dbLocalCopy.CopyServerName $server.ServerName
 		Assert-AreEqual $dbLocalCopy.CopyDatabaseName $copyDatabaseName
-    }
-    finally
-    {
-        Remove-ResourceGroupForTest $rg
-    }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
 }
 
 <#
@@ -155,7 +155,7 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
-	{	
+	{
 		# Create Readable Secondary
 		$readSecondary = New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
@@ -204,7 +204,7 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
-	{	
+	{
 		# Get Secondary
 		$job = New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 			-PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -AsJob
@@ -257,7 +257,7 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
-	{	
+	{
 		# remove Secondary
 		New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
@@ -297,7 +297,7 @@ function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "No
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
-	{	
+	{
 		# failover Secondary
 		New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
