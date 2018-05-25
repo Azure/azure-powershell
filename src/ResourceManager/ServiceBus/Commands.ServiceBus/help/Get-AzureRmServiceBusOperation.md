@@ -52,7 +52,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.4.2.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes
 
 ## OUTPUTS
 

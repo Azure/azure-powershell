@@ -107,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
 CreatedAt                   : 4/12/2017 3:17:02 AM
 UpdatedAt                   : 4/12/2017 3:17:02 AM
 ListenerCount               : 0

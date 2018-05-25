@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIotHubQuotaMetric")]
-    [OutputType(typeof(List<PSIotHubQuotaMetric>))]
+    [OutputType(typeof(PSIotHubQuotaMetric))]
     public class GetAzureRmIotHubQuotaMetric : IotHubBaseCmdlet
     {
 

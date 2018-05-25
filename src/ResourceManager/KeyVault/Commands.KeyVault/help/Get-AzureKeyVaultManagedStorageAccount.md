@@ -151,9 +151,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccount, Microsoft.Azure.Commands.KeyVault, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccount
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageAccount, Microsoft.Azure.Commands.KeyVault, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageAccount
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageAccountIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.0.0, Culture=neutral, PublicKeyToken=null
 
 ## NOTES

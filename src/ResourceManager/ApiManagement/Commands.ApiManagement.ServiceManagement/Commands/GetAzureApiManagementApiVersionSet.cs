@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiVersionSet)]
-    [OutputType(typeof(IList<PsApiManagementApiVersionSet>))]
+    [OutputType(typeof(PsApiManagementApiVersionSet))]
     [OutputType(typeof(PsApiManagementApiVersionSet))]
     public class GetAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
     {        

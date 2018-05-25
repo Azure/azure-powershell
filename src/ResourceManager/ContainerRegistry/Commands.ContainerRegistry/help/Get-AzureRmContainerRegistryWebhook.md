@@ -203,7 +203,7 @@ System.String
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
-System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
 
 ## NOTES
 

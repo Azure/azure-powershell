@@ -103,7 +103,7 @@ System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance, Microsoft.Azure.Commands.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance
 Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo
 
 ## NOTES

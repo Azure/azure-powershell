@@ -150,7 +150,7 @@ Microsoft.Azure.Commands.EventGrid.Models.PSTopic
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance, Microsoft.Azure.Commands.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance
 
 ## NOTES
 
