@@ -473,6 +473,78 @@ function Test-GetResourceExpandProperties
 
 <#
 .SYNOPSIS
+Tests getting a resource by id and its properties
+#>
+function Test-GetResourceByIdAndProperties
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $apiversion = "2014-04-01"
+    $resourceType = "Providers.Test/statefulResources"
+
+	try
+	{
+		# Test
+        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $resourceGet = Get-AzureRmResource -ResourceId $resource.ResourceId
+
+		# Assert
+		Assert-NotNull $resourceGet
+		Assert-AreEqual $resourceGet.Name $rname
+		Assert-AreEqual $resourceGet.ResourceGroupName $rgname
+		Assert-AreEqual $resourceGet.ResourceType $resourceType
+		$properties = $resourceGet.Properties
+		Assert-NotNull $properties
+		Assert-NotNull $properties.key
+		Assert-AreEqual $properties.key "value"
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Tests getting a resource by its components and its properties
+#>
+function Test-GetResourceByComponentsAndProperties
+{
+	# Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $apiversion = "2014-04-01"
+    $resourceType = "Providers.Test/statefulResources"
+
+	try
+	{
+		# Test
+        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        $resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $resourceGet = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+
+		# Assert
+		Assert-NotNull $resourceGet
+		Assert-AreEqual $resourceGet.Name $rname
+		Assert-AreEqual $resourceGet.ResourceGroupName $rgname
+		Assert-AreEqual $resourceGet.ResourceType $resourceType
+		$properties = $resourceGet.Properties
+		Assert-NotNull $properties
+		Assert-NotNull $properties.key
+		Assert-AreEqual $properties.key "value"
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 Tests managing resource with zones.
 #>
 function Test-ManageResourceWithZones

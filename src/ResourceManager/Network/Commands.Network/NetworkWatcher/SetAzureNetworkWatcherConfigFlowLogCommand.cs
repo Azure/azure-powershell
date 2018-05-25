@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using System;
 using System.Net;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -96,6 +97,14 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string Location { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -272,7 +281,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (networkWatcher == null)
                 {
-                    throw new System.ArgumentException("There is no network watcher in location {0}", this.Location);
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
                 }
 
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
