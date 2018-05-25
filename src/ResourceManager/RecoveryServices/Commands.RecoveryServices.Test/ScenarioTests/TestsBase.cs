@@ -104,13 +104,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
             providers.Add("Microsoft.Compute", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            HttpMockServer.RecordsDirectory =
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
-
-            using (RestTestFramework.MockContext context =
-                RestTestFramework.MockContext.Start(callingClassType, mockName))
+            using (RestTestFramework.MockContext context = RestTestFramework.MockContext.Start(callingClassType, mockName))
             {
                 csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
 

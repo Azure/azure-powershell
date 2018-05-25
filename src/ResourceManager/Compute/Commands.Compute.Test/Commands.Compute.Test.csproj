@@ -250,6 +250,9 @@
       <Link>ScenarioTests\Common.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="ConfigFiles\DiagnosticsExtensionConfigWithWrongName.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -268,15 +271,6 @@
     <Content Include="ConfigFiles\DiagnosticsExtensionPublicConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="AzureRM.Resources.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\AvailabilityZoneTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\DiskRPTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Content Include="ConfigFiles\DiagnosticsExtensionPrivateConfigWithSasToken.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -295,6 +289,12 @@
     <Content Include="ConfigFiles\DiagnosticsExtensionConfigWithSasToken.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="ScenarioTests\AvailabilityZoneTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\DiskRPTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\AddVhdTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

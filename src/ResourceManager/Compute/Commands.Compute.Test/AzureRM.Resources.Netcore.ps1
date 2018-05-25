@@ -40,8 +40,8 @@ function Get-AzureRmResourceProvider
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $getTask = $client.Providers.GetWithHttpMessagesAsync($ProviderNamespace, $null, $null, [System.Threading.CancellationToken]::None)
-    Write-Output $getTask.Result.Provider
+    $getTask = $client.Providers.GetWithHttpMessagesAsync($ProviderNamespace)
+    Write-Output $getTask.Result.Body
   }
   END {}
 }
