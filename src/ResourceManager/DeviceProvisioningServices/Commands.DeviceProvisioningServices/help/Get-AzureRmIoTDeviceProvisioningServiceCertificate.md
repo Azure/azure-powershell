@@ -168,7 +168,7 @@ System.String
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificateResponse
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificate, Microsoft.Azure.Commands.DeviceProvisioningServices, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+Microsoft.Azure.Commands.Management.DeviceProvisioningServices.Models.PSCertificate
 
 ## NOTES
 

@@ -194,7 +194,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun, Microsoft.Azure.Commands.DataFactoryV2, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun
 Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipelineRun
 
 ## NOTES

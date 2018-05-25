@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiRevision)]
     [OutputType(typeof(PsApiManagementApiRevision))]
-    [OutputType(typeof(IList<PsApiManagementApiRevision>))]
+    [OutputType(typeof(PsApiManagementApiRevision))]
     public class GetAzureApiManagementApiRevision : AzureApiManagementCmdletBase
     {
         [Parameter(

@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionUsageDetail", DefaultParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet), OutputType(typeof(List<PSUsageDetail>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionUsageDetail", DefaultParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet), OutputType(typeof(PSUsageDetail))]
     public class GetAzureRmConsumptionUsageDetail : AzureConsumptionCmdletBase
     {
         const int MaxNumberToFetch = 1000;

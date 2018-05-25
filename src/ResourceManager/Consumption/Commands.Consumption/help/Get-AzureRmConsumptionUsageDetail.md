@@ -268,7 +268,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.3.2.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail
 
 
 ## NOTES

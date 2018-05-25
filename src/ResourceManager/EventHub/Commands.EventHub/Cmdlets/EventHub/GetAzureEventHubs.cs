@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmEventHub"), OutputType(typeof(List<PSEventHubAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmEventHub"), OutputType(typeof(PSEventHubAttributes))]
     public class GetAzureRmEventHub : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]

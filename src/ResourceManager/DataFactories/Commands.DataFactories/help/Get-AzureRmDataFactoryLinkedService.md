@@ -152,7 +152,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService, Microsoft.WindowsAzure.Commands.Utilities, Version=0.8.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]] Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService
+### Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

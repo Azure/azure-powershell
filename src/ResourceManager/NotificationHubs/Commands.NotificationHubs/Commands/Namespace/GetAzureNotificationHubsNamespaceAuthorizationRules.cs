@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHubsNamespaceAuthorizationRules"), OutputType(typeof(List<SharedAccessAuthorizationRuleAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHubsNamespaceAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class GetAzureNotificationHubsNamespaceAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
