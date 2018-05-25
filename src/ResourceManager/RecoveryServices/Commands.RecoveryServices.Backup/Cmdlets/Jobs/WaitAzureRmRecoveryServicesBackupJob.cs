@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Waits for the given job to finish its operation and returns the corresponding job object.
     /// </summary>
-    [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(JobBase), typeof(IList<JobBase>))]
+    [Cmdlet("Wait", "AzureRmRecoveryServicesBackupJob"), OutputType(typeof(JobBase))]
     public class WaitAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
     {
         /// <summary>

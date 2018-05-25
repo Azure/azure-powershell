@@ -21,7 +21,7 @@ using System;
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuit"), OutputType(typeof(AzureDedicatedCircuit), typeof (IEnumerable<AzureDedicatedCircuit>))]
+    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuit"), OutputType(typeof(AzureDedicatedCircuit))]
     public class GetAzureDedicatedCircuitCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
