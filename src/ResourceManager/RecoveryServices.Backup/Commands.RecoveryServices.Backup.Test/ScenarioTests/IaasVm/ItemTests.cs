@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetItems()
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 PsBackupProviderTypes.IaasVm, "Test-AzureVMGetItems");
         }
 
-        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMProtection()
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 PsBackupProviderTypes.IaasVm, "Test-AzureVMProtection");
         }
 
-        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMBackup()
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 PsBackupProviderTypes.IaasVm, "Test-AzureVMBackup");
         }
 
-        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetRPs()
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 PsBackupProviderTypes.IaasVm, "Test-AzureVMGetRPs");
         }
 
-        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMFullRestore()
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 PsBackupProviderTypes.IaasVm, "Test-AzureVMFullRestore");
         }
 
-        [Fact(Skip = "Using Internal.Resources.ResourceManagerClient, needs re-recorded")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMRPMountScript()

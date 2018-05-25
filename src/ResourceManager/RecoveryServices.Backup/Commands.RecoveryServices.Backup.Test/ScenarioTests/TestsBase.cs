@@ -171,8 +171,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             providers.Add("Microsoft.Authorization", null);
             providers.Add("Microsoft.Compute", null);
             providers.Add("Microsoft.Network", null);
+            providers.Add("Microsoft.Storage", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
 
             HttpMockServer.RecordsDirectory =
