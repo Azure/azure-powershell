@@ -41,6 +41,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreElasticPoolCreateWithLicenseType()
+        {
+            RunPowerShellTest("Test-CreateVcoreElasticPoolWithLicenseType");
+        }
+
         public void TestElasticPoolCreateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-CreateElasticPoolWithZoneRedundancy");
@@ -58,6 +64,13 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         public void TestVcoreElasticPoolUpdate()
         {
             RunPowerShellTest("Test-UpdateVcoreElasticPool");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVcoreElasticPoolUpdateWithLicenseType()
+        {
+            RunPowerShellTest("Test-UpdateVcoreElasticPoolWithLicenseType");
         }
 
         [Fact]

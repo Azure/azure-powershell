@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                        ZoneRedundant != null
                            ? (bool?)ZoneRedundant.ToBool()
                            : null,
-                LicenseType = LicenseType != null ? LicenseType : model.FirstOrDefault().LicenseType
+                LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType // set to original license type
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);

@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 Location = location,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null,
-                LicenseType = LicenseType != null ? LicenseType : null
+                LicenseType = LicenseType ?? null
             };
 
             

@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 RequestedServiceObjectiveName = ServiceObjectiveName,
                 Edition = Edition,
                 CreateMode = createMode,
-                LicenseType = LicenseType != null ? LicenseType : null
+                LicenseType = LicenseType ?? null
             };
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||

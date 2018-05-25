@@ -146,31 +146,36 @@ function Test-CreateVcoreDatabase
 
 <#
 	.SYNOPSIS
-	Tests creating a database with sample name.
+	Tests creating a database with license type.
 #>
-function Test-CreateDatabaseWithSampleName
+function Test-CreateVcoreDatabaseWithLicenseType
 {
 	# Setup
 	$location = "westcentralus"
 	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
 	try
 	{
-		$server = Create-ServerForTest $rg $location
-
-		# Create with samplename
+    	# Create with Edition and RequestedServiceObjectiveName - Base Price
 		$databaseName = Get-DatabaseName
-		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
-			-DatabaseName $databaseName -SampleName "AdventureWorksLT" -RequestedServiceObjectiveName Basic `
-			-Tags @{"tag_key"="tag_value"}
-		Assert-AreEqual $db.DatabaseName $databaseName
-		Assert-AreEqual $db.CurrentServiceObjectiveName Basic
-		Assert-NotNull $db.MaxSizeBytes
-		Assert-NotNull $db.Edition
-		Assert-NotNull $db.CurrentServiceObjectiveName
-		Assert-NotNull $db.CollationName
-		Assert-NotNull $db.Tags
-		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
-		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose -LicenseType BasePrice
+        Assert-AreEqual BasePrice $db.LicenseType
+
+        # Create with Edition and RequestedServiceObjectiveName - LicenseIncluded
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose -LicenseType LicenseIncluded
+        Assert-AreEqual LicenseIncluded $db.LicenseType
+
+		# Create with VCore parameter set - BasePrice
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType BasePrice
+        Assert-AreEqual BasePrice $db.LicenseType
+
+        # Create with VCore parameter set - LicenseIncluded
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType LicenseIncluded
+        Assert-AreEqual LicenseIncluded $db.LicenseType
 	}
 	finally
 	{
@@ -180,7 +185,7 @@ function Test-CreateDatabaseWithSampleName
 
 <#
 	.SYNOPSIS
-	Tests creating a database with license type.
+	Tests creating a database with sample name.
 #>
 function Test-CreateDatabaseWithSampleName
 {
@@ -343,7 +348,7 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 	.SYNOPSIS
 	Tests updating a vcore database 
 #>
-function Test-UpdateVcoreDatabase ()
+function Test-UpdateVcoreDatabase()
 {
 	# Setup 
 	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
@@ -412,6 +417,47 @@ function Test-UpdateVcoreDatabase ()
 
 		# Alter ComputeGeneration only
 		# Need to add later, currently the service not support other Generations besides Gen4
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a vcore database license type
+#>
+function Test-UpdateVcoreDatabaseLicenseType()
+{
+	# Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+    # Create vcore database
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose
+	Assert-AreEqual $db.DatabaseName $databaseName
+    Assert-AreEqual $db.LicenseType LicenseIncluded # Default license type
+
+	try
+	{
+		# Alter with license type - License Included
+		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -LicenseType LicenseIncluded
+        Assert-AreEqual LicenseIncluded $db1.LicenseType
+
+        # Alter with license type - Base Price
+		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -LicenseType BasePrice
+        Assert-AreEqual BasePrice $db1.LicenseType
+
+        # Test piping - LicenseIncluded
+        $db1 = $db1 | Set-AzureRmSqlDatabase -LicenseType LicenseIncluded
+        Assert-AreEqual LicenseIncluded $db1.LicenseType
+
+        # Test piping - BasePrice
+        $db1 = $db1 | Set-AzureRmSqlDatabase -LicenseType BasePrice
+        Assert-AreEqual BasePrice $db1.LicenseType
 	}
 	finally
 	{

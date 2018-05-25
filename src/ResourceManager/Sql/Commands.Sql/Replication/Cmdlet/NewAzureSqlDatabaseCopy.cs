@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 ServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                LicenseType = LicenseType != null ? LicenseType : null
+                LicenseType = LicenseType ?? null // note: default license type is LicenseIncluded
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 copyModel.Edition = sourceDb.Edition;
                 copyModel.Capacity = VCore;
                 copyModel.Family = ComputeGeneration;
-            }           
+            }
 
             newEntity.Add(copyModel);
             return newEntity;

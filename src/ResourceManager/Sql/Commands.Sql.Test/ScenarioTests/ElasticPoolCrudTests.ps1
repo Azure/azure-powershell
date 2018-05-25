@@ -91,6 +91,50 @@ function Test-CreateVcoreElasticPool
 
 <# 
     .SYNOPSIS
+    Tests creating an Vcore elastic pool with different license types
+#>
+function Test-CreateVcoreElasticPoolWithLicenseType
+{
+    # Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+    try
+    {
+
+    	## Create default Vcore based pool
+		$poolName = Get-ElasticPoolName
+		$ep1 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		        -ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2
+
+		Assert-NotNull $ep1
+		Assert-AreEqual LicenseIncluded $ep1.LicenseType # default license type
+
+		## Create Vcore based pool with BasePrice license type
+		$poolName = Get-ElasticPoolName
+		$ep2 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		        -ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -LicenseType BasePrice
+
+		Assert-NotNull $ep2
+		Assert-AreEqual BasePrice $ep2.LicenseType
+
+        ## Create Vcore based pool with LicenseIncluded license type
+		$poolName = Get-ElasticPoolName
+		$ep3 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
+		        -ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4  -DatabaseVCoreMin 0.1 -DatabaseVCoreMax 2 -LicenseType LicenseIncluded
+
+		Assert-NotNull $ep3
+		Assert-AreEqual LicenseIncluded $ep3.LicenseType
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
     Tests creating an elastic pool with zone redundancy parameters
 #>
 function Test-CreateElasticPoolWithZoneRedundancy
@@ -244,6 +288,38 @@ function Test-UpdateVcoreElasticPool
 		Assert-NotNull $sep4
 		Assert-AreEqual 1 $sep4.Capacity
 		Assert-AreEqual 0.1 $sep4.DatabaseCapacityMin
+    }
+    finally
+    {
+        Remove-ResourceGroupForTest $rg
+    }
+}
+
+<# 
+    .SYNOPSIS
+    Tests updating an Vcore elastic pool
+#>
+function Test-UpdateVcoreElasticPoolWithLicenseType
+{
+    # Setup 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	# Create a Vcore Pool
+    $poolName = Get-ElasticPoolName
+    $ep1 = New-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $poolName -VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4
+    Assert-NotNull $ep1
+    
+    try
+    {
+        # Update Vcore pool license type to BasePrice
+        $resp = Set-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -LicenseType BasePrice
+        Assert-AreEqual $resp.LicenseType BasePrice
+
+        # Update Vcore pool license type to LicenseIncluded
+        $resp = Set-AzureRmSqlElasticPool -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName -ElasticPoolName $ep1.ElasticPoolName -LicenseType LicenseIncluded
+        Assert-AreEqual $resp.LicenseType LicenseIncluded
     }
     finally
     {

@@ -172,6 +172,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName);
             List<Model.AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
             Database.Model.AzureSqlDatabaseModel primaryDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
+
             AzureReplicationLinkModel linkModel = new AzureReplicationLinkModel()
             {
                 PartnerLocation = location,
@@ -183,7 +184,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                LicenseType = LicenseType != null ? LicenseType : null
+                LicenseType = LicenseType ?? null
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
