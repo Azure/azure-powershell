@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
@@ -18,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage.Test", "Commands.Storage.Test\Commands.Storage.Test.csproj", "{D6F470A6-7395-4B8B-9D29-44DF0EC8F624}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage", "..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj", "{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage.Management", "..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj", "{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
 EndProject
@@ -65,7 +66,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.KeyVault", "..\Common\Commands.Common.KeyVault\Commands.Common.KeyVault.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage.Management", "..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj", "{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.WebSites", "..\Common\Commands.Common.Websites\Commands.Common.WebSites.csproj", "{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +102,10 @@ Global
 		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -193,10 +198,10 @@ Global
 		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

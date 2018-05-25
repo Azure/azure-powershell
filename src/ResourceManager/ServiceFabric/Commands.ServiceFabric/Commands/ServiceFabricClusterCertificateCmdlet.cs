@@ -24,19 +24,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.KeyVault.Models;
-using Microsoft.Azure.Management.KeyVault.Models;
-using Microsoft.Azure.Management.ResourceManager;
-using Microsoft.Azure.Management.ResourceManager.Models;
-using Microsoft.Azure.KeyVault;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
+using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             certificateBundle = this.KeyVaultClient.GetCertificateAsync(keyVaultUrl, this.keyVaultCertificateName).Result;
             thumbprint = BitConverter.ToString(certificateBundle.X509Thumbprint).Replace("-", "");
 
-            WriteVerboseWithTimestamp(string.Format("Self signed certificate created: {0}", certificateBundle.CertificateIdentifier));
+            WriteVerboseWithTimestamp(string.Format("Self signed certificate created: {0}", certificateBundle.Id));
 
             if (!string.IsNullOrEmpty(this.CertificateOutputFolder))
             {
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 vmss.VirtualMachineProfile.OsProfile.Secrets.Add(
                     new VaultSecretGroup()
                     {
-                        SourceVault = new Management.Compute.Models.SubResource()
+                        SourceVault = new Azure.Commands.Common.Compute.Version_2018_04.Models.SubResource()
                         {
                             Id = certInformation.KeyVault.Id
                         },

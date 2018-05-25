@@ -23,11 +23,6 @@ The **Remove-AzureRmSchedulerJob** cmdlet removes an Azure Scheduler job.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

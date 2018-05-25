@@ -30,11 +30,6 @@ The **Disable-AzureRmOperationalInsightsLinuxCustomLogCollection** cmdlet stops 
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

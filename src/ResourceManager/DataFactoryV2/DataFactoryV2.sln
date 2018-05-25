@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.KeyVault", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage.Management", "..\..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj", "{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.WebSites", "..\..\Common\Commands.Common.Websites\Commands.Common.WebSites.csproj", "{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,6 +120,10 @@ Global
 		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,6 +134,6 @@ Global
 		{8E5612F5-4F26-49CA-B9AC-67A4C1DB74F3} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {29844D60-D580-4C68-8307-5FEEE8ED2E67}
+		SolutionGuid = {8F1CF279-009D-4579-8108-E3A1DE95A4F0}
 	EndGlobalSection
 EndGlobal

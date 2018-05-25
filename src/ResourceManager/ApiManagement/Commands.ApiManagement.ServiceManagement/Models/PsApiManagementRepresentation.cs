@@ -12,6 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Management.ApiManagement.Models;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
     public class PsApiManagementRepresentation
@@ -19,5 +21,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
         public string ContentType { get; set; }
 
         public string Sample { get; set; }
+        
+        public PsApiManagementParameter[] FormParameters { get; set; }
+                
+        public string SchemaId { get; set; }
+        
+        public string TypeName { get; set; }
     }
 }

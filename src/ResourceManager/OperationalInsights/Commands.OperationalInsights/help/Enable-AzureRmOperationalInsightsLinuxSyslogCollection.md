@@ -30,11 +30,6 @@ The **Enable-AzureRmOperationalInsightsLinuxSyslogCollection** cmdlet starts col
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

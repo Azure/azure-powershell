@@ -18,7 +18,7 @@
 #>
 function Test-CreateDatabaseCopy
 {
-	Test-CreateCopyInternal "12.0" "North Europe"
+	Test-CreateCopyInternal "12.0" "Southeast Asia"
 }
 
 <#
@@ -74,7 +74,7 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 #>
 function Test-CreateSecondaryDatabase
 {
-	Test-CreateSecondaryDatabaseInternal "12.0" "North Europe"
+	Test-CreateSecondaryDatabaseInternal "12.0" "Southeast Asia"
 }
 
 <#
@@ -123,7 +123,7 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 #>
 function Test-GetReplicationLink
 {
-	Test-GetReplicationLinkInternal "12.0" "North Europe"
+	Test-GetReplicationLinkInternal "12.0" "Southeast Asia"
 }
 
 <#
@@ -176,7 +176,7 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 #>
 function Test-RemoveSecondaryDatabase
 {
-	Test-RemoveSecondaryDatabaseInternal "12.0" "North Europe"
+	Test-RemoveSecondaryDatabaseInternal "12.0" "Southeast Asia"
 }
 
 <#
@@ -216,7 +216,7 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 function Test-FailoverSecondaryDatabase
 {
 	#v12 only
-	Test-FailoverSecondaryDatabaseInternal "12.0" "North Europe"
+	Test-FailoverSecondaryDatabaseInternal "12.0" "Southeast Asia"
 }
 
 <#
