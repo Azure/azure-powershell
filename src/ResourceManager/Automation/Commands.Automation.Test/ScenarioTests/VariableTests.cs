@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.ScenarioTests
             RunPowerShellTest("Test-CreateNewVariableWithStringValue");
         }
 
-        [Fact(Skip = "Test Timed out. Kanni will fix this test later")]
+        [Fact(Skip = "Test failed with error RequestEntityTooLarge. Kanni will fix this test later")]
         [Trait(Category.Service, Category.Automation)]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

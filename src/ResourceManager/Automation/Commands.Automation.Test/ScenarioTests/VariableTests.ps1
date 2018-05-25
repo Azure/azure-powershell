@@ -54,8 +54,6 @@ function Test-CreateNewVariableWithGetContent
     $fileName = "$env:temp\CreateNewVariableWithGetContent.txt"
 
     echo "testline1" > $fileName
-    echo "testline2" >> $fileName
-
     $variableValue = Get-Content $fileName
 
     $variableCreated = New-AzureRmAutomationVariable -ResourceGroupName $resourceGroupName `

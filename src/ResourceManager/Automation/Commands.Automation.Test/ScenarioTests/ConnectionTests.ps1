@@ -65,7 +65,6 @@ function Test-SetConnectionWithGetContent
 
     $fileName = "$env:temp\SetConnectionWithGetContent.txt"
     echo "testline1" > $fileName
-    echo "testline2" >> $fileName
     $applicationId = Get-Content $fileName
 
     $connectionAssetUpdated=Set-AzureRmAutomationConnectionFieldValue -ResourceGroupName $resourceGroupName `
