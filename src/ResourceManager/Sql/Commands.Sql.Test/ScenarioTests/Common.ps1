@@ -264,7 +264,7 @@ function Get-SqlServerKeyVaultKeyTestEnvironmentParameters ()
 			  serverKeyName = "akvtdekeyvault_key1_51c2fab9ff3c4a17aab4cd51b932b106";
 			  vaultName = "akvtdekeyvault";
 			  keyName = "key1"
-			  location = "centraluseuap";
+			  location = "southeastasia";
 			  }
 }
 

@@ -51,9 +51,6 @@
       <Link>AzureRM.UsageAggregates.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.UsageAggregates.dll-help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <Content Include="Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -82,6 +82,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             HelpMessage = "Firewall configuration")]
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Gateway resource ID")]
+        public string GatewayResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Resources.CreateNewAnalysisServicesServer))
@@ -144,7 +148,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     ReadonlyReplicaCount = 0;
                 }
 
-                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting);
+                var createdServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, Location, Sku, Tag, Administrator, null, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, GatewayResourceId);
                 WriteObject(AzureAnalysisServicesServer.FromAnalysisServicesServer(createdServer));
             }
         }
