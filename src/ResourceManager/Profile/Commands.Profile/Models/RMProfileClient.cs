@@ -277,13 +277,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     string tempName = null;
                     if (!_profile.TryGetContextName(tempContext, out tempName))
                     {
-                        WriteWarningMessage(string.Format("Unable to get context name for subscription with id '{0}'.", subscription.Id));
+                        WriteWarningMessage(string.Format(Resources.CannotGetContextName, subscription.Id));
                         continue;
                     }
 
                     if (!_profile.TrySetContext(tempName, tempContext))
                     {
-                        WriteWarningMessage(string.Format("Cannot create a context for subscription with id '{0}'.", subscription.Id));
+                        WriteWarningMessage(string.Format(Resources.CannotCreateContext, subscription.Id));
                     }
                 }
 
