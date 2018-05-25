@@ -41,7 +41,7 @@ Ssl cipher suites to be enabled in the specified order to application gateway
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -76,7 +76,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
 
 Required: False
@@ -92,7 +92,7 @@ Minimum version of Ssl protocol to be supported on application gateway
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: TLSv1_0, TLSv1_1, TLSv1_2
 
 Required: False
@@ -108,7 +108,7 @@ Name of Ssl predefined policy
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,7 +123,7 @@ Type of Ssl Policy
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Predefined, Custom
 
 Required: False

@@ -84,7 +84,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -114,7 +114,7 @@ Specifies the virtual network peering.
 ```yaml
 Type: PSVirtualNetworkPeering
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

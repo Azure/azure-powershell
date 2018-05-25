@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
 
 ## Version 6.0.0
 * Set minimum dependency of module to PowerShell 5.0

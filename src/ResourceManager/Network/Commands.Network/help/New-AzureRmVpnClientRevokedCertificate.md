@@ -65,7 +65,7 @@ Specifies a unique name for the new client-revocation certificate.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,7 +86,7 @@ The preceding command returns information for all the Local Computer certificate
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
