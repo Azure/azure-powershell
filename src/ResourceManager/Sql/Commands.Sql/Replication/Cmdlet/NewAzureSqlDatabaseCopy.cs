@@ -122,7 +122,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the license type for the Azure Sql database
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The license type for the Azure Sql database")]
-        [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -193,7 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 ServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-                LicenseType = LicenseType ?? null // note: default license type is LicenseIncluded
+                LicenseType = LicenseType // note: default license type is LicenseIncluded
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

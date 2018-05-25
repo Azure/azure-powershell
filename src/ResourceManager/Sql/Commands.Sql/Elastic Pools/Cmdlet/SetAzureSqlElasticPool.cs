@@ -146,7 +146,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the license type for the Azure Sql database
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The license type for the Azure Sql database")]
-        [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -196,10 +198,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             };
 
             var elasticPool = ModelAdapter.GetElasticPool(ResourceGroupName, ServerName, ElasticPoolName);
-            
+
             Management.Sql.Models.Sku poolCurrentSku = new Management.Sql.Models.Sku()
             {
-                Name = elasticPool.SkuName, 
+                Name = elasticPool.SkuName,
                 Tier = elasticPool.Edition,
                 Family = elasticPool.Family,
                 Capacity = elasticPool.Capacity
@@ -220,12 +222,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                     newModel.Edition = edition;
                     newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null;
                 }
-                              
+
                 if(MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") || MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax"))
                 {
                     newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null;
                     newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;
-                }      
+                }
             }
             else
             {
@@ -237,13 +239,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                     newModel.Edition = skuTier;
                     newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("VCore") ? VCore : poolCurrentSku.Capacity;
                     newModel.Family = string.IsNullOrWhiteSpace(ComputeGeneration) ? poolCurrentSku.Family : ComputeGeneration;
-                }              
+                }
 
                 if (MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") || MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax"))
                 {
                     newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") ? (double?)DatabaseVCoreMin : null;
                     newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax") ? (double?)DatabaseVCoreMax : null;
-                }     
+                }
             }
 
             newEntity.Add(newModel);

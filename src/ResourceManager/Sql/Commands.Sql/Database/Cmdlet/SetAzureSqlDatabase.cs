@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the ComputeGeneration for the Azure Sql database.
         /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false, 
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The Compute generation for the Azure Sql database.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
@@ -170,7 +170,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The tags to associate with the Azure Sql Database",
             ParameterSetName = VcoreDatabaseParameterSet)]
-        [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
         public string LicenseType { get; set; }
 
         /// <summary>

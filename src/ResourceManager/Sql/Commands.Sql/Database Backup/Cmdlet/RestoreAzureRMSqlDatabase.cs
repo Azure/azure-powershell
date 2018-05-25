@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
             HelpMessage = "The deletion DateTime of the deleted database to restore.")]
         public DateTime DeletionDate { get; set; }
 
-        /// <summary> 
+        /// <summary>
         /// The resource ID of the database to restore (deleted DB, geo backup DB, live DB, long term retention backup, etc.)
         /// </summary>
         [Alias("Id")]
@@ -136,9 +136,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     HelpMessage = "The resource ID of the database to restore.")]
         public string ResourceId { get; set; }
 
-        /// <summary> 
-        /// Gets or sets the name of the database server to use. 
-        /// </summary> 
+        /// <summary>
+        /// Gets or sets the name of the database server to use.
+        /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Azure SQL Server to restore the database to.")]
@@ -268,7 +268,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         /// Gets or sets the license type for the Azure Sql database
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The license type for the Azure Sql database")]
-        [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -333,7 +335,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                 RequestedServiceObjectiveName = ServiceObjectiveName,
                 Edition = Edition,
                 CreateMode = createMode,
-                LicenseType = LicenseType ?? null
+                LicenseType = LicenseType
             };
 
             if (ParameterSetName == FromPointInTimeBackupWithVcoreSetName || ParameterSetName == FromDeletedDatabaseBackupWithVcoreSetName ||

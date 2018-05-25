@@ -145,7 +145,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the license type for the Azure Sql database
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The license type for the Azure Sql database")]
-        [PSArgumentCompleter("LicenseIncluded", "BasePrice")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
         public string LicenseType { get; set; }
 
         /// <summary>
@@ -209,10 +211,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 Location = location,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
                 MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null,
-                LicenseType = LicenseType ?? null
+                LicenseType = LicenseType
             };
 
-            
+
             if (ParameterSetName == DtuPoolParameterSet)
             {
                 string edition = string.IsNullOrWhiteSpace(Edition) ? null : Edition;
@@ -225,7 +227,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 }
 
                 newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null;
-                newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;              
+                newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;
             }
             else
             {
