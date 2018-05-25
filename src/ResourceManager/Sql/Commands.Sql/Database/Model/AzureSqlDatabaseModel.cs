@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public bool? ZoneRedundant { get; set; }
 
         /// <summary>
-        /// Gets or sets the capacity of the database. 
+        /// Gets or sets the capacity of the database.
         ///    The capacity is Dtu number if the database is dtu based database; capacity is Vcore number if the database is vcore based database.
         /// </summary>
         public int? Capacity { get; set; }
@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
 
             SkuName = database.Sku == null ? null : database.Sku.Name;
 
-            LicenseType = database.LicenseType == null ? null : database.LicenseType;
+            LicenseType = database.LicenseType;
         }
     }
 }
