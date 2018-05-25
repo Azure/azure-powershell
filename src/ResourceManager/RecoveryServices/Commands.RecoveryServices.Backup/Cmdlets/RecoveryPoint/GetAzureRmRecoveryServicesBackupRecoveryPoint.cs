@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRecoveryPoint",
         DefaultParameterSetName = NoFilterParameterSet),
-        OutputType(typeof(RecoveryPointBase), typeof(IList<RecoveryPointBase>))]
+        OutputType(typeof(RecoveryPointBase))]
     public class GetAzureRmRecoveryServicesBackupRecoveryPoint : RecoveryServicesBackupCmdletBase
     {
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";

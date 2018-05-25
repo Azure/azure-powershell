@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
     using System.Text;
 
-    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitPeeringRouteTableSummary"), OutputType(typeof(AzureDedicatedCircuitPeeringRouteTableSummary), typeof(IEnumerable<AzureDedicatedCircuitPeeringRouteTableSummary>))]
+    [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuitPeeringRouteTableSummary"), OutputType(typeof(AzureDedicatedCircuitPeeringRouteTableSummary))]
     public class GetAzureDedicatedCircuitPeeringRouteTableSummaryCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
