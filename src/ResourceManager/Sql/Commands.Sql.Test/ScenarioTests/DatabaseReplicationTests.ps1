@@ -91,7 +91,7 @@ function Test-CreateVcoreCopyInternal ($serverVersion, $location = "North Europe
 
 	try
 	{
-		# Create a local database copy from a vcore database with base price license type - Default
+		# Create a local database copy from a vcore database with base price license type
 		$copyDatabaseName = Get-DatabaseName
 		$dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName
 
