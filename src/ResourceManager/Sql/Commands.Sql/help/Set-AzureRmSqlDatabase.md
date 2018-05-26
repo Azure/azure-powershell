@@ -216,7 +216,8 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-The license type for the Azure Sql database```yaml
+The license type for the Azure Sql database.
+```yaml
 Type: String
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:

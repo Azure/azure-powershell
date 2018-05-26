@@ -58,6 +58,7 @@ RequestedServiceObjectiveId   : f1173c43-91bd-4aaa-973c-54e79e15235b
 RequestedServiceObjectiveName :
 ElasticPoolName               :
 EarliestRestoreDate           :
+LicenseType                   :
 Tags                          :
 ```
 
@@ -83,6 +84,7 @@ RequestedServiceObjectiveId   : d1737d22-a8ea-4de7-9bd0-33395d2a7419
 RequestedServiceObjectiveName :
 ElasticPoolName               : ElasticPool01
 EarliestRestoreDate           :
+LicenseType                   :
 Tags                          :
 ```
 
@@ -101,11 +103,12 @@ CollationName                 : SQL_Latin1_General_CP1_CI_AS
 CatalogCollation              :
 MaxSizeBytes                  : 268435456000
 Status                        : Online
-CreationDate                  : 8/26/2015 10:04:29 PM 
+CreationDate                  : 8/26/2015 10:04:29 PM
 CurrentServiceObjectiveName   : GP_Gen4_2
 RequestedServiceObjectiveName :
-ElasticPoolName               : 
+ElasticPoolName               :
 EarliestRestoreDate           :
+LicenseType                   : LicenseIncluded
 Tags                          :
 ```
 
@@ -254,7 +257,8 @@ Accept wildcard characters: False
 ```
 
 ### -LicenseType
-The license type for the Azure Sql database```yaml
+The license type for the Azure Sql database.
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:

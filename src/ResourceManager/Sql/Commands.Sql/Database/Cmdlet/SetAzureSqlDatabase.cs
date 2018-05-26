@@ -165,10 +165,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the license type for the Azure Sql database
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Database",
+            HelpMessage = "The license type for the Azure Sql database.",
             ParameterSetName = UpdateParameterSetName)]
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Database",
+            HelpMessage = "The license type for the Azure Sql database.",
             ParameterSetName = VcoreDatabaseParameterSet)]
         [PSArgumentCompleter(
             Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
