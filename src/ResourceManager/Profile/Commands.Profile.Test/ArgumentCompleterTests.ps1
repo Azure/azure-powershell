@@ -21,7 +21,7 @@ function Test-LocationCompleter
 	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
 	$assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
 	$resourceTypes = @("Microsoft.Batch/operations")
-	$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($resourceTypes, 60)
+	$locations = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.LocationCompleterAttribute]::FindLocations($resourceTypes, -1)
 	$expectedResourceType = Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch" | Where-Object {$_.ResourceTypes.ResourceTypeName -eq "operations"}
 	$expectedLocations = $expectedResourceType.Locations | ForEach-Object {"`'" + $_ + "`'"}
 	Assert-AreEqualArray $locations $expectedLocations
@@ -36,7 +36,7 @@ function Test-ResourceGroupCompleter
 {
 	$filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
 	$assembly = [System.Reflection.Assembly]::LoadFrom($filePath)
-	$resourceGroups = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups(60)
+	$resourceGroups = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceGroupCompleterAttribute]::GetResourceGroups(-1)
 	$expectResourceGroups = Get-AzureRmResourceGroup | ForEach-Object {$_.ResourceGroupName}
 	Assert-AreEqualArray $resourceGroups $expectResourceGroups
 }

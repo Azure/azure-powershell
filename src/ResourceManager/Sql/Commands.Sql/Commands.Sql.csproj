@@ -112,6 +112,7 @@
     <Compile Include="ManagedInstance\Model\AzureSqlManagedInstanceModel.cs" />
     <Compile Include="ManagedInstance\Services\AzureSqlManagedInstanceAdapter.cs" />
     <Compile Include="ManagedInstance\Services\AzureSqlManagedInstanceCommunicator.cs" />
+    <Compile Include="Location Capabilities\Model\MaxSizeRangeCapabilityModel.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlDatabaseRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlElasticPoolRecommendedActionCmdletBase.cs" />
     <Compile Include="RecommendedAction\Cmdlet\AzureSqlServerRecommendedActionCmdletBase.cs" />
@@ -485,7 +486,7 @@
     </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.13.1-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.15.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

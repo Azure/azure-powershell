@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: A4226BFB-AB3B-4883-9D52-5EB7F29D8A71
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementregion
 schema: 2.0.0
@@ -24,7 +25,7 @@ This command is to be used with New-AzureRmApiManagement command.
 
 ## EXAMPLES
 
-### --------------------------  Example 1  --------------------------
+### Example 1
 ```
 $apimRegion = New-AzureRmApiManagementRegion -Location "Central US" 
 
@@ -33,7 +34,7 @@ $additionalRegions = @($apimRegion)
 New-AzureRmApiManagement -ResourceGroupName ContosoGroup -Location "West US" -Name ContosoApi -Organization Contoso -AdminEmail admin@contoso.com -AdditionalRegions $additionalRegions -Sku "Premium"
 ```
 
-### --------------------------  Example 2  --------------------------
+### Example 2
 ```
 $apimRegionVirtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "Central US" -SubnetResourceId "/subscriptions/a8ff56dc-3bc7-4174-a1e8-3726ab15d0e2/resourceGroups/ContosoGroup/providers/Microsoft.Network/virtualNetworks/centralusvirtualNetwork/subnets/backendSubnet"
 
@@ -57,7 +58,7 @@ Default value is 1.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,7 +90,7 @@ Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -105,7 +106,7 @@ Default value is $null.
 ```yaml
 Type: PsApiManagementVirtualNetwork
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,4 +130,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

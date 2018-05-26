@@ -16,7 +16,7 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using Microsoft.Azure.Management.Network.Models;
-
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class PSPeering : PSChildResource
@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public PSIpv6PeeringConfig Ipv6PeeringConfig { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public List<PSExpressRouteCircuitConnection> Connections { get; set; }
+
         [JsonIgnore]
         public string MicrosoftPeeringConfigText
         {
@@ -92,6 +95,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Ipv6PeeringConfigText
         {
             get { return JsonConvert.SerializeObject(Ipv6PeeringConfig, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ConnectionsText
+        {
+            get
+            {
+                return JsonConvert.SerializeObject(Connections, Formatting.Indented, new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+            }
         }
     }
 }

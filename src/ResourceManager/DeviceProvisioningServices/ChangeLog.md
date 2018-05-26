@@ -18,5 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 1.0.0
 * Add IoTHub device provisioning service(DPS) support cmdlets
 
