@@ -228,12 +228,15 @@
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\RemoveSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\SetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\SqlDatabaseVulnerabilityAssessmentRuleBaselineCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\ExportAzureSqlDatabaseVulnerabilityAssessmentScan.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\GetAzureSqlDatabaseVulnerabilityAssessmentScanRecord.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\SqlDatabaseVulnerabilityAssessmentScanCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessment\GetAzureSqlDatabaseVulnerabilityAssessment.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessment\RemoveSqlDatabaseVulnerabilityAssessment.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessment\SetAzureSqlDatabaseVulnerabilityAssessment.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessment\SqlDatabaseVulnerabilityAssessmentCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineItemModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanEportModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanErrorModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanRecordModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineModel.cs" />
@@ -477,7 +480,7 @@
     </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\code\azure-sdk-for-net\src\SDKs\SqlManagement\Management.Sql\bin\Debug\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.16.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
