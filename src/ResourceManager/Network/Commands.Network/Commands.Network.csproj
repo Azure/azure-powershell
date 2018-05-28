@@ -179,7 +179,7 @@
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
-    <Compile Include="Common\ParameterSetNames.cs" />	
+    <Compile Include="Common\ParameterSetNames.cs" />
     <Compile Include="DdosProtectionPlan\GetAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="DdosProtectionPlan\NewAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="DdosProtectionPlan\RemoveAzureRMDdosProtectionPlanCommand.cs" />
@@ -457,8 +457,6 @@
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayIpConfigCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureRmVpnClientIpsecPolicyCommand.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureRmVpnClientIpsecParametersCommand.cs" />
-    <Compile Include="VirtualNetworkGateway\SetAzureVpnClientIpsecParametersCommand.cs" />
-    <Compile Include="VirtualNetworkGateway\GetAzureVpnClientIpsecParametersCommand.cs" />
     <Compile Include="VirtualNetworkGateway\AddAzureVirtualNetworkGatewayIpConfigCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayIpConfigCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayCommand.cs" />
