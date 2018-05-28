@@ -25,16 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14994"
         ],
         "x-ms-request-id": [
-          "c071c24a-5801-4f2a-9c8f-2b38a653b14e"
+          "74e3cbce-54cd-431c-b824-063124b36b41"
         ],
         "x-ms-correlation-request-id": [
-          "c071c24a-5801-4f2a-9c8f-2b38a653b14e"
+          "74e3cbce-54cd-431c-b824-063124b36b41"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180504T113209Z:c071c24a-5801-4f2a-9c8f-2b38a653b14e"
+          "WESTUS2:20180528T142511Z:74e3cbce-54cd-431c-b824-063124b36b41"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,19 +46,19 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 04 May 2018 11:32:09 GMT"
+          "Mon, 28 May 2018 14:25:10 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/locations/westus/CheckDnsNameAvailability?domainNameLabel=ps5374&api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL0NoZWNrRG5zTmFtZUF2YWlsYWJpbGl0eT9kb21haW5OYW1lTGFiZWw9cHM1Mzc0JmFwaS12ZXJzaW9uPTIwMTgtMDQtMDE=",
+      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/locations/westus/CheckDnsNameAvailability?domainNameLabel=ps985&api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvd2VzdHVzL0NoZWNrRG5zTmFtZUF2YWlsYWJpbGl0eT9kb21haW5OYW1lTGFiZWw9cHM5ODUmYXBpLXZlcnNpb249MjAxOC0wNS0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d5d7fbbe-2e0c-4b0e-bbdd-be6ef7a67ecb"
+          "785300cb-0972-46b5-b38f-4808eb46c2c4"
         ],
         "accept-language": [
           "en-US"
@@ -67,13 +67,13 @@
           "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"available\": true\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidResourceType\",\r\n    \"message\": \"The resource type 'locations/CheckDnsNameAvailability' could not be found in the namespace 'Microsoft.Network' for api version '2018-05-01'. The supported api-versions are '2014-12-01-preview,2015-05-01-preview,2015-06-15,2016-03-30,2016-06-01,2016-07-01,2016-08-01,2016-09-01,2016-10-01,2016-11-01,2016-12-01,2017-03-01,2017-04-01,2017-06-01,2017-08-01,2017-09-01,2017-10-01,2017-11-01,2018-01-01,2018-02-01,2018-03-01,2018-04-01'.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "25"
+          "485"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -84,41 +84,37 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-request-id": [
-          "07a7ad56-c404-4d6b-a483-ba20132deec1"
+          "2ddcf835-8ba9-44ff-a7c6-efefcab269c1"
+        ],
+        "x-ms-correlation-request-id": [
+          "2ddcf835-8ba9-44ff-a7c6-efefcab269c1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180528T142512Z:2ddcf835-8ba9-44ff-a7c6-efefcab269c1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
-        ],
-        "x-ms-correlation-request-id": [
-          "e1601370-6ec8-4b01-84f6-5f3b19b204bd"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180504T113210Z:e1601370-6ec8-4b01-84f6-5f3b19b204bd"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Date": [
-          "Fri, 04 May 2018 11:32:09 GMT"
+          "Mon, 28 May 2018 14:25:11 GMT"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     }
   ],
   "Names": {
     "Test-DnsAvailability": [
-      "ps5374"
+      "ps985"
     ]
   },
   "Variables": {

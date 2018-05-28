@@ -28,13 +28,13 @@
           "14997"
         ],
         "x-ms-request-id": [
-          "212e90b8-b17b-4ecb-bd98-45bec122fcd9"
+          "62a26e4b-fc39-496d-9f90-1fb9ee354c94"
         ],
         "x-ms-correlation-request-id": [
-          "212e90b8-b17b-4ecb-bd98-45bec122fcd9"
+          "62a26e4b-fc39-496d-9f90-1fb9ee354c94"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180504T130725Z:212e90b8-b17b-4ecb-bd98-45bec122fcd9"
+          "WESTUS2:20180528T160450Z:62a26e4b-fc39-496d-9f90-1fb9ee354c94"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -46,19 +46,19 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 04 May 2018 13:07:24 GMT"
+          "Mon, 28 May 2018 16:04:50 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/locations/WestUS/virtualNetworkAvailableEndpointServices?api-version=2018-04-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdFVTL3ZpcnR1YWxOZXR3b3JrQXZhaWxhYmxlRW5kcG9pbnRTZXJ2aWNlcz9hcGktdmVyc2lvbj0yMDE4LTA0LTAx",
+      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/locations/WestUS/virtualNetworkAvailableEndpointServices?api-version=2018-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9sb2NhdGlvbnMvV2VzdFVTL3ZpcnR1YWxOZXR3b3JrQXZhaWxhYmxlRW5kcG9pbnRTZXJ2aWNlcz9hcGktdmVyc2lvbj0yMDE4LTA1LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3d708f98-a5e8-48c9-815a-a427caf1e870"
+          "af8ebb02-e887-4f78-8e60-18b60155c3c7"
         ],
         "accept-language": [
           "en-US"
@@ -67,13 +67,13 @@
           "FxVersion/4.7.2633.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/19.0.0.0"
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/20.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Microsoft.Storage\",\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Storage\",\r\n      \"type\": \"Microsoft.Network/virtualNetworkEndpointServices\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.Sql\",\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Sql\",\r\n      \"type\": \"Microsoft.Network/virtualNetworkEndpointServices\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.AzureActiveDirectory\",\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.AzureActiveDirectory\",\r\n      \"type\": \"Microsoft.Network/virtualNetworkEndpointServices\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.AzureCosmosDB\",\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.AzureCosmosDB\",\r\n      \"type\": \"Microsoft.Network/virtualNetworkEndpointServices\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.KeyVault\",\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.KeyVault\",\r\n      \"type\": \"Microsoft.Network/virtualNetworkEndpointServices\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.EventHub\",\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.EventHub\",\r\n      \"type\": \"Microsoft.Network/virtualNetworkEndpointServices\"\r\n    },\r\n    {\r\n      \"name\": \"Microsoft.ServiceBus\",\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.ServiceBus\",\r\n      \"type\": \"Microsoft.Network/virtualNetworkEndpointServices\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidResourceType\",\r\n    \"message\": \"The resource type 'locations/virtualNetworkAvailableEndpointServices' could not be found in the namespace 'Microsoft.Network' for api version '2018-05-01'. The supported api-versions are '2017-04-01,2017-06-01,2017-08-01,2017-09-01,2017-10-01,2017-11-01,2018-01-01,2018-02-01,2018-03-01,2018-04-01'.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "1896"
+          "352"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -84,36 +84,32 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-request-id": [
-          "08404cc3-e09a-4842-b649-31daefb86ca9"
+          "686ead69-ef5b-4a2e-8721-1e7b5227dc2e"
+        ],
+        "x-ms-correlation-request-id": [
+          "686ead69-ef5b-4a2e-8721-1e7b5227dc2e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180528T160452Z:686ead69-ef5b-4a2e-8721-1e7b5227dc2e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
-        ],
-        "x-ms-correlation-request-id": [
-          "ddefd633-f34f-4a78-bb49-6d1af88cd649"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180504T130726Z:ddefd633-f34f-4a78-bb49-6d1af88cd649"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
+        "Cache-Control": [
+          "no-cache"
+        ],
         "Date": [
-          "Fri, 04 May 2018 13:07:26 GMT"
+          "Mon, 28 May 2018 16:04:52 GMT"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 404
     }
   ],
   "Names": {},
