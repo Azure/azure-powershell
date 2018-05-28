@@ -24,11 +24,31 @@ namespace Microsoft.Azure.Commands.Management.Storage
     [Cmdlet(VerbsCommon.Set, StorageAccountManagementPolicyNounStr, SupportsShouldProcess = true), OutputType(typeof(PSManagementPolicy))]
     public class SetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
+        /// <summary>
+        /// AccountName Parameter Set
+        /// </summary>
+        private const string AccountNamePolicyStringParameterSet = "AccountNamePolicyString";
+
+        /// <summary>
+        /// AccountName Parameter Set
+        /// </summary>
+        private const string AccountNamePolicyObjectParameterSet = "AccountNamePolicyObject";
+
+        /// <summary>
+        /// Account object parameter set 
+        /// </summary>
+        private const string AccountObjectParameterSet = "AccountObject";
+
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = "Resource Group Name.",
+           ParameterSetName = AccountNamePolicyStringParameterSet)]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            HelpMessage = "Resource Group Name.",
+           ParameterSetName = AccountNamePolicyObjectParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -36,25 +56,66 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Storage Account Name.",
+           ParameterSetName = AccountNamePolicyStringParameterSet)]
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            HelpMessage = "Storage Account Name.",
+           ParameterSetName = AccountNamePolicyObjectParameterSet)]
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
+
+        [Parameter(Mandatory = true,
+            HelpMessage = "Storage account object",
+            ValueFromPipeline = true,
+            ParameterSetName = AccountObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSStorageAccount StorageAccount { get; set; }
 
         [Parameter(
             Position = 2,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Data Policy Rules.")]
+            HelpMessage = "The Data Policy Rules.",
+           ParameterSetName = AccountNamePolicyStringParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Data Policy Rules.",
+           ParameterSetName = AccountObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Policy { get; set; }
+
+        [Alias("ManagementPolicy")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Management Object to Set",
+            ValueFromPipeline = true,
+            ParameterSetName = AccountNamePolicyObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSManagementPolicy InputObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (ShouldProcess(this.StorageAccountName, "Set Storage Account Data Policy"))
+            if (ShouldProcess(this.StorageAccountName, Resources.SetManagementPolicy))
             {
+                switch (ParameterSetName)
+                {
+                    case AccountObjectParameterSet:
+                        this.ResourceGroupName = StorageAccount.ResourceGroupName;
+                        this.StorageAccountName = StorageAccount.StorageAccountName;
+                        break;
+                    case AccountNamePolicyObjectParameterSet:
+                        this.Policy = InputObject.Policy;
+                        break;
+                    default:
+                        // For AccountNamePolicyStringParameterSet, the ResourceGroupName, StorageAccountName and policy can get from input directly
+                        break;
+                }
+
                 JObject jsonRules = JObject.Parse(this.Policy);
                 StorageAccountManagementPolicies managementPolicy = this.StorageClient.StorageAccounts.CreateOrUpdateManagementPolicies(
                  this.ResourceGroupName,
