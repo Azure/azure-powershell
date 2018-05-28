@@ -203,6 +203,10 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\GetAzureSqlServerAdvancedThreatProtection.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\SqlServerAdvancedThreatProtectionCmdletBase.cs" />
+    <Compile Include="AdvancedThreatProtection\Model\ServerAdvancedThreatProtectionPolicyModel.cs" />
+    <Compile Include="AdvancedThreatProtection\Services\SqlAdvancedThreatProtectionAdapter.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />

@@ -682,6 +682,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Server Advanced Threat Protection is not defined. Please run Set-AzureRmSqlServerAdvancedThreatProtectionPolicy first..
+        /// </summary>
+        internal static string ServerAdvancedThreatProtectionIsNotDefined {
+            get {
+                return ResourceManager.GetString("ServerAdvancedThreatProtectionIsNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server communication link with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string ServerCommunicationLinkNameExists {
