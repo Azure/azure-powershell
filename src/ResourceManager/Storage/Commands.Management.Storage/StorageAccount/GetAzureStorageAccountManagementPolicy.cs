@@ -23,11 +23,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
     [Cmdlet(VerbsCommon.Get, StorageAccountManagementPolicyNounStr), OutputType(typeof(PSManagementPolicy))]
     public class GetAzureStorageAccountManagementPolicyCommand : StorageAccountBaseCmdlet
     {
+        /// <summary>
+        /// AccountName Parameter Set
+        /// </summary>
+        private const string AccountNameParameterSet = "AccountName";
+
+        /// <summary>
+        /// Account object parameter set 
+        /// </summary>
+        private const string AccountObjectParameterSet = "AccountObject";
+
         [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+         Position = 0,
+         Mandatory = true,
+         HelpMessage = "Resource Group Name.",
+        ParameterSetName = AccountNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
@@ -35,15 +45,28 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Storage Account Name.",
+           ParameterSetName = AccountNameParameterSet)]
         [Alias(AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
+        [Parameter(Mandatory = true,
+            HelpMessage = "Storage account object",
+            ValueFromPipeline = true,
+            ParameterSetName = AccountObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public PSStorageAccount StorageAccount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+
+            if (ParameterSetName == AccountObjectParameterSet)
+            {
+                this.ResourceGroupName = StorageAccount.ResourceGroupName;
+                this.StorageAccountName = StorageAccount.StorageAccountName;
+            }
 
             StorageAccountManagementPolicies managementPolicy = this.StorageClient.StorageAccounts.GetManagementPolicies(
                  this.ResourceGroupName,

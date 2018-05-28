@@ -12,9 +12,23 @@ Creates or modifies the management policy of an Azure Storage account.
 
 ## SYNTAX
 
+### AccountNamePolicyString
 ```
 Set-AzureRmStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-Policy] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AccountNamePolicyObject
+```
+Set-AzureRmStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
+ -InputObject <PSManagementPolicy> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### AccountObject
+```
+Set-AzureRmStorageAccountManagementPolicy -StorageAccount <PSStorageAccount> [-Policy] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +78,51 @@ PS C:\> $policy = '{
         }
     }]
 }'
-PS C:\>Set-AzureRmStorageAccountManagementPolicy -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Policy $policy
+PS C:\>Set-AzureRmStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Policy $policy
+
+ResourceGroupName  : myresourcegroup
+StorageAccountName : mystorageaccount
+Id                 : /subscriptions/********-****-****-****-************/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
+Name               : DefaultManagementPolicy
+Type               : Microsoft.Storage/storageAccounts/managementPolicies
+Policy             : {
+                       "version": "0.5",
+                       "rules": [
+                         {
+                           "name": "olcmtest",
+                           "type": "Lifecycle",
+                           "definition": {
+                             "filters": {
+                               "blobTypes": [
+                                 "blockBlob"
+                               ],
+                               "prefixMatch": [
+                                 "olcmtestcontainer"
+                               ]
+                             },
+                             "actions": {
+                               "baseBlob": {
+                                 "tierToCool": {
+                                   "daysAfterModificationGreaterThan": 1000
+                                 },
+                                 "tierToArchive": {
+                                   "daysAfterModificationGreaterThan": 90
+                                 },
+                                 "delete": {
+                                   "daysAfterModificationGreaterThan": 1000
+                                 }
+                               },
+                               "snapshot": {
+                                 "delete": {
+                                   "daysAfterCreationGreaterThan": 5000
+                                 }
+                               }
+                             }
+                           }
+                         }
+                       ]
+                     }
+LastModifiedTime   : 5/28/2018 10:09:18 AM
 ```
 
 This command creates or updates the management policy of a Storage account..
@@ -86,13 +144,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Management Object to Set
+
+```yaml
+Type: PSManagementPolicy
+Parameter Sets: AccountNamePolicyObject
+Aliases: ManagementPolicy
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Policy
 The lifecycle management policy, it's a collection of rules in a JSON document.
 See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: AccountNamePolicyString, AccountObject
 Aliases: 
 
 Required: True
@@ -107,13 +180,28 @@ Resource Group Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: AccountNamePolicyString, AccountNamePolicyObject
 Aliases: 
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccount
+Storage account object
+
+```yaml
+Type: PSStorageAccount
+Parameter Sets: AccountObject
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -122,13 +210,13 @@ Storage Account Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: AccountNamePolicyString, AccountNamePolicyObject
 Aliases: AccountName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
