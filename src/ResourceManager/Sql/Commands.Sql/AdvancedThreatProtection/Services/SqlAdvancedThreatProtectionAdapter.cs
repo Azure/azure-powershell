@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Services;
+using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
@@ -57,7 +58,6 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
             ThreatDetectionCommunicator = new ThreatDetectionEndpointsCommunicator(Context);
         }
 
-
         /// <summary>
         /// Provides a server Advanced Threat Protection policy model for the given database
         /// </summary>
@@ -77,6 +77,32 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
             };
 
             return serverAdvancedThreatProtectionPolicyModel;
+        }
+
+        /// <summary>
+        /// Sets a server Advanced Threat Protection policy model for the given database
+        /// </summary>
+        public ServerAdvancedThreatProtectionPolicyModel SetServerAdvancedThreatProtectionPolicy(ServerAdvancedThreatProtectionPolicyModel model)
+        {
+            // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
+            var updateParameters = new ServerSecurityAlertPolicyCreateOrUpdateParameters();
+            updateParameters.Properties.State = ThreatDetectionStateType.Enabled.ToString();
+            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, updateParameters);
+
+            return model;
+        }
+
+        /// <summary>
+        /// Removes the server Advanced Threat Protection policy model for the given database
+        /// </summary>
+        public ServerAdvancedThreatProtectionPolicyModel RemoveServerAdvancedThreatProtectionPolicy(ServerAdvancedThreatProtectionPolicyModel model)
+        {
+            // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
+            var updateParameters = new ServerSecurityAlertPolicyCreateOrUpdateParameters();
+            updateParameters.Properties.State = ThreatDetectionStateType.Disabled.ToString();
+            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, updateParameters);
+
+            return model;
         }
     }
 }

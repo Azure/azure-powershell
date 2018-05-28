@@ -18,18 +18,20 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// Returns the AdvancedThreatProtection policy of a specific server.
+    /// Sets the AdvancedThreatProtection policy of a specific server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAdvancedThreatProtectionPolicy", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerAdvancedThreatProtectionPolicy", SupportsShouldProcess = true), 
         OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
-    public class GetAzureSqlServerAdvancedThreatProtection : SqlServerThreatDetectionCmdletBase
+    public class SetAzureSqlServerAdvancedThreatProtection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
-        /// No sending is needed as this is a Get cmdlet
+        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
+        /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerAdvancedThreatProtectionPolicyModel PersistChanges(ServerAdvancedThreatProtectionPolicyModel model)
         {
+            ModelAdapter.SetServerAdvancedThreatProtectionPolicy(model);
             return null;
         }
     }
