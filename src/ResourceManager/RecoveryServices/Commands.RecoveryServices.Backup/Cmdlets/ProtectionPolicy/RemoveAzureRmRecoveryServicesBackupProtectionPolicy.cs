@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmRecoveryServicesBackupProtectionPolicy", SupportsShouldProcess = true,
         DefaultParameterSetName = PolicyNameParameterSet)]
-    public class RemoveAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
+    public class RemoveAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         internal const string PolicyNameParameterSet = "PolicyName";
         internal const string PolicyObjectParameterSet = "PolicyObject";
@@ -80,7 +80,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         WriteDebug(Resources.MakingClientCall);
 
-                        ServiceClientAdapter.RemoveProtectionPolicy(PolicyName);
+                        ServiceClientAdapter.RemoveProtectionPolicy(
+                            PolicyName,
+                            vaultName: Vault?.Name,
+                            resourceGroupName: Vault?.ResourceGroupName);
                         WriteDebug(Resources.ProtectionPolicyDeleted);
                     }
                 );

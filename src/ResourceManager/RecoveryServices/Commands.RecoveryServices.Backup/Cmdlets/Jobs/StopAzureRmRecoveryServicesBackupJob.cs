@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet,
         SupportsShouldProcess = true), OutputType(typeof(JobBase))]
-    public class StopAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
+    public class StopAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
@@ -61,11 +61,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug("Stopping job with ID: " + JobId);
 
-                var cancelResponse = ServiceClientAdapter.CancelJob(JobId);
+                var cancelResponse = ServiceClientAdapter.CancelJob(
+                    JobId,
+                    vaultName: Vault?.Name,
+                    resourceGroupName: Vault?.ResourceGroupName);
 
                 var operationStatus = TrackingHelpers.GetOperationResult(
                     cancelResponse,
-                    operationId => ServiceClientAdapter.GetCancelJobOperationResult(operationId));
+                    operationId => ServiceClientAdapter.GetCancelJobOperationResult(
+                        operationId,
+                        vaultName: Vault?.Name,
+                        resourceGroupName: Vault?.ResourceGroupName));
 
                 if (operationStatus.Response.StatusCode != HttpStatusCode.NoContent)
                 {
@@ -74,7 +80,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    WriteObject(JobConversions.GetPSJob(ServiceClientAdapter.GetJob(JobId)));
+                    WriteObject(JobConversions.GetPSJob(ServiceClientAdapter.GetJob(
+                        JobId,
+                        vaultName: Vault?.Name,
+                        resourceGroupName: Vault?.ResourceGroupName)));
                 }
             }, ShouldProcess(JobId, "Stop"));
         }

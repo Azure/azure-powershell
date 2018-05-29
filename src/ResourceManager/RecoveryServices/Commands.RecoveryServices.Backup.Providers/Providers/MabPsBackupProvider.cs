@@ -109,6 +109,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of protection containers</returns>
         public List<ContainerBase> ListProtectionContainers()
         {
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
             string name = (string)ProviderData[ContainerParams.Name];
 
             ODataQuery<BMSContainerQueryObject> queryParams =
@@ -116,7 +117,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     q => q.FriendlyName == name &&
                          q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);
 
-            var listResponse = ServiceClientAdapter.ListContainers(queryParams);
+            var listResponse = ServiceClientAdapter.ListContainers(
+                queryParams,
+                vaultName: vault?.Name,
+                resourceGroupName: vault?.ResourceGroupName);
 
             List<ContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 

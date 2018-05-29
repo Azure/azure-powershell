@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRPMountScript",
         SupportsShouldProcess = true), OutputType(typeof(RPMountScriptDetails))]
-    public class GetAzureRmRecoveryServicesBackupRPMountScript : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupRPMountScript : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Recovery point of the item to be explored
@@ -53,10 +53,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<Enum, object>()
-                {
-                    {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
+                    {
+                        { VaultParams.Vault, Vault },
+                        { RestoreBackupItemParams.RecoveryPoint, RecoveryPoint },
                         { RecoveryPointParams.FileDownloadLocation, Path }
-                }, ServiceClientAdapter);
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);

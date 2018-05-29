@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"),
         OutputType(typeof(BackupEngineBase), typeof(IList<BackupEngineBase>))]
     public class GetAzureRmRecoveryServicesBackupManagementServer
-        : RecoveryServicesBackupCmdletBase
+        : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Name of the backup management server(s) to be fetched.
@@ -44,10 +44,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<System.Enum, object>()
-                {
-                    {ContainerParams.ContainerType, ContainerType.Windows},
-                    {ContainerParams.Name, Name}
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.Vault, Vault },
+                        { ContainerParams.ContainerType, ContainerType.Windows },
+                        { ContainerParams.Name, Name }
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstanceForBackupManagementServer();

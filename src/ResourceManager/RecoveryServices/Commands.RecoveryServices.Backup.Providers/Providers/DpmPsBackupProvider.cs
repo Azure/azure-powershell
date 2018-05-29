@@ -113,12 +113,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns></returns>
         public List<BackupEngineBase> ListBackupManagementServers()
         {
+            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
             string name = (string)ProviderData[ContainerParams.Name];
 
             ODataQuery<ServiceClientModel.BMSBackupEnginesQueryObject> queryParams =
                 new ODataQuery<ServiceClientModel.BMSBackupEnginesQueryObject>();
 
-            var listResponse = ServiceClientAdapter.ListBackupEngines(queryParams);
+            var listResponse = ServiceClientAdapter.ListBackupEngines(
+                queryParams,
+                vaultName: vault?.Name,
+                resourceGroupName: vault?.ResourceGroupName);
 
             List<BackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);
 

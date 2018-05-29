@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection",
         DefaultParameterSetName = AzureVMComputeParameterSet, SupportsShouldProcess = true),
         OutputType(typeof(JobBase))]
-    public class EnableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
+    public class EnableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
@@ -92,14 +92,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 {                    
                     PsBackupProviderManager providerManager =
                         new PsBackupProviderManager(new Dictionary<Enum, object>()
-                    {
-                    {ItemParams.AzureVMName, Name},
-                    {ItemParams.AzureVMCloudServiceName, ServiceName},
-                    {ItemParams.AzureVMResourceGroupName, ResourceGroupName},
-                    {ItemParams.Policy, Policy},
-                    {ItemParams.Item, Item},
-                    {ItemParams.ParameterSetName, this.ParameterSetName},
-                    }, ServiceClientAdapter);
+                        {
+                            { VaultParams.Vault, Vault },
+                            { ItemParams.AzureVMName, Name },
+                            { ItemParams.AzureVMCloudServiceName, ServiceName },
+                            { ItemParams.AzureVMResourceGroupName, ResourceGroupName },
+                            { ItemParams.Policy, Policy },
+                            { ItemParams.Item, Item },
+                            { ItemParams.ParameterSetName, this.ParameterSetName },
+                        }, ServiceClientAdapter);
 
                     IPsBackupProvider psBackupProvider = (Item != null) ?
                         providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
@@ -108,7 +109,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     var itemResponse = psBackupProvider.EnableProtection();
 
                     // Track Response and display job details
-                    HandleCreatedJob(itemResponse, Resources.EnableProtectionOperation);
+                    HandleCreatedJob(
+                        itemResponse, 
+                        Resources.EnableProtectionOperation,
+                        vault: Vault);
                 }
             });
         }

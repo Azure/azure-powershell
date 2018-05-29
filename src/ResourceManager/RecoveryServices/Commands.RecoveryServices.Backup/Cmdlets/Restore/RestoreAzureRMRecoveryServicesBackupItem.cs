@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsData.Restore, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
         OutputType(typeof(JobBase))]
-    public class RestoreAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
+    public class RestoreAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Recovery point of the item to be restored
@@ -72,20 +72,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<Enum, object>()
-                {
-                    {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint},
-                    {RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id},
-                    {RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location},
-                    {RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type},
-                    {RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent}
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.Vault, Vault },
+                        { RestoreBackupItemParams.RecoveryPoint, RecoveryPoint },
+                        { RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id },
+                        { RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location },
+                        { RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type },
+                        { RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent }
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerRestore();
 
                 WriteDebug(string.Format("Restore submitted"));
-                HandleCreatedJob(jobResponse, Resources.RestoreOperation);
+                HandleCreatedJob(
+                    jobResponse, 
+                    Resources.RestoreOperation,
+                    vault: Vault);
             }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Restore));
         }
 
