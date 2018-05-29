@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanReceiveAllStreams()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSupportShouldProcess()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanSupportShouldContinue()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanHandleCmdletException()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanHandleCmdletStop()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 if (job.JobStateInfo.State != JobState.Completed)
                 {
                     job.StopJob();
-                    this.jobCompleted.WaitOne(TimeSpan.FromSeconds(10));
+                    this.jobCompleted.WaitOne(TimeSpan.FromHours(4));
                     Assert.Equal("Stopped", job.StatusMessage);
                 }
 
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanHandleShouldProcessExceptionForConfirm()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanHandleShouldProcessExceptionForWhatIf()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanHandleShouldContinueException()
         {
             Mock<ICommandRuntime> mockRuntime;
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void JobCopiesCmdletParameterSet()
         {
             Mock<ICommandRuntime> mock = new Mock<ICommandRuntime>();
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             try
             {
                 HandleStateChange(job, new JobStateEventArgs(job.JobStateInfo, new JobStateInfo(JobState.NotStarted)));
-                this.jobCompleted.WaitOne(TimeSpan.FromSeconds(30));
+                jobCompleted.WaitOne(TimeSpan.FromHours(4));
                 validate(job);
             }
             finally

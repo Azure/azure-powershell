@@ -179,6 +179,7 @@
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="Common\ParameterSetNames.cs" />	
     <Compile Include="DdosProtectionPlan\GetAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="DdosProtectionPlan\NewAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="DdosProtectionPlan\RemoveAzureRMDdosProtectionPlanCommand.cs" />
@@ -452,12 +453,17 @@
     <Compile Include="VirtualNetworkGateway\SetAzureVirtualNetworkGatewayVpnClientConfig.cs" />
     <Compile Include="VirtualNetworkGateway\GenerateAzureVpnClientPackage.cs" />
     <Compile Include="VirtualNetworkGateway\NewAzureVirtualNetworkGatewayIpConfigCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\NewAzureRmVpnClientIpsecPolicyCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\NewAzureRmVpnClientIpsecParametersCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\SetAzureVpnClientIpsecParametersCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\GetAzureVpnClientIpsecParametersCommand.cs" />
     <Compile Include="VirtualNetworkGateway\AddAzureVirtualNetworkGatewayIpConfigCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayIpConfigCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\ResetAzureVirtualNetworkGatewayCommand.cs" />
     <Compile Include="VirtualNetworkGateway\SetAzureVirtualNetworkGatewayDefaultSiteCommand.cs" />
     <Compile Include="VirtualNetworkGateway\RemoveAzureVirtualNetworkGatewayDefaultSiteCommand.cs" />
+    <Compile Include="VirtualNetworkGateway\RemoveAzureRmVpnClientIpsecParametersCommand.cs" />
     <Compile Include="LocalNetworkGateway\LocalNetworkGatewayBaseCmdlet.cs" />
     <Compile Include="LocalNetworkGateway\RemoveAzureLocalNetworkGatewayCommand.cs" />
     <Compile Include="LocalNetworkGateway\GetAzureLocalNetworkGatewayCommand.cs" />
@@ -524,6 +530,7 @@
     <Compile Include="Models\PSVpnClientRootCertificate.cs" />
     <Compile Include="Models\PSVpnClientRevokedCertificate.cs" />
     <Compile Include="Models\PSVpnClientConfiguration.cs" />
+    <Compile Include="Models\PSVpnClientIPsecParameters.cs" />
     <Compile Include="Models\PSVpnClientParameters.cs" />
     <Compile Include="Models\PSVirtualNetworkGatewayConnection.cs" />
     <Compile Include="Models\PSVirtualNetworkGatewayIpConfiguration.cs" />
