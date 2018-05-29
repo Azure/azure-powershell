@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add new cmdlets 'Get-AzureRmSqlDatabaseBackupShortTermRetention' and 'Set-AzureRmSqlDatabaseBackupShortTermRetention' to support getting/setting the retention policy for point-in-time-restore backups
 
 ## Version 4.5.0
 * Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
