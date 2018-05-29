@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.0
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
 
 ## Version 6.0.1
