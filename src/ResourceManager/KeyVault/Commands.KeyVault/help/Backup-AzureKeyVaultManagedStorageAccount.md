@@ -61,7 +61,7 @@ This command retrieves the managed storage account named MyMSAK from the key vau
 ### Example 3: Back up a previously retrieved managed storage account to a specified file name, overwriting the destination file without prompting.
 ```powershell
 PS C:\> $msak = Get-AzureKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
-PS C:\> Backup-AzureKeyVaultManagedStorageAccount -InputObject $msak -OutputFile 'C:\Backup.blob' -Force
+PS C:\> Backup-AzureKeyVaultManagedStorageAccount -StorageAccount $msak -OutputFile 'C:\Backup.blob' -Force
 
 C:\Backup.blob
 ```
