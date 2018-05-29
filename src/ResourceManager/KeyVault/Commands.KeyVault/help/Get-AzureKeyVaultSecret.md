@@ -383,7 +383,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
