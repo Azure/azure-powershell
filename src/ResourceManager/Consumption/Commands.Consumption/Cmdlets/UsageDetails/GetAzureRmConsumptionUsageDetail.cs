@@ -70,10 +70,12 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
         [ValidateNotNull]
+        [ValidateRange(1, 1000)]
         public int? MaxCount { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
         [ValidateNotNull]
+        [ValidateRange(1, 1000)]
         public int? Top { get; set; }
 
         [CmdletParameterBreakingChange("InvoiceName", ChangeDescription = "InvoiceName is being deprecated without being replaced.")]
@@ -189,18 +191,57 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
             {
                 numberToFetch = this.MaxCount.Value;
             }
-
-            IPage<UsageDetail> usageDetails = null;         
+            
+            List<PSUsageDetail> result = new List<PSUsageDetail>();
+                  
             try
             {
+                IPage<UsageDetail> usageDetails = null;
+                string nextPageLink = null;
+
                 if (!string.IsNullOrWhiteSpace(this.BillingPeriodName))
                 {
-                    usageDetails = ConsumptionManagementClient.UsageDetails.ListByBillingPeriod(BillingPeriodName,
-                        expand, filter, default(string), numberToFetch);
+                    do
+                    {
+                        if (!string.IsNullOrWhiteSpace(nextPageLink))
+                        {
+                            usageDetails = ConsumptionManagementClient.UsageDetails.ListByBillingPeriodNext(nextPageLink);
+                            nextPageLink = usageDetails.NextPageLink;
+                        }
+                        else
+                        {
+                            usageDetails = ConsumptionManagementClient.UsageDetails.ListByBillingPeriod(BillingPeriodName,
+                                expand, filter, default(string), numberToFetch);
+                            nextPageLink = usageDetails.NextPageLink;
+                        }
+
+                        if (usageDetails != null)
+                        {
+                            result.AddRange(usageDetails.Select(x => new PSUsageDetail(x)));
+                        }
+                    } while (!this.Top.HasValue && !this.MaxCount.HasValue && !string.IsNullOrWhiteSpace(nextPageLink));                 
                 }
                 else
                 {
-                    usageDetails = ConsumptionManagementClient.UsageDetails.List(expand, filter, default(string), numberToFetch);
+                    do
+                    {
+                        if (!string.IsNullOrWhiteSpace(nextPageLink))
+                        {
+                            usageDetails = ConsumptionManagementClient.UsageDetails.ListNext(nextPageLink);
+                            nextPageLink = usageDetails?.NextPageLink;
+                        }
+                        else
+                        {
+                            usageDetails = ConsumptionManagementClient.UsageDetails.List(expand, filter, default(string),
+                                numberToFetch);
+                            nextPageLink = usageDetails?.NextPageLink;
+                        }
+
+                        if (usageDetails != null)
+                        {
+                            result.AddRange(usageDetails.Select(x => new PSUsageDetail(x)));
+                        }
+                    } while (!this.Top.HasValue && !this.MaxCount.HasValue && !string.IsNullOrWhiteSpace(nextPageLink));
                 }                
             }
             catch (ErrorResponseException e)
@@ -208,10 +249,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
                 WriteWarning(e.Body.Error.Message);
             }
 
-            if (usageDetails != null)
-            {
-                WriteObject(usageDetails.Select(x => new PSUsageDetail(x)), true);
-            }            
+            WriteObject(result, true);         
         }
     }
 }
