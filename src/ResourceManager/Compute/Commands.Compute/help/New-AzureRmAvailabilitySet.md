@@ -83,7 +83,7 @@ Specifies a name for the availability set.
 
 ```yaml
 Type: String
-.Parameter Sets: (All)
+Parameter Sets: (All)
 Aliases: ResourceName, AvailabilitySetName
 
 Required: True
