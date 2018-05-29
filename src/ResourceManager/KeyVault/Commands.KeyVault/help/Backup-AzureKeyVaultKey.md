@@ -61,7 +61,7 @@ This command retrieves the key named MyKey from the key vaultnamed MyKeyVault an
 ### Example 3: Back up a previously retrieved key to a specified file name, overwriting the destination file without prompting.
 ```powershell
 PS C:\> $key = Get-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyKey'
-PS C:\> Backup-AzureKeyVaultKey -InputObject $key -OutputFile 'C:\Backup.blob' -Force
+PS C:\> Backup-AzureKeyVaultKey -Key $key -OutputFile 'C:\Backup.blob' -Force
 
 C:\Backup.blob
 ```
