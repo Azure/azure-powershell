@@ -8,8 +8,24 @@ schema: 2.0.0
 
 # Add-AzureRmExpressRouteCircuitConnectionConfig
 
-## SYNOPSIS 
+## SYNOPSIS
 Adds a circuit connection configuration to Private Peering of an Express Route Circuit. 
+
+## SYNTAX
+
+### SetByResource (Default)
+```
+Add-AzureRmExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
+ [-AddressPrefix] <String> [-AuthorizationKey <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### SetByResourceId
+```
+Add-AzureRmExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
+ [-PeerExpressRouteCircuitPeering] <String> [-AddressPrefix] <String> [-AuthorizationKey <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
 ## DESCRIPTION
 The **Add-AzureRmExpressRouteCircuitConnectionConfig** cmdlet adds a circuit connection configuration to
@@ -18,6 +34,7 @@ across regions or subscriptions.Note that, after running **Add-AzureRmExpressRou
 you must call the Set-AzureRmExpressRouteCircuit cmdlet to activate the configuration.
 
 ## EXAMPLES
+
 ### Example 1: Add a circuit connection resource to an existing ExpressRoute circuit
 ```
 $circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
@@ -26,6 +43,7 @@ $addressSpace = '60.0.0.0/29'
 Add-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
+
 ### Example 2: Add a circuit connection configuration using Piping to an existing ExpressRoute Circuit
 ```
 $circuit_peer = Get-AzureRmExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
@@ -34,6 +52,36 @@ Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $
 ```
 
 ## PARAMETERS
+
+### -AddressPrefix
+A minimum /29 customer address space to create VxLan tunnels between Express Route Circuits
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthorizationKey
+Authorization Key to peer Express Route Circuit in another subscription. Authorization on peer circuit can be created using existing commands.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -57,10 +105,10 @@ The ExpressRoute circuit being modified. This is Azure object returned by the
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -72,10 +120,10 @@ The name of the circuit connection resource to be added.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -86,37 +134,37 @@ Resource Id for Private Peering of remote circuit which will be peered with the 
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -AddressPrefix
-A minimum /29 customer address space to create VxLan tunnels between Express Route Circuits
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthorizationKey
-Authorization Key to peer Express Route Circuit in another subscription. Authorization on peer circuit can be created using existing commands.
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases: wi
 
 Required: False
 Position: Named
@@ -138,6 +186,7 @@ Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' fr
 ### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 
 ## NOTES
+
 ## RELATED LINKS
 
 [Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)

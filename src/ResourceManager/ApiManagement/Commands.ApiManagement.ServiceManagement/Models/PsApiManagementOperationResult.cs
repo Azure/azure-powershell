@@ -12,11 +12,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using Microsoft.Azure.Management.ApiManagement.SmapiModels;
-using System;
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
+    using Management.ApiManagement.Models;
+    using System;
+
     public class PsApiManagementOperationResult
     {
         public string Id { get; set; }
@@ -44,29 +45,35 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
                 throw new ArgumentNullException("operationResult");
             }
 
-            Id = operationResult.IdPath;
+            Id = operationResult.Id;
             Error = operationResult.Error != null ? new ErrorBody(operationResult.Error) : null;
             ResultInfo = operationResult.ResultInfo;
-            Started = operationResult.Started;
-            Updated = operationResult.Updated;
+            Started = operationResult.Started.HasValue ? operationResult.Started.Value : DateTime.MinValue;
+            Updated = operationResult.Updated.HasValue ? operationResult.Updated.Value : DateTime.MinValue;
             State = ToTenantConfigurationState(operationResult.Status);
         }
 
-        internal TenantConfigurationState ToTenantConfigurationState(AsyncOperationState state)
+        internal TenantConfigurationState ToTenantConfigurationState(AsyncOperationStatus? state)
         {
             TenantConfigurationState tenantState;
-            switch (state)
+
+            if (!state.HasValue)
             {
-                case AsyncOperationState.Started:
+                return TenantConfigurationState.InProgress;
+            }
+
+            switch (state.Value)
+            {
+                case AsyncOperationStatus.Started:
                     tenantState = TenantConfigurationState.Started;
                     break;
-                case AsyncOperationState.InProgress:
+                case AsyncOperationStatus.InProgress:
                     tenantState = TenantConfigurationState.InProgress;
                     break;
-                case AsyncOperationState.Succeeded:
+                case AsyncOperationStatus.Succeeded:
                     tenantState = TenantConfigurationState.Succeeded;
                     break;
-                case AsyncOperationState.Failed:
+                case AsyncOperationStatus.Failed:
                     tenantState = TenantConfigurationState.Failed;
                     break;
                 default: throw new NotSupportedException("Invalid State :" + state);

@@ -28,6 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDPublic()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-Public");
@@ -35,6 +36,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDInternalDynamic()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalDynamic");
@@ -42,6 +44,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDInternalStatic()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalStatic");
@@ -49,6 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDPublicNoInboundNATRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicNoInboundNATRule");
@@ -56,6 +60,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDPublicPublicNoLbRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicNoLbRule");
@@ -63,6 +68,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDInternalUsingId()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalUsingId");
@@ -70,6 +76,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDPublicUsingId()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicUsingId");
@@ -77,6 +84,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerChildResource()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerChildResource");
@@ -84,6 +92,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerSet()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerSet");
@@ -91,6 +100,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestCreateEmptyLoadBalancer()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-CreateEmptyLoadBalancer");
@@ -98,6 +108,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerNicAssociation()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancer-NicAssociation");
@@ -105,6 +116,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerNicAssociationDuringCreate()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancer-NicAssociationDuringCreate");
@@ -112,6 +124,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerInboundNatPoolConfigInternalLB()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB");
@@ -119,6 +132,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerInboundNatPoolConfigCRUDPublicLB()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB");
@@ -126,6 +140,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerMultiVipPublic()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerMultiVip-Public");
@@ -133,6 +148,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerMultiVipInternal()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerMultiVip-Internal");
@@ -140,6 +156,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestSetLoadBalancerObjectAssignment()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-SetLoadBalancerObjectAssignment");
@@ -147,6 +164,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestSetLoadBalancerCRUDPublicBasicSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-PublicBasicSku");
@@ -154,6 +172,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestSetLoadBalancerCRUDInternalBasicSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalBasicSku");
@@ -161,6 +180,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestSetLoadBalancerCRUDPublicStandardSku()
         {
@@ -169,6 +189,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestSetLoadBalancerCRUDInternalStandardSku()
         {
@@ -177,6 +198,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerCRUDInternalHighlyAvailableBasicSku()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerCRUD-InternalHighlyAvailableBasicSku");
@@ -184,6 +206,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestLoadBalancerCRUDInternalHighlyAvailableStandardSku()
         {
@@ -192,6 +215,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.slbdev)]
         public void TestLoadBalancerZones()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-LoadBalancerZones");

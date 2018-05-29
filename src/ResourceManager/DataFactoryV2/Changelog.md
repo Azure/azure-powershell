@@ -19,6 +19,11 @@
 -->
 
 ## Current Release
+* Updated the ADF .Net SDK version to 0.8.0-preview containing following changes:
+    - Added Configure factory repository operation
+    - Updated QuickBooks LinkedService to expose consumerKey and consumerSecret properties
+    - Updated Several model types from SecretBase to Object
+    - Added Blob Events trigger
 
 ## Version 0.5.4
 * Set minimum dependency of module to PowerShell 5.0
@@ -28,7 +33,6 @@
     - Removed the schema from DB2 linked service
     - Removed schema property from Teradata linked service
     - Added LinkedService, Dataset, CopySource for Responsys
-
 
 ## Version 0.5.3
 * Updated to the latest version of the Azure ClientRuntime

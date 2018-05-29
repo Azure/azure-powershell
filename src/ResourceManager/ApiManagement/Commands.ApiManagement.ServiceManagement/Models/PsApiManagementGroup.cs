@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
 {
-    public class PsApiManagementGroup
+    public class PsApiManagementGroup : PsApiManagementArmResource
     {
         public string GroupId { get; set; }
 
