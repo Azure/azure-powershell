@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.Consumption.Models;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionPriceSheet"), OutputType(typeof(PSPriceSheet), typeof(List<PSPriceSheetProperty>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionPriceSheet"), OutputType(typeof(PSPriceSheet))]
     public class GetAzureRmConsumptionPriceSheet : AzureConsumptionCmdletBase
     {
         private const int MaxNumberToFetch = 1000;
