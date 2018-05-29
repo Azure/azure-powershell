@@ -59,7 +59,7 @@ This command retrieves the secret named MySecret from the key vaultnamed MyKeyVa
 ### Example 3: Back up a secret previously retrieved to a specified file name
 ```powershell
 PS C:\> $secret = Get-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
-PS C:\> Backup-AzureKeyVaultSecret -InputObject $secret -OutputFile 'C:\Backup.blob'
+PS C:\> Backup-AzureKeyVaultSecret -Secret $secret -OutputFile 'C:\Backup.blob'
 
 C:\Backup.blob
 ```
