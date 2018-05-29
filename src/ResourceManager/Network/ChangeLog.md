@@ -22,6 +22,16 @@
 
 ## Version 6.1.0
 * Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
+* Updated below commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
+    - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIpsecPolicy   [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]
+    - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIPsecParameter [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]
+* Added new commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
+    - New-AzureRmVpnClientIpsecPolicy : Added for passing output from this command to existing commands: New-AzureRmVirtualNetworkGateway & Set-AzureRmVirtualNetworkGateway to set Vpn IPSec policy
+    - New-AzureRmVpnClientIpsecParameter
+	- Set-AzureRmVpnClientIpsecParameter
+	- Get-AzureRmVpnClientIpsecParameter
+	- Remove-AzureRmVpnClientIpsecParameter
+* Added a warning note for existing command: Set-AzureRmVirtualNetworkGatewayVpnClientConfig to let users know of its plan of removal in next release.
 * Added cmdlet to create protocol configuration
     - New-AzureRmNetworkWatcherProtocolConfiguration
 * Added cmdlet to add a new circuit connection to an existing express route circuit.

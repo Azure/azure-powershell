@@ -18,12 +18,12 @@ using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.ServiceFabric.Models;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using ServiceFabricProperties = Microsoft.Azure.Commands.ServiceFabric.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
