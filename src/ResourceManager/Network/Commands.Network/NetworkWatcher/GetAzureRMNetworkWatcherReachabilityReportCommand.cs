@@ -36,7 +36,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet(VerbsCommon.Get, "AzureRMNetworkWatcherReachabilityReport", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSAzureReachabilityReport))]
-    public partial class GetAzureRMNetworkWatcherReachabilityReport : NetworkBaseCmdlet
+    public partial class GetAzureRMNetworkWatcherReachabilityReport : NetworkWatcherBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -68,6 +68,14 @@ namespace Microsoft.Azure.Commands.Network.Automation
             HelpMessage = "The Id of network watcher resource.",
             ParameterSetName = "SetByResourceId")]
         public string ResourceId { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string NetworkWatcherLocation { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -150,6 +158,19 @@ namespace Microsoft.Azure.Commands.Network.Automation
                 EndTime = this.EndTime,
                 ProviderLocation = NetworkResourceManagerProfile.Mapper.Map < MNM.AzureReachabilityReportLocation >(vProviderLocation),
             };
+
+            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                var networkWatcher = this.GetNetworkWatcherByLocation(this.NetworkWatcherLocation);
+
+                if (networkWatcher == null)
+                {
+                    throw new ArgumentException("There is no network watcher in location {0}", this.NetworkWatcherLocation);
+                }
+
+                ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                NetworkWatcherName = networkWatcher.Name;
+            }
 
             if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
             {

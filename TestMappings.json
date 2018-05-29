@@ -45,7 +45,7 @@
   "src/ResourceManager/Compute/": [
     ".\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\bin\\Debug\\Microsoft.Azure.Commands.Compute.Test.dll",
     ".\\src\\ResourceManager\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.Azure.Commands.Network.Test.dll",
-    ".\\src\\ResourceManager\\RecoveryServices.Backup\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll",
+    ".\\src\\ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll",
     ".\\src\\ResourceManager\\ServiceFabric\\Commands.ServiceFabric.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceFabric.Test.dll"
   ],
   "src/ResourceManager/Consumption/": [
@@ -119,7 +119,7 @@
   "src/ResourceManager/Network/": [
     ".\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\bin\\Debug\\Microsoft.Azure.Commands.Compute.Test.dll",
     ".\\src\\ResourceManager\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.Azure.Commands.Network.Test.dll",
-    ".\\src\\ResourceManager\\RecoveryServices.Backup\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll",
+    ".\\src\\ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll",
     ".\\src\\ResourceManager\\ServiceFabric\\Commands.ServiceFabric.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceFabric.Test.dll",
     ".\\src\\ResourceManager\\Sql\\Commands.Sql.Test\\bin\\Debug\\Microsoft.Azure.Commands.Sql.Test.dll",
     ".\\src\\ResourceManager\\Dns\\Commands.Dns.Test\\bin\\Debug\\Microsoft.Azure.Commands.Dns.Test.dll"
@@ -139,11 +139,8 @@
   "src/ResourceManager/Profile/Commands.Profile.Test/": [
     ".\\src\\ResourceManager\\Profile\\Commands.Profile.Test\\bin\\Debug\\Microsoft.Azure.Commands.Profile.Test.dll"
   ],
-  "src/ResourceManager/RecoveryServices.Backup/": [
-    ".\\src\\ResourceManager\\RecoveryServices.Backup\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll"
-  ],
   "src/ResourceManager/RecoveryServices/": [
-    ".\\src\\ResourceManager\\RecoveryServices.Backup\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll",
+    ".\\src\\ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Backup.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Backup.Test.dll",
     ".\\src\\ResourceManager\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServicesArm.Test.dll"
   ],
   "src/ResourceManager/RedisCache/": [
