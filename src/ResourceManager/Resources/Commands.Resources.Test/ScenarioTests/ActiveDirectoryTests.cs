@@ -599,11 +599,25 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-NewADApplication");
         }
 
-        [Fact(Skip = "Need AD team to re-record test")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithoutApp()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewADServicePrincipalWithoutApp");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewADServicePrincipalWithReaderRole()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewADServicePrincipalWithReaderRole");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewADServicePrincipalWithCustomScope()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewADServicePrincipalWithCustomScope");
         }
 
         [Fact(Skip = "Not working in playback.")]
