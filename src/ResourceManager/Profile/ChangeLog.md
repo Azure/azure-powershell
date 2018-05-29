@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.2.0
 * Fix issue where version 10.0.3 of Newtonsoft.Json wasn't being loaded on module import
 
 ## Version 5.1.0
