@@ -196,13 +196,13 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 ```
 
 ### -ElasticPoolName
@@ -226,13 +226,13 @@ The license type for the Azure Sql database.
 Type: String
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
+Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Accepted values: LicenseIncluded, BasePrice
 ```
 
 ### -MaxSizeBytes

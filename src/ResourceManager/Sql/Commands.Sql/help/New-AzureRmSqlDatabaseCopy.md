@@ -168,13 +168,13 @@ The license type for the Azure Sql database.
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Accepted values: LicenseIncluded, BasePrice
 ```
 
 ### -ResourceGroupName

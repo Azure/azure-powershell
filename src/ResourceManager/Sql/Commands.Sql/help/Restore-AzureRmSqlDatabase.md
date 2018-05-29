@@ -213,26 +213,26 @@ The acceptable values for this parameter are:
 Type: String
 Parameter Sets: FromPointInTimeBackup, FromDeletedDatabaseBackup, FromGeoBackup, FromLongTermRetentionBackup
 Aliases:
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 ```
 
 ```yaml
 Type: String
 Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
 Aliases:
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 ```
 
 ### -ElasticPoolName
@@ -318,13 +318,13 @@ The license type for the Azure Sql database.
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-Accepted values: LicenseIncluded, BasePrice
 ```
 
 ### -PointInTime
