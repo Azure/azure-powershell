@@ -151,7 +151,7 @@ function Test-CreateVcoreDatabase
 function Test-CreateVcoreDatabaseWithLicenseType
 {
 	# Setup
-	$location = "westcentralus"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Central US"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 

@@ -208,12 +208,13 @@ Accept wildcard characters: False
 ### -Edition
 Specifies the edition to assign to the database. The acceptable values for this parameter are:
 
-- Default
 - None
-- Premium
 - Basic
 - Standard
+- Premium
 - DataWarehouse
+- Free
+- Stretch
 - GeneralPurpose
 - BusinessCritical
 
@@ -227,6 +228,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 ```
 
 ```yaml
@@ -268,6 +270,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Accepted values: LicenseIncluded, BasePrice
 ```
 
 ### -MaxSizeBytes

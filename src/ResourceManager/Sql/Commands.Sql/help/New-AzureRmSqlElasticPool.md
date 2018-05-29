@@ -204,11 +204,15 @@ Accept wildcard characters: False
 Specifies the edition of the Azure SQL Database used for the elastic pool.
 The acceptable values for this parameter are:
 
-- Premium
+- None
 - Basic
 - Standard
+- Premium
 - DataWarehouse
+- Free
 - Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
 Type: String
@@ -220,6 +224,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 ```
 
 ```yaml
@@ -261,6 +266,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Accepted values: LicenseIncluded, BasePrice
 ```
 
 ### -ResourceGroupName

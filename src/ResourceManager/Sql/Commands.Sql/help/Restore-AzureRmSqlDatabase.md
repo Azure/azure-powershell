@@ -200,11 +200,14 @@ Specifies the edition of the SQL database.
 The acceptable values for this parameter are:
 
 - None
-- Premium
 - Basic
 - Standard
+- Premium
 - DataWarehouse
 - Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
 Type: String
@@ -216,6 +219,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 ```
 
 ```yaml
@@ -319,6 +323,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Accepted values: LicenseIncluded, BasePrice
 ```
 
 ### -PointInTime

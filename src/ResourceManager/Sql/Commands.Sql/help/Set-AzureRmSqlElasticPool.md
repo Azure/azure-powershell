@@ -231,6 +231,10 @@ edition. The acceptable values for this parameter are:
 - Standard
 - Premium
 - DataWarehouse
+- Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
 Type: String
@@ -242,6 +246,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 ```
 
 ### -ElasticPoolName
@@ -271,6 +276,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+Accepted values: LicenseIncluded, BasePrice
 ```
 
 ### -ResourceGroupName

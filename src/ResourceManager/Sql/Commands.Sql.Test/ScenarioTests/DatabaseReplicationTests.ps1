@@ -16,18 +16,10 @@
 	.SYNOPSIS
 	Tests creating a database copy
 #>
-function Test-CreateDatabaseCopy
-{
-	Test-CreateCopyInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests creating a database copy
-#>
-function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
+function Test-CreateDatabaseCopy()
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
@@ -72,19 +64,10 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 	.SYNOPSIS
 	Tests creating a vcore database copy
 #>
-function Test-CreateVcoreDatabaseCopy
-{
-	Test-CreateVcoreCopyInternal "12.0" "Southeast Asia"
-}
-
-
-<#
-	.SYNOPSIS
-	Tests creating a vcore database copy
-#>
-function Test-CreateVcoreCopyInternal ($serverVersion, $location = "North Europe")
+function Test-CreateVcoreDatabaseCopy()
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$db = Create-VcoreDatabaseForTest $rg $server 1 BasePrice
@@ -135,18 +118,10 @@ function Test-CreateVcoreCopyInternal ($serverVersion, $location = "North Europe
 	.SYNOPSIS
 	Tests creating a secondary database
 #>
-function Test-CreateSecondaryDatabase
-{
-	Test-CreateSecondaryDatabaseInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests creating a secondary database
-#>
-function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
+function Test-CreateSecondaryDatabase()
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -184,18 +159,10 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	.SYNOPSIS
 	Tests getting a secondary database
 #>
-function Test-GetReplicationLink
-{
-	Test-GetReplicationLinkInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests getting a secondary database
-#>
-function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Europe")
+function Test-GetReplicationLink()
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -237,18 +204,10 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 	.SYNOPSIS
 	Tests removing a secondary database
 #>
-function Test-RemoveSecondaryDatabase
-{
-	Test-RemoveSecondaryDatabaseInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests removing a secondary database
-#>
-function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
+function Test-RemoveSecondaryDatabase()
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -274,21 +233,12 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 
 <#
 	.SYNOPSIS
-	Tests removing a secondary database
-#>
-function Test-FailoverSecondaryDatabase
-{
-	#v12 only
-	Test-FailoverSecondaryDatabaseInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
 	Tests failing over a secondary database
 #>
-function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
+function Test-FailoverSecondaryDatabase()
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server

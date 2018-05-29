@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ElasticPoolName = ElasticPoolName,
                 ReadScale = ReadScale,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
-                LicenseType = LicenseType // note: default license type is LicenseIncluded
+                LicenseType = LicenseType // note: default license type will be LicenseIncluded in SQL RP if not specified
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
