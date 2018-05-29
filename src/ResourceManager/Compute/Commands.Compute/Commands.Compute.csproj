@@ -321,6 +321,7 @@
     <Compile Include="VirtualMachine\VirtualMachineBaseCmdlet.cs" />
     <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Models\PSVirtualMachine.cs" />
+    <Compile Include="Models\PSVirtualMachineDataDisk.cs" />
     <Compile Include="VirtualMachine\Operation\NewAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\StartAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\StopAzureVMCommand.cs" />
@@ -334,6 +335,7 @@
     </Compile>
     <Compile Include="VirtualMachine\Config\SetAzureVMOperatingSystemCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\VirtualMachineCmdletHelper.cs" />
   </ItemGroup>

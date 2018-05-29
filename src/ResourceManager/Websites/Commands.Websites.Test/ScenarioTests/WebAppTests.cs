@@ -44,6 +44,13 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppOnAse");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewWebAppSimple()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSimple");
+        }
+
         [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebApp()

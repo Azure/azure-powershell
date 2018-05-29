@@ -28,6 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestDnsAvailability()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-DnsAvailability");

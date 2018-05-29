@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Sql.Database.Model;
+using SqlDatabaseModel = Microsoft.Azure.Commands.Sql.Database.Model;
+using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 
@@ -61,7 +62,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// <summary>
         /// Gets or sets the edition of the elastic pool
         /// </summary>
-        public DatabaseEdition? Edition { get; set; }
+        public string Edition { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Sku name of the elastic pool
+        /// </summary>
+        public string SkuName { get; set; }
 
         /// <summary>
         /// Gets or sets the Dtu for the elastic pool
@@ -77,6 +83,33 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the min Dtu per database in the elastic pool
         /// </summary>
         public int? DatabaseDtuMin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Sku capacity of the elastic pool
+        /// </summary>
+        public int? Capacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Minumum capacity of database in the elastic pool
+        ///    For Dtu pool, it is the min Database Dtu of the pool; for Vcore pool, it is the min vcore capacity of the pool
+        /// </summary>
+        public double? DatabaseCapacityMin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Maximum capacity of database in the elastic pool
+        ///    For Dtu pool, it is the max Database Dtu of the pool; for Vcore pool, it is the max vcore capacity of the pool
+        /// </summary>
+        public double? DatabaseCapacityMax { get; set; }
+
+        /// <summary>
+        /// Gets or sets the the sku family of the elastic pool
+        /// </summary>
+        public string Family { get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount of storage in bytes the elastic pool has in bytes
+        /// </summary>
+        public long? MaxSizeBytes { get; set; }
 
         /// <summary>
         /// Gets or sets the amount of storage the elastic pool has

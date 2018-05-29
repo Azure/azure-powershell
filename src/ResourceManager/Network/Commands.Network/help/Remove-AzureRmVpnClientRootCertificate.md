@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 5D857FF6-A27D-4031-948D-8A69D24B4AD4
@@ -80,7 +80,7 @@ $CertificateText = for ($i=1; $i -lt $Text.Length -1 ; $i++){$Text\[$i\]}
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +97,7 @@ Resource groups categorize items to help simplify inventory management and gener
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -112,7 +112,7 @@ Specifies the name of the virtual network gateway that the certificate is remove
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

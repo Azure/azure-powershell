@@ -24,7 +24,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Management.Sql.Models;
-using DatabaseEdition = Microsoft.Azure.Commands.Sql.Database.Model.DatabaseEdition;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -125,35 +124,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         }
 
         /// <summary>
-        /// Creates or updates an Azure Sql Database with Hyak SDK.
-        /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql Database Server</param>
-        /// <param name="model">The input parameters for the create/update operation</param>
-        /// <returns>The upserted Azure Sql Database from Hyak SDK</returns>
-        internal AzureSqlDatabaseModel UpsertDatabase(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
-        {
-            // Use Hyak SDK
-            var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new DatabaseCreateOrUpdateParameters
-            {
-                Location = model.Database.Location,
-                Tags = model.Database.Tags,
-                Properties = new DatabaseCreateOrUpdateProperties()
-                {
-                    Collation = model.Database.CollationName,
-                    Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
-                    MaxSizeBytes = model.Database.MaxSizeBytes,
-                    RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
-                    ElasticPoolName = model.Database.ElasticPoolName,
-                    RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
-                    ReadScale = model.Database.ReadScale.ToString(),
-                }
-            });
-
-            return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
-        }
-
-        /// <summary>
         /// Creates or updates an Azure Sql Database with new AutoRest SDK.
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
@@ -162,20 +132,31 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns>The upserted Azure Sql Database from AutoRest SDK</returns>
         internal AzureSqlDatabaseModel UpsertDatabaseWithNewSdk(string resourceGroup, string serverName, AzureSqlDatabaseCreateOrUpdateModel model)
         {
+            // Construct the ARM resource Id of the pool
+            string elasticPoolId = string.IsNullOrWhiteSpace(model.Database.ElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
+                        _subscription.Id,
+                        resourceGroup,
+                        serverName,
+                        model.Database.ElasticPoolName);
+
             // Use AutoRest SDK
             var resp = Communicator.CreateOrUpdate(resourceGroup, serverName, model.Database.DatabaseName, new Management.Sql.Models.Database
             {
                 Location = model.Database.Location,
                 Tags = model.Database.Tags,
                 Collation = model.Database.CollationName,
-                Edition = model.Database.Edition == DatabaseEdition.None ? null : model.Database.Edition.ToString(),
-                MaxSizeBytes = model.Database.MaxSizeBytes.ToString(),
-                RequestedServiceObjectiveId = model.Database.RequestedServiceObjectiveId,
-                ElasticPoolName = model.Database.ElasticPoolName,
-                RequestedServiceObjectiveName = model.Database.RequestedServiceObjectiveName,
-                ReadScale = (ReadScale)Enum.Parse(typeof(ReadScale), model.Database.ReadScale.ToString()),
+                Sku = string.IsNullOrWhiteSpace(model.Database.SkuName) ? null : new Sku()
+                {
+                    Name = model.Database.SkuName,
+                    Tier = model.Database.Edition,
+                    Family = model.Database.Family,
+                    Capacity = model.Database.Capacity
+                },
+                MaxSizeBytes = model.Database.MaxSizeBytes,
+                ReadScale =  model.Database.ReadScale.ToString(),
                 SampleName = model.SampleName,
-                ZoneRedundant = model.Database.ZoneRedundant
+                ZoneRedundant = model.Database.ZoneRedundant,
+                ElasticPoolId = elasticPoolId
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);
@@ -345,6 +326,54 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         public void RenameDatabase(string resourceGroupName, string serverName, string databaseName, string newName)
         {
             Communicator.Rename(resourceGroupName, serverName, databaseName, newName);
+        }
+
+        /// <summary>
+        /// Get database sku name based on edition
+        ///    Edition              | SkuName
+        ///    GeneralPurpose       | GP
+        ///    BusinessCritical     | BC
+        ///    Standard             | Standard
+        ///    Basic                | Basic
+        ///    Premium              | Premium
+        /// </summary>
+        /// <param name="tier">Azure Sql database edition</param>
+        /// <returns>The sku name</returns>
+        public static string GetDatabaseSkuName(string tier)
+        {
+            if (string.IsNullOrWhiteSpace(tier))
+                return null;
+
+            switch(tier.ToLowerInvariant())
+            {
+                case "generalpurpose":
+                    return "GP";
+                case "businesscritical":
+                    return "BC";
+                default:
+                    return tier;
+            }
+        }
+
+        /// <summary>
+        /// Gets the Sku for the Dtu database.
+        /// </summary>
+        /// <param name="requestedServiceObjectiveName">Requested service objective name of the Azure Sql database</param>
+        /// <param name="edition">Edition of the Azure Sql database</param>
+        /// <returns></returns>
+        public static Sku GetDtuDatabaseSku(string requestedServiceObjectiveName, string edition)
+        {
+            Sku sku = null;
+            if (!string.IsNullOrWhiteSpace(requestedServiceObjectiveName) || !string.IsNullOrWhiteSpace(edition))
+            {
+                sku = new Sku()
+                {
+                    Name = string.IsNullOrWhiteSpace(requestedServiceObjectiveName) ? GetDatabaseSkuName(edition) : requestedServiceObjectiveName,
+                    Tier = edition
+                };
+            }
+
+            return sku;
         }
     }
 }
