@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "AvailabilitySetGet",
             "AvailabilitySetList",
             "AvailabilitySetListAvailableSizes",
+            "AvailabilitySetUpdate",
             "ContainerServiceCreateOrUpdate",
             "ContainerServiceDelete",
             "ContainerServiceGet",
@@ -75,6 +76,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "ImageListByResourceGroup",
             "ImageListByResourceGroupNext",
             "ImageListNext",
+            "ImageUpdate",
             "LogAnalyticExportRequestRateByInterval",
             "LogAnalyticExportThrottledRequests",
             "ResourceSkuList",
@@ -89,6 +91,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "SnapshotListNext",
             "SnapshotRevokeAccess",
             "SnapshotUpdate",
+            "VirtualMachineExtensionCreateOrUpdate",
+            "VirtualMachineExtensionDelete",
+            "VirtualMachineExtensionGet",
+            "VirtualMachineExtensionList",
+            "VirtualMachineExtensionUpdate",
             "VirtualMachineRunCommandGet",
             "VirtualMachineRunCommandList",
             "VirtualMachineRunCommandListNext",
@@ -102,6 +109,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalk",
             "VirtualMachineScaleSetGet",
             "VirtualMachineScaleSetGetInstanceView",
+            "VirtualMachineScaleSetGetOSUpgradeHistory",
+            "VirtualMachineScaleSetGetOSUpgradeHistoryNext",
             "VirtualMachineScaleSetList",
             "VirtualMachineScaleSetListAll",
             "VirtualMachineScaleSetListAllNext",
@@ -149,7 +158,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "VirtualMachineRedeploy",
             "VirtualMachineRestart",
             "VirtualMachineRunCommand",
-            "VirtualMachineStart"
+            "VirtualMachineStart",
+            "VirtualMachineUpdate"
         )]
         public virtual string MethodName { get; set; }
 
@@ -195,6 +205,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "AvailabilitySetListAvailableSizes":
                         ExecuteAvailabilitySetListAvailableSizesMethod(argumentList);
+                        break;
+                    case "AvailabilitySetUpdate":
+                        ExecuteAvailabilitySetUpdateMethod(argumentList);
                         break;
                     case "ContainerServiceCreateOrUpdate":
                         ExecuteContainerServiceCreateOrUpdateMethod(argumentList);
@@ -268,6 +281,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "ImageListNext":
                         ExecuteImageListNextMethod(argumentList);
                         break;
+                    case "ImageUpdate":
+                        ExecuteImageUpdateMethod(argumentList);
+                        break;
                     case "LogAnalyticExportRequestRateByInterval":
                         ExecuteLogAnalyticExportRequestRateByIntervalMethod(argumentList);
                         break;
@@ -310,6 +326,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "SnapshotUpdate":
                         ExecuteSnapshotUpdateMethod(argumentList);
                         break;
+                    case "VirtualMachineExtensionCreateOrUpdate":
+                        ExecuteVirtualMachineExtensionCreateOrUpdateMethod(argumentList);
+                        break;
+                    case "VirtualMachineExtensionDelete":
+                        ExecuteVirtualMachineExtensionDeleteMethod(argumentList);
+                        break;
+                    case "VirtualMachineExtensionGet":
+                        ExecuteVirtualMachineExtensionGetMethod(argumentList);
+                        break;
+                    case "VirtualMachineExtensionList":
+                        ExecuteVirtualMachineExtensionListMethod(argumentList);
+                        break;
+                    case "VirtualMachineExtensionUpdate":
+                        ExecuteVirtualMachineExtensionUpdateMethod(argumentList);
+                        break;
                     case "VirtualMachineRunCommandGet":
                         ExecuteVirtualMachineRunCommandGetMethod(argumentList);
                         break;
@@ -348,6 +379,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         break;
                     case "VirtualMachineScaleSetGetInstanceView":
                         ExecuteVirtualMachineScaleSetGetInstanceViewMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetGetOSUpgradeHistory":
+                        ExecuteVirtualMachineScaleSetGetOSUpgradeHistoryMethod(argumentList);
+                        break;
+                    case "VirtualMachineScaleSetGetOSUpgradeHistoryNext":
+                        ExecuteVirtualMachineScaleSetGetOSUpgradeHistoryNextMethod(argumentList);
                         break;
                     case "VirtualMachineScaleSetList":
                         ExecuteVirtualMachineScaleSetListMethod(argumentList);
@@ -493,6 +530,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     case "VirtualMachineStart":
                         ExecuteVirtualMachineStartMethod(argumentList);
                         break;
+                    case "VirtualMachineUpdate":
+                        ExecuteVirtualMachineUpdateMethod(argumentList);
+                        break;
                     default: WriteWarning("Cannot find the method by name = '" + MethodName + "'."); break;
                 }
             });
@@ -508,6 +548,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "AvailabilitySetGet": return CreateAvailabilitySetGetDynamicParameters();
                 case "AvailabilitySetList": return CreateAvailabilitySetListDynamicParameters();
                 case "AvailabilitySetListAvailableSizes": return CreateAvailabilitySetListAvailableSizesDynamicParameters();
+                case "AvailabilitySetUpdate": return CreateAvailabilitySetUpdateDynamicParameters();
                 case "ContainerServiceCreateOrUpdate": return CreateContainerServiceCreateOrUpdateDynamicParameters();
                 case "ContainerServiceDelete": return CreateContainerServiceDeleteDynamicParameters();
                 case "ContainerServiceGet": return CreateContainerServiceGetDynamicParameters();
@@ -532,6 +573,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "ImageListByResourceGroup": return CreateImageListByResourceGroupDynamicParameters();
                 case "ImageListByResourceGroupNext": return CreateImageListByResourceGroupNextDynamicParameters();
                 case "ImageListNext": return CreateImageListNextDynamicParameters();
+                case "ImageUpdate": return CreateImageUpdateDynamicParameters();
                 case "LogAnalyticExportRequestRateByInterval": return CreateLogAnalyticExportRequestRateByIntervalDynamicParameters();
                 case "LogAnalyticExportThrottledRequests": return CreateLogAnalyticExportThrottledRequestsDynamicParameters();
                 case "ResourceSkuList": return CreateResourceSkuListDynamicParameters();
@@ -546,6 +588,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "SnapshotListNext": return CreateSnapshotListNextDynamicParameters();
                 case "SnapshotRevokeAccess": return CreateSnapshotRevokeAccessDynamicParameters();
                 case "SnapshotUpdate": return CreateSnapshotUpdateDynamicParameters();
+                case "VirtualMachineExtensionCreateOrUpdate": return CreateVirtualMachineExtensionCreateOrUpdateDynamicParameters();
+                case "VirtualMachineExtensionDelete": return CreateVirtualMachineExtensionDeleteDynamicParameters();
+                case "VirtualMachineExtensionGet": return CreateVirtualMachineExtensionGetDynamicParameters();
+                case "VirtualMachineExtensionList": return CreateVirtualMachineExtensionListDynamicParameters();
+                case "VirtualMachineExtensionUpdate": return CreateVirtualMachineExtensionUpdateDynamicParameters();
                 case "VirtualMachineRunCommandGet": return CreateVirtualMachineRunCommandGetDynamicParameters();
                 case "VirtualMachineRunCommandList": return CreateVirtualMachineRunCommandListDynamicParameters();
                 case "VirtualMachineRunCommandListNext": return CreateVirtualMachineRunCommandListNextDynamicParameters();
@@ -559,6 +606,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalk": return CreateVirtualMachineScaleSetForceRecoveryServiceFabricPlatformUpdateDomainWalkDynamicParameters();
                 case "VirtualMachineScaleSetGet": return CreateVirtualMachineScaleSetGetDynamicParameters();
                 case "VirtualMachineScaleSetGetInstanceView": return CreateVirtualMachineScaleSetGetInstanceViewDynamicParameters();
+                case "VirtualMachineScaleSetGetOSUpgradeHistory": return CreateVirtualMachineScaleSetGetOSUpgradeHistoryDynamicParameters();
+                case "VirtualMachineScaleSetGetOSUpgradeHistoryNext": return CreateVirtualMachineScaleSetGetOSUpgradeHistoryNextDynamicParameters();
                 case "VirtualMachineScaleSetList": return CreateVirtualMachineScaleSetListDynamicParameters();
                 case "VirtualMachineScaleSetListAll": return CreateVirtualMachineScaleSetListAllDynamicParameters();
                 case "VirtualMachineScaleSetListAllNext": return CreateVirtualMachineScaleSetListAllNextDynamicParameters();
@@ -607,6 +656,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 case "VirtualMachineRestart": return CreateVirtualMachineRestartDynamicParameters();
                 case "VirtualMachineRunCommand": return CreateVirtualMachineRunCommandDynamicParameters();
                 case "VirtualMachineStart": return CreateVirtualMachineStartDynamicParameters();
+                case "VirtualMachineUpdate": return CreateVirtualMachineUpdateDynamicParameters();
                 default: break;
             }
 
