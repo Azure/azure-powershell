@@ -51,42 +51,42 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
 
-        
-        [Parameter(ParameterSetName = UserParameterSet, 
+
+        [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
         public string CertificateThumbprint { get; set; }
-        
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
+
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = true, HelpMessage = "SPN")]
         public string ApplicationId { get; set; }
 
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true)]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
-        
-        [Parameter(ParameterSetName = UserParameterSet, 
+
+        [Parameter(ParameterSetName = UserParameterSet,
                     Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = AccessTokenParameterSet, 
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = false, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet, 
+        [Parameter(ParameterSetName = ServicePrincipalCertificateParameterSet,
                     Mandatory = true, HelpMessage = "Tenant name or ID")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
                     Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Alias("Domain")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
-        
-        [Parameter(ParameterSetName = AccessTokenParameterSet, 
+
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "AccessToken for Azure Resource Manager")]
         [ValidateNotNullOrEmpty]
         public string AccessToken { get; set; }
@@ -100,8 +100,8 @@ namespace Microsoft.Azure.Commands.Profile
                    Mandatory = false, HelpMessage = "AccessToken for KeyVault Service")]
         [ValidateNotNullOrEmpty]
         public string KeyVaultAccessToken { get; set; }
-        
-        [Parameter(ParameterSetName = AccessTokenParameterSet, 
+
+        [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = true, HelpMessage = "Account Id for access token")]
         [Parameter(ParameterSetName = ManagedServiceParameterSet,
                     Mandatory = false, HelpMessage = "Account Id for managed service. Can be a managed service resource Id, or the associated client id. To use the SyatemAssigned identity, leave this field blank.")]
@@ -146,6 +146,9 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = AccessTokenParameterSet,
                     Mandatory = false, HelpMessage = "Skip validation for access token")]
         public SwitchParameter SkipValidation { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Skips context population if no contexts are found.")]
+        public SwitchParameter SkipContextPopulation { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Overwrite the existing context with the same name, if any.")]
         public SwitchParameter Force { get; set; }
@@ -213,8 +216,8 @@ namespace Microsoft.Azure.Commands.Profile
                     builder.Port = ManagedServicePort;
                     builder.Path = "/oauth2/token";
 
-                    string msiSecret = this.IsBound(nameof(ManagedServiceSecret)) 
-                        ? ManagedServiceSecret.ConvertToString() 
+                    string msiSecret = this.IsBound(nameof(ManagedServiceSecret))
+                        ? ManagedServiceSecret.ConvertToString()
                         : System.Environment.GetEnvironmentVariable(MSISecretVariable);
 
                     string suppliedUri = this.IsBound(nameof(ManagedServiceHostName))
@@ -225,7 +228,7 @@ namespace Microsoft.Azure.Commands.Profile
                     {
                         azureAccount.SetProperty(AzureAccount.Property.MSILoginSecret, msiSecret);
                     }
-                       
+
                     if (!string.IsNullOrWhiteSpace(suppliedUri))
                     {
                         azureAccount.SetProperty(AzureAccount.Property.MSILoginUri, suppliedUri);
@@ -254,7 +257,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 azureAccount.Id = ApplicationId;
             }
-             
+
             if (!string.IsNullOrWhiteSpace(CertificateThumbprint))
             {
                 azureAccount.SetThumbprint(CertificateThumbprint);
@@ -283,7 +286,8 @@ namespace Microsoft.Azure.Commands.Profile
                         password,
                         SkipValidation,
                         (s) => WriteWarning(s),
-                        name));
+                        name,
+                        !this.SkipContextPopulation.IsPresent));
                });
             }
         }
@@ -329,7 +333,7 @@ namespace Microsoft.Azure.Commands.Profile
 #if DEBUG
                 }
 #endif
-                
+
                 bool autoSaveEnabled = AzureSession.Instance.ARMContextSaveMode == ContextSaveMode.CurrentUser;
                 var autosaveVariable = System.Environment.GetEnvironmentVariable(AzureProfileConstants.AzureAutosaveVariable);
                 bool localAutosave;
