@@ -70,6 +70,11 @@ function Test-AvailabilitySet
         $job = Remove-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        [System.Guid]::Parse($st.RequestId);
+        Assert-AreEqual "OK" $st.StatusCode;
+        Assert-AreEqual "OK" $st.ReasonPhrase;
+        Assert-True { $st.IsSuccessStatusCode };
         
         $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
         Assert-AreEqual $asets $null;
