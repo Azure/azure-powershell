@@ -61,7 +61,7 @@ This command retrieves the certificate named MyCert from the key vault named MyK
 ### Example 3: Back up a previously retrieved certificate to a specified file name, overwriting the destination file without prompting.
 ```powershell
 PS C:\> $cert = Get-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
-PS C:\> Backup-AzureKeyVaultCertificate -InputObject $cert -OutputFile 'C:\Backup.blob' -Force
+PS C:\> Backup-AzureKeyVaultCertificate -Certificate $cert -OutputFile 'C:\Backup.blob' -Force
 
 C:\Backup.blob
 ```
