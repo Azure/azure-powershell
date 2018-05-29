@@ -178,11 +178,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact>
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact
 
 ## NOTES
 

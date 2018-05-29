@@ -38,7 +38,7 @@ The **Remove-AzureKeyVaultCertificateContact** cmdlet deletes a contact that is 
 
 ### Example 1: Remove a certificate contact
 ```powershell
-PS C:\> Remove-AzureKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com"
+PS C:\> Remove-AzureKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
 
 Email               VaultName
 -----               ---------
