@@ -30,6 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupCRUD"));
@@ -37,6 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupCollections()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupCollections"));
@@ -44,6 +46,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInNewSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewSecurityRule"));
@@ -52,6 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInAddedSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule"));
@@ -60,6 +64,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInSetSecurityRule()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInSetSecurityRule"));
@@ -68,6 +73,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInNewNetworkInterface()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterface"));
@@ -75,6 +81,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInNewNetworkInterfaceIpConfig()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig"));
@@ -83,6 +90,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInAddedNetworkInterfaceIpConfig()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));

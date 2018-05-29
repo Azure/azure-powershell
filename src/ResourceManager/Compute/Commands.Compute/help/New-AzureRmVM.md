@@ -18,10 +18,10 @@ Creates a virtual machine.
 New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String[]>] -Name <String>
  -Credential <PSCredential> [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
- [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-ImageName <String>]
- [-Size <String>] [-AvailabilitySetName <String>] [-AsJob] [-DataDiskSizeInGb <Int32[]>]
- [-DefaultProfile <IAzureContextContainer>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
+ [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
+ [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -37,9 +37,9 @@ New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <Stri
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux]
- [-Size <String>] [-AvailabilitySetName <String>] [-AsJob] [-DataDiskSizeInGb <Int32[]>]
- [-DefaultProfile <IAzureContextContainer>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
+ [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -287,13 +287,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageName
+### -Image
 The friendly image name upon which the VM will be built.  These include: Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases:
+Aliases: ImageName
 
 Required: False
 Position: Named
@@ -503,9 +503,9 @@ Accept wildcard characters: False
 If the parameter is present then the VM is assingned a managed system identity that is auto generated.
 
 ```yaml
-Type: SwithParameter
+Type: SwitchParameter
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -537,7 +537,7 @@ The name of a managed service identity that should be assigned to the VM.
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

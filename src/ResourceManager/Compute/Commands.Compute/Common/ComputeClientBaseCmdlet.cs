@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Globalization;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -67,6 +69,22 @@ namespace Microsoft.Azure.Commands.Compute
 
                 throw new ComputeCloudException(ex);
             }
+        }
+
+        protected void ThrowInvalidArgumentError(string errorMessage, string arg)
+        {
+            ThrowTerminatingError
+                (new ErrorRecord(
+                    new ArgumentException(string.Format(CultureInfo.InvariantCulture,
+                        errorMessage, arg)),
+                    "InvalidArgument",
+                    ErrorCategory.InvalidArgument,
+                    null));
+        }
+
+        protected string GetDiskNameFromId(string Id)
+        {
+            return Id.Substring(Id.LastIndexOf('/') + 1);
         }
     }
 }

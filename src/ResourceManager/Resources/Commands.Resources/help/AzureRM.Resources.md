@@ -220,6 +220,24 @@ Updates managed application
 ### [Set-AzureRmManagedApplicationDefinition](Set-AzureRmManagedApplicationDefinition.md)
 Updates managed application definition
 
+### [Get-AzureRmManagementGroup](Get-AzureRmManagementGroup.md)
+Gets Management Group(s)
+
+### [New-AzureRmManagementGroup](New-AzureRmManagementGroup.md)
+Creates a Management Group
+
+### [New-AzureRmManagementGroupSubscription](New-AzureRmManagementGroupSubscription.md)
+Adds a Subscription to a Management Group.
+
+### [Remove-AzureRmManagementGroup](Remove-AzureRmManagementGroup.md)
+Removes a Management Group
+
+### [Remove-AzureRmManagementGroupSubscription](Remove-AzureRmManagementGroupSubscription.md)
+Removes a Subscription from a Management Group.
+
+### [Update-AzureRmManagementGroup](Update-AzureRmManagementGroup.md)
+Updates a Management Group
+
 ### [Set-AzureRmPolicyAssignment](Set-AzureRmPolicyAssignment.md)
 Modifies a policy assignment.
 

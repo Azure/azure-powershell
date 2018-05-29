@@ -56,12 +56,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; }
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.KeyVault.dll', 
                '.\Microsoft.Azure.KeyVault.WebKey.dll', 
-               '.\Microsoft.Azure.Management.Compute.dll', 
-               '.\Microsoft.Azure.Management.KeyVault.dll', 
-               '.\Microsoft.Azure.Management.Network.dll', 
-               '.\Microsoft.Azure.Management.ResourceManager.dll', 
-               '.\Microsoft.Azure.Management.ServiceFabric.dll', 
-               '.\Microsoft.Azure.Management.Storage.dll'
+               '.\Microsoft.Azure.Management.ServiceFabric.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

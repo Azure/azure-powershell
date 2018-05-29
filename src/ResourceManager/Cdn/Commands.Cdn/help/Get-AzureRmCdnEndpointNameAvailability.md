@@ -23,11 +23,6 @@ The **Get-AzureRmCdnEndpointNameAvailability** cmdlet gets availability status o
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
