@@ -357,6 +357,24 @@ function Get-ServerDnsAliasName
 
 <#
 .SYNOPSIS
+Gets valid managed instance name
+#>
+function Get-ManagedInstanceName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
+Gets valid managed database name
+#>
+function Get-ManagedDatabaseName
+{
+    return getAssetName
+}
+
+<#
+.SYNOPSIS
 Gets test mode - 'Record' or 'Playback'
 #>
 function Get-SqlTestMode {
@@ -612,4 +630,25 @@ function Get-DNSNameBasedOnEnvironment ()
          return ".sqltest-eg1.mscds.com"
      }
      return ".database.windows.net"
+}
+
+<#
+	.SYNOPSIS
+	Creates the test environment needed to perform the Sql managed instance CRUD tests
+#>
+function Create-ManagedInstanceForTest ($resourceGroup)
+{
+	$managedInstanceName = Get-ManagedInstanceName
+	$credentials = Get-ServerCredential
+	$subnetId = "/subscriptions/ee5ea899-0791-418f-9270-77cd8273794b/resourceGroups/cl_one/providers/Microsoft.Network/virtualNetworks/cl_initial/subnets/CooL"
+ 	$licenseType = "BasePrice"
+  	$storageSizeInGB = 32
+ 	$vCore = 16
+ 	$skuName = "GP_Gen4"
+
+	$managedInstance = New-AzureRmSqlManagedInstance -ResourceGroupName $resourceGroup.ResourceGroupName -Name $managedInstanceName `
+ 			-Location $resourceGroup.Location -AdministratorCredential $credentials -SubnetId $subnetId `
+  			-LicenseType $licenseType -StorageSizeInGB $storageSizeInGB -Vcore $vCore -SkuName $skuName
+
+	return $managedInstance
 }
