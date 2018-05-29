@@ -29,10 +29,19 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 1)]
         public string TargetResourceId { get; set; }
 
+        [JsonProperty(Order = 1)]
+        public PSTrafficAnalyticsProperties FlowAnalyticsConfiguration { get; set; }
+
         [JsonIgnore]
         public string RetentionPolicyText
         {
             get { return JsonConvert.SerializeObject(RetentionPolicy, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string FlowAnalyticsConfigurationText
+        {
+            get { return JsonConvert.SerializeObject(FlowAnalyticsConfiguration, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
