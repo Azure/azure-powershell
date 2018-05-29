@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
+
+## Version 6.0.1
+* Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters
+    - If no values are provided for `Role` or `Scope`, the service principal is created with no permissions
+    - If a `Role` is provided, but no `Scope`, the service principal is created with the specified `Role` permissions over the current subscription
+    - If a `Scope` is provided, but no `Role`, the service principal is created with `Contributor` permissions over the specified `Scope`
+    - If both `Role` and `Scope` are provided, the service principal is created with the specified `Role` permissions over the specified `Scope`
 
 ## Version 6.0.0
 * Set minimum dependency of module to PowerShell 5.0
