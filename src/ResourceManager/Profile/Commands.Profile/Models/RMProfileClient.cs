@@ -109,7 +109,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             SecureString password,
             bool skipValidation,
             Action<string> promptAction,
-            string name = null)
+            string name = null,
+            bool shouldPopulateContextList = true)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -226,7 +227,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
-            var shouldPopulateContextList = _profile.DefaultContext?.Account == null;
+            shouldPopulateContextList &= _profile.DefaultContext?.Account == null;
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -264,7 +265,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (shouldPopulateContextList)
             {
                 var defaultContext = _profile.DefaultContext;
-                var subscriptions = ListSubscriptions(tenantId);
+                var subscriptions = ListSubscriptions(tenantId).Take(25);
                 foreach (var subscription in subscriptions)
                 {
                     IAzureTenant tempTenant = new AzureTenant()
