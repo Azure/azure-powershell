@@ -141,6 +141,8 @@ PrivateData = @{
         # External dependent modules of this module
         # ExternalModuleDependencies = @()
 
+        # Prerelease = ''
+
     } # End of PSData hashtable
     
  } # End of PrivateData hashtable
