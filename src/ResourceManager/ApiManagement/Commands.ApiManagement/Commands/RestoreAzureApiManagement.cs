@@ -71,15 +71,18 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         public override void ExecuteCmdlet()
         {
             var account = StorageContext.GetCloudStorageAccount();
-            ExecuteLongRunningCmdletWrap(
-                () => Client.BeginRestoreApiManagement(
+            var apimanagementResource = Client.RestoreApiManagement(
                     ResourceGroupName,
                     Name,
                     account.Credentials.AccountName,
                     account.Credentials.ExportBase64EncodedKey(),
                     SourceContainerName,
-                    SourceBlobName),
-                PassThru.IsPresent);
+                    SourceBlobName);
+
+            if (PassThru.IsPresent)
+            {
+                this.WriteObject(apimanagementResource);
+            }
         }
     }
 }

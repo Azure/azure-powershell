@@ -164,6 +164,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         private void Initialize(AzureRmProfile profile)
         {
             EnvironmentTable.Clear();
+            // Adding predefined environments
+            foreach (var env in AzureEnvironment.PublicEnvironments)
+            {
+                EnvironmentTable[env.Key] = env.Value;
+            }
+
             Contexts.Clear();
             DefaultContextKey = "Default";
             if (profile != null)
@@ -311,6 +317,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         public void Clear()
         {
             Contexts.Clear();
+            DefaultContextKey = "Default";
             DefaultContext = new AzureContext();
             EnvironmentTable.Clear();
             foreach (var environment in AzureEnvironment.PublicEnvironments)

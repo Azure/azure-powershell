@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
             }
         }
-        [Fact]
+        [Fact(Skip = "LTR-V1 restore service is retiring in Prod.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreLongTermRetentionBackup()
         {
