@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: C9954E3D-8645-473E-A6D4-86278C2F6BC1
@@ -68,7 +68,7 @@ The name of the resource group that contains the ExpressRoute circuit.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

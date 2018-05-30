@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.1.0'
+ModuleVersion = '6.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -93,7 +93,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.1.0';
                @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.5'; }, 
                @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.0.0'; }, 
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.4'; }, 
-               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.0'; }, 
+               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.0.1'; }, 
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.4'; }, 
                @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.5'; }, 
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.6'; }, 
@@ -159,67 +159,13 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '6.1.0 - May 2018
-AzureRM.Profile
-* Fix issue where running ''Clear-AzureRmContext'' would keep an empty context with the name of the previous default context, which prevented the user from creating a new context with the old name
-
-AzureRM.AnalysisServices
-* Enable Gateway assocaite/disassociate operations on AS.
-
-AzureRM.ApiManagement
-* Added support for ApiVersions, ApiReleases and ApiRevisions
-* Added suppport for ServiceFabric Backend
-* Added support for Application Insights Logger
-* Added support for recognizing ''Basic'' sku as a valid sku of Api Management service
-* Added support for installing Certificates issued by private CA as Root or CA
-* Added support for accepting Custom SSL certificates via KeyVault and Multiple proxy hostnames
-* Added support for MSI identity
-* Added support for accepting Policies via Url
-NOTE: The following cmdlets will be deprecated in future release
-   - Import-AzureRmApiManagementHostnameCertificate
-   - New-AzureRmApiManagementHostnameConfiguration
-   - Set-AzureRmApiManagementHostnames
-   - Update-AzureRmApiManagementDeployment
-
-AzureRM.Batch
-* Release new cmdlet Get-AzureBatchPoolNodeCounts
-* Release new cmdlet Start-AzureBatchComputeNodeServiceLogUpload
-
-AzureRM.Consumption
-* Add new parameters Expand, ResourceGroup, InstanceName, InstanceId, Tags, and Top on Cmdlet Get-AzureRmConsumptionUsageDetail
-
-AzureRM.DataLakeStore
-* Fix example for Export-AzureRmDataLakeStoreChildItemProperties
-* Fix null parameter exception for Recurse case in Set-AzureRmDataLakeStoreItemAclEntry 
-* Fix the help files for Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl, Remove-AzureRmDataLakeStoreItemAclEntry 
-
-AzureRM.Network
-* Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
-* Added cmdlet to create protocol configuration
-    - New-AzureRmNetworkWatcherProtocolConfiguration
-* Added cmdlet to add a new circuit connection to an existing express route circuit.
-    - Add-AzureRmExpressRouteCircuitConnectionConfig
-* Added cmdlet to remove a circuit connection from an existing express route circuit.
-    - Remove-AzureRmExpressRouteCircuitConnectionConfig
-* Added cmdlet to retrieve a circuit connection
-    - Get-AzureRmExpressRouteCircuitConnectionConfig
-
-AzureRM.ServiceFabric
-* Fixed server authentication usage with generated certificates (Issue #5998)
-
-AzureRM.Sql
-* Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
-* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with ''Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy''.
-* Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
-* The updated cmdlets including: 
-	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
-	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
-	- New-AzureRmSqlDatabaseCopy
-	- New-AzureRmSqlDatabaseSecondary
-	- Restore-AzureRmSqlDatabase
-
-AzureRM.TrafficManager
-* Update the parameters for ''Get-AzureRmTrafficManagerProfile'' so that -ResourceGroupName parameter is required when using -Name parameter.
+        ReleaseNotes = '6.1.1 - May 2018
+AzureRM.Resources
+* Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters
+    - If no values are provided for `Role` or `Scope`, the service principal is created with no permissions
+    - If a `Role` is provided, but no `Scope`, the service principal is created with the specified `Role` permissions over the current subscription
+    - If a `Scope` is provided, but no `Role`, the service principal is created with `Contributor` permissions over the specified `Scope`
+    - If both `Role` and `Scope` are provided, the service principal is created with the specified `Role` permissions over the specified `Scope`
 '
 
         # Prerelease string of this module
