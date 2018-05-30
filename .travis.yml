@@ -10,6 +10,10 @@ env:
 services:
  - docker
 
+cache:
+  directories:
+  - /home/travis/build/Azure/azure-powershell/src/ResourceManager/Network/Commands.Network.Test/bin/Debug/netcoreapp2.0/
+
 before_install:
  - sudo apt-get update
  - sudo apt-get install docker-ce
