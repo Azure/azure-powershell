@@ -118,31 +118,62 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 ## EXAMPLES
 
 ### Example 1: Remove permissions for a user
-```
-PS C:\>Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com'
+```powershell
+PS C:\> Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PassThru
+
+Vault Name                       : Contoso03Vault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/contoso03vault
+Vault URI                        : https://contoso03vault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : False
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             :
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        :
+                                   Permissions to Secrets                     :
+                                   Permissions to Certificates                : get, create
+                                   Permissions to (Key Vault Managed) Storage :
+
+
+Network Rule Set                 :
+                                   Default Action                             : Allow
+                                   Bypass                                     : AzureServices
+                                   IP Rules                                   :
+                                   Virtual Network Rules                      :
+
+Tags                             :
 ```
 
-This command removes all the permissions that a user PattiFuller@contoso.com has on the key vault named Contoso03Vault.
+This command removes all the permissions that a user PattiFuller@contoso.com has on the key vault named Contoso03Vault.  If -PassThru is specified, the KeyVault object is returned.
 
 ### Example 2: Remove permissions for an application
-```
-PS C:\>Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com'
+```powershell
+PS C:\> Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com'
 ```
 
 This command removes all the permissions that an application has on the key vault named Contoso03Vault.
 This example identifies the application by using the service principal name registered in Azure Active Directory, http://payroll.contoso.com.
 
 ### Example 3: Remove permissions for an application by using its object ID
-```
-PS C:\>Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectID 34595082-9346-41b6-8d6b-295a2808b8db
+```powershell
+PS C:\> Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectID 34595082-9346-41b6-8d6b-295a2808b8db
 ```
 
 This command removes all the permissions that an application has on the key vault named Contoso03Vault.
 This example identifies the application by the object ID of the service principal.
 
 ### Example 4: Remove permissions for the Microsoft.Compute resource provider
-```
-PS C:\>Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
+```powershell
+PS C:\> Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
 ```
 
 This command removes permission for the Microsoft.Compute resource provider to get secrets from the Contoso03Vault.
@@ -399,8 +430,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
