@@ -66,7 +66,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
     '.\Microsoft.WindowsAzure.Commands.Common.Storage.dll', 
     '.\Microsoft.Azure.Commands.Common.KeyVault.dll', 
     '.\Microsoft.Azure.Commands.Common.Storage.Management.dll', 
-    '.\Microsoft.Azure.Commands.Common.WebSites.dll', 
+    '.\Microsoft.Azure.Commands.Common.Websites.dll', 
     '.\Hyak.Common.dll', '.\Microsoft.ApplicationInsights.dll', 
     '.\Microsoft.Azure.Common.dll', 
     '.\Microsoft.IdentityModel.Clients.ActiveDirectory.dll', 
