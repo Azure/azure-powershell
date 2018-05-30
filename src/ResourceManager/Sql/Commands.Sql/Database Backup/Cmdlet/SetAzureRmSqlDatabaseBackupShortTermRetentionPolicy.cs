@@ -6,9 +6,7 @@ using Microsoft.Azure.Commands.Sql.Database_Backup.Model;
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupShortTermRetentionPolicy",
-    DefaultParameterSetName = PolicyByResourceServerDatabaseSet,
-    SupportsShouldProcess = true,
-    ConfirmImpact = ConfirmImpact.Low),
+        SupportsShouldProcess = true),
     OutputType(typeof(AzureSqlDatabaseBackupShortTermRetentionPolicyModel))]
     public class SetAzureRmSqlDatabaseBackupShortTermRetentionPolicy : AzureSqlDatabaseBackupShortTermRetentionPolicyCmdletBase
     {
