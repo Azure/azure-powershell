@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 1A2C843C-6962-4B0E-ACBF-A5EFF609A5BE
@@ -28,10 +28,10 @@ New-AzureRmVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJ
  [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-VmSize <String>]
  [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
- [-Zone <System.Collections.Generic.List`1[System.String]>] [-DataDiskSizeInGb <Int32[]>]
- [-NatBackendPort <Int32[]>] [-DefaultProfile <IAzureContextContainer>]
  [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
+ [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -447,9 +447,9 @@ Accept wildcard characters: False
 If the parameter is present then the VM(s) in the scale set is(are) assingned a managed system identity that is auto generated.
 
 ```yaml
-Type: SwithParameter
-Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Type: SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
 
 Required: False
 Position: Named
@@ -479,8 +479,8 @@ The name of a managed service identity that should be assigned to the VM(s) in t
 
 ```yaml
 Type: String
-Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases: 
+Parameter Sets: SimpleParameterSet
+Aliases:
 
 Required: False
 Position: Named
