@@ -641,6 +641,10 @@
               <ListItem> 
                 <Label>VpnClientRootCertificates</Label> 
                 <PropertyName>VpnClientRootCertificatesText</PropertyName> 
+              </ListItem>
+	      <ListItem> 
+                 <Label>VpnClientIpsecPolicies</Label> 
+                <PropertyName>VpnClientIpsecPoliciesText</PropertyName>
               </ListItem> 
             </ListItems> 
           </ListEntry> 

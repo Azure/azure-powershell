@@ -300,7 +300,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
       
       # Create & Get LocalNetworkGateway      
       $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.4.5
@@ -309,7 +309,6 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       Assert-AreEqual $localnetGateway.Name $actual.Name	
       Assert-AreEqual "192.168.4.5" $localnetGateway.GatewayIpAddress
       Assert-AreEqual "192.168.0.0/16" $localnetGateway.LocalNetworkAddressSpace.AddressPrefixes[0]
-      $localnetGateway.Location = $location
 
       # Create the Virtual Network
       $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
@@ -331,17 +330,17 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $rootCert = New-AzureRmVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
       $clientCert = New-AzureRmVpnClientRevokedCertificate -Name $sampleClientCertName -Thumbprint $sampleClinentCertThumbprint
       
-      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Basic -GatewayDefaultSite $localnetGateway -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
+      $actual = New-AzureRmVirtualNetworkGateway -GatewayDefaultSite $localnetGateway -ResourceGroupName $rgname -Name $rname -Location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool "201.169.0.0/16" -VpnClientProtocol SSTP -VpnClientRootCertificates $rootCert -VpnClientRevokedCertificates $clientCert
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "Vpn" $expected.GatewayType
       Assert-AreEqual "RouteBased" $expected.VpnType
-      Assert-AreEqual "Basic" $expected.Sku.Tier
+      Assert-AreEqual "VpnGw1" $expected.Sku.Tier
       Assert-AreEqual $localnetGateway.Id $expected.GatewayDefaultSite.Id
-      Assert-AreEqual $localnetGateway.LocalNetworkAddressSpace $expected.VpnClientConfiguration.VpnClientAddressPool
-      Assert-AreEqual $clientRootCertName $expected.VpnClientConfiguration.VpnClientRevokedCertificates[0].name
-      Assert-AreEqual $sampleClientCertName $expected.VpnClientConfiguration.VpnClientRootCertificates[0].name
+      Assert-AreEqual "201.169.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes[0]
+      Assert-AreEqual $sampleClientCertName $expected.VpnClientConfiguration.VpnClientRevokedCertificates[0].name
+      Assert-AreEqual $clientRootCertName $expected.VpnClientConfiguration.VpnClientRootCertificates[0].name
 
       # Remove default site set for force tunneling
       $actual = Remove-AzureRmVirtualNetworkGatewayDefaultSite -VirtualNetworkGateway $expected
@@ -353,17 +352,17 @@ function Test-VirtualNetworkGatewayP2SAndSKU
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $localnetGateway.Id $expected.GatewayDefaultSite.Id
 
-	  # Resize the virtual network gateway from 'Basic' to 'Standard' SKU
-	  $actual = Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -GatewaySku "Standard"
+	  # Resize the virtual network gateway from 'VpnGw1' to 'VpnGw2' SKU
+	  $actual = Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -GatewaySku VpnGw2
       Assert-AreEqual "Succeeded" $actual.ProvisioningState
 	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname	  
-      Assert-AreEqual "Standard" $expected.Sku.Tier
+      Assert-AreEqual "VpnGw2" $expected.Sku.Tier
 
       # Update P2S VPNClient Address Pool
       Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $expected -VpnClientAddressPool 200.168.0.0/16
       $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
-	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes
-         
+	  Assert-AreEqual "200.168.0.0/16" $expected.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes[0]
+
      # Get, list client Root certificates
      $rootCert = Get-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $clientRootCertName -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName
      Assert-AreEqual $clientRootCertName $rootCert.Name
@@ -383,7 +382,7 @@ function Test-VirtualNetworkGatewayP2SAndSKU
      
      # Add client Root certificate
      $rootCerts = Add-AzureRmVpnClientRootCertificate -VpnClientRootCertificateName $clientRootCertName -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName -PublicCertData $samplePublicCertData
-	 Assert-AreEqual 1 @(rootCerts).Count
+	 Assert-AreEqual 1 @($rootCerts).Count
 
      # Get, list Vpn client revoked certificates
      $revokedCerts = Get-AzureRmVpnClientRevokedCertificate -VirtualNetworkGatewayName $expected.Name -ResourceGroupName $expected.ResourceGroupName
@@ -618,4 +617,119 @@ function Test-VirtualNetworkGatewayIkeV2
 		# Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Virtual network gateway tests
+#>
+function Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet
+{
+param 
+    ( 
+        $basedir = ".\" 
+    )
+
+    # Setup
+    $rgname = Get-ResourceName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $vnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $vnetGatewayConfigName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/virtualNetworkGateways"
+    $location = Get-ProviderLocation $resourceTypeParent
+	$vpnclientAuthMethod = "EAPTLS"
+    
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+	  # create the client root cert
+	  $clientRootCertName = "BrkLiteTestMSFTRootCA.cer"
+	  #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+	  $samplePublicCertData = "MIIDUzCCAj+gAwIBAgIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAMDQxEjAQBgNVBAoTCU1pY3Jvc29mdDEeMBwGA1UEAxMVQnJrIExpdGUgVGVzdCBSb290IENBMB4XDTEzMDExOTAwMjQxOFoXDTIxMDExOTAwMjQxN1owNDESMBAGA1UEChMJTWljcm9zb2Z0MR4wHAYDVQQDExVCcmsgTGl0ZSBUZXN0IFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC7SmE+iPULK0Rs7mQBO/6a6B6/G9BaMxHgDGzAmSG0Qsyt5e08aqgFnPdkMl3zRJw3lPKGha/JCvHRNrO8UpeAfc4IXWaqxx2iBipHjwmHPHh7+VB8lU0EJcUe7WBAI2n/sgfCwc+xKtuyRVlOhT6qw/nAi8e5don/iHPU6q7GCcnqoqtceQ/pJ8m66cvAnxwJlBFOTninhb2VjtvOfMQ07zPP+ZuYDPxvX5v3nd6yDa98yW4dZPuiGO2s6zJAfOPT2BrtyvLekItnSgAw3U5C0bOb+8XVKaDZQXbGEtOw6NZvD4L2yLd47nGkN2QXloiPLGyetrj3Z2pZYcrZBo8hAgMBAAGjaTBnMGUGA1UdAQReMFyAEOncRAPNcvJDoe4WP/gH2U+hNjA0MRIwEAYDVQQKEwlNaWNyb3NvZnQxHjAcBgNVBAMTFUJyayBMaXRlIFRlc3QgUm9vdCBDQYIQRggGmrpGj4pCblTanQRNUjAJBgUrDgMCHQUAA4IBAQCGyHhMdygS0g2tEUtRT4KFM+qqUY5HBpbIXNAav1a1dmXpHQCziuuxxzu3iq4XwnWUF1OabdDE2cpxNDOWxSsIxfEBf9ifaoz/O1ToJ0K757q2Rm2NWqQ7bNN8ArhvkNWa95S9gk9ZHZLUcjqanf0F8taJCYgzcbUSp+VBe9DcN89sJpYvfiBiAsMVqGPc/fHJgTScK+8QYrTRMubtFmXHbzBSO/KTAP5rBTxse88EGjK5F8wcedvge2Ksk6XjL3sZ19+Oj8KTQ72wihN900p1WQldHrrnbixSpmHBXbHr9U0NQigrJp5NphfuU5j81C8ixvfUdwyLmTv7rNA7GTAD";
+	  $rootCert = New-AzureRmVpnClientRootCertificate -Name $clientRootCertName -PublicCertData $samplePublicCertData
+
+      # Create the Virtual Network
+	  $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+	  $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+	  $vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname      
+	  $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+
+	  # Create the IP config
+	  $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+	  $vnetIpConfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
+
+      # Create IkeV2 virtualnetworkgateway with custom Ipsec policy specified
+	  $vpnclientipsecpolicy1 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
+      $actual = New-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol IkeV2 -VpnClientAddressPool 201.169.0.0/16 -VpnClientRootCertificates $rootCert -VpnClientIpsecPolicy $vpnclientipsecpolicy1
+
+	  # Get virtualnetworkgateway
+      $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+	  $protocols = $expected.VpnClientConfiguration.VpnClientProtocols
+	  Assert-AreEqual 1 @($protocols).Count
+	  Assert-AreEqual "IkeV2" $protocols[0]
+	  Assert-AreEqual 1 @($expected.VpnClientConfiguration.VpnClientIpsecPolicies).Count
+      Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].SALifeTimeSeconds $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].SALifeTimeSeconds
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].SADataSizeKilobytes $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].SADataSizeKilobytes
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecEncryption $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecEncryption
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecIntegrity $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecIntegrity
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].IkeEncryption $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].IkeEncryption
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].IkeIntegrity $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].IkeIntegrity
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].DhGroup $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].DhGroup
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup $actual.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup
+            
+      # Update P2S VPNClient Configuration :- custom Ipsec policy
+	  $vpnclientipsecpolicy2 = New-AzureRmVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86472 -SADataSize 429497 -IkeEncryption AES256 -IkeIntegrity SHA256 -DhGroup DHGroup2 -PfsGroup None
+	  $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $expected -VpnClientIpsecPolicy $vpnclientipsecpolicy2
+	  Assert-AreEqual $vpnclientipsecpolicy2.SALifeTimeSeconds $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].SALifeTimeSeconds
+	  Assert-AreEqual $vpnclientipsecpolicy2.SADataSizeKilobytes $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].SADataSizeKilobytes
+	  Assert-AreEqual $vpnclientipsecpolicy2.IpsecEncryption $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecEncryption
+	  Assert-AreEqual $vpnclientipsecpolicy2.IpsecIntegrity $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecIntegrity
+	  Assert-AreEqual $vpnclientipsecpolicy2.IkeEncryption $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].IkeEncryption
+	  Assert-AreEqual $vpnclientipsecpolicy2.IkeIntegrity $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].IkeIntegrity
+	  Assert-AreEqual $vpnclientipsecpolicy2.DhGroup $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].DhGroup
+	  Assert-AreEqual $vpnclientipsecpolicy2.PfsGroup $gateway.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup
+	  
+	  # Update P2S VPNClient Configuration :- custom Ipsec policy by using new API:- Set-AzureRmVpnClientIpsecParameter
+	  $vpnclientipsecparams1 = New-AzureRmVpnClientIpsecParameter -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86473 -SADataSize 429498 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup2 -PfsGroup PFS2
+	  $setvpnIpsecParams = Set-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayName $rname -ResourceGroupName $rgname -VpnClientIPsecParameter $vpnclientipsecparams1
+	  
+	  # Get P2S VPNClient Configuration :- set custom Ipsec policy using new API:- Get-AzureRmVpnClientIpsecParameter
+	  $vpnIpsecParams = Get-AzureRmVpnClientIpsecParameter -Name $rname -ResourceGroupName $rgname
+	  Assert-AreEqual $vpnclientipsecparams1.SALifeTimeSeconds $vpnIpsecParams.SALifeTimeSeconds
+	  Assert-AreEqual $vpnclientipsecparams1.SADataSizeKilobytes $vpnIpsecParams.SADataSizeKilobytes
+	  Assert-AreEqual $vpnclientipsecparams1.IpsecEncryption $vpnIpsecParams.IpsecEncryption
+	  Assert-AreEqual $vpnclientipsecparams1.IpsecIntegrity $vpnIpsecParams.IpsecIntegrity
+	  Assert-AreEqual $vpnclientipsecparams1.IkeEncryption $vpnIpsecParams.IkeEncryption
+	  Assert-AreEqual $vpnclientipsecparams1.IkeIntegrity $vpnIpsecParams.IkeIntegrity
+	  Assert-AreEqual $vpnclientipsecparams1.DhGroup $vpnIpsecParams.DhGroup
+	  Assert-AreEqual $vpnclientipsecparams1.PfsGroup $vpnIpsecParams.PfsGroup
+
+	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+	  Assert-AreEqual 1 @($expected.VpnClientConfiguration.VpnClientIpsecPolicies).Count
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].SALifeTimeSeconds $vpnIpsecParams.SALifeTimeSeconds
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].SADataSizeKilobytes $vpnIpsecParams.SADataSizeKilobytes
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecEncryption $vpnIpsecParams.IpsecEncryption
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].IpsecIntegrity $vpnIpsecParams.IpsecIntegrity
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].IkeEncryption $vpnIpsecParams.IkeEncryption
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].IkeIntegrity $vpnIpsecParams.IkeIntegrity
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].DhGroup $vpnIpsecParams.DhGroup
+	  Assert-AreEqual $expected.VpnClientConfiguration.VpnClientIpsecPolicies[0].PfsGroup $vpnIpsecParams.PfsGroup
+
+	  # Remove custom Ipsec policy set from P2S VPNClient Configuration using new API:- Remove-AzureRmVpnClientIpsecParameter
+	  $delete = Remove-AzureRmVpnClientIpsecParameter -ResourceGroupName $rgname -VirtualNetworkGatewayName $rname
+	  Assert-AreEqual $True $delete
+	  $expected = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+	  Assert-AreEqual 0 @($expected.VpnClientConfiguration.VpnClientIpsecPolicies).Count
+	  
+     }
+     finally
+     {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+     }
 }

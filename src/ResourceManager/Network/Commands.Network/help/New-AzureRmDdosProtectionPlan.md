@@ -79,7 +79,6 @@ DdosProtectionPlan     : {
                            "Id": "/subscriptions/d1dbd366-9871-45ac-84b7-fb318152a9e0/resourceGroups/ResourceGroupName/providers/Microsoft.Network/ddosProtectionPlans/DdosProtectionPlanName"
                          }
 EnableVmProtection     : false
-
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
