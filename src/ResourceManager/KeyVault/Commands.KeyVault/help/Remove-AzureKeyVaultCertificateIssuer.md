@@ -31,8 +31,15 @@ The **Remove-AzureKeyVaultCertificateIssuer** cmdlet deletes a certificate issue
 ## EXAMPLES
 
 ### Example 1: Remove a certificate issuer
-```
-PS C:\>Remove-AzureKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force
+```powershell
+PS C:\> Remove-AzureKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force
+
+AccountId           :
+ApiKey              :
+OrganizationDetails :
+Name                : TestIssuer01
+IssuerProvider      : test
+VaultName           : ContosoKV01
 ```
 
 This command removes the certificate issuer named TestIssuer01 from the ContosoKV01 key vault.
@@ -167,8 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem
 
 ## OUTPUTS
 

@@ -31,15 +31,33 @@ Removes a Key Vault managed Azure Storage SAS definitions. This also removes the
 ## EXAMPLES
 
 ### Example 1: Remove a Key Vault managed Azure Storage SAS definition.
-```
-PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef'
+```powershell
+PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru
+
+Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/mysasdef
+Vault Name  : myvault
+AccountName : mystorageaccount
+Name        : mysasdef
+Enabled     : True
+Created     : 5/24/2018 9:11:08 PM
+Updated     : 5/24/2018 9:11:08 PM
+Tags        :
 ```
 
 Removes a Key Vault managed Storage SAS definition 'mysasdef' associated with the account 'mystorageaccount' in vault 'myvault'.
 
 ### Example 2: Remove a Key Vault managed Azure Storage SAS definition without user confirmation.
-```
-PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -Force -Confirm:$False
+```powershell
+PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru -Force
+
+Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/mysasdef
+Vault Name  : myvault
+AccountName : mystorageaccount
+Name        : mysasdef
+Enabled     : True
+Created     : 5/24/2018 9:11:08 PM
+Updated     : 5/24/2018 9:11:08 PM
+Tags        :
 ```
 
 Removes a Key Vault managed Storage SAS definition 'mysasdef' associated with the account 'mystorageaccount' in vault 'myvault'.
@@ -191,11 +209,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinitionIdentityItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinition
 
 ## NOTES
 
