@@ -132,19 +132,18 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (!string.IsNullOrEmpty(tagValuePair.Name))
             {
-                listResult = listResult.Where(r => r.Tags != null && r.Tags.Keys != null && r.Tags.Where(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase)).Any());
+                listResult = listResult.Where(r => r.Tags != null && r.Tags.Keys != null && r.Tags.ConvertToDictionary().Keys.Where(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase)).Any());
             }
 
             if (!string.IsNullOrEmpty(tagValuePair.Value))
             {
-                listResult = listResult.Where(r => r.Tags != null && r.Tags.Values != null && r.Tags.Values.Where(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase)).Any());
+                listResult = listResult.Where(r => r.Tags != null && r.Tags.Values != null && r.Tags.ConvertToDictionary().Values.Where(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase)).Any());
             }
 
             List<PSKeyVaultModels.PSKeyVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSKeyVaultIdentityItem>();
             if (listResult != null)
             {
-                vaults.AddRange(listResult.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
-                    .Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
+                vaults.AddRange(listResult);
             }
 
             return vaults;
@@ -173,7 +172,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 delegate ()
                 {
                     return armClient.ResourceGroups.ListResources(resourceGroupName, filter);
-                }, armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r));
+                }, armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
         }
 
         protected string GetResourceGroupName(string vaultName)
