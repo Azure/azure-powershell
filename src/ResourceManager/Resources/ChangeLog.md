@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
+* Fix issue with error message(s) not being returned for ManagedApplication and ManagedApplicationDefinition cmdlets
 
 ## Version 6.0.0
 * Set minimum dependency of module to PowerShell 5.0
