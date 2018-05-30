@@ -103,7 +103,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             this.ProgressTrackerObject.UpdateProgress("Complete", 100);
 
             // Handle async operation status
-            var result = JObject.Parse(operationResult.Value);
+            var result = !string.IsNullOrEmpty(operationResult.Value)
+                ? JObject.Parse(operationResult.Value)
+                : new JObject();
 
             JToken statusToken;
             if (result.TryGetValue("status", out statusToken))
