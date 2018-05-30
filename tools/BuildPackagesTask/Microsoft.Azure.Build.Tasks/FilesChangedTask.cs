@@ -23,10 +23,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
     using System.IO;
     using System.Reflection;
     /// <summary>
-    /// A simple Microsoft Build task used to generate a list of test assemblies to be
-    /// used for testing Azure PowerShell.
+    /// Build task to get all of the files changed in a given PR.
     /// </summary>
-    public class SmartTestingTask : Task
+    public class FilesChangedTask : Task
     {
         /// <summary>
         /// Gets or sets the Repository owner of a GitHub repository.
@@ -46,16 +45,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public string PullRequestNumber { get; set; }
 
         /// <summary>
-        ///  Gets or sets the path to the files-to-test-assemblies map.
-        /// </summary>
-        [Required]
-        public string MapFilePath { get; set; }
-
-        /// <summary>
-        /// Gets or sets the test assemblies output produced by the task.
+        /// Gets or sets the files changed produced by the task.
         /// </summary>
         [Output]
-        public string[] TestAssemblies { get; set; }
+        public string[] FilesChanged { get; set; }
 
         /// <summary>
         /// File path of PS script to get list of filechanges from a PR.
@@ -72,11 +65,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         }
 
         /// <summary>
-        /// Executes the task to generate a list of test assemblies 
-        /// based on file changes from a specified Pull Request.
-        /// The output it produces is said list.
+        /// Executes the task to generate a list of files changed in a given pull request.
         /// </summary>
-        /// <returns> Returns a value indicating wheter the success status of the task. </returns>  
+        /// <returns> Returns a value indicating wheter the success status of the task. </returns>
         public override bool Execute()
         {
             // validate parameters
@@ -90,11 +81,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 throw new ArgumentNullException("The RepositoryName cannot be null.");
             }
 
-            if (MapFilePath == null)
-            {
-                throw new ArgumentNullException("The MapFilePath cannot be null.");
-            }
-
             var debugEnvironmentVariable = Environment.GetEnvironmentVariable("DebugLocalBuildTasks");
             bool debug;
             if (!Boolean.TryParse(debugEnvironmentVariable, out debug))
@@ -105,7 +91,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             int ParsedPullRequestNumber;
 
             // The next statement will convert the string representation of a number to its integer equivalent.
-            // If it succeeds it will return 'true'. 
+            // If it succeeds it will return 'true'.
             if (int.TryParse(PullRequestNumber, out ParsedPullRequestNumber))
             {
                 List<string> filesChanged = new List<string>();
@@ -168,13 +154,15 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 catch (Exception e)
                 {
                     Console.WriteLine("---Exception Caught when trying to detect file changes with PS script: " + e.ToString());
+                    FilesChanged = new string[] { };
+                    return true;
                 }
 
-                TestAssemblies = new List<string>(TestSetGenerator.GetTests(filesChanged, MapFilePath)).ToArray();
+                FilesChanged = filesChanged.ToArray();
             }
             else
             {
-                TestAssemblies = new List<string>(TestSetGenerator.GetTests(MapFilePath)).ToArray();
+                FilesChanged = new string[] { };
             }
 
             return true;

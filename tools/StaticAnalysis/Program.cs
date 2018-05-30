@@ -29,7 +29,6 @@ namespace StaticAnalysis
     {
         static IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
         {
-            new HelpAnalyzer.HelpAnalyzer(),
             new DependencyAnalyzer.DependencyAnalyzer(),
             new SignatureVerifier.SignatureVerifier(),
             new BreakingChangeAnalyzer.BreakingChangeAnalyzer()
@@ -75,6 +74,23 @@ namespace StaticAnalysis
 
                 analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, exceptionsDirectory) :
                     new AnalysisLogger(reportsDirectory);
+                bool skipHelp = false;
+                if (args.Length > 3)
+                {
+                    bool.TryParse(args[3], out skipHelp);
+                }
+
+                if (!skipHelp)
+                {
+                    Analyzers.Add(new HelpAnalyzer.HelpAnalyzer());
+                }
+
+                var modulesToAnalyze = new List<string>();
+                if (args.Length > 4)
+                {
+                    modulesToAnalyze = args[4].Split(';').ToList();
+                }
+
                 if (logReportsDirectoryWarning)
                 {
                     analysisLogger.WriteWarning("No logger specified in the second parameter, writing reports to {0}",
@@ -85,7 +101,7 @@ namespace StaticAnalysis
                 {
                     analyzer.Logger = analysisLogger;
                     analysisLogger.WriteMessage("Executing analyzer: {0}", analyzer.Name);
-                    analyzer.Analyze(directories);
+                    analyzer.Analyze(directories, modulesToAnalyze);
                     analysisLogger.WriteMessage("Processing complete for analyzer: {0}", analyzer.Name);
                 }
 
