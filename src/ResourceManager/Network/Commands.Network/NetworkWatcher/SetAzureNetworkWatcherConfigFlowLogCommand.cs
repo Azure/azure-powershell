@@ -17,45 +17,20 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using System.Net;
+using System;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
-using Microsoft.Azure.Management.Internal.Network.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = SetFlowlogByResourceWithoutTA), OutputType(typeof(PSFlowLog))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSFlowLog))]
     public class SetAzureNetworkWatcherConfigFlowLogCommand : NetworkWatcherBaseCmdlet
     {
-        private const string SetFlowlogByResourceWithTAByResource = "SetFlowlogByResourceWithTAByResource";
-        private const string SetFlowlogByResourceWithTAByDetails = "SetFlowlogByResourceWithTAByDetails";
-        private const string SetFlowlogByResourceWithoutTA = "SetFlowlogByResourceWithoutTA";
-        private const string SetFlowlogByNameWithTAByResource = "SetFlowlogByNameWithTAByResource";
-        private const string SetFlowlogByNameWithTAByDetails = "SetFlowlogByNameWithTAByDetails";
-        private const string SetFlowlogByNameWithoutTA = "SetFlowlogByNameWithoutTA";
-        private const string SetFlowlogByLocationWithTAByResource = "SetFlowlogByLocationWithTAByResource";
-        private const string SetFlowlogByLocationWithTAByDetails = "SetFlowlogByLocationWithTAByDetails";
-        private const string SetFlowlogByLocationWithoutTA = "SetFlowlogByLocationWithoutTA";
-        private const string SetFlowlogByResource = "SetFlowlogByResource";
-        private const string SetFlowlogByLocation = "SetFlowlogByLocation";
-        private const string WithTA = "WithTA";
-        private const string TAByDetails = "TAByDetails";
-
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
              HelpMessage = "The network watcher resource.",
-             ParameterSetName = SetFlowlogByResourceWithTAByResource)]
-        [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The network watcher resource.",
-             ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
-        [Parameter(
-             Mandatory = true,
-             ValueFromPipeline = true,
-             HelpMessage = "The network watcher resource.",
-             ParameterSetName = SetFlowlogByResourceWithoutTA)]
+             ParameterSetName = "SetByResource")]
         [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
@@ -64,17 +39,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The name of network watcher.",
-            ParameterSetName = SetFlowlogByNameWithTAByResource)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The name of network watcher.",
-            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The name of network watcher.",
-            ParameterSetName = SetFlowlogByNameWithoutTA)]
+            ParameterSetName = "SetByName")]
         [ValidateNotNullOrEmpty]
         public string NetworkWatcherName { get; set; }
 
@@ -82,36 +47,15 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = SetFlowlogByNameWithTAByResource)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the network watcher resource group.",
-            ParameterSetName = SetFlowlogByNameWithoutTA)]
+            ParameterSetName = "SetByName")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the network watcher.",
-            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Location of the network watcher.",
-            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Location of the network watcher.",
-            ParameterSetName = SetFlowlogByLocationWithoutTA)]
+            ParameterSetName = "SetByLocation")]
         [LocationCompleter("Microsoft.Network/networkWatchers")]
         [ValidateNotNull]
         public string Location { get; set; }
@@ -155,130 +99,25 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        [Alias("EnableTA")]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = SetFlowlogByResourceWithTAByResource)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = SetFlowlogByNameWithTAByResource)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Flag to enable/disable retention.",
-            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
-        [ValidateNotNull]
-        public SwitchParameter EnableTrafficAnalytics { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceResourceId { get; set; }
-
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "GUID of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceGUID { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByResourceWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Azure Region of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByNameWithTAByDetails)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Subscription of the WS which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByLocationWithTAByDetails)]
-        [ValidateNotNullOrEmpty]
-        public string WorkspaceLocation { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The WS object which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByResourceWithTAByResource)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The WS object which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByNameWithTAByResource)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The WS object which is used to store the traffic analytics data.",
-            ParameterSetName = SetFlowlogByLocationWithTAByResource)]
-        [ValidateNotNull]
-        public IOperationalInsightWorkspace Workspace { get; set; }
-
         public override void Execute()
         {
             base.Execute();
             string resourceGroupName;
             string name;
-            string WorkspaceResourceId;
-            string WorkspaceGUID;
-            string WorkspaceLocation;
 
-
-            if (ParameterSetName.Contains(SetFlowlogByLocation))
+            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
             {
                 var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
 
                 if (networkWatcher == null)
                 {
-                    throw new System.ArgumentException("There is no network watcher in location {0}", this.Location);
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
                 }
 
                 resourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
                 name = networkWatcher.Name;
             }
-            else if (ParameterSetName.Contains(SetFlowlogByResource))
+            else if (ParameterSetName.Contains("SetByResource"))
             {
                 resourceGroupName = this.NetworkWatcher.ResourceGroupName;
                 name = this.NetworkWatcher.Name;
@@ -306,41 +145,6 @@ namespace Microsoft.Azure.Commands.Network
                         parameters.RetentionPolicy.Days = this.RetentionInDays;
                     }
 
-                    if (ParameterSetName.Contains(WithTA))
-                    {
-                        parameters.FlowAnalyticsConfiguration = new MNM.TrafficAnalyticsProperties();
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration = new MNM.TrafficAnalyticsConfigurationProperties();
-
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled = this.EnableTrafficAnalytics.IsPresent;
-
-                        if (ParameterSetName.Contains(TAByDetails))
-                        {
-                            string[] workspaceDetailsComponents = this.WorkspaceResourceId.Split('/');
-
-                            //Expected format : /subscriptions/-WorkspaceSubscriptionId-/resourcegroups/-WorkspaceResourceGroup-/providers/microsoft.operationalinsights/workspaces/-this.WorkspaceName-
-                            if (workspaceDetailsComponents.Length != 9)
-                            {
-                                throw new System.ArgumentException("The given workspace resource id is not in format of: /subscriptions/-WorkspaceSubscriptionId-/resourcegroups/-WorkspaceResourceGroup-/providers/microsoft.operationalinsights/workspaces/-this.WorkspaceName-.");
-                            }
-
-                            WorkspaceResourceId = this.WorkspaceResourceId;
-                            WorkspaceGUID = this.WorkspaceGUID;
-                            WorkspaceLocation = this.WorkspaceLocation;
-                        }
-                        else
-                        {
-
-                            WorkspaceResourceId = this.Workspace.ResourceId;
-                            WorkspaceGUID = this.Workspace.CustomerId.ToString();
-                            WorkspaceLocation = this.Workspace.Location;
-
-                        }
-
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId = WorkspaceResourceId;
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId = WorkspaceGUID;
-                        parameters.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion = WorkspaceLocation;                        
-                    }
-
                     PSFlowLog flowLog = new PSFlowLog();
                     flowLog = SetFlowLogConfig(resourceGroupName, name, parameters);
 
@@ -354,6 +158,5 @@ namespace Microsoft.Azure.Commands.Network
 
             return psFlowLog;
         }
-
     }
 }

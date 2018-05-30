@@ -111,7 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'Service rename of Location Based Services to Maps'
+        ReleaseNotes = '* First release of Maps management cmdlets'
 
         # Prerelease string of this module
         # Prerelease = ''
