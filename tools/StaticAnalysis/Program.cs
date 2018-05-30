@@ -34,6 +34,18 @@ namespace StaticAnalysis
             new BreakingChangeAnalyzer.BreakingChangeAnalyzer()
         };
 
+        static IList<string> ExceptionFileNames = new List<string>()
+        {
+            "AssemblyVersionConflict.csv",
+            "BreakingChangeIssues.csv",
+            "ExtraAssemblies.csv",
+            "HelpIssues.csv",
+            "MissingAssemblies.csv",
+            "SignatureIssues.csv"
+        };
+
+        private static string ExceptionsDirectory { get; set; }
+
         public static void Main(string[] args)
         {
             AnalysisLogger analysisLogger = null;
@@ -65,14 +77,15 @@ namespace StaticAnalysis
                     logReportsDirectoryWarning = false;
                 }
 
-                var exceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
+                ExceptionsDirectory = Path.Combine(reportsDirectory, "Exceptions");
                 bool useExceptions = true;
                 if (args.Length > 2)
                 {
                     bool.TryParse(args[2], out useExceptions);
                 }
 
-                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, exceptionsDirectory) :
+                ConsolidateExceptionFiles(ExceptionsDirectory);
+                analysisLogger = useExceptions ? new AnalysisLogger(reportsDirectory, ExceptionsDirectory) :
                     new AnalysisLogger(reportsDirectory);
                 bool skipHelp = false;
                 if (args.Length > 3)
@@ -112,6 +125,50 @@ namespace StaticAnalysis
             {
                 analysisLogger.WriteError(ex.ToString());
                 throw ex;
+            }
+            finally
+            {
+                foreach (var exceptionFileName in ExceptionFileNames)
+                {
+                    var exceptionFilePath = Path.Combine(ExceptionsDirectory, exceptionFileName);
+                    if (File.Exists(exceptionFilePath))
+                    {
+                        File.Delete(exceptionFilePath);
+                    }
+                }
+            }
+        }
+
+        private static void ConsolidateExceptionFiles(string exceptionsDirectory)
+        {
+            foreach (var exceptionFileName in ExceptionFileNames)
+            {
+                var moduleExceptionFilePaths = Directory.EnumerateFiles(exceptionsDirectory, exceptionFileName, SearchOption.AllDirectories).ToList();
+                var exceptionFilePath = Path.Combine(exceptionsDirectory, exceptionFileName);
+                if (File.Exists(exceptionFilePath))
+                {
+                    throw new IOException(string.Format("The file '{0}' already exists.", exceptionFilePath));
+                }
+
+                File.Create(exceptionFilePath).Close();
+                var fileEmpty = true;
+                foreach (var moduleExceptionFilePath in moduleExceptionFilePaths)
+                {
+                    var content = File.ReadAllLines(moduleExceptionFilePath);
+                    if (content.Length > 1)
+                    {
+                        if (fileEmpty)
+                        {
+                            // Write the header
+                            File.WriteAllLines(exceptionFilePath, new string[] { content.FirstOrDefault() });
+                            fileEmpty = false;
+                        }
+
+                        // Write everything but the header
+                        content = content.Skip(1).ToArray();
+                        File.AppendAllLines(exceptionFilePath, content);
+                    }
+                }
             }
         }
     }
