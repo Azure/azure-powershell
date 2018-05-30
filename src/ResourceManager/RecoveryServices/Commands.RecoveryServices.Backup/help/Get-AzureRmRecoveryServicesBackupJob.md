@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: 12F8A120-7282-4844-90E0-1C3393336E8A
@@ -16,7 +16,7 @@ Gets Backup jobs.
 ```
 Get-AzureRmRecoveryServicesBackupJob [[-Status] <JobStatus>] [[-Operation] <JobOperation>] [[-From] <DateTime>]
  [[-To] <DateTime>] [[-JobId] <String>] [[-Job] <JobBase>] [-BackupManagementType <BackupManagementType>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,6 +217,19 @@ Required: False
 Position: 4
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Vault
+The Recovery Services Vault.```yaml
+Type: ARSVault
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
