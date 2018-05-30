@@ -183,7 +183,7 @@
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkCloudException.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
-    <Compile Include="Common\ParameterSetNames.cs" />	
+    <Compile Include="Common\ParameterSetNames.cs" />
     <Compile Include="DdosProtectionPlan\GetAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="DdosProtectionPlan\NewAzureRMDdosProtectionPlanCommand.cs" />
     <Compile Include="DdosProtectionPlan\RemoveAzureRMDdosProtectionPlanCommand.cs" />
@@ -423,7 +423,7 @@
     <Compile Include="AzureFirewall\ApplicationRuleCollection\NewAzureFirewallApplicationRuleCollectionCommand.cs" />
     <Compile Include="AzureFirewall\ApplicationRule\NewAzureFirewallApplicationRuleCommand.cs" />
     <Compile Include="AzureFirewall\GetAzureFirewallCommand.cs" />
-    <Compile Include="AzureFirewall\NetworkRuleCollection\NewAzureFirewallApplicationRuleCollectionCommand.cs" />
+    <Compile Include="AzureFirewall\NetworkRuleCollection\NewAzureFirewallNetworkRuleCollectionCommand.cs" />
     <Compile Include="AzureFirewall\NetworkRule\NewAzureFirewallNetworkRuleCommand.cs" />
     <Compile Include="AzureFirewall\NewAzureFirewallCommand.cs" />
     <Compile Include="AzureFirewall\RemoveAzureFirewallCommand.cs" />
