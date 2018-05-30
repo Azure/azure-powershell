@@ -228,7 +228,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
             catch (Exception ex) when (ex is ItemNotFoundException)
             {
-                return Path.GetFullPath(psCmdlet.SessionState.Path.CurrentLocation + path);
+                return Path.GetFullPath(Path.Combine(psCmdlet.SessionState.Path.CurrentLocation.Path, path));
             }
             catch
             {

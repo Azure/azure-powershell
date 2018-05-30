@@ -364,6 +364,46 @@ function Test-ExportResourceGroup
 
 <#
 .SYNOPSIS
+Tests export resource group template file using a relative path.
+#>
+function Test-ExportResourceGroupUsingRelativePath
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$rname = Get-ResourceName
+	$rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$apiversion = "2014-04-01"
+	$resourceType = "Providers.Test/statefulResources"
+	$currentDirectory = (Get-Item -Path ".\").FullName
+	cd $PSScriptRoot
+	$path = ".\resourceGroups\$rgname.json"
+	$expectedPath = [System.IO.Path]::GetFullPath((Join-Path -Path $PSScriptRoot -ChildPath $path))
+
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+                #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		$r = New-AzureRmResource -Name $rname -Location "centralus" -Tags @{ testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+		Assert-AreEqual $r.ResourceGroupName $rgname
+
+		$exportOutput = Export-AzureRmResourceGroup -ResourceGroupName $rgname -Path $path -Force
+		Assert-NotNull $exportOutput
+		Write-Debug "Expected output path: $expectedPath"
+		Write-Debug "Actual output path: $($exportOutput.Path)"
+		Assert-True { $exportOutput.Path -eq $expectedPath }
+	}
+
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+		cd $currentDirectory
+    }
+}
+
+<#
+.SYNOPSIS
 Tests resource group new, get and remove using positional parameters.
 #>
 function Test-ResourceGroupWithPositionalParams
