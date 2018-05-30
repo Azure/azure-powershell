@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerAdvancedThreatProtectionPolicy", SupportsShouldProcess = true), 
         OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
-    public class SetAzureSqlServerAdvancedThreatProtection : SqlServerThreatDetectionCmdletBase
+    public class SetAzureSqlServerAdvancedThreatProtectionPolicy : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on

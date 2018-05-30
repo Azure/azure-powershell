@@ -51,8 +51,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AdvancedThreatProtection\Cmdlet\RemoveAzureSqlServerAdvancedThreatProtection.cs" />
-    <Compile Include="AdvancedThreatProtection\Cmdlet\SetAzureSqlServerAdvancedThreatProtection.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\RemoveAzureSqlServerAdvancedThreatProtectionPolicy.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\SetAzureSqlServerAdvancedThreatProtectionPolicy.cs" />
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
     <Compile Include="Auditing\AuditingHelpMessages.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlDatabaseAuditing.cs" />
@@ -205,7 +205,7 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
-    <Compile Include="AdvancedThreatProtection\Cmdlet\GetAzureSqlServerAdvancedThreatProtection.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\GetAzureSqlServerAdvancedThreatProtectionPolicy.cs" />
     <Compile Include="AdvancedThreatProtection\Cmdlet\SqlServerAdvancedThreatProtectionCmdletBase.cs" />
     <Compile Include="AdvancedThreatProtection\Model\ServerAdvancedThreatProtectionPolicyModel.cs" />
     <Compile Include="AdvancedThreatProtection\Services\SqlAdvancedThreatProtectionAdapter.cs" />
@@ -497,7 +497,7 @@
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
-	<Reference Include="WindowsAzure.Storage">
+    <Reference Include="WindowsAzure.Storage">
       <HintPath>..\..\..\packages\WindowsAzure.Storage.9.0.0\lib\netstandard1.3\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
   </ItemGroup>
