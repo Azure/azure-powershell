@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 5E9C02BE-9DCC-4865-95D2-6B69D373BE77
@@ -100,7 +100,7 @@ The legacy mode of the Peering
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,7 +118,7 @@ a Routing Registry Name (RIR / IRR).
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -134,7 +134,7 @@ the AS number to which they are registered.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,7 +149,7 @@ The Routing Registry Name (RIR / IRR) to which the AS number and prefixes are re
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -164,7 +164,7 @@ The name of the peering configuration to be created.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -179,7 +179,7 @@ PeerAddressType
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IPv4, IPv6
 
 Required: False
@@ -196,7 +196,7 @@ AzurePublicPeering.
 ```yaml
 Type: UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -212,7 +212,7 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: True
@@ -230,7 +230,7 @@ router interface. Azure will configure the next even-numbered address to the Azu
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -245,7 +245,7 @@ This is an existing RouteFilter object.
 ```yaml
 Type: PSRouteFilter
 Parameter Sets: MicrosoftPeeringConfigRoutFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -260,7 +260,7 @@ This is the resource Id of an existing RouteFilter object.
 ```yaml
 Type: String
 Parameter Sets: MicrosoftPeeringConfigRoutFilterId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -277,7 +277,7 @@ router interface. Azure will configure the next even-numbered address to the Azu
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -292,7 +292,7 @@ This is an optional MD5 hash used as a pre-shared key for the peering configurat
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -307,7 +307,7 @@ This is the Id number of the VLAN assigned for this peering.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

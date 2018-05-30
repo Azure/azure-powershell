@@ -106,7 +106,10 @@ function Test-AddAzureRmServiceFabricNodeType
 
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName
     $vmPassword = Get-VmPwd | ConvertTo-SecureString -Force -AsPlainText
-	$cluster = Add-AzureRmServiceFabricNodeType -Capacity 1 -VmUserName username -VmPassword $vmPassword -NodeType $newNodeTypeName -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
+	# Added durability level, as default is Bronze and i get the following error 
+	# Remove-AzureRmServiceFabricNode : Cannot update node type with a durability level of Bronze, please update durability
+    # level to Silver or above first.
+	$cluster = Add-AzureRmServiceFabricNodeType -Capacity 1 -DurabilityLevel Silver -VmUserName username -VmPassword $vmPassword -NodeType $newNodeTypeName -ClusterName $clusterName -ResourceGroupName $resourceGroupName -Verbose
 	$clusters = Get-AzureRmServiceFabricCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName 
 	Assert-NotNull $clusters[0].NodeTypes.Where({$_.Name -eq $newNodeTypeName})
 }

@@ -12,23 +12,26 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-using System;
-using Microsoft.Azure.Commands.Common.Authentication;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using Azure.Test;
+    using Management.ApiManagement;
+    using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
+    using Rest.ClientRuntime.Azure.TestFramework;
     using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
+    using LegacyTest = Microsoft.Azure.Test;
 
     public class ApiManagementTests : RMTestBase
     {
@@ -41,13 +44,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_helper.TracingInterceptor);
         }
 
-        protected void SetupManagementClients()
-        {
-            var apiManagementManagementClient = GetApiManagementManagementClient();
+        protected void SetupManagementClients(MockContext context)
+        {            
+            var apiManagementManagementClient = GetApiManagementManagementClient(context);
             var resourceManagementClient = GetResourceManagementClient();
             var galaryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
             var managementClient = GetManagementClient();
+            var newResourceManagementClient = GetResourceManagementClient(context);
             var armStorageManagementClient = GetArmStorageManagementClient();
 
             _helper.SetupManagementClients(
@@ -56,42 +60,50 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                 galaryClient,
                 authorizationManagementClient,
                 managementClient,
+                newResourceManagementClient,
                 armStorageManagementClient);
         }
 
         protected StorageManagementClient GetStorageManagementClient()
         {
-            return TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(new RDFETestEnvironmentFactory());
         }
 
         protected Management.Storage.StorageManagementClient GetArmStorageManagementClient()
         {
-            return TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private ManagementClient GetManagementClient()
         {
-            return TestBase.GetServiceClient<ManagementClient>(new RDFETestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<ManagementClient>(new LegacyTest.RDFETestEnvironmentFactory());
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private GalleryClient GetGalleryClient()
         {
-            return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(new LegacyTest.CSMTestEnvironmentFactory());
         }
 
         private ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(new LegacyTest.CSMTestEnvironmentFactory());
         }
 
-        private Management.ApiManagement.ApiManagementClient GetApiManagementManagementClient()
+        private Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<Management.ApiManagement.ApiManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(
+                Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private ApiManagementClient GetApiManagementManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<ApiManagementClient>(
+                Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         [Fact]
@@ -110,39 +122,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetApiManagementDeploymentExternalVirtualNetwork()
-        {
-            RunPowerShellTest("Test-SetApiManagementDeploymentExternalVirtualNetwork");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetApiManagementDeploymentInternalVirtualNetwork()
-        {
-            RunPowerShellTest("Test-SetApiManagementDeploymentInternalVirtualNetwork");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateApiManagementDeployment()
         {
             RunPowerShellTest("Test-UpdateApiManagementDeployment");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateDeploymentComplex()
-        {
-            RunPowerShellTest("Test-UpdateApiManagementDeploymentWithHelpersAndPipeline");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestImportApiManagementHostnameCertificate()
-        {
-            RunPowerShellTest("Test-ImportApiManagementHostnameCertificate");
-        }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetApiManagementHostnames()
@@ -152,20 +136,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCrudApiManagementWithExternalVpn()
+        public void TestApiManagementHostnamesCrud()
         {
-            RunPowerShellTest("Test-CrudApiManagementWithExternalVpn");
+            RunPowerShellTest("Test-ApiManagementHostnamesCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrudApiManagementWithVirtualNetwork()
+        {
+            RunPowerShellTest("Test-ApiManagementVirtualNetworkCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCrudApiManagementWithAdditionalRegions()
         {
-            RunPowerShellTest("Test-CrudApiManagementWithAdditionalRegions");
+            RunPowerShellTest("Test-ApiManagementWithAdditionalRegionsCRUD");
         }
 
         private void RunPowerShellTest(params string[] scripts)
-        {
+        {           
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
@@ -174,11 +165,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
 
-            using (var context = UndoContext.Current)
-            {
-                context.Start(TestUtilities.GetCallingClass(), TestUtilities.GetCurrentMethodName(2));
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-                SetupManagementClients();
+            using (MockContext context = MockContext.Start(
+                Azure.Test.TestUtilities.GetCallingClass(),
+                Azure.Test.TestUtilities.GetCurrentMethodName(2)))
+            {
+                SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 _helper.SetupModules(AzureModule.AzureResourceManager,

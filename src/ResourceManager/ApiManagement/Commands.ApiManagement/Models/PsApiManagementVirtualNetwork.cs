@@ -30,11 +30,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             {
                 throw new ArgumentNullException("vnetConfigurationResource");
             }
-
-            Location = vnetConfigurationResource.Location;
+                        
             SubnetResourceId = vnetConfigurationResource.SubnetResourceId;
-            SubnetName = vnetConfigurationResource.SubnetName;
-            VnetId = vnetConfigurationResource.VnetId;
+            SubnetName = vnetConfigurationResource.Subnetname;
+            Guid vnetId;
+            if (Guid.TryParse(vnetConfigurationResource.Vnetid, out vnetId))
+            {
+                this.VnetId = vnetId;
+            }
         }
 
         public string Location { get; set; }

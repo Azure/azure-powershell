@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
+using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Rest.Azure;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,13 +29,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// Cmdlet to create a new Azure Sql ElasticPool
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlElasticPool", SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuPoolParameterSet)]
     public class NewAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the Elastic Pool to create.
         /// </summary>
         [Parameter(Mandatory = true,
+            Position = 2,
             HelpMessage = "The name of the Azure SQL ElasticPool to create.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
@@ -42,16 +45,26 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <summary>
         /// Gets or sets the edition to assign to the Azure SQL Elastic Pool
         /// </summary>
-        [Parameter(Mandatory = false,
+        [Parameter(ParameterSetName = DtuPoolParameterSet, Mandatory = false,
             HelpMessage = "The edition to assign to the Azure SQL Database.")]
+        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
+            HelpMessage = "The edition to assign to the Azure SQL Database.")]
+        [PSArgumentCompleter("None",
+            Management.Sql.Models.DatabaseEdition.Basic,
+            Management.Sql.Models.DatabaseEdition.Standard,
+            Management.Sql.Models.DatabaseEdition.Premium,
+            Management.Sql.Models.DatabaseEdition.DataWarehouse,
+            Management.Sql.Models.DatabaseEdition.Free,
+            Management.Sql.Models.DatabaseEdition.Stretch,
+            "GeneralPurpose", "BusinessCritical")]
         [ValidateNotNullOrEmpty]
-        public DatabaseEdition Edition { get; set; }
+        public string Edition { get; set; }
 
         /// <summary>
         /// Gets or sets the total shared DTU for the Sql Azure Elastic Pool.
         /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The total shared DTU for the Sql Azure Elastic Pool.")]
+        [Parameter(ParameterSetName = DtuPoolParameterSet, Mandatory = false,
+            HelpMessage = "The total shared DTU for the Azure SQL Elastic Pool.")]
         [ValidateNotNullOrEmpty]
         public int Dtu { get; set; }
 
@@ -59,31 +72,65 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the storage limit for the Sql Azure Elastic Pool in MB.
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The storage limit for the Sql Azure Elastic Pool in MB.")]
+            HelpMessage = "The storage limit for the Azure SQL Elastic Pool in MB.")]
         [ValidateNotNullOrEmpty]
         public int StorageMB { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum DTU all Sql Azure Databases are guaranteed.
         /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The minimum DTU all Sql Azure Databases are guaranteed.")]
+        [Parameter(ParameterSetName = DtuPoolParameterSet, Mandatory = false,
+            HelpMessage = "The minimum DTU all Azure SQL Databases are guaranteed.")]
         [ValidateNotNullOrEmpty]
         public int DatabaseDtuMin { get; set; }
 
         /// <summary>
         /// Gets or sets the maximum DTU any one Sql Azure Database can consume.
         /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The maximum DTU any one Sql Azure Database can consume.")]
+        [Parameter(ParameterSetName = DtuPoolParameterSet, Mandatory = false,
+            HelpMessage = "The maximum DTU any one Azure SQL Database can consume.")]
         [ValidateNotNullOrEmpty]
         public int DatabaseDtuMax { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total shared VCore number for the Sql Azure Elastic Pool.
+        /// </summary>
+        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
+            HelpMessage = "The total shared number of Vcore for the Azure SQL Elastic Pool.")]
+        [ValidateNotNullOrEmpty]
+        public int VCore { get; set; }
+
+        /// <summary>
+        /// Gets or sets the compute generation for the Sql Azure Elastic Pool
+        ///   (Available ComputeGeneration in the format of: Gen4, Gen5).
+        /// </summary>
+        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
+            HelpMessage = "The compute generation for the Azure SQL Elastic Pool. e.g. 'Gen4', 'Gen5'.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Gen4", "Gen5")]
+        public string ComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum vcore any database can consume in the pool.
+        /// </summary>
+        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
+            HelpMessage = "The minimum VCore number any Azure SQL Database can consume in the pool.")]
+        [ValidateNotNullOrEmpty]
+        public double DatabaseVCoreMin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum vcore any database can consume in the pool.
+        /// </summary>
+        [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = false,
+            HelpMessage = "The maxmium VCore number any Azure SQL Database can consume in the pool.")]
+        [ValidateNotNullOrEmpty]
+        public double DatabaseVCoreMax { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Azure Sql Elastic Pool
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Elastic Pool")]
+            HelpMessage = "The tags to associate with the Azure SQL Elastic Pool")]
         [Alias("Tag")]
         public Hashtable Tags { get; set; }
 
@@ -91,7 +138,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// Gets or sets the zone redundant option to assign to the Azure SQL Elastic Pool
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The zone redundancy to associate with the Azure Sql Elastic Pool")]
+            HelpMessage = "The zone redundancy to associate with the Azure SQL Elastic Pool")]
         public SwitchParameter ZoneRedundant { get; set; }
 
         /// <summary>
@@ -146,32 +193,56 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         {
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlElasticPoolModel> newEntity = new List<AzureSqlElasticPoolModel>();
-            newEntity.Add(new AzureSqlElasticPoolModel()
+            AzureSqlElasticPoolModel newModel = new AzureSqlElasticPoolModel()
             {
                 ResourceGroupName = ResourceGroupName,
                 ServerName = ServerName,
+                ElasticPoolName = ElasticPoolName,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 Location = location,
-                ElasticPoolName = ElasticPoolName,
-                DatabaseDtuMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (int?)DatabaseDtuMax : null,
-                DatabaseDtuMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (int?)DatabaseDtuMin : null,
-                Dtu = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null,
-                Edition = MyInvocation.BoundParameters.ContainsKey("Edition") ? (DatabaseEdition?)Edition : null,
-                StorageMB = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (int?)StorageMB : null,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
-            });
+                MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null
+            };
+
+            
+            if (ParameterSetName == DtuPoolParameterSet)
+            {
+                string edition = string.IsNullOrWhiteSpace(Edition) ? null : Edition;
+
+                if (!string.IsNullOrWhiteSpace(edition))
+                {
+                    newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(edition);
+                    newModel.Edition = edition;
+                    newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null;
+                }
+
+                newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null;
+                newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;              
+            }
+            else
+            {
+                newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(Edition);
+                newModel.Edition = Edition;
+                newModel.Capacity = VCore;
+                newModel.Family = ComputeGeneration;
+
+                newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMin") ? (double?)DatabaseVCoreMin : null;
+                newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseVCoreMax") ? (double?)DatabaseVCoreMax : null;
+            }
+
+            newEntity.Add(newModel);
             return newEntity;
         }
 
         /// <summary>
-        /// Create the new database
+        /// Create the new elastic pool
         /// </summary>
         /// <param name="entity">The output of apply user input to model</param>
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlElasticPoolModel> PersistChanges(IEnumerable<AzureSqlElasticPoolModel> entity)
         {
             return new List<AzureSqlElasticPoolModel>() {
-                ModelAdapter.UpsertElasticPool(entity.First())
+                ModelAdapter.CreateElasticPool(entity.First())
             };
         }
     }
