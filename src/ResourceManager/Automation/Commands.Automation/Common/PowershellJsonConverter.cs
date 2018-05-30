@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         /// <returns></returns>
         private static Collection<PSObject> InvokeScript(string scriptName, Hashtable parameters)
         {
-            using (var powerShell = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace))
+            using (var powerShell = System.Management.Automation.PowerShell.Create(RunspaceMode.NewRunspace))
             {
                 powerShell.AddCommand(scriptName);
                 foreach (DictionaryEntry parameter in parameters)
