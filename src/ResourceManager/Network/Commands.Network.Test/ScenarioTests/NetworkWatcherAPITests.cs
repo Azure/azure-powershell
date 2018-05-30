@@ -82,7 +82,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-FlowLog");
         }
 
-        [Fact(Skip = "Test is failing due to design changes. Service team is going to re-record and submit it.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestConnectivityCheck()
