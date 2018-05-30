@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Newtonsoft.Json.Linq;
     using System;
@@ -123,9 +124,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                         JToken errorToken;
                         if (result.TryGetValue("error", out errorToken))
                         {
+                            var errors = ResourceManagerSdkClient.ParseDetailErrorMessageWithCode(result.ToString());
+                            var errorText = string.Empty;
+                            if (errors != null)
+                            {
+                                errors.ForEach(error => errorText = string.Join(";", string.Format("Code: {0}, Message: {1}", error.Item1, error.Item2)));
+                            }
+
                             this.FailedResult(
                                 operationResult,
-                                string.Format("The operation failed because resource is in the: '{0}' state. Please check the logs for more details. The error message: {1}", statusToken, errorToken["message"].ToString()));
+                                string.Format("The operation failed because resource is in the: '{0}' state. Error(s): {1}", statusToken, errorText));
                         }
                         else
                         {

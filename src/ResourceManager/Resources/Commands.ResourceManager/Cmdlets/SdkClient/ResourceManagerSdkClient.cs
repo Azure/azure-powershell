@@ -306,6 +306,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return null;
         }
 
+        public static List<Tuple<string, string>> ParseDetailErrorMessageWithCode(string statusMessage)
+        {
+            if (!string.IsNullOrEmpty(statusMessage))
+            {
+                List<Tuple<string, string>> detailedMessage = new List<Tuple<string, string>>();
+                try
+                {
+                    dynamic errorMessage = JsonConvert.DeserializeObject(statusMessage);
+                    if (errorMessage.error != null)
+                    {
+                        detailedMessage.Add(new Tuple<string,string>(errorMessage.error.code.ToString(), errorMessage.error.message.ToString()));
+                        if (errorMessage.error.details != null)
+                        {
+                            detailedMessage.AddRange(ParseDetailErrorMessageWithCode(errorMessage.error.details));
+                        }
+                    }
+                }
+                catch
+                {
+                    //statusMessage is not always a valid JSON. It can sometimes be a string, which can result is DeserializeObject exception above in try
+                    detailedMessage.Add(new Tuple<string, string>(string.Empty, statusMessage));
+                }
+                return detailedMessage;
+            }
+            return null;
+        }
+
         private DeploymentExtended WaitDeploymentStatus(
             string resourceGroup,
             string deploymentName,
