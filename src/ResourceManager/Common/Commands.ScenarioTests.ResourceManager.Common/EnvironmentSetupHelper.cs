@@ -611,6 +611,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                     }
                     powershell.AddScript(scripts[i]);
                 }
+                var begin = DateTime.Now;
                 try
                 {
                     output = powershell.Invoke();
@@ -635,6 +636,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 finally
                 {
+                    if (TracingInterceptor != null)
+                    {
+                        TracingInterceptor.Information("ElapsedTime for test run inside powershell (in ms) :" + (DateTime.Now - begin).TotalMilliseconds);
+                    }
                     //powershell.LogPowerShellResults(output, TracingInterceptor);
                     powershell.Streams.Error.Clear();
                 }
