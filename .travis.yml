@@ -10,10 +10,6 @@ env:
 services:
  - docker
 
-cache:
-  directories:
-  - /home/travis/build/Azure/azure-powershell/src/ResourceManager/Network/Commands.Network.Test/bin/Debug/netcoreapp2.0/
-
 before_install:
  - sudo apt-get update
  - sudo apt-get install docker-ce
@@ -25,7 +21,8 @@ before_install:
 
 script:
  - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=$CONFIG
- - dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $CONFIG --verbosity normal
+ - sudo pwsh -NonInteractive -NoLogo -NoProfile -File tools/TestModuleLoading.ps1
+ - dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $CONFIG
  
 after_success:
  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then

@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderMismatchAccountNames()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithWrongName.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithWrongName.json");
 
             var exception = Record.Exception(() => DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resouce-id", null, null));
             Assert.IsType(typeof(ArgumentException), exception);
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderWithSasToken()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithSasToken.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithSasToken.json");
 
             string sasTokenValue = "This-is-a-sas-token";
             var result = DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resource-id", null, null);
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderWithStorageType()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithSasToken.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithSasToken.json");
 
             string storageTypeValue = "TableAndBlob";
 

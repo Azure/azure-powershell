@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
     /// </summary>
     public static class BatchTestHelpers
     {
-        internal static readonly string TestCertificateFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources\\BatchTestCert01.cer");
+        internal static readonly string TestCertificateFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/BatchTestCert01.cer");
         internal const string TestCertificateAlgorithm = "sha1";
         internal const string TestCertificatePassword = "Passw0rd";
         internal static readonly int DefaultQuotaCount = 20;

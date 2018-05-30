@@ -388,7 +388,7 @@ function Test-ApplicationGatewayCRUD2
 
 		# frontend part
 		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-		$sslCert01Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert1.pfx"
+		$sslCert01Path = $basedir + "ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
 		$sslCert01 = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
 
 		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
