@@ -24,11 +24,6 @@ The **Add-AzureRmApplicationGatewayAuthenticationCertificate** cmdlet adds an au
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -ApplicationGateway
@@ -37,7 +32,7 @@ Specifies the name of application gateway for which this cmdlet adds an authenti
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -52,7 +47,7 @@ Specifies the path of the authentication certificate that this cmdlet adds.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -82,7 +77,7 @@ Specifies the name of a certificate that this cmdlet adds to the application gat
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

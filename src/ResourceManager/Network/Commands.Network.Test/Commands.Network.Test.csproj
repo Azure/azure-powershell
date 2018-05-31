@@ -558,6 +558,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkGatewayP2SAndSKU.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>	
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayVpnDeviceConfigurationScripts.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -618,6 +621,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayRouteApiTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayVpnCustomIpsecPolicySetTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>	
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestResourceNavigationLinksOnSubnetCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

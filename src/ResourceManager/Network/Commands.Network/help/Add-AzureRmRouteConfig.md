@@ -93,7 +93,7 @@ Specifies the destination, in Classless Interdomain Routing (CIDR) format, to wh
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,7 +123,7 @@ Specifies a name of the route to add to the route table.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -140,7 +140,7 @@ Specify this parameter only if you specify a value of VirtualAppliance for the *
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,7 +168,7 @@ If you have two subnets, 10.1.0.0/16 and 10.2.0.0/16 in the same virtual network
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,7 +183,7 @@ Specifies the route table to which this cmdlet adds a route.
 ```yaml
 Type: PSRouteTable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

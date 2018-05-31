@@ -47,7 +47,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,7 +77,7 @@ Specifies a **VirtualNetwork** object that represents the goal state.
 ```yaml
 Type: PSVirtualNetwork
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

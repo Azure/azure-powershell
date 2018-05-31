@@ -31,11 +31,6 @@ This URL lets users conntect to a supplementary portal and use additional featur
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnProfile
