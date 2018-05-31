@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
     public class ClientFactory : IClientFactory
     {
         private static readonly char[] uriPathSeparator = { '/' };
+        private static readonly CancelRetryHandler DefaultCancelRetryHandler  = new CancelRetryHandler(TimeSpan.FromSeconds(10), 3);
 
         private Dictionary<Type, IClientAction> _actions;
         private OrderedDictionary _handlers;
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             List<Type> types = new List<Type>();
             List<object> parameterList = new List<object>();
-            List<DelegatingHandler> handlerList = new List<DelegatingHandler> { new CancelRetryHandler(TimeSpan.FromSeconds(10))};
+            List<DelegatingHandler> handlerList = new List<DelegatingHandler> { DefaultCancelRetryHandler.Clone() as CancelRetryHandler};
             var customHandlers = GetCustomHandlers();
             if (customHandlers != null && customHandlers.Any())
             {
@@ -218,7 +219,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                 client.AddHandlerToPipeline(handler);
             }
 
-            client.AddHandlerToPipeline(new CancelRetryHandler(TimeSpan.FromSeconds(10)));
+            client.AddHandlerToPipeline(DefaultCancelRetryHandler.Clone() as CancelRetryHandler);
             return client;
         }
 

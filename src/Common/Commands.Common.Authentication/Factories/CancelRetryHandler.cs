@@ -19,18 +19,24 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 {
+    /// <summary>
+    /// Class to enable automatic retry of TaskCanceledExsceptions.
+    /// Note that this follows the calling pattern in PowerShell, which does not pass cancellation tokens from
+    /// the base cmdlet
+    /// </summary>
     public class CancelRetryHandler : DelegatingHandler, ICloneable
     {
         public CancelRetryHandler()
         {
             WaitInterval = TimeSpan.Zero;
         }
-        public CancelRetryHandler(TimeSpan waitInterval)
+        public CancelRetryHandler(TimeSpan waitInterval, int maxTries)
         {
             WaitInterval = waitInterval;
+            MaxTries = maxTries;
         }
 
-        public TimeSpan WaitInterval { get; set; }
+        public TimeSpan WaitInterval { get; set; } = TimeSpan.Zero;
 
         public int MaxTries { get; set; } = 3;
 
@@ -39,13 +45,16 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             int tries = 0;
             do
             {
-                try
+                using (var source = new CancellationTokenSource())
                 {
-                    return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
-                }
-                catch (TaskCanceledException) when (tries++ < MaxTries)
-                {
-                    Thread.Sleep(WaitInterval);
+                    try
+                    {
+                        return await base.SendAsync(request, source.Token).ConfigureAwait(false);
+                    }
+                    catch (TaskCanceledException) when (tries++ < MaxTries)
+                    {
+                        Thread.Sleep(WaitInterval);
+                    }
                 }
             }
             while (true);
@@ -53,7 +62,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         public object Clone()
         {
-            return new CancelRetryHandler(WaitInterval);
+            return new CancelRetryHandler(WaitInterval, MaxTries);
         }
     }
 }
