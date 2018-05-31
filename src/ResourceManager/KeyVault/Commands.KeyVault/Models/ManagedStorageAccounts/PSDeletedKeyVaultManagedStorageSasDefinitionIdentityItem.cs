@@ -14,7 +14,7 @@
 
 using System;
 
-namespace Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts
+namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem : PSKeyVaultManagedStorageSasDefinitionIdentityItem
     {
