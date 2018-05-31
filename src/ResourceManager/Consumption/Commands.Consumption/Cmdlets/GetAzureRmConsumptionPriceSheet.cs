@@ -34,11 +34,11 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
         public string BillingPeriodName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Expand the price sheets based on MeterDetails.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string Expand { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         [ValidateRange(1, 1000)]
         public int? Top { get; set; }
 

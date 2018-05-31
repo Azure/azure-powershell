@@ -31,10 +31,12 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
     public class GetAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Resource Group of a budget.")]
+        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName;
 
         [Parameter(Mandatory = false, HelpMessage = "Name of a budget.")]
+        [ValidateNotNullOrEmpty]
         public string Name;
 
         public override void ExecuteCmdlet()

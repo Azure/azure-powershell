@@ -24,9 +24,11 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
     public class RemoveAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Name of a budget.")]
+        [ValidateNotNullOrEmpty]
         public string Name;
 
         [Parameter(Mandatory = false, HelpMessage = "Resource Group of a budget.")]
+        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName;
 

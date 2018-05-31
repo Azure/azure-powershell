@@ -29,19 +29,24 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
     public class GetAzureRmConsumptionReservationSummary : AzureConsumptionCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "The end data (YYYY-MM-DD in UTC) of the reservation summary, required only for daily grain.")]
+        [ValidateNotNullOrEmpty]
         public DateTime? EndDate { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The time grain of the reservation summaryy, can be daily or monthly.")]   
+        [ValidateNotNullOrEmpty]
         [ValidateSet("daily", "monthly")]
         public string Grain { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The identifier of a reservation within a reservation order.")]
+        [ValidateNotNullOrEmpty]
         public string ReservationId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The identifier of a reservation purchase.")]
+        [ValidateNotNullOrEmpty]
         public string ReservationOrderId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The start data (YYYY-MM-DD in UTC) of the reservation summary, required only for daily grain.")]
+        [ValidateNotNullOrEmpty]
         public DateTime? StartDate { get; set; }
 
         public override void ExecuteCmdlet()

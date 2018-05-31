@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         public string BillingPeriodName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Expand the usages based on MeterDetails, or AdditionalInfo.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string Expand { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Include meter details in the usages.")]
@@ -45,36 +45,36 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         public SwitchParameter IncludeAdditionalProperties { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the usages to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public DateTime? StartDate { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The end date (in UTC) of the usages to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public DateTime? EndDate { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The resource group of the usages to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The instance name of the usages to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The instance id of the usages to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string InstanceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The tag of the usages to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         [ValidateRange(1, 1000)]
         public int? MaxCount { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         [ValidateRange(1, 1000)]
         public int? Top { get; set; }
 

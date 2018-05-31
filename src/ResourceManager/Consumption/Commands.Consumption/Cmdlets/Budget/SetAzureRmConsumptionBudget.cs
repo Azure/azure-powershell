@@ -30,36 +30,47 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
     public class SetAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Amount of a budget.")]
-        public decimal? Amount;
-
-        [Parameter(Mandatory = true, HelpMessage = "Name of a budget.")]
-        public string Name;
+        [ValidateNotNullOrEmpty]
+        [ValidateRange(0, int.MaxValue)]
+        public decimal? Amount;        
 
         [Parameter(Mandatory = false, HelpMessage = "Category of the budget can be cost or usage.")]
+        [ValidateNotNullOrEmpty]
         [ValidateSet("Cost", "Usage")]
         public string Category;
 
         [Parameter(Mandatory = false, HelpMessage = "End date (YYYY-MM-DD in UTC) of time period of a budget.")]
+        [ValidateNotNullOrEmpty]
         public DateTime? EndDate;
 
-        [Parameter(Mandatory = false, HelpMessage = "Space-separated list of meters to filter on. Required if category is usage.")]
-        public string MeterFilter;
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of meters to filter on. Required if category is usage.")]
+        [ValidateNotNullOrEmpty]
+        public string[] MeterFilter;
 
-        [Parameter(Mandatory = false, HelpMessage = "Space-separated list of resource instances to filter on.")]
-        public string ResourceFilter;
+        [Parameter(Mandatory = true, HelpMessage = "Name of a budget.")]
+        [ValidateNotNullOrEmpty]
+        public string Name;
 
-        [Parameter(Mandatory = false, HelpMessage = "Space-separated list of resource groups to filter on.")]
-        public string ResourceGroupFilter;
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of resource instances to filter on.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ResourceFilter;
+
+        [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of resource groups to filter on.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ResourceGroupFilter;
 
         [Parameter(Mandatory = false, HelpMessage = "Resource Group of a budget.")]
+        [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName;
 
         [Parameter(Mandatory = false, 
             HelpMessage = "Start date (YYYY-MM-DD in UTC) of time period of a budget. Not prior to current month for monthly time grain. Not prior to three months for quarterly time grain. Not prior to twelve months for yearly time grain. Future start date not more than three months.")]
+        [ValidateNotNullOrEmpty]
         public DateTime? StartDate;
 
         [Parameter(Mandatory = false, HelpMessage = "Time grain of the budget can be monthly, quarterly, or annually.")]
+        [ValidateNotNullOrEmpty]
         [ValidateSet("Monthly", "Quarterly", "Annually")]
         public string TimeGrain;
 
@@ -111,19 +122,19 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
                 budget.TimePeriod.EndDate = this.EndDate.Value;
             }
 
-            if (!string.IsNullOrWhiteSpace(this.MeterFilter))
+            if (!string.IsNullOrWhiteSpace(this.MeterFilter?.FirstOrDefault()))
             {
-                budget.Filters.Meters = this.MeterFilter.Split(' ').ToList();
+                budget.Filters.Meters = this.MeterFilter.ToList();
             }
 
-            if (!string.IsNullOrWhiteSpace(this.ResourceFilter))
+            if (!string.IsNullOrWhiteSpace(this.ResourceFilter?.FirstOrDefault()))
             {
-                budget.Filters.Resources = this.ResourceFilter.Split(' ').ToList();
+                budget.Filters.Resources = this.ResourceFilter.ToList();
             }
 
-            if (!string.IsNullOrWhiteSpace(this.ResourceGroupFilter))
+            if (!string.IsNullOrWhiteSpace(this.ResourceGroupFilter?.FirstOrDefault()))
             {
-                budget.Filters.ResourceGroups = this.ResourceGroupFilter.Split(' ').ToList();
+                budget.Filters.ResourceGroups = this.ResourceGroupFilter.ToList();
             }
 
             if (this.StartDate != null)

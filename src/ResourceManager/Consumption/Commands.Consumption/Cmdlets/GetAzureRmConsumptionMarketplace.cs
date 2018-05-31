@@ -35,27 +35,27 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
         public string BillingPeriodName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The end date (in UTC) of the marketplaces to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public DateTime? EndDate { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The instance id of the marketplaces to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string InstanceId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The instance name of the marketplaces to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string InstanceName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The resource group of the marketplaces to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The start date (in UTC) of the marketplaces to filter.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         public DateTime? StartDate { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
-        [ValidateNotNull]
+        [ValidateNotNullOrEmpty]
         [ValidateRange(1, 1000)]
         public int? Top { get; set; }
         
