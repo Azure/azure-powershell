@@ -80,7 +80,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
                '.\Microsoft.Threading.Tasks.Extensions.dll', 
                '.\Microsoft.Threading.Tasks.Extensions.Desktop.dll', 
                '.\Microsoft.WindowsAzure.Management.dll', '.\Newtonsoft.Json.dll', 
-               '.\NewAssemblies\Newtonsoft.Json.dll', 
+               '.\Newtonsoft.Json.10.dll', 
                '.\System.Net.Http.Extensions.dll', 
                '.\System.Net.Http.Primitives.dll'
 
