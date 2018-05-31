@@ -391,6 +391,9 @@ function Test-ShortTermRetentionPolicy
 	$location = Get-Location "Microsoft.Sql" "servers" "West US 2"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
+	
+	# Not divisible by 7, client should error
+	$invalidRetention = 20
 	$defaultRetention = 35
 	$updatedRetention = 14
 
@@ -408,9 +411,13 @@ function Test-ShortTermRetentionPolicy
 		# Test Set
 		Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $updatedRetention
 		
+		# Test InputObject
+		Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject $db -ResourceGroupName $rg.ResourceGroupName -RetentionDays $updatedRetention
+		Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject $db -ResourceGroupName $rg.ResourceGroupName
+
 		# Test Piping
 		# Get with piping
-		$shortTermRetentionPeriod = Get-AzureRmSqlDatabase -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName | Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy
+		$shortTermRetentionPeriod = $db | Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy
 		Assert-AreEqual $shortTermRetentionPeriod.Count 1
 		Assert-AreEqual $shortTermRetentionPeriod[0].RetentionDays $updatedRetention
 
@@ -418,6 +425,15 @@ function Test-ShortTermRetentionPolicy
 		$shortTermRetentionPeriod = Get-AzureRmSqlDatabase -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName | Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $defaultRetention
 		Assert-AreEqual $shortTermRetentionPeriod.Count 1
 		Assert-AreEqual $shortTermRetentionPeriod[0].RetentionDays $defaultRetention
+
+		# Test client-side error handling
+		try {
+			$db | Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $invalidRetention
+		}
+		catch [System.Management.Automation.PSArgumentException] {
+			# We expect an error here
+			Assert-AreEqual $_.Count 1
+		}
 
 	}
 	finally

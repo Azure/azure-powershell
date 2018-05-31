@@ -26,6 +26,13 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> GetEntity()
         {
+            if (InputObject != null)
+            {
+                ResourceGroupName = InputObject.ResourceGroupName;
+                ServerName = InputObject.ServerName;
+                DatabaseName = InputObject.DatabaseName;
+            }
+
             ICollection<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> results = new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>()
             {
                 ModelAdapter.GetDatabaseBackupShortTermRetentionPolicy(

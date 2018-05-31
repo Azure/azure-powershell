@@ -38,9 +38,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the database is in.")]
-        [Parameter(ParameterSetName = PolicyByInputObjectSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
@@ -52,9 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database to use.")]
-        [Parameter(ParameterSetName = PolicyByInputObjectSet,
-            Mandatory = true, 
-            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
