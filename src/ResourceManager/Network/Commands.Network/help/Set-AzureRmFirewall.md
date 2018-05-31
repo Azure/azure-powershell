@@ -2,33 +2,33 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 40E56EC1-3327-4DFF-8262-E2EEBB5E4447
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermsecuregateway
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermfirewall
 schema: 2.0.0
 ---
 
-# Set-AzureRmSecureGateway
+# Set-AzureRmFirewall
 
 ## SYNOPSIS
-Updates a secure gateway
+Updates a Firewall
 
 ## SYNTAX
 
 ```
-Set-AzureRmSecureGateway -SecureGateway <Microsoft.Azure.Commands.Network.Models.PSSecureGateway>
+Set-AzureRmFirewall -Firewall <Microsoft.Azure.Commands.Network.Models.PSFirewall>
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSecureGateway** cmdlet updates an Azure secure gateway.
+The **Set-AzureRmFirewall** cmdlet updates an Azure Firewall.
 
 ## EXAMPLES
 
-### 1:  Update priority of a secure gateway rule
+### 1:  Update priority of a Firewall rule
 ```
-$secGw = Get-AzureRmSecureGateway -Name "SecGw" -ResourceGroupName "rg"
+$secGw = Get-AzureRmFirewall -Name "SecGw" -ResourceGroupName "rg"
 $ruleCollection = $secGw.GetApplicationRuleCollectionByName("ruleCollectionName")
 $rule = $ruleCollection.GetRuleByName("ruleName")
 $rule.Priority = 101
-Set-AzureRmSecureGateway -SecureGateway $secGw
+Set-AzureRmFirewall -Firewall $secGw
 ```
 
 This example updates the priority of an existing rule of a secure gateway.
@@ -40,24 +40,24 @@ on the server.
 
 ### 2:  Create a secure gateway and attach it to a virtual network later
 ```
-$secGw = New-AzureRmSecureGateway -Name "SecGw" -ResourceGroupName "rg"
+$secGw = New-AzureRmFirewall -Name "SecGw" -ResourceGroupName "rg"
 
 $vnet = Get-AzureRmVirtualNetwork -Name vnet -ResourceGroupName "rg"
 $secGw.AttachToVirtualNetwork($vnet)
-$secGw | Set-AzureRmSecureGateway
+$secGw | Set-AzureRmFirewall
 ```
 
-In this example, a secure gateway is created first without being attached to a virtual network.
-When AttachToVirtualNetwork is called, secure gateway object is modified in memory, without affecting the real configuration in cloud.
-For changes to be reflected in cloud, Set-AzureRmSecureGateway must be called.
+In this example, a Firewall is created first without being attached to a virtual network.
+When AttachToVirtualNetwork is called, Firewall object is modified in memory, without affecting the real configuration in cloud.
+For changes to be reflected in cloud, Set-AzureRmFirewall must be called.
 
 ## PARAMETERS
 
-### -SecureGateway
-Specifies a **SecureGateway** object that represents the goal state.
+### -Firewall
+Specifies a **Firewall** object that represents the goal state.
 
 ```yaml
-Type: PSSecureGateway
+Type: PSFirewall
 Parameter Sets: (All)
 Aliases: 
 
@@ -89,18 +89,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### PSVirtualNetwork
-Parameter 'SecureGateway' accepts value of type 'PSSecureGateway' from the pipeline
+Parameter 'Firewall' accepts value of type 'PSFirewall' from the pipeline
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSSecureGateway
+### Microsoft.Azure.Commands.Network.Models.PSFirewall
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzureRmSecureGateway](./Get-AzureRmSecureGateway.md)
+[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
 
-[New-AzureRmSecureGateway](./New-AzureRmSecureGateway.md)
+[New-AzureRmFirewall](./New-AzureRmFirewall.md)
 
-[Remove-AzureRmSecureGateway](./Remove-AzureRmSecureGateway.md)
+[Remove-AzureRmFirewall](./Remove-AzureRmFirewall.md)

@@ -2,34 +2,34 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 9DBD5ADF-C30E-4D1A-A4CB-4D70C21088F3
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermsecuregateway
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermfirewall
 schema: 2.0.0
 ---
 
-# Remove-AzureRmSecureGateway
+# Remove-AzureRmFirewall
 
 ## SYNOPSIS
-Remove a secure gateway
+Remove a Firewall
 
 ## SYNTAX
 
 ```
-Remove-AzureRmSecureGateway -ResourceGroupName <String> -Name <String>
+Remove-AzureRmFirewall -ResourceGroupName <String> -Name <String>
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSecureGateway** cmdlet removes an Azure secure gateway.
+The **Remove-AzureRmFirewall** cmdlet removes an Azure Firewall.
 
 ## EXAMPLES
 
-### 1: Create and delete a secure gateway
+### 1: Create and delete a Firewall
 ```
-New-AzureRmSecureGateway -Name "secGw" -ResourceGroupName "rgName" -Location centralus
+New-AzureRmFirewall -Name "secGw" -ResourceGroupName "rgName" -Location centralus
 
-Remove-AzureRmSecureGateway -Name "secGw" -ResourceGroupName "rgName"
+Remove-AzureRmFirewall -Name "secGw" -ResourceGroupName "rgName"
 ```
 
-This example creates a secure gateway in a resource group and then immediately deletes it. To suppress the prompt when deleting the secure gateway, use the -Force flag.
+This example creates a Firewall in a resource group and then immediately deletes it. To suppress the prompt when deleting the Firewall, use the -Force flag.
 
 ## PARAMETERS
 
@@ -138,8 +138,8 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[Get-AzureRmSecureGateway](./Get-AzureRmSecureGateway.md)
+[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
 
-[New-AzureRmSecureGateway](./New-AzureRmSecureGateway.md)
+[New-AzureRmFirewall](./New-AzureRmFirewall.md)
 
-[Set-AzureRmSecureGateway](./Set-AzureRmSecureGateway.md)
+[Set-AzureRmFirewall](./Set-AzureRmFirewall.md)
