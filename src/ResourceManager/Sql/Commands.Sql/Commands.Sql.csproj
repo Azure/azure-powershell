@@ -230,6 +230,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentAtpCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentOperationCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\GetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\RemoveSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
@@ -242,7 +243,6 @@
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentPolicy\GetAzureSqlDatabaseVulnerabilityAssessmentPolicy.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentPolicy\RemoveSqlDatabaseVulnerabilityAssessmentPolicy.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentPolicy\SetAzureSqlDatabaseVulnerabilityAssessmentPolicy.cs" />
-    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentPolicy\SqlDatabaseVulnerabilityAssessmentPolicyCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineItemModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanEportModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanErrorModel.cs" />
