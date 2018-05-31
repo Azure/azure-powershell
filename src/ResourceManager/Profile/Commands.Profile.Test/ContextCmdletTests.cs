@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             getCmdlet.ExecuteCmdlet();
             getCmdlet.InvokeEndProcessing();
             Assert.True(commandRuntimeMock.OutputPipeline != null);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             Assert.Equal(defaultContextName, ((PSAzureContext)commandRuntimeMock.OutputPipeline[0]).Name);
 
             var clearCmdlet = new ClearAzureRmContext();
@@ -236,8 +236,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             clearCmdlet.ExecuteCmdlet();
             clearCmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
-            var result = (bool)(commandRuntimeMock.OutputPipeline[0]);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
+            var result = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(result);
             Assert.True(profile.Contexts != null);
             Assert.Equal(1, profile.Contexts.Count);
