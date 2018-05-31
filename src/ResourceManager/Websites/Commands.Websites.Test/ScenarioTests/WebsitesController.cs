@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
                     _helper.RMProfileModule,
                     _helper.RMStorageDataPlaneModule,
                     _helper.RMResourceModule,
-                    _helper.GetRMModulePath(@"AzureRM.WebSites.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.Websites.psd1"),
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
