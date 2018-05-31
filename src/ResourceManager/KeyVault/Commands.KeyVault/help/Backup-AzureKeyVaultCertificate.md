@@ -41,23 +41,29 @@ and specify a key vault in the second region.
 ## EXAMPLES
 
 ### Example 1: Back up a certificate with an automatically generated file name
-```
-PS C:\>Backup-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
+```powershell
+PS C:\Users\username\> Backup-AzureKeyVaultCertificate -VaultName 'mykeyvault' -Name 'mycert'
+
+C:\Users\username\mykeyvault-mycert-1527029447.01191
 ```
 
 This command retrieves the certificate named MyCert from the key vault named MyKeyVault and saves a backup of that certificate to a file that is automatically named for you, and displays the file name.
 
 ### Example 2: Back up a certificate to a specified file name
-```
-PS C:\>Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
+```powershell
+PS C:\> Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
+
+C:\Backup.blob
 ```
 
 This command retrieves the certificate named MyCert from the key vault named MyKeyVault and saves a backup of that certificate to a file named Backup.blob.
 
 ### Example 3: Back up a previously retrieved certificate to a specified file name, overwriting the destination file without prompting.
-```
-PS C:\>$cert = Get-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
-PS C:\>Backup-AzureKeyVaultCertificate -Certificate $cert -OutputFile 'C:\Backup.blob' -Force
+```powershell
+PS C:\> $cert = Get-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
+PS C:\> Backup-AzureKeyVaultCertificate -Certificate $cert -OutputFile 'C:\Backup.blob' -Force
+
+C:\Backup.blob
 ```
 
 This command creates a backup of the certificate named $cert.Name in the vault named $cert.VaultName to a file named Backup.blob, silently overwriting the file if it exists already.
@@ -199,6 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+The cmdlet returns the path of the output file containing the backup of the certificate.
 
 ## NOTES
 

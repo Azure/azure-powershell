@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 4.6.0
+* Updated the following cmdlets with optional LicenseType parameter
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
+	- New-AzureRmSqlDatabaseCopy
+	- New-AzureRmSqlDatabaseSecondary
+	- Restore-AzureRmSqlDatabase
+
 ## Version 4.5.0
 * Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
 * Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with 'Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy'.
