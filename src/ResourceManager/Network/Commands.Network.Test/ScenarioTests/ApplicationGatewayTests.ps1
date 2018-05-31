@@ -451,7 +451,7 @@ function Test-ApplicationGatewayCRUD2
 		Assert-NotNull $getgw.SslCertificates[0].Password
 
 		$pw02 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-		$sslCert02Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert2.pfx"
+		$sslCert02Path = $basedir + "ScenarioTests/Data/ApplicationGatewaySslCert2.pfx"
 		$getgw = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $getgw -Name $sslCert02Name -CertificateFile $sslCert02Path -Password $pw02
 
 		# Modify existing application gateway with new configuration

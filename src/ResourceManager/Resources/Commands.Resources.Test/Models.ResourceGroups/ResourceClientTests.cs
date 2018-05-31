@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 #endif
                 TypeNameHandling = TypeNameHandling.None
             });
-            templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
+            templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateFile.json");
         }
 
         public ResourceClientTests()

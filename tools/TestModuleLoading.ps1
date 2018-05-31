@@ -20,6 +20,17 @@ $outputDir = "$PSScriptRoot/../src/Package/$configuration/"
 Write-Verbose "Running Test-ModuleManfiest on .psd1 files in $outputDir"
 $env:PSModulePath += ";$outputDir/ResourceManager/AzureResourceManager/;$outputDir/Storage/"
 
+$success = $true
 foreach($psd1FilePath in Get-ChildItem -Path $outputDir -Recurse -Filter *.psd1) {
-    Test-ModuleManifest -Path $psd1FilePath.FullName
+    $manifestError = $null
+    Test-ModuleManifest -Path $psd1FilePath.FullName -ErrorVariable manifestError
+    if($manifestError){
+        Write-Warning "$($psd1FilePath.Name) failed to load."
+        $success = $false
+    }
+}
+
+if(-not $success) {
+    Write-Warning 'Failure: One or more module manifests failed to load.'
+    exit 1
 }
