@@ -113,31 +113,107 @@ New-AzureRmADServicePrincipal -ApplicationObject <PSADApplication> -KeyCredentia
 ```
 
 ## DESCRIPTION
-Creates a new azure active directory service principal.
+Creates a new azure active directory service principal. The default parameter set uses default values for parameters if the user does not provide one for them. For more information on the default values used, please see the description for the given parameters below.
 
-Note: The cmdlet also implicitly creates an application and sets its properties (if the ApplicationId is not provided).
-In order to update the application specific parameters please use Set-AzureRmADApplication cmdlet.
+This cmdlet has the ability to assign a role to the service principal with the `Role` and `Scope` parameters; if neither of these parameters are provided, no role will be assigned to the service principal. The default values for the `Role` and `Scope` parameters are "Contributor" and the current subscription, respectively (_note_: the defaults are only used when the user provides a value for one of the two parameters, but not the other).
+
+The cmdlet also implicitly creates an application and sets its properties (if the ApplicationId is not provided). In order to update the application specific parameters please use Set-AzureRmADApplication cmdlet.
 
 ## EXAMPLES
 
-### Example 1 - Create a new AD service principal using application id
+### Example 1 - Simple AD service principal creation
+
+```
+PS C:\> New-AzureRmADServicePrincipal
+
+ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://azure-powershell-05-22-2018-18-23-43}
+ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+DisplayName           : azure-powershell-05-22-2018-18-23-43
+Id                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Type                  : ServicePrincipal
+```
+
+The above command creates an AD service principal using default values for parameters not provided. Since an application id was not provided, an application was created for the service principal. Since no values were provided for `Role` or `Scope`, the created service principal does not have any permissions.
+
+### Example 2 - Simple AD service principal creation with a specified role and default scope
+
+```
+PS C:\> New-AzureRmADServicePrincipal -Role Reader
+
+ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://azure-powershell-05-22-2018-18-23-43}
+ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+DisplayName           : azure-powershell-05-22-2018-18-23-43
+Id                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Type                  : ServicePrincipal
+
+WARNING: Assigning role 'Reader' over scope '/subscriptions/zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz' to the new service principal.
+```
+
+The above command creates an AD service principal using the default values for parameters not provided. Since the application id was not provided, an application was created for the service principal. The service principal was created with "Reader" permissions over the current subscription (since no value was provided for the `Scope` parameter).
+
+
+### Example 3 - Simple AD service principal creation with a specified scope and default role
+
+```
+PS C:\> New-AzureRmADServicePrincipal -Scope /subscriptions/zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz/resourceGroups/myResourceGroup
+
+ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://azure-powershell-05-22-2018-18-23-43}
+ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+DisplayName           : azure-powershell-05-22-2018-18-23-43
+Id                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Type                  : ServicePrincipal
+
+WARNING: Assigning role 'Contributor' over scope '/subscriptions/zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz/resourceGroups/myResourceGroup' to the new service principal.
+```
+
+The above command creates an AD service principal using the default values for parameters not provided. Since the application id was not provided, an application was created for the service principal. The service principal was created with "Contributor" permissions (since no value was provided for the `Role` parameter) over the provided resource group scope.
+
+### Example 4 - Simple AD service principal creation with a specified scope and role
+
+```
+PS C:\> New-AzureRmADServicePrincipal -Role Reader -Scope /subscriptions/zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz/resourceGroups/myResourceGroup
+
+ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://azure-powershell-05-22-2018-18-23-43}
+ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+DisplayName           : azure-powershell-05-22-2018-18-23-43
+Id                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Type                  : ServicePrincipal
+
+WARNING: Assigning role 'Reader' over scope '/subscriptions/zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz/resourceGroups/myResourceGroup' to the new service principal.
+```
+
+The above command creates an AD service principal using the default values for parameters not provided. Since the application id was not provided, an application was created for the service principal. The service principal was created with "Reader" permissions over the provided resource group scope.
+
+### Example 5 - Create a new AD service principal using application id with role assignment
 
 ```
 PS C:\> New-AzureRmADServicePrincipal -ApplicationId 34a28ad2-dec4-4a41-bc3b-d22ddf90000e
+
+ServicePrincipalNames : {34a28ad2-dec4-4a41-bc3b-d22ddf90000e, http://my-temp-app}
+ApplicationId         : 34a28ad2-dec4-4a41-bc3b-d22ddf90000e
+DisplayName           : my-temp-app
+Id                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Type                  : ServicePrincipal
 ```
 
-Creates a new AD service principal for the application with application id '34a28ad2-dec4-4a41-bc3b-d22ddf90000e'.
+Creates a new AD service principal for the application with application id '34a28ad2-dec4-4a41-bc3b-d22ddf90000e'. Since no values were provided for `Role` or `Scope`, the created service principal does not have any permissions.
 
-### Example 2 - Create a new AD service principal for no appplication
+### Example 6 - Create a new AD service principal for no appplication
 
 ```
 PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> New-AzureRmADServicePrincipal -DisplayName SPForNoExistingApp -Password $SecureStringPassword
+PS C:\> New-AzureRmADServicePrincipal -DisplayName SPForNoApp -Password $SecureStringPassword
+
+ServicePrincipalNames : {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, http://SPForNoApp}
+ApplicationId         : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+DisplayName           : SPForNoApp
+Id                    : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
+Type                  : ServicePrincipal
 ```
 
-Creates a new AD service principal without needing an existing application. This will implicitly create an application since one is not provided.
+Creates a new AD service principal without needing an existing application. This will implicitly create an application since one is not provided. Since no values were provided for `Role` or `Scope`, the created service principal does not have any permissions.
 
-### Example 3 - Create a new AD service principal using piping
+### Example 7 - Create a new AD service principal using piping
 
 ```
 PS C:\> Get-AzureRmADApplication -ObjectId 3ede3c26-b443-4e0b-9efc-b05e68338dc3 | New-AzureRmADServicePrincipal
@@ -235,7 +311,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The friendly name of the service principal.
+The friendly name of the service principal. If a display name is not provided, this value will default to 'azure-powershell-MM-dd-yyyy-HH-mm-ss', where the suffix is the time of application creation.
 
 ```yaml
 Type: String
@@ -318,7 +394,7 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-The password to be associated with the service principal.
+The password to be associated with the service principal. If a password is not provided, a random GUID will be generated and used as the password.
 
 ```yaml
 Type: SecureString
@@ -384,7 +460,7 @@ Accept wildcard characters: False
 ```
 
 ### -Role
-The role that the service principal has over the scope.
+The role that the service principal has over the scope. If a value for `Scope` is provided, but no value is provided for `Role`, then `Role` will default to the 'Contributor' role.
 
 ```yaml
 Type: String
@@ -399,7 +475,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope that the service principal has permissions on.
+The scope that the service principal has permissions on. If a value for `Role` is provided, but no value is provided for `Scope`, then `Scope` will default to the current subscription.
 
 ```yaml
 Type: String
