@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 3,
-            HelpMessage = "The name of the Azure SQL Database to use.")]
+            HelpMessage = "The backup retention setting, in days.")]
         [ValidateNotNullOrEmpty]
         [ValidateRetentionDays]
         public int RetentionDays{ get; set; }

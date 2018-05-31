@@ -33,7 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
-        ///
         [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
