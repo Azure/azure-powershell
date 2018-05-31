@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private Mock<IResourceManagementClient> resourceManagementClientMock;
 
-        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
+        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateFile.json");
 
-        private string invalidTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\invalidTemplateFile.json");
+        private string invalidTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/invalidTemplateFile.json");
 
-        private string templateParameterFileSchema1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFile.json");
+        private string templateParameterFileSchema1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateParameterFile.json");
 
-        private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFileSchema2.json");
+        private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateParameterFileSchema2.json");
 
         public GalleryTemplatesClientTests(ITestOutputHelper output)
         {
@@ -504,7 +504,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             TestExecutionHelpers.RetryAction(() =>
             {
                 Dictionary<string, TemplateFileParameterV1> result =
-                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources\WebSite.param.dev.json".AsAbsoluteLocation());
+                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources/WebSite.param.dev.json".AsAbsoluteLocation());
                 Assert.Equal(true, result["isWorker"].Value);
                 Assert.Equal((System.Int64) 1, result["numberOfWorker"].Value);
             });
