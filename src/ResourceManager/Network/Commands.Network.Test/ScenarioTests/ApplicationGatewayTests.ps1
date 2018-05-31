@@ -56,7 +56,7 @@ function Test-ApplicationGatewayCRUD
 {
 	param 
 	( 
-		$basedir = ".\" 
+		$basedir = "./" 
 	) 
 
 	# Setup	
@@ -123,7 +123,7 @@ function Test-ApplicationGatewayCRUD
 		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
 		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 8080
 
-		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+		$authCertFilePath = $basedir + "ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
 		
 		# Create match with undefined statuscode list

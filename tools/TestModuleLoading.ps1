@@ -17,8 +17,9 @@ param (
 )
 
 $outputDir = "$PSScriptRoot/../src/Package/$configuration/"
-Write-Verbose "Running Test-ModuleManfiest on .psd1 files in $outputDir"
+Write-Warning "Running Test-ModuleManfiest on .psd1 files in $outputDir"
 $env:PSModulePath += ";$outputDir/ResourceManager/AzureResourceManager/;$outputDir/Storage/"
+Write-Warning "PSModulePath: $env:PSModulePath"
 
 $success = $true
 foreach($psd1FilePath in Get-ChildItem -Path $outputDir -Recurse -Filter *.psd1) {
