@@ -93,7 +93,9 @@ Accept wildcard characters: False
 ```
 
 ### -Vault
-The Recovery Services Vault.```yaml
+The Recovery Services Vault.
+
+```yaml
 Type: ARSVault
 Parameter Sets: (All)
 Aliases: 
