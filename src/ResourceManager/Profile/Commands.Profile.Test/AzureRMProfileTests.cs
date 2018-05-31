@@ -727,7 +727,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("http://insights.contoso.io/", deserializedProfile.DefaultContext.Environment.GetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Serialized property order changes from NetCore 2.1.2 -> 2.1.200")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SavingProfileWorks()
         {
