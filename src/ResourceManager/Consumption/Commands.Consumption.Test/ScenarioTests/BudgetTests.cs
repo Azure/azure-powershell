@@ -99,5 +99,26 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-RemoveBudgetAtResourceGroupLevel");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewBudgetWithResourceGroupFilter()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithResourceGroupFilter");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewBudgetWithResourceFilter()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithResourceFilter");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewBudgetWithMeterFilter()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithMeterFilter");
+        }
     }
 }

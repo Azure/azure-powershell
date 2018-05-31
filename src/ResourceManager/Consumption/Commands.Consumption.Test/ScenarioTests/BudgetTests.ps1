@@ -133,3 +133,48 @@ function Test-RemoveBudgetAtResourceGroupLevel
 {
 	Remove-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG
 }
+
+<#
+.SYNOPSIS
+New budget with resource group filter
+#>
+function Test-NewBudgetWithResourceGroupFilter
+{
+    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetRGF -ResourceGroupFilter CriTest -Category Cost -StartDate 2018-05-01 -EndDate 2018-11-01 -TimeGrain Monthly
+	Assert-NotNull $budget
+	Assert-AreEqual 60 $budget.Amount
+	Assert-AreEqual PSBudgetRGF $budget.Name
+	Assert-AreEqual Cost $budget.Category
+	Assert-AreEqual Monthly $budget.TimeGrain
+	Assert-AreEqual 1 $budget.Filter.ResourceGroups.Count
+}
+
+<#
+.SYNOPSIS
+New budget with resource filter
+#>
+function Test-NewBudgetWithResourceFilter
+{
+    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetRF -ResourceFilter /subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/CriTest/providers/Microsoft.Compute/virtualMachines/MSAWSIFT2 -Category Cost -StartDate 2018-05-01 -EndDate 2018-11-01 -TimeGrain Monthly
+	Assert-NotNull $budget
+	Assert-AreEqual 60 $budget.Amount
+	Assert-AreEqual PSBudgetRF $budget.Name
+	Assert-AreEqual Cost $budget.Category
+	Assert-AreEqual Monthly $budget.TimeGrain
+	Assert-AreEqual 1 $budget.Filter.Resources.Count
+}
+
+<#
+.SYNOPSIS
+New budget with meter filter
+#>
+function Test-NewBudgetWithMeterFilter
+{
+    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetMF -MeterFilter fe167397-a38d-43c3-9bb3-8e2907e56a41 -Category Usage -StartDate 2018-05-01 -EndDate 2018-11-01 -TimeGrain Monthly
+	Assert-NotNull $budget
+	Assert-AreEqual 60 $budget.Amount
+	Assert-AreEqual PSBudgetMF $budget.Name
+	Assert-AreEqual Usage $budget.Category
+	Assert-AreEqual Monthly $budget.TimeGrain
+	Assert-AreEqual 1 $budget.Filter.Meters.Count
+}
