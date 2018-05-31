@@ -89,49 +89,52 @@ Tests creating a new vault.
 #>
 function Test-CreateNewVault
 {
-Param($rgName, $location, $tagName, $tagValue)
+	$rgName = getAssetName
+	$vaultName = getAssetName
+	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
+	$tagKey = "asdf"
+	$tagValue = "qwerty"
+	New-AzureRmResourceGroup -Name $rgName -Location $rgLocation
 
-    # Setup
-    $vaultname = Get-VaultName
+	try
+	{
+		$actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -Tag @{$tagKey = $tagValue}
+		Assert-AreEqual $vaultName $actual.VaultName
+		Assert-AreEqual $rgName $actual.ResourceGroupName
+		Assert-AreEqual $vaultLocation $actual.Location
+		Assert-AreEqual $actual.Tags.Count 1
+		Assert-AreEqual $actual.Tags.ContainsKey($tagKey) $true
+		Assert-AreEqual $actual.Tags.ContainsValue($tagValue) $true
+		Assert-AreEqual "Standard" $actual.Sku
+		Assert-AreEqual $false $actual.EnabledForDeployment
 
-    # Test
-    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tag @{$tagName = $tagValue}
+		# Default Access Policy
+		$applicationId = $env:ServicePrincipal
+		$expectedPermsToKeys = @("get",
+				"create",
+				"delete",
+				"list",
+				"update",
+				"import",
+				"backup",
+				"restore",
+				"recover")
+		$expectedPermsToSecrets = Get-AllSecretPermissions
+		$expectedPermsToCertificates = Get-AllCertPermissions
+		$expectedPermsToStorage = Get-AllStoragePermissions
 
-    # Assert
-    Assert-AreEqual $vaultName $actual.VaultName
-    Assert-AreEqual $rgname $actual.ResourceGroupName
-    Assert-AreEqual $location $actual.Location
-    Assert-AreEqual $actual.Tags.Count 1
-    Assert-AreEqual $actual.Tags.ContainsKey($tagName) $true
-    Assert-AreEqual $actual.Tags.ContainsValue($tagValue) $true
-    Assert-AreEqual "Standard" $actual.Sku
-    Assert-AreEqual $false $actual.EnabledForDeployment
-
-    # Default Access Policy
-    $objectId = $global:objectId
-    $expectedPermsToKeys = @("get",
-            "create",
-            "delete",
-            "list",
-            "update",
-            "import",
-            "backup",
-            "restore",
-            "recover")
-    $expectedPermsToSecrets = Get-AllSecretPermissions
-    $expectedPermsToCertificates = Get-AllCertPermissions
-    $expectedPermsToStorage = Get-AllStoragePermissions
-
-    Assert-AreEqual 1 @($actual.AccessPolicies).Count
-    Assert-AreEqual $objectId $actual.AccessPolicies[0].ObjectId
-    $result = Compare-Object $expectedPermsToKeys $actual.AccessPolicies[0].PermissionsToKeys
-    Assert-Null $result
-    $result = Compare-Object $expectedPermsToSecrets $actual.AccessPolicies[0].PermissionsToSecrets
-    Assert-Null $result
-    $result = Compare-Object $expectedPermsToCertificates $actual.AccessPolicies[0].PermissionsToCertificates
-    Assert-Null $result
-    $result = Compare-Object $expectedPermsToStorage $actual.AccessPolicies[0].PermissionsToStorage
-    Assert-Null $result
+		Assert-AreEqual 1 @($actual.AccessPolicies).Count
+		Assert-AreEqual $applicationId $actual.AccessPolicies[0].ApplicationId
+		Assert-AreEqualArray $expectedPermsToKeys $actual.AccessPolicies[0].PermissionsToKeys
+		Assert-AreEqualArray $expectedPermsToSecrets $actual.AccessPolicies[0].PermissionsToSecrets
+		Assert-AreEqualArray $expectedPermsToCertificates $actual.AccessPolicies[0].PermissionsToCertificates
+		Assert-AreEqualArray $expectedPermsToStorage $actual.AccessPolicies[0].PermissionsToStorage
+	}
+	finally
+	{
+		Remove-AzureRmResourceGroup -Name $rgName -Force
+	}
 }
 
 <#
