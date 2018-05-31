@@ -197,7 +197,6 @@
     <None Include="Scripts\bvtdata\pfxtest.pfx" />
     <None Include="Scripts\bvtdata\pfxtest1024.pfx" />
     <None Include="Scripts\Common.ps1" />
-    <None Include="Scripts\ControlPlane\Common.ps1" />
     <None Include="Scripts\ControlPlane\KeyVaultManagementTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

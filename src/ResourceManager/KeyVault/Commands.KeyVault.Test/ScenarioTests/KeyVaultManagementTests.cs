@@ -57,12 +57,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #region New-AzureRmKeyVault        
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewVault()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2} {3} {4}", "Test-CreateNewVault", _data.resourceGroupName, _data.location, _data.tagName, _data.tagValue) }; },
+                () => { return new[] { "Test-CreateNewVault" }; },
                 (env) => Initialize(),
                 null,
                 TestUtilities.GetCallingClass(),
