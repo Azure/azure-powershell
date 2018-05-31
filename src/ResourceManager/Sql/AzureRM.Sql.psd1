@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.5.0'
+ModuleVersion = '4.6.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -231,10 +231,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
-* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with ''Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy''.
-* Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
-* The updated cmdlets including: 
+        ReleaseNotes = '* Updated the following cmdlets with optional LicenseType parameter
 	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
 	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
 	- New-AzureRmSqlDatabaseCopy

@@ -20,6 +20,10 @@
 ## Current Release
 
 ## Version 5.2.0
+* Added the following three values to the telemetry:
+  - Inner exception types
+  - ParameterSetName
+  - InvocationName
 * Fix issue where version 10.0.3 of Newtonsoft.Json wasn't being loaded on module import
 
 ## Version 5.1.0
