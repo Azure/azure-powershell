@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update documentation with example output
 
 ## Version 5.0.0
 * Breaking changes to support piping scenarios
