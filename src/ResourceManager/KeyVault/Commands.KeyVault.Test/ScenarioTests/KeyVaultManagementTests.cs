@@ -128,85 +128,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #region Get-AzureRmKeyVault
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultByNameAndResourceGroup()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-GetVaultByNameAndResourceGroup", _data.preCreatedVault, _data.resourceGroupName) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultByNameAndResourceGroupPositionalParams()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-GetVaultByNameAndResourceGroupPositionalParams", _data.preCreatedVault, _data.resourceGroupName) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultByName()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-GetVaultByName", _data.preCreatedVault) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultByNameCapitalized()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => new[] { string.Format("{0} {1}", "Test-GetVaultByName", _data.preCreatedVault.ToUpper()) },
-                env => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetUnknownVaultFails()
+        public void TestGetVault()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-GetUnknownVaultFails", _data.resourceGroupName) }; },
+                () => { return new[] { "Test-GetVault" }; },
                 (env) => Initialize(),
                 null,
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName()
                 );
 
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetVaultFromUnknownResourceGroupFails()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-GetVaultFromUnknownResourceGroupFails", _data.preCreatedVault) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
         }
 
         #endregion
@@ -215,10 +148,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListVaultsByResourceGroup()
+        public void TestListVaults()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-ListVaultsByResourceGroup", _data.resourceGroupName) }; },
+                () => { return new[] { string.Format("{0} {1}", "Test-ListVaults", _data.resourceGroupName) }; },
                 (env) => Initialize(),
                 null,
                 TestUtilities.GetCallingClass(),
@@ -226,45 +159,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListAllVaultsInSubscription()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { "Test-ListAllVaultsInSubscription" }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListVaultsByTag()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-ListVaultsByTag", _data.tagName, _data.tagValue) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListVaultsByUnknownResourceGroupFails()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { "Test-ListVaultsByUnknownResourceGroupFails" }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
         #endregion
 
         #region Remove-AzureRmKeyVault 
