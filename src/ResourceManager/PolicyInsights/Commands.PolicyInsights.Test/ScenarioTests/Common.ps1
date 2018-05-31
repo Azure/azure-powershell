@@ -12,14 +12,77 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$ManagementGroupName = "azgovtest4";
-$ResourceGroupName = "bulenttestrg";
-$ResourceId = "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/govintpolicyrp/providers/microsoft.network/trafficmanagerprofiles/gov-int-policy-rp";
-$PolicySetDefinitionName = "db6c5074-a529-4cc8-8882-43f10ef42002";
-$PolicyDefinitionName = "d7b13c30-e6aa-47e1-b50a-8e33f152d086";
-$PolicyAssignmentName = "45ab2ab7898d45ebb3087573";
-$From = "2018-04-04 00:00:00Z"
-$Top = 10
+<#
+.SYNOPSIS
+Gets test management group name
+#>
+function Get-TestManagementGroupName
+{
+	"azgovtest4"
+}
+
+<#
+.SYNOPSIS
+Gets test resource group group name
+#>
+function Get-TestResourceGroupName
+{
+	"bulenttestrg"
+}
+
+<#
+.SYNOPSIS
+Gets test resource id
+#>
+function Get-TestResourceId
+{
+	"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/resourcegroups/govintpolicyrp/providers/microsoft.network/trafficmanagerprofiles/gov-int-policy-rp"
+}
+
+<#
+.SYNOPSIS
+Gets test policy set definition name
+#>
+function Get-TestPolicySetDefinitionName
+{
+	"db6c5074-a529-4cc8-8882-43f10ef42002"
+}
+
+<#
+.SYNOPSIS
+Gets test policy definition name
+#>
+function Get-TestPolicyDefinitionName
+{
+	"d7b13c30-e6aa-47e1-b50a-8e33f152d086"
+}
+
+<#
+.SYNOPSIS
+Gets test policy assignment name
+#>
+function Get-TestPolicyAssignmentName
+{
+	"45ab2ab7898d45ebb3087573"
+}
+
+<#
+.SYNOPSIS
+Gets test query interval start
+#>
+function Get-TestQueryIntervalStart
+{
+	"2018-04-04 00:00:00Z"
+}
+
+<#
+.SYNOPSIS
+Gets test query interval end
+#>
+function Get-TestQueryIntervalEnd
+{
+	"2018-05-30 00:00:00Z"
+}
 
 <#
 .SYNOPSIS

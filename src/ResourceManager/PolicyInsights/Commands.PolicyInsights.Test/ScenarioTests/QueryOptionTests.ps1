@@ -18,8 +18,10 @@ Get latest policy states at subscription scope; with From query option
 #>
 function QueryOptions-QueryResultsWithFrom
 {
-    $policyStates = Get-AzureRmPolicyState -From $From -Top $Top
-	Validate-PolicyStates $policyStates $Top
+	$from = Get-TestQueryIntervalStart
+
+    $policyStates = Get-AzureRmPolicyState -From $from -Top 10
+	Validate-PolicyStates $policyStates 10
 }
 
 <#
@@ -28,8 +30,10 @@ Get latest policy states at subscription scope; with To query option
 #>
 function QueryOptions-QueryResultsWithTo
 {
-    $policyStates = Get-AzureRmPolicyState -To $To -Top $Top
-	Validate-PolicyStates $policyStates $Top
+	$to = Get-TestQueryIntervalEnd
+
+    $policyStates = Get-AzureRmPolicyState -To $to -Top 10
+	Validate-PolicyStates $policyStates 10
 }
 
 <#
@@ -38,8 +42,8 @@ Get latest policy states at subscription scope; with Top query option
 #>
 function QueryOptions-QueryResultsWithTop
 {
-    $policyStates = Get-AzureRmPolicyState -Top $Top
-	Validate-PolicyStates $policyStates $Top
+    $policyStates = Get-AzureRmPolicyState -Top 10
+	Validate-PolicyStates $policyStates 10
 }
 
 <#
@@ -48,8 +52,8 @@ Get latest policy states at subscription scope; with OrderBy query option
 #>
 function QueryOptions-QueryResultsWithOrderBy
 {
-    $policyStates = Get-AzureRmPolicyState -OrderBy "Timestamp asc, PolicyDefinitionAction, PolicyAssignmentId asc" -Top $Top
-	Validate-PolicyStates $policyStates $Top
+    $policyStates = Get-AzureRmPolicyState -OrderBy "Timestamp asc, PolicyDefinitionAction, PolicyAssignmentId asc" -Top 10
+	Validate-PolicyStates $policyStates 10
 }
 
 <#
@@ -58,8 +62,8 @@ Get latest policy states at subscription scope; with Select query option
 #>
 function QueryOptions-QueryResultsWithSelect
 {
-    $policyStates = Get-AzureRmPolicyState -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicyDefinitionId, IsCompliant, SubscriptionId, PolicyDefinitionAction" -Top $Top
-	Validate-PolicyStates $policyStates $Top
+    $policyStates = Get-AzureRmPolicyState -Select "Timestamp, ResourceId, PolicyAssignmentId, PolicyDefinitionId, IsCompliant, SubscriptionId, PolicyDefinitionAction" -Top 10
+	Validate-PolicyStates $policyStates 10
 }
 
 <#
@@ -68,8 +72,8 @@ Get latest policy states at subscription scope; with Filter query option
 #>
 function QueryOptions-QueryResultsWithFilter
 {
-    $policyStates = Get-AzureRmPolicyState -Filter "IsCompliant eq false and PolicyDefinitionAction eq 'deny'" -Top $Top
-	Validate-PolicyStates $policyStates $Top
+    $policyStates = Get-AzureRmPolicyState -Filter "IsCompliant eq false and PolicyDefinitionAction eq 'deny'" -Top 10
+	Validate-PolicyStates $policyStates 10
 }
 
 <#
@@ -78,7 +82,7 @@ Get latest policy states at subscription scope; with Apply query option
 #>
 function QueryOptions-QueryResultsWithApply
 {
-    $policyStates = Get-AzureRmPolicyState -Apply "groupby((PolicyAssignmentId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicyDefinitionId), aggregate(`$count as NumResources))" -Top $Top
+    $policyStates = Get-AzureRmPolicyState -Apply "groupby((PolicyAssignmentId, PolicyDefinitionId, ResourceId))/groupby((PolicyAssignmentId, PolicyDefinitionId), aggregate(`$count as NumResources))" -Top 10
 	Foreach($policyState in $policyStates)
 	{
 		Assert-NotNull $policyState
