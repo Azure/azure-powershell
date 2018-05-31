@@ -13,12 +13,14 @@
 # ----------------------------------------------------------------------------------
 
 param (
-    [string] $configuration = 'Debug'
+    [string] $configuration = 'Debug',
+    [string] $pathDelimiter = ':'
 )
 
-$outputDir = "$PSScriptRoot/../src/Package/$configuration/"
+$tempModulePath = $env:PSModulePath
+$outputDir = "$PSScriptRoot/../src/Package/$configuration"
 Write-Warning "Running Test-ModuleManfiest on .psd1 files in $outputDir"
-$env:PSModulePath += ";$outputDir/ResourceManager/AzureResourceManager/;$outputDir/Storage/"
+$env:PSModulePath += "$pathDelimiter$outputDir/ResourceManager/AzureResourceManager/$pathDelimiter$outputDir/Storage/"
 Write-Warning "PSModulePath: $env:PSModulePath"
 
 $success = $true
@@ -31,6 +33,7 @@ foreach($psd1FilePath in Get-ChildItem -Path $outputDir -Recurse -Filter *.psd1)
     }
 }
 
+$env:PSModulePath = $tempModulePath
 if(-not $success) {
     Write-Warning 'Failure: One or more module manifests failed to load.'
     exit 1
