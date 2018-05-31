@@ -308,91 +308,103 @@ function Test-PurgeDeletedVault
 
 #------------------------------Get-AzureRmKeyVault--------------------------------------
 
-function Test-GetVaultByNameAndResourceGroup
+function Test-GetVault
 {
-    Param($existingVaultName, $rgName)
+	$rgName = getAssetName
+	$vaultName = getAssetName
+	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
+	New-AzureRmResourceGroup -Name $rgName -Location $rgLocation
 
-    $got = Get-AzureRmKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
+	try
+	{
+		New-AzureRmKeyVault -Name $vaultName -ResourceGroupName $rgName -Location $vaultLocation
+		$got = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName
 
-    Assert-NotNull $got
+		Assert-NotNull $got
+		Assert-AreEqual $got.Location $vaultLocation
+		Assert-AreEqual $got.ResourceGroupName $rgName
+		Assert-AreEqual $got.VaultName $vaultName
+
+		$got = Get-AzureRmKeyVault -VaultName $vaultName
+
+		Assert-NotNull $got
+		Assert-AreEqual $got.Location $vaultLocation
+		Assert-AreEqual $got.ResourceGroupName $rgName
+		Assert-AreEqual $got.VaultName $vaultName
+
+		$got = Get-AzureRmKeyVault -VaultName $vaultName.toUpper()
+
+		Assert-NotNull $got
+		Assert-AreEqual $got.Location $vaultLocation
+		Assert-AreEqual $got.ResourceGroupName $rgName
+		Assert-AreEqual $got.VaultName $vaultName
+
+		$unknownVault = getAssetName
+		$unknownRG = getAssetName
+
+		$unknown = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $unknownRG
+		Assert-Null $unknown
+
+		$unknown = Get-AzureRmKeyVault -VaultName $unknownVault -ResourceGroupName $rgName
+		Assert-Null $unknown
+	}
+
+	finally
+	{
+		Remove-AzureRmResourceGroup -Name $rgName -Force
+	}
 }
 
-function Test-GetVaultByNameAndResourceGroupPositionalParams
+function Test-ListVaults
 {
-    Param($existingVaultName, $rgName)
+	$rgName = getAssetName
+	$vault1Name = getAssetName
+	$vault2Name = getAssetName
+	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
+	$tag = @{"abcdefg"="bcdefgh"}
 
-    $got = Get-AzureRmKeyVault $existingVaultName $rgName
+	New-AzureRmResourceGroup -Name $rgName -Location $rgLocation
+	
+	try
+	{
+		New-AzureRmKeyVault -Name $vault1Name -ResourceGroupName $rgName -Location $vaultLocation
+		New-AzureRmKeyVault -Name $vault2Name -ResourceGroupName $rgName -Location $vaultLocation -Tag $tag
 
-    Assert-NotNull $got
-}
+		$list = Get-AzureRmKeyVault
+		Assert-NotNull $list
+		Assert-True { $list.Count -gt 1 }
+		foreach($v in $list)
+		{
+			Assert-NotNull $v.VaultName
+			Assert-NotNull $v.ResourceGroupName
+		}
 
-function Test-GetVaultByName
-{
-    Param($existingVaultName)
+		$list = Get-AzureRmKeyVault -ResourceGroupName $rgName
+		Assert-NotNull $list
+		Assert-True { $list.Count -eq 2 }
+		foreach($v in $list)
+		{
+			Assert-NotNull $v.VaultName
+			Assert-AreEqual $rgName $v.ResourceGroupName
+			Assert-AreEqual (Normalize-Location $vaultLocation) (Normalize-Location $v.Location)
+		}
 
-    $got = Get-AzureRmKeyVault -VaultName $existingVaultName
+		$list = Get-AzureRmKeyVault -Tag $tag
+		Assert-NotNull $list
+		Assert-True { $list.Count -eq 1 }
+		Assert-AreEqual $list[0].Tags.Keys[0] $tag.Keys[0]
+		Assert-AreEqual $list.Tags[$list[0].Tags.Keys[0]] $tag[$tag.Keys[0]]
 
-    Assert-NotNull $got
-}
-
-function Test-GetUnknownVaultFails
-{
-    Param($rgName)
-    $vaultname = Get-VaultName
-
-    $unknown = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName
-    Assert-Null $unknown
-}
-
-function Test-GetVaultFromUnknownResourceGroupFails
-{
-    Param($existingVaultName)
-    $rgName = Get-ResourceGroupName
-
-    $unknown = Get-AzureRmKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
-    Assert-Null $unknown
-}
-
-function Test-ListVaultsByResourceGroup
-{
-    Param($rgName)
-    $list = Get-AzureRmKeyVault -ResourceGroupName $rgName
-
-    Assert-NotNull $list
-    Assert-True { $list.Count -gt 0 }
-    foreach($v in $list) {
-        Assert-NotNull($v.VaultName)
-        Assert-NotNull($v.ResourceGroupName)
-        Assert-AreEqual $rgName $v.ResourceGroupName
-    }
-}
-
-function Test-ListAllVaultsInSubscription
-{
-    $list = Get-AzureRmKeyVault
-
-    Assert-NotNull $list
-    Assert-True { $list.Count -gt 0 }
-    foreach($v in $list) {
-        Assert-NotNull $v.VaultName
-        Assert-NotNull $v.ResourceGroupName
-    }
-}
-
-function Test-ListVaultsByTag
-{
-    Param($tagName, $tagValue)
-    $list = Get-AzureRmKeyVault -Tag  @{ $tagName = $tagValue }
-
-    Assert-NotNull $list
-    Assert-True { $list.Count -gt 0 }
-}
-
-function Test-ListVaultsByUnknownResourceGroupFails
-{
-    $rgName = Get-ResourceGroupName
-
-    Assert-Throws { Get-AzureRmKeyVault -ResourceGroupName $rgName }
+		$unknownRg = getAssetName
+		Assert-Throws { Get-AzureRmKeyVault -ResourceGroupName $unknownRg }
+	}
+    
+	finally
+	{
+		Remove-AzureRmResourceGroup -Name $rgName -Force
+	}
 }
 
 #-------------------------------------------------------------------------------------
