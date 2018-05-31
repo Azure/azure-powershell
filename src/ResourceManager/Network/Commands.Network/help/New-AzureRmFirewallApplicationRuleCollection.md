@@ -2,33 +2,33 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: A29E9921-C1B9-42C2-B816-5D4873AC6688
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermsecuregatewayapplicationrulecollection
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermfirewallapplicationrulecollection
 schema: 2.0.0
 ---
 
-# New-AzureRmSecureGatewayApplicationRuleCollection
+# New-AzureRmFirewallApplicationRuleCollection
 
 ## SYNOPSIS
-Creates a collection of secure gateway rules.
+Creates a collection of Firewall rules.
 
 ## SYNTAX
 
 ```
-New-AzureRmSecureGatewayApplicationRuleCollection -Name <String> -Priority <Integer> [-Description <String>]
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRule]>
+New-AzureRmFirewallApplicationRuleCollection -Name <String> -Priority <Integer> [-Description <String>]
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFirewallApplicationRule]>
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSecureGatewayApplicationRuleCollection** cmdlet creates a collection of Secure Gateway Application Rules.
+The **New-AzureRmFirewallApplicationRuleCollection** cmdlet creates a collection of Firewall Application Rules.
 
 ## EXAMPLES
 
 ### 1:  Create a collection of two rules
 ```
-$rule1 = New-AzureRmSecureGatewayApplicationRule -Name "Deny abc" -Priority 100 -Protocol "https" -TargetFqdn "*.abc" -ActionType "deny"
-$rule2 = New-AzureRmSecureGatewayApplicationRule -Name "AllowAll" -Priority 1000 -Protocol "https" -TargetFqdn "*" -ActionType "allow"
-New-AzureRmSecureGatewayApplicationRuleCollection -Name "MyCollection" -Priority 1000 -Rule $rule1,$rule2
+$rule1 = New-AzureRmFirewallApplicationRule -Name "Deny abc" -Priority 100 -Protocol "https" -TargetFqdn "*.abc" -ActionType "deny"
+$rule2 = New-AzureRmFirewallApplicationRule -Name "AllowAll" -Priority 1000 -Protocol "https" -TargetFqdn "*" -ActionType "allow"
+New-AzureRmFirewallApplicationRuleCollection -Name "MyCollection" -Priority 1000 -Rule $rule1,$rule2
 ```
 
 This example creates a collection with 2 rules.
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Specifies the list of rules to be grouped under this collection.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRule]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFirewallApplicationRule]
 Parameter Sets: (All)
 Aliases: 
 
@@ -185,14 +185,14 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRuleCollection
+### Microsoft.Azure.Commands.Network.Models.PSFirewallApplicationRuleCollection
 
 ## NOTES
 
 ## RELATED LINKS
 
-[New-AzureRmSecureGatewayApplicationRule](./New-AzureRmSecureGatewayApplicationRule.md)
+[New-AzureRmFirewallApplicationRule](./New-AzureRmFirewallApplicationRule.md)
 
-[New-AzureRmSecureGateway](./New-AzureRmSecureGateway.md)
+[New-AzureRmFirewall](./New-AzureRmFirewall.md)
 
-[Get-AzureRmSecureGateway](./Get-AzureRmSecureGateway.md)
+[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)

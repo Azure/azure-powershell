@@ -2,62 +2,50 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: A3D60CF1-2E66-4EE5-9C68-932DD8DF80BD
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermsecuregateway
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermfirewall
 schema: 2.0.0
 ---
 
-# New-AzureRmSecureGateway
+# New-AzureFirewall
 
 ## SYNOPSIS
-Creates a Secure Gateway
+Creates a Firewall
 
 ## SYNTAX
 
 ```
-New-AzureRmSecureGateway -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzureRmFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-VirtualNetworkName <String>]
- [-ApplicationRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRuleCollection]>]
- [-WorkspaceId <String> -WorkspacePrimaryKey <String>]
+ [-ApplicationRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFirewallApplicationRuleCollection]>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSecureGateway** cmdlet creates an Azure secure gateway.
+The **New-AzureRmFirewall** cmdlet creates an Azure Firewall.
 
 ## EXAMPLES
 
-### 1:  Create a secure gateway attached to a virtual network
+### 1:  Create a Firewall attached to a virtual network
 ```
-New-AzureRmSecureGateway -Name "SecGw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet"
+New-AzureRmFirewall -Name "SecGw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet"
 ```
 
-This example creates a secure gateway attached to virtual network "vnet" in the same resource group as the gateway.
+This example creates a Firewall attached to virtual network "vnet" in the same resource group as the gateway.
 Since no rules were specified, gateway will block all traffic (default behavior).
 
-### 2:  Create a secure gateway which allows all HTTPS traffic and is not attached to a virtual network
+### 2:  Create a Firewall which allows all HTTPS traffic and is not attached to a virtual network
 ```
-$rule = New-AzureRmSecureGatewayApplicationRule -Name Rule1 -Priority 100 -Protocol HTTPS -TargetFqdn "*" -ActionType Allow
-$ruleCollection = New-AzureRmSecureGatewayApplicationRuleCollection -Name RC -Priority 1000 -Rule $rule
-New-AzureRmSecureGateway -Name "SecGw" -ResourceGroupName "rg" -Location centralus -ApplicationRuleCollection $ruleCollection
-```
-
-This example creates a secure gateway which allows all HTTPS traffic. This gateway is not attached to a particular virtual network, so no traffic can be sent to it.
-
-### 3:  Create a secure gateway which allows HTTP(S) traffic to all .com addresses, uses Azure logging and is attached to a virtual network
-```
-$LoggingWorkspaceId = "00112233-0011-0011-0011-001122334455"
-$LoggingPrimaryKey = "abcdefghijklm+nopqrstuvw/xyz+123=="
-$rule = New-AzureRmSecureGatewayApplicationRule -Name Rule1 -Priority 100 -Protocol HTTP,HTTPS -TargetFqdn "*.com" -ActionType Allow
-$ruleCollection = New-AzureRmSecureGatewayApplicationRuleCollection -Name RC -Priority 1000 -Rule $rule
-New-AzureRmSecureGateway -Name "SecGw" -ResourceGroupName "rg" -Location centralus -ApplicationRuleCollection $ruleCollection -VirtualNetworkName vnetName -WorkspaceId $LoggingWorkspaceId -WorkspacePrimaryKey $LoggingPrimaryKey
+$rule = New-AzureRmFirewallApplicationRule -Name Rule1 -Priority 100 -Protocol HTTPS -TargetFqdn "*" -ActionType Allow
+$ruleCollection = New-AzureRmFirewallApplicationRuleCollection -Name RC -Priority 1000 -Rule $rule
+New-AzureRmFirewall -Name "SecGw" -ResourceGroupName "rg" -Location centralus -ApplicationRuleCollection $ruleCollection
 ```
 
-This example creates a secure gateway attached to virtual network "vnet" in the same resource group as the gateway. It allows HTTP and HTTPS traffic to all .com domains. Gateway logs will be available for the specified workspace id.
+This example creates a Firewall which allows all HTTPS traffic. This firewall is not attached to a particular virtual network, so no traffic can be sent to it.
 
 ## PARAMETERS
 
 ### -Name
-Specifies the name of the secure gateway that this cmdlet creates.
+Specifies the name of the Azure Firewall that this cmdlet creates.
 
 ```yaml
 Type: String
@@ -72,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of a resource group to contain the secure gateway.
+Specifies the name of a resource group to contain the Firewall.
 
 ```yaml
 Type: String
@@ -87,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Specifies the region for the secure gateway.
+Specifies the region for the Firewall.
 
 ```yaml
 Type: String
@@ -102,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkName
-Specifies the name of the virtual network for which secure gateway will be deployed. Virtual network and secure gateway must belong to the same resource group.
+Specifies the name of the virtual network for which the Firewall will be deployed. Virtual network and Firewall must belong to the same resource group.
 
 ```yaml
 Type: String
@@ -117,10 +105,10 @@ Accept wildcard characters: False
 ```
 
 ### -ApplicationRuleCollection
-Specifies the collections of rules for the new secure gateway.
+Specifies the collections of rules for the new Firewall.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRuleCollection]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFirewallApplicationRuleCollection]
 Parameter Sets: (All)
 Aliases: 
 
@@ -249,14 +237,14 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSSecureGateway
+### Microsoft.Azure.Commands.Network.Models.PSFirewall
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzureRmSecureGateway](./Get-AzureRmSecureGateway.md)
+[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
 
-[Remove-AzureRmSecureGateway](./Remove-AzureRmSecureGateway.md)
+[Remove-AzureRmFirewall](./Remove-AzureRmFirewall.md)
 
-[Set-AzureRmSecureGateway](./Set-AzureRmSecureGateway.md)
+[Set-AzureRmFirewall](./Set-AzureRmFirewall.md)

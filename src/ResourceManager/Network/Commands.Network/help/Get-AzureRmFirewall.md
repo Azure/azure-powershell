@@ -2,44 +2,44 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 91D58F60-F22A-454A-B04C-E5AEF33E9D06
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermsecuregateway
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermfirewall
 schema: 2.0.0
 ---
 
-# Get-AzureRmSecureGateway
+# Get-AzureRmFirewall
 
 ## SYNOPSIS
-Get a secure gateway in a resource group
+Get a Firewall in a resource group
 
 ## SYNTAX
 
 ```
-Get-AzureRmSecureGateway [-ResourceGroupName <String>] [-Name <String>]
+Get-AzureRmFirewall [-ResourceGroupName <String>] [-Name <String>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmSecureGateway** cmdlet gets one or more secure gateways in a resource group.
+The **Get-AzureRmFirewall** cmdlet gets one or more Firewalls in a resource group.
 
 ## EXAMPLES
 
-### 1:  Retrieve all secure gateways in a resource group
+### 1:  Retrieve all Firewalls in a resource group
 ```
-Get-AzureRmSecureGateway -ResourceGroupName rgName
-```
-
-This example retrieves all secure gateways in resource group "rgName".
-
-### 2:  Retrieve a secure gateway by name
-```
-Get-AzureRmSecureGateway -ResourceGroupName rgName -Name secGw
+Get-AzureRmFirewall -ResourceGroupName rgName
 ```
 
-This example retrieves secure gateway named "secGw" in resource group "rgName".
+This example retrieves all Firewalls in resource group "rgName".
+
+### 2:  Retrieve a Firewall by name
+```
+Get-AzureRmFirewall -ResourceGroupName rgName -Name secGw
+```
+
+This example retrieves Firewall named "secGw" in resource group "rgName".
 
 ## PARAMETERS
 
 ### -Name
-Specifies the name of the secure gateway that this cmdlet gets.
+Specifies the name of the Firewall that this cmdlet gets.
 
 ```yaml
 Type: String
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group that secure gateway belongs to.
+Specifies the name of the resource group that Firewall belongs to.
 
 ```yaml
 Type: String
@@ -93,14 +93,14 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSSecureGateway
+### Microsoft.Azure.Commands.Network.Models.PSFirewall
 
 ## NOTES
 
 ## RELATED LINKS
 
-[New-AzureRmSecureGateway](./New-AzureRmSecureGateway.md)
+[New-AzureRmFirewall](./New-AzureRmFirewall.md)
 
-[Remove-AzureRmSecureGateway](./Remove-AzureRmSecureGateway.md)
+[Remove-AzureRmFirewall](./Remove-AzureRmFirewall.md)
 
-[Set-AzureRmSecureGateway](./Set-AzureRmSecureGateway.md)
+[Set-AzureRmFirewall](./Set-AzureRmFirewall.md)

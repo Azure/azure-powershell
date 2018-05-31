@@ -2,40 +2,40 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: C0E1D4DF-232F-49C6-BE4C-05C8E8038329
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermsecuregatewayapplicationrule
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermfirewallapplicationrule
 schema: 2.0.0
 ---
 
-# New-AzureRmSecureGatewayApplicationRule
+# New-AzureRmFirewallApplicationRule
 
 ## SYNOPSIS
-Creates a Secure Gateway Application Rule.
+Creates a Firewall Application Rule.
 
 ## SYNTAX
 
 ```
-New-AzureRmSecureGatewayApplicationRule -Name <String> -Priority <Integer> [-Description <String>]
+New-AzureRmFirewallApplicationRule -Name <String> -Priority <Integer> [-Description <String>]
  -Protocol <System.Collections.Generic.List`1[System.String]>
  -TargetFqdn <System.Collections.Generic.List`1[System.String]>
  -ActionType <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSecureGatewayApplicationRule** cmdlet creates an application rule for Azure secure gateway.
+The **New-AzureRmFirewallApplicationRule** cmdlet creates an application rule for Azure Firewall.
 
 ## EXAMPLES
 
 ### 1:  Create a rule to allow all HTTPS traffic
 ```
-New-AzureRmSecureGatewayApplicationRule -Name "AllowHTTPS" -Priority 100 -Protocol "https" -TargetFqdn "*" -ActionType "allow"
+New-AzureRmFirewallApplicationRule -Name "AllowHTTPS" -Priority 100 -Protocol "https" -TargetFqdn "*" -ActionType "allow"
 ```
 
 This example creates a rule which will allow all HTTPS traffic.
 
 ### 2:  Allow *.msn.com, but deny *.site.msn.com for HTTP traffic
 ```
-New-AzureRmSecureGatewayApplicationRule -Name "AllowMsnHttp" -Priority 100 -Protocol "http" -TargetFqdn "*.msn.com" -ActionType "allow"
-New-AzureRmSecureGatewayApplicationRule -Name "BlockMsnSiteHttp" -Priority 90 -Protocol "http" -TargetFqdn "*.site.msn.com" -ActionType "deny"
+New-AzureRmFirewallApplicationRule -Name "AllowMsnHttp" -Priority 100 -Protocol "http" -TargetFqdn "*.msn.com" -ActionType "allow"
+New-AzureRmFirewallApplicationRule -Name "BlockMsnSiteHttp" -Priority 90 -Protocol "http" -TargetFqdn "*.site.msn.com" -ActionType "deny"
 ```
 
 This example evidentiates the importance of priority for a rule.
@@ -223,14 +223,14 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSSecureGatewayApplicationRule
+### Microsoft.Azure.Commands.Network.Models.PSFirewallApplicationRule
 
 ## NOTES
 
 ## RELATED LINKS
 
-[New-AzureRmSecureGatewayApplicationRuleCollection](./New-AzureRmSecureGatewayApplicationRuleCollection.md)
+[New-AzureRmFirewallApplicationRuleCollection](./New-AzureRmFirewallApplicationRuleCollection.md)
 
-[New-AzureRmSecureGateway](./New-AzureRmSecureGateway.md)
+[New-AzureRmFirewall](./New-AzureRmFirewall.md)
 
-[Get-AzureRmSecureGateway](./Get-AzureRmSecureGateway.md)
+[Get-AzureRmFirewall](./Get-AzureRmFirewall.md)
