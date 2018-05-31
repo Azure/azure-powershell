@@ -57,7 +57,13 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
 RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll', 
     '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll', 
     '.\Microsoft.Azure.Management.ResourceManager.dll', 
-    '.\Microsoft.Azure.Management.ManagementGroups.dll'
+    '.\Microsoft.Azure.Management.ManagementGroups.dll',
+    '.\Microsoft.Extensions.Caching.Abstractions.dll',
+    '.\Microsoft.Extensions.Caching.Memory.dll',
+    '.\Microsoft.Extensions.DependencyInjection.Abstractions.dll',
+    '.\Microsoft.Extensions.DependencyModel.dll',
+    '.\Microsoft.Extensions.Options.dll',
+    '.\Microsoft.Extensions.Primitives.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 ScriptsToProcess = @()
