@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Consumption.dll-Help.xml
 Module Name: AzureRM.Consumption
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.consumption/get-azurermconsumptionusagedetail
+online version:
 schema: 2.0.0
 ---
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -Expand
-Expand the usages based on MeterDetails, or AdditionalProperties.
+Expand the usages based on MeterDetails, or AdditionalInfo.
 
 ```yaml
 Type: String
@@ -268,7 +268,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.3.2.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail, Microsoft.Azure.Commands.Consumption, Version=0.3.3.0, Culture=neutral, PublicKeyToken=null]]
 
 
 ## NOTES

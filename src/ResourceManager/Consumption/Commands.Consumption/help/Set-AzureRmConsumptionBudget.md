@@ -13,10 +13,10 @@ Update a budget in either a subscription or a resource group.
 ## SYNTAX
 
 ```
-Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] [-Amount <Decimal>] -Name <String>
- [-Category <String>] [-EndDate <DateTime>] [-MeterFilter <String>] [-ResourceFilter <String>]
- [-ResourceGroupFilter <String>] [-ResourceGroupName <String>] [-StartDate <DateTime>] [-TimeGrain <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] [-Amount <Decimal>]
+ [-Category <String>] [-EndDate <DateTime>] [-MeterFilter <String[]>] -Name <String>
+ [-ResourceFilter <String[]>] [-ResourceGroupFilter <String[]>] [-ResourceGroupName <String>]
+ [-StartDate <DateTime>] [-TimeGrain <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,11 +117,11 @@ Accept wildcard characters: False
 ```
 
 ### -MeterFilter
-Space-separated list of meters to filter on.
+Comma-separated list of meters to filter on.
 Required if category is usage.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -148,10 +148,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceFilter
-Space-separated list of resource instances to filter on.
+Comma-separated list of resource instances to filter on.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -163,10 +163,10 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupFilter
-Space-separated list of resource groups to filter on.
+Comma-separated list of resource groups to filter on.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 

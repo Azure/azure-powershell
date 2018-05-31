@@ -124,7 +124,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Consumption.Models.PSPriceSheet
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSPriceSheetProperty, Microsoft.Azure.Commands.Consumption, Version=0.3.3.0, Culture=neutral, PublicKeyToken=null]]
 
 
 ## NOTES
