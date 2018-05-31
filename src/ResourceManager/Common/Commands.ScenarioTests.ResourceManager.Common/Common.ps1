@@ -602,3 +602,12 @@ function Get-Location
         return $location
     }
 }
+
+function Normalize-Location
+{
+	param([string]$location)
+	$outputLocation = $location.ToLower()
+	$outputLocation = $outputLocation -replace '\s', ''
+	$outputLocation = $outputLocation -replace '-', ''
+	$outputLocation = $outputLocation -replace '_', ''
+}

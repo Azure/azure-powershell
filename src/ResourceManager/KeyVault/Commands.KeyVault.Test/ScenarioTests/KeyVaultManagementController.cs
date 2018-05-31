@@ -17,25 +17,22 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using LegacyTest = Microsoft.Azure.Test;
+using LegacyRMClient = Microsoft.Azure.Management.Resources;
+using RM = Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
     using Common.Authentication.Abstractions;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-
-    using TestBase = Microsoft.Azure.Test.TestBase;
     using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
     public class KeyVaultManagementController
@@ -47,9 +44,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private const string DomainKey = "Domain";
         private const string SubscriptionIdKey = "SubscriptionId";
 
-        public ResourceManagementClient ResourceManagementClient { get; private set; }
+        public LegacyRMClient.ResourceManagementClient ResourceManagementClient { get; private set; }
 
         public Management.Internal.Resources.ResourceManagementClient NewResourceManagementClient { get; private set; }
+
+        public RM.ResourceManagementClient ResourceClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -160,6 +159,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         {
             ResourceManagementClient = GetResourceManagementClient();
             NewResourceManagementClient = GetResourceManagementClient(context);
+            ResourceClient = GetResourceClient(context);
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -167,6 +167,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             helper.SetupManagementClients(ResourceManagementClient,
                 NewResourceManagementClient,
+                ResourceClient,
                 SubscriptionClient,
                 KeyVaultManagementClient,
                 AuthorizationManagementClient,
@@ -180,14 +181,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private LegacyRMClient.ResourceManagementClient GetResourceManagementClient()
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<LegacyRMClient.ResourceManagementClient>(this.csmTestFactory);
         }
 
         private Management.Internal.Resources.ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<Management.Internal.Resources.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private RM.ResourceManagementClient GetResourceClient(MockContext context)
+        {
+            return context.GetServiceClient<RM.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
@@ -242,7 +248,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             {
                 AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
             }
-            return client;            
+            return client;
         }
 
     }
