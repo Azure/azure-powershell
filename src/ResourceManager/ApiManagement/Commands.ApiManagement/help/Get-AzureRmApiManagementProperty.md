@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
@@ -52,7 +52,7 @@ PS C:\>Get-AzureRmApiManagementProperty -Context $apimContext -Name "sql-connect
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetByName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: GetByPropertyId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,7 +110,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: String
 Parameter Sets: GetByTag
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,4 +136,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-
