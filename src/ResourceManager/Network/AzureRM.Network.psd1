@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.1.0'
+ModuleVersion = '6.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -363,15 +363,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
-* Added cmdlet to create protocol configuration
-    - New-AzureRmNetworkWatcherProtocolConfiguration
-* Added cmdlet to add a new circuit connection to an existing express route circuit.
-    - Add-AzureRmExpressRouteCircuitConnectionConfig
-* Added cmdlet to remove a circuit connection from an existing express route circuit.
-    - Remove-AzureRmExpressRouteCircuitConnectionConfig
-* Added cmdlet to retrieve a circuit connection
-    - Get-AzureRmExpressRouteCircuitConnectionConfig'
+        ReleaseNotes = '* Removed Default sku setting from New-AzureRmVirtualNetworkGateway cmdlet'
 
         # Prerelease string of this module
         # Prerelease = ''
