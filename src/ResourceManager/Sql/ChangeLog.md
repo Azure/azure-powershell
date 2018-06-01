@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.6.0
 * Updated the following cmdlets with optional LicenseType parameter
 	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
 	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
