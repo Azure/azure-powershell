@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
         public void GetWebKeyFromCertificate()
         {
             string password = "123";
-            string path = "Resources/pshtest.pfx";
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "pshtest.pfx");
 
             IWebKeyConverter converters = WebKeyConverterFactory.CreateConverterChain();
             var webKey = converters.ConvertKeyFromFile(new FileInfo(path), password.ConvertToSecureString());
