@@ -94,6 +94,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
     @{ModuleName = 'AzureRM.StreamAnalytics.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Tags.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.TrafficManager.Netcore'; ModuleVersion = '0.12.0'; }, 
+    @{ModuleName = 'AzureRM.UsageAggregates.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Websites.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
