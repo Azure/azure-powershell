@@ -25,7 +25,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.Aks
 {
     [Cmdlet(VerbsCommon.Get, KubeNounStr, DefaultParameterSetName = ResourceGroupParameterSet)]
-    [OutputType(typeof(PSKubernetesCluster), typeof(List<PSKubernetesCluster>))]
+    [OutputType(typeof(PSKubernetesCluster))]
     public class GetAzureRmAks : KubeCmdletBase
     {
         private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";

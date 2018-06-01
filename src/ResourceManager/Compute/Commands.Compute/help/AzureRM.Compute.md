@@ -24,7 +24,7 @@ Uploads a virtual hard disk from an on-premises virtual machine to a blob in a c
 Adds information to the unattended Windows Setup answer file.
 
 ### [Add-AzureRmVMDataDisk](Add-AzureRmVMDataDisk.md)
-Adds a data disk to a virtual machine.
+Adds a data disk to a virtual machine or a Vmss VM.
 
 ### [Add-AzureRmVMNetworkInterface](Add-AzureRmVMNetworkInterface.md)
 Adds a network interface to a virtual machine.
@@ -226,6 +226,9 @@ Creates a virtual machine.
 
 ### [New-AzureRmVMConfig](New-AzureRmVMConfig.md)
 Creates a configurable virtual machine object.
+
+### [New-AzureRmVMDataDisk](New-AzureRmVMDataDisk.md)
+Creates a local data disk object for a virtual machine or a Vmss VM.
 
 ### [New-AzureRmVMSqlServerAutoBackupConfig](New-AzureRmVMSqlServerAutoBackupConfig.md)
 Creates a configuration object for SQL Server automatic backup.
@@ -505,4 +508,7 @@ Updates the state of a VMSS.
 
 ### [Update-AzureRmVmssInstance](Update-AzureRmVmssInstance.md)
 Starts a manual upgrade of the VMSS instance.
+
+### [Update-AzureRmVmssVM](Update-AzureRmVmssVM.md)
+Updates the state of a Vmss VM.
 
