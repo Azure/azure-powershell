@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmFirewall", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmFirewall", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureFirewallCommand : AzureFirewallBaseCmdlet
     {
         [Alias("ResourceName")]

@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmFirewall"), OutputType(typeof(PSAzureFirewall))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmFirewall", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
     public class SetAzureFirewallCommand : AzureFirewallBaseCmdlet
     {
         [Parameter(
