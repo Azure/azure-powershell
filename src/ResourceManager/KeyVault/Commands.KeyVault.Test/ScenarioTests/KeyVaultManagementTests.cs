@@ -70,60 +70,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 );
         }
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateNewPremiumVaultEnabledForDeployment()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateNewPremiumVaultEnabledForDeployment", _data.resourceGroupName, _data.location) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRecreateVaultFails()
-        {
-
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2} {3}", "Test-RecreateVaultFails", _data.preCreatedVault, _data.resourceGroupName, _data.location) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateVaultInUnknownResGrpFails()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1}", "Test-CreateVaultInUnknownResGrpFails", _data.location) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateVaultPositionalParams()
-        {
-
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateVaultPositionalParams", _data.resourceGroupName, _data.location) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
         #endregion
 
         #region Get-AzureRmKeyVault
@@ -163,25 +109,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #region Remove-AzureRmKeyVault 
 
-        [Fact(Skip = "Graph authentication blocks test passes")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeleteVaultByName()
+        public void TestDeleteVault()
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () => { return new[] { string.Format("{0} {1} {2}", "Test-DeleteVaultByName", _data.resourceGroupName, _data.location) }; },
-                (env) => Initialize(),
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDeleteUnknownVaultFails()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} ", "Test-DeleteUnknownVaultFails") }; },
                 (env) => Initialize(),
                 null,
                 TestUtilities.GetCallingClass(),
@@ -500,22 +433,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                     Initialize();
                     upn = GetUser(env.GetTestEnvironment());
                 },
-                null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
-                );
-        }
-
-        #endregion
-
-        #region Piping
-        [Fact(Skip = "Graph authentication blocks test passes")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateDeleteVaultWithPiping()
-        {
-            KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
-                () => { return new[] { string.Format("{0} {1} {2}", "Test-CreateDeleteVaultWithPiping", _data.resourceGroupName, _data.location) }; },
-                (env) => Initialize(),
                 null,
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName()

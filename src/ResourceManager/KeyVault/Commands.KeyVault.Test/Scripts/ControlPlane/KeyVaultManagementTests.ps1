@@ -90,7 +90,12 @@ Tests creating a new vault.
 function Test-CreateNewVault
 {
 	$rgName = getAssetName
-	$vaultName = getAssetName
+	$unknownRGName = getAssetName
+	$vault1Name = getAssetName
+	$vault2Name = getAssetName
+	$vault3Name = getAssetName
+	$vault4Name = getAssetName
+	$vault5Name = getAssetName
 	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
 	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
 	$tagKey = "asdf"
@@ -99,8 +104,8 @@ function Test-CreateNewVault
 
 	try
 	{
-		$actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -Tag @{$tagKey = $tagValue}
-		Assert-AreEqual $vaultName $actual.VaultName
+		$actual = New-AzureRmKeyVault -VaultName $vault1Name -ResourceGroupName $rgName -Location $vaultLocation -Tag @{$tagKey = $tagValue}
+		Assert-AreEqual $vault1Name $actual.VaultName
 		Assert-AreEqual $rgName $actual.ResourceGroupName
 		Assert-AreEqual $vaultLocation $actual.Location
 		Assert-AreEqual $actual.Tags.Count 1
@@ -108,119 +113,42 @@ function Test-CreateNewVault
 		Assert-AreEqual $actual.Tags.ContainsValue($tagValue) $true
 		Assert-AreEqual "Standard" $actual.Sku
 		Assert-AreEqual $false $actual.EnabledForDeployment
+		# Default Access Policy is not set by Service Principal
+		Assert-AreEqual 0 @($actual.AccessPolicies).Count
 
-		# Default Access Policy
-		$applicationId = $env:ServicePrincipal
-		$expectedPermsToKeys = @("get",
-				"create",
-				"delete",
-				"list",
-				"update",
-				"import",
-				"backup",
-				"restore",
-				"recover")
-		$expectedPermsToSecrets = Get-AllSecretPermissions
-		$expectedPermsToCertificates = Get-AllCertPermissions
-		$expectedPermsToStorage = Get-AllStoragePermissions
+		# Test premium vault
+		$actual = New-AzureRmKeyVault -VaultName $vault2Name -ResourceGroupName $rgName -Location $vaultLocation -Sku premium -EnabledForDeployment
+		Assert-AreEqual $vault2Name $actual.VaultName
+		Assert-AreEqual $rgName $actual.ResourceGroupName
+		Assert-AreEqual $vaultLocation $actual.Location
+		Assert-AreEqual "Premium" $actual.Sku
+		Assert-AreEqual $true $actual.EnabledForDeployment
+		Assert-AreEqual 0 @($actual.AccessPolicies).Count
 
-		Assert-AreEqual 1 @($actual.AccessPolicies).Count
-		Assert-AreEqual $applicationId $actual.AccessPolicies[0].ApplicationId
-		Assert-AreEqualArray $expectedPermsToKeys $actual.AccessPolicies[0].PermissionsToKeys
-		Assert-AreEqualArray $expectedPermsToSecrets $actual.AccessPolicies[0].PermissionsToSecrets
-		Assert-AreEqualArray $expectedPermsToCertificates $actual.AccessPolicies[0].PermissionsToCertificates
-		Assert-AreEqualArray $expectedPermsToStorage $actual.AccessPolicies[0].PermissionsToStorage
+		# Test soft delete
+		$actual = New-AzureRmKeyVault -VaultName $vault3Name -ResourceGroupName $rgName -Location $vaultLocation -Sku standard -EnableSoftDelete
+		Assert-AreEqual $vault3Name $actual.VaultName
+		Assert-AreEqual $rgName $actual.ResourceGroupName
+		Assert-AreEqual $vaultLocation $actual.Location
+		Assert-AreEqual "Standard" $actual.Sku
+		Assert-AreEqual $true $actual.EnableSoftDelete
+		Assert-AreEqual 0 @($actual.AccessPolicies).Count
+
+		# Test positional parameters
+		$actual = New-AzureRmKeyVault $vault4Name $rgName $vaultLocation
+		Assert-NotNull $actual
+
+		# Test throws for existing vault
+		Assert-Throws { New-AzureRmKeyVault -VaultName $vault1Name -ResourceGroupName $rgname -Location $vaultLocation }
+
+		# Test throws for resourcegroup nonexistent
+		Assert-Throws { New-AzureRmKeyVault -VaultName $vault5Name -ResourceGroupName $unknownRGName -Location $vaultLocation }
 	}
+
 	finally
 	{
 		Remove-AzureRmResourceGroup -Name $rgName -Force
 	}
-}
-
-<#
-.SYNOPSIS
-Tests creating a new premium vault with enabledForDeployment set to true.
-#>
-function Test-CreateNewPremiumVaultEnabledForDeployment
-{
-    Param($rgName, $location)
-
-    # Setup
-    $vaultname = Get-VaultName
-
-    # Test
-    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku premium -EnabledForDeployment
-
-    # Assert
-    Assert-AreEqual $vaultName $actual.VaultName
-    Assert-AreEqual $rgname $actual.ResourceGroupName
-    Assert-AreEqual $location $actual.Location
-    Assert-AreEqual "Premium" $actual.Sku
-    Assert-AreEqual $true $actual.EnabledForDeployment
-
-    if ($global:noADCmdLetMode) {return;}
-
-    Assert-AreEqual 1 @($actual.AccessPolicies).Count
-}
-
-<#
-.SYNOPSIS
-Tests creating a new premium vault with enableSoftDelete set to true.
-#>
-function Test-CreateNewStandardVaultEnableSoftDelete
-{
-    Param($rgName, $location)
-
-    # Setup
-    $vaultname = Get-VaultName
-
-    # Test
-    $actual = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku standard -EnableSoftDelete
-
-    # Assert
-    Assert-AreEqual $vaultName $actual.VaultName
-    Assert-AreEqual $rgname $actual.ResourceGroupName
-    Assert-AreEqual $location $actual.Location
-    Assert-AreEqual "Standard" $actual.Sku
-    Assert-AreEqual $true $actual.EnableSoftDelete
-
-    if ($global:noADCmdLetMode) {return;}
-
-    Assert-AreEqual 1 @($actual.AccessPolicies).Count
-}
-
-<#
-.SYNOPSIS
-Recreate vault fails
-#>
-function Test-RecreateVaultFails
-{
-    Param($existingVaultName, $rgName, $location)
-
-     Assert-Throws { New-AzureRmKeyVault -VaultName $existingVaultName -ResourceGroupName $rgname -Location $location }
-}
-
-function Test-CreateVaultInUnknownResGrpFails
-{
-    Param($location)
-
-    $vaultname = Get-VaultName
-    $rgName = Get-ResourceGroupName
-
-    Assert-Throws { New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location }
-}
-
-function Test-CreateVaultPositionalParams
-{
-    Param($rgName, $location)
-
-    # Setup
-    $vaultname = Get-VaultName
-
-    # Test
-    $actual = New-AzureRmKeyVault $vaultName $rgname $location
-
-    Assert-NotNull $actual
 }
 
 #-------------------------------------------------------------------------------------
@@ -415,24 +343,42 @@ function Test-ListVaults
 #------------------------------Remove-AzureRmKeyVault-----------------------------------
 function Test-DeleteVaultByName
 {
-    Param($rgName, $location)
-    $vaultName = Get-VaultName
+	$rgName = getAssetName
+	$vaultName = getAssetName
+	$rgLocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+	$vaultLocation = Get-Location "Microsoft.KeyVault" "vault" "West US"
+	$tag = @{"abcdefg"="bcdefgh"}
 
-    New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location
+	New-AzureRmResourceGroup -Name $rgName -Location $rgLocation
 
-    Remove-AzureRmKeyVault -VaultName $vaultName -Force -Confirm:$false
+	try
+	{
+		New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $vaultLocation
 
-    $deletedVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName
-    Assert-Null $deletedVault
-}
+		Remove-AzureRmKeyVault -VaultName $vaultName -Force
 
-function Test-DeleteUnknownVaultFails
-{
-    $vaultName = Get-VaultName
-	$job = Remove-AzureRmKeyVault -VaultName $vaultName -AsJob
-	$job | Wait-Job
+		$deletedVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName
+		Assert-Null $deletedVault
 
-    Assert-Throws { $job | Receive-Job }
+		# Test piping
+		New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $vaultLocation
+		
+		Get-AzureRmKeyVault -VaultName $vaultName | Remove-AzureRmKeyVault -Force
+
+		$deletedVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName
+		Assert-Null $deletedVault
+
+		# Test negative case
+		$job = Remove-AzureRmKeyVault -VaultName $vaultName -AsJob
+		$job | Wait-Job
+
+		Assert-Throws { $job | Receive-Job }
+	}
+	
+	finally
+	{
+		Remove-AzureRmResourceGroup -Name $rgName -Force
+	}
 }
 
 #-------------------------------------------------------------------------------------
@@ -759,22 +705,6 @@ function Test-RemoveNonExistentAccessPolicyDoesNotThrow
     Param($existingVaultName, $rgName, $objId)
     $vault = Remove-AzureRmKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PassThru
     Assert-AreEqual 0 $vault.AccessPolicies.Count
-}
-
-#-------------------------------------------------------------------------------------
-
-
-#------------------------------Piping--------------------------
-
-function Test-CreateDeleteVaultWithPiping
-{
-    Param($rgName, $location)
-    $vaultName = Get-VaultName
-
-    New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location | Get-AzureRmKeyVault | Remove-AzureRmKeyVault -Force -Confirm:$false
-
-    $deletedVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName
-    Assert-Null $deletedVault
 }
 
 #-------------------------------------------------------------------------------------
