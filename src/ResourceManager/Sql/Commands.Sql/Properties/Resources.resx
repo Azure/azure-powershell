@@ -408,10 +408,98 @@
   <data name="auditChangeGroupDeprecationMessage" xml:space="preserve">
     <value>The action group 'AUDIT_CHANGE_GROUP' is not supported. It will be removed in a future release.</value>
   </data>
+  <data name="AzureElasticJobAgentExists" xml:space="preserve">
+    <value>Elastic Job Agent with name '{0}' already exists in server '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobAgentDescription" xml:space="preserve">
+    <value>Permanently removing the agent '{0}' from server '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobAgentWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the agent '{0}' from server '{1}'?</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobAgentNotExists" xml:space="preserve">
+    <value>Elastic Job agent '{0}' does not exist in server '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobCredentialExists" xml:space="preserve">
+    <value>Job credential with name '{0}' already exists in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobCredentialNotExists" xml:space="preserve">
+    <value>Job credential with name '{0}' does not exist in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobTargetGroupDescription" xml:space="preserve">
+    <value>Permanently removing target group '{0}' from agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetGroupExists" xml:space="preserve">
+    <value>Target group '{0}' already exists in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetGroupNotExists" xml:space="preserve">
+    <value>Target group '{0}' does not exist in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobTargetGroupWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the target group '{0}' from agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
   <data name="RemoveAzureSqlDatabaseLongTermRetentionBackupDescription" xml:space="preserve">
     <value>Permanently removing the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'.</value>
   </data>
   <data name="RemoveAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'?</value>
+  </data>
+  <data name="AzureElasticJobTargetDatabaseExists" xml:space="preserve">
+    <value>Target with database name '{0}' and server name '{1}' already exists in target group '{2}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetElasticPoolExists" xml:space="preserve">
+    <value>Target with elastic pool name '{0}' and server name '{1}' already exists in Target Group '{2}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetServerExists" xml:space="preserve">
+    <value>Target with server name '{0}' already exists in Target Group '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobTargetShardMapExists" xml:space="preserve">
+    <value>Target with shard map name '{0}' and server name '{1}' already exists in Target Group '{2}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobExists" xml:space="preserve">
+    <value>Job with name '{0}' already exists in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobNotExists" xml:space="preserve">
+    <value>Job with name '{0}' does not exist in agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobDescription" xml:space="preserve">
+    <value>Permanently removing job '{0}' from agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="RemoveElasticJobWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the job '{0}' from agent '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobStepExists" xml:space="preserve">
+    <value>Job step with name '{0}' already exists in job '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobStepNotExists" xml:space="preserve">
+    <value>Job step with name '{0}' does not exist in job '{1}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobIntervalNotSupported" xml:space="preserve">
+    <value>The requested job time interval is not supported '{0}'</value>
+    <comment>Elastic Jobs</comment>
+  </data>
+  <data name="AzureElasticJobExecutionNotExists" xml:space="preserve">
+    <value>Job execution '{0}' does not exist in job '{1}'</value>
+    <comment>Elastic Jobs</comment>
   </data>
 </root>

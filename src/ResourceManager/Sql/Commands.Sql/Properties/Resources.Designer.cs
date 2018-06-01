@@ -106,6 +106,150 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Elastic Job Agent with name &apos;{0}&apos; already exists in server &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobAgentExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobAgentExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elastic Job agent &apos;{0}&apos; does not exist in server &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobAgentNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobAgentNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job credential with name &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobCredentialExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobCredentialExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job credential with name &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobCredentialNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobCredentialNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job execution &apos;{0}&apos; does not exist in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobExecutionNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobExecutionNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job with name &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The requested job time interval is not supported &apos;{0}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobIntervalNotSupported {
+            get {
+                return ResourceManager.GetString("AzureElasticJobIntervalNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job with name &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job step with name &apos;{0}&apos; already exists in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobStepExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobStepExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Job step with name &apos;{0}&apos; does not exist in job &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobStepNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobStepNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with database name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in target group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetDatabaseExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetDatabaseExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with elastic pool name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in Target Group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetElasticPoolExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetElasticPoolExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target group &apos;{0}&apos; already exists in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetGroupExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetGroupExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target group &apos;{0}&apos; does not exist in agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetGroupNotExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetGroupNotExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with server name &apos;{0}&apos; already exists in Target Group &apos;{1}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetServerExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetServerExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target with shard map name &apos;{0}&apos; and server name &apos;{1}&apos; already exists in Target Group &apos;{2}&apos;.
+        /// </summary>
+        internal static string AzureElasticJobTargetShardMapExists {
+            get {
+                return ResourceManager.GetString("AzureElasticJobTargetShardMapExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About to process resource.
         /// </summary>
         internal static string BaseConfirmActionProcessMessage {
@@ -691,6 +835,60 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveDatabaseDataMaskingRuleWarning {
             get {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing the agent &apos;{0}&apos; from server &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobAgentDescription {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobAgentDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the agent &apos;{0}&apos; from server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveElasticJobAgentWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobAgentWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing job &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobDescription {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing target group &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobTargetGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobTargetGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the target group &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobTargetGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobTargetGroupWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the job &apos;{0}&apos; from agent &apos;{1}&apos;.
+        /// </summary>
+        internal static string RemoveElasticJobWarning {
+            get {
+                return ResourceManager.GetString("RemoveElasticJobWarning", resourceCulture);
             }
         }
         

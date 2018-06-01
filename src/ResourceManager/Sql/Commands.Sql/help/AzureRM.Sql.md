@@ -14,6 +14,12 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+### [Add-AzureRmSqlElasticJobStep](Add-AzureRmSqlElasticJobStep.md)
+Adds a job step to a job
+
+### [Add-AzureRmSqlElasticJobTarget](Add-AzureRmSqlElasticJobTarget.md)
+Adds a target to a target group
+
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
 
@@ -95,6 +101,30 @@ Gets pricing tier hints for a database.
 ### [Get-AzureRmSqlDeletedDatabaseBackup](Get-AzureRmSqlDeletedDatabaseBackup.md)
 Gets a deleted database that you can restore.
 
+### [Get-AzureRmSqlElasticJob](Get-AzureRmSqlElasticJob.md)
+Gets one or more jobs
+
+### [Get-AzureRmSqlElasticJobAgent](Get-AzureRmSqlElasticJobAgent.md)
+Gets a Azure SQL Elastic Job agent
+
+### [Get-AzureRmSqlElasticJobCredential](Get-AzureRmSqlElasticJobCredential.md)
+Gets one or more credentials
+
+### [Get-AzureRmSqlElasticJobExecution](Get-AzureRmSqlElasticJobExecution.md)
+Gets one or more job executions
+
+### [Get-AzureRmSqlElasticJobStep](Get-AzureRmSqlElasticJobStep.md)
+Gets one or more job steps
+
+### [Get-AzureRmSqlElasticJobStepExecution](Get-AzureRmSqlElasticJobStepExecution.md)
+{{Fill in the Synopsis}}
+
+### [Get-AzureRmSqlElasticJobTargetExecution](Get-AzureRmSqlElasticJobTargetExecution.md)
+Gets one or more job target executions
+
+### [Get-AzureRmSqlElasticJobTargetGroup](Get-AzureRmSqlElasticJobTargetGroup.md)
+Gets one or more job target groups
+
 ### [Get-AzureRmSqlElasticPool](Get-AzureRmSqlElasticPool.md)
 Gets elastic pools and their property values in an Azure SQL Database.
 
@@ -112,6 +142,12 @@ Gets elastic pool recommendations.
 
 ### [Get-AzureRmSqlElasticPoolRecommendedAction](Get-AzureRmSqlElasticPoolRecommendedAction.md)
 Gets one or more recommended actions for an Azure SQL Elastic Pool Advisor.
+
+### [Get-AzureRmSqlManagedDatabase](Get-AzureRmSqlManagedDatabase.md)
+Gets one or more managed databases.
+
+### [Get-AzureRmSqlManagedInstance](Get-AzureRmSqlManagedInstance.md)
+Returns information about SQL Database Managed instances.
 
 ### [Get-AzureRmSqlServer](Get-AzureRmSqlServer.md)
 Returns information about SQL Database servers.
@@ -207,7 +243,7 @@ This command creates a new Azure SQL Database Failover Group.
 Imports a .bacpac file and create a new database on the server.
 
 ### [New-AzureRmSqlDatabaseInstanceFailoverGroup](New-AzureRmSqlDatabaseInstanceFailoverGroup.md)
-This command creates a new Instance Failover Group.
+This command creates a new Azure SQL Database Instance Failover Group.
 
 ### [New-AzureRmSqlDatabaseRestorePoint](New-AzureRmSqlDatabaseRestorePoint.md)
 Creates a new restore point from which a SQL Database can be restored.
@@ -215,8 +251,26 @@ Creates a new restore point from which a SQL Database can be restored.
 ### [New-AzureRmSqlDatabaseSecondary](New-AzureRmSqlDatabaseSecondary.md)
 Creates a secondary database for an existing database and starts data replication.
 
+### [New-AzureRmSqlElasticJob](New-AzureRmSqlElasticJob.md)
+Creates a new job
+
+### [New-AzureRmSqlElasticJobAgent](New-AzureRmSqlElasticJobAgent.md)
+Creates a new elastic job agent
+
+### [New-AzureRmSqlElasticJobCredential](New-AzureRmSqlElasticJobCredential.md)
+Creates a new job credential
+
+### [New-AzureRmSqlElasticJobTargetGroup](New-AzureRmSqlElasticJobTargetGroup.md)
+Creates a new target group
+
 ### [New-AzureRmSqlElasticPool](New-AzureRmSqlElasticPool.md)
 Creates an elastic database pool for a SQL Database.
+
+### [New-AzureRmSqlManagedDatabase](New-AzureRmSqlManagedDatabase.md)
+Creates a managed database.
+
+### [New-AzureRmSqlManagedInstance](New-AzureRmSqlManagedInstance.md)
+Creates a SQL Database Managed instance.
 
 ### [New-AzureRmSqlServer](New-AzureRmSqlServer.md)
 Creates a SQL Database server.
@@ -278,8 +332,32 @@ Terminates data replication between a SQL Database and the specified secondary d
 ### [Remove-AzureRmSqlDatabaseThreatDetectionPolicy](Remove-AzureRmSqlDatabaseThreatDetectionPolicy.md)
 Removes the threat detection policy from a database.
 
+### [Remove-AzureRmSqlElasticJob](Remove-AzureRmSqlElasticJob.md)
+Removes a job
+
+### [Remove-AzureRmSqlElasticJobAgent](Remove-AzureRmSqlElasticJobAgent.md)
+Removes the elastic job agent
+
+### [Remove-AzureRmSqlElasticJobCredential](Remove-AzureRmSqlElasticJobCredential.md)
+Removes the elastic job credential
+
+### [Remove-AzureRmSqlElasticJobStep](Remove-AzureRmSqlElasticJobStep.md)
+Removes the job step
+
+### [Remove-AzureRmSqlElasticJobTarget](Remove-AzureRmSqlElasticJobTarget.md)
+Removes the target from the target group
+
+### [Remove-AzureRmSqlElasticJobTargetGroup](Remove-AzureRmSqlElasticJobTargetGroup.md)
+Removes the target group
+
 ### [Remove-AzureRmSqlElasticPool](Remove-AzureRmSqlElasticPool.md)
 Deletes an elastic database pool.
+
+### [Remove-AzureRmSqlManagedDatabase](Remove-AzureRmSqlManagedDatabase.md)
+Removes an Azure SQL Managed database.
+
+### [Remove-AzureRmSqlManagedInstance](Remove-AzureRmSqlManagedInstance.md)
+Removes an Azure SQL Database Managed instance.
 
 ### [Remove-AzureRmSqlServer](Remove-AzureRmSqlServer.md)
 Removes an Azure SQL Database server.
@@ -322,6 +400,9 @@ Removes an Azure SQL Database Sync Member.
 
 ### [Restore-AzureRmSqlDatabase](Restore-AzureRmSqlDatabase.md)
 Restores a SQL database.
+
+### [Restore-AzureRmSqlManagedDatabase](Restore-AzureRmSqlManagedDatabase.md)
+Restores a SQL Managed database.
 
 ### [Resume-AzureRmSqlDatabase](Resume-AzureRmSqlDatabase.md)
 Resumes a SQL Data Warehouse database.
@@ -368,6 +449,18 @@ Sets a threat detection policy on a database.
 ### [Set-AzureRmSqlDatabaseTransparentDataEncryption](Set-AzureRmSqlDatabaseTransparentDataEncryption.md)
 Modifies TDE property for a database.
 
+### [Set-AzureRmSqlElasticJob](Set-AzureRmSqlElasticJob.md)
+Updates a job
+
+### [Set-AzureRmSqlElasticJobAgent](Set-AzureRmSqlElasticJobAgent.md)
+Updates an elastic job agent
+
+### [Set-AzureRmSqlElasticJobCredential](Set-AzureRmSqlElasticJobCredential.md)
+Updates a job credential
+
+### [Set-AzureRmSqlElasticJobStep](Set-AzureRmSqlElasticJobStep.md)
+Updates a job step
+
 ### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
 
@@ -376,6 +469,9 @@ Updates auto execute status of an Azure SQL Elastic Pool Advisor.
 
 ### [Set-AzureRmSqlElasticPoolRecommendedActionState](Set-AzureRmSqlElasticPoolRecommendedActionState.md)
 Updates the state of an Azure SQL Elastic Pool recommended action.
+
+### [Set-AzureRmSqlManagedInstance](Set-AzureRmSqlManagedInstance.md)
+Modifies properties of a SQL Database Managed instance. Properties that are not specified are set to their default values.
 
 ### [Set-AzureRmSqlServer](Set-AzureRmSqlServer.md)
 Modifies properties of a SQL Database server.
@@ -419,6 +515,9 @@ Modifies the configuration of an Azure SQL Server Virtual Network Rule.
 ### [Start-AzureRmSqlDatabaseExecuteIndexRecommendation](Start-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Starts the workflow that runs a recommended index operation.
 
+### [Start-AzureRmSqlElasticJob](Start-AzureRmSqlElasticJob.md)
+Starts a job, returning a job execution id that can be polled to view it's status
+
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
 
@@ -430,6 +529,9 @@ Cancels the asynchronous updates operation on the database.
 
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
+
+### [Stop-AzureRmSqlElasticJob](Stop-AzureRmSqlElasticJob.md)
+Stops a job given it's job execution id
 
 ### [Stop-AzureRmSqlElasticPoolActivity](Stop-AzureRmSqlElasticPoolActivity.md)
 Cancels the asynchronous update operation on an elastic pool.
@@ -448,6 +550,9 @@ Executes a failover of an Azure SQL Database Failover Group.
 
 ### [Switch-AzureRmSqlDatabaseInstanceFailoverGroup](Switch-AzureRmSqlDatabaseInstanceFailoverGroup.md)
 Executes a failover of an Instance Failover Group.
+
+### [Update-AzureRmSqlManagedInstance](Update-AzureRmSqlManagedInstance.md)
+Modifies properties of a SQL Database Managed instance. Only properties that are explicitly set will be updated.
 
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.

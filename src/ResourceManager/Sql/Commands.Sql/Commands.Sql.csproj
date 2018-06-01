@@ -61,6 +61,7 @@
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlServerAuditingCmdletBase.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingSettingsModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingSettingsModel.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Common\AzureSqlElasticJobsCmdletBase.cs" />
     <Compile Include="Common\ResourceIdentityHelper.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseLongTermRetentionBackupCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\RemoveAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
@@ -231,6 +232,53 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobExecution\AzureSqlElasticJobExecutionCmdletBase.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobExecution\GetAzureSqlElasticJobExecution.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobExecution\GetAzureSqlElasticJobStepExecution.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobExecution\GetAzureSqlElasticJobTargetExecution.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobExecution\StartAzureSqlElasticJob.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobExecution\StopAzureSqlElasticJob.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobStep\AzureSqlElasticJobStepCmdletBase.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobStep\GetAzureSqlElasticJobStep.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobStep\AddAzureSqlElasticJobStep.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobStep\RemoveAzureSqlElasticJobStep.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\JobStep\SetAzureSqlElasticJobStep.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Job\AzureSqlElasticJobCmdletBase.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Job\GetAzureSqlElasticJob.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Job\NewAzureSqlElasticJob.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Agent\SetAzureRmSqlElasticJobAgent.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Job\RemoveAzureSqlElasticJob.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Job\SetAzureSqlElasticJob.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Target\AddAzureSqlElasticJobTarget.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Agent\AzureSqlElasticJobAgentCmdletBase.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Credential\AzureSqlElasticJobCredentialCmdletBase.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Target\AzureSqlElasticJobTargetCmdletBase.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\TargetGroup\AzureSqlElasticJobTargetGroupCmdletBase.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Agent\GetAzureSqlElasticJobAgent.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Credential\GetAzureSqlElasticJobCredential.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\TargetGroup\GetAzureSqlElasticJobTargetGroup.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Agent\NewAzureSqlElasticJobAgent.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Credential\NewAzureSqlElasticJobCredential.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\TargetGroup\NewAzureSqlElasticJobTargetGroup.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Agent\RemoveAzureSqlElasticJobAgent.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Credential\RemoveAzureSqlElasticJobCredential.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Target\RemoveAzureSqlElasticJobTarget.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\TargetGroup\RemoveAzureSqlElasticJobTargetGroup.cs" />
+    <Compile Include="Elastic Jobs\Cmdlet\Credential\SetAzureSqlElasticJobCredential.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobStepExecutionModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobStepVersionModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobTargetExecutionModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobTargetModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobsBaseModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobCredentialModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobExecutionModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobBaseModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobStepModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobAgentModel.cs" />
+    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobTargetGroupModel.cs" />
+    <Compile Include="Elastic Jobs\Services\AzureSqlElasticJobAdapter.cs" />
+    <Compile Include="Elastic Jobs\Services\AzureSqlElasticJobCommunicator.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
@@ -486,7 +534,7 @@
     </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.15.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.16.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">

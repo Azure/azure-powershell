@@ -19,6 +19,43 @@
 -->
 ## Current Release
 
+## Version 4.6.0-preview
+
+* Added new cmdlets for Elastic Jobs
+	* Elastic Job agent
+		* New-AzureRmSqlElasticJobAgent creates a new elastic job agent
+		* Get-AzureRmSqlElasticJobAgent gets one or more elastic job agents
+		* Set-AzureRmSqlElasticJobAgent updates an elastic job agent
+		* Remove-AzureRmSqlElasticJobAgent removes an elastic job agent
+	* Job credential
+		* New-AzureRmSqlElasticJobCredential creates a job credential
+		* Get-AzureRmSqlElasticJobCredential gets one or more job credentials
+		* Set-AzureRmSqlElasticJobCredential updates a job credential
+		* Remove-AzureRmSqlElasticJobCredential removes a job credential
+	* Target group
+		* New-AzureRmSqlElasticJobTargetGroup creates a new target group
+		* Get-AzureRmSqlElasticJobTargetGroup gets one or more target groups
+		* Remove-AzureRmSqlElasticJobTargetGroup removes a target group
+	* Target
+		* Add-AzureRmSqlElasticJobTarget adds a target to a target group
+		* Remove-AzureRmSqlElasticJobTarget removes a target from a target group
+	* Job
+		* New-AzureRmSqlElasticJob creates a new job
+		* Get-AzureRmSqlElasticJob gets one or more jobs
+		* Set-AzureRmSqlElasticJob updates a job
+		* Remove-AzureRmSqlElasticJob removes a job
+	* Job Step
+		* New-AzureRmSqlElasticJobStep creates a new job step
+		* Get-AzureRmSqlElasticJobStep gets one or more job steps
+		* Set-AzureRmSqlElasticJobStep updates a job step
+		* Remove-AzureRmSqlElasticJobStep removes a job step
+	* Job Execution
+		* Start-AzureRmSqlElasticJob starts a job returning a job execution
+		* Stop-AzureRmSqlElasticJob stops a job with a running job execution
+		* Get-AzureRmSqlElasticJobExecution gets the status of running job executions
+		* Get-AzureRmSqlElasticJobExecution gets the status of running job step executions
+		* Get-AzureRmSqlElasticJobExecution gets the status of running job target executions
+
 ## Version 4.5.0-preview
 * Added new cmdlets for CRUD operations on Managed Instance and Managed Database
 * Add commandlets for new feature - Instance Failover Groups
