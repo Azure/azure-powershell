@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
+* Add KeyVault secret reference support in parameters when using `TemplateParameterObject` in `New-AzureRmResourceGroupDeployment`
 
 ## Version 6.0.1
 * Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters
