@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Monitor.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -22,11 +23,17 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSMetric : Metric
     {
         /// <summary>
+        /// Gets or sets the Data property.
+        /// TODO: Remove this before checking in
+        /// </summary>
+        public IList<MetricValue> Data { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the PSMetric class.
         /// </summary>
         /// <param name="metric">The input Metric object</param>
         public PSMetric(Metric metric)
-            : base(name: new PSLocalizableString(metric.Name), unit: metric.Unit, data: new PSMetricValuesCollection(metric.Data), id: metric.Id, type: metric.Type)
+            : base(name: new PSLocalizableString(metric.Name), unit: metric.Unit, timeseries: metric.Timeseries, id: metric.Id, type: metric.Type)
         {
         }
     }

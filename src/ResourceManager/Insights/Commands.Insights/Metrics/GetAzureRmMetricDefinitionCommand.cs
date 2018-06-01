@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// Get the list of metric definitions for a resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmMetricDefinition"), OutputType(typeof(PSMetricDefinition[]))]
-    public class GetAzureRmMetricDefinitionCommand : MonitorClientCmdletBase
+    public class GetAzureRmMetricDefinitionCommand : ManagementCmdletBase
     {
         /// <summary>
         /// Gets or sets the ResourceId parameter of the cmdlet
@@ -50,24 +50,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         public SwitchParameter DetailedOutput { get; set; }
 
         /// <summary>
-        /// Process the general parameters (i.e. defined in this class) and the particular parameters (i.e. the parameters added by the descendants of this class).
-        /// </summary>
-        /// <returns>The final query filter to be used by the cmdlet</returns>
-        protected string ProcessParameters()
-        {
-            var buffer = new StringBuilder();
-            if (this.MetricName != null)
-            {
-                var metrics = this.MetricName
-                    .Select(n => string.Concat("name.value eq '", n, "'"))
-                    .Aggregate((a, b) => string.Concat(a, " or ", b));
-                buffer.Append(metrics);
-            }
-
-            return buffer.ToString().Trim();
-        }
-
-        /// <summary>
         /// Execute the cmdlet
         /// </summary>
         protected override void ProcessRecordInternal()
@@ -77,11 +59,20 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 cmdletName: cmdletName,
                 topic: "Parameter deprecation",
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
-            string queryFilter = this.ProcessParameters();
+
+            this.WriteIdentifiedWarning(
+                cmdletName: cmdletName,
+                topic: "Parameter name change", 
+                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
+
             bool fullDetails = this.DetailedOutput.IsPresent;
 
             // If fullDetails is present full details of the records are displayed, otherwise only a summary of the records is displayed
-            var records = this.MonitorClient.MetricDefinitions.List(resourceUri: this.ResourceId, odataQuery: new ODataQuery<MetricDefinition>(queryFilter))
+            var records = this.MonitorManagementClient.MetricDefinitions.List(resourceUri: this.ResourceId)
+                .Where(record => 
+                    (this.MetricName == null) ||
+                    (this.MetricName.Length == 0) ||
+                    this.MetricName.Any(name => string.Equals(record.Name.Value, name, System.StringComparison.OrdinalIgnoreCase)))
                 .Select(e => fullDetails ? new PSMetricDefinition(e) : new PSMetricDefinitionNoDetails(e)).ToArray();
 
             WriteObject(sendToPipeline: records, enumerateCollection: true);

@@ -44,7 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.Monitor">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.16.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Monitor.0.19.1-preview\lib\net452\Microsoft.Azure.Management.Monitor.dll</HintPath>
+      <Name>Microsoft.Azure.Management.Monitor</Name>
     </Reference>
     <Reference Include="System.Collections" />
   </ItemGroup>
@@ -78,11 +79,11 @@
     <Compile Include="Autoscale\GetAzureRmAutoscaleSettingCommand.cs" />
     <Compile Include="Autoscale\NewAzureRmAutoscaleWebhookCommand.cs" />
     <Compile Include="Autoscale\RemoveAzureRmAutoscaleSettingCommand.cs" />
+    <Compile Include="Diagnostics\RemoveAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="Diagnostics\SetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="Diagnostics\GetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="LogsCmdletBase.cs" />
     <Compile Include="ActivityLogs\GetAzureRmLogCommand.cs" />
-    <Compile Include="MonitorClientCmdletBase.cs" />
     <Compile Include="MonitorCmdletBase.cs" />
     <Compile Include="LogProfiles\RemoveAzureRmLogProfileCommand.cs" />
     <Compile Include="LogProfiles\GetAzureRmLogProfileCommand.cs" />
@@ -152,6 +153,46 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourcesForAutoscaleCmdlets.resx</DependentUpon>
     </Compile>
+    <Compile Include="TransitionalClasses\ActivityLogAlertActionGroup.cs" />
+    <Compile Include="TransitionalClasses\ActivityLogAlertActionList.cs" />
+    <Compile Include="TransitionalClasses\ActivityLogAlertAllOfCondition.cs" />
+    <Compile Include="TransitionalClasses\ActivityLogAlertLeafCondition.cs" />
+    <Compile Include="TransitionalClasses\ActivityLogAlertResource.cs" />
+    <Compile Include="TransitionalClasses\AlertRuleResource.cs" />
+    <Compile Include="TransitionalClasses\AutoscaleNotification.cs" />
+    <Compile Include="TransitionalClasses\AutoscaleProfile.cs" />
+    <Compile Include="TransitionalClasses\AutoscaleSettingResource.cs" />
+    <Compile Include="TransitionalClasses\ComparisonOperatorType.cs" />
+    <Compile Include="TransitionalClasses\ConditionOperator.cs" />
+    <Compile Include="TransitionalClasses\EmailNotification.cs" />
+    <Compile Include="TransitionalClasses\LocationThesholdRuleCondition.cs" />
+    <Compile Include="TransitionalClasses\LogProfileResource.cs" />
+    <Compile Include="TransitionalClasses\MetricTrigger.cs" />
+    <Compile Include="TransitionalClasses\ReceiverStatus.cs" />
+    <Compile Include="TransitionalClasses\Recurrence.cs" />
+    <Compile Include="TransitionalClasses\RecurrentSchedule.cs" />
+    <Compile Include="TransitionalClasses\RuleAction.cs" />
+    <Compile Include="TransitionalClasses\RuleCondition.cs" />
+    <Compile Include="TransitionalClasses\RuleDataSource.cs" />
+    <Compile Include="TransitionalClasses\RuleEmailAction.cs" />
+    <Compile Include="TransitionalClasses\RuleMetricDataSource.cs" />
+    <Compile Include="TransitionalClasses\RuleWebhookAction.cs" />
+    <Compile Include="TransitionalClasses\ScaleAction.cs" />
+    <Compile Include="TransitionalClasses\ScaleCapacity.cs" />
+    <Compile Include="TransitionalClasses\ThresholdRuleCondition.cs" />
+    <Compile Include="TransitionalClasses\TimeAggregationOperator.cs" />
+    <Compile Include="TransitionalClasses\TimeWindow.cs" />
+    <Compile Include="TransitionalClasses\TransitionHelpers.cs" />
+    <Compile Include="TransitionalClasses\LogSettings.cs" />
+    <Compile Include="TransitionalClasses\MetricSettings.cs" />
+    <Compile Include="TransitionalClasses\MetricStatisticType.cs" />
+    <Compile Include="TransitionalClasses\RecurrenceFrequency.cs" />
+    <Compile Include="TransitionalClasses\RetentionPolicy.cs" />
+    <Compile Include="TransitionalClasses\ScaleDirection.cs" />
+    <Compile Include="TransitionalClasses\ScaleRule.cs" />
+    <Compile Include="TransitionalClasses\ScaleType.cs" />
+    <Compile Include="TransitionalClasses\TimeAggregationType.cs" />
+    <Compile Include="TransitionalClasses\WebhookNotification.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>

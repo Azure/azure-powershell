@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -66,27 +66,27 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.ExecuteCmdlet();
         }
 
-        private ScaleRule CreateAutoscaleRule(string metricName = null)
+        private Management.Monitor.Management.Models.ScaleRule CreateAutoscaleRule(string metricName = null)
         {
             var autocaseRuleCmd = new NewAzureRmAutoscaleRuleCommand
             {
                 MetricName = metricName ?? "Requests",
                 MetricResourceId = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo",
-                Operator = ComparisonOperationType.GreaterThan,
-                MetricStatistic = MetricStatisticType.Average,
+                Operator = Management.Monitor.Management.Models.ComparisonOperationType.GreaterThan,
+                MetricStatistic = Management.Monitor.Management.Models.MetricStatisticType.Average,
                 Threshold = 10,
                 TimeGrain = TimeSpan.FromMinutes(1),
                 ScaleActionCooldown = TimeSpan.FromMinutes(5),
-                ScaleActionDirection = ScaleDirection.Increase,
+                ScaleActionDirection = Management.Monitor.Management.Models.ScaleDirection.Increase,
                 ScaleActionValue = "1"
             };
 
             return autocaseRuleCmd.CreateSettingRule();
         }
 
-        public void InitializeAutoscaleProfile(List<ScaleRule> rules = null)
+        public void InitializeAutoscaleProfile(List<Management.Monitor.Management.Models.ScaleRule> rules = null)
         {
-            List<ScaleRule> autoscaleRules = rules ?? new List<ScaleRule> { this.CreateAutoscaleRule() };
+            List<Management.Monitor.Management.Models.ScaleRule> autoscaleRules = rules ?? new List<Management.Monitor.Management.Models.ScaleRule> { this.CreateAutoscaleRule() };
 
             Cmdlet.Name = "profile1";
             Cmdlet.DefaultCapacity = "1";
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
         public void InitializeForRecurrentSchedule()
         {
-            Cmdlet.RecurrenceFrequency = RecurrenceFrequency.Minute;
+            Cmdlet.RecurrenceFrequency = Management.Monitor.Management.Models.RecurrenceFrequency.Minute;
             Cmdlet.ScheduleDay = new List<string> { "1", "2", "3" };
             Cmdlet.ScheduleHour = new List<int?> { 5, 10, 15 };
             Cmdlet.ScheduleMinute = new List<int?> { 15, 30, 45 };

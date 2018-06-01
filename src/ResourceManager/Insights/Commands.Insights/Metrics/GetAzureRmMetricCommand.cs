@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics
 {
@@ -29,8 +30,18 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// Get the list of metric definition for a resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmMetric"), OutputType(typeof(PSMetric[]))]
-    public class GetAzureRmMetricCommand : MonitorClientCmdletBase
+    public class GetAzureRmMetricCommand : ManagementCmdletBase
     {
+        /// <summary>
+        /// List of metri names for the query
+        /// </summary>
+        private string metrics;
+
+        /// <summary>
+        /// The time spanf for the query, i.e. two datetimes concatenated separated by "/"
+        /// </summary>
+        private string timespan;
+
         internal const string GetAzureRmAMetricParamGroup = "GetWithDefaultParameters";
         internal const string GetAzureRmAMetricFullParamGroup = "GetWithFullParameters";
 
@@ -92,23 +103,11 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// Process the general parameters (i.e. defined in this class). The particular parameters are a responsibility of the descendants after adding a method to process more parameters.
         /// </summary>
         /// <returns>The query filter to be used by the cmdlet</returns>
-        protected string ProcessParameters()
+        protected void ProcessParameters()
         {
-            var buffer = new StringBuilder();
             if (this.MetricName != null)
             {
-                var metrics = this.MetricName.Select(n => string.Concat("name.value eq '", n, "'")).Aggregate((a, b) => string.Concat(a, " or ", b));
-
-                buffer.Append("(");
-                buffer.Append(metrics);
-                buffer.Append(")");
-
-                if (this.TimeGrain != default(TimeSpan))
-                {
-                    buffer.Append(" and timeGrain eq duration'");
-                    buffer.Append(XmlConvert.ToString(this.TimeGrain));
-                    buffer.Append("'");
-                }
+                this.metrics = this.MetricName.Select(n => string.Concat("name.value eq '", n, "'")).Aggregate((a, b) => string.Concat(a, " or ", b));
 
                 // EndTime defaults to Now
                 if (this.EndTime == default(DateTime))
@@ -122,26 +121,8 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                     this.StartTime = this.EndTime.Subtract(DefaultTimeRange);
                 }
 
-                buffer.Append(" and startTime eq ");
-                buffer.Append(this.StartTime.ToUniversalTime().ToString("O"));
-                buffer.Append(" and endTime eq ");
-                buffer.Append(this.EndTime.ToUniversalTime().ToString("O"));
-
-                if (this.AggregationType != null)
-                {
-                    buffer.Append(" and aggregationType eq '");
-                    buffer.Append(this.AggregationType);
-                    buffer.Append("'");
-                }
+                this.timespan = string.Format(CultureInfo.InvariantCulture, "{0:O}/{1:O}", this.StartTime.ToUniversalTime(), this.EndTime.ToUniversalTime());
             }
-
-            string queryFilter = buffer.ToString();
-            if (queryFilter.StartsWith(" and "))
-            {
-                queryFilter = queryFilter.Substring(4);
-            }
-
-            return queryFilter.Trim();
         }
 
         /// <summary>
@@ -153,12 +134,19 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
                 cmdletName: "Get-AzureRmMetric",
                 topic: "Parameter deprecation", 
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
-            string queryFilter = this.ProcessParameters();
+            this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;
 
             // If fullDetails is present full details of the records are displayed, otherwise only a summary of the records is displayed
-            var records = this.MonitorClient.Metrics.List(resourceUri: this.ResourceId, odataQuery: new ODataQuery<Metric>(queryFilter))
-                .Select(e => fullDetails ? new PSMetric(e) : new PSMetricNoDetails(e)).ToArray();
+            var response = this.MonitorManagementClient.Metrics.List(
+                resourceUri: this.ResourceId, 
+                metricnames: this.metrics,
+                timespan: this.timespan,
+                interval: this.TimeGrain,
+                aggregation: this.AggregationType.HasValue ? this.AggregationType.ToString() : null,
+                resultType: ResultType.Data);
+
+            var records = response.Value.Select(e => fullDetails ? new PSMetric(e) : new PSMetricNoDetails(e)).ToArray();
             WriteObject(sendToPipeline: records, enumerateCollection: true);
         }
     }

@@ -17,8 +17,7 @@ using System.Management.Automation;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.Diagnostics;
-using Microsoft.Azure.Management.Monitor.Management;
-
+using Microsoft.Azure.Management.Monitor;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
@@ -78,6 +77,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveSettingTest()
         {
+            cmdlet.ResourceId = ResourceId;
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(ResourceId, resourceIdIn);
+            Assert.Equal("service", settingName);
+
+            cmdlet.ResourceId = ResourceId;
             cmdlet.Name = "MySetting";
             cmdlet.ExecuteCmdlet();
 

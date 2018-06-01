@@ -86,7 +86,7 @@ If you do not specify a category, this command operates on all categories.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Category
 
 Required: False
 Position: Named
@@ -221,7 +221,7 @@ If you do not specify a time grain, this command operates on all available time 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases: Timegrain
 
 Required: False
 Position: Named
@@ -262,5 +262,6 @@ This cmdlet does not accept any input.
 ## RELATED LINKS
 
 [Get-AzureRmDiagnosticSetting](./Get-AzureRmDiagnosticSetting.md)
+[Remove-AzureRmDiagnosticSetting](./Remove-AzureRmDiagnosticSetting.md)
 
 
