@@ -156,7 +156,7 @@ Gets the summary view of latest policy compliance states generated in the last d
 
 ### Example 13: Get latest non-compliant policy states summary for a policy assignment in the specified resource group in the current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyStateSummary -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1" 
+PS C:\> Get-AzureRmPolicyStateSummary -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
 Gets the summary view of latest policy compliance states generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the resource group in the subscription in current session context).
