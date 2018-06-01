@@ -148,7 +148,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 foreach (var parameterKey in templateParameterObject.Keys)
                 {
-                    prameterObject[parameterKey] = new Hashtable { { "value", templateParameterObject[parameterKey] } };
+                    // Let default behavior of a value parameter if not a KeyVault reference Hashtable
+                    var hashtableParameter = templateParameterObject[parameterKey] as Hashtable;
+                    if (hashtableParameter != null && hashtableParameter.ContainsKey("reference"))
+                    {
+                        prameterObject[parameterKey] = templateParameterObject[parameterKey];
+                    }
+                    else
+                    {
+                        prameterObject[parameterKey] = new Hashtable { { "value", templateParameterObject[parameterKey] } };
+                    }
                 }
             }
 
