@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Added the following three values to the telemetry :
+
+## Version 5.2.0
+* Added the following three values to the telemetry:
   - Inner exception types
   - ParameterSetName
   - InvocationName

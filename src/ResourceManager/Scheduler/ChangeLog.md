@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.16.5
 * Fix issue with update ServiceBusQueueJob not setting new Auth values
 
 ## Version 0.16.4

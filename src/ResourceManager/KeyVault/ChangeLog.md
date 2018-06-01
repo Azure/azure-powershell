@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.1
 * Update documentation with example output
 
 ## Version 5.0.0
