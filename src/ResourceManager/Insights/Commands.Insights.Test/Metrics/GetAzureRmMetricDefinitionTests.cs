@@ -29,23 +29,23 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
     public class GetAzureRmMetricDefinitionTests
     {
         private readonly GetAzureRmMetricDefinitionCommand cmdlet;
-        private readonly Mock<MonitorClient> MonitorClientMock;
+        private readonly Mock<MonitorManagementClient> MonitorClientMock;
         private readonly Mock<IMetricDefinitionsOperations> insightsMetricDefinitionOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<MetricDefinition>> response;
         private string resourceId;
-        private ODataQuery<MetricDefinition> filter;
+        private string nameSpace;
 
         public GetAzureRmMetricDefinitionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             insightsMetricDefinitionOperationsMock = new Mock<IMetricDefinitionsOperations>();
-            MonitorClientMock = new Mock<MonitorClient>();
+            MonitorClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmMetricDefinitionCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                MonitorClient = MonitorClientMock.Object
+                MonitorManagementClient = MonitorClientMock.Object
             };
 
             response = new Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<MetricDefinition>>()
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
                 Body = Utilities.InitializeMetricDefinitionResponse()
             };
 
-            insightsMetricDefinitionOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<ODataQuery<MetricDefinition>>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
+            insightsMetricDefinitionOperationsMock.Setup(f => f.ListWithHttpMessagesAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<Dictionary<string, List<string>>>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult<Microsoft.Rest.Azure.AzureOperationResponse<IEnumerable<MetricDefinition>>>(response))
-                .Callback((string resource, ODataQuery<MetricDefinition> query, Dictionary<string, List<string>> header, CancellationToken t) =>
+                .Callback((string resource, string ns, Dictionary<string, List<string>> header, CancellationToken t) =>
                 {
                     resourceId = resource;
-                    filter = query;
+                    nameSpace = ns;
                 });
 
             MonitorClientMock.SetupGet(f => f.MetricDefinitions).Returns(this.insightsMetricDefinitionOperationsMock.Object);
@@ -72,15 +72,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             cmdlet.ResourceId = Utilities.ResourceUri;
 
             cmdlet.ExecuteCmdlet();
-            Assert.True(string.IsNullOrWhiteSpace(filter.Filter));
+            Assert.True(string.IsNullOrWhiteSpace(nameSpace));
             Assert.Equal(Utilities.ResourceUri, resourceId);
 
             // Testing with optional parameters
             cmdlet.MetricName = new[] { "n1", "n2" };
-            const string expected = "name.value eq 'n1' or name.value eq 'n2'";
+            //// const string expected = "name.value eq 'n1' or name.value eq 'n2'";
 
             cmdlet.ExecuteCmdlet();
-            Assert.Equal(expected, filter.Filter);
+            //// Assert.Equal(expected, filter.Filter);
             Assert.Equal(Utilities.ResourceUri, resourceId);
         }
     }
