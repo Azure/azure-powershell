@@ -45,7 +45,7 @@ Gets test policy set definition name
 #>
 function Get-TestPolicySetDefinitionName
 {
-	"db6c5074-a529-4cc8-8882-43f10ef42002"
+	"12b58873-e0f8-4b95-936c-86cbe7c9d697"
 }
 
 <#
@@ -54,7 +54,7 @@ Gets test policy definition name
 #>
 function Get-TestPolicyDefinitionName
 {
-	"d7b13c30-e6aa-47e1-b50a-8e33f152d086"
+	"ebcd21e9-b89f-4a22-8654-dd3a4d8b9321"
 }
 
 <#
@@ -64,6 +64,15 @@ Gets test policy assignment name
 function Get-TestPolicyAssignmentName
 {
 	"45ab2ab7898d45ebb3087573"
+}
+
+<#
+.SYNOPSIS
+Gets test policy assignment name (resource group level)
+#>
+function Get-TestPolicyAssignmentNameResourceGroupLevel
+{
+	"f4d1645d-9180-4968-99df-17234d0f7019"
 }
 
 <#
@@ -93,6 +102,7 @@ function Validate-PolicyEvents
 	param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent]]]$policyEvents, [int]$count)
 
     Assert-True { $count -ge $policyEvents.Count }
+    Assert-True { $policyEvents.Count -gt 0 }
 	Foreach($policyEvent in $policyEvents)
 	{
 		Validate-PolicyEvent $policyEvent
@@ -129,6 +139,7 @@ function Validate-PolicyStates
 	param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates, [int]$count)
 
     Assert-True { $count -ge $policyStates.Count }
+    Assert-True { $policyStates.Count -gt 0 }
 	Foreach($policyState in $policyStates)
 	{
 		Validate-PolicyState $policyState
@@ -170,6 +181,7 @@ function Validate-PolicyStateSummary
 
     Assert-NotNull $policyStateSummary.PolicyAssignments
     Assert-True { $policyStateSummary.PolicyAssignments.Count -le $policyStateSummary.Results.NonCompliantPolicies } 
+    Assert-True { $policyStateSummary.PolicyAssignments.Count -gt 0 } 
 
 	Foreach($policyAssignmentSummary in $policyStateSummary.PolicyAssignments)
 	{
@@ -183,6 +195,7 @@ function Validate-PolicyStateSummary
 
         Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
         Assert-True { $policyAssignmentSummary.PolicyDefinitions.Count -eq $policyAssignmentSummary.Results.NonCompliantPolicies }
+        Assert-True { $policyAssignmentSummary.PolicyDefinitions.Count -gt 0 }
 
         if ($policyAssignmentSummary.Results.NonCompliantPolicies -gt 1)
         {

@@ -109,7 +109,7 @@ Get policy events at resource group level policy assignment scope
 function Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope
 {
 	$resourceGroupName = Get-TestResourceGroupName
-	$policyAssignmentName = Get-TestPolicyAssignmentName
+	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevel
 	$from = Get-TestQueryIntervalStart
 
     $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
