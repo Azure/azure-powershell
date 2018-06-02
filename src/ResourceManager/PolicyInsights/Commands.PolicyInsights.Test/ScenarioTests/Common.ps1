@@ -169,7 +169,7 @@ function Validate-PolicyStateSummary
     Assert-NotNull $policyStateSummary.Results.NonCompliantPolicies
 
     Assert-NotNull $policyStateSummary.PolicyAssignments
-    Assert-True $policyStateSummary.PolicyAssignments.Count -le $policyStateSummary.Results.NonCompliantPolicies
+    Assert-True { $policyStateSummary.PolicyAssignments.Count -le $policyStateSummary.Results.NonCompliantPolicies } 
 
 	Foreach($policyAssignmentSummary in $policyStateSummary.PolicyAssignments)
 	{
@@ -182,7 +182,7 @@ function Validate-PolicyStateSummary
 		Assert-NotNull $policyAssignmentSummary.Results.NonCompliantPolicies
 
         Assert-NotNull $policyAssignmentSummary.PolicyDefinitions
-        Assert-AreEqual $policyAssignmentSummary.PolicyDefinitions.Count $policyAssignmentSummary.Results.NonCompliantPolicies
+        Assert-True { $policyAssignmentSummary.PolicyDefinitions.Count -eq $policyAssignmentSummary.Results.NonCompliantPolicies }
 
         if ($policyAssignmentSummary.Results.NonCompliantPolicies -gt 1)
         {
@@ -195,11 +195,6 @@ function Validate-PolicyStateSummary
 
             Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionId
             Assert-NotNullOrEmpty $policyDefinitionSummary.Effect
-
-			if ($policyAssignmentSummary.PolicySetDefinitionId -ne $null -and $policyAssignmentSummary.PolicySetDefinitionId -ne '') 
-			{
-				Assert-NotNullOrEmpty $policyDefinitionSummary.PolicyDefinitionReferenceId
-			}
 
 			Assert-NotNull $policyDefinitionSummary.Results
 			Assert-NotNull $policyDefinitionSummary.Results.NonCompliantResources
@@ -217,5 +212,5 @@ function Assert-NotNullOrEmpty
 	param([string]$value)
 
     Assert-NotNull $value
-	Assert-AreNotEqual $value ""
+	Assert-True { $value -ne "" }
 }
