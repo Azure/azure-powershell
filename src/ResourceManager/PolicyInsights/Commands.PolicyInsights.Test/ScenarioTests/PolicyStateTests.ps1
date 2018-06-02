@@ -199,7 +199,7 @@ Get latest policy states at resource group level policy assignment scope
 function Get-AzureRmPolicyState-LatestResourceGroupLevelPolicyAssignmentScope
 {
 	$resourceGroupName = Get-TestResourceGroupName
-	$policyAssignmentName = Get-TestPolicyAssignmentName
+	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevel
 	$from = Get-TestQueryIntervalStart
 
     $policyStates = Get-AzureRmPolicyState -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
@@ -213,7 +213,7 @@ Get all policy states at resource group level policy assignment scope
 function Get-AzureRmPolicyState-AllResourceGroupLevelPolicyAssignmentScope
 {
 	$resourceGroupName = Get-TestResourceGroupName
-	$policyAssignmentName = Get-TestPolicyAssignmentName
+	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevel
 	$from = Get-TestQueryIntervalStart
 
     $policyStates = Get-AzureRmPolicyState -All -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from

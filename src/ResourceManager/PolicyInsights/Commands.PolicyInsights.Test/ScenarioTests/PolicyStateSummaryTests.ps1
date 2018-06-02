@@ -109,7 +109,7 @@ Get policy states summary at resource group level policy assignment scope
 function Get-AzureRmPolicyStateSummary-ResourceGroupLevelPolicyAssignmentScope
 {
 	$resourceGroupName = Get-TestResourceGroupName
-	$policyAssignmentName = Get-TestPolicyAssignmentName
+	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevel
 	$from = Get-TestQueryIntervalStart
 
     $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
