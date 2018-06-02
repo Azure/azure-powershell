@@ -92,7 +92,7 @@ function Validate-PolicyEvents
 {
 	param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent]]]$policyEvents, [int]$count)
 
-    Assert-True $count -ge $policyEvents.Count
+    Assert-True { $count -ge $policyEvents.Count }
 	Foreach($policyEvent in $policyEvents)
 	{
 		Validate-PolicyEvent $policyEvent
@@ -128,7 +128,7 @@ function Validate-PolicyStates
 {
 	param([System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyState]]]$policyStates, [int]$count)
 
-    Assert-True $count -ge $policyStates.Count
+    Assert-True { $count -ge $policyStates.Count }
 	Foreach($policyState in $policyStates)
 	{
 		Validate-PolicyState $policyState
