@@ -23,11 +23,6 @@ The **New-AzureRmCognitiveServicesAccountKey** cmdlet regenerates an API key for
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

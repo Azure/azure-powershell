@@ -43,7 +43,7 @@ PS C:\>
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSFrontendIPConfiguration
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSLoadBalancer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Tcp, Udp
 
 Required: True
@@ -174,4 +174,3 @@ Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipelin
 ## NOTES
 
 ## RELATED LINKS
-

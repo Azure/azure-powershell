@@ -197,7 +197,9 @@ namespace VersionController.Models
                 releaseNotes.Add(file[idx]);
             }
 
-            return releaseNotes.Where(l => !string.IsNullOrWhiteSpace(l)).Select(l => l.Replace("`", "'")).ToList();
+            return releaseNotes.Where(l => !string.IsNullOrWhiteSpace(l))
+                                                .Select(l => l.Replace("`", "'"))
+                                                .Select(l => l.Replace("\"", "'")).ToList();
         }
 
         /// <summary>

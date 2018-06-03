@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackendcredential
 schema: 2.0.0
 ---
@@ -23,8 +24,11 @@ Creates a new Backend Credential contract.
 ## EXAMPLES
 
 ### Create a Backend Credentials In-Memory Object
-```
+```powershell
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$credential = New-AzureRmApiManagementBackendCredential -AuthorizationHeaderScheme basic -AuthorizationHeaderParameter opensesame -Query @{"sv" = @('xx', 'bb'); "sr" = @('cc')} -Header @{"x-my-1" = @('val1', 'val2')}
+
+PS C:\>$backend = New-AzureRmApiManagementBackend -Context  $apimContext -BackendId 123 -Url 'https://contoso.com/awesomeapi' -Protocol http -Title "first backend" -SkipCertificateChainValidation $true -Credential $credential -Description "my backend"
 ```
 
 Creates a Backend Credentials Contract
@@ -38,7 +42,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -54,7 +58,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -70,7 +74,7 @@ This parameter is optional.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -101,7 +105,7 @@ This parameter is optional.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +121,7 @@ This parameter is optional.
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

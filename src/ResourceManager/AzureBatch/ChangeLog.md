@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.1.0
 * Release new cmdlet Get-AzureBatchPoolNodeCounts
 * Release new cmdlet Start-AzureBatchComputeNodeServiceLogUpload
 
