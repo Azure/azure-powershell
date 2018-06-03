@@ -769,3 +769,22 @@ function Test-WebAppPublishingProfile
 		Remove-AzureRmResourceGroup -Name $rgname -Force
 	}
 }
+
+<#
+.SYNOPSIS
+Tests creating a web app with a simple parameterset.
+#>
+function Test-CreateNewWebAppSimple
+{
+	$appName = Get-WebsiteName
+	try
+	{
+		$webapp = New-AzureRmWebApp -Name $appName
+
+		Assert-AreEqual $appName $webapp.Name
+	}
+	finally
+	{
+		Remove-AzureRmResourceGroup $appName
+	}
+}

@@ -23,11 +23,6 @@ The **Disable-AzureRmSchedulerJobCollection** cmdlet disables a job collection i
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
