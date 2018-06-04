@@ -12,8 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Elastic_Jobs.Model;
 using Microsoft.Azure.Management.Sql.Models;
-using System;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Model
 {
@@ -37,12 +37,32 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Model
         /// <summary>
         /// The job step's output details
         /// </summary>
-        public JobStepOutput Output { get; set; }
+        public AzureSqlElasticJobStepOutputModel Output { get; set; }
 
         /// <summary>
-        /// The job step's execution options
+        /// The initial retry interval seconds
         /// </summary>
-        public JobStepExecutionOptions ExecutionOptions { get; set; }
+        public int? InitialRetryIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// The maximum retry interval seconds
+        /// </summary>
+        public int? MaximumRetryIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// The retry attempts
+        /// </summary>
+        public int? RetryAttempts { get; set; }
+
+        /// <summary>
+        /// The retry interval back off multiplier
+        /// </summary>
+        public double? RetryIntervalBackoffMultiplier { get; set; }
+
+        /// <summary>
+        /// The timeout seconds
+        /// </summary>
+        public int? TimeoutSeconds { get; set; }
 
         /// <summary>
         /// The job step's step id

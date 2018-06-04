@@ -21,6 +21,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.Sql.Elastic_Jobs.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
 {
@@ -595,20 +596,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 StepName = this.Name,
                 TargetGroupName = targetGroupId,
                 CredentialName = credentialId,
-                ExecutionOptions = new Management.Sql.Models.JobStepExecutionOptions
-                {
-                    InitialRetryIntervalSeconds = this.InitialRetryIntervalSeconds,
-                    MaximumRetryIntervalSeconds = this.MaximumRetryIntervalSeconds,
-                    RetryAttempts = this.RetryAttempts,
-                    RetryIntervalBackoffMultiplier = this.RetryIntervalBackoffMultiplier,
-                    TimeoutSeconds = this.TimeoutSeconds
-                },
+                InitialRetryIntervalSeconds = this.InitialRetryIntervalSeconds,
+                MaximumRetryIntervalSeconds = this.MaximumRetryIntervalSeconds,
+                RetryAttempts = this.RetryAttempts,
+                RetryIntervalBackoffMultiplier = this.RetryIntervalBackoffMultiplier,
+                TimeoutSeconds = this.TimeoutSeconds,
                 CommandText = this.CommandText,
             };
 
             if (this.OutputDatabaseObject != null)
             {
-                updatedModel.Output = new Management.Sql.Models.JobStepOutput
+                updatedModel.Output = new AzureSqlElasticJobStepOutputModel
                 {
                     SubscriptionId = this.OutputDatabaseObject != null ? Guid.Parse(new ResourceIdentifier(this.OutputDatabaseObject.ResourceId).Subscription) : (Guid?) null,
                     ResourceGroupName = this.OutputDatabaseObject != null ? this.OutputDatabaseObject.ResourceGroupName : null,
@@ -624,7 +622,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             {
                 var databaseIdentifier = new ResourceIdentifier(this.OutputDatabaseResourceId);
 
-                updatedModel.Output = new Management.Sql.Models.JobStepOutput
+                updatedModel.Output = new AzureSqlElasticJobStepOutputModel
                 {
                     SubscriptionId = Guid.Parse(databaseIdentifier.Subscription),
                     ResourceGroupName = databaseIdentifier.ResourceGroupName,

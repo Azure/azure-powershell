@@ -19,24 +19,28 @@ using Microsoft.Azure.Commands.Sql.ElasticJobs.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
 using System.Management.Automation;
+using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Sql.Common
 {
     /// <summary>
     /// Defines the azure sql elastic jobs cmdlet base
     /// </summary>
-    /// <typeparam name="IO">The input object</typeparam>
-    /// <typeparam name="M">The model</typeparam>
-    /// <typeparam name="A">The adapter</typeparam>
-    public abstract class AzureSqlElasticJobsCmdletBase<IO, M, A> : AzureSqlCmdletBase<M, A>
+    /// <typeparam name="TInputObject">The input object</typeparam>
+    /// <typeparam name="TModel">The model</typeparam>
+    /// <typeparam name="TAdapter">The adapter</typeparam>
+    public abstract class AzureSqlElasticJobsCmdletBase<TInputObject, TModel, TAdapter> : AzureSqlCmdletBase<TModel, TAdapter>
     {
         /// <summary>
-        /// The shared parameter sets
+        /// Common parameter sets
         /// </summary>
         protected const string DefaultParameterSet = "Default Parameter Set"; // used as (default) parameter set mostly
         protected const string InputObjectParameterSet = "Input Object Parameter Set";
         protected const string ResourceIdParameterSet = "Resource Id Parameter Set";
 
+        /// <summary>
+        /// Common properties
+        /// </summary>
         public virtual string ServerName { get; set; }
         public virtual string AgentServerName { get; set; }
         public virtual string AgentName { get; set; }
@@ -60,61 +64,25 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// Initializes the input from model object
         /// </summary>
         /// <param name="model">The given input object</param>
-        public void InitializeInputObjectProperties(IO model)
+        public void InitializeInputObjectProperties(TInputObject model)
         {
+            // Return if null
             if (model == null)
             {
                 return;
             }
 
-            var resourceGroupProperty = model.GetType().GetProperty("ResourceGroupName");
-            this.ResourceGroupName = (resourceGroupProperty != null) ? resourceGroupProperty.GetValue(model).ToString() : this.ResourceGroupName;
-
-            var serverProperty = model.GetType().GetProperty("ServerName");
-            if (serverProperty != null)
-            {
-                string value = serverProperty.GetValue(model).ToString();
-                this.AgentServerName = value;
-                if (this.ServerName == null)
-                {
-                    this.ServerName = value;
-                }
-            }
-
-            var databaseProperty = model.GetType().GetProperty("DatabaseName");
-            this.DatabaseName = (databaseProperty != null) ? databaseProperty.GetValue(model).ToString() : this.DatabaseName;
-
-            var agentProperty = model.GetType().GetProperty("AgentName");
-            this.AgentName = (agentProperty != null) ? agentProperty.GetValue(model).ToString() : this.AgentName;
-
-            var jobProperty = model.GetType().GetProperty("JobName");
-            this.JobName = (jobProperty != null) ? jobProperty.GetValue(model).ToString() : this.JobName;
-
-            var stepProperty = model.GetType().GetProperty("StepName");
-            this.StepName = (stepProperty != null) ? stepProperty.GetValue(model).ToString() : this.StepName;
-
-            var targetGroupProperty = model.GetType().GetProperty("TargetGroupName");
-            if (targetGroupProperty != null)
-            {
-                string value = targetGroupProperty.GetValue(model).ToString();
-                if (this.TargetGroupName == null)
-                {
-                    this.TargetGroupName = value;
-                }
-            }
-
-            var jobCredentialProperty = model.GetType().GetProperty("CredentialName");
-            if (jobCredentialProperty != null)
-            {
-                string value = jobCredentialProperty.GetValue(model).ToString();
-                if (this.CredentialName == null)
-                {
-                    this.CredentialName = value;
-                }
-            }
-
-            var jobExecutionProperty = model.GetType().GetProperty("JobExecutionId");
-            this.JobExecutionId = (jobExecutionProperty != null) ? jobExecutionProperty.GetValue(model).ToString() : this.JobExecutionId;
+            // Initialize properties
+            this.ResourceGroupName = this.ResourceGroupName ?? GetPropertyValue(model, "ResourceGroupName");
+            this.ServerName = this.ServerName ?? GetPropertyValue(model, "ServerName");
+            this.AgentServerName = GetPropertyValue(model, "ServerName");
+            this.DatabaseName = this.DatabaseName ?? GetPropertyValue(model, "DatabaseName");
+            this.AgentName = this.AgentName ?? GetPropertyValue(model, "AgentName");
+            this.JobName = this.JobName ?? GetPropertyValue(model, "JobName");
+            this.StepName = this.StepName ?? GetPropertyValue(model, "StepName");
+            this.TargetGroupName = this.TargetGroupName ?? GetPropertyValue(model, "TargetGroupName");
+            this.CredentialName = this.CredentialName ?? GetPropertyValue(model, "CredentialName");
+            this.JobExecutionId = this.JobExecutionId ?? GetPropertyValue(model, "JobExecutionId");
         }
 
         /// <summary>
@@ -123,63 +91,24 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <param name="resourceId">The given resource id</param>
         public void InitializeResourceIdProperties(string resourceId)
         {
+            // Return if null
             if (resourceId == null)
             {
                 return;
             }
 
+            // Initialize properties
             string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            int length = tokens.Length;
-
-            if (length >= 7)
-            {
-                this.ResourceGroupName = tokens[3];
-                this.AgentServerName = tokens[7];
-                if (this.ServerName == null)
-                {
-                    this.ServerName = tokens[7];
-                }
-            }
-
-            if (length >= 9)
-            {
-                if (tokens[8] == "databases")
-                {
-                    this.DatabaseName = tokens[9];
-                }
-                else if (tokens[8] == "jobAgents")
-                {
-                    this.AgentName = tokens[9];
-                }
-            }
-
-            if (length >= 11)
-            {
-                if (tokens[10] == "jobs")
-                {
-                    this.JobName = tokens[11];
-                }
-                else if (tokens[10] == "credentials")
-                {
-                    this.CredentialName = tokens[11];
-                }
-                else if (tokens[10] == "targetGroups")
-                {
-                    this.TargetGroupName = tokens[11];
-                }
-            }
-
-            if (length >= 13)
-            {
-                if (tokens[12] == "steps")
-                {
-                    this.StepName = tokens[13];
-                }
-                else if (tokens[12] == "executions")
-                {
-                    this.JobExecutionId = tokens[13];
-                }
-            }
+            this.ResourceGroupName = this.ResourceGroupName ?? GetPropertyValue(tokens, "resourceGroups", 2);
+            this.ServerName = this.ServerName ?? GetPropertyValue(tokens, "servers", 6);
+            this.AgentServerName = GetPropertyValue(tokens, "servers", 6);
+            this.DatabaseName = this.DatabaseName ?? GetPropertyValue(tokens, "databases", 8);
+            this.AgentName = this.AgentName ?? GetPropertyValue(tokens, "jobAgents", 8);
+            this.JobName = this.JobName ?? GetPropertyValue(tokens, "jobs", 10);
+            this.CredentialName = this.CredentialName ?? GetPropertyValue(tokens, "credentials", 10);
+            this.TargetGroupName = this.TargetGroupName ?? GetPropertyValue(tokens, "targetGroups", 10);
+            this.StepName = this.StepName ?? GetPropertyValue(tokens, "steps", 12);
+            this.JobExecutionId = this.JobExecutionId ?? GetPropertyValue(tokens, "executions", 12);
         }
 
         /// <summary>
@@ -192,6 +121,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
             ClearProperties();
         }
 
+        /// <summary>
+        /// Helper to clear properties which may carry forward during piping scenarios
+        /// </summary>
         protected void ClearProperties()
         {
             this.ResourceGroupName = null;
@@ -207,6 +139,44 @@ namespace Microsoft.Azure.Commands.Sql.Common
             this.ShardMapName = null;
             this.ElasticPoolName = null;
             this.RefreshCredentialName = null;
+        }
+
+        /// <summary>
+        /// Helper method to return model property from input object model
+        /// </summary>
+        /// <param name="inputObject">The input object model</param>
+        /// <param name="propertyName">The property name</param>
+        /// <returns></returns>
+        public string GetPropertyValue(TInputObject inputObject, string propertyName)
+        {
+            PropertyInfo info = inputObject.GetType().GetProperty(propertyName);
+            if (info == null)
+            {
+                return null;
+            }
+
+            return info.GetValue(inputObject).ToString();
+        }
+
+        /// <summary>
+        /// Helper method to return model property value from resource id
+        /// </summary>
+        /// <param name="resourceIdSegments"></param>
+        /// <param name="typeSegmentName"></param>
+        /// <param name="typeSegmentIndex"></param>
+        /// <returns></returns>
+        public string GetPropertyValue(
+            string[] resourceIdSegments,
+            string typeSegmentName,
+            int typeSegmentIndex)
+        {
+            if (resourceIdSegments.Length >= typeSegmentIndex + 1 &&
+                resourceIdSegments[typeSegmentIndex] == typeSegmentName)
+            {
+                return resourceIdSegments[typeSegmentIndex + 1];
+            }
+
+            return null;
         }
 
         /// <summary>

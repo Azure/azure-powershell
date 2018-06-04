@@ -28,9 +28,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// <summary>
     /// The elastic job target cmdlet base
     /// </summary>
-    /// <typeparam name="IO">The input object model</typeparam>
-    public abstract class AzureSqlElasticJobTargetCmdletBase<IO> :
-        AzureSqlElasticJobsCmdletBase<IO, IEnumerable<AzureSqlElasticJobTargetModel>, AzureSqlElasticJobAdapter>
+    /// <typeparam name="TInputObject">The input object model</typeparam>
+    public abstract class AzureSqlElasticJobTargetCmdletBase<TInputObject> : AzureSqlElasticJobsCmdletBase<TInputObject, IEnumerable<AzureSqlElasticJobTargetModel>, AzureSqlElasticJobAdapter>
     {
         /// <summary>
         /// Parameter sets name for default target group db, server, elastic pool, and shard map

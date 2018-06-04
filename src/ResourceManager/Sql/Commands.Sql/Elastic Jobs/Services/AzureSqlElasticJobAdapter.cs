@@ -23,6 +23,7 @@ using System;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Text.RegularExpressions;
 using Microsoft.Rest.Azure;
+using Microsoft.Azure.Commands.Sql.Elastic_Jobs.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
 {
@@ -526,8 +527,25 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 {
                     Value = model.CommandText
                 },
-                ExecutionOptions = model.ExecutionOptions,
-                Output = model.Output,
+                ExecutionOptions = new JobStepExecutionOptions
+                {
+                    TimeoutSeconds = model.TimeoutSeconds,
+                    RetryIntervalBackoffMultiplier = model.RetryIntervalBackoffMultiplier,
+                    RetryAttempts = model.RetryAttempts,
+                    MaximumRetryIntervalSeconds = model.MaximumRetryIntervalSeconds,
+                    InitialRetryIntervalSeconds = model.InitialRetryIntervalSeconds
+                },
+                Output = model.Output != null ? new JobStepOutput
+                {
+                    Credential = model.Output.Credential,
+                    DatabaseName = model.Output.DatabaseName,
+                    ResourceGroupName = model.Output.ResourceGroupName,
+                    SchemaName = model.Output.SchemaName,
+                    ServerName = model.Output.ServerName,
+                    SubscriptionId = model.Output.SubscriptionId,
+                    TableName = model.Output.TableName,
+                    Type = model.Output.Type
+                } : null,
                 StepId = model.StepId,
             };
 
@@ -647,24 +665,43 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 TargetGroupName = new ResourceIdentifier(resp.TargetGroup).ResourceName,
                 CredentialName = new ResourceIdentifier(resp.Credential).ResourceName,
                 CommandText = resp.Action.Value,
-                ExecutionOptions = resp.ExecutionOptions,
-                Output = resp.Output != null ? new JobStepOutput
-                {
-                    ResourceGroupName = resp.Output.ResourceGroupName,
-                    SubscriptionId = resp.Output.SubscriptionId,
-                    Credential = new ResourceIdentifier(resp.Output.Credential).ResourceName,
-                    DatabaseName = resp.Output.DatabaseName,
-                    SchemaName = resp.Output.SchemaName,
-                    ServerName = resp.Output.ServerName,
-                    TableName = resp.Output.TableName,
-                    Type = resp.Output.Type
-                } : null,
+                InitialRetryIntervalSeconds = resp.ExecutionOptions.InitialRetryIntervalSeconds,
+                MaximumRetryIntervalSeconds = resp.ExecutionOptions.MaximumRetryIntervalSeconds,
+                RetryAttempts = resp.ExecutionOptions.RetryAttempts,
+                RetryIntervalBackoffMultiplier = resp.ExecutionOptions.RetryIntervalBackoffMultiplier,
+                TimeoutSeconds = resp.ExecutionOptions.TimeoutSeconds,
+                Output = CreateJobStepOutputModel(resp),
                 ResourceId = resp.Id,
                 StepId = resp.StepId,
                 Type = resp.Type
             };
 
             return jobStep;
+        }
+
+        /// <summary>
+        /// Creates an AzureSqlElasticJobStepOutputModel from a JobStep model
+        /// </summary>
+        /// <param name="model">The JobStep model repsonse</param>
+        /// <returns>An AzureSqlElasticJobStepOutputModel</returns>
+        private static AzureSqlElasticJobStepOutputModel CreateJobStepOutputModel(JobStep model)
+        {
+            if (model.Output == null)
+            {
+                return null;
+            }
+
+            return new AzureSqlElasticJobStepOutputModel
+            {
+                Credential = new ResourceIdentifier(model.Output.Credential).ResourceName,
+                DatabaseName = model.Output.DatabaseName,
+                ResourceGroupName = model.Output.ResourceGroupName,
+                SchemaName = model.Output.SchemaName,
+                ServerName = model.Output.ServerName,
+                SubscriptionId = model.Output.SubscriptionId,
+                TableName = model.Output.TableName,
+                Type = model.Output.Type
+            };
         }
 
         #endregion

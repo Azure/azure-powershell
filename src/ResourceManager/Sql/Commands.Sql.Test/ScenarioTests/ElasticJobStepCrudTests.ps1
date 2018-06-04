@@ -139,11 +139,11 @@ function Test-CreateJobStepWithDefaultParam ($a1)
 	Assert-AreEqual $js1.StepName $jsn1
 	Assert-AreEqual $js1.TargetGroupName $tg1.TargetGroupName
 	Assert-AreEqual $js1.CredentialName $jc1.CredentialName
-	Assert-AreEqual $js1.ExecutionOptions.TimeoutSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryAttempts 100
-	Assert-AreEqual $js1.ExecutionOptions.InitialRetryIntervalSeconds 10
-	Assert-AreEqual $js1.ExecutionOptions.MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryIntervalBackoffMultiplier 5.0
+	Assert-AreEqual $js1.TimeoutSeconds 1000
+	Assert-AreEqual $js1.RetryAttempts 100
+	Assert-AreEqual $js1.InitialRetryIntervalSeconds 10
+	Assert-AreEqual $js1.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $js1.RetryIntervalBackoffMultiplier 5.0
 	Assert-AreEqual $js1.Output.ResourceGroupName $db1.ResourceGroupName
 	Assert-AreEqual $js1.Output.ServerName $db1.ServerName
 	Assert-AreEqual $js1.Output.DatabaseName $db1.DatabaseName
@@ -161,11 +161,11 @@ function Test-CreateJobStepWithDefaultParam ($a1)
 	Assert-AreEqual $js1.StepName $jsn1
 	Assert-AreEqual $js1.TargetGroupName $tg1.TargetGroupName
 	Assert-AreEqual $js1.CredentialName $jc1.CredentialName
-	Assert-AreEqual $js1.ExecutionOptions.TimeoutSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryAttempts 100
-	Assert-AreEqual $js1.ExecutionOptions.InitialRetryIntervalSeconds 10
-	Assert-AreEqual $js1.ExecutionOptions.MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryIntervalBackoffMultiplier 5.0
+	Assert-AreEqual $js1.TimeoutSeconds 1000
+	Assert-AreEqual $js1.RetryAttempts 100
+	Assert-AreEqual $js1.InitialRetryIntervalSeconds 10
+	Assert-AreEqual $js1.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $js1.RetryIntervalBackoffMultiplier 5.0
 	Assert-AreEqual $js1.Output.ResourceGroupName $db1.ResourceGroupName
 	Assert-AreEqual $js1.Output.ServerName $db1.ServerName
 	Assert-AreEqual $js1.Output.DatabaseName $db1.DatabaseName
@@ -212,11 +212,11 @@ function Test-CreateJobStepWithJobObject ($a1)
 	Assert-AreEqual $js1.StepName $jsn1
 	Assert-AreEqual $js1.TargetGroupName $tg1.TargetGroupName
 	Assert-AreEqual $js1.CredentialName $jc1.CredentialName
-	Assert-AreEqual $js1.ExecutionOptions.TimeoutSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryAttempts 100
-	Assert-AreEqual $js1.ExecutionOptions.InitialRetryIntervalSeconds 10
-	Assert-AreEqual $js1.ExecutionOptions.MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryIntervalBackoffMultiplier 5.0
+	Assert-AreEqual $js1.TimeoutSeconds 1000
+	Assert-AreEqual $js1.RetryAttempts 100
+	Assert-AreEqual $js1.InitialRetryIntervalSeconds 10
+	Assert-AreEqual $js1.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $js1.RetryIntervalBackoffMultiplier 5.0
 	Assert-AreEqual $js1.Output.ResourceGroupName $db1.ResourceGroupName
 	Assert-AreEqual $js1.Output.ServerName $db1.ServerName
 	Assert-AreEqual $js1.Output.DatabaseName $db1.DatabaseName
@@ -234,11 +234,11 @@ function Test-CreateJobStepWithJobObject ($a1)
 	Assert-AreEqual $js1.StepName $jsn1
 	Assert-AreEqual $js1.TargetGroupName $tg1.TargetGroupName
 	Assert-AreEqual $js1.CredentialName $jc1.CredentialName
-	Assert-AreEqual $js1.ExecutionOptions.TimeoutSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryAttempts 100
-	Assert-AreEqual $js1.ExecutionOptions.InitialRetryIntervalSeconds 10
-	Assert-AreEqual $js1.ExecutionOptions.MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryIntervalBackoffMultiplier 5.0
+	Assert-AreEqual $js1.TimeoutSeconds 1000
+	Assert-AreEqual $js1.RetryAttempts 100
+	Assert-AreEqual $js1.InitialRetryIntervalSeconds 10
+	Assert-AreEqual $js1.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $js1.RetryIntervalBackoffMultiplier 5.0
 	Assert-AreEqual $js1.Output.ResourceGroupName $db1.ResourceGroupName
 	Assert-AreEqual $js1.Output.ServerName $db1.ServerName
 	Assert-AreEqual $js1.Output.DatabaseName $db1.DatabaseName
@@ -285,11 +285,11 @@ function Test-CreateJobStepWithJobResourceId ($a1)
 	Assert-AreEqual $js1.StepName $jsn1
 	Assert-AreEqual $js1.TargetGroupName $tg1.TargetGroupName
 	Assert-AreEqual $js1.CredentialName $jc1.CredentialName
-	Assert-AreEqual $js1.ExecutionOptions.TimeoutSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryAttempts 100
-	Assert-AreEqual $js1.ExecutionOptions.InitialRetryIntervalSeconds 10
-	Assert-AreEqual $js1.ExecutionOptions.MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryIntervalBackoffMultiplier 5.0
+	Assert-AreEqual $js1.TimeoutSeconds 1000
+	Assert-AreEqual $js1.RetryAttempts 100
+	Assert-AreEqual $js1.InitialRetryIntervalSeconds 10
+	Assert-AreEqual $js1.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $js1.RetryIntervalBackoffMultiplier 5.0
 	Assert-AreEqual $js1.Output.ResourceGroupName $db1.ResourceGroupName
 	Assert-AreEqual $js1.Output.ServerName $db1.ServerName
 	Assert-AreEqual $js1.Output.DatabaseName $db1.DatabaseName
@@ -307,11 +307,11 @@ function Test-CreateJobStepWithJobResourceId ($a1)
 	Assert-AreEqual $js1.StepName $jsn1
 	Assert-AreEqual $js1.TargetGroupName $tg1.TargetGroupName
 	Assert-AreEqual $js1.CredentialName $jc1.CredentialName
-	Assert-AreEqual $js1.ExecutionOptions.TimeoutSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryAttempts 100
-	Assert-AreEqual $js1.ExecutionOptions.InitialRetryIntervalSeconds 10
-	Assert-AreEqual $js1.ExecutionOptions.MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryIntervalBackoffMultiplier 5.0
+	Assert-AreEqual $js1.TimeoutSeconds 1000
+	Assert-AreEqual $js1.RetryAttempts 100
+	Assert-AreEqual $js1.InitialRetryIntervalSeconds 10
+	Assert-AreEqual $js1.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $js1.RetryIntervalBackoffMultiplier 5.0
 	Assert-AreEqual $js1.Output.ResourceGroupName $db1.ResourceGroupName
 	Assert-AreEqual $js1.Output.ServerName $db1.ServerName
 	Assert-AreEqual $js1.Output.DatabaseName $db1.DatabaseName
@@ -358,11 +358,11 @@ function Test-CreateJobStepWithPiping ($a1)
 	Assert-AreEqual $js1.StepName $jsn1
 	Assert-AreEqual $js1.TargetGroupName $tg1.TargetGroupName
 	Assert-AreEqual $js1.CredentialName $jc1.CredentialName
-	Assert-AreEqual $js1.ExecutionOptions.TimeoutSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryAttempts 100
-	Assert-AreEqual $js1.ExecutionOptions.InitialRetryIntervalSeconds 10
-	Assert-AreEqual $js1.ExecutionOptions.MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryIntervalBackoffMultiplier 5.0
+	Assert-AreEqual $js1.TimeoutSeconds 1000
+	Assert-AreEqual $js1.RetryAttempts 100
+	Assert-AreEqual $js1.InitialRetryIntervalSeconds 10
+	Assert-AreEqual $js1.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $js1.RetryIntervalBackoffMultiplier 5.0
 	Assert-AreEqual $js1.Output.ResourceGroupName $db1.ResourceGroupName
 	Assert-AreEqual $js1.Output.ServerName $db1.ServerName
 	Assert-AreEqual $js1.Output.DatabaseName $db1.DatabaseName
@@ -380,11 +380,11 @@ function Test-CreateJobStepWithPiping ($a1)
 	Assert-AreEqual $js1.StepName $jsn1
 	Assert-AreEqual $js1.TargetGroupName $tg1.TargetGroupName
 	Assert-AreEqual $js1.CredentialName $jc1.CredentialName
-	Assert-AreEqual $js1.ExecutionOptions.TimeoutSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryAttempts 100
-	Assert-AreEqual $js1.ExecutionOptions.InitialRetryIntervalSeconds 10
-	Assert-AreEqual $js1.ExecutionOptions.MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $js1.ExecutionOptions.RetryIntervalBackoffMultiplier 5.0
+	Assert-AreEqual $js1.TimeoutSeconds 1000
+	Assert-AreEqual $js1.RetryAttempts 100
+	Assert-AreEqual $js1.InitialRetryIntervalSeconds 10
+	Assert-AreEqual $js1.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $js1.RetryIntervalBackoffMultiplier 5.0
 	Assert-AreEqual $js1.Output.ResourceGroupName $db1.ResourceGroupName
 	Assert-AreEqual $js1.Output.ServerName $db1.ServerName
 	Assert-AreEqual $js1.Output.DatabaseName $db1.DatabaseName
@@ -462,23 +462,23 @@ function Test-UpdateJobStepWithDefaultParam ($a1)
 
 	# Test update execution option timeout seconds
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceGroupName $js1.ResourceGroupName -ServerName $js1.ServerName -AgentName $js1.AgentName -JobName $js1.JobName -Name $js1.StepName -TimeoutSeconds 100
-	Assert-AreEqual $resp.ExecutionOptions.TimeoutSeconds 100
+	Assert-AreEqual $resp.TimeoutSeconds 100
 
 	# Test update execution option retry attempts
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceGroupName $js1.ResourceGroupName -ServerName $js1.ServerName -AgentName $js1.AgentName -JobName $js1.JobName -Name $js1.StepName -RetryAttempts 1000
-	Assert-AreEqual $resp.ExecutionOptions.RetryAttempts 1000
+	Assert-AreEqual $resp.RetryAttempts 1000
 
 	# Test update execution option initial retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceGroupName $js1.ResourceGroupName -ServerName $js1.ServerName -AgentName $js1.AgentName -JobName $js1.JobName -Name $js1.StepName -InitialRetryIntervalSeconds 100
-	Assert-AreEqual $resp.ExecutionOptions.InitialRetryIntervalSeconds 100
+	Assert-AreEqual $resp.InitialRetryIntervalSeconds 100
 
 	# Test update execution option maximum retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceGroupName $js1.ResourceGroupName -ServerName $js1.ServerName -AgentName $js1.AgentName -JobName $js1.JobName -Name $js1.StepName -MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $resp.ExecutionOptions.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $resp.MaximumRetryIntervalSeconds 1000
 
 	# Test update execution option maximum retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceGroupName $js1.ResourceGroupName -ServerName $js1.ServerName -AgentName $js1.AgentName -JobName $js1.JobName -Name $js1.StepName -RetryIntervalBackoffMultiplier 5.2
-	Assert-AreEqual $resp.ExecutionOptions.RetryIntervalBackoffMultiplier 5.2
+	Assert-AreEqual $resp.RetryIntervalBackoffMultiplier 5.2
 }
 
 <#
@@ -547,23 +547,23 @@ function Test-UpdateJobStepWithInputObject ($a1)
 
 	# Test update execution option timeout seconds
 	$resp = Set-AzureRmSqlElasticJobStep -InputObject $js1 -TimeoutSeconds 100
-	Assert-AreEqual $resp.ExecutionOptions.TimeoutSeconds 100
+	Assert-AreEqual $resp.TimeoutSeconds 100
 
 	# Test update execution option retry attempts
 	$resp = Set-AzureRmSqlElasticJobStep -InputObject $js1 -RetryAttempts 1000
-	Assert-AreEqual $resp.ExecutionOptions.RetryAttempts 1000
+	Assert-AreEqual $resp.RetryAttempts 1000
 
 	# Test update execution option initial retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -InputObject $js1 -InitialRetryIntervalSeconds 100
-	Assert-AreEqual $resp.ExecutionOptions.InitialRetryIntervalSeconds 100
+	Assert-AreEqual $resp.InitialRetryIntervalSeconds 100
 
 	# Test update execution option maximum retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -InputObject $js1 -MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $resp.ExecutionOptions.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $resp.MaximumRetryIntervalSeconds 1000
 
 	# Test update execution option maximum retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -InputObject $js1 -RetryIntervalBackoffMultiplier 5.2
-	Assert-AreEqual $resp.ExecutionOptions.RetryIntervalBackoffMultiplier 5.2
+	Assert-AreEqual $resp.RetryIntervalBackoffMultiplier 5.2
 }
 
 <#
@@ -635,23 +635,23 @@ function Test-UpdateJobStepWithResourceId ($a1)
 
 	# Test update execution option timeout seconds
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceId $js1.ResourceId -TimeoutSeconds 100
-	Assert-AreEqual $resp.ExecutionOptions.TimeoutSeconds 100
+	Assert-AreEqual $resp.TimeoutSeconds 100
 
 	# Test update execution option retry attempts
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceId $js1.ResourceId -RetryAttempts 1000
-	Assert-AreEqual $resp.ExecutionOptions.RetryAttempts 1000
+	Assert-AreEqual $resp.RetryAttempts 1000
 
 	# Test update execution option initial retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceId $js1.ResourceId -InitialRetryIntervalSeconds 100
-	Assert-AreEqual $resp.ExecutionOptions.InitialRetryIntervalSeconds 100
+	Assert-AreEqual $resp.InitialRetryIntervalSeconds 100
 
 	# Test update execution option maximum retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceId $js1.ResourceId -MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $resp.ExecutionOptions.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $resp.MaximumRetryIntervalSeconds 1000
 
 	# Test update execution option maximum retry interval seconds
 	$resp = Set-AzureRmSqlElasticJobStep -ResourceId $js1.ResourceId -RetryIntervalBackoffMultiplier 5.2
-	Assert-AreEqual $resp.ExecutionOptions.RetryIntervalBackoffMultiplier 5.2
+	Assert-AreEqual $resp.RetryIntervalBackoffMultiplier 5.2
 }
 
 <#
@@ -723,23 +723,23 @@ function Test-UpdateJobStepWithPiping ($a1)
 
 	# Test update execution option timeout seconds
 	$resp = $js1 | Set-AzureRmSqlElasticJobStep -TimeoutSeconds 100
-	Assert-AreEqual $resp.ExecutionOptions.TimeoutSeconds 100
+	Assert-AreEqual $resp.TimeoutSeconds 100
 
 	# Test update execution option retry attempts
 	$resp = $js1 | Set-AzureRmSqlElasticJobStep -RetryAttempts 1000
-	Assert-AreEqual $resp.ExecutionOptions.RetryAttempts 1000
+	Assert-AreEqual $resp.RetryAttempts 1000
 
 	# Test update execution option initial retry interval seconds
 	$resp = $js1 | Set-AzureRmSqlElasticJobStep -InitialRetryIntervalSeconds 100
-	Assert-AreEqual $resp.ExecutionOptions.InitialRetryIntervalSeconds 100
+	Assert-AreEqual $resp.InitialRetryIntervalSeconds 100
 
 	# Test update execution option maximum retry interval seconds
 	$resp = $js1 | Set-AzureRmSqlElasticJobStep -MaximumRetryIntervalSeconds 1000
-	Assert-AreEqual $resp.ExecutionOptions.MaximumRetryIntervalSeconds 1000
+	Assert-AreEqual $resp.MaximumRetryIntervalSeconds 1000
 
 	# Test update execution option maximum retry interval seconds
 	$resp = $js1 | Set-AzureRmSqlElasticJobStep -RetryIntervalBackoffMultiplier 5.2
-	Assert-AreEqual $resp.ExecutionOptions.RetryIntervalBackoffMultiplier 5.2
+	Assert-AreEqual $resp.RetryIntervalBackoffMultiplier 5.2
 }
 
 <#

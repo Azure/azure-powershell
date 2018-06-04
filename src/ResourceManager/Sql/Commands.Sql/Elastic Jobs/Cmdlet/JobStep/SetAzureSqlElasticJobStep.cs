@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.Commands.Sql.Elastic_Jobs.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
 {
@@ -456,14 +457,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 CredentialName = this.CredentialName != null ?
                     CreateCredentialId(this.ResourceGroupName, this.ServerName, this.AgentName, this.CredentialName) :
                     CreateCredentialId(this.ResourceGroupName, this.ServerName, this.AgentName, existingEntity.CredentialName),
-                ExecutionOptions = new Management.Sql.Models.JobStepExecutionOptions
-                {
-                    InitialRetryIntervalSeconds = this.InitialRetryIntervalSeconds != null ? this.InitialRetryIntervalSeconds : existingEntity.ExecutionOptions.InitialRetryIntervalSeconds,
-                    MaximumRetryIntervalSeconds = this.MaximumRetryIntervalSeconds != null ? this.MaximumRetryIntervalSeconds : existingEntity.ExecutionOptions.MaximumRetryIntervalSeconds,
-                    RetryAttempts = this.RetryAttempts != null ? this.RetryAttempts : existingEntity.ExecutionOptions.RetryAttempts,
-                    RetryIntervalBackoffMultiplier = this.RetryIntervalBackoffMultiplier != null ? this.RetryIntervalBackoffMultiplier : existingEntity.ExecutionOptions.RetryIntervalBackoffMultiplier,
-                    TimeoutSeconds = this.TimeoutSeconds != null ? this.TimeoutSeconds : existingEntity.ExecutionOptions.TimeoutSeconds
-                },
+                InitialRetryIntervalSeconds = this.InitialRetryIntervalSeconds ?? existingEntity.InitialRetryIntervalSeconds,
+                MaximumRetryIntervalSeconds = this.MaximumRetryIntervalSeconds ?? existingEntity.MaximumRetryIntervalSeconds,
+                RetryAttempts = this.RetryAttempts ?? existingEntity.RetryAttempts,
+                RetryIntervalBackoffMultiplier = this.RetryIntervalBackoffMultiplier ?? existingEntity.RetryIntervalBackoffMultiplier,
+                TimeoutSeconds = this.TimeoutSeconds ?? existingEntity.TimeoutSeconds,
                 CommandText = this.CommandText != null ? this.CommandText : existingEntity.CommandText,
                 StepId = this.StepId != null ? this.StepId : existingEntity.StepId,
             };
@@ -477,7 +475,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 // Output database object was given
                 if (this.OutputDatabaseObject != null)
                 {
-                    updatedModel.Output = new Management.Sql.Models.JobStepOutput
+                    updatedModel.Output = new AzureSqlElasticJobStepOutputModel
                     {
                         SubscriptionId = this.OutputDatabaseObject != null ? Guid.Parse(new ResourceIdentifier(this.OutputDatabaseObject.ResourceId).Subscription) : existingEntity.Output.SubscriptionId,
                         ResourceGroupName = this.OutputDatabaseObject != null ? this.OutputDatabaseObject.ResourceGroupName : existingEntity.Output.ResourceGroupName,
@@ -489,7 +487,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 else if (this.OutputDatabaseResourceId != null)
                 {
                     var databaseIdentifier = new ResourceIdentifier(this.OutputDatabaseResourceId);
-                    updatedModel.Output = new Management.Sql.Models.JobStepOutput
+                    updatedModel.Output = new AzureSqlElasticJobStepOutputModel
                     {
                         SubscriptionId = Guid.Parse(databaseIdentifier.Subscription),
                         ResourceGroupName = databaseIdentifier.ResourceGroupName,
@@ -510,7 +508,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             {
                 if (this.OutputDatabaseObject != null)
                 {
-                    updatedModel.Output = new Management.Sql.Models.JobStepOutput
+                    updatedModel.Output = new AzureSqlElasticJobStepOutputModel
                     {
                         SubscriptionId = this.OutputDatabaseObject != null ? Guid.Parse(new ResourceIdentifier(this.OutputDatabaseObject.ResourceId).Subscription) : (Guid?)null,
                         ResourceGroupName = this.OutputDatabaseObject != null ? this.OutputDatabaseObject.ResourceGroupName : null,
@@ -526,7 +524,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 {
                     var databaseIdentifier = new ResourceIdentifier(this.OutputDatabaseResourceId);
 
-                    updatedModel.Output = new Management.Sql.Models.JobStepOutput
+                    updatedModel.Output = new AzureSqlElasticJobStepOutputModel
                     {
                         SubscriptionId = Guid.Parse(databaseIdentifier.Subscription),
                         ResourceGroupName = databaseIdentifier.ResourceGroupName,

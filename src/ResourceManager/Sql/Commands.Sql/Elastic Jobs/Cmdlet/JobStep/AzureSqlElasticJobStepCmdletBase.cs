@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// <summary>
     /// The elastic job step cmdlet base
     /// </summary>
-    /// <typeparam name="IO">The input object model</typeparam>
-    public abstract class AzureSqlElasticJobStepCmdletBase<IO> : AzureSqlElasticJobsCmdletBase<IO, IEnumerable<AzureSqlElasticJobStepModel>, AzureSqlElasticJobAdapter>
+    /// <typeparam name="TInputObject">The input object model</typeparam>
+    public abstract class AzureSqlElasticJobStepCmdletBase<TInputObject> : AzureSqlElasticJobsCmdletBase<TInputObject, IEnumerable<AzureSqlElasticJobStepModel>, AzureSqlElasticJobAdapter>
     {
         /// <summary>
         /// Intializes the model adapter
