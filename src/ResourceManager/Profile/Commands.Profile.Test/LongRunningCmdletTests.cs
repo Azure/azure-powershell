@@ -233,7 +233,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             return cmdlet;
         }
 
-        public void HandleStateChange(object sender, JobStateEventArgs args)
+        private void HandleStateChange(object sender, JobStateEventArgs args)
         {
             lock (lockObject)
             {
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             Assert.Equal("Completed", job.StatusMessage);
             Assert.True(job.HasMoreData);
-            Assert.True(job.Debug.Any(t => t.Message == Debug));
+            Assert.Contains(job.Debug, t => t.Message == Debug);
             Assert.Collection(job.Warning, t => Assert.Equal(Warning, t.Message));
             Assert.Collection(job.Verbose, t => Assert.Equal(Verbose, t.Message));
             Assert.Collection(job.Progress, t => Assert.Equal(Progress, t));

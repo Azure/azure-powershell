@@ -102,18 +102,18 @@ namespace Microsoft.Azure.Commands.Batch.Test
                 return;
             }
 
-            Assert.Equal<string>(context1.AccountEndpoint, context2.AccountEndpoint);
-            Assert.Equal<string>(context1.AccountName, context2.AccountName);
-            Assert.Equal<string>(context1.Id, context2.Id);
-            Assert.Equal<string>(context1.Location, context2.Location);
-            Assert.Equal<string>(context1.PrimaryAccountKey, context2.PrimaryAccountKey);
-            Assert.Equal<string>(context1.ResourceGroupName, context2.ResourceGroupName);
-            Assert.Equal<string>(context1.SecondaryAccountKey, context2.SecondaryAccountKey);
-            Assert.Equal<string>(context1.State, context2.State);
-            Assert.Equal<string>(context1.Subscription, context2.Subscription);
-            Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
-            Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
-            Assert.Equal<string>(context1.AutoStorageProperties.StorageAccountId, context2.AutoStorageProperties.StorageAccountId);
+            Assert.Equal(context1.AccountEndpoint, context2.AccountEndpoint);
+            Assert.Equal(context1.AccountName, context2.AccountName);
+            Assert.Equal(context1.Id, context2.Id);
+            Assert.Equal(context1.Location, context2.Location);
+            Assert.Equal(context1.PrimaryAccountKey, context2.PrimaryAccountKey);
+            Assert.Equal(context1.ResourceGroupName, context2.ResourceGroupName);
+            Assert.Equal(context1.SecondaryAccountKey, context2.SecondaryAccountKey);
+            Assert.Equal(context1.State, context2.State);
+            Assert.Equal(context1.Subscription, context2.Subscription);
+            Assert.Equal(context1.TagsTable, context2.TagsTable);
+            Assert.Equal(context1.TaskTenantUrl, context2.TaskTenantUrl);
+            Assert.Equal(context1.AutoStorageProperties.StorageAccountId, context2.AutoStorageProperties.StorageAccountId);
         }
 
         /// <summary>

@@ -61,7 +61,6 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll',
     '.\Microsoft.Extensions.Caching.Abstractions.dll', 
     '.\Microsoft.Extensions.Caching.Memory.dll', 
     '.\Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
-    '.\Microsoft.Extensions.DependencyModel.dll', 
     '.\Microsoft.Extensions.Options.dll', 
     '.\Microsoft.Extensions.Primitives.dll'
 

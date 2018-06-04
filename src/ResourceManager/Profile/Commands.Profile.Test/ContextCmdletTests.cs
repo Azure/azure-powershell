@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             }
 
             // Verify
-            Assert.Equal(0, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Empty(commandRuntimeMock.OutputPipeline);
             Assert.True(commandRuntimeMock.ErrorStream.Count == 0);
         }
 
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             getCmdlet.ExecuteCmdlet();
             getCmdlet.InvokeEndProcessing();
             Assert.True(commandRuntimeMock.OutputPipeline != null);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             Assert.Equal(defaultContextName, ((PSAzureContext)commandRuntimeMock.OutputPipeline[0]).Name);
 
             var clearCmdlet = new ClearAzureRmContext();
@@ -236,8 +236,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             clearCmdlet.ExecuteCmdlet();
             clearCmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
-            var result = (bool)(commandRuntimeMock.OutputPipeline[0]);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
+            var result = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(result);
             Assert.True(profile.Contexts != null);
             Assert.Equal(1, profile.Contexts.Count);
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.NotNull(testContext.Name);
             Assert.True(defaultContext.IsEqual(testContext));
             Assert.False(profile.Contexts.ContainsKey(defaultContextName));
-            Assert.False(profile.Contexts.Any(c => defaultContext.IsEqual(c.Value)));
+            Assert.DoesNotContain(profile.Contexts, c => defaultContext.IsEqual(c.Value));
             Assert.False(string.IsNullOrEmpty(profile.DefaultContextKey));
             Assert.NotNull(profile.DefaultContext);
         }
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.NotNull(testContext.Name);
             Assert.True(removedContext.IsEqual(testContext));
             Assert.False(profile.Contexts.ContainsKey(removedContextKey));
-            Assert.False(profile.Contexts.Any(c => removedContext.IsEqual(c.Value)));
+            Assert.DoesNotContain(profile.Contexts, c => removedContext.IsEqual(c.Value));
             Assert.Equal(defaultContextKey, profile.DefaultContextKey);
         }
 
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(0, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Empty(commandRuntimeMock.OutputPipeline);
             Assert.Equal(contextCount, profile.Contexts.Count);
         }
 
@@ -338,7 +338,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(0, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Empty(commandRuntimeMock.OutputPipeline);
             Assert.Equal(contextCount, profile.Contexts.Count);
         }
 
@@ -357,7 +357,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             PSAzureContext testContext = commandRuntimeMock.OutputPipeline[0] as PSAzureContext;
             Assert.NotNull(testContext);
             Assert.NotNull(testContext.Name);
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             PSAzureContext testContext = commandRuntimeMock.OutputPipeline[0] as PSAzureContext;
             Assert.NotNull(testContext);
             Assert.NotNull(testContext.Name);
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             PSAzureContext testContext = commandRuntimeMock.OutputPipeline[0] as PSAzureContext;
             Assert.NotNull(testContext);
             Assert.NotNull(testContext.Name);
@@ -439,7 +439,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             PSAzureContext testContext = commandRuntimeMock.OutputPipeline[0] as PSAzureContext;
             Assert.NotNull(testContext);
             Assert.NotNull(testContext.Name);
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             PSAzureContext testContext = commandRuntimeMock.OutputPipeline[0] as PSAzureContext;
             Assert.NotNull(testContext);
             Assert.NotNull(testContext.Name);
@@ -507,7 +507,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             PSAzureContext testContext = commandRuntimeMock.OutputPipeline[0] as PSAzureContext;
             Assert.NotNull(testContext);
             Assert.NotNull(testContext.Name);
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(0, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Empty(commandRuntimeMock.OutputPipeline);
             Assert.True(profile.Contexts.ContainsKey(contextNameToRename));
             Assert.True(contextToRename.IsEqual(profile.Contexts[contextNameToRename]));
             Assert.False(string.IsNullOrEmpty(profile.DefaultContextKey));
@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(0, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Empty(commandRuntimeMock.OutputPipeline);
             Assert.True(profile.Contexts.ContainsKey(newContextName));
             Assert.True(contextToRename.IsEqual(profile.Contexts[newContextName]));
             Assert.False(string.IsNullOrEmpty(profile.DefaultContextKey));
@@ -596,7 +596,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(0, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Empty(commandRuntimeMock.OutputPipeline);
             Assert.False(string.IsNullOrEmpty(profile.DefaultContextKey));
             Assert.Equal(defaultContextName, profile.DefaultContextKey);
             Assert.Equal(contextCount, profile.Contexts.Count);
@@ -617,7 +617,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             bool testResult = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(testResult);
             Assert.Equal(1, profile.Contexts.Count);
@@ -640,7 +640,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
             Assert.NotNull(commandRuntimeMock.OutputPipeline);
-            Assert.Equal(1, commandRuntimeMock.OutputPipeline.Count);
+            Assert.Single(commandRuntimeMock.OutputPipeline);
             bool testResult = (bool)commandRuntimeMock.OutputPipeline[0];
             Assert.True(testResult);
             Assert.Equal(1, profile.Contexts.Count);

@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2");
         }
 
-        public static void TestDomainName(string psTest, Func<string> getUniqueId)
+        internal static void TestDomainName(string psTest, Func<string> getUniqueId)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();

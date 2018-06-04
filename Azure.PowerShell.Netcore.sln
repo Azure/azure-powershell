@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Aks.Netcore", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Strategies.Netcore", "src\ResourceManager\Common\Commands.Common.Strategies\Common.Strategies.Netcore.csproj", "{77492655-0086-49E8-B941-7C3E9D5448E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Common.Compute.Netcore", "src\Common\Commands.Common.Compute\Commands.Common.Compute.Netcore.csproj", "{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Compute.Netcore", "src\Common\Commands.Common.Compute\Common.Compute.Netcore.csproj", "{5E5D1F8E-92C8-40EB-AABA-DFD12AFD6D0A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.AnalysisServices.Netcore", "src\ResourceManager\AnalysisServices\Commands.AnalysisServices\Commands.AnalysisServices.Netcore.csproj", "{C348F9F1-3CF4-4B98-91C7-C13C0386DBC7}"
 EndProject
