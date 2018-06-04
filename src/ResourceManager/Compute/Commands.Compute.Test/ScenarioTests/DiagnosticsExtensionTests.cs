@@ -103,10 +103,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithWrongName.json");
 
             var exception = Record.Exception(() => DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resouce-id", null, null));
-            Assert.IsType(typeof(ArgumentException), exception);
+            Assert.IsType<ArgumentException>(exception);
 
 
-            string[] configs = new[] {
+            string[] configs = {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithWrongName.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithWrongName.xml")
             };
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             foreach (var configPath in configs)
             {
                 exception = Record.Exception(() => DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(configPath, "wrong-name", "a-key", "an-endpoint"));
-                Assert.IsType(typeof(ArgumentException), exception);
+                Assert.IsType<ArgumentException>(exception);
             }
         }
 
@@ -127,9 +127,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
             string sasTokenValue = "This-is-a-sas-token";
             var result = DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resource-id", null, null);
-            Assert.Equal<string>(sasTokenValue, result.Item2["storageAccountSasToken"] as string);
+            Assert.Equal(sasTokenValue, result.Item2["storageAccountSasToken"] as string);
 
-            string[] configs = new[] {
+            string[] configs = {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithSasToken.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithSasToken.xml")
             };
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 var privateSettings = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(configPath, "[StorageAccountName]", "a-key", "an-endpoint");
                 Assert.Null(privateSettings["storageAccountKey"]);
                 Assert.NotNull(privateSettings["storageAccountEndPoint"]);
-                Assert.Equal<string>(sasTokenValue, privateSettings["storageAccountSasToken"] as string);
+                Assert.Equal(sasTokenValue, privateSettings["storageAccountSasToken"] as string);
             }
         }
 
@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             string storageTypeValue = "TableAndBlob";
 
             var result = DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resource-id", null, null);
-            Assert.Equal<string>(storageTypeValue, result.Item1["StorageType"] as string);
+            Assert.Equal(storageTypeValue, result.Item1["StorageType"] as string);
 
-            string[] configs = new[] {
+            string[] configs = {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithStorageType.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithStorageType.xml")
             };
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             foreach (var configPath in configs)
             {
                 var publicSettings = DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(configPath, "[StorageAccountName]", "dummy", null);
-                Assert.Equal<string>(storageTypeValue, publicSettings["StorageType"] as string);
+                Assert.Equal(storageTypeValue, publicSettings["StorageType"] as string);
             }
         }
     }
