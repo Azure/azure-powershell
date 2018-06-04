@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-CreateVcoreElasticPoolWithLicenseType");
         }
 
+        [Fact]
         public void TestElasticPoolCreateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-CreateElasticPoolWithZoneRedundancy");
