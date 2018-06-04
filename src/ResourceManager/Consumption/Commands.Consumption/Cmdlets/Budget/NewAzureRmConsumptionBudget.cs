@@ -40,6 +40,20 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [ValidateSet("Cost", "Usage")]
         public string Category;
 
+        [Parameter(Mandatory = false, HelpMessage = "Email addresses to send the budget notification to when the threshold is exceeded.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateCount(1, 50)]
+        public string[] ContactEmail;
+
+        [Parameter(Mandatory = false, HelpMessage = "Action groups to send the budget notification to when the threshold is exceeded.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ContactGroup;
+
+        [Parameter(Mandatory = false, HelpMessage = "Contact roles to send the budget notification to when the threshold is exceeded.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("Owner", "Reader", "Contributor")]
+        public string[] ContactRole;
+
         [Parameter(Mandatory = false, HelpMessage = "End date (YYYY-MM-DD in UTC) of time period of a budget.")]
         [ValidateNotNullOrEmpty]
         public DateTime? EndDate;
@@ -51,6 +65,17 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [Parameter(Mandatory = true, HelpMessage = "Name of a budget.")]
         [ValidateNotNullOrEmpty]
         public string Name;
+
+        [Parameter(Mandatory = false, HelpMessage = "The notification is enabled or not.")]
+        public SwitchParameter NotificationEnabled;
+
+        [Parameter(Mandatory = false, HelpMessage = "Key of a notification associated with a budget, required to create a notification with notification enabled switch, notification threshold, contact emails, contact groups, or contact roles.")]
+        [ValidateNotNullOrEmpty]
+        public string NotificationKey;
+
+        [Parameter(Mandatory = false, HelpMessage = "Threshold value associated with a notification. Notification is sent when the cost or usage exceeded the threshold. It is always percent and has to be between 0 and 1000.")]
+        [ValidateRange(0, 1000)]
+        public decimal? NotificationThreshold;
 
         [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of resource instances to filter on.")]
         [ValidateNotNullOrEmpty]
@@ -76,36 +101,13 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 
         public override void ExecuteCmdlet()
         {
-            var timePeriod = new BudgetTimePeriod();
-            if (this.StartDate != null)
-            {
-                timePeriod.StartDate = this.StartDate.Value;
-            }
-            if (this.EndDate != null)
-            {
-                timePeriod.EndDate = this.EndDate.Value;
-            }
-
-            IList<string> resourceGroups = null;                       
-            if (!string.IsNullOrWhiteSpace(this.ResourceGroupFilter?.FirstOrDefault()))
-            {
-                resourceGroups = this.ResourceGroupFilter.ToList();
-            }
-
-            IList<string> resources = null;
-            if (!string.IsNullOrWhiteSpace(this.ResourceFilter?.FirstOrDefault()))
-            {
-                resources = this.ResourceFilter.ToList();
-            }
-
-            IList<string> meters = null;
-            if (!string.IsNullOrWhiteSpace(this.MeterFilter?.FirstOrDefault()))
-            {
-                meters = this.MeterFilter.ToList();
-            }
-            var filters = new Filters(resourceGroups, resources, meters);
-
-            var requestBudget = new Budget(this.Category, this.Amount, this.TimeGrain, timePeriod, filters:filters);
+            var requestBudget = new Budget(
+                this.Category, 
+                this.Amount, 
+                this.TimeGrain, 
+                CreateBudgetTimePeriod(),
+                filters: CreateFilters(), 
+                notifications: CreateNotifications());
 
             Budget responseBudget = null;
             try
@@ -130,6 +132,94 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             {
                 WriteObject(new PSBudget(responseBudget), true);
             }
+        }
+
+        private BudgetTimePeriod CreateBudgetTimePeriod()
+        {
+            var timePeriod = new BudgetTimePeriod();
+            if (this.StartDate != null)
+            {
+                timePeriod.StartDate = this.StartDate.Value;
+            }
+            if (this.EndDate != null)
+            {
+                timePeriod.EndDate = this.EndDate.Value;
+            }
+
+            return timePeriod;
+        }
+
+        private Filters CreateFilters()
+        {
+            IList<string> resourceGroups = null;
+            if (!string.IsNullOrWhiteSpace(this.ResourceGroupFilter?.FirstOrDefault()))
+            {
+                resourceGroups = this.ResourceGroupFilter.ToList();
+            }
+
+            IList<string> resources = null;
+            if (!string.IsNullOrWhiteSpace(this.ResourceFilter?.FirstOrDefault()))
+            {
+                resources = this.ResourceFilter.ToList();
+            }
+
+            IList<string> meters = null;
+            if (!string.IsNullOrWhiteSpace(this.MeterFilter?.FirstOrDefault()))
+            {
+                meters = this.MeterFilter.ToList();
+            }
+            return new Filters(resourceGroups, resources, meters);
+        }
+
+        private IDictionary<string, Notification> CreateNotifications()
+        {
+            IDictionary<string, Notification> budgetNotification = new Dictionary<string, Notification>();
+
+            if (!string.IsNullOrWhiteSpace(this.NotificationKey))
+            {
+                var notification = new Notification
+                {
+                    OperatorProperty = "GreaterThanOrEqualTo"
+                };
+
+                if (this.NotificationEnabled.IsPresent)
+                {
+                    notification.Enabled = true;
+                }
+
+                if (this.NotificationThreshold != null)
+                {
+                    notification.Threshold = this.NotificationThreshold.Value;
+                }
+
+                var contactCount = 0;
+                if (!string.IsNullOrWhiteSpace(this.ContactEmail?.FirstOrDefault()))
+                {
+                    notification.ContactEmails = this.ContactEmail.ToList();
+                    contactCount += notification.ContactEmails.Count;
+                }
+
+                if (!string.IsNullOrWhiteSpace(this.ContactGroup?.FirstOrDefault()))
+                {
+                    notification.ContactGroups = this.ContactGroup.ToList();
+                    contactCount += notification.ContactGroups.Count;
+                }
+
+                if (!string.IsNullOrWhiteSpace(this.ContactRole?.FirstOrDefault()))
+                {
+                    notification.ContactRoles = this.ContactRole.ToList();
+                    contactCount += notification.ContactRoles.Count;
+                }
+
+                if (contactCount <= 0)
+                {
+                    WriteWarning("Notification cannot have all of Contact Emails, Contact Roles and Contact Groups empty.");
+                }
+
+                budgetNotification.Add(this.NotificationKey, notification);
+            }
+
+            return budgetNotification;
         }
     }
 }

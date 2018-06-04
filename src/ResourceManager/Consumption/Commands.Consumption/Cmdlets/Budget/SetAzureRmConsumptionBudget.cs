@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Consumption.Common;
 using Microsoft.Azure.Commands.Consumption.Models;
 using Microsoft.Azure.Management.Consumption;
 using Microsoft.Azure.Management.Consumption.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
@@ -39,6 +40,20 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [ValidateSet("Cost", "Usage")]
         public string Category;
 
+        [Parameter(Mandatory = false, HelpMessage = "Email addresses to send the budget notification to when the threshold is exceeded.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateCount(1, 50)]
+        public string[] ContactEmail;
+
+        [Parameter(Mandatory = false, HelpMessage = "Action groups to send the budget notification to when the threshold is exceeded.")]
+        [ValidateNotNullOrEmpty]
+        public string[] ContactGroup;
+
+        [Parameter(Mandatory = false, HelpMessage = "Contact roles to send the budget notification to when the threshold is exceeded.")]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("Owner", "Reader", "Contributor")]
+        public string[] ContactRole;
+
         [Parameter(Mandatory = false, HelpMessage = "End date (YYYY-MM-DD in UTC) of time period of a budget.")]
         [ValidateNotNullOrEmpty]
         public DateTime? EndDate;
@@ -50,6 +65,17 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [Parameter(Mandatory = true, HelpMessage = "Name of a budget.")]
         [ValidateNotNullOrEmpty]
         public string Name;
+
+        [Parameter(Mandatory = false, HelpMessage = "The notification is enabled or not.")]
+        public SwitchParameter NotificationEnabled;
+
+        [Parameter(Mandatory = false, HelpMessage = "Key of a notification associated with a budget, required to create a notification with notification enabled switch, notification threshold, contact emails, contact groups, or contact roles.")]
+        [ValidateNotNullOrEmpty]
+        public string NotificationKey;
+
+        [Parameter(Mandatory = false, HelpMessage = "Threshold value associated with a notification. Notification is sent when the cost or usage exceeded the threshold. It is always percent and has to be between 0 and 1000.")]
+        [ValidateRange(0, 1000)]
+        public decimal? NotificationThreshold;
 
         [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of resource instances to filter on.")]
         [ValidateNotNullOrEmpty]
@@ -145,6 +171,66 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             if (!string.IsNullOrWhiteSpace(this.TimeGrain))
             {
                 budget.TimeGrain = this.TimeGrain;
+            }
+
+            return UpdateBudgetNotification(budget);
+        }
+
+        private Budget UpdateBudgetNotification(Budget budget)
+        {
+            var notifications = budget.Notifications;
+
+            if (!string.IsNullOrWhiteSpace(this.NotificationKey))
+            {
+                var notification = notifications.GetValueOrDefault(this.NotificationKey,
+                    new Notification
+                    {
+                        OperatorProperty = "GreaterThanOrEqualTo"
+                    });
+
+                if (this.NotificationEnabled.IsPresent)
+                {
+                    notification.Enabled = true;
+                }
+
+                if (this.NotificationThreshold != null)
+                {
+                    notification.Threshold = this.NotificationThreshold.Value;
+                }
+
+                var contactCount = 0;
+                if (!string.IsNullOrWhiteSpace(this.ContactEmail?.FirstOrDefault()))
+                {
+                    notification.ContactEmails = this.ContactEmail.ToList();
+                    contactCount += notification.ContactEmails.Count;
+                }
+
+                if (!string.IsNullOrWhiteSpace(this.ContactGroup?.FirstOrDefault()))
+                {
+                    notification.ContactGroups = this.ContactGroup.ToList();
+                    contactCount += notification.ContactGroups.Count;
+                }
+
+                if (!string.IsNullOrWhiteSpace(this.ContactRole?.FirstOrDefault()))
+                {
+                    notification.ContactRoles = this.ContactRole.ToList();
+                    contactCount += notification.ContactRoles.Count;
+                }
+
+                if (contactCount <= 0)
+                {
+                    WriteWarning("Notification cannot have all of Contact Emails, Contact Roles and Contact Groups empty.");
+                }
+
+                if (!notifications.ContainsKey(this.NotificationKey))
+                {
+                    notifications.Add(this.NotificationKey, notification);
+                }               
+
+                if (notifications.Keys.Count >= 6)
+                {
+                    WriteWarning("Budget can only have up to five notifications.");
+                }
             }
 
             return budget;

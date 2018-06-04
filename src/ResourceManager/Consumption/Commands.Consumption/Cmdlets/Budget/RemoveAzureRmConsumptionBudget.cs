@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmConsumptionBudget", SupportsShouldProcess = true)]
+    [OutputType(typeof(bool))]
     public class RemoveAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Name of a budget.")]
@@ -32,9 +33,11 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [ResourceGroupCompleter]
         public string ResourceGroupName;
 
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru;
+
         public override void ExecuteCmdlet()
         {
-            bool isRemoved = true;
             try
             {
                 if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
@@ -49,13 +52,12 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             }
             catch (ErrorResponseException e)
             {
-                isRemoved = false;
                 WriteWarning(e.Body.Error.Message);
             }
 
-            if (isRemoved)
+            if (PassThru.IsPresent)
             {
-                WriteObject("Budget with the name " + this.Name + " was successfully removed.");
+                WriteObject(true);
             }
         }
     }
