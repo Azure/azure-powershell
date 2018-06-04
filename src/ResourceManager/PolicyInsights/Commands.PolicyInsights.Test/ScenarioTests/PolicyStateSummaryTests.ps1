@@ -70,9 +70,8 @@ Get policy states summary at policy set definition scope
 function Get-AzureRmPolicyStateSummary-PolicySetDefinitionScope
 {
 	$policySetDefinitionName = Get-TestPolicySetDefinitionName
-	$from = Get-TestQueryIntervalStart
 
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicySetDefinitionName $policySetDefinitionName -Top 10 -From $from
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicySetDefinitionName $policySetDefinitionName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -83,9 +82,8 @@ Get policy states summary at policy definition scope
 function Get-AzureRmPolicyStateSummary-PolicyDefinitionScope
 {
 	$policyDefinitionName = Get-TestPolicyDefinitionName
-	$from = Get-TestQueryIntervalStart
 
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyDefinitionName $policyDefinitionName -Top 10 -From $from
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyDefinitionName $policyDefinitionName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -96,9 +94,8 @@ Get policy states summary at subscription level policy assignment scope
 function Get-AzureRmPolicyStateSummary-SubscriptionLevelPolicyAssignmentScope
 {
 	$policyAssignmentName = Get-TestPolicyAssignmentName
-	$from = Get-TestQueryIntervalStart
 
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }
 
@@ -108,10 +105,9 @@ Get policy states summary at resource group level policy assignment scope
 #>
 function Get-AzureRmPolicyStateSummary-ResourceGroupLevelPolicyAssignmentScope
 {
-	$resourceGroupName = Get-TestResourceGroupName
-	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevel
-	$from = Get-TestQueryIntervalStart
+	$resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentStates
+	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelStates
 
-    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
+    $policyStateSummary = Get-AzureRmPolicyStateSummary -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyStateSummary $policyStateSummary
 }

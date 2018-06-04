@@ -54,7 +54,7 @@ Gets test policy definition name
 #>
 function Get-TestPolicyDefinitionName
 {
-	"ebcd21e9-b89f-4a22-8654-dd3a4d8b9321"
+	"24813039-7534-408a-9842-eb99f45721b1"
 }
 
 <#
@@ -68,9 +68,36 @@ function Get-TestPolicyAssignmentName
 
 <#
 .SYNOPSIS
-Gets test policy assignment name (resource group level)
+Gets test resource group group name for resource group level policy assignment (for event tests)
 #>
-function Get-TestPolicyAssignmentNameResourceGroupLevel
+function Get-TestResourceGroupNameForPolicyAssignmentEvents
+{
+	"jilimpolicytest2"
+}
+
+<#
+.SYNOPSIS
+Gets test policy assignment name (resource group level) (for event tests)
+#>
+function Get-TestPolicyAssignmentNameResourceGroupLevelEvents
+{
+	"e9860612d8ec4a469f59af06"
+}
+
+<#
+.SYNOPSIS
+Gets test resource group group name for resource group level policy assignment (for state tests)
+#>
+function Get-TestResourceGroupNameForPolicyAssignmentStates
+{
+	"bulenttestrg"
+}
+
+<#
+.SYNOPSIS
+Gets test policy assignment name (resource group level) (for state tests)
+#>
+function Get-TestPolicyAssignmentNameResourceGroupLevelStates
 {
 	"f4d1645d-9180-4968-99df-17234d0f7019"
 }
@@ -81,7 +108,7 @@ Gets test query interval start
 #>
 function Get-TestQueryIntervalStart
 {
-	"2018-04-04 00:00:00Z"
+	"2018-03-31 00:00:00Z"
 }
 
 <#

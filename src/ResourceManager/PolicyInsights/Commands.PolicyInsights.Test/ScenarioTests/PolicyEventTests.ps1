@@ -70,9 +70,8 @@ Get policy events at policy set definition scope
 function Get-AzureRmPolicyEvent-PolicySetDefinitionScope
 {
 	$policySetDefinitionName = Get-TestPolicySetDefinitionName
-	$from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzureRmPolicyEvent -PolicySetDefinitionName $policySetDefinitionName -Top 10 -From $from
+    $policyEvents = Get-AzureRmPolicyEvent -PolicySetDefinitionName $policySetDefinitionName -Top 10
 	Validate-PolicyEvents $policyEvents 10
 }
 
@@ -83,9 +82,8 @@ Get policy events at policy definition scope
 function Get-AzureRmPolicyEvent-PolicyDefinitionScope
 {
 	$policyDefinitionName = Get-TestPolicyDefinitionName
-	$from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzureRmPolicyEvent -PolicyDefinitionName $policyDefinitionName -Top 10 -From $from
+    $policyEvents = Get-AzureRmPolicyEvent -PolicyDefinitionName $policyDefinitionName -Top 10
 	Validate-PolicyEvents $policyEvents 10
 }
 
@@ -96,9 +94,8 @@ Get policy events at subscription level policy assignment scope
 function Get-AzureRmPolicyEvent-SubscriptionLevelPolicyAssignmentScope
 {
 	$policyAssignmentName = Get-TestPolicyAssignmentName
-	$from = Get-TestQueryIntervalStart
 
-    $policyEvents = Get-AzureRmPolicyEvent -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
+    $policyEvents = Get-AzureRmPolicyEvent -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyEvents $policyEvents 10
 }
 
@@ -108,10 +105,9 @@ Get policy events at resource group level policy assignment scope
 #>
 function Get-AzureRmPolicyEvent-ResourceGroupLevelPolicyAssignmentScope
 {
-	$resourceGroupName = Get-TestResourceGroupName
-	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevel
-	$from = Get-TestQueryIntervalStart
+	$resourceGroupName = Get-TestResourceGroupNameForPolicyAssignmentEvents
+	$policyAssignmentName = Get-TestPolicyAssignmentNameResourceGroupLevelEvents
 
-    $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10 -From $from
+    $policyEvents = Get-AzureRmPolicyEvent -ResourceGroupName $resourceGroupName -PolicyAssignmentName $policyAssignmentName -Top 10
 	Validate-PolicyEvents $policyEvents 10
 }
