@@ -18,7 +18,7 @@ New budget
 #>
 function Test-NewBudget
 {
-    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-05-01 -EndDate 2018-11-01 -TimeGrain Monthly
+    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
 	Assert-NotNull $budget
 	Assert-AreEqual 60 $budget.Amount
 	Assert-AreEqual PSBudget $budget.Name
@@ -32,7 +32,7 @@ New budget at resource group level
 #>
 function Test-NewBudgetAtResourceGroupLevel
 {
-    $budget = New-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-05-01 -EndDate 2018-11-01 -TimeGrain Monthly 
+    $budget = New-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly 
 	Assert-NotNull $budget
 	Assert-AreEqual 60 $budget.Amount
 	Assert-AreEqual PSBudgetRG $budget.Name
@@ -122,7 +122,8 @@ Remove budget
 #>
 function Test-RemoveBudget
 {
-	Remove-AzureRmConsumptionBudget -Name PSBudget
+	$response = Remove-AzureRmConsumptionBudget -Name PSBudget -PassThru
+	Assert-AreEqual True $response
 }
 
 <#
@@ -131,7 +132,8 @@ Remove budget at resource group level
 #>
 function Test-RemoveBudgetAtResourceGroupLevel
 {
-	Remove-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG
+	$response = Remove-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
+	Assert-AreEqual True $response
 }
 
 <#
@@ -140,7 +142,7 @@ New budget with resource group filter
 #>
 function Test-NewBudgetWithResourceGroupFilter
 {
-    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetRGF -ResourceGroupFilter CriTest -Category Cost -StartDate 2018-05-01 -EndDate 2018-11-01 -TimeGrain Monthly
+    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetRGF -ResourceGroupFilter CriTest -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
 	Assert-NotNull $budget
 	Assert-AreEqual 60 $budget.Amount
 	Assert-AreEqual PSBudgetRGF $budget.Name
@@ -155,7 +157,7 @@ New budget with resource filter
 #>
 function Test-NewBudgetWithResourceFilter
 {
-    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetRF -ResourceFilter /subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/CriTest/providers/Microsoft.Compute/virtualMachines/MSAWSIFT2 -Category Cost -StartDate 2018-05-01 -EndDate 2018-11-01 -TimeGrain Monthly
+    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetRF -ResourceFilter /subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/CriTest/providers/Microsoft.Compute/virtualMachines/MSAWSIFT2 -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
 	Assert-NotNull $budget
 	Assert-AreEqual 60 $budget.Amount
 	Assert-AreEqual PSBudgetRF $budget.Name
@@ -170,11 +172,66 @@ New budget with meter filter
 #>
 function Test-NewBudgetWithMeterFilter
 {
-    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetMF -MeterFilter fe167397-a38d-43c3-9bb3-8e2907e56a41 -Category Usage -StartDate 2018-05-01 -EndDate 2018-11-01 -TimeGrain Monthly
+    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetMF -MeterFilter fe167397-a38d-43c3-9bb3-8e2907e56a41 -Category Usage -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
 	Assert-NotNull $budget
 	Assert-AreEqual 60 $budget.Amount
 	Assert-AreEqual PSBudgetMF $budget.Name
 	Assert-AreEqual Usage $budget.Category
 	Assert-AreEqual Monthly $budget.TimeGrain
 	Assert-AreEqual 1 $budget.Filter.Meters.Count
+}
+
+<#
+.SYNOPSIS
+New budget with notification
+#>
+function Test-NewBudgetWithNotification
+{
+    $budget = New-AzureRmConsumptionBudget -Amount 60 -Name PSBudgetNotified -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly -NotificationKey budget100Percent -NotificationEnabled -NotificationThreshold 100 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+	Assert-NotNull $budget
+	Assert-AreEqual 60 $budget.Amount
+	Assert-AreEqual PSBudgetNotified $budget.Name
+	Assert-AreEqual Cost $budget.Category
+	Assert-AreEqual Monthly $budget.TimeGrain
+	Assert-AreEqual 1 $budget.Notification.Count
+}
+
+<#
+.SYNOPSIS
+Set budget with same notification
+#>
+function Test-SetBudgetWithSameNotification
+{
+    $budget = Set-AzureRmConsumptionBudget -Name PSBudgetNotified -NotificationKey budget100Percent -NotificationDisable  
+	Assert-NotNull $budget
+	Assert-AreEqual 60 $budget.Amount
+	Assert-AreEqual PSBudgetNotified $budget.Name
+	Assert-AreEqual Cost $budget.Category
+	Assert-AreEqual Monthly $budget.TimeGrain
+	Assert-AreEqual 1 $budget.Notification.Count
+}
+
+<#
+.SYNOPSIS
+Set budget with different notification
+#>
+function Test-SetBudgetWithDifferentNotification
+{
+    $budget = Set-AzureRmConsumptionBudget -Name PSBudgetNotified -NotificationKey budget200Percent -NotificationThreshold 200 -ContactEmail johndoe@contoso.com,janesmith@contoso.com
+	Assert-NotNull $budget
+	Assert-AreEqual 60 $budget.Amount
+	Assert-AreEqual PSBudgetNotified $budget.Name
+	Assert-AreEqual Cost $budget.Category
+	Assert-AreEqual Monthly $budget.TimeGrain
+	Assert-AreEqual 2 $budget.Notification.Count
+}
+
+<#
+.SYNOPSIS
+Remove budget with pass thru
+#>
+function Test-RemoveBudgetWithPassThru
+{
+    $response = Remove-AzureRmConsumptionBudget -Name PSBudgetNotified -PassThru
+	Assert-AreEqual True $response
 }

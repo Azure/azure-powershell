@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [Parameter(Mandatory = false, HelpMessage = "The notification is enabled or not.")]
         public SwitchParameter NotificationEnabled;
 
+        [Parameter(Mandatory = false, HelpMessage = "The notification is disabled or not.")]
+        public SwitchParameter NotificationDisabled;
+
         [Parameter(Mandatory = false, HelpMessage = "Key of a notification associated with a budget, required to create a notification with notification enabled switch, notification threshold, contact emails, contact groups, or contact roles.")]
         [ValidateNotNullOrEmpty]
         public string NotificationKey;
@@ -193,6 +196,11 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
                     notification.Enabled = true;
                 }
 
+                if (this.NotificationDisabled.IsPresent)
+                {
+                    notification.Enabled = false;
+                }
+
                 if (this.NotificationThreshold != null)
                 {
                     notification.Threshold = this.NotificationThreshold.Value;
@@ -215,6 +223,21 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
                 {
                     notification.ContactRoles = this.ContactRole.ToList();
                     contactCount += notification.ContactRoles.Count;
+                }
+
+                if (notification.ContactEmails != null)
+                {
+                    contactCount += notification.ContactEmails.Count;
+                }
+
+                if (notification.ContactRoles != null)
+                {
+                    contactCount += notification.ContactRoles.Count;
+                }
+
+                if (notification.ContactGroups != null)
+                {
+                    contactCount += notification.ContactGroups.Count;
                 }
 
                 if (contactCount <= 0)

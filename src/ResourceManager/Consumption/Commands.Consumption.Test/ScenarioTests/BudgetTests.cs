@@ -120,5 +120,33 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
         {
             TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithMeterFilter");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewBudgetWithNotification()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithNotification");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetBudgetWithSameNotification()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-SetBudgetWithSameNotification");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetBudgetWithDifferentNotification()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-SetBudgetWithDifferentNotification");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveBudgetWithPassThru()
+        {
+            TestController.NewInstance.RunPowerShellTest("Test-RemoveBudgetWithPassThru");
+        }
     }
 }

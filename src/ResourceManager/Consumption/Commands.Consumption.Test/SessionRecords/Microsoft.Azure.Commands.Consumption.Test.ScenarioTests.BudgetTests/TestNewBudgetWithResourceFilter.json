@@ -4,16 +4,16 @@
       "RequestUri": "/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudgetRF?api-version=2018-01-31",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWNhYWE1YTMtMmI2Ni00MzhlLThhYjQtYmNlMzdkNTE4YzVkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29uc3VtcHRpb24vYnVkZ2V0cy9QU0J1ZGdldFJGP2FwaS12ZXJzaW9uPTIwMTgtMDEtMzE=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"category\": \"Cost\",\r\n    \"amount\": 60.0,\r\n    \"timeGrain\": \"Monthly\",\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-05-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"filters\": {\r\n      \"resources\": [\r\n        \"/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/CriTest/providers/Microsoft.Compute/virtualMachines/MSAWSIFT2\"\r\n      ]\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"category\": \"Cost\",\r\n    \"amount\": 60.0,\r\n    \"timeGrain\": \"Monthly\",\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"filters\": {\r\n      \"resources\": [\r\n        \"/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/CriTest/providers/Microsoft.Compute/virtualMachines/MSAWSIFT2\"\r\n      ]\r\n    },\r\n    \"notifications\": {}\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "413"
+          "439"
         ],
         "x-ms-client-request-id": [
-          "ac5e717d-0c69-4fa1-a3c0-cdc9a235b63b"
+          "0de084a3-f045-4ec2-85f1-3eed25b71ab2"
         ],
         "accept-language": [
           "en-US"
@@ -25,7 +25,7 @@
           "Microsoft.Azure.Management.Consumption.ConsumptionManagementClient/3.0.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudgetRF\",\r\n  \"name\": \"PSBudgetRF\",\r\n  \"type\": \"Microsoft.Consumption/budgets\",\r\n  \"eTag\": \"\\\"1d3f92728260ad4\\\"\",\r\n  \"properties\": {\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-05-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"timeGrain\": \"Monthly\",\r\n    \"amount\": 60.0,\r\n    \"currentSpend\": null,\r\n    \"category\": \"Cost\",\r\n    \"notifications\": {},\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [\r\n        \"/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/CriTest/providers/Microsoft.Compute/virtualMachines/MSAWSIFT2\"\r\n      ],\r\n      \"meters\": [],\r\n      \"tags\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudgetRF\",\r\n  \"name\": \"PSBudgetRF\",\r\n  \"type\": \"Microsoft.Consumption/budgets\",\r\n  \"eTag\": \"\\\"1d3fc465bb3df05\\\"\",\r\n  \"properties\": {\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"timeGrain\": \"Monthly\",\r\n    \"amount\": 60.0,\r\n    \"currentSpend\": null,\r\n    \"category\": \"Cost\",\r\n    \"notifications\": {},\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [\r\n        \"/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/CriTest/providers/Microsoft.Compute/virtualMachines/MSAWSIFT2\"\r\n      ],\r\n      \"meters\": [],\r\n      \"tags\": {}\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "588"
@@ -40,16 +40,16 @@
           "no-cache"
         ],
         "session-id": [
-          "f14afdbc-03e2-423d-9523-17ca78c3ea06"
+          "d37ccaa7-43e6-4177-b804-b17d9f1c04f2"
         ],
         "x-ms-request-id": [
-          "929449a5-dc52-4a46-a3dd-84cc04d62f9a"
+          "3a45eff3-83ad-4e2b-84ef-82b198876ba0"
         ],
         "x-ms-correlation-request-id": [
-          "9fbe5d29-59ff-45ae-b566-9ee2b2761f0a"
+          "e062e7a2-f7a5-49e3-8201-dcd5f6f04e88"
         ],
         "x-ms-client-request-id": [
-          "ac5e717d-0c69-4fa1-a3c0-cdc9a235b63b"
+          "0de084a3-f045-4ec2-85f1-3eed25b71ab2"
         ],
         "Access-Control-Allow-Origin": [
           "*"
@@ -64,13 +64,13 @@
           "1199"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180531T213430Z:9fbe5d29-59ff-45ae-b566-9ee2b2761f0a"
+          "WESTUS2:20180604T205524Z:e062e7a2-f7a5-49e3-8201-dcd5f6f04e88"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Thu, 31 May 2018 21:34:29 GMT"
+          "Mon, 04 Jun 2018 20:55:24 GMT"
         ],
         "Location": [
           "https://consumption.azure.com/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudgetRF?api-version=2018-01-31"
