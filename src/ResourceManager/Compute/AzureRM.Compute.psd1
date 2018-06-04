@@ -7,7 +7,7 @@
 #
 
 @{
-
+	
 # Script module or binary module file associated with this manifest.
 # RootModule = ''
 
@@ -62,7 +62,7 @@ RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.d
                '.\Microsoft.WindowsAzure.Commands.Sync.dll',
                '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll',
                '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll',
-               '.\Microsoft.Azure.Commands.Common.Strategies.4.dll'
+               '.\Microsoft.Azure.Commands.Common.Strategies.5.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

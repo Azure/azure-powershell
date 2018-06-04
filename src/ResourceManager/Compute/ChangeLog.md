@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRmVm` and `New-AzureRmVmss` are updated to use the latest `Strategies` library.
 * VMSS VM Update feature
     - Added `Update-AzureRmVmssVM` and `New-AzureRmVMDataDisk` cmdlets
     - Add VirtualMachineScaleSetVM parameter to `Add-AzureRmVMDataDisk` cmdlet to support adding a data disk to Vmss VM.
