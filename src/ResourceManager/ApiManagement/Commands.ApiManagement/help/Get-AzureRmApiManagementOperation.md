@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: D5EB9AFA-B56C-45E2-838B-4555ED1EF8F8
@@ -15,14 +15,14 @@ Gets a list or a specified API Operation.
 
 ### GetAllApiOperations (Default)
 ```
-Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String>
+Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetById
 ```
-Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> -OperationId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
+ -OperationId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,9 +54,24 @@ Specifies the identifier of the API Operation.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApiRevision
+Identifier of API Revision. This parameter is optional. If not specified, the operation will be retrieved from the currently active api revision.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -69,7 +84,7 @@ Specifies the instance of the **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,7 +114,7 @@ Specifies the operation identifier.
 ```yaml
 Type: String
 Parameter Sets: GetById
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

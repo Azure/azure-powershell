@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.3.6
+* Fixed server authentication usage with generated certificates (Issue #5998)
+
 ## Version 0.3.5
 * Update default Linux image version sku
   - NewAzureServiceFabricCluster.cs default UbuntuServer1604 Sku update

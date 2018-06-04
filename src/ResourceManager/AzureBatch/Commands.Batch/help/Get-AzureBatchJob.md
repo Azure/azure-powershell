@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 8BF49C4D-E7CD-4FD0-AFAC-9856239D24EC
@@ -134,7 +134,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -165,7 +165,7 @@ Specify a value for this parameter to get associated entities of the main entity
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -181,7 +181,7 @@ If you do not specify a filter, this cmdlet returns all jobs for the Batch accou
 ```yaml
 Type: String
 Parameter Sets: ODataFilter, ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -197,7 +197,7 @@ You cannot specify wildcard characters.
 ```yaml
 Type: String
 Parameter Sets: Id
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -213,7 +213,7 @@ To obtain a **PSCloudJobSchedule** object, use the Get-AzureBatchJobSchedule cmd
 ```yaml
 Type: PSCloudJobSchedule
 Parameter Sets: ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -228,7 +228,7 @@ Specifies the ID of the job schedule which contains the jobs.
 ```yaml
 Type: String
 Parameter Sets: ODataFilter
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -245,7 +245,7 @@ The default value is 1000.
 ```yaml
 Type: Int32
 Parameter Sets: ODataFilter, ParentObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -261,7 +261,7 @@ Specify a value for this parameter to get specific properties rather than all ob
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

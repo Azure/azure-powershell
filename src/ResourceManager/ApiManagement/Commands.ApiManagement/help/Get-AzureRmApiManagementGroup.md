@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: EEB52CCA-F5D6-4ACB-A6C9-D07C510A5878
@@ -82,7 +82,7 @@ Specifies an instance of PsApiManagementContext.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ If specified, the cmdlet attempts to find the group by the identifier.
 ```yaml
 Type: String
 Parameter Sets: GetByGroupId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,7 +128,7 @@ Specifies the name of the management group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,7 +145,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: GetByProductId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -161,7 +161,7 @@ If specified the cmdlet will return all groups the product assigned to.
 ```yaml
 Type: String
 Parameter Sets: GetByUserId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

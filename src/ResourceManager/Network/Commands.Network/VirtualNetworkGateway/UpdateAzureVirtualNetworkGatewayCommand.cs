@@ -95,6 +95,12 @@ namespace Microsoft.Azure.Commands.Network
         public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of IPSec policies for P2S VPN client tunneling protocols.")]
+        public List<PSIpsecPolicy> VpnClientIpsecPolicy { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The virtual network gateway's ASN, used to set up BGP sessions inside IPsec tunnels")]
@@ -188,11 +194,13 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
             }
 
+
             if ((this.VpnClientAddressPool != null ||
                  this.VpnClientRootCertificates != null ||
                  this.VpnClientRevokedCertificates != null ||
                  this.RadiusServerAddress != null ||
-                 this.RadiusServerSecret != null) &&
+                 this.RadiusServerSecret != null ||
+                 (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
@@ -217,6 +225,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VpnClientRevokedCertificates != null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+            }
+
+            if (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy;
             }
 
             if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||

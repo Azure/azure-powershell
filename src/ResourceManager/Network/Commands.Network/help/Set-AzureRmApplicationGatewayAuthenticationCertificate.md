@@ -24,11 +24,6 @@ The **Set-AzureRmApplicationGatewayAuthenticationCertificate** cmdlet updates an
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -ApplicationGateway
@@ -37,7 +32,7 @@ Specifies the name of application gateway for which this cmdlet updates an authe
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -52,7 +47,7 @@ Specifies the path of the authentication certificate file with which this cmdlet
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -82,7 +77,7 @@ Specifies the name of the authentication certificate that this cmdlet updates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

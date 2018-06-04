@@ -26,6 +26,13 @@ Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcher <PSNetworkWat
  [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### SetByLocation
+```
+Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherLocation <String>
+ [-Location <System.Collections.Generic.List`1[System.String]>] [-Country <String>] [-State <String>]
+ [-City <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### SetByResourceId
 ```
 Get-AzureRmNetworkWatcherReachabilityProvidersList -ResourceId <String>
@@ -76,7 +83,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,7 +98,7 @@ The name of the city.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,7 +113,7 @@ The name of the country.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,7 +143,7 @@ Optional Azure regions to scope the query to.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,12 +158,27 @@ The network watcher resource.
 ```yaml
 Type: PSNetworkWatcher
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -NetworkWatcherLocation
+Location of the network watcher.
+
+```yaml
+Type: String
+Parameter Sets: SetByLocation
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -181,7 +203,7 @@ The name of the network watcher resource group.
 ```yaml
 Type: String
 Parameter Sets: SetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -196,7 +218,7 @@ The Id of network watcher resource.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -211,7 +233,7 @@ The name of the state.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -244,7 +266,7 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 
 [Remove-AzureRmNetworkWatcher](./Remove-AzureRmNetworkWatcher.md)
 
-[Test-AzureRmNetworkWatcherIPFlow](./Test-AzureRmNetworkWatcherIPFlow.md)
+[Get-AzureRmNetworkWatcherNextHop](./Get-AzureRmNetworkWatcherNextHop.md)
 
 [Get-AzureRmNetworkWatcherSecurityGroupView](./Get-AzureRmNetworkWatcherSecurityGroupView.md)
 
@@ -261,3 +283,33 @@ Keywords: azure, azurerm, arm, resource, management, manager, network, networkin
 [Remove-AzureRmNetworkWatcherPacketCapture](./Remove-AzureRmNetworkWatcherPacketCapture.md)
 
 [Stop-AzureRmNetworkWatcherPacketCapture](./Stop-AzureRmNetworkWatcherPacketCapture.md)
+
+[New-AzureRmNetworkWatcherProtocolConfiguration](./New-AzureRmNetworkWatcherProtocolConfiguration.md)
+
+[Test-AzureRmNetworkWatcherIPFlow](./Test-AzureRmNetworkWatcherIPFlow.md)
+
+[Test-AzureRmNetworkWatcherConnectivity](./Test-AzureRmNetworkWatcherConnectivity.md)
+
+[Stop-AzureRmNetworkWatcherConnectionMonitor](./Stop-AzureRmNetworkWatcherConnectionMonitor.md)
+
+[Start-AzureRmNetworkWatcherConnectionMonitor](./Start-AzureRmNetworkWatcherConnectionMonitor.md)
+
+[Set-AzureRmNetworkWatcherConnectionMonitor](./Set-AzureRmNetworkWatcherConnectionMonitor.md)
+
+[Set-AzureRmNetworkWatcherConfigFlowLog](./Set-AzureRmNetworkWatcherConfigFlowLog.md)
+
+[Remove-AzureRmNetworkWatcherConnectionMonitor](./Remove-AzureRmNetworkWatcherConnectionMonitor.md)
+
+[New-AzureRmNetworkWatcherConnectionMonitor](./New-AzureRmNetworkWatcherConnectionMonitor.md)
+
+[Get-AzureRmNetworkWatcherTroubleshootingResult](./Get-AzureRmNetworkWatcherTroubleshootingResult.md)
+
+[Get-AzureRMNetworkWatcherReachabilityReport](./Get-AzureRMNetworkWatcherReachabilityReport.md)
+
+[Get-AzureRmNetworkWatcherReachabilityProvidersList](./Get-AzureRmNetworkWatcherReachabilityProvidersList.md)
+
+[Get-AzureRmNetworkWatcherFlowLogStatus](./Get-AzureRmNetworkWatcherFlowLogStatus.md)
+
+[Get-AzureRmNetworkWatcherConnectionMonitorReport](./Get-AzureRmNetworkWatcherConnectionMonitorReport)
+
+[Get-AzureRmNetworkWatcherConnectionMonitor](./Get-AzureRmNetworkWatcherConnectionMonitor)

@@ -36,11 +36,6 @@ The **Add-AzureRmApplicationGatewayUrlPathMapConfig** cmdlet adds an array of UR
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -ApplicationGateway
@@ -49,7 +44,7 @@ Specifies the application gateway to which this cmdlet adds a URL path map confi
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -64,7 +59,7 @@ Specifies the default backend address pool to route in case none of the rules sp
 ```yaml
 Type: PSApplicationGatewayBackendAddressPool
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -79,7 +74,7 @@ Specifies the default backend address pool ID.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -94,7 +89,7 @@ Specifies the default backend HTTP settings to use in case none of the rules spe
 ```yaml
 Type: PSApplicationGatewayBackendHttpSettings
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -109,7 +104,7 @@ Specifies the default backend HTTP settings ID.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -139,7 +134,7 @@ Application gateway default RedirectConfiguration
 ```yaml
 Type: PSApplicationGatewayRedirectConfiguration
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -154,7 +149,7 @@ ID of the application gateway default RedirectConfiguration
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -169,7 +164,7 @@ Specifies the URL path map name that this cmdlet adds to the backend server pool
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -185,7 +180,7 @@ The path rules are order sensitive, they are applied in order they are specified
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

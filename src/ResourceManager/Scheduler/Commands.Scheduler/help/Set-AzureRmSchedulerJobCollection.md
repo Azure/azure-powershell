@@ -24,11 +24,6 @@ The **Set-AzureRmSchedulerJobCollection** cmdlet modifies a job collection in Az
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
