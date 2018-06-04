@@ -14,9 +14,11 @@ Update a budget in either a subscription or a resource group.
 
 ```
 Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] [-Amount <Decimal>]
- [-Category <String>] [-EndDate <DateTime>] [-MeterFilter <String[]>] -Name <String>
- [-ResourceFilter <String[]>] [-ResourceGroupFilter <String[]>] [-ResourceGroupName <String>]
- [-StartDate <DateTime>] [-TimeGrain <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Category <String>] [-ContactEmail <String[]>] [-ContactGroup <String[]>] [-ContactRole <String[]>]
+ [-EndDate <DateTime>] [-MeterFilter <String[]>] -Name <String> [-NotificationEnabled] [-NotificationDisabled]
+ [-NotificationKey <String>] [-NotificationThreshold <Decimal>] [-ResourceFilter <String[]>]
+ [-ResourceGroupFilter <String[]>] [-ResourceGroupName <String>] [-StartDate <DateTime>] [-TimeGrain <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +88,52 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ContactEmail
+Email addresses to send the budget notification to when the threshold is exceeded.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactGroup
+Action groups to send the budget notification to when the threshold is exceeded.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContactRole
+Contact roles to send the budget notification to when the threshold is exceeded.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Owner, Reader, Contributor
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -141,6 +189,68 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationDisabled
+The notification is disabled or not.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationEnabled
+The notification is enabled or not.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationKey
+Key of a notification associated with a budget, required to create a notification with notification enabled switch, notification threshold, contact emails, contact groups, or contact roles.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationThreshold
+Threshold value associated with a notification.
+Notification is sent when the cost or usage exceeded the threshold.
+It is always percent and has to be between 0 and 1000.
+
+```yaml
+Type: Decimal
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
