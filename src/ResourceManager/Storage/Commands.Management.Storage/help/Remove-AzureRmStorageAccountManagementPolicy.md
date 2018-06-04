@@ -12,7 +12,7 @@ Removes the management policy of an Azure Storage account.
 
 ## SYNTAX
 
-### AccountName
+### AccountName (Default)
 ```
 Remove-AzureRmStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
