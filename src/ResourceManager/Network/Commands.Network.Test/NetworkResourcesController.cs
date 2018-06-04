@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Redis;
 using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.OperationalInsights;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
@@ -41,6 +42,8 @@ namespace Commands.Network.Test
         public StorageManagementClient StorageManagementClient { get; private set; }
 
         public RedisManagementClient RedisManagementClient { get; private set; }
+
+        public OperationalInsightsManagementClient OperationalInsightsManagementClient { get; private set; }
 
         public static NetworkResourcesController NewInstance => new NetworkResourcesController();
 
@@ -97,6 +100,7 @@ namespace Commands.Network.Test
                     _helper.GetRMModulePath("AzureRM.Insights.psd1"),
                     _helper.GetRMModulePath("AzureRM.Network.psd1"),
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    _helper.GetRMModulePath("AzureRM.OperationalInsights.psd1"),
                     _helper.RMStorageDataPlaneModule,
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
@@ -132,13 +136,15 @@ namespace Commands.Network.Test
             ComputeManagementClient = GetComputeManagementClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             RedisManagementClient = GetRedisManagementClient(context);
+            OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
 
             _helper.SetupManagementClients(
                 resourceManagerResourceManagementClient,
                 NetworkManagementClient,
                 ComputeManagementClient,
                 StorageManagementClient,
-                RedisManagementClient);
+                RedisManagementClient,
+                OperationalInsightsManagementClient);
         }
 
         private static NetworkManagementClient GetNetworkManagementClient(RestTestFramework.MockContext context)
@@ -160,5 +166,10 @@ namespace Commands.Network.Test
         {
             return context.GetServiceClient<ComputeManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
-    }
+
+        private static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<OperationalInsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+}
 }
