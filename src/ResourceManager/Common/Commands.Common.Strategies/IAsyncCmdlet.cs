@@ -29,9 +29,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         IEnumerable<KeyValuePair<string, object>> Parameters { get; }
 
         /// <summary>
+        /// Log additional information.
         /// Thread-safe `WriteVerbose` function.
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message">The additional information to log</param>
         void WriteVerbose(string message);
 
         /// <summary>
@@ -40,10 +41,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         Task<bool> ShouldProcessAsync(string target, string action);
 
         /// <summary>
-        /// Thread-safe `WriteVerbose` function.
+        /// Thread-safe `WriteObject` function.
         /// </summary>
         /// <param name="value"></param>
         void WriteObject(object value);
+
+        /// <summary>
+        /// Thread-safe `WriteWarning` function.
+        /// </summary>
+        /// <param name="message"></param>
+        void WriteWarning(string message);
 
         /// <summary>
         /// Report task progress. The function is used to report current task and cmdlet progress.

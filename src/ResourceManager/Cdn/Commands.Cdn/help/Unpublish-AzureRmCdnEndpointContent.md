@@ -31,11 +31,6 @@ The **Unpublish-AzureRmCdnEndpointContent** cmdlet purges the content from an Az
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnEndpoint

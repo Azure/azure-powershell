@@ -47,7 +47,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -115,4 +115,3 @@ Parameter 'VirtualNetworkGateway' accepts value of type 'PSVirtualNetworkGateway
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 6F7C6611-5C56-4F1D-AB98-CDD92D88821C
@@ -54,7 +54,7 @@ Specifies the ID of the certificate to get.
 ```yaml
 Type: String
 Parameter Sets: GetByCertificateId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -69,7 +69,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

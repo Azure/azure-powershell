@@ -22,11 +22,6 @@ The **Set-AzureRmCdnOrigin** cmdlet updates an Azure Content Delivery Network (C
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnOrigin

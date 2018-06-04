@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{836965C0-B198-4D01-B3D7-757DB62B49A0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.Common.KeyVault</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.KeyVault</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Management.Utilities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.12\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Version2016-10-1\IKeyVaultManagementClient.cs" />
+    <Compile Include="Version2016-10-1\IOperations.cs" />
+    <Compile Include="Version2016-10-1\IVaultsOperations.cs" />
+    <Compile Include="Version2016-10-1\KeyVaultManagementClient.cs" />
+    <Compile Include="Version2016-10-1\Models\AccessPolicyEntry.cs" />
+    <Compile Include="Version2016-10-1\Models\AccessPolicyUpdateKind.cs" />
+    <Compile Include="Version2016-10-1\Models\CertificatePermissions.cs" />
+    <Compile Include="Version2016-10-1\Models\CheckNameAvailabilityResult.cs" />
+    <Compile Include="Version2016-10-1\Models\CreateMode.cs" />
+    <Compile Include="Version2016-10-1\Models\DeletedVault.cs" />
+    <Compile Include="Version2016-10-1\Models\DeletedVaultProperties.cs" />
+    <Compile Include="Version2016-10-1\Models\KeyPermissions.cs" />
+    <Compile Include="Version2016-10-1\Models\LogSpecification.cs" />
+    <Compile Include="Version2016-10-1\Models\Operation.cs" />
+    <Compile Include="Version2016-10-1\Models\OperationDisplay.cs" />
+    <Compile Include="Version2016-10-1\Models\Page.cs" />
+    <Compile Include="Version2016-10-1\Models\Permissions.cs" />
+    <Compile Include="Version2016-10-1\Models\Reason.cs" />
+    <Compile Include="Version2016-10-1\Models\Resource.cs" />
+    <Compile Include="Version2016-10-1\Models\SecretPermissions.cs" />
+    <Compile Include="Version2016-10-1\Models\ServiceSpecification.cs" />
+    <Compile Include="Version2016-10-1\Models\Sku.cs" />
+    <Compile Include="Version2016-10-1\Models\SkuName.cs" />
+    <Compile Include="Version2016-10-1\Models\StoragePermissions.cs" />
+    <Compile Include="Version2016-10-1\Models\Vault.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultAccessPolicyParameters.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultAccessPolicyProperties.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultCheckNameAvailabilityParameters.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultCreateOrUpdateParameters.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultPatchParameters.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultPatchProperties.cs" />
+    <Compile Include="Version2016-10-1\Models\VaultProperties.cs" />
+    <Compile Include="Version2016-10-1\Operations.cs" />
+    <Compile Include="Version2016-10-1\OperationsExtensions.cs" />
+    <Compile Include="Version2016-10-1\VaultsOperations.cs" />
+    <Compile Include="Version2016-10-1\VaultsOperationsExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
