@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestSimpleNewVmssWithSystemAssignedUserAssignedIdentity()
         {
             /**

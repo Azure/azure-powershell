@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicWindowsWAD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionBasicWindowsWAD");
@@ -61,6 +62,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindows()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindows");
@@ -82,6 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindowsMD()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsMD");

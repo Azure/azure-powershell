@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetReplicationLink()
         {
             RunPowerShellTest("Test-GetReplicationLink");
