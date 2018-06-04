@@ -1374,6 +1374,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         }
 
         [Fact(Skip = "Test produces different outputs since hashtable order is not guaranteed.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SerializeHashtableProperlyHandlesAllDataTypes()
         {
             Hashtable hashtable = new Hashtable();

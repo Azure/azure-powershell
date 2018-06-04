@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         // Currently the test runs too long to be marked as a check-in test.
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestElasticPoolCreate()
         {
             RunPowerShellTest("Test-CreateElasticPool");
