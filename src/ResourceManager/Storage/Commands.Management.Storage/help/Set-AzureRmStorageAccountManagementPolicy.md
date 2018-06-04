@@ -12,7 +12,7 @@ Creates or modifies the management policy of an Azure Storage account.
 
 ## SYNTAX
 
-### AccountNamePolicyString
+### AccountNamePolicyString (Default)
 ```
 Set-AzureRmStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-Policy] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

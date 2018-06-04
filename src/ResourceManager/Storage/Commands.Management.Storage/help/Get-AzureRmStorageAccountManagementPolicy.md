@@ -12,7 +12,7 @@ Gets the management policy of an Azure Storage account.
 
 ## SYNTAX
 
-### AccountName
+### AccountName (Default)
 ```
 Get-AzureRmStorageAccountManagementPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
