@@ -19,6 +19,21 @@
 -->
 ## Current Release
 
+## Version 6.1.0
+* Added support for ApiVersions, ApiReleases and ApiRevisions
+* Added suppport for ServiceFabric Backend
+* Added support for Application Insights Logger
+* Added support for recognizing `Basic` sku as a valid sku of Api Management service
+* Added support for installing Certificates issued by private CA as Root or CA
+* Added support for accepting Custom SSL certificates via KeyVault and Multiple proxy hostnames
+* Added support for MSI identity
+* Added support for accepting Policies via Url
+NOTE: The following cmdlets will be deprecated in future release
+   - Import-AzureRmApiManagementHostnameCertificate
+   - New-AzureRmApiManagementHostnameConfiguration
+   - Set-AzureRmApiManagementHostnames
+   - Update-AzureRmApiManagementDeployment
+
 ## Version 6.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Introduce multiple breaking changes

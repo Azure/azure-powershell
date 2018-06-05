@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 5.0.3-preview
+* Support Management Policy in Storage
+       - Remove-AzureRmStorageAccountNetworkRule
+	   - Set-AzureRmStorageAccountManagementPolicy
+	   - Get-AzureRmStorageAccountManagementPolicy
+	   - Remove-AzureRmStorageAccountManagementPolicy
+
 ## Version 5.0.2-preview
 * Support Immutability Policy in AzureRm.Storage
         - Remove-AzureRmStorageAccountNetworkRule,

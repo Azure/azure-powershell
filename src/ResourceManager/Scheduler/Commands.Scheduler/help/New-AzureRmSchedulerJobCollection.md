@@ -24,11 +24,6 @@ The **New-AzureRmSchedulerJobCollection** cmdlet creates a job collection in Azu
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

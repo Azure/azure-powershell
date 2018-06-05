@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue where version 10.0.3 of Newtonsoft.Json wasn't being loaded on module import
+
+## Version 5.1.0
+* Fix issue where running `Clear-AzureRmContext` would keep an empty context with the name of the previous default context, which prevented the user from creating a new context with the old name
+
+## Version 5.0.1
+* Fix issue where default environments weren''t being retrieved without a default context set
 
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
