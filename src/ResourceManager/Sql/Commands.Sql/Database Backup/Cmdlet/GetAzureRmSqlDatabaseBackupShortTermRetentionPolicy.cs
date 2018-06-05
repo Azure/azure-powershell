@@ -5,7 +5,10 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupShortTermRetentionPolicy")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseBackupShortTermRetentionPolicy",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = PolicyByResourceServerDatabaseSet),
+    OutputType(typeof(AzureSqlDatabaseBackupShortTermRetentionPolicyModel))]
     public class GetAzureRmSqlDatabaseBackupShortTermRetentionPolicy : AzureSqlDatabaseBackupShortTermRetentionPolicyCmdletBase
     {
         /// <summary>
@@ -14,13 +17,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> GetEntity()
         {
-            if (InputObject != null)
-            {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                ServerName = InputObject.ServerName;
-                DatabaseName = InputObject.DatabaseName;
-            }
-
             ICollection<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> results = new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>();
 
             results.Add(ModelAdapter.GetDatabaseBackupShortTermRetentionPolicy(

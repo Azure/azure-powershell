@@ -6,7 +6,8 @@ using Microsoft.Azure.Commands.Sql.Database_Backup.Model;
 namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseBackupShortTermRetentionPolicy",
-        SupportsShouldProcess = true),
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = PolicyByResourceServerDatabaseSet),
     OutputType(typeof(AzureSqlDatabaseBackupShortTermRetentionPolicyModel))]
     public class SetAzureRmSqlDatabaseBackupShortTermRetentionPolicy : AzureSqlDatabaseBackupShortTermRetentionPolicyCmdletBase
     {
@@ -26,13 +27,6 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> GetEntity()
         {
-            if (InputObject != null)
-            {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                ServerName = InputObject.ServerName;
-                DatabaseName = InputObject.DatabaseName;
-            }
-
             ICollection<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> results = new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>()
             {
                 ModelAdapter.GetDatabaseBackupShortTermRetentionPolicy(
@@ -68,26 +62,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> PersistChanges(IEnumerable<AzureSqlDatabaseBackupShortTermRetentionPolicyModel> entity)
         {
-            if (ShouldProcess(DatabaseName))
-            {
-                return new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>() {
-                    ModelAdapter.SetDatabaseBackupShortTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
-                };
-            }
-            else
-            {
-                return null;
-            }
-        }
+            if (!ShouldProcess(DatabaseName)) return null;
 
-        public override void ExecuteCmdlet()
-        {
-            if (this.RetentionDays % 7 != 0)
-            {
-                
-            }
-
-            base.ExecuteCmdlet();
+            return new List<AzureSqlDatabaseBackupShortTermRetentionPolicyModel>() {
+                ModelAdapter.SetDatabaseBackupShortTermRetentionPolicy(this.ResourceGroupName, this.ServerName, this.DatabaseName, entity.First())
+            };
         }
 
         /// <summary>

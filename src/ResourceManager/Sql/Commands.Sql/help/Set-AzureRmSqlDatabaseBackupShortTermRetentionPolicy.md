@@ -12,19 +12,25 @@ Sets a backup short term retention policy.
 
 ## SYNTAX
 
-### PolicyByResourceServerDatabase (Default)
+### PolicyByInputObject
+```
+Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32>
+ -InputObject <AzureSqlDatabaseModel> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### PolicyByResourceIdSet
+```
+Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> -ResourceId <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### PolicyByResourceServerDatabase
 ```
 Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32> [-ServerName] <String>
  [-DatabaseName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### PolicyByInputObject
-```
-Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy [-RetentionDays] <Int32>
- -InputObject <AzureSqlDatabaseModel> [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +50,17 @@ resourcegroup01   server01    database01   35
 
 This command sets the short term retention policy for database01 to 35 days.
 
+### Example 2
+```powershell
+PS C:\> Get-AzureRmSqlDatabase -ResourceGroupName resourcegroup01 -ServerName server01 -DatabaseName database01 | Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays 35
+
+ResourceGroupName ServerName  DatabaseName RetentionDays
+----------------- ----------  ------------ -------------
+resourcegroup01   server01    database01   35
+```
+
+This command sets the short term retention policy for database01 to 35 days.
+
 ## PARAMETERS
 
 ### -DatabaseName
@@ -51,7 +68,7 @@ The name of the Azure SQL Database to use.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: PolicyByResourceServerDatabase
 Aliases:
 
 Required: True
@@ -106,6 +123,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+The short term retention policy resource Id.```yaml
+Type: String
+Parameter Sets: PolicyByResourceIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -RetentionDays
 The name of the Azure SQL Database to use.
 
@@ -126,7 +156,7 @@ The name of the Azure SQL Server the database is in.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: PolicyByResourceServerDatabase
 Aliases:
 
 Required: True
@@ -168,19 +198,16 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Database_Backup.Model.AzureSqlDatabaseBackupShortTermRetentionPolicyModel
-
 
 ## NOTES
 

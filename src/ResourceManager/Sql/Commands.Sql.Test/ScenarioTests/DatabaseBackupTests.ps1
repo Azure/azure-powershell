@@ -394,37 +394,49 @@ function Test-ShortTermRetentionPolicy
 	
 	# Not divisible by 7, client should error
 	$invalidRetention = 20
-	$defaultRetention = 35
-	$updatedRetention = 14
 
 	try
 	{
-		# Create with default values
+		# Create db with default values
 		$databaseName = Get-DatabaseName
 		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
 
-		# Test default retention
-		$policy_default = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
-		Assert-AreEqual $policy_default.Count 1
-		Assert-AreEqual $policy_default[0].RetentionDays $defaultRetention
+		# Test default parameter set
+		$retention = 28
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $retention
+		Assert-AreEqual $policy.Count 1
+		Assert-AreEqual $retention $policy[0].RetentionDays
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName
+		Assert-AreEqual $policy.Count 1
+		Assert-AreEqual $retention $policy[0].RetentionDays
 
-		# Test Set
-		Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RetentionDays $updatedRetention
-		
 		# Test InputObject
-		Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject $db -ResourceGroupName $rg.ResourceGroupName -RetentionDays $updatedRetention
-		Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject $db -ResourceGroupName $rg.ResourceGroupName
+		$retention = 21
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject $db -RetentionDays $retention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject $db
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+
+		# Test ResourceId
+		$retention = 14
+		$resourceId = $db.ResourceId + "/backupShortTermRetentionPolicies/default"
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId -RetentionDays $retention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId $resourceId
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
 
 		# Test Piping
-		# Get with piping
-		$shortTermRetentionPeriod = $db | Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy
-		Assert-AreEqual $shortTermRetentionPeriod.Count 1
-		Assert-AreEqual $shortTermRetentionPeriod[0].RetentionDays $updatedRetention
-
-		# Set back to default with piping
-		$shortTermRetentionPeriod = Get-AzureRmSqlDatabase -ResourceGroup $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName | Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $defaultRetention
-		Assert-AreEqual $shortTermRetentionPeriod.Count 1
-		Assert-AreEqual $shortTermRetentionPeriod[0].RetentionDays $defaultRetention
+		$retention = 7
+		$policy = $db | Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -RetentionDays $retention
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
+		$policy = $db | Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy
+		Assert-AreEqual 1 $policy.Count
+		Assert-AreEqual $retention $policy[0].RetentionDays
 
 		# Test client-side error handling
 		try {
