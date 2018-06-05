@@ -12,28 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Diagnostics;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.DeviceProvisioningServices;
+using Microsoft.Azure.Management.IotHub;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
+using System.IO;
+using System.Linq;
+
 namespace Commands.DeviceProvisioningServices.Test
 {
-    using Microsoft.Azure.Commands.Common.Authentication;
-    using Microsoft.Azure.Management.DeviceProvisioningServices;
-    using Microsoft.Azure.Management.IotHub;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Test;
-    using Microsoft.Azure.Test.HttpRecorder;
-    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using System;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Linq;
-    using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-    using TestBase = Microsoft.Azure.Test.TestBase;
-    using TestUtilities = Microsoft.Azure.Test.TestUtilities;
-
     public sealed class IotDpsController
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -41,112 +36,65 @@ namespace Commands.DeviceProvisioningServices.Test
 
         public IotDpsClient IotDpsClient { get; private set; }
 
-        public static IotDpsController NewInstance
-        {
-            get
-            {
-                return new IotDpsController();
-            }
-        }
+        public static IotDpsController NewInstance => new IotDpsController();
 
         public IotDpsController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            RunPsTestWorkflow(
-                () => scripts,
-                null,
-                null,
-                callingClassType,
-                mockName);
-        }
-
-
-        public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
-            Action cleanup,
-            string callingClassType,
-            string mockName)
-        {
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
                 SetupManagementClients(context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.DeviceProvisioningServices.psd1"),
-                    helper.GetRMModulePath(@"AzureRM.IotHub.psd1"),
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.DeviceProvisioningServices.psd1"),
+                    _helper.GetRMModulePath(@"AzureRM.IotHub.psd1"),
                     "AzureRM.Resources.ps1"
                     );
 
-                try
-                {
-                    if (scriptBuilder != null)
-                    {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            helper.RunPowerShellTest(psScripts);
-                        }
-                    }
-                }
-                finally
-                {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
-                }
+                _helper.RunPowerShellTest(scripts);
             }
         }
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
             IotHubClient = GetIotHubClient(context);
             IotDpsClient = GetIotDpsClient(context);
 
-            helper.SetupManagementClients(
+            _helper.SetupManagementClients(
                 ResourceManagementClient,
                 IotHubClient,
                 IotDpsClient
                 );
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private IotHubClient GetIotHubClient(MockContext context)
+        private static IotHubClient GetIotHubClient(MockContext context)
         {
-            return context.GetServiceClient<IotHubClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<IotHubClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private IotDpsClient GetIotDpsClient(MockContext context)
+        private static IotDpsClient GetIotDpsClient(MockContext context)
         {
-            return context.GetServiceClient<IotDpsClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<IotDpsClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

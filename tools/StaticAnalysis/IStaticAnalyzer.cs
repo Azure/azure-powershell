@@ -42,12 +42,32 @@ namespace StaticAnalysis
         /// <summary>
         /// Validate the given assembly in the given directory
         /// </summary>
+        /// <param name="scopes">The analysis targets</param>
+        /// <param name="modulesToAnalyze">The modules to be
+        /// used for analysis</param>
+        void Analyze(IEnumerable<string> scopes, IEnumerable<string> modulesToAnalyze);
+
+        /// <summary>
+        /// Validate the given assembly in the given directory
+        /// </summary>
         /// <param name="cmdletProbingDirs">Root directory on which analysis needs to be performed</param>
         /// <param name="directoryFilter">Directory filter delegate to skip directories from performing static analysis</param>
         /// <param name="cmdletFilter">cmdlet name filter allowing you to skip cmdlets from being analyzed</param>
         void Analyze(IEnumerable<string> cmdletProbingDirs,
                             Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
                             Func<string, bool> cmdletFilter);
+
+        /// <summary>
+        /// Validate the given assembly in the given directory
+        /// </summary>
+        /// <param name="cmdletProbingDirs">Root directory on which analysis needs to be performed</param>
+        /// <param name="directoryFilter">Directory filter delegate to skip directories from performing static analysis</param>
+        /// <param name="cmdletFilter">cmdlet name filter allowing you to skip cmdlets from being analyzed</param>
+        /// <param name="modulesToAnalyze">The modules to be used for analysis</param>
+        void Analyze(IEnumerable<string> cmdletProbingDirs,
+                            Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
+                            Func<string, bool> cmdletFilter,
+                            IEnumerable<string> modulesToAnalyze);
 
         /// <summary>
         /// Get analysis report post analysis

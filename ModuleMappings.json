@@ -1,0 +1,193 @@
+{
+    ".github": [],
+    "documentation": [],
+    "setup": [],
+    ".gitattributes": [],
+    "CONTRIBUTING.md": [],
+    "ChangeLog.md": [],
+    "LICENSE.txt": [],
+    "README.md": [],
+    "appveyor.yml": [],
+    "src/Common/": [],
+    "src/ResourceManager/Common": [],
+    "src/ResourceManager/Aks/": [
+      "AzureRM.Aks"
+    ],
+    "src/ResourceManager/AnalysisServices/": [
+      "AzureRM.AnalysisServices",
+      "Azure.AnalysisServices"
+    ],
+    "src/ResourceManager/ApiManagement/": [
+      "AzureRM.ApiManagement"
+    ],
+    "src/ResourceManager/ApplicationInsights/": [
+      "AzureRM.ApplicationInsights"
+    ],
+    "src/ResourceManager/Automation/": [
+      "AzureRM.Automation"
+    ],
+    "src/ResourceManager/AzureBackup/": [
+      "AzureRM.Backup"
+    ],
+    "src/ResourceManager/AzureBatch/": [
+      "AzureRM.Batch"
+    ],
+    "src/ResourceManager/Billing/": [
+      "AzureRM.Billing"
+    ],
+    "src/ResourceManager/Cdn/": [
+      "AzureRM.Cdn"
+    ],
+    "src/ResourceManager/CognitiveServices/": [
+      "AzureRM.CognitiveServices"
+    ],
+    "src/ResourceManager/Compute/": [
+      "AzureRM.Compute"
+    ],
+    "src/ResourceManager/Consumption/": [
+      "AzureRM.Consumption"
+    ],
+    "src/ResourceManager/ContainerInstance/": [
+      "AzureRM.ContainerInstance"
+    ],
+    "src/ResourceManager/ContainerRegistry/": [
+      "AzureRM.ContainerRegistry"
+    ],
+    "src/ResourceManager/DataFactories/": [
+      "AzureRM.DataFactories"
+    ],
+    "src/ResourceManager/DataFactoryV2/": [
+      "AzureRM.DataFactoryV2"
+    ],
+    "src/ResourceManager/DataLakeAnalytics/": [
+      "AzureRM.DataLakeAnalytics"
+    ],
+    "src/ResourceManager/DataLakeStore/": [
+      "AzureRM.DataLakeStore"
+    ],
+    "src/ResourceManager/DataMigration/": [
+      "AzureRM.DataMigration"
+    ],
+    "src/ResourceManager/DeviceProvisioningServices/": [
+      "AzureRM.DeviceProvisioningServices"
+    ],
+    "src/ResourceManager/DevTestLabs/": [
+      "AzureRM.DevTestLabs"
+    ],
+    "src/ResourceManager/Dns/": [
+      "AzureRM.Dns"
+    ],
+    "src/ResourceManager/EventGrid/": [
+      "AzureRM.EventGrid"
+    ],
+    "src/ResourceManager/EventHub/": [
+      "AzureRM.EventHub"
+    ],
+    "src/ResourceManager/HDInsight/": [
+      "AzureRM.HDInsight"
+    ],
+    "src/ResourceManager/Insights/": [
+      "AzureRM.Insights"
+    ],
+    "src/ResourceManager/IotHub/": [
+      "AzureRM.IotHub"
+    ],
+    "src/ResourceManager/KeyVault/": [
+      "AzureRM.KeyVault"
+    ],
+    "src/ResourceManager/LogicApp/": [
+      "AzureRM.LogicApp"
+    ],
+    "src/ResourceManager/MachineLearning/": [
+      "AzureRM.MachineLearning"
+    ],
+    "src/ResourceManager/MachineLearningCompute/" : [
+      "AzureRM.MachineLearningCompute"
+    ],
+    "src/ResourceManager/ManagedServiceIdentity/" : [
+      "AzureRM.ManagedServiceIdentity"
+   ],
+    "src/ResourceManager/MarketplaceOrdering/Commands.MarketplaceOrdering.Test/": [
+      "AzureRM.MarketplaceOrdering"
+    ],
+    "src/ResourceManager/Media/": [
+      "AzureRM.Media"
+    ],
+    "src/ResourceManager/Network/": [
+      "AzureRM.Network"
+    ],
+    "src/ResourceManager/NotificationHubs /": [
+      "AzureRM.NotificationHubs"
+    ],
+    "src/ResourceManager/OperationalInsights/": [
+      "AzureRM.OperationalInsights"
+    ],
+    "src/ResourceManager/PolicyInsights/": [
+      "AzureRM.PolicyInsights"
+    ],
+    "src/ResourceManager/PowerBIEmbedded/": [
+      "AzureRM.PowerBIEmbedded"
+    ],
+    "src/ResourceManager/Profile/": [
+      "AzureRM.Profile"
+    ],
+    "src/ResourceManager/RecoveryServices.Backup/": [
+      "AzureRM.RecoveryServices.Backup"
+    ],
+    "src/ResourceManager/RecoveryServices/": [
+      "AzureRM.RecoveryServices"
+    ],
+    "src/ResourceManager/RedisCache/": [
+      "AzureRM.RedisCache"
+    ],
+    "src/ResourceManager/Relay/": [
+      "AzureRM.Relay"
+    ],
+    "src/ResourceManager/Reservations/": [
+      "AzureRM.Reservations"
+    ],
+    "src/ResourceManager/Resources/": [
+      "AzureRM.Resources"
+    ],
+    "src/ResourceManager/Scheduler/": [
+      "AzureRM.Scheduler"
+    ],
+    "src/ResourceManager/ServiceBus/": [
+      "AzureRM.ServiceBus"
+    ],
+    "src/ResourceManager/ServiceFabric/": [
+      "AzureRM.ServiceFabric"
+    ],
+    "src/ResourceManager/Sql/": [
+      "AzureRM.Sql"
+    ],
+    "src/ResourceManager/Storage/": [
+      "AzureRM.Storage"
+    ],
+    "src/ResourceManager/StreamAnalytics/": [
+      "AzureRM.StreamAnalytics"
+    ],
+    "src/ResourceManager/Subscription/": [
+      "AzureRM.Subscription"
+    ],
+    "src/ResourceManager/Tags/": [
+      "AzureRM.Tags"
+    ],
+    "src/ResourceManager/TrafficManager/": [
+      "AzureRM.TrafficManager"
+    ],
+    "src/ResourceManager/UsageAggregates/": [
+      "AzureRM.UsageAggregates"
+    ],
+    "src/ResourceManager/Websites/": [
+      "AzureRM.Websites"
+    ],
+    "src/ServiceManagement/": [
+      "Azure"
+    ],
+    "src/Storage/Commands.Storage/": [
+      "Azure.Storage"
+    ],
+    "tools/": [
+    ]
+  }
