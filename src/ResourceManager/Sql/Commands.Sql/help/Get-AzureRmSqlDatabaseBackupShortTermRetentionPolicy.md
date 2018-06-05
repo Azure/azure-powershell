@@ -121,7 +121,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The short term retention policy resource Id.```yaml
+The short term retention policy resource Id.
+
+```yaml
 Type: String
 Parameter Sets: PolicyByResourceIdSet
 Aliases:
