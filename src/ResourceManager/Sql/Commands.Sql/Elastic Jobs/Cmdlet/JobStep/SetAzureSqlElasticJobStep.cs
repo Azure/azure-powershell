@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The step name")]
         [Alias("StepName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the step id
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The step id text")]
+        [Parameter(Mandatory = false, HelpMessage = "The step id")]
         public int? StepId { get; set; }
 
         /// <summary>
@@ -403,7 +403,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             InitializeResourceIdProperties(this.ResourceId);
             this.Name = this.Name ?? this.StepName;
             base.ExecuteCmdlet();
-            this.Name = null; // Clear name
         }
 
         /// <summary>
@@ -462,8 +461,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 RetryAttempts = this.RetryAttempts ?? existingEntity.RetryAttempts,
                 RetryIntervalBackoffMultiplier = this.RetryIntervalBackoffMultiplier ?? existingEntity.RetryIntervalBackoffMultiplier,
                 TimeoutSeconds = this.TimeoutSeconds ?? existingEntity.TimeoutSeconds,
-                CommandText = this.CommandText != null ? this.CommandText : existingEntity.CommandText,
-                StepId = this.StepId != null ? this.StepId : existingEntity.StepId,
+                CommandText = this.CommandText ?? existingEntity.CommandText,
+                StepId = this.StepId ?? existingEntity.StepId,
             };
 
             // If there was an existing output target

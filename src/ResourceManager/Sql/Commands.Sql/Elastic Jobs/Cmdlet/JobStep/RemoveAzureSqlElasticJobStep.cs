@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             HelpMessage = "The job step name")]
         [Alias("StepName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the job step input object

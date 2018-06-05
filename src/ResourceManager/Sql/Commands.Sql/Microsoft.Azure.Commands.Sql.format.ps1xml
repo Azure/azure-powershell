@@ -690,9 +690,6 @@
             <Label>Output</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ExecutionOptions</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>CommandText</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -718,10 +715,6 @@
               <TableColumnItem>
                 <ScriptBlock>
                   $(If($_.Output.ServerName) { "(" + $_.Output.ServerName }) + $(If($_.Output.DatabaseName) { "," + $_.Output.DatabaseName }) + $(If($_.Output.SchemaName) { "," + $_.Output.SchemaName }) + $(If($_.Output.SchemaName) { "," + $_.Output.TableName + ")" })
-                </ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>"(" + $_.ExecutionOptions.TimeoutSeconds + "," + $_.ExecutionOptions.RetryAttempts + "," + $_.ExecutionOptions.InitialRetryIntervalSeconds + "," + $_.ExecutionOptions.MaximumRetryIntervalSeconds + "," + $_.ExecutionOptions.RetryIntervalBackoffMultiplier + ")"
                 </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
@@ -758,7 +751,7 @@
             <Label>Output</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>ExecutionOptions</Label>
+            <Label>Version</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>CommandText</Label>
@@ -789,9 +782,7 @@
                 </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>
-                  "(" + $_.ExecutionOptions.TimeoutSeconds + "," + $_.ExecutionOptions.RetryAttempts + "," + $_.ExecutionOptions.InitialRetryIntervalSeconds + "," + $_.ExecutionOptions.MaximumRetryIntervalSeconds + "," + $_.ExecutionOptions.RetryIntervalBackoffMultiplier + ")"
-                </ScriptBlock>
+                <PropertyName>Version</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>CommandText</PropertyName>

@@ -53,6 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         public virtual string RefreshCredentialName { get; set; }
         public virtual string ElasticPoolName { get; set; }
         public virtual string DatabaseName { get; set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Elastic Jobs Resource Id Templates
@@ -139,6 +140,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             this.ShardMapName = null;
             this.ElasticPoolName = null;
             this.RefreshCredentialName = null;
+            this.Name = null;
         }
 
         /// <summary>

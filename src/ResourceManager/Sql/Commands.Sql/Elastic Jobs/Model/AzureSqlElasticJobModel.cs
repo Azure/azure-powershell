@@ -53,17 +53,5 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Model
         /// Gets or sets the job's schedule interval value.
         /// </summary>
         public string Interval { get; set; }
-
-        /// <summary>
-        /// The job schedule intervals
-        /// </summary>
-        public enum JobScheduleReccuringScheduleTypes
-        {
-            Minute,
-            Hour,
-            Day,
-            Week,
-            Month
-        }
     }
 }

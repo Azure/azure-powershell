@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "The job name")]
         [ValidateNotNullOrEmpty]
         [Alias("JobName")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the agent input object

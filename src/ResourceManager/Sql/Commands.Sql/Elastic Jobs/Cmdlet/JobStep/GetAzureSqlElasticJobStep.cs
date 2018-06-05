@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             Position = 1,
             HelpMessage = "The job step name")]
         [Alias("StepName")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the job version

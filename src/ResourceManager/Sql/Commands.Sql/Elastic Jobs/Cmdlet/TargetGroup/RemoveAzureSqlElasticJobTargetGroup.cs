@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 3,
             HelpMessage = "The target group name")]
         [Alias("TargetGroupName")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation

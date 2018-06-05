@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, HelpMessage = "The job credential name")]
         [ValidateNotNullOrEmpty]
         [Alias("CredentialName")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the agent model input object

@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The agent name")]
         [Alias("AgentName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the Agent Server Object

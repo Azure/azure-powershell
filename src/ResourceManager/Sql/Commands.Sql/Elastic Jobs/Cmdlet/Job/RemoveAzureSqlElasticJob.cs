@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             Position = 3,
             HelpMessage = "The job name")]
         [Alias("JobName")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation

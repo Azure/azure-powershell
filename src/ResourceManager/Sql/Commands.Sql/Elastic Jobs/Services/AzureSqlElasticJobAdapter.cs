@@ -563,10 +563,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <param name="jobVersion">The job version</param>
         /// <param name="stepName">The job step name</param>
         /// <returns></returns>
-        public AzureSqlElasticJobStepVersionModel GetJobStepByVersion(string resourceGroupName, string serverName, string agentName, string jobName, int jobVersion, string stepName)
+        public AzureSqlElasticJobStepModel GetJobStepByVersion(string resourceGroupName, string serverName, string agentName, string jobName, int jobVersion, string stepName)
         {
             var resp = Communicator.GetJobStepByVersion(resourceGroupName, serverName, agentName, jobName, jobVersion, stepName);
-            return CreateJobStepVersionModelFromResponse(resourceGroupName, serverName, agentName, jobName, jobVersion, stepName, resp);
+            return CreateJobStepModelFromResponse(resourceGroupName, serverName, agentName, jobName, stepName, resp);
         }
 
         /// <summary>
@@ -612,32 +612,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         }
 
         /// <summary>
-        /// Converts a JobStep model to an AzureSqlElasticJobStepVersionModel
-        /// </summary>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="serverName">The server name</param>
-        /// <param name="agentName">The agent name</param>
-        /// <param name="jobName">The job name</param>
-        /// <param name="jobVersion">The job version</param>
-        /// <param name="stepName">The job step name</param>
-        /// <param name="resp">The JobStep model</param>
-        /// <returns>The AzureSqlElasticJobStepVersionModel</returns>
-        private static AzureSqlElasticJobStepVersionModel CreateJobStepVersionModelFromResponse(
-            string resourceGroupName,
-            string serverName,
-            string agentName,
-            string jobName,
-            int jobVersion,
-            string stepName,
-            JobStep resp)
-        {
-            AzureSqlElasticJobStepModel jobStep = CreateJobStepModelFromResponse(resourceGroupName, serverName, agentName, jobName, stepName, resp);
-            AzureSqlElasticJobStepVersionModel jobStepVersion = (AzureSqlElasticJobStepVersionModel)jobStep;
-            jobStepVersion.Version = jobVersion;
-            return jobStepVersion;
-        }
-
-        /// <summary>
         /// Converts a JobStep model to an AzureSqlElasticJobStepModel
         /// </summary>
         /// <param name="resourceGroupName">The resource group name</param>
@@ -673,7 +647,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 Output = CreateJobStepOutputModel(resp),
                 ResourceId = resp.Id,
                 StepId = resp.StepId,
-                Type = resp.Type
+                Type = resp.Type,
             };
 
             return jobStep;

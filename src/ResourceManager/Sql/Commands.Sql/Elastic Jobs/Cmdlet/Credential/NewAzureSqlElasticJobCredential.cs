@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The job credential name")]
         [Alias("CredentialName")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the job's credential

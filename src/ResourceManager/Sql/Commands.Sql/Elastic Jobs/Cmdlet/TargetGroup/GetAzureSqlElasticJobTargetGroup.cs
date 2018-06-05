@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The target group name")]
         [ValidateNotNullOrEmpty]
         [Alias("TargetGroupName")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the agent input object model

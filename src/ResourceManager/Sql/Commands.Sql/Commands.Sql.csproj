@@ -61,6 +61,7 @@
     <Compile Include="Auditing\Cmdlet\AuditingSettings\SqlServerAuditingCmdletBase.cs" />
     <Compile Include="Auditing\Model\DatabaseBlobAuditingSettingsModel.cs" />
     <Compile Include="Auditing\Model\ServerBlobAuditingSettingsModel.cs" />
+    <Compile Include="Common\Iso8601DurationHelper.cs" />
     <Compile Include="Elastic Jobs\Cmdlet\Common\AzureSqlElasticJobsCmdletBase.cs" />
     <Compile Include="Common\ResourceIdentityHelper.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseLongTermRetentionBackupCmdletBase.cs" />
@@ -267,7 +268,6 @@
     <Compile Include="Elastic Jobs\Cmdlet\TargetGroup\RemoveAzureSqlElasticJobTargetGroup.cs" />
     <Compile Include="Elastic Jobs\Cmdlet\Credential\SetAzureSqlElasticJobCredential.cs" />
     <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobStepExecutionModel.cs" />
-    <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobStepVersionModel.cs" />
     <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobTargetExecutionModel.cs" />
     <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobTargetModel.cs" />
     <Compile Include="Elastic Jobs\Model\AzureSqlElasticJobsBaseModel.cs" />

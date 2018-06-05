@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using static Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobModel;
+using static Microsoft.Azure.Commands.Sql.Common.Iso8601DurationHelper;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
 {
@@ -85,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = AgentResourceIdRecurringParameterSet, Position = 1, HelpMessage = "The job name")]
         [ValidateNotNullOrEmpty]
         [Alias("JobName")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the switch parameter run once
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
         [Parameter(Mandatory = true, ParameterSetName = AgentResourceIdRecurringParameterSet, Position = 2,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
-        public JobScheduleReccuringScheduleTypes? IntervalType { get; set; }
+        public IntervalTypes? IntervalType { get; set; }
 
         /// <summary>
         /// Gets or sets the job schedule interval count
@@ -243,48 +244,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 EndTime = this.EndTime != null ? this.EndTime : null,
                 ScheduleType = this.RunOnce.IsPresent ? JobScheduleType.Once :
                                this.IntervalType.HasValue ? JobScheduleType.Recurring : (JobScheduleType?) null,
+                Interval = this.IntervalCount.HasValue ? CreateIso8601Duration(this.IntervalType.Value, this.IntervalCount.Value) : null,
                 Enabled = this.Enable.IsPresent
             };
-
-            if (newEntity.ScheduleType != null && newEntity.ScheduleType == JobScheduleType.Recurring)
-            {
-                StringBuilder stringBuilder = new StringBuilder();
-
-                // Create basic ISO 8601 duration - Basic string builder implementation
-                // XmlConvert.ToString(timeSpan) only supports up to days. Weeks and months need to be supported
-                stringBuilder.Append("P");
-
-                if (this.IntervalType.Value == JobScheduleReccuringScheduleTypes.Hour ||
-                    this.IntervalType.Value == JobScheduleReccuringScheduleTypes.Minute)
-                {
-                    stringBuilder.Append("T");
-                }
-
-                if (this.IntervalType.Value == JobScheduleReccuringScheduleTypes.Month ||
-                    this.IntervalType.Value == JobScheduleReccuringScheduleTypes.Minute)
-                {
-                    stringBuilder.Append(this.IntervalCount + "M");
-                }
-
-                if (this.IntervalType.Value == JobScheduleReccuringScheduleTypes.Week)
-                {
-                    stringBuilder.Append(this.IntervalCount + "W");
-                }
-
-                if (this.IntervalType.Value == JobScheduleReccuringScheduleTypes.Day)
-                {
-                    stringBuilder.Append(this.IntervalCount + "D");
-                }
-
-                if (this.IntervalType.Value == JobScheduleReccuringScheduleTypes.Hour)
-                {
-                    stringBuilder.Append(this.IntervalCount + "H");
-                }
-
-                string interval = stringBuilder.ToString();
-
-                newEntity.Interval = interval;
-            }
 
             return new List<AzureSqlElasticJobModel> { newEntity };
         }

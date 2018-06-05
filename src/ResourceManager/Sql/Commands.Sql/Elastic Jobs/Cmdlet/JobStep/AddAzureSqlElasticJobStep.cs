@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             ParameterSetName = JobResourceIdOutputDatabaseId,
             HelpMessage = "The job step name")]
         [Alias("StepName")]
-        public string Name { get; set; }
+        public override string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the job step name
@@ -462,6 +462,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public string OutputSchemaName { get; set; }
 
         /// <summary>
+        /// Gets or sets the step id
+        /// </summary>
+        [Parameter(Mandatory  = false, HelpMessage = "The step id")]
+        public int? StepId { get; set; }
+
+        /// <summary>
         /// Gets or sets the timeout seconds
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The timeout seconds")]
@@ -602,6 +608,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 RetryIntervalBackoffMultiplier = this.RetryIntervalBackoffMultiplier,
                 TimeoutSeconds = this.TimeoutSeconds,
                 CommandText = this.CommandText,
+                StepId = this.StepId
             };
 
             if (this.OutputDatabaseObject != null)
