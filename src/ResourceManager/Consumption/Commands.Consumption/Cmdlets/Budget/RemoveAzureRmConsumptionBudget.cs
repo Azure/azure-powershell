@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 
         public override void ExecuteCmdlet()
         {
+            bool isRemoved = true;
             try
             {
                 if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
@@ -53,9 +54,10 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             catch (ErrorResponseException e)
             {
                 WriteWarning(e.Body.Error.Message);
+                isRemoved = false;
             }
 
-            if (PassThru.IsPresent)
+            if (PassThru.IsPresent && isRemoved)
             {
                 WriteObject(true);
             }
