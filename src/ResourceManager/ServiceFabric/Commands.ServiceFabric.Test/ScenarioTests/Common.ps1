@@ -64,12 +64,13 @@ function Get-NewCertName
 function Get-SecretUrl
 {
     # Thumbprint for this cert should be specified in TestServiceFabric.cs
-    return "https://azurermsfkv.vault.azure.net/secrets/AzureRMSFTestCert2/62bccb6ecac54a03a204c7676fa9b8cf"
+    return "https://azurermsfkv.vault.azure.net:443/secrets/AzureRMSFTestCert2/6fede96962254f1db3f5d47d124877de"
 }
 
 function Get-Thumbprint
 {
-    return "2F51AC39C590551FC7391A7A0A187A67BF8256CA"
+    #Change the thumbprint in the TestServiceFabric.cs file as well
+    return "570BBCC85CBDAB98A442D08630996708F60A356D"
 }
 
 function Get-DurabilityLevel

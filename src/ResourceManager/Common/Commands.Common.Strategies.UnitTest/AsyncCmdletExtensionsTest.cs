@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             public async Task<ResourceConfig<RG>> CreateConfigAsync()
                 => new ResourceConfig<RG>(
                     new ResourceStrategy<RG>(
-                        null, 
+                        null,
                         async (c, p) => new RG(),
                         null,
                         null,
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
         class AsyncCmdlet : IAsyncCmdlet
         {
-            public CancellationToken CancellationToken { get; } 
+            public CancellationToken CancellationToken { get; }
                 = new CancellationToken();
 
             public IEnumerable<KeyValuePair<string, object>> Parameters
@@ -88,6 +88,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             public void WriteVerbose(string message)
             {
                 Assert.Equal("Str = \"str\"", message);
+            }
+
+            public void WriteWarning(string message)
+            {
+                throw new NotImplementedException();
             }
         }
 

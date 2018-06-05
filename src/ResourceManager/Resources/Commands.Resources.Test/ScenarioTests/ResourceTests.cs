@@ -98,14 +98,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-MoveResourceFailed");
         }
 
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
         }
 
-        [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceWithPatchTest()
         {
@@ -131,6 +131,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestGetResourceWithExpandProperties()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetResourceExpandProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceByIdAndProperties()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceByIdAndProperties");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetResourceByComponentsAndProperties()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-GetResourceByComponentsAndProperties");
         }
 
         [Fact(Skip = "Zones are disabled for now.")]

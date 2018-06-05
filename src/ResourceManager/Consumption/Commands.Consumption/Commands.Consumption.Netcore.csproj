@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Consumption" Version="1.1.0-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Consumption" Version="3.0.0.0" />
   </ItemGroup>
 
   <ItemGroup>

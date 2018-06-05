@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 466AFB8C-C272-4A4F-8E13-A4DBD6EE3A85
@@ -83,7 +83,7 @@ If you specify this parameter, the cmdlet removes the API-scope policy.
 ```yaml
 Type: String
 Parameter Sets: RemoveApiLevel, RemoveOperationLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,7 +98,7 @@ Specifies the instance of the **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -129,7 +129,7 @@ If you specify this parameter with the *ApiId* parameter, this cmdlet removes th
 ```yaml
 Type: String
 Parameter Sets: RemoveOperationLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -144,7 +144,7 @@ Indicates that this cmdlet returns a value of $True, if it succeeds, or a value 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -160,7 +160,7 @@ If you specify this parameter, the cmdlet removes the product-scope policy.
 ```yaml
 Type: String
 Parameter Sets: RemoveProductLevel
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
