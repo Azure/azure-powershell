@@ -37,12 +37,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// The parameter sets
         /// </summary>
-        protected const string DefaultRemoveOutputParameterSet = "Set Job Step With Remove Output Parameter Set";
-        protected const string DefaultAddDatabaseResourceIdParameterSet = "Set Job Step With Add Output Parameter Set";
-        protected const string JobObjectRemoveOutputParameterSet = "Set Job Step With Remove Output Parameter Set Using Job Object";
-        protected const string JobObjectAddDatabaseResourceIdParameterSet = "Set Job Step With Add Output Parameter Set Using Job Object";
-        protected const string JobResourceIdRemoveOutputParameterSet = "Set Job Step With Remove Output Parameter Set Using Job Resource Id";
-        protected const string JobResourceIdAddDatabaseResourceIdParameterSet = "Set Job Step With Add Output Parameter Set Using Job Resource Id";
+        protected const string DefaultRemoveOutputParameterSet = "WithRemoveOutput";
+        protected const string DefaultAddDatabaseResourceIdParameterSet = "WithAddOutput";
+        protected const string JobObjectRemoveOutputParameterSet = "WithRemoveOutput using JobObject";
+        protected const string JobObjectAddDatabaseResourceIdParameterSet = "WithAddOutput using JobObject";
+        protected const string JobResourceIdRemoveOutputParameterSet = "WithRemoveOutput using JobResourceId";
+        protected const string JobResourceIdAddDatabaseResourceIdParameterSet = "WithAddOutput using JobResourceId";
 
         /// <summary>
         /// Gets or sets the resource group name

@@ -12,92 +12,92 @@ Adds a job step to a job
 
 ## SYNTAX
 
-### Default Parameter Set (Default)
+### DefaultSet (Default)
 ```
 Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  [-JobName] <String> [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
+ [-CommandText] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
  [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Add Job Step With Output Database Object Parameter Set
+### WithOutputDb
 ```
 Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  [-JobName] <String> [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
  [-CommandText] <String> [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Add Job Step With Output Database Resource Id Parameter Set
+### WithOutputDbId
 ```
 Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  [-JobName] <String> [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
  [-CommandText] <String> [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Input Object Parameter Set
+### ObjectSet
 ```
 Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
+ [-CommandText] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
  [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-JobObject] <AzureSqlElasticJobModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Add Job Step With Output Database Object Parameter Set Using Job Object
+### WithOutputDb using JobObject
 ```
 Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
  [-CommandText] <String> [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-JobObject] <AzureSqlElasticJobModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Add Job Step With Output Database Id Parameter Set Using Job Object
+### WithOutputDbId using JobObject
 ```
 Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
  [-CommandText] <String> [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-JobObject] <AzureSqlElasticJobModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource Id Parameter Set
+### ResourceIdSet
 ```
 Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
+ [-CommandText] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
  [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-JobResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Add Job Step With Output Database Object Parameter Set Using Job Resource Id
+### WithOutputDb using JobResourceId
 ```
 Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
  [-CommandText] <String> [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-JobResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Add Job Step With Output Database Id Parameter Set Using Job Resource Id
+### WithOutputDbId Set using JobResourceId
 ```
 Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
  [-CommandText] <String> [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-JobResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -125,7 +125,7 @@ The agent name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Resource Id Parameter Set
+Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId
 Aliases:
 
 Required: True
@@ -200,7 +200,7 @@ The job name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Resource Id Parameter Set
+Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId
 Aliases:
 
 Required: True
@@ -215,7 +215,7 @@ The job object
 
 ```yaml
 Type: AzureSqlElasticJobModel
-Parameter Sets: Input Object Parameter Set, Add Job Step With Output Database Object Parameter Set Using Job Object, Add Job Step With Output Database Id Parameter Set Using Job Object
+Parameter Sets: ObjectSet, WithOutputDb using JobObject, WithOutputDbId using JobObject
 Aliases:
 
 Required: True
@@ -230,7 +230,7 @@ The job resource id
 
 ```yaml
 Type: String
-Parameter Sets: Resource Id Parameter Set, Add Job Step With Output Database Object Parameter Set Using Job Resource Id, Add Job Step With Output Database Id Parameter Set Using Job Resource Id
+Parameter Sets: ResourceIdSet, WithOutputDb using JobResourceId, WithOutputDbId Set using JobResourceId
 Aliases:
 
 Required: True
@@ -275,7 +275,7 @@ The output credential name
 
 ```yaml
 Type: String
-Parameter Sets: Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Resource Id Parameter Set, Add Job Step With Output Database Object Parameter Set Using Job Object, Add Job Step With Output Database Id Parameter Set Using Job Object, Add Job Step With Output Database Object Parameter Set Using Job Resource Id, Add Job Step With Output Database Id Parameter Set Using Job Resource Id
+Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using JobObject, WithOutputDbId using JobObject, WithOutputDb using JobResourceId, WithOutputDbId Set using JobResourceId
 Aliases:
 
 Required: True
@@ -290,7 +290,7 @@ The output database object
 
 ```yaml
 Type: AzureSqlDatabaseModel
-Parameter Sets: Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Object Parameter Set Using Job Object, Add Job Step With Output Database Object Parameter Set Using Job Resource Id
+Parameter Sets: WithOutputDb, WithOutputDb using JobObject, WithOutputDb using JobResourceId
 Aliases:
 
 Required: True
@@ -305,7 +305,7 @@ The output database resource id
 
 ```yaml
 Type: String
-Parameter Sets: Add Job Step With Output Database Resource Id Parameter Set, Add Job Step With Output Database Id Parameter Set Using Job Object, Add Job Step With Output Database Id Parameter Set Using Job Resource Id
+Parameter Sets: WithOutputDbId, WithOutputDbId using JobObject, WithOutputDbId Set using JobResourceId
 Aliases:
 
 Required: True
@@ -320,7 +320,7 @@ The output schema name
 
 ```yaml
 Type: String
-Parameter Sets: Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Resource Id Parameter Set, Add Job Step With Output Database Object Parameter Set Using Job Object, Add Job Step With Output Database Id Parameter Set Using Job Object, Add Job Step With Output Database Object Parameter Set Using Job Resource Id, Add Job Step With Output Database Id Parameter Set Using Job Resource Id
+Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using JobObject, WithOutputDbId using JobObject, WithOutputDb using JobResourceId, WithOutputDbId Set using JobResourceId
 Aliases:
 
 Required: False
@@ -335,7 +335,7 @@ The output table name
 
 ```yaml
 Type: String
-Parameter Sets: Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Resource Id Parameter Set, Add Job Step With Output Database Object Parameter Set Using Job Object, Add Job Step With Output Database Id Parameter Set Using Job Object, Add Job Step With Output Database Object Parameter Set Using Job Resource Id, Add Job Step With Output Database Id Parameter Set Using Job Resource Id
+Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using JobObject, WithOutputDbId using JobObject, WithOutputDb using JobResourceId, WithOutputDbId Set using JobResourceId
 Aliases:
 
 Required: True
@@ -350,7 +350,7 @@ The resource group name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Resource Id Parameter Set
+Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId
 Aliases:
 
 Required: True
@@ -395,11 +395,24 @@ The server name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Resource Id Parameter Set
+Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId
 Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StepId
+The step id```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -410,7 +423,7 @@ The target group name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Add Job Step With Output Database Object Parameter Set, Add Job Step With Output Database Resource Id Parameter Set, Input Object Parameter Set, Add Job Step With Output Database Object Parameter Set Using Job Object, Add Job Step With Output Database Id Parameter Set Using Job Object, Resource Id Parameter Set, Add Job Step With Output Database Id Parameter Set Using Job Resource Id
+Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId, ObjectSet, WithOutputDb using JobObject, WithOutputDbId using JobObject, ResourceIdSet, WithOutputDbId Set using JobResourceId
 Aliases:
 
 Required: True
@@ -422,7 +435,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Add Job Step With Output Database Object Parameter Set Using Job Resource Id
+Parameter Sets: WithOutputDb using JobResourceId
 Aliases:
 
 Required: True

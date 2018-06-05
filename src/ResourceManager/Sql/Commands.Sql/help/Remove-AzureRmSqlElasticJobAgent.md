@@ -12,19 +12,19 @@ Removes the elastic job agent
 
 ## SYNTAX
 
-### Default Parameter Set (Default)
+### DefaultSet (Default)
 ```
 Remove-AzureRmSqlElasticJobAgent [-ResourceGroupName] <String> [-ServerName] <String> [-Name] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Input Object Parameter Set
+### ObjectSet
 ```
 Remove-AzureRmSqlElasticJobAgent [-InputObject] <AzureSqlElasticJobAgentModel> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource Id Parameter Set
+### ResourceIdSet
 ```
 Remove-AzureRmSqlElasticJobAgent [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -83,7 +83,7 @@ The agent object
 
 ```yaml
 Type: AzureSqlElasticJobAgentModel
-Parameter Sets: Input Object Parameter Set
+Parameter Sets: ObjectSet
 Aliases:
 
 Required: True
@@ -98,7 +98,7 @@ The agent name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases: AgentName
 
 Required: True
@@ -113,7 +113,7 @@ The resource group name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -128,7 +128,7 @@ The agent resource id
 
 ```yaml
 Type: String
-Parameter Sets: Resource Id Parameter Set
+Parameter Sets: ResourceIdSet
 Aliases:
 
 Required: True
@@ -143,7 +143,7 @@ The server name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True

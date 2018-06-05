@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Common parameter sets
         /// </summary>
-        protected const string DefaultParameterSet = "Default Parameter Set"; // used as (default) parameter set mostly
-        protected const string InputObjectParameterSet = "Input Object Parameter Set";
-        protected const string ResourceIdParameterSet = "Resource Id Parameter Set";
+        protected const string DefaultParameterSet = "DefaultSet";
+        protected const string InputObjectParameterSet = "ObjectSet";
+        protected const string ResourceIdParameterSet = "ResourceIdSet";
 
         /// <summary>
         /// Common properties

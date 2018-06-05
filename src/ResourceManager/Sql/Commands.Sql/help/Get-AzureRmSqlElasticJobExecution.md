@@ -12,7 +12,7 @@ Gets one or more job executions
 
 ## SYNTAX
 
-### Default Parameter Set (Default)
+### DefaultSet (Default)
 ```
 Get-AzureRmSqlElasticJobExecution [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  [-Count] <Int32> [-JobName <String>] [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>]
@@ -20,14 +20,14 @@ Get-AzureRmSqlElasticJobExecution [-ResourceGroupName] <String> [-ServerName] <S
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get Job Execution Parameter Set
+### WithJobExecutionId
 ```
 Get-AzureRmSqlElasticJobExecution [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  -JobName <String> [-JobExecutionId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Input Object Parameter Set
+### ObjectSet
 ```
 Get-AzureRmSqlElasticJobExecution [-Count] <Int32> [-JobName <String>] [-CreateTimeMin <DateTime>]
  [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
@@ -35,7 +35,7 @@ Get-AzureRmSqlElasticJobExecution [-Count] <Int32> [-JobName <String>] [-CreateT
  [<CommonParameters>]
 ```
 
-### Resource Id Parameter Set
+### ResourceIdSet
 ```
 Get-AzureRmSqlElasticJobExecution [-Count] <Int32> [-JobName <String>] [-CreateTimeMin <DateTime>]
  [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
@@ -43,14 +43,14 @@ Get-AzureRmSqlElasticJobExecution [-Count] <Int32> [-JobName <String>] [-CreateT
  [<CommonParameters>]
 ```
 
-### Get Job Execution Parameter Set Using Agent Object
+### WithJobExecutionId using AgentObject
 ```
 Get-AzureRmSqlElasticJobExecution -JobName <String> [-JobExecutionId] <String>
  [-AgentObject] <AzureSqlElasticJobAgentModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Get Job Execution Parameter Set using Agent Resource Id
+### WithJobExecutionId using AgentResourceId
 ```
 Get-AzureRmSqlElasticJobExecution -JobName <String> [-JobExecutionId] <String> [-AgentResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -90,7 +90,7 @@ Filter by create time min
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -105,7 +105,7 @@ The agent name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Execution Parameter Set
+Parameter Sets: DefaultSet, WithJobExecutionId
 Aliases:
 
 Required: True
@@ -120,7 +120,7 @@ The job execution id.
 
 ```yaml
 Type: AzureSqlElasticJobAgentModel
-Parameter Sets: Input Object Parameter Set, Get Job Execution Parameter Set Using Agent Object
+Parameter Sets: ObjectSet, WithJobExecutionId using AgentObject
 Aliases:
 
 Required: True
@@ -135,7 +135,7 @@ The agent resource id.
 
 ```yaml
 Type: String
-Parameter Sets: Resource Id Parameter Set, Get Job Execution Parameter Set using Agent Resource Id
+Parameter Sets: ResourceIdSet, WithJobExecutionId using AgentResourceId
 Aliases:
 
 Required: True
@@ -150,7 +150,7 @@ Count returns the top number of executions.
 
 ```yaml
 Type: Int32
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: True
@@ -165,7 +165,7 @@ Filter by create time min
 
 ```yaml
 Type: DateTime
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -180,7 +180,7 @@ Filter by create time min
 
 ```yaml
 Type: DateTime
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -210,7 +210,7 @@ Filter by create time min
 
 ```yaml
 Type: DateTime
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -225,7 +225,7 @@ Filter by create time min
 
 ```yaml
 Type: DateTime
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -240,7 +240,7 @@ The job execution id.
 
 ```yaml
 Type: String
-Parameter Sets: Get Job Execution Parameter Set, Get Job Execution Parameter Set Using Agent Object, Get Job Execution Parameter Set using Agent Resource Id
+Parameter Sets: WithJobExecutionId, WithJobExecutionId using AgentObject, WithJobExecutionId using AgentResourceId
 Aliases:
 
 Required: True
@@ -255,7 +255,7 @@ The job name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -267,7 +267,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Get Job Execution Parameter Set, Get Job Execution Parameter Set Using Agent Object, Get Job Execution Parameter Set using Agent Resource Id
+Parameter Sets: WithJobExecutionId, WithJobExecutionId using AgentObject, WithJobExecutionId using AgentResourceId
 Aliases:
 
 Required: True
@@ -282,7 +282,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Execution Parameter Set
+Parameter Sets: DefaultSet, WithJobExecutionId
 Aliases:
 
 Required: True
@@ -297,7 +297,7 @@ The server name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Execution Parameter Set
+Parameter Sets: DefaultSet, WithJobExecutionId
 Aliases:
 
 Required: True

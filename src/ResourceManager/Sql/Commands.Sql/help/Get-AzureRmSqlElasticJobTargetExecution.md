@@ -12,7 +12,7 @@ Gets one or more job target executions
 
 ## SYNTAX
 
-### Default Parameter Set (Default)
+### DefaultSet (Default)
 ```
 Get-AzureRmSqlElasticJobTargetExecution [-ResourceGroupName] <String> [-ServerName] <String>
  [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-StepName <String>]
@@ -21,7 +21,7 @@ Get-AzureRmSqlElasticJobTargetExecution [-ResourceGroupName] <String> [-ServerNa
  [<CommonParameters>]
 ```
 
-### Input Object Parameter Set
+### ObjectSet
 ```
 Get-AzureRmSqlElasticJobTargetExecution [-StepName <String>] [-CreateTimeMin <DateTime>]
  [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active] [-Count] <Int32>
@@ -29,7 +29,7 @@ Get-AzureRmSqlElasticJobTargetExecution [-StepName <String>] [-CreateTimeMin <Da
  [-Confirm] [<CommonParameters>]
 ```
 
-### Resource Id Parameter Set
+### ResourceIdSet
 ```
 Get-AzureRmSqlElasticJobTargetExecution [-StepName <String>] [-CreateTimeMin <DateTime>]
  [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active] [-Count] <Int32>
@@ -83,7 +83,7 @@ The agent name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -188,7 +188,7 @@ The job execution id.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -203,7 +203,7 @@ The agent object.
 
 ```yaml
 Type: AzureSqlElasticJobExecutionModel
-Parameter Sets: Input Object Parameter Set
+Parameter Sets: ObjectSet
 Aliases:
 
 Required: True
@@ -218,7 +218,7 @@ The job execution resource id.
 
 ```yaml
 Type: String
-Parameter Sets: Resource Id Parameter Set
+Parameter Sets: ResourceIdSet
 Aliases:
 
 Required: True
@@ -233,7 +233,7 @@ The job name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -248,7 +248,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -263,7 +263,7 @@ The server name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True

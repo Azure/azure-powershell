@@ -12,7 +12,7 @@ schema: 2.0.0
 
 ## SYNTAX
 
-### Default Parameter Set (Default)
+### DefaultSet (Default)
 ```
 Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName] <String>
  [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-CreateTimeMin <DateTime>]
@@ -20,27 +20,27 @@ Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get Job Step Execution Parameter Set
+### WithJobStepName
 ```
 Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName] <String>
  [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-StepName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get Job Step Execution Parameter Set Using Job Execution Object
+### WithJobStepName using JobExecutionObject
 ```
 Get-AzureRmSqlElasticJobStepExecution [-StepName] <String>
  [-JobExecutionObject] <AzureSqlElasticJobExecutionModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### Get Job Step Execution Parameter Set Using Job Execution Resource Id
+### WithJobStepName using JobExecutionResourceId
 ```
 Get-AzureRmSqlElasticJobStepExecution [-StepName] <String> [-JobExecutionResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Input Object Parameter Set
+### ObjectSet
 ```
 Get-AzureRmSqlElasticJobStepExecution [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>]
  [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
@@ -48,7 +48,7 @@ Get-AzureRmSqlElasticJobStepExecution [-CreateTimeMin <DateTime>] [-CreateTimeMa
  [-Confirm] [<CommonParameters>]
 ```
 
-### Resource Id Parameter Set
+### ResourceIdSet
 ```
 Get-AzureRmSqlElasticJobStepExecution [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>]
  [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active] [-JobExecutionResourceId] <String>
@@ -87,7 +87,7 @@ Flag to filter by active executions.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -102,7 +102,7 @@ The agent name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Execution Parameter Set
+Parameter Sets: DefaultSet, WithJobStepName
 Aliases:
 
 Required: True
@@ -117,7 +117,7 @@ Filter by create time max
 
 ```yaml
 Type: DateTime
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -132,7 +132,7 @@ Filter by create time min
 
 ```yaml
 Type: DateTime
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -162,7 +162,7 @@ Filter by end time max.
 
 ```yaml
 Type: DateTime
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -177,7 +177,7 @@ Filter by end time min.
 
 ```yaml
 Type: DateTime
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases:
 
 Required: False
@@ -192,7 +192,7 @@ The job execution id.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Execution Parameter Set
+Parameter Sets: DefaultSet, WithJobStepName
 Aliases:
 
 Required: True
@@ -207,7 +207,7 @@ The agent object.
 
 ```yaml
 Type: AzureSqlElasticJobExecutionModel
-Parameter Sets: Get Job Step Execution Parameter Set Using Job Execution Object, Input Object Parameter Set
+Parameter Sets: WithJobStepName using JobExecutionObject, ObjectSet
 Aliases:
 
 Required: True
@@ -222,7 +222,7 @@ The job execution resource id.
 
 ```yaml
 Type: String
-Parameter Sets: Get Job Step Execution Parameter Set Using Job Execution Resource Id, Resource Id Parameter Set
+Parameter Sets: WithJobStepName using JobExecutionResourceId, ResourceIdSet
 Aliases:
 
 Required: True
@@ -237,7 +237,7 @@ The job name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Execution Parameter Set
+Parameter Sets: DefaultSet, WithJobStepName
 Aliases:
 
 Required: True
@@ -252,7 +252,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Execution Parameter Set
+Parameter Sets: DefaultSet, WithJobStepName
 Aliases:
 
 Required: True
@@ -267,7 +267,7 @@ The server name.
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Execution Parameter Set
+Parameter Sets: DefaultSet, WithJobStepName
 Aliases:
 
 Required: True
@@ -282,7 +282,7 @@ The job step name.
 
 ```yaml
 Type: String
-Parameter Sets: Get Job Step Execution Parameter Set, Get Job Step Execution Parameter Set Using Job Execution Object, Get Job Step Execution Parameter Set Using Job Execution Resource Id
+Parameter Sets: WithJobStepName, WithJobStepName using JobExecutionObject, WithJobStepName using JobExecutionResourceId
 Aliases:
 
 Required: True

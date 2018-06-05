@@ -12,39 +12,39 @@ Gets one or more job steps
 
 ## SYNTAX
 
-### Default Parameter Set (Default)
+### DefaultSet (Default)
 ```
 Get-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  [-JobName] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Get Job Step Version Parameter Set
+### GetVersion
 ```
 Get-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  [-JobName] <String> -Name <String> [-Version] <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### Input Object Parameter Set
+### ObjectSet
 ```
 Get-AzureRmSqlElasticJobStep [-Name <String>] [-JobObject] <AzureSqlElasticJobModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get Job Step Version Parameter Set Using Job Object
+### GetVersion Using Job Object
 ```
 Get-AzureRmSqlElasticJobStep -Name <String> [-Version] <Int32> [-JobObject] <AzureSqlElasticJobModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource Id Parameter Set
+### ResourceIdSet
 ```
 Get-AzureRmSqlElasticJobStep [-Name <String>] [-JobResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Get Job Step Version Parameter Set Using Job Resource Id
+### GetVersion Using JobResourceId
 ```
 Get-AzureRmSqlElasticJobStep -Name <String> [-Version] <Int32> [-JobResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -73,7 +73,7 @@ The agent name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Version Parameter Set
+Parameter Sets: DefaultSet, GetVersion
 Aliases:
 
 Required: True
@@ -103,7 +103,7 @@ The job name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Version Parameter Set
+Parameter Sets: DefaultSet, GetVersion
 Aliases:
 
 Required: True
@@ -118,7 +118,7 @@ The job input object
 
 ```yaml
 Type: AzureSqlElasticJobModel
-Parameter Sets: Input Object Parameter Set, Get Job Step Version Parameter Set Using Job Object
+Parameter Sets: ObjectSet, GetVersion Using Job Object
 Aliases:
 
 Required: True
@@ -133,7 +133,7 @@ The job resource id
 
 ```yaml
 Type: String
-Parameter Sets: Resource Id Parameter Set, Get Job Step Version Parameter Set Using Job Resource Id
+Parameter Sets: ResourceIdSet, GetVersion Using JobResourceId
 Aliases:
 
 Required: True
@@ -148,7 +148,7 @@ The job step name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Input Object Parameter Set, Resource Id Parameter Set
+Parameter Sets: DefaultSet, ObjectSet, ResourceIdSet
 Aliases: StepName
 
 Required: False
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Get Job Step Version Parameter Set, Get Job Step Version Parameter Set Using Job Object, Get Job Step Version Parameter Set Using Job Resource Id
+Parameter Sets: GetVersion, GetVersion Using Job Object, GetVersion Using JobResourceId
 Aliases: StepName
 
 Required: True
@@ -175,7 +175,7 @@ The resource group name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Version Parameter Set
+Parameter Sets: DefaultSet, GetVersion
 Aliases:
 
 Required: True
@@ -190,7 +190,7 @@ The server name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set, Get Job Step Version Parameter Set
+Parameter Sets: DefaultSet, GetVersion
 Aliases:
 
 Required: True
@@ -205,7 +205,7 @@ The job step name
 
 ```yaml
 Type: Int32
-Parameter Sets: Get Job Step Version Parameter Set
+Parameter Sets: GetVersion
 Aliases:
 
 Required: True
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: Get Job Step Version Parameter Set Using Job Object
+Parameter Sets: GetVersion Using Job Object
 Aliases:
 
 Required: True
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: Get Job Step Version Parameter Set Using Job Resource Id
+Parameter Sets: GetVersion Using JobResourceId
 Aliases:
 
 Required: True

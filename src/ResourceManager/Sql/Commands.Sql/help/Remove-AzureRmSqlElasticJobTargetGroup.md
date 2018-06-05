@@ -12,20 +12,20 @@ Removes the target group
 
 ## SYNTAX
 
-### Default Parameter Set (Default)
+### DefaultSet (Default)
 ```
 Remove-AzureRmSqlElasticJobTargetGroup [-ResourceGroupName] <String> [-ServerName] <String>
  [-AgentName] <String> [-Name] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### Input Object Parameter Set
+### ObjectSet
 ```
 Remove-AzureRmSqlElasticJobTargetGroup [-Force] [-InputObject] <AzureSqlElasticJobTargetGroupModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource Id Parameter Set
+### ResourceIdSet
 ```
 Remove-AzureRmSqlElasticJobTargetGroup [-Force] [-ResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -54,7 +54,7 @@ The agent name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -99,7 +99,7 @@ The target group object
 
 ```yaml
 Type: AzureSqlElasticJobTargetGroupModel
-Parameter Sets: Input Object Parameter Set
+Parameter Sets: ObjectSet
 Aliases:
 
 Required: True
@@ -114,7 +114,7 @@ The target group name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases: TargetGroupName
 
 Required: True
@@ -129,7 +129,7 @@ The resource group name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -144,7 +144,7 @@ The target group resource id
 
 ```yaml
 Type: String
-Parameter Sets: Resource Id Parameter Set
+Parameter Sets: ResourceIdSet
 Aliases:
 
 Required: True
@@ -159,7 +159,7 @@ The server name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True

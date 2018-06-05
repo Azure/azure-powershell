@@ -12,20 +12,20 @@ Creates a new elastic job agent
 
 ## SYNTAX
 
-### Default Parameter Set (Default)
+### DefaultSet (Default)
 ```
 New-AzureRmSqlElasticJobAgent [-ResourceGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-Name] <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
-### Input Object Parameter Set
+### ObjectSet
 ```
 New-AzureRmSqlElasticJobAgent [-Name] <String> [-Tag <Hashtable>] [-DatabaseObject] <AzureSqlDatabaseModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Resource Id Parameter Set
+### ResourceIdSet
 ```
 New-AzureRmSqlElasticJobAgent [-Name] <String> [-Tag <Hashtable>] [-DatabaseResourceId] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -54,7 +54,7 @@ The database name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -69,7 +69,7 @@ The Agent Control Database Object
 
 ```yaml
 Type: AzureSqlDatabaseModel
-Parameter Sets: Input Object Parameter Set
+Parameter Sets: ObjectSet
 Aliases:
 
 Required: True
@@ -84,7 +84,7 @@ The Agent Control Database Resource Id
 
 ```yaml
 Type: String
-Parameter Sets: Resource Id Parameter Set
+Parameter Sets: ResourceIdSet
 Aliases:
 
 Required: True
@@ -129,7 +129,7 @@ The resource group name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True
@@ -144,7 +144,7 @@ The server name
 
 ```yaml
 Type: String
-Parameter Sets: Default Parameter Set
+Parameter Sets: DefaultSet
 Aliases:
 
 Required: True

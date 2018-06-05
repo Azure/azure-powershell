@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
         /// <summary>
         /// The parameter sets
         /// </summary>
-        protected const string GetJobStepExecutionDefaultParam = "Get Job Step Execution Parameter Set";
-        protected const string GetJobStepExecutionJobExecutionModel = "Get Job Step Execution Parameter Set Using Job Execution Object";
-        protected const string GetJobStepExecutionJobExecutionResourceId = "Get Job Step Execution Parameter Set Using Job Execution Resource Id";
+        protected const string GetJobStepExecutionDefaultParam = "WithJobStepName";
+        protected const string GetJobStepExecutionJobExecutionModel = "WithJobStepName using JobExecutionObject";
+        protected const string GetJobStepExecutionJobExecutionResourceId = "WithJobStepName using JobExecutionResourceId";
 
         /// <summary>
         /// Gets or sets the resource group name
