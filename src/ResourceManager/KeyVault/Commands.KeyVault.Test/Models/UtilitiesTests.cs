@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -26,8 +27,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
 {
     public class UtilitiesTests
     {
+        private ITestOutputHelper _output;
+
         public UtilitiesTests(ITestOutputHelper output)
         {
+            _output = output;
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
@@ -63,7 +67,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
         public void GetWebKeyFromCertificate()
         {
             string password = "123";
+            _output.WriteLine($"Assembly: {Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}");
+            _output.WriteLine($"Current: {Directory.GetCurrentDirectory()}");
+            _output.WriteLine($"Exists: {new FileInfo("./Resources/pshtest.pfx").Exists}");
             string path = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "pshtest.pfx");
+            _output.WriteLine($"Path: {path}");
 
             IWebKeyConverter converters = WebKeyConverterFactory.CreateConverterChain();
             var webKey = converters.ConvertKeyFromFile(new FileInfo(path), password.ConvertToSecureString());
